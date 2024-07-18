@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
         /// <param name="supportPlan">The support plan for the Managed Cluster. If unspecified, the default is
         /// &#39;KubernetesOfficial&#39;.
-        /// Possible values include: 'KubernetesOfficial', 'AKSLongTermSupport'</param>
+        /// Possible values include: &#39;KubernetesOfficial&#39;, &#39;AKSLongTermSupport&#39;</param>
 
         /// <param name="enablePodSecurityPolicy">(DEPRECATED) Whether to enable Kubernetes pod security policy (preview).
         /// PodSecurityPolicy was deprecated in Kubernetes v1.21, and removed from
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </param>
 
         /// <param name="publicNetworkAccess">Allow or deny public network access for AKS
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="workloadAutoScalerProfile">Workload Auto-scaler profile for the managed cluster.
         /// </param>

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </param>
 
         /// <param name="snapshotType">The type of a snapshot. The default is NodePool.
-        /// Possible values include: 'NodePool'</param>
+        /// Possible values include: &#39;NodePool&#39;</param>
 
         /// <param name="kubernetesVersion">The version of Kubernetes.
         /// </param>
@@ -38,13 +38,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </param>
 
         /// <param name="osType">The operating system type. The default is Linux.
-        /// Possible values include: 'Linux', 'Windows'</param>
+        /// Possible values include: &#39;Linux&#39;, &#39;Windows&#39;</param>
 
         /// <param name="osSku">Specifies the OS SKU used by the agent pool. The default is Ubuntu if
         /// OSType is Linux. The default is Windows2019 when Kubernetes &lt;= 1.24 or
         /// Windows2022 when Kubernetes &gt;= 1.25 if OSType is Windows.
-        /// Possible values include: 'Ubuntu', 'AzureLinux', 'CBLMariner',
-        /// 'Windows2019', 'Windows2022'</param>
+        /// Possible values include: &#39;Ubuntu&#39;, &#39;AzureLinux&#39;, &#39;CBLMariner&#39;,
+        /// &#39;Windows2019&#39;, &#39;Windows2022&#39;</param>
 
         /// <param name="vmSize">The size of the VM.
         /// </param>

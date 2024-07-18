@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.ContainerService
     public static partial class PrivateEndpointConnectionsOperationsExtensions
     {
         /// <summary>
-        /// To learn more about private clusters, see: https://docs.microsoft.com/azure/aks/private-clusters
+        /// To learn more about private clusters, see:
+        /// https://docs.microsoft.com/azure/aks/private-clusters
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -30,7 +31,8 @@ namespace Microsoft.Azure.Management.ContainerService
         }
 
         /// <summary>
-        /// To learn more about private clusters, see: https://docs.microsoft.com/azure/aks/private-clusters
+        /// To learn more about private clusters, see:
+        /// https://docs.microsoft.com/azure/aks/private-clusters
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -52,7 +54,8 @@ namespace Microsoft.Azure.Management.ContainerService
             }
         }
         /// <summary>
-        /// To learn more about private clusters, see: https://docs.microsoft.com/azure/aks/private-clusters
+        /// To learn more about private clusters, see:
+        /// https://docs.microsoft.com/azure/aks/private-clusters
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -72,7 +75,8 @@ namespace Microsoft.Azure.Management.ContainerService
         }
 
         /// <summary>
-        /// To learn more about private clusters, see: https://docs.microsoft.com/azure/aks/private-clusters
+        /// To learn more about private clusters, see:
+        /// https://docs.microsoft.com/azure/aks/private-clusters
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

@@ -97,7 +97,8 @@ namespace Microsoft.Azure.Management.ContainerService
             }
         }
         /// <summary>
-        /// Creates or updates a maintenance configuration in the specified managed cluster.
+        /// Creates or updates a maintenance configuration in the specified managed
+        /// cluster.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -117,7 +118,8 @@ namespace Microsoft.Azure.Management.ContainerService
         }
 
         /// <summary>
-        /// Creates or updates a maintenance configuration in the specified managed cluster.
+        /// Creates or updates a maintenance configuration in the specified managed
+        /// cluster.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

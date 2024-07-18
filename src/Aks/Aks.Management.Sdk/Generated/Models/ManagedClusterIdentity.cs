@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
         /// <param name="type">For more information see [use managed identities in
         /// AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).
-        /// Possible values include: 'SystemAssigned', 'UserAssigned', 'None'</param>
+        /// Possible values include: &#39;SystemAssigned&#39;, &#39;UserAssigned&#39;, &#39;None&#39;</param>
 
         /// <param name="userAssignedIdentities">The keys must be ARM resource IDs in the form:
         /// &#39;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}&#39;.

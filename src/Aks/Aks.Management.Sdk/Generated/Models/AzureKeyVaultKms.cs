@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// `Private`. `Public` means the key vault allows public access from all
         /// networks. `Private` means the key vault disables public access and enables
         /// private link. The default value is `Public`.
-        /// Possible values include: 'Public', 'Private'</param>
+        /// Possible values include: &#39;Public&#39;, &#39;Private&#39;</param>
 
         /// <param name="keyVaultResourceId">Resource ID of key vault. When keyVaultNetworkAccess is `Private`, this
         /// field is required and must be a valid resource ID. When

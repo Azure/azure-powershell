@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.ContainerService
     public partial interface IPrivateEndpointConnectionsOperations
     {
         /// <summary>
-        /// To learn more about private clusters, see: https://docs.microsoft.com/azure/aks/private-clusters
+        /// To learn more about private clusters, see:
+        /// https://docs.microsoft.com/azure/aks/private-clusters
         /// </summary>
         /// <remarks>
-        /// To learn more about private clusters, see: https://docs.microsoft.com/azure/aks/private-clusters
+        /// To learn more about private clusters, see:
+        /// https://docs.microsoft.com/azure/aks/private-clusters
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -40,10 +42,12 @@ namespace Microsoft.Azure.Management.ContainerService
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnectionListResult>> ListWithHttpMessagesAsync(string resourceGroupName, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// To learn more about private clusters, see: https://docs.microsoft.com/azure/aks/private-clusters
+        /// To learn more about private clusters, see:
+        /// https://docs.microsoft.com/azure/aks/private-clusters
         /// </summary>
         /// <remarks>
-        /// To learn more about private clusters, see: https://docs.microsoft.com/azure/aks/private-clusters
+        /// To learn more about private clusters, see:
+        /// https://docs.microsoft.com/azure/aks/private-clusters
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

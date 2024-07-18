@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </param>
 
         /// <param name="provisioningState">The current provisioning state.
-        /// Possible values include: 'Canceled', 'Creating', 'Deleting', 'Failed',
-        /// 'Succeeded'</param>
+        /// Possible values include: &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;,
+        /// &#39;Succeeded&#39;</param>
 
         /// <param name="privateLinkServiceConnectionState">A collection of information about the state of the connection between
         /// service consumer and provider.

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="expander">If not specified, the default is &#39;random&#39;. See
         /// [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders)
         /// for more information.
-        /// Possible values include: 'least-waste', 'most-pods', 'priority', 'random'</param>
+        /// Possible values include: &#39;least-waste&#39;, &#39;most-pods&#39;, &#39;priority&#39;, &#39;random&#39;</param>
 
         /// <param name="maxEmptyBulkDelete">The default is 10.
         /// </param>

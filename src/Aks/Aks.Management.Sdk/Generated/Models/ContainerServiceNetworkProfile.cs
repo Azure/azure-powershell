@@ -25,19 +25,19 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
 
         /// <param name="networkPlugin">Network plugin used for building the Kubernetes network.
-        /// Possible values include: 'azure', 'kubenet', 'none'</param>
+        /// Possible values include: &#39;azure&#39;, &#39;kubenet&#39;, &#39;none&#39;</param>
 
         /// <param name="networkPluginMode">The mode the network plugin should use.
-        /// Possible values include: 'overlay'</param>
+        /// Possible values include: &#39;overlay&#39;</param>
 
         /// <param name="networkPolicy">Network policy used for building the Kubernetes network.
-        /// Possible values include: 'calico', 'azure', 'cilium'</param>
+        /// Possible values include: &#39;calico&#39;, &#39;azure&#39;, &#39;cilium&#39;</param>
 
         /// <param name="networkMode">This cannot be specified if networkPlugin is anything other than &#39;azure&#39;.
-        /// Possible values include: 'transparent', 'bridge'</param>
+        /// Possible values include: &#39;transparent&#39;, &#39;bridge&#39;</param>
 
         /// <param name="networkDataplane">Network dataplane used in the Kubernetes cluster.
-        /// Possible values include: 'azure', 'cilium'</param>
+        /// Possible values include: &#39;azure&#39;, &#39;cilium&#39;</param>
 
         /// <param name="podCidr">A CIDR notation IP range from which to assign pod IPs when kubenet is used.
         /// </param>
@@ -53,13 +53,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="outboundType">This can only be set at cluster creation time and cannot be changed later.
         /// For more information see [egress outbound
         /// type](https://docs.microsoft.com/azure/aks/egress-outboundtype).
-        /// Possible values include: 'loadBalancer', 'userDefinedRouting',
-        /// 'managedNATGateway', 'userAssignedNATGateway'</param>
+        /// Possible values include: &#39;loadBalancer&#39;, &#39;userDefinedRouting&#39;,
+        /// &#39;managedNATGateway&#39;, &#39;userAssignedNATGateway&#39;</param>
 
         /// <param name="loadBalancerSku">The default is &#39;standard&#39;. See [Azure Load Balancer
         /// SKUs](https://docs.microsoft.com/azure/load-balancer/skus) for more
         /// information about the differences between load balancer SKUs.
-        /// Possible values include: 'standard', 'basic'</param>
+        /// Possible values include: &#39;standard&#39;, &#39;basic&#39;</param>
 
         /// <param name="loadBalancerProfile">Profile of the cluster load balancer.
         /// </param>

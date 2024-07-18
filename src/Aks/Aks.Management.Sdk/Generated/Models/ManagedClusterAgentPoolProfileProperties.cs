@@ -44,14 +44,14 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// larger than the requested OSDiskSizeGB. Otherwise, defaults to &#39;Managed&#39;.
         /// May not be changed after creation. For more information see [Ephemeral
         /// OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os).
-        /// Possible values include: 'Managed', 'Ephemeral'</param>
+        /// Possible values include: &#39;Managed&#39;, &#39;Ephemeral&#39;</param>
 
         /// <param name="kubeletDiskType">Determines the placement of emptyDir volumes, container runtime data root,
         /// and Kubelet ephemeral storage.
-        /// Possible values include: 'OS', 'Temporary'</param>
+        /// Possible values include: &#39;OS&#39;, &#39;Temporary&#39;</param>
 
         /// <param name="workloadRuntime">Determines the type of workload a node can run.
-        /// Possible values include: 'OCIContainer', 'WasmWasi'</param>
+        /// Possible values include: &#39;OCIContainer&#39;, &#39;WasmWasi&#39;</param>
 
         /// <param name="vnetSubnetId">If this is not specified, a VNET and subnet will be generated and used. If
         /// no podSubnetID is specified, this applies to nodes and pods, otherwise it
@@ -68,13 +68,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </param>
 
         /// <param name="osType">The operating system type. The default is Linux.
-        /// Possible values include: 'Linux', 'Windows'</param>
+        /// Possible values include: &#39;Linux&#39;, &#39;Windows&#39;</param>
 
         /// <param name="osSku">Specifies the OS SKU used by the agent pool. The default is Ubuntu if
         /// OSType is Linux. The default is Windows2019 when Kubernetes &lt;= 1.24 or
         /// Windows2022 when Kubernetes &gt;= 1.25 if OSType is Windows.
-        /// Possible values include: 'Ubuntu', 'AzureLinux', 'CBLMariner',
-        /// 'Windows2019', 'Windows2022'</param>
+        /// Possible values include: &#39;Ubuntu&#39;, &#39;AzureLinux&#39;, &#39;CBLMariner&#39;,
+        /// &#39;Windows2019&#39;, &#39;Windows2022&#39;</param>
 
         /// <param name="maxCount">The maximum number of nodes for auto-scaling
         /// </param>
@@ -87,15 +87,15 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
         /// <param name="scaleDownMode">This also effects the cluster autoscaler behavior. If not specified, it
         /// defaults to Delete.
-        /// Possible values include: 'Delete', 'Deallocate'</param>
+        /// Possible values include: &#39;Delete&#39;, &#39;Deallocate&#39;</param>
 
         /// <param name="type">The type of Agent Pool.
-        /// Possible values include: 'VirtualMachineScaleSets', 'AvailabilitySet'</param>
+        /// Possible values include: &#39;VirtualMachineScaleSets&#39;, &#39;AvailabilitySet&#39;</param>
 
         /// <param name="mode">A cluster must have at least one &#39;System&#39; Agent Pool at all times. For
         /// additional information on agent pool restrictions and best practices, see:
         /// https://docs.microsoft.com/azure/aks/use-system-pools
-        /// Possible values include: 'System', 'User'</param>
+        /// Possible values include: &#39;System&#39;, &#39;User&#39;</param>
 
         /// <param name="orchestratorVersion">Both patch version (major.minor.patch) (e.g. 1.20.13) and (major.minor)
         /// (e.g. 1.20) are supported. When (major.minor) is specified, the latest
@@ -151,11 +151,11 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
         /// <param name="scaleSetPriority">The Virtual Machine Scale Set priority. If not specified, the default is
         /// &#39;Regular&#39;.
-        /// Possible values include: 'Spot', 'Regular'</param>
+        /// Possible values include: &#39;Spot&#39;, &#39;Regular&#39;</param>
 
         /// <param name="scaleSetEvictionPolicy">This cannot be specified unless the scaleSetPriority is &#39;Spot&#39;. If not
         /// specified, the default is &#39;Delete&#39;.
-        /// Possible values include: 'Delete', 'Deallocate'</param>
+        /// Possible values include: &#39;Delete&#39;, &#39;Deallocate&#39;</param>
 
         /// <param name="spotMaxPrice">Possible values are any decimal value greater than zero or -1 which
         /// indicates the willingness to pay any on-demand price. For more details on
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
         /// <param name="gpuInstanceProfile">GPUInstanceProfile to be used to specify GPU MIG instance profile for
         /// supported GPU VM SKU.
-        /// Possible values include: 'MIG1g', 'MIG2g', 'MIG3g', 'MIG4g', 'MIG7g'</param>
+        /// Possible values include: &#39;MIG1g&#39;, &#39;MIG2g&#39;, &#39;MIG3g&#39;, &#39;MIG4g&#39;, &#39;MIG7g&#39;</param>
 
         /// <param name="creationData">CreationData to be used to specify the source Snapshot ID if the node pool
         /// will be created/upgraded using a snapshot.

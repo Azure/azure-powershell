@@ -18,7 +18,9 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         public const string Azure = "azure";
         /// <summary>
-        /// Use Cilium network dataplane. See [Azure CNI Powered by Cilium](https://learn.microsoft.com/azure/aks/azure-cni-powered-by-cilium) for more information.
+        /// Use Cilium network dataplane. See [Azure CNI Powered by
+        /// Cilium](https://learn.microsoft.com/azure/aks/azure-cni-powered-by-cilium)
+        /// for more information.
         /// </summary>
         public const string Cilium = "cilium";
     }

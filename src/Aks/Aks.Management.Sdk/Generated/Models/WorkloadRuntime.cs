@@ -18,7 +18,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         public const string OCIContainer = "OCIContainer";
         /// <summary>
-        /// Nodes will use Krustlet to run WASM workloads using the WASI provider (Preview).
+        /// Nodes will use Krustlet to run WASM workloads using the WASI provider
+        /// (Preview).
         /// </summary>
         public const string WasmWasi = "WasmWasi";
     }

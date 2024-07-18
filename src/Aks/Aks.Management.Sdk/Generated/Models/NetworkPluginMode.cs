@@ -14,7 +14,9 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     public static class NetworkPluginMode
     {
         /// <summary>
-        /// Used with networkPlugin=azure, pods are given IPs from the PodCIDR address space but use Azure Routing Domains rather than Kubenet's method of route tables. For more information visit https://aka.ms/aks/azure-cni-overlay.
+        /// Used with networkPlugin=azure, pods are given IPs from the PodCIDR address
+        /// space but use Azure Routing Domains rather than Kubenet&#39;s method of route
+        /// tables. For more information visit https://aka.ms/aks/azure-cni-overlay.
         /// </summary>
         public const string Overlay = "overlay";
     }

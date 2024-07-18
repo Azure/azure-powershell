@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
 
         /// <param name="day">The day of the week.
-        /// Possible values include: 'Sunday', 'Monday', 'Tuesday', 'Wednesday',
-        /// 'Thursday', 'Friday', 'Saturday'</param>
+        /// Possible values include: &#39;Sunday&#39;, &#39;Monday&#39;, &#39;Tuesday&#39;, &#39;Wednesday&#39;,
+        /// &#39;Thursday&#39;, &#39;Friday&#39;, &#39;Saturday&#39;</param>
 
         /// <param name="hourSlots">Each integer hour represents a time range beginning at 0m after the hour
         /// ending at the next hour (non-inclusive). 0 corresponds to 00:00 UTC, 23

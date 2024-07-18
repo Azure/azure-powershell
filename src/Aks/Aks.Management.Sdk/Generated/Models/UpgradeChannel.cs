@@ -14,23 +14,43 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     public static class UpgradeChannel
     {
         /// <summary>
-        /// Automatically upgrade the cluster to the latest supported patch release on the latest supported minor version. In cases where the cluster is at a version of Kubernetes that is at an N-2 minor version where N is the latest supported minor version, the cluster first upgrades to the latest supported patch version on N-1 minor version. For example, if a cluster is running version 1.17.7 and versions 1.17.9, 1.18.4, 1.18.6, and 1.19.1 are available, your cluster first is upgraded to 1.18.6, then is upgraded to 1.19.1.
+        /// Automatically upgrade the cluster to the latest supported patch release on
+        /// the latest supported minor version. In cases where the cluster is at a
+        /// version of Kubernetes that is at an N-2 minor version where N is the latest
+        /// supported minor version, the cluster first upgrades to the latest supported
+        /// patch version on N-1 minor version. For example, if a cluster is running
+        /// version 1.17.7 and versions 1.17.9, 1.18.4, 1.18.6, and 1.19.1 are
+        /// available, your cluster first is upgraded to 1.18.6, then is upgraded to
+        /// 1.19.1.
         /// </summary>
         public const string Rapid = "rapid";
         /// <summary>
-        /// Automatically upgrade the cluster to the latest supported patch release on minor version N-1, where N is the latest supported minor version. For example, if a cluster is running version 1.17.7 and versions 1.17.9, 1.18.4, 1.18.6, and 1.19.1 are available, your cluster is upgraded to 1.18.6.
+        /// Automatically upgrade the cluster to the latest supported patch release on
+        /// minor version N-1, where N is the latest supported minor version. For
+        /// example, if a cluster is running version 1.17.7 and versions 1.17.9,
+        /// 1.18.4, 1.18.6, and 1.19.1 are available, your cluster is upgraded to
+        /// 1.18.6.
         /// </summary>
         public const string Stable = "stable";
         /// <summary>
-        /// Automatically upgrade the cluster to the latest supported patch version when it becomes available while keeping the minor version the same. For example, if a cluster is running version 1.17.7 and versions 1.17.9, 1.18.4, 1.18.6, and 1.19.1 are available, your cluster is upgraded to 1.17.9.
+        /// Automatically upgrade the cluster to the latest supported patch version
+        /// when it becomes available while keeping the minor version the same. For
+        /// example, if a cluster is running version 1.17.7 and versions 1.17.9,
+        /// 1.18.4, 1.18.6, and 1.19.1 are available, your cluster is upgraded to
+        /// 1.17.9.
         /// </summary>
         public const string Patch = "patch";
         /// <summary>
-        /// Automatically upgrade the node image to the latest version available. Microsoft provides patches and new images for image nodes frequently (usually weekly), but your running nodes won't get the new images unless you do a node image upgrade. Turning on the node-image channel will automatically update your node images whenever a new version is available.
+        /// Automatically upgrade the node image to the latest version available.
+        /// Microsoft provides patches and new images for image nodes frequently
+        /// (usually weekly), but your running nodes won&#39;t get the new images unless
+        /// you do a node image upgrade. Turning on the node-image channel will
+        /// automatically update your node images whenever a new version is available.
         /// </summary>
         public const string NodeImage = "node-image";
         /// <summary>
-        /// Disables auto-upgrades and keeps the cluster at its current version of Kubernetes.
+        /// Disables auto-upgrades and keeps the cluster at its current version of
+        /// Kubernetes.
         /// </summary>
         public const string None = "none";
     }

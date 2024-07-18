@@ -14,7 +14,9 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     public static class AgentPoolMode
     {
         /// <summary>
-        /// System agent pools are primarily for hosting critical system pods such as CoreDNS and metrics-server. System agent pools osType must be Linux. System agent pools VM SKU must have at least 2vCPUs and 4GB of memory.
+        /// System agent pools are primarily for hosting critical system pods such as
+        /// CoreDNS and metrics-server. System agent pools osType must be Linux. System
+        /// agent pools VM SKU must have at least 2vCPUs and 4GB of memory.
         /// </summary>
         public const string System = "System";
         /// <summary>

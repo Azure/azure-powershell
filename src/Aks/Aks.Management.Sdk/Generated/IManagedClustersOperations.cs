@@ -40,10 +40,14 @@ namespace Microsoft.Azure.Management.ContainerService
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<OSOptionProfile>> GetOSOptionsWithHttpMessagesAsync(string location, string resourceType = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Contains extra metadata on the version, including supported patch versions, capabilities, available upgrades, and details on preview status of the version
+        /// Contains extra metadata on the version, including supported patch versions,
+        /// capabilities, available upgrades, and details on preview status of the
+        /// version
         /// </summary>
         /// <remarks>
-        /// Contains extra metadata on the version, including supported patch versions, capabilities, available upgrades, and details on preview status of the version
+        /// Contains extra metadata on the version, including supported patch versions,
+        /// capabilities, available upgrades, and details on preview status of the
+        /// version
         /// </remarks>
         /// <param name='location'>
         /// The name of Azure region.
@@ -132,10 +136,18 @@ namespace Microsoft.Azure.Management.ContainerService
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedClusterUpgradeProfile>> GetUpgradeProfileWithHttpMessagesAsync(string resourceGroupName, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// **WARNING**: This API will be deprecated. Instead use [ListClusterUserCredentials](https://docs.microsoft.com/rest/api/aks/managedclusters/listclusterusercredentials) or [ListClusterAdminCredentials](https://docs.microsoft.com/rest/api/aks/managedclusters/listclusteradmincredentials) .
+        /// **WARNING**: This API will be deprecated. Instead use
+        /// [ListClusterUserCredentials](https://docs.microsoft.com/rest/api/aks/managedclusters/listclusterusercredentials)
+        /// or
+        /// [ListClusterAdminCredentials](https://docs.microsoft.com/rest/api/aks/managedclusters/listclusteradmincredentials)
+        /// .
         /// </summary>
         /// <remarks>
-        /// **WARNING**: This API will be deprecated. Instead use [ListClusterUserCredentials](https://docs.microsoft.com/rest/api/aks/managedclusters/listclusterusercredentials) or [ListClusterAdminCredentials](https://docs.microsoft.com/rest/api/aks/managedclusters/listclusteradmincredentials) .
+        /// **WARNING**: This API will be deprecated. Instead use
+        /// [ListClusterUserCredentials](https://docs.microsoft.com/rest/api/aks/managedclusters/listclusterusercredentials)
+        /// or
+        /// [ListClusterAdminCredentials](https://docs.microsoft.com/rest/api/aks/managedclusters/listclusteradmincredentials)
+        /// .
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -205,7 +217,10 @@ namespace Microsoft.Azure.Management.ContainerService
         /// server fqdn type for credentials to be returned
         /// </param>
         /// <param name='format'>
-        /// Only apply to AAD clusters, specifies the format of returned kubeconfig. Format &#39;azure&#39; will return azure auth-provider kubeconfig; format &#39;exec&#39; will return exec format kubeconfig, which requires kubelogin binary in the path.
+        /// Only apply to AAD clusters, specifies the format of returned kubeconfig.
+        /// Format &#39;azure&#39; will return azure auth-provider kubeconfig; format &#39;exec&#39;
+        /// will return exec format kubeconfig, which requires kubelogin binary in the
+        /// path.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -358,10 +373,12 @@ namespace Microsoft.Azure.Management.ContainerService
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ManagedClustersDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// This action cannot be performed on a cluster that is not using a service principal
+        /// This action cannot be performed on a cluster that is not using a service
+        /// principal
         /// </summary>
         /// <remarks>
-        /// This action cannot be performed on a cluster that is not using a service principal
+        /// This action cannot be performed on a cluster that is not using a service
+        /// principal
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -384,10 +401,14 @@ namespace Microsoft.Azure.Management.ContainerService
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ManagedClustersResetServicePrincipalProfileHeaders>> ResetServicePrincipalProfileWithHttpMessagesAsync(string resourceGroupName, string resourceName, ManagedClusterServicePrincipalProfile parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// **WARNING**: This API will be deprecated. Please see [AKS-managed Azure Active Directory integration](https://aka.ms/aks-managed-aad) to update your cluster with AKS-managed Azure AD.
+        /// **WARNING**: This API will be deprecated. Please see [AKS-managed Azure
+        /// Active Directory integration](https://aka.ms/aks-managed-aad) to update
+        /// your cluster with AKS-managed Azure AD.
         /// </summary>
         /// <remarks>
-        /// **WARNING**: This API will be deprecated. Please see [AKS-managed Azure Active Directory integration](https://aka.ms/aks-managed-aad) to update your cluster with AKS-managed Azure AD.
+        /// **WARNING**: This API will be deprecated. Please see [AKS-managed Azure
+        /// Active Directory integration](https://aka.ms/aks-managed-aad) to update
+        /// your cluster with AKS-managed Azure AD.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -410,10 +431,14 @@ namespace Microsoft.Azure.Management.ContainerService
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ManagedClustersResetAadProfileHeaders>> ResetAADProfileWithHttpMessagesAsync(string resourceGroupName, string resourceName, ManagedClusterAADProfile parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// See [Certificate rotation](https://docs.microsoft.com/azure/aks/certificate-rotation) for more details about rotating managed cluster certificates.
+        /// See [Certificate
+        /// rotation](https://docs.microsoft.com/azure/aks/certificate-rotation) for
+        /// more details about rotating managed cluster certificates.
         /// </summary>
         /// <remarks>
-        /// See [Certificate rotation](https://docs.microsoft.com/azure/aks/certificate-rotation) for more details about rotating managed cluster certificates.
+        /// See [Certificate
+        /// rotation](https://docs.microsoft.com/azure/aks/certificate-rotation) for
+        /// more details about rotating managed cluster certificates.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -433,10 +458,16 @@ namespace Microsoft.Azure.Management.ContainerService
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ManagedClustersRotateClusterCertificatesHeaders>> RotateClusterCertificatesWithHttpMessagesAsync(string resourceGroupName, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Aborts the currently running operation on the managed cluster. The Managed Cluster will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes. If the operation completes before cancellation can take place, a 409 error code is returned.
+        /// Aborts the currently running operation on the managed cluster. The Managed
+        /// Cluster will be moved to a Canceling state and eventually to a Canceled
+        /// state when cancellation finishes. If the operation completes before
+        /// cancellation can take place, a 409 error code is returned.
         /// </summary>
         /// <remarks>
-        /// Aborts the currently running operation on the managed cluster. The Managed Cluster will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes. If the operation completes before cancellation can take place, a 409 error code is returned.
+        /// Aborts the currently running operation on the managed cluster. The Managed
+        /// Cluster will be moved to a Canceling state and eventually to a Canceled
+        /// state when cancellation finishes. If the operation completes before
+        /// cancellation can take place, a 409 error code is returned.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -479,10 +510,20 @@ namespace Microsoft.Azure.Management.ContainerService
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ManagedClustersRotateServiceAccountSigningKeysHeaders>> RotateServiceAccountSigningKeysWithHttpMessagesAsync(string resourceGroupName, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// This can only be performed on Azure Virtual Machine Scale set backed clusters. Stopping a cluster stops the control plane and agent nodes entirely, while maintaining all object and cluster state. A cluster does not accrue charges while it is stopped. See [stopping a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about stopping a cluster.
+        /// This can only be performed on Azure Virtual Machine Scale set backed
+        /// clusters. Stopping a cluster stops the control plane and agent nodes
+        /// entirely, while maintaining all object and cluster state. A cluster does
+        /// not accrue charges while it is stopped. See [stopping a
+        /// cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more
+        /// details about stopping a cluster.
         /// </summary>
         /// <remarks>
-        /// This can only be performed on Azure Virtual Machine Scale set backed clusters. Stopping a cluster stops the control plane and agent nodes entirely, while maintaining all object and cluster state. A cluster does not accrue charges while it is stopped. See [stopping a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about stopping a cluster.
+        /// This can only be performed on Azure Virtual Machine Scale set backed
+        /// clusters. Stopping a cluster stops the control plane and agent nodes
+        /// entirely, while maintaining all object and cluster state. A cluster does
+        /// not accrue charges while it is stopped. See [stopping a
+        /// cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more
+        /// details about stopping a cluster.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -502,10 +543,14 @@ namespace Microsoft.Azure.Management.ContainerService
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ManagedClustersStopHeaders>> StopWithHttpMessagesAsync(string resourceGroupName, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// See [starting a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about starting a cluster.
+        /// See [starting a
+        /// cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more
+        /// details about starting a cluster.
         /// </summary>
         /// <remarks>
-        /// See [starting a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about starting a cluster.
+        /// See [starting a
+        /// cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more
+        /// details about starting a cluster.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -525,10 +570,14 @@ namespace Microsoft.Azure.Management.ContainerService
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ManagedClustersStartHeaders>> StartWithHttpMessagesAsync(string resourceGroupName, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// AKS will create a pod to run the command. This is primarily useful for private clusters. For more information see [AKS Run Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
+        /// AKS will create a pod to run the command. This is primarily useful for
+        /// private clusters. For more information see [AKS Run
+        /// Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
         /// </summary>
         /// <remarks>
-        /// AKS will create a pod to run the command. This is primarily useful for private clusters. For more information see [AKS Run Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
+        /// AKS will create a pod to run the command. This is primarily useful for
+        /// private clusters. For more information see [AKS Run
+        /// Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -583,10 +632,14 @@ namespace Microsoft.Azure.Management.ContainerService
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RunCommandResult,ManagedClustersGetCommandResultHeaders>> GetCommandResultWithHttpMessagesAsync(string resourceGroupName, string resourceName, string commandId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets a list of egress endpoints (network endpoints of all outbound dependencies) in the specified managed cluster. The operation returns properties of each egress endpoint.
+        /// Gets a list of egress endpoints (network endpoints of all outbound
+        /// dependencies) in the specified managed cluster. The operation returns
+        /// properties of each egress endpoint.
         /// </summary>
         /// <remarks>
-        /// Gets a list of egress endpoints (network endpoints of all outbound dependencies) in the specified managed cluster. The operation returns properties of each egress endpoint.
+        /// Gets a list of egress endpoints (network endpoints of all outbound
+        /// dependencies) in the specified managed cluster. The operation returns
+        /// properties of each egress endpoint.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -690,10 +743,12 @@ namespace Microsoft.Azure.Management.ContainerService
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ManagedClustersDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// This action cannot be performed on a cluster that is not using a service principal
+        /// This action cannot be performed on a cluster that is not using a service
+        /// principal
         /// </summary>
         /// <remarks>
-        /// This action cannot be performed on a cluster that is not using a service principal
+        /// This action cannot be performed on a cluster that is not using a service
+        /// principal
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -716,10 +771,14 @@ namespace Microsoft.Azure.Management.ContainerService
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ManagedClustersResetServicePrincipalProfileHeaders>> BeginResetServicePrincipalProfileWithHttpMessagesAsync(string resourceGroupName, string resourceName, ManagedClusterServicePrincipalProfile parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// **WARNING**: This API will be deprecated. Please see [AKS-managed Azure Active Directory integration](https://aka.ms/aks-managed-aad) to update your cluster with AKS-managed Azure AD.
+        /// **WARNING**: This API will be deprecated. Please see [AKS-managed Azure
+        /// Active Directory integration](https://aka.ms/aks-managed-aad) to update
+        /// your cluster with AKS-managed Azure AD.
         /// </summary>
         /// <remarks>
-        /// **WARNING**: This API will be deprecated. Please see [AKS-managed Azure Active Directory integration](https://aka.ms/aks-managed-aad) to update your cluster with AKS-managed Azure AD.
+        /// **WARNING**: This API will be deprecated. Please see [AKS-managed Azure
+        /// Active Directory integration](https://aka.ms/aks-managed-aad) to update
+        /// your cluster with AKS-managed Azure AD.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -742,10 +801,14 @@ namespace Microsoft.Azure.Management.ContainerService
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ManagedClustersResetAadProfileHeaders>> BeginResetAADProfileWithHttpMessagesAsync(string resourceGroupName, string resourceName, ManagedClusterAADProfile parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// See [Certificate rotation](https://docs.microsoft.com/azure/aks/certificate-rotation) for more details about rotating managed cluster certificates.
+        /// See [Certificate
+        /// rotation](https://docs.microsoft.com/azure/aks/certificate-rotation) for
+        /// more details about rotating managed cluster certificates.
         /// </summary>
         /// <remarks>
-        /// See [Certificate rotation](https://docs.microsoft.com/azure/aks/certificate-rotation) for more details about rotating managed cluster certificates.
+        /// See [Certificate
+        /// rotation](https://docs.microsoft.com/azure/aks/certificate-rotation) for
+        /// more details about rotating managed cluster certificates.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -765,10 +828,16 @@ namespace Microsoft.Azure.Management.ContainerService
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ManagedClustersRotateClusterCertificatesHeaders>> BeginRotateClusterCertificatesWithHttpMessagesAsync(string resourceGroupName, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Aborts the currently running operation on the managed cluster. The Managed Cluster will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes. If the operation completes before cancellation can take place, a 409 error code is returned.
+        /// Aborts the currently running operation on the managed cluster. The Managed
+        /// Cluster will be moved to a Canceling state and eventually to a Canceled
+        /// state when cancellation finishes. If the operation completes before
+        /// cancellation can take place, a 409 error code is returned.
         /// </summary>
         /// <remarks>
-        /// Aborts the currently running operation on the managed cluster. The Managed Cluster will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes. If the operation completes before cancellation can take place, a 409 error code is returned.
+        /// Aborts the currently running operation on the managed cluster. The Managed
+        /// Cluster will be moved to a Canceling state and eventually to a Canceled
+        /// state when cancellation finishes. If the operation completes before
+        /// cancellation can take place, a 409 error code is returned.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -811,10 +880,20 @@ namespace Microsoft.Azure.Management.ContainerService
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ManagedClustersRotateServiceAccountSigningKeysHeaders>> BeginRotateServiceAccountSigningKeysWithHttpMessagesAsync(string resourceGroupName, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// This can only be performed on Azure Virtual Machine Scale set backed clusters. Stopping a cluster stops the control plane and agent nodes entirely, while maintaining all object and cluster state. A cluster does not accrue charges while it is stopped. See [stopping a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about stopping a cluster.
+        /// This can only be performed on Azure Virtual Machine Scale set backed
+        /// clusters. Stopping a cluster stops the control plane and agent nodes
+        /// entirely, while maintaining all object and cluster state. A cluster does
+        /// not accrue charges while it is stopped. See [stopping a
+        /// cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more
+        /// details about stopping a cluster.
         /// </summary>
         /// <remarks>
-        /// This can only be performed on Azure Virtual Machine Scale set backed clusters. Stopping a cluster stops the control plane and agent nodes entirely, while maintaining all object and cluster state. A cluster does not accrue charges while it is stopped. See [stopping a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about stopping a cluster.
+        /// This can only be performed on Azure Virtual Machine Scale set backed
+        /// clusters. Stopping a cluster stops the control plane and agent nodes
+        /// entirely, while maintaining all object and cluster state. A cluster does
+        /// not accrue charges while it is stopped. See [stopping a
+        /// cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more
+        /// details about stopping a cluster.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -834,10 +913,14 @@ namespace Microsoft.Azure.Management.ContainerService
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ManagedClustersStopHeaders>> BeginStopWithHttpMessagesAsync(string resourceGroupName, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// See [starting a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about starting a cluster.
+        /// See [starting a
+        /// cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more
+        /// details about starting a cluster.
         /// </summary>
         /// <remarks>
-        /// See [starting a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about starting a cluster.
+        /// See [starting a
+        /// cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more
+        /// details about starting a cluster.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -857,10 +940,14 @@ namespace Microsoft.Azure.Management.ContainerService
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ManagedClustersStartHeaders>> BeginStartWithHttpMessagesAsync(string resourceGroupName, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// AKS will create a pod to run the command. This is primarily useful for private clusters. For more information see [AKS Run Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
+        /// AKS will create a pod to run the command. This is primarily useful for
+        /// private clusters. For more information see [AKS Run
+        /// Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
         /// </summary>
         /// <remarks>
-        /// AKS will create a pod to run the command. This is primarily useful for private clusters. For more information see [AKS Run Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
+        /// AKS will create a pod to run the command. This is primarily useful for
+        /// private clusters. For more information see [AKS Run
+        /// Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -932,10 +1019,14 @@ namespace Microsoft.Azure.Management.ContainerService
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ManagedCluster>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets a list of egress endpoints (network endpoints of all outbound dependencies) in the specified managed cluster. The operation returns properties of each egress endpoint.
+        /// Gets a list of egress endpoints (network endpoints of all outbound
+        /// dependencies) in the specified managed cluster. The operation returns
+        /// properties of each egress endpoint.
         /// </summary>
         /// <remarks>
-        /// Gets a list of egress endpoints (network endpoints of all outbound dependencies) in the specified managed cluster. The operation returns properties of each egress endpoint.
+        /// Gets a list of egress endpoints (network endpoints of all outbound
+        /// dependencies) in the specified managed cluster. The operation returns
+        /// properties of each egress endpoint.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

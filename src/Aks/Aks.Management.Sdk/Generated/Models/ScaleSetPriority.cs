@@ -14,7 +14,9 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     public static class ScaleSetPriority
     {
         /// <summary>
-        /// Spot priority VMs will be used. There is no SLA for spot nodes. See [spot on AKS](https://docs.microsoft.com/azure/aks/spot-node-pool) for more information.
+        /// Spot priority VMs will be used. There is no SLA for spot nodes. See [spot
+        /// on AKS](https://docs.microsoft.com/azure/aks/spot-node-pool) for more
+        /// information.
         /// </summary>
         public const string Spot = "Spot";
         /// <summary>

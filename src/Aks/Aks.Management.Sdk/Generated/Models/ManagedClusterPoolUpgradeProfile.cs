@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </param>
 
         /// <param name="osType">The operating system type. The default is Linux.
-        /// Possible values include: 'Linux', 'Windows'</param>
+        /// Possible values include: &#39;Linux&#39;, &#39;Windows&#39;</param>
 
         /// <param name="upgrades">List of orchestrator types and versions available for upgrade.
         /// </param>

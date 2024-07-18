@@ -535,7 +535,8 @@ namespace Microsoft.Azure.Management.ContainerService
 
         }
         /// <summary>
-        /// Creates or updates a maintenance configuration in the specified managed cluster.
+        /// Creates or updates a maintenance configuration in the specified managed
+        /// cluster.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1076,6 +1077,7 @@ namespace Microsoft.Azure.Management.ContainerService
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
                 tracingParameters.Add("nextPageLink", nextPageLink);
+               
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "ListByManagedClusterNext", tracingParameters);

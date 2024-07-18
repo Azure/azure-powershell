@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
         /// <param name="upgradeChannel">For more information see [setting the AKS cluster auto-upgrade
         /// channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
-        /// Possible values include: 'rapid', 'stable', 'patch', 'node-image', 'none'</param>
+        /// Possible values include: &#39;rapid&#39;, &#39;stable&#39;, &#39;patch&#39;, &#39;node-image&#39;, &#39;none&#39;</param>
         public ManagedClusterAutoUpgradeProfile(string upgradeChannel = default(string))
 
         {

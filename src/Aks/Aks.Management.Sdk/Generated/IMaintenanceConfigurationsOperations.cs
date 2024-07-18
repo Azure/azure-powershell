@@ -69,10 +69,12 @@ namespace Microsoft.Azure.Management.ContainerService
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MaintenanceConfiguration>> GetWithHttpMessagesAsync(string resourceGroupName, string resourceName, string configName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Creates or updates a maintenance configuration in the specified managed cluster.
+        /// Creates or updates a maintenance configuration in the specified managed
+        /// cluster.
         /// </summary>
         /// <remarks>
-        /// Creates or updates a maintenance configuration in the specified managed cluster.
+        /// Creates or updates a maintenance configuration in the specified managed
+        /// cluster.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

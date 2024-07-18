@@ -263,7 +263,9 @@ namespace Microsoft.Azure.Management.ContainerService
 
         }
         /// <summary>
-        /// Contains extra metadata on the version, including supported patch versions, capabilities, available upgrades, and details on preview status of the version
+        /// Contains extra metadata on the version, including supported patch versions,
+        /// capabilities, available upgrades, and details on preview status of the
+        /// version
         /// </summary>
         /// <param name='location'>
         /// The name of Azure region.
@@ -1139,7 +1141,11 @@ namespace Microsoft.Azure.Management.ContainerService
 
         }
         /// <summary>
-        /// **WARNING**: This API will be deprecated. Instead use [ListClusterUserCredentials](https://docs.microsoft.com/rest/api/aks/managedclusters/listclusterusercredentials) or [ListClusterAdminCredentials](https://docs.microsoft.com/rest/api/aks/managedclusters/listclusteradmincredentials) .
+        /// **WARNING**: This API will be deprecated. Instead use
+        /// [ListClusterUserCredentials](https://docs.microsoft.com/rest/api/aks/managedclusters/listclusterusercredentials)
+        /// or
+        /// [ListClusterAdminCredentials](https://docs.microsoft.com/rest/api/aks/managedclusters/listclusteradmincredentials)
+        /// .
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1656,7 +1662,10 @@ namespace Microsoft.Azure.Management.ContainerService
         /// server fqdn type for credentials to be returned
         /// </param>
         /// <param name='format'>
-        /// Only apply to AAD clusters, specifies the format of returned kubeconfig. Format &#39;azure&#39; will return azure auth-provider kubeconfig; format &#39;exec&#39; will return exec format kubeconfig, which requires kubelogin binary in the path.
+        /// Only apply to AAD clusters, specifies the format of returned kubeconfig.
+        /// Format &#39;azure&#39; will return azure auth-provider kubeconfig; format &#39;exec&#39;
+        /// will return exec format kubeconfig, which requires kubelogin binary in the
+        /// path.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2472,7 +2481,8 @@ namespace Microsoft.Azure.Management.ContainerService
         }
 
         /// <summary>
-        /// This action cannot be performed on a cluster that is not using a service principal
+        /// This action cannot be performed on a cluster that is not using a service
+        /// principal
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -2497,7 +2507,9 @@ namespace Microsoft.Azure.Management.ContainerService
         }
 
         /// <summary>
-        /// **WARNING**: This API will be deprecated. Please see [AKS-managed Azure Active Directory integration](https://aka.ms/aks-managed-aad) to update your cluster with AKS-managed Azure AD.
+        /// **WARNING**: This API will be deprecated. Please see [AKS-managed Azure
+        /// Active Directory integration](https://aka.ms/aks-managed-aad) to update
+        /// your cluster with AKS-managed Azure AD.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -2522,7 +2534,9 @@ namespace Microsoft.Azure.Management.ContainerService
         }
 
         /// <summary>
-        /// See [Certificate rotation](https://docs.microsoft.com/azure/aks/certificate-rotation) for more details about rotating managed cluster certificates.
+        /// See [Certificate
+        /// rotation](https://docs.microsoft.com/azure/aks/certificate-rotation) for
+        /// more details about rotating managed cluster certificates.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -2544,7 +2558,10 @@ namespace Microsoft.Azure.Management.ContainerService
         }
 
         /// <summary>
-        /// Aborts the currently running operation on the managed cluster. The Managed Cluster will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes. If the operation completes before cancellation can take place, a 409 error code is returned.
+        /// Aborts the currently running operation on the managed cluster. The Managed
+        /// Cluster will be moved to a Canceling state and eventually to a Canceled
+        /// state when cancellation finishes. If the operation completes before
+        /// cancellation can take place, a 409 error code is returned.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -2588,7 +2605,12 @@ namespace Microsoft.Azure.Management.ContainerService
         }
 
         /// <summary>
-        /// This can only be performed on Azure Virtual Machine Scale set backed clusters. Stopping a cluster stops the control plane and agent nodes entirely, while maintaining all object and cluster state. A cluster does not accrue charges while it is stopped. See [stopping a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about stopping a cluster.
+        /// This can only be performed on Azure Virtual Machine Scale set backed
+        /// clusters. Stopping a cluster stops the control plane and agent nodes
+        /// entirely, while maintaining all object and cluster state. A cluster does
+        /// not accrue charges while it is stopped. See [stopping a
+        /// cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more
+        /// details about stopping a cluster.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -2610,7 +2632,9 @@ namespace Microsoft.Azure.Management.ContainerService
         }
 
         /// <summary>
-        /// See [starting a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about starting a cluster.
+        /// See [starting a
+        /// cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more
+        /// details about starting a cluster.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -2632,7 +2656,9 @@ namespace Microsoft.Azure.Management.ContainerService
         }
 
         /// <summary>
-        /// AKS will create a pod to run the command. This is primarily useful for private clusters. For more information see [AKS Run Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
+        /// AKS will create a pod to run the command. This is primarily useful for
+        /// private clusters. For more information see [AKS Run
+        /// Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -2923,7 +2949,9 @@ namespace Microsoft.Azure.Management.ContainerService
 
         }
         /// <summary>
-        /// Gets a list of egress endpoints (network endpoints of all outbound dependencies) in the specified managed cluster. The operation returns properties of each egress endpoint.
+        /// Gets a list of egress endpoints (network endpoints of all outbound
+        /// dependencies) in the specified managed cluster. The operation returns
+        /// properties of each egress endpoint.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -3938,7 +3966,8 @@ namespace Microsoft.Azure.Management.ContainerService
 
         }
         /// <summary>
-        /// This action cannot be performed on a cluster that is not using a service principal
+        /// This action cannot be performed on a cluster that is not using a service
+        /// principal
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -4191,7 +4220,9 @@ namespace Microsoft.Azure.Management.ContainerService
 
         }
         /// <summary>
-        /// **WARNING**: This API will be deprecated. Please see [AKS-managed Azure Active Directory integration](https://aka.ms/aks-managed-aad) to update your cluster with AKS-managed Azure AD.
+        /// **WARNING**: This API will be deprecated. Please see [AKS-managed Azure
+        /// Active Directory integration](https://aka.ms/aks-managed-aad) to update
+        /// your cluster with AKS-managed Azure AD.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -4441,7 +4472,9 @@ namespace Microsoft.Azure.Management.ContainerService
 
         }
         /// <summary>
-        /// See [Certificate rotation](https://docs.microsoft.com/azure/aks/certificate-rotation) for more details about rotating managed cluster certificates.
+        /// See [Certificate
+        /// rotation](https://docs.microsoft.com/azure/aks/certificate-rotation) for
+        /// more details about rotating managed cluster certificates.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -4676,7 +4709,10 @@ namespace Microsoft.Azure.Management.ContainerService
 
         }
         /// <summary>
-        /// Aborts the currently running operation on the managed cluster. The Managed Cluster will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes. If the operation completes before cancellation can take place, a 409 error code is returned.
+        /// Aborts the currently running operation on the managed cluster. The Managed
+        /// Cluster will be moved to a Canceling state and eventually to a Canceled
+        /// state when cancellation finishes. If the operation completes before
+        /// cancellation can take place, a 409 error code is returned.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -5146,7 +5182,12 @@ namespace Microsoft.Azure.Management.ContainerService
 
         }
         /// <summary>
-        /// This can only be performed on Azure Virtual Machine Scale set backed clusters. Stopping a cluster stops the control plane and agent nodes entirely, while maintaining all object and cluster state. A cluster does not accrue charges while it is stopped. See [stopping a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about stopping a cluster.
+        /// This can only be performed on Azure Virtual Machine Scale set backed
+        /// clusters. Stopping a cluster stops the control plane and agent nodes
+        /// entirely, while maintaining all object and cluster state. A cluster does
+        /// not accrue charges while it is stopped. See [stopping a
+        /// cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more
+        /// details about stopping a cluster.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -5381,7 +5422,9 @@ namespace Microsoft.Azure.Management.ContainerService
 
         }
         /// <summary>
-        /// See [starting a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about starting a cluster.
+        /// See [starting a
+        /// cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more
+        /// details about starting a cluster.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -5616,7 +5659,9 @@ namespace Microsoft.Azure.Management.ContainerService
 
         }
         /// <summary>
-        /// AKS will create a pod to run the command. This is primarily useful for private clusters. For more information see [AKS Run Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
+        /// AKS will create a pod to run the command. This is primarily useful for
+        /// private clusters. For more information see [AKS Run
+        /// Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -5931,6 +5976,7 @@ namespace Microsoft.Azure.Management.ContainerService
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
                 tracingParameters.Add("nextPageLink", nextPageLink);
+               
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "ListNext", tracingParameters);
@@ -6112,6 +6158,7 @@ namespace Microsoft.Azure.Management.ContainerService
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
                 tracingParameters.Add("nextPageLink", nextPageLink);
+               
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "ListByResourceGroupNext", tracingParameters);
@@ -6252,7 +6299,9 @@ namespace Microsoft.Azure.Management.ContainerService
 
         }
         /// <summary>
-        /// Gets a list of egress endpoints (network endpoints of all outbound dependencies) in the specified managed cluster. The operation returns properties of each egress endpoint.
+        /// Gets a list of egress endpoints (network endpoints of all outbound
+        /// dependencies) in the specified managed cluster. The operation returns
+        /// properties of each egress endpoint.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -6293,6 +6342,7 @@ namespace Microsoft.Azure.Management.ContainerService
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
                 tracingParameters.Add("nextPageLink", nextPageLink);
+               
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "ListOutboundNetworkDependenciesEndpointsNext", tracingParameters);

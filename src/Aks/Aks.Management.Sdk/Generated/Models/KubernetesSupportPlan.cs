@@ -14,11 +14,15 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     public static class KubernetesSupportPlan
     {
         /// <summary>
-        /// Support for the version is the same as for the open source Kubernetes offering. Official Kubernetes open source community support versions for 1 year after release.
+        /// Support for the version is the same as for the open source Kubernetes
+        /// offering. Official Kubernetes open source community support versions for 1
+        /// year after release.
         /// </summary>
         public const string KubernetesOfficial = "KubernetesOfficial";
         /// <summary>
-        /// Support for the version extended past the KubernetesOfficial support of 1 year. AKS continues to patch CVEs for another 1 year, for a total of 2 years of support.
+        /// Support for the version extended past the KubernetesOfficial support of 1
+        /// year. AKS continues to patch CVEs for another 1 year, for a total of 2
+        /// years of support.
         /// </summary>
         public const string AKSLongTermSupport = "AKSLongTermSupport";
     }

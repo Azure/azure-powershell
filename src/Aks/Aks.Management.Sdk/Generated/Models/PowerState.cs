@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
 
         /// <param name="code">Tells whether the cluster is Running or Stopped
-        /// Possible values include: 'Running', 'Stopped'</param>
+        /// Possible values include: &#39;Running&#39;, &#39;Stopped&#39;</param>
         public PowerState(string code = default(string))
 
         {

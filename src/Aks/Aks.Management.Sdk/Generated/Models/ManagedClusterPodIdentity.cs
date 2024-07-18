@@ -37,8 +37,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </param>
 
         /// <param name="provisioningState">The current provisioning state of the pod identity.
-        /// Possible values include: 'Assigned', 'Canceled', 'Deleting', 'Failed',
-        /// 'Succeeded', 'Updating'</param>
+        /// Possible values include: &#39;Assigned&#39;, &#39;Canceled&#39;, &#39;Deleting&#39;, &#39;Failed&#39;,
+        /// &#39;Succeeded&#39;, &#39;Updating&#39;</param>
 
         /// <param name="provisioningInfo">
         /// </param>

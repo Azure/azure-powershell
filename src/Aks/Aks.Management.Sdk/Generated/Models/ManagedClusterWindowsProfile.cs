@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="licenseType">The license type to use for Windows VMs. See [Azure Hybrid User
         /// Benefits](https://azure.microsoft.com/pricing/hybrid-benefit/faq/) for more
         /// details.
-        /// Possible values include: 'None', 'Windows_Server'</param>
+        /// Possible values include: &#39;None&#39;, &#39;Windows_Server&#39;</param>
 
         /// <param name="enableCsiProxy">For more details on CSI proxy, see the [CSI proxy GitHub
         /// repo](https://github.com/kubernetes-csi/csi-proxy).

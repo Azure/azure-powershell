@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.ContainerService
         public ContainerServiceClient Client { get; private set; }
 
         /// <summary>
-        /// To learn more about private clusters, see: https://docs.microsoft.com/azure/aks/private-clusters
+        /// To learn more about private clusters, see:
+        /// https://docs.microsoft.com/azure/aks/private-clusters
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -282,7 +283,8 @@ namespace Microsoft.Azure.Management.ContainerService
 
         }
         /// <summary>
-        /// To learn more about private clusters, see: https://docs.microsoft.com/azure/aks/private-clusters
+        /// To learn more about private clusters, see:
+        /// https://docs.microsoft.com/azure/aks/private-clusters
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

@@ -13,7 +13,10 @@ namespace Microsoft.Azure.Management.ContainerService
     public static partial class AgentPoolsOperationsExtensions
     {
         /// <summary>
-        /// Aborts the currently running operation on the agent pool. The Agent Pool will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes. If the operation completes before cancellation can take place, a 409 error code is returned.
+        /// Aborts the currently running operation on the agent pool. The Agent Pool
+        /// will be moved to a Canceling state and eventually to a Canceled state when
+        /// cancellation finishes. If the operation completes before cancellation can
+        /// take place, a 409 error code is returned.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -33,7 +36,10 @@ namespace Microsoft.Azure.Management.ContainerService
         }
 
         /// <summary>
-        /// Aborts the currently running operation on the agent pool. The Agent Pool will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes. If the operation completes before cancellation can take place, a 409 error code is returned.
+        /// Aborts the currently running operation on the agent pool. The Agent Pool
+        /// will be moved to a Canceling state and eventually to a Canceled state when
+        /// cancellation finishes. If the operation completes before cancellation can
+        /// take place, a 409 error code is returned.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -277,7 +283,9 @@ namespace Microsoft.Azure.Management.ContainerService
             }
         }
         /// <summary>
-        /// See [supported Kubernetes versions](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions) for more details about the version lifecycle.
+        /// See [supported Kubernetes
+        /// versions](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions)
+        /// for more details about the version lifecycle.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -294,7 +302,9 @@ namespace Microsoft.Azure.Management.ContainerService
         }
 
         /// <summary>
-        /// See [supported Kubernetes versions](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions) for more details about the version lifecycle.
+        /// See [supported Kubernetes
+        /// versions](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions)
+        /// for more details about the version lifecycle.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -316,7 +326,10 @@ namespace Microsoft.Azure.Management.ContainerService
             }
         }
         /// <summary>
-        /// Upgrading the node image version of an agent pool applies the newest OS and runtime updates to the nodes. AKS provides one new image per week with the latest updates. For more details on node image versions, see: https://docs.microsoft.com/azure/aks/node-image-upgrade
+        /// Upgrading the node image version of an agent pool applies the newest OS and
+        /// runtime updates to the nodes. AKS provides one new image per week with the
+        /// latest updates. For more details on node image versions, see:
+        /// https://docs.microsoft.com/azure/aks/node-image-upgrade
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -336,7 +349,10 @@ namespace Microsoft.Azure.Management.ContainerService
         }
 
         /// <summary>
-        /// Upgrading the node image version of an agent pool applies the newest OS and runtime updates to the nodes. AKS provides one new image per week with the latest updates. For more details on node image versions, see: https://docs.microsoft.com/azure/aks/node-image-upgrade
+        /// Upgrading the node image version of an agent pool applies the newest OS and
+        /// runtime updates to the nodes. AKS provides one new image per week with the
+        /// latest updates. For more details on node image versions, see:
+        /// https://docs.microsoft.com/azure/aks/node-image-upgrade
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -361,7 +377,10 @@ namespace Microsoft.Azure.Management.ContainerService
             }
         }
         /// <summary>
-        /// Aborts the currently running operation on the agent pool. The Agent Pool will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes. If the operation completes before cancellation can take place, a 409 error code is returned.
+        /// Aborts the currently running operation on the agent pool. The Agent Pool
+        /// will be moved to a Canceling state and eventually to a Canceled state when
+        /// cancellation finishes. If the operation completes before cancellation can
+        /// take place, a 409 error code is returned.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -381,7 +400,10 @@ namespace Microsoft.Azure.Management.ContainerService
         }
 
         /// <summary>
-        /// Aborts the currently running operation on the agent pool. The Agent Pool will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes. If the operation completes before cancellation can take place, a 409 error code is returned.
+        /// Aborts the currently running operation on the agent pool. The Agent Pool
+        /// will be moved to a Canceling state and eventually to a Canceled state when
+        /// cancellation finishes. If the operation completes before cancellation can
+        /// take place, a 409 error code is returned.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -496,7 +518,10 @@ namespace Microsoft.Azure.Management.ContainerService
             }
         }
         /// <summary>
-        /// Upgrading the node image version of an agent pool applies the newest OS and runtime updates to the nodes. AKS provides one new image per week with the latest updates. For more details on node image versions, see: https://docs.microsoft.com/azure/aks/node-image-upgrade
+        /// Upgrading the node image version of an agent pool applies the newest OS and
+        /// runtime updates to the nodes. AKS provides one new image per week with the
+        /// latest updates. For more details on node image versions, see:
+        /// https://docs.microsoft.com/azure/aks/node-image-upgrade
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -516,7 +541,10 @@ namespace Microsoft.Azure.Management.ContainerService
         }
 
         /// <summary>
-        /// Upgrading the node image version of an agent pool applies the newest OS and runtime updates to the nodes. AKS provides one new image per week with the latest updates. For more details on node image versions, see: https://docs.microsoft.com/azure/aks/node-image-upgrade
+        /// Upgrading the node image version of an agent pool applies the newest OS and
+        /// runtime updates to the nodes. AKS provides one new image per week with the
+        /// latest updates. For more details on node image versions, see:
+        /// https://docs.microsoft.com/azure/aks/node-image-upgrade
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

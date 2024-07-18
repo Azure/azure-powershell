@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.ContainerService
     public partial interface IPrivateLinkResourcesOperations
     {
         /// <summary>
-        /// To learn more about private clusters, see: https://docs.microsoft.com/azure/aks/private-clusters
+        /// To learn more about private clusters, see:
+        /// https://docs.microsoft.com/azure/aks/private-clusters
         /// </summary>
         /// <remarks>
-        /// To learn more about private clusters, see: https://docs.microsoft.com/azure/aks/private-clusters
+        /// To learn more about private clusters, see:
+        /// https://docs.microsoft.com/azure/aks/private-clusters
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

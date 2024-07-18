@@ -14,11 +14,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     public static class ScaleDownMode
     {
         /// <summary>
-        /// Create new instances during scale up and remove instances during scale down.
+        /// Create new instances during scale up and remove instances during scale
+        /// down.
         /// </summary>
         public const string Delete = "Delete";
         /// <summary>
-        /// Attempt to start deallocated instances (if they exist) during scale up and deallocate instances during scale down.
+        /// Attempt to start deallocated instances (if they exist) during scale up and
+        /// deallocate instances during scale down.
         /// </summary>
         public const string Deallocate = "Deallocate";
     }

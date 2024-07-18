@@ -14,10 +14,16 @@ namespace Microsoft.Azure.Management.ContainerService
     public partial interface IAgentPoolsOperations
     {
         /// <summary>
-        /// Aborts the currently running operation on the agent pool. The Agent Pool will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes. If the operation completes before cancellation can take place, a 409 error code is returned.
+        /// Aborts the currently running operation on the agent pool. The Agent Pool
+        /// will be moved to a Canceling state and eventually to a Canceled state when
+        /// cancellation finishes. If the operation completes before cancellation can
+        /// take place, a 409 error code is returned.
         /// </summary>
         /// <remarks>
-        /// Aborts the currently running operation on the agent pool. The Agent Pool will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes. If the operation completes before cancellation can take place, a 409 error code is returned.
+        /// Aborts the currently running operation on the agent pool. The Agent Pool
+        /// will be moved to a Canceling state and eventually to a Canceled state when
+        /// cancellation finishes. If the operation completes before cancellation can
+        /// take place, a 409 error code is returned.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -182,10 +188,14 @@ namespace Microsoft.Azure.Management.ContainerService
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AgentPoolUpgradeProfile>> GetUpgradeProfileWithHttpMessagesAsync(string resourceGroupName, string resourceName, string agentPoolName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// See [supported Kubernetes versions](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions) for more details about the version lifecycle.
+        /// See [supported Kubernetes
+        /// versions](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions)
+        /// for more details about the version lifecycle.
         /// </summary>
         /// <remarks>
-        /// See [supported Kubernetes versions](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions) for more details about the version lifecycle.
+        /// See [supported Kubernetes
+        /// versions](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions)
+        /// for more details about the version lifecycle.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -208,10 +218,16 @@ namespace Microsoft.Azure.Management.ContainerService
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AgentPoolAvailableVersions>> GetAvailableAgentPoolVersionsWithHttpMessagesAsync(string resourceGroupName, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Upgrading the node image version of an agent pool applies the newest OS and runtime updates to the nodes. AKS provides one new image per week with the latest updates. For more details on node image versions, see: https://docs.microsoft.com/azure/aks/node-image-upgrade
+        /// Upgrading the node image version of an agent pool applies the newest OS and
+        /// runtime updates to the nodes. AKS provides one new image per week with the
+        /// latest updates. For more details on node image versions, see:
+        /// https://docs.microsoft.com/azure/aks/node-image-upgrade
         /// </summary>
         /// <remarks>
-        /// Upgrading the node image version of an agent pool applies the newest OS and runtime updates to the nodes. AKS provides one new image per week with the latest updates. For more details on node image versions, see: https://docs.microsoft.com/azure/aks/node-image-upgrade
+        /// Upgrading the node image version of an agent pool applies the newest OS and
+        /// runtime updates to the nodes. AKS provides one new image per week with the
+        /// latest updates. For more details on node image versions, see:
+        /// https://docs.microsoft.com/azure/aks/node-image-upgrade
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -237,10 +253,16 @@ namespace Microsoft.Azure.Management.ContainerService
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AgentPool,AgentPoolsUpgradeNodeImageVersionHeaders>> UpgradeNodeImageVersionWithHttpMessagesAsync(string resourceGroupName, string resourceName, string agentPoolName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Aborts the currently running operation on the agent pool. The Agent Pool will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes. If the operation completes before cancellation can take place, a 409 error code is returned.
+        /// Aborts the currently running operation on the agent pool. The Agent Pool
+        /// will be moved to a Canceling state and eventually to a Canceled state when
+        /// cancellation finishes. If the operation completes before cancellation can
+        /// take place, a 409 error code is returned.
         /// </summary>
         /// <remarks>
-        /// Aborts the currently running operation on the agent pool. The Agent Pool will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes. If the operation completes before cancellation can take place, a 409 error code is returned.
+        /// Aborts the currently running operation on the agent pool. The Agent Pool
+        /// will be moved to a Canceling state and eventually to a Canceled state when
+        /// cancellation finishes. If the operation completes before cancellation can
+        /// take place, a 409 error code is returned.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -321,10 +343,16 @@ namespace Microsoft.Azure.Management.ContainerService
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<AgentPoolsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string agentPoolName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Upgrading the node image version of an agent pool applies the newest OS and runtime updates to the nodes. AKS provides one new image per week with the latest updates. For more details on node image versions, see: https://docs.microsoft.com/azure/aks/node-image-upgrade
+        /// Upgrading the node image version of an agent pool applies the newest OS and
+        /// runtime updates to the nodes. AKS provides one new image per week with the
+        /// latest updates. For more details on node image versions, see:
+        /// https://docs.microsoft.com/azure/aks/node-image-upgrade
         /// </summary>
         /// <remarks>
-        /// Upgrading the node image version of an agent pool applies the newest OS and runtime updates to the nodes. AKS provides one new image per week with the latest updates. For more details on node image versions, see: https://docs.microsoft.com/azure/aks/node-image-upgrade
+        /// Upgrading the node image version of an agent pool applies the newest OS and
+        /// runtime updates to the nodes. AKS provides one new image per week with the
+        /// latest updates. For more details on node image versions, see:
+        /// https://docs.microsoft.com/azure/aks/node-image-upgrade
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
