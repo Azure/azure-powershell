@@ -177,5 +177,21 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-CRUDNicFlowLog");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestVnetFlowLogWithFiltering()
+        {
+            TestRunner.RunTestScript("Test-VnetFlowLogWithFiltering");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestVnetFlowLogWithEmptyFilteringCondition()
+        {
+            TestRunner.RunTestScript("Test-VnetFlowLogWithEmptyFilteringCondition");
+        }
     }
 }
