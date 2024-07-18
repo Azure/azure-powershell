@@ -26,7 +26,6 @@
     Only build changed module according to the changelog in root folder or according to another property "TargetModule"
   /p:TargetModule
     Just focus on modules and its dependency such as Az.Account. Module name doesn't need to lead with Az. Split by ":"
-  ##################TEST################
 -->
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 

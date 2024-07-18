@@ -5,7 +5,7 @@ env:
 on:
   push:
     branches:
-      - 'yabo/sync-main-to-future'
+      - 'main'
 jobs:
   sync_generation:
     runs-on: ubuntu-latest
@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: 'yabo/test-temp-branch'
+        ref: 'future'
     - name: sync main
       shell: pwsh
       run: |
@@ -35,13 +35,14 @@ jobs:
         git config user.email "65331932+azure-powershell-bot@users.noreply.github.com";
         git config user.name "azure-powershell-bot";
 
-        $branchName = "eng/sync-main-to-future-$commitIdShort"
+        $branchName = "temporary/sync-main-to-future-$commitIdShort"
         git checkout -b $branchName
 
-        $prInfo = "Sync commit [$commitMessage ($commitId)] from main branch to future branch .."
-        Write-Host -ForegroundColor DarkGreen $prInfo
-
-        git fetch origin yabo/sync-main-to-future
+        git fetch origin main
         git cherry-pick $commitId --strategy-option theirs
         git push origin $branchName
-        gh pr create -B $branchName -H yabo/test-temp-branch --title $commitMessage --body $prInfo
+
+        # commented because extra configuration needed to allow github action to create PR
+        # $prInfo = "Sync commit [$commitMessage ($commitId)] from main branch to future branch ..."
+        # Write-Host -ForegroundColor DarkGreen $prInfo
+        # gh pr create -B $branchName -H future --title $commitMessage --body $prInfo
