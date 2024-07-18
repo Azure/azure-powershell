@@ -37,7 +37,8 @@ This command creates an environment variable within a container instance.
 
 ### Example 2: Create a secure environment variable within a container instance
 ```powershell
-New-AzContainerInstanceEnvironmentVariableObject -Name "env2" -SecureValue (ConvertTo-SecureString -String "******" -AsPlainText -Force)
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
+New-AzContainerInstanceEnvironmentVariableObject -Name "env2" -SecureValue $pwd
 ```
 
 ```output
@@ -105,8 +106,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.EnvironmentVariable
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

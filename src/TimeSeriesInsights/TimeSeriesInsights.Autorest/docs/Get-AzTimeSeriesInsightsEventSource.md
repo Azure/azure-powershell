@@ -39,6 +39,7 @@ Gets the event source with the specified name in the specified environment.
 ```powershell
 Get-AzTimeSeriesInsightsEventSource -ResourceGroupName testgroup -EnvironmentName tsitest001
 ```
+
 ```output
 ConsumerGroupName     : testgroup2
 EventHubName          : hubname001
@@ -75,6 +76,7 @@ This command lists all event sources under the specified environments.
 ```powershell
 Get-AzTimeSeriesInsightsEventSource -ResourceGroupName testgroup -EnvironmentName tsitest001 -Name iots001
 ```
+
 ```output
 ConsumerGroupName     : testgroup2
 EventSourceResourceId : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup2/providers/Microsoft.Devices/IotHubs/iotname001
@@ -97,6 +99,7 @@ This command gets a specific event source.
 $es = Get-AzTimeSeriesInsightsEventSource -ResourceGroupName tsi-test-i01k5l -EnvironmentName tsi-envv8u56x -Name tsi-esrfyi9h
 Get-AzTimeSeriesInsightsEventSource -InputObject $es
 ```
+
 ```output
 ConsumerGroupName     : tsi-test-i01k5l
 EventHubName          : eventhubname-d2rvmp
@@ -117,7 +120,8 @@ This command gets a specific event source.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -219,22 +223,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
-  - `[AccessPolicyName <String>]`: Name of the access policy.
-  - `[EnvironmentName <String>]`: Name of the environment
-  - `[EventSourceName <String>]`: The name of the Time Series Insights event source associated with the specified environment.
-  - `[Id <String>]`: Resource identity path
-  - `[ReferenceDataSetName <String>]`: Name of the reference data set.
-  - `[ResourceGroupName <String>]`: Name of an Azure Resource group.
-  - `[SubscriptionId <String>]`: Azure Subscription ID.
 
 ## RELATED LINKS
 

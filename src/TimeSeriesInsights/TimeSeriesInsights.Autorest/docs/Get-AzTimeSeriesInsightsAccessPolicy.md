@@ -39,6 +39,7 @@ Gets the access policy with the specified name in the specified environment.
 ```powershell
 Get-AzTimeSeriesInsightsAccessPolicy -EnvironmentName tsitest001 -ResourceGroupName testgroup
 ```
+
 ```output
 Name      Type
 ----      ----
@@ -52,6 +53,7 @@ This command lists all access policies under a specified environment.
 ```powershell
 Get-AzTimeSeriesInsightsAccessPolicy -EnvironmentName tsitest001 -ResourceGroupName testgroup -Name policy001
 ```
+
 ```output
 Name      Type
 ----      ----
@@ -65,6 +67,7 @@ This command gets a specified access policy.
 $ap = Get-AzTimeSeriesInsightsAccessPolicy -EnvironmentName tsi-envv8u56x -ResourceGroupName tsi-test-i01k5l -Name tsi-apilgj5y 
 Get-AzTimeSeriesInsightsAccessPolicy -InputObject $ap
 ```
+
 ```output
 Name      Type
 ----      ----
@@ -76,7 +79,8 @@ This command gets a specified access policy.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -178,22 +182,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IAccessPolicyResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
-  - `[AccessPolicyName <String>]`: Name of the access policy.
-  - `[EnvironmentName <String>]`: Name of the environment
-  - `[EventSourceName <String>]`: The name of the Time Series Insights event source associated with the specified environment.
-  - `[Id <String>]`: Resource identity path
-  - `[ReferenceDataSetName <String>]`: Name of the reference data set.
-  - `[ResourceGroupName <String>]`: Name of an Azure Resource group.
-  - `[SubscriptionId <String>]`: Azure Subscription ID.
 
 ## RELATED LINKS
 

@@ -49,7 +49,8 @@ This removes a specific event source.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -197,22 +198,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
-  - `[AccessPolicyName <String>]`: Name of the access policy.
-  - `[EnvironmentName <String>]`: Name of the environment
-  - `[EventSourceName <String>]`: The name of the Time Series Insights event source associated with the specified environment.
-  - `[Id <String>]`: Resource identity path
-  - `[ReferenceDataSetName <String>]`: Name of the reference data set.
-  - `[ResourceGroupName <String>]`: Name of an Azure Resource group.
-  - `[SubscriptionId <String>]`: Azure Subscription ID.
 
 ## RELATED LINKS
 

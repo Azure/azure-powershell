@@ -16,16 +16,15 @@ If the target database have no table existing, please use [New-AzDataMigrationSq
 
 ```
 New-AzDataMigrationToSqlDb -ResourceGroupName <String> -SqlDbInstanceName <String> -TargetDbName <String>
- [-SubscriptionId <String>] [-Kind <ResourceType>] [-MigrationOperationId <String>]
- [-MigrationService <String>] [-ProvisioningError <String>] [-Scope <String>] [-SourceDatabaseName <String>]
- [-SourceSqlConnectionAuthentication <String>] [-SourceSqlConnectionDataSource <String>]
- [-SourceSqlConnectionEncryptConnection] [-SourceSqlConnectionPassword <String>]
- [-SourceSqlConnectionTrustServerCertificate] [-SourceSqlConnectionUserName <String>] [-TableList <String[]>]
- [-TargetDatabaseCollation <String>] [-TargetSqlConnectionAuthentication <String>]
- [-TargetSqlConnectionDataSource <String>] [-TargetSqlConnectionEncryptConnection]
- [-TargetSqlConnectionPassword <String>] [-TargetSqlConnectionTrustServerCertificate]
- [-TargetSqlConnectionUserName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Kind <ResourceType>] [-MigrationService <String>] [-Scope <String>]
+ [-SourceDatabaseName <String>] [-SourceSqlConnectionAuthentication <String>]
+ [-SourceSqlConnectionDataSource <String>] [-SourceSqlConnectionEncryptConnection]
+ [-SourceSqlConnectionPassword <SecureString>] [-SourceSqlConnectionTrustServerCertificate]
+ [-SourceSqlConnectionUserName <String>] [-TableList <String[]>] [-TargetDatabaseCollation <String>]
+ [-TargetSqlConnectionAuthentication <String>] [-TargetSqlConnectionDataSource <String>]
+ [-TargetSqlConnectionEncryptConnection] [-TargetSqlConnectionPassword <SecureString>]
+ [-TargetSqlConnectionTrustServerCertificate] [-TargetSqlConnectionUserName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,8 +36,8 @@ If the target database have no table existing, please use [New-AzDataMigrationSq
 
 ### Example 1: Start a Database Migration from the on-premise Source Sql Server to target Sql Db
 ```powershell
-$sourcePassword = ConvertTo-SecureString -String $password -AsPlainText -Force
-$targetPassword = ConvertTo-SecureString -String $password -AsPlainText -Force
+$sourcePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$targetPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzDataMigrationToSqlDb -ResourceGroupName myRG -SqlDbInstanceName "mysqldb" -MigrationService  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.DataMigration/SqlMigrationServices/myDMS" -TargetSqlConnectionAuthentication "SqlAuthentication" -TargetSqlConnectionDataSource "mydb.windows.net" -TargetSqlConnectionPassword $targetPassword -TargetSqlConnectionUserName "user" -SourceSqlConnectionAuthentication "SqlAuthentication" -SourceSqlConnectionDataSource "xyz.MICROSOFT.COM" -SourceSqlConnectionUserName "user1" -SourceSqlConnectionPassword $sourcePassword -SourceDatabaseName "sourcedb" -TargetDbName "mydb1" -Scope  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.Sql/servers/mysqldb"
 ```
 
@@ -52,8 +51,8 @@ Start a Database Migration from the on-premise Source Sql Server to target Sql D
 
 ### Example 2: Start a Database Migration with some selcted tables from the on-premise Source Sql Server to target Sql Db
 ```powershell
-$sourcePassword = ConvertTo-SecureString -String $password -AsPlainText -Force
-$targetPassword = ConvertTo-SecureString -String $password -AsPlainText -Force
+$sourcePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$targetPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzDataMigrationToSqlDb -ResourceGroupName myRG -SqlDbInstanceName "mysqldb" -MigrationService  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.DataMigration/SqlMigrationServices/myDMS" -TargetSqlConnectionAuthentication "SqlAuthentication" -TargetSqlConnectionDataSource "mydb.windows.net" -TargetSqlConnectionPassword $targetPassword -TargetSqlConnectionUserName "user" -SourceSqlConnectionAuthentication "SqlAuthentication" -SourceSqlConnectionDataSource "xyz.MICROSOFT.COM" -SourceSqlConnectionUserName "user1" -SourceSqlConnectionPassword $sourcePassword -SourceDatabaseName "sourcedb" -TargetDbName "mydb1" -Scope  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.Sql/servers/mysqldb"  -TableList "table_1"
 ```
 
@@ -83,7 +82,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -102,21 +102,6 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MigrationOperationId
-ID tracking current migration operation.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -162,21 +147,6 @@ Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProvisioningError
-Error message for migration provisioning failure, if any.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -282,7 +252,7 @@ Accept wildcard characters: False
 Password to connect to source SQL.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -447,7 +417,7 @@ Accept wildcard characters: False
 Password to connect to source SQL.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -529,8 +499,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

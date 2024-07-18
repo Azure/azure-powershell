@@ -98,7 +98,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -566,30 +567,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-FORESTTRUST <IForestTrust[]>: List of settings for Resource Forest
-  - `[FriendlyName <String>]`: Friendly Name
-  - `[RemoteDnsIP <String>]`: Remote Dns ips
-  - `[TrustDirection <String>]`: Trust Direction
-  - `[TrustPassword <SecureString>]`: Trust Password
-  - `[TrustedDomainFqdn <String>]`: Trusted Domain FQDN
-
-INPUTOBJECT <IAdDomainServicesIdentity>: Identity Parameter
-  - `[DomainServiceName <String>]`: The name of the domain service.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group within the user's subscription. The name is case insensitive.
-  - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-REPLICASET <IReplicaSet[]>: List of ReplicaSets
-  - `[Location <String>]`: Virtual network location
-  - `[SubnetId <String>]`: The name of the virtual network that Domain Services will be deployed on. The id of the subnet that Domain Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
 
 ## RELATED LINKS
 

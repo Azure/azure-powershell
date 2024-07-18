@@ -29,6 +29,7 @@ Create or update a reference data set in the specified environment.
 $mykeyproperties = @{ "name" = "device01"; "type" = "Double"}
 New-AzTimeSeriesInsightsReferenceDataSet -EnvironmentName tsitest001 -Name dstest001 -ResourceGroupName testgroup -Location eastus -DataStringComparisonBehavior Ordinal -KeyProperty $mykeyproperties
 ```
+
 ```output
 Location Name      Type
 -------- ----      ----
@@ -57,7 +58,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -218,17 +220,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-KEYPROPERTY <IReferenceDataSetKeyProperty[]>: The list of key properties for the reference data set.
-  - `[Name <String>]`: The name of the key property.
-  - `[Type <ReferenceDataKeyPropertyType?>]`: The type of the key property.
 
 ## RELATED LINKS
 

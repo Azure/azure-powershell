@@ -54,9 +54,9 @@ Create a new ADDomainService
 $replicaSet = New-AzADDomainServiceReplicaSet -Location westus -SubnetId /subscriptions/********-****-****-****-**********/resourceGroups/yishitest/providers/Microsoft.Network/virtualNetworks/aadds-vnet/subnets/default\
 $certificateBytes = Get-Content "certificate.pfx" -AsByteStream
 $base64String = [System.Convert]::ToBase64String($certificateBytes) 
-$ldaps_pfx_pass = "MyStrongPassword"
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 
-New-AzADDomainService -Name youriADdomain -ResourceGroupName youriAddomain -DomainName youriAddomain.com -ReplicaSet $replicaSet -LdapSettingLdaps Enabled -LdapSettingPfxCertificate $base64String -LdapSettingPfxCertificatePassword $($ldaps_pfx_pass | ConvertTo-SecureString -Force -AsPlainText)
+New-AzADDomainService -Name youriADdomain -ResourceGroupName youriAddomain -DomainName youriAddomain.com -ReplicaSet $replicaSet -LdapSettingLdaps Enabled -LdapSettingPfxCertificate $base64String -LdapSettingPfxCertificatePassword $password
 ```
 
 ```output
@@ -535,24 +535,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-FORESTTRUST <IForestTrust[]>: List of settings for Resource Forest
-  - `[FriendlyName <String>]`: Friendly Name
-  - `[RemoteDnsIP <String>]`: Remote Dns ips
-  - `[TrustDirection <String>]`: Trust Direction
-  - `[TrustPassword <SecureString>]`: Trust Password
-  - `[TrustedDomainFqdn <String>]`: Trusted Domain FQDN
-
-REPLICASET <IReplicaSet[]>: List of ReplicaSets
-  - `[Location <String>]`: Virtual network location
-  - `[SubnetId <String>]`: The name of the virtual network that Domain Services will be deployed on. The id of the subnet that Domain Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
 
 ## RELATED LINKS
 
