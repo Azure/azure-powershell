@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
 
 ## Version 7.8.0
 * Added new cmdlets to support Save & Commit (AzureFirewallPolicy draft)

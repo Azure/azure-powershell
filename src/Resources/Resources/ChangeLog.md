@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
 
 ## Version 7.2.0
 * Fixed `Set-AzPolicyAssignment` loses description and Display Name [#25362]

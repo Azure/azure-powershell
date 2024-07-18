@@ -46,8 +46,8 @@ Add-AzIoTDeviceProvisioningServiceAccessPolicy -ResourceGroupName "myresourcegro
 ResourceGroupName	: myresourcegroup
 Name				: myiotdps
 KeyName				: mypolicy
-PrimaryKey			: ********************************
-SecondaryKey		: ********************************
+PrimaryKey			: hy******vg=
+SecondaryKey		: vb******pY=
 Rights				: ServiceConfig, EnrollmentWrite
 ```
 

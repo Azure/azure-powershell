@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
 
 ## Version 6.0.1
 * Fixed an issue during merging certificate process. [#24323]
