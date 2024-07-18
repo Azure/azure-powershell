@@ -32,6 +32,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string StorageId { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
+        public string EnabledFilteringCriteria { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool? Enabled { get; set; }
 
         public PSRetentionPolicyParameters RetentionPolicy { get; set; }
