@@ -302,7 +302,7 @@ function Invoke-LiveTestScenario {
 
         do {
             try {
-                $prefs = @([psvariable]::new("ErrorActionPreference", "Stop"), [psvariable]::new("ConfirmPreference", "None"))
+                $prefs = @([psvariable]::new("ErrorActionPreference", "Stop"))
                 if ($snrRetryCount -eq $script:ScenarioMaxRetryCount) {
                     $prefs += [psvariable]::new("DebugPreference", "Continue")
                 }
