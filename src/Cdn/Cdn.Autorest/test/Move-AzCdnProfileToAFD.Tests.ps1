@@ -19,8 +19,10 @@ Describe 'Move-AzCdnProfileToAFD' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Migrate' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Migrate' {
+        $subId = $env.SubscriptionId
+        $map1 = New-AzCdnMigrationEndpointMappingObject -MigratedFrom maxtestendpointcli-test-profile1.azureedge.net -MigratedTo maxtestendpointcli-test-profile2
+        Move-AzCdnProfileToAFD -Subscription $subId -ProfileName cli-test-profile -ResourceGroupName cli-test-rg -SkuName Premium_AzureFrontDoor -MigrationEndpointMapping @($map1)
     }
 
     It 'MigrateViaIdentity' -skip {

@@ -240,12 +240,12 @@ function ValidateIdentityType {
     if (${IdentityType}) {
         $identityTypeArray =  ${IdentityType}.ToString().split(",")
         if (($identityTypeArray.Count -gt 2)) {
-            throw "The IdentityType is invalid. The supported types are 'SystemAssigned,UserAssigned' when the front door has Customer Certificates during migration."
+            throw "The IdentityType is invalid. The supported types are 'SystemAssigned,UserAssigned' when the CDN has Customer Certificates during migration."
         }
         foreach($identity in $identityTypeArray) {
             $id = $identity.Trim().ToLower()
             if (($id -ne "userassigned") -and ($id -ne "systemassigned")) {
-                throw "The IdentityType is invalid. The supported types are 'SystemAssigned,UserAssigned' when the front door has Customer Certificates during migration."
+                throw "The IdentityType is invalid. The supported types are 'SystemAssigned,UserAssigned' when the CDN has Customer Certificates during migration."
             }
             if ($id -eq "userassigned") {
                 if (${IdentityUserAssignedIdentity}.count -eq 0) {

@@ -121,7 +121,7 @@ function Invoke-AzCdnCommitProfileToAFDMigration {
 
     process {
         Write-Host("Start to migrate.")
-        Write-Host("This process will disable your Front Door (classic) profile and move all your traffic and configurations to the new Front Door profile.")
+        Write-Host("This process will disable your classic CDN profile and move all your traffic and configurations to the new Front Door profile.")
         Az.Cdn.internal\Invoke-AzCdnCommitProfileMigration @PSBoundParameters
     }
 }
