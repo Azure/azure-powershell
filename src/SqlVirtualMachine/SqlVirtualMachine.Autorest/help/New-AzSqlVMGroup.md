@@ -28,8 +28,8 @@ Creates or updates a SQL virtual machine group.
 
 ### Example
 ```powershell
-# "****" is a valid access key for the storage account
-$storageAccountPrimaryKey = ConvertTo-SecureString -String "****" -AsPlainText -Force
+# $accessKey is a valid access key for the storage account
+$storageAccountPrimaryKey = ConvertTo-SecureString -String $accessKey -AsPlainText -Force
 New-AzSqlVMGroup -ResourceGroupName 'ResourceGroup01' -Name 'sqlvmgroup01' -Location 'eastus' -Offer 'SQL2022-WS2022' -Sku 'Developer' -DomainFqdn 'yourdomain.com' -ClusterOperatorAccount 'operatoruser@yourdomain.com' -ClusterBootstrapAccount 'bootstrapuser@yourdomain.com' -StorageAccountUrl 'https://yourstorageaccount.blob.core.windows.net/' -StorageAccountPrimaryKey $storageAccountPrimaryKey -SqlServiceAccount 'sqladmin@yourdomain.com' -ClusterSubnetType 'SingleSubnet'
 ```
 
