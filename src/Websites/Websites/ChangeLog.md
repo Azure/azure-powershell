@@ -21,6 +21,8 @@
 
 ## Version 3.2.1
 * Introduced secrets detection feature to safeguard sensitive data.
+* Supported a new parameter `UseZipDeploy` in cmdlet `Publish-AzWebApp` to deploy using the ZipDeploy API
+* `Publish-AzWebApp` now uses ZipDeploy to publish Function Apps
 
 ## Version 3.2.0
 * Fixed Ambiguous Positional Argument for `New-AzWebAppSlot`
