@@ -31,7 +31,6 @@ steps:
     custom: msbuild
     arguments: 'build.proj /t:${{ parameters.testTarget }} /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }};PullRequestNumber=${{ parameters.PRNo }}'
   env:
-    OCTOKITPAT: $(GithubToken)
     PowerShellPlatform: ${{ parameters.powerShellPlatform }}
   continueOnError: true
 

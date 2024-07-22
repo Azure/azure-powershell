@@ -60,7 +60,6 @@ steps:
     custom: msbuild
     arguments: 'build.proj /t:StaticAnalysis /p:Configuration=${{ parameters.configuration }};PullRequestNumber=${{ parameters.PRNo }}'
   env:
-      OCTOKITPAT: $(GithubToken)
       IsGenerateBased: ${{ parameters.IsGenerateBased }}
 
 - template: publish-artifacts-steps.yml

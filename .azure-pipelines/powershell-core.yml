@@ -21,7 +21,7 @@ variables:
   TestCoverageLocation: $(Build.SourcesDirectory)/artifacts
   PowerShellPlatform: PowerShell Core
   AZURE_CLIENTS_SHOW_SECRETS_WARNING: true
-  PRNo: 25561
+  PRNo: 25600
 
 trigger: none
 
