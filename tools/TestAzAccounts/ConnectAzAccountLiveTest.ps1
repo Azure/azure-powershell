@@ -120,6 +120,8 @@ elseif ($PSCmdlet.ParameterSetName -eq 'FederatedToken') {
     #$void = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 }
 
+#($env:PSModulePath -Split ":") | Get-ChildItem |  Where-Object {$_.FullName.EndsWith('Az.Accounts') } | Get-ChildItem
+
 if ($ClearContext.IsPresent) {
     Clear-AzContext -Verbose -Force
 }

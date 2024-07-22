@@ -71,28 +71,37 @@ if ($null -eq $module)
 
 $importAzAccountsFrom = "Import-Module Az.Accounts -RequiredVersion $accountsFrom`n"
 $importAzAccountsTo = "Import-Module Az.Accounts -RequiredVersion $accountsTo`n"
-$getToken = "Get-Module -Name Az.Accounts`nGet-AzAccessToken"
+$getToken = "Get-AzAccessToken`n"
+$getAzAcountVersion = "Get-Module -Name Az.Accounts`n"
 
 $baseCommand = @"
-Get-Module -Name Az.Accounts
 ."$PSScriptRoot/ConnectAzAccountLiveTest.ps1" -ServicePrincipalName "AzAccountsTest" -CredentialPrefix "AzAccountsTest"
 "@
 
-$smokeTest = @"
-Import-Module Az.Accounts
-Get-Module -Name Az.Accounts
-(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/main/tools/Test/SmokeTest/RmCoreSmokeTests.ps1").Content | Invoke-Expression
-"@
-
-$shortTest = @"
-Write-Host '`n'
-`$storageAccount = Get-AzStorageAccount | Select-Object -First 1
-if (`$storageAccount)
-{
-  Get-AzStorageContainer -Context `$storageAccount.Context
-  Get-AzResource -ResourceId `$storageAccount.Id
+$smokeTest = {
+    try {
+        (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/main/tools/Test/SmokeTest/RmCoreSmokeTests.ps1").Content | Invoke-Expression
+    }
+    finally {
+        Get-Module -ListAvailable | Select-Object Name, Version
+    }
 }
-"@
+$smokeTest = $smokeTest | Out-String
+
+$shortTest = {
+    try {
+        $storageAccount = Get-AzStorageAccount | Select-Object -First 1
+        if ($storageAccount)
+        {
+          Get-AzStorageContainer -Context $storageAccount.Context
+          Get-AzResource -ResourceId $storageAccount.Id
+        }
+    }
+    finally {
+        Get-Module -ListAvailable | Select-Object Name, Version
+    }
+}
+$shortTest = $shortTest | Out-String
 
 function Test-AzAccountsLogin
 {
@@ -112,7 +121,7 @@ function Test-AzAccountsLogin
     Invoke-PowerShellCommand -ScriptBlock "`{$command`}" -UseWindowsPowerShell:$UseWindowsPowerShell
 
     Write-Host 'Connect AzAccounts Using the Test Version:'
-    $command = $connectCommand
+    $command = $importAzAccountsTo + $connectCommand + $getAzAcountVersion
     Invoke-PowerShellCommand -ScriptBlock "`{$command`}" -UseWindowsPowerShell:$UseWindowsPowerShell
 }
 
@@ -131,7 +140,7 @@ function Test-AzAccountsUpgrade
     $connectCommand = $baseCommand + " $($specialParamString) `n"
 
     Write-Host 'Connect Using the previous Az.Accounts:'
-    $command = $importAzAccountsFrom + $connectCommand
+    $command = $importAzAccountsFrom + $connectCommand + $getAzAcountVersion
     Invoke-PowerShellCommand -ScriptBlock "`{$command`}" -UseWindowsPowerShell:$UseWindowsPowerShell
 
     Write-Host 'Accquire Token Using the Test Version:'
@@ -139,7 +148,7 @@ function Test-AzAccountsUpgrade
     Invoke-PowerShellCommand -ScriptBlock "`{$command`}" -UseWindowsPowerShell:$UseWindowsPowerShell
 
     Write-Host 'Connect AzAccounts Using the Test Version:'
-    $command = $connectCommand
+    $command = $importAzAccountsTo + $connectCommand + $getAzAcountVersion
     Invoke-PowerShellCommand -ScriptBlock "`{$command`}" -UseWindowsPowerShell:$UseWindowsPowerShell
 }
 
@@ -210,11 +219,11 @@ if ($RunSmokeTest)
 {
     Write-Host '--------------------Run Smoke Test----------------------------------------'
     Write-Host 'Run smoke test using the test version:'
-    Invoke-PowerShellCommand -ScriptBlock $smokeTest -UseWindowsPowerShell:$useWindowsPowerShell
+    Invoke-PowerShellCommand -ScriptBlock "`{$importAzAccountsTo + $smokeTest`}" -UseWindowsPowerShell:$useWindowsPowerShell
 }
 else
 {
     Write-Host '--------------------Run Short Test----------------------------------------'
     Write-Host 'Run the management plane and data plane cmdlets'
-    Invoke-PowerShellCommand -ScriptBlock $shortTest -UseWindowsPowerShell:$useWindowsPowerShell
+    Invoke-PowerShellCommand -ScriptBlock "`{$importAzAccountsTo + $shortTest`}" -UseWindowsPowerShell:$useWindowsPowerShell
 }
