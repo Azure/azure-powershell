@@ -67,7 +67,7 @@ CoordinatorDebugEnable                      :
 
 List all clusters in a pool.
 
-### Example 2: Get a HDInsightcluster
+### Example 2: Get a HDInsight cluster
 ```powershell
 $clusterResourceGroupName = "your-resourceGroup"
 $clusterpoolName = "your-clusterpool"
