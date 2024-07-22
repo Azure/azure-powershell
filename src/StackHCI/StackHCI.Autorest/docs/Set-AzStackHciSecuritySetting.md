@@ -26,7 +26,7 @@ Create a security setting
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1:
 ```powershell
 Set-AzStackHciSecuritySetting -ClusterName 'test-cluster' -ResourceGroupName 'test-rg'
 ```

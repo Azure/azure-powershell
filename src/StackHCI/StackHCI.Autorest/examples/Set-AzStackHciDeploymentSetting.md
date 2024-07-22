@@ -1,9 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1:
 ```powershell
 Set-AzStackHciDeploymentSetting -ClusterName 'test-cluster' -ResourceGroupName 's-cluster-rg' -SName 'default'
-```
-
-```output
 ```
 
 Sets the Deployment Setting

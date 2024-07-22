@@ -30,7 +30,7 @@ Delete a DeploymentSetting
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1:
 ```powershell
 Remove-AzStackHciDeploymentSetting -ClusterName test-cluster -ResourceGroupName test-rg
 ```

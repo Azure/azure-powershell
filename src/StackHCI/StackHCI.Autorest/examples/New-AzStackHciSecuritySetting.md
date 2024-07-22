@@ -1,6 +1,6 @@
 ### Example 1:
 ```powershell
-New-AzStackHciSecuritySetting -ClusterName 's-cluster' -ResourceGroupName 's-cluster-rg' -SName 'default'
+New-AzStackHciSecuritySetting -ClusterName 's-cluster' -ResourceGroupName 's-cluster-rg'
 ```
 
 ```output

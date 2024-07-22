@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1:
 ```powershell
 New-AzStackHciDeploymentSetting -ClusterName 'test-cluster' -ResourceGroupName 'test-rg' -SName 'default'
 ```

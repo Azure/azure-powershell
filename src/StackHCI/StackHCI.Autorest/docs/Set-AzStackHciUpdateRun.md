@@ -34,27 +34,12 @@ Put Update runs for a specified update
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1:
 ```powershell
-{{ Add code here }}
+Set-AzStackHciUpdateRun -ClusterName 'test-cluster' -ResourceGroupName 'test-rg' -UpdateRunName 'test-update-run' -UpdateName 'test-update'
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Sets the update run
 
 ## PARAMETERS
 

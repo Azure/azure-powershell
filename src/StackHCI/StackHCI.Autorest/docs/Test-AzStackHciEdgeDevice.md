@@ -42,27 +42,20 @@ A long-running resource action.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1:
 ```powershell
-{{ Add code here }}
+$ValidateRequest = @{
+    edgeDeviceIds = @(
+        "/subscriptions/<subId>/resourceGroups/<test-rg>/providers/Microsoft.HybridCompute/machines/<test-node>/edgeDevices/default",
+        "/subscriptions/<subId>/resourceGroups/<test-rg>/providers/Microsoft.HybridCompute/machines/<test-node2>/edgeDevices/default"
+    )
+    additionalInfo = "test"
+}
+
+Test-AzStackHciEdgeDevice -ResourceUri "subscriptions/<subId>/resourceGroups/<test-rg>/providers/Microsoft.HybridCompute/machines/<test-node>" -Name "default" -ValidateRequest $ValidateRequest
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Tests the edge devices for the node
 
 ## PARAMETERS
 

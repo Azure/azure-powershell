@@ -24,7 +24,7 @@ Create a EdgeDevice
 
 ### Example 1:
 ```powershell
-New-AzStackHciEdgeDevice -Name 'default' -ResourceUri "subscriptions/<subId>/resourceGroups/<test-rg>/providers/Microsoft.HybridCompute/machines/<test-node>"
+New-AzStackHciEdgeDevice -ResourceUri "subscriptions/<subId>/resourceGroups/<test-rg>/providers/Microsoft.HybridCompute/machines/<test-node>"
 ```
 
 ```output

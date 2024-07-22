@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1:
 ```powershell
 Set-AzStackHciEdgeDevice -ResourceUri "subscriptions/<subId>/resourceGroups/<test-rg>/providers/Microsoft.HybridCompute/machines/<test-node>" -Name "default"
 ```

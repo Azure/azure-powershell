@@ -13,9 +13,8 @@ Create a security setting
 ## SYNTAX
 
 ```
-New-AzStackHciSecuritySetting -ClusterName <String> -ResourceGroupName <String> -SName <String>
- [-SubscriptionId <String>] [-ProvisioningState <ProvisioningState>]
- [-SecuredCoreComplianceAssignment <ComplianceAssignmentType>]
+New-AzStackHciSecuritySetting -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-ProvisioningState <ProvisioningState>] [-SecuredCoreComplianceAssignment <ComplianceAssignmentType>]
  [-SmbEncryptionForIntraClusterTrafficComplianceAssignment <ComplianceAssignmentType>]
  [-WdacComplianceAssignment <ComplianceAssignmentType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -28,7 +27,7 @@ Create a security setting
 
 ### Example 1:
 ```powershell
-New-AzStackHciSecuritySetting -ClusterName 's-cluster' -ResourceGroupName 's-cluster-rg' -SName 'default'
+New-AzStackHciSecuritySetting -ClusterName 's-cluster' -ResourceGroupName 's-cluster-rg'
 ```
 
 ```output
@@ -157,21 +156,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SName
-Name of security setting
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: SecuritySettingsName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -148,7 +148,7 @@ directive:
   - where:
       verb: New
       subject: SecuritySetting
-      parameter-name: Name
+      parameter-name: SName
     hide: true
     set:
       default:
