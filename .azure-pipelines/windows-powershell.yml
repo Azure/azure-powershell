@@ -13,6 +13,7 @@ variables:
   TestCoverageLocation: $(Build.SourcesDirectory)/artifacts
   PowerShellPlatform: Windows PowerShell
   AZURE_CLIENTS_SHOW_SECRETS_WARNING: true
+  PRNo: 25600
 
 trigger: none
 
@@ -39,6 +40,7 @@ jobs:
       testFramework: ${{ variables.TestFramework }}
       configuration: ${{ variables.Configuration }}
       powerShellPlatform: ${{ variables.PowerShellPlatform }}
+      PRNo: ${{ variables.PRNo }}
 
 - job: Analyze
   displayName: Analyze
@@ -54,6 +56,7 @@ jobs:
       testFramework: ${{ variables.TestFramework }}
       powerShellPlatform: ${{ variables.PowerShellPlatform }}
       IsGenerateBased: ${{ variables.IsGenerateBased }}
+      PRNo: ${{ variables.PRNo }}
 
 - job: Test
   displayName: Test
@@ -69,3 +72,4 @@ jobs:
       testTarget: ${{ variables.TestTarget }}
       configuration: ${{ variables.Configuration }}
       powerShellPlatform: ${{ variables.PowerShellPlatform }}
+      PRNo: ${{ variables.PRNo }}
