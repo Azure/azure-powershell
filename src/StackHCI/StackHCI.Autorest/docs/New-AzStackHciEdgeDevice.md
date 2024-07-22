@@ -13,8 +13,8 @@ Create a EdgeDevice
 ## SYNTAX
 
 ```
-New-AzStackHciEdgeDevice -Name <String> -ResourceUri <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzStackHciEdgeDevice -ResourceUri <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,21 +62,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Name of Device
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: EdgeDeviceName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

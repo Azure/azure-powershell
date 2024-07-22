@@ -134,9 +134,6 @@ Remove-AzStackHCIVMAttestation removes guests from AzureStack HCI IMDS Attestati
 ### [Set-AzStackHCI](Set-AzStackHCI.md)
 Set-AzStackHCI modifies resource properties of the Microsoft.AzureStackHCI cloud resource representing the on-premises cluster to enable or disable features.
 
-### [Set-AzStackHciClusterRemoteSupport](Set-AzStackHciClusterRemoteSupport.md)
-Configure RemoteSupport on a cluster
-
 ### [Set-AzStackHciDeploymentSetting](Set-AzStackHciDeploymentSetting.md)
 Create a DeploymentSetting
 
@@ -154,9 +151,6 @@ Put Update runs for a specified update
 
 ### [Set-AzStackHciUpdateSummary](Set-AzStackHciUpdateSummary.md)
 Put Update summaries under the HCI cluster
-
-### [Start-AzStackHciClusterLogCollection](Start-AzStackHciClusterLogCollection.md)
-Trigger Log Collection on a cluster
 
 ### [Test-AzStackHciEdgeDevice](Test-AzStackHciEdgeDevice.md)
 A long-running resource action.

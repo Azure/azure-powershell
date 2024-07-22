@@ -95,6 +95,16 @@ directive:
       verb: Update
       subject: Extension
     remove: true
+  # Remove Start-AzStackHciClusterLogCollection
+  - where:
+      verb: Start
+      subject: ClusterLogCollection
+    remove: true
+  # Remove Set-AzStackHciClusterRemoteSupport
+  - where:
+      verb: Set
+      subject: ClusterRemoteSupport
+    remove: true
   # Remove Invoke-AzStackHciUploadClusterCertificate
   - where:
       verb: Invoke
@@ -120,6 +130,24 @@ directive:
   - where:
       verb: New
       subject: ArcSetting
+      parameter-name: Name
+    hide: true
+    set:
+      default:
+        script: '"default"'
+  # Hide name from edgeDevices 
+  - where:
+      verb: New
+      subject: EdgeDevice
+      parameter-name: Name
+    hide: true
+    set:
+      default:
+        script: '"default"'
+  # Hide name from securitySetting 
+  - where:
+      verb: New
+      subject: SecuritySetting
       parameter-name: Name
     hide: true
     set:
