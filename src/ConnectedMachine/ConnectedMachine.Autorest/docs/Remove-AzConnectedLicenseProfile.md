@@ -1,39 +1,31 @@
 ---
 external help file:
 Module Name: Az.ConnectedMachine
-online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/invoke-azconnectedreconcilenetworksecurityperimeterconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/remove-azconnectedlicenseprofile
 schema: 2.0.0
 ---
 
-# Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration
+# Remove-AzConnectedLicenseProfile
 
 ## SYNOPSIS
-Forces the network security perimeter configuration to refresh for a private link scope.
+The operation to delete a license profile.
 
 ## SYNTAX
 
-### Reconcile (Default)
+### Delete (Default)
 ```
-Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration -PerimeterName <String>
- -ResourceGroupName <String> -ScopeName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ReconcileViaIdentity
-```
-Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration -InputObject <IConnectedMachineIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzConnectedLicenseProfile -MachineName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ReconcileViaIdentityPrivateLinkScope
+### DeleteViaIdentity
 ```
-Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration -PerimeterName <String>
- -PrivateLinkScopeInputObject <IConnectedMachineIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzConnectedLicenseProfile -InputObject <IConnectedMachineIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Forces the network security perimeter configuration to refresh for a private link scope.
+The operation to delete a license profile.
 
 ## EXAMPLES
 
@@ -98,13 +90,28 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
-Parameter Sets: ReconcileViaIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MachineName
+The name of the hybrid machine.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -123,34 +130,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PerimeterName
-The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.String
-Parameter Sets: Reconcile, ReconcileViaIdentityPrivateLinkScope
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PrivateLinkScopeInputObject
-Identity Parameter
-To construct, see NOTES section for PRIVATELINKSCOPEINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
-Parameter Sets: ReconcileViaIdentityPrivateLinkScope
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -160,22 +151,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reconcile
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScopeName
-The name of the Azure Arc PrivateLinkScope resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Reconcile
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -190,7 +166,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reconcile
+Parameter Sets: Delete
 Aliases:
 
 Required: False

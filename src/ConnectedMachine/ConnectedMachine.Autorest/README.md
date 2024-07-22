@@ -41,7 +41,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
  
 ``` yaml
-commit: 432838208e52bdf6267b8a566331ba10893c2076
+commit: 2e5be0e72597c6fc8d438f20e38087d900c16427
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
@@ -325,26 +325,21 @@ directive:
     remove: true
   # internal API
   - where:
-      subject: LicenseProfile
-    remove: true
-  - where:
       subject: Extension
       variant: Upgrade
     remove: true
 
-  # we will release gateway and setting commands in a seperate module
-  - where:
-      subject: Gateway
-    remove: true
+  # Add back when this API version is added to the controller code
   - where:
       subject: Setting
     remove: true
 
-  # We don't want user to send PATCH to the ESU license API
+  # Have a separate cmdlet for them
   - where:
-      subject: License
-      verb: Update
+      subject: Gateway
     remove: true
+
+  # We don't want user to send PATCH to the ESU license API
   - where:
       subject: License
       verb: Validate
@@ -354,16 +349,11 @@ directive:
       verb: Test
     remove: true
 
-  # We don't want user to talk directly to the network configuration API
+  # Add back when 200 response is added to this LRO
   - where:
-      subject: NetworkConfiguration
+      subject: ReconcileNetworkSecurityPerimeterConfiguration$
+      verb: Invoke
     remove: true
-
-  # # Remove when this API is fixed
-  # - where:
-  #     subject: ReconcileNetworkSecurityPerimeterConfiguration$
-  #     verb: Invoke
-  #   remove: true
 
   # Removing non-expand commands
   - where:
