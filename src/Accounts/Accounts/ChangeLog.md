@@ -19,7 +19,8 @@
 -->
 
 ## Upcoming Release
-* Upgraded Azure.Core to 1.41.0 to include the fix for `BearerTokenAuthenticationPolicy`
+* Upgraded Microsoft.Identity.Client to 4.62.0 to include the fix for Device Code Login [#24962].
+* Upgraded Azure.Core to 1.41.0 to include the fix for `BearerTokenAuthenticationPolicy`.
 * Removed the informational table about selected context to avoid duplication with output table.
 
 ## Version 3.0.2
