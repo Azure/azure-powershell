@@ -331,8 +331,8 @@ namespace Microsoft.Azure.Commands.Profile
             string subscriptionName = null;
             string subscriptionId = null;
 
-            //Disable WAM before the issue https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/4786 is fixed
-            if (ParameterSetName.Equals(UserParameterSet) && UseDeviceAuthentication == true || ParameterSetName.Equals(UserWithCredentialParameterSet))
+            //Disable WAM before ROPC WAM is fixed
+            if (ParameterSetName.Equals(UserWithCredentialParameterSet))
             {
                 AzConfigReader.Instance?.UpdateConfig(ConfigKeys.EnableLoginByWam, false, ConfigScope.CurrentUser);
             }
