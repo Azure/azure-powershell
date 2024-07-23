@@ -325,21 +325,27 @@ directive:
     remove: true
   # internal API
   - where:
+      subject: LicenseProfile
+    remove: true
+  - where:
       subject: Extension
       variant: Upgrade
     remove: true
 
-  # Add back when this API version is added to the controller code
+  # we will release gateway and setting commands in a seperate module
+  - where:
+      subject: Gateway
+    remove: true
+  # Remove when this API version is added
   - where:
       subject: Setting
     remove: true
 
-  # Have a separate cmdlet for them
-  - where:
-      subject: Gateway
-    remove: true
-
   # We don't want user to send PATCH to the ESU license API
+  - where:
+      subject: License
+      verb: Update
+    remove: true
   - where:
       subject: License
       verb: Validate
@@ -349,7 +355,12 @@ directive:
       verb: Test
     remove: true
 
-  # Add back when 200 response is added to this LRO
+  # We don't want user to talk directly to the network configuration API
+  - where:
+      subject: NetworkConfiguration
+    remove: true
+
+  # Remove when this API is fixed
   - where:
       subject: ReconcileNetworkSecurityPerimeterConfiguration$
       verb: Invoke
