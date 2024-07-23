@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
 * Removed the informational table about selected context to avoid duplication with output table.
 
 ## Version 3.0.2

@@ -43,7 +43,7 @@ $KeyName = "key" + $rgname;
 $DesName= "des" + $rgname;
 $KeySize = 3072;
 
-$SecurePassword = "Password" | ConvertTo-SecureString -AsPlainText -Force;
+$SecurePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force;
 $User = "Username";
 $Cred = New-Object System.Management.Automation.PSCredential ($User, $SecurePassword);
 

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
 
 ## Version 1.10.0
 * Updated Module operation cmdlets to support Powershell 7.2

@@ -40,8 +40,7 @@ $SubnetAddressPrefix = "10.0.0.0/24";
 $VnetAddressPrefix = "10.0.0.0/16";
 
 # Credential setup.
-$password = "Password" |ConvertTo-SecureString -AsPlainText -Force; 
-$securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force;
 $credential = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
 $SecurityType = "ConfidentialVM";
