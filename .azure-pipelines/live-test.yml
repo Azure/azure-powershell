@@ -52,6 +52,7 @@ variables:
   ArtifactsName: LiveTestArtifacts
   DataLocation: $(Pipeline.Workspace)/$(ArtifactsName)
   SuppressAzurePowerShellBreakingChangeWarnings: true
+  Codeql.Enabled: false
 
 schedules:
 - cron: "0 19 * * *"
