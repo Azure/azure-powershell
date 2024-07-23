@@ -947,6 +947,202 @@ end {
 
 <#
 .Synopsis
+Get all libraries of HDInsight on AKS cluster.
+.Description
+Get all libraries of HDInsight on AKS cluster.
+.Example
+$clusterResourceGroupName = "Group"
+$clusterpoolName = "ps-test-pool"
+$clusterName = "flinkcluster"
+Get-AzHdInsightOnAksClusterLibrary -ResourceGroupName $clusterResourceGroupName -ClusterName $clusterName -ClusterPoolName $clusterpoolName -Category custom
+.Example
+$clusterResourceGroupName = "Group"
+$clusterpoolName = "ps-test-pool"
+$clusterName = "flinkcluster"
+Get-AzHdInsightOnAksClusterLibrary -ResourceGroupName $clusterResourceGroupName -ClusterName $clusterName -ClusterPoolName $clusterpoolName -Category preddfine
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibrary
+.Link
+https://learn.microsoft.com/powershell/module/az.hdinsightonaks/get-azhdinsightonaksclusterlibrary
+#>
+function Get-AzHdInsightOnAksClusterLibrary {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibrary])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [System.String]
+    # The name of the HDInsight cluster.
+    ${ClusterName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [System.String]
+    # The name of the cluster pool.
+    ${ClusterPoolName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("custom", "predefined")]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Query')]
+    [System.String]
+    # The system query option to filter libraries returned in the response.
+    # Allowed value is 'custom' or 'predefined'.
+    ${Category},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            List = 'Az.HdInsightOnAks.private\Get-AzHdInsightOnAksClusterLibrary_List';
+        }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 List a cluster pool available upgrade.
 .Description
 List a cluster pool available upgrade.
@@ -1059,6 +1255,182 @@ begin {
 
         $mapping = @{
             List = 'Az.HdInsightOnAks.private\Get-AzHdInsightOnAksClusterPoolAvailableUpgrade_List';
+        }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Returns a list of upgrade history.
+.Description
+Returns a list of upgrade history.
+.Example
+$resourceGroupName = "resourceGroupName"
+$clusterPoolName = "clusterPoolName"
+Get-AzHdInsightOnAksClusterPoolUpgradeHistory -ResourceGroupName $resourceGroupName -ClusterPoolName $clusterPoolName
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolUpgradeHistory
+.Link
+https://learn.microsoft.com/powershell/module/az.hdinsightonaks/get-azhdinsightonaksclusterpoolupgradehistory
+#>
+function Get-AzHdInsightOnAksClusterPoolUpgradeHistory {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolUpgradeHistory])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [System.String]
+    # The name of the cluster pool.
+    ${ClusterPoolName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            List = 'Az.HdInsightOnAks.private\Get-AzHdInsightOnAksClusterPoolUpgradeHistory_List';
         }
         if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
@@ -1512,6 +1884,189 @@ end {
 
 <#
 .Synopsis
+Returns a list of upgrade history.
+.Description
+Returns a list of upgrade history.
+.Example
+$resourceGroupName = "resourceGroupName"
+$clusterPoolName = "clusterPoolName"
+$clusterName = "clusterName"
+Get-AzHdInsightOnAksClusterUpgradeHistory -ResourceGroupName $resourceGroupName -ClusterPoolName $clusterPoolName -ClusterName $clusterName
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgradeHistory
+.Link
+https://learn.microsoft.com/powershell/module/az.hdinsightonaks/get-azhdinsightonaksclusterupgradehistory
+#>
+function Get-AzHdInsightOnAksClusterUpgradeHistory {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgradeHistory])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [System.String]
+    # The name of the HDInsight cluster.
+    ${ClusterName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [System.String]
+    # The name of the cluster pool.
+    ${ClusterPoolName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            List = 'Az.HdInsightOnAks.private\Get-AzHdInsightOnAksClusterUpgradeHistory_List';
+        }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Gets a HDInsight cluster.
 .Description
 Gets a HDInsight cluster.
@@ -1742,6 +2297,309 @@ end {
 
 <#
 .Synopsis
+Library management operations on HDInsight on AKS cluster.
+.Description
+Library management operations on HDInsight on AKS cluster.
+.Example
+$libObj=New-AzHdInsightOnAksClusterMavenLibraryObject -GroupId "com.azure.resourcemanager" -Name "azure-resourcemanager-hdinsight-containers" -Version "1.0.0-beta.2" -Remark "Maven lib"
+Invoke-AzHdInsightOnAksManageClusterLibrary -ResourceGroupName hilocli-test -ClusterPoolName hilopoolwus3 -ClusterName cluster2024521155147  -Action Install -Library $libObj -AsJob
+.Example
+$libObj=New-AzHdInsightOnAksClusterPyPiLibraryObject -Name pandas -Version 2.2.2 
+Invoke-AzHdInsightOnAksManageClusterLibrary -ResourceGroupName hilocli-test -ClusterPoolName hilopoolwus3 -ClusterName cluster2024521155147  -Action Uninstall -Library $libObj -AsJob
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryManagementOperation
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CLUSTERPOOLINPUTOBJECT <IHdInsightOnAksIdentity>: Identity Parameter
+  [ClusterName <String>]: The name of the HDInsight cluster.
+  [ClusterPoolName <String>]: The name of the cluster pool.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+INPUTOBJECT <IHdInsightOnAksIdentity>: Identity Parameter
+  [ClusterName <String>]: The name of the HDInsight cluster.
+  [ClusterPoolName <String>]: The name of the cluster pool.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+LIBRARY <IClusterLibrary[]>: The libraries to be installed/updated/uninstalled.
+  PropertiesType <String>: Type of the library.
+  [Remark <String>]: Remark of the latest library management operation.
+
+OPERATION <IClusterLibraryManagementOperation>: Library management operation.
+  Action <String>: The library management action.
+  Library <List<IClusterLibrary>>: The libraries to be installed/updated/uninstalled.
+    PropertiesType <String>: Type of the library.
+    [Remark <String>]: Remark of the latest library management operation.
+.Link
+https://learn.microsoft.com/powershell/module/az.hdinsightonaks/invoke-azhdinsightonaksmanageclusterlibrary
+#>
+function Invoke-AzHdInsightOnAksManageClusterLibrary {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='ManageViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Manage', Mandatory)]
+    [Parameter(ParameterSetName='ManageExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ManageViaIdentityClusterpool', Mandatory)]
+    [Parameter(ParameterSetName='ManageViaIdentityClusterpoolExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ManageViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ManageViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [System.String]
+    # The name of the HDInsight cluster.
+    ${ClusterName},
+
+    [Parameter(ParameterSetName='Manage', Mandatory)]
+    [Parameter(ParameterSetName='ManageExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ManageViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ManageViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [System.String]
+    # The name of the cluster pool.
+    ${ClusterPoolName},
+
+    [Parameter(ParameterSetName='Manage', Mandatory)]
+    [Parameter(ParameterSetName='ManageExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ManageViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ManageViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Manage')]
+    [Parameter(ParameterSetName='ManageExpanded')]
+    [Parameter(ParameterSetName='ManageViaJsonFilePath')]
+    [Parameter(ParameterSetName='ManageViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='ManageViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ManageViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='ManageViaIdentityClusterpool', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ManageViaIdentityClusterpoolExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity]
+    # Identity Parameter
+    ${ClusterpoolInputObject},
+
+    [Parameter(ParameterSetName='Manage', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ManageViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ManageViaIdentityClusterpool', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryManagementOperation]
+    # Library management operation.
+    ${Operation},
+
+    [Parameter(ParameterSetName='ManageExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ManageViaIdentityClusterpoolExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ManageViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("Install", "Uninstall")]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # The library management action.
+    ${Action},
+
+    [Parameter(ParameterSetName='ManageExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ManageViaIdentityClusterpoolExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ManageViaIdentityExpanded', Mandatory)]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibrary[]]
+    # The libraries to be installed/updated/uninstalled.
+    ${Library},
+
+    [Parameter(ParameterSetName='ManageViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Manage operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ManageViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Json string supplied to the Manage operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Manage = 'Az.HdInsightOnAks.private\Invoke-AzHdInsightOnAksManageClusterLibrary_Manage';
+            ManageExpanded = 'Az.HdInsightOnAks.private\Invoke-AzHdInsightOnAksManageClusterLibrary_ManageExpanded';
+            ManageViaIdentity = 'Az.HdInsightOnAks.private\Invoke-AzHdInsightOnAksManageClusterLibrary_ManageViaIdentity';
+            ManageViaIdentityClusterpool = 'Az.HdInsightOnAks.private\Invoke-AzHdInsightOnAksManageClusterLibrary_ManageViaIdentityClusterpool';
+            ManageViaIdentityClusterpoolExpanded = 'Az.HdInsightOnAks.private\Invoke-AzHdInsightOnAksManageClusterLibrary_ManageViaIdentityClusterpoolExpanded';
+            ManageViaIdentityExpanded = 'Az.HdInsightOnAks.private\Invoke-AzHdInsightOnAksManageClusterLibrary_ManageViaIdentityExpanded';
+            ManageViaJsonFilePath = 'Az.HdInsightOnAks.private\Invoke-AzHdInsightOnAksManageClusterLibrary_ManageViaJsonFilePath';
+            ManageViaJsonString = 'Az.HdInsightOnAks.private\Invoke-AzHdInsightOnAksManageClusterLibrary_ManageViaJsonString';
+        }
+        if (('Manage', 'ManageExpanded', 'ManageViaJsonFilePath', 'ManageViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Create a cluster pool.
 .Description
 Create a cluster pool.
@@ -1792,11 +2650,12 @@ CLUSTERPOOL <IClusterPool>: Cluster pool.
   Location <String>: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
+  [ComputeProfileAvailabilityZone <List<String>>]: The list of Availability zones to use for AKS VMSS nodes.
   [ComputeProfileVMSize <String>]: The virtual machine SKU.
   [LogAnalyticProfileEnabled <Boolean?>]: True if log analytics is enabled for cluster pool, otherwise false.
   [LogAnalyticProfileWorkspaceId <String>]: Log analytics workspace to associate with the OMS agent.
   [ManagedResourceGroupName <String>]: A resource group created by RP, to hold the resources created by RP on-behalf of customers. It will also be used to generate aksManagedResourceGroupName by pattern: MC_{managedResourceGroupName}_{clusterPoolName}_{region}. Please make sure it meets resource group name restriction.
-  [NetworkProfileApiServerAuthorizedIPRange <List<String>>]: IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
+  [NetworkProfileApiServerAuthorizedIPRange <List<String>>]: IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property is not supported and please don't use it.
   [NetworkProfileEnablePrivateApiServer <Boolean?>]: ClusterPool is based on AKS cluster. AKS cluster exposes the API server to public internet by default. If you set this property to true, a private AKS cluster will be created, and it will use private apiserver, which is not exposed to public internet.
   [NetworkProfileOutboundType <String>]: This can only be set at cluster pool creation time and cannot be changed later. 
   [NetworkProfileSubnetId <String>]: Cluster pool subnet resource id.
@@ -1877,6 +2736,14 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String[]]
+    # The list of Availability zones to use for AKS VMSS nodes.
+    ${ComputeProfileAvailabilityZone},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # True if log analytics is enabled for cluster pool, otherwise false.
@@ -1907,6 +2774,7 @@ param(
     # 137.117.106.88/29.
     # This feature is not compatible with private AKS clusters.
     # So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
+    # Currently, this property is not supported and please don't use it.
     ${NetworkProfileApiServerAuthorizedIPRange},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -2461,6 +3329,7 @@ HDINSIGHTONAKSCLUSTER <ICluster>: The cluster.
   [AutoscaleProfileEnabled <Boolean?>]: This indicates whether auto scale is enabled on HDInsight on AKS cluster.
   [AutoscaleProfileGracefulDecommissionTimeout <Int32?>]: This property is for graceful decommission timeout; It has a default setting of 3600 seconds before forced shutdown takes place. This is the maximal time to wait for running containers and applications to complete before transition a DECOMMISSIONING node into DECOMMISSIONED. The default value is 3600 seconds. Negative value (like -1) is handled as infinite timeout.
   [ClusterType <String>]: The type of cluster.
+  [ComputeProfileAvailabilityZone <List<String>>]: The list of Availability zones to use for AKS VMSS nodes.
   [ComputeProfileNode <List<INodeProfile>>]: The nodes definitions.
     Count <Int32>: The number of virtual machines.
     Type <String>: The node type.
@@ -2509,6 +3378,11 @@ HDINSIGHTONAKSCLUSTER <ICluster>: The cluster.
     ScalingMetric <String>: Metrics name for individual workloads. For example: cpu
   [LogAnalyticProfileEnabled <Boolean?>]: True if log analytics is enabled for the cluster, otherwise false.
   [LogAnalyticProfileMetricsEnabled <Boolean?>]: True if metrics are enabled, otherwise false.
+  [ManagedIdentityProfileIdentityList <List<IManagedIdentitySpec>>]: The list of managed identity.
+    ClientId <String>: ClientId of the managed identity.
+    ObjectId <String>: ObjectId of the managed identity.
+    ResourceId <String>: ResourceId of the managed identity.
+    Type <String>: The type of managed identity.
   [MetastoreSpecDbConnectionAuthenticationMode <String>]: The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
   [MetastoreSpecDbName <String>]: The database name.
   [MetastoreSpecDbPasswordSecretName <String>]: The secret name which contains the database user password.
@@ -2530,7 +3404,7 @@ HDINSIGHTONAKSCLUSTER <ICluster>: The cluster.
     [TimeoutInMinute <Int32?>]: Timeout duration for the script action in minutes.
   [ProfileServiceConfigsProfile <List<IClusterServiceConfigsProfile>>]: The service configs profiles.
     Config <List<IClusterServiceConfig>>: List of service configs.
-      Component <String>: Name of the component the config files should apply to.
+      ComponentName <String>: Name of the component the config files should apply to.
       File <List<IClusterConfigFile>>: List of Config Files.
         FileName <String>: Configuration file name.
         [Content <String>]: Free form content of the entire configuration file.
@@ -2559,14 +3433,15 @@ HDINSIGHTONAKSCLUSTER <ICluster>: The cluster.
   [ScheduleBasedConfigTimeZone <String>]: User has to specify the timezone on which the schedule has to be set for schedule based autoscale configuration.
   [SecretProfileKeyVaultResourceId <String>]: Name of the user Key Vault where all the cluster specific user secrets are stored.
   [SecretProfileSecret <List<ISecretReference>>]: Properties of Key Vault secret.
-    KeyVaultObjectName <String>: Object identifier name of the secret in key vault.
     ReferenceName <String>: Reference name of the secret to be used in service configs.
+    SecretName <String>: Object identifier name of the secret in key vault.
     Type <String>: Type of key vault object: secret, key or certificate.
     [Version <String>]: Version of the secret in key vault.
   [SparkProfileDefaultStorageUrl <String>]: The default storage URL.
   [SparkProfileUserPluginsSpecPlugin <List<ISparkUserPlugin>>]: Spark user plugins.
     Path <String>: Fully qualified path to the folder containing the plugins.
   [SshProfileCount <Int32?>]: Number of ssh pods per cluster.
+  [SshProfileVMSize <String>]: The virtual machine SKU.
   [StorageHivecatalogName <String>]: Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.
   [StorageHivecatalogSchema <String>]: Schema of the above catalog to use, to mount query logs as external tables, if not specified tables will be mounted under schema trinologs.
   [StoragePartitionRetentionInDay <Int32?>]: Retention period for query log table partitions, this doesn't have any affect on actual data.
@@ -2605,6 +3480,12 @@ LOADBASEDCONFIGSCALINGRULE <IScalingRule[]>: The scaling rules.
   EvaluationCount <Int32>: This is an evaluation count for a scaling condition, the number of times a trigger condition should be successful, before scaling activity is triggered.
   ScalingMetric <String>: Metrics name for individual workloads. For example: cpu
 
+MANAGEDIDENTITYPROFILEIDENTITYLIST <IManagedIdentitySpec[]>: The list of managed identity.
+  ClientId <String>: ClientId of the managed identity.
+  ObjectId <String>: ObjectId of the managed identity.
+  ResourceId <String>: ResourceId of the managed identity.
+  Type <String>: The type of managed identity.
+
 SCHEDULEBASEDCONFIGSCHEDULE <ISchedule[]>: This specifies the schedules where scheduled based Autoscale to be enabled, the user has a choice to set multiple rules within the schedule across days and times (start/end).
   Count <Int32>: User has to set the node count anticipated at end of the scaling operation of the set current schedule configuration, format is integer.
   Day <List<String>>: User has to set the days where schedule has to be set for autoscale operation.
@@ -2621,14 +3502,14 @@ SCRIPTACTIONPROFILE <IScriptActionProfile[]>: The script action profile list.
   [TimeoutInMinute <Int32?>]: Timeout duration for the script action in minutes.
 
 SECRETREFERENCE <ISecretReference[]>: Properties of Key Vault secret.
-  KeyVaultObjectName <String>: Object identifier name of the secret in key vault.
   ReferenceName <String>: Reference name of the secret to be used in service configs.
+  SecretName <String>: Object identifier name of the secret in key vault.
   Type <String>: Type of key vault object: secret, key or certificate.
   [Version <String>]: Version of the secret in key vault.
 
 SERVICECONFIGSPROFILE <IClusterServiceConfigsProfile[]>: The service configs profiles.
   Config <List<IClusterServiceConfig>>: List of service configs.
-    Component <String>: Name of the component the config files should apply to.
+    ComponentName <String>: Name of the component the config files should apply to.
     File <List<IClusterConfigFile>>: List of Config Files.
       FileName <String>: Configuration file name.
       [Content <String>]: Free form content of the entire configuration file.
@@ -2843,6 +3724,15 @@ param(
     [System.String]
     # Version with 3/4 part.
     ${ClusterVersion},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String[]]
+    # The list of Availability zones to use for AKS VMSS nodes.
+    ${ComputeProfileAvailabilityZone},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
@@ -3183,6 +4073,15 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentitySpec[]]
+    # The list of managed identity.
+    ${ManagedIdentityProfileIdentityList},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("SqlAuth", "IdentityAuth")]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
@@ -3394,6 +4293,14 @@ param(
     [System.Int32]
     # Number of ssh pods per cluster.
     ${SshProfileCount},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # The virtual machine SKU.
+    ${SshProfileVMSize},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
@@ -4480,11 +5387,12 @@ CLUSTERPOOL <IClusterPool>: Cluster pool.
   Location <String>: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
+  [ComputeProfileAvailabilityZone <List<String>>]: The list of Availability zones to use for AKS VMSS nodes.
   [ComputeProfileVMSize <String>]: The virtual machine SKU.
   [LogAnalyticProfileEnabled <Boolean?>]: True if log analytics is enabled for cluster pool, otherwise false.
   [LogAnalyticProfileWorkspaceId <String>]: Log analytics workspace to associate with the OMS agent.
   [ManagedResourceGroupName <String>]: A resource group created by RP, to hold the resources created by RP on-behalf of customers. It will also be used to generate aksManagedResourceGroupName by pattern: MC_{managedResourceGroupName}_{clusterPoolName}_{region}. Please make sure it meets resource group name restriction.
-  [NetworkProfileApiServerAuthorizedIPRange <List<String>>]: IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
+  [NetworkProfileApiServerAuthorizedIPRange <List<String>>]: IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property is not supported and please don't use it.
   [NetworkProfileEnablePrivateApiServer <Boolean?>]: ClusterPool is based on AKS cluster. AKS cluster exposes the API server to public internet by default. If you set this property to true, a private AKS cluster will be created, and it will use private apiserver, which is not exposed to public internet.
   [NetworkProfileOutboundType <String>]: This can only be set at cluster pool creation time and cannot be changed later. 
   [NetworkProfileSubnetId <String>]: Cluster pool subnet resource id.
@@ -4537,6 +5445,13 @@ param(
     ${ClusterPoolVersion},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String[]]
+    # The list of Availability zones to use for AKS VMSS nodes.
+    ${ComputeProfileAvailabilityZone},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # True if log analytics is enabled for cluster pool, otherwise false.
@@ -4564,6 +5479,7 @@ param(
     # 137.117.106.88/29.
     # This feature is not compatible with private AKS clusters.
     # So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
+    # Currently, this property is not supported and please don't use it.
     ${NetworkProfileApiServerAuthorizedIPRange},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -5048,7 +5964,7 @@ Check the availability of the resource name.
 Check the availability of the resource name.
 .Example
 $location="west us 2"
-$name="testname"
+$name="pool/testname"
 Test-AzHdInsightOnAksLocationNameAvailability -Location $location -Name $name -Type Microsoft.HDInsight/clusterPools/clusters
 
 .Inputs
@@ -5544,267 +6460,6 @@ end {
 
 <#
 .Synopsis
-Upgrade a cluster pool.
-.Description
-Upgrade a cluster pool.
-.Example
-$clusterResourceGroupName = "Group"
-$clusterpoolName = "your-clusterpool"
-Update-AzHdInsightOnAksClusterPool -ResourceGroupName $clusterResourceGroupName -ClusterPoolName $clusterpoolName -UpgradeType NodeOsUpgrade 
-.Example
-$clusterResourceGroupName = "Group"
-$clusterpoolName = "your-clusterpool"
-$upgradeObj = New-AzHdInsightOnAksClusterPoolAKSUpgradeObject -TargetAksVersion "1.27.9" -UpgradeClusterPool $true
-Update-AzHdInsightOnAksClusterPool -ResourceGroupName $clusterResourceGroupName -ClusterPoolName $clusterpoolName -ClusterPoolUpgradeRequest $upgradeObj
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolUpgrade
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-CLUSTERPOOLUPGRADEREQUEST <IClusterPoolUpgrade>: Cluster Pool Upgrade.
-  UpgradeType <String>: Type of upgrade.
-
-INPUTOBJECT <IHdInsightOnAksIdentity>: Identity Parameter
-  [ClusterName <String>]: The name of the HDInsight cluster.
-  [ClusterPoolName <String>]: The name of the cluster pool.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of the Azure region.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-.Link
-https://learn.microsoft.com/powershell/module/az.hdinsightonaks/update-azhdinsightonaksclusterpool
-#>
-function Update-AzHdInsightOnAksClusterPool {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool])]
-[CmdletBinding(DefaultParameterSetName='UpgradeExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Upgrade', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
-    [Alias('ClusterPoolName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
-    [System.String]
-    # The name of the cluster pool.
-    ${Name},
-
-    [Parameter(ParameterSetName='Upgrade', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Upgrade')]
-    [Parameter(ParameterSetName='UpgradeExpanded')]
-    [Parameter(ParameterSetName='UpgradeViaJsonFilePath')]
-    [Parameter(ParameterSetName='UpgradeViaJsonString')]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpgradeViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter(ParameterSetName='Upgrade', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolUpgrade]
-    # Cluster Pool Upgrade.
-    ${ClusterPoolUpgradeRequest},
-
-    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaIdentityExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("AKSPatchUpgrade", "NodeOsUpgrade")]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
-    [System.String]
-    # Type of upgrade.
-    ${UpgradeType},
-
-    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
-    [System.String]
-    # Path of Json file supplied to the Upgrade operation
-    ${JsonFilePath},
-
-    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
-    [System.String]
-    # Json string supplied to the Upgrade operation
-    ${JsonString},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Upgrade = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksClusterPool_Upgrade';
-            UpgradeExpanded = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksClusterPool_UpgradeExpanded';
-            UpgradeViaIdentity = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksClusterPool_UpgradeViaIdentity';
-            UpgradeViaIdentityExpanded = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksClusterPool_UpgradeViaIdentityExpanded';
-            UpgradeViaJsonFilePath = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksClusterPool_UpgradeViaJsonFilePath';
-            UpgradeViaJsonString = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksClusterPool_UpgradeViaJsonString';
-        }
-        if (('Upgrade', 'UpgradeExpanded', 'UpgradeViaJsonFilePath', 'UpgradeViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
 Update an existing Cluster.
 .Description
 Update an existing Cluster.
@@ -5817,17 +6472,9 @@ $yarnComponentConfig = New-AzHdInsightOnAksClusterServiceConfigObject -Component
 $yarnServiceConfigProfile = New-AzHdInsightOnAksClusterServiceConfigsProfileObject -ServiceName "yarn-service" -Config $yarnComponentConfig
 
 Update-AzHdInsightOnAksCluster -ResourceGroupName $clusterResourceGroupName -PoolName $clusterpoolName -Name $clusterName -ClusterProfileServiceConfigsProfile $yarnServiceConfigProfile
-.Example
-$clusterResourceGroupName = "Group"
-$clusterpoolName = "ps-test-pool"
-$clusterName = "flinkcluster"
-$hotfixObj = New-AzHdInsightOnAksClusterHotfixUpgradeObject -ComponentName Webssh -TargetBuildNumber 7 -TargetClusterVersion "1.1.1" -TargetOssVersion "0.4.2"
-Update-AzHdInsightOnAksCluster -ResourceGroupName $clusterResourceGroupName -ClusterName $clusterName -ClusterPoolName $clusterpoolName -ClusterUpgradeRequest $hotfixObj
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatch
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
 .Outputs
@@ -5837,6 +6484,14 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+CATALOGOPTIONHIVE <IHiveCatalogOption[]>: hive catalog options.
+  CatalogName <String>: Name of trino catalog which should use specified hive metastore.
+  MetastoreDbConnectionUrl <String>: Connection string for hive metastore database.
+  MetastoreWarehouseDir <String>: Metastore root directory URI, format: abfs[s]://<container>@<account_name>.dfs.core.windows.net/<path>. More details: https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction-abfs-uri
+  [MetastoreDbConnectionAuthenticationMode <String>]: The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
+  [MetastoreDbConnectionPasswordSecret <String>]: Secret reference name from secretsProfile.secrets containing password for database connection.
+  [MetastoreDbConnectionUserName <String>]: User name for database connection.
+
 CLUSTERPATCHREQUEST <IClusterPatch>: The patch for a cluster.
   [ApplicationLogStdErrorEnabled <Boolean?>]: True if stderror is enabled, otherwise false.
   [ApplicationLogStdOutEnabled <Boolean?>]: True if stdout is enabled, otherwise false.
@@ -5845,6 +6500,13 @@ CLUSTERPATCHREQUEST <IClusterPatch>: The patch for a cluster.
   [AutoscaleProfileAutoscaleType <String>]: User to specify which type of Autoscale to be implemented - Scheduled Based or Load Based.
   [AutoscaleProfileEnabled <Boolean?>]: This indicates whether auto scale is enabled on HDInsight on AKS cluster.
   [AutoscaleProfileGracefulDecommissionTimeout <Int32?>]: This property is for graceful decommission timeout; It has a default setting of 3600 seconds before forced shutdown takes place. This is the maximal time to wait for running containers and applications to complete before transition a DECOMMISSIONING node into DECOMMISSIONED. The default value is 3600 seconds. Negative value (like -1) is handled as infinite timeout.
+  [CatalogOptionHive <List<IHiveCatalogOption>>]: hive catalog options.
+    CatalogName <String>: Name of trino catalog which should use specified hive metastore.
+    MetastoreDbConnectionUrl <String>: Connection string for hive metastore database.
+    MetastoreWarehouseDir <String>: Metastore root directory URI, format: abfs[s]://<container>@<account_name>.dfs.core.windows.net/<path>. More details: https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction-abfs-uri
+    [MetastoreDbConnectionAuthenticationMode <String>]: The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
+    [MetastoreDbConnectionPasswordSecret <String>]: Secret reference name from secretsProfile.secrets containing password for database connection.
+    [MetastoreDbConnectionUserName <String>]: User name for database connection.
   [ClusterProfileScriptActionProfile <List<IScriptActionProfile>>]: The script action profile list.
     Name <String>: Script name.
     Service <List<String>>: List of services to apply the script action.
@@ -5855,7 +6517,7 @@ CLUSTERPATCHREQUEST <IClusterPatch>: The patch for a cluster.
     [TimeoutInMinute <Int32?>]: Timeout duration for the script action in minutes.
   [ClusterProfileServiceConfigsProfile <List<IClusterServiceConfigsProfile>>]: The service configs profiles.
     Config <List<IClusterServiceConfig>>: List of service configs.
-      Component <String>: Name of the component the config files should apply to.
+      ComponentName <String>: Name of the component the config files should apply to.
       File <List<IClusterConfigFile>>: List of Config Files.
         FileName <String>: Configuration file name.
         [Content <String>]: Free form content of the entire configuration file.
@@ -5864,6 +6526,10 @@ CLUSTERPATCHREQUEST <IClusterPatch>: The patch for a cluster.
         [Value <IClusterConfigFileValues>]: List of key value pairs         where key represents a valid service configuration name and value represents the value of the config.
           [(Any) <String>]: This indicates any property can be added to this object.
     ServiceName <String>: Name of the service the configurations should apply to.
+  [CoordinatorDebugEnable <Boolean?>]: The flag that if enable debug or not.
+  [CoordinatorDebugPort <Int32?>]: The debug port.
+  [CoordinatorDebugSuspend <Boolean?>]: The flag that if suspend debug or not.
+  [CoordinatorHighAvailabilityEnabled <Boolean?>]: The flag that if enable coordinator HA, uses multiple coordinator replicas with auto failover, one per each head node. Default: true.
   [DatabaseHost <String>]: The database URL
   [DatabaseName <String>]: The database name
   [DatabasePasswordSecretRef <String>]: Reference for the database password
@@ -5896,9 +6562,27 @@ CLUSTERPATCHREQUEST <IClusterPatch>: The patch for a cluster.
     EndTime <String>: User has to set the end time of current schedule configuration, format like 10:30 (HH:MM).
     StartTime <String>: User has to set the start time of current schedule configuration, format like 10:30 (HH:MM).
   [ScheduleBasedConfigTimeZone <String>]: User has to specify the timezone on which the schedule has to be set for schedule based autoscale configuration.
+  [SecretProfileKeyVaultResourceId <String>]: Name of the user Key Vault where all the cluster specific user secrets are stored.
+  [SecretProfileSecret <List<ISecretReference>>]: Properties of Key Vault secret.
+    ReferenceName <String>: Reference name of the secret to be used in service configs.
+    SecretName <String>: Object identifier name of the secret in key vault.
+    Type <String>: Type of key vault object: secret, key or certificate.
+    [Version <String>]: Version of the secret in key vault.
   [SshProfileCount <Int32?>]: Number of ssh pods per cluster.
+  [SshProfileVMSize <String>]: The virtual machine SKU.
+  [StorageHivecatalogName <String>]: Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.
+  [StorageHivecatalogSchema <String>]: Schema of the above catalog to use, to mount query logs as external tables, if not specified tables will be mounted under schema trinologs.
+  [StoragePartitionRetentionInDay <Int32?>]: Retention period for query log table partitions, this doesn't have any affect on actual data.
+  [StoragePath <String>]: Azure storage location of the blobs.
   [Tag <IClusterPatchTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
+  [UserPluginSpecPlugin <List<ITrinoUserPlugin>>]: Trino user plugins.
+    [Enabled <Boolean?>]: Denotes whether the plugin is active or not.
+    [Name <String>]: This field maps to the sub-directory in trino plugins location, that will contain all the plugins under path.
+    [Path <String>]: Fully qualified path to the folder containing the plugins.
+  [WorkerDebugEnable <Boolean?>]: The flag that if enable debug or not.
+  [WorkerDebugPort <Int32?>]: The debug port.
+  [WorkerDebugSuspend <Boolean?>]: The flag that if suspend debug or not.
 
 CLUSTERPOOLINPUTOBJECT <IHdInsightOnAksIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the HDInsight cluster.
@@ -5919,7 +6603,7 @@ CLUSTERPROFILESCRIPTACTIONPROFILE <IScriptActionProfile[]>: The script action pr
 
 CLUSTERPROFILESERVICECONFIGSPROFILE <IClusterServiceConfigsProfile[]>: The service configs profiles.
   Config <List<IClusterServiceConfig>>: List of service configs.
-    Component <String>: Name of the component the config files should apply to.
+    ComponentName <String>: Name of the component the config files should apply to.
     File <List<IClusterConfigFile>>: List of Config Files.
       FileName <String>: Configuration file name.
       [Content <String>]: Free form content of the entire configuration file.
@@ -5928,9 +6612,6 @@ CLUSTERPROFILESERVICECONFIGSPROFILE <IClusterServiceConfigsProfile[]>: The servi
       [Value <IClusterConfigFileValues>]: List of key value pairs         where key represents a valid service configuration name and value represents the value of the config.
         [(Any) <String>]: This indicates any property can be added to this object.
   ServiceName <String>: Name of the service the configurations should apply to.
-
-CLUSTERUPGRADEREQUEST <IClusterUpgrade>: Cluster Upgrade.
-  UpgradeType <String>: Type of upgrade.
 
 INPUTOBJECT <IHdInsightOnAksIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the HDInsight cluster.
@@ -5952,6 +6633,17 @@ SCHEDULEBASEDCONFIGSCHEDULE <ISchedule[]>: This specifies the schedules where sc
   Day <List<String>>: User has to set the days where schedule has to be set for autoscale operation.
   EndTime <String>: User has to set the end time of current schedule configuration, format like 10:30 (HH:MM).
   StartTime <String>: User has to set the start time of current schedule configuration, format like 10:30 (HH:MM).
+
+SECRETPROFILESECRET <ISecretReference[]>: Properties of Key Vault secret.
+  ReferenceName <String>: Reference name of the secret to be used in service configs.
+  SecretName <String>: Object identifier name of the secret in key vault.
+  Type <String>: Type of key vault object: secret, key or certificate.
+  [Version <String>]: Version of the secret in key vault.
+
+USERPLUGINSPECPLUGIN <ITrinoUserPlugin[]>: Trino user plugins.
+  [Enabled <Boolean?>]: Denotes whether the plugin is active or not.
+  [Name <String>]: This field maps to the sub-directory in trino plugins location, that will contain all the plugins under path.
+  [Path <String>]: Fully qualified path to the folder containing the plugins.
 .Link
 https://learn.microsoft.com/powershell/module/az.hdinsightonaks/update-azhdinsightonakscluster
 #>
@@ -5965,12 +6657,6 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
-    [Parameter(ParameterSetName='Upgrade', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpool', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpoolExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
     [Alias('ClusterName')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [System.String]
@@ -5981,10 +6667,6 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
-    [Parameter(ParameterSetName='Upgrade', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
     [Alias('ClusterPoolName')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [System.String]
@@ -5995,10 +6677,6 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
-    [Parameter(ParameterSetName='Upgrade', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -6009,10 +6687,6 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
     [Parameter(ParameterSetName='UpdateViaJsonString')]
-    [Parameter(ParameterSetName='Upgrade')]
-    [Parameter(ParameterSetName='UpgradeExpanded')]
-    [Parameter(ParameterSetName='UpgradeViaJsonFilePath')]
-    [Parameter(ParameterSetName='UpgradeViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -6022,8 +6696,6 @@ param(
 
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpgradeViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity]
     # Identity Parameter
@@ -6031,8 +6703,6 @@ param(
 
     [Parameter(ParameterSetName='UpdateViaIdentityClusterpool', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpool', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpoolExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity]
     # Identity Parameter
@@ -6113,6 +6783,15 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHiveCatalogOption[]]
+    # hive catalog options.
+    ${CatalogOptionHive},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScriptActionProfile[]]
     # The script action profile list.
     ${ClusterProfileScriptActionProfile},
@@ -6125,6 +6804,39 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigsProfile[]]
     # The service configs profiles.
     ${ClusterProfileServiceConfigsProfile},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The flag that if enable debug or not.
+    ${CoordinatorDebugEnable},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Int32]
+    # The debug port.
+    ${CoordinatorDebugPort},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The flag that if suspend debug or not.
+    ${CoordinatorDebugSuspend},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The flag that if enable coordinator HA, uses multiple coordinator replicas with auto failover, one per each head node.
+    # Default: true.
+    ${CoordinatorHighAvailabilityEnabled},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
@@ -6326,9 +7038,66 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Name of the user Key Vault where all the cluster specific user secrets are stored.
+    ${SecretProfileKeyVaultResourceId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReference[]]
+    # Properties of Key Vault secret.
+    ${SecretProfileSecret},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.Int32]
     # Number of ssh pods per cluster.
     ${SshProfileCount},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # The virtual machine SKU.
+    ${SshProfileVMSize},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.
+    ${StorageHivecatalogName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Schema of the above catalog to use, to mount query logs as external tables, if not specified tables will be mounted under schema trinologs.
+    ${StorageHivecatalogSchema},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Int32]
+    # Retention period for query log table partitions, this doesn't have any affect on actual data.
+    ${StoragePartitionRetentionInDay},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Azure storage location of the blobs.
+    ${StoragePath},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
@@ -6339,36 +7108,50 @@ param(
     # Resource tags.
     ${Tag},
 
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoUserPlugin[]]
+    # Trino user plugins.
+    ${UserPluginSpecPlugin},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The flag that if enable debug or not.
+    ${WorkerDebugEnable},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Int32]
+    # The debug port.
+    ${WorkerDebugPort},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The flag that if suspend debug or not.
+    ${WorkerDebugSuspend},
+
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
     # Path of Json file supplied to the Update operation
     ${JsonFilePath},
 
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
     # Json string supplied to the Update operation
     ${JsonString},
-
-    [Parameter(ParameterSetName='Upgrade', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpool', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade]
-    # Cluster Upgrade.
-    ${ClusterUpgradeRequest},
-
-    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpoolExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaIdentityExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("AKSPatchUpgrade", "HotfixUpgrade")]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
-    [System.String]
-    # Type of upgrade.
-    ${UpgradeType},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -6465,16 +7248,8 @@ begin {
             UpdateViaIdentityExpanded = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpdateViaIdentityExpanded';
             UpdateViaJsonFilePath = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpdateViaJsonFilePath';
             UpdateViaJsonString = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpdateViaJsonString';
-            Upgrade = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_Upgrade';
-            UpgradeExpanded = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpgradeExpanded';
-            UpgradeViaIdentity = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpgradeViaIdentity';
-            UpgradeViaIdentityClusterpool = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpgradeViaIdentityClusterpool';
-            UpgradeViaIdentityClusterpoolExpanded = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpgradeViaIdentityClusterpoolExpanded';
-            UpgradeViaIdentityExpanded = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpgradeViaIdentityExpanded';
-            UpgradeViaJsonFilePath = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpgradeViaJsonFilePath';
-            UpgradeViaJsonString = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpgradeViaJsonString';
         }
-        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString', 'Upgrade', 'UpgradeExpanded', 'UpgradeViaJsonFilePath', 'UpgradeViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -6535,35 +7310,193 @@ end {
 
 <#
 .Synopsis
-Create cluster config file.
+Manual rollback upgrade for a cluster.
 .Description
-Create cluster config file.
+Manual rollback upgrade for a cluster.
 .Example
-$coreSiteConfigFile=New-AzHdInsightOnAksClusterConfigFileObject -FileName "core-site.xml" -Value @{"fs.defaultFS"="abfs://testcontainer@$teststorage.dfs.core.windows.net"}
+$clusterResourceGroupName = "Group"
+$clusterpoolName = "ps-test-pool"
+$clusterName = "cluster"
+Upgrade-AzHdInsightOnAksClusterManualRollback -ResourceGroupName $clusterResourceGroupName -ClusterName $clusterName -ClusterPoolName $clusterpoolName -UpgradeHistory /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/weidong-devrp/providers/Microsoft.HDInsight/clusterpools/weidongbugbash57/clusters/cluster202458152055/upgradeHistories/05_11_2024_06_41_26_AM-AKSPatchUpgrade
 
 .Inputs
-System.Collections.HashTable
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgradeRollback
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterConfigFile
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CLUSTERPOOLINPUTOBJECT <IHdInsightOnAksIdentity>: Identity Parameter
+  [ClusterName <String>]: The name of the HDInsight cluster.
+  [ClusterPoolName <String>]: The name of the cluster pool.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+CLUSTERROLLBACKUPGRADEREQUEST <IClusterUpgradeRollback>: Cluster Upgrade.
+  UpgradeHistory <String>: A specific upgrade history to rollback
+
+INPUTOBJECT <IHdInsightOnAksIdentity>: Identity Parameter
+  [ClusterName <String>]: The name of the HDInsight cluster.
+  [ClusterPoolName <String>]: The name of the cluster pool.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
-https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksClusterConfigFileObject
+https://learn.microsoft.com/powershell/module/az.hdinsightonaks/upgrade-azhdinsightonaksclustermanualrollback
 #>
-function New-AzHdInsightOnAksClusterConfigFileObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterConfigFile])]
-[CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false)]
+function Upgrade-AzHdInsightOnAksClusterManualRollback {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster])]
+[CmdletBinding(DefaultParameterSetName='UpgradeExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Alias('Name')]
+    [Parameter(ParameterSetName='Upgrade', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpool', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpoolExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [System.String]
+    # The name of the HDInsight cluster.
+    ${ClusterName},
+
+    [Parameter(ParameterSetName='Upgrade', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [System.String]
+    # The name of the cluster pool.
+    ${ClusterPoolName},
+
+    [Parameter(ParameterSetName='Upgrade', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Upgrade')]
+    [Parameter(ParameterSetName='UpgradeExpanded')]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpgradeViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpool', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpoolExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity]
+    # Identity Parameter
+    ${ClusterpoolInputObject},
+
+    [Parameter(ParameterSetName='Upgrade', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpool', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgradeRollback]
+    # Cluster Upgrade.
+    ${ClusterRollbackUpgradeRequest},
+
+    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpoolExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
-    # The name of the config file.
-    ${FileName},
+    # A specific upgrade history to rollback
+    ${UpgradeHistory},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
-    [System.Collections.Hashtable]
-    # List of key value pairs where key represents a valid service configuration name and value represents the value of the config.
-    ${Value}
+    [System.String]
+    # Path of Json file supplied to the Upgrade operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Json string supplied to the Upgrade operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
 )
 
 begin {
@@ -6592,7 +7525,23 @@ begin {
         }
 
         $mapping = @{
-            Create = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksClusterConfigFileObject';
+            Upgrade = 'Az.HdInsightOnAks.private\Upgrade-AzHdInsightOnAksClusterManualRollback_Upgrade';
+            UpgradeExpanded = 'Az.HdInsightOnAks.private\Upgrade-AzHdInsightOnAksClusterManualRollback_UpgradeExpanded';
+            UpgradeViaIdentity = 'Az.HdInsightOnAks.private\Upgrade-AzHdInsightOnAksClusterManualRollback_UpgradeViaIdentity';
+            UpgradeViaIdentityClusterpool = 'Az.HdInsightOnAks.private\Upgrade-AzHdInsightOnAksClusterManualRollback_UpgradeViaIdentityClusterpool';
+            UpgradeViaIdentityClusterpoolExpanded = 'Az.HdInsightOnAks.private\Upgrade-AzHdInsightOnAksClusterManualRollback_UpgradeViaIdentityClusterpoolExpanded';
+            UpgradeViaIdentityExpanded = 'Az.HdInsightOnAks.private\Upgrade-AzHdInsightOnAksClusterManualRollback_UpgradeViaIdentityExpanded';
+            UpgradeViaJsonFilePath = 'Az.HdInsightOnAks.private\Upgrade-AzHdInsightOnAksClusterManualRollback_UpgradeViaJsonFilePath';
+            UpgradeViaJsonString = 'Az.HdInsightOnAks.private\Upgrade-AzHdInsightOnAksClusterManualRollback_UpgradeViaJsonString';
+        }
+        if (('Upgrade', 'UpgradeExpanded', 'UpgradeViaJsonFilePath', 'UpgradeViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -6646,20 +7595,707 @@ end {
 
 <#
 .Synopsis
-Create an object to hold the cluster upgrade parameters.
+Upgrade a cluster pool.
 .Description
-Create an object to hold the cluster upgrade parameters.
+Upgrade a cluster pool.
+.Example
+$clusterResourceGroupName = "Group"
+$clusterpoolName = "your-clusterpool"
+Upgrade-AzHdInsightOnAksClusterPool -ResourceGroupName $clusterResourceGroupName -ClusterPoolName $clusterpoolName -UpgradeType NodeOsUpgrade 
+.Example
+$clusterResourceGroupName = "Group"
+$clusterpoolName = "your-clusterpool"
+$upgradeObj = New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject -TargetAksVersion "1.27.9" -UpgradeClusterPool $true
+Upgrade-AzHdInsightOnAksClusterPool -ResourceGroupName $clusterResourceGroupName -ClusterPoolName $clusterpoolName -ClusterPoolUpgradeRequest $upgradeObj
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolUpgrade
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CLUSTERPOOLUPGRADEREQUEST <IClusterPoolUpgrade>: Cluster Pool Upgrade.
+  UpgradeType <String>: Type of upgrade.
+
+INPUTOBJECT <IHdInsightOnAksIdentity>: Identity Parameter
+  [ClusterName <String>]: The name of the HDInsight cluster.
+  [ClusterPoolName <String>]: The name of the cluster pool.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+.Link
+https://learn.microsoft.com/powershell/module/az.hdinsightonaks/upgrade-azhdinsightonaksclusterpool
+#>
+function Upgrade-AzHdInsightOnAksClusterPool {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool])]
+[CmdletBinding(DefaultParameterSetName='UpgradeExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Upgrade', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
+    [Alias('ClusterPoolName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [System.String]
+    # The name of the cluster pool.
+    ${Name},
+
+    [Parameter(ParameterSetName='Upgrade', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Upgrade')]
+    [Parameter(ParameterSetName='UpgradeExpanded')]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpgradeViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Upgrade', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolUpgrade]
+    # Cluster Pool Upgrade.
+    ${ClusterPoolUpgradeRequest},
+
+    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("AKSPatchUpgrade", "NodeOsUpgrade")]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Type of upgrade.
+    ${UpgradeType},
+
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Upgrade operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Json string supplied to the Upgrade operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Upgrade = 'Az.HdInsightOnAks.private\Upgrade-AzHdInsightOnAksClusterPool_Upgrade';
+            UpgradeExpanded = 'Az.HdInsightOnAks.private\Upgrade-AzHdInsightOnAksClusterPool_UpgradeExpanded';
+            UpgradeViaIdentity = 'Az.HdInsightOnAks.private\Upgrade-AzHdInsightOnAksClusterPool_UpgradeViaIdentity';
+            UpgradeViaIdentityExpanded = 'Az.HdInsightOnAks.private\Upgrade-AzHdInsightOnAksClusterPool_UpgradeViaIdentityExpanded';
+            UpgradeViaJsonFilePath = 'Az.HdInsightOnAks.private\Upgrade-AzHdInsightOnAksClusterPool_UpgradeViaJsonFilePath';
+            UpgradeViaJsonString = 'Az.HdInsightOnAks.private\Upgrade-AzHdInsightOnAksClusterPool_UpgradeViaJsonString';
+        }
+        if (('Upgrade', 'UpgradeExpanded', 'UpgradeViaJsonFilePath', 'UpgradeViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Upgrade a cluster.
+.Description
+Upgrade a cluster.
+.Example
+$clusterResourceGroupName = "Group"
+$clusterpoolName = "ps-test-pool"
+$clusterName = "flinkcluster"
+$hotfixObj = New-AzHdInsightOnAksClusterHotfixUpgradeObject -ComponentName Webssh -TargetBuildNumber 7 -TargetClusterVersion "1.1.1" -TargetOssVersion "0.4.2"
+Upgrade-AzHdInsightOnAksCluster -ResourceGroupName $clusterResourceGroupName -ClusterName $clusterName -ClusterPoolName $clusterpoolName -ClusterUpgradeRequest $hotfixObj
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CLUSTERPOOLINPUTOBJECT <IHdInsightOnAksIdentity>: Identity Parameter
+  [ClusterName <String>]: The name of the HDInsight cluster.
+  [ClusterPoolName <String>]: The name of the cluster pool.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+CLUSTERUPGRADEREQUEST <IClusterUpgrade>: Cluster Upgrade.
+  UpgradeType <String>: Type of upgrade.
+
+INPUTOBJECT <IHdInsightOnAksIdentity>: Identity Parameter
+  [ClusterName <String>]: The name of the HDInsight cluster.
+  [ClusterPoolName <String>]: The name of the cluster pool.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+.Link
+https://learn.microsoft.com/powershell/module/az.hdinsightonaks/upgrade-azhdinsightonakscluster
+#>
+function Upgrade-AzHdInsightOnAksCluster {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster])]
+[CmdletBinding(DefaultParameterSetName='UpgradeExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Upgrade', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpool', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpoolExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
+    [Alias('ClusterName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [System.String]
+    # The name of the HDInsight cluster.
+    ${Name},
+
+    [Parameter(ParameterSetName='Upgrade', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
+    [Alias('ClusterPoolName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [System.String]
+    # The name of the cluster pool.
+    ${PoolName},
+
+    [Parameter(ParameterSetName='Upgrade', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Upgrade')]
+    [Parameter(ParameterSetName='UpgradeExpanded')]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpgradeViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpool', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpoolExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity]
+    # Identity Parameter
+    ${ClusterpoolInputObject},
+
+    [Parameter(ParameterSetName='Upgrade', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpool', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade]
+    # Cluster Upgrade.
+    ${ClusterUpgradeRequest},
+
+    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpoolExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("AKSPatchUpgrade", "HotfixUpgrade", "PatchVersionUpgrade")]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Type of upgrade.
+    ${UpgradeType},
+
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Upgrade operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Json string supplied to the Upgrade operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Upgrade = 'Az.HdInsightOnAks.private\Upgrade-AzHdInsightOnAksCluster_Upgrade';
+            UpgradeExpanded = 'Az.HdInsightOnAks.private\Upgrade-AzHdInsightOnAksCluster_UpgradeExpanded';
+            UpgradeViaIdentity = 'Az.HdInsightOnAks.private\Upgrade-AzHdInsightOnAksCluster_UpgradeViaIdentity';
+            UpgradeViaIdentityClusterpool = 'Az.HdInsightOnAks.private\Upgrade-AzHdInsightOnAksCluster_UpgradeViaIdentityClusterpool';
+            UpgradeViaIdentityClusterpoolExpanded = 'Az.HdInsightOnAks.private\Upgrade-AzHdInsightOnAksCluster_UpgradeViaIdentityClusterpoolExpanded';
+            UpgradeViaIdentityExpanded = 'Az.HdInsightOnAks.private\Upgrade-AzHdInsightOnAksCluster_UpgradeViaIdentityExpanded';
+            UpgradeViaJsonFilePath = 'Az.HdInsightOnAks.private\Upgrade-AzHdInsightOnAksCluster_UpgradeViaJsonFilePath';
+            UpgradeViaJsonString = 'Az.HdInsightOnAks.private\Upgrade-AzHdInsightOnAksCluster_UpgradeViaJsonString';
+        }
+        if (('Upgrade', 'UpgradeExpanded', 'UpgradeViaJsonFilePath', 'UpgradeViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create an in-memory object for ClusterConfigFile.
+.Description
+Create an in-memory object for ClusterConfigFile.
+.Example
+$coreSiteConfigFile=New-AzHdInsightOnAksClusterConfigFileObject -FileName "core-site.xml" -Value @{"fs.defaultFS"="abfs://testcontainer@$teststorage.dfs.core.windows.net"}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterConfigFile
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+VALUE <IClusterConfigFileValues>: List of key value pairs         where key represents a valid service configuration name and value represents the value of the config.
+  [(Any) <String>]: This indicates any property can be added to this object.
+.Link
+https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksclusterconfigfileobject
+#>
+function New-AzHdInsightOnAksClusterConfigFileObject {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterConfigFile])]
+[CmdletBinding(PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Configuration file name.
+    ${FileName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Free form content of the entire configuration file.
+    ${Content},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("Base64", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # This property indicates if the content is encoded and is case-insensitive.
+    # Please set the value to base64 if the content is base64 encoded.
+    # Set it to none or skip it if the content is plain text.
+    ${Encoding},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Path of the config file if content is specified.
+    ${Path},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterConfigFileValues]
+    # List of key value pairs
+    #         where key represents a valid service configuration name and value represents the value of the config.
+    ${Value}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            __AllParameterSets = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksClusterConfigFileObject';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create an in-memory object for ClusterHotfixUpgradeProperties.
+.Description
+Create an in-memory object for ClusterHotfixUpgradeProperties.
 .Example
 $hotfixObj = New-AzHdInsightOnAksClusterHotfixUpgradeObject -ComponentName Webssh -TargetBuildNumber 7 -TargetClusterVersion "1.1.1" -TargetOssVersion "0.4.2"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterHotfixUpgradeProperties
 .Link
-https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksClusterHotfixUpgradeObject
+https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksclusterhotfixupgradeobject
 #>
 function New-AzHdInsightOnAksClusterHotfixUpgradeObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade])]
-[CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterHotfixUpgradeProperties])]
+[CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
@@ -6712,7 +8348,7 @@ begin {
         }
 
         $mapping = @{
-            Create = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksClusterHotfixUpgradeObject';
+            __AllParameterSets = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksClusterHotfixUpgradeObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -6766,20 +8402,140 @@ end {
 
 <#
 .Synopsis
-Create an object to hold the cluster pool upgrade parameters.
+Create an in-memory object for MavenLibraryProperties.
 .Description
-Create an object to hold the cluster pool upgrade parameters.
+Create an in-memory object for MavenLibraryProperties.
 .Example
-New-AzHdInsightOnAksClusterPoolAKSUpgradeObject -TargetAksVersion "1.27.9" -UpgradeClusterPool $true
+New-AzHdInsightOnAksClusterMavenLibraryObject -GroupId "com.azure.resourcemanager" -Name "azure-resourcemanager-hdinsight-containers" -Version "1.0.0-beta.2" -Remark "Maven lib"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolUpgrade
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibrary
 .Link
-https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksClusterPoolAKSUpgradeObject
+https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksclustermavenlibraryobject
 #>
-function New-AzHdInsightOnAksClusterPoolAKSUpgradeObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolUpgrade])]
-[CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false)]
+function New-AzHdInsightOnAksClusterMavenLibraryObject {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibrary])]
+[CmdletBinding(PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # GroupId of the Maven package.
+    ${GroupId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # ArtifactId of the Maven package.
+    ${Name},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Version of the Maven package.
+    ${Version},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Remark of the latest library management operation.
+    ${Remark}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            __AllParameterSets = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksClusterMavenLibraryObject';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create an in-memory object for ClusterPoolAksPatchVersionUpgradeProperties.
+.Description
+Create an in-memory object for ClusterPoolAksPatchVersionUpgradeProperties.
+.Example
+New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject -TargetAksVersion "1.27.9" -UpgradeClusterPool $true
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolAksPatchVersionUpgradeProperties
+.Link
+https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksclusterpoolakspatchversionupgradeobject
+#>
+function New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolAksPatchVersionUpgradeProperties])]
+[CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
@@ -6792,14 +8548,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
-    [System.String]
+    [System.Boolean]
     # whether upgrade all clusters' nodes.
     # If it's true, upgradeClusterPool should be false.
     ${UpgradeAllClusterNode},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
-    [System.String]
+    [System.Boolean]
     # whether upgrade cluster pool or not.
     # If it's true, upgradeAllClusterNodes should be false.
     ${UpgradeClusterPool}
@@ -6831,7 +8587,7 @@ begin {
         }
 
         $mapping = @{
-            Create = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksClusterPoolAKSUpgradeObject';
+            __AllParameterSets = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -6885,17 +8641,129 @@ end {
 
 <#
 .Synopsis
-Create a component config.
+Create an in-memory object for PyPiLibraryProperties.
 .Description
-Create a component config.
+Create an in-memory object for PyPiLibraryProperties.
+.Example
+New-AzHdInsightOnAksClusterPyPiLibraryObject -Name pandas -Version 2.2.2 -Remark "Pandas Lib."
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibrary
+.Link
+https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksclusterpypilibraryobject
+#>
+function New-AzHdInsightOnAksClusterPyPiLibraryObject {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibrary])]
+[CmdletBinding(PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Name of the PyPi package.
+    ${Name},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Version of the PyPi package.
+    ${Version},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Remark of the latest library management operation.
+    ${Remark}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            __AllParameterSets = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksClusterPyPiLibraryObject';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create an in-memory object for ClusterServiceConfig.
+.Description
+Create an in-memory object for ClusterServiceConfig.
 .Example
 $coreSiteConfigFile=New-AzHdInsightOnAksClusterConfigFileObject -FileName "core-site.xml" -Value @{"fs.defaultFS"="abfs://testcontainer@$teststorage.dfs.core.windows.net"}
-$yarnComponentConfig= New-AzHdInsightOnAksClusterServiceConfigObject -ComponentName "yarn-config" -File $coreSiteConfigFile
+New-AzHdInsightOnAksClusterServiceConfigObject -ComponentName "yarn-config" -File $coreSiteConfigFile
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterConfigFile[]
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfig
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterServiceConfig
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -6909,14 +8777,13 @@ FILE <IClusterConfigFile[]>: List of Config Files.
   [Value <IClusterConfigFileValues>]: List of key value pairs         where key represents a valid service configuration name and value represents the value of the config.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksClusterServiceConfigObject
+https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksclusterserviceconfigobject
 #>
 function New-AzHdInsightOnAksClusterServiceConfigObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfig])]
-[CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterServiceConfig])]
+[CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
-    [Alias('Name')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
     # Name of the component the config files should apply to.
@@ -6955,7 +8822,7 @@ begin {
         }
 
         $mapping = @{
-            Create = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksClusterServiceConfigObject';
+            __AllParameterSets = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksClusterServiceConfigObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -7009,27 +8876,23 @@ end {
 
 <#
 .Synopsis
-Create a service config profile.
+Create an in-memory object for ClusterServiceConfigsProfile.
 .Description
-Create a service config profile.
+Create an in-memory object for ClusterServiceConfigsProfile.
 .Example
 $coreSiteConfigFile=New-AzHdInsightOnAksClusterConfigFileObject -FileName "core-site.xml" -Value @{"fs.defaultFS"="abfs://testcontainer@$teststorage.dfs.core.windows.net"}
 $yarnComponentConfig= New-AzHdInsightOnAksClusterServiceConfigObject -ComponentName "yarn-config" -File $coreSiteConfigFile
 $yarnServiceConfigProfile=New-AzHdInsightOnAksClusterServiceConfigsProfileObject -ServiceName "yarn-service" -Config $yarnComponentConfig
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfig[]
-.Inputs
-System.String
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigsProfile
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterServiceConfigsProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 CONFIG <IClusterServiceConfig[]>: List of service configs.
-  Component <String>: Name of the component the config files should apply to.
+  ComponentName <String>: Name of the component the config files should apply to.
   File <List<IClusterConfigFile>>: List of Config Files.
     FileName <String>: Configuration file name.
     [Content <String>]: Free form content of the entire configuration file.
@@ -7038,24 +8901,23 @@ CONFIG <IClusterServiceConfig[]>: List of service configs.
     [Value <IClusterConfigFileValues>]: List of key value pairs         where key represents a valid service configuration name and value represents the value of the config.
       [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksClusterServiceConfigsProfileObject
+https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksclusterserviceconfigsprofileobject
 #>
 function New-AzHdInsightOnAksClusterServiceConfigsProfileObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigsProfile])]
-[CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterServiceConfigsProfile])]
+[CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [Alias('Name')]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
-    [System.String]
-    # Name of the service the configurations should apply to.
-    ${ServiceName},
-
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfig[]]
     # List of service configs.
-    ${Config}
+    ${Config},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Name of the service the configurations should apply to.
+    ${ServiceName}
 )
 
 begin {
@@ -7084,7 +8946,7 @@ begin {
         }
 
         $mapping = @{
-            Create = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksClusterServiceConfigsProfileObject';
+            __AllParameterSets = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksClusterServiceConfigsProfileObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -7295,23 +9157,150 @@ end {
 
 <#
 .Synopsis
-Create a node profile with SKU and worker count.
+Create an in-memory object for ManagedIdentitySpec.
 .Description
-Create a node profile with SKU and worker count.
+Create an in-memory object for ManagedIdentitySpec.
+.Example
+New-AzHdInsightOnAksManagedIdentityObject -ClientId 00000000-0000-0000-0000-000000000000 -ObjectId 00000000-0000-0000-0000-000000000000 -ResourceId /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/msi -Type cluster
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ManagedIdentitySpec
+.Link
+https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksmanagedidentityobject
+#>
+function New-AzHdInsightOnAksManagedIdentityObject {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ManagedIdentitySpec])]
+[CmdletBinding(PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # ClientId of the managed identity.
+    ${ClientId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # ObjectId of the managed identity.
+    ${ObjectId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # ResourceId of the managed identity.
+    ${ResourceId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("cluster", "user", "internal")]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # The type of managed identity.
+    ${Type}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            __AllParameterSets = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksManagedIdentityObject';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create an in-memory object for NodeProfile.
+.Description
+Create an in-memory object for NodeProfile.
 .Example
 $vmSize="Standard_E8ads_v5";
 $workerCount=5;
 $nodeProfile = New-AzHdInsightOnAksNodeProfileObject -Type "Worker" -Count $workerCount -VMSize $vmSize
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INodeProfile
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.NodeProfile
 .Link
-https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksNodeProfileObject
+https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksnodeprofileobject
 #>
 function New-AzHdInsightOnAksNodeProfileObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INodeProfile])]
-[CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.NodeProfile])]
+[CmdletBinding(PositionalBinding=$false)]
 param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Int32]
+    # The number of virtual machines.
+    ${Count},
+
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
@@ -7320,14 +9309,8 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
-    [System.Int32]
-    # The virtual machine SKU.
-    ${Count},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
-    # The number of virtual machines.
+    # The virtual machine SKU.
     ${VMSize}
 )
 
@@ -7357,7 +9340,7 @@ begin {
         }
 
         $mapping = @{
-            Create = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksNodeProfileObject';
+            __AllParameterSets = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksNodeProfileObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -7411,47 +9394,48 @@ end {
 
 <#
 .Synopsis
-Create a reference to provide a secret to store the password for accessing the database.
+Create an in-memory object for SecretReference.
 .Description
-Create a reference to provide a secret to store the password for accessing the database.
-$keyVaultResourceId="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/{your resource group name}/providers/Microsoft.KeyVault/vaults/{your vault name}";
-$secretName="{your secret name}"
-$referenceName="{your secret reference name}";
-
-$secretReference=New-AzHdInsightOnAksSecretReferenceObject -SecretName $secretName -ReferenceName $referenceName
-NA
+Create an in-memory object for SecretReference.
 .Example
 $keyVaultResourceId="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/{your resource group name}/providers/Microsoft.KeyVault/vaults/{your vault name}";
 $secretName="{your secret name}"
 $referenceName="{your secret reference name}";
 
-$secretReference=New-AzHdInsightOnAksSecretReferenceObject -SecretName $secretName -ReferenceName $referenceName
+$secretReference=New-AzHdInsightOnAksSecretReferenceObject -SecretName $secretName -ReferenceName $referenceName -Type Secret
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReference
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SecretReference
 .Link
-https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksSecretReferenceObject
+https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonakssecretreferenceobject
 #>
 function New-AzHdInsightOnAksSecretReferenceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReference])]
-[CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SecretReference])]
+[CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
-    # The secret name in the key vault.
-    ${SecretName},
+    # Reference name of the secret to be used in service configs.
+    ${ReferenceName},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
-    # The reference name of the secret to be used in service configs.
-    ${ReferenceName},
+    # Object identifier name of the secret in key vault.
+    ${SecretName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("Key", "Secret", "Certificate")]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Type of key vault object: secret, key or certificate.
+    ${Type},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
-    # The version of the secret in key vault.
+    # Version of the secret in key vault.
     ${Version}
 )
 
@@ -7481,7 +9465,7 @@ begin {
         }
 
         $mapping = @{
-            Create = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksSecretReferenceObject';
+            __AllParameterSets = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksSecretReferenceObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -7535,9 +9519,9 @@ end {
 
 <#
 .Synopsis
-Create a hive catalog configured as a Trino cluster.
+Create an in-memory object for HiveCatalogOption.
 .Description
-Create a hive catalog configured as a Trino cluster.
+Create an in-memory object for HiveCatalogOption.
 .Example
 $catalogName="{your catalog name}"
 $metastoreDbConnectionURL="jdbc:sqlserver://{your sql server url};database={your db name};encrypt=truetrustServerCertificate=true;loginTimeout=30;"
@@ -7545,16 +9529,16 @@ $metastoreDbUserName="{your db user name}"
 $metastoreDbPasswordSecret="{secretName}"
 $metastoreWarehouseDir="abfs://{your container name}@{your adls gen2 endpoint}/{your path}"
 
-New-AzHdInsightOnAksTrinoHiveCatalogObject -CatalogName $catalogName -MetastoreDbConnectionUrl $metastoreDbConnectionURL -MetastoreDbConnectionUserName $metastoreDbUserName -MetastoreDbConnectionPasswordSecret $metastoreDbPasswordSecret
+New-AzHdInsightOnAksTrinoHiveCatalogObject -CatalogName $catalogName -MetastoreDbConnectionUrl $metastoreDbConnectionURL -MetastoreDbConnectionUserName $metastoreDbUserName -MetastoreDbConnectionPasswordSecret $metastoreDbPasswordSecret -MetastoreWarehouseDir $metastoreWarehouseDir
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHiveCatalogOption
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.HiveCatalogOption
 .Link
-https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksTrinoHiveCatalogObject
+https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonakstrinohivecatalogobject
 #>
 function New-AzHdInsightOnAksTrinoHiveCatalogObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHiveCatalogOption])]
-[CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.HiveCatalogOption])]
+[CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
@@ -7571,20 +9555,29 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
-    # User name for hive metastore database.
-    ${MetastoreDbConnectionUserName},
+    # Metastore root directory URI, format: abfs[s]://<container>@<account_name>.dfs.core.windows.net/<path>.
+    # More details: https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction-abfs-uri.
+    ${MetastoreWarehouseDir},
 
-    [Parameter(Mandatory)]
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("SqlAuth", "IdentityAuth")]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
-    # Password secret for hive metastore database.
+    # The authentication mode to connect to your Hive metastore database.
+    # More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization.
+    ${MetastoreDbConnectionAuthenticationMode},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Secret reference name from secretsProfile.secrets containing password for database connection.
     ${MetastoreDbConnectionPasswordSecret},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
-    # Warehouse directory for hive metastore database.
-    ${MetastoreWarehouseDir}
+    # User name for database connection.
+    ${MetastoreDbConnectionUserName}
 )
 
 begin {
@@ -7613,7 +9606,7 @@ begin {
         }
 
         $mapping = @{
-            Create = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksTrinoHiveCatalogObject';
+            __AllParameterSets = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksTrinoHiveCatalogObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
