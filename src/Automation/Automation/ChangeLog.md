@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed naming convention of sdk.
 
 ## Version 1.10.0
 * Updated Module operation cmdlets to support Powershell 7.2
