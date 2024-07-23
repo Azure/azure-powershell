@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 7.2.0
 * Fixed `Set-AzPolicyAssignment` loses description and Display Name [#25362]
 * Fixed `New-AzPolicyAssignment` string ID value handling for parameter '-PolicyDefinition'
 * Fixed policy import issue with OP (requires serialization of null values)

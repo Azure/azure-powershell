@@ -22,7 +22,7 @@ The **Get-AzDelegation** cmdlet gets the named delegation from a subnet. If no d
 
 ## EXAMPLES
 
-### 1: Retrieving a specific delegation
+### Example 1: Retrieving a specific delegation
 ```powershell
 $subnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"
 Get-AzDelegation -Name "myDelegation" -Subnet $subnet
@@ -39,7 +39,7 @@ Id                : /subscriptions/subId/resourceGroups/rg/providers/Microsoft.N
 
 The first line retrieves the subnet of interest. The second line shows the delegation information for the delegation called "myDelegation."
 
-### 2: Retrieving all subnet delegations
+### Example 2: Retrieving all subnet delegations
 ```powershell
 $subnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"
 $delegations = Get-AzDelegation -Subnet $subnet

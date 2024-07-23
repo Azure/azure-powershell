@@ -24,6 +24,7 @@
   <ItemGroup>
     <PackageReference Include="Polly" Version="7.2.4" />
     <PackageReference Include="Azure.CodeSigning.Client.CryptoProvider" Version="0.1.16" />
+    <PackageReference Include="Azure.CodeSigning.Sdk" Version="0.1.106" />
     <PackageReference Include="System.Security.Cryptography.Pkcs" Version="6.0.3" />
   </ItemGroup>
 

@@ -1191,6 +1191,96 @@ function Test-LoadBalancerProbes_ProbeThresholdParameter
 
 <#
 .SYNOPSIS
+Tests for load balancer probes
+#>
+function Test-LoadBalancerProbes_NoHealthyBackendsBehaviorParameter
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $lbName = Get-ResourceName
+    $frontendName = Get-ResourceName
+    $backendAddressPoolName = Get-ResourceName
+    $probeName = Get-ResourceName
+    $inboundNatRuleName = Get-ResourceName
+    $lbruleName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
+    $location = Get-ProviderLocation $resourceTypeParent
+    
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
+        
+        # Create the publicip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
+
+        $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $publicip
+        $backendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
+        $probe = New-AzLoadBalancerProbeConfig -Name $probeName -Protocol Tcp -Port 80 -IntervalInSeconds 15 -ProbeCount 2 -NoHealthyBackendsBehavior "AllProbedUp"
+        $inboundNatRule = New-AzLoadBalancerInboundNatRuleConfig -Name $inboundNatRuleName -FrontendIPConfigurationId $frontend.Id -Protocol Tcp -FrontendPort 3389 -BackendPort 3389 -IdleTimeoutInMinutes 15 -EnableFloatingIP
+        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfigurationId $frontend.Id -BackendAddressPoolId $backendAddressPool.Id -ProbeId $probe.Id -Protocol Tcp -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP
+        New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -InboundNatRule $inboundNatRule -LoadBalancingRule $lbrule -Tier Regional
+        
+        $lb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        
+        # Test LbProbe Cmdlet
+        Assert-AreEqual '1' $lb.Probes[0].ProbeThreshold
+        Assert-AreEqual "AllProbedUp" $lb.Probes[0].NoHealthyBackendsBehavior
+
+        # Test Probe cmdlets
+        $probeName2 = Get-ResourceName
+        $lb =  Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Add-AzLoadBalancerProbeConfig -Name $probeName2 -RequestPath healthcheck2.aspx -Protocol http -Port 81 -IntervalInSeconds 16 -ProbeCount 3 -ProbeThreshold $null -NoHealthyBackendsBehavior "AllProbedDown" | Set-AzLoadBalancer
+
+        Assert-AreEqual 2 @($lb.Probes).Count
+        Assert-AreEqual $probeName2 $lb.Probes[1].Name
+        Assert-AreEqual 1 $lb.Probes[1].ProbeThreshold
+        Assert-AreEqual "healthcheck2.aspx" $lb.Probes[1].RequestPath
+        Assert-AreEqual 81 $lb.Probes[1].Port
+        Assert-AreEqual "AllProbedDown" $lb.Probes[1].NoHealthyBackendsBehavior
+
+        $lb =  Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Set-AzLoadBalancerProbeConfig -Name $probeName2 -RequestPath healthcheck2.aspx -Protocol http -Port 85 -IntervalInSeconds 16 -ProbeCount 3 -NoHealthyBackendsBehavior "AllProbedUp" | Set-AzLoadBalancer
+        Assert-AreEqual 2 @($lb.Probes).Count
+        Assert-AreEqual $probeName2 $lb.Probes[1].Name
+        Assert-AreEqual "healthcheck2.aspx" $lb.Probes[1].RequestPath
+        Assert-AreEqual 85 $lb.Probes[1].Port
+        Assert-AreEqual 1 $lb.Probes[1].ProbeThreshold
+        Assert-AreEqual "AllProbedUp" $lb.Probes[1].NoHealthyBackendsBehavior
+
+        $probeConfig = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Get-AzLoadBalancerProbeConfig -Name $probeName2
+        $probeConfigList = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Get-AzLoadBalancerProbeConfig
+        Assert-AreEqual 2 @($probeConfigList).Count
+        Assert-AreEqual $probeName $probeConfigList[0].Name
+        Assert-AreEqual $probeName2 $probeConfigList[1].Name
+        Assert-AreEqual $probeConfig.Name $probeConfigList[1].Name
+        Assert-AreEqual "AllProbedUp" $lb.Probes[1].NoHealthyBackendsBehavior
+
+        $lb =  Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Remove-AzLoadBalancerProbeConfig -Name $probeName2 | Set-AzLoadBalancer
+        Assert-AreEqual 1 @($lb.Probes).Count
+        Assert-AreEqual $probeName $lb.Probes[0].Name
+        Assert-AreEqual "AllProbedUp" $lb.Probes[0].NoHealthyBackendsBehavior
+
+        # Delete
+        $deleteLb = $lb | Remove-AzLoadBalancer -PassThru -Force
+        Assert-AreEqual true $deleteLb
+        
+        $list = Get-AzLoadBalancer -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+
+<#
+.SYNOPSIS
 Tests creating new simple Load balancer and edit InboundNatRuleV2 using config cmdlets
 #>
 function Test-LoadBalancerInboundNatRuleV2

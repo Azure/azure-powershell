@@ -103,4 +103,7 @@ directive:
       model-name: Components1Jq1T4ISchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties
     set:
       model-name: ManagedServiceIdentityUserAssignedIdentitiesValue
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/"NoHealthyBackendsBehavior"/g, "noHealthyBackendsBehavior")
 ```

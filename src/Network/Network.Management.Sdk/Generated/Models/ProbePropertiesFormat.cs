@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets determines how new connections are handled by the load
         /// balancer when all backend instances are probed down. Possible values include: &#39;AllProbedDown&#39;, &#39;AllProbedUp&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "NoHealthyBackendsBehavior")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "noHealthyBackendsBehavior")]
         public string NoHealthyBackendsBehavior {get; set; }
 
         /// <summary>

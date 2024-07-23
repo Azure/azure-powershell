@@ -67,7 +67,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             var subscriptionId = typeof(TClient).GetProperty("SubscriptionId");
             if (subscriptionId != null && context.Subscription != null)
             {
-                subscriptionId.SetValue(client, context.Subscription.Id.ToString());
+                if (subscriptionId.PropertyType == typeof(Guid))
+                {
+                    subscriptionId.SetValue(client, Guid.Parse(context.Subscription.Id));
+                }
+                else
+                {
+                    subscriptionId.SetValue(client, context.Subscription.Id);
+                }
             }
 
             return client;

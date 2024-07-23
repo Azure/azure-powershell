@@ -76,9 +76,6 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 {
                     defaultTenant.ExtendedProperties.Add(AzureTenant.Property.DisplayName, tenantName);
                 }
-                WriteSelectedSubscriptionTable(defaultSubscription?.Name ?? defaultSubscription?.Id, 
-                    defaultTenant?.GetProperty(AzureTenant.Property.DisplayName) ?? tenantName ?? defaultTenant?.Id,
-                    outputAction, columnSubNameWidth, columnTenantWidth, columnIndentsWidth);
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -147,26 +144,6 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 outputAction($"{subIndexRowValue}{subNameRowValue}{subIdRowValue}{tenantNameRowValue}");
             }
 
-        }
-
-        private static void WriteSelectedSubscriptionTable(string subscription, string tenant,
-            Action<string> outputAction, int columnSubNameWidth, int columnTenantWidth, int columnIndentsWidth)
-        {
-            string columnSubNameTab = "Subscription name", columnTenantTab = "Tenant name";
-            string separator = "-",
-                ColumSubNameSeparator = new StringBuilder().Insert(0, separator, columnSubNameWidth).ToString(),
-                ColumTenantSeparator = new StringBuilder().Insert(0, separator, columnTenantWidth).ToString();
-
-            outputAction("");
-            outputAction($"{String.Format($"{{0,-{columnSubNameWidth + columnIndentsWidth}}}", columnSubNameTab)}" +
-                $"{String.Format($"{{0,-{columnTenantWidth + columnIndentsWidth}}}", columnTenantTab)}");
-            outputAction($"{String.Format($"{{0,-{columnSubNameWidth + columnIndentsWidth}}}", ColumSubNameSeparator)}" +
-                $"{String.Format($"{{0,-{columnTenantWidth}}}", ColumTenantSeparator)}");
-            string truncatedSubName = subscription?.Length > columnSubNameWidth ? $"{subscription.Substring(0, columnSubNameWidth - 3)}..." : subscription;
-            string truncatedTenantName = tenant?.Length > columnTenantWidth ? $"{tenant.Substring(0, columnTenantWidth - 3)}..." : tenant;
-            string subNameRowValue = String.Format($"{{0,-{columnSubNameWidth + columnIndentsWidth}}}", truncatedSubName),
-                tenantDomainNameRowValue = String.Format($"{{0,-{columnTenantWidth}}}", truncatedTenantName);
-            outputAction($"{subNameRowValue}{tenantDomainNameRowValue}");
         }
 
         public static IAzureTenant GetDetailedTenantFromQueryHistory(List<AzureTenant> queriedTenants, string tenantId)
