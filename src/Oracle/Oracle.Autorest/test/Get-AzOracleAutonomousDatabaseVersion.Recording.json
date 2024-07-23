@@ -1,0 +1,47 @@
+{
+  "Get-AzOracleAutonomousDatabaseVersion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/autonomousDbVersions?api-version=2023-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/autonomousDbVersions?api-version=2023-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "74eb4271-f8fe-4310-b8bf-f4db00a3082a" ],
+        "CommandName": [ "Get-AzOracleAutonomousDatabaseVersion" ],
+        "FullCommandName": [ "Get-AzOracleAutonomousDatabaseVersion_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "opc-request-id": [ "/375F40190A1CC258168D9635EEDEA058/F5E5823046DA9CDE4EDA9538DA1ED467" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "a4032185-f3af-4663-9fa3-516af98981e9" ],
+        "x-ms-correlation-request-id": [ "4dbad3be-4e9d-4b24-a868-e21cba3548cf" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20240705T104649Z:4dbad3be-4e9d-4b24-a868-e21cba3548cf" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1A9A3538202D4260843014B67E5695DF Ref B: AMS231020512019 Ref C: 2024-07-05T10:46:47Z" ],
+        "Date": [ "Fri, 05 Jul 2024 10:46:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1344" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/autonomousDbVersions/19c\",\"name\":\"19c\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"AJD\",\"isDefaultForFree\":false,\"isDefaultForPaid\":true,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"19c\"}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/autonomousDbVersions/19c\",\"name\":\"19c\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"DW\",\"isDefaultForFree\":false,\"isDefaultForPaid\":true,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"19c\"}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/autonomousDbVersions/19c\",\"name\":\"19c\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"APEX\",\"isDefaultForFree\":false,\"isDefaultForPaid\":true,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"19c\"}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/autonomousDbVersions/19c\",\"name\":\"19c\",\"type\":\"Oracle.Database/autonomousDbVersions\",\"properties\":{\"dbWorkload\":\"OLTP\",\"isDefaultForFree\":false,\"isDefaultForPaid\":true,\"isFreeTierEnabled\":true,\"isPaidEnabled\":true,\"version\":\"19c\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

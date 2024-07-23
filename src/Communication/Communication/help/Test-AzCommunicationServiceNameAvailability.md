@@ -14,7 +14,7 @@ Checks that the CommunicationService name is valid and is not already in use.
 
 ```
 Test-AzCommunicationServiceNameAvailability [-SubscriptionId <String>] -Name <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,9 +28,9 @@ Test-AzCommunicationServiceNameAvailability -Name ContosoAcsResource1
 ```
 
 ```output
-Message                               NameAvailable Reason
--------                               ------------- ------
-Requested name is unavailable for the requested type False         AlreadyExists
+Message                      NameAvailable Reason
+-------                      ------------- ------
+Resource name already exists False         AlreadyExists
 ```
 
 Verified that the CommunicationService name is valid and is not already in use.
@@ -41,9 +41,9 @@ Test-AzCommunicationServiceNameAvailability -Name ContosoAcsResource2
 ```
 
 ```output
-Message                               NameAvailable Reason
--------                               ------------- ------
-Requested name is available for the requested type True         NameAvailable
+Message NameAvailable Reason
+------- ------------- ------
+        True
 ```
 
 Verified that the requested CommunicationService name already in use.
@@ -67,8 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The CommunicationService name to validate.
-e.g."my-CommunicationService-name-here"
+The name of the resource for which availability needs to be checked.
 
 ```yaml
 Type: System.String
@@ -82,8 +81,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -135,7 +150,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.INameAvailability
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.ICheckNameAvailabilityResponse
 
 ## NOTES
 

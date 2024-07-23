@@ -903,5 +903,9 @@
   {
     "module": "Informatica",
     "alias": "Informatica"
+  },
+  {
+    "module": "Oracle",
+    "alias": "Oracle"
   }
 ]

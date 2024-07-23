@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.HdInsightOnAks
-online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksClusterServiceConfigsProfileObject
+online version: https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksclusterserviceconfigsprofileobject
 schema: 2.0.0
 ---
 
 # New-AzHdInsightOnAksClusterServiceConfigsProfileObject
 
 ## SYNOPSIS
-Create a service config profile.
+Create an in-memory object for ClusterServiceConfigsProfile.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzHdInsightOnAksClusterServiceConfigsProfileObject -Config <IClusterServiceC
 ```
 
 ## DESCRIPTION
-Create a service config profile.
+Create an in-memory object for ClusterServiceConfigsProfile.
 
 ## EXAMPLES
 
@@ -29,7 +29,7 @@ $yarnComponentConfig= New-AzHdInsightOnAksClusterServiceConfigObject -ComponentN
 $yarnServiceConfigProfile=New-AzHdInsightOnAksClusterServiceConfigsProfileObject -ServiceName "yarn-service" -Config $yarnComponentConfig
 ```
 
-This cmdlet creates the service config profile of "yarn-service" with the component service config.
+This cmdlet creates the service config profile of "yarn-service" with the ComponentName service config.
 
 ## PARAMETERS
 
@@ -54,7 +54,7 @@ Name of the service the configurations should apply to.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: Name
+Aliases:
 
 Required: True
 Position: Named
@@ -68,13 +68,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfig[]
-
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigsProfile
+### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterServiceConfigsProfile
 
 ## NOTES
 
