@@ -306,11 +306,20 @@ namespace Microsoft.Azure.Commands.Compute
         {
             if (this.VM.OSProfile == null)
             {
+                if (this.Credential == null)
+                {
+                    throw new Exception("A credential is required to set the VM operating system when the VM does not have an OS Profile set. Please provide a credential to the -Credential parameter.");
+                }
+                if (this.ComputerName == null)
+                {
+                    WriteInformation("A computer name will be required when creating a virtual machine. We suggest you provide a computer name in the -ComputerName parameter.", new string[] { "PSHOST" });
+                }
+
                 this.VM.OSProfile = new OSProfile
                 {
-                    ComputerName = this.ComputerName,
-                    AdminUsername = this.Credential.UserName,
-                    AdminPassword = ConversionUtilities.SecureStringToString(this.Credential.Password),
+                    ComputerName = string.IsNullOrWhiteSpace(this.ComputerName) ? null : this.ComputerName,
+                    AdminUsername = this.Credential.UserName == null ? null : this.Credential.UserName,
+                    AdminPassword = this.Credential.Password == null ? null : ConversionUtilities.SecureStringToString(this.Credential.Password),
                     CustomData = string.IsNullOrWhiteSpace(this.CustomData) ? null : Convert.ToBase64String(Encoding.UTF8.GetBytes(this.CustomData)),
                 };
             }

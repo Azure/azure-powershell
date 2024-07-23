@@ -21,6 +21,7 @@
 -->
 ## Upcoming Release
 * Renamed parameter `-VmId` to `-SourceId` and added `-VmId` as an alias to `New-AzRestorePointCollection` cmdlet.
+* Changed the `Set-AzVMOperatingSystem` cmdlet when the `-VM` parameter is used without an OSProfile. The `-Credential` parameter is needed in this case, so an error is thrown if not provided.
 
 ## Version 8.1.0
 * Added parameter `-SourceResourceId` to cmdlet `Add-AzVMDataDisk`.

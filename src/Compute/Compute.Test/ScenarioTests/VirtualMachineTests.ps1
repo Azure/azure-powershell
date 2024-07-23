@@ -7552,3 +7552,66 @@ function Test-AddVMDataDisk
     # Validate
     Assert-AreEqual $vmConfig.StorageProfile.DataDisks[0].SourceResource.id "testSourceResourceId"
 }
+
+<#
+.SYNOPSIS
+Test Set-AzVMOperatingSystem a better error rather than null Reference
+is thrown when a credential is not provided. 
+#>
+function Test-VMSetAzOSCredentialNullRef
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "westus2";#Get-ComputeVMLocation;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # SimpleParameterSet, no config, scenario.
+        # create credential
+        $password = Get-PasswordForVM;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $user = Get-ComputeTestResourceName;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # DefaultParameterSet with VMConfig scenario
+        $domainNameLabel = "d2" + $rgname;
+        $vmsize = 'Standard_D4s_v3';
+        $vmname = 'v' + $rgname;
+        $vnetname = "vn" + $rgname;
+        $vnetAddress = "10.0.0.0/16";
+        $subnetname = "slb" + $rgname;
+        $subnetAddress = "10.0.2.0/24";
+        $OSDiskName = $vmname + "d";
+        $NICName = $vmname+ "n";
+        $NSGName = $vmname + "nsg";
+
+        # Creating a VM using Default parameterset
+        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
+
+        $vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
+
+        $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
+        $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgname -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP;
+        $nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $rgname -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
+
+        # VM
+        $vmConfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+
+        Assert-ThrowsContains { Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmname; } "A credential is required to set the VM operating system when the VM does not have an OS Profile set. Please provide a credential to the -Credential parameter."
+        
+        $vmConfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $vmConfig = Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmname -Credential $cred;
+        $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
+
+        # Verify a VM is created fine. 
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
