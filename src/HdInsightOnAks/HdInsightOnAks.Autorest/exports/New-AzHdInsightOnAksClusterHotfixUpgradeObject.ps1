@@ -16,20 +16,20 @@
 
 <#
 .Synopsis
-Create an object to hold the cluster upgrade parameters.
+Create an in-memory object for ClusterHotfixUpgradeProperties.
 .Description
-Create an object to hold the cluster upgrade parameters.
+Create an in-memory object for ClusterHotfixUpgradeProperties.
 .Example
 $hotfixObj = New-AzHdInsightOnAksClusterHotfixUpgradeObject -ComponentName Webssh -TargetBuildNumber 7 -TargetClusterVersion "1.1.1" -TargetOssVersion "0.4.2"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterHotfixUpgradeProperties
 .Link
-https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksClusterHotfixUpgradeObject
+https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksclusterhotfixupgradeobject
 #>
 function New-AzHdInsightOnAksClusterHotfixUpgradeObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade])]
-[CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterHotfixUpgradeProperties])]
+[CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
@@ -82,7 +82,7 @@ begin {
         }
 
         $mapping = @{
-            Create = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksClusterHotfixUpgradeObject';
+            __AllParameterSets = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksClusterHotfixUpgradeObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
