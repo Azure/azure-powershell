@@ -1,8 +1,8 @@
 {
-  "New-AzCommunicationServiceKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/listKeys?api-version=2023-06-01-preview+1": {
+  "New-AzCommunicationServiceKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/listKeys?api-version=2023-06-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/listKeys?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/listKeys?api-version=2023-06-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -44,10 +44,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzCommunicationServiceKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/regenerateKey?api-version=2023-06-01-preview+2": {
+  "New-AzCommunicationServiceKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/regenerateKey?api-version=2023-06-01-preview+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/regenerateKey?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/regenerateKey?api-version=2023-06-01-preview",
       "Content": "{\r\n  \"keyType\": \"Primary\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -84,10 +84,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzCommunicationServiceKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/regenerateKey?api-version=2023-06-01-preview+3": {
+  "New-AzCommunicationServiceKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/regenerateKey?api-version=2023-06-01-preview+3": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/regenerateKey?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/regenerateKey?api-version=2023-06-01-preview",
       "Content": "{\r\n  \"keyType\": \"Secondary\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -124,10 +124,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzCommunicationServiceKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/listKeys?api-version=2023-06-01-preview+1": {
+  "New-AzCommunicationServiceKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/listKeys?api-version=2023-06-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/listKeys?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/listKeys?api-version=2023-06-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -169,10 +169,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzCommunicationServiceKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/regenerateKey?api-version=2023-06-01-preview+2": {
+  "New-AzCommunicationServiceKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/regenerateKey?api-version=2023-06-01-preview+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/regenerateKey?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/regenerateKey?api-version=2023-06-01-preview",
       "Content": "{\r\n  \"keyType\": \"Primary\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -209,10 +209,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzCommunicationServiceKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/regenerateKey?api-version=2023-06-01-preview+3": {
+  "New-AzCommunicationServiceKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/regenerateKey?api-version=2023-06-01-preview+3": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/regenerateKey?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/regenerateKey?api-version=2023-06-01-preview",
       "Content": "{\r\n  \"keyType\": \"Secondary\"\r\n}",
       "isContentBase64": false,
       "Headers": {

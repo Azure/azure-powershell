@@ -49,7 +49,7 @@ Attaches the given tags to the specified ACS resource.
 ### Example 2: Update an existing ACS resource to have tags and link the domain
 ```powershell
 $linkedDomains = @(
-	"/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/tcsacstest/providers/Microsoft.Communication/emailServices/tcsacstestECSps/domains/AzureManagedDomain"
+	"/subscriptions/73fc3592-3cef-4300-5e19-8d18b65ce0e8/resourceGroups/tcsacstest/providers/Microsoft.Communication/emailServices/tcsacstestECSps/domains/AzureManagedDomain"
 )
 
 Update-AzCommunicationService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Tag @{ExampleKey1="ExampleValue1"}  -LinkedDomain @linkedDomains

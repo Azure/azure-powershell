@@ -1,7 +1,7 @@
 ### Example 1: List existing CommunicationServices for a Subscription
 
 ```powershell
-Get-AzCommunicationService -SubscriptionId 632ec9eb-fad7-4cbd-993a-e72973ba2acc
+Get-AzCommunicationService -SubscriptionId 73fc3592-3cef-4300-5e19-8d18b65ce0e8
 ```
 
 ```output
@@ -19,7 +19,7 @@ Returns a list of all ACS resources under that subscription.
 ### Example 2: Get infomation on specified Azure Communication resource
 
 ```powershell
-Get-AzCommunicationService -Name ContosoAcsResource34 -ResourceGroupName ContosoResourceProvider1
+Get-AzCommunicationService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 ```
 
 ```output

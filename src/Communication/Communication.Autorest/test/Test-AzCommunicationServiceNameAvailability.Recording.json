@@ -1,8 +1,8 @@
 {
-  "Test-AzCommunicationServiceNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/providers/Microsoft.Communication/checkNameAvailability?api-version=2023-06-01-preview+1": {
+  "Test-AzCommunicationServiceNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/providers/Microsoft.Communication/checkNameAvailability?api-version=2023-06-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/providers/Microsoft.Communication/checkNameAvailability?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/providers/Microsoft.Communication/checkNameAvailability?api-version=2023-06-01-preview",
       "Content": "{\r\n  \"name\": \"acsResourcedsfbvr\",\r\n  \"type\": \"Microsoft.Communication/CommunicationServices\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -37,10 +37,10 @@
       "isContentBase64": false
     }
   },
-  "Test-AzCommunicationServiceNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/providers/Microsoft.Communication/checkNameAvailability?api-version=2023-06-01-preview+2": {
+  "Test-AzCommunicationServiceNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/providers/Microsoft.Communication/checkNameAvailability?api-version=2023-06-01-preview+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/providers/Microsoft.Communication/checkNameAvailability?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/providers/Microsoft.Communication/checkNameAvailability?api-version=2023-06-01-preview",
       "Content": "{\r\n  \"name\": \"persistentResourceNamejeq8nr\",\r\n  \"type\": \"Microsoft.Communication/CommunicationServices\"\r\n}",
       "isContentBase64": false,
       "Headers": {
