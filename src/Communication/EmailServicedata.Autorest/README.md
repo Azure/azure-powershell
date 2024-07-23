@@ -1,6 +1,6 @@
 <!-- region Generated -->
-# Az.CommunicationServicesEmail
-This directory contains the PowerShell module for the CommunicationServicesEmail service.
+# Az.EmailServicedata
+This directory contains the PowerShell module for the EmailServicedata service.
 
 ---
 ## Info
@@ -20,7 +20,7 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.CommunicationServicesEmail`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.EmailServicedata`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ### AutoRest Configuration
@@ -41,7 +41,7 @@ root-module-name: $(prefix).Communication
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
 # Normally, title is the service name
-title: CommunicationServicesEmail
+title: EmailServicedata
 subject-prefix: $(service-name)
 
 # If there are post APIs for some kinds of actions in the RP, you may need to

@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Communication
-online version: https://learn.microsoft.com/powershell/module/az.communication/send-azcommunicationservicesemail
+online version: https://learn.microsoft.com/powershell/module/az.communication/send-azemailservicedataemail
 schema: 2.0.0
 ---
 
-# Send-AzCommunicationServicesEmail
+# Send-AzEmailServicedataEmail
 
 ## SYNOPSIS
 Queues an email message to be sent to one or more recipients
@@ -14,14 +14,14 @@ Queues an email message to be sent to one or more recipients
 
 ### Send (Default)
 ```
-Send-AzCommunicationServicesEmail -Endpoint <String> -Message <IEmailMessage> [-ClientRequestId <String>]
+Send-AzEmailServicedataEmail -Endpoint <String> -Message <IEmailMessage> [-ClientRequestId <String>]
  [-OperationId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### SendExpanded
 ```
-Send-AzCommunicationServicesEmail -Endpoint <String> -ContentSubject <String> -RecipientTo <IEmailAddress[]>
+Send-AzEmailServicedataEmail -Endpoint <String> -ContentSubject <String> -RecipientTo <IEmailAddress[]>
  -SenderAddress <String> [-ClientRequestId <String>] [-OperationId <String>]
  [-Attachment <IEmailAttachment[]>] [-ContentHtml <String>] [-ContentPlainText <String>] [-Header <Hashtable>]
  [-RecipientBcc <IEmailAddress[]>] [-RecipientCc <IEmailAddress[]>] [-ReplyTo <IEmailAddress[]>]
@@ -31,14 +31,14 @@ Send-AzCommunicationServicesEmail -Endpoint <String> -ContentSubject <String> -R
 
 ### SendViaJsonFilePath
 ```
-Send-AzCommunicationServicesEmail -Endpoint <String> -JsonFilePath <String> [-ClientRequestId <String>]
+Send-AzEmailServicedataEmail -Endpoint <String> -JsonFilePath <String> [-ClientRequestId <String>]
  [-OperationId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### SendViaJsonString
 ```
-Send-AzCommunicationServicesEmail -Endpoint <String> -JsonString <String> [-ClientRequestId <String>]
+Send-AzEmailServicedataEmail -Endpoint <String> -JsonString <String> [-ClientRequestId <String>]
  [-OperationId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -64,14 +64,14 @@ $message = @{
 	ContentPlainText = "This is the first email from ACS - HTML"	
 }
 
-Send-AzCommunicationServicesEmail -Message $Message -endpoint "https://contoso.unitedstates.communications.azure.com"
+Send-AzEmailServicedataEmail -Message $Message -endpoint "https://contoso.unitedstates.communications.azure.com"
 ```
 
 ```output
 AdditionalInfo    :
 Code              :
 Detail            :
-Id                : 8540c0de-899f-5cce-acb5-3ec493af3800
+Id                : 1111c0de-899f-5cce-acb5-3ec493af3800
 Message           :
 ResourceGroupName :
 RetryAfter        :
@@ -146,14 +146,14 @@ $message = @{
 	UserEngagementTrackingDisabled = $true
 }
 
-Send-AzCommunicationServicesEmail -Message $Message -endpoint "https://contoso.unitedstates.communications.azure.com"
+Send-AzEmailServicedataEmail -Message $Message -endpoint "https://contoso.unitedstates.communications.azure.com"
 ```
 
 ```output
 AdditionalInfo    :
 Code              :
 Detail            :
-Id                : 8540c0de-899f-5cce-acb5-3ec493af3800
+Id                : 1111c0de-899f-5cce-acb5-3ec493af3801
 Message           :
 ResourceGroupName :
 RetryAfter        :
@@ -185,7 +185,7 @@ List of attachments.
 Please note that we limit the total size of an email request (which includes attachments) to 10MB.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CommunicationServicesEmail.Models.IEmailAttachment[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailAttachment[]
 Parameter Sets: SendExpanded
 Aliases:
 
@@ -336,7 +336,7 @@ Accept wildcard characters: False
 Message payload for sending an email
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CommunicationServicesEmail.Models.IEmailMessage
+Type: Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailMessage
 Parameter Sets: Send
 Aliases:
 
@@ -382,7 +382,7 @@ Accept wildcard characters: False
 Email BCC recipients
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CommunicationServicesEmail.Models.IEmailAddress[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailAddress[]
 Parameter Sets: SendExpanded
 Aliases:
 
@@ -397,7 +397,7 @@ Accept wildcard characters: False
 Email CC recipients
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CommunicationServicesEmail.Models.IEmailAddress[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailAddress[]
 Parameter Sets: SendExpanded
 Aliases:
 
@@ -412,7 +412,7 @@ Accept wildcard characters: False
 Email To recipients
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CommunicationServicesEmail.Models.IEmailAddress[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailAddress[]
 Parameter Sets: SendExpanded
 Aliases:
 
@@ -427,7 +427,7 @@ Accept wildcard characters: False
 Email addresses where recipients' replies will be sent to.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CommunicationServicesEmail.Models.IEmailAddress[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailAddress[]
 Parameter Sets: SendExpanded
 Aliases:
 
@@ -504,11 +504,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CommunicationServicesEmail.Models.IEmailMessage
+### Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailMessage
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CommunicationServicesEmail.Models.IEmailSendResult
+### Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailSendResult
 
 ## NOTES
 

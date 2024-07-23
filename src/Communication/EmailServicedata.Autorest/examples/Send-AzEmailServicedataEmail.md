@@ -14,14 +14,14 @@ $message = @{
 	ContentPlainText = "This is the first email from ACS - HTML"	
 }
 
-Send-AzCommunicationServicesEmail -Message $Message -endpoint "https://contoso.unitedstates.communications.azure.com"
+Send-AzEmailServicedataEmail -Message $Message -endpoint "https://contoso.unitedstates.communications.azure.com"
 ```
 
 ```output
 AdditionalInfo    :
 Code              :
 Detail            :
-Id                : 8540c0de-899f-5cce-acb5-3ec493af3800
+Id                : 1111c0de-899f-5cce-acb5-3ec493af3800
 Message           :
 ResourceGroupName :
 RetryAfter        :
@@ -96,14 +96,14 @@ $message = @{
 	UserEngagementTrackingDisabled = $true
 }
 
-Send-AzCommunicationServicesEmail -Message $Message -endpoint "https://contoso.unitedstates.communications.azure.com"
+Send-AzEmailServicedataEmail -Message $Message -endpoint "https://contoso.unitedstates.communications.azure.com"
 ```
 
 ```output
 AdditionalInfo    :
 Code              :
 Detail            :
-Id                : 8540c0de-899f-5cce-acb5-3ec493af3800
+Id                : 1111c0de-899f-5cce-acb5-3ec493af3801
 Message           :
 ResourceGroupName :
 RetryAfter        :

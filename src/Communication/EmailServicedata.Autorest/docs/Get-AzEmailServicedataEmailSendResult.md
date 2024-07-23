@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Communication
-online version: https://learn.microsoft.com/powershell/module/az.communication/get-azcommunicationservicesemailsendresult
+online version: https://learn.microsoft.com/powershell/module/az.communication/get-azemailservicedataemailsendresult
 schema: 2.0.0
 ---
 
-# Get-AzCommunicationServicesEmailSendResult
+# Get-AzEmailServicedataEmailSendResult
 
 ## SYNOPSIS
 Gets the status of the email send operation.
@@ -14,14 +14,14 @@ Gets the status of the email send operation.
 
 ### Get (Default)
 ```
-Get-AzCommunicationServicesEmailSendResult -Endpoint <String> -OperationId <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzEmailServicedataEmailSendResult -Endpoint <String> -OperationId <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzCommunicationServicesEmailSendResult -Endpoint <String>
- -InputObject <ICommunicationServicesEmailIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzEmailServicedataEmailSendResult -Endpoint <String> -InputObject <IEmailServicedataIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,14 +31,14 @@ Gets the status of the email send operation.
 
 ### Example 1: Gets the status and operation id of the email send operation.
 ```powershell
-Get-AzCommunicationServicesEmailSendResult -Endpoint "https://contoso.unitedstates.communications.azure.com" -OperationId 8540c0de-899f-5cce-acb5-3ec493af3800
+Get-AzEmailServicedataEmailSendResult -Endpoint "https://contoso.unitedstates.communications.azure.com" -OperationId 1111c0de-899f-5cce-acb5-3ec493af3800
 ```
 
 ```output
 AdditionalInfo    :
 Code              :
 Detail            :
-Id                : 8540c0de-899f-5cce-acb5-3ec493af3800
+Id                : 1111c0de-899f-5cce-acb5-3ec493af3800
 Message           :
 ResourceGroupName :
 RetryAfter        :
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CommunicationServicesEmail.Models.ICommunicationServicesEmailIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailServicedataIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -116,11 +116,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CommunicationServicesEmail.Models.ICommunicationServicesEmailIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailServicedataIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CommunicationServicesEmail.Models.IEmailSendResult
+### Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailSendResult
 
 ## NOTES
 
