@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Upgraded Azure.Core to 1.41.0 to include the fix for `BearerTokenAuthenticationPolicy`
 * Removed the informational table about selected context to avoid duplication with output table.
 
 ## Version 3.0.2

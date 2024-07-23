@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Description(@"Update an existing Cluster.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}/clusters/{clusterName}", ApiVersion = "2023-11-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}/clusters/{clusterName}", ApiVersion = "2024-05-01-preview")]
     public partial class UpdateAzHdInsightOnAksCluster_UpdateViaIdentityClusterpoolExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IContext
@@ -151,6 +151,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
         /// <summary>Accessor for cancellationTokenSource.</summary>
         public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
+        /// <summary>hive catalog options.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "hive catalog options.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"hive catalog options.",
+        SerializedName = @"hive",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHiveCatalogOption) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHiveCatalogOption[] CatalogOptionHive { get => _clusterPatchRequestBody.CatalogOptionHive?.ToArray() ?? null /* fixedArrayOf */; set => _clusterPatchRequestBody.CatalogOptionHive = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHiveCatalogOption>(value) : null); }
+
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.HdInsightOnAks Client => Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Module.Instance.ClientAPI;
 
@@ -185,6 +197,53 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Identity Parameter", ValueFromPipeline = true)]
         [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Path)]
         public Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity ClusterpoolInputObject { get => this._clusterpoolInputObject; set => this._clusterpoolInputObject = value; }
+
+        /// <summary>The flag that if enable debug or not.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The flag that if enable debug or not.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The flag that if enable debug or not.",
+        SerializedName = @"enable",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter CoordinatorDebugEnable { get => _clusterPatchRequestBody.CoordinatorDebugEnable ?? default(global::System.Management.Automation.SwitchParameter); set => _clusterPatchRequestBody.CoordinatorDebugEnable = value; }
+
+        /// <summary>The debug port.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The debug port.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The debug port.",
+        SerializedName = @"port",
+        PossibleTypes = new [] { typeof(int) })]
+        public int CoordinatorDebugPort { get => _clusterPatchRequestBody.CoordinatorDebugPort ?? default(int); set => _clusterPatchRequestBody.CoordinatorDebugPort = value; }
+
+        /// <summary>The flag that if suspend debug or not.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The flag that if suspend debug or not.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The flag that if suspend debug or not.",
+        SerializedName = @"suspend",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter CoordinatorDebugSuspend { get => _clusterPatchRequestBody.CoordinatorDebugSuspend ?? default(global::System.Management.Automation.SwitchParameter); set => _clusterPatchRequestBody.CoordinatorDebugSuspend = value; }
+
+        /// <summary>
+        /// The flag that if enable coordinator HA, uses multiple coordinator replicas with auto failover, one per each head node.
+        /// Default: true.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The flag that if enable coordinator HA, uses multiple coordinator replicas with auto failover, one per each head node. Default: true.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The flag that if enable coordinator HA, uses multiple coordinator replicas with auto failover, one per each head node. Default: true.",
+        SerializedName = @"highAvailabilityEnabled",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter CoordinatorHighAvailabilityEnabled { get => _clusterPatchRequestBody.CoordinatorHighAvailabilityEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _clusterPatchRequestBody.CoordinatorHighAvailabilityEnabled = value; }
 
         /// <summary>The database URL</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The database URL")]
@@ -557,6 +616,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string ScheduleBasedConfigTimeZone { get => _clusterPatchRequestBody.ScheduleBasedConfigTimeZone ?? null; set => _clusterPatchRequestBody.ScheduleBasedConfigTimeZone = value; }
 
+        /// <summary>
+        /// Name of the user Key Vault where all the cluster specific user secrets are stored.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of the user Key Vault where all the cluster specific user secrets are stored.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the user Key Vault where all the cluster specific user secrets are stored.",
+        SerializedName = @"keyVaultResourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SecretProfileKeyVaultResourceId { get => _clusterPatchRequestBody.SecretProfileKeyVaultResourceId ?? null; set => _clusterPatchRequestBody.SecretProfileKeyVaultResourceId = value; }
+
+        /// <summary>Properties of Key Vault secret.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Properties of Key Vault secret.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Properties of Key Vault secret.",
+        SerializedName = @"secrets",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReference) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReference[] SecretProfileSecret { get => _clusterPatchRequestBody.SecretProfileSecret?.ToArray() ?? null /* fixedArrayOf */; set => _clusterPatchRequestBody.SecretProfileSecret = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReference>(value) : null); }
+
         /// <summary>Number of ssh pods per cluster.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Number of ssh pods per cluster.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
@@ -567,6 +651,68 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
         SerializedName = @"count",
         PossibleTypes = new [] { typeof(int) })]
         public int SshProfileCount { get => _clusterPatchRequestBody.SshProfileCount ?? default(int); set => _clusterPatchRequestBody.SshProfileCount = value; }
+
+        /// <summary>The virtual machine SKU.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The virtual machine SKU.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The virtual machine SKU.",
+        SerializedName = @"vmSize",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SshProfileVMSize { get => _clusterPatchRequestBody.SshProfileVMSize ?? null; set => _clusterPatchRequestBody.SshProfileVMSize = value; }
+
+        /// <summary>
+        /// Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.",
+        SerializedName = @"hivecatalogName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string StorageHivecatalogName { get => _clusterPatchRequestBody.StorageHivecatalogName ?? null; set => _clusterPatchRequestBody.StorageHivecatalogName = value; }
+
+        /// <summary>
+        /// Schema of the above catalog to use, to mount query logs as external tables, if not specified tables will be mounted under
+        /// schema trinologs.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Schema of the above catalog to use, to mount query logs as external tables, if not specified tables will be mounted under schema trinologs.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Schema of the above catalog to use, to mount query logs as external tables, if not specified tables will be mounted under schema trinologs.",
+        SerializedName = @"hivecatalogSchema",
+        PossibleTypes = new [] { typeof(string) })]
+        public string StorageHivecatalogSchema { get => _clusterPatchRequestBody.StorageHivecatalogSchema ?? null; set => _clusterPatchRequestBody.StorageHivecatalogSchema = value; }
+
+        /// <summary>
+        /// Retention period for query log table partitions, this doesn't have any affect on actual data.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Retention period for query log table partitions, this doesn't have any affect on actual data.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Retention period for query log table partitions, this doesn't have any affect on actual data.",
+        SerializedName = @"partitionRetentionInDays",
+        PossibleTypes = new [] { typeof(int) })]
+        public int StoragePartitionRetentionInDay { get => _clusterPatchRequestBody.StoragePartitionRetentionInDay ?? default(int); set => _clusterPatchRequestBody.StoragePartitionRetentionInDay = value; }
+
+        /// <summary>Azure storage location of the blobs.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Azure storage location of the blobs.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Azure storage location of the blobs.",
+        SerializedName = @"path",
+        PossibleTypes = new [] { typeof(string) })]
+        public string StoragePath { get => _clusterPatchRequestBody.StoragePath ?? null; set => _clusterPatchRequestBody.StoragePath = value; }
 
         /// <summary>Resource tags.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ExportAs(typeof(global::System.Collections.Hashtable))]
@@ -579,6 +725,51 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchTags) })]
         public Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchTags Tag { get => _clusterPatchRequestBody.Tag ?? null /* object */; set => _clusterPatchRequestBody.Tag = value; }
+
+        /// <summary>Trino user plugins.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Trino user plugins.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Trino user plugins.",
+        SerializedName = @"plugins",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoUserPlugin) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoUserPlugin[] UserPluginSpecPlugin { get => _clusterPatchRequestBody.UserPluginSpecPlugin?.ToArray() ?? null /* fixedArrayOf */; set => _clusterPatchRequestBody.UserPluginSpecPlugin = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoUserPlugin>(value) : null); }
+
+        /// <summary>The flag that if enable debug or not.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The flag that if enable debug or not.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The flag that if enable debug or not.",
+        SerializedName = @"enable",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter WorkerDebugEnable { get => _clusterPatchRequestBody.WorkerDebugEnable ?? default(global::System.Management.Automation.SwitchParameter); set => _clusterPatchRequestBody.WorkerDebugEnable = value; }
+
+        /// <summary>The debug port.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The debug port.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The debug port.",
+        SerializedName = @"port",
+        PossibleTypes = new [] { typeof(int) })]
+        public int WorkerDebugPort { get => _clusterPatchRequestBody.WorkerDebugPort ?? default(int); set => _clusterPatchRequestBody.WorkerDebugPort = value; }
+
+        /// <summary>The flag that if suspend debug or not.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The flag that if suspend debug or not.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The flag that if suspend debug or not.",
+        SerializedName = @"suspend",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter WorkerDebugSuspend { get => _clusterPatchRequestBody.WorkerDebugSuspend ?? default(global::System.Management.Automation.SwitchParameter); set => _clusterPatchRequestBody.WorkerDebugSuspend = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
