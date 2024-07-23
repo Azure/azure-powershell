@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
     using Microsoft.Azure.Management.Network;
 
     [Cmdlet(VerbsCommon.Get,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Bastion" + "ShareableLink",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + Constants.BastionResourceName + Constants.ShareableLink,
         DefaultParameterSetName = BastionParameterSetNames.ByResourceGroupName + BastionParameterSetNames.ByName,
         SupportsShouldProcess = true),
         OutputType(typeof(List<PSBastionShareableLink>))]
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
 
             if (!bastion.EnableShareableLink.Value)
             {
-                throw new PropertyNotFoundException(Properties.Resources.ShareableLinkNotEnabled);
+                throw new PropertyNotFoundException(Properties.Resources.BastionShareableLinkNotEnabled);
             }
 
             var psBslRequest = new PSBastionShareableLinkRequest(this.TargetVmId);

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
     using Microsoft.Azure.Management.Network;
 
     [Cmdlet(VerbsCommon.Remove,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Bastion" + "ShareableLink",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + Constants.BastionResourceName + Constants.ShareableLink,
         DefaultParameterSetName = BastionParameterSetNames.ByResourceGroupName + BastionParameterSetNames.ByName,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
@@ -91,8 +91,8 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             base.Execute();
 
             ConfirmAction(Force.IsPresent,
-                Properties.Resources.ConfirmRemoveBastionShareableLink,
-                Properties.Resources.RemoveBastionShareableLink,
+                Properties.Resources.BastionShareableLinkConfirmRemove,
+                Properties.Resources.BastionShareableLinkRemoving,
                 Name, () =>
                 {
                     if (ParameterSetName.Equals(BastionParameterSetNames.ByResourceId, StringComparison.OrdinalIgnoreCase))
@@ -106,14 +106,17 @@ namespace Microsoft.Azure.Commands.Network.Bastion
                         this.Name = this.InputObject.Name;
                         this.ResourceGroupName = this.InputObject.ResourceGroupName;
                     }
+
                     if (!this.TryGetBastion(this.ResourceGroupName, this.Name, out PSBastion bastion))
                     {
                         throw new ItemNotFoundException(string.Format(Properties.Resources.ResourceNotFound, this.Name));
                     }
+
                     if (!bastion.EnableShareableLink.Value)
                     {
-                        throw new PropertyNotFoundException(Properties.Resources.ShareableLinkNotEnabled);
+                        throw new PropertyNotFoundException(Properties.Resources.BastionShareableLinkNotEnabled);
                     }
+
                     var psBslRequest = new PSBastionShareableLinkRequest(this.TargetVmId);
                     this.NetworkClient.NetworkManagementClient.DeleteBastionShareableLink(this.ResourceGroupName, this.Name, psBslRequest.ToSdkObject());
                     if (PassThru)
