@@ -19,7 +19,6 @@
 -->
 
 ## Upcoming Release
-* Fixed secrets exposure in example documentation.
 
 ## Version 6.1.0
 * Added new feature: Enable secure channels while creating a new cluster.

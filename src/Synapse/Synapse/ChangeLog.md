@@ -19,7 +19,6 @@
 -->
 
 ## Upcoming Release
-* Fixed secrets exposure in example documentation.
 
 ## Version 3.0.9
 * Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.20.
