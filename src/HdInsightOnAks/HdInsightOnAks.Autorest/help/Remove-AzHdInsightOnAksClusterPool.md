@@ -29,14 +29,14 @@ Deletes a Cluster Pool.
 
 ## EXAMPLES
 
-### Example 1: Remove an Azure HDInsight gen2 cluster pool
+### Example 1: Remove an Azure HDInsight cluster pool
 ```powershell
 $clusterResourceGroupName = "Group"
 $clusterpoolName = "your-clusterpool"
 Remove-AzHdInsightOnAksClusterPool -Name $clusterpoolName -ResourceGroupName $clusterResourceGroupName
 ```
 
-Remove an Azure HDInsight gen2 cluster pool.
+Remove an Azure HDInsight cluster pool.
 
 ## PARAMETERS
 

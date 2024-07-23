@@ -13,25 +13,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal
     {
 
-        /// <summary>Backing field for <see cref="ClusterIdentity" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfile _clusterIdentity;
-
-        /// <summary>Identity of the internal service components inside the Kafka cluster.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfile ClusterIdentity { get => (this._clusterIdentity = this._clusterIdentity ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IdentityProfile()); }
-
-        /// <summary>ClientId of the MSI.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
-        public string ClusterIdentityMsiClientId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfileInternal)ClusterIdentity).MsiClientId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfileInternal)ClusterIdentity).MsiClientId = value ?? null; }
-
-        /// <summary>ObjectId of the MSI.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
-        public string ClusterIdentityMsiObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfileInternal)ClusterIdentity).MsiObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfileInternal)ClusterIdentity).MsiObjectId = value ?? null; }
-
-        /// <summary>ResourceId of the MSI.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
-        public string ClusterIdentityMsiResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfileInternal)ClusterIdentity).MsiResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfileInternal)ClusterIdentity).MsiResourceId = value ?? null; }
-
         /// <summary>Backing field for <see cref="ConnectivityEndpoint" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaConnectivityEndpoints _connectivityEndpoint;
 
@@ -79,9 +60,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
         public bool? EnablePublicEndpoint { get => this._enablePublicEndpoint; set => this._enablePublicEndpoint = value; }
 
-        /// <summary>Internal Acessors for ClusterIdentity</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal.ClusterIdentity { get => (this._clusterIdentity = this._clusterIdentity ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IdentityProfile()); set { {_clusterIdentity = value;} } }
-
         /// <summary>Internal Acessors for ConnectivityEndpoint</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaConnectivityEndpoints Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal.ConnectivityEndpoint { get => (this._connectivityEndpoint = this._connectivityEndpoint ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.KafkaConnectivityEndpoints()); set { {_connectivityEndpoint = value;} } }
 
@@ -105,39 +83,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
     public partial interface IKafkaProfile :
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IJsonSerializable
     {
-        /// <summary>ClientId of the MSI.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"ClientId of the MSI.",
-        SerializedName = @"msiClientId",
-        PossibleTypes = new [] { typeof(string) })]
-        string ClusterIdentityMsiClientId { get;  }
-        /// <summary>ObjectId of the MSI.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"ObjectId of the MSI.",
-        SerializedName = @"msiObjectId",
-        PossibleTypes = new [] { typeof(string) })]
-        string ClusterIdentityMsiObjectId { get;  }
-        /// <summary>ResourceId of the MSI.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"ResourceId of the MSI.",
-        SerializedName = @"msiResourceId",
-        PossibleTypes = new [] { typeof(string) })]
-        string ClusterIdentityMsiResourceId { get;  }
         /// <summary>bootstrap server connectivity endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = false,
@@ -225,14 +170,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
     internal partial interface IKafkaProfileInternal
 
     {
-        /// <summary>Identity of the internal service components inside the Kafka cluster.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfile ClusterIdentity { get; set; }
-        /// <summary>ClientId of the MSI.</summary>
-        string ClusterIdentityMsiClientId { get; set; }
-        /// <summary>ObjectId of the MSI.</summary>
-        string ClusterIdentityMsiObjectId { get; set; }
-        /// <summary>ResourceId of the MSI.</summary>
-        string ClusterIdentityMsiResourceId { get; set; }
         /// <summary>Kafka bootstrap server and brokers related connectivity endpoints.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaConnectivityEndpoints ConnectivityEndpoint { get; set; }
         /// <summary>bootstrap server connectivity endpoint.</summary>
