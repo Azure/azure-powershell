@@ -15,25 +15,25 @@ Create a cluster pool.
 ### CreateExpanded (Default)
 ```
 New-AzHdInsightOnAksClusterPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> [-ClusterPoolVersion <String>] [-EnableLogAnalytics]
- [-LogAnalyticWorkspaceResourceId <String>] [-ManagedResourceGroupName <String>]
+ -Location <String> [-ClusterPoolVersion <String>] [-ComputeProfileAvailabilityZone <String[]>]
+ [-EnableLogAnalytics] [-LogAnalyticWorkspaceResourceId <String>] [-ManagedResourceGroupName <String>]
  [-NetworkProfileApiServerAuthorizedIPRange <String[]>] [-NetworkProfileEnablePrivateApiServer]
  [-NetworkProfileOutboundType <String>] [-SubnetId <String>] [-Tag <Hashtable>] [-VmSize <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzHdInsightOnAksClusterPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzHdInsightOnAksClusterPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -41,23 +41,24 @@ New-AzHdInsightOnAksClusterPool -Name <String> -ResourceGroupName <String> [-Sub
 ```
 New-AzHdInsightOnAksClusterPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -ClusterPool <IClusterPool> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzHdInsightOnAksClusterPool -InputObject <IHdInsightOnAksIdentity> -Location <String>
- [-ClusterPoolVersion <String>] [-EnableLogAnalytics] [-LogAnalyticWorkspaceResourceId <String>]
- [-ManagedResourceGroupName <String>] [-NetworkProfileApiServerAuthorizedIPRange <String[]>]
- [-NetworkProfileEnablePrivateApiServer] [-NetworkProfileOutboundType <String>] [-SubnetId <String>]
- [-Tag <Hashtable>] [-VmSize <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ClusterPoolVersion <String>] [-ComputeProfileAvailabilityZone <String[]>] [-EnableLogAnalytics]
+ [-LogAnalyticWorkspaceResourceId <String>] [-ManagedResourceGroupName <String>]
+ [-NetworkProfileApiServerAuthorizedIPRange <String[]>] [-NetworkProfileEnablePrivateApiServer]
+ [-NetworkProfileOutboundType <String>] [-SubnetId <String>] [-Tag <Hashtable>] [-VmSize <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzHdInsightOnAksClusterPool -InputObject <IHdInsightOnAksIdentity> -ClusterPool <IClusterPool>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -66,7 +67,7 @@ Create a cluster pool.
 
 ## EXAMPLES
 
-### Example 1: Create an Azure HDInsight gen2 cluster pool
+### Example 1: Create an Azure HDInsight cluster pool
 ```powershell
 # Cluster pool configuration info
 $location = "West US 3"
@@ -109,7 +110,7 @@ SystemDataCreatedAt                            :
 
 This command creates a cluster pool in the current subscription.
 
-### Example 2: Create an Azure HDInsight gen2 cluster pool enabled log analytics workspace
+### Example 2: Create an Azure HDInsight cluster pool enabled log analytics workspace
 ```powershell
 # Cluster configuration info
 $location = "East US 2"
@@ -155,7 +156,7 @@ SystemDataCreatedAt                            :
 ...
 ```
 
-Create an Azure HDInsight gen2 cluster pool enabled azure monitor with log analytics workspace.
+Create an Azure HDInsight cluster pool enabled azure monitor with log analytics workspace.
 
 ## PARAMETERS
 
@@ -194,6 +195,21 @@ Cluster pool version is a 2-part version.
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ComputeProfileAvailabilityZone
+The list of Availability zones to use for AKS VMSS nodes.
+
+```yaml
+Type: System.String[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -347,6 +363,7 @@ IP ranges are specified in CIDR format, e.g.
 137.117.106.88/29.
 This feature is not compatible with private AKS clusters.
 So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
+Currently, this property is not supported and please don't use it.
 
 ```yaml
 Type: System.String[]
@@ -399,6 +416,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
