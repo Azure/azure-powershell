@@ -11,6 +11,9 @@ Locale: en-US
 Microsoft Azure PowerShell: KubernetesRuntime cmdlets
 
 ## Az.KubernetesRuntime Cmdlets
+### [Enable-AzKubernetesRuntimeStorageClass](Enable-AzKubernetesRuntimeStorageClass.md)
+Create a ServiceResource
+
 ### [Get-AzKubernetesRuntimeBgpPeer](Get-AzKubernetesRuntimeBgpPeer.md)
 Get a BgpPeer
 

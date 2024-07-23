@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.KubernetesRuntime.private.dll'
   FormatsToProcess = './Az.KubernetesRuntime.format.ps1xml'
-  FunctionsToExport = 'Get-AzKubernetesRuntimeBgpPeer', 'Get-AzKubernetesRuntimeLoadBalancer', 'Get-AzKubernetesRuntimeService', 'Get-AzKubernetesRuntimeStorageClass', 'New-AzKubernetesRuntimeBgpPeer', 'New-AzKubernetesRuntimeLoadBalancer', 'New-AzKubernetesRuntimeService', 'New-AzKubernetesRuntimeStorageClass', 'Remove-AzKubernetesRuntimeBgpPeer', 'Remove-AzKubernetesRuntimeLoadBalancer', 'Remove-AzKubernetesRuntimeService', 'Remove-AzKubernetesRuntimeStorageClass', 'Update-AzKubernetesRuntimeBgpPeer', 'Update-AzKubernetesRuntimeLoadBalancer', 'Update-AzKubernetesRuntimeService', 'Update-AzKubernetesRuntimeStorageClass'
+  FunctionsToExport = 'Enable-AzKubernetesRuntimeStorageClass', 'Get-AzKubernetesRuntimeBgpPeer', 'Get-AzKubernetesRuntimeLoadBalancer', 'Get-AzKubernetesRuntimeService', 'Get-AzKubernetesRuntimeStorageClass', 'New-AzKubernetesRuntimeBgpPeer', 'New-AzKubernetesRuntimeLoadBalancer', 'New-AzKubernetesRuntimeService', 'New-AzKubernetesRuntimeStorageClass', 'Remove-AzKubernetesRuntimeBgpPeer', 'Remove-AzKubernetesRuntimeLoadBalancer', 'Remove-AzKubernetesRuntimeService', 'Remove-AzKubernetesRuntimeStorageClass', 'Update-AzKubernetesRuntimeBgpPeer', 'Update-AzKubernetesRuntimeLoadBalancer', 'Update-AzKubernetesRuntimeService', 'Update-AzKubernetesRuntimeStorageClass'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'KubernetesRuntime'
