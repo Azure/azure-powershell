@@ -20,7 +20,6 @@
 
 -->
 ## Upcoming Release
-* Fixed secrets exposure in example documentation.
 * Renamed parameter `-VmId` to `-SourceId` and added `-VmId` as an alias to `New-AzRestorePointCollection` cmdlet.
 
 ## Version 8.1.0
