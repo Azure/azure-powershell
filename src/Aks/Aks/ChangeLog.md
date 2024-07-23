@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed naming convention of sdk.
 
 ## Version 6.0.3
 * Introduced secrets detection feature to safeguard sensitive data.
