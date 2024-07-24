@@ -19,8 +19,7 @@ New-AzStackHciCluster -Name <String> -ResourceGroupName <String> [-SubscriptionI
  [-DesiredPropertyDiagnosticLevel <DiagnosticLevel>]
  [-DesiredPropertyWindowsServerSubscription <WindowsServerSubscription>]
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-SoftwareAssurancePropertySoftwareAssuranceIntent <SoftwareAssuranceIntent>]
- [-SoftwareAssurancePropertySoftwareAssuranceStatus <SoftwareAssuranceStatus>] [-Tag <Hashtable>]
+ [-SoftwareAssurancePropertySoftwareAssuranceIntent <SoftwareAssuranceIntent>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -287,23 +286,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SoftwareAssurancePropertySoftwareAssuranceStatus
-Status of the Software Assurance for the cluster.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.SoftwareAssuranceStatus
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -370,7 +355,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ICluster
 
 ## NOTES
 
