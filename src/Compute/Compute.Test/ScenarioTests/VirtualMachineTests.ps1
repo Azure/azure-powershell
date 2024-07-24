@@ -6255,7 +6255,7 @@ function Test-ManualConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
         $secureEncryptGuestState = 'DiskWithVMGuestState';
         $vmSecurityType = "ConfidentialVM";
         $user = "admin01";
-        $password = "Testing1234567";
+        $password = "<>";
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
@@ -6583,7 +6583,7 @@ function Test-ConfVMSetAzDiskEncryptionSetConfig
         $desName= "des" + $rgname;
 
         # Creating a VM using simple parameterset
-        $securePassword = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force;
+        $securePassword = "<>" | ConvertTo-SecureString -AsPlainText -Force;
         $user = "admin01";
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
