@@ -30,7 +30,7 @@ Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IServiceResource
 https://learn.microsoft.com/powershell/module/az.kubernetesruntime/new-azkubernetesruntimeservice
 #>
 
-function Enable-AzKubernetesRuntimeStorageClass {
+function Disable-AzKubernetesRuntimeStorageClass {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IServiceResource])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
@@ -130,41 +130,50 @@ function Enable-AzKubernetesRuntimeStorageClass {
             . "$PSScriptRoot/Helpers/RPRegistrations.ps1"
 
             $connected_cluster_resource_id = [ConnectedClusterResourceId]::Parse($ResourceUri)
-            
-            CheckRPRegistration -SubscriptionId $connected_cluster_resource_id.SubscriptionId
 
-            $oid = QueryRpObjectId 
 
-            ImportModule -ModuleName Az.KubernetesConfiguration
+            Write-Output "Uninstalling storage class Arc extension in cluster $($connected_cluster_resource_id.ClusterName) in resource group $($connected_cluster_resource_id.ResourceGroup)..."
 
-            Write-Output "Installing storage class storage class Arc Extension in cluster $($connected_cluster_resource_id.ClusterName) in resource group $($connected_cluster_resource_id.ResourceGroup)..."
-
-            $extension = New-AzKubernetesExtension `
+            $extension = Get-AzKubernetesExtension `
                 -SubscriptionId $connected_cluster_resource_id.SubscriptionId `
                 -ResourceGroupName $connected_cluster_resource_id.ResourceGroup `
                 -ClusterName $connected_cluster_resource_id.ClusterName `
                 -ClusterType ConnectedClusters `
-                -IdentityType 'SystemAssigned' `
-                -Name "arc-k8s-storage-class" `
-                -ExtensionType "Microsoft.ManagedStorageClass" `
-                -ReleaseTrain "preview" `
-                -ConfigurationSetting @{"k8sRuntimeFpaObjectId" = $oid }
+                -Name "arc-k8s-storage-class"
 
-            Write-Output "Assign the extension with Storage Class Contributor role under the cluster scope..."
-            $sc_contributor_role_assignment = New-AzRoleAssignment `
+            if ($null -eq $extension) {
+                Write-Output "Storage class Arc extension is not installed in cluster $($connected_cluster_resource_id.ClusterName) in resource group $($connected_cluster_resource_id.ResourceGroup)."
+                return
+            }
+
+            Remove-AzKubernetesExtension -InputObject $extension
+                
+            Write-Output "Delete role assignment of the extension identity with Storage Class Contributor role under the cluster scope..."
+
+            $sc_contributor_role_assignment = Get-AzRoleAssignment `
                 -Scope $connected_cluster_resource_id.ToString() `
-                -PrincipalId $extension.IdentityPrincipalId `
-                -PrincipalType 'ServicePrincipal' `
+                -ObjectId $extension.IdentityPrincipalId `
                 -RoleDefinitionId $STORAGE_CLASS_CONTRIBUTOR_ROLE_ID
-            
-            Write-Output "Assign Storage Class RP with Kubernetes Extension Contributor role under the cluster scope..."
-            $k8s_extension_contributor_role_assignment = New-AzRoleAssignment `
+
+            if ($null -eq $sc_contributor_role_assignment) {
+                Write-Output "No role assignment found for the extension identity with Storage Class Contributor role under the cluster scope."
+            }
+            else {
+                Remove-AzRoleAssignment -InputObject $sc_contributor_role_assignment
+            } 
+
+            Write-Output "Delete role assignment for storage class RP with Kubernetes Extension Contributor role under the cluster scope..."
+            $k8s_extension_contributor_role_assignment = Get-AzRoleAssignment `
                 -Scope $connected_cluster_resource_id.ToString() `
-                -PrincipalId $KubernetesRuntimeFpaAppId `
-                -PrincipalType 'ServicePrincipal' `
+                -ObjectId $KubernetesRuntimeFpaAppId `
                 -RoleDefinitionId $KUBERNETES_EXTENSION_CONTRIBUTOR_ROLE_ID
 
-            Write-Output "Arc Storage class service has been installed successfully in cluster $($connected_cluster_resource_id.ClusterName) in resource group $($connected_cluster_resource_id.ResourceGroup)."
+            if ($null -eq $k8s_extension_contributor_role_assignment) {
+                Write-Output "No role assignment found for storage class RP with Kubernetes Extension Contributor role under the cluster scope."
+            }
+            else {
+                Remove-AzRoleAssignment -InputObject $k8s_extension_contributor_role_assignment
+            } 
 
             return @{
                 "Extension"                             = $extension;

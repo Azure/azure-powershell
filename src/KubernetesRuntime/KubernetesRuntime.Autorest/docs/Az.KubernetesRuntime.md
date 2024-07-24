@@ -11,6 +11,9 @@ Locale: en-US
 Microsoft Azure PowerShell: KubernetesRuntime cmdlets
 
 ## Az.KubernetesRuntime Cmdlets
+### [Disable-AzKubernetesRuntimeStorageClass](Disable-AzKubernetesRuntimeStorageClass.md)
+Create a ServiceResource
+
 ### [Enable-AzKubernetesRuntimeStorageClass](Enable-AzKubernetesRuntimeStorageClass.md)
 Create a ServiceResource
 
