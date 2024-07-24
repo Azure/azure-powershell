@@ -127,7 +127,7 @@ function Enable-AzKubernetesRuntimeStorageClass {
     process {
         try {
 
-            . "$PSScriptRoot/Helpers/RPRegistrations.ps1"
+            . "$PSScriptRoot/Helpers.ps1"
 
             $connected_cluster_resource_id = [ConnectedClusterResourceId]::Parse($ResourceUri)
             
