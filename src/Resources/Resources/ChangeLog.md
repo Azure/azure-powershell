@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed overriding of Bicep parameters in Deployment cmdlets to support `SecureString` parameters.
 * Added Test cmdlets for Deployment Stacks.
 
 ## Version 7.2.0
