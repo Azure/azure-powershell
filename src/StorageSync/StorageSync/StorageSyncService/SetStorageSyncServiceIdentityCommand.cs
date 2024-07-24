@@ -152,6 +152,8 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                 if (ShouldProcess(Target, ActionMessage))
                 {
                     StorageSyncModels.StorageSyncService storageSyncService = StorageSyncClientWrapper.StorageSyncManagementClient.StorageSyncServices.Get(resourceGroupName, resourceName);
+                    bool needPropogationDelay = storageSyncService?.Identity?.Type != ManagedServiceIdentityType.SystemAssigned.ToString();
+
                     // 1. Check if any server available for migration
                     IEnumerable<StorageSyncModels.RegisteredServer> registeredServers = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.ListByStorageSyncService(resourceGroupName, resourceName);
                     var candidateServersLookup = new Dictionary<string, StorageSyncModels.RegisteredServer>(StringComparer.InvariantCultureIgnoreCase);
@@ -211,9 +213,12 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                         StorageSyncClientWrapper.VerboseLogger.Invoke($"Storage Sync Service is capable with identity {storageSyncService.Identity.PrincipalId}");
                     }
 
-                    StorageSyncClientWrapper.VerboseLogger.Invoke($"If you are creating this principal and then immediately assigning a role, you will get error PrincipalNotFound which is related to a replication delay. In this case, set the role assignment principalType property to a value, such as ServicePrincipal, User, or Group. See\r\nhttps://aka.ms/docs-principaltype");
-                    StorageSyncClientWrapper.VerboseLogger.Invoke($"Sleeping for 120 seconds...");
-                    Thread.Sleep(TimeSpan.FromSeconds(120));
+                    if (needPropogationDelay)
+                    {
+                        StorageSyncClientWrapper.VerboseLogger.Invoke($"If you are creating this principal and then immediately assigning a role, you will get error PrincipalNotFound which is related to a replication delay. In this case, set the role assignment principalType property to a value, such as ServicePrincipal, User, or Group. See\r\nhttps://aka.ms/docs-principaltype");
+                        StorageSyncClientWrapper.VerboseLogger.Invoke($"Sleeping for 120 seconds...");
+                        Thread.Sleep(TimeSpan.FromSeconds(120));
+                    }
 
                     // 3. RBAC permission set for Cloud Endpoints and Server Endpoints
                     IEnumerable<StorageSyncModels.SyncGroup> syncGroups = StorageSyncClientWrapper.StorageSyncManagementClient.SyncGroups.ListByStorageSyncService(resourceGroupName, resourceName);
