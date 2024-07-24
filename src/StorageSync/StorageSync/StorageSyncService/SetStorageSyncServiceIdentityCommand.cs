@@ -287,6 +287,7 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                                 }
                                 catch (Exception ex)
                                 {
+                                    StorageSyncClientWrapper.ErrorLogger.Invoke($"ServerEndpoint {serverEndpoint.Name} has failed with an exception {ex.Message}.");
                                     serverEndpointFirstException = serverEndpointFirstException ?? ex;
                                 }
                             } // Iterating server endpoints
@@ -297,6 +298,7 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                         }
                         catch (Exception ex)
                         {
+                            StorageSyncClientWrapper.ErrorLogger.Invoke($"SyncGroup {syncGroup.Name} has failed with an exception {ex.Message}.");
                             syncGroupFirstException = syncGroupFirstException ?? ex;
                         }
                     } // Iterating sync groups
