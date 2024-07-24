@@ -1,6 +1,6 @@
 {
   "resourceType": "clusters",
-  "apiVersion": "2023-03-01",
+  "apiVersion": "2024-04-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.stackhci"
   },
@@ -29,6 +29,44 @@
           "parameters": [
             {
               "name": "-Name",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzStackHciUpdateSummary",
+      "description": "Get all Update summaries under the HCI cluster",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updateSummaries/default",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhciupdatesummary"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get all Update summaries under the HCI cluster",
+          "parameters": [
+            {
+              "name": "-ClusterName",
               "value": "[Path.clusterName]"
             },
             {
@@ -105,6 +143,44 @@
           "parameters": [
             {
               "name": "-Name",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzStackHciUpdateSummary",
+      "description": "Delete Update Summaries",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updateSummaries/default",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhciupdatesummary"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete Update Summaries",
+          "parameters": [
+            {
+              "name": "-ClusterName",
               "value": "[Path.clusterName]"
             },
             {
