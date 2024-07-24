@@ -12,16 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.WindowsAzure.Commands.Storage
+namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
+    using global::Azure.Storage.Files.Shares.Models;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-    using Microsoft.WindowsAzure.Commands.Common.Storage.Properties;
     using Microsoft.Azure.Storage;
-    using XTable = Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using global::Azure.Storage.Files.Shares.Models;
+    using XTable = Microsoft.Azure.Cosmos.Table;
 
     /// <summary>
     /// Storage context

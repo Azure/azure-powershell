@@ -1,8 +1,6 @@
 ﻿using Azure.Core;
-
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-
 using System;
 using System.Threading;
 using System.Threading.Tasks;

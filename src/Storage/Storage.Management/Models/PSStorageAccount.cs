@@ -13,20 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Auth;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.WindowsAzure.Commands.Storage.Adapters;
+using Microsoft.WindowsAzure.Commands.Storage.Common;
 using System;
 using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Storage.Auth;
-using Microsoft.Azure.Storage;
-using System.Threading;
-using Microsoft.WindowsAzure.Commands.Storage;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
@@ -174,35 +171,44 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSStorageAccountSkuConversionStatus StorageAccountSkuConversionStatus { get; set; }
         public string DnsEndpointType { get; set; }
 
-        /// <summary>
-        /// Default resourceId for storage OAuth tokens
-        /// </summary>
-        private const string StorageOAuthEndpointResourceValue = "https://storage.azure.com";
-
-        /// <summary>
-        /// The extension key to use for the storage token audience value
-        /// </summary>
-        private const string StorageOAuthEndpointResourceKey = "StorageOAuthEndpointResourceId";
-
 
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client, IAzureContext DefaultContext)
         {
             var result = new PSStorageAccount(storageAccount);
+
             // If now allow Shared key, will get Oauth context
             if (storageAccount.AllowSharedKeyAccess.HasValue && !storageAccount.AllowSharedKeyAccess.Value)
             {
-                IAccessToken accessToken = CreateOAuthToken(DefaultContext);
-         
-                TokenCredential tokenCredential = new TokenCredential(GetTokenStrFromAccessToken(accessToken), GetTokenRenewer(accessToken), null, new TimeSpan(0, 1, 0));
-                StorageCredentials credential = new StorageCredentials(tokenCredential);
-                CloudStorageAccount track1Account = new CloudStorageAccount(credential,
-                    string.IsNullOrEmpty(storageAccount.PrimaryEndpoints.Blob) ? null : new Uri(storageAccount.PrimaryEndpoints.Blob),
-                    string.IsNullOrEmpty(storageAccount.PrimaryEndpoints.Queue) ? null : new Uri(storageAccount.PrimaryEndpoints.Queue),
-                    string.IsNullOrEmpty(storageAccount.PrimaryEndpoints.Table) ? null : new Uri(storageAccount.PrimaryEndpoints.Table),
-                    string.IsNullOrEmpty(storageAccount.PrimaryEndpoints.File) ? null : new Uri(storageAccount.PrimaryEndpoints.File));
-                
-                result.Context = new AzureStorageContext(track1Account, storageAccount.Name, DefaultContext);
+                result.Context = new LazyAzureStorageContext((s) =>
+                {
+                    TokenCredential tokenCredential = OAuthUtil.getTokenCredential(DefaultContext, null);
+                    StorageCredentials credential = new StorageCredentials(tokenCredential);
+                    CloudStorageAccount track1Account = new CloudStorageAccount(credential,
+                        string.IsNullOrEmpty(storageAccount.PrimaryEndpoints.Blob) ? null : new Uri(storageAccount.PrimaryEndpoints.Blob),
+                        string.IsNullOrEmpty(storageAccount.PrimaryEndpoints.Queue) ? null : new Uri(storageAccount.PrimaryEndpoints.Queue),
+                        string.IsNullOrEmpty(storageAccount.PrimaryEndpoints.Table) ? null : new Uri(storageAccount.PrimaryEndpoints.Table),
+                        string.IsNullOrEmpty(storageAccount.PrimaryEndpoints.File) ? null : new Uri(storageAccount.PrimaryEndpoints.File));
+                    return track1Account;
+                },
+                result.StorageAccountName,
+                () =>
+                {
+                    return new AzureSessionCredential(DefaultContext, null);
+                }) as AzureStorageContext;
+
+                // Leave the code since we might don't need make Oauth token credential object lazy.
+                //TokenCredential tokenCredential = OAuthUtil.getTokenCredential(DefaultContext, logWriter);
+                //StorageCredentials credential = new StorageCredentials(tokenCredential);
+                //CloudStorageAccount track1Account = new CloudStorageAccount(credential,
+                //    string.IsNullOrEmpty(storageAccount.PrimaryEndpoints.Blob) ? null : new Uri(storageAccount.PrimaryEndpoints.Blob),
+                //    string.IsNullOrEmpty(storageAccount.PrimaryEndpoints.Queue) ? null : new Uri(storageAccount.PrimaryEndpoints.Queue),
+                //    string.IsNullOrEmpty(storageAccount.PrimaryEndpoints.Table) ? null : new Uri(storageAccount.PrimaryEndpoints.Table),
+                //    string.IsNullOrEmpty(storageAccount.PrimaryEndpoints.File) ? null : new Uri(storageAccount.PrimaryEndpoints.File));
+
+                //result.Context = new AzureStorageContext(track1Account, storageAccount.Name, DefaultContext);
+
             }
+            // get sharedkey context
             else
             {
                 result.Context = new LazyAzureStorageContext((s) =>
@@ -212,68 +218,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             }
 
             return result;
-        }
-
-        /// <summary>
-        /// Create a OAuth Token
-        /// </summary>
-        /// <returns>the token</returns>
-        private static IAccessToken CreateOAuthToken(IAzureContext DefaultContext)
-        {
-            if (DefaultContext == null || DefaultContext.Account == null)
-            {
-                throw new InvalidOperationException("Context cannot be null.  Please log in using Connect-AzAccount.");
-            }
-
-            IAccessToken accessToken = AzureSession.Instance.AuthenticationFactory.Authenticate(
-               DefaultContext.Account,
-               EnsureStorageOAuthAudienceSet(DefaultContext.Environment),
-               DefaultContext.Tenant.Id,
-               null,
-               ShowDialog.Never,
-               null,
-               StorageOAuthEndpointResourceKey);
-            return accessToken;
-        }
-        private static RenewTokenFuncAsync GetTokenRenewer(IAccessToken accessToken)
-        {
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-            RenewTokenFuncAsync renewer = async (Object state, CancellationToken cancellationToken) =>
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
-            {
-                var tokenStr = GetTokenStrFromAccessToken(accessToken);
-                return new NewTokenAndFrequency(tokenStr, new TimeSpan(0, 1, 0));
-            };
-            return renewer;
-        }
-
-        /// <summary>
-        /// Get the token string from the accesstoken
-        /// </summary>
-        /// <param name="accessToken">the token</param>
-        /// <returns>token string</returns>
-        private static string GetTokenStrFromAccessToken(IAccessToken accessToken)
-        {
-            var tokenStr = string.Empty;
-            accessToken.AuthorizeRequest((tokenType, tokenValue) =>
-            {
-                tokenStr = tokenValue;
-            });
-
-            return tokenStr;
-        }
-
-        private static IAzureEnvironment EnsureStorageOAuthAudienceSet(IAzureEnvironment environment)
-        {
-            if (environment != null)
-            {
-                if (!environment.IsPropertySet(StorageOAuthEndpointResourceKey))
-                {
-                    environment.SetProperty(StorageOAuthEndpointResourceKey, StorageOAuthEndpointResourceValue);
-                }
-            }
-
-            return environment;
         }
 
         public IStorageContext Context { get; private set; }
