@@ -131,6 +131,7 @@ function Disable-AzKubernetesRuntimeStorageClass {
 
             $connected_cluster_resource_id = [ConnectedClusterResourceId]::Parse($ResourceUri)
 
+            ImportModule -ModuleName Az.KubernetesConfiguration
 
             Write-Output "Uninstalling storage class Arc extension in cluster $($connected_cluster_resource_id.ClusterName) in resource group $($connected_cluster_resource_id.ResourceGroup)..."
 
@@ -145,6 +146,7 @@ function Disable-AzKubernetesRuntimeStorageClass {
                 Write-Output "Storage class Arc extension is not installed in cluster $($connected_cluster_resource_id.ClusterName) in resource group $($connected_cluster_resource_id.ResourceGroup)."
                 return
             }
+
 
             Remove-AzKubernetesExtension -InputObject $extension
                 
