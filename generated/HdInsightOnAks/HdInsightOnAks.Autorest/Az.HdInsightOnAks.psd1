@@ -1,5 +1,5 @@
 @{
-  GUID = '5d9ea51e-3614-409d-b09a-9188a642e11c'
+  GUID = '40af02af-b9a4-40ef-9dc5-5ea4d5e5e3be'
   RootModule = './Az.HdInsightOnAks.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
