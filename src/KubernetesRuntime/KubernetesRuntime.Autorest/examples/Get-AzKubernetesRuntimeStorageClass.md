@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all storage classes of a connected cluster 
 ```powershell
-{{ Add code here }}
+Get-AzKubernetesRuntimeStorageClass -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Lists all storage classes of a connected cluster.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a storage class of a connected cluster
 ```powershell
-{{ Add code here }}
+Get-AzKubernetesRuntimeStorageClass -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Name "default"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Gets detailed information of a storage class of a connected cluster

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a ServiceResource
+Enable Arc storage class service in a connected cluster.
 .Description
-Create a ServiceResource
+Enable Arc storage class service in a connected cluster.
 .Example
 {{ Add code here }}
 .Example

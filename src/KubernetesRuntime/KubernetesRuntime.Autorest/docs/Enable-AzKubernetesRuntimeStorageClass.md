@@ -8,7 +8,7 @@ schema: 2.0.0
 # Enable-AzKubernetesRuntimeStorageClass
 
 ## SYNOPSIS
-Create a ServiceResource
+Enable Arc storage class service in a connected cluster.
 
 ## SYNTAX
 
@@ -18,31 +18,25 @@ Enable-AzKubernetesRuntimeStorageClass -ResourceUri <String> [-DefaultProfile <P
 ```
 
 ## DESCRIPTION
-Create a ServiceResource
+Enable Arc storage class service in a connected cluster.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Enable Arc storage class service in a connected cluster
 ```powershell
-{{ Add code here }}
+Enable-AzKubernetesRuntimeStorageClass -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                           Value
+----                           -----
+K8sExtensionContributorRoleAs… Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment
+StorageClassContributorRoleAs… Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment
+Extension                      {…}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Enables Arc storage class service in a connected cluster.
+Returns the created Azure resources.
 
 ## PARAMETERS
 

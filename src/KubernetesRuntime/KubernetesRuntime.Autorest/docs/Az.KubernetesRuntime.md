@@ -12,10 +12,10 @@ Microsoft Azure PowerShell: KubernetesRuntime cmdlets
 
 ## Az.KubernetesRuntime Cmdlets
 ### [Disable-AzKubernetesRuntimeStorageClass](Disable-AzKubernetesRuntimeStorageClass.md)
-Create a ServiceResource
+Disable Arc storage class service in a connected cluster.
 
 ### [Enable-AzKubernetesRuntimeStorageClass](Enable-AzKubernetesRuntimeStorageClass.md)
-Create a ServiceResource
+Enable Arc storage class service in a connected cluster.
 
 ### [Get-AzKubernetesRuntimeBgpPeer](Get-AzKubernetesRuntimeBgpPeer.md)
 Get a BgpPeer
