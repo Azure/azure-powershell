@@ -152,6 +152,8 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                 if (ShouldProcess(Target, ActionMessage))
                 {
                     StorageSyncModels.StorageSyncService storageSyncService = StorageSyncClientWrapper.StorageSyncManagementClient.StorageSyncServices.Get(resourceGroupName, resourceName);
+                    bool needPropogationDelay = storageSyncService?.Identity?.Type != ManagedServiceIdentityType.SystemAssigned.ToString();
+
                     // 1. Check if any server available for migration
                     IEnumerable<StorageSyncModels.RegisteredServer> registeredServers = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.ListByStorageSyncService(resourceGroupName, resourceName);
                     var candidateServersLookup = new Dictionary<string, StorageSyncModels.RegisteredServer>(StringComparer.InvariantCultureIgnoreCase);
@@ -211,71 +213,99 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                         StorageSyncClientWrapper.VerboseLogger.Invoke($"Storage Sync Service is capable with identity {storageSyncService.Identity.PrincipalId}");
                     }
 
-                    StorageSyncClientWrapper.VerboseLogger.Invoke($"If you are creating this principal and then immediately assigning a role, you will get error PrincipalNotFound which is related to a replication delay. In this case, set the role assignment principalType property to a value, such as ServicePrincipal, User, or Group. See\r\nhttps://aka.ms/docs-principaltype");
-                    StorageSyncClientWrapper.VerboseLogger.Invoke($"Sleeping for 120 seconds...");
-                    Thread.Sleep(TimeSpan.FromSeconds(120));
+                    if (needPropogationDelay)
+                    {
+                        StorageSyncClientWrapper.VerboseLogger.Invoke($"If you are creating this principal and then immediately assigning a role, you will get error PrincipalNotFound which is related to a replication delay. In this case, set the role assignment principalType property to a value, such as ServicePrincipal, User, or Group. See\r\nhttps://aka.ms/docs-principaltype");
+                        StorageSyncClientWrapper.VerboseLogger.Invoke($"Sleeping for 120 seconds...");
+                        Thread.Sleep(TimeSpan.FromSeconds(120));
+                    }
 
                     // 3. RBAC permission set for Cloud Endpoints and Server Endpoints
                     IEnumerable<StorageSyncModels.SyncGroup> syncGroups = StorageSyncClientWrapper.StorageSyncManagementClient.SyncGroups.ListByStorageSyncService(resourceGroupName, resourceName);
+                    Exception syncGroupFirstException = null;
                     foreach (var syncGroup in syncGroups)
                     {
-                        IEnumerable<StorageSyncModels.CloudEndpoint> cloudEndpoints = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.ListBySyncGroup(resourceGroupName, resourceName, syncGroup.Name);
-                        StorageSyncModels.CloudEndpoint cloudEndpoint = cloudEndpoints.FirstOrDefault();
-
-                        if (cloudEndpoint == null)
+                        try
                         {
-                            StorageSyncClientWrapper.VerboseLogger.Invoke($"Skipping SyncGroup. No cloud Endpoint found for sync group {syncGroup.Name}");
-                            continue;
-                        }
-                        var storageAccountResourceIdentifier = new ResourceIdentifier(cloudEndpoint.StorageAccountResourceId);
+                            IEnumerable<StorageSyncModels.CloudEndpoint> cloudEndpoints = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.ListBySyncGroup(resourceGroupName, resourceName, syncGroup.Name);
+                            StorageSyncModels.CloudEndpoint cloudEndpoint = cloudEndpoints.FirstOrDefault();
 
-                        // Identity , RoleDef, Scope
-                        var scope = cloudEndpoint.StorageAccountResourceId;
-                        var identityRoleAssignmentForSAScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
-                            storageSyncService.Identity.PrincipalId.Value,
-                            Common.StorageSyncClientWrapper.StorageAccountContributorRoleDefinitionId,
-                            scope);
-
-                        scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
-                        var identityRoleAssignmentForFilsShareScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
-                           storageSyncService.Identity.PrincipalId.Value,
-                           Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
-                           scope);
-
-                        IEnumerable<StorageSyncModels.ServerEndpoint> serverEndpoints = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.ListBySyncGroup(resourceGroupName, resourceName, syncGroup.Name);
-                        foreach (var serverEndpoint in serverEndpoints)
-                        {
-                            var associatedServers = new List<RegisteredServer>();
-
-                            // It is expected that multiple migration script might have caused to have role assignment already in the system. We are fault tolerant to existing role assignment.
-                            if (candidateServersLookup.ContainsKey(serverEndpoint.ServerResourceId))
+                            if (cloudEndpoint == null)
                             {
-                                // Standalone Server scenario
-                                associatedServers.Add(candidateServersLookup[serverEndpoint.ServerResourceId]);
+                                StorageSyncClientWrapper.VerboseLogger.Invoke($"Skipping SyncGroup. No cloud Endpoint found for sync group {syncGroup.Name}");
+                                continue;
                             }
-                            else if (clusterNameServersLookup.ContainsKey(serverEndpoint.ServerResourceId))
-                            {
-                                // ClusterNode Server scenario
-                                associatedServers.AddRange(clusterNameServersLookup[serverEndpoint.ServerResourceId]);
-                            }
+                            var storageAccountResourceIdentifier = new ResourceIdentifier(cloudEndpoint.StorageAccountResourceId);
 
-                            StorageSyncClientWrapper.VerboseLogger.Invoke($"ServerEndpoint {serverEndpoint.Name} has {associatedServers.Count} associated registered servers.");
-                            foreach (var associatedServer in associatedServers)
+                            // Identity , RoleDef, Scope
+                            var scope = cloudEndpoint.StorageAccountResourceId;
+                            var identityRoleAssignmentForSAScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
+                                storageSyncService.Identity.PrincipalId.Value,
+                                Common.StorageSyncClientWrapper.StorageAccountContributorRoleDefinitionId,
+                                scope);
+
+                            scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
+                            var identityRoleAssignmentForFilsShareScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
+                               storageSyncService.Identity.PrincipalId.Value,
+                               Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
+                               scope);
+
+                            IEnumerable<StorageSyncModels.ServerEndpoint> serverEndpoints = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.ListBySyncGroup(resourceGroupName, resourceName, syncGroup.Name);
+                            Exception serverEndpointFirstException = null;
+                            foreach (var serverEndpoint in serverEndpoints)
                             {
-                                if (!Guid.TryParse(associatedServer.LatestApplicationId, out Guid applicationGuid))
+                                try
                                 {
-                                    applicationGuid = Guid.Parse(associatedServer.ApplicationId);
+                                    var associatedServers = new List<RegisteredServer>();
+
+                                    // It is expected that multiple migration script might have caused to have role assignment already in the system. We are fault tolerant to existing role assignment.
+                                    if (candidateServersLookup.ContainsKey(serverEndpoint.ServerResourceId))
+                                    {
+                                        // Standalone Server scenario
+                                        associatedServers.Add(candidateServersLookup[serverEndpoint.ServerResourceId]);
+                                    }
+                                    else if (clusterNameServersLookup.ContainsKey(serverEndpoint.ServerResourceId))
+                                    {
+                                        // ClusterNode Server scenario
+                                        associatedServers.AddRange(clusterNameServersLookup[serverEndpoint.ServerResourceId]);
+                                    }
+
+                                    StorageSyncClientWrapper.VerboseLogger.Invoke($"ServerEndpoint {serverEndpoint.Name} has {associatedServers.Count} associated registered servers.");
+                                    foreach (var associatedServer in associatedServers)
+                                    {
+                                        if (!Guid.TryParse(associatedServer.LatestApplicationId, out Guid applicationGuid))
+                                        {
+                                            applicationGuid = Guid.Parse(associatedServer.ApplicationId);
+                                        }
+                                        // Identity , RoleDef, Scope
+                                        scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
+                                        identityRoleAssignmentForFilsShareScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
+                                           applicationGuid,
+                                           Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
+                                           scope);
+                                    }
                                 }
-                                // Identity , RoleDef, Scope
-                                scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
-                                identityRoleAssignmentForFilsShareScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
-                                   applicationGuid,
-                                   Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
-                                   scope);
+                                catch (Exception ex)
+                                {
+                                    StorageSyncClientWrapper.ErrorLogger.Invoke($"ServerEndpoint {serverEndpoint.Name} has failed with an exception {ex.Message}.");
+                                    serverEndpointFirstException = serverEndpointFirstException ?? ex;
+                                }
+                            } // Iterating server endpoints
+                            if (serverEndpointFirstException != null)
+                            {
+                                throw serverEndpointFirstException;
                             }
                         }
+                        catch (Exception ex)
+                        {
+                            StorageSyncClientWrapper.ErrorLogger.Invoke($"SyncGroup {syncGroup.Name} has failed with an exception {ex.Message}.");
+                            syncGroupFirstException = syncGroupFirstException ?? ex;
+                        }
+                    } // Iterating sync groups
+                    if (syncGroupFirstException != null)
+                    {
+                        throw syncGroupFirstException;
                     }
-
                     // 4 Set UseIdentity for given Storage Sync Service
                     updateParameters = new StorageSyncServiceUpdateParameters()
                     {
