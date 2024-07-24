@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
     /// Cmdlet to create a new Managed Instance Link
     /// </summary>
     [CmdletOutputBreakingChangeWithVersion(typeof(AzureSqlManagedInstanceLinkModel), "13.0.0", "6.0.0",
-        DeprecatedOutputProperties = new String[] { "TargetDatabase", "DistributedAvailabilityGroupId", "SourceReplicaId", "TargetReplicaId", "LinkState",
-            "LastHardenedLsn", "PrimaryAvailabilityGroupName", "SecondaryAvailabilityGroupName", "SourceEndpoint" },
+        DeprecatedOutputProperties = new String[] { "TargetDatabase", "PrimaryAvailabilityGroupName", "SecondaryAvailabilityGroupName",
+            "SourceEndpoint", "SourceReplicaId", "TargetReplicaId", "LinkState", "LastHardenedLsn" },
         NewOutputProperties = new String[] { "Databases", "DistributedAvailabilityGroupName ", "InstanceAvailabilityGroupName", "PartnerAvailabilityGroupName",
             "InstanceLinkRole", "PartnerLinkRole", "FailoverMode", "SeedingMode", "PartnerEndpoint" })]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceLink",
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the target database
         /// </summary>
-        [CmdletParameterBreakingChangeWithVersion("TargetDatabase", "13.0.0", "6.0.0", ChangeDescription = "The parameter 'target-database' is being replaced by parameter 'databases'. The type of new parameter is changing from 'String' to 'List<String>'")]
+        [CmdletParameterBreakingChangeWithVersion("TargetDatabase", "13.0.0", "6.0.0", ChangeDescription = "The parameter 'TargetDatabase' is being replaced by parameter 'Databases'. The type of new parameter is changing from 'String' to 'List<String>'")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Name of the target database.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Name of the target database.")]
         [ValidateNotNullOrEmpty]

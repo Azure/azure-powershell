@@ -30,9 +30,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
     /// Cmdlet to update Managed Instance Link
     /// </summary>
     [CmdletOutputBreakingChangeWithVersion(typeof(AzureSqlManagedInstanceLinkModel), "13.0.0", "6.0.0",
-       DeprecatedOutputProperties = new String[] { "TargetDatabase", "DistributedAvailabilityGroupId", "SourceReplicaId", "TargetReplicaId", "LinkState",
-            "LastHardenedLsn", "PrimaryAvailabilityGroupName", "SecondaryAvailabilityGroupName", "SourceEndpoint" },
-       NewOutputProperties = new String[] { "Databases", "DistributedAvailabilityGroupName ", "InstanceAvailabilityGroupName", "PartnerAvailabilityGroupName",
+        DeprecatedOutputProperties = new String[] { "TargetDatabase", "PrimaryAvailabilityGroupName", "SecondaryAvailabilityGroupName",
+            "SourceEndpoint", "SourceReplicaId", "TargetReplicaId", "LinkState", "LastHardenedLsn" },
+        NewOutputProperties = new String[] { "Databases", "DistributedAvailabilityGroupName ", "InstanceAvailabilityGroupName", "PartnerAvailabilityGroupName",
             "InstanceLinkRole", "PartnerLinkRole", "FailoverMode", "SeedingMode", "PartnerEndpoint" })]
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceLink",
         DefaultParameterSetName = UpdateByNameParameterSet, SupportsShouldProcess = true),
