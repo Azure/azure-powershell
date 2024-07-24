@@ -21,7 +21,9 @@ using System.Management.Automation;
 using System.Management.Automation.Internal;
 using System.Management.Automation.Language;
 using System.Reflection;
+using System.Security;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -31,17 +33,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json
     {
         public struct SerializeContext
         {
-            public SerializeContext(int maxDepth)
+            public SerializeContext(int maxDepth, bool serializeSecureString)
             {
                 this.MaxDepth = maxDepth;
+                this.SerializeSecureString = serializeSecureString;
             }
 
             public int MaxDepth { get; }
+
+            public bool SerializeSecureString { get; }
         }
 
-        public static string Serialize(object value)
+        public static string Serialize(object value, bool serializeSecureString = false)
         {
-            var context = new SerializeContext(1024);
+            var context = new SerializeContext(1024, serializeSecureString);
 
             return Serialize(value, context);
         }
@@ -75,6 +80,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json
             if (psObject != null)
             {
                 value = psObject.BaseObject;
+            }
+
+            if (value is SecureString secureString)
+            {
+                // This requires a conscious opt-in, rather than being the default behavior - to avoid accidentally leaking sensitive information.
+                if (context.SerializeSecureString)
+                {
+                    return secureString.ConvertToString();
+                }
+                else
+                {
+                    throw new InvalidOperationException("Unable to serialize secure string value");
+                }
             }
 
             if (value == NullString.Value || value == DBNull.Value)
