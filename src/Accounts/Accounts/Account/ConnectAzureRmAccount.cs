@@ -537,7 +537,7 @@ namespace Microsoft.Azure.Commands.Profile
                         shouldPopulateContextList = false;
                     }
 
-                    profileClient.WarningLog = (message) => _tasks.Enqueue(new Task(() => this.WriteWarning(message))); 
+                    profileClient.WarningLog = (message) => _tasks.Enqueue(new Task(() => this.WriteWarning(message)));
                     profileClient.InteractiveInformationLog = (message) => _tasks.Enqueue(new Task(() => WriteInteractiveInformation(message)));
                     profileClient.DebugLog = (message) => _tasks.Enqueue(new Task(() => this.WriteDebugWithTimestamp(message)));
                     profileClient.PromptAndReadLine = (message) =>
@@ -603,8 +603,28 @@ namespace Microsoft.Azure.Commands.Profile
                     }
                 });
 
-                WriteInteractiveInformation($"{Resources.AnnouncementsHeader}{System.Environment.NewLine}{Resources.AnnouncementsMessage}{System.Environment.NewLine}");
-                WriteInteractiveInformation($"{Resources.ReportIssue}{System.Environment.NewLine}");
+                WriteAnnouncementsPeriodically();
+            }
+        }
+
+        private void WriteAnnouncementsPeriodically()
+        {
+            if (ParameterSetName != UserParameterSet)
+            {
+                // Write-Host may block automation scenarios
+                return;
+            }
+            const string AnnouncementsFeatureName = "SignInAnnouncements";
+            TimeSpan AnnouncementsInterval = TimeSpan.FromDays(7);
+            if (AzureSession.Instance.TryGetComponent<IFrequencyService>(nameof(IFrequencyService), out var frequency))
+            {
+                frequency.Register(AnnouncementsFeatureName, AnnouncementsInterval);
+                // WriteInformation can't fail, so the second parameter always returns true
+                frequency.TryRun(AnnouncementsFeatureName, () => true, () =>
+                {
+                    WriteInformation($"{Resources.AnnouncementsHeader}{System.Environment.NewLine}{Resources.AnnouncementsMessage}{System.Environment.NewLine}", false);
+                    WriteInformation($"{Resources.ReportIssue}{System.Environment.NewLine}", false);
+                });
             }
         }
 
@@ -878,7 +898,7 @@ namespace Microsoft.Azure.Commands.Profile
                        AzConfigReader.GetAzConfig(ConfigKeys.EnableLoginByWam, true).ToString());
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 WriteDebug(string.Format("Failed to add telemtry for config as {0}", ex.Message));
             }
