@@ -41,6 +41,12 @@ function Enable-AzKubernetesRuntimeStorageClass {
         ${ResourceUri},
 
         [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Category('Body')]
+        [System.String]
+        # ReleaseTrain this extension participates in
+        ${ReleaseTrain} = "preview",
+
+        [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Category('Azure')]
@@ -127,6 +133,9 @@ function Enable-AzKubernetesRuntimeStorageClass {
     process {
         try {
 
+            ImportModule -ModuleName Az.KubernetesConfiguration
+            ImportModule -ModuleName Az.Resources
+
             . "$PSScriptRoot/Helpers.ps1"
 
             $connected_cluster_resource_id = [ConnectedClusterResourceId]::Parse($ResourceUri)
@@ -147,7 +156,7 @@ function Enable-AzKubernetesRuntimeStorageClass {
                 -IdentityType 'SystemAssigned' `
                 -Name "arc-k8s-storage-class" `
                 -ExtensionType "Microsoft.ManagedStorageClass" `
-                -ReleaseTrain "preview" `
+                -ReleaseTrain $ReleaseTrain `
                 -ConfigurationSetting @{"k8sRuntimeFpaObjectId" = $oid }
 
             Write-Output "Assign the extension with Storage Class Contributor role under the cluster scope..."

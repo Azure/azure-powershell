@@ -31,6 +31,7 @@ function ImportModule {
 
 }
 
+# Requires Az.Resources to be loaded
 function CheckRPRegistration {
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.DoNotExportAttribute()]
     param(
@@ -40,7 +41,6 @@ function CheckRPRegistration {
     )
 
     process {
-        ImportModule -ModuleName Az.Resources
 
         # Check if the RP is registered
         $rp_registration = $(Get-AzResourceProvider -ProviderNamespace $KubernetesRuntimeRPNamespace)

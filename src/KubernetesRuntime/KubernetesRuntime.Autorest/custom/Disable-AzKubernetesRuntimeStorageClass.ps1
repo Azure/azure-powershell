@@ -127,11 +127,12 @@ function Disable-AzKubernetesRuntimeStorageClass {
     process {
         try {
 
+            ImportModule -ModuleName Az.KubernetesConfiguration
+            ImportModule -ModuleName Az.Resources
+
             . "$PSScriptRoot/Helpers.ps1"
 
             $connected_cluster_resource_id = [ConnectedClusterResourceId]::Parse($ResourceUri)
-
-            ImportModule -ModuleName Az.KubernetesConfiguration
 
             Write-Output "Uninstalling storage class Arc extension in cluster $($connected_cluster_resource_id.ClusterName) in resource group $($connected_cluster_resource_id.ResourceGroup)..."
 
@@ -151,6 +152,7 @@ function Disable-AzKubernetesRuntimeStorageClass {
             Remove-AzKubernetesExtension -InputObject $extension
                 
             Write-Output "Delete role assignment of the extension identity with Storage Class Contributor role under the cluster scope..."
+
 
             $sc_contributor_role_assignment = Get-AzRoleAssignment `
                 -Scope $connected_cluster_resource_id.ToString() `

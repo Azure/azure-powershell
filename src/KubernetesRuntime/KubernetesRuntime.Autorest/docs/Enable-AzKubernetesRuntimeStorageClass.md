@@ -13,8 +13,8 @@ Enable Arc storage class service in a connected cluster.
 ## SYNTAX
 
 ```
-Enable-AzKubernetesRuntimeStorageClass -ResourceUri <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Enable-AzKubernetesRuntimeStorageClass -ResourceUri <String> [-ReleaseTrain <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +38,22 @@ Extension                      {…}
 Enables Arc storage class service in a connected cluster.
 Returns the created Azure resources.
 
+### Example 2: Enable Arc storage class service in a connected cluster using dev release train extension
+```powershell
+Enable-AzKubernetesRuntimeStorageClass -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -ReleaseTrain dev
+```
+
+```output
+Name                           Value
+----                           -----
+K8sExtensionContributorRoleAs… Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment
+StorageClassContributorRoleAs… Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment
+Extension                      {…}
+```
+
+Enables Arc storage class service in a connected cluster using dev release train extension.
+Returns the created Azure resources.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -48,6 +64,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReleaseTrain
+ReleaseTrain this extension participates in
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
