@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added support to create, get and delete Bastion shareable links
+    - `New-AzBastionShareableLink`
+    - `Get-AzBastionShareableLink`
+    - `Remove-AzBastionShareableLink`
 
 ## Version 7.8.0
 * Added new cmdlets to support Save & Commit (AzureFirewallPolicy draft)
@@ -61,10 +65,6 @@
 * Added AdminState parameter to Load Balancer Backend Address
     - `New-AzLoadBalancerBackendAddressConfig`
 * Updated PS SDK to older SDK removing identity field
-* Added support to create, get and delete Bastion shareable links
-    - `New-AzBastionShareableLink`
-    - `Get-AzBastionShareableLink`
-    - `Remove-AzBastionShareableLink`
 
 ## Version 7.5.0
 * Added cmdlet `Convert-AzNetworkWatcherClassicConnectionMonitor` for converting a classic connection monitor to V2 connection monitor.
