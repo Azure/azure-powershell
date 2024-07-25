@@ -6,7 +6,7 @@ Update-AzMLWorkspaceBatchDeployment -ResourceGroupName ml-rg-test -WorkspaceName
 ```output
 Location Name        SystemDataCreatedAt SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType AzureAsyncOperation Kind ResourceGroupName
 -------- ----        ------------------- -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- ------------------- ---- -----------------
-eastus   nonmlflowdp 6/1/2022 6:19:16 AM Lucas Yao (Wicresoft North America)                         6/1/2022 6:19:16 AM                                                                                     ml-rg-test
+eastus   nonmlflowdp 6/1/2022 6:19:16 AM UserName (Example)                                 6/1/2022 6:19:16 AM                                                                                     ml-rg-test
 ```
 
 Update a batch inference deployment (asynchronous)
@@ -19,7 +19,7 @@ Get-AzMLWorkspaceBatchDeployment -ResourceGroupName ml-rg-test -WorkspaceName ml
 ```output
 Location Name        SystemDataCreatedAt SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType AzureAsyncOperation Kind ResourceGroupName
 -------- ----        ------------------- -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- ------------------- ---- -----------------
-eastus   nonmlflowdp 6/1/2022 6:19:16 AM Lucas Yao (Wicresoft North America)                         6/1/2022 6:19:16 AM                                                                                     ml-rg-test
+eastus   nonmlflowdp 6/1/2022 6:19:16 AM UserName (Example)                                 6/1/2022 6:19:16 AM                                                                                     ml-rg-test
 ```
 
 Update a batch inference deployment (asynchronous) by pipeline

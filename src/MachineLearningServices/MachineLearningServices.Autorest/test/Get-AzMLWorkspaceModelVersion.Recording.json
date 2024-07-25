@@ -1,17 +1,17 @@
 {
-  "Get-AzMLWorkspaceModelVersion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/models/modelcontaonerpwsh01/versions?api-version=2022-05-01+1": {
+  "Get-AzMLWorkspaceModelVersion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/models/heart-classifier-batch/versions?api-version=2024-04-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/models/modelcontaonerpwsh01/versions?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/models/heart-classifier-batch/versions?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "39" ],
-        "x-ms-client-request-id": [ "eaeb54d2-8bcc-4b7c-8484-c4f50014a9dc" ],
+        "x-ms-unique-id": [ "101" ],
+        "x-ms-client-request-id": [ "fb3a73f6-24ea-4c3c-861c-790e7628411e" ],
         "CommandName": [ "Get-AzMLWorkspaceModelVersion" ],
         "FullCommandName": [ "Get-AzMLWorkspaceModelVersion_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.MachineLearningServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,40 +22,43 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11965" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "263dfd57-94f5-494f-be10-48a276b6e5d5" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
         "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
         "x-ms-response-type": [ "standard" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.118" ],
-        "x-ms-request-id": [ "3bba5290-d3cb-48d5-aeab-ba0616ef3da1" ],
-        "x-ms-correlation-request-id": [ "3bba5290-d3cb-48d5-aeab-ba0616ef3da1" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094058Z:3bba5290-d3cb-48d5-aeab-ba0616ef3da1" ],
-        "Date": [ "Sun, 05 Jun 2022 09:40:58 GMT" ]
+        "x-request-time": [ "0.241" ],
+        "x-ms-correlation-request-id": [ "263dfd57-94f5-494f-be10-48a276b6e5d5" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085133Z:263dfd57-94f5-494f-be10-48a276b6e5d5" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3BBCA3D99C224128A17A40E166F329EC Ref B: TYO201151005031 Ref C: 2024-07-24T08:51:33Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:51:33 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "17" ],
+        "Content-Length": [ "1669" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"value\": []\n}",
+      "Content": "{\n  \"value\": [\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/models/heart-classifier-batch/versions/1\",\n      \"name\": \"1\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/models/versions\",\n      \"properties\": {\n        \"description\": null,\n        \"tags\": {},\n        \"properties\": {},\n        \"isArchived\": false,\n        \"isAnonymous\": false,\n        \"flavors\": {\n          \"python_function\": {\n            \"data\": {\n              \"env\": \"conda.yaml\",\n              \"loader_module\": \"mlflow.sklearn\",\n              \"model_path\": \"model.pkl\",\n              \"python_version\": \"3.8.5\"\n            }\n          },\n          \"sklearn\": {\n            \"data\": {\n              \"pickled_model\": \"model.pkl\",\n              \"serialization_format\": \"cloudpickle\",\n              \"sklearn_version\": \"1.1.2\"\n            }\n          }\n        },\n        \"modelType\": \"mlflow_model\",\n        \"modelUri\": \"azureml://subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/workspaces/mlworkspace-test2/datastores/workspaceblobstore/paths/heart-classifier-mlflow\",\n        \"jobName\": null,\n        \"provisioningState\": \"Succeeded\",\n        \"stage\": \"Development\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2024-07-24T08:45:07.7208568+00:00\",\n        \"createdBy\": \"Joyer Jin (Wicresoft North America Ltd)\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2024-07-24T08:45:07.7208568+00:00\",\n        \"lastModifiedBy\": \"Joyer Jin (Wicresoft North America Ltd)\",\n        \"lastModifiedByType\": \"User\"\n      }\n    }\n  ]\n}",
       "isContentBase64": false
     }
   },
-  "Get-AzMLWorkspaceModelVersion+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/models/modelcontaonerpwsh01/versions?api-version=2022-05-01\u0026version=1+1": {
+  "Get-AzMLWorkspaceModelVersion+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/models/heart-classifier-batch/versions?api-version=2024-04-01\u0026version=1+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/models/modelcontaonerpwsh01/versions?api-version=2022-05-01\u0026version=1",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/models/heart-classifier-batch/versions?api-version=2024-04-01\u0026version=1",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "40" ],
-        "x-ms-client-request-id": [ "9b549421-b1e4-4ed2-b232-9780c91fb60e" ],
+        "x-ms-unique-id": [ "102" ],
+        "x-ms-client-request-id": [ "0e63f8d0-9658-4323-8987-e8662e4ad602" ],
         "CommandName": [ "Get-AzMLWorkspaceModelVersion" ],
         "FullCommandName": [ "Get-AzMLWorkspaceModelVersion_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.MachineLearningServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -66,24 +69,27 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11964" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "87a0d32c-659c-430e-849a-7b6586c7f7b2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
         "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
         "x-ms-response-type": [ "standard" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.111" ],
-        "x-ms-request-id": [ "200b6f78-645d-4831-95b4-fb1f1853583f" ],
-        "x-ms-correlation-request-id": [ "200b6f78-645d-4831-95b4-fb1f1853583f" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094100Z:200b6f78-645d-4831-95b4-fb1f1853583f" ],
-        "Date": [ "Sun, 05 Jun 2022 09:40:59 GMT" ]
+        "x-aml-cluster": [ "vienna-eastus-02" ],
+        "x-request-time": [ "0.303" ],
+        "x-ms-correlation-request-id": [ "87a0d32c-659c-430e-849a-7b6586c7f7b2" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085134Z:87a0d32c-659c-430e-849a-7b6586c7f7b2" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4A11EC7D0F93485996173CB9E68719F0 Ref B: TYO201151005031 Ref C: 2024-07-24T08:51:33Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:51:34 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "17" ],
+        "Content-Length": [ "1669" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"value\": []\n}",
+      "Content": "{\n  \"value\": [\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/models/heart-classifier-batch/versions/1\",\n      \"name\": \"1\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/models/versions\",\n      \"properties\": {\n        \"description\": null,\n        \"tags\": {},\n        \"properties\": {},\n        \"isArchived\": false,\n        \"isAnonymous\": false,\n        \"flavors\": {\n          \"python_function\": {\n            \"data\": {\n              \"env\": \"conda.yaml\",\n              \"loader_module\": \"mlflow.sklearn\",\n              \"model_path\": \"model.pkl\",\n              \"python_version\": \"3.8.5\"\n            }\n          },\n          \"sklearn\": {\n            \"data\": {\n              \"pickled_model\": \"model.pkl\",\n              \"serialization_format\": \"cloudpickle\",\n              \"sklearn_version\": \"1.1.2\"\n            }\n          }\n        },\n        \"modelType\": \"mlflow_model\",\n        \"modelUri\": \"azureml://subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/workspaces/mlworkspace-test2/datastores/workspaceblobstore/paths/heart-classifier-mlflow\",\n        \"jobName\": null,\n        \"provisioningState\": \"Succeeded\",\n        \"stage\": \"Development\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2024-07-24T08:45:07.7208568+00:00\",\n        \"createdBy\": \"Joyer Jin (Wicresoft North America Ltd)\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2024-07-24T08:45:07.7208568+00:00\",\n        \"lastModifiedBy\": \"Joyer Jin (Wicresoft North America Ltd)\",\n        \"lastModifiedByType\": \"User\"\n      }\n    }\n  ]\n}",
       "isContentBase64": false
     }
   }

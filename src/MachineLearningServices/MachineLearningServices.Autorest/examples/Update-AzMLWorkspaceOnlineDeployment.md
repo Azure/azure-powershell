@@ -6,7 +6,7 @@ Update-AzMLWorkspaceOnlineDeployment -ResourceGroupName ml-rg-test -WorkspaceNam
 ```output
 Location Name SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType AzureAsyncOperation Kind    ResourceGroupName
 -------- ---- -------------------  -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- ------------------- ----    -----------------
-eastus   blue 5/19/2022 2:52:06 AM Lucas Yao (Wicresoft North America)                         5/19/2022 2:52:06 AM                                                                               Managed ml-rg-test
+eastus   blue 5/19/2022 2:52:06 AM UserName (Example)                                 5/19/2022 2:52:06 AM                                                                               Managed ml-rg-test
 ```
 
 Update Online Deployment (asynchronous)
@@ -19,7 +19,7 @@ Get-AzMLWorkspaceOnlineDeployment -ResourceGroupName ml-rg-test -WorkspaceName m
 ```output
 Location Name SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType AzureAsyncOperation Kind    ResourceGroupName
 -------- ---- -------------------  -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- ------------------- ----    -----------------
-eastus   blue 5/19/2022 2:52:06 AM Lucas Yao (Wicresoft North America)                         5/19/2022 2:52:06 AM                                                                               Managed ml-rg-test
+eastus   blue 5/19/2022 2:52:06 AM UserName (Example)                                 5/19/2022 2:52:06 AM                                                                               Managed ml-rg-test
 ```
 
 Update Online Deployment (asynchronous) by pipeline
