@@ -1,5 +1,5 @@
 ---
-external help file: Az.Resources-help.xml
+external help file:
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/get-azpolicyassignment
 schema: 2.0.0
@@ -14,7 +14,17 @@ Gets policy assignments.
 
 ### Default (Default)
 ```
-Get-AzPolicyAssignment [-BackwardCompatible] [-DefaultProfile <PSObject>]
+Get-AzPolicyAssignment [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Id
+```
+Get-AzPolicyAssignment -Id <String> [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### IncludeDescendent
+```
+Get-AzPolicyAssignment -IncludeDescendent [-Scope <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -26,26 +36,13 @@ Get-AzPolicyAssignment -Name <String> [-Scope <String>] [-BackwardCompatible] [-
 
 ### PolicyDefinitionId
 ```
-Get-AzPolicyAssignment [-Scope <String>] -PolicyDefinitionId <String> [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### IncludeDescendent
-```
-Get-AzPolicyAssignment [-Scope <String>] [-IncludeDescendent] [-BackwardCompatible]
+Get-AzPolicyAssignment -PolicyDefinitionId <String> [-Scope <String>] [-BackwardCompatible]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Scope
 ```
-Get-AzPolicyAssignment -Scope <String> [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### Id
-```
-Get-AzPolicyAssignment -Id <String> [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzPolicyAssignment -Scope <String> [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -195,19 +192,7 @@ Valid scopes are: management group (format: '/providers/Microsoft.Management/man
 
 ```yaml
 Type: System.String
-Parameter Sets: Name, PolicyDefinitionId, IncludeDescendent
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: Scope
+Parameter Sets: IncludeDescendent, Name, PolicyDefinitionId, Scope
 Aliases:
 
 Required: True
@@ -233,3 +218,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

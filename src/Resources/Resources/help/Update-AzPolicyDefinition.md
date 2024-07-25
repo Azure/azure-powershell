@@ -1,5 +1,5 @@
 ---
-external help file: Az.Resources-help.xml
+external help file:
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/update-azpolicydefinition
 schema: 2.0.0
@@ -14,40 +14,37 @@ This operation updates an existing policy definition in the given subscription o
 
 ### Name (Default)
 ```
-Update-AzPolicyDefinition -Name <String> [-DisplayName <String>] [-Description <String>] [-Policy <String>]
- [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### SubscriptionId
-```
-Update-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-DisplayName <String>]
- [-Description <String>] [-Policy <String>] [-Metadata <String>] [-Parameter <String>] [-Mode <String>]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ManagementGroupName
-```
-Update-AzPolicyDefinition -Name <String> -ManagementGroupName <String> [-DisplayName <String>]
- [-Description <String>] [-Policy <String>] [-Metadata <String>] [-Parameter <String>] [-Mode <String>]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzPolicyDefinition -Name <String> [-BackwardCompatible] [-Description <String>] [-DisplayName <String>]
+ [-Metadata <String>] [-Mode <String>] [-Parameter <String>] [-Policy <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Id
 ```
-Update-AzPolicyDefinition -Id <String> [-DisplayName <String>] [-Description <String>] [-Policy <String>]
- [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzPolicyDefinition -Id <String> [-BackwardCompatible] [-Description <String>] [-DisplayName <String>]
+ [-Metadata <String>] [-Mode <String>] [-Parameter <String>] [-Policy <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Update-AzPolicyDefinition [-DisplayName <String>] [-Description <String>] [-Policy <String>]
- [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-BackwardCompatible]
- -InputObject <IPolicyDefinition> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzPolicyDefinition -InputObject <IPolicyDefinition> [-BackwardCompatible] [-Description <String>]
+ [-DisplayName <String>] [-Metadata <String>] [-Mode <String>] [-Parameter <String>] [-Policy <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ManagementGroupName
+```
+Update-AzPolicyDefinition -ManagementGroupName <String> -Name <String> [-BackwardCompatible]
+ [-Description <String>] [-DisplayName <String>] [-Metadata <String>] [-Mode <String>] [-Parameter <String>]
+ [-Policy <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### SubscriptionId
+```
+Update-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-BackwardCompatible]
+ [-Description <String>] [-DisplayName <String>] [-Metadata <String>] [-Mode <String>] [-Parameter <String>]
+ [-Policy <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -167,6 +164,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 
+
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition
 Parameter Sets: InputObject
@@ -175,7 +173,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByValue, ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -231,7 +229,7 @@ The name of the policy definition to update.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name, SubscriptionId, ManagementGroupName
+Parameter Sets: ManagementGroupName, Name, SubscriptionId
 Aliases: PolicyDefinitionName
 
 Required: True
@@ -338,3 +336,4 @@ ALIASES
 Set-AzPolicyDefinition
 
 ## RELATED LINKS
+

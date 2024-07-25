@@ -1,4 +1,4 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -61,7 +61,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Authorization", "..\..\g
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MSGraph", "..\..\generated\Resources\MSGraph.Autorest\Az.MSGraph.csproj", "{E6846629-DD89-4B6B-9006-C096E4EED406}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Policy", "..\..\generated\Resources\Policy.Autorest\Az.Policy.csproj", "{B5CB811F-BF27-47CC-AB3A-6ABE4CD8A25E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Policy", "Policy.Autorest\Az.Policy.csproj", "{DF668516-C981-4673-977C-2CE3F224AF17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -178,10 +178,10 @@ Global
 		{E6846629-DD89-4B6B-9006-C096E4EED406}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6846629-DD89-4B6B-9006-C096E4EED406}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6846629-DD89-4B6B-9006-C096E4EED406}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B5CB811F-BF27-47CC-AB3A-6ABE4CD8A25E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B5CB811F-BF27-47CC-AB3A-6ABE4CD8A25E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B5CB811F-BF27-47CC-AB3A-6ABE4CD8A25E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B5CB811F-BF27-47CC-AB3A-6ABE4CD8A25E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF668516-C981-4673-977C-2CE3F224AF17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF668516-C981-4673-977C-2CE3F224AF17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF668516-C981-4673-977C-2CE3F224AF17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF668516-C981-4673-977C-2CE3F224AF17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5323D4CC-D4B7-44A7-B79A-F91C47AC9650} = {23F657BD-37C1-4E91-8548-5783E43D40B0}
