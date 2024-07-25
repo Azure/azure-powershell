@@ -36,11 +36,16 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// resultType object). Example: &#34;additionalFormatOptions&#34;: { &#34;OVERWRITE&#34;:
         /// &#34;TRUE&#34;, &#34;MAX_FILE_SIZE&#34;: &#34;&#39;FALSE&#39;&#34; }
         /// </param>
-        public SnowflakeExportCopyCommand(System.Collections.Generic.IDictionary<string, object> additionalCopyOptions = default(System.Collections.Generic.IDictionary<string, object>), System.Collections.Generic.IDictionary<string, object> additionalFormatOptions = default(System.Collections.Generic.IDictionary<string, object>))
+
+        /// <param name="storageIntegration">The name of the snowflake storage integration to use for the copy
+        /// operation. Type: string (or Expression with resultType string).
+        /// </param>
+        public SnowflakeExportCopyCommand(System.Collections.Generic.IDictionary<string, object> additionalCopyOptions = default(System.Collections.Generic.IDictionary<string, object>), System.Collections.Generic.IDictionary<string, object> additionalFormatOptions = default(System.Collections.Generic.IDictionary<string, object>), object storageIntegration = default(object))
 
         {
             this.AdditionalCopyOptions = additionalCopyOptions;
             this.AdditionalFormatOptions = additionalFormatOptions;
+            this.StorageIntegration = storageIntegration;
             CustomInit();
         }
 
@@ -67,5 +72,12 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "additionalFormatOptions")]
         public System.Collections.Generic.IDictionary<string, object> AdditionalFormatOptions {get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the snowflake storage integration to use for the
+        /// copy operation. Type: string (or Expression with resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "storageIntegration")]
+        public object StorageIntegration {get; set; }
     }
 }

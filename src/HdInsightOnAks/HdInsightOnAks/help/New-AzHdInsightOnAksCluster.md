@@ -20,14 +20,14 @@ New-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName
  [-AssignedIdentityResourceId <String>] [-AuthorizationGroupId <String[]>] [-AuthorizationUserId <String[]>]
  [-AutoscaleProfileAutoscaleType <String>] [-AutoscaleProfileEnabled]
  [-AutoscaleProfileGracefulDecommissionTimeout <Int32>] [-ClusterAccessProfileEnableInternalIngress]
- [-ClusterType <String>] [-ClusterVersion <String>] [-ComputeProfileNode <INodeProfile[]>]
- [-CoordinatorDebugEnable] [-CoordinatorDebugPort <Int32>] [-CoordinatorDebugSuspend]
- [-CoordinatorHighAvailabilityEnabled] [-DatabaseHost <String>] [-DatabaseName <String>]
- [-DatabasePasswordSecretRef <String>] [-DatabaseUsername <String>] [-DiskStorageDataDiskSize <Int32>]
- [-DiskStorageDataDiskType <String>] [-EnableLogAnalytics] [-FlinkHiveCatalogDbConnectionUrl <String>]
- [-FlinkHiveCatalogDbPasswordSecretName <String>] [-FlinkHiveCatalogDbUserName <String>]
- [-FlinkProfileDeploymentMode <String>] [-FlinkStorageUrl <String>] [-FlinkTaskManagerReplicaCount <Int32>]
- [-HistoryServerCpu <Single>] [-HistoryServerMemory <Int64>]
+ [-ClusterType <String>] [-ClusterVersion <String>] [-ComputeProfileAvailabilityZone <String[]>]
+ [-ComputeProfileNode <INodeProfile[]>] [-CoordinatorDebugEnable] [-CoordinatorDebugPort <Int32>]
+ [-CoordinatorDebugSuspend] [-CoordinatorHighAvailabilityEnabled] [-DatabaseHost <String>]
+ [-DatabaseName <String>] [-DatabasePasswordSecretRef <String>] [-DatabaseUsername <String>]
+ [-DiskStorageDataDiskSize <Int32>] [-DiskStorageDataDiskType <String>] [-EnableLogAnalytics]
+ [-FlinkHiveCatalogDbConnectionUrl <String>] [-FlinkHiveCatalogDbPasswordSecretName <String>]
+ [-FlinkHiveCatalogDbUserName <String>] [-FlinkProfileDeploymentMode <String>] [-FlinkStorageUrl <String>]
+ [-FlinkTaskManagerReplicaCount <Int32>] [-HistoryServerCpu <Single>] [-HistoryServerMemory <Int64>]
  [-HiveMetastoreDbConnectionAuthenticationMode <String>] [-JobManagerCpu <Single>] [-JobManagerMemory <Int64>]
  [-JobSpecArg <String>] [-JobSpecEntryClass <String>] [-JobSpecJarName <String>]
  [-JobSpecJobJarDirectory <String>] [-JobSpecSavePointName <String>] [-JobSpecUpgradeMode <String>]
@@ -35,6 +35,7 @@ New-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName
  [-KeyVaultResourceId <String>] [-LlapProfile <Hashtable>] [-LoadBasedConfigCooldownPeriod <Int32>]
  [-LoadBasedConfigMaxNode <Int32>] [-LoadBasedConfigMinNode <Int32>] [-LoadBasedConfigPollInterval <Int32>]
  [-LoadBasedConfigScalingRule <IScalingRule[]>] [-LogAnalyticProfileMetricsEnabled]
+ [-ManagedIdentityProfileIdentityList <IManagedIdentitySpec[]>]
  [-MetastoreSpecDbConnectionAuthenticationMode <String>] [-OssVersion <String>] [-PrometheuProfileEnabled]
  [-RangerAdmin <String[]>] [-RangerAuditStorageAccount <String>] [-RangerPluginProfileEnabled]
  [-RangerUsersyncEnabled] [-RangerUsersyncGroup <String[]>] [-RangerUsersyncMode <String>]
@@ -45,26 +46,26 @@ New-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName
  [-SparkHiveCatalogDbName <String>] [-SparkHiveCatalogDbPasswordSecretName <String>]
  [-SparkHiveCatalogDbServerName <String>] [-SparkHiveCatalogDbUserName <String>]
  [-SparkHiveCatalogKeyVaultId <String>] [-SparkStorageUrl <String>] [-SparkThriftUrl <String>]
- [-SshProfileCount <Int32>] [-StorageHivecatalogName <String>] [-StorageHivecatalogSchema <String>]
- [-StoragePartitionRetentionInDay <Int32>] [-StoragePath <String>] [-StubProfile <Hashtable>]
- [-Tag <Hashtable>] [-TaskManagerCpu <Single>] [-TaskManagerMemory <Int64>]
+ [-SshProfileCount <Int32>] [-SshProfileVMSize <String>] [-StorageHivecatalogName <String>]
+ [-StorageHivecatalogSchema <String>] [-StoragePartitionRetentionInDay <Int32>] [-StoragePath <String>]
+ [-StubProfile <Hashtable>] [-Tag <Hashtable>] [-TaskManagerCpu <Single>] [-TaskManagerMemory <Int64>]
  [-TrinoHiveCatalog <IHiveCatalogOption[]>] [-TrinoProfileUserPluginsSpecPlugin <ITrinoUserPlugin[]>]
  [-WorkerDebugEnable] [-WorkerDebugPort <Int32>] [-WorkerDebugSuspend] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityClusterpoolExpanded
@@ -74,14 +75,14 @@ New-AzHdInsightOnAksCluster -Name <String> -ClusterpoolInputObject <IHdInsightOn
  [-AssignedIdentityObjectId <String>] [-AssignedIdentityResourceId <String>] [-AuthorizationGroupId <String[]>]
  [-AuthorizationUserId <String[]>] [-AutoscaleProfileAutoscaleType <String>] [-AutoscaleProfileEnabled]
  [-AutoscaleProfileGracefulDecommissionTimeout <Int32>] [-ClusterAccessProfileEnableInternalIngress]
- [-ClusterType <String>] [-ClusterVersion <String>] [-ComputeProfileNode <INodeProfile[]>]
- [-CoordinatorDebugEnable] [-CoordinatorDebugPort <Int32>] [-CoordinatorDebugSuspend]
- [-CoordinatorHighAvailabilityEnabled] [-DatabaseHost <String>] [-DatabaseName <String>]
- [-DatabasePasswordSecretRef <String>] [-DatabaseUsername <String>] [-DiskStorageDataDiskSize <Int32>]
- [-DiskStorageDataDiskType <String>] [-EnableLogAnalytics] [-FlinkHiveCatalogDbConnectionUrl <String>]
- [-FlinkHiveCatalogDbPasswordSecretName <String>] [-FlinkHiveCatalogDbUserName <String>]
- [-FlinkProfileDeploymentMode <String>] [-FlinkStorageUrl <String>] [-FlinkTaskManagerReplicaCount <Int32>]
- [-HistoryServerCpu <Single>] [-HistoryServerMemory <Int64>]
+ [-ClusterType <String>] [-ClusterVersion <String>] [-ComputeProfileAvailabilityZone <String[]>]
+ [-ComputeProfileNode <INodeProfile[]>] [-CoordinatorDebugEnable] [-CoordinatorDebugPort <Int32>]
+ [-CoordinatorDebugSuspend] [-CoordinatorHighAvailabilityEnabled] [-DatabaseHost <String>]
+ [-DatabaseName <String>] [-DatabasePasswordSecretRef <String>] [-DatabaseUsername <String>]
+ [-DiskStorageDataDiskSize <Int32>] [-DiskStorageDataDiskType <String>] [-EnableLogAnalytics]
+ [-FlinkHiveCatalogDbConnectionUrl <String>] [-FlinkHiveCatalogDbPasswordSecretName <String>]
+ [-FlinkHiveCatalogDbUserName <String>] [-FlinkProfileDeploymentMode <String>] [-FlinkStorageUrl <String>]
+ [-FlinkTaskManagerReplicaCount <Int32>] [-HistoryServerCpu <Single>] [-HistoryServerMemory <Int64>]
  [-HiveMetastoreDbConnectionAuthenticationMode <String>] [-JobManagerCpu <Single>] [-JobManagerMemory <Int64>]
  [-JobSpecArg <String>] [-JobSpecEntryClass <String>] [-JobSpecJarName <String>]
  [-JobSpecJobJarDirectory <String>] [-JobSpecSavePointName <String>] [-JobSpecUpgradeMode <String>]
@@ -89,6 +90,7 @@ New-AzHdInsightOnAksCluster -Name <String> -ClusterpoolInputObject <IHdInsightOn
  [-KeyVaultResourceId <String>] [-LlapProfile <Hashtable>] [-LoadBasedConfigCooldownPeriod <Int32>]
  [-LoadBasedConfigMaxNode <Int32>] [-LoadBasedConfigMinNode <Int32>] [-LoadBasedConfigPollInterval <Int32>]
  [-LoadBasedConfigScalingRule <IScalingRule[]>] [-LogAnalyticProfileMetricsEnabled]
+ [-ManagedIdentityProfileIdentityList <IManagedIdentitySpec[]>]
  [-MetastoreSpecDbConnectionAuthenticationMode <String>] [-OssVersion <String>] [-PrometheuProfileEnabled]
  [-RangerAdmin <String[]>] [-RangerAuditStorageAccount <String>] [-RangerPluginProfileEnabled]
  [-RangerUsersyncEnabled] [-RangerUsersyncGroup <String[]>] [-RangerUsersyncMode <String>]
@@ -99,26 +101,26 @@ New-AzHdInsightOnAksCluster -Name <String> -ClusterpoolInputObject <IHdInsightOn
  [-SparkHiveCatalogDbName <String>] [-SparkHiveCatalogDbPasswordSecretName <String>]
  [-SparkHiveCatalogDbServerName <String>] [-SparkHiveCatalogDbUserName <String>]
  [-SparkHiveCatalogKeyVaultId <String>] [-SparkStorageUrl <String>] [-SparkThriftUrl <String>]
- [-SshProfileCount <Int32>] [-StorageHivecatalogName <String>] [-StorageHivecatalogSchema <String>]
- [-StoragePartitionRetentionInDay <Int32>] [-StoragePath <String>] [-StubProfile <Hashtable>]
- [-Tag <Hashtable>] [-TaskManagerCpu <Single>] [-TaskManagerMemory <Int64>]
+ [-SshProfileCount <Int32>] [-SshProfileVMSize <String>] [-StorageHivecatalogName <String>]
+ [-StorageHivecatalogSchema <String>] [-StoragePartitionRetentionInDay <Int32>] [-StoragePath <String>]
+ [-StubProfile <Hashtable>] [-Tag <Hashtable>] [-TaskManagerCpu <Single>] [-TaskManagerMemory <Int64>]
  [-TrinoHiveCatalog <IHiveCatalogOption[]>] [-TrinoProfileUserPluginsSpecPlugin <ITrinoUserPlugin[]>]
  [-WorkerDebugEnable] [-WorkerDebugPort <Int32>] [-WorkerDebugSuspend] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityClusterpool
 ```
 New-AzHdInsightOnAksCluster -Name <String> -ClusterpoolInputObject <IHdInsightOnAksIdentity>
  -HdInsightOnAksCluster <ICluster> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -HdInsightOnAksCluster <ICluster> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -128,14 +130,14 @@ New-AzHdInsightOnAksCluster -InputObject <IHdInsightOnAksIdentity> -Location <St
  [-AssignedIdentityObjectId <String>] [-AssignedIdentityResourceId <String>] [-AuthorizationGroupId <String[]>]
  [-AuthorizationUserId <String[]>] [-AutoscaleProfileAutoscaleType <String>] [-AutoscaleProfileEnabled]
  [-AutoscaleProfileGracefulDecommissionTimeout <Int32>] [-ClusterAccessProfileEnableInternalIngress]
- [-ClusterType <String>] [-ClusterVersion <String>] [-ComputeProfileNode <INodeProfile[]>]
- [-CoordinatorDebugEnable] [-CoordinatorDebugPort <Int32>] [-CoordinatorDebugSuspend]
- [-CoordinatorHighAvailabilityEnabled] [-DatabaseHost <String>] [-DatabaseName <String>]
- [-DatabasePasswordSecretRef <String>] [-DatabaseUsername <String>] [-DiskStorageDataDiskSize <Int32>]
- [-DiskStorageDataDiskType <String>] [-EnableLogAnalytics] [-FlinkHiveCatalogDbConnectionUrl <String>]
- [-FlinkHiveCatalogDbPasswordSecretName <String>] [-FlinkHiveCatalogDbUserName <String>]
- [-FlinkProfileDeploymentMode <String>] [-FlinkStorageUrl <String>] [-FlinkTaskManagerReplicaCount <Int32>]
- [-HistoryServerCpu <Single>] [-HistoryServerMemory <Int64>]
+ [-ClusterType <String>] [-ClusterVersion <String>] [-ComputeProfileAvailabilityZone <String[]>]
+ [-ComputeProfileNode <INodeProfile[]>] [-CoordinatorDebugEnable] [-CoordinatorDebugPort <Int32>]
+ [-CoordinatorDebugSuspend] [-CoordinatorHighAvailabilityEnabled] [-DatabaseHost <String>]
+ [-DatabaseName <String>] [-DatabasePasswordSecretRef <String>] [-DatabaseUsername <String>]
+ [-DiskStorageDataDiskSize <Int32>] [-DiskStorageDataDiskType <String>] [-EnableLogAnalytics]
+ [-FlinkHiveCatalogDbConnectionUrl <String>] [-FlinkHiveCatalogDbPasswordSecretName <String>]
+ [-FlinkHiveCatalogDbUserName <String>] [-FlinkProfileDeploymentMode <String>] [-FlinkStorageUrl <String>]
+ [-FlinkTaskManagerReplicaCount <Int32>] [-HistoryServerCpu <Single>] [-HistoryServerMemory <Int64>]
  [-HiveMetastoreDbConnectionAuthenticationMode <String>] [-JobManagerCpu <Single>] [-JobManagerMemory <Int64>]
  [-JobSpecArg <String>] [-JobSpecEntryClass <String>] [-JobSpecJarName <String>]
  [-JobSpecJobJarDirectory <String>] [-JobSpecSavePointName <String>] [-JobSpecUpgradeMode <String>]
@@ -143,6 +145,7 @@ New-AzHdInsightOnAksCluster -InputObject <IHdInsightOnAksIdentity> -Location <St
  [-KeyVaultResourceId <String>] [-LlapProfile <Hashtable>] [-LoadBasedConfigCooldownPeriod <Int32>]
  [-LoadBasedConfigMaxNode <Int32>] [-LoadBasedConfigMinNode <Int32>] [-LoadBasedConfigPollInterval <Int32>]
  [-LoadBasedConfigScalingRule <IScalingRule[]>] [-LogAnalyticProfileMetricsEnabled]
+ [-ManagedIdentityProfileIdentityList <IManagedIdentitySpec[]>]
  [-MetastoreSpecDbConnectionAuthenticationMode <String>] [-OssVersion <String>] [-PrometheuProfileEnabled]
  [-RangerAdmin <String[]>] [-RangerAuditStorageAccount <String>] [-RangerPluginProfileEnabled]
  [-RangerUsersyncEnabled] [-RangerUsersyncGroup <String[]>] [-RangerUsersyncMode <String>]
@@ -153,18 +156,18 @@ New-AzHdInsightOnAksCluster -InputObject <IHdInsightOnAksIdentity> -Location <St
  [-SparkHiveCatalogDbName <String>] [-SparkHiveCatalogDbPasswordSecretName <String>]
  [-SparkHiveCatalogDbServerName <String>] [-SparkHiveCatalogDbUserName <String>]
  [-SparkHiveCatalogKeyVaultId <String>] [-SparkStorageUrl <String>] [-SparkThriftUrl <String>]
- [-SshProfileCount <Int32>] [-StorageHivecatalogName <String>] [-StorageHivecatalogSchema <String>]
- [-StoragePartitionRetentionInDay <Int32>] [-StoragePath <String>] [-StubProfile <Hashtable>]
- [-Tag <Hashtable>] [-TaskManagerCpu <Single>] [-TaskManagerMemory <Int64>]
+ [-SshProfileCount <Int32>] [-SshProfileVMSize <String>] [-StorageHivecatalogName <String>]
+ [-StorageHivecatalogSchema <String>] [-StoragePartitionRetentionInDay <Int32>] [-StoragePath <String>]
+ [-StubProfile <Hashtable>] [-Tag <Hashtable>] [-TaskManagerCpu <Single>] [-TaskManagerMemory <Int64>]
  [-TrinoHiveCatalog <IHiveCatalogOption[]>] [-TrinoProfileUserPluginsSpecPlugin <ITrinoUserPlugin[]>]
  [-WorkerDebugEnable] [-WorkerDebugPort <Int32>] [-WorkerDebugSuspend] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzHdInsightOnAksCluster -InputObject <IHdInsightOnAksIdentity> -HdInsightOnAksCluster <ICluster>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -841,6 +844,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ComputeProfileAvailabilityZone
+The list of Availability zones to use for AKS VMSS nodes.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterpoolExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ComputeProfileNode
 The nodes definitions.
 
@@ -1178,7 +1196,7 @@ Accept wildcard characters: False
 
 ### -HiveMetastoreDbConnectionAuthenticationMode
 The authentication mode to connect to your Hive metastore database.
-More details: https://learn.microsoft.com/azure/azure-sql/database/logins-create-manage#authentication-and-authorization
+More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manageview=azuresql#authentication-and-authorization
 
 ```yaml
 Type: System.String
@@ -1541,9 +1559,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ManagedIdentityProfileIdentityList
+The list of managed identity.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentitySpec[]
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterpoolExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MetastoreSpecDbConnectionAuthenticationMode
 The authentication mode to connect to your Hive metastore database.
-More details: https://learn.microsoft.com/azure/azure-sql/database/logins-create-manage#authentication-and-authorization
+More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manageview=azuresql#authentication-and-authorization
 
 ```yaml
 Type: System.String
@@ -1611,6 +1644,21 @@ Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Crea
 Aliases: ClusterPoolName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -1973,6 +2021,21 @@ Number of ssh pods per cluster.
 
 ```yaml
 Type: System.Int32
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterpoolExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SshProfileVMSize
+The virtual machine SKU.
+
+```yaml
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityClusterpoolExpanded, CreateViaIdentityExpanded
 Aliases:
 

@@ -15,5 +15,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     {
         public const string SQL = "SQL";
         public const string Windows = "Windows";
+        public const string UserAssignedManagedIdentity = "UserAssignedManagedIdentity";
     }
 }

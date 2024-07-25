@@ -35,7 +35,7 @@ INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
   [CommunicationServiceName <String>]: The name of the CommunicationService resource.
   [Id <String>]: Resource identity path
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.communication/remove-azcommunicationservice
 #>
@@ -62,6 +62,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]

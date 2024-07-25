@@ -26,12 +26,12 @@ $Settings = @{ "commandToExecute" = "powershell.exe -c Get-Process" }
 New-AzStackHciExtension -ArcSettingName "default" -ClusterName "myCluster" -Name "MicrosoftMonitoringAgent" -ResourceGroupName test-rg -ExtensionParameterPublisher "Microsoft.Compute" -ExtensionParameterType "MicrosoftMonitoringAgent" -ExtensionParameterProtectedSetting $Settings
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtension
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IExtension
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhciextension
 #>
 function New-AzStackHciExtension {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtension])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IExtension])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -65,6 +65,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter()]
@@ -88,7 +89,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtensionParametersProtectedSettings]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IExtensionParametersProtectedSettings]))]
     [System.Collections.Hashtable]
     # Protected settings (may contain secrets).
     ${ExtensionParameterProtectedSetting},
@@ -101,7 +102,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtensionParametersSettings]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IExtensionParametersSettings]))]
     [System.Collections.Hashtable]
     # Json formatted public settings for the extension.
     ${ExtensionParameterSetting},

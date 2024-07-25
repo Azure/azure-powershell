@@ -6,7 +6,9 @@ parameters:
   ForceRegenerate: false
 
 steps:
-- template: get-github-pat-steps.yml
+- checkout: self
+  persistCredentials: true
+- template: get-github-token-steps.yml
 - task: PowerShell@2
   displayName: 'Check Ignored File'
   inputs:
