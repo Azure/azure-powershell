@@ -7607,6 +7607,7 @@ function Test-VMSetAzOSCredentialNullRef
         # Verify a VM is created fine. 
         New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+	Assert-NotNull $vm;
 
     }
     finally
