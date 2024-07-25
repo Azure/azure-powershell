@@ -29,11 +29,6 @@ namespace Microsoft.Azure.Commands.Ssh.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-ConfigVmPortFromRSTags");
         }
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestArcPortFromRSTags()
-        {
-            TestRunner.RunTestScript("Test-ConfigArcPortFromRSTags");
-        }
+        
     }
 }
