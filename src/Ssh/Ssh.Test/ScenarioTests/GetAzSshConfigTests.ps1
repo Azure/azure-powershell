@@ -131,7 +131,7 @@ function Test-ConfigVmPortFromRSTags
     $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
     $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 
-    New-AzResourceGroup -Name $ResourceGroupName -Location "eastus" | Out-Null
+    New-AzResourceGroup -Name $ResourceGroupName -Location "northeurope" | Out-Null
 
     $tags = @{
         "Environment" = "Test"
@@ -143,18 +143,18 @@ function Test-ConfigVmPortFromRSTags
     try 
     {
         $stnd = "Standard";
-        $vm = New-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName -Location "eastus" -Credential $cred -DomainNameLabel $domainlabel -SecurityType $stnd 
+        $vm = New-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName -Location "northeurope" -Credential $cred -DomainNameLabel $domainlabel -SecurityType $stnd 
         
        
         Assert-NotNull $vm
-        Update-AzVM -Tag $tags -VM $vm
+        Update-AzVM -Tag $tags -VM $vm -ResourceGroupName $ResourceGroupName
 
         $retrievedVM = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName
         $resource = @{
             Tags = $retrievedVM.Tags
         }
 
-        $configEntry = Export-AzSshConfig -ResourceGroupName $ResourceGroupName -Name $VmName -ConfigFilePath ./config -LocalUser $username
+        $configEntry = Export-AzSshConfig -ResourceGroupName $ResourceGroupName -Name $VmName -ConfigFilePath ./config -LocalUser $username -ResourceTag "SSHPort"
 
          
          Assert-AreEqual "2222" $configEntry.Port
