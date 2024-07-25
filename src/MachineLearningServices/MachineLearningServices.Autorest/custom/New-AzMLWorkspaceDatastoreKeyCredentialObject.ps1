@@ -23,7 +23,7 @@ Create an in-memory object for AccountKeyDatastoreCredentials.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.AccountKeyDatastoreCredentials
 .Link
-https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceAccountKeyDatastoreCredentialsObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/New-AzMLWorkspaceDatastoreKeyCredentialObject
 #>
 function New-AzMLWorkspaceDatastoreKeyCredentialObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.AccountKeyDatastoreCredentials')]
