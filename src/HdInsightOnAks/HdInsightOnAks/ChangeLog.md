@@ -18,6 +18,20 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Enabled get cluster pool upgrade history.
+* Enabled get cluster upgrade history.
+* Ebabled rollback cluster upgrade.
+* Enabled manage cluster library.
+* Enabled multiple managedIdentity, cluster version is required to be above 1.2.0.
+* Added cmdlets:
+    - `New-AzHdInsightOnAksManagedIdentityObject` for create an in-memory object for ManagedIdentitySpec.
+    - `New-AzHdInsightOnAksClusterMavenLibraryObject` for create an in-memory object for Maven library properties.
+    - `New-AzHdInsightOnAksClusterPyPiLibraryObject` for create an in-memory object for PyPi library properties.
+    - `Get-AzHdInsightOnAksClusterPoolUpgradeHistory` for get a list for cluster pool upgrade history.
+    - `Get-AzHdInsightOnAksClusterUpgradeHistory` for get a list for cluster upgrade history.
+    - `Invoke-AzHdInsightOnAksManageClusterLibrary` for manage libraries on cluster.
+    - `Upgrade-AzHdInsightOnAksClusterManualRollback` for manual rollback upgrade for a cluster.
+* Renamed command `New-AzHdInsightOnAksClusterPoolAKSUpgradeObject` to `New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject`.
 
 ## Version 0.1.2
 * Introduced secrets detection feature to safeguard sensitive data.

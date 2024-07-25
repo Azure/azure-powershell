@@ -265,7 +265,7 @@ This example connects to an Azure account using certificate-based service princi
 The certificate file, which is specified by `CertficatePath`, should contains both certificate and private key as the input.
 
 ```powershell
-$SecurePassword = ConvertTo-SecureString -String "Password123!" -AsPlainText -Force
+$SecurePassword = ConvertTo-SecureString -String "******" -AsPlainText -Force
 $TenantId = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy'
 $ApplicationId = 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzz'
 Connect-AzAccount -ServicePrincipal -ApplicationId $ApplicationId -TenantId $TenantId -CertificatePath './certificatefortest.pfx' -CertificatePassword $securePassword

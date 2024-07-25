@@ -1,0 +1,48 @@
+name: sync-main
+run-name: Sync commit from main to future - temporary
+env:
+  GH_TOKEN: ${{ github.token }}
+on:
+  push:
+    branches:
+      - 'main'
+jobs:
+  sync_generation:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: 'future'
+    - name: sync main
+      shell: pwsh
+      run: |
+        $commitMessage = '${{ github.event.head_commit.message }}'
+        $commitMessagePatternToIgnore = @()
+        $commitMessagePatternToIgnore += "^Migrate\s\w+\sfrom\sgeneration\sto\smain"
+        $commitMessagePatternToIgnore += "^Move\s\w+\sto\smain"
+        foreach ($pattern in $commitMessagePatternToIgnore) {
+            if ($commitMessage -match $pattern) {
+                Write-Host -ForegroundColor DarkGreen "Commit: [$commitMessage], is for gen2main, skip this run ..."
+                return
+            }
+        }
+        $commitId = '${{ github.event.head_commit.id }}'
+        $commitIdShort = $commitId.Substring(0,5)
+
+        git config user.email "65331932+azure-powershell-bot@users.noreply.github.com";
+        git config user.name "azure-powershell-bot";
+
+        $branchName = "temporary/sync-main-to-future-$commitIdShort"
+        git checkout -b $branchName
+
+        git fetch origin main
+        git cherry-pick $commitId --strategy-option theirs
+        git push origin $branchName
+
+        # commented because extra configuration needed to allow github action to create PR
+        # $prInfo = "Sync commit [$commitMessage ($commitId)] from main branch to future branch ..."
+        # Write-Host -ForegroundColor DarkGreen $prInfo
+        # gh pr create -B $branchName -H future --title $commitMessage --body $prInfo

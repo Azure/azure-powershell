@@ -1,6 +1,6 @@
 {
   "resourceType": "clusters/arcSettings/extensions",
-  "apiVersion": "2023-03-01",
+  "apiVersion": "2024-04-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.stackhci"
   },

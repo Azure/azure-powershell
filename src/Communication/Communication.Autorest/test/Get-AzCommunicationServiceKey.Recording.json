@@ -1,16 +1,17 @@
 {
-  "Get-AzCommunicationServiceKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz/listKeys?api-version=2020-08-20+1": {
+  "Get-AzCommunicationServiceKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/listKeys?api-version=2023-06-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz/listKeys?api-version=2020-08-20",
+      "RequestUri": "https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/listKeys?api-version=2023-06-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "12" ],
-        "x-ms-client-request-id": [ "324ffd64-62d0-4f23-8edf-f8ecc9c8f358" ],
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "b79ad816-4eaa-42d4-aed2-0ac2211493c9" ],
         "CommandName": [ "Get-AzCommunicationServiceKey" ],
         "FullCommandName": [ "Get-AzCommunicationServiceKey_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.Communication/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -26,17 +27,21 @@
         "Request-Context": [ "appId=" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "9ff147ba-d431-434b-b2a6-37eacd1488b1" ],
-        "x-ms-correlation-request-id": [ "9cb3ebfb-d40b-4a65-9d82-26d68b3aa233" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211028T214012Z:9cb3ebfb-d40b-4a65-9d82-26d68b3aa233" ],
-        "Date": [ "Thu, 28 Oct 2021 21:40:12 GMT" ]
+        "mise-correlation-id": [ "1cde51b5-31b6-4524-babe-2419d73dee87" ],
+        "x-ms-request-id": [ "4b50e3a0-defa-48d5-87ad-c3894192a9df" ],
+        "x-ms-correlation-request-id": [ "42b846af-bf96-44eb-8167-37d2b0045297" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240718T044939Z:42b846af-bf96-44eb-8167-37d2b0045297" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 366AF2E307B24C2A8F2F2597CB7396D6 Ref B: MAA201060513037 Ref C: 2024-07-18T04:49:38Z" ],
+        "Date": [ "Thu, 18 Jul 2024 04:49:38 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "609" ],
+        "Content-Length": [ "619" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"primaryKey\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx==\",\"secondaryKey\":\"**************************************************************************************==\",\"primaryConnectionString\":\"endpoint=https://persistentresourcename8wn6lz.communication.azure.com/;accesskey=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx==\",\"secondaryConnectionString\":\"endpoint=https://persistentresourcename8wn6lz.communication.azure.com/;accesskey=**************************************************************************************==\"}"
+      "Content": "{\"primaryKey\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx==\",\"secondaryKey\":\"**************************************************************************************==\",\"primaryConnectionString\":\"endpoint=https://persistentresourcenamejeq8nr.unitedstates.communication.azure.com/;accesskey=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx==\",\"secondaryConnectionString\":\"endpoint=https://persistentresourcenamejeq8nr.unitedstates.communication.azure.com/;accesskey=**************************************************************************************==\"}",
+      "isContentBase64": false
     }
   }
 }
