@@ -186,7 +186,7 @@ steps:
     script: |
       $pipelineScript = Join-Path "$(Build.SourcesDirectory)" 'tools' 'ExecuteCIStep.ps1'
       $repoArtifact = Join-Path "$(Build.SourcesDirectory)" 'artifacts'
-      . $pipelineScript -Build -TriggerType "$(Build.Reason)" -Trigger $(Trigger) -RepoArtifacts $repoArtifact -Configuration ${{ parameters.configuration }}
+      . $pipelineScript -Build -TriggerType "$(Build.Reason)" -Trigger "$(Trigger)" -RepoArtifacts $repoArtifact -Configuration ${{ parameters.configuration }}
 - task: DotNetCoreCLI@2
   displayName: 'SubTask Predictor'
   condition: or(eq(variables.SubTaskPredictor, true), eq(variables.SubTaskAll, true))
