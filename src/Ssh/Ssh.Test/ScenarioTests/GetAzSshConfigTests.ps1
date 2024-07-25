@@ -147,7 +147,7 @@ function Test-ConfigVmPortFromRSTags
         
        
         Assert-NotNull $vm
-        Set-AzResource -Name $VmName -ResourceGroupName $ResourceGroupName -ResourceType "Microsoft.Compute/VirtualMachines" -Tag $tags -Force  
+        Update-AzVM -Tag $tags -VM $vm
 
         $retrievedVM = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName
         $resource = @{
