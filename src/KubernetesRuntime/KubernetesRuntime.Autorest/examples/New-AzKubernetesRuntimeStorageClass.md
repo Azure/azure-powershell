@@ -1,22 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a NFS storage class
 ```powershell
-{{ Add code here }}
+$typeProperties = New-AzKubernetesRuntimeNfsStorageClassTypePropertiesObject `
+    -Server "0.0.0.0" `
+    -Share "/share" `
+    -MountPermission "777" `
+    -OnDelete "Delete" `
+    -SubDir "subdir"
+
+New-AzKubernetesRuntimeStorageClass `
+    -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 `
+    -Name "nfs-test" `
+    -TypeProperty $typeProperties
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create a NFS storage class `nfs-test` with parameters in the connected cluster.

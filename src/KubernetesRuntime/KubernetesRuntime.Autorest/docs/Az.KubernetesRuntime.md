@@ -29,14 +29,32 @@ Get a ServiceResource
 ### [Get-AzKubernetesRuntimeStorageClass](Get-AzKubernetesRuntimeStorageClass.md)
 Get a StorageClassResource
 
+### [New-AzKubernetesRuntimeAksArcDiskStorageClassTypePropertiesObject](New-AzKubernetesRuntimeAksArcDiskStorageClassTypePropertiesObject.md)
+Create an in-memory object for AksArcDiskStorageClassTypeProperties.
+
 ### [New-AzKubernetesRuntimeBgpPeer](New-AzKubernetesRuntimeBgpPeer.md)
 Create a BgpPeer
+
+### [New-AzKubernetesRuntimeBlobStorageClassTypePropertiesObject](New-AzKubernetesRuntimeBlobStorageClassTypePropertiesObject.md)
+Create an in-memory object for BlobStorageClassTypeProperties.
 
 ### [New-AzKubernetesRuntimeLoadBalancer](New-AzKubernetesRuntimeLoadBalancer.md)
 Create a LoadBalancer
 
+### [New-AzKubernetesRuntimeNativeStorageClassTypePropertiesObject](New-AzKubernetesRuntimeNativeStorageClassTypePropertiesObject.md)
+Create an in-memory object for NativeStorageClassTypeProperties.
+
+### [New-AzKubernetesRuntimeNfsStorageClassTypePropertiesObject](New-AzKubernetesRuntimeNfsStorageClassTypePropertiesObject.md)
+Create an in-memory object for NfsStorageClassTypeProperties.
+
+### [New-AzKubernetesRuntimeRwxStorageClassTypePropertiesObject](New-AzKubernetesRuntimeRwxStorageClassTypePropertiesObject.md)
+Create an in-memory object for RwxStorageClassTypeProperties.
+
 ### [New-AzKubernetesRuntimeService](New-AzKubernetesRuntimeService.md)
 Create a ServiceResource
+
+### [New-AzKubernetesRuntimeSmbStorageClassTypePropertiesObject](New-AzKubernetesRuntimeSmbStorageClassTypePropertiesObject.md)
+Create an in-memory object for SmbStorageClassTypeProperties.
 
 ### [New-AzKubernetesRuntimeStorageClass](New-AzKubernetesRuntimeStorageClass.md)
 Create a StorageClassResource

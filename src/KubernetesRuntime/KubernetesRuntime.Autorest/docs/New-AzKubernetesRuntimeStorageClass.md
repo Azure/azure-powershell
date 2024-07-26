@@ -17,7 +17,7 @@ Create a StorageClassResource
 New-AzKubernetesRuntimeStorageClass -Name <String> -ResourceUri <String> [-AccessMode <String[]>]
  [-AllowVolumeExpansion <String>] [-DataResilience <String>] [-FailoverSpeed <String>]
  [-Limitation <String[]>] [-MountOption <String[]>] [-Performance <String>] [-Priority <Int64>]
- [-Provisioner <String>] [-TypePropertyType <String>] [-VolumeBindingMode <String>]
+ [-Provisioner <String>] [-TypeProperty <IStorageClassTypeProperties>] [-VolumeBindingMode <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -38,27 +38,22 @@ Create a StorageClassResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a NFS storage class
 ```powershell
-{{ Add code here }}
+$typeProperties = New-AzKubernetesRuntimeNfsStorageClassTypePropertiesObject `
+    -Server "0.0.0.0" `
+    -Share "/share" `
+    -MountPermission "777" `
+    -OnDelete "Delete" `
+    -SubDir "subdir"
+
+New-AzKubernetesRuntimeStorageClass `
+    -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 `
+    -Name "nfs-test" `
+    -TypeProperty $typeProperties
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create a NFS storage class `nfs-test` with parameters in the connected cluster.
 
 ## PARAMETERS
 
@@ -304,11 +299,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TypePropertyType
-Type of the storage class.
+### -TypeProperty
+Properties of the StorageClass
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IStorageClassTypeProperties
 Parameter Sets: CreateExpanded
 Aliases:
 

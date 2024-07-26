@@ -70,4 +70,15 @@ directive:
   - where:
       verb: Set
     remove: true
+
+  - no-inline:
+    - StorageClassTypeProperties
+
+  - model-cmdlet:
+    - model-name: NativeStorageClassTypeProperties
+    - model-name: RwxStorageClassTypeProperties
+    - model-name: BlobStorageClassTypeProperties
+    - model-name: NfsStorageClassTypeProperties
+    - model-name: SmbStorageClassTypeProperties
+    - model-name: AksArcDiskStorageClassTypeProperties
 ```
