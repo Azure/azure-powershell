@@ -13,13 +13,14 @@ namespace Microsoft.Azure.Management.AlertsManagement
     public static partial class SmartGroupsOperationsExtensions
     {
         /// <summary>
-        /// List all the Smart Groups within a specified subscription. 
+        /// List all the Smart Groups within a specified subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='targetResource'>
-        /// Filter by target resource( which is full ARM ID) Default value is select all.
+        /// Filter by target resource( which is full ARM ID) Default value is select
+        /// all.
         /// </param>
         /// <param name='targetResourceGroup'>
         /// Filter by target resource group name. Default value is select all.
@@ -28,10 +29,12 @@ namespace Microsoft.Azure.Management.AlertsManagement
         /// Filter by target resource type. Default value is select all.
         /// </param>
         /// <param name='monitorService'>
-        /// Filter by monitor service which generates the alert instance. Default value is select all.
+        /// Filter by monitor service which generates the alert instance. Default value
+        /// is select all.
         /// </param>
         /// <param name='monitorCondition'>
-        /// Filter by monitor condition which is either &#39;Fired&#39; or &#39;Resolved&#39;. Default value is to select all.
+        /// Filter by monitor condition which is either &#39;Fired&#39; or &#39;Resolved&#39;. Default
+        /// value is to select all.
         /// </param>
         /// <param name='severity'>
         /// Filter by severity.  Default value is select all.
@@ -43,13 +46,17 @@ namespace Microsoft.Azure.Management.AlertsManagement
         /// Filter by time range by below listed values. Default value is 1 day.
         /// </param>
         /// <param name='pageCount'>
-        /// Determines number of alerts returned per page in response. Permissible value is between 1 to 250. When the &#34;includeContent&#34;  filter is selected, maximum value allowed is 25. Default value is 25.
+        /// Determines number of alerts returned per page in response. Permissible
+        /// value is between 1 to 250. When the &#34;includeContent&#34;  filter is selected,
+        /// maximum value allowed is 25. Default value is 25.
         /// </param>
         /// <param name='sortBy'>
-        /// Sort the query results by input field. Default value is sort by &#39;lastModifiedDateTime&#39;.
+        /// Sort the query results by input field. Default value is sort by
+        /// &#39;lastModifiedDateTime&#39;.
         /// </param>
         /// <param name='sortOrder'>
-        /// Sort the query results order in either ascending or descending.  Default value is &#39;desc&#39; for time fields and &#39;asc&#39; for others.
+        /// Sort the query results order in either ascending or descending.  Default
+        /// value is &#39;desc&#39; for time fields and &#39;asc&#39; for others.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<SmartGroup> GetAll(this ISmartGroupsOperations operations, string targetResource = default(string), string targetResourceGroup = default(string), string targetResourceType = default(string), string monitorService = default(string), string monitorCondition = default(string), string severity = default(string), string smartGroupState = default(string), string timeRange = default(string), long? pageCount = default(long?), string sortBy = default(string), string sortOrder = default(string))
         {
@@ -57,13 +64,14 @@ namespace Microsoft.Azure.Management.AlertsManagement
         }
 
         /// <summary>
-        /// List all the Smart Groups within a specified subscription. 
+        /// List all the Smart Groups within a specified subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='targetResource'>
-        /// Filter by target resource( which is full ARM ID) Default value is select all.
+        /// Filter by target resource( which is full ARM ID) Default value is select
+        /// all.
         /// </param>
         /// <param name='targetResourceGroup'>
         /// Filter by target resource group name. Default value is select all.
@@ -72,10 +80,12 @@ namespace Microsoft.Azure.Management.AlertsManagement
         /// Filter by target resource type. Default value is select all.
         /// </param>
         /// <param name='monitorService'>
-        /// Filter by monitor service which generates the alert instance. Default value is select all.
+        /// Filter by monitor service which generates the alert instance. Default value
+        /// is select all.
         /// </param>
         /// <param name='monitorCondition'>
-        /// Filter by monitor condition which is either &#39;Fired&#39; or &#39;Resolved&#39;. Default value is to select all.
+        /// Filter by monitor condition which is either &#39;Fired&#39; or &#39;Resolved&#39;. Default
+        /// value is to select all.
         /// </param>
         /// <param name='severity'>
         /// Filter by severity.  Default value is select all.
@@ -87,13 +97,17 @@ namespace Microsoft.Azure.Management.AlertsManagement
         /// Filter by time range by below listed values. Default value is 1 day.
         /// </param>
         /// <param name='pageCount'>
-        /// Determines number of alerts returned per page in response. Permissible value is between 1 to 250. When the &#34;includeContent&#34;  filter is selected, maximum value allowed is 25. Default value is 25.
+        /// Determines number of alerts returned per page in response. Permissible
+        /// value is between 1 to 250. When the &#34;includeContent&#34;  filter is selected,
+        /// maximum value allowed is 25. Default value is 25.
         /// </param>
         /// <param name='sortBy'>
-        /// Sort the query results by input field. Default value is sort by &#39;lastModifiedDateTime&#39;.
+        /// Sort the query results by input field. Default value is sort by
+        /// &#39;lastModifiedDateTime&#39;.
         /// </param>
         /// <param name='sortOrder'>
-        /// Sort the query results order in either ascending or descending.  Default value is &#39;desc&#39; for time fields and &#39;asc&#39; for others.
+        /// Sort the query results order in either ascending or descending.  Default
+        /// value is &#39;desc&#39; for time fields and &#39;asc&#39; for others.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -112,7 +126,7 @@ namespace Microsoft.Azure.Management.AlertsManagement
         /// The operations group for this extension method.
         /// </param>
         /// <param name='smartGroupId'>
-        /// Smart group unique id. 
+        /// Smart group unique id.
         /// </param>
         public static SmartGroup GetById(this ISmartGroupsOperations operations, string smartGroupId)
         {
@@ -126,7 +140,7 @@ namespace Microsoft.Azure.Management.AlertsManagement
         /// The operations group for this extension method.
         /// </param>
         /// <param name='smartGroupId'>
-        /// Smart group unique id. 
+        /// Smart group unique id.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -145,7 +159,7 @@ namespace Microsoft.Azure.Management.AlertsManagement
         /// The operations group for this extension method.
         /// </param>
         /// <param name='smartGroupId'>
-        /// Smart group unique id. 
+        /// Smart group unique id.
         /// </param>
         /// <param name='newState'>
         /// New state of the alert.
@@ -162,7 +176,7 @@ namespace Microsoft.Azure.Management.AlertsManagement
         /// The operations group for this extension method.
         /// </param>
         /// <param name='smartGroupId'>
-        /// Smart group unique id. 
+        /// Smart group unique id.
         /// </param>
         /// <param name='newState'>
         /// New state of the alert.
@@ -178,13 +192,14 @@ namespace Microsoft.Azure.Management.AlertsManagement
             }
         }
         /// <summary>
-        /// Get the history a smart group, which captures any Smart Group state changes (New/Acknowledged/Closed) .
+        /// Get the history a smart group, which captures any Smart Group state changes
+        /// (New/Acknowledged/Closed) .
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='smartGroupId'>
-        /// Smart group unique id. 
+        /// Smart group unique id.
         /// </param>
         public static SmartGroupModification GetHistory(this ISmartGroupsOperations operations, string smartGroupId)
         {
@@ -192,13 +207,14 @@ namespace Microsoft.Azure.Management.AlertsManagement
         }
 
         /// <summary>
-        /// Get the history a smart group, which captures any Smart Group state changes (New/Acknowledged/Closed) .
+        /// Get the history a smart group, which captures any Smart Group state changes
+        /// (New/Acknowledged/Closed) .
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='smartGroupId'>
-        /// Smart group unique id. 
+        /// Smart group unique id.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -211,7 +227,7 @@ namespace Microsoft.Azure.Management.AlertsManagement
             }
         }
         /// <summary>
-        /// List all the Smart Groups within a specified subscription. 
+        /// List all the Smart Groups within a specified subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -225,7 +241,7 @@ namespace Microsoft.Azure.Management.AlertsManagement
         }
 
         /// <summary>
-        /// List all the Smart Groups within a specified subscription. 
+        /// List all the Smart Groups within a specified subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

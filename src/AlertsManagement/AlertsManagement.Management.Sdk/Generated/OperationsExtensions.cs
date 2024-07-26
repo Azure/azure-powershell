@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.AlertsManagement
     public static partial class OperationsExtensions
     {
         /// <summary>
-        /// List all operations available through Azure Alerts Management Resource Provider.
+        /// List all operations available through Azure Alerts Management Resource
+        /// Provider.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -24,7 +25,8 @@ namespace Microsoft.Azure.Management.AlertsManagement
         }
 
         /// <summary>
-        /// List all operations available through Azure Alerts Management Resource Provider.
+        /// List all operations available through Azure Alerts Management Resource
+        /// Provider.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -40,7 +42,8 @@ namespace Microsoft.Azure.Management.AlertsManagement
             }
         }
         /// <summary>
-        /// List all operations available through Azure Alerts Management Resource Provider.
+        /// List all operations available through Azure Alerts Management Resource
+        /// Provider.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -54,7 +57,8 @@ namespace Microsoft.Azure.Management.AlertsManagement
         }
 
         /// <summary>
-        /// List all operations available through Azure Alerts Management Resource Provider.
+        /// List all operations available through Azure Alerts Management Resource
+        /// Provider.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

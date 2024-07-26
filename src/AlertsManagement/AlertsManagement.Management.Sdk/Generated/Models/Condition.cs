@@ -25,14 +25,14 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
         /// </summary>
 
         /// <param name="field">Field for a given condition.
-        /// Possible values include: 'Severity', 'MonitorService', 'MonitorCondition',
-        /// 'SignalType', 'TargetResourceType', 'TargetResource',
-        /// 'TargetResourceGroup', 'AlertRuleId', 'AlertRuleName', 'Description',
-        /// 'AlertContext'</param>
+        /// Possible values include: &#39;Severity&#39;, &#39;MonitorService&#39;, &#39;MonitorCondition&#39;,
+        /// &#39;SignalType&#39;, &#39;TargetResourceType&#39;, &#39;TargetResource&#39;,
+        /// &#39;TargetResourceGroup&#39;, &#39;AlertRuleId&#39;, &#39;AlertRuleName&#39;, &#39;Description&#39;,
+        /// &#39;AlertContext&#39;</param>
 
         /// <param name="operatorProperty">Operator for a given condition.
-        /// Possible values include: 'Equals', 'NotEquals', 'Contains',
-        /// 'DoesNotContain'</param>
+        /// Possible values include: &#39;Equals&#39;, &#39;NotEquals&#39;, &#39;Contains&#39;,
+        /// &#39;DoesNotContain&#39;</param>
 
         /// <param name="values">List of values to match for a given condition.
         /// </param>

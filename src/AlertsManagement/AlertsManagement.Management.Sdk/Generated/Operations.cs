@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.AlertsManagement
         public AlertsManagementClient Client { get; private set; }
 
         /// <summary>
-        /// List all operations available through Azure Alerts Management Resource Provider.
+        /// List all operations available through Azure Alerts Management Resource
+        /// Provider.
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -218,7 +219,8 @@ namespace Microsoft.Azure.Management.AlertsManagement
 
         }
         /// <summary>
-        /// List all operations available through Azure Alerts Management Resource Provider.
+        /// List all operations available through Azure Alerts Management Resource
+        /// Provider.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -259,6 +261,7 @@ namespace Microsoft.Azure.Management.AlertsManagement
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
                 tracingParameters.Add("nextPageLink", nextPageLink);
+               
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "ListNext", tracingParameters);

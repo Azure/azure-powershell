@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.AlertsManagement
     public partial interface IOperations
     {
         /// <summary>
-        /// List all operations available through Azure Alerts Management Resource Provider.
+        /// List all operations available through Azure Alerts Management Resource
+        /// Provider.
         /// </summary>
         /// <remarks>
-        /// List all operations available through Azure Alerts Management Resource Provider.
+        /// List all operations available through Azure Alerts Management Resource
+        /// Provider.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -34,10 +36,12 @@ namespace Microsoft.Azure.Management.AlertsManagement
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Operation>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List all operations available through Azure Alerts Management Resource Provider.
+        /// List all operations available through Azure Alerts Management Resource
+        /// Provider.
         /// </summary>
         /// <remarks>
-        /// List all operations available through Azure Alerts Management Resource Provider.
+        /// List all operations available through Azure Alerts Management Resource
+        /// Provider.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
