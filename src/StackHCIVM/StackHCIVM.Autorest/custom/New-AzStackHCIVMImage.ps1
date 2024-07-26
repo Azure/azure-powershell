@@ -103,6 +103,7 @@ function New-AzStackHCIVMImage{
     [Parameter(ParameterSetName='GalleryImage', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.String]
+
     # Local path of image that the image should be created from. 
     # This parameter is required for non marketplace images. 
     ${ImagePath},
@@ -416,6 +417,9 @@ function New-AzStackHCIVMImage{
         if ($PSCmdlet.ParameterSetName -eq "GalleryImage")
         {
             try{
+                $null = $PSBoundParameters.Remove("ImagePath")
+                $SecureImagePath = ConvertTo-SecureString -String $ImagePath -AsPlainText -Force
+                $PSBoundParameters.Add('ImagePath', $SecureImagePath)
                 Az.StackHCIVM.internal\New-AzStackHCIVMGalleryImage -ErrorAction Stop @PSBoundParameters 
             } catch {
                 $e = $_

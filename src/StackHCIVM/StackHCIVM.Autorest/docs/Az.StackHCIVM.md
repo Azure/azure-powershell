@@ -74,9 +74,6 @@ Please note some properties can be set only during virtual hard disk creation.
 The operation to create or update a virtual machine.
 Please note some properties can be set only during virtual machine creation.
 
-### [Pause-AzStackHCIVMVirtualMachine](Pause-AzStackHCIVMVirtualMachine.md)
-The operation to start a virtual machine instance.
-
 ### [Remove-AzStackHCIVMImage](Remove-AzStackHCIVMImage.md)
 The operation to delete an image.
 
@@ -109,9 +106,6 @@ The operation to delete a network interface from a virtual machine.
 
 ### [Restart-AzStackHCIVMVirtualMachine](Restart-AzStackHCIVMVirtualMachine.md)
 The operation to restart a virtual machine instance.
-
-### [Save-AzStackHCIVMVirtualMachine](Save-AzStackHCIVMVirtualMachine.md)
-The operation to start a virtual machine instance.
 
 ### [Save-AzStackHCIVMVirtualMachineInstance](Save-AzStackHCIVMVirtualMachineInstance.md)
 The operation to save a virtual machine instance.
