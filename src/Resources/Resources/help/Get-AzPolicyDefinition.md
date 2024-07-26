@@ -1,5 +1,5 @@
 ---
-external help file: Az.Resources-help.xml
+external help file:
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/get-azpolicydefinition
 schema: 2.0.0
@@ -18,52 +18,51 @@ Get-AzPolicyDefinition [-Name <String>] [-BackwardCompatible] [-DefaultProfile <
  [<CommonParameters>]
 ```
 
-### ManagementGroupName
-```
-Get-AzPolicyDefinition [-Name <String>] -ManagementGroupName <String> [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### SubscriptionId
-```
-Get-AzPolicyDefinition [-Name <String>] -SubscriptionId <String> [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Version
-```
-Get-AzPolicyDefinition [-Name <String>] [-Id <String>] [-BackwardCompatible] -Version <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListVersion
-```
-Get-AzPolicyDefinition [-Name <String>] [-Id <String>] [-ListVersion] [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Id
-```
-Get-AzPolicyDefinition -Id <String> [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### Builtin
 ```
-Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Builtin]
+Get-AzPolicyDefinition -Builtin [-ManagementGroupName <String>] [-SubscriptionId <String>]
  [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Custom
 ```
-Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Custom]
+Get-AzPolicyDefinition -Custom [-ManagementGroupName <String>] [-SubscriptionId <String>]
  [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Id
+```
+Get-AzPolicyDefinition -Id <String> [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListVersion
+```
+Get-AzPolicyDefinition -ListVersion [-Id <String>] [-Name <String>] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ManagementGroupName
+```
+Get-AzPolicyDefinition -ManagementGroupName <String> [-Name <String>] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Static
 ```
-Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Static]
+Get-AzPolicyDefinition -Static [-ManagementGroupName <String>] [-SubscriptionId <String>]
  [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### SubscriptionId
+```
+Get-AzPolicyDefinition -SubscriptionId <String> [-Name <String>] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Version
+```
+Get-AzPolicyDefinition -Version <String> [-Id <String>] [-Name <String>] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -191,19 +190,7 @@ The full Id of the policy definition to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: Version, ListVersion
-Aliases: ResourceId
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: Id
+Parameter Sets: Id, ListVersion, Version
 Aliases: ResourceId
 
 Required: True
@@ -233,22 +220,10 @@ The name of the management group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupName
+Parameter Sets: Builtin, Custom, ManagementGroupName, Static
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: Builtin, Custom, Static
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -260,7 +235,7 @@ The name of the policy definition to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name, ManagementGroupName, SubscriptionId, Version, ListVersion
+Parameter Sets: ListVersion, ManagementGroupName, Name, SubscriptionId, Version
 Aliases: PolicyDefinitionName
 
 Required: False
@@ -290,22 +265,10 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionId
+Parameter Sets: Builtin, Custom, Static, SubscriptionId
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: Builtin, Custom, Static
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -343,3 +306,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

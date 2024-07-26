@@ -1,5 +1,5 @@
 ---
-external help file: Az.Resources-help.xml
+external help file:
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/new-azpolicydefinition
 schema: 2.0.0
@@ -14,23 +14,23 @@ Creates or updates a policy definition.
 
 ### Name (Default)
 ```
-New-AzPolicyDefinition -Name <String> -Policy <String> [-DisplayName <String>] [-Description <String>]
- [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzPolicyDefinition -Name <String> -Policy <String> [-BackwardCompatible] [-Description <String>]
+ [-DisplayName <String>] [-Metadata <String>] [-Mode <String>] [-Parameter <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
-New-AzPolicyDefinition -Name <String> -ManagementGroupName <String> -Policy <String> [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzPolicyDefinition -ManagementGroupName <String> -Name <String> -Policy <String> [-BackwardCompatible]
+ [-Description <String>] [-DisplayName <String>] [-Metadata <String>] [-Mode <String>] [-Parameter <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
-New-AzPolicyDefinition -Name <String> -SubscriptionId <String> -Policy <String> [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzPolicyDefinition -Name <String> -SubscriptionId <String> -Policy <String> [-BackwardCompatible]
+ [-Description <String>] [-DisplayName <String>] [-Metadata <String>] [-Mode <String>] [-Parameter <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -324,3 +324,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

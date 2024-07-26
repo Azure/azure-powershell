@@ -1,5 +1,5 @@
 ---
-external help file: Az.Resources-help.xml
+external help file:
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/update-azpolicysetdefinition
 schema: 2.0.0
@@ -14,42 +14,39 @@ This operation updates an existing policy set definition in the given subscripti
 
 ### Name (Default)
 ```
-Update-AzPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>]
- [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ManagementGroupName
-```
-Update-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> [-DisplayName <String>]
- [-Description <String>] [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinitionGroup <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### SubscriptionId
-```
-Update-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-DisplayName <String>]
- [-Description <String>] [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinitionGroup <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzPolicySetDefinition -Name <String> [-BackwardCompatible] [-Description <String>]
+ [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinition <String>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Id
 ```
-Update-AzPolicySetDefinition -Id <String> [-DisplayName <String>] [-Description <String>]
- [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzPolicySetDefinition -Id <String> [-BackwardCompatible] [-Description <String>]
+ [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinition <String>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Update-AzPolicySetDefinition [-DisplayName <String>] [-Description <String>] [-PolicyDefinition <String>]
- [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>] [-BackwardCompatible]
- -InputObject <IPolicySetDefinition> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzPolicySetDefinition -InputObject <IPolicySetDefinition> [-BackwardCompatible] [-Description <String>]
+ [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinition <String>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ManagementGroupName
+```
+Update-AzPolicySetDefinition -ManagementGroupName <String> -Name <String> [-BackwardCompatible]
+ [-Description <String>] [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>]
+ [-PolicyDefinition <String>] [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### SubscriptionId
+```
+Update-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-BackwardCompatible]
+ [-Description <String>] [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>]
+ [-PolicyDefinition <String>] [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -176,6 +173,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 
+
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition
 Parameter Sets: InputObject
@@ -184,7 +182,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByValue, ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -224,7 +222,7 @@ The name of the policy set definition to update.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name, ManagementGroupName, SubscriptionId
+Parameter Sets: ManagementGroupName, Name, SubscriptionId
 Aliases: PolicySetDefinitionName
 
 Required: True
@@ -347,3 +345,4 @@ ALIASES
 Set-AzPolicySetDefinition
 
 ## RELATED LINKS
+
