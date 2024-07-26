@@ -45,6 +45,9 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             AzureSession.Instance.TryGetComponent(nameof(MsalAccessTokenAcquirerFactory), out MsalAccessTokenAcquirerFactory msalAccessTokenAcquirerFactory);
 
             var identityCredential = azureCredentialFactory.CreateManagedIdentityCredential(userAccountId);
+
+            CollectTelemetry(identityCredential);
+
             var msalAccessTokenAcquirer = msalAccessTokenAcquirerFactory.CreateMsalAccessTokenAcquirer();
             var parametersLog = $"- TenantId:'{msiParameters.TenantId}', Scopes:'{string.Join(",", scopes)}', UserId:'{userAccountId}'";
             return msalAccessTokenAcquirer.GetAccessTokenAsync(

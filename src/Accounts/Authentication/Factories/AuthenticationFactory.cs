@@ -12,20 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Core;
+
 using Hyak.Common;
+
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Utilities;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.Shared.Config;
-using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.Identity.Client;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
+
 using System;
-using System.Diagnostics;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security;
 using System.Threading.Tasks;
@@ -110,6 +113,37 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             IAzureTokenCache tokenCache,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
+            return Authenticate(null, account, environment, tenant, password, promptBehavior, promptAction, tokenCache, resourceId);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="requestId"></param>
+        /// <param name="account"></param>
+        /// <param name="environment"></param>
+        /// <param name="tenant"></param>
+        /// <param name="password"></param>
+        /// <param name="promptBehavior"></param>
+        /// <param name="promptAction"></param>
+        /// <param name="tokenCache"></param>
+        /// <param name="resourceId"></param>
+        /// <returns></returns>
+        public IAccessToken Authenticate(
+            string requestId,
+            IAzureAccount account,
+            IAzureEnvironment environment,
+            string tenant,
+            SecureString password,
+            string promptBehavior,
+            Action<string> promptAction,
+            IAzureTokenCache tokenCache,
+            string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
+        {
+            if (!string.IsNullOrEmpty(requestId) && !telemetryDataAccquirer.ContainsKey(requestId))
+            {
+                telemetryDataAccquirer[requestId] = new List<AuthTelemetryRecord>();
+            }
             IAccessToken token = null;
 
             PowerShellTokenCacheProvider tokenCacheProvider;
@@ -137,6 +171,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                             {
                                 account.SetProperty(AzureAccount.Property.HomeAccountId, token.HomeAccountId);
                             }
+                            if (telemetryDataAccquirer.ContainsKey(requestId))
+                            {
+                                telemetryDataAccquirer[requestId].Add(new AuthTelemetryRecord(Builder.Authenticator.GetDataForTelemetry(), true));
+                            }
                             break;
                         }
 
@@ -147,6 +185,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 {
                     if (!IsTransientException(e) || retries == 0)
                     {
+                        if (telemetryDataAccquirer.ContainsKey(requestId))
+                        {
+                            telemetryDataAccquirer[requestId].Add(new AuthTelemetryRecord(Builder.Authenticator.GetDataForTelemetry(), false));
+                        }
                         var mfaException = AnalyzeMsalException(e, environment, tenant, resourceId);
                         if (mfaException != null)
                         {
@@ -164,7 +206,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
                 break;
             }
-
             return token;
         }
 
@@ -620,6 +661,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         private static AuthenticationParameters GetSilentParameters(PowerShellTokenCacheProvider tokenCacheProvider, IAzureAccount account, IAzureEnvironment environment, string tenant, IAzureTokenCache tokenCache, string resourceId, string homeAccountId)
         {
             return new SilentParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId);
+        }
+
+        private ConcurrentDictionary<string, IList<AuthTelemetryRecord>> telemetryDataAccquirer = new ConcurrentDictionary<string, IList<AuthTelemetryRecord>>();
+
+        public AuthenticationTelemetry GetDataForTelemetry(string requestId)
+        {
+            if (telemetryDataAccquirer.ContainsKey(requestId)) 
+            {
+                return new AuthenticationTelemetry(telemetryDataAccquirer[requestId]);
+            }
+            return null;
         }
     }
 }
