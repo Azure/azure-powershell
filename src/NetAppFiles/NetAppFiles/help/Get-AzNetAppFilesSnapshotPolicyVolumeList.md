@@ -1,56 +1,48 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://learn.microsoft.com/powershell/module/az.netappfiles/remove-aznetappfilesvolumequotarule
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/get-aznetappfilessnapshotpolicyvolumelist
 schema: 2.0.0
 ---
 
-# Remove-AzNetAppFilesVolumeQuotaRule
+# Get-AzNetAppFilesSnapshotPolicyVolumeList
 
 ## SYNOPSIS
-Deletes an Azure NetApp Files (ANF) Volume Quota Rule. 
+Get Volumes for Azure NetApp Files (ANF) Snapshot Policy
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Remove-AzNetAppFilesVolumeQuotaRule -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- [-VolumeName <String>] [-Name <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByResourceIdParameterSet
-```
-Remove-AzNetAppFilesVolumeQuotaRule [-Name <String>] -ResourceId <String> [-PassThru]
+Get-AzNetAppFilesSnapshotPolicyVolumeList -ResourceGroupName <String> -AccountName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Remove-AzNetAppFilesVolumeQuotaRule [-Name <String>] -VolumeObject <PSNetAppFilesVolume> [-PassThru]
+Get-AzNetAppFilesSnapshotPolicyVolumeList -Name <String> -SnaphotPolicyObject <PSNetAppFilesSnapshotPolicy>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### ByObjectParameterSet
+### ByResourceIdParameterSet
 ```
-Remove-AzNetAppFilesVolumeQuotaRule [-Name <String>] -InputObject <PSNetAppFilesBackupPolicy> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzNetAppFilesSnapshotPolicyVolumeList -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzNetAppFilesVolumeQuotaRule** cmdlet deletes an empty ANF VolumeQuotaRule.
+Get Volumes associated with Azure NetApp Files (ANF) Snapshot Policy
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Remove-AzNetAppFilesVolumeQuotaRule -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -VolumeName "MyAnfVolume" -Name "MyVolumeQuotaRuleName"
+Get-AzNetAppFilesSnapshotPolicyVolumeList -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MySnapshotPolicy"
 ```
 
-The **Remove-AzNetAppFilesVolumeGroup** cmdlet deletes an empty ANF VolumeQuotaRule.
+This command gets a list of Volumes associated with the backup policy named "MyBackupPolicy" for account "MyAnfAccount".
 
 ## PARAMETERS
 
@@ -58,7 +50,7 @@ The **Remove-AzNetAppFilesVolumeGroup** cmdlet deletes an empty ANF VolumeQuotaR
 The name of the ANF account
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -73,7 +65,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -84,58 +76,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The VolumeGroup object to remove
-
-```yaml
-Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupPolicy
-Parameter Sets: ByObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
-The name of the ANF VolumeGroup
+The name of the ANF snapshot policy
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: VolumeGroupName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Return whether the specified VolumeQuotaRule was successfully removed
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PoolName
-The name of the ANF pool
-
-```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
-Aliases:
+Aliases: SnapshotPolicyName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: ByParentObjectParameterSet
+Aliases: SnapshotPolicyName
 
 Required: True
 Position: Named
@@ -148,7 +107,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
+Type: ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -160,10 +119,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group of the ANF VolumeQuotaRule
+The resource group of the ANF account
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -175,10 +134,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of the ANF VolumeQuotaRule
+The resource id of the ANF Snapshot Policy
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
@@ -189,26 +148,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -VolumeName
-The name of the ANF volume
+### -SnaphotPolicyObject
+The Snapshot Policy object
 
 ```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VolumeObject
-The volume object containing the subvolume to remove
-
-```yaml
-Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
+Type: PSNetAppFilesSnapshotPolicy
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
@@ -223,7 +167,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -239,7 +183,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -257,13 +201,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
-
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupPolicy
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesSnapshotPolicy
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesSnapshotPolicy
 
 ## NOTES
 
