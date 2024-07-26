@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
         /// </summary>
 
         /// <param name="modificationEvent">Reason for the modification
-        /// Possible values include: 'SmartGroupCreated', 'StateChange', 'AlertAdded',
-        /// 'AlertRemoved'</param>
+        /// Possible values include: &#39;SmartGroupCreated&#39;, &#39;StateChange&#39;, &#39;AlertAdded&#39;,
+        /// &#39;AlertRemoved&#39;</param>
 
         /// <param name="oldValue">Old value
         /// </param>

@@ -25,18 +25,18 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
         /// </summary>
 
         /// <param name="severity">Severity of alert Sev0 being highest and Sev4 being lowest.
-        /// Possible values include: 'Sev0', 'Sev1', 'Sev2', 'Sev3', 'Sev4'</param>
+        /// Possible values include: &#39;Sev0&#39;, &#39;Sev1&#39;, &#39;Sev2&#39;, &#39;Sev3&#39;, &#39;Sev4&#39;</param>
 
         /// <param name="signalType">The type of signal the alert is based on, which could be metrics, logs or
         /// activity logs.
-        /// Possible values include: 'Metric', 'Log', 'Unknown'</param>
+        /// Possible values include: &#39;Metric&#39;, &#39;Log&#39;, &#39;Unknown&#39;</param>
 
         /// <param name="alertState">Alert object state, which can be modified by the user.
-        /// Possible values include: 'New', 'Acknowledged', 'Closed'</param>
+        /// Possible values include: &#39;New&#39;, &#39;Acknowledged&#39;, &#39;Closed&#39;</param>
 
         /// <param name="monitorCondition">Condition of the rule at the monitor service. It represents whether the
         /// underlying conditions have crossed the defined alert rule thresholds.
-        /// Possible values include: 'Fired', 'Resolved'</param>
+        /// Possible values include: &#39;Fired&#39;, &#39;Resolved&#39;</param>
 
         /// <param name="targetResource">Target ARM resource, on which alert got created.
         /// </param>
@@ -51,11 +51,11 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
         /// </param>
 
         /// <param name="monitorService">Monitor service on which the rule(monitor) is set.
-        /// Possible values include: 'Application Insights', 'ActivityLog
-        /// Administrative', 'ActivityLog Security', 'ActivityLog Recommendation',
-        /// 'ActivityLog Policy', 'ActivityLog Autoscale', 'Log Analytics', 'Nagios',
-        /// 'Platform', 'SCOM', 'ServiceHealth', 'SmartDetector', 'VM Insights',
-        /// 'Zabbix'</param>
+        /// Possible values include: &#39;Application Insights&#39;, &#39;ActivityLog
+        /// Administrative&#39;, &#39;ActivityLog Security&#39;, &#39;ActivityLog Recommendation&#39;,
+        /// &#39;ActivityLog Policy&#39;, &#39;ActivityLog Autoscale&#39;, &#39;Log Analytics&#39;, &#39;Nagios&#39;,
+        /// &#39;Platform&#39;, &#39;SCOM&#39;, &#39;ServiceHealth&#39;, &#39;SmartDetector&#39;, &#39;VM Insights&#39;,
+        /// &#39;Zabbix&#39;</param>
 
         /// <param name="alertRule">Rule(monitor) which fired alert instance. Depending on the monitor service,
         /// this would be ARM id or name of the rule.

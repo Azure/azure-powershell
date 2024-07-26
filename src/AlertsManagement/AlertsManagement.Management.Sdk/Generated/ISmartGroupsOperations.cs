@@ -14,13 +14,14 @@ namespace Microsoft.Azure.Management.AlertsManagement
     public partial interface ISmartGroupsOperations
     {
         /// <summary>
-        /// List all the Smart Groups within a specified subscription. 
+        /// List all the Smart Groups within a specified subscription.
         /// </summary>
         /// <remarks>
-        /// List all the Smart Groups within a specified subscription. 
+        /// List all the Smart Groups within a specified subscription.
         /// </remarks>
         /// <param name='targetResource'>
-        /// Filter by target resource( which is full ARM ID) Default value is select all.
+        /// Filter by target resource( which is full ARM ID) Default value is select
+        /// all.
         /// </param>
         /// <param name='targetResourceGroup'>
         /// Filter by target resource group name. Default value is select all.
@@ -29,10 +30,12 @@ namespace Microsoft.Azure.Management.AlertsManagement
         /// Filter by target resource type. Default value is select all.
         /// </param>
         /// <param name='monitorService'>
-        /// Filter by monitor service which generates the alert instance. Default value is select all.
+        /// Filter by monitor service which generates the alert instance. Default value
+        /// is select all.
         /// </param>
         /// <param name='monitorCondition'>
-        /// Filter by monitor condition which is either &#39;Fired&#39; or &#39;Resolved&#39;. Default value is to select all.
+        /// Filter by monitor condition which is either &#39;Fired&#39; or &#39;Resolved&#39;. Default
+        /// value is to select all.
         /// </param>
         /// <param name='severity'>
         /// Filter by severity.  Default value is select all.
@@ -44,13 +47,17 @@ namespace Microsoft.Azure.Management.AlertsManagement
         /// Filter by time range by below listed values. Default value is 1 day.
         /// </param>
         /// <param name='pageCount'>
-        /// Determines number of alerts returned per page in response. Permissible value is between 1 to 250. When the &#34;includeContent&#34;  filter is selected, maximum value allowed is 25. Default value is 25.
+        /// Determines number of alerts returned per page in response. Permissible
+        /// value is between 1 to 250. When the &#34;includeContent&#34;  filter is selected,
+        /// maximum value allowed is 25. Default value is 25.
         /// </param>
         /// <param name='sortBy'>
-        /// Sort the query results by input field. Default value is sort by &#39;lastModifiedDateTime&#39;.
+        /// Sort the query results by input field. Default value is sort by
+        /// &#39;lastModifiedDateTime&#39;.
         /// </param>
         /// <param name='sortOrder'>
-        /// Sort the query results order in either ascending or descending.  Default value is &#39;desc&#39; for time fields and &#39;asc&#39; for others.
+        /// Sort the query results order in either ascending or descending.  Default
+        /// value is &#39;desc&#39; for time fields and &#39;asc&#39; for others.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -73,7 +80,7 @@ namespace Microsoft.Azure.Management.AlertsManagement
         /// Get information related to a specific Smart Group.
         /// </remarks>
         /// <param name='smartGroupId'>
-        /// Smart group unique id. 
+        /// Smart group unique id.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -96,7 +103,7 @@ namespace Microsoft.Azure.Management.AlertsManagement
         /// Change the state of a Smart Group.
         /// </remarks>
         /// <param name='smartGroupId'>
-        /// Smart group unique id. 
+        /// Smart group unique id.
         /// </param>
         /// <param name='newState'>
         /// New state of the alert.
@@ -116,13 +123,15 @@ namespace Microsoft.Azure.Management.AlertsManagement
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SmartGroup,SmartGroupsChangeStateHeaders>> ChangeStateWithHttpMessagesAsync(string smartGroupId, string newState, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get the history a smart group, which captures any Smart Group state changes (New/Acknowledged/Closed) .
+        /// Get the history a smart group, which captures any Smart Group state changes
+        /// (New/Acknowledged/Closed) .
         /// </summary>
         /// <remarks>
-        /// Get the history a smart group, which captures any Smart Group state changes (New/Acknowledged/Closed) .
+        /// Get the history a smart group, which captures any Smart Group state changes
+        /// (New/Acknowledged/Closed) .
         /// </remarks>
         /// <param name='smartGroupId'>
-        /// Smart group unique id. 
+        /// Smart group unique id.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -139,10 +148,10 @@ namespace Microsoft.Azure.Management.AlertsManagement
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SmartGroupModification>> GetHistoryWithHttpMessagesAsync(string smartGroupId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List all the Smart Groups within a specified subscription. 
+        /// List all the Smart Groups within a specified subscription.
         /// </summary>
         /// <remarks>
-        /// List all the Smart Groups within a specified subscription. 
+        /// List all the Smart Groups within a specified subscription.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
