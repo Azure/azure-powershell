@@ -21,7 +21,8 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] 
  [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String> [-RestoreOnlyOSDisk]
  [-RestoreDiskList <String[]>] [-DiskEncryptionSetId <String>] [-RestoreToSecondaryRegion]
  [-TargetZoneNumber <Int32>] [-RehydratePriority <String>] [-UseSystemAssignedIdentity]
- [-UserAssignedIdentityId <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-UserAssignedIdentityId <String>] [-DiskAccessOption <TargetDiskNetworkAccessOption>]
+ [-TargetDiskAccessId <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
  [-RehydrateDuration <String>] [-Token <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -54,9 +55,9 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] 
  [-TargetZoneNumber <Int32>] [-RehydratePriority <String>] [-UseSystemAssignedIdentity]
  [-UserAssignedIdentityId <String>] [-TargetVMName <String>] [-TargetVNetName <String>]
  [-TargetVNetResourceGroup <String>] [-TargetSubnetName <String>] [-TargetSubscriptionId <String>]
- [-RestoreToEdgeZone] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-RehydrateDuration <String>] [-Token <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-RestoreToEdgeZone] [-DiskAccessOption <TargetDiskNetworkAccessOption>] [-TargetDiskAccessId <String>]
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-RehydrateDuration <String>] [-Token <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureVMUnManagedDiskParameterSet
@@ -347,6 +348,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DiskAccessOption
+Specifies the disk access option for target disks
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Management.RecoveryServices.Backup.Models.TargetDiskNetworkAccessOption]
+Parameter Sets: AzureManagedVMReplaceExistingParameterSet, AzureManagedVMCreateNewParameterSet
+Aliases:
+Accepted values: SameAsOnSourceDisks, EnablePrivateAccessForAllDisks, EnablePublicAccessForAllDisks
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DiskEncryptionSetId
 
 The DES ID to encrypt the restored disks.
@@ -606,6 +623,21 @@ Aliases:
 
 Required: True
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetDiskAccessId
+Specifies the target disk access ID when DiskAccessOption set to EnablePrivateAccessForAllDisks
+
+```yaml
+Type: System.String
+Parameter Sets: AzureManagedVMReplaceExistingParameterSet, AzureManagedVMCreateNewParameterSet
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

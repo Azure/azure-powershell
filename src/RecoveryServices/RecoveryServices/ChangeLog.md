@@ -21,6 +21,7 @@
 
 ## Version 7.0.0
 * [Breaking Change] Renamed the property `ResouceType` of `ASRVaultSettings` to `ResourceType`. 
+* Added support for enabling Disk access settings for managed VM restores.
 
 ## Version 6.9.0
 * Added support for MUA for disabling vault Immutability, increasing RPO for policy schedule, restore, stop protection with retain data.
