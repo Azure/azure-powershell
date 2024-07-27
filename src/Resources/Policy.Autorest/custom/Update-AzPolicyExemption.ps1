@@ -74,6 +74,7 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [ValidateSet('Waiver', 'Mitigated')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute('Waiver', 'Mitigated')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The policy exemption category
@@ -115,6 +116,7 @@ param(
 
     [Parameter()]
     [ValidateSet('Default', 'DoNotValidate')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute('Default', 'DoNotValidate')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The option whether validate the exemption is at or under the assignment scope.
@@ -252,6 +254,26 @@ process {
     if ($ClearExpiration) {
         $calledParameters.ExpiresOn = $null
         $null = $calledParameters.Remove('ClearExpiration')
+    }
+
+    if (!$calledParameters.DisplayName) {
+        $calledParameters.DisplayName = $existing.DisplayName
+    }
+
+    if (!$calledParameters.Description) {
+        $calledParameters.Description = $existing.Description
+    }
+
+    if (!$calledParameters.PolicyDefinitionReferenceId -and !($calledParameters.PolicyDefinitionReferenceId -is [array])) {
+        $calledParameters.PolicyDefinitionReferenceId = $existing.PolicyDefinitionReferenceId
+    }
+
+    if (!$calledParameters.Metadata) {
+        $calledParameters.Metadata = $existing.Metadata
+    }
+
+    if (!$calledParameters.AssignmentScopeValidation -and $existing.AssignmentScopeValidation) {
+        $calledParameters.AssignmentScopeValidation = $existing.AssignmentScopeValidation
     }
 
     if ($BackwardCompatible) {

@@ -486,6 +486,22 @@ function Update-AzDatabricksWorkspace {
             {
                 $workspace.ComplianceSecurityProfileValue = $ComplianceSecurityProfileValue
             }
+            if ($hasDefaultStorageFirewall)
+            {
+                $workspace.DefaultStorageFirewall = $DefaultStorageFirewall
+            }
+            if ($hasAccessConnectorId)
+            {
+                $workspace.AccessConnectorId = $AccessConnectorId
+            }
+            if ($hasAccessConnectorIdentityType)
+            {
+                $workspace.AccessConnectorIdentityType = $AccessConnectorIdentityType
+            }
+            if ($hasAccessConnectorUserAssignedIdentityId)
+            {
+                $workspace.AccessConnectorUserAssignedIdentityId = $AccessConnectorUserAssignedIdentityId
+            }
             if ($hasAsJob) {
                 $PSBoundParameters.Add('AsJob', $true)
             }

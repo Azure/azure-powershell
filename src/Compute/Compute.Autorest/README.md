@@ -26,7 +26,7 @@ For information on how to develop for `Az.Compute`, see [how-to.md](how-to.md).
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-commit: 77c47a7fba8d8b900595966b81d6bb92a0308370
+commit: 6f498e0646e1bb978b8b6f8b4e701938dd79df2b
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -35,7 +35,7 @@ input-file:
   - $(repo)/specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2022-01-03/gallery.json
   - $(repo)/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-07-01/runCommand.json
   - $(repo)/specification/compute/resource-manager/Microsoft.Compute/common-types/v1/common.json
-  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/DiagnosticRP/preview/2024-03-01-preview/diagnostic.json
+  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/DiagnosticRP/preview/2024-06-01-preview/diagnostic.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 module-version: 0.3.0
 # Normally, title is the service name
@@ -233,7 +233,7 @@ directive:
       subject: VMRunCommand|VmssVMRunCommand
       verb: Get
     remove: true
-  ### Remove All Diagnostic cmdlets aside from Invoke Spot Placement Recommender - generate ONLY SpotPlacementRecommender cmdlets
+  ### Remove All Diagnostic cmdlets aside from Invoke Spot Placement Recommender - generate ONLY SpotPlacementScore cmdlets
   - where:
       verb: Get
       subject: Diagnostic
@@ -262,4 +262,23 @@ directive:
       verb: Get
       subject: SpotPlacementRecommender
     remove: true
+  - where:
+      verb: Get
+      subject: SpotPlacementScore
+    remove: true
+
+  ## Add Alias for Invoke-AzSpotPlacementScore
+  - where:
+      verb: Invoke
+      subject: SpotPlacementRecommender
+    remove: true
+  - where:
+      verb: Invoke
+      subject: SpotPlacementScore
+    set:
+      alias: Invoke-AzSpotPlacementRecommender
+  - where:
+      parameter-name: SpotPlacementScoresInput
+    set:
+      alias: SpotPlacementRecommenderInput
 ```

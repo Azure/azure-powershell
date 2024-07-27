@@ -1,8 +1,8 @@
 ### Example 1: Create the SourceControl for a Container App.
 ```powershell
-$AzureClientSecret = ConvertTo-SecureString -String "1234" -Force -AsPlainText
-$RegistryPassword = ConvertTo-SecureString -String "1234" -Force -AsPlainText
-$GithubAccessToken = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$AzureClientSecret = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$RegistryPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$GithubAccessToken = ConvertTo-SecureString -String "****" -AsPlainText -Force
 
 New-AzContainerAppSourceControl -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app -Name current -AzureClientId "UserObjectId" -AzureClientSecret $AzureClientSecret -AzureKind "feaderated" -AzureTenantId "UserDirectoryID" -Branch "main" -GithubContextPath "./" -GithubAccessToken $GithubAccessToken -GithubConfigurationImage "azps-containerapp-1" -RegistryPassword $RegistryPassword -RegistryUrl "azpscontainerregistry.azurecr.io" -RegistryUserName "azpscontainerregistry" -RepoUrl "https://github.com/lijinpei2008/ghatest"
 ```

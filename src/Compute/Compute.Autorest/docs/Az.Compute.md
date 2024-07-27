@@ -11,14 +11,14 @@ Locale: en-US
 Microsoft Azure PowerShell: Compute cmdlets
 
 ## Az.Compute Cmdlets
-### [Invoke-AzSpotPlacementRecommender](Invoke-AzSpotPlacementRecommender.md)
-Generates placement scores for Spot VM skus.
-
 ### [Get-AzGalleryApplication](Get-AzGalleryApplication.md)
 Retrieves information about a gallery Application Definition.
 
 ### [Get-AzGalleryApplicationVersion](Get-AzGalleryApplicationVersion.md)
 Retrieves information about a gallery Application Version.
+
+### [Invoke-AzSpotPlacementScore](Invoke-AzSpotPlacementScore.md)
+Generates placement scores for Spot VM skus.
 
 ### [New-AzGalleryApplication](New-AzGalleryApplication.md)
 Create or update a gallery Application Definition.
