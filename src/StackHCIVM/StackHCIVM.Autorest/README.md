@@ -51,13 +51,15 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ```yaml
-commit: db63bea839f5648462c94e685d5cc96f8e8b38ba
+commit: 814c3673e0c115347cc398673fe7d36cd82dc83e
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 repo: azure-rest-api-specs
 
 input-file:
   - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCIVM/preview/2024-02-01-preview/stackhcivm.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2023-03-15-preview/HybridCompute.json
+
 
 module-version: 0.1.0
 title: StackHCIVM
