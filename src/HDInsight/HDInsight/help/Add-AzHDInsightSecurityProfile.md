@@ -48,7 +48,7 @@ $clusterCreds = Get-Credential
 #Security profile info
 $domain="sampledomain.onmicrosoft.com"
 $domainUser="sample.user@sampledomain.onmicrosoft.com"
-$domainPassword=ConvertTo-SecureString "domainPassword" -AsPlainText -Force
+$domainPassword=ConvertTo-SecureString -String "****" -AsPlainText -Force
 $domainUserCredential=New-Object System.Management.Automation.PSCredential($domainUser, $domainPassword)
 $organizationalUnitDN="ou=testunitdn"
 $ldapsUrls=("ldaps://sampledomain.onmicrosoft.com:636","ldaps://sampledomain.onmicrosoft.com:389")

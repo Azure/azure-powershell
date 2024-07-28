@@ -15,7 +15,7 @@ List the device groups for the catalog.
 ```
 Get-AzSphereCatalogDeviceGroup -CatalogName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-Filter <String>] [-Maxpagesize <Int32>] [-Skip <Int32>] [-Top <Int32>] [-DeviceGroupName <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,14 +25,14 @@ List the device groups for the catalog.
 
 ### Example 1: List for the specified catalog with resource group
 ```powershell
-Get-AzSphereCatalogDeviceGroup -CatalogName test2024 -ResourceGroupName joyer-test
+Get-AzSphereCatalogDeviceGroup -CatalogName test2024 -ResourceGroupName group-test
 ```
 
 ```output
 Name             SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName      
 ----             ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------      
-testdevicegroup                                                                                                                                                 joyer-test
-testdevicegroup2                                                                                                                                                joyer-test
+testdevicegroup                                                                                                                                                 group-test
+testdevicegroup2                                                                                                                                                group-test
 ```
 
 This command gets list of device groups for the specified catalog with resource group.
@@ -107,6 +107,21 @@ The maximum number of result items per page.
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

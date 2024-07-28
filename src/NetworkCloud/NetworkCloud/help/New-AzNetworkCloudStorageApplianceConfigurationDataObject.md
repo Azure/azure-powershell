@@ -15,7 +15,7 @@ Create an in-memory object for StorageApplianceConfigurationData.
 ```
 New-AzNetworkCloudStorageApplianceConfigurationDataObject -AdminCredentialsPassword <SecureString>
  -AdminCredentialsUsername <String> -RackSlot <Int64> -SerialNumber <String> [-StorageApplianceName <String>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Create an in-memory object for StorageApplianceConfigurationData.
 
 ### Example 1: Create an in-memory object for StorageApplianceConfigurationData.
 ```powershell
-$password = ConvertTo-SecureString "1qaz@WSX" -AsPlainText
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 
 New-AzNetworkCloudStorageApplianceConfigurationDataObject -AdminCredentialsPassword $password -AdminCredentialsUsername username -RackSlot 1 -SerialNumber serialNumber -StorageApplianceName storageApplianceName
 ```
@@ -64,6 +64,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

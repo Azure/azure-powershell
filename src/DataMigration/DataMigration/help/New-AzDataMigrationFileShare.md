@@ -14,7 +14,7 @@ Creates the FileShare object for the Azure Database Migration Service (classic),
 
 ```
 New-AzDataMigrationFileShare -Path <String> -Credential <PSCredential>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,9 +28,9 @@ New-AzDataMigrationFileShare -Path $fileSharePath -Credential $fileShareCred
 ```
 
 ```output
-UserName    Password     Path
---------    --------     ----
-domain\user testadmin123 \\fileshare\folder1
+UserName    Password  Path
+--------    --------  ----
+domain\user $password \\fileshare\folder1
 ```
 
 ## PARAMETERS
@@ -74,6 +74,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
