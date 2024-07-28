@@ -19,7 +19,6 @@ parameters:
 variables:
   EnableTestCoverage: true
   TestCoverageLocation: $(Pipeline.Workspace)/artifacts
-  Codeql.Enabled: false
 
 pr: none
 trigger: none
