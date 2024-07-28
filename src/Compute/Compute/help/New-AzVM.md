@@ -110,7 +110,7 @@ This script uses several other cmdlets.
 ## VM Account
 # Credentials for Local Admin account you created in the sysprepped (generalized) vhd image
 $VMLocalAdminUser = "LocalAdminUser"
-$VMLocalAdminSecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force
+$VMLocalAdminSecurePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 ## Azure Account
 $LocationName = "westus"
 $ResourceGroupName = "MyResourceGroup"
@@ -163,7 +163,7 @@ You can confirm your login status by using the **Get-AzSubscription** cmdlet.
 ### Example 3: Create a VM from a marketplace image without a Public IP
 ```powershell
 $VMLocalAdminUser = "LocalAdminUser"
-$VMLocalAdminSecurePassword = ConvertTo-SecureString "password" -AsPlainText -Force
+$VMLocalAdminSecurePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $LocationName = "eastus2"
 $ResourceGroupName = "MyResourceGroup"
 $ComputerName = "MyVM"
@@ -196,7 +196,7 @@ This command creates a VM from a marketplace image without a Public IP.
 ```powershell
 # VM Account
 $VMLocalAdminUser = "LocalAdminUser";
-$VMLocalAdminSecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force;
+$VMLocalAdminSecurePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force;
 
 # Azure Account
 $LocationName = "eastus";
@@ -222,7 +222,7 @@ The UserData value must always be Base64 encoded.
 ### Example 5: Creating a new VM with an existing subnet in another resource group
 ```powershell
 $UserName = "User"
-$Password = ConvertTo-SecureString "############" -AsPlainText -Force
+$Password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $psCred = New-Object System.Management.Automation.PSCredential($UserName, $Password)
 
 $Vnet = $(Get-AzVirtualNetwork -ResourceGroupName ResourceGroup2 -Name VnetName)
@@ -248,7 +248,7 @@ $domainNameLabel = "d1" + $resourceGroupName;
 $vmname = "vm" + $resourceGroupName;
 $platformFaultDomainVMDefaultSet = 2;
 $vmssFaultDomain = 3;
-$securePassword = <PASSWORD> | ConvertTo-SecureString -AsPlainText -Force;
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force;
 $user = <USERNAME>;
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 $vmssName = "vmss" + $resourceGroupName;
@@ -267,7 +267,7 @@ $resourceGroupName= "<Resource Group Name>"
 $loc = "<Azure Region>"
 $domainNameLabel = "<Domain Name Label>"
 $vmname = "<Virtual Machine Name>"
-$securePassword = "<Password>" | ConvertTo-SecureString -AsPlainText -Force
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $user = "<Username>"
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword)
 
@@ -298,8 +298,7 @@ $disable = $false;
 $enable = $true;
 $securityType = "TrustedLaunch";
 
-$password = <Password>;
-$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force;
 $user = <Username>;
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
@@ -334,8 +333,7 @@ $PublisherName = "MicrosoftWindowsServer";
 $Offer = "WindowsServer";
 $SKU = "2022-datacenter-azure-edition";
 $version = "latest";
-$password = "<Password>";
-$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force;
 $user = <Username>;
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 # Network setup
@@ -364,8 +362,7 @@ $rgname = "<Resource Group Name>";
 $loc = "<Azure Region>";
 $vmname = 'vm' + $rgname;
 $domainNameLabel = "d1" + $rgname;
-$password = "<Password>";
-$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force;
 $user = <Username>;
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 # Create VM

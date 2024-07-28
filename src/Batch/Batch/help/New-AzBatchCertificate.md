@@ -40,7 +40,7 @@ This command adds a certificate to the specified Batch account by using the file
 ### Example 2: Add a certificate from raw data
 ```powershell
 $RawData = [System.IO.File]::ReadAllBytes("E:\Certificates\MyCert.pfx")
-New-AzBatchCertificate -RawData $RawData -Password "Password1234" -BatchContext $Context
+New-AzBatchCertificate -RawData $RawData -Password <Password> -BatchContext $Context
 ```
 
 The first command reads the data from the file named MyCert.pfx into the $RawData variable.
