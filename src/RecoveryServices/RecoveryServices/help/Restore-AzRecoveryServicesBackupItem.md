@@ -147,7 +147,7 @@ $BackupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -
 $StartDate = (Get-Date).AddDays(-7)
 $EndDate = Get-Date
 $RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -StartDate $StartDate.ToUniversalTime() -EndDate $EndDate.ToUniversalTime() -VaultId $vault.ID
-$AlternateLocationRestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -TargetResourceGroupName "Target_RG" -StorageAccountName "DestStorageAccount" -StorageAccountResourceGroupName "DestStorageAccRG" -TargetVMName "TagetVirtualMachineName" -TargetVNetName "Target_VNet" -TargetVNetResourceGroup "" -TargetSubnetName "subnetName" -VaultId $vault.ID -VaultLocation $vault.Location 
+$AlternateLocationRestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -TargetResourceGroupName "Target_RG" -StorageAccountName "DestStorageAccount" -StorageAccountResourceGroupName "DestStorageAccRG" -TargetVMName "TagetVirtualMachineName" -TargetVNetName "Target_VNet" -TargetVNetResourceGroup "Target_VNet_RG" -TargetSubnetName "subnetName" -VaultId $vault.ID -VaultLocation $vault.Location 
 $OriginalLocationRestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -StorageAccountName "DestStorageAccount" -StorageAccountResourceGroupName "DestStorageAccRG" -VaultId $vault.ID -VaultLocation $vault.Location
 ```
 
@@ -329,6 +329,23 @@ $restoreJob = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLoca
 ```
 
 In this example, we use RestoreToEdgeZone parameter to trigger a restore to new edge zone vm in alternate location. For Original location restore (OLR), restore will implicitly be an edge zone restore if the source VM is an edge zone VM.
+
+### Example 12: Restore a Managed AzureVM using DiskAccessOption
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$BackupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -Name "V2VM" -VaultId $vault.ID
+$RP = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $item
+$AlternateLocationRestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -TargetResourceGroupName "Target_RG" -StorageAccountName "DestStorageAccount" -StorageAccountResourceGroupName "DestStorageAccRG" -TargetVMName "TagetVirtualMachineName" -TargetVNetName "Target_VNet" -TargetVNetResourceGroup "Target_VNet_RG" -TargetSubnetName "subnetName" -VaultId $vault.ID -VaultLocation $vault.Location -DiskAccessOption EnablePrivateAccessForAllDisks -TargetDiskAccessId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rgName/providers/Microsoft.Compute/diskAccesses/target-diskaccess"
+```
+
+```output
+WorkloadName    Operation       Status          StartTime              EndTime
+    ------------    ---------       ------          ---------              -------
+    V2VM            Restore         InProgress      26-Jul-24 1:14:01 PM   01-Jan-01 12:00:00 AM
+```
+
+In this example, we use DiskAccessOption parameter to trigger a restore to new VM with private access enabled for all disks. DiskAccessOption parameter can be used to specify the disk access option for target disks. The acceptable values for this parameter are: SameAsOnSourceDisks, EnablePrivateAccessForAllDisks, EnablePublicAccessForAllDisks. TargetDiskAccessId parameter is used to specify the disk access id for the target disks. This parameter is required when DiskAccessOption is set to EnablePrivateAccessForAllDisks.
 
 ## PARAMETERS
 

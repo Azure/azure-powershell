@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public string Token;
 
         [Parameter(Mandatory = false, ParameterSetName = AzureManagedVMCreateNewParameterSet,
-            HelpMessage = ParamHelpMsgs.RestoreVM.DiskAccessOption)]
+            HelpMessage = ParamHelpMsgs.RestoreVM.DiskAccessOption)]        
         [Parameter(Mandatory = false, ParameterSetName = AzureManagedVMReplaceExistingParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreVM.DiskAccessOption)]
         public ServiceClientModel.TargetDiskNetworkAccessOption?  DiskAccessOption { get; set; }
@@ -337,7 +337,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = false, ParameterSetName = AzureManagedVMCreateNewParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreVM.TargetDiskAccessId)]
         [Parameter(Mandatory = false, ParameterSetName = AzureManagedVMReplaceExistingParameterSet,
-            HelpMessage = ParamHelpMsgs.RestoreVM.TargetDiskAccessId)]        
+            HelpMessage = ParamHelpMsgs.RestoreVM.TargetDiskAccessId)]
+        [ValidatePattern(@"^/subscriptions/[^/]+/resourceGroups/[^/]+/providers/Microsoft.Compute/diskAccesses/[^/]+$")]
         public string TargetDiskAccessId { get; set; }
 
         public override void ExecuteCmdlet()
