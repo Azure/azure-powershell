@@ -97,7 +97,7 @@ if(-not $Debugger) {
   $null = Remove-Item -Recurse -ErrorAction SilentlyContinue -Path (Join-Path $binFolder 'Debug'), (Join-Path $binFolder 'Release')
 }
 
-$dll = Join-Path $PSScriptRoot 'bin\Az.AksArc.private.dll'
+$dll = Join-Path $PSScriptRoot 'bin/Az.AksArc.private.dll'
 if(-not (Test-Path $dll)) {
   Write-Error "Unable to find output assembly in '$binFolder'."
 }
@@ -106,7 +106,7 @@ if(-not (Test-Path $dll)) {
 $null = Import-Module -Name $dll
 
 $modulePaths = $dll
-$customPsm1 = Join-Path $PSScriptRoot 'custom\Az.AksArc.custom.psm1'
+$customPsm1 = Join-Path $PSScriptRoot 'custom/Az.AksArc.custom.psm1'
 if(Test-Path $customPsm1) {
   $modulePaths = @($dll, $customPsm1)
 }
@@ -178,8 +178,8 @@ if (Test-Path (Join-Path $PSScriptRoot 'generate-portal-ux.ps1'))
 }
 
 if (-not $DisableAfterBuildTasks){
-  $afterBuildTasksPath = Join-Path $PSScriptRoot ''
-  $afterBuildTasksArgs = ConvertFrom-Json 'true' -AsHashtable
+  $afterBuildTasksPath = Join-Path $PSScriptRoot '../../../tools/BuildScripts/AdaptAutorestModule.ps1'
+  $afterBuildTasksArgs = ConvertFrom-Json '{"SubModuleName":"AksArc","ModuleRootName":"$(root-module-name)"}' -AsHashtable
   if(Test-Path -Path $afterBuildTasksPath -PathType leaf){
     Write-Host -ForegroundColor Green 'Running after build tasks...'
     . $afterBuildTasksPath @afterBuildTasksArgs
