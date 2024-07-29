@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the EmailService service.
 
 ---
-## Status
-[![Az.EmailService](https://img.shields.io/powershellgallery/v/Az.EmailService.svg?style=flat-square&label=Az.EmailService "Az.EmailService")](https://www.powershellgallery.com/packages/Az.EmailService/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

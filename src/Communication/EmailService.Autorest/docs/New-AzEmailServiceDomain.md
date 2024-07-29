@@ -211,7 +211,6 @@ Accept wildcard characters: False
 
 ### -EmailServiceInputObject
 Identity Parameter
-To construct, see NOTES section for EMAILSERVICEINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IEmailServiceIdentity
@@ -317,7 +316,6 @@ Accept wildcard characters: False
 
 ### -Parameter
 A class representing a Domains resource.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResource

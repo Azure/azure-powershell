@@ -15,12 +15,34 @@ if(($null -eq $TestName) -or ($TestName -contains 'Send-AzEmailServicedataEmail'
 }
 
 Describe 'Send-AzEmailServicedataEmail' {
-    It 'Send' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Send' {       
+        $emailRecipientTo = @(
+            @{
+                Address = "contosouser@contoso.com"
+                DisplayName = "ContosoUser"
+            }
+        )
+        $message = @{
+	        ContentSubject = "Test Email"
+	        RecipientTo = @($emailRecipientTo)  # Array of email address objects
+	        SenderAddress = $env.senderAddress
+	        ContentPlainText = "This is the first email from ACS - HTML"	
+        }
+        $SendEmailResult = Send-AzEmailServicedataEmail -Message $message -endpoint $env.endPoint
+        $SendEmailResult.Status | Should -Be "Succeeded"
     }
 
-    It 'SendExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SendExpanded' {
+        $emailRecipientTo = @(
+            @{
+                Address = "contosouser@contoso.com"
+                DisplayName = "ContosoUser"
+            }
+        )
+        $contentSubject = "Test Email"
+        $contentPlainText = "This is the first email from ACS - HTML"	
+        $SendEmailResult = Send-AzEmailServicedataEmail -endpoint $env.endPoint -ContentSubject $contentSubject -RecipientTo @($emailRecipientTo) -SenderAddress $env.senderAddress -ContentPlainText $contentPlainText
+        $SendEmailResult.Status | Should -Be "Succeeded"
     }
 
     It 'SendViaJsonFilePath' -skip {
