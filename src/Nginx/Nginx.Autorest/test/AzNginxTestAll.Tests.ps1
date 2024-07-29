@@ -14,13 +14,20 @@ if(($null -eq $TestName) -or ($TestName -contains "AzNginxTestAll"))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Write-Host "test2";
-Write-Host $env;
-
 Describe "AzNginxTestAll" {
     It "CreateExpanded" {
-        New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
+        # create resource group for testing
+        $rg = New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
 
+        # create user assigned managed identity
+        $identity = New-AzUserAssignedIdentity -ResourceGroupName $env.resourceGroup -Name $env.userAssignedMI -Location $env.location
+
+        # create key vault
+        $keyvault = New-AzKeyVault -Name $env.keyvault -ResourceGroupName $env.resourceGroup -Location $env.location
+        $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=nginxpwshtesting.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal
+        $certKV = Add-AzKeyVaultCertificate -VaultName $env.keyvault -Name $env.nginxCert -CertificatePolicy $Policy
+
+        # create public ip
         $ip = @{
             Name = $env.pubip
             ResourceGroupName = $env.resourceGroup
@@ -30,40 +37,78 @@ Describe "AzNginxTestAll" {
             IpAddressVersion = "IPv4"
             Zone = 2
         }
-
         $publicIp = New-AzPublicIpAddress @ip -Force
 
-        # $vnet = @{
-        #     Name = $env.vnet
-        #     ResourceGroupName = $env.resourceGroup
-        #     Location = $env.location
-        #     AddressPrefix = "10.0.0.0/16"
-        # }
-        # $virtualNetwork = New-AzVirtualNetwork $vnet
+        # create virtual network
+        $vnet = @{
+            Name = $env.vnet
+            ResourceGroupName = $env.resourceGroup
+            Location = $env.location
+            AddressPrefix = "10.0.0.0/16"
+        }
+        $virtualNetwork = New-AzVirtualNetwork @vnet -Force
 
-        # $subnet = @{
-        #     Name = $env.subnet
-        #     VirtualNetwork = $virtualNetwork
-        #     AddressPrefix = "10.0.0.0/24"
-        # }
-        # $subnetConfig = Add-AzVirtualNetworkSubnetConfig $subnet
-        # $virtualNetwork | Set-AzVirtualNetwork
+        # create subnet
+        $subnet = @{
+            Name = $env.subnet
+            VirtualNetwork = $virtualNetwork
+            AddressPrefix = "10.0.0.0/24"
+        }
+        $subnetConfig = Add-AzVirtualNetworkSubnetConfig @subnet
+        $virtualNetwork | Set-AzVirtualNetwork
 
-        # $vnet = Get-AzVirtualNetwork -Name $env.vnet -ResourceGroupName $env.resourceGroup
-        # $subnet = Get-AzVirtualNetworkSubnetConfig -Name $env.subnet -VirtualNetwork $vnet
-        # $subnet = Add-AzDelegation -Name "delegation" -ServiceName $env.delegation -Subnet $subnet
-        # Set-AzVirtualNetwork -VirtualNetwork $vnet
+        # delegate the subnet to NGINX.NGINXPLUS/nginxDeployments
+        $vnet = Get-AzVirtualNetwork -Name $env.vnet -ResourceGroupName $env.resourceGroup
+        $subnet = Get-AzVirtualNetworkSubnetConfig -Name $env.subnet -VirtualNetwork $vnet
+        $subnet = Add-AzDelegation -Name "delegation" -ServiceName $env.delegation -Subnet $subnet
+        Set-AzVirtualNetwork -VirtualNetwork $vnet
 
-        # $publicIp = New-AzNginxPublicIPAddressObject -Id /subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/az-pwsh-testrg/providers/Microsoft.Network/publicIPAddresses/testpubip
-        # Write-Host "test3";
-        # Write-Host $publicIp;
-        # $networkProfile = New-AzNginxNetworkProfileObject -FrontEndIPConfiguration @{PublicIPAddress=@($publicIp)} -NetworkInterfaceConfiguration @{SubnetId="/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/az-pwsh-testrg/providers/Microsoft.Network/virtualNetworks/testvnet/subnets/default"}
-        # Write-Host "test4";
-        # Write-Host $networkProfile;
-        # $nginxDeployment = New-AzNginxDeployment -Name $env.nginxDeployment2 -ResourceGroupName $env.resourceGroup -Location $env.location -NetworkProfile $networkProfile -SkuName standard_Monthly_gmz7xq9ge3py
-        # Write-Host "test5";
-        # Write-Host $nginxDeployment;
-        # $nginxDeployment.ProvisioningState | Should -Be "Succeeded"
-        # $nginxDeployment.Name | Should -Be $env.nginxDeployment2
+        # create the nginxaas resource
+        $publicIp = New-AzNginxPublicIPAddressObject -Id $publicIp.Id
+        $networkProfile = New-AzNginxNetworkProfileObject -FrontEndIPConfiguration @{PublicIPAddress=@($publicIp)} -NetworkInterfaceConfiguration @{SubnetId=$subnet.Id}
+        $nginxDeployment = New-AzNginxDeployment -Name $env.nginxDeployment1 -ResourceGroupName $env.resourceGroup -Location $env.location -NetworkProfile $networkProfile -SkuName standard_Monthly_gmz7xq9ge3py -IdentityType "SystemAssigned" 
+        $nginxDeployment.ProvisioningState | Should -Be "Succeeded"
+        $nginxDeployment.Name | Should -Be $env.nginxDeployment1
+        
+
+        # assigning role
+        $keyVaultId = $keyVault.ResourceId
+        $roleDefinition = Get-AzRoleDefinition -Name "Key Vault Administrator"
+        $roleAssignment = New-AzRoleAssignment -ObjectId $nginxDeployment.IdentityPrincipalId  -RoleDefinitionId $roleDefinition.Id -Scope $keyVaultId
+
+
+        # enabling monitoring
+        $nginx = Update-AzNginxDeployment -DeploymentName $env.nginxDeployment1 -ResourceGroupName $env.resourceGroup -EnableDiagnosticsSupport
+        $nginx.EnableDiagnosticsSupport | Should -Be True
+
+        # adding nginx configuration
+        $confFile = New-AzNginxConfigurationFileObject -VirtualPath $env.nginxFilePath -Content $env.nginxFileContent
+        $conf = New-AzNginxConfiguration -DeploymentName $env.nginxDeployment1 -Name default -ResourceGroupName $env.resourceGroup -File $confFile -RootFile $env.nginxFilePath
+        $conf.ProvisioningState | Should -Be 'Succeeded'
+
+        # checking added configuration
+        $confList = Get-AzNginxConfiguration -DeploymentName $env.nginxDeployment1 -ResourceGroupName $env.resourceGroup
+        $confList.Count | Should -Be 1
+
+        $conf = Get-AzNginxConfiguration -DeploymentName $env.nginxDeployment1 -Name $env.nginxConf -ResourceGroupName $env.resourceGroup
+        $conf.Name | Should -Be $env.nginxConf
+
+        $conf = Get-AzNginxConfiguration -DeploymentName $env.nginxDeployment1 -Name $env.nginxConf -ResourceGroupName $env.resourceGroup
+        $conf = Get-AzNginxConfiguration -InputObject  $conf
+        $conf.Name | Should -Be $env.nginxConf
+
+        # add certificate
+        $certVersion = "/" + (Get-AzKeyVaultcertificate -VaultName $env.keyvault -name $env.nginxCert).version 
+        $kvcertsecretid = (Get-AzKeyVaultcertificate -VaultName $env.keyvault -name $env.nginxCert).secretid.Replace(":443", "").Replace($certVersion, "")
+        $cert = New-AzNginxCertificate -DeploymentName $env.nginxDeployment1 -Name $env.nginxCert -ResourceGroupName $env.resourceGroup -CertificateVirtualPath "/etc/nginx/test.cert" -KeyVirtualPath "/etc/nginx/test.key" -KeyVaultSecretId $kvcertsecretid
+        $cert.ProvisioningState | Should -Be 'Succeeded'
+
+
+        # delete deployment
+        Remove-AzNginxDeployment -Name $env.nginxDeployment1 -ResourceGroupName $env.resourceGroup
+        $deploymentList = Get-AzNginxDeployment -ResourceGroupName $env.resourceGroup
+        $deploymentList.Name | Should -Not -Contain $env.nginxDeployment1
+        
     }
+
 }

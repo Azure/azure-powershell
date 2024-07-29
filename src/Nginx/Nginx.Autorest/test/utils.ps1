@@ -41,20 +41,23 @@ $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val,
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
+    $testNumber = $(Get-Random -Minimum 0 -Maximum 1000)
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
-    $env.resourceGroup = 'az-pwsh-testrg'
-    $env.nginxDeployment1 = 'azpwshnginx1'
-    $env.nginxDeployment2 = 'azpwshnginx2'
+    $env.resourceGroup = ('testing-rg' + $testNumber)
+    $env.nginxDeployment1 = ('azpwshnginx' + $testNumber)
     $env.nginxCert = 'testcert'
     $env.nginxNewCert = 'testnewcert'
     $env.nginxConf = 'default'
     $env.nginxFilePath = 'nginx.conf'
     $env.nginxFileContent = 'aHR0cCB7DQogICAgdXBzdHJlYW0gYXBwIHsNCiAgICAgICAgc2VydmVyIDE3Mi4yNy4wLjQ6ODA7DQogICAgfQ0KICAgIHNlcnZlciB7DQogICAgICAgIGxpc3RlbiA4MDsNCiAgICAgICAgbG9jYXRpb24gLyB7DQogICAgICAgICAgICBkZWZhdWx0X3R5cGUgdGV4dC9odG1sOw0KICAgICAgICAgICAgcmV0dXJuIDIwMCAnPCFET0NUWVBFIGh0bWw+PGgxIHN0eWxlPSJmb250LXNpemU6MzBweDsiPkhlbGxvIGZyb20gTmdpbnggV2ViIFNlcnZlciE8L2gxPlxuJzsNCiAgICAgICAgfQ0KICAgICAgICBsb2NhdGlvbiAvYXBwLyB7DQogICAgICAgICAgICBwcm94eV9wYXNzIGh0dHA6Ly9hcHAuYmxvYi5jb3JlLndpbmRvd3MubmV0LzsNCiAgICAgICAgICAgIHByb3h5X2h0dHBfdmVyc2lvbiAxLjE7DQogICAgICAgICAgICBwcm94eV9yZWFkX3RpbWVvdXQgNjAwOw0KCSAgICAgICAgcHJveHlfY29ubmVjdF90aW1lb3V0IDYwMDsNCgkgICAgICAgIHByb3h5X3NlbmRfdGltZW91dCA2MDA7DQogICAgICAgIH0NCiAgICB9DQp9'
     $env.location = "eastus2"
-    $env.pubip = "testpubip"
-    $env.vnet = "testvnet"
+    $env.pubip = ("testpubip" + $testNumber)
+    $env.vnet = ("testvnet" + $testNumber)
+    $env.subnet = "default"
+    $env.userAssignedMI = ("testusermi" + $testNumber)
+    $env.keyvault = ("tkv" + $testNumber)
     $env.delegation = "NGINX.NGINXPLUS/nginxDeployments"
 
     $envFile = 'env.json'
@@ -65,5 +68,5 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }
-
