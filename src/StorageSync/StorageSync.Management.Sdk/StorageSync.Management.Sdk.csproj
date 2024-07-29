@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.PowerShell.StorageSync.Sdk</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.StorageSync.Management.Sdk</AssemblyName>
     <RootNamespace>Microsoft.Azure.Management.StorageSync</RootNamespace>
     <NoWarn>$(NoWarn);CS0108;CS1573;CS0114</NoWarn>
   </PropertyGroup>
