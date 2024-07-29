@@ -24,21 +24,10 @@ Create an in-memory object for TritonModelJobInput.
 
 ### Example 1: Create an in-memory object for TritonModelJobInput
 ```powershell
-New-AzMLWorkspaceTritonModelJobInputObject
+New-AzMLWorkspaceTritonModelJobInputObject -Type <JobInputType> -Uri <String>
 ```
 
 Create an in-memory object for TritonModelJobInput
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -109,11 +98,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.TritonModelJobInput
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.TritonModelJobInput
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
