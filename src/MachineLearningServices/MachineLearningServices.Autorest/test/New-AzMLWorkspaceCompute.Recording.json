@@ -1,8 +1,8 @@
 {
-  "New-AzMLWorkspaceCompute+[NoContext]+AmlCompute+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test01/computes/aml02?api-version=2022-05-01+1": {
+  "New-AzMLWorkspaceCompute+[NoContext]+AmlCompute+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/computes/aml03?api-version=2024-04-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test01/computes/aml02?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/computes/aml03?api-version=2024-04-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"computeType\": \"AmlCompute\",\r\n    \"properties\": {\r\n      \"scaleSettings\": {\r\n        \"maxNodeCount\": 8,\r\n        \"minNodeCount\": 0\r\n      },\r\n      \"osType\": \"Linux\",\r\n      \"vmSize\": \"STANDARD_DS3_V2\",\r\n      \"remoteLoginPortPublicAccess\": \"NotSpecified\",\r\n      \"enableNodePublicIp\": true\r\n    }\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -20,39 +20,315 @@
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
         "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
         "x-ms-response-type": [ "standard" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/e963b795-d6a3-4a40-b591-63c65ddf972f?api-version=2022-05-01\u0026service=new" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/f0e05bb5-f9d5-4b19-9995-01690f99c6f7?api-version=2024-04-01\u0026service=new\u0026t=638574079431156289\u0026c=MIIHhzCCBm-gAwIBAgITHgTLf2Bo2ctQx42TXQAABMt_YDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNjI0MTExMDUyWhcNMjUwNjE5MTExMDUyWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJlnrj2pdevN1SIOk4Ymmo6b0y9Je4RZXWejQSMTCH35NFEHss9bBD2CGcY3xU4F2W7onMR_2J9BMUNk3BAub3AoLlqVrcx5dzI0ay_5toyOhu-L1pN7aSQdp7J-LzA-UW_CLp2D_65mjx1ZER-HWOV5QedBCvUwhqtSal8AbzrK5Qth8tntkg5tzjChuGo9vkh1pnXKQyYHQMdulCipi-EK8sPOQpZyiVIRujiHxTJMjdxz4gCG4rAFAK8_jK4UC73mwHm7BAlfbfkkZtxW5sVSGLrYwFPkNIDtNGoINbTjOqTmJR02AYrzu-AeRS1DP-HxtHci9UFjOurKjaUYhTUCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBTxZpd7aM59MC90B8etCBMRpcVJhTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAHAEnYrjKwIEeZD6k6Jnduw9QE83ye3e6yI36Y6jc5gavwpltarWjUevLWA6bzqnIMEbxZot_oo7GgSjb9hcbtTWjf_cW7PWDbQSC5WExVS4rTM5XJOQlXIeguIDWoXNGCzJBnYfUfUEfW8ZdjPKbJ7_7OQo_y-DgeRynB9KRCkpH4wZ1X5EQR-13kZvzXCVNpw1yiAELFyVScpLMqfm5iM9nMEMU7Og9hgeUL4q7EwPPbvn6qRq4ehK7ctlmEItOmMlgtNqT3IRhFnMIIsqnZu7BTfLyXR_8geMDnVJlhUXkb73ZpHNIBaoXmHwLpUQLBwoqG0ME1rP1_9UfVhYmNs\u0026s=OivnsUSneAGQlqeyD2lcigF0EU1eziUoa3P_f4n6Tr5uMeIZWEdzuC794rHJHEP_kIVtzB1imWrOFhBzVClyMUxPVJpY0IbQJ9SwzG4uczMM9UG3tb4XYxo9jIVgn5RSZi49QEZSme58yDIBDB14JLAsNBFZAVyADipKkwu1JkcaJxNLSwKjg_nRgrZWB8uJxpniEwpzcfs7FqRWZeEGQLZSAaotlfp-T4dbsSHsIShW6y2GlqYKyVUpyoYCc61WcYyutOeigR_Zy2aJlYloviRixXHeRGTfOM9co7dltg_pdnoTvxv1F3wFO454qSlXa5h5IclWEcYfL6rirssK4g\u0026h=6QBeX1WJvq-A9olgVktwBlt2cKP-Y9bu5wFOwW5IArU" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.395" ],
-        "x-ms-request-id": [ "0690593c-ea1a-475b-ae79-58454b1338ea" ],
-        "x-ms-correlation-request-id": [ "0690593c-ea1a-475b-ae79-58454b1338ea" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T145620Z:0690593c-ea1a-475b-ae79-58454b1338ea" ],
-        "Date": [ "Sun, 05 Jun 2022 14:56:19 GMT" ]
+        "x-aml-cluster": [ "vienna-eastus-02" ],
+        "x-request-time": [ "0.173" ],
+        "x-ms-request-id": [ "e875e325-0553-4135-a096-8d9807171f43" ],
+        "x-ms-correlation-request-id": [ "e875e325-0553-4135-a096-8d9807171f43" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085223Z:e875e325-0553-4135-a096-8d9807171f43" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FFEED7DF07554E9D87EFFBC41D38E46B Ref B: TYO201151005031 Ref C: 2024-07-24T08:52:21Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:52:22 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1404" ],
+        "Content-Length": [ "1287" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test01/computes/aml02\",\n  \"name\": \"aml02\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/computes\",\n  \"location\": \"eastus\",\n  \"tags\": {},\n  \"properties\": {\n    \"createdOn\": \"2022-05-31T03:13:58.5270306+00:00\",\n    \"modifiedOn\": \"2022-06-05T14:56:20.2320921+00:00\",\n    \"disableLocalAuth\": false,\n    \"description\": null,\n    \"resourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.BatchAI/workspaces/mlworkspace-test01/clusters/aml02\",\n    \"computeType\": \"AmlCompute\",\n    \"computeLocation\": \"eastus\",\n    \"provisioningState\": \"Creating\",\n    \"provisioningErrors\": null,\n    \"isAttachedCompute\": false,\n    \"properties\": {\n      \"vmSize\": \"STANDARD_DS3_V2\",\n      \"vmPriority\": \"Dedicated\",\n      \"scaleSettings\": {\n        \"maxNodeCount\": 8,\n        \"minNodeCount\": 0,\n        \"nodeIdleTimeBeforeScaleDown\": null\n      },\n      \"subnet\": null,\n      \"currentNodeCount\": null,\n      \"targetNodeCount\": null,\n      \"nodeStateCounts\": null,\n      \"allocationState\": null,\n      \"errors\": null,\n      \"remoteLoginPortPublicAccess\": \"NotSpecified\",\n      \"osType\": \"Linux\",\n      \"virtualMachineImage\": null,\n      \"isolatedNetwork\": false,\n      \"enableNodePublicIp\": true\n    }\n  }\n}",
+      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/computes/aml03\",\n  \"name\": \"aml03\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/computes\",\n  \"location\": \"eastus\",\n  \"tags\": null,\n  \"properties\": {\n    \"createdOn\": \"2024-07-24T08:52:22.8992568+00:00\",\n    \"modifiedOn\": \"2024-07-24T08:52:22.8992568+00:00\",\n    \"disableLocalAuth\": false,\n    \"description\": null,\n    \"resourceId\": null,\n    \"computeType\": \"AmlCompute\",\n    \"provisioningState\": \"Creating\",\n    \"provisioningErrors\": null,\n    \"provisioningWarnings\": null,\n    \"isAttachedCompute\": false,\n    \"properties\": {\n      \"vmSize\": \"STANDARD_DS3_V2\",\n      \"vmPriority\": null,\n      \"scaleSettings\": {\n        \"maxNodeCount\": 8,\n        \"minNodeCount\": 0,\n        \"nodeIdleTimeBeforeScaleDown\": null\n      },\n      \"subnet\": null,\n      \"currentNodeCount\": null,\n      \"targetNodeCount\": null,\n      \"nodeStateCounts\": null,\n      \"allocationState\": null,\n      \"errors\": null,\n      \"remoteLoginPortPublicAccess\": \"NotSpecified\",\n      \"osType\": \"Linux\",\n      \"virtualMachineImage\": null,\n      \"isolatedNetwork\": false,\n      \"enableNodePublicIp\": true,\n      \"enableBatchPrivateLink\": false\n    }\n  }\n}",
       "isContentBase64": false
     }
   },
-  "New-AzMLWorkspaceCompute+[NoContext]+AmlCompute+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/e963b795-d6a3-4a40-b591-63c65ddf972f?api-version=2022-05-01\u0026service=new+2": {
+  "New-AzMLWorkspaceCompute+[NoContext]+AmlCompute+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/f0e05bb5-f9d5-4b19-9995-01690f99c6f7?api-version=2024-04-01\u0026service=new\u0026t=638574079431156289\u0026c=MIIHhzCCBm-gAwIBAgITHgTLf2Bo2ctQx42TXQAABMt_YDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNjI0MTExMDUyWhcNMjUwNjE5MTExMDUyWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJlnrj2pdevN1SIOk4Ymmo6b0y9Je4RZXWejQSMTCH35NFEHss9bBD2CGcY3xU4F2W7onMR_2J9BMUNk3BAub3AoLlqVrcx5dzI0ay_5toyOhu-L1pN7aSQdp7J-LzA-UW_CLp2D_65mjx1ZER-HWOV5QedBCvUwhqtSal8AbzrK5Qth8tntkg5tzjChuGo9vkh1pnXKQyYHQMdulCipi-EK8sPOQpZyiVIRujiHxTJMjdxz4gCG4rAFAK8_jK4UC73mwHm7BAlfbfkkZtxW5sVSGLrYwFPkNIDtNGoINbTjOqTmJR02AYrzu-AeRS1DP-HxtHci9UFjOurKjaUYhTUCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBTxZpd7aM59MC90B8etCBMRpcVJhTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAHAEnYrjKwIEeZD6k6Jnduw9QE83ye3e6yI36Y6jc5gavwpltarWjUevLWA6bzqnIMEbxZot_oo7GgSjb9hcbtTWjf_cW7PWDbQSC5WExVS4rTM5XJOQlXIeguIDWoXNGCzJBnYfUfUEfW8ZdjPKbJ7_7OQo_y-DgeRynB9KRCkpH4wZ1X5EQR-13kZvzXCVNpw1yiAELFyVScpLMqfm5iM9nMEMU7Og9hgeUL4q7EwPPbvn6qRq4ehK7ctlmEItOmMlgtNqT3IRhFnMIIsqnZu7BTfLyXR_8geMDnVJlhUXkb73ZpHNIBaoXmHwLpUQLBwoqG0ME1rP1_9UfVhYmNs\u0026s=OivnsUSneAGQlqeyD2lcigF0EU1eziUoa3P_f4n6Tr5uMeIZWEdzuC794rHJHEP_kIVtzB1imWrOFhBzVClyMUxPVJpY0IbQJ9SwzG4uczMM9UG3tb4XYxo9jIVgn5RSZi49QEZSme58yDIBDB14JLAsNBFZAVyADipKkwu1JkcaJxNLSwKjg_nRgrZWB8uJxpniEwpzcfs7FqRWZeEGQLZSAaotlfp-T4dbsSHsIShW6y2GlqYKyVUpyoYCc61WcYyutOeigR_Zy2aJlYloviRixXHeRGTfOM9co7dltg_pdnoTvxv1F3wFO454qSlXa5h5IclWEcYfL6rirssK4g\u0026h=6QBeX1WJvq-A9olgVktwBlt2cKP-Y9bu5wFOwW5IArU+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/e963b795-d6a3-4a40-b591-63c65ddf972f?api-version=2022-05-01\u0026service=new",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/f0e05bb5-f9d5-4b19-9995-01690f99c6f7?api-version=2024-04-01\u0026service=new\u0026t=638574079431156289\u0026c=MIIHhzCCBm-gAwIBAgITHgTLf2Bo2ctQx42TXQAABMt_YDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNjI0MTExMDUyWhcNMjUwNjE5MTExMDUyWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJlnrj2pdevN1SIOk4Ymmo6b0y9Je4RZXWejQSMTCH35NFEHss9bBD2CGcY3xU4F2W7onMR_2J9BMUNk3BAub3AoLlqVrcx5dzI0ay_5toyOhu-L1pN7aSQdp7J-LzA-UW_CLp2D_65mjx1ZER-HWOV5QedBCvUwhqtSal8AbzrK5Qth8tntkg5tzjChuGo9vkh1pnXKQyYHQMdulCipi-EK8sPOQpZyiVIRujiHxTJMjdxz4gCG4rAFAK8_jK4UC73mwHm7BAlfbfkkZtxW5sVSGLrYwFPkNIDtNGoINbTjOqTmJR02AYrzu-AeRS1DP-HxtHci9UFjOurKjaUYhTUCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBTxZpd7aM59MC90B8etCBMRpcVJhTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAHAEnYrjKwIEeZD6k6Jnduw9QE83ye3e6yI36Y6jc5gavwpltarWjUevLWA6bzqnIMEbxZot_oo7GgSjb9hcbtTWjf_cW7PWDbQSC5WExVS4rTM5XJOQlXIeguIDWoXNGCzJBnYfUfUEfW8ZdjPKbJ7_7OQo_y-DgeRynB9KRCkpH4wZ1X5EQR-13kZvzXCVNpw1yiAELFyVScpLMqfm5iM9nMEMU7Og9hgeUL4q7EwPPbvn6qRq4ehK7ctlmEItOmMlgtNqT3IRhFnMIIsqnZu7BTfLyXR_8geMDnVJlhUXkb73ZpHNIBaoXmHwLpUQLBwoqG0ME1rP1_9UfVhYmNs\u0026s=OivnsUSneAGQlqeyD2lcigF0EU1eziUoa3P_f4n6Tr5uMeIZWEdzuC794rHJHEP_kIVtzB1imWrOFhBzVClyMUxPVJpY0IbQJ9SwzG4uczMM9UG3tb4XYxo9jIVgn5RSZi49QEZSme58yDIBDB14JLAsNBFZAVyADipKkwu1JkcaJxNLSwKjg_nRgrZWB8uJxpniEwpzcfs7FqRWZeEGQLZSAaotlfp-T4dbsSHsIShW6y2GlqYKyVUpyoYCc61WcYyutOeigR_Zy2aJlYloviRixXHeRGTfOM9co7dltg_pdnoTvxv1F3wFO454qSlXa5h5IclWEcYfL6rirssK4g\u0026h=6QBeX1WJvq-A9olgVktwBlt2cKP-Y9bu5wFOwW5IArU",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "2b35ec44-5dd3-4f0f-a4a2-a1c8d89a7ce1" ],
+        "x-ms-unique-id": [ "117" ],
+        "x-ms-client-request-id": [ "6ac49abb-feae-4d76-81a1-404bca99fae1" ],
         "CommandName": [ "New-AzMLWorkspaceCompute" ],
         "FullCommandName": [ "New-AzMLWorkspaceCompute_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.MachineLearningServices/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-02" ],
+        "x-request-time": [ "0.020" ],
+        "x-ms-request-id": [ "a66b0db0-eb58-4fa8-84ad-e1c731955dd4" ],
+        "x-ms-correlation-request-id": [ "a66b0db0-eb58-4fa8-84ad-e1c731955dd4" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085254Z:a66b0db0-eb58-4fa8-84ad-e1c731955dd4" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 063A8128A50C4781891FB9215BCF20F5 Ref B: TYO201151005031 Ref C: 2024-07-24T08:52:53Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:52:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "55" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"status\": \"Succeeded\",\n  \"percentComplete\": 100.0\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMLWorkspaceCompute+[NoContext]+AmlCompute+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/computes/aml03?api-version=2024-04-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/computes/aml03?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "118" ],
+        "x-ms-client-request-id": [ "6ac49abb-feae-4d76-81a1-404bca99fae1" ],
+        "CommandName": [ "New-AzMLWorkspaceCompute" ],
+        "FullCommandName": [ "New-AzMLWorkspaceCompute_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.MachineLearningServices/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "b3e9bd6d-54e8-4f0d-ac12-11b8131eca7d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-02" ],
+        "x-request-time": [ "0.065" ],
+        "x-ms-correlation-request-id": [ "b3e9bd6d-54e8-4f0d-ac12-11b8131eca7d" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085254Z:b3e9bd6d-54e8-4f0d-ac12-11b8131eca7d" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5854AA6235F8438682797A46C1EDE5AB Ref B: TYO201151005031 Ref C: 2024-07-24T08:52:54Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:52:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1608" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/computes/aml03\",\n  \"name\": \"aml03\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/computes\",\n  \"location\": \"eastus\",\n  \"tags\": {},\n  \"properties\": {\n    \"createdOn\": \"2024-07-24T08:52:22.8992568+00:00\",\n    \"modifiedOn\": \"2024-07-24T08:52:33.1814685+00:00\",\n    \"disableLocalAuth\": false,\n    \"description\": null,\n    \"resourceId\": null,\n    \"computeType\": \"AmlCompute\",\n    \"computeLocation\": \"eastus\",\n    \"provisioningState\": \"Succeeded\",\n    \"provisioningErrors\": null,\n    \"provisioningWarnings\": {},\n    \"isAttachedCompute\": false,\n    \"properties\": {\n      \"vmSize\": \"STANDARD_DS3_V2\",\n      \"vmPriority\": \"Dedicated\",\n      \"scaleSettings\": {\n        \"maxNodeCount\": 8,\n        \"minNodeCount\": 0,\n        \"nodeIdleTimeBeforeScaleDown\": \"PT2M\"\n      },\n      \"subnet\": null,\n      \"currentNodeCount\": 0,\n      \"targetNodeCount\": 0,\n      \"nodeStateCounts\": {\n        \"preparingNodeCount\": 0,\n        \"runningNodeCount\": 0,\n        \"idleNodeCount\": 0,\n        \"unusableNodeCount\": 0,\n        \"leavingNodeCount\": 0,\n        \"preemptedNodeCount\": 0\n      },\n      \"allocationState\": \"Steady\",\n      \"allocationStateTransitionTime\": \"2024-07-24T08:52:31.067+00:00\",\n      \"errors\": null,\n      \"remoteLoginPortPublicAccess\": \"Enabled\",\n      \"osType\": \"Linux\",\n      \"virtualMachineImage\": null,\n      \"isolatedNetwork\": false,\n      \"enableNodePublicIp\": true,\n      \"enableBatchPrivateLink\": false,\n      \"propertyBag\": {}\n    }\n  }\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMLWorkspaceCompute+[NoContext]+AmlCompute+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/computes/aml03?api-version=2024-04-01+4": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/computes/aml03?api-version=2024-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"properties\": {\r\n      \"scaleSettings\": {\r\n        \"maxNodeCount\": 8\r\n      }\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "118" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/c8ce318d-e406-42ff-b7e7-223a34891d73?api-version=2024-04-01\u0026service=new\u0026t=638574079759609276\u0026c=MIIHhzCCBm-gAwIBAgITHgTLf2Bo2ctQx42TXQAABMt_YDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNjI0MTExMDUyWhcNMjUwNjE5MTExMDUyWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJlnrj2pdevN1SIOk4Ymmo6b0y9Je4RZXWejQSMTCH35NFEHss9bBD2CGcY3xU4F2W7onMR_2J9BMUNk3BAub3AoLlqVrcx5dzI0ay_5toyOhu-L1pN7aSQdp7J-LzA-UW_CLp2D_65mjx1ZER-HWOV5QedBCvUwhqtSal8AbzrK5Qth8tntkg5tzjChuGo9vkh1pnXKQyYHQMdulCipi-EK8sPOQpZyiVIRujiHxTJMjdxz4gCG4rAFAK8_jK4UC73mwHm7BAlfbfkkZtxW5sVSGLrYwFPkNIDtNGoINbTjOqTmJR02AYrzu-AeRS1DP-HxtHci9UFjOurKjaUYhTUCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBTxZpd7aM59MC90B8etCBMRpcVJhTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAHAEnYrjKwIEeZD6k6Jnduw9QE83ye3e6yI36Y6jc5gavwpltarWjUevLWA6bzqnIMEbxZot_oo7GgSjb9hcbtTWjf_cW7PWDbQSC5WExVS4rTM5XJOQlXIeguIDWoXNGCzJBnYfUfUEfW8ZdjPKbJ7_7OQo_y-DgeRynB9KRCkpH4wZ1X5EQR-13kZvzXCVNpw1yiAELFyVScpLMqfm5iM9nMEMU7Og9hgeUL4q7EwPPbvn6qRq4ehK7ctlmEItOmMlgtNqT3IRhFnMIIsqnZu7BTfLyXR_8geMDnVJlhUXkb73ZpHNIBaoXmHwLpUQLBwoqG0ME1rP1_9UfVhYmNs\u0026s=IQ5JWxNC7FPw8uZ1OSz9SEZfBY9YWGDZBtv8PbkdHnvxZvecXeCN4IYZlxuI90BiF-3xVrHBDeAOOzdXs-LLbSHeZTYICvA0kDedIEZFHyr1FebdWtIDgOSsJ8h3cQDU1M5Qu2T0UgOMKBSzLJdIUbkAQn8Mq8i0LFB8id_HvWrkP0uMmo4IuLlarckpI3rP85IN30vbFzkO7GlXujnM1Wfi_tjpMPt2tjr82IrPRAgXg2lhDz2EPTHV0nnQ0JvgZ3BYuA53bMwih4LrBw_XVK4lR-rs2tuJrlRFuyabWH3LaPTnNW8IBfL7iUxBDZZNDpzG268P8vNUjnAfGmKX3w\u0026h=3mzPo7T-QaqeqvwhTHXRpLOsngcQlw7UyhXu-oa5J1k" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.063" ],
+        "x-ms-request-id": [ "df4d4332-d2bf-49b3-946e-55fe53e7e74e" ],
+        "x-ms-correlation-request-id": [ "df4d4332-d2bf-49b3-946e-55fe53e7e74e" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085255Z:df4d4332-d2bf-49b3-946e-55fe53e7e74e" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A2B030C566284827AFBDC4FA82677F49 Ref B: TYO201151005031 Ref C: 2024-07-24T08:52:54Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:52:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1467" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/computes/aml03\",\n  \"name\": \"aml03\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/computes\",\n  \"location\": \"eastus\",\n  \"tags\": {},\n  \"properties\": {\n    \"createdOn\": \"2024-07-24T08:52:22.8992568+00:00\",\n    \"modifiedOn\": \"2024-07-24T08:52:55.8231101+00:00\",\n    \"disableLocalAuth\": false,\n    \"description\": null,\n    \"resourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.BatchAI/workspaces/mlworkspace-test2/clusters/aml03\",\n    \"computeType\": \"AmlCompute\",\n    \"computeLocation\": \"eastus\",\n    \"provisioningState\": \"Updating\",\n    \"provisioningErrors\": null,\n    \"provisioningWarnings\": {},\n    \"isAttachedCompute\": false,\n    \"properties\": {\n      \"vmSize\": \"STANDARD_DS3_V2\",\n      \"vmPriority\": \"Dedicated\",\n      \"scaleSettings\": {\n        \"maxNodeCount\": 8,\n        \"minNodeCount\": 0,\n        \"nodeIdleTimeBeforeScaleDown\": null\n      },\n      \"subnet\": null,\n      \"currentNodeCount\": null,\n      \"targetNodeCount\": null,\n      \"nodeStateCounts\": null,\n      \"allocationState\": null,\n      \"errors\": null,\n      \"remoteLoginPortPublicAccess\": \"NotSpecified\",\n      \"osType\": \"Linux\",\n      \"virtualMachineImage\": null,\n      \"isolatedNetwork\": false,\n      \"enableNodePublicIp\": true,\n      \"enableBatchPrivateLink\": false\n    }\n  }\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMLWorkspaceCompute+[NoContext]+AmlCompute+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/c8ce318d-e406-42ff-b7e7-223a34891d73?api-version=2024-04-01\u0026service=new\u0026t=638574079759609276\u0026c=MIIHhzCCBm-gAwIBAgITHgTLf2Bo2ctQx42TXQAABMt_YDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNjI0MTExMDUyWhcNMjUwNjE5MTExMDUyWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJlnrj2pdevN1SIOk4Ymmo6b0y9Je4RZXWejQSMTCH35NFEHss9bBD2CGcY3xU4F2W7onMR_2J9BMUNk3BAub3AoLlqVrcx5dzI0ay_5toyOhu-L1pN7aSQdp7J-LzA-UW_CLp2D_65mjx1ZER-HWOV5QedBCvUwhqtSal8AbzrK5Qth8tntkg5tzjChuGo9vkh1pnXKQyYHQMdulCipi-EK8sPOQpZyiVIRujiHxTJMjdxz4gCG4rAFAK8_jK4UC73mwHm7BAlfbfkkZtxW5sVSGLrYwFPkNIDtNGoINbTjOqTmJR02AYrzu-AeRS1DP-HxtHci9UFjOurKjaUYhTUCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBTxZpd7aM59MC90B8etCBMRpcVJhTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAHAEnYrjKwIEeZD6k6Jnduw9QE83ye3e6yI36Y6jc5gavwpltarWjUevLWA6bzqnIMEbxZot_oo7GgSjb9hcbtTWjf_cW7PWDbQSC5WExVS4rTM5XJOQlXIeguIDWoXNGCzJBnYfUfUEfW8ZdjPKbJ7_7OQo_y-DgeRynB9KRCkpH4wZ1X5EQR-13kZvzXCVNpw1yiAELFyVScpLMqfm5iM9nMEMU7Og9hgeUL4q7EwPPbvn6qRq4ehK7ctlmEItOmMlgtNqT3IRhFnMIIsqnZu7BTfLyXR_8geMDnVJlhUXkb73ZpHNIBaoXmHwLpUQLBwoqG0ME1rP1_9UfVhYmNs\u0026s=IQ5JWxNC7FPw8uZ1OSz9SEZfBY9YWGDZBtv8PbkdHnvxZvecXeCN4IYZlxuI90BiF-3xVrHBDeAOOzdXs-LLbSHeZTYICvA0kDedIEZFHyr1FebdWtIDgOSsJ8h3cQDU1M5Qu2T0UgOMKBSzLJdIUbkAQn8Mq8i0LFB8id_HvWrkP0uMmo4IuLlarckpI3rP85IN30vbFzkO7GlXujnM1Wfi_tjpMPt2tjr82IrPRAgXg2lhDz2EPTHV0nnQ0JvgZ3BYuA53bMwih4LrBw_XVK4lR-rs2tuJrlRFuyabWH3LaPTnNW8IBfL7iUxBDZZNDpzG268P8vNUjnAfGmKX3w\u0026h=3mzPo7T-QaqeqvwhTHXRpLOsngcQlw7UyhXu-oa5J1k+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/c8ce318d-e406-42ff-b7e7-223a34891d73?api-version=2024-04-01\u0026service=new\u0026t=638574079759609276\u0026c=MIIHhzCCBm-gAwIBAgITHgTLf2Bo2ctQx42TXQAABMt_YDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNjI0MTExMDUyWhcNMjUwNjE5MTExMDUyWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJlnrj2pdevN1SIOk4Ymmo6b0y9Je4RZXWejQSMTCH35NFEHss9bBD2CGcY3xU4F2W7onMR_2J9BMUNk3BAub3AoLlqVrcx5dzI0ay_5toyOhu-L1pN7aSQdp7J-LzA-UW_CLp2D_65mjx1ZER-HWOV5QedBCvUwhqtSal8AbzrK5Qth8tntkg5tzjChuGo9vkh1pnXKQyYHQMdulCipi-EK8sPOQpZyiVIRujiHxTJMjdxz4gCG4rAFAK8_jK4UC73mwHm7BAlfbfkkZtxW5sVSGLrYwFPkNIDtNGoINbTjOqTmJR02AYrzu-AeRS1DP-HxtHci9UFjOurKjaUYhTUCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBTxZpd7aM59MC90B8etCBMRpcVJhTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAHAEnYrjKwIEeZD6k6Jnduw9QE83ye3e6yI36Y6jc5gavwpltarWjUevLWA6bzqnIMEbxZot_oo7GgSjb9hcbtTWjf_cW7PWDbQSC5WExVS4rTM5XJOQlXIeguIDWoXNGCzJBnYfUfUEfW8ZdjPKbJ7_7OQo_y-DgeRynB9KRCkpH4wZ1X5EQR-13kZvzXCVNpw1yiAELFyVScpLMqfm5iM9nMEMU7Og9hgeUL4q7EwPPbvn6qRq4ehK7ctlmEItOmMlgtNqT3IRhFnMIIsqnZu7BTfLyXR_8geMDnVJlhUXkb73ZpHNIBaoXmHwLpUQLBwoqG0ME1rP1_9UfVhYmNs\u0026s=IQ5JWxNC7FPw8uZ1OSz9SEZfBY9YWGDZBtv8PbkdHnvxZvecXeCN4IYZlxuI90BiF-3xVrHBDeAOOzdXs-LLbSHeZTYICvA0kDedIEZFHyr1FebdWtIDgOSsJ8h3cQDU1M5Qu2T0UgOMKBSzLJdIUbkAQn8Mq8i0LFB8id_HvWrkP0uMmo4IuLlarckpI3rP85IN30vbFzkO7GlXujnM1Wfi_tjpMPt2tjr82IrPRAgXg2lhDz2EPTHV0nnQ0JvgZ3BYuA53bMwih4LrBw_XVK4lR-rs2tuJrlRFuyabWH3LaPTnNW8IBfL7iUxBDZZNDpzG268P8vNUjnAfGmKX3w\u0026h=3mzPo7T-QaqeqvwhTHXRpLOsngcQlw7UyhXu-oa5J1k",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "120" ],
+        "x-ms-client-request-id": [ "b753948f-8f56-4741-aae6-0029166aea1a" ],
+        "CommandName": [ "Update-AzMLWorkspaceCompute" ],
+        "FullCommandName": [ "Update-AzMLWorkspaceCompute_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.MachineLearningServices/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.015" ],
+        "x-ms-request-id": [ "2a19d4c9-f4b8-4820-b09c-88fdedb1528b" ],
+        "x-ms-correlation-request-id": [ "2a19d4c9-f4b8-4820-b09c-88fdedb1528b" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085326Z:2a19d4c9-f4b8-4820-b09c-88fdedb1528b" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3E1A241E3A834B6797D931C566A6139C Ref B: TYO201151005031 Ref C: 2024-07-24T08:53:26Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:53:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "55" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"status\": \"Succeeded\",\n  \"percentComplete\": 100.0\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMLWorkspaceCompute+[NoContext]+AmlCompute+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/computes/aml03?api-version=2024-04-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/computes/aml03?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "121" ],
+        "x-ms-client-request-id": [ "b753948f-8f56-4741-aae6-0029166aea1a" ],
+        "CommandName": [ "Update-AzMLWorkspaceCompute" ],
+        "FullCommandName": [ "Update-AzMLWorkspaceCompute_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.MachineLearningServices/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "5bc4336c-8106-4a1c-a25b-780d30345c3f" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-02" ],
+        "x-request-time": [ "0.069" ],
+        "x-ms-correlation-request-id": [ "5bc4336c-8106-4a1c-a25b-780d30345c3f" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085327Z:5bc4336c-8106-4a1c-a25b-780d30345c3f" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 824E4995B6854CAAA24196FD83C168A1 Ref B: TYO201151005031 Ref C: 2024-07-24T08:53:26Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:53:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1608" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/computes/aml03\",\n  \"name\": \"aml03\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/computes\",\n  \"location\": \"eastus\",\n  \"tags\": {},\n  \"properties\": {\n    \"createdOn\": \"2024-07-24T08:52:22.8992568+00:00\",\n    \"modifiedOn\": \"2024-07-24T08:53:02.0282037+00:00\",\n    \"disableLocalAuth\": false,\n    \"description\": null,\n    \"resourceId\": null,\n    \"computeType\": \"AmlCompute\",\n    \"computeLocation\": \"eastus\",\n    \"provisioningState\": \"Succeeded\",\n    \"provisioningErrors\": null,\n    \"provisioningWarnings\": {},\n    \"isAttachedCompute\": false,\n    \"properties\": {\n      \"vmSize\": \"STANDARD_DS3_V2\",\n      \"vmPriority\": \"Dedicated\",\n      \"scaleSettings\": {\n        \"maxNodeCount\": 8,\n        \"minNodeCount\": 0,\n        \"nodeIdleTimeBeforeScaleDown\": \"PT2M\"\n      },\n      \"subnet\": null,\n      \"currentNodeCount\": 0,\n      \"targetNodeCount\": 0,\n      \"nodeStateCounts\": {\n        \"preparingNodeCount\": 0,\n        \"runningNodeCount\": 0,\n        \"idleNodeCount\": 0,\n        \"unusableNodeCount\": 0,\n        \"leavingNodeCount\": 0,\n        \"preemptedNodeCount\": 0\n      },\n      \"allocationState\": \"Steady\",\n      \"allocationStateTransitionTime\": \"2024-07-24T08:52:31.067+00:00\",\n      \"errors\": null,\n      \"remoteLoginPortPublicAccess\": \"Enabled\",\n      \"osType\": \"Linux\",\n      \"virtualMachineImage\": null,\n      \"isolatedNetwork\": false,\n      \"enableNodePublicIp\": true,\n      \"enableBatchPrivateLink\": false,\n      \"propertyBag\": {}\n    }\n  }\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMLWorkspaceCompute+[NoContext]+AmlCompute+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/computes/aml03?api-version=2024-04-01\u0026underlyingResourceAction=Delete+7": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/computes/aml03?api-version=2024-04-01\u0026underlyingResourceAction=Delete",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "122" ],
+        "x-ms-client-request-id": [ "4f32dab2-a2e5-4d4a-96c8-fea8b9c3a54b" ],
+        "CommandName": [ "Remove-AzMLWorkspaceCompute" ],
+        "FullCommandName": [ "Remove-AzMLWorkspaceCompute_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.MachineLearningServices/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/70f555c7-44c6-4db8-a48b-74ef1fb5f3e3?api-version=2024-04-01\u0026service=new\u0026t=638574080083484054\u0026c=MIIHhzCCBm-gAwIBAgITHgTLf2Bo2ctQx42TXQAABMt_YDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNjI0MTExMDUyWhcNMjUwNjE5MTExMDUyWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJlnrj2pdevN1SIOk4Ymmo6b0y9Je4RZXWejQSMTCH35NFEHss9bBD2CGcY3xU4F2W7onMR_2J9BMUNk3BAub3AoLlqVrcx5dzI0ay_5toyOhu-L1pN7aSQdp7J-LzA-UW_CLp2D_65mjx1ZER-HWOV5QedBCvUwhqtSal8AbzrK5Qth8tntkg5tzjChuGo9vkh1pnXKQyYHQMdulCipi-EK8sPOQpZyiVIRujiHxTJMjdxz4gCG4rAFAK8_jK4UC73mwHm7BAlfbfkkZtxW5sVSGLrYwFPkNIDtNGoINbTjOqTmJR02AYrzu-AeRS1DP-HxtHci9UFjOurKjaUYhTUCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBTxZpd7aM59MC90B8etCBMRpcVJhTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAHAEnYrjKwIEeZD6k6Jnduw9QE83ye3e6yI36Y6jc5gavwpltarWjUevLWA6bzqnIMEbxZot_oo7GgSjb9hcbtTWjf_cW7PWDbQSC5WExVS4rTM5XJOQlXIeguIDWoXNGCzJBnYfUfUEfW8ZdjPKbJ7_7OQo_y-DgeRynB9KRCkpH4wZ1X5EQR-13kZvzXCVNpw1yiAELFyVScpLMqfm5iM9nMEMU7Og9hgeUL4q7EwPPbvn6qRq4ehK7ctlmEItOmMlgtNqT3IRhFnMIIsqnZu7BTfLyXR_8geMDnVJlhUXkb73ZpHNIBaoXmHwLpUQLBwoqG0ME1rP1_9UfVhYmNs\u0026s=OUKwM0BmhAPRDaezLTj8ijeCZZ-BnUua2fs4lf80LWg9isBaeb3KKljUihTmHVy44L0XzcnaJmph6mod4WaC2oFU66EcBcLX_3Xj1dTmcMgi7DAuKLCl8cKyhtRbSwzhGO0-KDDNWXp-TCdHTAjq--E0l9qmWU5fUei77jh2KZqgv_0BIKrrclxzjgC4K59LtaXMvAkYho4rn6eXVV_5arY2Rob-4W8UCvUHHmjeks_DVNYI7d9LrYjE8FZqVAN3jZLY1nlXzQGDQ1ezavocvDqGky65DlgnF-PMlYaATeX599P85NzariTKtg1XLDdnGVlX95mIrAdei-Ab0wupDw\u0026h=DJI57KD1MdwBgSlV-9gdavbsnpwQWWYwNNBkl86fGDw" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-02" ],
+        "x-request-time": [ "0.187" ],
+        "x-ms-request-id": [ "82d36e32-307b-4812-8235-e1a379aed61f" ],
+        "x-ms-correlation-request-id": [ "82d36e32-307b-4812-8235-e1a379aed61f" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085328Z:82d36e32-307b-4812-8235-e1a379aed61f" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 402902329C814EF18B0B09D9B40E8A06 Ref B: TYO201151005031 Ref C: 2024-07-24T08:53:27Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:53:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "New-AzMLWorkspaceCompute+[NoContext]+AmlCompute+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/70f555c7-44c6-4db8-a48b-74ef1fb5f3e3?api-version=2024-04-01\u0026service=new\u0026t=638574080083484054\u0026c=MIIHhzCCBm-gAwIBAgITHgTLf2Bo2ctQx42TXQAABMt_YDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNjI0MTExMDUyWhcNMjUwNjE5MTExMDUyWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJlnrj2pdevN1SIOk4Ymmo6b0y9Je4RZXWejQSMTCH35NFEHss9bBD2CGcY3xU4F2W7onMR_2J9BMUNk3BAub3AoLlqVrcx5dzI0ay_5toyOhu-L1pN7aSQdp7J-LzA-UW_CLp2D_65mjx1ZER-HWOV5QedBCvUwhqtSal8AbzrK5Qth8tntkg5tzjChuGo9vkh1pnXKQyYHQMdulCipi-EK8sPOQpZyiVIRujiHxTJMjdxz4gCG4rAFAK8_jK4UC73mwHm7BAlfbfkkZtxW5sVSGLrYwFPkNIDtNGoINbTjOqTmJR02AYrzu-AeRS1DP-HxtHci9UFjOurKjaUYhTUCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBTxZpd7aM59MC90B8etCBMRpcVJhTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAHAEnYrjKwIEeZD6k6Jnduw9QE83ye3e6yI36Y6jc5gavwpltarWjUevLWA6bzqnIMEbxZot_oo7GgSjb9hcbtTWjf_cW7PWDbQSC5WExVS4rTM5XJOQlXIeguIDWoXNGCzJBnYfUfUEfW8ZdjPKbJ7_7OQo_y-DgeRynB9KRCkpH4wZ1X5EQR-13kZvzXCVNpw1yiAELFyVScpLMqfm5iM9nMEMU7Og9hgeUL4q7EwPPbvn6qRq4ehK7ctlmEItOmMlgtNqT3IRhFnMIIsqnZu7BTfLyXR_8geMDnVJlhUXkb73ZpHNIBaoXmHwLpUQLBwoqG0ME1rP1_9UfVhYmNs\u0026s=OUKwM0BmhAPRDaezLTj8ijeCZZ-BnUua2fs4lf80LWg9isBaeb3KKljUihTmHVy44L0XzcnaJmph6mod4WaC2oFU66EcBcLX_3Xj1dTmcMgi7DAuKLCl8cKyhtRbSwzhGO0-KDDNWXp-TCdHTAjq--E0l9qmWU5fUei77jh2KZqgv_0BIKrrclxzjgC4K59LtaXMvAkYho4rn6eXVV_5arY2Rob-4W8UCvUHHmjeks_DVNYI7d9LrYjE8FZqVAN3jZLY1nlXzQGDQ1ezavocvDqGky65DlgnF-PMlYaATeX599P85NzariTKtg1XLDdnGVlX95mIrAdei-Ab0wupDw\u0026h=DJI57KD1MdwBgSlV-9gdavbsnpwQWWYwNNBkl86fGDw+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/70f555c7-44c6-4db8-a48b-74ef1fb5f3e3?api-version=2024-04-01\u0026service=new\u0026t=638574080083484054\u0026c=MIIHhzCCBm-gAwIBAgITHgTLf2Bo2ctQx42TXQAABMt_YDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNjI0MTExMDUyWhcNMjUwNjE5MTExMDUyWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJlnrj2pdevN1SIOk4Ymmo6b0y9Je4RZXWejQSMTCH35NFEHss9bBD2CGcY3xU4F2W7onMR_2J9BMUNk3BAub3AoLlqVrcx5dzI0ay_5toyOhu-L1pN7aSQdp7J-LzA-UW_CLp2D_65mjx1ZER-HWOV5QedBCvUwhqtSal8AbzrK5Qth8tntkg5tzjChuGo9vkh1pnXKQyYHQMdulCipi-EK8sPOQpZyiVIRujiHxTJMjdxz4gCG4rAFAK8_jK4UC73mwHm7BAlfbfkkZtxW5sVSGLrYwFPkNIDtNGoINbTjOqTmJR02AYrzu-AeRS1DP-HxtHci9UFjOurKjaUYhTUCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBTxZpd7aM59MC90B8etCBMRpcVJhTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAHAEnYrjKwIEeZD6k6Jnduw9QE83ye3e6yI36Y6jc5gavwpltarWjUevLWA6bzqnIMEbxZot_oo7GgSjb9hcbtTWjf_cW7PWDbQSC5WExVS4rTM5XJOQlXIeguIDWoXNGCzJBnYfUfUEfW8ZdjPKbJ7_7OQo_y-DgeRynB9KRCkpH4wZ1X5EQR-13kZvzXCVNpw1yiAELFyVScpLMqfm5iM9nMEMU7Og9hgeUL4q7EwPPbvn6qRq4ehK7ctlmEItOmMlgtNqT3IRhFnMIIsqnZu7BTfLyXR_8geMDnVJlhUXkb73ZpHNIBaoXmHwLpUQLBwoqG0ME1rP1_9UfVhYmNs\u0026s=OUKwM0BmhAPRDaezLTj8ijeCZZ-BnUua2fs4lf80LWg9isBaeb3KKljUihTmHVy44L0XzcnaJmph6mod4WaC2oFU66EcBcLX_3Xj1dTmcMgi7DAuKLCl8cKyhtRbSwzhGO0-KDDNWXp-TCdHTAjq--E0l9qmWU5fUei77jh2KZqgv_0BIKrrclxzjgC4K59LtaXMvAkYho4rn6eXVV_5arY2Rob-4W8UCvUHHmjeks_DVNYI7d9LrYjE8FZqVAN3jZLY1nlXzQGDQ1ezavocvDqGky65DlgnF-PMlYaATeX599P85NzariTKtg1XLDdnGVlX95mIrAdei-Ab0wupDw\u0026h=DJI57KD1MdwBgSlV-9gdavbsnpwQWWYwNNBkl86fGDw",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "123" ],
+        "x-ms-client-request-id": [ "4f32dab2-a2e5-4d4a-96c8-fea8b9c3a54b" ],
+        "CommandName": [ "Remove-AzMLWorkspaceCompute" ],
+        "FullCommandName": [ "Remove-AzMLWorkspaceCompute_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.MachineLearningServices/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -68,273 +344,13 @@
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.014" ],
-        "x-ms-request-id": [ "25702f09-69bb-4a99-8852-e3bf3a87924e" ],
-        "x-ms-correlation-request-id": [ "25702f09-69bb-4a99-8852-e3bf3a87924e" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T145650Z:25702f09-69bb-4a99-8852-e3bf3a87924e" ],
-        "Date": [ "Sun, 05 Jun 2022 14:56:50 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "55" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\n  \"status\": \"Succeeded\",\n  \"percentComplete\": 100.0\n}",
-      "isContentBase64": false
-    }
-  },
-  "New-AzMLWorkspaceCompute+[NoContext]+AmlCompute+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test01/computes/aml02?api-version=2022-05-01+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test01/computes/aml02?api-version=2022-05-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "2b35ec44-5dd3-4f0f-a4a2-a1c8d89a7ce1" ],
-        "CommandName": [ "New-AzMLWorkspaceCompute" ],
-        "FullCommandName": [ "New-AzMLWorkspaceCompute_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "c455d4cf-a936-4053-bc14-113ad9648f47" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
-        "x-ms-response-type": [ "standard" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.072" ],
-        "x-ms-correlation-request-id": [ "c455d4cf-a936-4053-bc14-113ad9648f47" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T145651Z:c455d4cf-a936-4053-bc14-113ad9648f47" ],
-        "Date": [ "Sun, 05 Jun 2022 14:56:51 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "1541" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test01/computes/aml02\",\n  \"name\": \"aml02\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/computes\",\n  \"location\": \"eastus\",\n  \"tags\": {},\n  \"properties\": {\n    \"createdOn\": \"2022-05-31T03:13:58.5270306+00:00\",\n    \"modifiedOn\": \"2022-06-05T14:56:20.7693304+00:00\",\n    \"disableLocalAuth\": false,\n    \"description\": null,\n    \"resourceId\": null,\n    \"computeType\": \"AmlCompute\",\n    \"computeLocation\": \"eastus\",\n    \"provisioningState\": \"Succeeded\",\n    \"provisioningErrors\": null,\n    \"isAttachedCompute\": false,\n    \"properties\": {\n      \"vmSize\": \"STANDARD_DS3_V2\",\n      \"vmPriority\": \"Dedicated\",\n      \"scaleSettings\": {\n        \"maxNodeCount\": 8,\n        \"minNodeCount\": 0,\n        \"nodeIdleTimeBeforeScaleDown\": \"PT2M\"\n      },\n      \"subnet\": null,\n      \"currentNodeCount\": 0,\n      \"targetNodeCount\": 0,\n      \"nodeStateCounts\": {\n        \"preparingNodeCount\": 0,\n        \"runningNodeCount\": 0,\n        \"idleNodeCount\": 0,\n        \"unusableNodeCount\": 0,\n        \"leavingNodeCount\": 0,\n        \"preemptedNodeCount\": 0\n      },\n      \"allocationState\": \"Steady\",\n      \"allocationStateTransitionTime\": \"2022-05-31T10:28:33.495+00:00\",\n      \"errors\": null,\n      \"remoteLoginPortPublicAccess\": \"Enabled\",\n      \"osType\": \"Linux\",\n      \"virtualMachineImage\": null,\n      \"isolatedNetwork\": false,\n      \"enableNodePublicIp\": true,\n      \"propertyBag\": {}\n    }\n  }\n}",
-      "isContentBase64": false
-    }
-  },
-  "New-AzMLWorkspaceCompute+[NoContext]+AmlCompute+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test01/computes/aml02?api-version=2022-05-01+4": {
-    "Request": {
-      "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test01/computes/aml02?api-version=2022-05-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"properties\": {\r\n      \"scaleSettings\": {\r\n        \"maxNodeCount\": 8\r\n      }\r\n    }\r\n  }\r\n}",
-      "isContentBase64": false,
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "118" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
-        "x-ms-response-type": [ "standard" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/dc7d94c8-ec42-4b66-919f-a13bc550c0b9?api-version=2022-05-01\u0026service=new" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.088" ],
-        "x-ms-request-id": [ "e2f99dc8-2cf1-4d34-93e2-4a62dc763532" ],
-        "x-ms-correlation-request-id": [ "e2f99dc8-2cf1-4d34-93e2-4a62dc763532" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T145652Z:e2f99dc8-2cf1-4d34-93e2-4a62dc763532" ],
-        "Date": [ "Sun, 05 Jun 2022 14:56:52 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "1404" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test01/computes/aml02\",\n  \"name\": \"aml02\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/computes\",\n  \"location\": \"eastus\",\n  \"tags\": {},\n  \"properties\": {\n    \"createdOn\": \"2022-05-31T03:13:58.5270306+00:00\",\n    \"modifiedOn\": \"2022-06-05T14:56:52.6225554+00:00\",\n    \"disableLocalAuth\": false,\n    \"description\": null,\n    \"resourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.BatchAI/workspaces/mlworkspace-test01/clusters/aml02\",\n    \"computeType\": \"AmlCompute\",\n    \"computeLocation\": \"eastus\",\n    \"provisioningState\": \"Updating\",\n    \"provisioningErrors\": null,\n    \"isAttachedCompute\": false,\n    \"properties\": {\n      \"vmSize\": \"STANDARD_DS3_V2\",\n      \"vmPriority\": \"Dedicated\",\n      \"scaleSettings\": {\n        \"maxNodeCount\": 8,\n        \"minNodeCount\": 0,\n        \"nodeIdleTimeBeforeScaleDown\": null\n      },\n      \"subnet\": null,\n      \"currentNodeCount\": null,\n      \"targetNodeCount\": null,\n      \"nodeStateCounts\": null,\n      \"allocationState\": null,\n      \"errors\": null,\n      \"remoteLoginPortPublicAccess\": \"NotSpecified\",\n      \"osType\": \"Linux\",\n      \"virtualMachineImage\": null,\n      \"isolatedNetwork\": false,\n      \"enableNodePublicIp\": true\n    }\n  }\n}",
-      "isContentBase64": false
-    }
-  },
-  "New-AzMLWorkspaceCompute+[NoContext]+AmlCompute+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/dc7d94c8-ec42-4b66-919f-a13bc550c0b9?api-version=2022-05-01\u0026service=new+5": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/dc7d94c8-ec42-4b66-919f-a13bc550c0b9?api-version=2022-05-01\u0026service=new",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "b616d027-805c-46ba-87ca-d3de81d8d9db" ],
-        "CommandName": [ "Update-AzMLWorkspaceCompute" ],
-        "FullCommandName": [ "Update-AzMLWorkspaceCompute_UpdateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
-        "x-ms-response-type": [ "standard" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.010" ],
-        "x-ms-request-id": [ "232eabe6-a135-4e17-b58a-080f9d3a953c" ],
-        "x-ms-correlation-request-id": [ "232eabe6-a135-4e17-b58a-080f9d3a953c" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T145723Z:232eabe6-a135-4e17-b58a-080f9d3a953c" ],
-        "Date": [ "Sun, 05 Jun 2022 14:57:22 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "55" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\n  \"status\": \"Succeeded\",\n  \"percentComplete\": 100.0\n}",
-      "isContentBase64": false
-    }
-  },
-  "New-AzMLWorkspaceCompute+[NoContext]+AmlCompute+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test01/computes/aml02?api-version=2022-05-01+6": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test01/computes/aml02?api-version=2022-05-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "b616d027-805c-46ba-87ca-d3de81d8d9db" ],
-        "CommandName": [ "Update-AzMLWorkspaceCompute" ],
-        "FullCommandName": [ "Update-AzMLWorkspaceCompute_UpdateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "df883a65-b716-445d-8b8a-57ff650e4011" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
-        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
-        "x-ms-response-type": [ "standard" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.073" ],
-        "x-ms-correlation-request-id": [ "df883a65-b716-445d-8b8a-57ff650e4011" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T145723Z:df883a65-b716-445d-8b8a-57ff650e4011" ],
-        "Date": [ "Sun, 05 Jun 2022 14:57:22 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "1541" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test01/computes/aml02\",\n  \"name\": \"aml02\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/computes\",\n  \"location\": \"eastus\",\n  \"tags\": {},\n  \"properties\": {\n    \"createdOn\": \"2022-05-31T03:13:58.5270306+00:00\",\n    \"modifiedOn\": \"2022-06-05T14:56:52.8028527+00:00\",\n    \"disableLocalAuth\": false,\n    \"description\": null,\n    \"resourceId\": null,\n    \"computeType\": \"AmlCompute\",\n    \"computeLocation\": \"eastus\",\n    \"provisioningState\": \"Succeeded\",\n    \"provisioningErrors\": null,\n    \"isAttachedCompute\": false,\n    \"properties\": {\n      \"vmSize\": \"STANDARD_DS3_V2\",\n      \"vmPriority\": \"Dedicated\",\n      \"scaleSettings\": {\n        \"maxNodeCount\": 8,\n        \"minNodeCount\": 0,\n        \"nodeIdleTimeBeforeScaleDown\": \"PT2M\"\n      },\n      \"subnet\": null,\n      \"currentNodeCount\": 0,\n      \"targetNodeCount\": 0,\n      \"nodeStateCounts\": {\n        \"preparingNodeCount\": 0,\n        \"runningNodeCount\": 0,\n        \"idleNodeCount\": 0,\n        \"unusableNodeCount\": 0,\n        \"leavingNodeCount\": 0,\n        \"preemptedNodeCount\": 0\n      },\n      \"allocationState\": \"Steady\",\n      \"allocationStateTransitionTime\": \"2022-05-31T10:28:33.495+00:00\",\n      \"errors\": null,\n      \"remoteLoginPortPublicAccess\": \"Enabled\",\n      \"osType\": \"Linux\",\n      \"virtualMachineImage\": null,\n      \"isolatedNetwork\": false,\n      \"enableNodePublicIp\": true,\n      \"propertyBag\": {}\n    }\n  }\n}",
-      "isContentBase64": false
-    }
-  },
-  "New-AzMLWorkspaceCompute+[NoContext]+AmlCompute+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test01/computes/aml02?api-version=2022-05-01\u0026underlyingResourceAction=Delete+7": {
-    "Request": {
-      "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test01/computes/aml02?api-version=2022-05-01\u0026underlyingResourceAction=Delete",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "61f0ee7c-17d4-41e4-9a90-dde2b08a34bb" ],
-        "CommandName": [ "Remove-AzMLWorkspaceCompute" ],
-        "FullCommandName": [ "Remove-AzMLWorkspaceCompute_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
-        "x-ms-response-type": [ "standard" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/10f90a71-fa5d-4c4a-8afd-27cdbe7a9d7c?api-version=2022-05-01\u0026service=new" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.124" ],
-        "x-ms-request-id": [ "e6788e54-a75d-4eb2-becd-89244a6534c1" ],
-        "x-ms-correlation-request-id": [ "e6788e54-a75d-4eb2-becd-89244a6534c1" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T145725Z:e6788e54-a75d-4eb2-becd-89244a6534c1" ],
-        "Date": [ "Sun, 05 Jun 2022 14:57:24 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null,
-      "isContentBase64": false
-    }
-  },
-  "New-AzMLWorkspaceCompute+[NoContext]+AmlCompute+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/10f90a71-fa5d-4c4a-8afd-27cdbe7a9d7c?api-version=2022-05-01\u0026service=new+8": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/10f90a71-fa5d-4c4a-8afd-27cdbe7a9d7c?api-version=2022-05-01\u0026service=new",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "61f0ee7c-17d4-41e4-9a90-dde2b08a34bb" ],
-        "CommandName": [ "Remove-AzMLWorkspaceCompute" ],
-        "FullCommandName": [ "Remove-AzMLWorkspaceCompute_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
-        "x-ms-response-type": [ "standard" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.011" ],
-        "x-ms-request-id": [ "bb4b5965-21a6-4440-ab7a-f2a315bce4f9" ],
-        "x-ms-correlation-request-id": [ "bb4b5965-21a6-4440-ab7a-f2a315bce4f9" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T145755Z:bb4b5965-21a6-4440-ab7a-f2a315bce4f9" ],
-        "Date": [ "Sun, 05 Jun 2022 14:57:55 GMT" ]
+        "x-request-time": [ "0.015" ],
+        "x-ms-request-id": [ "1e86e439-7a91-4e77-a371-c245463c3003" ],
+        "x-ms-correlation-request-id": [ "1e86e439-7a91-4e77-a371-c245463c3003" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085358Z:1e86e439-7a91-4e77-a371-c245463c3003" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E9C2C4FC21284EA6BAFD72826DEB2657 Ref B: TYO201151005031 Ref C: 2024-07-24T08:53:58Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:53:57 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "28" ],
@@ -345,20 +361,20 @@
       "isContentBase64": false
     }
   },
-  "New-AzMLWorkspaceCompute+[NoContext]+AmlCompute+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/10f90a71-fa5d-4c4a-8afd-27cdbe7a9d7c?api-version=2022-05-01\u0026service=new+9": {
+  "New-AzMLWorkspaceCompute+[NoContext]+AmlCompute+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/70f555c7-44c6-4db8-a48b-74ef1fb5f3e3?api-version=2024-04-01\u0026service=new\u0026t=638574080083484054\u0026c=MIIHhzCCBm-gAwIBAgITHgTLf2Bo2ctQx42TXQAABMt_YDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNjI0MTExMDUyWhcNMjUwNjE5MTExMDUyWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJlnrj2pdevN1SIOk4Ymmo6b0y9Je4RZXWejQSMTCH35NFEHss9bBD2CGcY3xU4F2W7onMR_2J9BMUNk3BAub3AoLlqVrcx5dzI0ay_5toyOhu-L1pN7aSQdp7J-LzA-UW_CLp2D_65mjx1ZER-HWOV5QedBCvUwhqtSal8AbzrK5Qth8tntkg5tzjChuGo9vkh1pnXKQyYHQMdulCipi-EK8sPOQpZyiVIRujiHxTJMjdxz4gCG4rAFAK8_jK4UC73mwHm7BAlfbfkkZtxW5sVSGLrYwFPkNIDtNGoINbTjOqTmJR02AYrzu-AeRS1DP-HxtHci9UFjOurKjaUYhTUCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBTxZpd7aM59MC90B8etCBMRpcVJhTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAHAEnYrjKwIEeZD6k6Jnduw9QE83ye3e6yI36Y6jc5gavwpltarWjUevLWA6bzqnIMEbxZot_oo7GgSjb9hcbtTWjf_cW7PWDbQSC5WExVS4rTM5XJOQlXIeguIDWoXNGCzJBnYfUfUEfW8ZdjPKbJ7_7OQo_y-DgeRynB9KRCkpH4wZ1X5EQR-13kZvzXCVNpw1yiAELFyVScpLMqfm5iM9nMEMU7Og9hgeUL4q7EwPPbvn6qRq4ehK7ctlmEItOmMlgtNqT3IRhFnMIIsqnZu7BTfLyXR_8geMDnVJlhUXkb73ZpHNIBaoXmHwLpUQLBwoqG0ME1rP1_9UfVhYmNs\u0026s=OUKwM0BmhAPRDaezLTj8ijeCZZ-BnUua2fs4lf80LWg9isBaeb3KKljUihTmHVy44L0XzcnaJmph6mod4WaC2oFU66EcBcLX_3Xj1dTmcMgi7DAuKLCl8cKyhtRbSwzhGO0-KDDNWXp-TCdHTAjq--E0l9qmWU5fUei77jh2KZqgv_0BIKrrclxzjgC4K59LtaXMvAkYho4rn6eXVV_5arY2Rob-4W8UCvUHHmjeks_DVNYI7d9LrYjE8FZqVAN3jZLY1nlXzQGDQ1ezavocvDqGky65DlgnF-PMlYaATeX599P85NzariTKtg1XLDdnGVlX95mIrAdei-Ab0wupDw\u0026h=DJI57KD1MdwBgSlV-9gdavbsnpwQWWYwNNBkl86fGDw+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/10f90a71-fa5d-4c4a-8afd-27cdbe7a9d7c?api-version=2022-05-01\u0026service=new",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/computeOperationsStatus/70f555c7-44c6-4db8-a48b-74ef1fb5f3e3?api-version=2024-04-01\u0026service=new\u0026t=638574080083484054\u0026c=MIIHhzCCBm-gAwIBAgITHgTLf2Bo2ctQx42TXQAABMt_YDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNjI0MTExMDUyWhcNMjUwNjE5MTExMDUyWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJlnrj2pdevN1SIOk4Ymmo6b0y9Je4RZXWejQSMTCH35NFEHss9bBD2CGcY3xU4F2W7onMR_2J9BMUNk3BAub3AoLlqVrcx5dzI0ay_5toyOhu-L1pN7aSQdp7J-LzA-UW_CLp2D_65mjx1ZER-HWOV5QedBCvUwhqtSal8AbzrK5Qth8tntkg5tzjChuGo9vkh1pnXKQyYHQMdulCipi-EK8sPOQpZyiVIRujiHxTJMjdxz4gCG4rAFAK8_jK4UC73mwHm7BAlfbfkkZtxW5sVSGLrYwFPkNIDtNGoINbTjOqTmJR02AYrzu-AeRS1DP-HxtHci9UFjOurKjaUYhTUCAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBTxZpd7aM59MC90B8etCBMRpcVJhTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAHAEnYrjKwIEeZD6k6Jnduw9QE83ye3e6yI36Y6jc5gavwpltarWjUevLWA6bzqnIMEbxZot_oo7GgSjb9hcbtTWjf_cW7PWDbQSC5WExVS4rTM5XJOQlXIeguIDWoXNGCzJBnYfUfUEfW8ZdjPKbJ7_7OQo_y-DgeRynB9KRCkpH4wZ1X5EQR-13kZvzXCVNpw1yiAELFyVScpLMqfm5iM9nMEMU7Og9hgeUL4q7EwPPbvn6qRq4ehK7ctlmEItOmMlgtNqT3IRhFnMIIsqnZu7BTfLyXR_8geMDnVJlhUXkb73ZpHNIBaoXmHwLpUQLBwoqG0ME1rP1_9UfVhYmNs\u0026s=OUKwM0BmhAPRDaezLTj8ijeCZZ-BnUua2fs4lf80LWg9isBaeb3KKljUihTmHVy44L0XzcnaJmph6mod4WaC2oFU66EcBcLX_3Xj1dTmcMgi7DAuKLCl8cKyhtRbSwzhGO0-KDDNWXp-TCdHTAjq--E0l9qmWU5fUei77jh2KZqgv_0BIKrrclxzjgC4K59LtaXMvAkYho4rn6eXVV_5arY2Rob-4W8UCvUHHmjeks_DVNYI7d9LrYjE8FZqVAN3jZLY1nlXzQGDQ1ezavocvDqGky65DlgnF-PMlYaATeX599P85NzariTKtg1XLDdnGVlX95mIrAdei-Ab0wupDw\u0026h=DJI57KD1MdwBgSlV-9gdavbsnpwQWWYwNNBkl86fGDw",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "9" ],
-        "x-ms-client-request-id": [ "61f0ee7c-17d4-41e4-9a90-dde2b08a34bb" ],
+        "x-ms-unique-id": [ "124" ],
+        "x-ms-client-request-id": [ "4f32dab2-a2e5-4d4a-96c8-fea8b9c3a54b" ],
         "CommandName": [ "Remove-AzMLWorkspaceCompute" ],
         "FullCommandName": [ "Remove-AzMLWorkspaceCompute_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.MachineLearningServices/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -368,17 +384,19 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
         "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
         "x-ms-response-type": [ "standard" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.073" ],
-        "x-ms-request-id": [ "7cbe1dca-0a2b-44c4-a1f5-1205be4c3945" ],
-        "x-ms-correlation-request-id": [ "7cbe1dca-0a2b-44c4-a1f5-1205be4c3945" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T145825Z:7cbe1dca-0a2b-44c4-a1f5-1205be4c3945" ],
-        "Date": [ "Sun, 05 Jun 2022 14:58:25 GMT" ]
+        "x-request-time": [ "0.015" ],
+        "x-ms-request-id": [ "8742ff5a-a035-4d12-8cf5-9f27b278ecd2" ],
+        "x-ms-correlation-request-id": [ "8742ff5a-a035-4d12-8cf5-9f27b278ecd2" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085429Z:8742ff5a-a035-4d12-8cf5-9f27b278ecd2" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AFED4412ADC44614AD4E4A618BE95269 Ref B: TYO201151005031 Ref C: 2024-07-24T08:54:28Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:54:28 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "55" ],
