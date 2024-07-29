@@ -37,9 +37,9 @@ Update-AzMLWorkspaceBatchEndpoint -ResourceGroupName ml-rg-test -WorkspaceName m
 ```
 
 ```output
-Location Name         SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType AzureAsyncOperation Kind ResourceGroupName
--------- ----         -------------------  -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- ------------------- ---- -----------------
-eastus   batch-pwsh03 5/20/2022 7:21:12 AM UserName (Example)                                 5/20/2022 7:31:17 AM                                                                                    ml-rg-test
+Location Name         SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Kind ResourceGroupName
+-------- ----         -------------------  -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- ---- -----------------
+eastus   batch-pwsh03 5/20/2022 7:21:12 AM UserName (Example)                  5/20/2022 7:31:17 AM                                                                                        ml-rg-test
 ```
 
 Update a batch inference endpoint (asynchronous)
@@ -50,9 +50,9 @@ Get-AzMLWorkspaceBatchEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlwo
 ```
 
 ```output
-Location Name         SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType AzureAsyncOperation Kind ResourceGroupName
--------- ----         -------------------  -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- ------------------- ---- -----------------
-eastus   batch-pwsh03 5/20/2022 7:21:12 AM UserName (Example)                                 5/20/2022 7:31:17 AM                                                                                    ml-rg-test
+Location Name         SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Kind ResourceGroupName
+-------- ----         -------------------  -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- ---- -----------------
+eastus   batch-pwsh03 5/20/2022 7:21:12 AM UserName (Example)                  5/20/2022 7:31:17 AM                                                                                        ml-rg-test
 ```
 
 Update a batch inference endpoint (asynchronous) by pipeline

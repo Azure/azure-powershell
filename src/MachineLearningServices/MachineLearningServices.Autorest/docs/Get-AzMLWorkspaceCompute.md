@@ -43,11 +43,11 @@ Get-AzMLWorkspaceCompute -ResourceGroupName ml-rg-test -WorkspaceName mlworkspac
 ```
 
 ```output
-Name          SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType AzureAsyncOperation Location ResourceGroupName
-----          ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ------------------- -------- -----------------
-cpu-cluster                                                                                                                                                                      eastus   ml-rg-test
-gpu-cluster                                                                                                                                                                      eastus   ml-rg-test
-batch-cluster                                                                                                                                                                    eastus   ml-rg-test
+Name          SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Location ResourceGroupName
+----          ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -------- -----------------
+cpu-cluster                                                                                                                                                  eastus   ml-rg-test
+gpu-cluster                                                                                                                                                  eastus   ml-rg-test
+batch-cluster                                                                                                                                                eastus   ml-rg-test
 ```
 
 Lists all computes under a workspace
@@ -58,9 +58,9 @@ Get-AzMLWorkspaceCompute -ResourceGroupName ml-rg-test -WorkspaceName mlworkspac
 ```
 
 ```output
-Name        SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType AzureAsyncOperation Location ResourceGroupName
-----        ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ------------------- -------- -----------------
-cpu-cluster                                                                                                                                                                    eastus   ml-rg-test
+Name        SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Location ResourceGroupName
+----        ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -------- -----------------
+cpu-cluster                                                                                                                                                eastus   ml-rg-test
 ```
 
 Gets a compute by name

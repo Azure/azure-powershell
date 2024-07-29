@@ -42,9 +42,9 @@ Get-AzMLWorkspaceBatchDeployment -ResourceGroupName ml-rg-test -WorkspaceName ml
 ```
 
 ```output
-Location Name        SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType AzureAsyncOperation Kind ResourceGroupName
--------- ----        ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ------------------- ---- -----------------
-eastus   nonmlflowdp 6/1/2022 6:19:16 AM UserName (Example)                          6/1/2022 6:19:16 AM                                                                                     ml-rg-test
+Location Name        SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Kind ResourceGroupName
+-------- ----        ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ---- -----------------
+eastus   nonmlflowdp 6/1/2022 6:19:16 AM UserName (Example)                          6/1/2022 6:19:16 AM                                                                 ml-rg-test
 ```
 
 Lists all batch inference deployment under a batch endpoint
@@ -55,9 +55,9 @@ Get-AzMLWorkspaceBatchDeployment -ResourceGroupName ml-rg-test -WorkspaceName ml
 ```
 
 ```output
-Location Name        SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType AzureAsyncOperation Kind ResourceGroupName
--------- ----        ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ------------------- ---- -----------------
-eastus   nonmlflowdp 6/1/2022 6:19:16 AM UserName (Example)                          6/1/2022 6:19:16 AM                                                                                     ml-rg-test
+Location Name        SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Kind ResourceGroupName
+-------- ----        ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ---- -----------------
+eastus   nonmlflowdp 6/1/2022 6:19:16 AM UserName (Example)                          6/1/2022 6:19:16 AM                                                                 ml-rg-test
 ```
 
 Gets a batch inference deployment by Name

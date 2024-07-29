@@ -21,12 +21,12 @@ Create an in-memory object for CertificateDatastoreCredentials.
 Create an in-memory object for CertificateDatastoreCredentials.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.CertificateDatastoreCredentials.CertificateDatastoreCredentials
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.CertificateDatastoreCredentials
 .Link
 https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceDatastoreCredentialObject
 #>
 function New-AzMLWorkspaceDatastoreCredentialObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.CertificateDatastoreCredentials.CertificateDatastoreCredentials')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.CertificateDatastoreCredentials')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
