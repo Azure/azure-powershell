@@ -175,7 +175,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 ZoneRedundant = model.ZoneRedundant,
                 ServicePrincipal = ResourceServicePrincipalHelper.UnwrapServicePrincipalObject(model.ServicePrincipal),
                 DatabaseFormat = model.DatabaseFormat,
-                PricingModel = model.PricingModel
+                PricingModel = model.PricingModel,
+                AuthenticationMetadata = model.AuthenticationMetadata
             });
 
             return CreateManagedInstanceModelFromResponse(resp);
@@ -294,6 +295,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.DatabaseFormat = resp.DatabaseFormat;
             managedInstance.PricingModel = resp.PricingModel;
             managedInstance.ExternalGovernanceStatus = resp.ExternalGovernanceStatus;
+            managedInstance.AuthenticationMetadata = resp.AuthenticationMetadata;
 
             return managedInstance;
         }

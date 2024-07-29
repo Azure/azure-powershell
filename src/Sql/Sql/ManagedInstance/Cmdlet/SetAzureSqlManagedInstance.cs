@@ -285,6 +285,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public string PricingModel { get; set; }
 
         /// <summary>
+        /// Specifies weather or not Managed Instance is freemium
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Sets the Managed Instance's authentication metadata. Default value is AzureAD.")]
+        [ValidateSet("AzureAD", "Paired", "Windows")]
+        [PSArgumentCompleter("AzureAD", "Paired", "Windows")]
+        public string AuthenticationMetadata { get; set; }
+
+        /// <summary>
         /// Get the instance to update
         /// </summary>
         /// <returns>The instance being updated</returns>
@@ -373,6 +381,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             updateData[0].ServicePrincipal = ResourceServicePrincipalHelper.GetServicePrincipalObjectFromType(this.ServicePrincipalType ?? null);
             updateData[0].DatabaseFormat = this.DatabaseFormat?? updateData[0].DatabaseFormat;
             updateData[0].PricingModel = this.PricingModel ?? updateData[0].PricingModel;
+            updateData[0].AuthenticationMetadata = this.AuthenticationMetadata ?? updateData[0].AuthenticationMetadata;
 
             return updateData;
         }

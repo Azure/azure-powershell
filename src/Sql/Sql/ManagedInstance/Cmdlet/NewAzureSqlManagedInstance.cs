@@ -416,6 +416,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public string PricingModel { get; set; }
 
         /// <summary>
+        /// Specifies weather or not Managed Instance is freemium
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Sets the Managed Instance's authentication metadata. Default value is AzureAD.")]
+        [ValidateSet("AzureAD", "Paired", "Windows")]
+        [PSArgumentCompleter("AzureAD", "Paired", "Windows")]
+        public string AuthenticationMetadata { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -585,7 +593,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 ZoneRedundant = this.ZoneRedundant.IsPresent ? this.ZoneRedundant.ToBool() : (bool?)null,
                 ServicePrincipal = ResourceServicePrincipalHelper.GetServicePrincipalObjectFromType(this.ServicePrincipalType ?? null),
                 DatabaseFormat = this.DatabaseFormat,
-                PricingModel = this.PricingModel
+                PricingModel = this.PricingModel,
+                AuthenticationMetadata = this.AuthenticationMetadata,
             });
             return newEntity;
         }
