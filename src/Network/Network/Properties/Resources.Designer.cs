@@ -410,11 +410,38 @@ namespace Microsoft.Azure.Commands.Network.Properties
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Bastion shareable link(s)?.
+        /// </summary>
+        internal static string BastionShareableLinkConfirmRemove {
+            get {
+                return ResourceManager.GetString("BastionShareableLinkConfirmRemove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Toggling shareable link is available on Standard SKU or higher.
         /// </summary>
         internal static string BastionShareableLinkInvalidValue {
             get {
                 return ResourceManager.GetString("BastionShareableLinkInvalidValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shareable link feature is not enabled.
+        /// </summary>
+        internal static string BastionShareableLinkNotEnabled {
+            get {
+                return ResourceManager.GetString("BastionShareableLinkNotEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Bastion shareable link(s).
+        /// </summary>
+        internal static string BastionShareableLinkRemoving {
+            get {
+                return ResourceManager.GetString("BastionShareableLinkRemoving", resourceCulture);
             }
         }
         
