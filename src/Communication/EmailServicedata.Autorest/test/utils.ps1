@@ -43,6 +43,55 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
+        $rstr1 = RandomString -allChars $false -len 6
+    $rstr2 = RandomString -allChars $false -len 6
+    $env.Add("rstr1", $rstr1)
+    $env.Add("rstr2", $rstr2)
+    
+    # Create the test group
+    write-host "creating test resource group..."
+    $resourceGroup = "testgroup" + $rstr1
+    $env.Add("resourceGroup", $resourceGroup)
+    New-AzResourceGroup -Name $resourceGroup -Location eastus
+    write-host "ResourceGroup : " $resourceGroup 
+    
+    # Add location values
+    $dataLocation = "UnitedStates"
+    $location = "Global"
+    $env.Add("dataLocation", $dataLocation)
+    $env.Add("location", $location)
+
+    write-host "creating a persistent email test resource..."
+    # Create a persistent email test resource
+    $persistentEmailResourceName = "persistentEmailResourceName" + $rstr1
+    $env.Add("persistentEmailResourceName", $persistentEmailResourceName)
+    $persistentEmailResource = New-AzEmailService -ResourceGroupName $resourceGroup -Name $persistentEmailResourceName -DataLocation $dataLocation -Location $location
+    
+    write-host "creating a persistent test domain..."
+    # Create a persistent test domain
+    $persistentDomainResourceName = "persistentDomainResourceName" + $rstr1 +".net"
+    $env.Add("persistentDomainResourceName", $persistentDomainResourceName)
+    $persistentDomainResource = New-AzEmailServiceDomain -ResourceGroupName $resourceGroup -EmailServiceName $persistentEmailResourceName -Name AzureManagedDomain -Location $location -DomainManagement AzureManaged
+    
+    $senderAddress = "DoNotReply@" + $persistentDomainResource.MailFromSenderDomain
+    $env.Add("senderAddress", $senderAddress)
+    write-host "senderAddress : " $senderAddress 
+
+    $linkedDomain = "/subscriptions/"+ $env.SubscriptionId +"/resourceGroups/"+ $env.resourceGroup +"/providers/Microsoft.Communication/emailServices/"+ $env.persistentEmailResourceName +"/domains/AzureManagedDomain"
+    $linkedDomains = @(
+        $linkedDomain
+    )
+
+    write-host "creating a persistent communication test resource..."
+    # Create a persistent communication test resource
+    $persistentCommResourceName = "persistentCommResourceName" + $rstr1
+    $env.Add("persistentCommResourceName", $persistentCommResourceName)
+    $persistentCommResource = New-AzCommunicationService -ResourceGroupName $resourceGroup -Name $persistentCommResourceName -DataLocation $dataLocation -Location $location -LinkedDomain $linkedDomains 
+
+    #Endpoint
+    $endPoint = "https://" + $persistentCommResourceName + "." + $dataLocation + ".communication.azure.com"
+    $env.Add("endPoint", $endPoint)
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -52,5 +101,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }
 
