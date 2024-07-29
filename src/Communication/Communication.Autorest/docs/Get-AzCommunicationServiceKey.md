@@ -53,8 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -86,7 +85,6 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
-The value must be an UUID.
 
 ```yaml
 Type: System.String[]
@@ -138,9 +136,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceKeys
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceKeys
 
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS
 

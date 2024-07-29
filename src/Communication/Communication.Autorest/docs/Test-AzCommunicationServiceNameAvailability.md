@@ -13,7 +13,7 @@ Checks that the CommunicationService name is valid and is not already in use.
 ## SYNTAX
 
 ```
-Test-AzCommunicationServiceNameAvailability -Name <String> [-SubscriptionId <String>]
+Test-AzCommunicationServiceNameAvailability -Name <String> [-SubscriptionId <String>] [-Type <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -51,8 +51,7 @@ Verified that the requested CommunicationService name already in use.
 ## PARAMETERS
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -67,7 +66,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the resource for which availability needs to be checked.
+The CommunicationService name to validate.
+e.g."my-CommunicationService-name-here"
 
 ```yaml
 Type: System.String
@@ -83,7 +83,6 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
-The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -93,6 +92,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Type
+The resource type.
+Should be always "Microsoft.Communication/CommunicationServices".
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: "Microsoft.Communication/CommunicationServices"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -135,9 +150,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.ICheckNameAvailabilityResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.INameAvailability
 
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS
 

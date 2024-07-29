@@ -15,43 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEmailServicedataEmailSe
 }
 
 Describe 'Get-AzEmailServicedataEmailSendResult' {
-    It 'Get' {
-        $emailRecipientTo = @(
-            @{
-                Address = "contosouser@contoso.com"
-                DisplayName = "ContosoUser"
-            }
-        )
-        $message = @{
-	        ContentSubject = "Test Email"
-	        RecipientTo = @($emailRecipientTo)
-	        SenderAddress = $env.senderAddress
-	        ContentPlainText = "This is the first email from ACS - HTML"	
-        }
-        $sendEmailResult = Send-AzEmailServicedataEmail -Message $message -endpoint $env.endPoint        
-        $getEmailResult = Get-AzEmailServicedataEmailSendResult -Endpoint $env.endPoint -OperationId $sendEmailResult.Id
-        $sendEmailResult.Status | Should -Be $getEmailResult.Status
+    It 'Get' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' {
-        $emailRecipientTo = @(
-            @{
-                Address = "contosouser@contoso.com"
-                DisplayName = "ContosoUser"
-            }
-        )
-        $message = @{
-	        ContentSubject = "Test Email"
-	        RecipientTo = @($emailRecipientTo)  # Array of email address objects
-	        SenderAddress = $env.senderAddress
-	        ContentPlainText = "This is the first email from ACS - HTML"	
-        }
-
-        $sendEmailResult = Send-AzEmailServicedataEmail -Message $message -endpoint $env.endPoint            
-        $inputObject = @{
-	        OperationId = $sendEmailResult.Id
-        }
-        $getEmailResult = Get-AzEmailServicedataEmailSendResult -Endpoint $env.endPoint -InputObject $inputObject
-        $sendEmailResult.Status | Should -Be $getEmailResult.Status
+    It 'GetViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

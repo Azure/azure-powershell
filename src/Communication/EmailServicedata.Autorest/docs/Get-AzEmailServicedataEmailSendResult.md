@@ -31,7 +31,7 @@ Gets the status of the email send operation.
 
 ### Example 1: Gets the status and operation id of the email send operation.
 ```powershell
-Get-AzEmailServicedataEmailSendResult -Endpoint "https://contoso.unitedstates.communication.azure.com" -OperationId 1111c0de-899f-5cce-acb5-3ec493af3800
+Get-AzEmailServicedataEmailSendResult -Endpoint "https://contoso.unitedstates.communications.azure.com" -OperationId 1111c0de-899f-5cce-acb5-3ec493af3800
 ```
 
 ```output

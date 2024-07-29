@@ -71,8 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -91,7 +90,7 @@ Description of an Azure Notification Hub to link to the communication service
 To construct, see NOTES section for LINKNOTIFICATIONHUBPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ILinkNotificationHubParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ILinkNotificationHubParameters
 Parameter Sets: Link
 Aliases:
 
@@ -135,7 +134,6 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
-The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -185,13 +183,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ILinkNotificationHubParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ILinkNotificationHubParameters
 
 ## OUTPUTS
 
 ### System.String
 
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+LINKNOTIFICATIONHUBPARAMETER <ILinkNotificationHubParameters>: Description of an Azure Notification Hub to link to the communication service
+  - `ConnectionString <String>`: Connection string for the notification hub
+  - `ResourceId <String>`: The resource ID of the notification hub
 
 ## RELATED LINKS
 

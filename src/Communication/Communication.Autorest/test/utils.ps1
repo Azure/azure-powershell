@@ -1,4 +1,3 @@
-import-module ..\EmailService.Autorest\Az.EmailService.psd1
 function RandomString([bool]$allChars, [int32]$len) {
     if ($allChars) {
         return -join ((33..126) | Get-Random -Count $len | % {[char]$_})
