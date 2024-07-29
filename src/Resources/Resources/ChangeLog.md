@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added null check and empty list check to the permissions object in the ToPSRoleDefinition method.
 * Added argument completer for `EnforcementMode`, `IdentityType`
     * `New-AzPolicyAssignment`
     * `New-AzPolicyExemption`
