@@ -19,6 +19,7 @@ using Hyak.Common;
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Profile.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 
@@ -81,12 +82,12 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         {
 
             var loginInfo = new StringBuilder();
-            string LoginToAzurePhrase = $"{PSStyle.Bold}{PSStyle.BackgroundColor.Blue}[Login to Azure]{PSStyle.Reset} ";
+            string LoginToAzurePhrase = PSStyleFormatter.PSStyleStringFormat(PSStyleFormatter.SupportsVirtualTerminal, $"{PSStyle.Bold}{PSStyle.BackgroundColor.Blue}|[Login to Azure]|{PSStyle.Reset} ");
             loginInfo.Append(LoginToAzurePhrase);
 
             if (!string.IsNullOrEmpty(userCode))
             {
-                var formattedUserCode = $"{PSStyle.Underline}{userCode}{PSStyle.Reset}";
+                var formattedUserCode = PSStyleFormatter.PSStyleStringFormat(PSStyleFormatter.SupportsVirtualTerminal, $"{PSStyle.Underline}|{userCode}|{PSStyle.Reset}");
                 var formattedMessage = message.Replace(userCode, formattedUserCode);
                 loginInfo.Append(formattedMessage);
             }

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
 {
     internal static class InteractiveSubscriptionSelectionHelper
     {
-        private static string DefaultSubscriptionMark = $"{PSStyle.ForegroundColor.White}*{PSStyle.Reset}";
+        private static string DefaultSubscriptionMark = PSStyleFormatter.PSStyleStringFormat(PSStyleFormatter.SupportsVirtualTerminal, $"{PSStyle.ForegroundColor.White}|*|{PSStyle.Reset}");
 
         internal static void SelectSubscriptionFromList(IEnumerable<IAzureSubscription> subscriptions, List<AzureTenant> queriedTenants, string tenantId, string tenantName, IAzureSubscription lastUsedSubscription,
             Func<string, string> prompt, Action<string> outputAction,
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         {
             bool markDefaultSubscription = isDefaultSubscription && needMarkDefaultSubscription;
             int markedIndexLength = markDefaultSubscription ? columnNoWidth + columnIndentsWidth - 1 + DefaultSubscriptionMark.Length : columnNoWidth + columnIndentsWidth;
-            string markedSubIndex = $"[{subIndex}]{(markDefaultSubscription ? $" {DefaultSubscriptionMark} ": "")}";
+            string markedSubIndex = $"[{subIndex}]{(markDefaultSubscription ? $" {DefaultSubscriptionMark} " : "")}";
             string truncatedSubName = subscription.Name?.Length > columnSubNameWidth ? $"{subscription.Name.Substring(0, columnSubNameWidth - 3)}..." : subscription.Name;
             string truncatedTenantName = tenantName?.Length > columnTenantWidth ? $"{tenantName.Substring(0, columnTenantWidth - 3)}..." : tenantName;
             string subIndexRowValue = String.Format($"{{0,-{markedIndexLength}}}", markedSubIndex),
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
 
             if (markDefaultSubscription)
             {
-                outputAction($"{PSStyle.Bold}{PSStyle.ForegroundColor.BrightCyan}{subIndexRowValue}{PSStyle.BoldOff}{PSStyle.ForegroundColor.BrightCyan}{subNameRowValue}{subIdRowValue}{tenantNameRowValue}{PSStyle.Reset}");
+                outputAction(PSStyleFormatter.PSStyleStringFormat(PSStyleFormatter.SupportsVirtualTerminal, $"{PSStyle.Bold}{PSStyle.ForegroundColor.BrightCyan}|{subIndexRowValue}|{PSStyle.BoldOff}{PSStyle.ForegroundColor.BrightCyan}|{subNameRowValue}{subIdRowValue}{tenantNameRowValue}|{PSStyle.Reset}"));
             }
             else
             {

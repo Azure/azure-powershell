@@ -132,8 +132,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             string authScope = null,
             bool IsInteractiveContextSelectionEnabled = true)
         {
-            
-            WriteInteractiveInformationMessage($"{PSStyle.ForegroundColor.BrightYellow}{Resources.PleaseSelectAccount}{PSStyle.Reset}{System.Environment.NewLine}");
+            WriteInteractiveInformationMessage(PSStyleFormatter.PSStyleStringFormat(PSStyleFormatter.SupportsVirtualTerminal, $"{PSStyle.ForegroundColor.BrightYellow}|{Resources.PleaseSelectAccount}|{PSStyle.Reset}|{System.Environment.NewLine}"));
 
             IAzureSubscription defaultSubscription = null;
             IAzureTenant defaultTenant = null;
