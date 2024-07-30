@@ -81,8 +81,11 @@ Describe "AzNginxTestAll" {
         $nginx = Update-AzNginxDeployment -DeploymentName $env.nginxDeployment1 -ResourceGroupName $env.resourceGroup -EnableDiagnosticsSupport
         $nginx.EnableDiagnosticsSupport | Should -Be True
 
-        # adding nginx configuration
         $confFile = New-AzNginxConfigurationFileObject -VirtualPath $env.nginxFilePath -Content $env.nginxFileContent
+        
+        # configuration analysis
+        $confAnalysis = Invoke-AzNginxAnalysisConfiguration -ConfigurationName default -DeploymentName $env.nginxDeployment1 -ResourceGroupName $env.resourceGroup  -ConfigFile $confFile -ConfigRootFile $env.nginxFilePath 
+        # adding nginx configuration
         $conf = New-AzNginxConfiguration -DeploymentName $env.nginxDeployment1 -Name default -ResourceGroupName $env.resourceGroup -File $confFile -RootFile $env.nginxFilePath
         $conf.ProvisioningState | Should -Be 'Succeeded'
 
