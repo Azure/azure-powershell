@@ -61,3 +61,51 @@ Global   fdp-v542q6 frontdoor testps-rg-da16jm
 ```
 
 Enable managed identity using UserAssigned type to an AzureFrontDoor profile
+
+
+### Example 5: Enable the Profile Logscrub to an AzureFrontDoor profile, only contains one LogScrubbingRule
+```powershell
+$rule = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Enabled
+Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -LogScrubbingRule $rule -LogScrubbingState Enabled
+```
+
+```output
+Location Name       Kind      ResourceGroupName
+-------- ----       ----      -----------------
+Global   fdp-v542q6 frontdoor testps-rg-da16jm
+```
+
+Enable the Profile Logscrub to an AzureFrontDoor profile, only contains one LogScrubbingRule
+
+
+### Example 6: Enable the Profile Logscrub to an AzureFrontDoor profile, contains more than one LogScrubbingRule
+```powershell
+$rule1 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Enabled 
+$rule2 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable QueryStringArgNames -State Enabled
+$rules = New-AzFrontDoorCdnProfileLogScrubbingObject -ScrubbingRule @($rule1, $rule2) -State Enabled
+
+Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -LogScrubbingRule $rules.ScrubbingRule -LogScrubbingState Enabled
+```
+
+```output
+Location Name       Kind      ResourceGroupName
+-------- ----       ----      -----------------
+Global   fdp-v542q6 frontdoor testps-rg-da16jm
+```
+
+Enable the Profile Logscrub to an AzureFrontDoor profile, contains more than one LogScrubbingRule
+
+
+### Example 7: Disable the Profile Logscrub to an AzureFrontDoor profile
+```powershell
+$rule = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Disabled
+Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -LogScrubbingRule $rule -LogScrubbingState Disabled
+```
+
+```output
+Location Name       Kind      ResourceGroupName
+-------- ----       ----      -----------------
+Global   fdp-v542q6 frontdoor testps-rg-da16jm
+```
+
+Disable the Profile Logscrub to an AzureFrontDoor profile

@@ -1,5 +1,5 @@
 function Update-AzFunctionAppSetting {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Adds or updates app settings in a function app.')]
     [CmdletBinding(DefaultParameterSetName='ByName', SupportsShouldProcess=$true, ConfirmImpact='Medium')]
     param(
@@ -23,7 +23,7 @@ function Update-AzFunctionAppSetting {
         ${SubscriptionId},
 
         [Parameter(ParameterSetName='ByObjectInput', Mandatory=$true, ValueFromPipeline=$true)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite]
         [ValidateNotNull()]
         ${InputObject},
 
@@ -84,6 +84,8 @@ function Update-AzFunctionAppSetting {
         ${ProxyUseDefaultCredentials}
     )
     process {
+
+        RegisterFunctionsTabCompleters
 
         # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets
         $paramsToRemove = @(
@@ -149,17 +151,20 @@ function Update-AzFunctionAppSetting {
 
                 if ($Force.IsPresent -or $PsCmdlet.ShouldContinue($message, "Updating function app settings"))
                 {
-                    $settings = Az.Functions.internal\Set-AzWebAppApplicationSetting @PSBoundParameters
+                    Az.Functions.internal\Set-AzWebAppApplicationSetting @PSBoundParameters | Out-Null
                 }
             }
             else
             {
-                $settings = Az.Functions.internal\Set-AzWebAppApplicationSetting @PSBoundParameters
+                $null = Az.Functions.internal\Set-AzWebAppApplicationSetting @PSBoundParameters | Out-Null
             }
 
-            if ($settings)
+            # The latest API version does not return the list of app settings. Make a second call to retrieve them.
+            $updatedSettings = Az.Functions.internal\Get-AzWebAppApplicationSetting -Name $Name -ResourceGroupName $ResourceGroupName @params
+
+            if ($null -ne $updatedSettings)
             {
-                ConvertWebAppApplicationSettingToHashtable -ApplicationSetting $settings `
+                ConvertWebAppApplicationSettingToHashtable -ApplicationSetting $updatedSettings `
                                                            -AppSettingsToShow $AppSetting.Keys `
                                                            -ShowOnlySpecificAppSettings
             }

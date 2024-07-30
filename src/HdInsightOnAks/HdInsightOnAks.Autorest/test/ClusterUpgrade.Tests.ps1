@@ -73,9 +73,9 @@ Describe 'ClusterUpgrade' {
     }
 
     It "Upgrade Cluster" -Skip{
-        
         { Invoke-AzHdInsightOnAksClusterUpgrade -ResourceGroupName $clusterResourceGroupName -ClusterPoolName $clusterpoolName  -ClusterName $clusterName -UpgradeType "NodeOsUpgrade"  } | Should -Not -Throw
         [Console]::WriteLine("Invoke-AzHdInsightOnAksClusterUpgrade done")
+
     }
 
     It "List Cluster upgrade history" {

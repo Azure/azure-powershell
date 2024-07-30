@@ -34,33 +34,60 @@ Returns a Azure Arc PrivateLinkScope.
 
 ## EXAMPLES
 
-### Example 1: List all private link scopes in a resource group
+### Example 1: get all private link scope of a resource group
 ```powershell
-Get-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName
+Get-AzConnectedPrivateLinkScope -ResourceGroupName 'ytongtest'
 ```
 
 ```output
-Name              Location    PublicNetworkAccess ProvisioningState
-----              --------    ------------------- ----------------- 
-name1             eastus2euap Enabled             Succeeded
-name2             eastus2euap Disabled            Succeeded
-name3             eastus2euap Enabled             Succeeded
+Id                           : /subscriptions/subcriptionid/resourceGroups/ytongtest/providers/M
+                               icrosoft.HybridCompute/privateLinkScopes/myScope
+Location                     : centraluseuap
+Name                         : myScope
+PrivateEndpointConnection    : {}
+PrivateLinkScopeId           : scopeId
+ProvisioningState            : Succeeded
+PublicNetworkAccess          : Enabled
+ResourceGroupName            : ytongtest
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Tag                          : {
+                               }
+Type                         : Microsoft.HybridCompute/privateLinkScopes
 ```
 
-Lists all private link scopes in a specified resource group
+get all private link scope of a resource group
 
-### Example 2: Get a private link scope in a resource group by name
+### Example 2: get specific private link scope
 ```powershell
-Get-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName
+Get-AzConnectedPrivateLinkScope -ResourceGroupName 'ytongtest' -ScopeName 'myScope'
 ```
 
 ```output
-Name         Location    PublicNetworkAccess ProvisioningState
-----         --------    ------------------- -----------------
-name1        eastus2euap Enabled             Succeeded
+Id                           : /subscriptions/********-****-****-****-**********/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope
+Location                     : centraluseuap
+Name                         : myScope
+PrivateEndpointConnection    : {}
+PrivateLinkScopeId           : ********-****-****-****-**********
+ProvisioningState            : Succeeded
+PublicNetworkAccess          : Enabled
+ResourceGroupName            : ytongtest
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Tag                          : {
+                               }
+Type                         : Microsoft.HybridCompute/privateLinkScopes
 ```
 
-Gets a private link scope in a specified resource group by name
+get specific private link scope
 
 ## PARAMETERS
 

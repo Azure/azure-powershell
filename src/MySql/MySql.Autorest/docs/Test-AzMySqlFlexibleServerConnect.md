@@ -46,7 +46,7 @@ Test out the connection to the database server
 
 ### Example 1: Test connection by name
 ```powershell
-$password = ConvertTo-SecureString <YourPassword> -AsPlainText
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Test-AzMySqlFlexibleServerConnect -ResourceGroupName PowershellMySqlTest -Name mysql-test -AdministratorLoginPassword $password
 ```
 
@@ -58,7 +58,7 @@ Test connection by the resource group and the server name
 
 ### Example 2: Test connection by identity
 ```powershell
-$password = ConvertTo-SecureString <YourPassword> -AsPlainText
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Test-AzMySqlFlexibleServerConnect -AdministratorLoginPassword $password
 ```
 
@@ -70,7 +70,7 @@ Test connection by the identity
 
 ### Example 3: Test query by name
 ```powershell
-$password = ConvertTo-SecureString <YourPassword> -AsPlainText
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Test-AzMySqlFlexibleServerConnect -ResourceGroupName PowershellMySqlTest -Name mysql-test -AdministratorLoginPassword $password -QueryText "SELECT * FROM test"
 ```
 
@@ -237,26 +237,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IMySqlIdentity>`: The server to connect.
-  - `[BackupName <String>]`: The name of the backup.
-  - `[ConfigurationName <String>]`: The name of the server configuration.
-  - `[DatabaseName <String>]`: The name of the database.
-  - `[FirewallRuleName <String>]`: The name of the server firewall rule.
-  - `[Id <String>]`: Resource identity path
-  - `[LocationName <String>]`: The name of the location.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SecurityAlertPolicyName <SecurityAlertPolicyName?>]`: The name of the security alert policy.
-  - `[ServerName <String>]`: The name of the server.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
 
 ## RELATED LINKS
 

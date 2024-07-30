@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspaceKubernetesObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceKubernetesObject
 schema: 2.0.0
 ---
 
@@ -27,11 +27,7 @@ Create an in-memory object for Kubernetes.
 
 ### Example 1: Create an in-memory object for Kubernetes
 ```powershell
-New-AzMLWorkspaceKubernetesObject
-```
-
-```output
-{{ Add output here }}
+New-AzMLWorkspaceKubernetesObject -ResourceId <KubernetesResourceId>
 ```
 
 Create an in-memory object for Kubernetes
@@ -240,11 +236,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.Kubernetes
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.Kubernetes
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

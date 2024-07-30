@@ -1,0 +1,249 @@
+{
+  "Send-AzEmailServicedataEmail+[NoContext]+Send+$POST+https://persistentcommresourcename4woepr.unitedstates.communication.azure.com/emails:send?api-version=2023-03-31+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://persistentcommresourcename4woepr.unitedstates.communication.azure.com/emails:send?api-version=2023-03-31",
+      "Content": "{\r\n  \"content\": {\r\n    \"subject\": \"Test Email\",\r\n    \"plainText\": \"This is the first email from ACS - HTML\"\r\n  },\r\n  \"recipients\": {\r\n    \"to\": [\r\n      {\r\n        \"address\": \"contosouser@contoso.com\",\r\n        \"displayName\": \"ContosoUser\"\r\n      }\r\n    ]\r\n  },\r\n  \"senderAddress\": \"DoNotReply@088a9b12-bb8e-41eb-ac0b-1b8de90c33a7.azurecomm.net\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "359" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Retry-After": [ "3" ],
+        "mise-correlation-id": [ "301c08bc-95f7-4c46-97bc-3332ade50bf5" ],
+        "Operation-Location": [ "https://persistentcommresourcename4woepr.unitedstates.communication.azure.com/emails/operations/7afbaa08-7a70-4b30-af14-a32a37500bcd?api-version=2023-03-31" ],
+        "api-supported-versions": [ "2021-10-01-preview, 2023-01-15-preview, 2023-03-31" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "Strict-Transport-Security": [ "max-age=31536000;includeSubDomains" ],
+        "X-Azure-Ref": [ "091enZgAAAADUEKUwuF8rT7cu9kafao/rSEtCRURHRTA3MjEAOWZjN2I1MTktYThjYy00Zjg5LTkzNWUtYzkxNDhhZTA5ZTgx" ],
+        "Date": [ "Mon, 29 Jul 2024 08:51:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "77" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"id\":\"7afbaa08-7a70-4b30-af14-a32a37500bcd\",\"status\":\"Running\",\"error\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Send-AzEmailServicedataEmail+[NoContext]+Send+$GET+https://persistentcommresourcename4woepr.unitedstates.communication.azure.com/emails/operations/7afbaa08-7a70-4b30-af14-a32a37500bcd?api-version=2023-03-31+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://persistentcommresourcename4woepr.unitedstates.communication.azure.com/emails/operations/7afbaa08-7a70-4b30-af14-a32a37500bcd?api-version=2023-03-31",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "7d196878-d003-4195-bda1-befd161ff79d" ],
+        "CommandName": [ "Send-AzEmailServicedataEmail" ],
+        "FullCommandName": [ "Send-AzEmailServicedataEmail_Send" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.4", "Az.EmailServicedata/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "mise-correlation-id": [ "3eb4add1-d7bc-440a-a0e1-825dccd4e24b" ],
+        "api-supported-versions": [ "2021-10-01-preview, 2023-01-15-preview, 2023-03-31" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "Strict-Transport-Security": [ "max-age=31536000;includeSubDomains" ],
+        "X-Azure-Ref": [ "0+1enZgAAAABvoCCwsiWaRIDdHwzhwzOaSEtCRURHRTA3MjEAOWZjN2I1MTktYThjYy00Zjg5LTkzNWUtYzkxNDhhZTA5ZTgx" ],
+        "Date": [ "Mon, 29 Jul 2024 08:51:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "79" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"id\":\"7afbaa08-7a70-4b30-af14-a32a37500bcd\",\"status\":\"Succeeded\",\"error\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Send-AzEmailServicedataEmail+[NoContext]+Send+$GET+https://persistentcommresourcename4woepr.unitedstates.communication.azure.com/emails/operations/7afbaa08-7a70-4b30-af14-a32a37500bcd?api-version=2023-03-31+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://persistentcommresourcename4woepr.unitedstates.communication.azure.com/emails/operations/7afbaa08-7a70-4b30-af14-a32a37500bcd?api-version=2023-03-31",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "27" ],
+        "x-ms-client-request-id": [ "7d196878-d003-4195-bda1-befd161ff79d" ],
+        "CommandName": [ "Send-AzEmailServicedataEmail" ],
+        "FullCommandName": [ "Send-AzEmailServicedataEmail_Send" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.4", "Az.EmailServicedata/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "mise-correlation-id": [ "c58db23e-7289-47c3-be10-1577a4b183fe" ],
+        "api-supported-versions": [ "2021-10-01-preview, 2023-01-15-preview, 2023-03-31" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "Strict-Transport-Security": [ "max-age=31536000;includeSubDomains" ],
+        "X-Azure-Ref": [ "0+1enZgAAAACFz6WQxq5jQYFsisHkgcQSSEtCRURHRTA3MjEAOWZjN2I1MTktYThjYy00Zjg5LTkzNWUtYzkxNDhhZTA5ZTgx" ],
+        "Date": [ "Mon, 29 Jul 2024 08:51:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "79" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"id\":\"7afbaa08-7a70-4b30-af14-a32a37500bcd\",\"status\":\"Succeeded\",\"error\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Send-AzEmailServicedataEmail+[NoContext]+SendExpanded+$POST+https://persistentcommresourcename4woepr.unitedstates.communication.azure.com/emails:send?api-version=2023-03-31+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://persistentcommresourcename4woepr.unitedstates.communication.azure.com/emails:send?api-version=2023-03-31",
+      "Content": "{\r\n  \"content\": {\r\n    \"subject\": \"Test Email\",\r\n    \"plainText\": \"This is the first email from ACS - HTML\"\r\n  },\r\n  \"recipients\": {\r\n    \"to\": [\r\n      {\r\n        \"address\": \"contosouser@contoso.com\",\r\n        \"displayName\": \"ContosoUser\"\r\n      }\r\n    ]\r\n  },\r\n  \"senderAddress\": \"DoNotReply@088a9b12-bb8e-41eb-ac0b-1b8de90c33a7.azurecomm.net\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "359" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Retry-After": [ "3" ],
+        "mise-correlation-id": [ "097f3911-920f-4c23-8113-85e997a935bb" ],
+        "Operation-Location": [ "https://persistentcommresourcename4woepr.unitedstates.communication.azure.com/emails/operations/768dbcaf-9f7f-4918-b4a5-19dd837f4e7c?api-version=2023-03-31" ],
+        "api-supported-versions": [ "2021-10-01-preview, 2023-01-15-preview, 2023-03-31" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "Strict-Transport-Security": [ "max-age=31536000;includeSubDomains" ],
+        "X-Azure-Ref": [ "0/FenZgAAAABLuqUTykXWTLCW9Pb/YqCBSEtCRURHRTA3MjEAOWZjN2I1MTktYThjYy00Zjg5LTkzNWUtYzkxNDhhZTA5ZTgx" ],
+        "Date": [ "Mon, 29 Jul 2024 08:51:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "77" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"id\":\"768dbcaf-9f7f-4918-b4a5-19dd837f4e7c\",\"status\":\"Running\",\"error\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Send-AzEmailServicedataEmail+[NoContext]+SendExpanded+$GET+https://persistentcommresourcename4woepr.unitedstates.communication.azure.com/emails/operations/768dbcaf-9f7f-4918-b4a5-19dd837f4e7c?api-version=2023-03-31+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://persistentcommresourcename4woepr.unitedstates.communication.azure.com/emails/operations/768dbcaf-9f7f-4918-b4a5-19dd837f4e7c?api-version=2023-03-31",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "29" ],
+        "x-ms-client-request-id": [ "20f92642-fa61-49f4-b14d-8f2744711510" ],
+        "CommandName": [ "Send-AzEmailServicedataEmail" ],
+        "FullCommandName": [ "Send-AzEmailServicedataEmail_SendExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.4", "Az.EmailServicedata/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Retry-After": [ "3" ],
+        "mise-correlation-id": [ "c17eac73-17c6-4f4f-820b-d6e1e57e0b9c" ],
+        "api-supported-versions": [ "2021-10-01-preview, 2023-01-15-preview, 2023-03-31" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "Strict-Transport-Security": [ "max-age=31536000;includeSubDomains" ],
+        "X-Azure-Ref": [ "0AFinZgAAAADiA51VVMvaQJgGhhdNMcPOSEtCRURHRTA3MjEAOWZjN2I1MTktYThjYy00Zjg5LTkzNWUtYzkxNDhhZTA5ZTgx" ],
+        "Date": [ "Mon, 29 Jul 2024 08:51:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "77" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"id\":\"768dbcaf-9f7f-4918-b4a5-19dd837f4e7c\",\"status\":\"Running\",\"error\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Send-AzEmailServicedataEmail+[NoContext]+SendExpanded+$GET+https://persistentcommresourcename4woepr.unitedstates.communication.azure.com/emails/operations/768dbcaf-9f7f-4918-b4a5-19dd837f4e7c?api-version=2023-03-31+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://persistentcommresourcename4woepr.unitedstates.communication.azure.com/emails/operations/768dbcaf-9f7f-4918-b4a5-19dd837f4e7c?api-version=2023-03-31",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "20f92642-fa61-49f4-b14d-8f2744711510" ],
+        "CommandName": [ "Send-AzEmailServicedataEmail" ],
+        "FullCommandName": [ "Send-AzEmailServicedataEmail_SendExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.4", "Az.EmailServicedata/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "mise-correlation-id": [ "b5c92ca1-ae1f-45a7-90ba-5fcc2f4583ae" ],
+        "api-supported-versions": [ "2021-10-01-preview, 2023-01-15-preview, 2023-03-31" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "Strict-Transport-Security": [ "max-age=31536000;includeSubDomains" ],
+        "X-Azure-Ref": [ "0A1inZgAAAABgYBzQ+OdbR55bprndnEf/SEtCRURHRTA3MjEAOWZjN2I1MTktYThjYy00Zjg5LTkzNWUtYzkxNDhhZTA5ZTgx" ],
+        "Date": [ "Mon, 29 Jul 2024 08:51:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "79" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"id\":\"768dbcaf-9f7f-4918-b4a5-19dd837f4e7c\",\"status\":\"Succeeded\",\"error\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Send-AzEmailServicedataEmail+[NoContext]+SendExpanded+$GET+https://persistentcommresourcename4woepr.unitedstates.communication.azure.com/emails/operations/768dbcaf-9f7f-4918-b4a5-19dd837f4e7c?api-version=2023-03-31+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://persistentcommresourcename4woepr.unitedstates.communication.azure.com/emails/operations/768dbcaf-9f7f-4918-b4a5-19dd837f4e7c?api-version=2023-03-31",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "20f92642-fa61-49f4-b14d-8f2744711510" ],
+        "CommandName": [ "Send-AzEmailServicedataEmail" ],
+        "FullCommandName": [ "Send-AzEmailServicedataEmail_SendExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.4", "Az.EmailServicedata/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "mise-correlation-id": [ "5c1cee57-9a00-40fb-a77a-c712c2161b8d" ],
+        "api-supported-versions": [ "2021-10-01-preview, 2023-01-15-preview, 2023-03-31" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "Strict-Transport-Security": [ "max-age=31536000;includeSubDomains" ],
+        "X-Azure-Ref": [ "0BFinZgAAAADJ7pqObjtvRZLyaPDoA1hsSEtCRURHRTA3MjEAOWZjN2I1MTktYThjYy00Zjg5LTkzNWUtYzkxNDhhZTA5ZTgx" ],
+        "Date": [ "Mon, 29 Jul 2024 08:51:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "79" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"id\":\"768dbcaf-9f7f-4918-b4a5-19dd837f4e7c\",\"status\":\"Succeeded\",\"error\":null}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,12 +1,13 @@
 
 function New-AzFunctionApp {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Creates a function app.')]
     [CmdletBinding(SupportsShouldProcess=$true, DefaultParametersetname="Consumption")]
     param(
         [Parameter(ParameterSetName="Consumption", HelpMessage='The Azure subscription ID.')]
         [Parameter(ParameterSetName="ByAppServicePlan")]
         [Parameter(ParameterSetName="CustomDockerImage")]
+        [Parameter(ParameterSetName="EnvironmentForContainerApp")]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [ValidateNotNullOrEmpty()]
         [System.String]
@@ -15,6 +16,7 @@ function New-AzFunctionApp {
         [Parameter(Mandatory=$true, ParameterSetName="Consumption", HelpMessage='The name of the resource group.')]
         [Parameter(Mandatory=$true, ParameterSetName="ByAppServicePlan")]
         [Parameter(Mandatory=$true, ParameterSetName="CustomDockerImage")]
+        [Parameter(Mandatory=$true, ParameterSetName="EnvironmentForContainerApp")]
         [ValidateNotNullOrEmpty()]
         [System.String]
         ${ResourceGroupName},
@@ -22,6 +24,7 @@ function New-AzFunctionApp {
         [Parameter(Mandatory=$true, ParameterSetName="Consumption", HelpMessage='The name of the function app.')]
         [Parameter(Mandatory=$true, ParameterSetName="ByAppServicePlan")]
         [Parameter(Mandatory=$true, ParameterSetName="CustomDockerImage")]
+        [Parameter(Mandatory=$true, ParameterSetName="EnvironmentForContainerApp")]
         [ValidateNotNullOrEmpty()]
         [System.String]
         ${Name},
@@ -29,6 +32,7 @@ function New-AzFunctionApp {
         [Parameter(Mandatory=$true, ParameterSetName="Consumption", HelpMessage='The name of the storage account.')]
         [Parameter(Mandatory=$true, ParameterSetName="ByAppServicePlan")]
         [Parameter(Mandatory=$true, ParameterSetName="CustomDockerImage")]
+        [Parameter(Mandatory=$true, ParameterSetName="EnvironmentForContainerApp")]
         [ValidateNotNullOrEmpty()]
         [System.String]
         ${StorageAccountName},
@@ -36,6 +40,7 @@ function New-AzFunctionApp {
         [Parameter(ParameterSetName="Consumption", HelpMessage='Name of the existing App Insights project to be added to the function app.')]
         [Parameter(ParameterSetName="ByAppServicePlan")]
         [Parameter(ParameterSetName="CustomDockerImage")]
+        [Parameter(ParameterSetName="EnvironmentForContainerApp")]
         [ValidateNotNullOrEmpty()]
         [System.String]
         [Alias("AppInsightsName")]
@@ -44,6 +49,7 @@ function New-AzFunctionApp {
         [Parameter(ParameterSetName="Consumption", HelpMessage='Instrumentation key of App Insights to be added.')]
         [Parameter(ParameterSetName="ByAppServicePlan")]
         [Parameter(ParameterSetName="CustomDockerImage")]
+        [Parameter(ParameterSetName="EnvironmentForContainerApp")]
         [ValidateNotNullOrEmpty()]
         [System.String]
         [System.String]
@@ -94,19 +100,24 @@ function New-AzFunctionApp {
         [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage='Disable creating application insights resource during the function app creation. No logs will be available.')]
         [Parameter(ParameterSetName="Consumption")]
         [Parameter(ParameterSetName="CustomDockerImage")]
+        [Parameter(ParameterSetName="EnvironmentForContainerApp")]
         [System.Management.Automation.SwitchParameter]
         [Alias("DisableAppInsights")]
         ${DisableApplicationInsights},
         
-        [Parameter(Mandatory=$true, ParameterSetName="CustomDockerImage", HelpMessage='Linux only. Container image name from Docker Registry, e.g. publisher/image-name:tag.')]
+        [Parameter(Mandatory=$true, ParameterSetName="CustomDockerImage", HelpMessage='Container image name, e.g., publisher/image-name:tag.')]
+        [Parameter(ParameterSetName="EnvironmentForContainerApp")]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        ${DockerImageName},
+        [Alias("DockerImageName")]
+        ${Image},
 
-        [Parameter(ParameterSetName="CustomDockerImage", HelpMessage='The container registry user name and password. Required for private registries.')]
+        [Parameter(ParameterSetName="CustomDockerImage", HelpMessage='The container registry username and password. Required for private registries.')]
+        [Parameter(ParameterSetName="EnvironmentForContainerApp")]
         [ValidateNotNullOrEmpty()]
         [PSCredential]
-        ${DockerRegistryCredential},
+        [Alias("DockerRegistryCredential")]
+        ${RegistryCredential},
 
         [Parameter(HelpMessage='Returns true when the command succeeds.')]
         [System.Management.Automation.SwitchParameter]
@@ -115,6 +126,7 @@ function New-AzFunctionApp {
         [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage='Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.')]
         [Parameter(ParameterSetName="Consumption")]
         [Parameter(ParameterSetName="CustomDockerImage")]
+        [Parameter(ParameterSetName="EnvironmentForContainerApp")]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         ${NoWait},
@@ -122,6 +134,7 @@ function New-AzFunctionApp {
         [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage='Runs the cmdlet as a background job.')]
         [Parameter(ParameterSetName="Consumption")]
         [Parameter(ParameterSetName="CustomDockerImage")]
+        [Parameter(ParameterSetName="EnvironmentForContainerApp")]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         ${AsJob},
@@ -129,8 +142,9 @@ function New-AzFunctionApp {
         [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage='Resource tags.')]
         [Parameter(ParameterSetName="Consumption")]
         [Parameter(ParameterSetName="CustomDockerImage")]
+        [Parameter(ParameterSetName="EnvironmentForContainerApp")]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IResourceTags]))]
         [System.Collections.Hashtable]
         [ValidateNotNull()]
         ${Tag},
@@ -138,6 +152,7 @@ function New-AzFunctionApp {
         [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage='Function app settings.')]
         [Parameter(ParameterSetName="Consumption")]
         [Parameter(ParameterSetName="CustomDockerImage")]
+        [Parameter(ParameterSetName="EnvironmentForContainerApp")]
         [ValidateNotNullOrEmpty()]
         [Hashtable]
         ${AppSetting},
@@ -149,6 +164,7 @@ function New-AzFunctionApp {
             ")]
         [Parameter(ParameterSetName="Consumption")]
         [Parameter(ParameterSetName="CustomDockerImage")]
+        [Parameter(ParameterSetName="EnvironmentForContainerApp")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionAppManagedServiceIdentityCreateType])]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType]
@@ -159,9 +175,45 @@ function New-AzFunctionApp {
             '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'")]
         [Parameter(ParameterSetName="Consumption")]
         [Parameter(ParameterSetName="CustomDockerImage")]
+        [Parameter(ParameterSetName="EnvironmentForContainerApp")]
         [ValidateNotNull()]
         [System.String[]]
         ${IdentityID},
+
+        [Parameter(Mandatory=$true, ParameterSetName="EnvironmentForContainerApp", HelpMessage='Name of the container app environment.')]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        ${Environment},
+
+        [Parameter(Mandatory=$false, ParameterSetName="EnvironmentForContainerApp", HelpMessage='The workload profile name to run the container app on.')]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        ${WorkloadProfileName},
+
+        [Parameter(Mandatory=$false, ParameterSetName="EnvironmentForContainerApp", HelpMessage='The CPU in cores of the container app. e.g., 0.75.')]
+        [ValidateNotNullOrEmpty()]
+        [Double]
+        ${ResourceCpu},
+
+        [Parameter(Mandatory=$false, ParameterSetName="EnvironmentForContainerApp", HelpMessage='The memory size of the container app. e.g., 1.0Gi.')]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        ${ResourceMemory},
+
+        [Parameter(Mandatory=$false, ParameterSetName="EnvironmentForContainerApp", HelpMessage='The maximum number of replicas when creating a function app on container app.')]
+        [ValidateScript({$_ -gt 0})]
+        [Int]
+        ${ScaleMaxReplica},
+
+        [Parameter(Mandatory=$false, ParameterSetName="EnvironmentForContainerApp", HelpMessage='The minimum number of replicas when create function app on container app.')]
+        [ValidateScript({$_ -gt 0})]
+        [Int]
+        ${ScaleMinReplica},
+
+        [Parameter(Mandatory=$false, ParameterSetName="EnvironmentForContainerApp", HelpMessage='The container registry server hostname, e.g. myregistry.azurecr.io.')]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        ${RegistryServer},
         
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -210,6 +262,9 @@ function New-AzFunctionApp {
     )
 
     process {
+
+        RegisterFunctionsTabCompleters
+
         # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets.
         $paramsToRemove = @(
             "StorageAccountName",
@@ -220,14 +275,21 @@ function New-AzFunctionApp {
             "OSType",
             "Runtime",
             "DisableApplicationInsights",
-            "DockerImageName",
-            "DockerRegistryCredential",
+            "Image",
+            "RegistryCredential",
             "FunctionsVersion",
             "RuntimeVersion",
             "AppSetting",
             "IdentityType",
             "IdentityID",
-            "Tag"
+            "Tag",
+            "Environment",
+            "RegistryServer",
+            "WorkloadProfileName",
+            "ResourceCpu",
+            "ResourceMemory",
+            "ScaleMaxReplica",
+            "ScaleMinReplica"
         )
         foreach ($paramName in $paramsToRemove)
         {
@@ -238,10 +300,11 @@ function New-AzFunctionApp {
         }
 
         $functionAppIsCustomDockerImage = $PsCmdlet.ParameterSetName -eq "CustomDockerImage"
+        $environmentForContainerApp = $PsCmdlet.ParameterSetName -eq "EnvironmentForContainerApp"
 
         $appSettings = New-Object -TypeName System.Collections.Generic.List[System.Object]
-        $siteCofig = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteConfig
-        $functionAppDef = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.Site
+        $siteConfig = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.SiteConfig
+        $functionAppDef = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.Site
 
         $params = GetParameterKeyValues -PSBoundParametersDictionary $PSBoundParameters `
                                         -ParameterList @("SubscriptionId", "HttpPipelineAppend", "HttpPipelinePrepend")
@@ -249,7 +312,7 @@ function New-AzFunctionApp {
         $runtimeJsonDefinition = $null
         ValidateFunctionName -Name $Name @params
 
-        if (-not $functionAppIsCustomDockerImage)
+        if (-not ($functionAppIsCustomDockerImage -or $environmentForContainerApp))
         {
             if (-not $FunctionsVersion)
             {
@@ -295,7 +358,7 @@ function New-AzFunctionApp {
                 foreach ($PropertyName in $runtimeJsonDefinition.SiteConfigPropertiesDictionary.Keys)
                 {
                     $value = $runtimeJsonDefinition.SiteConfigPropertiesDictionary[$PropertyName]
-                    $siteCofig.$PropertyName = $value
+                    $siteConfig.$PropertyName = $value
                 }
             }            
         }
@@ -303,13 +366,42 @@ function New-AzFunctionApp {
         $servicePlan = $null
         $consumptionPlan = $PsCmdlet.ParameterSetName -eq "Consumption"
         $OSIsLinux = $OSType -eq "Linux"
+        $dockerRegistryServerUrl = $null
         
         if ($consumptionPlan)
         {
             ValidateConsumptionPlanLocation -Location $Location -OSIsLinux:$OSIsLinux @params
             $functionAppDef.Location = $Location
         }
-        else 
+        elseif ($environmentForContainerApp)
+        {
+            $OSIsLinux = $true
+
+            if (-not $Image)
+            {
+                Write-Warning "Image not specified. Setting default value to '$DefaultCentauriImage'."
+                $Image = $DefaultCentauriImage
+            }
+            if ($RegistryServer)
+            {
+                $dockerRegistryServerUrl = $RegistryServer
+            }
+
+            if ($Environment -and $RegistryCredential)
+            {
+                # Error out if the user has specified both Environment and RegistryCredential and not provided RegistryServer.
+                if (-not $RegistryServer)
+                {
+                    $errorMessage = "RegistryServer is required when Environment and RegistryCredential is specified."
+                    $exception = [System.InvalidOperationException]::New($errorMessage)
+                    ThrowTerminatingError -ErrorId "RegistryServerRequired" `
+                                          -ErrorMessage $errorMessage `
+                                          -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                          -Exception $exception
+                }
+            }
+        }
+        elseif ($PlanName)
         {
             # Host function app in Elastic Premium or app service plan
             $servicePlan = GetServicePlan $PlanName @params
@@ -338,28 +430,32 @@ function New-AzFunctionApp {
             $functionAppDef.Kind = 'functionapp,linux'
             $functionAppDef.Reserved = $true
 
-            # Bring your own container is only supported on App Service and Premium plans
-            if ($DockerImageName)
+            # Bring your own container is only supported on App Service, Premium plans and Container App
+            if ($Image)
             {
                 $functionAppDef.Kind = 'functionapp,linux,container'
 
-                $imageName = $DockerImageName.Trim().ToLower()
-                $appSettings.Add((NewAppSetting -Name 'DOCKER_CUSTOM_IMAGE_NAME' -Value $imageName))
+                $appSettings.Add((NewAppSetting -Name 'DOCKER_CUSTOM_IMAGE_NAME' -Value $Image.Trim().ToLower()))
                 $appSettings.Add((NewAppSetting -Name 'FUNCTION_APP_EDIT_MODE' -Value 'readOnly'))
                 $appSettings.Add((NewAppSetting -Name 'WEBSITES_ENABLE_APP_SERVICE_STORAGE' -Value 'false'))
 
-                $siteCofig.LinuxFxVersion = "DOCKER|$imageName"
+                $siteConfig.LinuxFxVersion = FormatFxVersion -Image $Image
 
-                # Parse the docker registry url, user name and password
-                $dockerRegistryServerUrl = ParseDockerImage -DockerImageName $DockerImageName
+                # Parse the docker registry url only for the custom image parameter set (otherwise it will be a breaking change for existing customers).
+                # For the container app environment, the registry url must me explicitly provided.
+                if (-not $dockerRegistryServerUrl -and -not $environmentForContainerApp)
+                {
+                    $dockerRegistryServerUrl = ParseDockerImage -DockerImageName $Image
+                }
+
                 if ($dockerRegistryServerUrl)
                 {
                     $appSettings.Add((NewAppSetting -Name 'DOCKER_REGISTRY_SERVER_URL' -Value $dockerRegistryServerUrl))
 
-                    if ($DockerRegistryCredential)
+                    if ($RegistryCredential)
                     {
-                        $appSettings.Add((NewAppSetting -Name 'DOCKER_REGISTRY_SERVER_USERNAME' -Value $DockerRegistryCredential.GetNetworkCredential().UserName))
-                        $appSettings.Add((NewAppSetting -Name 'DOCKER_REGISTRY_SERVER_PASSWORD' -Value $DockerRegistryCredential.GetNetworkCredential().Password))
+                        $appSettings.Add((NewAppSetting -Name 'DOCKER_REGISTRY_SERVER_USERNAME' -Value $RegistryCredential.GetNetworkCredential().UserName))
+                        $appSettings.Add((NewAppSetting -Name 'DOCKER_REGISTRY_SERVER_PASSWORD' -Value $RegistryCredential.GetNetworkCredential().Password))
                     }
                 }
             }
@@ -374,21 +470,63 @@ function New-AzFunctionApp {
             $functionAppDef.Kind = 'functionapp'
         }
 
+        if ($environmentForContainerApp)
+        {
+            $functionAppDef.Kind = 'functionapp,linux,container,azurecontainerapps'
+            $functionAppDef.Reserved = $null
+            $functionAppDef.HttpsOnly = $null
+            $functionAppDef.ScmSiteAlsoStopped = $null
+            $functionAppDef.HttpsOnly = $null
+
+            ValidateCpuAndMemory -ResourceCpu $ResourceCpu -ResourceMemory $ResourceMemory
+            if ($ResourceCpu -and $ResourceMemory)
+            {
+                $functionAppDef.ResourceConfigCpu = $ResourceCpu
+                $functionAppDef.ResourceConfigMemory = $ResourceMemory
+            }
+
+            if ($WorkloadProfileName)
+            {
+                $functionAppDef.WorkloadProfileName = $WorkloadProfileName
+            }
+
+            $siteConfig.netFrameworkVersion = $null
+            $siteConfig.JavaVersion = $null
+            $siteConfig.Use32BitWorkerProcess = $null
+            $siteConfig.PowerShellVersion = $null
+            $siteConfig.Http20Enabled = $null
+            $siteConfig.LocalMySqlEnabled = $null
+
+            if ($ScaleMinReplica)
+            {
+                $siteConfig.MinimumElasticInstanceCount = $ScaleMinReplica
+            }
+
+            if ($ScaleMaxReplica)
+            {
+                $siteConfig.FunctionAppScaleLimit = $ScaleMaxReplica
+            }
+            
+            $managedEnvironment = GetManagedEnvironment -Environment $Environment -ResourceGroupName $ResourceGroupName
+            $functionAppDef.Location = $managedEnvironment.Location
+            $functionAppDef.ManagedEnvironmentId = $managedEnvironment.Id
+        }
+
         # Validate storage account and get connection string
         $connectionString = GetConnectionString -StorageAccountName $StorageAccountName @params
         $appSettings.Add((NewAppSetting -Name 'AzureWebJobsStorage' -Value $connectionString))
         $appSettings.Add((NewAppSetting -Name 'AzureWebJobsDashboard' -Value $connectionString))
 
-        if (-not $functionAppIsCustomDockerImage)
+        if (-not ($functionAppIsCustomDockerImage -or $environmentForContainerApp))
         {
             $appSettings.Add((NewAppSetting -Name 'FUNCTIONS_EXTENSION_VERSION' -Value "~$FunctionsVersion"))
         }
 
-        # If plan is not consumption or elastic premium, set always on
+        # If plan is not consumption, elastic premium or a container app environment, set always on
         $planIsElasticPremium = $servicePlan.SkuTier -eq 'ElasticPremium'
-        if ((-not $consumptionPlan) -and (-not $planIsElasticPremium))
+        if ((-not $consumptionPlan) -and (-not $planIsElasticPremium) -and (-not $Environment))
         {
-            $siteCofig.AlwaysOn = $true
+            $siteConfig.AlwaysOn = $true
         }
 
         # If plan is Elastic Premium or Consumption (Windows or Linux), we need these app settings
@@ -480,8 +618,8 @@ function New-AzFunctionApp {
         }
 
         # Set app settings and site configuration
-        $siteCofig.AppSetting = $appSettings
-        $functionAppDef.Config = $siteCofig
+        $siteConfig.AppSetting = $appSettings
+        $functionAppDef.Config = $siteConfig
         $PSBoundParameters.Add("SiteEnvelope", $functionAppDef)  | Out-Null
 
         if ($PsCmdlet.ShouldProcess($Name, "Creating function app"))

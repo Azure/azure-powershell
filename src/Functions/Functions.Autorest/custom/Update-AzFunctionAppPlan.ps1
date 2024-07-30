@@ -1,5 +1,5 @@
 function Update-AzFunctionAppPlan {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Updates a function app service plan.')]
     [CmdletBinding(DefaultParameterSetName='ByName', SupportsShouldProcess=$true, ConfirmImpact='Medium')]
     param(
@@ -23,7 +23,7 @@ function Update-AzFunctionAppPlan {
         ${Name},
 
         [Parameter(ParameterSetName='ByObjectInput', Mandatory=$true, ValueFromPipeline=$true)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan]
         [ValidateNotNull()]
         ${InputObject},
 
@@ -55,7 +55,7 @@ function Update-AzFunctionAppPlan {
 
         [Parameter(HelpMessage='Resource tags.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IResourceTags]))]
         [System.Collections.Hashtable]
         [ValidateNotNull()]
         ${Tag},
@@ -117,6 +117,9 @@ function Update-AzFunctionAppPlan {
         ${ProxyUseDefaultCredentials}
     )
     process {
+
+        RegisterFunctionsTabCompleters
+
         # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets.
         foreach ($paramName in @("Sku", "MaximumWorkerCount", "MinimumWorkerCount", "Tag"))
         {
@@ -186,7 +189,7 @@ function Update-AzFunctionAppPlan {
         }
 
         $shouldUpdateFunctionAppPlan = $false;
-        $servicePlan = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AppServicePlan
+        $servicePlan = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.AppServicePlan
         
         # Plan settings
         $servicePlan.Location = $existingPlan.Location

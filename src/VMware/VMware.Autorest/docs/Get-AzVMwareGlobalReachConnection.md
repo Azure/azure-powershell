@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzVMwareGlobalReachConnection
 
 ## SYNOPSIS
-Get a global reach connection by name in a private cloud
+Get a GlobalReachConnection
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Get-AzVMwareGlobalReachConnection -Name <String> -PrivateCloudInputObject <IVMwa
 ```
 
 ## DESCRIPTION
-Get a global reach connection by name in a private cloud
+Get a GlobalReachConnection
 
 ## EXAMPLES
 
@@ -87,7 +87,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -102,7 +101,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the global reach connection in the private cloud
+Name of the global reach connection
 
 ```yaml
 Type: System.String
@@ -118,7 +117,6 @@ Accept wildcard characters: False
 
 ### -PrivateCloudInputObject
 Identity Parameter
-To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -165,6 +163,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]

@@ -4,6 +4,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSelfHelpDiscoverySoluti
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
+
   . ($loadEnvPath)
   $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzSelfHelpDiscoverySolution.Recording.json'
   $currentPath = $PSScriptRoot
@@ -14,10 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSelfHelpDiscoverySoluti
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzSelfHelpDiscoverySolution' {
+Describe 'Get-AzSelfHelpDiscoverySolution' -Tag 'LiveOnly'{
     It 'List' {
         { 
-             Get-AzSelfHelpDiscoverySolution -Scope $env.scope -Filter "ProblemClassificationId eq 'a5db90c3-f147-bce6-83b0-ab5e0aeca1f0'"
+             Get-AzSelfHelpDiscoverySolution -Filter "ProblemClassificationId eq 'a5db90c3-f147-bce6-83b0-ab5e0aeca1f0'"
              } | Should -Not -Throw
     }
 }

@@ -23,7 +23,7 @@ function Remove-AzFunctionApp {
         ${SubscriptionId},
 
         [Parameter(ParameterSetName='ByObjectInput', Mandatory=$true, ValueFromPipeline=$true)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite]
         [ValidateNotNull()]
         ${InputObject},
 
@@ -83,6 +83,9 @@ function Remove-AzFunctionApp {
         ${ProxyUseDefaultCredentials}
     )
     process {
+
+        RegisterFunctionsTabCompleters
+
         # The input object is an ISite. This needs to be transformed into a FunctionsIdentity
         if ($PsCmdlet.ParameterSetName -eq "ByObjectInput")
         {

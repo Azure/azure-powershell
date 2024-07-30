@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwareCloudLink
 
 ## SYNOPSIS
-Create a cloud link in a private cloud
+Update a CloudLink
 
 ## SYNTAX
 
@@ -32,13 +32,13 @@ Update-AzVMwareCloudLink -Name <String> -PrivateCloudInputObject <IVMwareIdentit
 ```
 
 ## DESCRIPTION
-Create a cloud link in a private cloud
+Update a CloudLink
 
 ## EXAMPLES
 
 ### Example 1: Update a cloud link in a private cloud
 ```powershell
-Update-AzVMwareCloudLink -Name azps_test_cloudlink -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -LinkedCloud "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group2/providers/Microsoft.AVS/privateClouds/azps_test_cloud2/"
+Update-AzVMwareCloudLink -Name azps_test_cloudlink -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 ```
 
 ```output
@@ -84,7 +84,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -114,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the cloud link resource
+Name of the cloud link.
 
 ```yaml
 Type: System.String
@@ -145,7 +144,6 @@ Accept wildcard characters: False
 
 ### -PrivateCloudInputObject
 Identity Parameter
-To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -160,7 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateCloudName
-The name of the private cloud.
+Name of the private cloud
 
 ```yaml
 Type: System.String
@@ -192,6 +190,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

@@ -207,17 +207,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`DIMENSION <IDimension[]>`: List of Dimensions conditions.
-  - `Name <String>`: Name of the dimension
-  - `Operator <DimensionOperator>`: Operator for dimension values
-  - `Value <String[]>`: List of dimension values
-
 ## RELATED LINKS
 
