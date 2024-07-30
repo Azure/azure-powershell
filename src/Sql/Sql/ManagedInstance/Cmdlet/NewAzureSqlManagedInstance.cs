@@ -441,7 +441,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// <summary>
         /// Specifies weather or not Managed Instance is freemium
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Preferred metadata to use for authentication of synced on-prem users. Default is AzureAD.")]
+        [Parameter(Mandatory = false,
+            HelpMessage = "Preferred metadata to use for authentication of synced on-prem users. Default is AzureAD.")]
         [ValidateSet("AzureAD", "Paired", "Windows")]
         [PSArgumentCompleter("AzureAD", "Paired", "Windows")]
         public string AuthenticationMetadata { get; set; }
