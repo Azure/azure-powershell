@@ -7,4 +7,3 @@ Invoke-AzHdInsightOnAksClusterManualRollback -ResourceGroupName $clusterResource
 ```
 
 Roll back the upgrade of a cluster
-
