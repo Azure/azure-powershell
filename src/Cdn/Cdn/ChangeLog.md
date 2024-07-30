@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Bypassed object id validation for KeyVault access policy during `Start-AzFrontDoorCdnProfilePrepareMigration`
 
 ## Version 3.2.0
 * Introduced secrets detection feature to safeguard sensitive data.

@@ -13,6 +13,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal
     {
 
+        /// <summary>Backing field for <see cref="DefinitionVersion" /> property.</summary>
+        private string _definitionVersion;
+
+        /// <summary>The version of the policy definition to use.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        public string DefinitionVersion { get => this._definitionVersion; set => this._definitionVersion = value; }
+
         /// <summary>Backing field for <see cref="Description" /> property.</summary>
         private string _description;
 
@@ -109,6 +116,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
     public partial interface IPolicyAssignmentProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IJsonSerializable
     {
+        /// <summary>The version of the policy definition to use.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The version of the policy definition to use.",
+        SerializedName = @"definitionVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        string DefinitionVersion { get; set; }
         /// <summary>This message will be part of response in case of policy violation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
         Required = false,
@@ -243,6 +261,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
     internal partial interface IPolicyAssignmentPropertiesInternal
 
     {
+        /// <summary>The version of the policy definition to use.</summary>
+        string DefinitionVersion { get; set; }
         /// <summary>This message will be part of response in case of policy violation.</summary>
         string Description { get; set; }
         /// <summary>The display name of the policy assignment.</summary>

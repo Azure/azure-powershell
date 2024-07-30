@@ -475,7 +475,7 @@ $resourceSku3 = @{sku = "Standard_D4_v3"}
 $desiredSizes = $resourceSku1,$resourceSku2,$resourceSku3
 $desiredLocations = 'japaneast','southcentralus','centralus'
 
-$response = Invoke-AzSpotPlacementRecommender -Location eastus -DesiredCount 1 -DesiredLocation $desiredLocations -DesiredSize $desiredSizes
+$response = Invoke-AzSpotPlacementScore -Location eastus -DesiredCount 1 -DesiredLocation $desiredLocations -DesiredSize $desiredSizes
 $response.PlacementScore
 .Example
 $resourceSku1 = @{sku = "Standard_D2_v3"}
@@ -484,19 +484,7 @@ $resourceSku3 = @{sku = "Standard_D4_v3"}
 $desiredSizes = $resourceSku1,$resourceSku2,$resourceSku3
 $desiredLocations = 'japaneast','southcentralus','centralus'
 
-$response = Invoke-AzSpotPlacementRecommender -Location eastus -DesiredCount 1 -DesiredLocation $desiredLocations -DesiredSize $desiredSizes -AvailabilityZone
-$response.PlacementScore
-.Example
-$resourceSku1 = @{sku = "Standard_D2_v3"}
-$resourceSku2 = @{sku = "Standard_D2_v2"}
-$resourceSku3 = @{sku = "Standard_D4_v3"}
-$desiredSizes = $resourceSku1,$resourceSku2,$resourceSku3
-$desiredLocations = 'japaneast','southcentralus','centralus'
-$desiredCount = 1
-
-$spotPlacementRecommenderInput = @{desiredLocation = $desiredLocations; desiredSize = $desiredSizes; desiredCount = $desiredCount; availabilityZone = $false}
-
-$response = Invoke-AzSpotPlacementRecommender -Location eastus -SpotPlacementRecommenderInput $spotPlacementRecommenderInput
+$response = Invoke-AzSpotPlacementScore -Location eastus -DesiredCount 1 -DesiredLocation $desiredLocations -DesiredSize $desiredSizes -AvailabilityZone
 $response.PlacementScore
 .Example
 $resourceSku1 = @{sku = "Standard_D2_v3"}
@@ -506,17 +494,27 @@ $desiredSizes = $resourceSku1,$resourceSku2,$resourceSku3
 $desiredLocations = 'japaneast','southcentralus','centralus'
 $desiredCount = 1
 
-$spotPlacementRecommenderInput = @{desiredLocation = $desiredLocations; desiredSize = $desiredSizes; desiredCount = $desiredCount; availabilityZone = $true}
+$spotPlacementScoresInput = @{desiredLocation = $desiredLocations; desiredSize = $desiredSizes; desiredCount = $desiredCount; availabilityZone = $false}
 
-$response = Invoke-AzSpotPlacementRecommender -Location eastus -SpotPlacementRecommenderInput $spotPlacementRecommenderInput
+$response = Invoke-AzSpotPlacementScore -Location eastus -SpotPlacementScoresInput $spotPlacementScoresInput
+$response.PlacementScore
+.Example
+$resourceSku1 = @{sku = "Standard_D2_v3"}
+$resourceSku2 = @{sku = "Standard_D2_v2"}
+$resourceSku3 = @{sku = "Standard_D4_v3"}
+$desiredSizes = $resourceSku1,$resourceSku2,$resourceSku3
+$desiredLocations = 'japaneast','southcentralus','centralus'
+$desiredCount = 1
+$spotPlacementScoresInput = @{desiredLocation = $desiredLocations; desiredSize = $desiredSizes; desiredCount = $desiredCount; availabilityZone = $true}
+$response = Invoke-AzSpotPlacementScore -Location eastus -SpotPlacementScoresInput $spotPlacementScoresInput
 $response.PlacementScore
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240301Preview.ISpotPlacementRecommenderInput
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresInput
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240301Preview.ISpotPlacementRecommenderResponse
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -542,17 +540,18 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
   [VMScaleSetName <String>]: The name of the VM scale set.
 
-SPOTPLACEMENTRECOMMENDERINPUT <ISpotPlacementRecommenderInput>: SpotPlacementRecommender API Input.
+SPOTPLACEMENTSCORESINPUT <ISpotPlacementScoresInput>: SpotPlacementScores API Input.
   [AvailabilityZone <Boolean?>]: Defines if the scope is zonal or regional.
   [DesiredCount <Int32?>]: Desired instance count per region/zone based on the scope.
   [DesiredLocation <String[]>]: The desired regions
   [DesiredSize <IResourceSize[]>]: The desired resource SKUs.
     [Sku <String>]: The resource's CRP virtual machine SKU size.
 .Link
-https://learn.microsoft.com/powershell/module/az.compute/invoke-azspotplacementrecommender
+https://learn.microsoft.com/powershell/module/az.compute/invoke-azspotplacementscore
 #>
-function Invoke-AzSpotPlacementRecommender {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240301Preview.ISpotPlacementRecommenderResponse])]
+function Invoke-AzSpotPlacementScore {
+[Alias('Invoke-AzSpotPlacementRecommender')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresResponse])]
 [CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Post', Mandatory)]
@@ -581,11 +580,12 @@ param(
 
     [Parameter(ParameterSetName='Post', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
+    [Alias('SpotPlacementRecommenderInput')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240301Preview.ISpotPlacementRecommenderInput]
-    # SpotPlacementRecommender API Input.
-    # To construct, see NOTES section for SPOTPLACEMENTRECOMMENDERINPUT properties and create a hash table.
-    ${SpotPlacementRecommenderInput},
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresInput]
+    # SpotPlacementScores API Input.
+    # To construct, see NOTES section for SPOTPLACEMENTSCORESINPUT properties and create a hash table.
+    ${SpotPlacementScoresInput},
 
     [Parameter(ParameterSetName='PostExpanded')]
     [Parameter(ParameterSetName='PostViaIdentityExpanded')]
@@ -613,7 +613,7 @@ param(
     [Parameter(ParameterSetName='PostViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240301Preview.IResourceSize[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.IResourceSize[]]
     # The desired resource SKUs.
     # To construct, see NOTES section for DESIREDSIZE properties and create a hash table.
     ${DesiredSize},
@@ -693,10 +693,10 @@ begin {
         }
 
         $mapping = @{
-            Post = 'Az.Compute.private\Invoke-AzSpotPlacementRecommender_Post';
-            PostExpanded = 'Az.Compute.private\Invoke-AzSpotPlacementRecommender_PostExpanded';
-            PostViaIdentity = 'Az.Compute.private\Invoke-AzSpotPlacementRecommender_PostViaIdentity';
-            PostViaIdentityExpanded = 'Az.Compute.private\Invoke-AzSpotPlacementRecommender_PostViaIdentityExpanded';
+            Post = 'Az.Compute.private\Invoke-AzSpotPlacementScore_Post';
+            PostExpanded = 'Az.Compute.private\Invoke-AzSpotPlacementScore_PostExpanded';
+            PostViaIdentity = 'Az.Compute.private\Invoke-AzSpotPlacementScore_PostViaIdentity';
+            PostViaIdentityExpanded = 'Az.Compute.private\Invoke-AzSpotPlacementScore_PostViaIdentityExpanded';
         }
         if (('Post', 'PostExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $testPlayback = $false

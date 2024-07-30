@@ -16,9 +16,9 @@ Create the agent pool in the provisioned cluster
 ```
 New-AzAksArcNodepool -ClusterName <String> -ResourceGroupName <String> -Name <String>
  [-SubscriptionId <String>] [-Count <Int32>] [-EnableAutoScaling] [-MinCount <Int32>] [-MaxCount <Int32>]
- [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] [-OSSku <String>] [-OSType <String>] [-Tag <Hashtable>]
- [-VMSize <String>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-MaxPod <Int32>] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] [-OSSku <String>] [-OSType <String>]
+ [-Tag <Hashtable>] [-VMSize <String>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -210,6 +210,21 @@ Parameter Sets: AutoScaling
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaxPod
+The maximum number of pods that can run on a node.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

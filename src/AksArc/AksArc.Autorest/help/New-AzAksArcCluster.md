@@ -14,42 +14,50 @@ Create the provisioned cluster instance
 
 ### CreateExpanded (Default)
 ```
-New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPlaneEndpointHostIP <String>
+New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPlaneIP <String>
  -CustomLocationName <String> -VnetId <String> [-MaxCount <Int32>] [-MaxPod <Int32>] [-MinCount <Int32>]
  [-SubscriptionId <String>] [-AdminGroupObjectID <String[]>]
- [-ClusterVMAccessProfileAuthorizedIprange <String>] [-ControlPlaneCount <Int32>]
- [-ControlPlaneVMSize <String>] [-EnableAutoScaling] [-EnableAzureHybridBenefit] [-KubernetesVersion <String>]
- [-LoadBalancerProfileCount <Int32>] [-Location <String>] [-NetworkProfilePodCidr <String>]
- [-NfCsiDriverEnabled] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] [-SmbCsiDriverEnabled]
- [-SshKeyValue <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-AutoScalerProfileBalanceSimilarNodeGroup <String>] [-AutoScalerProfileExpander <String>]
+ [-AutoScalerProfileMaxEmptyBulkDelete <String>] [-AutoScalerProfileMaxGracefulTerminationSec <String>]
+ [-AutoScalerProfileMaxNodeProvisionTime <String>] [-AutoScalerProfileMaxTotalUnreadyPercentage <String>]
+ [-AutoScalerProfileNewPodScaleUpDelay <String>] [-AutoScalerProfileOkTotalUnreadyCount <String>]
+ [-AutoScalerProfileScaleDownDelayAfterAdd <String>] [-AutoScalerProfileScaleDownDelayAfterDelete <String>]
+ [-AutoScalerProfileScaleDownDelayAfterFailure <String>] [-AutoScalerProfileScaleDownUnneededTime <String>]
+ [-AutoScalerProfileScaleDownUnreadyTime <String>] [-AutoScalerProfileScaleDownUtilizationThreshold <String>]
+ [-AutoScalerProfileScanInterval <String>] [-AutoScalerProfileSkipNodesWithLocalStorage <String>]
+ [-AutoScalerProfileSkipNodesWithSystemPod <String>] [-ControlPlaneCount <Int32>]
+ [-ControlPlaneVMSize <String>] [-EnableAutoScaling] [-EnableAzureHybridBenefit] [-EnableAzureRbac]
+ [-KubernetesVersion <String>] [-LoadBalancerCount <Int32>] [-Location <String>] [-NfCsiDriverEnabled]
+ [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] [-PodCidr <String>] [-SmbCsiDriverEnabled]
+ [-SshAuthIp <String>] [-SshKeyValue <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### AutoScaling
 ```
 New-AzAksArcCluster -ClusterName <String> -MaxCount <Int32> -MaxPod <Int32> -MinCount <Int32>
- -ResourceGroupName <String> -ControlPlaneEndpointHostIP <String> -CustomLocationName <String>
- -EnableAutoScaling -VnetId <String> [-SubscriptionId <String>] [-AdminGroupObjectID <String[]>]
- [-EnableAzureHybridBenefit] [-Location <String>] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>]
+ -ResourceGroupName <String> -ControlPlaneIP <String> -CustomLocationName <String> -EnableAutoScaling
+ -VnetId <String> [-SubscriptionId <String>] [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit]
+ [-EnableAzureRbac] [-Location <String>] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPlaneEndpointHostIP <String>
+New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPlaneIP <String>
  -CustomLocationName <String> -JsonFilePath <String> -VnetId <String> [-SubscriptionId <String>]
- [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit] [-Location <String>] [-NodeLabel <Hashtable>]
- [-NodeTaint <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit] [-EnableAzureRbac] [-Location <String>]
+ [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPlaneEndpointHostIP <String>
+New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPlaneIP <String>
  -CustomLocationName <String> -JsonString <String> -VnetId <String> [-SubscriptionId <String>]
- [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit] [-Location <String>] [-NodeLabel <Hashtable>]
- [-NodeTaint <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit] [-EnableAzureRbac] [-Location <String>]
+ [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -159,6 +167,279 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AutoScalerProfileBalanceSimilarNodeGroup
+Valid values are 'true' and 'false'
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileExpander
+If not specified, the default is 'random'.
+See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileMaxEmptyBulkDelete
+The default is 10.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileMaxGracefulTerminationSec
+The default is 600.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileMaxNodeProvisionTime
+The default is '15m'.
+Values must be an integer followed by an 'm'.
+No unit of time other than minutes (m) is supported.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileMaxTotalUnreadyPercentage
+The default is 45.
+The maximum is 100 and the minimum is 0.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileNewPodScaleUpDelay
+For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're a certain age.
+The default is '0s'.
+Values must be an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h' for hours, etc).
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileOkTotalUnreadyCount
+This must be an integer.
+The default is 3.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileScaleDownDelayAfterAdd
+The default is '10m'.
+Values must be an integer followed by an 'm'.
+No unit of time other than minutes (m) is supported.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileScaleDownDelayAfterDelete
+The default is the scan-interval.
+Values must be an integer followed by an 'm'.
+No unit of time other than minutes (m) is supported.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileScaleDownDelayAfterFailure
+The default is '3m'.
+Values must be an integer followed by an 'm'.
+No unit of time other than minutes (m) is supported.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileScaleDownUnneededTime
+The default is '10m'.
+Values must be an integer followed by an 'm'.
+No unit of time other than minutes (m) is supported.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileScaleDownUnreadyTime
+The default is '20m'.
+Values must be an integer followed by an 'm'.
+No unit of time other than minutes (m) is supported.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileScaleDownUtilizationThreshold
+The default is '0.5'.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileScanInterval
+The default is '10'.
+Values must be an integer number of seconds.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileSkipNodesWithLocalStorage
+The default is true.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileSkipNodesWithSystemPod
+The default is true.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The name of the Kubernetes cluster on which get is called.
 
@@ -168,21 +449,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClusterVMAccessProfileAuthorizedIprange
-IP Address or CIDR for SSH access to VMs in the provisioned cluster
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -205,7 +471,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ControlPlaneEndpointHostIP
+### -ControlPlaneIP
 IP address of the Kubernetes API server
 
 ```yaml
@@ -298,6 +564,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableAzureRbac
+Indicates whether azure rbac is enabled.
+Default value is false
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -JsonFilePath
 Path of Json file supplied to the Create operation
 
@@ -343,7 +625,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LoadBalancerProfileCount
+### -LoadBalancerCount
 Number of HA Proxy load balancer VMs.
 The default value is 0.
 
@@ -419,21 +701,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkProfilePodCidr
-A CIDR notation IP Address range from which to assign pod IPs.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NfCsiDriverEnabled
 Indicates whether to enable NFS CSI Driver.
 The default value is true.
@@ -496,6 +763,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PodCidr
+A CIDR notation IP Address range from which to assign pod IPs.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -518,6 +800,21 @@ The default value is true.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SshAuthIp
+IP Address or CIDR for SSH access to VMs in the provisioned cluster
+
+```yaml
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 

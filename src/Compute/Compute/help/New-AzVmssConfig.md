@@ -127,8 +127,7 @@ $vmssname = "vmss" + $rgname;
 $domainNameLabel = "d" + $rgname;
 $securityTypeStnd = "Standard";
 $username = <Username>;
-$password = <Password>;
-$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force;
 
 $credential = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
 
@@ -188,7 +187,7 @@ $vmssName1 = 'vmss1' + $rgname;
 $vmssName2 = 'vmss2' + $rgname;
 $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
 $adminUsername = <Username>;
-$adminPassword = <Password> | ConvertTo-SecureString -AsPlainText -Force;
+$adminPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force;
 $imgRef = New-Object -TypeName 'Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage';
 $imgRef.PublisherName = $PublisherName;
 $imgRef.Offer = $Offer;

@@ -26,6 +26,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.PropertyOrigin.Owned)]
         public string ClusterName { get => this._clusterName; set => this._clusterName = value; }
 
+        /// <summary>Backing field for <see cref="DeploymentSettingsName" /> property.</summary>
+        private string _deploymentSettingsName;
+
+        /// <summary>Name of Deployment Setting</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.PropertyOrigin.Owned)]
+        public string DeploymentSettingsName { get => this._deploymentSettingsName; set => this._deploymentSettingsName = value; }
+
+        /// <summary>Backing field for <see cref="EdgeDeviceName" /> property.</summary>
+        private string _edgeDeviceName;
+
+        /// <summary>Name of Device</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.PropertyOrigin.Owned)]
+        public string EdgeDeviceName { get => this._edgeDeviceName; set => this._edgeDeviceName = value; }
+
         /// <summary>Backing field for <see cref="ExtensionName" /> property.</summary>
         private string _extensionName;
 
@@ -47,12 +61,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
+        /// <summary>Backing field for <see cref="ResourceUri" /> property.</summary>
+        private string _resourceUri;
+
+        /// <summary>The fully qualified Azure Resource manager identifier of the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.PropertyOrigin.Owned)]
+        public string ResourceUri { get => this._resourceUri; set => this._resourceUri = value; }
+
+        /// <summary>Backing field for <see cref="SecuritySettingsName" /> property.</summary>
+        private string _securitySettingsName;
+
+        /// <summary>Name of security setting</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.PropertyOrigin.Owned)]
+        public string SecuritySettingsName { get => this._securitySettingsName; set => this._securitySettingsName = value; }
+
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>The ID of the target subscription.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
+
+        /// <summary>Backing field for <see cref="UpdateName" /> property.</summary>
+        private string _updateName;
+
+        /// <summary>The name of the Update</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.PropertyOrigin.Owned)]
+        public string UpdateName { get => this._updateName; set => this._updateName = value; }
+
+        /// <summary>Backing field for <see cref="UpdateRunName" /> property.</summary>
+        private string _updateRunName;
+
+        /// <summary>The name of the Update Run</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.PropertyOrigin.Owned)]
+        public string UpdateRunName { get => this._updateRunName; set => this._updateRunName = value; }
 
         /// <summary>Creates an new <see cref="StackHciIdentity" /> instance.</summary>
         public StackHciIdentity()
@@ -79,6 +121,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         SerializedName = @"clusterName",
         PossibleTypes = new [] { typeof(string) })]
         string ClusterName { get; set; }
+        /// <summary>Name of Deployment Setting</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of Deployment Setting",
+        SerializedName = @"deploymentSettingsName",
+        PossibleTypes = new [] { typeof(string) })]
+        string DeploymentSettingsName { get; set; }
+        /// <summary>Name of Device</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of Device",
+        SerializedName = @"edgeDeviceName",
+        PossibleTypes = new [] { typeof(string) })]
+        string EdgeDeviceName { get; set; }
         /// <summary>The name of the machine extension.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
         Required = false,
@@ -103,14 +161,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
-        /// <summary>The ID of the target subscription.</summary>
+        /// <summary>The fully qualified Azure Resource manager identifier of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The ID of the target subscription.",
+        Description = @"The fully qualified Azure Resource manager identifier of the resource.",
+        SerializedName = @"resourceUri",
+        PossibleTypes = new [] { typeof(string) })]
+        string ResourceUri { get; set; }
+        /// <summary>Name of security setting</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of security setting",
+        SerializedName = @"securitySettingsName",
+        PossibleTypes = new [] { typeof(string) })]
+        string SecuritySettingsName { get; set; }
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
+        /// <summary>The name of the Update</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the Update",
+        SerializedName = @"updateName",
+        PossibleTypes = new [] { typeof(string) })]
+        string UpdateName { get; set; }
+        /// <summary>The name of the Update Run</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the Update Run",
+        SerializedName = @"updateRunName",
+        PossibleTypes = new [] { typeof(string) })]
+        string UpdateRunName { get; set; }
 
     }
     internal partial interface IStackHciIdentityInternal
@@ -120,14 +210,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         string ArcSettingName { get; set; }
         /// <summary>The name of the cluster.</summary>
         string ClusterName { get; set; }
+        /// <summary>Name of Deployment Setting</summary>
+        string DeploymentSettingsName { get; set; }
+        /// <summary>Name of Device</summary>
+        string EdgeDeviceName { get; set; }
         /// <summary>The name of the machine extension.</summary>
         string ExtensionName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
-        /// <summary>The ID of the target subscription.</summary>
+        /// <summary>The fully qualified Azure Resource manager identifier of the resource.</summary>
+        string ResourceUri { get; set; }
+        /// <summary>Name of security setting</summary>
+        string SecuritySettingsName { get; set; }
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         string SubscriptionId { get; set; }
+        /// <summary>The name of the Update</summary>
+        string UpdateName { get; set; }
+        /// <summary>The name of the Update Run</summary>
+        string UpdateRunName { get; set; }
 
     }
 }

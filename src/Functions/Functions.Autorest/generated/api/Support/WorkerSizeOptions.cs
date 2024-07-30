@@ -20,11 +20,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.WorkerSizeOptions Large = @"Large";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.WorkerSizeOptions LargeV3 = @"LargeV3";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.WorkerSizeOptions Medium = @"Medium";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.WorkerSizeOptions MediumV3 = @"MediumV3";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.WorkerSizeOptions NestedSmall = @"NestedSmall";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.WorkerSizeOptions NestedSmallLinux = @"NestedSmallLinux";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.WorkerSizeOptions Small = @"Small";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.WorkerSizeOptions SmallV3 = @"SmallV3";
 
         /// <summary>the value for an instance of the <see cref="WorkerSizeOptions" /> Enum.</summary>
         private string _value { get; set; }

@@ -176,6 +176,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 ServicePrincipal = ResourceServicePrincipalHelper.UnwrapServicePrincipalObject(model.ServicePrincipal),
                 DatabaseFormat = model.DatabaseFormat,
                 PricingModel = model.PricingModel,
+                IsGeneralPurposeV2 = model.IsGeneralPurposeV2,
+                StorageIOps = model.StorageIOps,
                 AuthenticationMetadata = model.AuthenticationMetadata
             });
 
@@ -263,6 +265,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.LicenseType = resp.LicenseType;
             managedInstance.VCores = resp.VCores;
             managedInstance.StorageSizeInGB = resp.StorageSizeInGb;
+            managedInstance.StorageIOps = resp.StorageIOps;
             managedInstance.Collation = resp.Collation;
             managedInstance.PublicDataEndpointEnabled = resp.PublicDataEndpointEnabled;
             managedInstance.ProxyOverride = resp.ProxyOverride;
@@ -284,6 +287,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
 
             managedInstance.Sku = sku;
             managedInstance.Administrators = resp.Administrators;
+
+            managedInstance.IsGeneralPurposeV2 = resp.IsGeneralPurposeV2;
 
             if (managedInstance.Administrators != null && managedInstance.Administrators.AdministratorType == null)
             {

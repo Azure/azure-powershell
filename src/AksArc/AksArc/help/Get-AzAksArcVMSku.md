@@ -13,8 +13,8 @@ Lists the supported VM skus for the specified custom location
 ## SYNTAX
 
 ```
-Get-AzAksArcVMSku -CustomLocationResourceUri <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-AzAksArcVMSku -CustomLocationName <String> [-ResourceGroupName <String>] [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,15 +24,15 @@ Lists the supported VM skus for the specified custom location
 
 ### Example 1: Get VM SKU's
 ```powershell
-Get-AzAksArcVMSku -CustomLocationResourceUri sample-cl-id
+Get-AzAksArcVMSku -CustomLocationName sample-cl-id
 ```
 
 Lists the supported virtual machine sizes in the specified custom location.
 
 ## PARAMETERS
 
-### -CustomLocationResourceUri
-The fully qualified Azure Resource Manager identifier of the custom location resource.
+### -CustomLocationName
+The name or id of the custom location.
 
 ```yaml
 Type: System.String
@@ -73,6 +73,37 @@ Aliases: proga
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

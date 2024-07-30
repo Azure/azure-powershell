@@ -78,6 +78,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>The ID of the ExpressRoute Circuit</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The ID of the ExpressRoute Circuit")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The ID of the ExpressRoute Circuit",
+        SerializedName = @"expressRouteId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ExpressRouteId { get => _authorizationBody.ExpressRouteId ?? null; set => _authorizationBody.ExpressRouteId = value; }
+
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
@@ -479,7 +490,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
 
         private void Update_authorizationBody()
         {
-
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ExpressRouteId")))
+            {
+                this.ExpressRouteId = (string)(this.MyInvocation?.BoundParameters["ExpressRouteId"]);
+            }
         }
 
         /// <param name="sendToPipeline"></param>

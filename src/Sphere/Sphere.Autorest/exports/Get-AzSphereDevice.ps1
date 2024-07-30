@@ -22,9 +22,9 @@ Use '.unassigned' or '.default' for the device group and product names when a de
 Get a Device.
 Use '.unassigned' or '.default' for the device group and product names when a device does not belong to a device group and product.
 .Example
-Get-AzSphereDevice -CatalogName test2024 -ResourceGroupName "joyer-test" -GroupName testdevicegroup -ProductName product2024
+Get-AzSphereDevice -CatalogName test2024 -ResourceGroupName "group-test" -GroupName testdevicegroup -ProductName product2024
 .Example
-Get-AzSphereDevice -CatalogName test2024 -ResourceGroupName "joyer-test" -GroupName testdevicegroup -ProductName product2024 -Name dbb0e0cb8bd961a6129096e1e8a1375ac1fa274f030c08161b37ae3bc5a94f443bdb628cf257bc5bc810d8768c03b6f5ca301a35cd0169f56a49624255964560
+Get-AzSphereDevice -CatalogName test2024 -ResourceGroupName "group-test" -GroupName testdevicegroup -ProductName product2024 -Name device1b8bd961a6129096e1e8a1375ac1fa274f030c08161b37ae3bc5a94f443bdb628cf257bc5bc810d8768c03b6f5ca301a35cd0169f56a49624255964560
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity

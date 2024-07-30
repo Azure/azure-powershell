@@ -24,7 +24,7 @@ New-AzDataMigrationToSqlDb -ResourceGroupName <String> -SqlDbInstanceName <Strin
  [-TargetSqlConnectionAuthentication <String>] [-TargetSqlConnectionDataSource <String>]
  [-TargetSqlConnectionEncryptConnection] [-TargetSqlConnectionPassword <SecureString>]
  [-TargetSqlConnectionTrustServerCertificate] [-TargetSqlConnectionUserName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,8 +37,8 @@ If the target database have no table existing, please use [New-AzDataMigrationSq
 
 ### Example 1: Start a Database Migration from the on-premise Source Sql Server to target Sql Db
 ```powershell
-$sourcePassword = ConvertTo-SecureString "pass123" -AsPlainText -Force
-$targetPassword = ConvertTo-SecureString "pass123" -AsPlainText -Force
+$sourcePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$targetPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzDataMigrationToSqlDb -ResourceGroupName myRG -SqlDbInstanceName "mysqldb" -MigrationService  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.DataMigration/SqlMigrationServices/myDMS" -TargetSqlConnectionAuthentication "SqlAuthentication" -TargetSqlConnectionDataSource "mydb.windows.net" -TargetSqlConnectionPassword $targetPassword -TargetSqlConnectionUserName "user" -SourceSqlConnectionAuthentication "SqlAuthentication" -SourceSqlConnectionDataSource "xyz.MICROSOFT.COM" -SourceSqlConnectionUserName "user1" -SourceSqlConnectionPassword $sourcePassword -SourceDatabaseName "sourcedb" -TargetDbName "mydb1" -Scope  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.Sql/servers/mysqldb"
 ```
 
@@ -52,8 +52,8 @@ Start a Database Migration from the on-premise Source Sql Server to target Sql D
 
 ### Example 2: Start a Database Migration with some selcted tables from the on-premise Source Sql Server to target Sql Db
 ```powershell
-$sourcePassword = ConvertTo-SecureString "pass123" -AsPlainText -Force
-$targetPassword = ConvertTo-SecureString "pass123" -AsPlainText -Force
+$sourcePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$targetPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzDataMigrationToSqlDb -ResourceGroupName myRG -SqlDbInstanceName "mysqldb" -MigrationService  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.DataMigration/SqlMigrationServices/myDMS" -TargetSqlConnectionAuthentication "SqlAuthentication" -TargetSqlConnectionDataSource "mydb.windows.net" -TargetSqlConnectionPassword $targetPassword -TargetSqlConnectionUserName "user" -SourceSqlConnectionAuthentication "SqlAuthentication" -SourceSqlConnectionDataSource "xyz.MICROSOFT.COM" -SourceSqlConnectionUserName "user1" -SourceSqlConnectionPassword $sourcePassword -SourceDatabaseName "sourcedb" -TargetDbName "mydb1" -Scope  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.Sql/servers/mysqldb"  -TableList "table_1"
 ```
 
@@ -150,6 +150,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

@@ -111,6 +111,12 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+    [System.Int32]
+    # The maximum number of pods that can run on a node.
+    ${MaxPod},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolProfileNodeLabels]))]
     [System.Collections.Hashtable]
     # The node labels to be persisted across all nodes in agent pool.
@@ -223,6 +229,27 @@ process {
     $null = $PSBoundParameters.Remove("ResourceGroupName")
     $null = $PSBoundParameters.Remove("ClusterName")
     $null = $PSBoundParameters.Add("ConnectedClusterResourceUri", $Scope)
+
+    $ProvisionedClusterConfig = Get-AzAksArcCluster -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName
+
+    if ($ProvisionedClusterConfig.ProvisioningState -ne "Succeeded") {
+      throw "Provisioned Cluster is not in succeeded state."
+    }
+
+    if ($PSBoundParameters.ContainsKey('VMSize')) {
+      $VMList = Get-AzAksArcVMSku -CustomLocationName $ProvisionedClusterConfig.ExtendedLocationName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+      foreach ($sku in $VMList.Value) {
+        if ($VMSize -eq $sku.Name) {
+          $FoundSku = $true
+          continue
+        }
+      }
+
+      if (!$FoundSku) {
+        throw "VMSize is not valid."
+      } 
+    }
+
     Az.AksArc.internal\New-AzAksArcNodepool @PSBoundParameters
 }
 }

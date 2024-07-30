@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.Storage
     public static partial class SkusOperationsExtensions
     {
         /// <summary>
-        /// Lists the available SKUs supported by Microsoft.Storage for given subscription.
+        /// Lists the available SKUs supported by Microsoft.Storage for given
+        /// subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -24,7 +25,8 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Lists the available SKUs supported by Microsoft.Storage for given subscription.
+        /// Lists the available SKUs supported by Microsoft.Storage for given
+        /// subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

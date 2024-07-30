@@ -1,0 +1,407 @@
+{
+  "PolicyDefinitionWithComplexParameters+[NoContext]+make test definition with complex parameters from a file+$PUT+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters01?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters01?api-version=2023-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"Microsoft.Kubernetes.Data\",\r\n    \"displayName\": \"Kubernetes cluster containers should only use allowed images\",\r\n    \"description\": \"Cloned from built-in DP policy: febd0533-8e55-448f-b837-bd0e06f16469\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"field\": \"type\",\r\n        \"in\": [ \"Microsoft.Kubernetes/connectedClusters\", \"Microsoft.ContainerService/managedClusters\" ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters(\\u0027effect\\u0027)]\",\r\n        \"details\": {\r\n          \"warn\": \"[parameters(\\u0027warn\\u0027)]\",\r\n          \"templateInfo\": {\r\n            \"sourceType\": \"PublicURL\",\r\n            \"url\": \"https://store.policy.core.windows.net/kubernetes/container-allowed-images/v2/template.yaml\"\r\n          },\r\n          \"apiGroups\": [ \"\" ],\r\n          \"kinds\": [ \"Pod\" ],\r\n          \"excludedNamespaces\": \"[parameters(\\u0027excludedNamespaces\\u0027)]\",\r\n          \"namespaces\": \"[parameters(\\u0027namespaces\\u0027)]\",\r\n          \"labelSelector\": \"[parameters(\\u0027labelSelector\\u0027)]\",\r\n          \"values\": {\r\n            \"imageRegex\": \"[parameters(\\u0027allowedContainerImagesRegex\\u0027)]\",\r\n            \"excludedContainers\": \"[parameters(\\u0027excludedContainers\\u0027)]\"\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"metadata\": {\r\n      \"version\": \"9.2.0\",\r\n      \"category\": \"Kubernetes\"\r\n    },\r\n    \"parameters\": {\r\n      \"warn\": {\r\n        \"type\": \"Boolean\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Warn\",\r\n          \"description\": \"Whether or not to return warnings back to the user in the kubectl cli\"\r\n        },\r\n        \"allowedValues\": [ true, false ],\r\n        \"defaultValue\": false\r\n      },\r\n      \"effect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Effect\",\r\n          \"description\": \"\\u0027Audit\\u0027 allows a non-compliant resource to be created, but flags it as non-compliant. \\u0027Deny\\u0027 blocks the resource creation. \\u0027Disable\\u0027 turns off the policy.\",\r\n          \"portalReview\": true\r\n        },\r\n        \"allowedValues\": [ \"audit\", \"Audit\", \"deny\", \"Deny\", \"disabled\", \"Disabled\" ],\r\n        \"defaultValue\": \"Deny\"\r\n      },\r\n      \"excludedNamespaces\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Namespace exclusions\",\r\n          \"description\": \"List of Kubernetes namespaces to exclude from policy evaluation. System namespaces \\\"kube-system\\\", \\\"gatekeeper-system\\\" and \\\"azure-arc\\\" are always excluded by design. \\\"azure-extensions-usage-system\\\" is optional to remove.\"\r\n        },\r\n        \"defaultValue\": [ \"kube-system\", \"gatekeeper-system\", \"azure-arc\", \"azure-extensions-usage-system\" ]\r\n      },\r\n      \"namespaces\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Namespace inclusions\",\r\n          \"description\": \"List of Kubernetes namespaces to only include in policy evaluation. An empty list means the policy is applied to all resources in all namespaces.\"\r\n        },\r\n        \"defaultValue\": [ ]\r\n      },\r\n      \"labelSelector\": {\r\n        \"type\": \"Object\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Kubernetes label selector\",\r\n          \"description\": \"Label query to select Kubernetes resources for policy evaluation. An empty label selector matches all Kubernetes resources.\"\r\n        },\r\n        \"defaultValue\": {\r\n        },\r\n        \"schema\": {\r\n          \"description\": \"A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all resources.\",\r\n          \"type\": \"object\",\r\n          \"properties\": {\r\n            \"matchLabels\": {\r\n              \"description\": \"matchLabels is a map of {key,value} pairs.\",\r\n              \"type\": \"object\",\r\n              \"additionalProperties\": {\r\n                \"type\": \"string\"\r\n              },\r\n              \"minProperties\": 1\r\n            },\r\n            \"matchExpressions\": {\r\n              \"description\": \"matchExpressions is a list of values, a key, and an operator.\",\r\n              \"type\": \"array\",\r\n              \"items\": {\r\n                \"type\": \"object\",\r\n                \"properties\": {\r\n                  \"key\": {\r\n                    \"description\": \"key is the label key that the selector applies to.\",\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"operator\": {\r\n                    \"description\": \"operator represents a key\\u0027s relationship to a set of values.\",\r\n                    \"type\": \"string\",\r\n                    \"enum\": [ \"In\", \"NotIn\", \"Exists\", \"DoesNotExist\" ]\r\n                  },\r\n                  \"values\": {\r\n                    \"description\": \"values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.\",\r\n                    \"type\": \"array\",\r\n                    \"items\": {\r\n                      \"type\": \"string\"\r\n                    }\r\n                  }\r\n                },\r\n                \"required\": [ \"key\", \"operator\" ],\r\n                \"additionalProperties\": false\r\n              },\r\n              \"minItems\": 1\r\n            }\r\n          },\r\n          \"additionalProperties\": false\r\n        }\r\n      },\r\n      \"allowedContainerImagesRegex\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Allowed registry or registries regex\",\r\n          \"description\": \"The RegEx rule used to match allowed container image field in a Kubernetes cluster. For example, to allow any Azure Container Registry image by matching partial path: ^[^\\\\/]+\\\\.azurecr\\\\.io\\\\/.+$ and for multiple registries: ^([^\\\\/]+\\\\.azurecr\\\\.io|registry\\\\.io)\\\\/.+$\",\r\n          \"portalReview\": true\r\n        }\r\n      },\r\n      \"excludedContainers\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Containers exclusions\",\r\n          \"description\": \"The list of InitContainers and Containers to exclude from policy evaluation. The identify is the name of container. Use an empty list to apply this policy to all containers in all namespaces.\"\r\n        },\r\n        \"defaultValue\": [ ]\r\n      }\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "6238" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-request-id": [ "3f4b32ac-4d27-4386-9c59-8e9ef9099dc6" ],
+        "x-ms-correlation-request-id": [ "3f4b32ac-4d27-4386-9c59-8e9ef9099dc6" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240724T224544Z:3f4b32ac-4d27-4386-9c59-8e9ef9099dc6" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 188A8FAC662A46A6959F199021041299 Ref B: CO6AA3150220027 Ref C: 2024-07-24T22:45:43Z" ],
+        "Date": [ "Wed, 24 Jul 2024 22:45:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4968" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"displayName\":\"Kubernetes cluster containers should only use allowed images\",\"policyType\":\"Custom\",\"mode\":\"Microsoft.Kubernetes.Data\",\"description\":\"Cloned from built-in DP policy: febd0533-8e55-448f-b837-bd0e06f16469\",\"metadata\":{\"version\":\"9.2.0\",\"category\":\"Kubernetes\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-07-24T22:45:44.2003321Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"parameters\":{\"warn\":{\"type\":\"Boolean\",\"metadata\":{\"displayName\":\"Warn\",\"description\":\"Whether or not to return warnings back to the user in the kubectl cli\"},\"allowedValues\":[true,false],\"defaultValue\":false},\"effect\":{\"type\":\"String\",\"metadata\":{\"displayName\":\"Effect\",\"description\":\"\u0027Audit\u0027 allows a non-compliant resource to be created, but flags it as non-compliant. \u0027Deny\u0027 blocks the resource creation. \u0027Disable\u0027 turns off the policy.\",\"portalReview\":true},\"allowedValues\":[\"audit\",\"Audit\",\"deny\",\"Deny\",\"disabled\",\"Disabled\"],\"defaultValue\":\"Deny\"},\"excludedNamespaces\":{\"type\":\"Array\",\"metadata\":{\"displayName\":\"Namespace exclusions\",\"description\":\"List of Kubernetes namespaces to exclude from policy evaluation. System namespaces \\\"kube-system\\\", \\\"gatekeeper-system\\\" and \\\"azure-arc\\\" are always excluded by design. \\\"azure-extensions-usage-system\\\" is optional to remove.\"},\"defaultValue\":[\"kube-system\",\"gatekeeper-system\",\"azure-arc\",\"azure-extensions-usage-system\"]},\"namespaces\":{\"type\":\"Array\",\"metadata\":{\"displayName\":\"Namespace inclusions\",\"description\":\"List of Kubernetes namespaces to only include in policy evaluation. An empty list means the policy is applied to all resources in all namespaces.\"},\"defaultValue\":[]},\"labelSelector\":{\"type\":\"Object\",\"metadata\":{\"displayName\":\"Kubernetes label selector\",\"description\":\"Label query to select Kubernetes resources for policy evaluation. An empty label selector matches all Kubernetes resources.\"},\"defaultValue\":{},\"schema\":{\"description\":\"A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all resources.\",\"type\":\"object\",\"properties\":{\"matchLabels\":{\"description\":\"matchLabels is a map of {key,value} pairs.\",\"type\":\"object\",\"additionalProperties\":{\"type\":\"string\"},\"minProperties\":1},\"matchExpressions\":{\"description\":\"matchExpressions is a list of values, a key, and an operator.\",\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"key\":{\"description\":\"key is the label key that the selector applies to.\",\"type\":\"string\"},\"operator\":{\"description\":\"operator represents a key\u0027s relationship to a set of values.\",\"type\":\"string\",\"enum\":[\"In\",\"NotIn\",\"Exists\",\"DoesNotExist\"]},\"values\":{\"description\":\"values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.\",\"type\":\"array\",\"items\":{\"type\":\"string\"}}},\"required\":[\"key\",\"operator\"],\"additionalProperties\":false},\"minItems\":1}},\"additionalProperties\":false}},\"allowedContainerImagesRegex\":{\"type\":\"String\",\"metadata\":{\"displayName\":\"Allowed registry or registries regex\",\"description\":\"The RegEx rule used to match allowed container image field in a Kubernetes cluster. For example, to allow any Azure Container Registry image by matching partial path: ^[^\\\\/]+\\\\.azurecr\\\\.io\\\\/.+$ and for multiple registries: ^([^\\\\/]+\\\\.azurecr\\\\.io|registry\\\\.io)\\\\/.+$\",\"portalReview\":true}},\"excludedContainers\":{\"type\":\"Array\",\"metadata\":{\"displayName\":\"Containers exclusions\",\"description\":\"The list of InitContainers and Containers to exclude from policy evaluation. The identify is the name of container. Use an empty list to apply this policy to all containers in all namespaces.\"},\"defaultValue\":[]}},\"policyRule\":{\"if\":{\"field\":\"type\",\"in\":[\"Microsoft.Kubernetes/connectedClusters\",\"Microsoft.ContainerService/managedClusters\"]},\"then\":{\"effect\":\"[parameters(\u0027effect\u0027)]\",\"details\":{\"warn\":\"[parameters(\u0027warn\u0027)]\",\"templateInfo\":{\"sourceType\":\"PublicURL\",\"url\":\"https://store.policy.core.windows.net/kubernetes/container-allowed-images/v2/template.yaml\"},\"apiGroups\":[\"\"],\"kinds\":[\"Pod\"],\"excludedNamespaces\":\"[parameters(\u0027excludedNamespaces\u0027)]\",\"namespaces\":\"[parameters(\u0027namespaces\u0027)]\",\"labelSelector\":\"[parameters(\u0027labelSelector\u0027)]\",\"values\":{\"imageRegex\":\"[parameters(\u0027allowedContainerImagesRegex\u0027)]\",\"excludedContainers\":\"[parameters(\u0027excludedContainers\u0027)]\"}}}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters01\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psPolicyDefinitionWithComplexParameters01\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-07-24T22:45:43.8461044Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-07-24T22:45:43.8461044Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyDefinitionWithComplexParameters+[NoContext]+make test definition with complex parameters from a file+$GET+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters01?api-version=2023-04-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters01?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "685" ],
+        "x-ms-client-request-id": [ "66caaeee-ffbd-4208-98d8-98030062ad9a" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Get-AzPolicyDefinition_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.1.0", "PSVersion/v7.4.3", "Az.Policy/0.1.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-request-id": [ "feb65921-19b0-467b-a93a-a9f14d4c800a" ],
+        "x-ms-correlation-request-id": [ "feb65921-19b0-467b-a93a-a9f14d4c800a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240724T224544Z:feb65921-19b0-467b-a93a-a9f14d4c800a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7B6C412359E44CFAA12B7ED8786A863F Ref B: CO6AA3150220027 Ref C: 2024-07-24T22:45:44Z" ],
+        "Date": [ "Wed, 24 Jul 2024 22:45:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4968" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"displayName\":\"Kubernetes cluster containers should only use allowed images\",\"policyType\":\"Custom\",\"mode\":\"Microsoft.Kubernetes.Data\",\"description\":\"Cloned from built-in DP policy: febd0533-8e55-448f-b837-bd0e06f16469\",\"metadata\":{\"version\":\"9.2.0\",\"category\":\"Kubernetes\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-07-24T22:45:44.2003321Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"parameters\":{\"warn\":{\"type\":\"Boolean\",\"metadata\":{\"displayName\":\"Warn\",\"description\":\"Whether or not to return warnings back to the user in the kubectl cli\"},\"allowedValues\":[true,false],\"defaultValue\":false},\"effect\":{\"type\":\"String\",\"metadata\":{\"displayName\":\"Effect\",\"description\":\"\u0027Audit\u0027 allows a non-compliant resource to be created, but flags it as non-compliant. \u0027Deny\u0027 blocks the resource creation. \u0027Disable\u0027 turns off the policy.\",\"portalReview\":true},\"allowedValues\":[\"audit\",\"Audit\",\"deny\",\"Deny\",\"disabled\",\"Disabled\"],\"defaultValue\":\"Deny\"},\"excludedNamespaces\":{\"type\":\"Array\",\"metadata\":{\"displayName\":\"Namespace exclusions\",\"description\":\"List of Kubernetes namespaces to exclude from policy evaluation. System namespaces \\\"kube-system\\\", \\\"gatekeeper-system\\\" and \\\"azure-arc\\\" are always excluded by design. \\\"azure-extensions-usage-system\\\" is optional to remove.\"},\"defaultValue\":[\"kube-system\",\"gatekeeper-system\",\"azure-arc\",\"azure-extensions-usage-system\"]},\"namespaces\":{\"type\":\"Array\",\"metadata\":{\"displayName\":\"Namespace inclusions\",\"description\":\"List of Kubernetes namespaces to only include in policy evaluation. An empty list means the policy is applied to all resources in all namespaces.\"},\"defaultValue\":[]},\"labelSelector\":{\"type\":\"Object\",\"metadata\":{\"displayName\":\"Kubernetes label selector\",\"description\":\"Label query to select Kubernetes resources for policy evaluation. An empty label selector matches all Kubernetes resources.\"},\"defaultValue\":{},\"schema\":{\"description\":\"A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all resources.\",\"type\":\"object\",\"properties\":{\"matchLabels\":{\"description\":\"matchLabels is a map of {key,value} pairs.\",\"type\":\"object\",\"additionalProperties\":{\"type\":\"string\"},\"minProperties\":1},\"matchExpressions\":{\"description\":\"matchExpressions is a list of values, a key, and an operator.\",\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"key\":{\"description\":\"key is the label key that the selector applies to.\",\"type\":\"string\"},\"operator\":{\"description\":\"operator represents a key\u0027s relationship to a set of values.\",\"type\":\"string\",\"enum\":[\"In\",\"NotIn\",\"Exists\",\"DoesNotExist\"]},\"values\":{\"description\":\"values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.\",\"type\":\"array\",\"items\":{\"type\":\"string\"}}},\"required\":[\"key\",\"operator\"],\"additionalProperties\":false},\"minItems\":1}},\"additionalProperties\":false}},\"allowedContainerImagesRegex\":{\"type\":\"String\",\"metadata\":{\"displayName\":\"Allowed registry or registries regex\",\"description\":\"The RegEx rule used to match allowed container image field in a Kubernetes cluster. For example, to allow any Azure Container Registry image by matching partial path: ^[^\\\\/]+\\\\.azurecr\\\\.io\\\\/.+$ and for multiple registries: ^([^\\\\/]+\\\\.azurecr\\\\.io|registry\\\\.io)\\\\/.+$\",\"portalReview\":true}},\"excludedContainers\":{\"type\":\"Array\",\"metadata\":{\"displayName\":\"Containers exclusions\",\"description\":\"The list of InitContainers and Containers to exclude from policy evaluation. The identify is the name of container. Use an empty list to apply this policy to all containers in all namespaces.\"},\"defaultValue\":[]}},\"policyRule\":{\"if\":{\"field\":\"type\",\"in\":[\"Microsoft.Kubernetes/connectedClusters\",\"Microsoft.ContainerService/managedClusters\"]},\"then\":{\"effect\":\"[parameters(\u0027effect\u0027)]\",\"details\":{\"warn\":\"[parameters(\u0027warn\u0027)]\",\"templateInfo\":{\"sourceType\":\"PublicURL\",\"url\":\"https://store.policy.core.windows.net/kubernetes/container-allowed-images/v2/template.yaml\"},\"apiGroups\":[\"\"],\"kinds\":[\"Pod\"],\"excludedNamespaces\":\"[parameters(\u0027excludedNamespaces\u0027)]\",\"namespaces\":\"[parameters(\u0027namespaces\u0027)]\",\"labelSelector\":\"[parameters(\u0027labelSelector\u0027)]\",\"values\":{\"imageRegex\":\"[parameters(\u0027allowedContainerImagesRegex\u0027)]\",\"excludedContainers\":\"[parameters(\u0027excludedContainers\u0027)]\"}}}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters01\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psPolicyDefinitionWithComplexParameters01\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-07-24T22:45:43.8461044Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-07-24T22:45:43.8461044Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyDefinitionWithComplexParameters+[NoContext]+make a policy assignment with complex parameters on the command line+$GET+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters01?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters01?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "686" ],
+        "x-ms-client-request-id": [ "6faa9fd1-5af9-41f1-9989-bf5cc953c5f1" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Get-AzPolicyDefinition_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.1.0", "PSVersion/v7.4.3", "Az.Policy/0.1.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-request-id": [ "aad42687-66b5-4c90-80a6-4839b502cce4" ],
+        "x-ms-correlation-request-id": [ "aad42687-66b5-4c90-80a6-4839b502cce4" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240724T224544Z:aad42687-66b5-4c90-80a6-4839b502cce4" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DBB97465E76042B5A88C0C2F9E1DFFC2 Ref B: CO6AA3150220027 Ref C: 2024-07-24T22:45:44Z" ],
+        "Date": [ "Wed, 24 Jul 2024 22:45:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4968" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"displayName\":\"Kubernetes cluster containers should only use allowed images\",\"policyType\":\"Custom\",\"mode\":\"Microsoft.Kubernetes.Data\",\"description\":\"Cloned from built-in DP policy: febd0533-8e55-448f-b837-bd0e06f16469\",\"metadata\":{\"version\":\"9.2.0\",\"category\":\"Kubernetes\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-07-24T22:45:44.2003321Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"parameters\":{\"warn\":{\"type\":\"Boolean\",\"metadata\":{\"displayName\":\"Warn\",\"description\":\"Whether or not to return warnings back to the user in the kubectl cli\"},\"allowedValues\":[true,false],\"defaultValue\":false},\"effect\":{\"type\":\"String\",\"metadata\":{\"displayName\":\"Effect\",\"description\":\"\u0027Audit\u0027 allows a non-compliant resource to be created, but flags it as non-compliant. \u0027Deny\u0027 blocks the resource creation. \u0027Disable\u0027 turns off the policy.\",\"portalReview\":true},\"allowedValues\":[\"audit\",\"Audit\",\"deny\",\"Deny\",\"disabled\",\"Disabled\"],\"defaultValue\":\"Deny\"},\"excludedNamespaces\":{\"type\":\"Array\",\"metadata\":{\"displayName\":\"Namespace exclusions\",\"description\":\"List of Kubernetes namespaces to exclude from policy evaluation. System namespaces \\\"kube-system\\\", \\\"gatekeeper-system\\\" and \\\"azure-arc\\\" are always excluded by design. \\\"azure-extensions-usage-system\\\" is optional to remove.\"},\"defaultValue\":[\"kube-system\",\"gatekeeper-system\",\"azure-arc\",\"azure-extensions-usage-system\"]},\"namespaces\":{\"type\":\"Array\",\"metadata\":{\"displayName\":\"Namespace inclusions\",\"description\":\"List of Kubernetes namespaces to only include in policy evaluation. An empty list means the policy is applied to all resources in all namespaces.\"},\"defaultValue\":[]},\"labelSelector\":{\"type\":\"Object\",\"metadata\":{\"displayName\":\"Kubernetes label selector\",\"description\":\"Label query to select Kubernetes resources for policy evaluation. An empty label selector matches all Kubernetes resources.\"},\"defaultValue\":{},\"schema\":{\"description\":\"A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all resources.\",\"type\":\"object\",\"properties\":{\"matchLabels\":{\"description\":\"matchLabels is a map of {key,value} pairs.\",\"type\":\"object\",\"additionalProperties\":{\"type\":\"string\"},\"minProperties\":1},\"matchExpressions\":{\"description\":\"matchExpressions is a list of values, a key, and an operator.\",\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"key\":{\"description\":\"key is the label key that the selector applies to.\",\"type\":\"string\"},\"operator\":{\"description\":\"operator represents a key\u0027s relationship to a set of values.\",\"type\":\"string\",\"enum\":[\"In\",\"NotIn\",\"Exists\",\"DoesNotExist\"]},\"values\":{\"description\":\"values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.\",\"type\":\"array\",\"items\":{\"type\":\"string\"}}},\"required\":[\"key\",\"operator\"],\"additionalProperties\":false},\"minItems\":1}},\"additionalProperties\":false}},\"allowedContainerImagesRegex\":{\"type\":\"String\",\"metadata\":{\"displayName\":\"Allowed registry or registries regex\",\"description\":\"The RegEx rule used to match allowed container image field in a Kubernetes cluster. For example, to allow any Azure Container Registry image by matching partial path: ^[^\\\\/]+\\\\.azurecr\\\\.io\\\\/.+$ and for multiple registries: ^([^\\\\/]+\\\\.azurecr\\\\.io|registry\\\\.io)\\\\/.+$\",\"portalReview\":true}},\"excludedContainers\":{\"type\":\"Array\",\"metadata\":{\"displayName\":\"Containers exclusions\",\"description\":\"The list of InitContainers and Containers to exclude from policy evaluation. The identify is the name of container. Use an empty list to apply this policy to all containers in all namespaces.\"},\"defaultValue\":[]}},\"policyRule\":{\"if\":{\"field\":\"type\",\"in\":[\"Microsoft.Kubernetes/connectedClusters\",\"Microsoft.ContainerService/managedClusters\"]},\"then\":{\"effect\":\"[parameters(\u0027effect\u0027)]\",\"details\":{\"warn\":\"[parameters(\u0027warn\u0027)]\",\"templateInfo\":{\"sourceType\":\"PublicURL\",\"url\":\"https://store.policy.core.windows.net/kubernetes/container-allowed-images/v2/template.yaml\"},\"apiGroups\":[\"\"],\"kinds\":[\"Pod\"],\"excludedNamespaces\":\"[parameters(\u0027excludedNamespaces\u0027)]\",\"namespaces\":\"[parameters(\u0027namespaces\u0027)]\",\"labelSelector\":\"[parameters(\u0027labelSelector\u0027)]\",\"values\":{\"imageRegex\":\"[parameters(\u0027allowedContainerImagesRegex\u0027)]\",\"excludedContainers\":\"[parameters(\u0027excludedContainers\u0027)]\"}}}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters01\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psPolicyDefinitionWithComplexParameters01\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-07-24T22:45:43.8461044Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-07-24T22:45:43.8461044Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyDefinitionWithComplexParameters+[NoContext]+make a policy assignment with complex parameters on the command line+$PUT+https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyAssignments/psPolicyDefinitionWithComplexParameters03?api-version=2023-04-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyAssignments/psPolicyDefinitionWithComplexParameters03?api-version=2023-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Kubernetes cluster containers should only use allowed images\",\r\n    \"policyDefinitionId\": \"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters01\",\r\n    \"parameters\": {\r\n      \"warn\": {\r\n        \"value\": true\r\n      },\r\n      \"excludedContainers\": {\r\n        \"value\": [ ]\r\n      },\r\n      \"labelSelector\": {\r\n        \"value\": {\r\n          \"matchLabels\": {\r\n            \"label1\": \"don\\u0027t label me\",\r\n            \"label2\": \"another label\"\r\n          },\r\n          \"matchExpressions\": [\r\n            {\r\n              \"key\": \"thing1\",\r\n              \"operator\": \"NotIn\",\r\n              \"values\": [ \"thing2\", \"thing3\", \"thing4\" ]\r\n            },\r\n            {\r\n              \"key\": \"thing2\",\r\n              \"operator\": \"In\",\r\n              \"values\": [ \"thing2\" ]\r\n            }\r\n          ]\r\n        }\r\n      },\r\n      \"effect\": {\r\n        \"value\": \"Audit\"\r\n      },\r\n      \"allowedContainerImagesRegex\": {\r\n        \"value\": \"regex1\"\r\n      },\r\n      \"namespaces\": {\r\n        \"value\": [ \"namespace1\", \"namespace2\" ]\r\n      },\r\n      \"excludedNamespaces\": {\r\n        \"value\": [ \"uh-oh\", \"no-way\" ]\r\n      }\r\n    },\r\n    \"description\": \"Cloned from built-in DP policy: febd0533-8e55-448f-b837-bd0e06f16469\",\r\n    \"metadata\": {\r\n      \"category\": \"Kubernetes\",\r\n      \"createdOn\": \"07/24/2024 22:45:44\",\r\n      \"createdBy\": \"3d826307-2481-45a0-a271-bcf9333f914a\",\r\n      \"version\": \"9.2.0\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1534" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "510754f2-2717-4f6b-9ca4-67d06b41cf0d" ],
+        "x-ms-correlation-request-id": [ "510754f2-2717-4f6b-9ca4-67d06b41cf0d" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240724T224545Z:510754f2-2717-4f6b-9ca4-67d06b41cf0d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1B1F5E4BEA7F422F89BC8BEBAF13AF4E Ref B: CO6AA3150220027 Ref C: 2024-07-24T22:45:45Z" ],
+        "Date": [ "Wed, 24 Jul 2024 22:45:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1638" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"displayName\":\"Kubernetes cluster containers should only use allowed images\",\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad\",\"parameters\":{\"warn\":{\"value\":true},\"excludedContainers\":{\"value\":[]},\"labelSelector\":{\"value\":{\"matchLabels\":{\"label1\":\"don\u0027t label me\",\"label2\":\"another label\"},\"matchExpressions\":[{\"key\":\"thing1\",\"operator\":\"NotIn\",\"values\":[\"thing2\",\"thing3\",\"thing4\"]},{\"key\":\"thing2\",\"operator\":\"In\",\"values\":[\"thing2\"]}]}},\"effect\":{\"value\":\"Audit\"},\"allowedContainerImagesRegex\":{\"value\":\"regex1\"},\"namespaces\":{\"value\":[\"namespace1\",\"namespace2\"]},\"excludedNamespaces\":{\"value\":[\"uh-oh\",\"no-way\"]}},\"description\":\"Cloned from built-in DP policy: febd0533-8e55-448f-b837-bd0e06f16469\",\"metadata\":{\"category\":\"Kubernetes\",\"createdOn\":\"2024-07-24T22:45:45.0885464Z\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"version\":\"9.2.0\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyAssignments/psPolicyDefinitionWithComplexParameters03\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyDefinitionWithComplexParameters03\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-07-24T22:45:45.0623602Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-07-24T22:45:45.0623602Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyDefinitionWithComplexParameters+[NoContext]+make a policy assignment with complex parameters on the command line+$GET+https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyAssignments/psPolicyDefinitionWithComplexParameters03?api-version=2023-04-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyAssignments/psPolicyDefinitionWithComplexParameters03?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "688" ],
+        "x-ms-client-request-id": [ "f4b30059-4508-4680-9347-793a494606ee" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Get-AzPolicyAssignment_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.1.0", "PSVersion/v7.4.3", "Az.Policy/0.1.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-request-id": [ "af9faf56-6660-4525-a8a4-6bbb6f5a333f" ],
+        "x-ms-correlation-request-id": [ "af9faf56-6660-4525-a8a4-6bbb6f5a333f" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240724T224545Z:af9faf56-6660-4525-a8a4-6bbb6f5a333f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E5ABB38B949E4609AC242F69336DE447 Ref B: CO6AA3150220027 Ref C: 2024-07-24T22:45:45Z" ],
+        "Date": [ "Wed, 24 Jul 2024 22:45:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1638" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"displayName\":\"Kubernetes cluster containers should only use allowed images\",\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad\",\"parameters\":{\"warn\":{\"value\":true},\"excludedContainers\":{\"value\":[]},\"labelSelector\":{\"value\":{\"matchLabels\":{\"label1\":\"don\u0027t label me\",\"label2\":\"another label\"},\"matchExpressions\":[{\"key\":\"thing1\",\"operator\":\"NotIn\",\"values\":[\"thing2\",\"thing3\",\"thing4\"]},{\"key\":\"thing2\",\"operator\":\"In\",\"values\":[\"thing2\"]}]}},\"effect\":{\"value\":\"Audit\"},\"allowedContainerImagesRegex\":{\"value\":\"regex1\"},\"namespaces\":{\"value\":[\"namespace1\",\"namespace2\"]},\"excludedNamespaces\":{\"value\":[\"uh-oh\",\"no-way\"]}},\"description\":\"Cloned from built-in DP policy: febd0533-8e55-448f-b837-bd0e06f16469\",\"metadata\":{\"category\":\"Kubernetes\",\"createdOn\":\"2024-07-24T22:45:45.0885464Z\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"version\":\"9.2.0\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyAssignments/psPolicyDefinitionWithComplexParameters03\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyDefinitionWithComplexParameters03\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-07-24T22:45:45.0623602Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-07-24T22:45:45.0623602Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyDefinitionWithComplexParameters+[NoContext]+make test definition with complex parameters including null value from a file+$PUT+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters02?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters02?api-version=2023-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"mode\": \"All\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.Compute/virtualMachines\"\r\n          },\r\n          {\r\n            \"anyof\": [\r\n              {\r\n                \"field\": \"Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.storageUri\",\r\n                \"exists\": true\r\n              },\r\n              {\r\n                \"field\": \"Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.enabled\",\r\n                \"notEquals\": true\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"[parameters(\\u0027effect\\u0027)]\",\r\n        \"details\": {\r\n          \"conflictEffect\": \"audit\",\r\n          \"roleDefinitionIds\": [ \"/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c\" ],\r\n          \"operations\": [\r\n            {\r\n              \"operation\": \"addOrReplace\",\r\n              \"field\": \"Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.storageUri\",\r\n              \"value\": null\r\n            },\r\n            {\r\n              \"operation\": \"addOrReplace\",\r\n              \"field\": \"Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.enabled\",\r\n              \"value\": true\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    },\r\n    \"parameters\": {\r\n      \"effect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Effect\",\r\n          \"description\": \"\\u0027Audit\\u0027 allows a non-compliant resource to be created, but flags it as non-compliant. \\u0027Deny\\u0027 blocks the resource creation. \\u0027Disable\\u0027 turns off the policy.\",\r\n          \"portalReview\": true\r\n        },\r\n        \"allowedValues\": [ \"audit\", \"Audit\", \"deny\", \"Deny\", \"disabled\", \"Disabled\" ],\r\n        \"defaultValue\": \"Deny\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1922" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "3c529273-dad7-4343-936f-57b762d34db6" ],
+        "x-ms-correlation-request-id": [ "3c529273-dad7-4343-936f-57b762d34db6" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240724T224546Z:3c529273-dad7-4343-936f-57b762d34db6" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D32110461682478A84C4F7FAAC9F256F Ref B: CO6AA3150220027 Ref C: 2024-07-24T22:45:45Z" ],
+        "Date": [ "Wed, 24 Jul 2024 22:45:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1877" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"policyType\":\"Custom\",\"mode\":\"All\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-07-24T22:45:45.8132528Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"parameters\":{\"effect\":{\"type\":\"String\",\"metadata\":{\"displayName\":\"Effect\",\"description\":\"\u0027Audit\u0027 allows a non-compliant resource to be created, but flags it as non-compliant. \u0027Deny\u0027 blocks the resource creation. \u0027Disable\u0027 turns off the policy.\",\"portalReview\":true},\"allowedValues\":[\"audit\",\"Audit\",\"deny\",\"Deny\",\"disabled\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"allOf\":[{\"field\":\"type\",\"equals\":\"Microsoft.Compute/virtualMachines\"},{\"anyof\":[{\"field\":\"Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.storageUri\",\"exists\":true},{\"field\":\"Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.enabled\",\"notEquals\":true}]}]},\"then\":{\"effect\":\"[parameters(\u0027effect\u0027)]\",\"details\":{\"conflictEffect\":\"audit\",\"roleDefinitionIds\":[\"/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c\"],\"operations\":[{\"operation\":\"addOrReplace\",\"field\":\"Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.storageUri\",\"value\":null},{\"operation\":\"addOrReplace\",\"field\":\"Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.enabled\",\"value\":true}]}}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters02\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psPolicyDefinitionWithComplexParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-07-24T22:45:45.8002401Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-07-24T22:45:45.8002401Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyDefinitionWithComplexParameters+[NoContext]+make test definition with complex parameters including null value from a file+$GET+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters02?api-version=2023-04-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters02?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "690" ],
+        "x-ms-client-request-id": [ "bbaddee1-52c5-4af3-b4f4-b6c683900b53" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Get-AzPolicyDefinition_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.1.0", "PSVersion/v7.4.3", "Az.Policy/0.1.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-request-id": [ "3a3e9cd9-531f-4486-a1d8-5ca68e383979" ],
+        "x-ms-correlation-request-id": [ "3a3e9cd9-531f-4486-a1d8-5ca68e383979" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240724T224546Z:3a3e9cd9-531f-4486-a1d8-5ca68e383979" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 642229B589F7453699A0511A6D476B28 Ref B: CO6AA3150220027 Ref C: 2024-07-24T22:45:46Z" ],
+        "Date": [ "Wed, 24 Jul 2024 22:45:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1877" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"policyType\":\"Custom\",\"mode\":\"All\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-07-24T22:45:45.8132528Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"parameters\":{\"effect\":{\"type\":\"String\",\"metadata\":{\"displayName\":\"Effect\",\"description\":\"\u0027Audit\u0027 allows a non-compliant resource to be created, but flags it as non-compliant. \u0027Deny\u0027 blocks the resource creation. \u0027Disable\u0027 turns off the policy.\",\"portalReview\":true},\"allowedValues\":[\"audit\",\"Audit\",\"deny\",\"Deny\",\"disabled\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"allOf\":[{\"field\":\"type\",\"equals\":\"Microsoft.Compute/virtualMachines\"},{\"anyof\":[{\"field\":\"Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.storageUri\",\"exists\":true},{\"field\":\"Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.enabled\",\"notEquals\":true}]}]},\"then\":{\"effect\":\"[parameters(\u0027effect\u0027)]\",\"details\":{\"conflictEffect\":\"audit\",\"roleDefinitionIds\":[\"/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c\"],\"operations\":[{\"operation\":\"addOrReplace\",\"field\":\"Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.storageUri\",\"value\":null},{\"operation\":\"addOrReplace\",\"field\":\"Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.enabled\",\"value\":true}]}}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters02\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psPolicyDefinitionWithComplexParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-07-24T22:45:45.8002401Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-07-24T22:45:45.8002401Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyDefinitionWithComplexParameters+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyAssignments/psPolicyDefinitionWithComplexParameters03?api-version=2023-04-01+3": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyAssignments/psPolicyDefinitionWithComplexParameters03?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "691" ],
+        "x-ms-client-request-id": [ "d3a5a34c-cba4-439f-b90c-e01cb2c57e65" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Remove-AzPolicyAssignment_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.1.0", "PSVersion/v7.4.3", "Az.Policy/0.1.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-request-id": [ "6e1b1bf2-a861-41d2-b3b8-f538cb87c764" ],
+        "x-ms-correlation-request-id": [ "6e1b1bf2-a861-41d2-b3b8-f538cb87c764" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240724T224546Z:6e1b1bf2-a861-41d2-b3b8-f538cb87c764" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FF97B06A90D345EFAF3503A90624D8A9 Ref B: CO6AA3150220027 Ref C: 2024-07-24T22:45:46Z" ],
+        "Date": [ "Wed, 24 Jul 2024 22:45:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1638" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"displayName\":\"Kubernetes cluster containers should only use allowed images\",\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad\",\"parameters\":{\"warn\":{\"value\":true},\"excludedContainers\":{\"value\":[]},\"labelSelector\":{\"value\":{\"matchLabels\":{\"label1\":\"don\u0027t label me\",\"label2\":\"another label\"},\"matchExpressions\":[{\"key\":\"thing1\",\"operator\":\"NotIn\",\"values\":[\"thing2\",\"thing3\",\"thing4\"]},{\"key\":\"thing2\",\"operator\":\"In\",\"values\":[\"thing2\"]}]}},\"effect\":{\"value\":\"Audit\"},\"allowedContainerImagesRegex\":{\"value\":\"regex1\"},\"namespaces\":{\"value\":[\"namespace1\",\"namespace2\"]},\"excludedNamespaces\":{\"value\":[\"uh-oh\",\"no-way\"]}},\"description\":\"Cloned from built-in DP policy: febd0533-8e55-448f-b837-bd0e06f16469\",\"metadata\":{\"category\":\"Kubernetes\",\"createdOn\":\"2024-07-24T22:45:45.0885464Z\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"version\":\"9.2.0\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyAssignments/psPolicyDefinitionWithComplexParameters03\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyDefinitionWithComplexParameters03\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-07-24T22:45:45.0623602Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-07-24T22:45:45.0623602Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyDefinitionWithComplexParameters+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters01?api-version=2023-04-01+4": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters01?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "692" ],
+        "x-ms-client-request-id": [ "a4dd58f9-b5ed-4d52-8457-56e3dcb30184" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Remove-AzPolicyDefinition_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.1.0", "PSVersion/v7.4.3", "Az.Policy/0.1.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-request-id": [ "bd67a03f-4086-409b-abec-ce4d063e7fa7" ],
+        "x-ms-correlation-request-id": [ "bd67a03f-4086-409b-abec-ce4d063e7fa7" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240724T224547Z:bd67a03f-4086-409b-abec-ce4d063e7fa7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: BFB10023A1814815A3546C2B611E4A47 Ref B: CO6AA3150220027 Ref C: 2024-07-24T22:45:46Z" ],
+        "Date": [ "Wed, 24 Jul 2024 22:45:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4968" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"displayName\":\"Kubernetes cluster containers should only use allowed images\",\"policyType\":\"Custom\",\"mode\":\"Microsoft.Kubernetes.Data\",\"description\":\"Cloned from built-in DP policy: febd0533-8e55-448f-b837-bd0e06f16469\",\"metadata\":{\"version\":\"9.2.0\",\"category\":\"Kubernetes\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-07-24T22:45:44.2003321Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"parameters\":{\"warn\":{\"type\":\"Boolean\",\"metadata\":{\"displayName\":\"Warn\",\"description\":\"Whether or not to return warnings back to the user in the kubectl cli\"},\"allowedValues\":[true,false],\"defaultValue\":false},\"effect\":{\"type\":\"String\",\"metadata\":{\"displayName\":\"Effect\",\"description\":\"\u0027Audit\u0027 allows a non-compliant resource to be created, but flags it as non-compliant. \u0027Deny\u0027 blocks the resource creation. \u0027Disable\u0027 turns off the policy.\",\"portalReview\":true},\"allowedValues\":[\"audit\",\"Audit\",\"deny\",\"Deny\",\"disabled\",\"Disabled\"],\"defaultValue\":\"Deny\"},\"excludedNamespaces\":{\"type\":\"Array\",\"metadata\":{\"displayName\":\"Namespace exclusions\",\"description\":\"List of Kubernetes namespaces to exclude from policy evaluation. System namespaces \\\"kube-system\\\", \\\"gatekeeper-system\\\" and \\\"azure-arc\\\" are always excluded by design. \\\"azure-extensions-usage-system\\\" is optional to remove.\"},\"defaultValue\":[\"kube-system\",\"gatekeeper-system\",\"azure-arc\",\"azure-extensions-usage-system\"]},\"namespaces\":{\"type\":\"Array\",\"metadata\":{\"displayName\":\"Namespace inclusions\",\"description\":\"List of Kubernetes namespaces to only include in policy evaluation. An empty list means the policy is applied to all resources in all namespaces.\"},\"defaultValue\":[]},\"labelSelector\":{\"type\":\"Object\",\"metadata\":{\"displayName\":\"Kubernetes label selector\",\"description\":\"Label query to select Kubernetes resources for policy evaluation. An empty label selector matches all Kubernetes resources.\"},\"defaultValue\":{},\"schema\":{\"description\":\"A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all resources.\",\"type\":\"object\",\"properties\":{\"matchLabels\":{\"description\":\"matchLabels is a map of {key,value} pairs.\",\"type\":\"object\",\"additionalProperties\":{\"type\":\"string\"},\"minProperties\":1},\"matchExpressions\":{\"description\":\"matchExpressions is a list of values, a key, and an operator.\",\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"key\":{\"description\":\"key is the label key that the selector applies to.\",\"type\":\"string\"},\"operator\":{\"description\":\"operator represents a key\u0027s relationship to a set of values.\",\"type\":\"string\",\"enum\":[\"In\",\"NotIn\",\"Exists\",\"DoesNotExist\"]},\"values\":{\"description\":\"values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.\",\"type\":\"array\",\"items\":{\"type\":\"string\"}}},\"required\":[\"key\",\"operator\"],\"additionalProperties\":false},\"minItems\":1}},\"additionalProperties\":false}},\"allowedContainerImagesRegex\":{\"type\":\"String\",\"metadata\":{\"displayName\":\"Allowed registry or registries regex\",\"description\":\"The RegEx rule used to match allowed container image field in a Kubernetes cluster. For example, to allow any Azure Container Registry image by matching partial path: ^[^\\\\/]+\\\\.azurecr\\\\.io\\\\/.+$ and for multiple registries: ^([^\\\\/]+\\\\.azurecr\\\\.io|registry\\\\.io)\\\\/.+$\",\"portalReview\":true}},\"excludedContainers\":{\"type\":\"Array\",\"metadata\":{\"displayName\":\"Containers exclusions\",\"description\":\"The list of InitContainers and Containers to exclude from policy evaluation. The identify is the name of container. Use an empty list to apply this policy to all containers in all namespaces.\"},\"defaultValue\":[]}},\"policyRule\":{\"if\":{\"field\":\"type\",\"in\":[\"Microsoft.Kubernetes/connectedClusters\",\"Microsoft.ContainerService/managedClusters\"]},\"then\":{\"effect\":\"[parameters(\u0027effect\u0027)]\",\"details\":{\"warn\":\"[parameters(\u0027warn\u0027)]\",\"templateInfo\":{\"sourceType\":\"PublicURL\",\"url\":\"https://store.policy.core.windows.net/kubernetes/container-allowed-images/v2/template.yaml\"},\"apiGroups\":[\"\"],\"kinds\":[\"Pod\"],\"excludedNamespaces\":\"[parameters(\u0027excludedNamespaces\u0027)]\",\"namespaces\":\"[parameters(\u0027namespaces\u0027)]\",\"labelSelector\":\"[parameters(\u0027labelSelector\u0027)]\",\"values\":{\"imageRegex\":\"[parameters(\u0027allowedContainerImagesRegex\u0027)]\",\"excludedContainers\":\"[parameters(\u0027excludedContainers\u0027)]\"}}}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters01\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psPolicyDefinitionWithComplexParameters01\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-07-24T22:45:43.8461044Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-07-24T22:45:43.8461044Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyDefinitionWithComplexParameters+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters02?api-version=2023-04-01+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters02?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "693" ],
+        "x-ms-client-request-id": [ "8ad49ca8-4ca7-4890-bcb6-2918e876e8ab" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Remove-AzPolicyDefinition_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.1.0", "PSVersion/v7.4.3", "Az.Policy/0.1.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
+        "x-ms-request-id": [ "c3ba9645-5113-40c1-b0ff-910bb9adb2b7" ],
+        "x-ms-correlation-request-id": [ "c3ba9645-5113-40c1-b0ff-910bb9adb2b7" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240724T224547Z:c3ba9645-5113-40c1-b0ff-910bb9adb2b7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FDF86DD2D22344FE9D82595883B57F37 Ref B: CO6AA3150220027 Ref C: 2024-07-24T22:45:47Z" ],
+        "Date": [ "Wed, 24 Jul 2024 22:45:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1877" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"policyType\":\"Custom\",\"mode\":\"All\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-07-24T22:45:45.8132528Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"parameters\":{\"effect\":{\"type\":\"String\",\"metadata\":{\"displayName\":\"Effect\",\"description\":\"\u0027Audit\u0027 allows a non-compliant resource to be created, but flags it as non-compliant. \u0027Deny\u0027 blocks the resource creation. \u0027Disable\u0027 turns off the policy.\",\"portalReview\":true},\"allowedValues\":[\"audit\",\"Audit\",\"deny\",\"Deny\",\"disabled\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"allOf\":[{\"field\":\"type\",\"equals\":\"Microsoft.Compute/virtualMachines\"},{\"anyof\":[{\"field\":\"Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.storageUri\",\"exists\":true},{\"field\":\"Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.enabled\",\"notEquals\":true}]}]},\"then\":{\"effect\":\"[parameters(\u0027effect\u0027)]\",\"details\":{\"conflictEffect\":\"audit\",\"roleDefinitionIds\":[\"/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c\"],\"operations\":[{\"operation\":\"addOrReplace\",\"field\":\"Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.storageUri\",\"value\":null},{\"operation\":\"addOrReplace\",\"field\":\"Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.enabled\",\"value\":true}]}}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyDefinitionWithComplexParameters02\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psPolicyDefinitionWithComplexParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-07-24T22:45:45.8002401Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-07-24T22:45:45.8002401Z\"}}",
+      "isContentBase64": false
+    }
+  }
+}

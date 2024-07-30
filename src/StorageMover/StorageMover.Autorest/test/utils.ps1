@@ -52,7 +52,7 @@ function setupEnv() {
     $env.RandomString = (RandomString $false 8)
     $env.ResourceGroupName = "teststoragemover"
     $env.StorageMoverNameWithAgent = "testmoverpreview1"
-    $env.AgentName = "testagent1"
+    $env.AgentName = "testagent12"
     $env.Location = "eastus2euap"
     $env.InitialStoMoverName = "testStoMover1" + $env.RandomString
     $env.InitialSMDescription = "initial test SM description"

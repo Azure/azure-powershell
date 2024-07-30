@@ -69,5 +69,65 @@ namespace Commands.StorageSync.Interop.DataObjects
         /// </summary>
         /// <value>The server identifier.</value>
         public Guid ServerId { get; set; }
+
+        /// <summary>
+        /// Server Machine Name.
+        /// </summary>
+        public string ServerMachineName { get; set; }
+
+        /// <summary>
+        /// Monitoring Configuration.
+        /// </summary>
+        public string MonitoringConfiguration { get; set; }
+
+        /// <summary>
+        /// Management Endpoint Uri
+        /// </summary>
+        public Uri ManagementEndpointUri { get; set; }
+
+        /// <summary>
+        /// Monitoring Endpoint Uri
+        /// </summary>
+        public Uri MonitoringEndpointUri { get; set; }
+
+        /// <summary>
+        /// Discovery Endpoint Uri
+        /// </summary>
+        public Uri DiscoveryEndpointUri { get; set; }
+
+        /// <summary>
+        /// Resource Location
+        /// </summary>
+        public string ResourceLocation { get; set; }
+
+        /// <summary>
+        /// Service Location
+        /// </summary>
+        public string ServiceLocation { get; set; }
+
+        /// <summary>
+        /// Storage Sync Service Uid
+        /// </summary>
+        public Guid? StorageSyncServiceUid { get; set; }
+
+        /// <summary>
+        /// Last Heart Beat
+        /// </summary>
+        public DateTime? LastHeartBeat { get; set; }
+
+        /// <summary>
+        /// Server Management Error Code
+        /// </summary>
+        public int? ServerManagementErrorCode { get; set; }
+
+        /// <summary>
+        /// Provisioning State
+        /// </summary>
+        public string ProvisioningState { get; set; }
+
+        /// <summary>
+        /// Server Identity Id.
+        /// </summary>
+        public Guid? ApplicationId { get; set; }
     }
 }

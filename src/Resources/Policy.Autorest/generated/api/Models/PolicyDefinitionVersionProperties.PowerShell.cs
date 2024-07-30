@@ -121,11 +121,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
             }
             if (content.Contains("PolicyRule"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)this).PolicyRule = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny) content.GetValueForProperty("PolicyRule",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)this).PolicyRule, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.AnyTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)this).PolicyRule = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesPolicyRule) content.GetValueForProperty("PolicyRule",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)this).PolicyRule, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.PolicyDefinitionVersionPropertiesPolicyRuleTypeConverter.ConvertFrom);
             }
             if (content.Contains("Metadata"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)this).Metadata = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny) content.GetValueForProperty("Metadata",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)this).Metadata, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.AnyTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)this).Metadata = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesMetadata) content.GetValueForProperty("Metadata",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)this).Metadata, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.PolicyDefinitionVersionPropertiesMetadataTypeConverter.ConvertFrom);
             }
             if (content.Contains("Parameter"))
             {
@@ -170,11 +170,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
             }
             if (content.Contains("PolicyRule"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)this).PolicyRule = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny) content.GetValueForProperty("PolicyRule",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)this).PolicyRule, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.AnyTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)this).PolicyRule = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesPolicyRule) content.GetValueForProperty("PolicyRule",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)this).PolicyRule, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.PolicyDefinitionVersionPropertiesPolicyRuleTypeConverter.ConvertFrom);
             }
             if (content.Contains("Metadata"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)this).Metadata = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny) content.GetValueForProperty("Metadata",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)this).Metadata, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.AnyTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)this).Metadata = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesMetadata) content.GetValueForProperty("Metadata",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)this).Metadata, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.PolicyDefinitionVersionPropertiesMetadataTypeConverter.ConvertFrom);
             }
             if (content.Contains("Parameter"))
             {

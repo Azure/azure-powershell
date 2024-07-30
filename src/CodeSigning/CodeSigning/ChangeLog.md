@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `Get-AzCodeSigningCertChain` cmdlet to retrieve the certificate chain for a certificate profile.
+* Added System.Formats.Asn1 dependency to the module to address a security vulnerability.
+
+## Version 0.1.2
+* Updated signed 3rd party assembly Polly.dll to PSGallery
 
 ## Version 0.1.1
 * Upgraded Azure.Core to 1.37.0.

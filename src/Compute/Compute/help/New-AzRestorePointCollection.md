@@ -14,16 +14,16 @@ Creates a New Restore Point Collection
 
 ### DefaultParameter (Default)
 ```
-New-AzRestorePointCollection [-ResourceGroupName] <String> [-Name] <String> [-VmId] <String>
+New-AzRestorePointCollection [-ResourceGroupName] <String> [-Name] <String> [-SourceId] <String>
  [-Location <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### RestorePointCollectionId
 ```
-New-AzRestorePointCollection [-ResourceGroupName] <String> [-Name] <String> [[-VmId] <String>]
+New-AzRestorePointCollection [-ResourceGroupName] <String> [-Name] <String> [[-SourceId] <String>]
  [-RestorePointCollectionId] <String> -Location <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -127,13 +127,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -VmId
-resource Id of the source resource used to create this restore point Collection
+### -SourceId
+Resource ID of the source resource used to create this restore point collection.
 
 ```yaml
 Type: System.String
 Parameter Sets: DefaultParameter
-Aliases:
+Aliases: VmId
 
 Required: True
 Position: 2
@@ -145,7 +145,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.String
 Parameter Sets: RestorePointCollectionId
-Aliases:
+Aliases: VmId
 
 Required: False
 Position: 2

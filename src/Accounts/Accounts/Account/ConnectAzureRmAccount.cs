@@ -17,13 +17,14 @@ using Azure.Identity;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Config.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Sanitizer;
+using Microsoft.Azure.Commands.Common.Authentication.Utilities;
 using Microsoft.Azure.Commands.Profile.Common;
-using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Models.Core;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.Profile.Utilities;
@@ -329,6 +330,18 @@ namespace Microsoft.Azure.Commands.Profile
             Guid subscriptionIdGuid;
             string subscriptionName = null;
             string subscriptionId = null;
+
+            //Disable WAM before the issue https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/4786 is fixed
+            if (ParameterSetName.Equals(UserParameterSet) && UseDeviceAuthentication == true || ParameterSetName.Equals(UserWithCredentialParameterSet))
+            {
+                AzConfigReader.Instance?.UpdateConfig(ConfigKeys.EnableLoginByWam, false, ConfigScope.CurrentUser);
+            }
+
+            if (ParameterSetName.Equals(UserWithCredentialParameterSet))
+            {
+                WriteWarning(Resources.UsernamePasswordDeprecateWarningMessage);
+            }
+
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Subscription)))
             {
                 if (Guid.TryParse(Subscription, out subscriptionIdGuid))
@@ -524,8 +537,8 @@ namespace Microsoft.Azure.Commands.Profile
                         shouldPopulateContextList = false;
                     }
 
-                    profileClient.WarningLog = (message) => _tasks.Enqueue(new Task(() => this.WriteWarning(message))); 
-                    profileClient.InformationLog = (message) => _tasks.Enqueue(new Task(() => this.WriteInformation(message, false)));
+                    profileClient.WarningLog = (message) => _tasks.Enqueue(new Task(() => this.WriteWarning(message)));
+                    profileClient.InteractiveInformationLog = (message) => _tasks.Enqueue(new Task(() => WriteInteractiveInformation(message)));
                     profileClient.DebugLog = (message) => _tasks.Enqueue(new Task(() => this.WriteDebugWithTimestamp(message)));
                     profileClient.PromptAndReadLine = (message) =>
                     {
@@ -548,7 +561,6 @@ namespace Microsoft.Azure.Commands.Profile
                         shouldPopulateContextList,
                         MaxContextPopulation,
                         resourceId,
-                        IsInteractiveAuthenticationFlow(),
                         IsInteractiveContextSelectionEnabled()));
                     task.Start();
                     while (!task.IsCompleted)
@@ -591,19 +603,34 @@ namespace Microsoft.Azure.Commands.Profile
                     }
                 });
 
-                WriteInformation($"{Resources.AnnouncementsHeader}{System.Environment.NewLine}{Resources.AnnouncementsMessage}{System.Environment.NewLine}");
-                WriteInformation($"{Resources.ReportIssue}{System.Environment.NewLine}");
+                WriteAnnouncementsPeriodically();
+            }
+        }
+
+        private void WriteAnnouncementsPeriodically()
+        {
+            if (ParameterSetName != UserParameterSet)
+            {
+                // Write-Host may block automation scenarios
+                return;
+            }
+            const string AnnouncementsFeatureName = "SignInAnnouncements";
+            TimeSpan AnnouncementsInterval = TimeSpan.FromDays(7);
+            if (AzureSession.Instance.TryGetComponent<IFrequencyService>(nameof(IFrequencyService), out var frequency))
+            {
+                frequency.Register(AnnouncementsFeatureName, AnnouncementsInterval);
+                // WriteInformation can't fail, so the second parameter always returns true
+                frequency.TryRun(AnnouncementsFeatureName, () => true, () =>
+                {
+                    WriteInformation($"{Resources.AnnouncementsHeader}{System.Environment.NewLine}{Resources.AnnouncementsMessage}{System.Environment.NewLine}", false);
+                    WriteInformation($"{Resources.ReportIssue}{System.Environment.NewLine}", false);
+                });
             }
         }
 
         private bool IsInteractiveContextSelectionEnabled()
         {
             return AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out IConfigManager configManager) ? configManager.GetConfigValue<LoginExperienceConfig>(ConfigKeys.LoginExperienceV2).Equals(LoginExperienceConfig.On) : true;
-        }
-
-        private bool IsInteractiveAuthenticationFlow()
-        {
-            return ParameterSetName.Equals(UserParameterSet);
         }
 
         private bool IsPopUpInteractiveAuthenticationFlow()
@@ -616,6 +643,14 @@ namespace Microsoft.Azure.Commands.Profile
             if (UseDeviceAuthentication.IsPresent && IsWriteInformationIgnored())
             {
                 throw new ActionPreferenceStopException(Resources.DoNotIgnoreInformationIfUserDeviceAuth);
+            }
+        }
+
+        private void WriteInteractiveInformation(string message)
+        {
+            if (ParameterSetName.Equals(UserParameterSet))
+            {
+                this.WriteInformation(message, false);
             }
         }
 
@@ -847,8 +882,31 @@ namespace Microsoft.Azure.Commands.Profile
 #endif
         }
 
+        private void AddConfigTelemetry()
+        {
+            try
+            {
+                if (!_qosEvent.ConfigMetrics.ContainsKey(ConfigKeys.LoginExperienceV2))
+                {
+                    _qosEvent.ConfigMetrics[ConfigKeys.LoginExperienceV2] = new ConfigMetrics(ConfigKeys.LoginExperienceV2, $"Config-{ConfigKeys.LoginExperienceV2}",
+                       Enum.GetName(typeof(LoginExperienceConfig), AzConfigReader.GetAzConfig(ConfigKeys.LoginExperienceV2, LoginExperienceConfig.On)));
+                }
+
+                if (!_qosEvent.ConfigMetrics.ContainsKey(ConfigKeys.EnableLoginByWam))
+                {
+                    _qosEvent.ConfigMetrics[ConfigKeys.EnableLoginByWam] = new ConfigMetrics(ConfigKeys.EnableLoginByWam, $"Config-{ConfigKeys.EnableLoginByWam}",
+                       AzConfigReader.GetAzConfig(ConfigKeys.EnableLoginByWam, true).ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteDebug(string.Format("Failed to add telemtry for config as {0}", ex.Message));
+            }
+        }
+
         protected override void EndProcessing()
         {
+            AddConfigTelemetry();
             base.EndProcessing();
             // unregister the thread-safe write warning, because it won't work out of this cmdlet
             AzureSession.Instance.UnregisterComponent<EventHandler<StreamEventArgs>>(WriteWarningKey);
