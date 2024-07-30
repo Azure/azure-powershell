@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added dataplane cmdlets:
+    * `Get-AzEmailServicedataEmailSendResult`
+    * `Send-AzEmailServicedataEmail`
 * Upgraded API version to 2023-06-01-preview
 
 ## Version 0.3.1
