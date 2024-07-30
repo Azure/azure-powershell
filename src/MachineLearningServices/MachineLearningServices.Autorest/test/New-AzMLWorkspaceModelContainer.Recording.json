@@ -1,8 +1,8 @@
 {
-  "New-AzMLWorkspaceModelContainer+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/models/modelcontainerpwsh01?api-version=2022-05-01+1": {
+  "New-AzMLWorkspaceModelContainer+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/models/modelcontainerpwsh01?api-version=2024-04-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/models/modelcontainerpwsh01?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/models/modelcontainerpwsh01?api-version=2024-04-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"description\": \"code container for test.\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -13,45 +13,47 @@
       }
     },
     "Response": {
-      "StatusCode": 201,
+      "StatusCode": 200,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/models/modelcontainerpwsh01?api-version=2022-05-01" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "ba24f5ef-5f7a-4e6a-ba0b-f516d584c804" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
         "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
         "x-ms-response-type": [ "standard" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.418" ],
-        "x-ms-request-id": [ "d4a996fb-5306-49fa-a366-19f7824ca908" ],
-        "x-ms-correlation-request-id": [ "d4a996fb-5306-49fa-a366-19f7824ca908" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T141113Z:d4a996fb-5306-49fa-a366-19f7824ca908" ],
-        "Date": [ "Sun, 05 Jun 2022 14:11:12 GMT" ]
+        "x-aml-cluster": [ "vienna-eastus-02" ],
+        "x-request-time": [ "0.305" ],
+        "x-ms-correlation-request-id": [ "ba24f5ef-5f7a-4e6a-ba0b-f516d584c804" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085445Z:ba24f5ef-5f7a-4e6a-ba0b-f516d584c804" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 94059085B47D47E6A237DCE171F9AAF6 Ref B: TYO201151005031 Ref C: 2024-07-24T08:54:43Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:54:44 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "779" ],
+        "Content-Length": [ "836" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/models/modelcontainerpwsh01\",\n  \"name\": \"modelcontainerpwsh01\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/models\",\n  \"properties\": {\n    \"description\": \"code container for test.\",\n    \"tags\": {},\n    \"properties\": {},\n    \"isArchived\": false,\n    \"latestVersion\": null,\n    \"nextVersion\": \"1\"\n  },\n  \"systemData\": {\n    \"createdAt\": \"2022-06-05T14:11:12.9502589Z\",\n    \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n    \"createdByType\": \"User\",\n    \"lastModifiedAt\": \"2022-06-05T14:11:12.9502589Z\",\n    \"lastModifiedBy\": \"Lucas Yao (Wicresoft North America)\",\n    \"lastModifiedByType\": \"User\"\n  }\n}",
+      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/models/modelcontainerpwsh01\",\n  \"name\": \"modelcontainerpwsh01\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/models\",\n  \"properties\": {\n    \"description\": \"code container for test.\",\n    \"tags\": {},\n    \"properties\": {},\n    \"isArchived\": false,\n    \"latestVersion\": null,\n    \"nextVersion\": \"1\",\n    \"provisioningState\": \"Succeeded\"\n  },\n  \"systemData\": {\n    \"createdAt\": \"2024-07-24T08:45:05.6052865+00:00\",\n    \"createdBy\": \"Joyer Jin (Wicresoft North America Ltd)\",\n    \"createdByType\": \"User\",\n    \"lastModifiedAt\": \"2024-07-24T08:54:45.1577243+00:00\",\n    \"lastModifiedBy\": \"Joyer Jin (Wicresoft North America Ltd)\",\n    \"lastModifiedByType\": \"User\"\n  }\n}",
       "isContentBase64": false
     }
   },
-  "New-AzMLWorkspaceModelContainer+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/models/modelcontainerpwsh01?api-version=2022-05-01+2": {
+  "New-AzMLWorkspaceModelContainer+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/models/modelcontainerpwsh01?api-version=2024-04-01+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/models/modelcontainerpwsh01?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/models/modelcontainerpwsh01?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "4f5686d5-87c9-4497-9502-ea0d90ef35c8" ],
+        "x-ms-unique-id": [ "129" ],
+        "x-ms-client-request-id": [ "21112bff-d562-460d-8c63-ac1da54467f5" ],
         "CommandName": [ "Remove-AzMLWorkspaceModelContainer" ],
         "FullCommandName": [ "Remove-AzMLWorkspaceModelContainer_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.MachineLearningServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -67,12 +69,14 @@
         "x-ms-response-type": [ "standard" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.167" ],
-        "x-ms-request-id": [ "3d8739cc-0968-4fa8-abca-c68f8da7da2f" ],
-        "x-ms-correlation-request-id": [ "3d8739cc-0968-4fa8-abca-c68f8da7da2f" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T141115Z:3d8739cc-0968-4fa8-abca-c68f8da7da2f" ],
-        "Date": [ "Sun, 05 Jun 2022 14:11:14 GMT" ]
+        "x-aml-cluster": [ "vienna-eastus-02" ],
+        "x-request-time": [ "0.221" ],
+        "x-ms-request-id": [ "7f2d9e87-597d-4cdf-bed7-f23f5b9b7cc9" ],
+        "x-ms-correlation-request-id": [ "7f2d9e87-597d-4cdf-bed7-f23f5b9b7cc9" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085446Z:7f2d9e87-597d-4cdf-bed7-f23f5b9b7cc9" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8F4F4119FD824B5C8E109702FC05085F Ref B: TYO201151005031 Ref C: 2024-07-24T08:54:45Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:54:45 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],

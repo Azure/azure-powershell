@@ -6,7 +6,7 @@ Get-AzMLWorkspaceCodeVersion -ResourceGroupName ml-rg-test -WorkspaceName mlwork
 ```output
 Name SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy            SystemDataLastModifiedByType ResourceGroupName
 ---- -------------------  -------------------                 ----------------------- ------------------------ ------------------------            ---------------------------- -----------------
-1    5/24/2022 7:14:05 AM Lucas Yao (Wicresoft North America) User                    5/24/2022 7:14:05 AM     Lucas Yao (Wicresoft North America) User                         ml-rg-test
+1    5/24/2022 7:14:05 AM UserName (Example)         User                    5/24/2022 7:14:05 AM     UserName (Example)         User                         ml-rg-test
 ```
 
 Gets code version.
