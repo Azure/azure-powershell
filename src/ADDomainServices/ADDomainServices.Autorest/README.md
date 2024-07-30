@@ -57,6 +57,7 @@ use-extension:
   "@autorest/powershell": "3.x"
 
 directive:
+# test ci
   - from: swagger-document
     where: $.definitions..pfxCertificatePassword
     transform: $.format = "password"
