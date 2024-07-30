@@ -57,8 +57,8 @@ Describe 'ClusterUpgrade' {
     }
 
     It "Upgrade ClusterPool" -Skip {
-        { Upgrade-AzHdInsightOnAksClusterPool -ResourceGroupName $clusterResourceGroupName -ClusterPoolName $clusterpoolName -UpgradeType "NodeOsUpgrade"  } | Should -Not -Throw
-        [Console]::WriteLine("Upgrade-AzHdInsightOnAksClusterPool done")
+        { Invoke-AzHdInsightOnAksClusterPoolUpgrade -ResourceGroupName $clusterResourceGroupName -ClusterPoolName $clusterpoolName -UpgradeType "NodeOsUpgrade"  } | Should -Not -Throw
+        [Console]::WriteLine("Invoke-AzHdInsightOnAksClusterPoolUpgrade done")
     }
 
     It "List ClusterPool upgrade history" {
@@ -74,8 +74,8 @@ Describe 'ClusterUpgrade' {
 
     It "Upgrade Cluster" -Skip{
         
-        { Upgrade-AzHdInsightOnAksCluster -ResourceGroupName $clusterResourceGroupName -ClusterPoolName $clusterpoolName  -ClusterName $clusterName -UpgradeType "NodeOsUpgrade"  } | Should -Not -Throw
-        [Console]::WriteLine("Upgrade-AzHdInsightOnAksCluster done")
+        { Invoke-AzHdInsightOnAksClusterUpgrade -ResourceGroupName $clusterResourceGroupName -ClusterPoolName $clusterpoolName  -ClusterName $clusterName -UpgradeType "NodeOsUpgrade"  } | Should -Not -Throw
+        [Console]::WriteLine("Invoke-AzHdInsightOnAksClusterUpgrade done")
     }
 
     It "List Cluster upgrade history" {

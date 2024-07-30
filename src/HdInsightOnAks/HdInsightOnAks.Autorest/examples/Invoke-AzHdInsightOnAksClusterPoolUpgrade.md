@@ -2,7 +2,7 @@
 ```powershell
 $clusterResourceGroupName = "Group"
 $clusterpoolName = "your-clusterpool"
-Upgrade-AzHdInsightOnAksClusterPool -ResourceGroupName $clusterResourceGroupName -ClusterPoolName $clusterpoolName -UpgradeType NodeOsUpgrade 
+Invoke-AzHdInsightOnAksClusterPoolUpgrade -ResourceGroupName $clusterResourceGroupName -ClusterPoolName $clusterpoolName -UpgradeType NodeOsUpgrade 
 ```
 
 ```output
@@ -47,7 +47,7 @@ Upgrade a cluster pool and upgrade type is NodeOsUpgrade.
 $clusterResourceGroupName = "Group"
 $clusterpoolName = "your-clusterpool"
 $upgradeObj = New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject -TargetAksVersion "1.27.9" -UpgradeClusterPool $true
-Upgrade-AzHdInsightOnAksClusterPool -ResourceGroupName $clusterResourceGroupName -ClusterPoolName $clusterpoolName -ClusterPoolUpgradeRequest $upgradeObj
+Invoke-AzHdInsightOnAksClusterPoolUpgrade -ResourceGroupName $clusterResourceGroupName -ClusterPoolName $clusterpoolName -ClusterPoolUpgradeRequest $upgradeObj
 ```
 
 ```output

@@ -4,7 +4,7 @@ $clusterResourceGroupName = "Group"
 $clusterpoolName = "ps-test-pool"
 $clusterName = "flinkcluster"
 $hotfixObj = New-AzHdInsightOnAksClusterHotfixUpgradeObject -ComponentName Webssh -TargetBuildNumber 7 -TargetClusterVersion "1.1.1" -TargetOssVersion "0.4.2"
-Upgrade-AzHdInsightOnAksCluster -ResourceGroupName $clusterResourceGroupName -ClusterName $clusterName -ClusterPoolName $clusterpoolName -ClusterUpgradeRequest $hotfixObj
+Invoke-AzHdInsightOnAksClusterUpgrade -ResourceGroupName $clusterResourceGroupName -ClusterName $clusterName -ClusterPoolName $clusterpoolName -ClusterUpgradeRequest $hotfixObj
 ```
 
 ```output

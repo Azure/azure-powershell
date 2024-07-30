@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.HdInsightOnAks
-online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/upgrade-azhdinsightonakscluster
+online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/invoke-azhdinsightonaksclusterupgrade
 schema: 2.0.0
 ---
 
-# Upgrade-AzHdInsightOnAksCluster
+# Invoke-AzHdInsightOnAksClusterUpgrade
 
 ## SYNOPSIS
 Upgrade a cluster.
@@ -14,55 +14,55 @@ Upgrade a cluster.
 
 ### UpgradeExpanded (Default)
 ```
-Upgrade-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
+Invoke-AzHdInsightOnAksClusterUpgrade -Name <String> -PoolName <String> -ResourceGroupName <String>
  -UpgradeType <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### Upgrade
 ```
-Upgrade-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
+Invoke-AzHdInsightOnAksClusterUpgrade -Name <String> -PoolName <String> -ResourceGroupName <String>
  -ClusterUpgradeRequest <IClusterUpgrade> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpgradeViaIdentity
 ```
-Upgrade-AzHdInsightOnAksCluster -InputObject <IHdInsightOnAksIdentity>
+Invoke-AzHdInsightOnAksClusterUpgrade -InputObject <IHdInsightOnAksIdentity>
  -ClusterUpgradeRequest <IClusterUpgrade> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpgradeViaIdentityClusterpool
 ```
-Upgrade-AzHdInsightOnAksCluster -ClusterpoolInputObject <IHdInsightOnAksIdentity> -Name <String>
+Invoke-AzHdInsightOnAksClusterUpgrade -ClusterpoolInputObject <IHdInsightOnAksIdentity> -Name <String>
  -ClusterUpgradeRequest <IClusterUpgrade> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpgradeViaIdentityClusterpoolExpanded
 ```
-Upgrade-AzHdInsightOnAksCluster -ClusterpoolInputObject <IHdInsightOnAksIdentity> -Name <String>
+Invoke-AzHdInsightOnAksClusterUpgrade -ClusterpoolInputObject <IHdInsightOnAksIdentity> -Name <String>
  -UpgradeType <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpgradeViaIdentityExpanded
 ```
-Upgrade-AzHdInsightOnAksCluster -InputObject <IHdInsightOnAksIdentity> -UpgradeType <String>
+Invoke-AzHdInsightOnAksClusterUpgrade -InputObject <IHdInsightOnAksIdentity> -UpgradeType <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpgradeViaJsonFilePath
 ```
-Upgrade-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
+Invoke-AzHdInsightOnAksClusterUpgrade -Name <String> -PoolName <String> -ResourceGroupName <String>
  -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpgradeViaJsonString
 ```
-Upgrade-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
+Invoke-AzHdInsightOnAksClusterUpgrade -Name <String> -PoolName <String> -ResourceGroupName <String>
  -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -78,7 +78,7 @@ $clusterResourceGroupName = "Group"
 $clusterpoolName = "ps-test-pool"
 $clusterName = "flinkcluster"
 $hotfixObj = New-AzHdInsightOnAksClusterHotfixUpgradeObject -ComponentName Webssh -TargetBuildNumber 7 -TargetClusterVersion "1.1.1" -TargetOssVersion "0.4.2"
-Upgrade-AzHdInsightOnAksCluster -ResourceGroupName $clusterResourceGroupName -ClusterName $clusterName -ClusterPoolName $clusterpoolName -ClusterUpgradeRequest $hotfixObj
+Invoke-AzHdInsightOnAksClusterUpgrade -ResourceGroupName $clusterResourceGroupName -ClusterName $clusterName -ClusterPoolName $clusterpoolName -ClusterUpgradeRequest $hotfixObj
 ```
 
 ```output

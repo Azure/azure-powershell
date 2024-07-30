@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.HdInsightOnAks
-online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/upgrade-azhdinsightonaksclustermanualrollback
+online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/invoke-azhdinsightonaksclustermanualrollback
 schema: 2.0.0
 ---
 
-# Upgrade-AzHdInsightOnAksClusterManualRollback
+# Invoke-AzHdInsightOnAksClusterManualRollback
 
 ## SYNOPSIS
 Manual rollback upgrade for a cluster.
@@ -14,14 +14,14 @@ Manual rollback upgrade for a cluster.
 
 ### UpgradeExpanded (Default)
 ```
-Upgrade-AzHdInsightOnAksClusterManualRollback -ClusterName <String> -ClusterPoolName <String>
+Invoke-AzHdInsightOnAksClusterManualRollback -ClusterName <String> -ClusterPoolName <String>
  -ResourceGroupName <String> -UpgradeHistory <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Upgrade
 ```
-Upgrade-AzHdInsightOnAksClusterManualRollback -ClusterName <String> -ClusterPoolName <String>
+Invoke-AzHdInsightOnAksClusterManualRollback -ClusterName <String> -ClusterPoolName <String>
  -ResourceGroupName <String> -ClusterRollbackUpgradeRequest <IClusterUpgradeRollback>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -29,41 +29,41 @@ Upgrade-AzHdInsightOnAksClusterManualRollback -ClusterName <String> -ClusterPool
 
 ### UpgradeViaIdentity
 ```
-Upgrade-AzHdInsightOnAksClusterManualRollback -InputObject <IHdInsightOnAksIdentity>
+Invoke-AzHdInsightOnAksClusterManualRollback -InputObject <IHdInsightOnAksIdentity>
  -ClusterRollbackUpgradeRequest <IClusterUpgradeRollback> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpgradeViaIdentityClusterpool
 ```
-Upgrade-AzHdInsightOnAksClusterManualRollback -ClusterName <String>
+Invoke-AzHdInsightOnAksClusterManualRollback -ClusterName <String>
  -ClusterpoolInputObject <IHdInsightOnAksIdentity> -ClusterRollbackUpgradeRequest <IClusterUpgradeRollback>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpgradeViaIdentityClusterpoolExpanded
 ```
-Upgrade-AzHdInsightOnAksClusterManualRollback -ClusterName <String>
+Invoke-AzHdInsightOnAksClusterManualRollback -ClusterName <String>
  -ClusterpoolInputObject <IHdInsightOnAksIdentity> -UpgradeHistory <String> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpgradeViaIdentityExpanded
 ```
-Upgrade-AzHdInsightOnAksClusterManualRollback -InputObject <IHdInsightOnAksIdentity> -UpgradeHistory <String>
+Invoke-AzHdInsightOnAksClusterManualRollback -InputObject <IHdInsightOnAksIdentity> -UpgradeHistory <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpgradeViaJsonFilePath
 ```
-Upgrade-AzHdInsightOnAksClusterManualRollback -ClusterName <String> -ClusterPoolName <String>
+Invoke-AzHdInsightOnAksClusterManualRollback -ClusterName <String> -ClusterPoolName <String>
  -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpgradeViaJsonString
 ```
-Upgrade-AzHdInsightOnAksClusterManualRollback -ClusterName <String> -ClusterPoolName <String>
+Invoke-AzHdInsightOnAksClusterManualRollback -ClusterName <String> -ClusterPoolName <String>
  -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -78,7 +78,7 @@ Manual rollback upgrade for a cluster.
 $clusterResourceGroupName = "Group"
 $clusterpoolName = "ps-test-pool"
 $clusterName = "cluster"
-Upgrade-AzHdInsightOnAksClusterManualRollback -ResourceGroupName $clusterResourceGroupName -ClusterName $clusterName -ClusterPoolName $clusterpoolName -UpgradeHistory /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/weidong-devrp/providers/Microsoft.HDInsight/clusterpools/weidongbugbash57/clusters/cluster202458152055/upgradeHistories/05_11_2024_06_41_26_AM-AKSPatchUpgrade
+Invoke-AzHdInsightOnAksClusterManualRollback -ResourceGroupName $clusterResourceGroupName -ClusterName $clusterName -ClusterPoolName $clusterpoolName -UpgradeHistory /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/weidong-devrp/providers/Microsoft.HDInsight/clusterpools/weidongbugbash57/clusters/cluster202458152055/upgradeHistories/05_11_2024_06_41_26_AM-AKSPatchUpgrade
 ```
 
 Roll back the upgrade of a cluster
