@@ -41,35 +41,35 @@ Restarts a Dev Box.
 
 ## EXAMPLES
 
-### Example 1: Restart a dev box by endpoint
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 Restart-AzDevCenterUserDevBox -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -UserId 786a823c-8037-48ab-89b8-8599901e67d0 -Name myDevBox
 ```
 
-This command restarts the dev box "myDevBox" assigned to user "786a823c-8037-48ab-89b8-8599901e67d0".
 
-### Example 2: Restart a dev box by dev center
+
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 Restart-AzDevCenterUserDevBox -DevCenterName Contoso -ProjectName DevProject -UserId "me" -Name myDevBox
 ```
 
-This command restarts the dev box "myDevBox" assigned to the currently signed-in user.
 
-### Example 3: Restart a dev box by endpoint and InputObject
+
+### -------------------------- EXAMPLE 3 --------------------------
 ```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject" }
 Restart-AzDevCenterUserDevBox -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $devBoxInput
 ```
 
-This command restarts the dev box "myDevBox" assigned to the currently signed-in user.
 
-### Example 4: Restart a dev box by dev center and InputObject
+
+### -------------------------- EXAMPLE 4 --------------------------
 ```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "786a823c-8037-48ab-89b8-8599901e67d0"; "ProjectName" = "DevProject" }
-Restart-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput 
+Restart-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput
 ```
 
-This command restarts the dev box "myDevBox" assigned to user "786a823c-8037-48ab-89b8-8599901e67d0".
+
 
 ## PARAMETERS
 

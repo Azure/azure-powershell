@@ -1,37 +1,22 @@
-### Example 1: List customization tasks by endpoint
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzDevCenterUserDevBoxCustomizationTaskDefinition -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject
+{{ Add code here }}
 ```
-This command lists customization tasks in the project "DevProject".
 
-### Example 2: List customization tasks by dev center
-```powershell
-Get-AzDevCenterUserDevBoxCustomizationTaskDefinition -DevCenterName Contoso -ProjectName DevProject
+```output
+{{ Add output here }}
 ```
-This command lists customization tasks in the project "DevProject".
 
-### Example 3: Get a customization task by endpoint
-```powershell
-Get-AzDevCenterUserDevBoxCustomizationTaskDefinition -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -TaskName choco -CatalogName MyCatalog
-```
-This command gets a customization task named "choco" for the catalog "MyCatalog" in the project "DevProject".
+{{ Add description here }}
 
-### Example 4: Get a customization task by dev center
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzDevCenterUserDevBoxCustomizationTaskDefinition -DevCenterName Contoso -ProjectName DevProject -TaskName choco -CatalogName MyCatalog
+{{ Add code here }}
 ```
-This command gets a customization task named "choco" for the catalog "MyCatalog" in the project "DevProject".
 
-### Example 5: Get a customization task by endpoint and InputObject
-```powershell
-$customizationTaskInput = @{"TaskName" = "choco"; "ProjectName" ="DevProject"; "TaskName" = "choco"; "CatalogName" = "MyCatalog" }
-Get-AzDevCenterUserDevBoxCustomizationTaskDefinition -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $customizationTaskInput
+```output
+{{ Add output here }}
 ```
-This command gets a customization task named "choco" for the catalog "MyCatalog" in the project "DevProject".
 
-### Example 6: Get a customization task by dev center and InputObject
-```powershell
-$customizationTaskInput = @{"TaskName" = "choco"; "ProjectName" = "DevProject"; "TaskName" = "choco"; "CatalogName" = "MyCatalog" }
-Get-AzDevCenterUserDevBoxCustomizationTaskDefinition -DevCenterName Contoso -InputObject $customizationTaskInput 
-```
-This command gets a customization task named "choco" for the catalog "MyCatalog" in the project "DevProject".
+{{ Add description here }}
+
