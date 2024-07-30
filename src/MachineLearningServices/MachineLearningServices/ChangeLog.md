@@ -23,22 +23,22 @@
 * Fixed batch deployment creation issue
 * Fixed Connection creation issue
 * Added Connection Properties object cmdlets for connection creation
-    - New-AzMLWorkspaceAadAuthTypeWorkspaceConnectionPropertiesObject
-    - New-AzMLWorkspaceAccessKeyAuthTypeWorkspaceConnectionPropertiesObject
-    - New-AzMLWorkspaceAccountKeyAuthTypeWorkspaceConnectionPropertiesObject
-    - New-AzMLWorkspaceApiKeyAuthWorkspaceConnectionPropertiesObject
-    - New-AzMLWorkspaceCustomKeysWorkspaceConnectionPropertiesObject
-    - New-AzMLWorkspaceManagedIdentityAuthTypeWorkspaceConnectionPropertiesObject
-    - New-AzMLWorkspaceNoneAuthTypeWorkspaceConnectionPropertiesObject
-    - New-AzMLWorkspaceOAuth2AuthTypeWorkspaceConnectionPropertiesObject
-    - New-AzMLWorkspacePatAuthTypeWorkspaceConnectionPropertiesObject
-    - New-AzMLWorkspaceSasAuthTypeWorkspaceConnectionPropertiesObject
-    - New-AzMLWorkspaceServicePrincipalAuthTypeWorkspaceConnectionPropertiesObject
-    - New-AzMLWorkspaceUsernamePasswordAuthTypeWorkspaceConnectionPropertiesObject
+    - `New-AzMLWorkspaceAadAuthTypeWorkspaceConnectionPropertiesObject`
+    - `New-AzMLWorkspaceAccessKeyAuthTypeWorkspaceConnectionPropertiesObject`
+    - `New-AzMLWorkspaceAccountKeyAuthTypeWorkspaceConnectionPropertiesObject`
+    - `New-AzMLWorkspaceApiKeyAuthWorkspaceConnectionPropertiesObject`
+    - `New-AzMLWorkspaceCustomKeysWorkspaceConnectionPropertiesObject`
+    - `New-AzMLWorkspaceManagedIdentityAuthTypeWorkspaceConnectionPropertiesObject`
+    - `New-AzMLWorkspaceNoneAuthTypeWorkspaceConnectionPropertiesObject`
+    - `New-AzMLWorkspaceOAuth2AuthTypeWorkspaceConnectionPropertiesObject`
+    - `New-AzMLWorkspacePatAuthTypeWorkspaceConnectionPropertiesObject`
+    - `New-AzMLWorkspaceSasAuthTypeWorkspaceConnectionPropertiesObject`
+    - `New-AzMLWorkspaceServicePrincipalAuthTypeWorkspaceConnectionPropertiesObject`
+    - `New-AzMLWorkspaceUsernamePasswordAuthTypeWorkspaceConnectionPropertiesObject`
 * Added Model reference object cmdlets for batch deployment creation
-    - New-AzMLWorkspaceIdAssetReferenceObject
-    - New-AzMLWorkspaceDataPathAssetReferenceObject
-    - New-AzMLWorkspaceOutputPathAssetReferenceObject
+    - `New-AzMLWorkspaceIdAssetReferenceObject`
+    - `New-AzMLWorkspaceDataPathAssetReferenceObject`
+    - `New-AzMLWorkspaceOutputPathAssetReferenceObject`
 
 ## Version 1.0.1
 * Removed the outdated deps.json file.
