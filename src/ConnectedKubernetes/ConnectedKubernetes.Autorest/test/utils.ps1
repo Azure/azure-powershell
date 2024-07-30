@@ -62,10 +62,10 @@ function setupEnv() {
     $kubeContext = 'kind-good-cluster'
     $env.Add('kubeContext', $kubeContext)
 
-    write-host "1. start to create test group..."
+    write-host "1. Creating a test resource group..."
     New-AzResourceGroup -Name $env.resourceGroupEUS -Location "eastus"
 
-    write-host "1. Create a Connected Kubernetes..."
+    write-host "2. Create a Connected Kubernetes..."
     New-AzConnectedKubernetes -ClusterName $env.clusterNameEUS2 -ResourceGroupName $env.resourceGroupEUS -Location $env.locationEUS -KubeConfig $HOME\.kube\config -KubeContext $env.kubeContext
 
     $envFile = 'env.json'

@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'AzConnectedKubernetes' {
     It 'CreateExpanded' {
         {
-            $config = New-AzConnectedKubernetes -ClusterName $env.clusterNameEUS1 -ResourceGroupName $env.resourceGroupEUS -Location $env.locationEUS
+            $config = New-AzConnectedKubernetes -ClusterName $env.clusterNameEUS1 -ResourceGroupName $env.resourceGroupEUS -Location $env.locationEUS -OidcIssuerProfileEnabled
             $config.ProvisioningState | Should -Be 'Succeeded'
 
             # Clear helm azure-arc environment

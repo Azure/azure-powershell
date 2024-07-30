@@ -174,6 +174,24 @@ function New-AzConnectedKubernetes {
         ${CustomLocationsOid},
 
         [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # Whether to enable oidc issuer for workload identity integration.
+        ${OidcIssuerProfileEnabled},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+        [System.String]
+        # The issuer url for public cloud clusters - AKS, EKS, GKE - used for the workload identity feature.
+        ${OidcIssuerProfileSelfHostedIssuerUrl},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # Whether to enable or disable the workload identity Webhook
+        ${WorkloadIdentityEnabled},
+
+        [Parameter()]
         [System.Management.Automation.SwitchParameter]
         # Accept EULA of ConnectedKubernetes, legal term will pop up without this parameter provided
         ${AcceptEULA},
@@ -240,6 +258,7 @@ function New-AzConnectedKubernetes {
 
     process {
         . "$PSScriptRoot/helpers/HelmHelper.ps1"
+        # throw "Something terrible happened!"
         if($AzureHybridBenefit){
             if(!$AcceptEULA){
                 $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
