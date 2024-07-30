@@ -34,13 +34,18 @@ namespace Microsoft.Azure.Management.AlertsManagement
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AlertsMetaData>> MetaDataWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List all existing alerts, where the results can be filtered on the basis of multiple parameters (e.g. time range). The results can then be sorted on the basis specific fields, with the default being lastModifiedDateTime. 
+        /// List all existing alerts, where the results can be filtered on the basis of
+        /// multiple parameters (e.g. time range). The results can then be sorted on
+        /// the basis specific fields, with the default being lastModifiedDateTime.
         /// </summary>
         /// <remarks>
-        /// List all existing alerts, where the results can be filtered on the basis of multiple parameters (e.g. time range). The results can then be sorted on the basis specific fields, with the default being lastModifiedDateTime. 
+        /// List all existing alerts, where the results can be filtered on the basis of
+        /// multiple parameters (e.g. time range). The results can then be sorted on
+        /// the basis specific fields, with the default being lastModifiedDateTime.
         /// </remarks>
         /// <param name='targetResource'>
-        /// Filter by target resource( which is full ARM ID) Default value is select all.
+        /// Filter by target resource( which is full ARM ID) Default value is select
+        /// all.
         /// </param>
         /// <param name='targetResourceType'>
         /// Filter by target resource type. Default value is select all.
@@ -49,10 +54,12 @@ namespace Microsoft.Azure.Management.AlertsManagement
         /// Filter by target resource group name. Default value is select all.
         /// </param>
         /// <param name='monitorService'>
-        /// Filter by monitor service which generates the alert instance. Default value is select all.
+        /// Filter by monitor service which generates the alert instance. Default value
+        /// is select all.
         /// </param>
         /// <param name='monitorCondition'>
-        /// Filter by monitor condition which is either &#39;Fired&#39; or &#39;Resolved&#39;. Default value is to select all.
+        /// Filter by monitor condition which is either &#39;Fired&#39; or &#39;Resolved&#39;. Default
+        /// value is to select all.
         /// </param>
         /// <param name='severity'>
         /// Filter by severity.  Default value is select all.
@@ -67,28 +74,40 @@ namespace Microsoft.Azure.Management.AlertsManagement
         /// Filter the alerts list by the Smart Group Id. Default value is none.
         /// </param>
         /// <param name='includeContext'>
-        /// Include context which has contextual data specific to the monitor service. Default value is false&#39;
+        /// Include context which has contextual data specific to the monitor service.
+        /// Default value is false&#39;
         /// </param>
         /// <param name='includeEgressConfig'>
-        /// Include egress config which would be used for displaying the content in portal.  Default value is &#39;false&#39;.
+        /// Include egress config which would be used for displaying the content in
+        /// portal.  Default value is &#39;false&#39;.
         /// </param>
         /// <param name='pageCount'>
-        /// Determines number of alerts returned per page in response. Permissible value is between 1 to 250. When the &#34;includeContent&#34;  filter is selected, maximum value allowed is 25. Default value is 25.
+        /// Determines number of alerts returned per page in response. Permissible
+        /// value is between 1 to 250. When the &#34;includeContent&#34;  filter is selected,
+        /// maximum value allowed is 25. Default value is 25.
         /// </param>
         /// <param name='sortBy'>
-        /// Sort the query results by input field,  Default value is &#39;lastModifiedDateTime&#39;.
+        /// Sort the query results by input field,  Default value is
+        /// &#39;lastModifiedDateTime&#39;.
         /// </param>
         /// <param name='sortOrder'>
-        /// Sort the query results order in either ascending or descending.  Default value is &#39;desc&#39; for time fields and &#39;asc&#39; for others.
+        /// Sort the query results order in either ascending or descending.  Default
+        /// value is &#39;desc&#39; for time fields and &#39;asc&#39; for others.
         /// </param>
         /// <param name='select'>
-        /// This filter allows to selection of the fields(comma separated) which would  be part of the essential section. This would allow to project only the  required fields rather than getting entire content.  Default is to fetch all the fields in the essentials section.
+        /// This filter allows to selection of the fields(comma separated) which would 
+        /// be part of the essential section. This would allow to project only the 
+        /// required fields rather than getting entire content.  Default is to fetch
+        /// all the fields in the essentials section.
         /// </param>
         /// <param name='timeRange'>
         /// Filter by time range by below listed values. Default value is 1 day.
         /// </param>
         /// <param name='customTimeRange'>
-        /// Filter by custom time range in the format &lt;start-time&gt;/&lt;end-time&gt;  where time is in (ISO-8601 format)&#39;. Permissible values is within 30 days from  query time. Either timeRange or customTimeRange could be used but not both. Default is none.
+        /// Filter by custom time range in the format &lt;start-time&gt;/&lt;end-time&gt;  where
+        /// time is in (ISO-8601 format)&#39;. Permissible values is within 30 days from 
+        /// query time. Either timeRange or customTimeRange could be used but not both.
+        /// Default is none.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -157,10 +176,12 @@ namespace Microsoft.Azure.Management.AlertsManagement
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Alert>> ChangeStateWithHttpMessagesAsync(string alertId, string newState, Comments comment = default(Comments), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get the history of an alert, which captures any monitor condition changes (Fired/Resolved) and alert state changes (New/Acknowledged/Closed).
+        /// Get the history of an alert, which captures any monitor condition changes
+        /// (Fired/Resolved) and alert state changes (New/Acknowledged/Closed).
         /// </summary>
         /// <remarks>
-        /// Get the history of an alert, which captures any monitor condition changes (Fired/Resolved) and alert state changes (New/Acknowledged/Closed).
+        /// Get the history of an alert, which captures any monitor condition changes
+        /// (Fired/Resolved) and alert state changes (New/Acknowledged/Closed).
         /// </remarks>
         /// <param name='alertId'>
         /// Unique ID of an alert instance.
@@ -180,19 +201,25 @@ namespace Microsoft.Azure.Management.AlertsManagement
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AlertModification>> GetHistoryWithHttpMessagesAsync(string alertId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get a summarized count of your alerts grouped by various parameters (e.g. grouping by &#39;Severity&#39; returns the count of alerts for each severity).
+        /// Get a summarized count of your alerts grouped by various parameters (e.g.
+        /// grouping by &#39;Severity&#39; returns the count of alerts for each severity).
         /// </summary>
         /// <remarks>
-        /// Get a summarized count of your alerts grouped by various parameters (e.g. grouping by &#39;Severity&#39; returns the count of alerts for each severity).
+        /// Get a summarized count of your alerts grouped by various parameters (e.g.
+        /// grouping by &#39;Severity&#39; returns the count of alerts for each severity).
         /// </remarks>
         /// <param name='groupby'>
-        /// This parameter allows the result set to be grouped by input fields (Maximum 2 comma separated fields supported). For example, groupby=severity or groupby=severity,alertstate.
+        /// This parameter allows the result set to be grouped by input fields (Maximum
+        /// 2 comma separated fields supported). For example, groupby=severity or
+        /// groupby=severity,alertstate.
         /// </param>
         /// <param name='includeSmartGroupsCount'>
-        /// Include count of the SmartGroups as part of the summary. Default value is &#39;false&#39;.
+        /// Include count of the SmartGroups as part of the summary. Default value is
+        /// &#39;false&#39;.
         /// </param>
         /// <param name='targetResource'>
-        /// Filter by target resource( which is full ARM ID) Default value is select all.
+        /// Filter by target resource( which is full ARM ID) Default value is select
+        /// all.
         /// </param>
         /// <param name='targetResourceType'>
         /// Filter by target resource type. Default value is select all.
@@ -201,10 +228,12 @@ namespace Microsoft.Azure.Management.AlertsManagement
         /// Filter by target resource group name. Default value is select all.
         /// </param>
         /// <param name='monitorService'>
-        /// Filter by monitor service which generates the alert instance. Default value is select all.
+        /// Filter by monitor service which generates the alert instance. Default value
+        /// is select all.
         /// </param>
         /// <param name='monitorCondition'>
-        /// Filter by monitor condition which is either &#39;Fired&#39; or &#39;Resolved&#39;. Default value is to select all.
+        /// Filter by monitor condition which is either &#39;Fired&#39; or &#39;Resolved&#39;. Default
+        /// value is to select all.
         /// </param>
         /// <param name='severity'>
         /// Filter by severity.  Default value is select all.
@@ -219,7 +248,10 @@ namespace Microsoft.Azure.Management.AlertsManagement
         /// Filter by time range by below listed values. Default value is 1 day.
         /// </param>
         /// <param name='customTimeRange'>
-        /// Filter by custom time range in the format &lt;start-time&gt;/&lt;end-time&gt;  where time is in (ISO-8601 format)&#39;. Permissible values is within 30 days from  query time. Either timeRange or customTimeRange could be used but not both. Default is none.
+        /// Filter by custom time range in the format &lt;start-time&gt;/&lt;end-time&gt;  where
+        /// time is in (ISO-8601 format)&#39;. Permissible values is within 30 days from 
+        /// query time. Either timeRange or customTimeRange could be used but not both.
+        /// Default is none.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -236,10 +268,14 @@ namespace Microsoft.Azure.Management.AlertsManagement
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AlertsSummary>> GetSummaryWithHttpMessagesAsync(string groupby, bool? includeSmartGroupsCount = default(bool?), string targetResource = default(string), string targetResourceType = default(string), string targetResourceGroup = default(string), string monitorService = default(string), string monitorCondition = default(string), string severity = default(string), string alertState = default(string), string alertRule = default(string), string timeRange = default(string), string customTimeRange = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List all existing alerts, where the results can be filtered on the basis of multiple parameters (e.g. time range). The results can then be sorted on the basis specific fields, with the default being lastModifiedDateTime. 
+        /// List all existing alerts, where the results can be filtered on the basis of
+        /// multiple parameters (e.g. time range). The results can then be sorted on
+        /// the basis specific fields, with the default being lastModifiedDateTime.
         /// </summary>
         /// <remarks>
-        /// List all existing alerts, where the results can be filtered on the basis of multiple parameters (e.g. time range). The results can then be sorted on the basis specific fields, with the default being lastModifiedDateTime. 
+        /// List all existing alerts, where the results can be filtered on the basis of
+        /// multiple parameters (e.g. time range). The results can then be sorted on
+        /// the basis specific fields, with the default being lastModifiedDateTime.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

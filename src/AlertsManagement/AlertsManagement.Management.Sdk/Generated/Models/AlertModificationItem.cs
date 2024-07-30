@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
         /// </summary>
 
         /// <param name="modificationEvent">Reason for the modification
-        /// Possible values include: 'AlertCreated', 'StateChange',
-        /// 'MonitorConditionChange', 'SeverityChange', 'ActionRuleTriggered',
-        /// 'ActionRuleSuppressed', 'ActionsTriggered', 'ActionsSuppressed',
-        /// 'ActionsFailed'</param>
+        /// Possible values include: &#39;AlertCreated&#39;, &#39;StateChange&#39;,
+        /// &#39;MonitorConditionChange&#39;, &#39;SeverityChange&#39;, &#39;ActionRuleTriggered&#39;,
+        /// &#39;ActionRuleSuppressed&#39;, &#39;ActionsTriggered&#39;, &#39;ActionsSuppressed&#39;,
+        /// &#39;ActionsFailed&#39;</param>
 
         /// <param name="oldValue">Old value
         /// </param>
