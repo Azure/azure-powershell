@@ -14,7 +14,7 @@ Create an in-memory object for DataLakeAnalytics.
 
 ```
 New-AzMLWorkspaceDataLakeAnalyticsObject [-Description <String>] [-DisableLocalAuth <Boolean>]
- [-ResourceId <String>] [-DataLakeStoreAccountName <String>] [-ProgressAction <ActionPreference>]
+ [-ResourceId <String>] [-DataLakeStoreAccountName <String>]
  [<CommonParameters>]
 ```
 
@@ -69,21 +69,6 @@ Opt-out of local authentication and ensure customers can use only MSI and AAD ex
 Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

@@ -15,13 +15,13 @@ Checks for potential compatibility issues between your system and Azure File Syn
 ### PathBased (Default)
 ```
 Invoke-AzStorageSyncCompatibilityCheck [-Path] <String> [-Credential <PSCredential>] [-SkipSystemChecks]
- [-SkipNamespaceChecks] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-SkipNamespaceChecks] [<CommonParameters>]
 ```
 
 ### ComputerNameBased
 ```
 Invoke-AzStorageSyncCompatibilityCheck [-Credential <PSCredential>] [-ComputerName] <String>
- [-SkipSystemChecks] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-SkipSystemChecks] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,21 +102,6 @@ Aliases:
 
 Required: True
 Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
