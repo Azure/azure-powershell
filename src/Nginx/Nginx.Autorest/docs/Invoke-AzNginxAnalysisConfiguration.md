@@ -61,7 +61,6 @@ SUCCEEDED
 
 This command analyzes the configuration before you submit to create your configuration for your nginx deployment
 
-
 ## PARAMETERS
 
 ### -Body

@@ -1,22 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Analyzing nginx configuration before creating the nginx configuration
 ```powershell
-{{ Add code here }}
+$confFile = New-AzNginxConfigurationFileObject -VirtualPath "nginx.conf" -Content 'xxxx'
+        
+# configuration analysis
+$confAnalysis = Invoke-AzNginxAnalysisConfiguration -ConfigurationName default -DeploymentName xxxx -ResourceGroupName xxxx -ConfigFile $confFile -ConfigRootFile "nginx.conf"
 ```
 
 ```output
-{{ Add output here }}
+Status
+------
+SUCCEEDED
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command analyzes the configuration before you submit to create your configuration for your nginx deployment
