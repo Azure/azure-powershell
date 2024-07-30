@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the DevCenterdata service.
 
 ---
-## Status
-[![Az.DevCenterdata](https://img.shields.io/powershellgallery/v/Az.DevCenterdata.svg?style=flat-square&label=Az.DevCenterdata "Az.DevCenterdata")](https://www.powershellgallery.com/packages/Az.DevCenterdata/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -101,6 +98,18 @@ directive:
         "description": "OK. The request has succeeded.",
         "schema": {"$ref": "#/definitions/OperationStatus"}
       }
+  - from: swagger-document
+    where: $.paths["/projects/{projectName}"].get.operationId
+    transform: >-
+      return "Projects_Get"
+  - from: swagger-document
+    where: $.paths["/projects/{projectName}/users/{userId}/abilities"].get.operationId
+    transform: >-
+      return "Projects_GetAbilities"
+  - from: swagger-document
+    where: $.paths["/projects"].get.operationId
+    transform: >-
+      return "Projects_List"
   - where:
       subject: ^(.*)(DevBoxPool)(.*)$
     set:

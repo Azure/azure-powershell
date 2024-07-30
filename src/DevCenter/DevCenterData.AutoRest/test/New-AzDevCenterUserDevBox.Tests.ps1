@@ -21,17 +21,17 @@ Describe 'New-AzDevCenterUserDevBox' {
         $devBox.ProjectName | Should -Be $env.projectName
         $devBox.poolName | Should -Be $env.poolName
         $devBox.OSType | Should -Be "Windows"
-        $devBox.OSDiskSizeGb | Should -Be "1024"
+        $devBox.StorageProfile.OSDiskSizeGb | Should -Be "1024"
         $devBox.Location | Should -Be $env.location
         $devBox.LocalAdministrator | Should -Be "Enabled"
-        $devBox.ImageReferenceVersion | Should -Be "1.0.0"
+        $devBox.ImageReference.Version | Should -Be "1.0.0"
         $devBox.HibernateSupport | Should -Be "Enabled"
-        $devBox.ImageReferenceName | Should -Be $env.imageName
-        $devBox.HardwareProfileVCpUs | Should -Be 8
-        $devBox.HardwareProfileMemoryGb | Should -Be 32
-        $devBox.HardwareProfileSkuName | Should -Be $env.skuName
-        $devBox.ImageReferenceOSBuildNumber | Should -Be "win11-22h2-ent-cpc-os"
-        $devBox.ImageReferenceOperatingSystem | Should -Be "Windows11"
+        $devBox.ImageReference.Name | Should -Be $env.imageName
+        $devBox.HardwareProfile.VCpUs | Should -Be 8
+        $devBox.HardwareProfile.MemoryGb | Should -Be 32
+        $devBox.HardwareProfile.SkuName | Should -Be $env.skuName
+        $devBox.ImageReference.OSBuildNumber | Should -Be "win11-22h2-ent-cpc-os"
+        $devBox.ImageReference.OperatingSystem | Should -Be "Windows11"
         $devBox.ProvisioningState | Should -Be "Succeeded"
         $devBox.PowerState | Should -Be "Running"
 
@@ -42,17 +42,17 @@ Describe 'New-AzDevCenterUserDevBox' {
             $devBox.ProjectName | Should -Be $env.projectName
             $devBox.poolName | Should -Be $env.poolName
             $devBox.OSType | Should -Be "Windows"
-            $devBox.OSDiskSizeGb | Should -Be "1024"
+            $devBox.StorageProfile.OSDiskSizeGb | Should -Be "1024"
             $devBox.Location | Should -Be $env.location
             $devBox.LocalAdministrator | Should -Be "Enabled"
-            $devBox.ImageReferenceVersion | Should -Be "1.0.0"
+            $devBox.ImageReference.Version | Should -Be "1.0.0"
             $devBox.HibernateSupport | Should -Be "Enabled"
-            $devBox.ImageReferenceName | Should -Be $env.imageName
-            $devBox.HardwareProfileVCpUs | Should -Be 8
-            $devBox.HardwareProfileMemoryGb | Should -Be 32
-            $devBox.HardwareProfileSkuName | Should -Be $env.skuName
-            $devBox.ImageReferenceOSBuildNumber | Should -Be "win11-22h2-ent-cpc-os"
-            $devBox.ImageReferenceOperatingSystem | Should -Be "Windows11"
+            $devBox.ImageReference.Name | Should -Be $env.imageName
+            $devBox.HardwareProfile.VCpUs | Should -Be 8
+            $devBox.HardwareProfile.MemoryGb | Should -Be 32
+            $devBox.HardwareProfile.SkuName | Should -Be $env.skuName
+            $devBox.ImageReference.OSBuildNumber | Should -Be "win11-22h2-ent-cpc-os"
+            $devBox.ImageReference.OperatingSystem | Should -Be "Windows11"
             $devBox.ProvisioningState | Should -Be "Succeeded"
             $devBox.PowerState | Should -Be "Running"
         }
@@ -68,17 +68,17 @@ Describe 'New-AzDevCenterUserDevBox' {
         $devBox.ProjectName | Should -Be $env.projectName
         $devBox.poolName | Should -Be $env.poolName
         $devBox.OSType | Should -Be "Windows"
-        $devBox.OSDiskSizeGb | Should -Be "1024"
+        $devBox.StorageProfile.OSDiskSizeGb | Should -Be "1024"
         $devBox.Location | Should -Be $env.location
         $devBox.LocalAdministrator | Should -Be "Enabled"
-        $devBox.ImageReferenceVersion | Should -Be "1.0.0"
+        $devBox.ImageReference.Version | Should -Be "1.0.0"
         $devBox.HibernateSupport | Should -Be "Enabled"
-        $devBox.ImageReferenceName | Should -Be $env.imageName
-        $devBox.HardwareProfileVCpUs | Should -Be 8
-        $devBox.HardwareProfileMemoryGb | Should -Be 32
-        $devBox.HardwareProfileSkuName | Should -Be $env.skuName
-        $devBox.ImageReferenceOSBuildNumber | Should -Be "win11-22h2-ent-cpc-os"
-        $devBox.ImageReferenceOperatingSystem | Should -Be "Windows11"
+        $devBox.ImageReference.Name | Should -Be $env.imageName
+        $devBox.HardwareProfile.VCpUs | Should -Be 8
+        $devBox.HardwareProfile.MemoryGb | Should -Be 32
+        $devBox.HardwareProfile.SkuName | Should -Be $env.skuName
+        $devBox.ImageReference.OSBuildNumber | Should -Be "win11-22h2-ent-cpc-os"
+        $devBox.ImageReference.OperatingSystem | Should -Be "Windows11"
         $devBox.ProvisioningState | Should -Be "Succeeded"
         $devBox.PowerState | Should -Be "Running"
 
@@ -89,17 +89,17 @@ Describe 'New-AzDevCenterUserDevBox' {
             $devBox.ProjectName | Should -Be $env.projectName
             $devBox.poolName | Should -Be $env.poolName
             $devBox.OSType | Should -Be "Windows"
-            $devBox.OSDiskSizeGb | Should -Be "1024"
+            $devBox.StorageProfile.OSDiskSizeGb | Should -Be "1024"
             $devBox.Location | Should -Be $env.location
             $devBox.LocalAdministrator | Should -Be "Enabled"
-            $devBox.ImageReferenceVersion | Should -Be "1.0.0"
+            $devBox.ImageReference.Version | Should -Be "1.0.0"
             $devBox.HibernateSupport | Should -Be "Enabled"
-            $devBox.ImageReferenceName | Should -Be $env.imageName
-            $devBox.HardwareProfileVCpUs | Should -Be 8
-            $devBox.HardwareProfileMemoryGb | Should -Be 32
-            $devBox.HardwareProfileSkuName | Should -Be $env.skuName
-            $devBox.ImageReferenceOSBuildNumber | Should -Be "win11-22h2-ent-cpc-os"
-            $devBox.ImageReferenceOperatingSystem | Should -Be "Windows11"
+            $devBox.ImageReference.Name | Should -Be $env.imageName
+            $devBox.HardwareProfile.VCpUs | Should -Be 8
+            $devBox.HardwareProfile.MemoryGb | Should -Be 32
+            $devBox.HardwareProfile.SkuName | Should -Be $env.skuName
+            $devBox.ImageReference.OSBuildNumber | Should -Be "win11-22h2-ent-cpc-os"
+            $devBox.ImageReference.OperatingSystem | Should -Be "Windows11"
             $devBox.ProvisioningState | Should -Be "Succeeded"
             $devBox.PowerState | Should -Be "Running"
         }

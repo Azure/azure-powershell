@@ -53,49 +53,49 @@ Gets a pool.
 
 ## EXAMPLES
 
-### Example 1: List pools by endpoint
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 Get-AzDevCenterUserPool -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject
 ```
 
-This command lists the pools in the project "DevProject".
 
-### Example 2: List pools by dev center
+
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 Get-AzDevCenterUserPool -DevCenterName Contoso -ProjectName DevProject
 ```
 
-This command lists the pools in the project "DevProject".
 
-### Example 3: Get pool by endpoint
+
+### -------------------------- EXAMPLE 3 --------------------------
 ```powershell
 Get-AzDevCenterUserPool -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -PoolName DevPool
 ```
 
-This command gets the pool "DevPool" in the project "DevProject".
 
-### Example 4: Get pool by dev center
+
+### -------------------------- EXAMPLE 4 --------------------------
 ```powershell
 Get-AzDevCenterUserPool -DevCenterName Contoso -ProjectName DevProject -PoolName DevPool
 ```
 
-This command gets the pool "DevPool" in the project "DevProject".
 
-### Example 5: Get pool by endpoint and InputObject
+
+### -------------------------- EXAMPLE 5 --------------------------
 ```powershell
 $devBoxInput = @{"ProjectName" = "DevProject"; "PoolName" = "DevPool" }
 Get-AzDevCenterUserPool -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $devBoxInput
 ```
 
-This command gets the pool "DevPool" in the project "DevProject".
 
-### Example 6: Get pool by dev center and InputObject
+
+### -------------------------- EXAMPLE 6 --------------------------
 ```powershell
 $devBoxInput = @{"ProjectName" = "DevProject"; "PoolName" = "DevPool" }
 Get-AzDevCenterUserPool -DevCenterName Contoso -InputObject $devBoxInput
 ```
 
-This command gets the pool "DevPool" in the project "DevProject".
+
 
 ## PARAMETERS
 

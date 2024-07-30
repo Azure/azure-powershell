@@ -1,25 +1,22 @@
-### Example 1: Create a dev box by endpoint
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzDevCenterUserDevBox -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -UserId 786a823c-8037-48ab-89b8-8599901e67d0 -Name myDevBox -PoolName DevPool
+{{ Add code here }}
 ```
-This command creates the dev box "myDevBox" for the user "786a823c-8037-48ab-89b8-8599901e67d0".
 
-### Example 2: Create a dev box by dev center
-```powershell
-New-AzDevCenterUserDevBox -DevCenterName Contoso -ProjectName DevProject -UserId "me" -Name myDevBox -PoolName DevPool
+```output
+{{ Add output here }}
 ```
-This command creates the dev box "myDevBox" for the currently signed-in user.
 
-### Example 3: Create a dev box by endpoint and InputObject
-```powershell
-$devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject" }
-New-AzDevCenterUserDevBox -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $devBoxInput -PoolName DevPool
-```
-This command creates the dev box "myDevBox" for the currently signed-in user.
+{{ Add description here }}
 
-### Example 4: Create a dev box by dev center and InputObject
+### Example 2: {{ Add title here }}
 ```powershell
-$devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "786a823c-8037-48ab-89b8-8599901e67d0"; "ProjectName" = "DevProject" }
-New-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput -PoolName DevPool
+{{ Add code here }}
 ```
-This command creates the dev box "myDevBox" for the user "786a823c-8037-48ab-89b8-8599901e67d0".
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
