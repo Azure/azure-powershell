@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.PowerSh
 
     private const string ModelNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models";
     private const string SupportNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support";
-    private const string PropertiesExcludedForTableview = @"Id,Type";
+    private const string PropertiesExcludedForTableview = @"";
 
     private static readonly bool IsAzure = Convert.ToBoolean(@"true");
 

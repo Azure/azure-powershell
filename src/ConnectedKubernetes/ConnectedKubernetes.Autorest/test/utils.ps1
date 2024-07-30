@@ -59,7 +59,7 @@ function setupEnv() {
     $resourceGroupEUS = "testgroup" + $env.locationEUS
     $env.Add("resourceGroupEUS", $resourceGroupEUS)
 
-    $kubeContext = 'youriKubtest'
+    $kubeContext = 'kind-good-cluster'
     $env.Add('kubeContext', $kubeContext)
 
     write-host "1. start to create test group..."

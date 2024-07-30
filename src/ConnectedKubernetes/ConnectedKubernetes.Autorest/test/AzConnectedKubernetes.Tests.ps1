@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'AzConnectedKubernetes' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded' {
         {
             $config = New-AzConnectedKubernetes -ClusterName $env.clusterNameEUS1 -ResourceGroupName $env.resourceGroupEUS -Location $env.locationEUS
             $config.ProvisioningState | Should -Be 'Succeeded'

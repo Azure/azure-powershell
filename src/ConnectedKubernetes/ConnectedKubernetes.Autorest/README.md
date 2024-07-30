@@ -44,11 +44,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: ac6324d13863e8157f4b392ef0ceef1e86eea935
+commit: 0ce2859b2f018adcea3d14346951ff4270dcff3d
 require:
-  - $(this-folder)/../../readme.azure.noprofile.md
+  - $(this-folder)/../../../tools/SwaggerCI/readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/hybridkubernetes/resource-manager/Microsoft.Kubernetes/preview/2022-10-01-preview/connectedClusters.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/hybridkubernetes/resource-manager/Microsoft.Kubernetes/preview/2024-07-01-preview/connectedClusters.json
 
 title: ConnectedKubernetes
 module-version: 0.1.0
