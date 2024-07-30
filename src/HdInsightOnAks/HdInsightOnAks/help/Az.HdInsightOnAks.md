@@ -29,68 +29,47 @@ Gets the status of a cluster instance.
 ### [Get-AzHdInsightOnAksClusterJob](Get-AzHdInsightOnAksClusterJob.md)
 Get jobs of HDInsight on AKS cluster.
 
-### [Get-AzHdInsightOnAksClusterLibrary](Get-AzHdInsightOnAksClusterLibrary.md)
-Get all libraries of HDInsight on AKS cluster.
-
 ### [Get-AzHdInsightOnAksClusterPool](Get-AzHdInsightOnAksClusterPool.md)
 Gets a cluster pool.
 
 ### [Get-AzHdInsightOnAksClusterPoolAvailableUpgrade](Get-AzHdInsightOnAksClusterPoolAvailableUpgrade.md)
 List a cluster pool available upgrade.
 
-### [Get-AzHdInsightOnAksClusterPoolUpgradeHistory](Get-AzHdInsightOnAksClusterPoolUpgradeHistory.md)
-Returns a list of upgrade history.
-
 ### [Get-AzHdInsightOnAksClusterServiceConfig](Get-AzHdInsightOnAksClusterServiceConfig.md)
 Lists the config dump of all services running in cluster.
-
-### [Get-AzHdInsightOnAksClusterUpgradeHistory](Get-AzHdInsightOnAksClusterUpgradeHistory.md)
-Returns a list of upgrade history.
-
-### [Invoke-AzHdInsightOnAksManageClusterLibrary](Invoke-AzHdInsightOnAksManageClusterLibrary.md)
-Library management operations on HDInsight on AKS cluster.
 
 ### [New-AzHdInsightOnAksCluster](New-AzHdInsightOnAksCluster.md)
 Create a cluster.
 
 ### [New-AzHdInsightOnAksClusterConfigFileObject](New-AzHdInsightOnAksClusterConfigFileObject.md)
-Create an in-memory object for ClusterConfigFile.
+Create cluster config file.
 
 ### [New-AzHdInsightOnAksClusterHotfixUpgradeObject](New-AzHdInsightOnAksClusterHotfixUpgradeObject.md)
-Create an in-memory object for ClusterHotfixUpgradeProperties.
-
-### [New-AzHdInsightOnAksClusterMavenLibraryObject](New-AzHdInsightOnAksClusterMavenLibraryObject.md)
-Create an in-memory object for MavenLibraryProperties.
+Create an object to hold the cluster upgrade parameters.
 
 ### [New-AzHdInsightOnAksClusterPool](New-AzHdInsightOnAksClusterPool.md)
 Create a cluster pool.
 
-### [New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject](New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject.md)
-Create an in-memory object for ClusterPoolAksPatchVersionUpgradeProperties.
-
-### [New-AzHdInsightOnAksClusterPyPiLibraryObject](New-AzHdInsightOnAksClusterPyPiLibraryObject.md)
-Create an in-memory object for PyPiLibraryProperties.
+### [New-AzHdInsightOnAksClusterPoolAKSUpgradeObject](New-AzHdInsightOnAksClusterPoolAKSUpgradeObject.md)
+Create an object to hold the cluster pool upgrade parameters.
 
 ### [New-AzHdInsightOnAksClusterServiceConfigObject](New-AzHdInsightOnAksClusterServiceConfigObject.md)
-Create an in-memory object for ClusterServiceConfig.
+Create a component config.
 
 ### [New-AzHdInsightOnAksClusterServiceConfigsProfileObject](New-AzHdInsightOnAksClusterServiceConfigsProfileObject.md)
-Create an in-memory object for ClusterServiceConfigsProfile.
+Create a service config profile.
 
 ### [New-AzHdInsightOnAksFlinkJobObject](New-AzHdInsightOnAksFlinkJobObject.md)
 Create an object as a parameter for submitting cluster work
 
-### [New-AzHdInsightOnAksManagedIdentityObject](New-AzHdInsightOnAksManagedIdentityObject.md)
-Create an in-memory object for ManagedIdentitySpec.
-
 ### [New-AzHdInsightOnAksNodeProfileObject](New-AzHdInsightOnAksNodeProfileObject.md)
-Create an in-memory object for NodeProfile.
+Create a node profile with SKU and worker count.
 
 ### [New-AzHdInsightOnAksSecretReferenceObject](New-AzHdInsightOnAksSecretReferenceObject.md)
-Create an in-memory object for SecretReference.
+Create a reference to provide a secret to store the password for accessing the database.
 
 ### [New-AzHdInsightOnAksTrinoHiveCatalogObject](New-AzHdInsightOnAksTrinoHiveCatalogObject.md)
-Create an in-memory object for HiveCatalogOption.
+Create a hive catalog configured as a Trino cluster.
 
 ### [Remove-AzHdInsightOnAksCluster](Remove-AzHdInsightOnAksCluster.md)
 Deletes a cluster.
@@ -113,15 +92,9 @@ Check the availability of the resource name.
 ### [Update-AzHdInsightOnAksCluster](Update-AzHdInsightOnAksCluster.md)
 Update an existing Cluster.
 
+### [Update-AzHdInsightOnAksClusterPool](Update-AzHdInsightOnAksClusterPool.md)
+Upgrade a cluster pool.
+
 ### [Update-AzHdInsightOnAksClusterPoolTag](Update-AzHdInsightOnAksClusterPoolTag.md)
 Update an existing Cluster Pool Tags.
-
-### [Upgrade-AzHdInsightOnAksCluster](Upgrade-AzHdInsightOnAksCluster.md)
-Upgrade a cluster.
-
-### [Upgrade-AzHdInsightOnAksClusterManualRollback](Upgrade-AzHdInsightOnAksClusterManualRollback.md)
-Manual rollback upgrade for a cluster.
-
-### [Upgrade-AzHdInsightOnAksClusterPool](Upgrade-AzHdInsightOnAksClusterPool.md)
-Upgrade a cluster pool.
 

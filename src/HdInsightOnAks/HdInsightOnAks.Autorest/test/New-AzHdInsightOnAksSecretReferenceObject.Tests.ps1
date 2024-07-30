@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzHdInsightOnAksSecretRef
 }
 
 Describe 'New-AzHdInsightOnAksSecretReferenceObject' {
-    It '__AllParameterSets' -skip {
+    It 'Create' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

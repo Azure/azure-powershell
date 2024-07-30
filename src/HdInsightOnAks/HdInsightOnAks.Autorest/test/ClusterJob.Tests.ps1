@@ -16,22 +16,19 @@ if (($null -eq $TestName) -or ($TestName -contains 'ClusterJob')) {
 Describe 'ClusterJob' {
     BeforeAll {
         # Cluster configuration info
-        $location = "westus2"
-        $clusterResourceGroupName = "psGroup"
-        $clusterpoolName = "ps-hilopool"
-        $clusterName = "ps-flink12"
+        $location = "westus3"
+        $clusterResourceGroupName = "PStestGroup"
+        $clusterpoolName = "hilo-pool"
+        $clusterName = "cluster202432112341"
         $clusterType = "Flink"
-        $clusterVersion = (Get-AzHdInsightOnAksAvailableClusterVersion -Location $location | Where-Object { $_.ClusterType -eq $clusterType } | Where-Object ClusterPoolVersion -eq "1.2")
-        $ComputeProfileNode = New-AzHdInsightOnAksNodeProfileObject -Type "Worker" -Count 3 -VMSize "Standard_D4a_v4"
+        $clusterVersion = (Get-AzHdInsightOnAksAvailableClusterVersion -Location $location | Where-Object { $_.ClusterType -eq $clusterType } | Where-Object ClusterPoolVersion -eq "1.1")[1]
+        $ComputeProfileNode = New-AzHdInsightOnAksNodeProfileObject -Type "Worker" -Count 3 -VMSize "Standard_D16as_v4"
 
-        $StorageUri = "abfs://flinkdemo125dfsuoi@flinkdemo125stuoi.dfs.core.windows.net"
+        $StorageUri = "abfs://pscontainer3@hilostorage.dfs.core.windows.net"
     }
 
     # If you do not have a cluster, please use this to create a cluster, then do the following tests.
-    It "New-AzHdInsightOnAksCluster_Flink" -skip {
-
-        { $script:ManagedIdentity = New-AzHdInsightOnAksManagedIdentityObject -ClientId $env.msiClientId -ObjectId $env.msiObjectId -ResourceId $env.identityProfileMsiResourceId -Type cluster } | Should -Not -Throw
-        [Console]::WriteLine("New-AzHdInsightOnAksManagedIdentityObject done")
+    It "New-AzHdInsightOnAksCluster_Flink" -Skip {
 
         New-AzHdInsightOnAksCluster -Name $clusterName -PoolName $clusterpoolName `
             -ResourceGroupName $clusterResourceGroupName `
@@ -41,9 +38,11 @@ Describe 'ClusterJob' {
             -OssVersion $clusterVersion.OssVersion `
             -ComputeProfileNode $ComputeProfileNode `
             -AuthorizationUserId $env.authorizationUserId `
-            -ManagedIdentityProfileIdentityList  $ManagedIdentity `
+            -AssignedIdentityClientId $env.msiClientId `
+            -AssignedIdentityObjectId $env.msiObjectId `
+            -AssignedIdentityResourceId $env.identityProfileMsiResourceId `
             -FlinkStorageUrl $storageUri `
-            -JobManagerCpu 1 -JobManagerMemory 2000 -HistoryServerCpu 0.25 -HistoryServerMemory 2000 -TaskManagerCpu 14 -TaskManagerMemory 49016
+            -JobManagerCpu 1 -JobManagerMemory 2000 -TaskManagerCpu 14 -TaskManagerMemory 49016 -HistoryServerCpu 0.25 -HistoryServerMemory 2000
         
         [Console]::WriteLine("New-AzHdInsightOnAksCluster_Flink done")
     }
@@ -52,8 +51,8 @@ Describe 'ClusterJob' {
     It "Start-AzHdInsightOnAksClusterJob" {
 
         $flinkJobProperties = New-AzHdInsightOnAksFlinkJobObject -Action "NEW" -JobName "job1" `
-            -JarName "FlinkJobDemo-1.0-SNAPSHOT.jar" -EntryClass "org.example.SleepJob" `
-            -JobJarDirectory "abfs://flinkdemo125dfsuoi@flinkdemo125stuoi.dfs.core.windows.net/jars" `
+            -JarName "JarName" -EntryClass "com.microsoft.hilo.flink.job.streaming.SleepJob" `
+            -JobJarDirectory "abfs://flinkjob@hilosa.dfs.core.windows.net/jars" `
             -FlinkConfiguration @{parallelism = 1 }
 
         [Console]::WriteLine("New-AzHdInsightOnAksFlinkJobProperties done")
@@ -67,12 +66,16 @@ Describe 'ClusterJob' {
 
 
 
-    It "Get-AzHdInsightOnAksClusterJob" {
+    It "Start-AzHdInsightOnAksClusterJob" {
 
         { $script:jobs = Get-AzHdInsightOnAksClusterJob -ResourceGroupName $clusterResourceGroupName -ClusterName $clusterName -ClusterPoolName $clusterpoolName }  | Should -Not -Throw
         $script:jobs[0].JobType | Should -Be "FlinkJob"
 
         [Console]::WriteLine("Get-AzHdInsightOnAksClusterJob done")
+    }
+
+    AfterAll {
+        # Remove-AzHdInsightOnAksClusterPool -ResourceGroupName $clusterResourceGroupName -Name $clusterpoolName 
     }
 
 }

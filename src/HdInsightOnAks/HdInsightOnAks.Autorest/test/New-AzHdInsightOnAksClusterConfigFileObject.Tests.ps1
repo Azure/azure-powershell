@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzHdInsightOnAksClusterCo
 }
 
 Describe 'New-AzHdInsightOnAksClusterConfigFileObject' {
-    It '__AllParameterSets' -skip {
+    It 'Create' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

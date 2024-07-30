@@ -1,24 +1,30 @@
 ---
 external help file: Az.HdInsightOnAks-help.xml
 Module Name: Az.HdInsightOnAks
-online version: https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonakssecretreferenceobject
+online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksSecretReferenceObject
 schema: 2.0.0
 ---
 
 # New-AzHdInsightOnAksSecretReferenceObject
 
 ## SYNOPSIS
-Create an in-memory object for SecretReference.
+Create a reference to provide a secret to store the password for accessing the database.
 
 ## SYNTAX
 
 ```
-New-AzHdInsightOnAksSecretReferenceObject -ReferenceName <String> -SecretName <String> -Type <String>
- [-Version <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+New-AzHdInsightOnAksSecretReferenceObject -SecretName <String> -ReferenceName <String> [-Version <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for SecretReference.
+Create a reference to provide a secret to store the password for accessing the database.
+$keyVaultResourceId="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/{your resource group name}/providers/Microsoft.KeyVault/vaults/{your vault name}";
+$secretName="{your secret name}"
+$referenceName="{your secret reference name}";
+
+$secretReference=New-AzHdInsightOnAksSecretReferenceObject -SecretName $secretName -ReferenceName $referenceName
+NA
 
 ## EXAMPLES
 
@@ -28,11 +34,11 @@ $keyVaultResourceId="/subscriptions/00000000-0000-0000-0000-000000000000/resourc
 $secretName="{your secret name}"
 $referenceName="{your secret reference name}";
 
-$secretReference=New-AzHdInsightOnAksSecretReferenceObject -SecretName $secretName -ReferenceName $referenceName -Type Secret
+$secretReference=New-AzHdInsightOnAksSecretReferenceObject -SecretName $secretName -ReferenceName $referenceName
 ```
 
 ```output
-SecretName ReferenceName                Type   Version
+KeyVaultObjectName ReferenceName                Type   Version
 ------------------ -------------                ----   -------
 {your secret name} {your secret reference name} Secret
 ```
@@ -41,23 +47,8 @@ Create a reference to provide a secret to store the password for accessing the d
 
 ## PARAMETERS
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ReferenceName
-Reference name of the secret to be used in service configs.
+The reference name of the secret to be used in service configs.
 
 ```yaml
 Type: System.String
@@ -72,22 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecretName
-Object identifier name of the secret in key vault.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Type
-Type of key vault object: secret, key or certificate.
+The secret name in the key vault.
 
 ```yaml
 Type: System.String
@@ -102,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -Version
-Version of the secret in key vault.
+The version of the secret in key vault.
 
 ```yaml
 Type: System.String
@@ -123,7 +99,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SecretReference
+### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReference
 
 ## NOTES
 

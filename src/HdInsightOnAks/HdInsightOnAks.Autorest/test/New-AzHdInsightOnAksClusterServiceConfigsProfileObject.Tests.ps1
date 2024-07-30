@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzHdInsightOnAksClusterSe
 }
 
 Describe 'New-AzHdInsightOnAksClusterServiceConfigsProfileObject' {
-    It '__AllParameterSets' -skip {
+    It 'Create' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

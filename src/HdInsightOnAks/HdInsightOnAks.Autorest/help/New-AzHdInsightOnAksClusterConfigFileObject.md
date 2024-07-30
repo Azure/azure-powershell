@@ -1,24 +1,23 @@
 ---
 external help file:
 Module Name: Az.HdInsightOnAks
-online version: https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksclusterconfigfileobject
+online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksClusterConfigFileObject
 schema: 2.0.0
 ---
 
 # New-AzHdInsightOnAksClusterConfigFileObject
 
 ## SYNOPSIS
-Create an in-memory object for ClusterConfigFile.
+Create cluster config file.
 
 ## SYNTAX
 
 ```
-New-AzHdInsightOnAksClusterConfigFileObject -FileName <String> [-Content <String>] [-Encoding <String>]
- [-Path <String>] [-Value <IClusterConfigFileValues>] [<CommonParameters>]
+New-AzHdInsightOnAksClusterConfigFileObject -FileName <String> -Value <Hashtable> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for ClusterConfigFile.
+Create cluster config file.
 
 ## EXAMPLES
 
@@ -31,45 +30,13 @@ This cmdlet create the config file "core-site.xml" and set the key "fs.defaultFS
 
 ## PARAMETERS
 
-### -Content
-Free form content of the entire configuration file.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Encoding
-This property indicates if the content is encoded and is case-insensitive.
-Please set the value to base64 if the content is base64 encoded.
-Set it to none or skip it if the content is plain text.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -FileName
-Configuration file name.
+The name of the config file.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Name
 
 Required: True
 Position: Named
@@ -78,31 +45,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Path
-Path of the config file if content is specified.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Value
-List of key value pairs
-        where key represents a valid service configuration name and value represents the value of the config.
+List of key value pairs where key represents a valid service configuration name and value represents the value of the config.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterConfigFileValues
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -114,9 +65,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.Collections.HashTable
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterConfigFile
+### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterConfigFile
 
 ## NOTES
 
