@@ -14,9 +14,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMLWorkspaceModelVersion
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzMLWorkspaceModelVersion' {
-    It 'CreateExpanded' {
-        { 
+Describe 'New-AzMLWorkspaceModelVersion' { #Moved
+    It 'CreateExpanded' -Skip {
+        {
             New-AzMLWorkspaceModelVersion  -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name modelcontainerpwsh01 -Version 1 -ModelType "mlflow_model" `
             -ModelUri "azureml://subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/workspaces/mlworkspace-cli01/datastores/workspaceartifactstore/paths/ExperimentRun/dcid.plucky_collar_5x0ds0fgb3/model"
         } | Should -Not -Throw

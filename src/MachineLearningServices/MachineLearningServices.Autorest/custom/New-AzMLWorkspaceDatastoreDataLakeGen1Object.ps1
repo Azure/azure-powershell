@@ -21,12 +21,12 @@ Create an in-memory object for AzureDataLakeGen1Datastore.
 Create an in-memory object for AzureDataLakeGen1Datastore.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AzureDataLakeGen1Datastore
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.AzureDataLakeGen1Datastore
 .Link
-https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreDataLakeGen1Object
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceDatastoreDataLakeGen1Object
 #>
 function New-AzMLWorkspaceDatastoreDataLakeGen1Object {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AzureDataLakeGen1Datastore')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.AzureDataLakeGen1Datastore')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -38,21 +38,21 @@ function New-AzMLWorkspaceDatastoreDataLakeGen1Object {
         [string]
         $StoreName,
         [Parameter(Mandatory, HelpMessage="[Required] Account credentials.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDatastoreCredentials]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDatastoreCredentials]
         $Credentials,
         [Parameter(HelpMessage="The asset description text.")]
         [string]
         $Description,
         [Parameter(HelpMessage="The asset property dictionary.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceBaseProperties]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]
         $Property,
         [Parameter(HelpMessage="Tag dictionary. Tags can be added, removed, and updated.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceBaseTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]
         $Tag
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AzureDataLakeGen1Datastore]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.AzureDataLakeGen1Datastore]::New()
         $Object.DatastoreType = "AzureDataLakeGen1"
 
         if ($PSBoundParameters.ContainsKey('ServiceDataAccessAuthIdentity')) {

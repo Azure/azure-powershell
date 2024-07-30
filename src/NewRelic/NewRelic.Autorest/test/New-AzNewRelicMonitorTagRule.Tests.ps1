@@ -14,8 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzNewRelicMonitorTagRule'
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzNewRelicMonitorTagRule' {
-    It 'CreateExpanded' -skip {
+Describe 'New-AzNewRelicMonitorTagRule' { #Scenario Test
+    It 'CreateViaJsonFilePath' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'CreateViaJsonString' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

@@ -251,6 +251,7 @@ if ($UsePreviousConfigForRecord) {
 # example: $val = $env.AddWithCache('key', $val, $true)
 $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) { return $this[$key] } else { $this[$key] = $val; return $val } } -Name 'AddWithCache'
 function setupEnv() {
+    Write-Host -ForegroundColor Magenta "Setting up globals"
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = Get-SubscriptionId
@@ -332,10 +333,11 @@ function setupEnv() {
     $env['versionRequiresNameOrId'] = 'Version is only allowed if Name or Id  are provided.'
     $env['listVersionsRequiresNameOrId'] = 'ListVersions is only allowed if Name or Id  are provided.'
 
-    # get some test objects
-    $env['customSubDefinition'] = Get-AzPolicyDefinition -Custom | ?{ $_.Id -like '/sub*' } | select -Last 1
-    $env['customSubSetDefinition'] = Get-AzPolicySetDefinition -SubscriptionId $env.subscriptionId -Custom | select -Last 1
-
+    # create a couple of test objects
+    $env['customSubDefName'] = Get-ResourceName
+    $env['customSubDefinition'] = New-AzPolicyDefinition -Name $env.customSubDefName -Policy '{ "if": { "field": "location", "equals": "westus" }, "then": { "effect": "audit" } }'
+    $env['customSubSetDefName'] = Get-ResourceName
+    $env['customSubSetDefinition'] = New-AzPolicySetDefinition -Name $env.customSubSetDefName -PolicyDefinition ("[{""policyDefinitionId"":""" + $($env.customSubDefinition).Id + """}]")
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -345,7 +347,12 @@ function setupEnv() {
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env -Depth 100)
 }
 function cleanupEnv() {
+
+    Write-Host -ForegroundColor Magenta "Cleaning up globals"
     # Clean resources you create for testing
+    $null = Remove-AzPolicySetDefinition -Name $env.customSubSetDefName -Confirm:$false
+    $null = Remove-AzPolicyDefinition -Name $env.customSubDefName -Confirm:$false
     $null = Remove-AzUserAssignedIdentity -ResourceGroupName $env.rgName -Name $env.userAssignedIdentityName
     $null = Remove-ResourceGroup -Name $env.rgName
+    Write-Host -ForegroundColor Magenta "Finished cleaning up globals"
 }

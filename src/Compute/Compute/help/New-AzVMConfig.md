@@ -68,7 +68,7 @@ $securityTypeStnd = "Standard";
         
 # Credential. Input Username and Password values
 $user = "";
-$securePassword = "" | ConvertTo-SecureString -AsPlainText -Force;  
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force;  
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         
 # Creating a VMConfig 
@@ -130,7 +130,7 @@ $SKU = "2019-Datacenter";
         
 # Credential. Input Username and Password values.
 $user = "";
-$securePassword = "" | ConvertTo-SecureString -AsPlainText -Force;  
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force;  
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
@@ -181,8 +181,7 @@ $enable = $true;
 $extDefaultName = "GuestAttestation";
 $vmGADefaultIDentity = "SystemAssigned";
 # Credential
-$password = <Password>;
-$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force;  
 $user = <Username>;
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 # Network resources

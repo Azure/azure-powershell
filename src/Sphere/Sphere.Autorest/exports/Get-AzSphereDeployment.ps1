@@ -22,9 +22,9 @@ Get a Deployment.
 Get a Deployment.
 '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 .Example
-Get-AzSphereDeployment -ResourceGroupName joyer-test -DeviceGroupName testdevicegroup -ProductName product2024 -CatalogName test2024
+Get-AzSphereDeployment -ResourceGroupName group-test -DeviceGroupName testdevicegroup -ProductName product2024 -CatalogName test2024
 .Example
-Get-AzSphereDeployment -ResourceGroupName joyer-test -DeviceGroupName testdevicegroup -ProductName product2024 -CatalogName test2024 -Name 2e83ddd9-6297-48df-9c2c-2257e6b3cc71
+Get-AzSphereDeployment -ResourceGroupName group-test -DeviceGroupName testdevicegroup -ProductName product2024 -CatalogName test2024 -Name 11111111-2222-3333-4444-123456789102
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity

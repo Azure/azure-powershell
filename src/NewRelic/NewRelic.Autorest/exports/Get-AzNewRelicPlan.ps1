@@ -20,17 +20,17 @@ List plans data
 .Description
 List plans data
 .Example
-Get-AzNewRelicPlan -SubscriptionId 272c26cb-7026-4b37-b190-7cb7b2abecb0 -OrganizationId 9c5445c7-65e3-4bd5-8581-80c65584100f
+Get-AzNewRelicPlan -SubscriptionId 11111111-2222-3333-4444-123456789101 -OrganizationId 11111111-2222-3333-4444-123456789104
 .Example
-Get-AzNewRelicPlan -SubscriptionId 272c26cb-7026-4b37-b190-7cb7b2abecb0 -OrganizationId 9c5445c7-65e3-4bd5-8581-80c65584100f -AccountId 3996563
+Get-AzNewRelicPlan -SubscriptionId 11111111-2222-3333-4444-123456789101 -OrganizationId 11111111-2222-3333-4444-123456789104 -AccountId 1234567
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.IPlanDataResource
+Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanDataResource
 .Link
 https://learn.microsoft.com/powershell/module/az.newrelic/get-aznewrelicplan
 #>
 function Get-AzNewRelicPlan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.IPlanDataResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanDataResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -129,7 +129,7 @@ begin {
         $mapping = @{
             List = 'Az.NewRelic.private\Get-AzNewRelicPlan_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {

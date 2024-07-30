@@ -220,7 +220,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Error message if the script was able to run, but if the script itself had
         errors or powershell threw an exception",
         SerializedName = @"failureReason",
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Parameters that will be hidden/not visible to ARM, such as passwords and
         credentials",
         SerializedName = @"hiddenParameters",
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"User-defined dictionary.",
         SerializedName = @"namedOutputs",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionPropertiesNamedOutputs) })]
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Standard output stream from the powershell execution",
         SerializedName = @"output",
         PossibleTypes = new [] { typeof(string) })]
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Parameters the script will accept",
         SerializedName = @"parameters",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameter) })]
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Time to live for the resource. If not provided, will be available for 60 days",
         SerializedName = @"retention",
         PossibleTypes = new [] { typeof(string) })]
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"A reference to the script cmdlet resource if user is running a AVS script",
         SerializedName = @"scriptCmdletId",
         PossibleTypes = new [] { typeof(string) })]
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Time limit for execution",
         SerializedName = @"timeout",
         PossibleTypes = new [] { typeof(string) })]

@@ -17,6 +17,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
     public class PSNetAppFilesReplication
     {
         /// <summary>
+        /// Gets uUID v4 used to identify the replication.        
+        /// </summary>
+        public string ReplicationId { get; set; }
+
+        /// <summary>
         /// Gets or sets indicates whether the local volume is the source or destination
         /// for the Volume Replication. Possible values include: 'src', 'dst'
         /// </summary>

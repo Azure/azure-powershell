@@ -23,7 +23,7 @@ The **Set-AzFirewall** cmdlet updates an Azure Firewall.
 
 ## EXAMPLES
 
-### 1:  Update priority of a Firewall application rule collection
+### Example 1: Update priority of a Firewall application rule collection
 ```powershell
 $azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
 $ruleCollection = $azFw.GetApplicationRuleCollectionByName("ruleCollectionName")
@@ -37,7 +37,7 @@ Assuming Azure Firewall "AzureFirewall" in resource group "rg" contains an appli
 Azure Firewall afterwards. Without the Set-AzFirewall command, all operations performed on the local $azFw 
 object are not reflected on the server.
 
-### 2:  Create a Azure Firewall and set an application rule collection later
+### Example 2: Create a Azure Firewall and set an application rule collection later
 ```powershell
 $azFw = New-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg" -VirtualNetworkName "vnet-name" -PublicIpName "pip-name"
 
@@ -52,7 +52,7 @@ In this example, a Firewall is created first without any application rule collec
 and Application Rule Collection are created, then the Firewall object is modified in memory, without affecting 
 the real configuration in cloud. For changes to be reflected in cloud, Set-AzFirewall must be called.
 
-### 3:  Update Threat Intel operation mode of Azure Firewall
+### Example 3: Update Threat Intel operation mode of Azure Firewall
 ```powershell
 $azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
 $azFw.ThreatIntelMode = "Deny"
@@ -62,7 +62,7 @@ Set-AzFirewall -AzureFirewall $azFw
 This example updates the Threat Intel operation mode of Azure Firewall "AzureFirewall" in resource group "rg".
 Without the Set-AzFirewall command, all operations performed on the local $azFw object are not reflected on the server.
 
-### 4: Deallocate and allocate the Firewall
+### Example 4: Deallocate and allocate the Firewall
 ```powershell
 $firewall=Get-AzFirewall -ResourceGroupName rgName -Name azFw
 $firewall.Deallocate()
@@ -80,7 +80,7 @@ If user wants to start the service again, the Allocate method should be called o
 The new VNet and Public IP must be in the same resource group as the Firewall. Again, for changes to be reflected in cloud,
 Set-AzFirewall must be called.
 
-### 5: Allocate with a management public IP address for forced tunneling scenarios
+### Example 5: Allocate with a management public IP address for forced tunneling scenarios
 ```powershell
 $vnet = Get-AzVirtualNetwork -ResourceGroupName rgName -Name anotherVNetName
 $pip = Get-AzPublicIpAddress -ResourceGroupName rgName -Name publicIpName
@@ -91,7 +91,7 @@ $firewall | Set-AzFirewall
 
 This example allocates the firewall with a management public IP address and subnet for forced tunneling scenarios. The VNet must contain a subnet called "AzureFirewallManagementSubnet".
 
-### 6:	Add a Public IP address to an Azure Firewall
+### Example 6: Add a Public IP address to an Azure Firewall
 ```powershell
 $pip = New-AzPublicIpAddress -Name "azFwPublicIp1" -ResourceGroupName "rg" -Sku "Standard" -Location "centralus" -AllocationMethod Static
 $azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
@@ -102,7 +102,7 @@ $azFw | Set-AzFirewall
 
 In this example, the Public IP Address "azFwPublicIp1" as attached to the Firewall.
 
-### 7:	Remove a Public IP address from an Azure Firewall
+### Example 7:	Remove a Public IP address from an Azure Firewall
 ```powershell
 $pip = Get-AzPublicIpAddress -Name "azFwPublicIp1" -ResourceGroupName "rg"
 $azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
@@ -113,7 +113,7 @@ $azFw | Set-AzFirewall
 
 In this example, the Public IP Address "azFwPublicIp1" as detached from the Firewall.
 
-### 8:	Change the management public IP address on an Azure Firewall
+### Example 8:	Change the management public IP address on an Azure Firewall
 ```powershell
 $newMgmtPip = New-AzPublicIpAddress -Name "azFwMgmtPublicIp2" -ResourceGroupName "rg" -Sku "Standard" -Location "centralus" -AllocationMethod Static
 $azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
@@ -124,7 +124,7 @@ $azFw | Set-AzFirewall
 
 In this example, the management public IP address of the firewall will be changed to "AzFwMgmtPublicIp2"
 
-### 9:	Add DNS configuration to an Azure Firewall
+### Example 9:	Add DNS configuration to an Azure Firewall
 ```powershell
 $dnsServers = @("10.10.10.1", "20.20.20.2")
 $azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
@@ -136,7 +136,7 @@ $azFw | Set-AzFirewall
 
 In this example, DNS Proxy and DNS Server configuration is attached to the Firewall.
 
-### 10:	Update destination of an existing rule within a Firewall application rule collection
+### Example 10:	Update destination of an existing rule within a Firewall application rule collection
 ```powershell
 $azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
 $ruleCollection = $azFw.GetNetworkRuleCollectionByName("ruleCollectionName")
@@ -147,7 +147,7 @@ Set-AzFirewall -AzureFirewall $azFw
 
 This example updates the destination of an existing rule within a rule collection of an Azure Firewall. This allows you to automatically update your rules when IP addresses change dynamically.
 
-### 11:	Allow Active FTP on Azure Firewall
+### Example 11:	Allow Active FTP on Azure Firewall
 ```powershell
 $azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
 $azFw.AllowActiveFTP = $true
@@ -157,7 +157,7 @@ $azFw | Set-AzFirewall
 
 In this example, Active FTP is allowed on the Firewall.
 
-### 12: Deallocate and allocate the Firewall from a Virtual Hub
+### Example 12: Deallocate and allocate the Firewall from a Virtual Hub
 ```powershell
 $firewall=Get-AzFirewall -ResourceGroupName rgName -Name azFw
 $firewall.Deallocate()
@@ -173,7 +173,7 @@ to the virtual hub but preserves the firewall's configuration. For changes to be
 The Allocate method assigns the virtual hub reference to the firewall. Again, for changes to be reflected in cloud,
 Set-AzFirewall must be called.
 
-### 13:	Enable Fat Flow Logging on Azure Firewall
+### Example 13:	Enable Fat Flow Logging on Azure Firewall
 ```powershell
 $azFw = Get-AzFirewall -Name "ps184" -ResourceGroupName "ps774"
 $azFw.EnableFatFlowLogging = $true
@@ -222,7 +222,7 @@ AllowActiveFTP	                : null
 
 In this example, Enable Fat Flow Logging is enabled on the Firewall.
 
-### 14: Upgrade Azure Firewall Standard to Premium
+### Example 14: Upgrade Azure Firewall Standard to Premium
 ```powershell
 $azfw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
 $azfw.Sku.Tier="Premium"
@@ -231,7 +231,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 This example upgrades your existing Azure Firewall Standard to Premium Firewall. Upgrade process may take several minutes and does not require service down time. After upgrade is completed successfully you may replace your exiting standard policy with premium.
 
-### 15: Deallocate and allocate the Firewall with Availability Zones
+### Example 15: Deallocate and allocate the Firewall with Availability Zones
 ```powershell
 $firewall=Get-AzFirewall -ResourceGroupName rgName -Name azFw
 $firewall.Deallocate()

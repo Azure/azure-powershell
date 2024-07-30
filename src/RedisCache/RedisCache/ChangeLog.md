@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for Disabling Access Keys Authentication
 
 ## Version 1.9.1
 * Fixed pattern for access policy resource names

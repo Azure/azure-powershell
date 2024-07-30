@@ -14,7 +14,7 @@ Registers Sql Migration Service on Integration Runtime
 
 ```
 Register-AzDataMigrationIntegrationRuntime -AuthKey <String> [-IntegrationRuntimePath <String>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,7 +29,7 @@ Register-AzDataMigrationIntegrationRuntime -AuthKey $authKeys.AuthKey1
 ```
 
 ```output
-Start to register IR with key: IR@abcd1-efgh2-jklmn3-opqr4@mysqlms@eastus@stuv5/wxyz6=
+Start to register IR with key: IR*********************yz6=
 Integration Runtime registration is successful!
 ```
 
@@ -44,7 +44,7 @@ Register-AzDataMigrationIntegrationRuntime -AuthKey $authKeys.AuthKey1 -Integrat
 ```output
 Start Gateway installation
 Succeed to install gateway
-Start to register IR with key: IR@abcd1-efgh2-jklmn3-opqr4@mysqlms@eastus@stuv5/wxyz6=
+Start to register IR with key: IR*********************yz6=
 Integration Runtime registration is successful!
 ```
 
@@ -88,6 +88,21 @@ Accept wildcard characters: False
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

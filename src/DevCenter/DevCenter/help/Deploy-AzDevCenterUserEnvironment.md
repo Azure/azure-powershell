@@ -17,7 +17,7 @@ Creates or updates an environment.
 Deploy-AzDevCenterUserEnvironment -Endpoint <String> -Name <String> -ProjectName <String> [-UserId <String>]
  -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <Hashtable>]
  [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -25,7 +25,7 @@ Deploy-AzDevCenterUserEnvironment -Endpoint <String> -Name <String> -ProjectName
 Deploy-AzDevCenterUserEnvironment -Endpoint <String> -InputObject <IDevCenterdataIdentity>
  -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <Hashtable>]
  [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpandedByDevCenter
@@ -33,7 +33,7 @@ Deploy-AzDevCenterUserEnvironment -Endpoint <String> -InputObject <IDevCenterdat
 Deploy-AzDevCenterUserEnvironment -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <Hashtable>]
  [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpandedByDevCenter
@@ -41,7 +41,7 @@ Deploy-AzDevCenterUserEnvironment -DevCenterName <String> -InputObject <IDevCent
 Deploy-AzDevCenterUserEnvironment -DevCenterName <String> -Name <String> -ProjectName <String>
  [-UserId <String>] -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String>
  [-Parameter <Hashtable>] [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -261,6 +261,21 @@ Parameters object for the environment.
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

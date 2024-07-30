@@ -133,6 +133,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         /// <summary>
         /// The policy definition metadata. Metadata is an open ended object and is typically a collection of key value pairs.
         /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.ExportAs(typeof(global::System.Collections.Hashtable))]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The policy definition metadata. Metadata is an open ended object and is typically a collection of key value pairs.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Policy.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
@@ -140,9 +141,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         ReadOnly = false,
         Description = @"The policy definition metadata. Metadata is an open ended object and is typically a collection of key value pairs.",
         SerializedName = @"metadata",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny) })]
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesMetadata) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExport]
-        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny MetadataTable { get => _parametersBody.Metadata ?? null /* object */; set => _parametersBody.Metadata = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesMetadata MetadataTable { get => _parametersBody.Metadata ?? null /* object */; set => _parametersBody.Metadata = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -218,6 +219,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         public string PolicyDefinitionVersion { get => this._policyDefinitionVersion; set => this._policyDefinitionVersion = value; }
 
         /// <summary>The policy rule.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.ExportAs(typeof(global::System.Collections.Hashtable))]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The policy rule.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Policy.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
@@ -225,8 +227,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         ReadOnly = false,
         Description = @"The policy rule.",
         SerializedName = @"policyRule",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny PolicyRule { get => _parametersBody.PolicyRule ?? null /* object */; set => _parametersBody.PolicyRule = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesPolicyRule) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesPolicyRule PolicyRule { get => _parametersBody.PolicyRule ?? null /* object */; set => _parametersBody.PolicyRule = value; }
 
         /// <summary>
         /// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
@@ -490,7 +492,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
                 // get the client instance
                 if (true == this.MyInvocation?.BoundParameters?.ContainsKey("MetadataTable"))
                 {
-                    MetadataTable = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny)this.MyInvocation.BoundParameters["MetadataTable"];
+                    MetadataTable = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesMetadata)this.MyInvocation.BoundParameters["MetadataTable"];
                 }
                 if (true == this.MyInvocation?.BoundParameters?.ContainsKey("ParameterTable"))
                 {
@@ -561,11 +563,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
             }
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("PolicyRule")))
             {
-                this.PolicyRule = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny)(this.MyInvocation?.BoundParameters["PolicyRule"]);
+                this.PolicyRule = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesPolicyRule)(this.MyInvocation?.BoundParameters["PolicyRule"]);
             }
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("MetadataTable")))
             {
-                this.MetadataTable = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny)(this.MyInvocation?.BoundParameters["MetadataTable"]);
+                this.MetadataTable = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesMetadata)(this.MyInvocation?.BoundParameters["MetadataTable"]);
             }
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ParameterTable")))
             {

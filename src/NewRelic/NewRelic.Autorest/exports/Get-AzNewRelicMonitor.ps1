@@ -25,17 +25,22 @@ Get-AzNewRelicMonitor
 Get-AzNewRelicMonitor -ResourceGroupName ps-test
 .Example
 Get-AzNewRelicMonitor -Name test-01 -ResourceGroupName ps-test
+.Example
+Get-AzNewRelicMonitor -MonitorName test-01 -ResourceGroupName group-test -ListLinkedResource
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.INewRelicMonitorResource
+Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ILinkedResource
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <INewRelicIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [MonitorName <String>]: Name of the Monitors resource
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -45,9 +50,18 @@ INPUTOBJECT <INewRelicIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.newrelic/get-aznewrelicmonitor
 #>
 function Get-AzNewRelicMonitor {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.INewRelicMonitorResource])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource], [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ILinkedResource])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Alias('MonitorName')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Path')]
@@ -63,21 +77,17 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='List')]
-    [Parameter(ParameterSetName='List1')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='Get')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # List Linked Resource
+    ${ListLinkedResource},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -154,12 +164,12 @@ begin {
         }
 
         $mapping = @{
-            Get = 'Az.NewRelic.private\Get-AzNewRelicMonitor_Get';
-            GetViaIdentity = 'Az.NewRelic.private\Get-AzNewRelicMonitor_GetViaIdentity';
-            List = 'Az.NewRelic.private\Get-AzNewRelicMonitor_List';
-            List1 = 'Az.NewRelic.private\Get-AzNewRelicMonitor_List1';
+            List = 'Az.NewRelic.custom\Get-AzNewRelicMonitor';
+            Get = 'Az.NewRelic.custom\Get-AzNewRelicMonitor';
+            List1 = 'Az.NewRelic.custom\Get-AzNewRelicMonitor';
+            GetViaIdentity = 'Az.NewRelic.custom\Get-AzNewRelicMonitor';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('List', 'Get', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {

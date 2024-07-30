@@ -7523,3 +7523,22 @@ function Test-VMDefaultsToTrustedLaunchImgWhenStnd
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test Add-AzVMDataDisk
+#>
+function Test-AddVMDataDisk
+{
+    # To have a test recording 
+    Get-AzVm 
+
+    $name = Get-ComputeTestResourceName;
+    $vmname = 'vm' + $name;
+    $vmConfig = New-AzVmConfig -VMName $vmname -VMSize 'testVMSize'
+
+    $vmConfig = Add-AzVMDataDisk -VM $vmConfig -Name datadisk0 -VhdUri "testVhdUri" -SourceResourceId "testSourceResourceId" -CreateOption Copy -Lun 1
+
+    # Validate
+    Assert-AreEqual $vmConfig.StorageProfile.DataDisks[0].SourceResource.id "testSourceResourceId"
+}

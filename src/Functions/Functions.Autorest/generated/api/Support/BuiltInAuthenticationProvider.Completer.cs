@@ -50,6 +50,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Twitter'", "Twitter", global::System.Management.Automation.CompletionResultType.ParameterValue, "Twitter");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Github".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Github'", "Github", global::System.Management.Automation.CompletionResultType.ParameterValue, "Github");
+            }
         }
     }
 }

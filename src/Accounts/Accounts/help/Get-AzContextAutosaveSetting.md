@@ -24,7 +24,7 @@ automatically saved, and where saved context and credential information can be f
 
 ## EXAMPLES
 
-### Get context save metadata for the current session
+### Example 1: Get context save metadata for the current session
 ```powershell
 Get-AzContextAutosaveSetting
 ```
@@ -40,7 +40,7 @@ Settings         : {}
 
 Get details about whether and where the context is saved.  In the above example, the autosave feature has been disabled.
 
-### Get context save metadata for the current user
+### Example 2: Get context save metadata for the current user
 ```powershell
 Get-AzContextAutosaveSetting -Scope CurrentUser
 ```

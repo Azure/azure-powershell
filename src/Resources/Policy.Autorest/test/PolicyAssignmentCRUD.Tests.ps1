@@ -68,7 +68,7 @@ Describe 'PolicyAssignmentCRUD' {
         $nonComplianceMessage.Length | Should -Be 2
 
         # create it again with two non-compliance messages
-        $new = New-AzPolicyAssignment -Name $testPA -PolicySetDefinition $policySet -Scope $rgScope -Description $description -NonComplianceMessage $nonComplianceMessage
+        $new = New-AzPolicyAssignment -Name $testPA -PolicySetDefinition $policySet -Scope $rgScope -Description $description -NonComplianceMessage $nonComplianceMessage -DisplayName $someDisplayName
         $new.Id | Should -Be $get.Id
 
         # get it again by id and validate non-compliance messages
@@ -82,6 +82,16 @@ Describe 'PolicyAssignmentCRUD' {
         $new.NonComplianceMessage[1].Message | Should -Be 'Specific message 1'
         $new.NonComplianceMessage[1].PolicyDefinitionReferenceId | Should -Be $policyDefinitionReferenceId1
 
+        # update the policy assignment with no change, validate DisplayName and Description (this was a previously reported issue)
+        $update = Update-AzPolicyAssignment -Id $get.Id -EnforcementMode Default
+        $update.DisplayName | Should -Be $someDisplayName
+        $update.Description | Should -Be $description
+
+        # validate Get result as well
+        $temp = Get-AzPolicyAssignment -Id $get.Id
+        $temp.DisplayName | Should -Be $someDisplayName
+        $temp.Description | Should -Be $description
+
         # update the policy assignment, validate the result
         $update = Update-AzPolicyAssignment -Id $get.Id -DisplayName testDisplay
         $update.DisplayName | Should -Be testDisplay
@@ -90,6 +100,31 @@ Describe 'PolicyAssignmentCRUD' {
         $update.NonComplianceMessage.Length | Should -Be 2
         $update.NonComplianceMessage[1].Message | Should -Be 'Specific message 1'
         $update.NonComplianceMessage[1].PolicyDefinitionReferenceId | Should -Be $policyDefinitionReferenceId1
+    }
+
+    It 'Validate parameter round-trip' {
+        # get the definition, do an update with no changes, validate nothing is changed in response or backend
+        $expected = Get-AzPolicyAssignment -Name $testPA -Scope $rgScope
+        $response = Update-AzPolicyAssignment -Name $testPA -Scope $rgScope
+        $response.DisplayName | Should -Be $expected.DisplayName
+        $response.Description | Should -Be $expected.Description
+        $response.Metadata.$metadataName | Should -Be $expected.Metadata.$metadataName
+        $response.NonComplianceMessage[0] | Should -BeLike $expected.NonComplianceMessage[0]
+        $response.NonComplianceMessage[1] | Should -BeLike $expected.NonComplianceMessage[1]
+        $response.Parameter | Should -BeLike $expected.Parameter
+        $response.NotScope | Should -BeLike $expected.NotScope
+        $response.Location | Should -BeLike $expected.Location
+        $response.EnforcementMode | Should -BeLike $expected.EnforcementMode
+        $actual = Get-AzPolicyAssignment -Name $testPA -Scope $rgScope
+        $actual.DisplayName | Should -Be $expected.DisplayName
+        $actual.Description | Should -Be $expected.Description
+        $actual.Metadata.$metadataName | Should -Be $expected.Metadata.$metadataName
+        $actual.NonComplianceMessage[0] | Should -BeLike $expected.NonComplianceMessage[0]
+        $actual.NonComplianceMessage[1] | Should -BeLike $expected.NonComplianceMessage[1]
+        $actual.Parameter | Should -BeLike $expected.Parameter
+        $actual.NotScope | Should -Be $expected.NotScope
+        $actual.Location | Should -BeLike $expected.Location
+        $actual.EnforcementMode | Should -BeLike $expected.EnforcementMode
     }
 
     It 'Update the policy assignment to have a single non-compliance message' {

@@ -13,16 +13,8 @@
 // limitations under the License.
 //
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Management.Automation;
-using System.Net;
-using Microsoft.Azure.Commands.Aks.Generated.Version2017_08_31.Models;
-using Microsoft.Azure.Commands.Common;
-using Microsoft.Azure.Commands.Common.Exceptions;
-using Microsoft.Azure.Commands.Network.Properties;
-using Microsoft.Rest;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
@@ -58,8 +50,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSAzureFirewallPolicyExplicitProxy ExplicitProxy { get; set; }
 
-        private const string IANAPrivateRanges = "IANAPrivateRanges";
-
         public string[] PrivateRange
         {
             get
@@ -70,8 +60,8 @@ namespace Microsoft.Azure.Commands.Network.Models
             {
                 if (value != null)
                 {
-                    ValidatePrivateRange(value);
                     Snat = new PSAzureFirewallPolicySNAT() { PrivateRanges = value };
+                    Snat.ValidatePrivateRange();
                 }
             }
         }
@@ -82,20 +72,5 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(PrivateRange, Formatting.Indented); }
         }
 
-        #region Private Range Validation
-        private void ValidatePrivateRange(string[] privateRange)
-        {
-            foreach (var ip in privateRange)
-            {
-                if (ip.Equals(IANAPrivateRanges, StringComparison.OrdinalIgnoreCase))
-                    continue;
-
-                if (ip.Contains("/"))
-                    NetworkValidationUtils.ValidateSubnet(ip);
-                else
-                    NetworkValidationUtils.ValidateIpAddress(ip);
-            }
-        }
-        #endregion
     }
 }

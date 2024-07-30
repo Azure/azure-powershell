@@ -20,7 +20,7 @@ using System.Security.Cryptography.X509Certificates;
 namespace Microsoft.Azure.Commands.CodeSigning
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "CodeSigningRootCert", DefaultParameterSetName = ByAccountProfileNameParameterSet)]
-    [OutputType(typeof(string))]
+    [OutputType(typeof(PSSigningCertificate))]
     public class GetAzureCodeSigningRootCert : CodeSigningCmdletBase
     {
         #region Parameter Set Names
@@ -115,7 +115,8 @@ namespace Microsoft.Azure.Commands.CodeSigning
             PSSigningCertificate pscert = new PSSigningCertificate
             {
                 Subject = x509.Subject,
-                Thumbprint = x509.Thumbprint
+                Thumbprint = x509.Thumbprint,
+                Issuer = x509.Issuer
             };
 
             WriteObject(pscert, false);
