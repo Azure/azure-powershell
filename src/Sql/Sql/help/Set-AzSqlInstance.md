@@ -442,7 +442,7 @@ Accept wildcard characters: False
 ```
 
 ### -AuthenticationMetadata
-Sets the Managed Instance's authentication metadata. Default value is AzureAD.
+Preferred metadata to use for authentication of synced on-prem users. Default is AzureAD.
 
 ```yaml
 Type: System.String
