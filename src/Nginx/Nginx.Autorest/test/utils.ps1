@@ -77,14 +77,7 @@ function setupEnv() {
     # getting the keyvault certificate secretid
     $certVersion = "/" + (Get-AzKeyVaultcertificate -VaultName $env.keyvault -name $env.nginxCert).version 
     $kvcertsecretid = (Get-AzKeyVaultcertificate -VaultName $env.keyvault -name $env.nginxCert).secretid.Replace(":443", "").Replace($certVersion, "")
-    
     $env.kvcertsecretid = $kvcertsecretid
-    
-    $envFile = 'env.json'
-    if ($TestMode -eq 'live') {
-        $envFile = 'localEnv.json'
-    }
-    set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 
     # create public ip
     $ip = @{
@@ -134,7 +127,17 @@ function setupEnv() {
     $roleDefinition = Get-AzRoleDefinition -Name "Key Vault Administrator"
     $roleAssignment = New-AzRoleAssignment -ObjectId $nginxDeployment.IdentityPrincipalId  -RoleDefinitionId $roleDefinition.Id -Scope $keyVaultId
     
+    $envFile = 'env.json'
+    if ($TestMode -eq 'live') {
+        $envFile = 'localEnv.json'
+    }
+    
+    set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
+    Write-Host "finished setting up env for AzNginx testing"
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Write-Host "cleaning up resources"
+    Remove-AzResourceGroup -Name $env.resourceGroup
+    Write-Host "cleaned up resources"
 }
