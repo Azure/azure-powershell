@@ -1,86 +1,65 @@
 ---
 external help file:
 Module Name: Az.Nginx
-online version: https://learn.microsoft.com/powershell/module/az.nginx/get-aznginxdeployment
+online version: https://learn.microsoft.com/powershell/module/az.nginx/get-aznginxcertificate
 schema: 2.0.0
 ---
 
-# Get-AzNginxDeployment
+# Get-AzNginxCertificate
 
 ## SYNOPSIS
-Get the NGINX deployment
+Get a certificate of given NGINX deployment
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzNginxDeployment [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNginxCertificate -DeploymentName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzNginxDeployment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNginxCertificate -DeploymentName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzNginxDeployment -InputObject <INginxIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzNginxDeployment -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzNginxCertificate -InputObject <INginxIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the NGINX deployment
+Get a certificate of given NGINX deployment
 
 ## EXAMPLES
 
-### Example 1: Get a NGINX deployment with name
+### Example 1: List all certificates under a NGINX deployment
 ```powershell
-Get-AzNginxDeployment -Name nginx-test -ResourceGroupName nginx-test-rg
+Get-AzNginxCertificate -DeploymentName nginx-test -ResourceGroupName nginx-test-rg
 ```
 
 ```output
 Location      Name
 --------      ----
-westcentralus nginx-test
+westcentralus cert
+westcentralus cert1
 ```
 
-This command gets a NGINX deployment in a resource group.
+This command lists all certificates under a NGINX deployment.
 
-### Example 2: List all NGINX deployments in a subscription
+### Example 2: Get a certificate
 ```powershell
-Get-AzNginxDeployment
+Get-AzNginxCertificate -DeploymentName nginx-test -Name cert -ResourceGroupName nginx-test-rg
 ```
 
 ```output
 Location      Name
 --------      ----
-westcentralus nginx-test
-westcentralus nginx-test1
-eastus2       nginx-test2
-
+westcentralus cert
 ```
 
-This command lists all NGINX deployments in a subscription.
-
-### Example 3: List all NGINX deployments in a resource group
-```powershell
-Get-AzNginxDeployment -ResourceGroupName nginx-test-rg
-```
-
-```output
-Location      Name
---------      ----
-westcentralus nginx-test
-westcentralus nginx-test1
-```
-
-This command lists all NGINX deployments in a resource group.
+This command gets a certificate.
 
 ## PARAMETERS
 
@@ -94,6 +73,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeploymentName
+The name of targeted NGINX deployment
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -117,12 +111,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of targeted NGINX deployment
+The name of certificate
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: DeploymentName
+Aliases: CertificateName
 
 Required: True
 Position: Named
@@ -137,7 +131,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -152,7 +146,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -171,7 +165,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxCertificate
 
 ## NOTES
 

@@ -16,7 +16,7 @@ Create or update the NGINX certificates for given NGINX deployment
 New-AzNginxCertificate -DeploymentName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -CertificateVirtualPath <String> -KeyVaultSecretId <String>
  -KeyVirtualPath <String> [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -175,6 +175,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -244,7 +259,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxCertificate
 
 ## NOTES
 

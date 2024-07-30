@@ -1,5 +1,5 @@
 @{
-  GUID = 'a6006217-b983-465f-9b21-5017989fa14f'
+  GUID = '81a564f0-1cf8-4d7b-ad75-8ecab8bfadc1'
   RootModule = './Az.Nginx.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'

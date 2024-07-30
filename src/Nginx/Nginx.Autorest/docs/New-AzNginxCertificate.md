@@ -1,41 +1,41 @@
 ---
 external help file:
 Module Name: Az.Nginx
-online version: https://learn.microsoft.com/powershell/module/az.nginx/new-aznginxconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.nginx/new-aznginxcertificate
 schema: 2.0.0
 ---
 
-# New-AzNginxConfiguration
+# New-AzNginxCertificate
 
 ## SYNOPSIS
-Create or update the NGINX configuration for given NGINX deployment
+Create or update the NGINX certificates for given NGINX deployment
 
 ## SYNTAX
 
 ```
-New-AzNginxConfiguration -DeploymentName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-File <INginxConfigurationFile[]>] [-Location <String>] [-PackageData <String>]
- [-PackageProtectedFile <String[]>] [-ProtectedFile <INginxConfigurationFile[]>] [-RootFile <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzNginxCertificate -DeploymentName <String> -Name <String> -ResourceGroupName <String>
+ -CertificateVirtualPath <String> -KeyVaultSecretId <String> -KeyVirtualPath <String>
+ [-SubscriptionId <String>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update the NGINX configuration for given NGINX deployment
+Create or update the NGINX certificates for given NGINX deployment
 
 ## EXAMPLES
 
-### Example 1: Create or update the Nginx configuration for given Nginx deployment
+### Example 1: Create a certificate for a NGINX deployment
 ```powershell
-New-AzNginxConfiguration -DeploymentName nginx-test -Name default -ResourceGroupName nginx-test-rg -File $confFile -RootFile nginx.conf
+New-AzNginxCertificate -DeploymentName nginx-test -Name cert-test -ResourceGroupName nginx-test-rg -CertificateVirtualPath /etc/nginx/test.cert -KeyVirtualPath /etc/nginx/test.key -KeyVaultSecretId https://tests-kv.vault.azure.net/secrets/newcert
 ```
 
 ```output
 Location Name
 -------- ----
-         default
+         cert-test
 ```
 
-This command creates or updates the Nginx configuration for given Nginx deployment.
+This commond creates a certificate for a NGINX deployment.
 
 ## PARAMETERS
 
@@ -48,6 +48,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CertificateVirtualPath
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -85,16 +100,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -File
+### -KeyVaultSecretId
 .
-To construct, see NOTES section for FILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfigurationFile[]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVirtualPath
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -117,12 +146,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of configuration, only 'default' is supported value due to the singleton of NGINX conf
+The name of certificate
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: ConfigurationName
+Aliases: CertificateName
 
 Required: True
 Position: Named
@@ -146,52 +175,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PackageData
-.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PackageProtectedFile
-.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProtectedFile
-.
-To construct, see NOTES section for PROTECTEDFILE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfigurationFile[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -202,21 +185,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RootFile
-.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -276,7 +244,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxCertificate
 
 ## NOTES
 

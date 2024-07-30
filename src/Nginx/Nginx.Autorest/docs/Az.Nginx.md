@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Nginx
-Module Guid: a6006217-b983-465f-9b21-5017989fa14f
+Module Guid: 81a564f0-1cf8-4d7b-ad75-8ecab8bfadc1
 Download Help Link: https://learn.microsoft.com/powershell/module/az.nginx
 Help Version: 1.0.0.0
 Locale: en-US
@@ -19,6 +19,9 @@ Get the NGINX configuration of given NGINX deployment
 
 ### [Get-AzNginxDeployment](Get-AzNginxDeployment.md)
 Get the NGINX deployment
+
+### [Invoke-AzNginxAnalysisConfiguration](Invoke-AzNginxAnalysisConfiguration.md)
+Analyze an NGINX configuration without applying it to the NGINXaaS deployment
 
 ### [New-AzNginxCertificate](New-AzNginxCertificate.md)
 Create or update the NGINX certificates for given NGINX deployment

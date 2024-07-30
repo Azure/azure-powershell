@@ -1,44 +1,35 @@
 ---
 external help file:
 Module Name: Az.Nginx
-online version: https://learn.microsoft.com/powershell/module/az.nginx/update-aznginxdeployment
+online version: https://learn.microsoft.com/powershell/module/az.nginx/new-aznginxdeployment
 schema: 2.0.0
 ---
 
-# Update-AzNginxDeployment
+# New-AzNginxDeployment
 
 ## SYNOPSIS
-Update the NGINX deployment
+Create or update the NGINX deployment
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
-Update-AzNginxDeployment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-EnableDiagnosticsSupport] [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-Location <String>] [-ScalingPropertyCapacity <Int32>] [-SkuName <String>]
- [-StorageAccountContainerName <String>] [-StorageAccountName <String>] [-Tag <Hashtable>]
- [-UserProfilePreferredEmail <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzNginxDeployment -InputObject <INginxIdentity> [-EnableDiagnosticsSupport]
- [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>]
- [-ScalingPropertyCapacity <Int32>] [-SkuName <String>] [-StorageAccountContainerName <String>]
- [-StorageAccountName <String>] [-Tag <Hashtable>] [-UserProfilePreferredEmail <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzNginxDeployment -Name <String> -ResourceGroupName <String> -Location <String>
+ -NetworkProfile <INginxNetworkProfile> -SkuName <String> [-SubscriptionId <String>]
+ [-AutoScaleSettingProfile <IScaleProfile[]>] [-EnableDiagnosticsSupport] [-IdentityType <IdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-ManagedResourceGroup <String>]
+ [-ScalingPropertyCapacity <Int32>] [-StorageAccountContainerName <String>] [-StorageAccountName <String>]
+ [-Tag <Hashtable>] [-UserProfilePreferredEmail <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update the NGINX deployment
+Create or update the NGINX deployment
 
 ## EXAMPLES
 
-### Example 1: Enable the diagnotics support for a NGINX deployment
+### Example 1: Create or update the Nginx deployment
 ```powershell
-Update-AzNginxDeployment -Name nginx-test -ResourceGroupName nginx-test-rg -EnableDiagnosticsSupport
+New-AzNginxDeployment -Name nginx-test -ResourceGroupName nginx-test-rg -Location westcentralus -NetworkProfile $networkProfile -SkuName preview_Monthly_gmz7xq9ge3py
 ```
 
 ```output
@@ -47,20 +38,7 @@ Location      Name
 westcentralus nginx-test
 ```
 
-This command enables the diagnotics support for a NGINX deployment.
-
-### Example 2: Disable the diagnotics support for a NGINX deployment
-```powershell
-Update-AzNginxDeployment -Name nginx-test -ResourceGroupName nginx-test-rg -EnableDiagnosticsSupport:$false
-```
-
-```output
-Location      Name
---------      ----
-westcentralus nginx-test
-```
-
-This command disables the diagnotics support for a NGINX deployment.
+This command creates or updates the Nginx deployment.
 
 ## PARAMETERS
 
@@ -69,6 +47,22 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScaleSettingProfile
+.
+To construct, see NOTES section for AUTOSCALESETTINGPROFILE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[]
 Parameter Sets: (All)
 Aliases:
 
@@ -140,24 +134,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -Location
+.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-.
+### -ManagedResourceGroup
+The managed resource group to deploy VNet injection related network resources.
 
 ```yaml
 Type: System.String
@@ -176,8 +169,24 @@ The name of targeted NGINX deployment
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases: DeploymentName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkProfile
+.
+To construct, see NOTES section for NETWORKPROFILE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkProfile
+Parameter Sets: (All)
+Aliases:
 
 Required: True
 Position: Named
@@ -207,7 +216,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -240,7 +249,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -282,7 +291,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -359,11 +368,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment
 
 ## NOTES
 
