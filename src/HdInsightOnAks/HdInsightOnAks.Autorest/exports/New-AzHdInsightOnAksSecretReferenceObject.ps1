@@ -16,48 +16,47 @@
 
 <#
 .Synopsis
-Create an in-memory object for SecretReference.
+Create a reference to provide a secret to store the password for accessing the database.
 .Description
-Create an in-memory object for SecretReference.
+Create a reference to provide a secret to store the password for accessing the database.
+$keyVaultResourceId="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/{your resource group name}/providers/Microsoft.KeyVault/vaults/{your vault name}";
+$secretName="{your secret name}"
+$referenceName="{your secret reference name}";
+
+$secretReference=New-AzHdInsightOnAksSecretReferenceObject -SecretName $secretName -ReferenceName $referenceName
+NA
 .Example
 $keyVaultResourceId="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/{your resource group name}/providers/Microsoft.KeyVault/vaults/{your vault name}";
 $secretName="{your secret name}"
 $referenceName="{your secret reference name}";
 
-$secretReference=New-AzHdInsightOnAksSecretReferenceObject -SecretName $secretName -ReferenceName $referenceName -Type Secret
+$secretReference=New-AzHdInsightOnAksSecretReferenceObject -SecretName $secretName -ReferenceName $referenceName
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SecretReference
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReference
 .Link
-https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonakssecretreferenceobject
+https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksSecretReferenceObject
 #>
 function New-AzHdInsightOnAksSecretReferenceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SecretReference])]
-[CmdletBinding(PositionalBinding=$false)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReference])]
+[CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
-    # Reference name of the secret to be used in service configs.
-    ${ReferenceName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
-    [System.String]
-    # Object identifier name of the secret in key vault.
+    # The secret name in the key vault.
     ${SecretName},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("Key", "Secret", "Certificate")]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
-    # Type of key vault object: secret, key or certificate.
-    ${Type},
+    # The reference name of the secret to be used in service configs.
+    ${ReferenceName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
-    # Version of the secret in key vault.
+    # The version of the secret in key vault.
     ${Version}
 )
 
@@ -87,7 +86,7 @@ begin {
         }
 
         $mapping = @{
-            __AllParameterSets = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksSecretReferenceObject';
+            Create = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksSecretReferenceObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

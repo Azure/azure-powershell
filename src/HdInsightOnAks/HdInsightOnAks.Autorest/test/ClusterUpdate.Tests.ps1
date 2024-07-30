@@ -16,26 +16,25 @@ if (($null -eq $TestName) -or ($TestName -contains 'ClusterUpdate')) {
 Describe 'ClusterUpdate' {
     BeforeAll {
         # Cluster configuration info
-        $location = "West US 2"
-        $clusterResourceGroupName = "psGroup"
-        $clusterpoolName = "ps-hilopool"
-        $clusterName = "ps-spark"
+        $location = "West US 3"
+        $clusterResourceGroupName = "PStestGroup"
+        $clusterpoolName = "hilo-pool"
+        $clusterName = "psspark"
         $poolVmSize = "Standard_D4a_v4"
-        $clusterPoolVersion = "1.2"
+        $clusterPoolVersion = "1.1"
         $clusterType = "Spark"
         $clusterOfferingVersions = Get-AzHdInsightOnAksAvailableClusterVersion -Location $location | Where-Object ClusterPoolVersion -eq $clusterPoolVersion | Where-Object ClusterType -eq $clusterType
-        $StorageUri = "abfs://pscontainer1@yuchenhilostorage.dfs.core.windows.net"
-        $ComputeProfileNode = New-AzHdInsightOnAksNodeProfileObject -Type "Worker" -Count 3 -VMSize "Standard_D8ds_v4"
+        $StorageUri = "abfs://pscontainer1@hilostorage.dfs.core.windows.net"
+        $ComputeProfileNode = New-AzHdInsightOnAksNodeProfileObject -Type "Worker" -Count 3 -VMSize "Standard_D16a_v4"
 
+        # New-AzHdInsightOnAksClusterPool -Name $clusterpoolName -ResourceGroupName $clusterResourceGroupName -VmSize $poolVmSize -ClusterPoolVersion $clusterPoolVersion -Location $location
         $coreSiteConfigKey = "testvalue1"
         $coreSiteConfigValue = "111"
         $yarnServiceConfigProfile
     }
 
     # If you have donnot have a cluster, you can use this test to create a cluster, and then run other tests.
-    It "New-AzHdInsightOnAksCluster_Spark" -skip{
-
-        { $script:ManagedIdentity = New-AzHdInsightOnAksManagedIdentityObject -ClientId $env.msiClientId -ObjectId $env.msiObjectId -ResourceId $env.identityProfileMsiResourceId -Type cluster } | Should -Not -Throw
+    It "New-AzHdInsightOnAksCluster_Spark" -Skip {
         
         { New-AzHdInsightOnAksCluster -Name $clusterName -PoolName $clusterpoolName `
                 -ResourceGroupName $clusterResourceGroupName `
@@ -44,7 +43,9 @@ Describe 'ClusterUpdate' {
                 -ClusterVersion $clusterOfferingVersions[0].ClusterVersionValue -OssVersion $clusterOfferingVersions[0].OssVersion `
                 -ComputeProfileNode $ComputeProfileNode `
                 -AuthorizationUserId $env.authorizationUserId `
-                -ManagedIdentityProfileIdentityList  $ManagedIdentity `
+                -AssignedIdentityClientId $env.msiClientId `
+                -AssignedIdentityObjectId $env.msiObjectId `
+                -AssignedIdentityResourceId $env.identityProfileMsiResourceId `
                 -SparkStorageUrl $StorageUri } | Should -Not -Throw
         
         [Console]::WriteLine("New-AzHdInsightOnAksCluster_Spark done")

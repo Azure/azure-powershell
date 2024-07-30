@@ -15,26 +15,26 @@ Gets a HDInsight cluster.
 ### List (Default)
 ```
 Get-AzHdInsightOnAksCluster -PoolName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityClusterpool
 ```
 Get-AzHdInsightOnAksCluster -Name <String> -ClusterpoolInputObject <IHdInsightOnAksIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzHdInsightOnAksCluster -InputObject <IHdInsightOnAksIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +42,7 @@ Gets a HDInsight cluster.
 
 ## EXAMPLES
 
-### Example 1: lsit all HDInsight clusters in a pool.
+### Example 1: lsit all HDInsight gen2 clusters in a pool.
 ```powershell
 $clusterResourceGroupName = "your-resourceGroup"
 $clusterpoolName = "your-clusterpool"
@@ -68,7 +68,7 @@ CoordinatorDebugEnable                      :
 
 List all clusters in a pool.
 
-### Example 2: Get a HDInsight cluster
+### Example 2: Get a HDInsight gen2 cluster
 ```powershell
 $clusterResourceGroupName = "your-resourceGroup"
 $clusterpoolName = "your-clusterpool"
@@ -93,7 +93,7 @@ CoordinatorDebugEnable                      :
 ...
 ```
 
-Get a HDInsight cluster
+Get a HDInsight gen2 cluster
 
 ## PARAMETERS
 
@@ -167,21 +167,6 @@ Parameter Sets: List, Get
 Aliases: ClusterPoolName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
