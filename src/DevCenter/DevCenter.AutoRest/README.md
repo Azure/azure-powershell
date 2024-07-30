@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the DevCenter service.
 
 ---
-## Status
-[![Az.DevCenter](https://img.shields.io/powershellgallery/v/Az.DevCenter.svg?style=flat-square&label=Az.DevCenter "Az.DevCenter")](https://www.powershellgallery.com/packages/Az.DevCenter/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -41,7 +38,7 @@ input-file:
   - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2024-05-01-preview/vdi.json
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
 use-extension:
-  "@autorest/powershell": "3.0.512"
+  "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document
@@ -55,6 +52,18 @@ directive:
     transform: >
       $['200'] = {
         "description": "OK. Successfully initiated sync."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/connect"].post.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/connect"].post.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
       }
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/galleries/{galleryName}"].put.responses
@@ -78,6 +87,13 @@ directive:
         "schema": {"$ref": "#/definitions/Catalog"}
       }
   - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}"].put.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded.",
+        "schema": {"$ref": "#/definitions/Catalog"}
+      }
+  - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/environmentDefinitions/{environmentDefinitionName}"].get.operationId
     transform: >-
       return "ProjectEnvironmentDefinitions_Get"
@@ -89,6 +105,90 @@ directive:
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/environmentDefinitions/{environmentDefinitionName}/getErrorDetails"].post.operationId
     transform: >-
       return "ProjectEnvironmentDefinitions_GetErrorDetails"
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/attachednetworks/{attachedNetworkConnectionName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/devboxdefinitions/{devBoxDefinitionName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/galleries/{galleryName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/schedules/{scheduleName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/plans/{planName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/plans/{planName}/members/{memberName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}/runHealthChecks"].post.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/runHealthChecks"].post.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
   - where:
       parameter-name: Top
     hide: true
