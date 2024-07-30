@@ -648,5 +648,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-VMDefaultsToTrustedLaunchImgWhenStnd");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCapacityReservationGroupResourceIdsOnly()
+        {
+            TestRunner.RunTestScript("Test-CapacityReservationGroupResourceIdsOnly");
+        }
+
+
     }
 }
