@@ -14,7 +14,7 @@ Create an in-memory object for ManagedCertificateParameters.
 
 ```
 New-AzFrontDoorCdnSecretManagedCertificateParametersObject -Type <SecretType>
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,21 +35,6 @@ ExpirationDate Subject
 Create an in-memory object for ManagedCertificateParameters.
 
 ## PARAMETERS
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Type
 The type of the secret resource.

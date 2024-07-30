@@ -22,7 +22,7 @@ Set-AzStackHciUpdate -ClusterName <String> -Name <String> -ResourceGroupName <St
  [-PackageSizeInMb <Single>] [-PackageType <String>] [-Prerequisite <IUpdatePrerequisite[]>]
  [-Publisher <String>] [-RebootRequired <RebootRequirement>] [-ReleaseLink <String>] [-State <State>]
  [-UpdateStatePropertyNotifyMessage <String>] [-UpdateStatePropertyProgressPercentage <Single>]
- [-Version <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -30,7 +30,7 @@ Set-AzStackHciUpdate -ClusterName <String> -Name <String> -ResourceGroupName <St
 ```
 Set-AzStackHciUpdate -ClusterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -UpdateProperty <IUpdate> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -317,21 +317,6 @@ To construct, see NOTES section for PREREQUISITE properties and create a hash ta
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdatePrerequisite[]
 Parameter Sets: PutExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
