@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added breaking change announcement for cmdlets: `New-AzSqlInstanceLink`, `Get-AzSqlInstanceLink`, `Remove-AzSqlInstanceLink`, `Update-AzSqlInstanceLink`.
 * Added `IsGeneralPurposeV2` and `StorageIOps` parameters to `New-AzSqlInstance`, `Set-AzSqlInstance` to enable the creation of GPv2 instances
 * Added IsGeneralPurposeV2 and StorageIOps fields to the model of the managed instance so that it displays information about GPv2 instances that are returned by `Get-AzSqlInstance`.
 * Added new cmdlet `Set-AzSqlDatabaseReplicationLink` for updating replication link type
