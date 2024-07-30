@@ -74,8 +74,6 @@ directive:
   - model-cmdlet:
     - model-name: ManagedIdentitySpec
       cmdlet-name: New-AzHdInsightOnAksManagedIdentityObject
-    - model-name: ClusterHotfixUpgradeProperties
-      cmdlet-name: New-AzHdInsightOnAksClusterHotfixUpgradeObject
     - model-name: ClusterPoolAksPatchVersionUpgradeProperties
       cmdlet-name: New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject
     - model-name: NodeProfile
