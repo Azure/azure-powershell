@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added feature for auto scaling and upgradeprofile, and nginx configuration analysis
 
 ## Version 1.0.1
 * Introduced secrets detection feature to safeguard sensitive data.
