@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzMLWorkspaceDiagnose'
 
 Describe 'Invoke-AzMLWorkspaceDiagnose' {
     It 'DiagnoseExpanded' {
-        { Invoke-AzMLWorkspaceDiagnose -ResourceGroupName ml-rg-test -Name mlworkspace-cli01 -ApplicationInsightId @{'key1'="/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.insights/components/mlworkspacecli3073090957"} } | Should -Not -Throw
+        { Invoke-AzMLWorkspaceDiagnose -ResourceGroupName $env.TestGroupName -Name $env.mainWorkspace -ApplicationInsightId @{'key1'=$env.InsightsID1} } | Should -Not -Throw
     }
 }

@@ -15,8 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzMLWorkspaceJob'))
 }
 
 Describe 'Remove-AzMLWorkspaceJob' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteJob' -skip {
+        {
+            Remove-AzMLWorkspaceJob -ResourceGroupName $env.TestGroupName -WorkspaceName $env.mainWorkspace -Name $env.commandJob01
+            Remove-AzMLWorkspaceJob -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -Name $env.commandJob02
+        } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' -skip {

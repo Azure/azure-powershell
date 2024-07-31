@@ -34,7 +34,7 @@ Update-AzDatabricksWorkspace -ResourceGroupName azps_test_gp_db -Name azps-datab
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -53,7 +53,7 @@ INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.databricks/update-azdatabricksworkspace
 #>
 function Update-AzDatabricksWorkspace {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "The name of the workspace.")]
@@ -149,7 +149,7 @@ function Update-AzDatabricksWorkspace {
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[]]
         # The workspace provider authorizations.
         # To construct, see NOTES section for AUTHORIZATION properties and create a hash table.
         ${Authorization},
@@ -204,7 +204,7 @@ function Update-AzDatabricksWorkspace {
 
         [Parameter(HelpMessage = "Resource tags.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceUpdateTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceUpdateTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},
@@ -231,6 +231,62 @@ function Update-AzDatabricksWorkspace {
         [System.Management.Automation.SwitchParameter]
         # The value which should be used for this field.
         ${EnableNoPublicIP},
+
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue]
+        # Status of Enhanced Security Monitoring feature.
+        ${EnhancedSecurityMonitoringValue},
+
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue]
+        # Status of automated cluster updates feature.
+        ${AutomaticClusterUpdateValue},
+
+        [Parameter()]
+        [AllowEmptyCollection()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[]]
+        # Compliance standards associated with the workspace.
+        ${ComplianceSecurityProfileComplianceStandard},
+
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue]
+        # Status of Compliance Security Profile feature.
+        ${ComplianceSecurityProfileValue},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The resource ID of Azure Databricks Access Connector Resource.
+        ${AccessConnectorId},
+
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType]
+        # The identity type of the Access Connector Resource.
+        ${AccessConnectorIdentityType},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The resource ID of the User Assigned Identity associated with the Access Connector Resource.
+        # This is required for type 'UserAssigned' and not valid for type 'SystemAssigned'.
+        ${AccessConnectorUserAssignedIdentityId},
+
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall]
+        # Gets or Sets Default Storage Firewall configuration information
+        ${DefaultStorageFirewall},
         
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -319,6 +375,14 @@ function Update-AzDatabricksWorkspace {
             $hasRequiredNsgRule = $PSBoundParameters.Remove('RequiredNsgRule')
             $hasEnableNoPublicIP = $PSBoundParameters.Remove('EnableNoPublicIP')
             $hasPublicNetworkAccess = $PSBoundParameters.Remove('PublicNetworkAccess')
+            $hasAccessConnectorId = $PSBoundParameters.Remove('AccessConnectorId')
+            $hasAccessConnectorIdentityType = $PSBoundParameters.Remove('AccessConnectorIdentityType')
+            $hasAccessConnectorUserAssignedIdentityId = $PSBoundParameters.Remove('AccessConnectorUserAssignedIdentityId')
+            $hasDefaultStorageFirewall = $PSBoundParameters.Remove('DefaultStorageFirewall')
+            $hasEnhancedSecurityMonitoringValue = $PSBoundParameters.Remove('EnhancedSecurityMonitoringValue')
+            $hasAutomaticClusterUpdateValue = $PSBoundParameters.Remove('AutomaticClusterUpdateValue')
+            $hasComplianceSecurityProfileComplianceStandard = $PSBoundParameters.Remove('ComplianceSecurityProfileComplianceStandard')
+            $hasComplianceSecurityProfileValue = $PSBoundParameters.Remove('ComplianceSecurityProfileValue')
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
@@ -405,6 +469,38 @@ function Update-AzDatabricksWorkspace {
             }
             if ($hasRequiredNsgRule) {
                 $workspace.RequiredNsgRule = $RequiredNsgRule
+            }
+            if ($hasEnhancedSecurityMonitoringValue)
+            {
+                $workspace.EnhancedSecurityMonitoringValue = $EnhancedSecurityMonitoringValue
+            }
+            if ($hasAutomaticClusterUpdateValue)
+            {
+                $workspace.AutomaticClusterUpdateValue = $AutomaticClusterUpdateValue
+            }
+            if ($hasComplianceSecurityProfileComplianceStandard)
+            {
+                $workspace.ComplianceSecurityProfileComplianceStandard = $ComplianceSecurityProfileComplianceStandard
+            }
+            if ($hasComplianceSecurityProfileValue)
+            {
+                $workspace.ComplianceSecurityProfileValue = $ComplianceSecurityProfileValue
+            }
+            if ($hasDefaultStorageFirewall)
+            {
+                $workspace.DefaultStorageFirewall = $DefaultStorageFirewall
+            }
+            if ($hasAccessConnectorId)
+            {
+                $workspace.AccessConnectorId = $AccessConnectorId
+            }
+            if ($hasAccessConnectorIdentityType)
+            {
+                $workspace.AccessConnectorIdentityType = $AccessConnectorIdentityType
+            }
+            if ($hasAccessConnectorUserAssignedIdentityId)
+            {
+                $workspace.AccessConnectorUserAssignedIdentityId = $AccessConnectorUserAssignedIdentityId
             }
             if ($hasAsJob) {
                 $PSBoundParameters.Add('AsJob', $true)

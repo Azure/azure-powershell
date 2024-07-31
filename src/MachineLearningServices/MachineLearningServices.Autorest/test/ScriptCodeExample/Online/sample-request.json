@@ -1,0 +1,11 @@
+{
+    "input_data": {
+        "columns": [
+            "age", "sex", "cp", "trestbps", "chol", "fbs", "restecg", "thalach", "exang", "oldpeak", "slope", "ca", "thal"
+        ],
+        "index": [1],
+        "data": [
+            [1, 1, 4, 145, 233, 1, 2, 150, 0, 2.3, 3, 0, 2]
+        ]
+    }
+}
