@@ -79,10 +79,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
         {
             var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.InstanceName, model.Name, new Management.Sql.Models.DistributedAvailabilityGroup
             {
-                TargetDatabase = model.TargetDatabase,
-                SourceEndpoint = model.SourceEndpoint, 
-                PrimaryAvailabilityGroupName = model.PrimaryAvailabilityGroupName,
-                SecondaryAvailabilityGroupName = model.SecondaryAvailabilityGroupName,
+                Databases = model.Databases,
+                InstanceAvailabilityGroupName = model.InstanceAvailabilityGroupName,
+                InstanceLinkRole = model.InstanceLinkRole,
+                PartnerAvailabilityGroupName = model.PartnerAvailabilityGroupName,
+                PartnerEndpoint = model.PartnerEndpoint,
+                ReplicationMode = model.ReplicationMode,
+                FailoverMode = model.FailoverMode,
+                SeedingMode = model.SeedingMode
             });
 
             return CreateManagedInstanceLinkModelFromResponse(model.ResourceGroupName, model.InstanceName, resp);
@@ -130,16 +134,18 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
                 Id = managedInstanceLink.Id,
                 Type = managedInstanceLink.Type,
                 Name = managedInstanceLink.Name,
-                TargetDatabase = managedInstanceLink.TargetDatabase,
-                SourceEndpoint = managedInstanceLink.SourceEndpoint,
-                ReplicationMode = managedInstanceLink.ReplicationMode,
-                PrimaryAvailabilityGroupName = managedInstanceLink.PrimaryAvailabilityGroupName,
-                SecondaryAvailabilityGroupName = managedInstanceLink.SecondaryAvailabilityGroupName,
+                DistributedAvailabilityGroupName = managedInstanceLink.DistributedAvailabilityGroupName,
                 DistributedAvailabilityGroupId = managedInstanceLink.DistributedAvailabilityGroupId,
-                SourceReplicaId = managedInstanceLink.SourceReplicaId,
-                TargetReplicaId = managedInstanceLink.TargetReplicaId,
-                LinkState = managedInstanceLink.LinkState,
-                LastHardenedLsn =managedInstanceLink.LastHardenedLsn,
+                Databases = managedInstanceLink.Databases,
+                InstanceAvailabilityGroupName = managedInstanceLink.InstanceAvailabilityGroupName,
+                PartnerAvailabilityGroupName = managedInstanceLink.PartnerAvailabilityGroupName,
+                InstanceLinkRole = managedInstanceLink.InstanceLinkRole,
+                PartnerLinkRole = managedInstanceLink.PartnerLinkRole,
+                PartnerEndpoint = managedInstanceLink.PartnerEndpoint,
+                ReplicationMode = managedInstanceLink.ReplicationMode,
+                FailoverMode = managedInstanceLink.FailoverMode,
+                SeedingMode = managedInstanceLink.SeedingMode,
+                
             };
             return managedInstanceLinkModel;
         }
