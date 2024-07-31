@@ -1,0 +1,369 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/af15e575-f948-49ac-bce0-252d028e9379/providers/Microsoft.Network?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWYxNWU1NzUtZjk0OC00OWFjLWJjZTAtMjUyZDAyOGU5Mzc5L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yaz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "37e8612b-3534-4423-bf81-ec86feca00f0"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3224.31407",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.98"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "WWW-Authenticate": [
+          "Bearer authorization_uri=\"https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47\", error=\"invalid_token\", error_description=\"The access token has expired.\""
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "13596c58-b5f3-4f72-a46b-333b640fc21a"
+        ],
+        "x-ms-correlation-request-id": [
+          "13596c58-b5f3-4f72-a46b-333b640fc21a"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20240731T055406Z:13596c58-b5f3-4f72-a46b-333b640fc21a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 92B70ECD92324E4EAE5EAD544696185F Ref B: MAA201060513033 Ref C: 2024-07-31T05:54:05Z"
+        ],
+        "Date": [
+          "Wed, 31 Jul 2024 05:54:05 GMT"
+        ],
+        "Content-Length": [
+          "172"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ExpiredAuthenticationToken\",\r\n    \"message\": \"The access token expiry UTC time '7/31/2024 5:53:20 AM' is earlier than current UTC time '7/31/2024 5:54:06 AM'.\"\r\n  }\r\n}",
+      "StatusCode": 401
+    },
+    {
+      "RequestUri": "/subscriptions/af15e575-f948-49ac-bce0-252d028e9379/resourcegroups/lyonrg2099?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWYxNWU1NzUtZjk0OC00OWFjLWJjZTAtMjUyZDAyOGU5Mzc5L3Jlc291cmNlZ3JvdXBzL2x5b25yZzIwOTk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "24a775db-8acf-43da-a5ed-21a18c764dce"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3224.31407",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.98"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "28"
+        ]
+      },
+      "RequestBody": "{\r\n  \"location\": \"westus\"\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "WWW-Authenticate": [
+          "Bearer authorization_uri=\"https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47\", error=\"invalid_token\", error_description=\"The access token has expired.\""
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "a7cdc809-0c9d-45bc-aae9-887183d6dc2b"
+        ],
+        "x-ms-correlation-request-id": [
+          "a7cdc809-0c9d-45bc-aae9-887183d6dc2b"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20240731T055406Z:a7cdc809-0c9d-45bc-aae9-887183d6dc2b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 82B396A41F4F4342AAEC148DBE79A1BF Ref B: MAA201060514037 Ref C: 2024-07-31T05:54:06Z"
+        ],
+        "Date": [
+          "Wed, 31 Jul 2024 05:54:05 GMT"
+        ],
+        "Content-Length": [
+          "172"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ExpiredAuthenticationToken\",\r\n    \"message\": \"The access token expiry UTC time '7/31/2024 5:53:20 AM' is earlier than current UTC time '7/31/2024 5:54:06 AM'.\"\r\n  }\r\n}",
+      "StatusCode": 401
+    },
+    {
+      "RequestUri": "/subscriptions/af15e575-f948-49ac-bce0-252d028e9379/resourceGroups/lyonrg2099/providers/Microsoft.Network/virtualNetworks/lyon2379?api-version=2024-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWYxNWU1NzUtZjk0OC00OWFjLWJjZTAtMjUyZDAyOGU5Mzc5L3Jlc291cmNlR3JvdXBzL2x5b25yZzIwOTkvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy9seW9uMjM3OT9hcGktdmVyc2lvbj0yMDI0LTAxLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c008b325-d12f-4373-8694-a61c19096f29"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3224.31407",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/27.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "WWW-Authenticate": [
+          "Bearer authorization_uri=\"https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47\", error=\"invalid_token\", error_description=\"The access token has expired.\""
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "8bb5be88-0fd2-41eb-8e76-c91f9f08aaa3"
+        ],
+        "x-ms-correlation-request-id": [
+          "8bb5be88-0fd2-41eb-8e76-c91f9f08aaa3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20240731T055406Z:8bb5be88-0fd2-41eb-8e76-c91f9f08aaa3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 52874FB3FE1F4C7F9E96805310D30D81 Ref B: MAA201060515045 Ref C: 2024-07-31T05:54:06Z"
+        ],
+        "Date": [
+          "Wed, 31 Jul 2024 05:54:06 GMT"
+        ],
+        "Content-Length": [
+          "172"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ExpiredAuthenticationToken\",\r\n    \"message\": \"The access token expiry UTC time '7/31/2024 5:53:20 AM' is earlier than current UTC time '7/31/2024 5:54:06 AM'.\"\r\n  }\r\n}",
+      "StatusCode": 401
+    },
+    {
+      "RequestUri": "/subscriptions/af15e575-f948-49ac-bce0-252d028e9379/resourcegroups/lyonrg2099?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWYxNWU1NzUtZjk0OC00OWFjLWJjZTAtMjUyZDAyOGU5Mzc5L3Jlc291cmNlZ3JvdXBzL2x5b25yZzIwOTk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "669239b2-c505-4821-a155-ff72a4e198d3"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3224.31407",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.98"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "WWW-Authenticate": [
+          "Bearer authorization_uri=\"https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47\", error=\"invalid_token\", error_description=\"The access token has expired.\""
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "a158124b-4498-44c3-9419-47449d12e413"
+        ],
+        "x-ms-correlation-request-id": [
+          "a158124b-4498-44c3-9419-47449d12e413"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20240731T055406Z:a158124b-4498-44c3-9419-47449d12e413"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 8D9C1E69040F4C5CB9397C536E24FB40 Ref B: MAA201060515029 Ref C: 2024-07-31T05:54:06Z"
+        ],
+        "Date": [
+          "Wed, 31 Jul 2024 05:54:06 GMT"
+        ],
+        "Content-Length": [
+          "172"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ExpiredAuthenticationToken\",\r\n    \"message\": \"The access token expiry UTC time '7/31/2024 5:53:20 AM' is earlier than current UTC time '7/31/2024 5:54:06 AM'.\"\r\n  }\r\n}",
+      "StatusCode": 401
+    },
+    {
+      "RequestUri": "/subscriptions/af15e575-f948-49ac-bce0-252d028e9379/resourcegroups/lyonrg8649?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWYxNWU1NzUtZjk0OC00OWFjLWJjZTAtMjUyZDAyOGU5Mzc5L3Jlc291cmNlZ3JvdXBzL2x5b25yZzg2NDk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ef21c392-c7a1-492d-ba02-31e9dbd6e2d7"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3224.31407",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.98"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "WWW-Authenticate": [
+          "Bearer authorization_uri=\"https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47\", error=\"invalid_token\", error_description=\"The access token has expired.\""
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "cf20ce82-a1c4-4710-85a6-4ff123005845"
+        ],
+        "x-ms-correlation-request-id": [
+          "cf20ce82-a1c4-4710-85a6-4ff123005845"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20240731T055406Z:cf20ce82-a1c4-4710-85a6-4ff123005845"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: A25963D3E2484E90A7A0796869D1ADDC Ref B: MAA201060514017 Ref C: 2024-07-31T05:54:06Z"
+        ],
+        "Date": [
+          "Wed, 31 Jul 2024 05:54:06 GMT"
+        ],
+        "Content-Length": [
+          "172"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ExpiredAuthenticationToken\",\r\n    \"message\": \"The access token expiry UTC time '7/31/2024 5:53:20 AM' is earlier than current UTC time '7/31/2024 5:54:06 AM'.\"\r\n  }\r\n}",
+      "StatusCode": 401
+    }
+  ],
+  "Names": {
+    "Test-VnetFlowLogWithEmptyFilteringCondition": [
+      "lyonrg2099",
+      "lyon1559",
+      "lyonrg8649",
+      "lyon2496",
+      "lyon430",
+      "lyon2379",
+      "lyon1443"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "af15e575-f948-49ac-bce0-252d028e9379"
+  }
+}
