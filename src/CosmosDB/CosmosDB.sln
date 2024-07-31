@@ -16,7 +16,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{05A62C78-7B46-43F6-BA66-44997ED2D6F9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{601ACAFD-DB52-4199-B131-84CF04C1F79A}"
-=======
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{CF76D70C-D6D4-4195-94C6-878E64A60A7E}"
 EndProject
@@ -27,7 +26,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DependentModules", "DependentModules", "{B559D184-6859-4B41-A1ED-B4B0F51F6C21}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.KeyVault", "..\KeyVault\KeyVault.Autorest\Az.KeyVault.csproj", "{7F23CDAE-8D76-4F91-8C26-7A8E97E25E4B}"
-
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault", "..\KeyVault\KeyVault\KeyVault.csproj", "{AE8F380F-802A-422E-80F3-32CD8F241921}"
 EndProject
