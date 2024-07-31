@@ -16,7 +16,7 @@ Resize an existing Cluster.
 ```
 Resize-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Location <String> [-Tag <Hashtable>] [-TargetWorkerNodeCount <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,49 +24,49 @@ Resize-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupN
 ```
 Resize-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResizeViaJsonFilePath
 ```
 Resize-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResizeViaIdentityClusterpoolExpanded
 ```
 Resize-AzHdInsightOnAksCluster -Name <String> -ClusterpoolInputObject <IHdInsightOnAksIdentity>
  -Location <String> [-Tag <Hashtable>] [-TargetWorkerNodeCount <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResizeViaIdentityClusterpool
 ```
 Resize-AzHdInsightOnAksCluster -Name <String> -ClusterpoolInputObject <IHdInsightOnAksIdentity>
  -ClusterResizeRequest <IClusterResizeData> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Resize
 ```
 Resize-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -ClusterResizeRequest <IClusterResizeData> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResizeViaIdentityExpanded
 ```
 Resize-AzHdInsightOnAksCluster -InputObject <IHdInsightOnAksIdentity> -Location <String> [-Tag <Hashtable>]
  [-TargetWorkerNodeCount <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResizeViaIdentity
 ```
 Resize-AzHdInsightOnAksCluster -InputObject <IHdInsightOnAksIdentity>
  -ClusterResizeRequest <IClusterResizeData> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -276,6 +276,21 @@ Parameter Sets: ResizeExpanded, ResizeViaJsonString, ResizeViaJsonFilePath, Resi
 Aliases: ClusterPoolName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
