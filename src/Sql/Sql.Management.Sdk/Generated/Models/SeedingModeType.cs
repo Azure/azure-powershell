@@ -7,13 +7,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 {
 
     /// <summary>
-    /// Defines values for ReplicationMode.
+    /// Defines values for SeedingModeType.
     /// </summary>
 
 
-    public static class ReplicationMode
+    public static class SeedingModeType
     {
-        public const string Async = "Async";
-        public const string Sync = "Sync";
+        public const string Automatic = "Automatic";
+        public const string Manual = "Manual";
     }
 }
