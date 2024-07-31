@@ -1,115 +1,87 @@
 ---
 external help file:
 Module Name: Az.HdInsightOnAks
-online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/upgrade-azhdinsightonakscluster
+online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/invoke-azhdinsightonaksclustermanualrollback
 schema: 2.0.0
 ---
 
-# Upgrade-AzHdInsightOnAksCluster
+# Invoke-AzHdInsightOnAksClusterManualRollback
 
 ## SYNOPSIS
-Upgrade a cluster.
+Manual rollback upgrade for a cluster.
 
 ## SYNTAX
 
 ### UpgradeExpanded (Default)
 ```
-Upgrade-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
- -UpgradeType <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Invoke-AzHdInsightOnAksClusterManualRollback -ClusterName <String> -ClusterPoolName <String>
+ -ResourceGroupName <String> -UpgradeHistory <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Upgrade
 ```
-Upgrade-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
- -ClusterUpgradeRequest <IClusterUpgrade> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzHdInsightOnAksClusterManualRollback -ClusterName <String> -ClusterPoolName <String>
+ -ResourceGroupName <String> -ClusterRollbackUpgradeRequest <IClusterUpgradeRollback>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpgradeViaIdentity
 ```
-Upgrade-AzHdInsightOnAksCluster -InputObject <IHdInsightOnAksIdentity>
- -ClusterUpgradeRequest <IClusterUpgrade> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Invoke-AzHdInsightOnAksClusterManualRollback -InputObject <IHdInsightOnAksIdentity>
+ -ClusterRollbackUpgradeRequest <IClusterUpgradeRollback> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpgradeViaIdentityClusterpool
 ```
-Upgrade-AzHdInsightOnAksCluster -ClusterpoolInputObject <IHdInsightOnAksIdentity> -Name <String>
- -ClusterUpgradeRequest <IClusterUpgrade> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Invoke-AzHdInsightOnAksClusterManualRollback -ClusterName <String>
+ -ClusterpoolInputObject <IHdInsightOnAksIdentity> -ClusterRollbackUpgradeRequest <IClusterUpgradeRollback>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpgradeViaIdentityClusterpoolExpanded
 ```
-Upgrade-AzHdInsightOnAksCluster -ClusterpoolInputObject <IHdInsightOnAksIdentity> -Name <String>
- -UpgradeType <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Invoke-AzHdInsightOnAksClusterManualRollback -ClusterName <String>
+ -ClusterpoolInputObject <IHdInsightOnAksIdentity> -UpgradeHistory <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpgradeViaIdentityExpanded
 ```
-Upgrade-AzHdInsightOnAksCluster -InputObject <IHdInsightOnAksIdentity> -UpgradeType <String>
+Invoke-AzHdInsightOnAksClusterManualRollback -InputObject <IHdInsightOnAksIdentity> -UpgradeHistory <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpgradeViaJsonFilePath
 ```
-Upgrade-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Invoke-AzHdInsightOnAksClusterManualRollback -ClusterName <String> -ClusterPoolName <String>
+ -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpgradeViaJsonString
 ```
-Upgrade-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Invoke-AzHdInsightOnAksClusterManualRollback -ClusterName <String> -ClusterPoolName <String>
+ -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Upgrade a cluster.
+Manual rollback upgrade for a cluster.
 
 ## EXAMPLES
 
-### Example 1: Upgrade a cluster.
+### Example 1: Roll back the upgrade of a cluster
 ```powershell
 $clusterResourceGroupName = "Group"
 $clusterpoolName = "ps-test-pool"
-$clusterName = "flinkcluster"
-$hotfixObj = New-AzHdInsightOnAksClusterHotfixUpgradeObject -ComponentName Webssh -TargetBuildNumber 7 -TargetClusterVersion "1.1.1" -TargetOssVersion "0.4.2"
-Upgrade-AzHdInsightOnAksCluster -ResourceGroupName $clusterResourceGroupName -ClusterName $clusterName -ClusterPoolName $clusterpoolName -ClusterUpgradeRequest $hotfixObj
+$clusterName = "cluster"
+Invoke-AzHdInsightOnAksClusterManualRollback -ResourceGroupName $clusterResourceGroupName -ClusterName $clusterName -ClusterPoolName $clusterpoolName -UpgradeHistory /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/devrp/providers/Microsoft.HDInsight/clusterpools/pool/clusters/cluster202458152055/upgradeHistories/05_11_2024_06_41_26_AM-AKSPatchUpgrade
 ```
 
-```output
-AccessProfileEnableInternalIngress          : False
-AccessProfilePrivateLinkServiceId           : 
-ApplicationLogStdErrorEnabled               : 
-ApplicationLogStdOutEnabled                 : 
-AuthorizationProfileGroupId                 : 
-AuthorizationProfileUserId                  : 
-AutoscaleProfileAutoscaleType               : 
-AutoscaleProfileEnabled                     : False
-AutoscaleProfileGracefulDecommissionTimeout : 
-ClusterType                                 : 
-ComputeProfileNode                          : 
-ConnectivityEndpointBootstrapServerEndpoint : 
-ConnectivityEndpointBrokerEndpoint          : 
-ConnectivityProfileSsh                      : 
-CoordinatorDebugEnable                      : 
-CoordinatorDebugPort                        : 
-CoordinatorDebugSuspend                     : 
-CoordinatorHighAvailabilityEnabled          : 
-DatabaseHost                                : 
-DatabaseName                                : 
-DatabasePasswordSecretRef                   : 
-DatabaseUsername                            : 
-DeploymentId                                : 
-DiskStorageDataDiskSize                     : 0
-...
-```
-
-Upgrade a cluster with type HotFix.
+Roll back the upgrade of a cluster
 
 ## PARAMETERS
 
@@ -122,6 +94,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterName
+The name of the HDInsight cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaIdentityClusterpool, UpgradeViaIdentityClusterpoolExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -143,11 +130,26 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ClusterUpgradeRequest
+### -ClusterPoolName
+The name of the cluster pool.
+
+```yaml
+Type: System.String
+Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterRollbackUpgradeRequest
 Cluster Upgrade.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade
+Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgradeRollback
 Parameter Sets: Upgrade, UpgradeViaIdentity, UpgradeViaIdentityClusterpool
 Aliases:
 
@@ -219,21 +221,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the HDInsight cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaIdentityClusterpool, UpgradeViaIdentityClusterpoolExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
-Aliases: ClusterName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -243,21 +230,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PoolName
-The name of the cluster pool.
-
-```yaml
-Type: System.String
-Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
-Aliases: ClusterPoolName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -296,8 +268,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UpgradeType
-Type of upgrade.
+### -UpgradeHistory
+A specific upgrade history to rollback
 
 ```yaml
 Type: System.String
@@ -347,7 +319,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade
+### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgradeRollback
 
 ### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
 
