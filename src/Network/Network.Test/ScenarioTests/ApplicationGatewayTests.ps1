@@ -4170,7 +4170,6 @@ function Test-ApplicationGatewayFirewallPolicyManagedRuleGroupOverrideEmptyRule
 		Clean-ResourceGroup $rgname
 	}
 }
-}
 
 <#
 .SYNOPSIS
