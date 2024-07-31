@@ -4226,6 +4226,7 @@ function Test-ApplicationGatewayFirewallPolicyManagedRuleGroupOverrideWithSensit
 		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleSetVersion "1.0"
 		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleGroupOverrides[0].RuleGroupName $ruleGroupOverrideEntry.RuleGroupName
 		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleGroupOverrides[0].Rules[0].Sensitivity $ruleOverrideEntry.Sensitivity
+		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleGroupOverrides[0].Rules[0].Action $ruleOverrideEntry.Action
 	}
 	finally
 	{
