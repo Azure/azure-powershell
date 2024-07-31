@@ -376,15 +376,19 @@ directive:
   - where:
       subject: MachinePatch|AssessMachinePatch|Gateway|License|LicenseProfile|MachineExtension|MachineRunCommand|AgentVersion|ExtensionMetadata|HybridIdentityMetadata|NetworkProfile|Setting|Extension
     remove: true
+  - where:
+      subject: Machine
+    hide: true
 
   - where:
       subject: VirtualMachineInstance
     set:
       subject: VM
   - where:
-      verb: New
+      verb: New|Update|Remove
       subject: VM
     hide: true
+
   - where:
       subject: VirtualMachineInstanceHybridIdentityMetadata
     set:
@@ -410,6 +414,10 @@ directive:
       verb: Update|Remove
       subject: VMGuestAgent
     remove: true
+  - where:
+      verb: New
+      subject: VMGuestAgent
+    hide: true
 
   - where:
       parameter-name: ResourceName

@@ -12,23 +12,11 @@ Create GuestAgent.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
-New-AzScVmmVMGuestAgent -MachineId <String> [-CredentialsPassword <SecureString>]
- [-CredentialsUsername <String>] [-HttpProxyConfigHttpsProxy <String>] [-ProvisioningAction <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzScVmmVMGuestAgent -MachineId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzScVmmVMGuestAgent -MachineId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzScVmmVMGuestAgent -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-CredentialsPassword <SecureString>] [-CredentialsUsername <String>] [-HttpProxyConfigHttpsProxy <String>]
+ [-ProvisioningAction <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,27 +24,19 @@ Create GuestAgent.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 {{ Add code here }}
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 {{ Add code here }}
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
 
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -80,7 +60,7 @@ Gets or sets the password to connect with the guest.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -95,7 +75,7 @@ Gets or sets username to connect with the guest.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -126,7 +106,7 @@ Gets or sets httpsProxy url.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -136,43 +116,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MachineId
-The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+### -Name
+The name of the hybrid machine.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: MachineName
 
 Required: True
 Position: Named
@@ -201,12 +151,44 @@ Gets or sets the guest agent provisioning action.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

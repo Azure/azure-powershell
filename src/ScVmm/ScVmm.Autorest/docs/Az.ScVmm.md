@@ -26,9 +26,6 @@ Implements Cloud GET method.
 ### [Get-AzScVmmInventoryItem](Get-AzScVmmInventoryItem.md)
 Shows an inventory item.
 
-### [Get-AzScVmmMachine](Get-AzScVmmMachine.md)
-Retrieves information about the model view or the instance view of a hybrid machine.
-
 ### [Get-AzScVmmServer](Get-AzScVmmServer.md)
 Implements VMMServer GET method.
 
@@ -58,10 +55,6 @@ Onboards the ScVmm fabric cloud as an Azure cloud resource.
 
 ### [New-AzScVmmInventoryItem](New-AzScVmmInventoryItem.md)
 Create InventoryItem.
-
-### [New-AzScVmmMachine](New-AzScVmmMachine.md)
-The operation to Create a hybrid machine.
-Please note some properties can be set only during machine creation.
 
 ### [New-AzScVmmNetworkInterfaceObject](New-AzScVmmNetworkInterfaceObject.md)
 Create an in-memory object for NetworkInterface.
@@ -103,9 +96,6 @@ Deregisters the ScVmm fabric cloud from Azure.
 ### [Remove-AzScVmmInventoryItem](Remove-AzScVmmInventoryItem.md)
 Deletes an inventoryItem.
 
-### [Remove-AzScVmmMachine](Remove-AzScVmmMachine.md)
-The operation to delete a hybrid machine.
-
 ### [Remove-AzScVmmNetworkInterface](Remove-AzScVmmNetworkInterface.md)
 The operation to Delete a virtual machine network interface.
 
@@ -144,9 +134,6 @@ Update the AvailabilitySets resource.
 
 ### [Update-AzScVmmCloud](Update-AzScVmmCloud.md)
 Update the Clouds resource.
-
-### [Update-AzScVmmMachine](Update-AzScVmmMachine.md)
-The operation to Update a hybrid machine.
 
 ### [Update-AzScVmmServer](Update-AzScVmmServer.md)
 Update the VmmServers resource.

@@ -13,9 +13,9 @@ Please note some properties can be set only during virtual machine instance crea
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
-New-AzScVmmVM -MachineId <String> [-AvailabilitySet <IAvailabilitySetListItem[]>]
+New-AzScVmmVM -Name <String> -ResourceGroupName <String> -IdentityType <String> -Kind <String>
+ -Location <String> [-SubscriptionId <String>] [-AvailabilitySet <IAvailabilitySetListItem[]>]
  [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-HardwareProfileCpuCount <Int32>]
  [-HardwareProfileDynamicMemoryEnabled <String>] [-HardwareProfileDynamicMemoryMaxMb <Int32>]
  [-HardwareProfileDynamicMemoryMinMb <Int32>] [-HardwareProfileLimitCpuForMigration <String>]
@@ -26,19 +26,7 @@ New-AzScVmmVM -MachineId <String> [-AvailabilitySet <IAvailabilitySetListItem[]>
  [-InfrastructureProfileUuid <String>] [-InfrastructureProfileVmmServerId <String>]
  [-InfrastructureProfileVMName <String>] [-NetworkProfileNetworkInterface <INetworkInterface[]>]
  [-OSProfileAdminPassword <SecureString>] [-OSProfileComputerName <String>]
- [-StorageProfileDisk <IVirtualDisk[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzScVmmVM -MachineId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzScVmmVM -MachineId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-StorageProfileDisk <IVirtualDisk[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -93,7 +81,7 @@ To construct, see NOTES section for AVAILABILITYSET properties and create a hash
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAvailabilitySetListItem[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -124,7 +112,7 @@ The extended location name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -139,7 +127,7 @@ The extended location type.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -154,7 +142,7 @@ Gets or sets the number of vCPUs for the vm.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -169,7 +157,7 @@ Gets or sets a value indicating whether to enable dynamic memory or not.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -184,7 +172,7 @@ Gets or sets the max dynamic memory for the vm.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -199,7 +187,7 @@ Gets or sets the min dynamic memory for the vm.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -214,7 +202,7 @@ Gets or sets a value indicating whether to enable processor compatibility mode f
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -229,10 +217,25 @@ MemoryMB is the size of a virtual machine's memory, in MB.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+The identity type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -244,7 +247,7 @@ Gets or sets the bios guid for the vm.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -260,7 +263,7 @@ To construct, see NOTES section for INFRASTRUCTUREPROFILECHECKPOINT properties a
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICheckpoint[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -275,7 +278,7 @@ Type of checkpoint supported for the vm.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -290,7 +293,7 @@ ARM Id of the cloud resource to use for deploying the vm.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -305,7 +308,7 @@ Gets or sets the generation for the vm.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -320,7 +323,7 @@ Gets or sets the inventory Item ID for the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -335,7 +338,7 @@ ARM Id of the template resource to use for deploying the vm.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -350,7 +353,7 @@ Unique ID of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -365,7 +368,7 @@ ARM Id of the vmmServer resource in which this resource resides.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -380,7 +383,7 @@ VMName is the name of VM on the SCVMM server.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -390,43 +393,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MachineId
-The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+### -Kind
+Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The geo-location where the resource lives
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the hybrid machine.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: MachineName
 
 Required: True
 Position: Named
@@ -441,7 +444,7 @@ To construct, see NOTES section for NETWORKPROFILENETWORKINTERFACE properties an
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.INetworkInterface[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -471,7 +474,7 @@ Admin password of the virtual machine.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -486,10 +489,26 @@ Gets or sets computer name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -502,7 +521,38 @@ To construct, see NOTES section for STORAGEPROFILEDISK properties and create a h
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualDisk[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
 Aliases:
 
 Required: False

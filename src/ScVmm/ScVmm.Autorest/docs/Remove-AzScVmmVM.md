@@ -13,8 +13,9 @@ The operation to delete a virtual machine instance.
 ## SYNTAX
 
 ```
-Remove-AzScVmmVM -MachineId <String> [-DeleteFromHost <String>] [-Force <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzScVmmVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DeleteFromHost <String>] [-Force <String>] [-DeleteMachine] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,6 +93,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DeleteMachine
+
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Force
 Whether force delete was specified.
 
@@ -107,13 +123,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MachineId
-The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+### -Name
+The name of the hybrid machine.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: MachineName
 
 Required: True
 Position: Named
@@ -148,6 +164,38 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

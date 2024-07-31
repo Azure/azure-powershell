@@ -71,11 +71,54 @@ function New-AzScVmmVM {
   [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineInstance])]
   [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
   param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Alias('MachineName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Path')]
     [System.String]
-    # The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
-    ${MachineId},
+    # The name of the hybrid machine.
+    ${Name},
+
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
+
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.PSArgumentCompleterAttribute("SystemAssigned")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.String]
+    # The identity type.
+    ${IdentityType},
+
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.PSArgumentCompleterAttribute("AVS", "HCI", "SCVMM", "VMware", "EPS", "GCP", "AWS")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.String]
+    # Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
+    ${Kind},
+
+    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
 
     [Parameter(ParameterSetName = 'CreateExpanded')]
     [AllowEmptyCollection()]
@@ -225,18 +268,6 @@ function New-AzScVmmVM {
     # To construct, see NOTES section for STORAGEPROFILEDISK properties and create a hash table.
     ${StorageProfileDisk},
 
-    [Parameter(ParameterSetName = 'CreateViaJsonFilePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.String]
-    # Path of Json file supplied to the Create operation
-    ${JsonFilePath},
-
-    [Parameter(ParameterSetName = 'CreateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.String]
-    # Json string supplied to the Create operation
-    ${JsonString},
-
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -299,6 +330,35 @@ function New-AzScVmmVM {
   )
 
   process {
+    $machineObj = Az.ScVmm.internal\Get-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName
+
+    if ($null -eq $machineObj) {
+      if ($null -eq $tag) {
+        $machineObj = Az.ScVmm.internal\New-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -Location $Location -IdentityType $IdentityType -Kind $Kind
+      }
+      else {
+        $machineObj = Az.ScVmm.internal\New-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -Location $Location -IdentityType $IdentityType -Kind $Kind -Tag $Tag
+      }
+    }
+    else {
+      if (!($machineObj.Kind.ToLower() -eq $Kind.ToLower())) {
+        throw "A machine already exists with kind: $($machineObj.Kind). Machine kind cannot be updated to: $($Kind)"
+      }
+      
+      if (!($machineObj.Location.ToLower() -eq $Location.ToLower())) {
+        throw "The location of the existing Machine cannot be updated. Either specify the existing location or keep the location unspecified. Existing location: $($machine.Location), Provided location: $($Location)"
+      }
+      
+      if ($null -eq $Tag) {
+        $machineObj = Az.ScVmm.internal\Update-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -IdentityType $IdentityType
+      }
+      else {
+        $machineObj = Az.ScVmm.internal\Update-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -IdentityType $IdentityType -Tag $Tag
+      }
+    }
+
+    $PSBoundParameters.Add('MachineId', $machineObj.Id)
+    
     if ($PSBoundParameters.ContainsKey('InfrastructureProfileUuid') -and $PSBoundParameters.ContainsKey('InfrastructureProfileVmmServerId')) {
       $Null = $PSBoundParameters.Remove('InfrastructureProfileInventoryItemId')
 

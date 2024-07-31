@@ -12,27 +12,14 @@ The operation to Update a virtual machine instance.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
-Update-AzScVmmVM -MachineId <String> [-AvailabilitySet <IAvailabilitySetListItem[]>]
- [-HardwareProfileCpuCount <Int32>] [-HardwareProfileDynamicMemoryEnabled <String>]
- [-HardwareProfileDynamicMemoryMaxMb <Int32>] [-HardwareProfileDynamicMemoryMinMb <Int32>]
- [-HardwareProfileLimitCpuForMigration <String>] [-HardwareProfileMemoryMb <Int32>]
- [-InfrastructureProfileCheckpointType <String>] [-NetworkProfileNetworkInterface <INetworkInterfaceUpdate[]>]
- [-StorageProfileDisk <IVirtualDiskUpdate[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzScVmmVM -MachineId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzScVmmVM -MachineId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzScVmmVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-AvailabilitySet <IAvailabilitySetListItem[]>] [-HardwareProfileCpuCount <Int32>]
+ [-HardwareProfileDynamicMemoryEnabled <String>] [-HardwareProfileDynamicMemoryMaxMb <Int32>]
+ [-HardwareProfileDynamicMemoryMinMb <Int32>] [-HardwareProfileLimitCpuForMigration <String>]
+ [-HardwareProfileMemoryMb <Int32>] [-InfrastructureProfileCheckpointType <String>]
+ [-NetworkProfileNetworkInterface <INetworkInterfaceUpdate[]>] [-StorageProfileDisk <IVirtualDiskUpdate[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +71,7 @@ Availability Sets in vm.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAvailabilitySetListItem[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -115,7 +102,7 @@ Gets or sets the number of vCPUs for the vm.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -130,7 +117,7 @@ Gets or sets a value indicating whether to enable dynamic memory or not.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -145,7 +132,7 @@ Gets or sets the max dynamic memory for the vm.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -160,7 +147,7 @@ Gets or sets the min dynamic memory for the vm.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -175,7 +162,7 @@ Gets or sets a value indicating whether to enable processor compatibility mode f
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -190,7 +177,7 @@ MemoryMB is the size of a virtual machine's memory, in MB.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -205,7 +192,7 @@ Type of checkpoint supported for the vm.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -215,43 +202,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MachineId
-The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+### -Name
+The name of the hybrid machine.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: MachineName
 
 Required: True
 Position: Named
@@ -265,7 +222,7 @@ Gets or sets the list of network interfaces associated with the virtual machine.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.INetworkInterfaceUpdate[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -290,17 +247,49 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -StorageProfileDisk
 Gets or sets the list of virtual disks associated with the virtual machine.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualDiskUpdate[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
