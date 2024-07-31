@@ -1,19 +1,185 @@
 {
-  "New-AzCommunicationServiceKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz/listKeys?api-version=2020-08-20+1": {
+  "New-AzCommunicationServiceKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/listKeys?api-version=2023-06-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz/listKeys?api-version=2020-08-20",
+      "RequestUri": "https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/listKeys?api-version=2023-06-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "18" ],
-        "x-ms-client-request-id": [ "d27eb41f-7f33-4ce0-8660-211e95d3002f" ],
+        "x-ms-unique-id": [ "28" ],
+        "x-ms-client-request-id": [ "6cf9d130-3a8d-4235-a9be-3ca424c9102e" ],
         "CommandName": [ "Get-AzCommunicationServiceKey" ],
         "FullCommandName": [ "Get-AzCommunicationServiceKey_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.Communication/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "0f966fa7-3ccb-4dd8-98a9-3502b971b649" ],
+        "x-ms-request-id": [ "1ac681cc-6fbd-460b-9500-fa7b5c772140" ],
+        "x-ms-correlation-request-id": [ "583ce723-f6cf-4281-bc17-17ac22ac5993" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240718T045122Z:583ce723-f6cf-4281-bc17-17ac22ac5993" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 736FFD67C1B8419885753787DD32C449 Ref B: MAA201060513037 Ref C: 2024-07-18T04:51:21Z" ],
+        "Date": [ "Thu, 18 Jul 2024 04:51:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "619" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"primaryKey\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx==\",\"secondaryKey\":\"**************************************************************************************==\",\"primaryConnectionString\":\"endpoint=https://persistentresourcenamejeq8nr.unitedstates.communication.azure.com/;accesskey=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx==\",\"secondaryConnectionString\":\"endpoint=https://persistentresourcenamejeq8nr.unitedstates.communication.azure.com/;accesskey=**************************************************************************************==\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzCommunicationServiceKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/regenerateKey?api-version=2023-06-01-preview+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/regenerateKey?api-version=2023-06-01-preview",
+      "Content": "{\r\n  \"keyType\": \"Primary\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "28" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "71cca1e2-e5b2-4670-a30f-ff8376ef72f1" ],
+        "x-ms-request-id": [ "f3360a4c-91bb-413f-8e41-86248e972207" ],
+        "x-ms-correlation-request-id": [ "65bf3f4a-e5b2-4e78-bdb5-85459ba558ee" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240718T045124Z:65bf3f4a-e5b2-4e78-bdb5-85459ba558ee" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AA948889FB7E4200A6F4AA0FE7C7CF42 Ref B: MAA201060513037 Ref C: 2024-07-18T04:51:22Z" ],
+        "Date": [ "Thu, 18 Jul 2024 04:51:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "308" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"primaryKey\":\"original_primary_key==\",\"primaryConnectionString\":\"endpoint=https://persistentresourcenamejeq8nr.unitedstates.communication.azure.com/;accesskey=original_primary_key==\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzCommunicationServiceKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/regenerateKey?api-version=2023-06-01-preview+3": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/regenerateKey?api-version=2023-06-01-preview",
+      "Content": "{\r\n  \"keyType\": \"Secondary\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "30" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "8a4ea759-e294-4e7b-acec-abce926284bd" ],
+        "x-ms-request-id": [ "62617c28-a13c-4e5d-90c8-3aab64d046ea" ],
+        "x-ms-correlation-request-id": [ "07e609c6-9942-407f-86a4-23751fbc6ffe" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240718T045125Z:07e609c6-9942-407f-86a4-23751fbc6ffe" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1D032A118DA841D2BDFF9A18D930912B Ref B: MAA201060513037 Ref C: 2024-07-18T04:51:24Z" ],
+        "Date": [ "Thu, 18 Jul 2024 04:51:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "312" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"secondaryKey\":\"original_secondary_key==\",\"secondaryConnectionString\":\"endpoint=https://persistentresourcenamejeq8nr.unitedstates.communication.azure.com/;accesskey=original_secondary_key==\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzCommunicationServiceKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/listKeys?api-version=2023-06-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/listKeys?api-version=2023-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "be4cf6b7-c1a0-46e1-929e-e58fd8e6c7f1" ],
+        "CommandName": [ "Get-AzCommunicationServiceKey" ],
+        "FullCommandName": [ "Get-AzCommunicationServiceKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.Communication/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "f239733e-08e0-4670-8bb7-edbf2ad123f5" ],
+        "x-ms-request-id": [ "9296ae68-adce-4d3c-9eb7-e033b4e18de2" ],
+        "x-ms-correlation-request-id": [ "e9159a0f-017c-4a48-93bf-c2a85fa4c024" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240718T045126Z:e9159a0f-017c-4a48-93bf-c2a85fa4c024" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4027EE82017E42248DB8E47CB9A30052 Ref B: MAA201060513037 Ref C: 2024-07-18T04:51:25Z" ],
+        "Date": [ "Thu, 18 Jul 2024 04:51:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "619" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"primaryKey\":\"original_primary_key==\",\"secondaryKey\":\"original_secondary_key==\",\"primaryConnectionString\":\"endpoint=https://persistentresourcenamejeq8nr.unitedstates.communication.azure.com/;accesskey=original_primary_key==\",\"secondaryConnectionString\":\"endpoint=https://persistentresourcenamejeq8nr.unitedstates.communication.azure.com/;accesskey=original_secondary_key==\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzCommunicationServiceKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/regenerateKey?api-version=2023-06-01-preview+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/regenerateKey?api-version=2023-06-01-preview",
+      "Content": "{\r\n  \"keyType\": \"Primary\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "28" ]
       }
     },
     "Response": {
@@ -26,59 +192,29 @@
         "Request-Context": [ "appId=" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "f72cef12-6d57-4da6-987b-b54554e0a1f7" ],
-        "x-ms-correlation-request-id": [ "5693ab91-d646-4922-990c-0644242e9082" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211028T214147Z:5693ab91-d646-4922-990c-0644242e9082" ],
-        "Date": [ "Thu, 28 Oct 2021 21:41:47 GMT" ]
+        "mise-correlation-id": [ "20dc290d-d1eb-4f74-a824-f2e29f43970d" ],
+        "x-ms-request-id": [ "c7c2234c-2fec-44b4-b745-80e8d37d0c90" ],
+        "x-ms-correlation-request-id": [ "5f909b36-1e62-4b10-a1cd-8deca0f6a880" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240718T045127Z:5f909b36-1e62-4b10-a1cd-8deca0f6a880" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0178A95CBE8E48D5A3A920F4F09BDDD4 Ref B: MAA201060513037 Ref C: 2024-07-18T04:51:26Z" ],
+        "Date": [ "Thu, 18 Jul 2024 04:51:26 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "609" ],
+        "Content-Length": [ "308" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"primaryKey\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx==\",\"secondaryKey\":\"**************************************************************************************==\",\"primaryConnectionString\":\"endpoint=https://persistentresourcename8wn6lz.communication.azure.com/;accesskey=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx==\",\"secondaryConnectionString\":\"endpoint=https://persistentresourcename8wn6lz.communication.azure.com/;accesskey=**************************************************************************************==\"}"
+      "Content": "{\"primaryKey\":\"new_primary_key==\",\"primaryConnectionString\":\"endpoint=https://persistentresourcenamejeq8nr.unitedstates.communication.azure.com/;accesskey=new_primary_key==\"}",
+      "isContentBase64": false
     }
   },
-  "New-AzCommunicationServiceKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz/regenerateKey?api-version=2020-08-20+2": {
+  "New-AzCommunicationServiceKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/regenerateKey?api-version=2023-06-01-preview+3": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz/regenerateKey?api-version=2020-08-20",
-      "Content": "{\r\n  \"keyType\": \"Primary\"\r\n}",
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "28" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "x-ms-providerhub-traffic": [ "True" ],
-        "Request-Context": [ "appId=" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "ce23549f-1043-4cff-9b5b-0e3d8648175a" ],
-        "x-ms-correlation-request-id": [ "ba8a0bdb-cfbc-46d5-8c9f-cc446c725b03" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211028T214148Z:ba8a0bdb-cfbc-46d5-8c9f-cc446c725b03" ],
-        "Date": [ "Thu, 28 Oct 2021 21:41:48 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "303" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"primaryKey\":\"original_primary_key==\",\"primaryConnectionString\":\"endpoint=https://persistentresourcename8wn6lz.communication.azure.com/;accesskey=original_primary_key==\"}"
-    }
-  },
-  "New-AzCommunicationServiceKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz/regenerateKey?api-version=2020-08-20+3": {
-    "Request": {
-      "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz/regenerateKey?api-version=2020-08-20",
+      "RequestUri": "https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupjeq8nr/providers/Microsoft.Communication/communicationServices/persistentResourceNamejeq8nr/regenerateKey?api-version=2023-06-01-preview",
       "Content": "{\r\n  \"keyType\": \"Secondary\"\r\n}",
+      "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
@@ -91,132 +227,26 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "d23e2c9e-1df4-4227-95b7-a06adfc025ae" ],
-        "x-ms-correlation-request-id": [ "348cec29-d9be-42d8-b972-3b89483d99a3" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211028T214148Z:348cec29-d9be-42d8-b972-3b89483d99a3" ],
-        "Date": [ "Thu, 28 Oct 2021 21:41:48 GMT" ]
+        "mise-correlation-id": [ "a965a757-25b8-4a88-a763-5ebbaa80b07c" ],
+        "x-ms-request-id": [ "f166bf40-9406-4099-a063-c1e6d393dad6" ],
+        "x-ms-correlation-request-id": [ "7c7551ad-8f06-45cf-9be6-e9c46160f149" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240718T045128Z:7c7551ad-8f06-45cf-9be6-e9c46160f149" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A8556ED4374F421498889F17DB91BBD4 Ref B: MAA201060513037 Ref C: 2024-07-18T04:51:27Z" ],
+        "Date": [ "Thu, 18 Jul 2024 04:51:27 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "307" ],
+        "Content-Length": [ "312" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"secondaryKey\":\"original_secondary_key==\",\"secondaryConnectionString\":\"endpoint=https://persistentresourcename8wn6lz.communication.azure.com/;accesskey=original_secondary_key==\"}"
-    }
-  },
-  "New-AzCommunicationServiceKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz/listKeys?api-version=2020-08-20+1": {
-    "Request": {
-      "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz/listKeys?api-version=2020-08-20",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": [ "21" ],
-        "x-ms-client-request-id": [ "6c2a44a4-c068-49ad-a4f6-ec5b088af88d" ],
-        "CommandName": [ "Get-AzCommunicationServiceKey" ],
-        "FullCommandName": [ "Get-AzCommunicationServiceKey_List" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
-        "x-ms-providerhub-traffic": [ "True" ],
-        "Request-Context": [ "appId=" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "6bdd8546-f982-4bbd-a516-f03e3a04a667" ],
-        "x-ms-correlation-request-id": [ "db170c5b-3a59-4e96-ad7e-a598facf2cd1" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211028T214149Z:db170c5b-3a59-4e96-ad7e-a598facf2cd1" ],
-        "Date": [ "Thu, 28 Oct 2021 21:41:48 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "609" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"primaryKey\":\"original_primary_key==\",\"secondaryKey\":\"original_secondary_key==\",\"primaryConnectionString\":\"endpoint=https://persistentresourcename8wn6lz.communication.azure.com/;accesskey=original_primary_key==\",\"secondaryConnectionString\":\"endpoint=https://persistentresourcename8wn6lz.communication.azure.com/;accesskey=original_secondary_key==\"}"
-    }
-  },
-  "New-AzCommunicationServiceKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz/regenerateKey?api-version=2020-08-20+2": {
-    "Request": {
-      "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz/regenerateKey?api-version=2020-08-20",
-      "Content": "{\r\n  \"keyType\": \"Primary\"\r\n}",
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "28" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
-        "x-ms-providerhub-traffic": [ "True" ],
-        "Request-Context": [ "appId=" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "7ab9ba1a-acda-4b41-beeb-25875b1241a8" ],
-        "x-ms-correlation-request-id": [ "90184c67-33c4-448a-ad64-4a950990df60" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211028T214149Z:90184c67-33c4-448a-ad64-4a950990df60" ],
-        "Date": [ "Thu, 28 Oct 2021 21:41:49 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "303" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"primaryKey\":\"new_primary_key==\",\"primaryConnectionString\":\"endpoint=https://persistentresourcename8wn6lz.communication.azure.com/;accesskey=new_primary_key==\"}"
-    }
-  },
-  "New-AzCommunicationServiceKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz/regenerateKey?api-version=2020-08-20+3": {
-    "Request": {
-      "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/resourceGroups/testgroup8wn6lz/providers/Microsoft.Communication/communicationServices/persistentResourceName8wn6lz/regenerateKey?api-version=2020-08-20",
-      "Content": "{\r\n  \"keyType\": \"Secondary\"\r\n}",
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "30" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
-        "x-ms-providerhub-traffic": [ "True" ],
-        "Request-Context": [ "appId=" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "9ec43ca3-b289-45d8-b68b-03e7f57db13c" ],
-        "x-ms-correlation-request-id": [ "baa0fb81-ae47-43bc-a69a-3ac5498dcb83" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211028T214149Z:baa0fb81-ae47-43bc-a69a-3ac5498dcb83" ],
-        "Date": [ "Thu, 28 Oct 2021 21:41:49 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "307" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"secondaryKey\":\"new_secondary_key==\",\"secondaryConnectionString\":\"endpoint=https://persistentresourcename8wn6lz.communication.azure.com/;accesskey=new_secondary_key==\"}"
+      "Content": "{\"secondaryKey\":\"new_secondary_key==\",\"secondaryConnectionString\":\"endpoint=https://persistentresourcenamejeq8nr.unitedstates.communication.azure.com/;accesskey=new_secondary_key==\"}",
+      "isContentBase64": false
     }
   }
 }

@@ -1,8 +1,8 @@
 {
-  "Update-AzMLServiceQuota+[NoContext]+UpdateExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/updateQuotas?api-version=2022-05-01+1": {
+  "Update-AzMLServiceQuota+[NoContext]+UpdateExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/updateQuotas?api-version=2024-04-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/updateQuotas?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/updateQuotas?api-version=2024-04-01",
       "Content": "{\r\n  \"value\": [ ]\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -23,18 +23,20 @@
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-aml-cluster": [ "vienna-eastus-02" ],
-        "x-request-time": [ "0.282" ],
-        "x-ms-request-id": [ "ac116107-e55c-4cfa-801a-1a554634f7ac" ],
-        "x-ms-correlation-request-id": [ "ac116107-e55c-4cfa-801a-1a554634f7ac" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T144445Z:ac116107-e55c-4cfa-801a-1a554634f7ac" ],
-        "Date": [ "Sun, 05 Jun 2022 14:44:45 GMT" ]
+        "x-request-time": [ "0.029" ],
+        "x-ms-request-id": [ "468194a7-566d-4ad6-a4e5-655ce5638f01" ],
+        "x-ms-correlation-request-id": [ "468194a7-566d-4ad6-a4e5-655ce5638f01" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T090400Z:468194a7-566d-4ad6-a4e5-655ce5638f01" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D7556FDB64F44D6B8A152C1712ADF708 Ref B: TYO201151005031 Ref C: 2024-07-24T09:03:59Z" ],
+        "Date": [ "Wed, 24 Jul 2024 09:04:00 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "17" ],
+        "Content-Length": [ "134" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"value\": []\n}",
+      "Content": "{\n  \"value\": [\n    {\n      \"id\": null,\n      \"type\": null,\n      \"limit\": 0,\n      \"unit\": null,\n      \"status\": \"success\"\n    }\n  ]\n}",
       "isContentBase64": false
     }
   }

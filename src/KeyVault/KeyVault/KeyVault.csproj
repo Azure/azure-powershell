@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KeyVault.Sdk\KeyVault.Sdk.csproj" />
+    <ProjectReference Include="..\KeyVault.Management.Sdk\KeyVault.Management.Sdk.csproj" />
   </ItemGroup>
 
   <ItemGroup>

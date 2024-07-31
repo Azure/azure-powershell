@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV1.dll-Help.xml
 Module Name: Az.DataFactory
 ms.assetid: 5BF24BC2-DEB6-4830-BDEA-841BAB070388
 online version: https://learn.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue
@@ -36,7 +36,7 @@ The **New-AzDataFactoryEncryptValue** cmdlet encrypts sensitive data, such as a 
 
 ### Example 1: Encrypt a non-ODBC connection string
 ```powershell
-$Value = ConvertTo-SecureString 'Data Source=ContosoServer;Initial Catalog=catalog;user id =user123;password=password123' -AsPlainText -Force 
+$Value = ConvertTo-SecureString 'Data Source=ContosoServer;Initial Catalog=catalog;user id =user123;password=******' -AsPlainText -Force 
 New-AzDataFactoryEncryptValue -GatewayName "WikiGateway" -DataFactoryName "WikiAdf" -Value $value -ResourceGroupName "ADF" -Type OnPremisesSqlLinkedService
 ```
 
@@ -47,7 +47,7 @@ The second command creates an encrypted value for the object stored in $Value fo
 
 ### Example 2: Encrypt a non-ODBC connection string that uses Windows authentication.
 ```powershell
-$Value = ConvertTo-SecureString 'Data Source=ContosoServer;Initial Catalog=catalog;Integrated Security=True' -AsPlainText -Force
+$Value = ConvertTo-SecureString -String 'Data Source=ContosoServer;Initial Catalog=catalog;Integrated Security=True' -AsPlainText -Force
 $Credential = Get-Credential
 New-AzDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Credential $Credential -Type OnPremisesSqlLinkedService
 ```
@@ -59,7 +59,7 @@ The third command creates an encrypted value for the object stored in $Value and
 
 ### Example 3: Encrypt server name and credentials for File system linked service
 ```powershell
-$Value = ConvertTo-SecureString '\\servername' -AsPlainText -Force
+$Value = ConvertTo-SecureString "******" -AsPlainText -Force
 $Credential = Get-Credential
 New-AzDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Credential $Credential -Type OnPremisesFileSystemLinkedService
 ```
@@ -70,8 +70,8 @@ The third command creates an encrypted value for the object stored in $Value and
 
 ### Example 4: Encrypt credentials for HDFS linked service
 ```powershell
-$UserName = ConvertTo-SecureString "domain\\username" -AsPlainText -Force
-$Password = ConvertTo-SecureString "password" -AsPlainText -Force
+$UserName = ConvertTo-SecureString "******" -AsPlainText -Force
+$Password = ConvertTo-SecureString "******" -AsPlainText -Force
 $Credential = New-Object System.Management.Automation.PSCredential ($UserName, $Password)
 New-AzDataFactoryEncryptValue -DataFactoryName "MyDataFactory" -ResourceGroupName "MyResourceGroup" -GatewayName "MyDataManagementGateway" -Type HdfsLinkedService -AuthenticationType Windows -Credential $Credential -NonCredentialValue "http://server01.com:50070/webhdfs/v1/user/username"
 ```
@@ -83,7 +83,7 @@ The **New-AzDataFactoryEncryptValue** command creates an encrypted value for the
 
 ### Example 5: Encrypt credentials for ODBC linked service
 ```powershell
-$Content = ConvertTo-SecureString "UID=username@contoso;PWD=password;" -AsPlainText -Force
+$Content = ConvertTo-SecureString "UID=username@contoso;PWD=******;" -AsPlainText -Force
 New-AzDataFactoryEncryptValue -ResourceGroupName $RGName -DataFactoryName $DFName -GatewayName $Gateway -Type OnPremisesOdbcLinkedService -AuthenticationType Basic -NonCredentialValue "Driver={SQL Server};Server=server01.database.contoso.net; Database=HDISScenarioTest;" -Value $content
 ```
 

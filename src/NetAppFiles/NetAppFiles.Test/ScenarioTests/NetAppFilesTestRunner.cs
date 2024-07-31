@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests
                     },
                     resourceProviders: new Dictionary<string, string>
                     {
+                        {"Microsoft.NetApp", null},
                         {"Microsoft.Resources", null},
                         {"Microsoft.Features", null},
                         {"Microsoft.Authorization", null},

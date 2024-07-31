@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support
 {
 
-    /// <summary>TypeConverter implementation for ScheduleProvisioningState.</summary>
+    /// <summary>The current deployment state of schedule.</summary>
     public partial class ScheduleProvisioningStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {
