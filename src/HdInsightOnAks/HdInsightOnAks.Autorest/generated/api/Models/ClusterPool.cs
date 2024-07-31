@@ -47,6 +47,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
         public string AksManagedResourceGroupName { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).AksManagedResourceGroupName; }
 
+        /// <summary>The list of Availability zones to use for AKS VMSS nodes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> ComputeProfileAvailabilityZone { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).ComputeProfileAvailabilityZone; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).ComputeProfileAvailabilityZone = value ?? null /* arrayOf */; }
+
         /// <summary>The number of virtual machines.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
         public int? ComputeProfileCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).ComputeProfileCount; }
@@ -142,7 +146,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
 
         /// <summary>
         /// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters.
-        /// So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
+        /// So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property
+        /// is not supported and please don't use it.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<string> NetworkProfileApiServerAuthorizedIPRange { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).NetworkProfileApiServerAuthorizedIPRange; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)Property).NetworkProfileApiServerAuthorizedIPRange = value ?? null /* arrayOf */; }
@@ -320,6 +325,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"aksManagedResourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string AksManagedResourceGroupName { get;  }
+        /// <summary>The list of Availability zones to use for AKS VMSS nodes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The list of Availability zones to use for AKS VMSS nodes.",
+        SerializedName = @"availabilityZones",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> ComputeProfileAvailabilityZone { get; set; }
         /// <summary>The number of virtual machines.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = false,
@@ -392,7 +408,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         string ManagedResourceGroupName { get; set; }
         /// <summary>
         /// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters.
-        /// So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
+        /// So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property
+        /// is not supported and please don't use it.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = false,
@@ -400,7 +417,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.",
+        Description = @"IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property is not supported and please don't use it.",
         SerializedName = @"apiServerAuthorizedIpRanges",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> NetworkProfileApiServerAuthorizedIPRange { get; set; }
@@ -505,6 +522,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         string AksManagedResourceGroupName { get; set; }
         /// <summary>CLuster pool compute profile.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesComputeProfile ComputeProfile { get; set; }
+        /// <summary>The list of Availability zones to use for AKS VMSS nodes.</summary>
+        System.Collections.Generic.List<string> ComputeProfileAvailabilityZone { get; set; }
         /// <summary>The number of virtual machines.</summary>
         int? ComputeProfileCount { get; set; }
         /// <summary>The virtual machine SKU.</summary>
@@ -527,7 +546,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesNetworkProfile NetworkProfile { get; set; }
         /// <summary>
         /// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters.
-        /// So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
+        /// So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property
+        /// is not supported and please don't use it.
         /// </summary>
         System.Collections.Generic.List<string> NetworkProfileApiServerAuthorizedIPRange { get; set; }
         /// <summary>
