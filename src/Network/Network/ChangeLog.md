@@ -19,8 +19,9 @@
 --->
 
 ## Upcoming Release
-* Updated cmdlet to add the property of `Sensitivity`
+* Updated cmdlet to add the property of `Sensitivity`, and updated corresponding cmdlets.
     - `New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`
+* Added support of `UserAssignedIdentityId` Property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
 
 ## Version 7.8.0
 * Added new cmdlets to support Save & Commit (AzureFirewallPolicy draft)
