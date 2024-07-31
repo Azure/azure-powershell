@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetAppFiles.Test", "NetAppF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetAppFiles", "NetAppFiles\NetAppFiles.csproj", "{EDAD20C4-5721-46E0-9CB9-1BEF40B89752}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ManagedServiceIdentity", "..\..\generated\ManagedServiceIdentity\ManagedServiceIdentity.Autorest\Az.ManagedServiceIdentity.csproj", "{A41C0692-B030-4640-A7EC-0FD5ABAFF8E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagedServiceIdentity", "..\ManagedServiceIdentity\ManagedServiceIdentity\ManagedServiceIdentity.csproj", "{2A2773E2-381E-406A-8194-460A1336D8DC}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DependentModules", "DependentModules", "{4AF958EB-C4B8-4745-8D65-5F3C4EF1D30B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network.Management.Sdk", "..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj", "{51FB3A2C-3D39-4947-85D8-418C4D37A787}"
@@ -78,6 +82,14 @@ Global
 		{EDAD20C4-5721-46E0-9CB9-1BEF40B89752}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDAD20C4-5721-46E0-9CB9-1BEF40B89752}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDAD20C4-5721-46E0-9CB9-1BEF40B89752}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A41C0692-B030-4640-A7EC-0FD5ABAFF8E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A41C0692-B030-4640-A7EC-0FD5ABAFF8E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A41C0692-B030-4640-A7EC-0FD5ABAFF8E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A41C0692-B030-4640-A7EC-0FD5ABAFF8E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A2773E2-381E-406A-8194-460A1336D8DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A2773E2-381E-406A-8194-460A1336D8DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A2773E2-381E-406A-8194-460A1336D8DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A2773E2-381E-406A-8194-460A1336D8DC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{51FB3A2C-3D39-4947-85D8-418C4D37A787}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{51FB3A2C-3D39-4947-85D8-418C4D37A787}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51FB3A2C-3D39-4947-85D8-418C4D37A787}.Release|Any CPU.ActiveCfg = Release|Any CPU
