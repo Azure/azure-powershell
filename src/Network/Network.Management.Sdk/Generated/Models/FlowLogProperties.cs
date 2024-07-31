@@ -27,11 +27,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="storageId">ID of the storage account which is used to store the flow log.
         /// </param>
 
-        /// <param name="enabledFilteringCriteria">Optional field to filter network traffic logs based on SrcIP, SrcPort,
-        /// DstIP, DstPort, Protocol, Encryption, Direction and Action. If not
-        /// specified, all network traffic will be logged.
-        /// </param>
-
         /// <param name="enabled">Flag to enable/disable flow logging.
         /// </param>
 
@@ -40,11 +35,10 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="format">Parameters that define the flow log format.
         /// </param>
-        public FlowLogProperties(string storageId, bool enabled, string enabledFilteringCriteria = default(string), RetentionPolicyParameters retentionPolicy = default(RetentionPolicyParameters), FlowLogFormatParameters format = default(FlowLogFormatParameters))
+        public FlowLogProperties(string storageId, bool enabled, RetentionPolicyParameters retentionPolicy = default(RetentionPolicyParameters), FlowLogFormatParameters format = default(FlowLogFormatParameters))
 
         {
             this.StorageId = storageId;
-            this.EnabledFilteringCriteria = enabledFilteringCriteria;
             this.Enabled = enabled;
             this.RetentionPolicy = retentionPolicy;
             this.Format = format;
@@ -62,14 +56,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "storageId")]
         public string StorageId {get; set; }
-
-        /// <summary>
-        /// Gets or sets optional field to filter network traffic logs based on SrcIP,
-        /// SrcPort, DstIP, DstPort, Protocol, Encryption, Direction and Action. If not
-        /// specified, all network traffic will be logged.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "enabledFilteringCriteria")]
-        public string EnabledFilteringCriteria {get; set; }
 
         /// <summary>
         /// Gets or sets flag to enable/disable flow logging.
@@ -100,7 +86,6 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "StorageId");
             }
-
 
 
 
