@@ -362,6 +362,7 @@ HDINSIGHTONAKSCLUSTER <ICluster>: The cluster.
   [AutoscaleProfileEnabled <Boolean?>]: This indicates whether auto scale is enabled on HDInsight on AKS cluster.
   [AutoscaleProfileGracefulDecommissionTimeout <Int32?>]: This property is for graceful decommission timeout; It has a default setting of 3600 seconds before forced shutdown takes place. This is the maximal time to wait for running containers and applications to complete before transition a DECOMMISSIONING node into DECOMMISSIONED. The default value is 3600 seconds. Negative value (like -1) is handled as infinite timeout.
   [ClusterType <String>]: The type of cluster.
+  [ComputeProfileAvailabilityZone <List<String>>]: The list of Availability zones to use for AKS VMSS nodes.
   [ComputeProfileNode <List<INodeProfile>>]: The nodes definitions.
     Count <Int32>: The number of virtual machines.
     Type <String>: The node type.
@@ -410,6 +411,11 @@ HDINSIGHTONAKSCLUSTER <ICluster>: The cluster.
     ScalingMetric <String>: Metrics name for individual workloads. For example: cpu
   [LogAnalyticProfileEnabled <Boolean?>]: True if log analytics is enabled for the cluster, otherwise false.
   [LogAnalyticProfileMetricsEnabled <Boolean?>]: True if metrics are enabled, otherwise false.
+  [ManagedIdentityProfileIdentityList <List<IManagedIdentitySpec>>]: The list of managed identity.
+    ClientId <String>: ClientId of the managed identity.
+    ObjectId <String>: ObjectId of the managed identity.
+    ResourceId <String>: ResourceId of the managed identity.
+    Type <String>: The type of managed identity.
   [MetastoreSpecDbConnectionAuthenticationMode <String>]: The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
   [MetastoreSpecDbName <String>]: The database name.
   [MetastoreSpecDbPasswordSecretName <String>]: The secret name which contains the database user password.
@@ -431,7 +437,7 @@ HDINSIGHTONAKSCLUSTER <ICluster>: The cluster.
     [TimeoutInMinute <Int32?>]: Timeout duration for the script action in minutes.
   [ProfileServiceConfigsProfile <List<IClusterServiceConfigsProfile>>]: The service configs profiles.
     Config <List<IClusterServiceConfig>>: List of service configs.
-      Component <String>: Name of the component the config files should apply to.
+      ComponentName <String>: Name of the component the config files should apply to.
       File <List<IClusterConfigFile>>: List of Config Files.
         FileName <String>: Configuration file name.
         [Content <String>]: Free form content of the entire configuration file.
@@ -460,14 +466,15 @@ HDINSIGHTONAKSCLUSTER <ICluster>: The cluster.
   [ScheduleBasedConfigTimeZone <String>]: User has to specify the timezone on which the schedule has to be set for schedule based autoscale configuration.
   [SecretProfileKeyVaultResourceId <String>]: Name of the user Key Vault where all the cluster specific user secrets are stored.
   [SecretProfileSecret <List<ISecretReference>>]: Properties of Key Vault secret.
-    KeyVaultObjectName <String>: Object identifier name of the secret in key vault.
     ReferenceName <String>: Reference name of the secret to be used in service configs.
+    SecretName <String>: Object identifier name of the secret in key vault.
     Type <String>: Type of key vault object: secret, key or certificate.
     [Version <String>]: Version of the secret in key vault.
   [SparkProfileDefaultStorageUrl <String>]: The default storage URL.
   [SparkProfileUserPluginsSpecPlugin <List<ISparkUserPlugin>>]: Spark user plugins.
     Path <String>: Fully qualified path to the folder containing the plugins.
   [SshProfileCount <Int32?>]: Number of ssh pods per cluster.
+  [SshProfileVMSize <String>]: The virtual machine SKU.
   [StorageHivecatalogName <String>]: Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.
   [StorageHivecatalogSchema <String>]: Schema of the above catalog to use, to mount query logs as external tables, if not specified tables will be mounted under schema trinologs.
   [StoragePartitionRetentionInDay <Int32?>]: Retention period for query log table partitions, this doesn't have any affect on actual data.
@@ -506,6 +513,12 @@ LOADBASEDCONFIGSCALINGRULE <IScalingRule[]>: The scaling rules.
   EvaluationCount <Int32>: This is an evaluation count for a scaling condition, the number of times a trigger condition should be successful, before scaling activity is triggered.
   ScalingMetric <String>: Metrics name for individual workloads. For example: cpu
 
+MANAGEDIDENTITYPROFILEIDENTITYLIST <IManagedIdentitySpec[]>: The list of managed identity.
+  ClientId <String>: ClientId of the managed identity.
+  ObjectId <String>: ObjectId of the managed identity.
+  ResourceId <String>: ResourceId of the managed identity.
+  Type <String>: The type of managed identity.
+
 SCHEDULEBASEDCONFIGSCHEDULE <ISchedule[]>: This specifies the schedules where scheduled based Autoscale to be enabled, the user has a choice to set multiple rules within the schedule across days and times (start/end).
   Count <Int32>: User has to set the node count anticipated at end of the scaling operation of the set current schedule configuration, format is integer.
   Day <List<String>>: User has to set the days where schedule has to be set for autoscale operation.
@@ -522,14 +535,14 @@ SCRIPTACTIONPROFILE <IScriptActionProfile[]>: The script action profile list.
   [TimeoutInMinute <Int32?>]: Timeout duration for the script action in minutes.
 
 SECRETREFERENCE <ISecretReference[]>: Properties of Key Vault secret.
-  KeyVaultObjectName <String>: Object identifier name of the secret in key vault.
   ReferenceName <String>: Reference name of the secret to be used in service configs.
+  SecretName <String>: Object identifier name of the secret in key vault.
   Type <String>: Type of key vault object: secret, key or certificate.
   [Version <String>]: Version of the secret in key vault.
 
 SERVICECONFIGSPROFILE <IClusterServiceConfigsProfile[]>: The service configs profiles.
   Config <List<IClusterServiceConfig>>: List of service configs.
-    Component <String>: Name of the component the config files should apply to.
+    ComponentName <String>: Name of the component the config files should apply to.
     File <List<IClusterConfigFile>>: List of Config Files.
       FileName <String>: Configuration file name.
       [Content <String>]: Free form content of the entire configuration file.
@@ -744,6 +757,15 @@ param(
     [System.String]
     # Version with 3/4 part.
     ${ClusterVersion},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String[]]
+    # The list of Availability zones to use for AKS VMSS nodes.
+    ${ComputeProfileAvailabilityZone},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
@@ -1084,6 +1106,15 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentitySpec[]]
+    # The list of managed identity.
+    ${ManagedIdentityProfileIdentityList},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("SqlAuth", "IdentityAuth")]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
@@ -1295,6 +1326,14 @@ param(
     [System.Int32]
     # Number of ssh pods per cluster.
     ${SshProfileCount},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # The virtual machine SKU.
+    ${SshProfileVMSize},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
