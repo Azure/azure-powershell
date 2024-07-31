@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -56,7 +56,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnprofile
 #>
 function Update-AzFrontDoorCdnProfile {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IProfile])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -89,7 +89,7 @@ function Update-AzFrontDoorCdnProfile {
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileScrubbingRules[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IProfileScrubbingRules[]]
         # List of log scrubbing rules applied to the Azure Front Door profile logs.
         # To construct, see NOTES section for LOGSCRUBBINGRULE properties and create a hash table.
         ${LogScrubbingRule},
@@ -111,7 +111,7 @@ function Update-AzFrontDoorCdnProfile {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileUpdateParametersTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IProfileUpdateParametersTags]))]
         [System.Collections.Hashtable]
         # Profile tags
         ${Tag},

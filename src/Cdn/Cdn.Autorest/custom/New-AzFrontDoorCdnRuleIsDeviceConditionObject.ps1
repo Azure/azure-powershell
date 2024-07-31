@@ -21,12 +21,12 @@ Create an in-memory object for DeliveryRuleIsDeviceCondition.
 Create an in-memory object for DeliveryRuleIsDeviceCondition.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleIsDeviceCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleIsDeviceCondition
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleIsDeviceConditionObject
 #>
 function New-AzFrontDoorCdnRuleIsDeviceConditionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleIsDeviceCondition')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleIsDeviceCondition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -47,7 +47,7 @@ function New-AzFrontDoorCdnRuleIsDeviceConditionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleIsDeviceCondition]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleIsDeviceCondition]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterMatchValue')) {
             $Object.ParameterMatchValue = $ParameterMatchValue

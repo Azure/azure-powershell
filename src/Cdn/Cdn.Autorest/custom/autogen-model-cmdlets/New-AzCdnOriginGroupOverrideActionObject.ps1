@@ -21,12 +21,12 @@ Create an in-memory object for OriginGroupOverrideAction.
 Create an in-memory object for OriginGroupOverrideAction.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginGroupOverrideAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OriginGroupOverrideAction
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnOriginGroupOverrideActionObject
 #>
 function New-AzCdnOriginGroupOverrideActionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginGroupOverrideAction')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OriginGroupOverrideAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -40,7 +40,7 @@ function New-AzCdnOriginGroupOverrideActionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginGroupOverrideAction]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OriginGroupOverrideAction]::New()
 
         if ($PSBoundParameters.ContainsKey('OriginGroupId')) {
             $Object.OriginGroupId = $OriginGroupId
