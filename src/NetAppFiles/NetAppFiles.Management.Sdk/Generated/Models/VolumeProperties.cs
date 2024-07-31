@@ -34,9 +34,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Ultra&#39;, &#39;StandardZRS&#39;</param>
 
         /// <param name="usageThreshold">Maximum storage quota allowed for a file system in bytes. This is a soft
-        /// quota used for alerting only. Minimum size is 100 GiB. Upper limit is
-        /// 100TiB, 500Tib for LargeVolume or 2400Tib for LargeVolume on exceptional
-        /// basis. Specified in bytes.
+        /// quota used for alerting only. For regular volumes, valid values are in the
+        /// range 50GiB to 100TiB. For large volumes, valid values are in the range
+        /// 100TiB to 500TiB, and on an exceptional basis, from to 2400GiB to 2400TiB.
+        /// Values expressed in bytes as multiples of 1 GiB.
         /// </param>
 
         /// <param name="exportPolicy">Set of export policy rules
@@ -321,9 +322,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <summary>
         /// Gets or sets maximum storage quota allowed for a file system in bytes. This
-        /// is a soft quota used for alerting only. Minimum size is 100 GiB. Upper
-        /// limit is 100TiB, 500Tib for LargeVolume or 2400Tib for LargeVolume on
-        /// exceptional basis. Specified in bytes.
+        /// is a soft quota used for alerting only. For regular volumes, valid values
+        /// are in the range 50GiB to 100TiB. For large volumes, valid values are in
+        /// the range 100TiB to 500TiB, and on an exceptional basis, from to 2400GiB to
+        /// 2400TiB. Values expressed in bytes as multiples of 1 GiB.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "usageThreshold")]
         public long UsageThreshold {get; set; }
@@ -729,9 +731,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "UsageThreshold", 2638827906662400);
             }
-            if (this.UsageThreshold < 107374182400)
+            if (this.UsageThreshold < 53687091200)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "UsageThreshold", 107374182400);
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "UsageThreshold", 53687091200);
             }
 
 

@@ -54,9 +54,9 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.1'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Azure.CodeSigning.Client.CryptoProvider.dll', 
-               'Azure.CodeSigning.Client.CryptoProvider.Models.dll', 
-               'Azure.CodeSigning.Client.CryptoProvider.Utilities.dll', 
+RequiredAssemblies = 'Azure.CodeSigning.Client.CryptoProvider.dll',
+               'Azure.CodeSigning.Client.CryptoProvider.Models.dll',
+               'Azure.CodeSigning.Client.CryptoProvider.Utilities.dll',
                'Azure.CodeSigning.dll', 'Polly.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
@@ -75,7 +75,7 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.CodeSigning.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzCodeSigningCustomerEku', 'Get-AzCodeSigningRootCert', 
+CmdletsToExport = 'Get-AzCodeSigningCustomerEku', 'Get-AzCodeSigningRootCert', 'Get-AzCodeSigningCertChain',
                'Invoke-AzCodeSigningCIPolicySigning'
 
 # Variables to export from this module

@@ -16,26 +16,26 @@ Get a Certificate
 ```
 Get-AzSphereCertificate -CatalogName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-Filter <String>] [-Maxpagesize <Int32>] [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzSphereCertificate -CatalogName <String> -ResourceGroupName <String> -SerialNumber <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentityCatalog
 ```
 Get-AzSphereCertificate -SerialNumber <String> -CatalogInputObject <ISphereIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzSphereCertificate -InputObject <ISphereIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,26 +45,26 @@ Get a Certificate
 
 ### Example 1: List for the specified catalog with resource group
 ```powershell
-Get-AzSphereCertificate -CatalogName test2024 -ResourceGroupName joyer-test
+Get-AzSphereCertificate -CatalogName test2024 -ResourceGroupName group-test
 ```
 
 ```output
 ExpiryUtc                    : 4/30/2024 10:51:54 PM
-Id                           : /subscriptions/d1cd48f9-b94b-4645-9632-634b440db393/resourceGroups/joyer-test/providers/Microsoft.AzureSphere/catalogs/test2024/certificates/'serial number'
+Id                           : /subscriptions/11111111-2222-3333-4444-123456789103/resourceGroups/group-test/providers/Microsoft.AzureSphere/catalogs/test2024/certificates/'serial number'
 Name                         : 'serial number'
 NotBeforeUtc                 : 1/31/2024 10:51:54 PM
 PropertiesCertificate        : 'certificate information'
 ProvisioningState            : Succeeded
-ResourceGroupName            : joyer-test
+ResourceGroupName            : group-test
 Status                       : Active
-Subject                      : CN=Microsoft Azure Sphere INT 7de8a199-bb33-4eda-9600-583103317243, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Subject                      : CN=Microsoft Azure Sphere INT 11111111-2222-3333-4444-123456789101, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
 SystemDataCreatedAt          : 
 SystemDataCreatedBy          : 
 SystemDataCreatedByType      : 
 SystemDataLastModifiedAt     : 
 SystemDataLastModifiedBy     : 
 SystemDataLastModifiedByType : 
-Thumbprint                   : 92C60521BB46C72D66FA72CF59EF701D9269A236
+Thumbprint                   : ****************
 Type                         : Microsoft.AzureSphere/catalogs/certificates
 ```
 
@@ -155,6 +155,21 @@ The maximum number of result items per page.
 Type: System.Int32
 Parameter Sets: List
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

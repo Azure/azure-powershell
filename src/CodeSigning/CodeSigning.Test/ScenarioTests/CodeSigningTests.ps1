@@ -54,3 +54,24 @@ function Test-GetCodeSigningRootCert {
 
     }
 }
+
+<#
+.SYNOPSIS
+Test codesigning command to get the certificate chain from the certificate profile
+#>
+function Test-GetCodeSigningCertChain {
+    $accountName = "acs-test-account"
+    $profileName = "acs-test-account-ci"
+    $endPointUrl = "https://scus.codesigning.azure.net/"
+    $destination = "C:\temp"
+
+    try {
+        # Test Get CodeSigning Certificate Chain
+        $chain = Get-AzCodeSigningCertChain -AccountName $accountName -ProfileName $profileName -EndpointUrl $endPointUrl -Destination $destination
+        Assert-NotNullOrEmpty $chain
+    }
+
+    finally {
+
+    }
+}

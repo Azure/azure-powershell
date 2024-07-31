@@ -14,7 +14,7 @@ Migrate Sql Server Schema from the source Sql Servers to the target Azure Sql Se
 
 ### ConfigFile (Default)
 ```
-New-AzDataMigrationSqlServerSchema -ConfigFilePath <String> [-PassThru]
+New-AzDataMigrationSqlServerSchema -ConfigFilePath <String> [-PassThru] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -22,7 +22,7 @@ New-AzDataMigrationSqlServerSchema -ConfigFilePath <String> [-PassThru]
 ```
 New-AzDataMigrationSqlServerSchema -Action <String> -SourceConnectionString <String>
  -TargetConnectionString <String> [-InputScriptFilePath <String>] [-OutputFolder <String>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -203,6 +203,21 @@ Accept wildcard characters: False
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

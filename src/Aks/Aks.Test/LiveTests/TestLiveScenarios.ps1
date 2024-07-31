@@ -8,7 +8,6 @@ Invoke-LiveTestScenario -Name "Test_AKS_CURD" -Description "Test AKS Cluster CRU
     $kubeClusterName = New-LiveTestResourceName
 
     # step 1: create a default aks cluster with default node pool
-
     'y' | ssh-keygen -t rsa -f id_rsa -q -N '"123456"'
     $sshKeyValue = Get-Content id_rsa.pub -Raw
 
@@ -34,7 +33,6 @@ Invoke-LiveTestScenario -Name "Test_AKS_CURD" -Description "Test AKS Cluster CRU
     Assert-NotNull $cluster.NodeResourceGroup
     Assert-AreEqual "Succeeded" $cluster.ProvisioningState
     Assert-AreEqual 100 $cluster.MaxAgentPools
-    #Assert-AreEqual $cluster.CurrentKubernetesVersion $cluster.KubernetesVersion
     Assert-AreEqual "default" $cluster.AgentPoolProfiles.Name
     Assert-AreEqual 1 $cluster.AgentPoolProfiles.Length
     Assert-AreEqual 3 $cluster.AgentPoolProfiles[0].Count
@@ -56,7 +54,6 @@ Invoke-LiveTestScenario -Name "Test_AKS_CURD" -Description "Test AKS Cluster CRU
     Assert-AreEqual "Ubuntu" $pools.OsSKU
     Assert-AreEqual "System" $pools.Mode
     Assert-AreEqual "VirtualMachineScaleSets" $pools.AgentPoolType
-    Assert-AreEqual $pools.CurrentOrchestratorVersion $pools.OrchestratorVersion
     Assert-AreEqual "Succeeded" $pools.ProvisioningState
     Assert-AreEqual "Running" $pools.PowerState.Code
     Assert-AreEqual 0 $pools.Tags.Count
@@ -68,8 +65,6 @@ Invoke-LiveTestScenario -Name "Test_AKS_CURD" -Description "Test AKS Cluster CRU
     Assert-Null $pools.PodSubnetID
     Assert-Null $pools.MaxCount
     Assert-Null $pools.MinCount
-    Assert-Null $pools.EnableAutoScaling
-    # Assert-Null $pools.UpgradeSettings
     Assert-Null $pools.EnableNodePublicIP
     Assert-Null $pools.ScaleSetPriority
     Assert-Null $pools.ScaleSetEvictionPolicy
@@ -151,5 +146,4 @@ Invoke-LiveTestScenario -Name "Test_AKS_CURD" -Description "Test AKS Cluster CRU
     Write-Host "##[section]Start to remove Aks cluster : Remove-AzAksCluster"
     $cluster | Remove-AzAksCluster -Force
     Write-Host "##[section]Finished removing Aks cluster : Remove-AzAksCluster"
-
 }

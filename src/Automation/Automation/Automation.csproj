@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Automation.Sdk\Automation.Sdk.csproj" />
+    <ProjectReference Include="..\Automation.Management.Sdk\Automation.Management.Sdk.csproj" />
   </ItemGroup>
 
   <ItemGroup>
