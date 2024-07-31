@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlet to add the property of `Sensitivity`
+    - `New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`
 
 ## Version 7.8.0
 * Added new cmdlets to support Save & Commit (AzureFirewallPolicy draft)

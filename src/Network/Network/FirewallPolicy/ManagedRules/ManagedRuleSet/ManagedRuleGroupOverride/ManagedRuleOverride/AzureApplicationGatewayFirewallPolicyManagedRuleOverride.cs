@@ -40,6 +40,13 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Action { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Describes the override sensitivity to be applied when rule matches.")]
+        [ValidateSet("None", "Low", "Medium", "High", IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string Sensitivity { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -51,7 +58,8 @@ namespace Microsoft.Azure.Commands.Network
             {
                 RuleId = this.RuleId,
                 State = string.IsNullOrEmpty(State) ? "Disabled" : this.State,
-                Action = this.Action
+                Action = this.Action,
+                Sensitivity = this.Sensitivity
             };
         }
     }

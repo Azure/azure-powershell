@@ -4094,13 +4094,13 @@ function Test-ApplicationGatewayFirewallPolicyExclusions
 
 <#
 .SYNOPSIS
-Application gateway v2 top level waf tests with empty rule in ManagedRuleGroupOverride
+Application gateway v2 top level waf tests in ManagedRuleGroupOverride with sensitivity
 #>
-function Test-ApplicationGatewayFirewallPolicyManagedRuleGroupOverrideEmptyRule
+function Test-ApplicationGatewayFirewallPolicyManagedRuleGroupOverrideWithSensitivity
 
 {
 	# Setup
-	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "uksouth"
 
 	$rgname = Get-ResourceGroupName
 	$wafPolicy = Get-ResourceName
@@ -4114,8 +4114,11 @@ function Test-ApplicationGatewayFirewallPolicyManagedRuleGroupOverrideEmptyRule
 		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator GreaterThan -MatchValue 1000 -Transform Lowercase -NegationCondition $False
 		$rule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RuleType MatchRule -MatchCondition $condition -Action Block
 		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70
-		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
-		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet
+		$ruleOverrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId 500100 -State Enabled -Action Block -Sensitivity High
+		$ruleGroupOverrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName ExcessiveRequests -Rule $ruleOverrideEntry
+		$primarymanagedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
+		$ddosmanagedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "Microsoft_HTTPDDoSRuleSet" -RuleSetVersion "1.0" -RuleGroupOverride $ruleGroupOverrideEntry
+		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $primarymanagedRuleSet,$ddosmanagedRuleSet
 		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname -Location $location -ManagedRule $managedRule -PolicySetting $policySettings
 
 		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
@@ -4140,29 +4143,10 @@ function Test-ApplicationGatewayFirewallPolicyManagedRuleGroupOverrideEmptyRule
 		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
 		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
 		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
-
-		# Add disabled rules to the firewall policy
-
-		$emptyRuleGroupOverrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName REQUEST-942-APPLICATION-ATTACK-SQLI 
-
-		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2" -RuleGroupOverride $emptyRuleGroupOverrideEntry
-		$managedRules = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet 
-		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
-		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 750 -MaxRequestBodySizeInKb 128
-		$policy.managedRules = $managedRules
-		$policy.PolicySettings = $policySettings
-		Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
-
-		# Get firewall policy
-		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
-		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets.Count 1
-		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[0].RuleGroupOverrides.Count 1
-		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[0].RuleGroupOverrides[0].Rules.Count 0
-		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
-		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
-		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
-		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
-		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
+		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleSetType "Microsoft_HTTPDDoSRuleSet"
+		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleSetVersion "1.0"
+		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleGroupOverrides[0].RuleGroupName $ruleGroupOverrideEntry.RuleGroupName
+		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleGroupOverrides[0].Rules[0].Sensitivity $ruleOverrideEntry.Sensitivity
 	}
 	finally
 	{
