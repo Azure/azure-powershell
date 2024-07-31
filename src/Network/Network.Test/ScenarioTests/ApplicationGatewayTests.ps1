@@ -4090,8 +4090,9 @@ function Test-ApplicationGatewayFirewallPolicyExclusions
 		# Cleanup
 		Clean-ResourceGroup $rgname
 	}
+}
 
-	<#
+<#
 .SYNOPSIS
 Application gateway v2 top level waf tests with empty rule in ManagedRuleGroupOverride
 #>
