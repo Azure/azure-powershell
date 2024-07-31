@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.3.0
 * Fixed the Register-AzStorageSyncServer with Azure FileSync Agent v17
 * Improved performance for Managed Identity migration cmdlet
 

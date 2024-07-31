@@ -1,2 +1,3 @@
 ### Thanks to our community contributors
-* Felipe Andrade (@andradf), Use named parameter for appPackageUrl in CreateOrUpdateApplicationTyp… (#25113)
+* Paolo Frigo (@PaoloFrigo), Update New-AzStorageAccount.md (#25493)
+* @Skatterbrainz, Update Import-AzAutomationRunbook.md (#25587)

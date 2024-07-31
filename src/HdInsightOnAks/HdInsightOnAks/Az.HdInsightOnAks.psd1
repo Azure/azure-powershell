@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.2'
+ModuleVersion = '0.2.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,16 +51,16 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.2'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.3'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'HdInsightOnAks.Autorest/bin/Az.HdInsightOnAks.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = @()
+# ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = @()
+# TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'HdInsightOnAks.Autorest/Az.HdInsightOnAks.format.ps1xml'
@@ -131,7 +131,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'HdInsightOnAks'
+        Tags = 'Azure','ResourceManager','ARM','PSModule','HdInsightOnAks'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -143,7 +143,17 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Introduced secrets detection feature to safeguard sensitive data.'
+        ReleaseNotes = '* Added commands
+  - ''New-AzHdInsightOnAksManagedIdentityObject'' for create an in-memory object for ManagedIdentitySpec.
+  - ''New-AzHdInsightOnAksClusterMavenLibraryObject'' for create an in-memory object for Maven library properties.
+  - ''New-AzHdInsightOnAksClusterPyPiLibraryObject'' for create an in-memory object for PyPi library properties.
+  - ''Get-AzHdInsightOnAksClusterPoolUpgradeHistory'' for get a list for cluster pool upgrade history.
+  - ''Get-AzHdInsightOnAksClusterUpgradeHistory'' for get a list for cluster upgrade history.
+  - ''Invoke-AzHdInsightOnAksManageClusterLibrary'' for manage libraries on cluster.
+  - ''Invoke-AzHdInsightOnAksClusterManualRollback'' for manual rollback upgrade for a cluster.
+* Renamed command ''New-AzHdInsightOnAksClusterPoolAKSUpgradeObject'' to ''New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject''. 
+* Separated the Upgrade function from command ''Update-AzHdInsightOnAksCluster'', the new command is ''Invoke-AzHdInsightOnAksClusterUpgrade''. 
+* Separated the Upgrade function from command ''Update-AzHdInsightOnAksClusterPool'', the new command is ''Invoke-AzHdInsightOnAksClusterPoolUpgrade''.'
 
         # Prerelease string of this module
         # Prerelease = ''
@@ -156,7 +166,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
-} # End of PrivateData hashtable
+ } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''

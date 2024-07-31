@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.0
 * Added commands
   - `New-AzHdInsightOnAksManagedIdentityObject` for create an in-memory object for ManagedIdentitySpec.
   - `New-AzHdInsightOnAksClusterMavenLibraryObject` for create an in-memory object for Maven library properties.

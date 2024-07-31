@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.18.6
 * Added security enhancement feature snowflake support storage integration.
 * Supported 'domain' Property In Dynamics Family.
 * Enabled UAMI auth for Data Factory Sql Server connector.

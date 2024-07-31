@@ -1,3 +1,57 @@
+## 12.2.0 - August 2024
+#### Az.Compute 8.2.0 
+* Modified cmdlet `New-AzRestorePointCollection`
+   - Removed parameter `-VmId`
+   - Added parameter `-SourceId`
+#### Az.MachineLearningServices 1.1.0 
+* Modified cmdlet `Get-AzMLWorkspaceJob`
+   - Added parameter `-Job`
+* Modified cmdlet `New-AzMLWorkspace`
+   - Added parameters `-AssociatedWorkspace`, `-ComputeRuntimeSparkRuntimeVersion`, `-EnableDataIsolation`, `-FeatureStoreSettingOfflineStoreConnectionName`, `-FeatureStoreSettingOnlineStoreConnectionName`, `-HubResourceId`, `-Kind`, `-ManagedNetworkIsolationMode`, `-ManagedNetworkOutboundRule`, `-ServerlessComputeSettingServerlessComputeCustomSubnet`, `-ServerlessComputeSettingServerlessComputeNoPublicIP`, `-Status`, `-StatusSparkReady`, `-WorkspaceHubConfigAdditionalWorkspaceStorageAccount`, `-WorkspaceHubConfigDefaultWorkspaceResourceGroup`
+* Modified cmdlet `New-AzMLWorkspaceBatchDeployment`
+   - Removed parameter `-ModelReferenceType`
+   - Added parameters `-DeploymentConfigurationType`, `-Model`
+* Modified cmdlet `New-AzMLWorkspaceComputeStartStopScheduleObject`
+   - Added parameters `-CronExpression`, `-CronStartTime`, `-CronTimeZone`, `-RecurrenceFrequency`, `-RecurrenceInterval`, `-RecurrenceStartTime`, `-RecurrenceTimeZone`, `-ScheduleHour`, `-ScheduleMinute`, `-ScheduleMonthDay`, `-ScheduleWeekDay`, `-Status`, `-TriggerType`
+* Modified cmdlet `New-AzMLWorkspaceConnection`
+   - Added parameters `-ExpiryTime`, `-IsSharedToAll`, `-Metadata`, `-SharedUserList`, `-Property`
+* Modified cmdlet `New-AzMLWorkspaceEnvironmentVersion`
+   - Added parameters `-AutoRebuild`, `-Stage`
+* Modified cmdlet `New-AzMLWorkspaceModelVersion`
+   - Added parameter `-Stage`
+* Modified cmdlet `New-AzMLWorkspaceOnlineDeployment`
+   - Added parameters `-DataCollectorCollection`, `-DataCollectorRollingRate`, `-EgressPublicNetworkAccess`, `-RequestLoggingCaptureHeader`
+* Modified cmdlet `New-AzMLWorkspaceOnlineEndpoint`
+   - Added parameters `-MirrorTraffic`, `-PublicNetworkAccess`
+* Modified cmdlet `Remove-AzMLWorkspace`
+   - Added parameter `-ForceToPurge`
+* Modified cmdlet `Update-AzMLWorkspace`
+   - Added parameters `-ComputeRuntimeSparkRuntimeVersion`, `-EnableDataIsolation`, `-FeatureStoreSettingOfflineStoreConnectionName`, `-FeatureStoreSettingOnlineStoreConnectionName`, `-KeyVaultKeyIdentifier`, `-ManagedNetworkIsolationMode`, `-ManagedNetworkOutboundRule`, `-ServerlessComputeSettingServerlessComputeCustomSubnet`, `-ServerlessComputeSettingServerlessComputeNoPublicIP`, `-Status`, `-StatusSparkReady`, `-V1LegacyMode`
+* Added cmdlet `New-AzMLWorkspaceAadAuthTypeWorkspaceConnectionPropertiesObject`, `New-AzMLWorkspaceAccessKeyAuthTypeWorkspaceConnectionPropertiesObject`, `New-AzMLWorkspaceAccountKeyAuthTypeWorkspaceConnectionPropertiesObject`, `New-AzMLWorkspaceApiKeyAuthWorkspaceConnectionPropertiesObject`, `New-AzMLWorkspaceCustomKeysWorkspaceConnectionPropertiesObject`, `New-AzMLWorkspaceDataPathAssetReferenceObject`, `New-AzMLWorkspaceIdAssetReferenceObject`, `New-AzMLWorkspaceManagedIdentityAuthTypeWorkspaceConnectionPropertiesObject`, `New-AzMLWorkspaceNoneAuthTypeWorkspaceConnectionPropertiesObject`, `New-AzMLWorkspaceOAuth2AuthTypeWorkspaceConnectionPropertiesObject`, `New-AzMLWorkspaceOutputPathAssetReferenceObject`, `New-AzMLWorkspacePatAuthTypeWorkspaceConnectionPropertiesObject`, `New-AzMLWorkspaceSasAuthTypeWorkspaceConnectionPropertiesObject`, `New-AzMLWorkspaceServicePrincipalAuthTypeWorkspaceConnectionPropertiesObject`, `New-AzMLWorkspaceUsernamePasswordAuthTypeWorkspaceConnectionPropertiesObject`
+#### Az.Nginx 1.1.0 
+* Modified cmdlet `New-AzNginxDeployment`
+   - Added parameter `-AutoScaleSettingProfile`
+* Modified cmdlet `Update-AzNginxDeployment`
+   - Added parameters `-AutoScaleSettingProfile`, `-AutoUpgradeProfileUpgradeChannel`
+* Added cmdlet `Invoke-AzNginxAnalysisConfiguration`
+#### Az.RedisCache 1.10.0 
+* Modified cmdlet `New-AzRedisCache`
+   - Added parameter `-DisableAccessKeyAuthentication`
+* Modified cmdlet `Set-AzRedisCache`
+   - Added parameter `-DisableAccessKeyAuthentication`
+#### Az.Resources 7.3.0 
+* Added cmdlet `Test-AzManagementGroupDeploymentStack`, `Test-AzResourceGroupDeploymentStack`, `Test-AzSubscriptionDeploymentStack`
+#### Az.Sql 5.2.0 
+* Modified cmdlet `New-AzSqlInstance`
+   - Added parameters `-IsGeneralPurposeV2`, `-StorageIOps`
+* Modified cmdlet `Set-AzSqlInstance`
+   - Added parameters `-IsGeneralPurposeV2`, `-StorageIOps`
+* Added cmdlet `Set-AzSqlDatabaseReplicationLink`
+#### Az.StackHCI 2.4.0 
+* Modified cmdlet `New-AzStackHciCluster`
+   - Removed parameter `-SoftwareAssurancePropertySoftwareAssuranceStatus`
+* Added cmdlet `Get-AzStackHciDeploymentSetting`, `Get-AzStackHciEdgeDevice`, `Get-AzStackHciSecuritySetting`, `Get-AzStackHciUpdate`, `Get-AzStackHciUpdateRun`, `Get-AzStackHciUpdateSummary`, `Invoke-AzStackHciUpdate`, `New-AzStackHciDeploymentSetting`, `New-AzStackHciEdgeDevice`, `New-AzStackHciSecuritySetting`, `Remove-AzStackHciDeploymentSetting`, `Remove-AzStackHciEdgeDevice`, `Remove-AzStackHciSecuritySetting`, `Remove-AzStackHciUpdate`, `Remove-AzStackHciUpdateRun`, `Remove-AzStackHciUpdateSummary`, `Set-AzStackHciDeploymentSetting`, `Set-AzStackHciEdgeDevice`, `Set-AzStackHciSecuritySetting`, `Set-AzStackHciUpdate`, `Set-AzStackHciUpdateRun`, `Set-AzStackHciUpdateSummary`, `Test-AzStackHciEdgeDevice`
+
 ## 12.1.0 - July 2024
 #### Az.Compute 8.1.0 
 * Modified cmdlet `Add-AzVMDataDisk`
@@ -877,6 +931,7 @@
    - Changed the type of parameter `-Status` from `Status` to `String`
    - Output type changed from ``PSSupportTicket`` to ``ISupportTicketDetails``
 * Added cmdlet `Get-AzSupportChatTranscript`, `Get-AzSupportChatTranscriptsNoSubscription`, `Get-AzSupportCommunication`, `Get-AzSupportCommunicationsNoSubscription`, `Get-AzSupportFile`, `Get-AzSupportFilesNoSubscription`, `Get-AzSupportFileWorkspace`, `Get-AzSupportFileWorkspacesNoSubscription`, `Get-AzSupportOperation`, `Get-AzSupportTicketsNoSubscription`, `New-AzSupportCommunication`, `New-AzSupportCommunicationsNoSubscription`, `New-AzSupportFileAndUpload`, `New-AzSupportFileAndUploadNoSubscription`, `New-AzSupportFileWorkspace`, `New-AzSupportFileWorkspacesNoSubscription`, `New-AzSupportTicketsNoSubscription`, `Test-AzSupportCommunicationNameAvailability`, `Test-AzSupportCommunicationsNoSubscriptionNameAvailability`, `Test-AzSupportTicketNameAvailability`, `Test-AzSupportTicketsNoSubscriptionNameAvailability`, `Update-AzSupportTicketsNoSubscription`
+
 
 
 
