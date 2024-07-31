@@ -16,27 +16,27 @@ Upgrade a cluster.
 ```
 Invoke-AzHdInsightOnAksClusterUpgrade -Name <String> -PoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -UpgradeType <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpgradeViaJsonString
 ```
 Invoke-AzHdInsightOnAksClusterUpgrade -Name <String> -PoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpgradeViaJsonFilePath
 ```
 Invoke-AzHdInsightOnAksClusterUpgrade -Name <String> -PoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpgradeViaIdentityClusterpoolExpanded
 ```
 Invoke-AzHdInsightOnAksClusterUpgrade -Name <String> -ClusterpoolInputObject <IHdInsightOnAksIdentity>
- -UpgradeType <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ -UpgradeType <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -44,20 +44,20 @@ Invoke-AzHdInsightOnAksClusterUpgrade -Name <String> -ClusterpoolInputObject <IH
 ```
 Invoke-AzHdInsightOnAksClusterUpgrade -Name <String> -ClusterpoolInputObject <IHdInsightOnAksIdentity>
  -ClusterUpgradeRequest <IClusterUpgrade> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Upgrade
 ```
 Invoke-AzHdInsightOnAksClusterUpgrade -Name <String> -PoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -ClusterUpgradeRequest <IClusterUpgrade> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpgradeViaIdentityExpanded
 ```
 Invoke-AzHdInsightOnAksClusterUpgrade -InputObject <IHdInsightOnAksIdentity> -UpgradeType <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -65,7 +65,7 @@ Invoke-AzHdInsightOnAksClusterUpgrade -InputObject <IHdInsightOnAksIdentity> -Up
 ```
 Invoke-AzHdInsightOnAksClusterUpgrade -InputObject <IHdInsightOnAksIdentity>
  -ClusterUpgradeRequest <IClusterUpgrade> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -259,21 +259,6 @@ Parameter Sets: UpgradeExpanded, UpgradeViaJsonString, UpgradeViaJsonFilePath, U
 Aliases: ClusterPoolName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
