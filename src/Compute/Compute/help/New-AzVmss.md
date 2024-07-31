@@ -46,15 +46,19 @@ The **New-AzVmss** cmdlet creates a Virtual Machine Scale Set (VMSS) in Azure.
 Use the simple parameter set (`SimpleParameterSet`) to quickly create a pre-set VMSS and associated resources. <br> 
 
 Use the default parameter set (`DefaultParameter`) for more advanced scenarios when you need to precisely configure each component of the VMSS and each associated resource before creation. 
-For default parameter set, first use the **[New-AzVmssConfig](https://learn.microsoft.com/en-us/powershell/module/az.compute/new-azvmss)** cmdlet to create a virtual machine scale set object. <br> <br>
+For default parameter set, first use the **[New-AzVmssConfig](https://learn.microsoft.com/en-us/powershell/module/az.compute/new-azvmss)** cmdlet to create a virtual machine scale set object. <br> 
 
 Then use the following cmdlets to set different properties of the virtual machine scale set object: <br>
 - **[Add-AzVmssNetworkInterfaceConfiguration](https://learn.microsoft.com/en-us/powershell/module/az.compute/add-azvmssnetworkinterfaceconfiguration)** to set the network profile.<br>
 - **[Set-AzVmssOsProfile](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmssosprofile)** to set the OS profile. <br>
 - **[Set-AzVmssStorageProfile](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmssstorageprofile)** to set the storage profile.<br>
-- **[Get-AzComputeResourceSku](https://learn.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku)** can also be used to find out available virtual machine sizes for your subscription and region.<br><br>
+- **[Get-AzComputeResourceSku](https://learn.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku)** can also be used to find out available virtual machine sizes for your subscription and region.<br>
 
-See other cmdlets for virtual machine scale set [here](https://learn.microsoft.com/en-us/powershell/module/az.compute/#vm-scale-sets).<br>
+See other cmdlets for virtual machine scale set [here](https://learn.microsoft.com/en-us/powershell/module/az.compute/#vm-scale-sets).<br><br>
+
+VMSS creation will default to OrchestrationMode:Flexible. Default parameter set will set properties in VirtualMachineScaleSetVMProfile by default. To create a VMSS with an empty VirtualMachineScaleSetVMProfile property, use simple parameter set by first creating a VirtualMachineScaleSet object with an empty VirtualMachineScaleSetVMProfile property using **[New-AzVmssConfig](https://learn.microsoft.com/en-us/powershell/module/az.compute/new-azvmss)**.
+
+
 <br>
 See [Quickstart: Create a virtual machine scale set with Azure PowerShell](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/quick-create-powershell) for tutorial.
 
@@ -718,6 +722,9 @@ Accept wildcard characters: False
 
 ### -OrchestrationMode
 Specifies the orchestration mode for the virtual machine scale set. Possible values: Uniform, Flexible
+
+Creating a VMSS in OrchestrationMode:Flexible using default parameter set will result in having the VirtualMachineScaleSetVMProfile being populated by default. 
+If you want to create a VMSS with an empty VirtualMachineScaleSetVMProfile, first create a VirtualMachineScaleSet object with empty VMProfile property using **[New-AzVmssConfig](https://learn.microsoft.com/en-us/powershell/module/az.compute/new-azvmss)**, then create the VMSS using simple parameter set.
 
 ```yaml
 Type: System.String
