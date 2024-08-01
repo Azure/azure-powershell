@@ -69,7 +69,7 @@ function New-AzMigrateHCINicMappingObject {
             $selectionTypeForFailover = $VMNicSelection.NotSelected
         }
 
-        $NicObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCINicInput]::new(
+        $NicObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzStackHCINicInput]::new(
             $NicID,
             $TargetVirtualSwitchId,
             $TargetTestVirtualSwitchId,
