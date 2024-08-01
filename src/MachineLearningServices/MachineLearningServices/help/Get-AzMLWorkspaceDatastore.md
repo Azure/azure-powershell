@@ -16,20 +16,20 @@ Get datastore.
 ```
 Get-AzMLWorkspaceDatastore -ResourceGroupName <String> [-SubscriptionId <String[]>] -WorkspaceName <String>
  [-Count <Int32>] [-IsDefault] [-OrderBy <String>] [-OrderByAsc] [-SearchName <String[]>]
- [-SearchText <String>] [-Skip <String>] [-DefaultProfile <PSObject>]
+ [-SearchText <String>] [-Skip <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzMLWorkspaceDatastore -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -WorkspaceName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -WorkspaceName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzMLWorkspaceDatastore -InputObject <IMachineLearningServicesIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -167,6 +167,21 @@ Order by property in ascending order.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: List
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

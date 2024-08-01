@@ -17,26 +17,26 @@ Counts devices in device group.
 ```
 Invoke-AzSphereCountDeviceGroupDevice -CatalogName <String> -DeviceGroupName <String> -ProductName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CountDeviceViaIdentityProduct
 ```
 Invoke-AzSphereCountDeviceGroupDevice -DeviceGroupName <String> -ProductInputObject <ISphereIdentity>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CountDeviceViaIdentityCatalog
 ```
 Invoke-AzSphereCountDeviceGroupDevice -DeviceGroupName <String> -ProductName <String>
- -CatalogInputObject <ISphereIdentity> [-DefaultProfile <PSObject>]
+ -CatalogInputObject <ISphereIdentity> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CountDeviceViaIdentity
 ```
 Invoke-AzSphereCountDeviceGroupDevice -InputObject <ISphereIdentity> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -160,6 +160,21 @@ Parameter Sets: CountDevice, CountDeviceViaIdentityCatalog
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

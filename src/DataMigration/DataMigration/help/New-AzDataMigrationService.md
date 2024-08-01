@@ -14,7 +14,7 @@ Creates a new instance of the Azure Database Migration Service (classic).
 
 ```
 New-AzDataMigrationService -ResourceGroupName <String> -Name <String> -Location <String> -Sku <String>
- -VirtualSubnetId <String> [-DefaultProfile <IAzureContextContainer>]
+ -VirtualSubnetId <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -71,6 +71,21 @@ Parameter Sets: (All)
 Aliases: ServiceName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

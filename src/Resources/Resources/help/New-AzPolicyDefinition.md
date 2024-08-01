@@ -16,21 +16,21 @@ Creates or updates a policy definition.
 ```
 New-AzPolicyDefinition -Name <String> -Policy <String> [-DisplayName <String>] [-Description <String>]
  [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
 New-AzPolicyDefinition -Name <String> -ManagementGroupName <String> -Policy <String> [-DisplayName <String>]
  [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
 New-AzPolicyDefinition -Name <String> -SubscriptionId <String> -Policy <String> [-DisplayName <String>]
  [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -261,6 +261,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -16,20 +16,20 @@ Returns a serverless runtime resource by ID
 ```
 Invoke-AzInformaticaServerlessRuntimeResource -OrganizationName <String> -ResourceGroupName <String>
  -ServerlessRuntimeName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServerlessViaIdentityOrganization
 ```
 Invoke-AzInformaticaServerlessRuntimeResource -ServerlessRuntimeName <String>
  -OrganizationInputObject <IInformaticaIdentity> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServerlessViaIdentity
 ```
 Invoke-AzInformaticaServerlessRuntimeResource -InputObject <IInformaticaIdentity> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -117,6 +117,21 @@ Parameter Sets: Serverless
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

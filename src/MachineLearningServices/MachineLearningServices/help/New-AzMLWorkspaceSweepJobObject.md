@@ -25,7 +25,7 @@ New-AzMLWorkspaceSweepJobObject -ObjectiveGoal <Goal> -ObjectivePrimaryMetric <S
  [-DisplayName <String>] [-ExperimentName <String>] [-IdentityType <IdentityConfigurationType>]
  [-IsArchived <Boolean>] [-ServiceEndpoint <String>] [-ServicePort <Int32>]
  [-ServiceProperty <IJobServiceProperties>] [-ServiceType <String>] [-Description <String>]
- [-Property <IResourceBaseProperties>] [-Tag <IResourceBaseTags>]
+ [-Property <IResourceBaseProperties>] [-Tag <IResourceBaseTags>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -328,6 +328,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

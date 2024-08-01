@@ -17,7 +17,7 @@ Analyze an NGINX configuration without applying it to the NGINXaaS deployment
 Invoke-AzNginxAnalysisConfiguration -ConfigurationName <String> -DeploymentName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-ConfigFile <INginxConfigurationFile[]>]
  [-ConfigProtectedFile <INginxConfigurationFile[]>] [-ConfigRootFile <String>] [-PackageData <String>]
- [-PackageProtectedFile <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-PackageProtectedFile <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -25,21 +25,21 @@ Invoke-AzNginxAnalysisConfiguration -ConfigurationName <String> -DeploymentName 
 ```
 Invoke-AzNginxAnalysisConfiguration -ConfigurationName <String> -DeploymentName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -Body <IAnalysisCreate> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AnalysisViaIdentityExpanded
 ```
 Invoke-AzNginxAnalysisConfiguration -InputObject <INginxIdentity> [-ConfigFile <INginxConfigurationFile[]>]
  [-ConfigProtectedFile <INginxConfigurationFile[]>] [-ConfigRootFile <String>] [-PackageData <String>]
- [-PackageProtectedFile <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-PackageProtectedFile <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### AnalysisViaIdentity
 ```
 Invoke-AzNginxAnalysisConfiguration -InputObject <INginxIdentity> -Body <IAnalysisCreate>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -213,6 +213,21 @@ Accept wildcard characters: False
 Type: System.String[]
 Parameter Sets: AnalysisExpanded, AnalysisViaIdentityExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
