@@ -19,7 +19,7 @@ New-AzMLWorkspaceAksObject [-Description <String>] [-DisableLocalAuth <Boolean>]
  [-ClusterFqdn <String>] [-ClusterPurpose <ClusterPurpose>] [-LoadBalancerSubnet <String>]
  [-LoadBalancerType <LoadBalancerType>] [-SslCert <String>] [-SslCname <String>] [-SslKey <String>]
  [-SslLeafDomainLabel <String>] [-SslOverwriteExistingDomain <Boolean>] [-SslStatus <SslConfigStatus>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -211,21 +211,6 @@ Load Balancer Type.
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.LoadBalancerType
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
