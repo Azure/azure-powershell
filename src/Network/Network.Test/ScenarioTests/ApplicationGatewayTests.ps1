@@ -4193,8 +4193,9 @@ function Test-ApplicationGatewayFirewallPolicyManagedRuleGroupOverrideWithSensit
 		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator GreaterThan -MatchValue 1000 -Transform Lowercase -NegationCondition $False
 		$rule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RuleType MatchRule -MatchCondition $condition -Action Block
 		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70
-		$ruleOverrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId 500100 -State Enabled -Action Block -Sensitivity High
-		$ruleGroupOverrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName ExcessiveRequests -Rule $ruleOverrideEntry
+		$ruleOverrideEntry1 = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId 500100 -State Enabled -Action Block -Sensitivity High
+		$ruleOverrideEntry2 = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId 500110 -State Enabled -Action Block -Sensitivity High
+		$ruleGroupOverrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName ExcessiveRequests -Rule $ruleOverrideEntry1,$ruleOverrideEntry2
 		$primarymanagedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
 		$ddosmanagedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "Microsoft_HTTPDDoSRuleSet" -RuleSetVersion "1.0" -RuleGroupOverride $ruleGroupOverrideEntry
 		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $primarymanagedRuleSet,$ddosmanagedRuleSet
@@ -4225,8 +4226,10 @@ function Test-ApplicationGatewayFirewallPolicyManagedRuleGroupOverrideWithSensit
 		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleSetType "Microsoft_HTTPDDoSRuleSet"
 		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleSetVersion "1.0"
 		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleGroupOverrides[0].RuleGroupName $ruleGroupOverrideEntry.RuleGroupName
-		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleGroupOverrides[0].Rules[0].Sensitivity $ruleOverrideEntry.Sensitivity
-		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleGroupOverrides[0].Rules[0].Action $ruleOverrideEntry.Action
+		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleGroupOverrides[0].Rules[0].Sensitivity $ruleOverrideEntry1.Sensitivity
+		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleGroupOverrides[0].Rules[0].Action $ruleOverrideEntry1.Action
+		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleGroupOverrides[0].Rules[1].Sensitivity $ruleOverrideEntry2.Sensitivity
+		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[1].RuleGroupOverrides[0].Rules[1].Action $ruleOverrideEntry2.Action
 	}
 	finally
 	{

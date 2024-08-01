@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Describes the override sensitivity to be applied when rule matches.")]
+            HelpMessage = "Sensitivity of the Rule.")]
         [ValidateSet("None", "Low", "Medium", "High", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Sensitivity { get; set; }
