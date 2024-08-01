@@ -17,7 +17,7 @@ New-AzMLWorkspaceVirtualMachineObject [-Description <String>] [-DisableLocalAuth
  [-ResourceId <String>] [-Address <String>] [-AdministratorAccountPassword <String>]
  [-AdministratorAccountPrivateKeyData <String>] [-AdministratorAccountPublicKeyData <String>]
  [-AdministratorAccountUsername <String>] [-IsNotebookInstanceCompute <Boolean>] [-NotebookServerPort <Int32>]
- [-Size <String>] [-SshPort <Int32>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-Size <String>] [-SshPort <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -161,21 +161,6 @@ Notebook server port open for ssh connections.
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

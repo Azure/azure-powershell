@@ -17,7 +17,7 @@ New-AzMLWorkspaceServicePrincipalAuthTypeWorkspaceConnectionPropertiesObject [-C
  [-CredentialsClientSecret <String>] [-CredentialsTenantId <String>] [-Category <ConnectionCategory>]
  [-ExpiryTime <DateTime>] [-IsSharedToAll <Boolean>] [-Metadata <IWorkspaceConnectionPropertiesV2Metadata>]
  [-SharedUserList <String[]>] [-Target <String>] [-Value <String>] [-ValueFormat <ValueFormat>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -127,21 +127,6 @@ To construct, see NOTES section for METADATA properties and create a hash table.
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspaceConnectionPropertiesV2Metadata
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

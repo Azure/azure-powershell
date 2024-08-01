@@ -13,6 +13,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IComputeProfileInternal
     {
 
+        /// <summary>Backing field for <see cref="AvailabilityZone" /> property.</summary>
+        private System.Collections.Generic.List<string> _availabilityZone;
+
+        /// <summary>The list of Availability zones to use for AKS VMSS nodes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> AvailabilityZone { get => this._availabilityZone; set => this._availabilityZone = value; }
+
         /// <summary>Backing field for <see cref="Node" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INodeProfile> _node;
 
@@ -30,6 +37,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
     public partial interface IComputeProfile :
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IJsonSerializable
     {
+        /// <summary>The list of Availability zones to use for AKS VMSS nodes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The list of Availability zones to use for AKS VMSS nodes.",
+        SerializedName = @"availabilityZones",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> AvailabilityZone { get; set; }
         /// <summary>The nodes definitions.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = true,
@@ -47,6 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
     internal partial interface IComputeProfileInternal
 
     {
+        /// <summary>The list of Availability zones to use for AKS VMSS nodes.</summary>
+        System.Collections.Generic.List<string> AvailabilityZone { get; set; }
         /// <summary>The nodes definitions.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INodeProfile> Node { get; set; }
 

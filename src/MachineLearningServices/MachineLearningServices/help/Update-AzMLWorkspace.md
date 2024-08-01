@@ -26,7 +26,7 @@ Update-AzMLWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId
  [-ServerlessComputeSettingServerlessComputeNoPublicIP] [-SkuCapacity <Int32>] [-SkuFamily <String>]
  [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-Status <ManagedNetworkStatus>]
  [-StatusSparkReady] [-Tag <Hashtable>] [-V1LegacyMode] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -43,7 +43,7 @@ Update-AzMLWorkspace -InputObject <IMachineLearningServicesIdentity> [-Applicati
  [-ServerlessComputeSettingServerlessComputeNoPublicIP] [-SkuCapacity <Int32>] [-SkuFamily <String>]
  [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-Status <ManagedNetworkStatus>]
  [-StatusSparkReady] [-Tag <Hashtable>] [-V1LegacyMode] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -390,21 +390,6 @@ The user assigned identity resource id that represents the workspace identity.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
