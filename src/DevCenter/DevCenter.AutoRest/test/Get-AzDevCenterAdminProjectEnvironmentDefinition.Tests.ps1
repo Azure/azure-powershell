@@ -21,7 +21,7 @@ Describe 'Get-AzDevCenterAdminProjectEnvironmentDefinition' {
     }
 
     It 'Get' {
-        $envDef = Get-AzDevCenterAdminEnvironmentDefinition -EnvironmentDefinitionName "Sandbox" -ProjectName $env.projectName20 -CatalogName $env.catalogName20 -ResourceGroupName $env.resourceGroupName20
+        $envDef = Get-AzDevCenterAdminProjectEnvironmentDefinition -EnvironmentDefinitionName "Sandbox" -ProjectName $env.projectName20 -CatalogName $env.catalogName20 -ResourceGroupName $env.resourceGroupName20
         $envDef.Name | Should -Be "Sandbox"
     }
 

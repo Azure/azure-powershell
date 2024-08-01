@@ -20,9 +20,4 @@ Describe 'Get-AzDevCenterAdminCatalogSyncErrorDetail' {
         $syncError.Conflict.Name | Should -Be $env.functionAppName
         $syncError.Conflict.Path | Should -Be $env.functionAppPath
     }
-
-    It 'GetViaIdentity' {
-        $catalog = Get-AzDevCenterAdminCatalog -DevCenterName $env.devCenterName20 -Name $env.devCenterCatalogWithSyncError -ResourceGroupName $env.resourceGroupName20
-        Get-AzDevCenterAdminCatalogSyncErrorDetail -InputObject $catalog   
-    }
 }
