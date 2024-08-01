@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 0.4.0
 * Added dataplane cmdlets:
     * `Get-AzEmailServicedataEmailSendResult`
     * `Send-AzEmailServicedataEmail`

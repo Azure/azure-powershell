@@ -14,7 +14,7 @@ Create an in-memory object for UriFileJobInput.
 
 ```
 New-AzMLWorkspaceUriFileJobInputObject -Uri <String> -Type <JobInputType> [-Mode <InputDeliveryMode>]
- [-Description <String>] [<CommonParameters>]
+ [-Description <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,6 +53,21 @@ Input Asset Delivery Mode.
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.InputDeliveryMode
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

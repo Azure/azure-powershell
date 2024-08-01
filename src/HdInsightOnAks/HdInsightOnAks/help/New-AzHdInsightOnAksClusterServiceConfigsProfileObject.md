@@ -1,24 +1,24 @@
 ---
 external help file: Az.HdInsightOnAks-help.xml
 Module Name: Az.HdInsightOnAks
-online version: https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksclusterserviceconfigsprofileobject
+online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksClusterServiceConfigsProfileObject
 schema: 2.0.0
 ---
 
 # New-AzHdInsightOnAksClusterServiceConfigsProfileObject
 
 ## SYNOPSIS
-Create an in-memory object for ClusterServiceConfigsProfile.
+Create a service config profile.
 
 ## SYNTAX
 
 ```
-New-AzHdInsightOnAksClusterServiceConfigsProfileObject -Config <IClusterServiceConfig[]> -ServiceName <String>
+New-AzHdInsightOnAksClusterServiceConfigsProfileObject -ServiceName <String> -Config <IClusterServiceConfig[]>
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for ClusterServiceConfigsProfile.
+Create a service config profile.
 
 ## EXAMPLES
 
@@ -29,7 +29,7 @@ $yarnComponentConfig= New-AzHdInsightOnAksClusterServiceConfigObject -ComponentN
 $yarnServiceConfigProfile=New-AzHdInsightOnAksClusterServiceConfigsProfileObject -ServiceName "yarn-service" -Config $yarnComponentConfig
 ```
 
-This cmdlet creates the service config profile of "yarn-service" with the ComponentName service config.
+This cmdlet creates the service config profile of "yarn-service" with the component service config.
 
 ## PARAMETERS
 
@@ -54,7 +54,7 @@ Name of the service the configurations should apply to.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Name
 
 Required: True
 Position: Named
@@ -68,9 +68,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfig[]
+
+### System.String
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterServiceConfigsProfile
+### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigsProfile
 
 ## NOTES
 

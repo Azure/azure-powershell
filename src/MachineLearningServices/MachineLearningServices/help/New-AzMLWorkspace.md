@@ -32,7 +32,7 @@ New-AzMLWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <S
  [-StatusSparkReady] [-StorageAccountId <String>] [-Tag <Hashtable>] [-V1LegacyMode]
  [-WorkspaceHubConfigAdditionalWorkspaceStorageAccount <String[]>]
  [-WorkspaceHubConfigDefaultWorkspaceResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -533,6 +533,21 @@ The user assigned identity resource id that represents the workspace identity.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

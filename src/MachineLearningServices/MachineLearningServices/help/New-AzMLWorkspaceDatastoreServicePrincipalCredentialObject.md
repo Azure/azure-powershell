@@ -14,7 +14,7 @@ Create an in-memory object for ServicePrincipalDatastoreCredentials.
 
 ```
 New-AzMLWorkspaceDatastoreServicePrincipalCredentialObject -ClientId <String> -TenantId <String>
- -ClientSecret <String> [-AuthorityUrl <String>] [-ResourceUrl <String>]
+ -ClientSecret <String> [-AuthorityUrl <String>] [-ResourceUrl <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -71,6 +71,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

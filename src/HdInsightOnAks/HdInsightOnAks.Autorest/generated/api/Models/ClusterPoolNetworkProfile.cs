@@ -18,8 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
 
         /// <summary>
         /// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters.
-        /// So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property
-        /// is not supported and please don't use it.
+        /// So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> ApiServerAuthorizedIPRange { get => this._apiServerAuthorizedIPRange; set => this._apiServerAuthorizedIPRange = value; }
@@ -63,8 +62,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
     {
         /// <summary>
         /// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters.
-        /// So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property
-        /// is not supported and please don't use it.
+        /// So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = false,
@@ -72,7 +70,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property is not supported and please don't use it.",
+        Description = @"IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.",
         SerializedName = @"apiServerAuthorizedIpRanges",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> ApiServerAuthorizedIPRange { get; set; }
@@ -124,8 +122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
     {
         /// <summary>
         /// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters.
-        /// So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property
-        /// is not supported and please don't use it.
+        /// So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
         /// </summary>
         System.Collections.Generic.List<string> ApiServerAuthorizedIPRange { get; set; }
         /// <summary>

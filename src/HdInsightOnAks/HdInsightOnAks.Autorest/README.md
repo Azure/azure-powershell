@@ -46,8 +46,8 @@ In this directory, run AutoRest:
 ### General settings
 > Values
 ``` yaml
-tag: package-preview-2024-05
-commit: c766bb559e93067acf5a852e63f7edcee75a2f5b
+tag: package-preview-2023-11
+commit: 754d31188c080f20b8155acdf8b8fbd77dace467
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/hdinsight/resource-manager/Microsoft.HDInsight/HDInsightOnAks/readme.md
@@ -71,23 +71,6 @@ default-exclude-tableview-properties: true
 ``` yaml
 identity-correction-for-post: true
 directive:
-  - model-cmdlet:
-    - model-name: ManagedIdentitySpec
-      cmdlet-name: New-AzHdInsightOnAksManagedIdentityObject
-    - model-name: ClusterPoolAksPatchVersionUpgradeProperties
-      cmdlet-name: New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject
-    - model-name: NodeProfile
-      cmdlet-name: New-AzHdInsightOnAksNodeProfileObject
-    - model-name: SecretReference
-      cmdlet-name: New-AzHdInsightOnAksSecretReferenceObject
-    - model-name: HiveCatalogOption
-      cmdlet-name: New-AzHdInsightOnAksTrinoHiveCatalogObject
-    - model-name: ClusterConfigFile
-      cmdlet-name: New-AzHdInsightOnAksClusterConfigFileObject
-    - model-name: ClusterServiceConfig
-      cmdlet-name: New-AzHdInsightOnAksClusterServiceConfigObject
-    - model-name: ClusterServiceConfigsProfile
-      cmdlet-name: New-AzHdInsightOnAksClusterServiceConfigsProfileObject
   - from: swagger-document
     where: $.paths..responses.202
     transform: delete $.headers
@@ -139,17 +122,7 @@ directive:
       model-name: ClusterVersion
       property-name: PropertiesClusterVersion
     set:
-      property-name: ClusterVersionValue
-  - where:
-      model-name: SecretReference
-      property-name: KeyVaultObjectName
-    set:
-      property-name: SecretName   
-  - where:
-      model-name: ClusterServiceConfig
-      property-name: Component
-    set:
-      property-name: ComponentName  
+      property-name: ClusterVersionValue      
 # the below is cmdlet part      
   - where:
       verb: New|Set
@@ -336,24 +309,5 @@ directive:
     set:
       parameter-name: FlinkHiveCatalogDbUserName
 # The below customize the output model   
-  - where:
-      verb: Update
-      subject: [Cluster] 
-      variant: [Upgrade|UpgradeExpanded|UpgradeViaIdentity|UpgradeViaIdentityExpanded|UpgradeViaJsonFilePath|UpgradeViaJsonString]
-    set:
-      verb: Invoke
-      subject: ClusterUpgrade
-  - where:
-      verb: Update
-      subject: [ClusterManualRollback] 
-      variant: [Upgrade|UpgradeExpanded|UpgradeViaIdentity|UpgradeViaIdentityExpanded|UpgradeViaJsonFilePath|UpgradeViaJsonString]
-    set:
-      verb: Invoke
-  - where:
-      verb: Update
-      subject: [ClusterPool] 
-      variant: [Upgrade|UpgradeExpanded|UpgradeViaIdentity|UpgradeViaIdentityExpanded|UpgradeViaJsonFilePath|UpgradeViaJsonString]
-    set:
-      verb: Invoke
-      subject: ClusterPoolUpgrade
+
 ```

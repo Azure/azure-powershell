@@ -1,24 +1,24 @@
 ---
 external help file: Az.HdInsightOnAks-help.xml
 Module Name: Az.HdInsightOnAks
-online version: https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksnodeprofileobject
+online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksNodeProfileObject
 schema: 2.0.0
 ---
 
 # New-AzHdInsightOnAksNodeProfileObject
 
 ## SYNOPSIS
-Create an in-memory object for NodeProfile.
+Create a node profile with SKU and worker count.
 
 ## SYNTAX
 
 ```
-New-AzHdInsightOnAksNodeProfileObject -Count <Int32> -Type <String> -VMSize <String>
+New-AzHdInsightOnAksNodeProfileObject -Type <String> -Count <Int32> -VMSize <String>
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for NodeProfile.
+Create a node profile with SKU and worker count.
 
 ## EXAMPLES
 
@@ -34,7 +34,7 @@ Create a profile with SKU Standard_E8ads_v5 and 5 worker nodes.
 ## PARAMETERS
 
 ### -Count
-The number of virtual machines.
+The virtual machine SKU.
 
 ```yaml
 Type: System.Int32
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -VMSize
-The virtual machine SKU.
+The number of virtual machines.
 
 ```yaml
 Type: System.String
@@ -85,7 +85,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.NodeProfile
+### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INodeProfile
 
 ## NOTES
 

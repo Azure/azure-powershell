@@ -117,10 +117,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshProfileInternal)this).PodPrefix = (string) content.GetValueForProperty("PodPrefix",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshProfileInternal)this).PodPrefix, global::System.Convert.ToString);
             }
-            if (content.Contains("VMSize"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshProfileInternal)this).VMSize = (string) content.GetValueForProperty("VMSize",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshProfileInternal)this).VMSize, global::System.Convert.ToString);
-            }
             AfterDeserializeDictionary(content);
         }
 
@@ -145,10 +141,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("PodPrefix"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshProfileInternal)this).PodPrefix = (string) content.GetValueForProperty("PodPrefix",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshProfileInternal)this).PodPrefix, global::System.Convert.ToString);
-            }
-            if (content.Contains("VMSize"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshProfileInternal)this).VMSize = (string) content.GetValueForProperty("VMSize",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshProfileInternal)this).VMSize, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

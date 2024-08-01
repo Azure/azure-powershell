@@ -19,7 +19,7 @@ New-AzMLWorkspaceAmlComputeObject [-Description <String>] [-DisableLocalAuth <Bo
  [-ScaleMinNodeCount <Int32>] [-ScaleNodeIdleTimeBeforeScaleDown <TimeSpan>] [-SubnetId <String>]
  [-AdminUserName <String>] [-AdminUserPassword <String>] [-AdminUserSshPublicKey <String>]
  [-VMPriority <VMPriority>] [-VMSize <String>] [-VirtualMachineImageId <String>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -150,6 +150,21 @@ Compute OS Type.
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OSType
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

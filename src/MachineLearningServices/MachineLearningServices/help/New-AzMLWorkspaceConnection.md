@@ -18,14 +18,14 @@ New-AzMLWorkspaceConnection -Name <String> -ResourceGroupName <String> -Workspac
  [-SubscriptionId <String>] -AuthType <ConnectionAuthType> [-Category <ConnectionCategory>]
  [-ExpiryTime <DateTime>] [-IsSharedToAll] [-Metadata <Hashtable>] [-SharedUserList <String[]>]
  [-Target <String>] [-Value <String>] [-ValueFormat <ValueFormat>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateWithProperty
 ```
 New-AzMLWorkspaceConnection -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String>] -Property <IWorkspaceConnectionPropertiesV2> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -172,6 +172,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
