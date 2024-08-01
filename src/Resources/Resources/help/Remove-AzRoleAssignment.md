@@ -137,7 +137,7 @@ Removes a role assignment for john.doe@contoso.com who is assigned to the Reader
 
 ### Example 2
 ```powershell
-Remove-AzRoleAssignment -ObjectId 36f81fc3-b00f-48cd-8218-3879f51ff39f -RoleDefinitionName Reader
+Remove-AzRoleAssignment -ObjectId 00001111-aaaa-2222-bbbb-3333cccc4444 -RoleDefinitionName Reader
 ```
 
 Removes the role assignment to the group principal identified by the ObjectId and assigned to the Reader role.
