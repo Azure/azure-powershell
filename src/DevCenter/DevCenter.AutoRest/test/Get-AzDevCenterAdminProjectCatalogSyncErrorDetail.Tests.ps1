@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminProjectCa
 
 Describe 'Get-AzDevCenterAdminProjectCatalogSyncErrorDetail' {
     It 'Get' {
-        $syncError = Get-AzDevCenterAdminProjectCatalogSyncErrorDetail -ProjectName $env.projectName20 -ResourceGroupName $env.resourceGroupName20 -CatalogName $env.projectCatalogWithSyncError
+        $syncError = Get-AzDevCenterAdminProjectCatalogSyncErrorDetail -ProjectName $env.projectName20 -ResourceGroupName $env.resourceGroupName20 -CatalogName $env.projectCatalogWithSyncError -SubscriptionId $env.SubscriptionId2
         $syncError.OperationErrorCode | Should -Be "DisabledKeyVaultSecret"
     }
 

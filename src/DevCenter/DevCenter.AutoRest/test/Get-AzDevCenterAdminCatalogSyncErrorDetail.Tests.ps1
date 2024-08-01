@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminCatalogSy
 
 Describe 'Get-AzDevCenterAdminCatalogSyncErrorDetail' {
     It 'Get' {
-        $syncError = Get-AzDevCenterAdminCatalogSyncErrorDetail -DevCenterName $env.devCenterName20 -CatalogName $env.devCenterCatalogWithSyncError -ResourceGroupName $env.resourceGroupName20
+        $syncError = Get-AzDevCenterAdminCatalogSyncErrorDetail -DevCenterName $env.devCenterName20 -CatalogName $env.devCenterCatalogWithSyncError -ResourceGroupName $env.resourceGroupName20 -SubscriptionId $env.SubscriptionId2
         $syncError.Conflict.Name | Should -Be $env.functionAppName
         $syncError.Conflict.Path | Should -Be $env.functionAppPath
     }

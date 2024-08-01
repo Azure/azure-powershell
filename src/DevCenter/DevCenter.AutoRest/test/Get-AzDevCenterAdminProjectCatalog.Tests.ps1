@@ -16,12 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminProjectCa
 
 Describe 'Get-AzDevCenterAdminProjectCatalog' {
     It 'List' {
-        $listOfCatalogs = Get-AzDevCenterAdminProjectCatalog -ProjectName $env.projectName20 -ResourceGroupName $env.resourceGroupName20
+        $listOfCatalogs = Get-AzDevCenterAdminProjectCatalog -ProjectName $env.projectName20 -ResourceGroupName $env.resourceGroupName20 -SubscriptionId $env.SubscriptionId2
         $listOfCatalogs.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
-        $catalog = Get-AzDevCenterAdminProjectCatalog -ProjectName $env.projectName20 -CatalogName $env.catalogName20 -ResourceGroupName $env.resourceGroupName20
+        $catalog = Get-AzDevCenterAdminProjectCatalog -ProjectName $env.projectName20 -CatalogName $env.catalogName20 -ResourceGroupName $env.resourceGroupName20 -SubscriptionId $env.SubscriptionId2
         $catalog.Name | Should -Be $env.catalogName20
         $catalog.GitHubPath | Should -Be $env.gitHubPath20
         $catalog.GitHubUri | Should -Be $env.gitHubUri20
