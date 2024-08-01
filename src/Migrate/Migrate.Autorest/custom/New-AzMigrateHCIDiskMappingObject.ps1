@@ -22,7 +22,7 @@ The New-AzMigrateHCIDiskMappingObject cmdlet creates a mapping of the source dis
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehcidiskmappingobject
 #>
 function New-AzMigrateHCIDiskMappingObject {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCIDiskInput])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzStackHCIDiskInput])]
     [CmdletBinding(PositionalBinding = $false)]
     param(
         [Parameter(Mandatory)]

@@ -22,7 +22,7 @@ The Get-AzMigrateHCIServerReplication cmdlet retrieves the object for the replic
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratehciserverreplication
 #>
 function Get-AzMigrateHCIServerReplication {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IProtectedItemModel])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModel])]
     [CmdletBinding(DefaultParameterSetName = 'ListByName', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'GetByItemID', Mandatory)]
