@@ -22,12 +22,4 @@ Describe 'Update-AzDevCenterAdminProjectCatalog' {
     It 'Patch' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
-
-    It 'PatchViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'PatchViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

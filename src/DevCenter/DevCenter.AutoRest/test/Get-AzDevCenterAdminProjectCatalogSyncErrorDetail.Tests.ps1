@@ -15,11 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminProjectCa
 }
 
 Describe 'Get-AzDevCenterAdminProjectCatalogSyncErrorDetail' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $syncError = Get-AzDevCenterAdminProjectCatalogSyncErrorDetail -ProjectName $env.projectName20 -ResourceGroupName $env.resourceGroupName20 -CatalogName $env.projectCatalogWithSyncError
+        $syncError.OperationErrorCode | Should -Be "DisabledKeyVaultSecret"
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

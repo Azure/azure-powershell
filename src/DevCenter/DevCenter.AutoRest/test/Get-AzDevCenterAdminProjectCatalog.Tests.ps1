@@ -15,15 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminProjectCa
 }
 
 Describe 'Get-AzDevCenterAdminProjectCatalog' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $listOfCatalogs = Get-AzDevCenterAdminProjectCatalog -ProjectName $env.projectName20 -ResourceGroupName $env.resourceGroup20
+        $listOfCatalogs.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $catalog = Get-AzDevCenterAdminProjectCatalog -ProjectName $env.projectName20 -CatalogName $env.catalogName20 -ResourceGroupName $env.resourceGroup20
+        $catalog.Name | Should -Be $env.catalogName20
+        $catalog.GitHubPath | Should -Be $env.gitHubPath20
+        $catalog.GitHubUri | Should -Be $env.gitHubUri20
     }
 }
