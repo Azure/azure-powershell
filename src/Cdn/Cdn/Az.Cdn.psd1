@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '3.2.0'
+ModuleVersion = '4.0.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -57,10 +57,10 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.2'; })
 RequiredAssemblies = 'Cdn.Autorest/bin/Az.Cdn.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = @()
+# ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = @()
+# TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'Cdn.Autorest/Az.Cdn.format.ps1xml'
@@ -221,7 +221,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Cdn'
+        Tags = 'Azure','ResourceManager','ARM','PSModule','Cdn'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -233,12 +233,12 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Introduced secrets detection feature to safeguard sensitive data.
-* Upgrade API version to 2024-02-01
-* Added support to configure rules to scrub PII values from the AFDx logs when new or update a AFDx resource.'
+        ReleaseNotes = '* Upgraded api version to 2024-05-01-preview
+* Added support for classic CDN migrated to AFD
+* Bypassed object id validation for KeyVault access policy during ''Start-AzFrontDoorCdnProfilePrepareMigration'''
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
@@ -248,7 +248,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
-} # End of PrivateData hashtable
+ } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''

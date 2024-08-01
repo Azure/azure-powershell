@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 4.0.0
 * Upgraded api version to 2024-05-01-preview
 * Added support for classic CDN migrated to AFD
 * Bypassed object id validation for KeyVault access policy during `Start-AzFrontDoorCdnProfilePrepareMigration`
