@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Restart the Virtual Machine
 ```powershell
-{{ Add code here }}
+Restart-AzScVmmVM -MachineId "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.HybridCompute/machines/test-vm"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+This command will restart the Virtual Machine.

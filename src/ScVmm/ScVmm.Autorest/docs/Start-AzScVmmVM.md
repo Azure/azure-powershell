@@ -22,27 +22,12 @@ The operation to start a virtual machine instance.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Start a Virtual Machine
 ```powershell
-{{ Add code here }}
+Start-AzScVmmVM -MachineId "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.HybridCompute/machines/test-vm"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command will power on the VM and bring it to Running state from Stopped state.
 
 ## PARAMETERS
 

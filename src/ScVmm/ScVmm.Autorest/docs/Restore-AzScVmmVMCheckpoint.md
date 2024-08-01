@@ -41,27 +41,13 @@ Restores to a checkpoint in virtual machine instance.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Restore a VM Checkpoint
 ```powershell
-{{ Add code here }}
+Restore-AzScVmmVMCheckpoint -MachineId "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.HybridCompute/machines/test-vm" -Id "00000000-1111-0000-1111-000000000000"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Restore a VM Checkpoint with given `checkpointID`.
+To get the list of available checkpoints and their Id, do a get VM operation using `Get-AzScVmmVM`.
 
 ## PARAMETERS
 

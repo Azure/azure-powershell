@@ -35,27 +35,21 @@ Create a checkpoint in virtual machine instance.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create VM checkpoint
 ```powershell
-{{ Add code here }}
+New-AzScVmmVMCheckpoint -MachineId "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.HybridCompute/machines/test-vm"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Creates a VM checkpoint.
+To get details of the created checkpoint perform a Get VM operation using `Get-AzScVmmVM`.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Create VM checkpoint
 ```powershell
-{{ Add code here }}
+New-AzScVmmVMCheckpoint -MachineId "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.HybridCompute/machines/test-vm" -Name "Checkpoint1" -Description "Test-Checkpoint"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Creates a VM checkpoint with given Name and Description values for Checkpoint.
+To get details of the created checkpoint perform a Get VM operation using `Get-AzScVmmVM`.
 
 ## PARAMETERS
 

@@ -41,7 +41,7 @@ CredentialsUsername          : scvmm-username
 ErrorMessage                 : 
 ExtendedLocationName         : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ExtendedLocation/customLocations/test-cl
 ExtendedLocationType         : customLocation
-Fqdn                         : VMMNEBSTD1308.CDM.LAB
+Fqdn                         : vmmServerFqdn
 Id                           : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ScVmm/vmmServers/test-vmmserver-01
 Location                     : eastus
 Name                         : test-vmmserver-01

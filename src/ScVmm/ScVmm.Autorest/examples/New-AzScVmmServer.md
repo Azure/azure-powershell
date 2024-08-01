@@ -1,22 +1,34 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a VMM Server resource.
 ```powershell
-{{ Add code here }}
+$securePassword = ConvertTo-SecureString "******" -AsPlainText -Force
+New-AzScVmmServer -Name "test-vmmserver-01" -Fqdn "vmmServerFqdn" -Location "eastus" -CredentialsUsername "scvmm-username" -CredentialsPassword $securePassword -Port 8100 -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000" -ExtendedLocationType "customLocation" -ExtendedLocationName "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ExtendedLocation/customLocations/test-cl" -debug
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ConnectionStatus             : Connected
+CredentialsPassword          : 
+CredentialsUsername          : scvmm-username
+ErrorMessage                 : 
+ExtendedLocationName         : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ExtendedLocation/customLocations/test-cl
+ExtendedLocationType         : customLocation
+Fqdn                         : vmmServerFqdn
+Id                           : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ScVmm/vmmServers/test-vmmserver-01
+Location                     : eastus
+Name                         : test-vmmserver-01
+Port                         : 8100
+ProvisioningState            : Succeeded
+ResourceGroupName            : test-rg-01
+SystemDataCreatedAt          : 08-01-2024 10:04:20
+SystemDataCreatedBy          : user@contoso.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 08-01-2024 13:14:34
+SystemDataLastModifiedBy     : 11111111-aaaa-2222-bbbb-333333333333
+SystemDataLastModifiedByType : Application
+Tag                          : {
+                               }
+Type                         : microsoft.scvmm/vmmservers
+Uuid                         : 00000000-1111-0000-2222-000000000000
+Version                      : 10.22.1711.0
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create a VMM Server resource in Azure to perform self-service management operation for your on-prem VMM Server.

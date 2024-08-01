@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Shut down the VM gracefully
 ```powershell
-{{ Add code here }}
+Stop-AzScVmmVM -MachineId "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.HybridCompute/machines/test-vm"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This command will Shut down the VM gracefully and bring it to Stopped state.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Power off the VM
 ```powershell
-{{ Add code here }}
+Stop-AzScVmmVM -MachineId "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.HybridCompute/machines/test-vm" -SkipShutdown "true"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command will Skip shutdown and power-off the VM immediately.
 

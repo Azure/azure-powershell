@@ -29,27 +29,12 @@ Deregisters the ScVmm fabric cloud from Azure.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove Cloud resource
 ```powershell
-{{ Add code here }}
+Remove-AzScVmmCloud -Name "test-cloud" -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Removes the SCVMM Cloud resource from Azure.
 
 ## PARAMETERS
 
