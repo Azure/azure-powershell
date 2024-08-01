@@ -76,6 +76,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {_ruleName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("ruleName"), out var __jsonRuleName) ? (string)__jsonRuleName : (string)RuleName;}
             {_securityPolicyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("securityPolicyName"), out var __jsonSecurityPolicyName) ? (string)__jsonSecurityPolicyName : (string)SecurityPolicyName;}
             {_secretName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("secretName"), out var __jsonSecretName) ? (string)__jsonSecretName : (string)SecretName;}
+            {_keyGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("keyGroupName"), out var __jsonKeyGroupName) ? (string)__jsonKeyGroupName : (string)KeyGroupName;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
             AfterFromJson(json);
         }
@@ -121,6 +122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             AddIf( null != (((object)this._ruleName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._ruleName.ToString()) : null, "ruleName" ,container.Add );
             AddIf( null != (((object)this._securityPolicyName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._securityPolicyName.ToString()) : null, "securityPolicyName" ,container.Add );
             AddIf( null != (((object)this._secretName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._secretName.ToString()) : null, "secretName" ,container.Add );
+            AddIf( null != (((object)this._keyGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._keyGroupName.ToString()) : null, "keyGroupName" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;

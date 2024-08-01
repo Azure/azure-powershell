@@ -83,7 +83,7 @@ Parameters required for content purge.
 To construct, see NOTES section for CONTENT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdPurgeParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IAfdPurgeParameters
 Parameter Sets: Purge, PurgeViaIdentity
 Aliases:
 
@@ -298,7 +298,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdPurgeParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IAfdPurgeParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 

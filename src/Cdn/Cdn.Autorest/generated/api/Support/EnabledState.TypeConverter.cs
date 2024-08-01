@@ -7,7 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support
 {
 
     /// <summary>
-    /// Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
+    /// Set to Enabled by default. If set to Disabled, validation of client certificate chain for mutual TLS handshake will be
+    /// skipped.
     /// </summary>
     public partial class EnabledStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter

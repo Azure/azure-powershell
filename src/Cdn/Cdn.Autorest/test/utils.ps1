@@ -86,12 +86,12 @@ function setupEnv() {
     # Hard-coding host and endpoint names due to requirement for DNS CNAME
     # DNA mapping use DNS Zone resource: ps.cdne2e.azfdtest.xyz 
     # Add RecordSets in 'DNS Management' blade: 
-    #    Name: ps-20240402-domain020
+    #    Name: ps-20240501-domain010
     #    Tyep: CName
     #    Alias Record Set: No
-    #    Alias: ps-20240402-domain020.azureedge.net
-    $classicCdnEndpointName = 'ps-20240402-domain020'
-    $customDomainHostName = 'ps-20240402-domain020.ps.cdne2e.azfdtest.xyz'
+    #    Alias: ps-20240501-domain010.azureedge.net
+    $classicCdnEndpointName = 'ps-20240501-domain010'
+    $customDomainHostName = 'ps-20240501-domain010.ps.cdne2e.azfdtest.xyz'
     $customDomainName = 'cd-' + (RandomString -allChars $false -len 6);
     $location = "westus"
     $origin = @{

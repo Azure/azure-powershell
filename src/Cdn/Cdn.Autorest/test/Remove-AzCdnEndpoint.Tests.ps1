@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCdnEndpoint'))
 
 Describe 'Remove-AzCdnEndpoint'  {
     It 'Delete' { 
-        $endpointName = 'e-clipstest070'
+        $endpointName = 'e-clipstest370'
         $origin = @{
             Name = "origin1"
             HostName = "host1.hello.com"
@@ -29,7 +29,7 @@ Describe 'Remove-AzCdnEndpoint'  {
     }
 
     It 'DeleteViaIdentity' {
-        $endpointName = 'e-clipstest071'
+        $endpointName = 'e-clipstest371'
         $origin = @{
             Name = "origin1"
             HostName = "host1.hello.com"

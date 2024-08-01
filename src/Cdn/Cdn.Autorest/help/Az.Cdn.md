@@ -103,6 +103,16 @@ Gets an existing security policy within a profile.
 Pre-loads a content to CDN.
 Available for Verizon Profiles.
 
+### [Invoke-AzCdnAbortProfileToAFDMigration](Invoke-AzCdnAbortProfileToAFDMigration.md)
+Abort the migration to Azure Frontdoor Premium/Standard.
+
+### [Invoke-AzCdnCommitProfileToAFDMigration](Invoke-AzCdnCommitProfileToAFDMigration.md)
+Commit the migrated Azure Front Door(Standard/Premium) profile..
+
+### [Move-AzCdnProfileToAFD](Move-AzCdnProfileToAFD.md)
+Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
+This step prepares the profile for migration and will be followed by Commit to finalize the migration.
+
 ### [New-AzCdnCustomDomain](New-AzCdnCustomDomain.md)
 Creates a new custom domain within an endpoint.
 
@@ -174,6 +184,9 @@ Create an in-memory object for LoadParameters.
 
 ### [New-AzCdnManagedHttpsParametersObject](New-AzCdnManagedHttpsParametersObject.md)
 Create an in-memory object for CdnManagedHttpsParameters.
+
+### [New-AzCdnMigrationEndpointMappingObject](New-AzCdnMigrationEndpointMappingObject.md)
+Create an in-memory object for MigrationEndpointMapping.
 
 ### [New-AzCdnOrigin](New-AzCdnOrigin.md)
 Creates a new origin within the specified endpoint.
@@ -439,6 +452,9 @@ This is needed for resources where name is globally unique, such as a CDN endpoi
 Check if the probe path is a valid path and the file can be accessed.
 Probe path is the path to a file hosted on the origin server to help accelerate the delivery of dynamic content via the CDN endpoint.
 This path is relative to the origin path specified in the endpoint configuration.
+
+### [Test-AzCdnProfileMigrationCompatibility](Test-AzCdnProfileMigrationCompatibility.md)
+Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
 
 ### [Test-AzFrontDoorCdnEndpointCustomDomain](Test-AzFrontDoorCdnEndpointCustomDomain.md)
 Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS.

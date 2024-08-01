@@ -25,12 +25,12 @@ New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -S
 New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestUri -State Disabled
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileScrubbingRules
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfileScrubbingRules
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnProfileScrubbingRulesObject
 #>
 function New-AzFrontDoorCdnProfileScrubbingRulesObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileScrubbingRules])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfileScrubbingRules])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

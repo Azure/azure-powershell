@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support
 {
 
-    /// <summary>TLS protocol version that will be used for Https</summary>
+    /// <summary>
+    /// TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdMinimumTlsVersionTypeConverter))]
     public partial struct AfdMinimumTlsVersion :
         System.Management.Automation.IArgumentCompleter
@@ -33,6 +35,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TLS12".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'TLS12'", "TLS12", global::System.Management.Automation.CompletionResultType.ParameterValue, "TLS12");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "TLS13".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'TLS13'", "TLS13", global::System.Management.Automation.CompletionResultType.ParameterValue, "TLS13");
             }
         }
     }

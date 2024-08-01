@@ -42,6 +42,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'AzureFirstPartyManagedCertificate'", "AzureFirstPartyManagedCertificate", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureFirstPartyManagedCertificate");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "MtlsCertificateChain".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'MtlsCertificateChain'", "MtlsCertificateChain", global::System.Management.Automation.CompletionResultType.ParameterValue, "MtlsCertificateChain");
+            }
         }
     }
 }

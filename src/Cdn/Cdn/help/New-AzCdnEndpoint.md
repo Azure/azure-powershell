@@ -130,7 +130,7 @@ A list of the delivery rules.
 To construct, see NOTES section for DELIVERYPOLICYRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IDeliveryRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -148,7 +148,7 @@ block APAC for path /pictures/
 To construct, see NOTES section for GEOFILTER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IGeoFilter[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IGeoFilter[]
 Parameter Sets: (All)
 Aliases:
 
@@ -278,7 +278,7 @@ The source of the content being delivered via CDN.
 To construct, see NOTES section for ORIGIN properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOrigin[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IDeepCreatedOrigin[]
 Parameter Sets: (All)
 Aliases:
 
@@ -294,7 +294,7 @@ The origin groups comprising of origins that are used for load balancing the tra
 To construct, see NOTES section for ORIGINGROUP properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOriginGroup[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IDeepCreatedOriginGroup[]
 Parameter Sets: (All)
 Aliases:
 
@@ -451,7 +451,7 @@ List of keys used to validate the signed URL hashes.
 To construct, see NOTES section for URLSIGNINGKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IUrlSigningKey[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IUrlSigningKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -515,7 +515,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IEndpoint
 
 ## NOTES
 

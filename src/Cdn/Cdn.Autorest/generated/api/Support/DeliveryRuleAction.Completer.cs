@@ -62,6 +62,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'RouteConfigurationOverride'", "RouteConfigurationOverride", global::System.Management.Automation.CompletionResultType.ParameterValue, "RouteConfigurationOverride");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AfdUrlSigning".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AfdUrlSigning'", "AfdUrlSigning", global::System.Management.Automation.CompletionResultType.ParameterValue, "AfdUrlSigning");
+            }
         }
     }
 }

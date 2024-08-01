@@ -33,6 +33,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
 
+        /// <summary>Backing field for <see cref="KeyGroupName" /> property.</summary>
+        private string _keyGroupName;
+
+        /// <summary>Name of the KeyGroup under the profile.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string KeyGroupName { get => this._keyGroupName; set => this._keyGroupName = value; }
+
         /// <summary>Backing field for <see cref="OriginGroupName" /> property.</summary>
         private string _originGroupName;
 
@@ -138,6 +145,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+        /// <summary>Name of the KeyGroup under the profile.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the KeyGroup under the profile.",
+        SerializedName = @"keyGroupName",
+        PossibleTypes = new [] { typeof(string) })]
+        string KeyGroupName { get; set; }
         /// <summary>Name of the origin group which is unique within the endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
@@ -231,6 +246,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         string EndpointName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
+        /// <summary>Name of the KeyGroup under the profile.</summary>
+        string KeyGroupName { get; set; }
         /// <summary>Name of the origin group which is unique within the endpoint.</summary>
         string OriginGroupName { get; set; }
         /// <summary>Name of the origin which is unique within the profile.</summary>

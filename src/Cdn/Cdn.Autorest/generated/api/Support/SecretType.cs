@@ -16,6 +16,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SecretType ManagedCertificate = @"ManagedCertificate";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SecretType MtlsCertificateChain = @"MtlsCertificateChain";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SecretType UrlSigningKey = @"UrlSigningKey";
 
         /// <summary>the value for an instance of the <see cref="SecretType" /> Enum.</summary>

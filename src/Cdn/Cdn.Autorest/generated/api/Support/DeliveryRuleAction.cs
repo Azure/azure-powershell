@@ -10,6 +10,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support
     public partial struct DeliveryRuleAction :
         System.IEquatable<DeliveryRuleAction>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction AfdUrlSigning = @"AfdUrlSigning";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction CacheExpiration = @"CacheExpiration";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction CacheKeyQueryString = @"CacheKeyQueryString";
