@@ -154,6 +154,28 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
         }
 
         /// <summary>
+        /// Failovers managed instance link
+        /// </summary>
+        /// <param name="model">The input parameters for the update operation</param>
+        /// <returns>The updated Azure Sql Managed Instance Link</returns>
+        internal AzureSqlManagedInstanceLinkModel FailoverManagedInstanceLink(AzureSqlManagedInstanceLinkModel model)
+        {
+            try
+            {
+                var resp = Communicator.Failover(model.ResourceGroupName, model.InstanceName, model.Name, new Management.Sql.Models.DistributedAvailabilityGroupsFailoverRequest
+                {
+                    FailoverType = model.FailoverMode,
+                });
+
+                return CreateManagedInstanceLinkModelFromResponse(model.ResourceGroupName, model.InstanceName, resp);
+            }
+            catch (ErrorResponseException ex)
+            {
+                throw CreateExceptionWithDescriptiveErrorMessage(ex);
+            }
+        }
+
+        /// <summary>
         /// Convert a Management.Sql.Models.DistributedAvailabilityGroup to AzureSqlManagedInstanceLinkModel
         /// </summary>
         /// <param name="resourceGroupName">Resource group used by the managed instance</param>
