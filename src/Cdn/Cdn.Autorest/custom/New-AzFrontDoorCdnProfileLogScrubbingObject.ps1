@@ -21,17 +21,17 @@ Create an in-memory object for ProfileLogScrubbing.
 Create an in-memory object for ProfileLogScrubbing.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileLogScrubbing
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfileLogScrubbing
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnProfileLogScrubbingObject
 #>
 function New-AzFrontDoorCdnProfileLogScrubbingObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileLogScrubbing')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfileLogScrubbing')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="List of log scrubbing rules applied to the Azure Front Door profile logs.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileScrubbingRules[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IProfileScrubbingRules[]]
         $ScrubbingRule,
         [Parameter(HelpMessage="State of the log scrubbing config. Default value is Enabled.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProfileScrubbingState])]
@@ -40,7 +40,7 @@ function New-AzFrontDoorCdnProfileLogScrubbingObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileLogScrubbing]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfileLogScrubbing]::New()
 
         if ($PSBoundParameters.ContainsKey('ScrubbingRule')) {
             $Object.ScrubbingRule = $ScrubbingRule

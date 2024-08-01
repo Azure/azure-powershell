@@ -123,6 +123,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).SecretName = (string) content.GetValueForProperty("SecretName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).SecretName, global::System.Convert.ToString);
             }
+            if (content.Contains("KeyGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).KeyGroupName = (string) content.GetValueForProperty("KeyGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).KeyGroupName, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -191,6 +195,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("SecretName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).SecretName = (string) content.GetValueForProperty("SecretName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).SecretName, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).KeyGroupName = (string) content.GetValueForProperty("KeyGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).KeyGroupName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

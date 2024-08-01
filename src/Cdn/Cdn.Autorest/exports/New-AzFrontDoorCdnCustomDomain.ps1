@@ -26,22 +26,30 @@ $tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -Certific
 New-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001 -HostName "pstest001.dev.cdn.azure.cn" -TlsSetting $tlsSetting
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomain
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IAfdDomain
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+MTLSETTINGSECRET <IResourceReference[]>: List of one or two of Resource References (ie. subs/rg/profile/secret) to Secrets of type MtlsCertificateChain to use in mutual TLS handshake.
+  [Id <String>]: Resource ID.
+
 TLSSETTING <IAfdDomainHttpsParameters>: The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
   CertificateType <AfdCertificateType>: Defines the source of the SSL certificate.
-  [MinimumTlsVersion <AfdMinimumTlsVersion?>]: TLS protocol version that will be used for Https
+  [CipherSuiteSetType <AfdCipherSuiteSetType?>]: cipher suite set type that will be used for Https
+  [CustomizedCipherSuiteSet <IAfdDomainHttpsCustomizedCipherSuiteSet>]: Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized.
+    [CipherSuiteSetForTls10 <AfdCustomizedCipherSuiteForTls10[]>]: Cipher suites for TLS 1.0. Required at least one in minimumTlsVersion TLS 1.0.
+    [CipherSuiteSetForTls12 <AfdCustomizedCipherSuiteForTls12[]>]: Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2, option in minimumTlsVersion TLS 1.0.
+    [CipherSuiteSetForTls13 <AfdCustomizedCipherSuiteForTls13[]>]: Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.0, TLS 1.2, TLS 1.3.
+  [MinimumTlsVersion <AfdMinimumTlsVersion?>]: TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
   [Secret <IResourceReference>]: Resource reference to the secret. ie. subs/rg/profile/secret
     [Id <String>]: Resource ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdncustomdomain
 #>
 function New-AzFrontDoorCdnCustomDomain {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomain])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IAfdDomain])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -77,7 +85,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomainPropertiesExtendedProperties]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IAfdDomainPropertiesExtendedProperties]))]
     [System.Collections.Hashtable]
     # Key-Value pair representing migration properties for domains.
     ${ExtendedProperty},
@@ -90,6 +98,46 @@ param(
     ${HostName},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.EnabledState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.EnabledState]
+    # Set to Disabled by default.
+    # If set to Enabled, then selected client certificate chain(s) are sent directly to origin using reserved header.
+    ${MtlSettingCertificatePassthrough},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.EnabledState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.EnabledState]
+    # Set to Enabled by default.
+    # If set to Disabled, validation of client certificate chain for mutual TLS handshake will be skipped.
+    ${MtlSettingCertificateValidation},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.EnabledState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.EnabledState]
+    # Set to Enabled by default.
+    # If set to Disabled, revocation status of client certificate chain will be checked before establishing mutual TLS connection.
+    ${MtlSettingOcsp},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String[]]
+    # List of FQDN that will be accepted for mutual TLS validation in addition to custom domain's hostname.
+    ${MtlSettingOtherAllowedFqdn},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IResourceReference[]]
+    # List of one or two of Resource References (ie.
+    # subs/rg/profile/secret) to Secrets of type MtlsCertificateChain to use in mutual TLS handshake.
+    # To construct, see NOTES section for MTLSETTINGSECRET properties and create a hash table.
+    ${MtlSettingSecret},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # Resource ID.
@@ -97,7 +145,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomainHttpsParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IAfdDomainHttpsParameters]
     # The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate.
     # If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
     # To construct, see NOTES section for TLSSETTING properties and create a hash table.

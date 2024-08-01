@@ -15,8 +15,11 @@ Creates a new domain within the specified profile.
 ```
 New-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AzureDnsZoneId <String>] [-ExtendedProperty <Hashtable>] [-HostName <String>]
- [-PropertiesPreValidatedCustomDomainResourceId <String>] [-TlsSetting <IAfdDomainHttpsParameters>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-MtlSettingCertificatePassthrough <EnabledState>] [-MtlSettingCertificateValidation <EnabledState>]
+ [-MtlSettingOcsp <EnabledState>] [-MtlSettingOtherAllowedFqdn <String[]>]
+ [-MtlSettingSecret <IResourceReference[]>] [-PropertiesPreValidatedCustomDomainResourceId <String>]
+ [-TlsSetting <IAfdDomainHttpsParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -134,6 +137,86 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MtlSettingCertificatePassthrough
+Set to Disabled by default.
+If set to Enabled, then selected client certificate chain(s) are sent directly to origin using reserved header.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.EnabledState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MtlSettingCertificateValidation
+Set to Enabled by default.
+If set to Disabled, validation of client certificate chain for mutual TLS handshake will be skipped.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.EnabledState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MtlSettingOcsp
+Set to Enabled by default.
+If set to Disabled, revocation status of client certificate chain will be checked before establishing mutual TLS connection.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.EnabledState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MtlSettingOtherAllowedFqdn
+List of FQDN that will be accepted for mutual TLS validation in addition to custom domain's hostname.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MtlSettingSecret
+List of one or two of Resource References (ie.
+subs/rg/profile/secret) to Secrets of type MtlsCertificateChain to use in mutual TLS handshake.
+To construct, see NOTES section for MTLSETTINGSECRET properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IResourceReference[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -215,7 +298,7 @@ If not specified, enabling ssl uses AzureFrontDoor managed certificate by defaul
 To construct, see NOTES section for TLSSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomainHttpsParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IAfdDomainHttpsParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -264,7 +347,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomain
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IAfdDomain
 
 ## NOTES
 

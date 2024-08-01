@@ -29,7 +29,7 @@ Update-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IRoute
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,6 +42,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [Id <String>]: Resource identity path
+  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
@@ -59,7 +60,7 @@ RULESET <IResourceReference[]>: rule sets referenced by this endpoint.
 https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnroute
 #>
 function Update-AzFrontDoorCdnRoute {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IRoute])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -135,7 +136,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IActivatedResourceReference[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IActivatedResourceReference[]]
     # Domains referenced by this endpoint.
     # To construct, see NOTES section for CUSTOMDOMAIN properties and create a hash table.
     ${CustomDomain},
@@ -154,6 +155,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ForwardingProtocol]
     # Protocol this rule will use when forwarding traffic to backends.
     ${ForwardingProtocol},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdRouteGrpcState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdRouteGrpcState]
+    # Whether or not gRPC is enabled on this route.
+    # Permitted values are 'Enabled' or 'Disabled'
+    ${GrpcState},
 
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HttpsRedirect])]
@@ -193,7 +202,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceReference[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IResourceReference[]]
     # rule sets referenced by this endpoint.
     # To construct, see NOTES section for RULESET properties and create a hash table.
     ${RuleSet},

@@ -21,12 +21,12 @@ Create an in-memory object for CdnManagedHttpsParameters.
 Create an in-memory object for CdnManagedHttpsParameters.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CdnManagedHttpsParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CdnManagedHttpsParameters
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnManagedHttpsParametersObject
 #>
 function New-AzCdnManagedHttpsParametersObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CdnManagedHttpsParameters')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CdnManagedHttpsParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -49,7 +49,7 @@ function New-AzCdnManagedHttpsParametersObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CdnManagedHttpsParameters]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CdnManagedHttpsParameters]::New()
 
         if ($PSBoundParameters.ContainsKey('CertificateSourceParameterCertificateType')) {
             $Object.CertificateSourceParameterCertificateType = $CertificateSourceParameterCertificateType

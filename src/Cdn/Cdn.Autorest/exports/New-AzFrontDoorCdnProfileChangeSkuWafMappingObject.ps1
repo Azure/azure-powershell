@@ -23,12 +23,12 @@ Create an in-memory object for ProfileChangeSkuWafMapping.
 New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName policyName -ChangeToWafPolicyId toWafPolicyId
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileChangeSkuWafMapping
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfileChangeSkuWafMapping
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnProfileChangeSkuWafMappingObject
 #>
 function New-AzFrontDoorCdnProfileChangeSkuWafMappingObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileChangeSkuWafMapping])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfileChangeSkuWafMapping])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

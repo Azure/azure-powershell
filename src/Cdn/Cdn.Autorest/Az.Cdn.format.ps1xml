@@ -147,6 +147,9 @@
             <Label>EndpointName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>KeyGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>OriginGroupName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -187,6 +190,9 @@
                 <PropertyName>EndpointName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>KeyGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>OriginGroupName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -215,6 +221,50 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SubscriptionId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CdnProfilesCdnCanMigrateToAfdAcceptedResponseHeaders</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CdnProfilesCdnCanMigrateToAfdAcceptedResponseHeaders</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CdnProfilesToAfdCdnMigrateToAfdAcceptedResponseHeaders</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CdnProfilesToAfdCdnMigrateToAfdAcceptedResponseHeaders</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -269,6 +319,28 @@
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.EndpointsPurgeContentAcceptedResponseHeaders</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.EndpointsPurgeContentAcceptedResponseHeaders</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.KeyGroupsDeleteAcceptedResponseHeaders</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.KeyGroupsDeleteAcceptedResponseHeaders</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -357,6 +429,28 @@
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfilesDeleteAcceptedResponseHeaders</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfilesDeleteAcceptedResponseHeaders</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfilesMigrationAbortAcceptedResponseHeaders</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfilesMigrationAbortAcceptedResponseHeaders</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -508,6 +602,40 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api50.ErrorDetail</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api50.ErrorDetail</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api40.ManagedServiceIdentity</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api40.ManagedServiceIdentity</TypeName>
@@ -564,9 +692,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ActivatedResourceReference</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ActivatedResourceReference</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ActivatedResourceReference</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ActivatedResourceReference</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -586,9 +714,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdDomain</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdDomain</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdDomain</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdDomain</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -620,14 +748,51 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdDomainHttpsParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdDomainHttpsCustomizedCipherSuiteSet</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdDomainHttpsParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdDomainHttpsCustomizedCipherSuiteSet</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CipherSuiteSetForTls10</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CipherSuiteSetForTls12</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CipherSuiteSetForTls13</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CipherSuiteSetForTls10</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CipherSuiteSetForTls12</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CipherSuiteSetForTls13</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdDomainHttpsParameters</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdDomainHttpsParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>CertificateType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CipherSuiteSetType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>MinimumTlsVersion</Label>
@@ -640,6 +805,9 @@
                 <PropertyName>CertificateType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>CipherSuiteSetType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>MinimumTlsVersion</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -648,9 +816,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdDomainListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdDomainListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdDomainListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdDomainListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -670,9 +838,49 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdDomainProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdDomainMtlsParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdDomainProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdDomainMtlsParameters</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CertificatePassthrough</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CertificateValidation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Ocsp</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OtherAllowedFqdn</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CertificatePassthrough</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CertificateValidation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Ocsp</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OtherAllowedFqdn</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdDomainProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdDomainProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -681,6 +889,18 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>DeploymentStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MtlSettingCertificatePassthrough</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MtlSettingCertificateValidation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MtlSettingOcsp</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MtlSettingOtherAllowedFqdn</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>PreValidatedCustomDomainResourceId</Label>
@@ -708,6 +928,18 @@
                 <PropertyName>DeploymentStatus</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>MtlSettingCertificatePassthrough</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MtlSettingCertificateValidation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MtlSettingOcsp</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MtlSettingOtherAllowedFqdn</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>PreValidatedCustomDomainResourceId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -728,9 +960,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdDomainPropertiesExtendedProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdDomainPropertiesExtendedProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdDomainPropertiesExtendedProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdDomainPropertiesExtendedProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -750,9 +982,31 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdDomainUpdatePropertiesParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdDomainReferencedRoutePath</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdDomainUpdatePropertiesParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdDomainReferencedRoutePath</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Path</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Path</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdDomainUpdatePropertiesParameters</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdDomainUpdatePropertiesParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -772,9 +1026,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdEndpoint</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdEndpoint</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdEndpoint</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdEndpoint</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -806,9 +1060,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdEndpointListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdEndpointListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdEndpointListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdEndpointListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -828,9 +1082,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdEndpointProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdEndpointProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdEndpointProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdEndpointProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -880,9 +1134,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdEndpointPropertiesUpdateParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdEndpointPropertiesUpdateParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdEndpointPropertiesUpdateParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdEndpointPropertiesUpdateParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -908,9 +1162,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdEndpointUpdateParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdEndpointUpdateParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdEndpointUpdateParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdEndpointUpdateParametersTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -930,9 +1184,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOrigin</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdOrigin</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOrigin</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdOrigin</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -964,9 +1218,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOriginGroup</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdOriginGroup</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOriginGroup</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdOriginGroup</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -998,9 +1252,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOriginGroupListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdOriginGroupListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOriginGroupListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdOriginGroupListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1020,9 +1274,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOriginGroupProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdOriginGroupProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOriginGroupProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdOriginGroupProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1066,9 +1320,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOriginGroupUpdatePropertiesParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdOriginGroupUpdatePropertiesParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOriginGroupUpdatePropertiesParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdOriginGroupUpdatePropertiesParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1100,9 +1354,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOriginListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdOriginListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOriginListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdOriginListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1122,9 +1376,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOriginProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdOriginProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOriginProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdOriginProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1240,9 +1494,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOriginUpdatePropertiesParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdOriginUpdatePropertiesParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOriginUpdatePropertiesParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdOriginUpdatePropertiesParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1310,9 +1564,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdPurgeParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdPurgeParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdPurgeParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdPurgeParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1338,9 +1592,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdRouteCacheConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdRouteCacheConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdRouteCacheConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdRouteCacheConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1366,9 +1620,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdStateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdSecretMtlsCertificateChain</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdStateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdSecretMtlsCertificateChain</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ExpirationDate</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SecretVersion</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ExpirationDate</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SecretVersion</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdStateProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdStateProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1394,9 +1676,59 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AzureFirstPartyManagedCertificate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdUrlSigningAction</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AzureFirstPartyManagedCertificate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdUrlSigningAction</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdUrlSigningActionParameters</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AfdUrlSigningActionParameters</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Algorithm</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TypeName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Algorithm</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TypeName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AzureFirstPartyManagedCertificate</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AzureFirstPartyManagedCertificate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1422,9 +1754,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AzureFirstPartyManagedCertificateParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AzureFirstPartyManagedCertificateParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AzureFirstPartyManagedCertificateParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AzureFirstPartyManagedCertificateParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1468,9 +1800,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CacheConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CacheConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CacheConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CacheConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1514,9 +1846,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CacheExpirationActionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CacheExpirationActionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CacheExpirationActionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CacheExpirationActionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1554,9 +1886,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CacheKeyQueryStringActionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CacheKeyQueryStringActionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CacheKeyQueryStringActionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CacheKeyQueryStringActionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1588,9 +1920,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CanMigrateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CanMigrateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CanMigrateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CanMigrateProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1616,9 +1948,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CanMigrateResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CanMigrateResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CanMigrateResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CanMigrateResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1650,9 +1982,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CdnCertificateSourceParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CdnCertificateSourceParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CdnCertificateSourceParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CdnCertificateSourceParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1678,9 +2010,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CdnManagedHttpsParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CdnManagedHttpsParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CdnManagedHttpsParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CdnManagedHttpsParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1712,9 +2044,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Certificate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Certificate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Certificate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Certificate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1740,9 +2072,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CheckEndpointNameAvailabilityInput</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CheckEndpointNameAvailabilityInput</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CheckEndpointNameAvailabilityInput</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CheckEndpointNameAvailabilityInput</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1768,9 +2100,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CheckEndpointNameAvailabilityOutput</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CheckEndpointNameAvailabilityOutput</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CheckEndpointNameAvailabilityOutput</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CheckEndpointNameAvailabilityOutput</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1808,9 +2140,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CheckHostNameAvailabilityInput</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CheckHostNameAvailabilityInput</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CheckHostNameAvailabilityInput</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CheckHostNameAvailabilityInput</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1830,9 +2162,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CheckNameAvailabilityInput</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CheckNameAvailabilityInput</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CheckNameAvailabilityInput</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CheckNameAvailabilityInput</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1852,9 +2184,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CheckNameAvailabilityOutput</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CheckNameAvailabilityOutput</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CheckNameAvailabilityOutput</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CheckNameAvailabilityOutput</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1886,9 +2218,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CidrIPAddress</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CidrIPAddress</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CidrIPAddress</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CidrIPAddress</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1914,9 +2246,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ClientPortMatchConditionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ClientPortMatchConditionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ClientPortMatchConditionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ClientPortMatchConditionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1960,9 +2292,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Components18OrqelSchemasWafmetricsresponsePropertiesSeriesItemsPropertiesDataItems</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Components18OrqelSchemasWafmetricsresponsePropertiesSeriesItemsPropertiesDataItems</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Components18OrqelSchemasWafmetricsresponsePropertiesSeriesItemsPropertiesDataItems</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Components18OrqelSchemasWafmetricsresponsePropertiesSeriesItemsPropertiesDataItems</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1988,9 +2320,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Components1Gs0LlpSchemasMetricsresponsePropertiesSeriesItemsPropertiesDataItems</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Components1Gs0LlpSchemasMetricsresponsePropertiesSeriesItemsPropertiesDataItems</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Components1Gs0LlpSchemasMetricsresponsePropertiesSeriesItemsPropertiesDataItems</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Components1Gs0LlpSchemasMetricsresponsePropertiesSeriesItemsPropertiesDataItems</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2016,9 +2348,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ComponentsKpo1PjSchemasWafrankingsresponsePropertiesDataItemsPropertiesMetricsItems</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ComponentsKpo1PjSchemasWafrankingsresponsePropertiesDataItemsPropertiesMetricsItems</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ComponentsKpo1PjSchemasWafrankingsresponsePropertiesDataItemsPropertiesMetricsItems</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ComponentsKpo1PjSchemasWafrankingsresponsePropertiesDataItemsPropertiesMetricsItems</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2050,9 +2382,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CompressionSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CompressionSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CompressionSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CompressionSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2078,9 +2410,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ContinentsResponseCountryOrRegionsItem</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ContinentsResponseCountryOrRegionsItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ContinentsResponseCountryOrRegionsItem</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ContinentsResponseCountryOrRegionsItem</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2100,9 +2432,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CookiesMatchConditionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CookiesMatchConditionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CookiesMatchConditionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CookiesMatchConditionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2152,9 +2484,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CustomDomain</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CustomDomain</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CustomDomain</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CustomDomain</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2186,9 +2518,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CustomDomainHttpsParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CustomDomainHttpsParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CustomDomainHttpsParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CustomDomainHttpsParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2220,9 +2552,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CustomDomainListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CustomDomainListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CustomDomainListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CustomDomainListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2242,9 +2574,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CustomDomainProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CustomDomainProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CustomDomainProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CustomDomainProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2294,9 +2626,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CustomDomainPropertiesParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CustomDomainPropertiesParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CustomDomainPropertiesParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CustomDomainPropertiesParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2316,9 +2648,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CustomerCertificate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CustomerCertificate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CustomerCertificate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CustomerCertificate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2374,9 +2706,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CustomerCertificateParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CustomerCertificateParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CustomerCertificateParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CustomerCertificateParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2432,9 +2764,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeepCreatedCustomDomain</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeepCreatedCustomDomain</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeepCreatedCustomDomain</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeepCreatedCustomDomain</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2454,9 +2786,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeepCreatedCustomDomainProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeepCreatedCustomDomainProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeepCreatedCustomDomainProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeepCreatedCustomDomainProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2482,9 +2814,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeepCreatedOrigin</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeepCreatedOrigin</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeepCreatedOrigin</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeepCreatedOrigin</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2504,9 +2836,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeepCreatedOriginGroup</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeepCreatedOriginGroup</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeepCreatedOriginGroup</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeepCreatedOriginGroup</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2526,9 +2858,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeepCreatedOriginGroupProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeepCreatedOriginGroupProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeepCreatedOriginGroupProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeepCreatedOriginGroupProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2548,9 +2880,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeepCreatedOriginProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeepCreatedOriginProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeepCreatedOriginProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeepCreatedOriginProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2636,9 +2968,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRule</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRule</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRule</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2664,9 +2996,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleAction1</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleAction1</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleAction1</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleAction1</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2686,9 +3018,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleCacheExpirationAction</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleCacheExpirationAction</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleCacheExpirationAction</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleCacheExpirationAction</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2708,9 +3040,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleCacheKeyQueryStringAction</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleCacheKeyQueryStringAction</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleCacheKeyQueryStringAction</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleCacheKeyQueryStringAction</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2730,9 +3062,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleClientPortCondition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleClientPortCondition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleClientPortCondition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleClientPortCondition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2752,9 +3084,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleCondition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleCondition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleCondition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleCondition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2774,9 +3106,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleCookiesCondition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleCookiesCondition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleCookiesCondition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleCookiesCondition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2796,9 +3128,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleHostNameCondition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleHostNameCondition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleHostNameCondition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleHostNameCondition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2818,9 +3150,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleHttpVersionCondition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleHttpVersionCondition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleHttpVersionCondition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleHttpVersionCondition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2840,9 +3172,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleIsDeviceCondition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleIsDeviceCondition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleIsDeviceCondition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleIsDeviceCondition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2862,9 +3194,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRulePostArgsCondition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRulePostArgsCondition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRulePostArgsCondition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRulePostArgsCondition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2884,9 +3216,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleQueryStringCondition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleQueryStringCondition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleQueryStringCondition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleQueryStringCondition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2906,9 +3238,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRemoteAddressCondition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRemoteAddressCondition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRemoteAddressCondition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRemoteAddressCondition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2928,9 +3260,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestBodyCondition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRequestBodyCondition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestBodyCondition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRequestBodyCondition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2950,9 +3282,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestHeaderAction</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRequestHeaderAction</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestHeaderAction</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRequestHeaderAction</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2972,9 +3304,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestHeaderCondition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRequestHeaderCondition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestHeaderCondition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRequestHeaderCondition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2994,9 +3326,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestMethodCondition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRequestMethodCondition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestMethodCondition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRequestMethodCondition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3016,9 +3348,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestSchemeCondition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRequestSchemeCondition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestSchemeCondition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRequestSchemeCondition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3038,9 +3370,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestUriCondition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRequestUriCondition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestUriCondition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRequestUriCondition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3060,9 +3392,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleResponseHeaderAction</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleResponseHeaderAction</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleResponseHeaderAction</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleResponseHeaderAction</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3082,9 +3414,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRouteConfigurationOverrideAction</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRouteConfigurationOverrideAction</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRouteConfigurationOverrideAction</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRouteConfigurationOverrideAction</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3104,9 +3436,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleServerPortCondition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleServerPortCondition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleServerPortCondition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleServerPortCondition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3126,9 +3458,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleSocketAddrCondition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleSocketAddrCondition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleSocketAddrCondition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleSocketAddrCondition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3148,9 +3480,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleSslProtocolCondition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleSslProtocolCondition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleSslProtocolCondition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleSslProtocolCondition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3170,9 +3502,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleUrlFileExtensionCondition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleUrlFileExtensionCondition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleUrlFileExtensionCondition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleUrlFileExtensionCondition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3192,9 +3524,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleUrlFileNameCondition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleUrlFileNameCondition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleUrlFileNameCondition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleUrlFileNameCondition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3214,9 +3546,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleUrlPathCondition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleUrlPathCondition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleUrlPathCondition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleUrlPathCondition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3236,9 +3568,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DimensionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DimensionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DimensionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DimensionProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3270,9 +3602,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DomainValidationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DomainValidationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DomainValidationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DomainValidationProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3298,9 +3630,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.EdgenodeResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.EdgenodeResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.EdgenodeResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.EdgenodeResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3320,9 +3652,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Endpoint</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Endpoint</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Endpoint</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Endpoint</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3354,9 +3686,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.EndpointListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.EndpointListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.EndpointListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.EndpointListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3376,9 +3708,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.EndpointProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.EndpointProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.EndpointProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.EndpointProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3482,9 +3814,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.EndpointPropertiesUpdateParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.EndpointPropertiesUpdateParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.EndpointPropertiesUpdateParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.EndpointPropertiesUpdateParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3552,9 +3884,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.EndpointPropertiesUpdateParametersDeliveryPolicy</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.EndpointPropertiesUpdateParametersDeliveryPolicy</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.EndpointPropertiesUpdateParametersDeliveryPolicy</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.EndpointPropertiesUpdateParametersDeliveryPolicy</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3574,9 +3906,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.EndpointUpdateParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.EndpointUpdateParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.EndpointUpdateParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.EndpointUpdateParametersTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3596,43 +3928,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.GeoFilter</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorDetail</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Target</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Target</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.GeoFilter</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.GeoFilter</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.GeoFilter</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3664,9 +3962,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.HeaderActionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.HeaderActionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.HeaderActionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.HeaderActionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3704,9 +4002,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.HealthProbeParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.HealthProbeParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.HealthProbeParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.HealthProbeParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3744,9 +4042,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.HostNameMatchConditionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.HostNameMatchConditionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.HostNameMatchConditionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.HostNameMatchConditionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3790,9 +4088,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.HttpErrorRangeParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.HttpErrorRangeParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.HttpErrorRangeParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.HttpErrorRangeParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3818,9 +4116,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.HttpVersionMatchConditionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.HttpVersionMatchConditionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.HttpVersionMatchConditionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.HttpVersionMatchConditionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3864,9 +4162,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IPAddressGroup</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IPAddressGroup</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IPAddressGroup</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IPAddressGroup</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3886,9 +4184,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IsDeviceMatchConditionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IsDeviceMatchConditionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IsDeviceMatchConditionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IsDeviceMatchConditionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3932,9 +4230,87 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.KeyVaultCertificateSourceParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.KeyGroup</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.KeyVaultCertificateSourceParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.KeyGroup</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.KeyGroupListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.KeyGroupListResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.KeyGroupProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.KeyGroupProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DeploymentStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DeploymentStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.KeyVaultCertificateSourceParameters</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.KeyVaultCertificateSourceParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3996,9 +4372,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.KeyVaultSigningKeyParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.KeyVaultSigningKeyParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.KeyVaultSigningKeyParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.KeyVaultSigningKeyParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4048,9 +4424,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.LoadBalancingSettingsParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.LoadBalancingSettingsParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.LoadBalancingSettingsParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.LoadBalancingSettingsParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4082,9 +4458,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.LoadParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.LoadParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.LoadParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.LoadParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4104,9 +4480,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.LogSpecification</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.LogSpecification</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.LogSpecification</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.LogSpecification</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4144,9 +4520,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ManagedCertificate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ManagedCertificate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ManagedCertificate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ManagedCertificate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4172,9 +4548,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ManagedCertificateParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ManagedCertificateParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ManagedCertificateParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ManagedCertificateParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4200,9 +4576,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MetricAvailability</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MetricAvailability</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MetricAvailability</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MetricAvailability</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4228,9 +4604,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MetricSpecification</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MetricSpecification</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MetricSpecification</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MetricSpecification</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4298,9 +4674,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MetricsResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MetricsResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MetricsResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MetricsResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4332,9 +4708,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MetricsResponseSeriesItem</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MetricsResponseSeriesItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MetricsResponseSeriesItem</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MetricsResponseSeriesItem</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4360,9 +4736,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MetricsResponseSeriesPropertiesItemsItem</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MetricsResponseSeriesPropertiesItemsItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MetricsResponseSeriesPropertiesItemsItem</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MetricsResponseSeriesPropertiesItemsItem</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4388,9 +4764,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MigrateResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MigrateResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MigrateResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MigrateResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4410,9 +4786,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MigrationErrorType</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MigrationEndpointMapping</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MigrationErrorType</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MigrationEndpointMapping</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>MigratedFrom</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MigratedTo</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>MigratedFrom</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MigratedTo</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MigrationErrorType</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MigrationErrorType</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4450,9 +4854,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MigrationParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MigrationParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MigrationParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MigrationParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4472,9 +4876,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Operation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Operation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Operation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Operation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4506,9 +4910,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OperationDisplay</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4546,9 +4950,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OperationsListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OperationsListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OperationsListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OperationsListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4568,9 +4972,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Origin</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Origin</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Origin</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Origin</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4602,9 +5006,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginGroup</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OriginGroup</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginGroup</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OriginGroup</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4636,9 +5040,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginGroupListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OriginGroupListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginGroupListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OriginGroupListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4658,9 +5062,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginGroupOverride</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OriginGroupOverride</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginGroupOverride</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OriginGroupOverride</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4680,9 +5084,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginGroupOverrideAction</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OriginGroupOverrideAction</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginGroupOverrideAction</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OriginGroupOverrideAction</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4702,9 +5106,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginGroupOverrideActionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OriginGroupOverrideActionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginGroupOverrideActionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OriginGroupOverrideActionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4724,9 +5128,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginGroupProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OriginGroupProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginGroupProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OriginGroupProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4758,9 +5162,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginGroupUpdatePropertiesParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OriginGroupUpdatePropertiesParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginGroupUpdatePropertiesParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OriginGroupUpdatePropertiesParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4780,9 +5184,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OriginListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OriginListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4802,9 +5206,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OriginProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OriginProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4902,9 +5306,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginUpdatePropertiesParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OriginUpdatePropertiesParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginUpdatePropertiesParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.OriginUpdatePropertiesParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4984,9 +5388,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.PostArgsMatchConditionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.PostArgsMatchConditionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.PostArgsMatchConditionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.PostArgsMatchConditionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5036,9 +5440,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Profile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Profile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Profile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Profile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5076,9 +5480,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileChangeSkuWafMapping</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfileChangeSkuWafMapping</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileChangeSkuWafMapping</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfileChangeSkuWafMapping</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5098,9 +5502,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfileListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfileListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5120,9 +5524,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileLogScrubbing</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfileLogScrubbing</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileLogScrubbing</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfileLogScrubbing</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5142,9 +5546,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfileProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfileProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5182,9 +5586,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfilePropertiesExtendedProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfilePropertiesExtendedProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfilePropertiesExtendedProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfilePropertiesExtendedProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5204,9 +5608,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfilePropertiesUpdateParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfilePropertiesUpdateParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfilePropertiesUpdateParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfilePropertiesUpdateParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5226,9 +5630,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileScrubbingRules</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfileScrubbingRules</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileScrubbingRules</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfileScrubbingRules</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5266,9 +5670,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileUpdateParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfileUpdateParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileUpdateParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfileUpdateParametersTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5288,9 +5692,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProxyResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProxyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProxyResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProxyResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5310,9 +5714,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.PurgeParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.PurgeParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.PurgeParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.PurgeParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5332,9 +5736,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.QueryStringMatchConditionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.QueryStringMatchConditionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.QueryStringMatchConditionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.QueryStringMatchConditionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5378,9 +5782,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RankingsResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RankingsResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RankingsResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RankingsResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5406,9 +5810,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RankingsResponseTablesItem</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RankingsResponseTablesItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RankingsResponseTablesItem</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RankingsResponseTablesItem</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5428,9 +5832,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RankingsResponseTablesPropertiesItemsItem</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RankingsResponseTablesPropertiesItemsItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RankingsResponseTablesPropertiesItemsItem</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RankingsResponseTablesPropertiesItemsItem</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5450,9 +5854,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RankingsResponseTablesPropertiesItemsMetricsItem</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RankingsResponseTablesPropertiesItemsMetricsItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RankingsResponseTablesPropertiesItemsMetricsItem</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RankingsResponseTablesPropertiesItemsMetricsItem</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5484,9 +5888,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RemoteAddressMatchConditionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RemoteAddressMatchConditionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RemoteAddressMatchConditionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RemoteAddressMatchConditionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5530,9 +5934,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RequestBodyMatchConditionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RequestBodyMatchConditionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RequestBodyMatchConditionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RequestBodyMatchConditionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5576,9 +5980,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RequestHeaderMatchConditionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RequestHeaderMatchConditionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RequestHeaderMatchConditionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RequestHeaderMatchConditionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5628,9 +6032,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RequestMethodMatchConditionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RequestMethodMatchConditionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RequestMethodMatchConditionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RequestMethodMatchConditionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5674,9 +6078,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RequestSchemeMatchConditionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RequestSchemeMatchConditionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RequestSchemeMatchConditionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RequestSchemeMatchConditionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5720,9 +6124,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RequestUriMatchConditionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RequestUriMatchConditionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RequestUriMatchConditionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RequestUriMatchConditionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5766,9 +6170,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Resource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5788,9 +6192,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResourcesResponseCustomDomainsItem</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ResourcesResponseCustomDomainsItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResourcesResponseCustomDomainsItem</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ResourcesResponseCustomDomainsItem</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5822,9 +6226,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResourcesResponseEndpointsItem</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ResourcesResponseEndpointsItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResourcesResponseEndpointsItem</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ResourcesResponseEndpointsItem</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5850,9 +6254,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResourcesResponseEndpointsPropertiesItemsItem</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ResourcesResponseEndpointsPropertiesItemsItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResourcesResponseEndpointsPropertiesItemsItem</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ResourcesResponseEndpointsPropertiesItemsItem</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5884,9 +6288,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResourceUsage</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ResourceUsage</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResourceUsage</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ResourceUsage</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5924,9 +6328,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResourceUsageListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ResourceUsageListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResourceUsageListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ResourceUsageListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5946,9 +6350,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResponseBasedOriginErrorDetectionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ResponseBasedOriginErrorDetectionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResponseBasedOriginErrorDetectionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ResponseBasedOriginErrorDetectionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5974,9 +6378,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Route</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Route</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Route</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Route</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6008,9 +6412,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RouteConfigurationOverrideActionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RouteConfigurationOverrideActionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RouteConfigurationOverrideActionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RouteConfigurationOverrideActionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6030,9 +6434,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RouteListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RouteListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RouteListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RouteListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6052,9 +6456,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RouteProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RouteProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RouteProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RouteProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6081,6 +6485,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ForwardingProtocol</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>GrpcState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>HttpsRedirect</Label>
@@ -6132,6 +6539,9 @@
                 <PropertyName>ForwardingProtocol</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>GrpcState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>HttpsRedirect</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -6158,9 +6568,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RouteUpdatePropertiesParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RouteUpdatePropertiesParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RouteUpdatePropertiesParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RouteUpdatePropertiesParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6172,6 +6582,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ForwardingProtocol</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>GrpcState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>HttpsRedirect</Label>
@@ -6202,6 +6615,9 @@
                 <PropertyName>ForwardingProtocol</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>GrpcState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>HttpsRedirect</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -6222,9 +6638,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Rule</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Rule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Rule</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Rule</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6256,9 +6672,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RuleListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RuleListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RuleListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RuleListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6278,9 +6694,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RuleProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RuleProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RuleProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RuleProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6324,9 +6740,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RuleSet</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RuleSet</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RuleSet</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RuleSet</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6352,9 +6768,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RuleSetListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RuleSetListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RuleSetListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RuleSetListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6374,9 +6790,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RuleSetProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RuleSetProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RuleSetProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RuleSetProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6408,9 +6824,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RuleUpdatePropertiesParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RuleUpdatePropertiesParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RuleUpdatePropertiesParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.RuleUpdatePropertiesParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6442,9 +6858,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Secret</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Secret</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Secret</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Secret</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6476,9 +6892,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecretListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.SecretListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecretListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.SecretListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6498,9 +6914,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecretProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.SecretProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecretProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.SecretProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6532,9 +6948,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecurityPolicy</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.SecurityPolicy</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecurityPolicy</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.SecurityPolicy</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6566,9 +6982,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecurityPolicyListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.SecurityPolicyListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecurityPolicyListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.SecurityPolicyListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6588,9 +7004,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecurityPolicyProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.SecurityPolicyProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecurityPolicyProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.SecurityPolicyProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6622,9 +7038,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecurityPolicyWebApplicationFirewallAssociation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.SecurityPolicyWebApplicationFirewallAssociation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecurityPolicyWebApplicationFirewallAssociation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.SecurityPolicyWebApplicationFirewallAssociation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6644,9 +7060,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ServerPortMatchConditionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ServerPortMatchConditionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ServerPortMatchConditionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ServerPortMatchConditionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6690,9 +7106,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SharedPrivateLinkResourceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.SharedPrivateLinkResourceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SharedPrivateLinkResourceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.SharedPrivateLinkResourceProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6730,9 +7146,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Sku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Sku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Sku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Sku</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6752,9 +7168,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SocketAddrMatchConditionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.SocketAddrMatchConditionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SocketAddrMatchConditionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.SocketAddrMatchConditionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6798,9 +7214,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SslProtocolMatchConditionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.SslProtocolMatchConditionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SslProtocolMatchConditionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.SslProtocolMatchConditionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6844,9 +7260,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SsoUri</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.SsoUri</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SsoUri</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.SsoUri</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6866,9 +7282,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SupportedOptimizationTypesListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.SupportedOptimizationTypesListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SupportedOptimizationTypesListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.SupportedOptimizationTypesListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6888,9 +7304,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SystemData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.SystemData</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6940,9 +7356,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.TrackedResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.TrackedResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.TrackedResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.TrackedResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6968,9 +7384,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.TrackedResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.TrackedResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.TrackedResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.TrackedResourceTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6990,9 +7406,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlFileExtensionMatchConditionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlFileExtensionMatchConditionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlFileExtensionMatchConditionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlFileExtensionMatchConditionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7036,9 +7452,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlFileNameMatchConditionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlFileNameMatchConditionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlFileNameMatchConditionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlFileNameMatchConditionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7082,9 +7498,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlPathMatchConditionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlPathMatchConditionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlPathMatchConditionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlPathMatchConditionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7128,9 +7544,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlRedirectAction</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlRedirectAction</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlRedirectAction</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlRedirectAction</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7150,9 +7566,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlRedirectActionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlRedirectActionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlRedirectActionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlRedirectActionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7208,9 +7624,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlRewriteAction</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlRewriteAction</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlRewriteAction</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlRewriteAction</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7230,9 +7646,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlRewriteActionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlRewriteActionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlRewriteActionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlRewriteActionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7270,9 +7686,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlSigningAction</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlSigningAction</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlSigningAction</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlSigningAction</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7292,9 +7708,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlSigningActionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlSigningActionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlSigningActionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlSigningActionParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7320,9 +7736,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlSigningKey</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlSigningKey</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlSigningKey</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlSigningKey</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7342,9 +7758,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlSigningKeyParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlSigningKeyParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlSigningKeyParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlSigningKeyParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7370,9 +7786,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlSigningParamIdentifier</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlSigningParamIdentifier</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlSigningParamIdentifier</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlSigningParamIdentifier</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7398,9 +7814,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Usage</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Usage</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Usage</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.Usage</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7432,9 +7848,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UsageName</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UsageName</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UsageName</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UsageName</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7460,9 +7876,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UsagesListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UsagesListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UsagesListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UsagesListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7482,9 +7898,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UserManagedHttpsParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UserManagedHttpsParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UserManagedHttpsParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UserManagedHttpsParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7516,9 +7932,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ValidateCustomDomainInput</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ValidateCustomDomainInput</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ValidateCustomDomainInput</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ValidateCustomDomainInput</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7538,9 +7954,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ValidateCustomDomainOutput</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ValidateCustomDomainOutput</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ValidateCustomDomainOutput</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ValidateCustomDomainOutput</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7572,9 +7988,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ValidateProbeInput</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ValidateProbeInput</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ValidateProbeInput</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ValidateProbeInput</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7594,9 +8010,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ValidateProbeOutput</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ValidateProbeOutput</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ValidateProbeOutput</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ValidateProbeOutput</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7628,9 +8044,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ValidateSecretInput</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ValidateSecretInput</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ValidateSecretInput</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ValidateSecretInput</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7656,9 +8072,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ValidateSecretOutput</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ValidateSecretOutput</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ValidateSecretOutput</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ValidateSecretOutput</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7684,9 +8100,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ValidationToken</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ValidationToken</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ValidationToken</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ValidationToken</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7706,9 +8122,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.WafMetricsResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.WafMetricsResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.WafMetricsResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.WafMetricsResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7740,9 +8156,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.WafMetricsResponseSeriesItem</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.WafMetricsResponseSeriesItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.WafMetricsResponseSeriesItem</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.WafMetricsResponseSeriesItem</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7768,9 +8184,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.WafMetricsResponseSeriesPropertiesItemsItem</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.WafMetricsResponseSeriesPropertiesItemsItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.WafMetricsResponseSeriesPropertiesItemsItem</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.WafMetricsResponseSeriesPropertiesItemsItem</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7796,9 +8212,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.WafRankingsResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.WafRankingsResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.WafRankingsResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.WafRankingsResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -7830,9 +8246,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.WafRankingsResponseDataItem</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.WafRankingsResponseDataItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.WafRankingsResponseDataItem</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.WafRankingsResponseDataItem</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

@@ -6,13 +6,17 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support
 {
 
-    /// <summary>TLS protocol version that will be used for Https</summary>
+    /// <summary>
+    /// TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
+    /// </summary>
     public partial struct AfdMinimumTlsVersion :
         System.IEquatable<AfdMinimumTlsVersion>
     {
         public static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdMinimumTlsVersion Tls10 = @"TLS10";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdMinimumTlsVersion Tls12 = @"TLS12";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdMinimumTlsVersion Tls13 = @"TLS13";
 
         /// <summary>the value for an instance of the <see cref="AfdMinimumTlsVersion" /> Enum.</summary>
         private string _value { get; set; }

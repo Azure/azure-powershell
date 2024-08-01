@@ -25,7 +25,7 @@ $scrubbingRule2 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable R
 New-AzFrontDoorCdnProfileLogScrubbingObject -ScrubbingRule @($scrubbingRule1, $scrubbingRule2) -State Enabled
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileLogScrubbing
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfileLogScrubbing
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -39,12 +39,12 @@ SCRUBBINGRULE <IProfileScrubbingRules[]>: List of log scrubbing rules applied to
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnProfileLogScrubbingObject
 #>
 function New-AzFrontDoorCdnProfileLogScrubbingObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileLogScrubbing])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfileLogScrubbing])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileScrubbingRules[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IProfileScrubbingRules[]]
     # List of log scrubbing rules applied to the Azure Front Door profile logs.
     # To construct, see NOTES section for SCRUBBINGRULE properties and create a hash table.
     ${ScrubbingRule},

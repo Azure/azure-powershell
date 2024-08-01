@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support
 {
 
-    /// <summary>TLS protocol version that will be used for Https</summary>
+    /// <summary>
+    /// TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
+    /// </summary>
     public partial class AfdMinimumTlsVersionTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -106,7 +106,7 @@ object which contains secret parameters
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecretParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ISecretParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -215,7 +215,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecret
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ISecret
 
 ## NOTES
 

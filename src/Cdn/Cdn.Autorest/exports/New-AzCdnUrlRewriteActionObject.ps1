@@ -23,12 +23,12 @@ Create an in-memory object for UrlRewriteAction.
 New-AzCdnUrlRewriteActionObject -Name rewrite01 -ParameterDestination dest01 -ParameterSourcePattern pattern01
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlRewriteAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlRewriteAction
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnUrlRewriteActionObject
 #>
 function New-AzCdnUrlRewriteActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlRewriteAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlRewriteAction])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
