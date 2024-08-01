@@ -15,14 +15,14 @@ Update quota for each VM family in workspace.
 ### UpdateExpanded (Default)
 ```
 Update-AzMLServiceQuota -Location <String> [-SubscriptionId <String>] [-Location1 <String>]
- [-Value <IQuotaBaseProperties[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Value <IQuotaBaseProperties[]>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzMLServiceQuota -Location <String> -InputObject <IMachineLearningServicesIdentity>
- [-Value <IQuotaBaseProperties[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Value <IQuotaBaseProperties[]>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -101,21 +101,6 @@ Region of workspace quota to be updated.
 Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
