@@ -42,6 +42,19 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
     }
     New-GenerateInfoJson -GeneratedDirectory $sourceSubModulePath
     
+    # update path of csproj references in sln files
+    $slnPath = (Join-Path $sourceModuleRootPath "$moduleRootName.sln")
+    $pattern = "^/./..*Autorest.*csproj$"
+    $autorestCsproj = dotnet sln $slnPath list | where-object {$_ -match $pattern}
+    foreach ($csproj in $autorestCsproj) {
+        dotnet sln $slnPath remove $csproj
+        $pattern="^\.\.\\(?<path>.*)"
+        if ($csproj -match $pattern) {
+            $generatedPath = Join-Path $generatedFolderPath $Matches["path"]
+            dotnet sln $slnPath add $generatedPath
+        }
+    }
+
     # Move files from src to generated
     $fileToMove = @('generated', 'generate-info.json', "Az.$subModuleNameTrimmed.psd1", "Az.$subModuleNameTrimmed.psm1", "Az.$subModuleNameTrimmed.format.ps1xml", 'exports', 'internal', "Az.$subModuleNameTrimmed.csproj", 'test-module.ps1', 'check-dependencies.ps1')
     $fileToMove | Foreach-Object {
@@ -90,36 +103,3 @@ $content = $content -replace "..\\Monitor\\MonitorWorkspace.Autorest\\Az.Monitor
 $content = $content -replace "..\\Monitor\\ScheduledQueryRule.Autorest\\Az.ScheduledQueryRule.csproj", "..\..\generated\Monitor\ScheduledQueryRule.Autorest\Az.ScheduledQueryRule.csproj"
 $content = $content -replace "..\\Monitor\\MetricData.Autorest\\Az.Metricdata.csproj", "..\..\generated\Monitor\MetricData.Autorest\Az.Metricdata.csproj"
 $content | Set-Content $resourceSlnPath -force
-
-
-# <#
-#     sync files from eng/archive-test branch to current branch
-# #>
-
-# #update content of src/Az.autorest.props
-# $propsPath = Join-Path $sourceFolderPath 'Az.autorest.props'
-# (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/src/Az.autorest.props").Content > $propsPath
-
-# #copy src/.props from eng/archive-test branch to current branch
-# $readmeAzurePath = Join-Path $sourceFolderPath 'readme.azure.md'
-# $readmeAzureNoProfilePath = Join-Path $sourceFolderPath 'readme.azure.noprofile.md'
-# (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/src/readme.azure.md").Content > $readmeAzurePath
-# (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/src/readme.azure.noprofile.md").Content > $readmeAzureNoProfilePath
-
-# #copy other scripts from eng/archive-test to current branch
-# $ciFilterTaskPath = Join-Path $toolsFolderPath 'BuildPackagesTask' 'Microsoft.Azure.Build.Tasks' 'CIFilterTask.cs'
-# (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/tools/BuildPackagesTask/Microsoft.Azure.Build.Tasks/CIFilterTask.cs").Content > $ciFilterTaskPath
-# $filesChangedTaskPath = Join-Path $toolsFolderPath 'BuildPackagesTask' 'Microsoft.Azure.Build.Tasks' 'FilesChangedTask.cs'
-# (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/tools/BuildPackagesTask/Microsoft.Azure.Build.Tasks/FilesChangedTask.cs").Content > $filesChangedTaskPath
-# $buildModulesPath = Join-Path $toolsFolderPath 'BuildScripts' 'BuildModules.ps1'
-# (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/tools/BuildScripts/BuildModules.ps1").Content > $buildModulesPath
-# $createFilterMappingsPath = Join-Path $toolsFolderPath 'CreateFilterMappings.ps1'
-# (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/tools/CreateFilterMappings.ps1").Content > $createFilterMappingsPath
-# $executeCIStepPath = Join-Path $toolsFolderPath 'ExecuteCIStep.ps1'
-# (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/tools/ExecuteCIStep.ps1").Content > $executeCIStepPath
-# $prepareAutorestModulePath = Join-Path $toolsFolderPath 'PrepareAutorestModule.ps1'
-# (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/tools/PrepareAutorestModule.ps1").Content > $prepareAutorestModulePath
-
-# #copy build.proj from eng/archive-test to current branch
-# $buildProjPath = Join-Path $RepoRoot 'build.proj'
-# (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/build.proj").Content > $buildProjPath
