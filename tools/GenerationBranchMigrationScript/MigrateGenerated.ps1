@@ -16,9 +16,8 @@ $toolsFolderPath = Join-Path $RepoRoot 'tools'
 # create $RepoRoot/generated
 New-Item -Path $generatedFolderPath -ItemType Directory -Force
 
-#find directories ends with .autorest
-$modules = Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse 
-$modules | foreach-Object {
+#find directories ends with .autorest 
+Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse | foreach-Object {
     $moduleRootName = $_.Parent.Name
     $subModuleName = $_.Name
     $subModuleNameTrimmed = $SubModuleName.split('.')[-2]
@@ -72,12 +71,9 @@ $modules | foreach-Object {
 }
 
 # have to do it in another loop because csproj need to be all moved to /generated before add into sln
-$modules | foreach-Object {
-    $moduleRootName = $_.Parent.Name
-    $sourceModuleRootPath = Join-Path $sourceFolderPath $moduleRootName
-
+Get-ChildItem -Path $sourceFolderPath -Filter "*.Sln" -Recurse -File | foreach-Object {
     # update path of csproj references in sln files
-    $slnPath = (Join-Path $sourceModuleRootPath "$moduleRootName.sln")
+    $slnPath = $_.FullName
     $pattern = "^\.\.\\\w+\\.*Autorest.*csproj$"
     $autorestCsproj = dotnet sln $slnPath list | where-object {$_ -match $pattern}
     foreach ($csproj in $autorestCsproj) {
