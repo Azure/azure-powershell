@@ -15,11 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminProjectIn
 }
 
 Describe 'Get-AzDevCenterAdminProjectInheritedSetting' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $settings = Get-AzDevCenterAdminProjectInheritedSetting -ProjectName $env.projectName20 -ResourceGroupName $env.resourceGroupName20 -SubscriptionId $env.SubscriptionId2
+        $settings.ProjectCatalogSettingCatalogItemSyncEnableStatus | Should -Be "Enabled"
     }
 }

@@ -192,7 +192,7 @@ function Invoke-AzDevCenterUserDelayDevBoxAction {
         -Project $ProjectName -DevBoxName $DevBoxName -DelayTime $DelayTime -UserId $User
     }
 
-    $null = $PSBoundParameters.Add("Until", $Until)
+    $null = $PSBoundParameters.Add("DelayUntil", $Until)
     $null = $PSBoundParameters.Remove("DelayTime")
 
     Az.DevCenterdata.internal\Invoke-AzDevCenterUserDelayDevBoxAction @PSBoundParameters

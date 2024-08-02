@@ -15,15 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminProjectEn
 }
 
 Describe 'Get-AzDevCenterAdminProjectEnvironmentDefinition' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $listOfEnvironmentDefinitions = Get-AzDevCenterAdminProjectEnvironmentDefinition -ProjectName $env.projectName20 -CatalogName $env.catalogName20 -ResourceGroupName $env.resourceGroupName20 -SubscriptionId $env.SubscriptionId2
+        $listOfEnvironmentDefinitions.Count | Should -BeGreaterOrEqual 1    
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $envDef = Get-AzDevCenterAdminProjectEnvironmentDefinition -EnvironmentDefinitionName "Sandbox" -ProjectName $env.projectName20 -CatalogName $env.catalogName20 -ResourceGroupName $env.resourceGroupName20 -SubscriptionId $env.SubscriptionId2
+        $envDef.Name | Should -Be "Sandbox"
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

@@ -15,19 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDevCenterAdminProjec
 }
 
 Describe 'Update-AzDevCenterAdminProjectCatalog' {
-    It 'PatchExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Patch' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'PatchViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'PatchViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'PatchExpanded' {
+        $catalog = Update-AzDevCenterAdminProjectCatalog  -ProjectName $env.projectName20 -ResourceGroupName $env.resourceGroupName20 -SubscriptionId $env.SubscriptionId2 -CatalogName $env.catalogNew20 -GitHubPath "testpath"
+        $catalog.Name | Should -Be $env.catalogNew20
+        $catalog.GitHubBranch | Should -Be $env.gitHubBranch
+        $catalog.GitHubPath | Should -Be "testpath"
+        $catalog.GitHubUri | Should -Be $env.gitHubUri20
     }
 }
