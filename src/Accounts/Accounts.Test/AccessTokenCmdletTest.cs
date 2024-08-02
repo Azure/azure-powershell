@@ -91,6 +91,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             };
  
             factoryMock.Setup(t => t.Authenticate(
+                It.IsAny<string>(),
                 It.IsAny<IAzureAccount>(),
                 It.IsAny<IAzureEnvironment>(),
                 It.IsAny<string>(),
@@ -140,6 +141,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
 
             factoryMock.Setup(t => t.Authenticate(
+                It.IsAny<string>(),
                 It.IsAny<IAzureAccount>(),
                 It.IsAny<IAzureEnvironment>(),
                 It.IsAny<string>(),

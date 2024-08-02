@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
+            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>(), _clientRequestId);
             var result = profileClient.ListEnvironments(Name).Select(s => new PSAzureEnvironment(s)).ToList();
             WriteObject(result, enumerateCollection: true);
         }

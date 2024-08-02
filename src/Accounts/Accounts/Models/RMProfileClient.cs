@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     public class RMProfileClient
     {
+        public string requestId { get; set; }
         private IProfileOperations _profile;
         private IAzureTokenCache _cache;
         public Action<string> WarningLog;
@@ -56,8 +57,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
-        public RMProfileClient(IProfileOperations profile)
+        public RMProfileClient(IProfileOperations profile, string reqId)
         {
+            requestId = reqId ?? string.Empty;
             _profile = profile;
             var context = _profile.DefaultContext;
             _cache = AzureSession.Instance.TokenCache;

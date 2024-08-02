@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Profile
                 throw new InvalidOperationException(Resources.ContextCannotBeNull);
             }
 
-            _client = new RMProfileClient(profile);
+            _client = new RMProfileClient(profile, _clientRequestId);
             _client.WarningLog = (s) => WriteWarning(s);
         }
 

@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 new AzureTenant() { Id = Guid.NewGuid().ToString() });
             var profile = new AzureRmProfile();
             profile.DefaultContext = defaultContext;
-            cmdlet.profileClient = new RMProfileClient(profile);
+            cmdlet.profileClient = new RMProfileClient(profile, null);
             cmdlet.profileClient.SubscriptionAndTenantClient = mockSubscriptionClient.Object;
         }
 

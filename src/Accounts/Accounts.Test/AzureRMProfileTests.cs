@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 new AzureTenant() { Directory = DefaultDomain, Id = DefaultTenant.ToString() });
             var profile = new AzureRmProfile();
             profile.TrySetDefaultContext(Context);
-            return new RMProfileClient(profile);
+            return new RMProfileClient(profile, null);
         }
 
         private static AzureRmProfile SetupLogin(List<string> tenants, params List<string>[] subscriptionLists)

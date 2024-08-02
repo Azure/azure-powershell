@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Profile.Common
         /// <returns></returns>
         public static string[] GetEnvironments()
         {
-            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
+            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>(), null);
             return profileClient.ListEnvironments(null).Select(x => x.Name).ToArray();
         }
 

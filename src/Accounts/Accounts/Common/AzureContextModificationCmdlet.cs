@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Profile.Common
         {
             using (var profile = GetDefaultProfile())
             {
-                var client = new RMProfileClient(profile)
+                var client = new RMProfileClient(profile, _clientRequestId)
                 {
                     WarningLog = (s) => WriteWarning(s)
                 };

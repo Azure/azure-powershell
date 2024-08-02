@@ -105,6 +105,7 @@ namespace Microsoft.Azure.Commands.Profile
             }
 
             IAccessToken accessToken = AzureSession.Instance.AuthenticationFactory.Authenticate(
+                                _clientRequestId,
                                 context.Account,
                                 context.Environment,
                                 TenantId,
