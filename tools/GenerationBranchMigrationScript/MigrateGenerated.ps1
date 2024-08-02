@@ -73,6 +73,9 @@ $modules | foreach-Object {
 
 # have to do it in another loop because csproj need to be all moved to /generated before add into sln
 $modules | foreach-Object {
+    $moduleRootName = $_.Parent.Name
+    $sourceModuleRootPath = Join-Path $sourceFolderPath $moduleRootName
+
     # update path of csproj references in sln files
     $slnPath = (Join-Path $sourceModuleRootPath "$moduleRootName.sln")
     $pattern = "^\.\.\\\w+\\.*Autorest.*csproj$"
