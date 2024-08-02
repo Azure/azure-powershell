@@ -17,7 +17,8 @@ $toolsFolderPath = Join-Path $RepoRoot 'tools'
 New-Item -Path $generatedFolderPath -ItemType Directory -Force
 
 #find directories ends with .autorest
-Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse | foreach-Object {
+$modules = Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse 
+$modules | foreach-Object {
     $moduleRootName = $_.Parent.Name
     $subModuleName = $_.Name
     $subModuleNameTrimmed = $SubModuleName.split('.')[-2]
@@ -41,20 +42,6 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
         Remove-Item $generateInfoPath -Force
     }
     New-GenerateInfoJson -GeneratedDirectory $sourceSubModulePath
-    
-    # update path of csproj references in sln files
-    $slnPath = (Join-Path $sourceModuleRootPath "$moduleRootName.sln")
-    $pattern = "^\.\.\\.*Autorest.*csproj$"
-    $autorestCsproj = dotnet sln $slnPath list | where-object {$_ -match $pattern}
-    foreach ($csproj in $autorestCsproj) {
-        $pattern="^\.\.\\(?<path>.*)"
-        if ($csproj -match $pattern) {
-            $srcPath = Join-Path $sourceFolderPath $Matches["path"]
-            $generatedPath = Join-Path $generatedFolderPath $Matches["path"]
-            dotnet sln $slnPath remove $srcPath
-            dotnet sln $slnPath add $generatedPath
-        }
-    }
 
     # Move files from src to generated
     $fileToMove = @('generated', 'generate-info.json', "Az.$subModuleNameTrimmed.psd1", "Az.$subModuleNameTrimmed.psm1", "Az.$subModuleNameTrimmed.format.ps1xml", 'exports', 'internal', "Az.$subModuleNameTrimmed.csproj", 'test-module.ps1', 'check-dependencies.ps1')
@@ -80,6 +67,23 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
         if ("Az.$subModuleNameTrimmed.csproj" -eq $_) {
             $slnPath = (Join-Path $sourceModuleRootPath "$moduleRootName.sln")
             dotnet sln $slnPath add $toPath
+        }
+    }
+}
+
+# have to do it in another loop because csproj need to be all moved to /generated before add into sln
+$modules | foreach-Object {
+    # update path of csproj references in sln files
+    $slnPath = (Join-Path $sourceModuleRootPath "$moduleRootName.sln")
+    $pattern = "^\.\.\\\w+\\.*Autorest.*csproj$"
+    $autorestCsproj = dotnet sln $slnPath list | where-object {$_ -match $pattern}
+    foreach ($csproj in $autorestCsproj) {
+        $pattern="^\.\.\\(?<path>.*)"
+        if ($csproj -match $pattern) {
+            $srcPath = Join-Path $sourceFolderPath $Matches["path"]
+            $generatedPath = Join-Path $generatedFolderPath $Matches["path"]
+            dotnet sln $slnPath remove $srcPath
+            dotnet sln $slnPath add $generatedPath
         }
     }
 }
