@@ -15,7 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterAdminProjectCa
 }
 
 Describe 'New-AzDevCenterAdminProjectCatalog' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $catalog = New-AzDevCenterAdminProjectCatalog -ProjectName $env.projectName20 -ResourceGroupName $env.resourceGroupName20 -SubscriptionId $env.SubscriptionId2 -CatalogName $env.catalogNew20 -GitHubBranch $env.gitHubBranch -GitHubPath $env.gitHubPath -GitHubSecretIdentifier $env.gitHubSecretIdentifier20 -GitHubUri $env.gitHubUri20
+        $catalog.Name | Should -Be $env.catalogNew20
+        $catalog.GitHubBranch | Should -Be $env.gitHubBranch
+        $catalog.GitHubPath | Should -Be $env.gitHubPath
+        $catalog.GitHubUri | Should -Be $env.gitHubUri20
     }
 }
