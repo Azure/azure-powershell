@@ -47,10 +47,11 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
     $pattern = "^\.\.\\.*Autorest.*csproj$"
     $autorestCsproj = dotnet sln $slnPath list | where-object {$_ -match $pattern}
     foreach ($csproj in $autorestCsproj) {
-        dotnet sln $slnPath remove $csproj
         $pattern="^\.\.\\(?<path>.*)"
         if ($csproj -match $pattern) {
+            $srcPath = Join-Path $sourceFolderPath $Matches["path"]
             $generatedPath = Join-Path $generatedFolderPath $Matches["path"]
+            dotnet sln $slnPath remove $srcPath
             dotnet sln $slnPath add $generatedPath
         }
     }
