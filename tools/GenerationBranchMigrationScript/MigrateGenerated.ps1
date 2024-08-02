@@ -44,7 +44,7 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
     
     # update path of csproj references in sln files
     $slnPath = (Join-Path $sourceModuleRootPath "$moduleRootName.sln")
-    $pattern = "^/./..*Autorest.*csproj$"
+    $pattern = "^\.\.\\.*Autorest.*csproj$"
     $autorestCsproj = dotnet sln $slnPath list | where-object {$_ -match $pattern}
     foreach ($csproj in $autorestCsproj) {
         dotnet sln $slnPath remove $csproj
