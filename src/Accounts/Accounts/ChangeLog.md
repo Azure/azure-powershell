@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated `Connect-AZAccount` to fix a display issue in PowerShell ISE [#24556].
 
 ## Version 3.0.3
 * Reduced the frequency of displaying sign-in announcement messages.
