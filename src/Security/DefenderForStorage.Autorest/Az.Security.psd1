@@ -1,5 +1,5 @@
 @{
-  GUID = '4c1996b2-9c2c-4e4d-8565-cadcafe0511c'
+  GUID = '2f9cd489-4cb4-432b-a8d1-1ee22501f45c'
   RootModule = './Az.Security.psm1'
   ModuleVersion = '1.5.1'
   CompatiblePSEditions = 'Core', 'Desktop'

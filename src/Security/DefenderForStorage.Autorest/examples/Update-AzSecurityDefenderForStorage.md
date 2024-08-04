@@ -20,6 +20,7 @@ SensitiveDataDiscoveryOperationStatusMessage       :
 Type                                               : Microsoft.Security/defenderForStorageSettings
 ```
 
+
 ### Example 2: Disable Defender for Storage V2 when Scanning Services are enabled
 ```powershell
 Update-AzSecurityDefenderForStorage -ResourceId "/subscriptions/<SubscriptionId>/resourcegroups/<ResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>" -IsEnabled:$false -OnUploadIsEnabled:$false -SensitiveDataDiscoveryIsEnabled:$false
@@ -43,3 +44,4 @@ Type                                               : Microsoft.Security/defender
 ```
 
 Note that when Scanning Services are enabled, disabling them explicitly is required in order to disable Defender for Storage V2 (-IsEnabled:$false is not enough).
+

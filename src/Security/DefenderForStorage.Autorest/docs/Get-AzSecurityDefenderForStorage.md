@@ -21,27 +21,29 @@ Gets the Defender for Storage settings for the specified storage account.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get Defender for Storage V2 settings on a storage account
 ```powershell
-{{ Add code here }}
+Get-AzSecurityDefenderForStorage -ResourceId "/subscriptions/<SubscriptionId>/resourcegroups/<ResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id                                                 : /subscriptions/<SubscriptionId>/resourcegroups/<ResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>
+IsEnabled                                          : True
+MalwareScanningOperationStatusCode                 :
+MalwareScanningOperationStatusMessage              :
+MalwareScanningScanResultsEventGridTopicResourceId :
+Name                                               : current
+OnUploadCapGbPerMonth                              : 5000
+OnUploadIsEnabled                                  : True
+OverrideSubscriptionLevelSetting                   : False
+ResourceGroupName                                  : <ResourceGroupName>
+SensitiveDataDiscoveryIsEnabled                    : True
+SensitiveDataDiscoveryOperationStatusCode          :
+SensitiveDataDiscoveryOperationStatusMessage       :
+Type                                               : Microsoft.Security/defenderForStorageSettings
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

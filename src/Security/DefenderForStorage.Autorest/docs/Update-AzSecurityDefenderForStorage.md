@@ -24,27 +24,53 @@ Update the Defender for Storage settings on a specified storage account.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Enable Defender for Storage V2 and Scanning Services
 ```powershell
-{{ Add code here }}
+Update-AzSecurityDefenderForStorage -ResourceId "/subscriptions/<SubscriptionId>/resourcegroups/<ResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>" -IsEnabled -OnUploadIsEnabled -SensitiveDataDiscoveryIsEnabled
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id                                                 : /subscriptions/<SubscriptionId>/resourcegroups/<ResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>
+IsEnabled                                          : True
+MalwareScanningOperationStatusCode                 : Succeeded
+MalwareScanningOperationStatusMessage              :
+MalwareScanningScanResultsEventGridTopicResourceId :
+Name                                               : current
+OnUploadCapGbPerMonth                              : 5000
+OnUploadIsEnabled                                  : True
+OverrideSubscriptionLevelSetting                   : False
+ResourceGroupName                                  : <ResourceGroupName>
+SensitiveDataDiscoveryIsEnabled                    : True
+SensitiveDataDiscoveryOperationStatusCode          : Succeeded
+SensitiveDataDiscoveryOperationStatusMessage       :
+Type                                               : Microsoft.Security/defenderForStorageSettings
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
+
+### Example 2: Disable Defender for Storage V2 when Scanning Services are enabled
 ```powershell
-{{ Add code here }}
+Update-AzSecurityDefenderForStorage -ResourceId "/subscriptions/<SubscriptionId>/resourcegroups/<ResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>" -IsEnabled:$false -OnUploadIsEnabled:$false -SensitiveDataDiscoveryIsEnabled:$false
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id                                                 : /subscriptions/<SubscriptionId>/resourcegroups/<ResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>
+IsEnabled                                          : False
+MalwareScanningOperationStatusCode                 : Succeeded
+MalwareScanningOperationStatusMessage              :
+MalwareScanningScanResultsEventGridTopicResourceId :
+Name                                               : current
+OnUploadCapGbPerMonth                              : -1
+OnUploadIsEnabled                                  : False
+OverrideSubscriptionLevelSetting                   : False
+ResourceGroupName                                  : <ResourceGroupName>
+SensitiveDataDiscoveryIsEnabled                    : False
+SensitiveDataDiscoveryOperationStatusCode          : Succeeded
+SensitiveDataDiscoveryOperationStatusMessage       :
+Type                                               : Microsoft.Security/defenderForStorageSettings
 ```
 
-{{ Add description here }}
+Note that when Scanning Services are enabled, disabling them explicitly is required in order to disable Defender for Storage V2 (-IsEnabled:$false is not enough).
 
 ## PARAMETERS
 

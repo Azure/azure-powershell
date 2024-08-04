@@ -4,18 +4,19 @@ Get-AzSecurityDefenderForStorage -ResourceId "/subscriptions/<SubscriptionId>/re
 ```
 
 ```output
-Id                                                 : String
-IsEnabled                                          : Bool
+Id                                                 : /subscriptions/<SubscriptionId>/resourcegroups/<ResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>
+IsEnabled                                          : True
 MalwareScanningOperationStatusCode                 :
 MalwareScanningOperationStatusMessage              :
-MalwareScanningScanResultsEventGridTopicResourceId : String
+MalwareScanningScanResultsEventGridTopicResourceId :
 Name                                               : current
-OnUploadCapGbPerMonth                              : Int
-OnUploadIsEnabled                                  : Bool
-OverrideSubscriptionLevelSetting                   : Bool
-ResourceGroupName                                  : String
-SensitiveDataDiscoveryIsEnabled                    : Bool
+OnUploadCapGbPerMonth                              : 5000
+OnUploadIsEnabled                                  : True
+OverrideSubscriptionLevelSetting                   : False
+ResourceGroupName                                  : <ResourceGroupName>
+SensitiveDataDiscoveryIsEnabled                    : True
 SensitiveDataDiscoveryOperationStatusCode          :
 SensitiveDataDiscoveryOperationStatusMessage       :
 Type                                               : Microsoft.Security/defenderForStorageSettings
 ```
+

@@ -42,7 +42,10 @@ enable-parent-pipeline-input: false
 directive:  
 
   - where:
-      variant: ^GetViaIdentity$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$|^Update$
+      variant: ^(Create|Update)(?!.*?Expanded|JsonFilePath|JsonString)
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity.*$|^GetViaIdentity.*$|^UpdateViaIdentityExpanded.*$
     remove: true
   
   - where:
