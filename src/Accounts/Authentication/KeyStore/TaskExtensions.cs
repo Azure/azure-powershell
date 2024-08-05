@@ -20,7 +20,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.PowerShell.Authenticators.Identity.Core
+namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     internal static class TaskExtensions
     {
