@@ -1,6 +1,6 @@
 ### Example 1: Enable Defender for Storage V2 and Scanning Services
 ```powershell
-Update-AzSecurityDefenderForStorage -ResourceId "/subscriptions/<SubscriptionId>/resourcegroups/<ResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>" -IsEnabled -OnUploadIsEnabled -SensitiveDataDiscoveryIsEnabled
+Update-AzSecurityDefenderForStorage -ResourceId "/subscriptions/<SubscriptionId>/resourcegroups/<ResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>" -IsEnabled -OnUploadIsEnabled -OnUploadCapGbPerMonth 7000 -SensitiveDataDiscoveryIsEnabled
 ```
 
 ```output
@@ -10,7 +10,7 @@ MalwareScanningOperationStatusCode                 : Succeeded
 MalwareScanningOperationStatusMessage              :
 MalwareScanningScanResultsEventGridTopicResourceId :
 Name                                               : current
-OnUploadCapGbPerMonth                              : 5000
+OnUploadCapGbPerMonth                              : 7000
 OnUploadIsEnabled                                  : True
 OverrideSubscriptionLevelSetting                   : False
 ResourceGroupName                                  : <ResourceGroupName>
