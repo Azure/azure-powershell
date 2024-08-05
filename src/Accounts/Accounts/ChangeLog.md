@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Used Azure.Identity and Azure.Core directly for client assertion.
 
 ## Version 3.0.3
 * Reduced the frequency of displaying sign-in announcement messages.
