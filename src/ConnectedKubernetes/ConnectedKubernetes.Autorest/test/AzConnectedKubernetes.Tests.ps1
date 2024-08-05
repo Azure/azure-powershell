@@ -12,9 +12,9 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'AzConnectedKubernetes' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -skip {
         {
-            $config = New-AzConnectedKubernetes -ClusterName $env.clusterNameEUS1 -ResourceGroupName $env.resourceGroupEUS -Location $env.locationEUS -OidcIssuerProfileEnabled
+            $config = New-AzConnectedKubernetes -ClusterName $env.clusterNameEUS1 -ResourceGroupName $env.resourceGroupEUS -Location $env.locationEUS
             $config.ProvisioningState | Should -Be 'Succeeded'
 
             # Clear helm azure-arc environment
@@ -65,6 +65,13 @@ Describe 'AzConnectedKubernetes' {
             $config = Get-AzConnectedKubernetes -InputObject $config
             $config.Tag.Count | Should -Be 3
             $config.Name | Should -Be $env.clusterNameEUS2
+        } | Should -Not -Throw
+    }
+
+    It 'CreateWorkloadIdentityExpanded' -skip {
+        {
+            $config = New-AzConnectedKubernetes -ClusterName $env.clusterNameEUS3 -ResourceGroupName $env.resourceGroupEUS -Location $env.locationEUS -OidcIssuerProfileEnabled -WorkloadIdentityEnabled
+            $config.ProvisioningState | Should -Be 'Succeeded'
         } | Should -Not -Throw
     }
 

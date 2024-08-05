@@ -544,7 +544,24 @@ function New-AzConnectedKubernetes {
             helm upgrade --install azure-arc $ChartPath --namespace $ReleaseInstallNamespace --create-namespace --set global.subscriptionId=$SubscriptionId --set global.resourceGroupName=$ResourceGroupName --set global.resourceName=$ClusterName --set global.tenantId=$TenantId --set global.location=$Location --set global.onboardingPrivateKey=$AgentPrivateKey --set systemDefaultValues.spnOnboarding=false --set global.azureEnvironment=AZUREPUBLICCLOUD --set systemDefaultValues.clusterconnect-agent.enabled=true --set global.kubernetesDistro=$Distribution --set global.kubernetesInfra=$Infrastructure (-split $options)
         } catch {
             throw "Unable to install helm chart at $ChartPath"
+        } 
+
+        if ($PSBoundParameters.ContainsKey('OidcIssuerProfileEnabled') -or $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled') ) {
+            $ExistConnectedKubernetes = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
+
+            Write-Host "Cluster configuration is in progress..."
+            while ($ExistConnectedKubernetes.ArcAgentProfileAgentState -ne "Succeeded") {
+                Start-Sleep -Seconds 30
+                $ExistConnectedKubernetes = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
+            }
+
+            if ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Succeeded") {
+                Write-Host "Cluster configuration succeeded."
+            } else {
+                throw "Cluster configuration failed."
+            }            
         }
+
         Return $Response
     }
 }
