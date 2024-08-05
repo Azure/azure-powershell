@@ -317,8 +317,8 @@
         "Date": [
           "Fri, 29 Mar 2024 04:44:24 GMT"
         ],
-        "Content-Length": [
-          "519"
+        "X-MSEdge-Ref": [
+          "Ref A: 2928CF1F025449B6B2BB07CEF65B6B3A Ref B: MAA201060513039 Ref C: 2024-03-26T05:19:51Z"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -381,7 +381,7 @@
           "Fri, 29 Mar 2024 04:44:29 GMT"
         ],
         "Content-Length": [
-          "520"
+          "206"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1664,8 +1664,8 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "X-Content-Type-Options": [
-          "nosniff"
+        "X-MSEdge-Ref": [
+          "Ref A: FA407654D56E47AF9F2C5A974A2BEAF1 Ref B: MAA201060515009 Ref C: 2024-03-26T05:20:27Z"
         ],
         "X-Cache": [
           "CONFIG_NOCACHE"
@@ -1790,8 +1790,8 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "X-Content-Type-Options": [
-          "nosniff"
+        "X-MSEdge-Ref": [
+          "Ref A: C03CD8AC0A5945F29370251BC98F4A39 Ref B: MAA201060515009 Ref C: 2024-03-26T05:20:42Z"
         ],
         "X-Cache": [
           "CONFIG_NOCACHE"
@@ -1916,8 +1916,8 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "X-Content-Type-Options": [
-          "nosniff"
+        "X-MSEdge-Ref": [
+          "Ref A: B402BF05518243D598528EBA6C803956 Ref B: MAA201060515009 Ref C: 2024-03-26T05:20:58Z"
         ],
         "X-Cache": [
           "CONFIG_NOCACHE"
@@ -2036,8 +2036,8 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "X-Content-Type-Options": [
-          "nosniff"
+        "X-MSEdge-Ref": [
+          "Ref A: AE33267BA2B0436CA885D875A61217EF Ref B: MAA201060515009 Ref C: 2024-03-26T05:21:14Z"
         ],
         "X-Cache": [
           "CONFIG_NOCACHE"
