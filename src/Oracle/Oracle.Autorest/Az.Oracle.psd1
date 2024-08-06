@@ -1,7 +1,7 @@
 @{
   GUID = '50196261-2b3a-4dac-808d-3a2a25b147cd'
   RootModule = './Az.Oracle.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '1.0.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'

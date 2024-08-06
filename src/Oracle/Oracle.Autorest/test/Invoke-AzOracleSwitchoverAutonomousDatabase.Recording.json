@@ -54,7 +54,7 @@
         "CommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase" ],
         "FullCommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase_SwitchoverExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -100,7 +100,7 @@
         "CommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase" ],
         "FullCommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase_SwitchoverExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -146,7 +146,7 @@
         "CommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase" ],
         "FullCommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase_SwitchoverExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -192,7 +192,7 @@
         "CommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase" ],
         "FullCommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase_SwitchoverExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -238,7 +238,7 @@
         "CommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase" ],
         "FullCommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase_SwitchoverExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -284,7 +284,7 @@
         "CommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase" ],
         "FullCommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase_SwitchoverExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -330,7 +330,7 @@
         "CommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase" ],
         "FullCommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase_SwitchoverExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -376,7 +376,7 @@
         "CommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase" ],
         "FullCommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase_SwitchoverExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -422,7 +422,7 @@
         "CommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase" ],
         "FullCommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase_SwitchoverExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -468,7 +468,7 @@
         "CommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase" ],
         "FullCommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase_SwitchoverExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -514,7 +514,7 @@
         "CommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase" ],
         "FullCommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase_SwitchoverExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -560,7 +560,7 @@
         "CommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase" ],
         "FullCommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase_SwitchoverExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -606,7 +606,7 @@
         "CommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase" ],
         "FullCommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase_SwitchoverExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -652,7 +652,7 @@
         "CommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase" ],
         "FullCommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase_SwitchoverExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -698,7 +698,7 @@
         "CommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase" ],
         "FullCommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase_SwitchoverExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -744,7 +744,7 @@
         "CommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase" ],
         "FullCommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase_SwitchoverExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -790,7 +790,7 @@
         "CommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase" ],
         "FullCommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase_SwitchoverExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -836,7 +836,7 @@
         "CommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase" ],
         "FullCommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase_SwitchoverExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -880,7 +880,7 @@
         "CommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase" ],
         "FullCommandName": [ "Invoke-AzOracleSwitchoverAutonomousDatabase_SwitchoverExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/1.0.0" ]
       },
       "ContentHeaders": {
       }
