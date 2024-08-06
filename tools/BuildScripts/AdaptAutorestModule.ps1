@@ -62,8 +62,8 @@ if (-not (Test-Path $parentModulePath)) {
     <#
         create csproj for parent module if not existed
     #>
-    Write-Host "Creating $parentModulePath/$parentModuleName.csproj ..." -ForegroundColor DarkGreen
-    New-GeneratedFileFromTemplate -TemplateName 'HandcraftedModule.csproj' -GeneratedFileName "$parentModuleName.csproj" -GeneratedDirectory $parentModulePath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
+    Write-Host "Creating $parentModulePath/Az.$parentModuleName.csproj ..." -ForegroundColor DarkGreen
+    New-GeneratedFileFromTemplate -TemplateName 'HandcraftedModule.csproj' -GeneratedFileName "Az.$parentModuleName.csproj" -GeneratedDirectory $parentModulePath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
     <#
         create AsemblyInfo.cs for parent module if not existed
     #>
@@ -206,10 +206,15 @@ $job | Remove-Job
 <#
     merge actual sub module csproj to parent module sln
 #>
-dotnet sln $slnPath remove $subModuleCsprojPath
 Move-Item $tempCsprojPath $subModuleCsprojPath -Force
-$subModuleCsprojPath = Join-Path $GeneratedDirectory $ModuleRootName $SubModuleName "Az.$subModuleNameTrimmed.csproj"
-dotnet sln $slnPath add $subModuleCsprojPath
+$existingCsprojPath = dotnet sln $slnPath list | Where-Object {
+    $_ -match ".*$csprojName$"
+}
+if ($existingCsprojPath) {
+    $generatedCsprojPath = "..\..\generated\" + $existingCsprojPath
+    (Get-Content $slnPath).Replace($existingCsprojPath, $generatedCsprojPath) | Set-Content $slnPath -force
+}
+
 
 <#
     Create or refresh generate-info.json for submodule
