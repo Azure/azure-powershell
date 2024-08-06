@@ -65,7 +65,7 @@ TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 
-               'ConnectedKubernetes.Autorest/Az.ConnectedKubernetes.format.ps1xml'
+               'ConnectedKubernetes.Autorest\Az.ConnectedKubernetes.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('ConnectedKubernetes.Autorest/Az.ConnectedKubernetes.psm1')
