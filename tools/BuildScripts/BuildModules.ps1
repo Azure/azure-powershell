@@ -81,8 +81,12 @@ switch ($PSCmdlet.ParameterSetName) {
         $CIPlanPath = Join-Path $RepoArtifacts "PipelineResult" "CIPlan.json"
         If (Test-Path $CIPlanPath) {
             $CIPlanContent = Get-Content $CIPlanPath | ConvertFrom-Json
-            $TargetModule = $CIPlanContent.build
-            $testModule = $CIPlanContent.test
+            foreach($build in $CIPlanContent.build) {
+                $TargetModule += $build
+            }
+            foreach($test in $CIPlanContent.test) {
+                $testModule += $test
+            }
         }
         Write-Host "----------Start building modules from $CIPlanPath----------`r`n$($TargetModule | Join-String -Separator "`r`n")" -ForegroundColor DarkYellow
     }
