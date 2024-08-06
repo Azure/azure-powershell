@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for configuring OIDC issuer and Workload Identity Federation.
 
 ## Version 0.10.2
 * Introduced secrets detection feature to safeguard sensitive data.
