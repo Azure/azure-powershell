@@ -16,28 +16,28 @@ Library management operations on HDInsight on AKS cluster.
 ```
 Invoke-AzHdInsightOnAksManageClusterLibrary -InputObject <IHdInsightOnAksIdentity>
  -Operation <IClusterLibraryManagementOperation> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ManageViaJsonString
 ```
 Invoke-AzHdInsightOnAksManageClusterLibrary -ClusterName <String> -ClusterPoolName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ManageViaJsonFilePath
 ```
 Invoke-AzHdInsightOnAksManageClusterLibrary -ClusterName <String> -ClusterPoolName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ManageViaIdentityClusterpoolExpanded
 ```
 Invoke-AzHdInsightOnAksManageClusterLibrary -ClusterName <String>
  -ClusterpoolInputObject <IHdInsightOnAksIdentity> -Action <String> -Library <IClusterLibrary[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -45,7 +45,7 @@ Invoke-AzHdInsightOnAksManageClusterLibrary -ClusterName <String>
 ```
 Invoke-AzHdInsightOnAksManageClusterLibrary -ClusterName <String>
  -ClusterpoolInputObject <IHdInsightOnAksIdentity> -Operation <IClusterLibraryManagementOperation>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -53,7 +53,7 @@ Invoke-AzHdInsightOnAksManageClusterLibrary -ClusterName <String>
 ```
 Invoke-AzHdInsightOnAksManageClusterLibrary -ClusterName <String> -ClusterPoolName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -Action <String> -Library <IClusterLibrary[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -61,7 +61,7 @@ Invoke-AzHdInsightOnAksManageClusterLibrary -ClusterName <String> -ClusterPoolNa
 ```
 Invoke-AzHdInsightOnAksManageClusterLibrary -ClusterName <String> -ClusterPoolName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -Operation <IClusterLibraryManagementOperation>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -69,7 +69,7 @@ Invoke-AzHdInsightOnAksManageClusterLibrary -ClusterName <String> -ClusterPoolNa
 ```
 Invoke-AzHdInsightOnAksManageClusterLibrary -InputObject <IHdInsightOnAksIdentity> -Action <String>
  -Library <IClusterLibrary[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -285,21 +285,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

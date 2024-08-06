@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.4.0
+* Upgraded API version to 2024-04-01
 * Allowed registration for 23H2 and above versions of the device
 
 ## Version 2.3.2

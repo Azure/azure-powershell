@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services
 {
     public interface ISanitizerService
     {
-        Dictionary<string, IEnumerable<string>> IgnoredProperties { get; }
+        IReadOnlyDictionary<string, IEnumerable<string>> IgnoredProperties { get; }
 
         bool TrySanitizeData(string data, out string sanitizedData);
     }

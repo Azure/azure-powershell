@@ -14,7 +14,7 @@ Create an in-memory object for ClusterConfigFile.
 
 ```
 New-AzHdInsightOnAksClusterConfigFileObject -FileName <String> [-Content <String>] [-Encoding <String>]
- [-Path <String>] [-Value <IClusterConfigFileValues>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-Path <String>] [-Value <IClusterConfigFileValues>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,21 +85,6 @@ Path of the config file if content is specified.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

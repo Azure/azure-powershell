@@ -1,17 +1,17 @@
 {
-  "Get-AzMLWorkspaceBatchEndpoint+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/batchEndpoints?api-version=2022-05-01+1": {
+  "Get-AzMLWorkspaceBatchEndpoint+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/batchEndpoints?api-version=2024-04-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/batchEndpoints?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/batchEndpoints?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "9" ],
-        "x-ms-client-request-id": [ "97f9cf93-4e7a-4cd4-93ff-91ad537f66a5" ],
+        "x-ms-unique-id": [ "72" ],
+        "x-ms-client-request-id": [ "4c6378ff-fba3-4315-94aa-afc4bb59f676" ],
         "CommandName": [ "Get-AzMLWorkspaceBatchEndpoint" ],
         "FullCommandName": [ "Get-AzMLWorkspaceBatchEndpoint_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.MachineLearningServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,40 +23,42 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "a40458b0-fbea-450d-8b0e-1a7884815590" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-request-id": [ "e10b8e74-2abf-4ae5-8284-5b55de6ef4d0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
         "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
         "x-ms-response-type": [ "standard" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.628" ],
-        "x-ms-correlation-request-id": [ "a40458b0-fbea-450d-8b0e-1a7884815590" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094007Z:a40458b0-fbea-450d-8b0e-1a7884815590" ],
-        "Date": [ "Sun, 05 Jun 2022 09:40:07 GMT" ]
+        "x-request-time": [ "0.091" ],
+        "x-ms-correlation-request-id": [ "e10b8e74-2abf-4ae5-8284-5b55de6ef4d0" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085100Z:e10b8e74-2abf-4ae5-8284-5b55de6ef4d0" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 767455279005444E88016E7BD2FF26F6 Ref B: TYO201151005031 Ref C: 2024-07-24T08:51:00Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:50:59 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "9430" ],
+        "Content-Length": [ "1216" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"value\": [\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/batchEndpoints/batch-pwsh04\",\n      \"name\": \"batch-pwsh04\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/batchEndpoints\",\n      \"properties\": {\n        \"description\": null,\n        \"properties\": {\n          \"BatchEndpointCreationApiVersion\": \"2022-05-01\",\n          \"AzureAsyncOperationUri\": \"https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/mfeOperationsStatus/be:85b9e7f0-8ea4-4e3d-a742-06ee40ba4b03:aed8c225-ad55-472a-8935-67c9a781b6a6?api-version=2022-05-01\"\n        },\n        \"scoringUri\": null,\n        \"swaggerUri\": null,\n        \"authMode\": \"Key\",\n        \"defaults\": {\n          \"deploymentName\": null\n        },\n        \"provisioningState\": \"Failed\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-06-01T09:51:38.2025881Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedAt\": \"2022-06-01T10:01:50.4044371Z\"\n      },\n      \"tags\": {},\n      \"location\": \"eastus\",\n      \"identity\": {\n        \"type\": \"None\",\n        \"principalId\": \"00000000-0000-0000-0000-000000000000\",\n        \"tenantId\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/batchEndpoints/batchpwsh01-key\",\n      \"name\": \"batchpwsh01-key\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/batchEndpoints\",\n      \"properties\": {\n        \"description\": null,\n        \"properties\": {\n          \"BatchEndpointCreationApiVersion\": \"2022-05-01\",\n          \"AzureAsyncOperationUri\": \"https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/mfeOperationsStatus/be:85b9e7f0-8ea4-4e3d-a742-06ee40ba4b03:be12bbb7-b159-4482-a966-586f6711e23a?api-version=2022-05-01\"\n        },\n        \"scoringUri\": null,\n        \"swaggerUri\": null,\n        \"authMode\": \"Key\",\n        \"defaults\": {\n          \"deploymentName\": null\n        },\n        \"provisioningState\": \"Failed\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-06-01T06:23:35.371311Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedAt\": \"2022-06-01T06:33:39.6454709Z\"\n      },\n      \"tags\": {},\n      \"location\": \"eastus\",\n      \"identity\": {\n        \"type\": \"None\",\n        \"principalId\": \"00000000-0000-0000-0000-000000000000\",\n        \"tenantId\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/batchEndpoints/batch-cli02\",\n      \"name\": \"batch-cli02\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/batchEndpoints\",\n      \"properties\": {\n        \"description\": null,\n        \"properties\": {\n          \"BatchEndpointCreationApiVersion\": \"2022-02-01-preview\",\n          \"AzureAsyncOperationUri\": \"https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/mfeOperationsStatus/be:85b9e7f0-8ea4-4e3d-a742-06ee40ba4b03:5aa4ac11-4cae-444a-a3e3-4773f46b5a7b?api-version=2022-05-01\"\n        },\n        \"scoringUri\": \"https://batch-cli02.eastus.inference.ml.azure.com/jobs\",\n        \"swaggerUri\": null,\n        \"authMode\": \"AADToken\",\n        \"defaults\": {\n          \"deploymentName\": \"nonmlflowdp\"\n        },\n        \"provisioningState\": \"Succeeded\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-06-01T06:17:33.1155273Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedAt\": \"2022-06-01T06:20:16.664044Z\"\n      },\n      \"tags\": {},\n      \"location\": \"eastus\",\n      \"identity\": {\n        \"type\": \"None\",\n        \"principalId\": \"00000000-0000-0000-0000-000000000000\",\n        \"tenantId\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/batchEndpoints/batch-pwsh03\",\n      \"name\": \"batch-pwsh03\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/batchEndpoints\",\n      \"properties\": {\n        \"description\": null,\n        \"properties\": {\n          \"AzureAsyncOperationUri\": \"https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/mfeOperationsStatus/be:85b9e7f0-8ea4-4e3d-a742-06ee40ba4b03:dbe6c001-3826-4f66-86e9-ffa1a6b1e1b2?api-version=2022-05-01\"\n        },\n        \"scoringUri\": null,\n        \"swaggerUri\": null,\n        \"authMode\": \"Key\",\n        \"defaults\": {\n          \"deploymentName\": null\n        },\n        \"provisioningState\": \"Failed\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-20T07:21:12.1460231Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedAt\": \"2022-05-20T07:31:17.5044287Z\"\n      },\n      \"tags\": {},\n      \"location\": \"eastus\",\n      \"identity\": {\n        \"type\": \"None\",\n        \"principalId\": \"00000000-0000-0000-0000-000000000000\",\n        \"tenantId\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/batchEndpoints/batch-pwsh02\",\n      \"name\": \"batch-pwsh02\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/batchEndpoints\",\n      \"properties\": {\n        \"description\": null,\n        \"properties\": {\n          \"AzureAsyncOperationUri\": \"https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/mfeOperationsStatus/be:85b9e7f0-8ea4-4e3d-a742-06ee40ba4b03:fa90e9e1-ee45-459a-82da-192b421a641b?api-version=2022-05-01\"\n        },\n        \"scoringUri\": \"https://batch-pwsh02.eastus.inference.ml.azure.com/jobs\",\n        \"swaggerUri\": null,\n        \"authMode\": \"AADToken\",\n        \"defaults\": {\n          \"deploymentName\": null\n        },\n        \"provisioningState\": \"Succeeded\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-20T07:17:33.9087769Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedAt\": \"2022-05-20T07:20:02.7250337Z\"\n      },\n      \"tags\": {},\n      \"location\": \"eastus\"\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/batchEndpoints/batch-cli01\",\n      \"name\": \"batch-cli01\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/batchEndpoints\",\n      \"properties\": {\n        \"description\": null,\n        \"properties\": {\n          \"AzureAsyncOperationUri\": \"https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/mfeOperationsStatus/be:85b9e7f0-8ea4-4e3d-a742-06ee40ba4b03:e495310d-70c3-44e6-97ec-100836c25167?api-version=2022-05-01\"\n        },\n        \"scoringUri\": \"https://batch-cli01.eastus.inference.ml.azure.com/jobs\",\n        \"swaggerUri\": null,\n        \"authMode\": \"AADToken\",\n        \"defaults\": {\n          \"deploymentName\": null\n        },\n        \"provisioningState\": \"Succeeded\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-20T07:11:11.8172605Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedAt\": \"2022-05-20T07:11:32.8602266Z\"\n      },\n      \"tags\": {},\n      \"location\": \"eastus\",\n      \"identity\": {\n        \"type\": \"None\",\n        \"principalId\": \"00000000-0000-0000-0000-000000000000\",\n        \"tenantId\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    },\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/batchEndpoints/batch-pwsh01\",\n      \"name\": \"batch-pwsh01\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/batchEndpoints\",\n      \"properties\": {\n        \"description\": null,\n        \"properties\": {\n          \"AzureAsyncOperationUri\": \"https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/mfeOperationsStatus/be:85b9e7f0-8ea4-4e3d-a742-06ee40ba4b03:2e63cd84-37b5-4bb5-b683-821c65281312?api-version=2022-05-01\"\n        },\n        \"scoringUri\": null,\n        \"swaggerUri\": null,\n        \"authMode\": \"Key\",\n        \"defaults\": {\n          \"deploymentName\": null\n        },\n        \"provisioningState\": \"Failed\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2022-05-20T06:57:08.6453621Z\",\n        \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n        \"lastModifiedAt\": \"2022-05-20T07:07:09.816827Z\"\n      },\n      \"tags\": {},\n      \"location\": \"eastus\",\n      \"identity\": {\n        \"type\": \"None\",\n        \"principalId\": \"00000000-0000-0000-0000-000000000000\",\n        \"tenantId\": \"00000000-0000-0000-0000-000000000000\"\n      }\n    }\n  ]\n}",
+      "Content": "{\n  \"value\": [\n    {\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/batchEndpoints/batchenpoint01\",\n      \"name\": \"batchenpoint01\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/batchEndpoints\",\n      \"properties\": {\n        \"description\": null,\n        \"properties\": {\n          \"BatchEndpointCreationApiVersion\": \"2024-04-01\",\n          \"azureml.onlineendpointid\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/batchEndpoints/batchenpoint01\"\n        },\n        \"scoringUri\": \"https://batchenpoint01.eastus.inference.ml.azure.com/jobs\",\n        \"swaggerUri\": null,\n        \"authMode\": \"AADToken\",\n        \"defaults\": {\n          \"deploymentName\": null\n        },\n        \"provisioningState\": \"Succeeded\"\n      },\n      \"systemData\": {\n        \"createdAt\": \"2024-07-24T08:45:11.4957933+00:00\",\n        \"createdBy\": \"Joyer Jin (Wicresoft North America Ltd)\",\n        \"lastModifiedAt\": \"2024-07-24T08:45:11.4958073+00:00\"\n      },\n      \"tags\": {},\n      \"location\": \"eastus\"\n    }\n  ]\n}",
       "isContentBase64": false
     }
   },
-  "Get-AzMLWorkspaceBatchEndpoint+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/batchEndpoints/batch-pwsh03?api-version=2022-05-01+1": {
+  "Get-AzMLWorkspaceBatchEndpoint+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/batchEndpoints/batchenpoint01?api-version=2024-04-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/batchEndpoints/batch-pwsh03?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/batchEndpoints/batchenpoint01?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "10" ],
-        "x-ms-client-request-id": [ "2c06b172-d266-40d0-8e4f-ab06439fc506" ],
+        "x-ms-unique-id": [ "73" ],
+        "x-ms-client-request-id": [ "20769cba-9185-4c71-b4d8-73bb89b37b19" ],
         "CommandName": [ "Get-AzMLWorkspaceBatchEndpoint" ],
         "FullCommandName": [ "Get-AzMLWorkspaceBatchEndpoint_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.MachineLearningServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -68,24 +70,26 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "9adcdc71-c172-40d7-87ea-1734cf3227b5" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-request-id": [ "d426d14d-5162-4377-8861-26a83e735d0a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
         "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
         "x-ms-response-type": [ "standard" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.320" ],
-        "x-ms-correlation-request-id": [ "9adcdc71-c172-40d7-87ea-1734cf3227b5" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094009Z:9adcdc71-c172-40d7-87ea-1734cf3227b5" ],
-        "Date": [ "Sun, 05 Jun 2022 09:40:08 GMT" ]
+        "x-aml-cluster": [ "vienna-eastus-02" ],
+        "x-request-time": [ "0.090" ],
+        "x-ms-correlation-request-id": [ "d426d14d-5162-4377-8861-26a83e735d0a" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085101Z:d426d14d-5162-4377-8861-26a83e735d0a" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 22280184C2D34CD4AE730A2AC689C97F Ref B: TYO201151005031 Ref C: 2024-07-24T08:51:00Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:51:00 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1194" ],
+        "Content-Length": [ "1091" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/batchEndpoints/batch-pwsh03\",\n  \"name\": \"batch-pwsh03\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/batchEndpoints\",\n  \"properties\": {\n    \"description\": null,\n    \"properties\": {\n      \"AzureAsyncOperationUri\": \"https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/mfeOperationsStatus/be:85b9e7f0-8ea4-4e3d-a742-06ee40ba4b03:dbe6c001-3826-4f66-86e9-ffa1a6b1e1b2?api-version=2022-05-01\"\n    },\n    \"scoringUri\": null,\n    \"swaggerUri\": null,\n    \"authMode\": \"Key\",\n    \"defaults\": {\n      \"deploymentName\": null\n    },\n    \"provisioningState\": \"Failed\"\n  },\n  \"systemData\": {\n    \"createdAt\": \"2022-05-20T07:21:12.1460231Z\",\n    \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n    \"lastModifiedAt\": \"2022-05-20T07:31:17.5044287Z\"\n  },\n  \"tags\": {},\n  \"location\": \"eastus\",\n  \"identity\": {\n    \"type\": \"None\",\n    \"principalId\": \"00000000-0000-0000-0000-000000000000\",\n    \"tenantId\": \"00000000-0000-0000-0000-000000000000\"\n  }\n}",
+      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/batchEndpoints/batchenpoint01\",\n  \"name\": \"batchenpoint01\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/batchEndpoints\",\n  \"properties\": {\n    \"description\": null,\n    \"properties\": {\n      \"BatchEndpointCreationApiVersion\": \"2024-04-01\",\n      \"azureml.onlineendpointid\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/batchEndpoints/batchenpoint01\"\n    },\n    \"scoringUri\": \"https://batchenpoint01.eastus.inference.ml.azure.com/jobs\",\n    \"swaggerUri\": null,\n    \"authMode\": \"AADToken\",\n    \"defaults\": {\n      \"deploymentName\": null\n    },\n    \"provisioningState\": \"Succeeded\"\n  },\n  \"systemData\": {\n    \"createdAt\": \"2024-07-24T08:45:11.4957933+00:00\",\n    \"createdBy\": \"Joyer Jin (Wicresoft North America Ltd)\",\n    \"lastModifiedAt\": \"2024-07-24T08:45:11.4958073+00:00\"\n  },\n  \"tags\": {},\n  \"location\": \"eastus\"\n}",
       "isContentBase64": false
     }
   }

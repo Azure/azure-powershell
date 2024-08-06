@@ -47,6 +47,15 @@ Lists the config dump of all services running in cluster.
 ### [Get-AzHdInsightOnAksClusterUpgradeHistory](Get-AzHdInsightOnAksClusterUpgradeHistory.md)
 Returns a list of upgrade history.
 
+### [Invoke-AzHdInsightOnAksClusterManualRollback](Invoke-AzHdInsightOnAksClusterManualRollback.md)
+Manual rollback upgrade for a cluster.
+
+### [Invoke-AzHdInsightOnAksClusterPoolUpgrade](Invoke-AzHdInsightOnAksClusterPoolUpgrade.md)
+Upgrade a cluster pool.
+
+### [Invoke-AzHdInsightOnAksClusterUpgrade](Invoke-AzHdInsightOnAksClusterUpgrade.md)
+Upgrade a cluster.
+
 ### [Invoke-AzHdInsightOnAksManageClusterLibrary](Invoke-AzHdInsightOnAksManageClusterLibrary.md)
 Library management operations on HDInsight on AKS cluster.
 
@@ -115,13 +124,4 @@ Update an existing Cluster.
 
 ### [Update-AzHdInsightOnAksClusterPoolTag](Update-AzHdInsightOnAksClusterPoolTag.md)
 Update an existing Cluster Pool Tags.
-
-### [Upgrade-AzHdInsightOnAksCluster](Upgrade-AzHdInsightOnAksCluster.md)
-Upgrade a cluster.
-
-### [Upgrade-AzHdInsightOnAksClusterManualRollback](Upgrade-AzHdInsightOnAksClusterManualRollback.md)
-Manual rollback upgrade for a cluster.
-
-### [Upgrade-AzHdInsightOnAksClusterPool](Upgrade-AzHdInsightOnAksClusterPool.md)
-Upgrade a cluster pool.
 

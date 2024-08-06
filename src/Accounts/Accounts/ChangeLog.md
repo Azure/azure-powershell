@@ -19,6 +19,12 @@
 -->
 
 ## Upcoming Release
+* Updated `Connect-AzAccount` to fix a display issue in PowerShell ISE [#24556].
+* Updated the reference of Azure PowerShell Common to 1.3.100-preview.
+* Used Azure.Identity and Azure.Core directly for client assertion [#22628].
+
+## Version 3.0.3
+* Reduced the frequency of displaying sign-in announcement messages.
 * Upgraded Azure.Core to 1.41.0 to include the fix for `BearerTokenAuthenticationPolicy`
 * Removed the informational table about selected context to avoid duplication with output table.
 
