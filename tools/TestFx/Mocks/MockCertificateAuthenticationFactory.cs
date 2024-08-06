@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Rest;
 using System;
+using System.Collections.Generic;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 
@@ -99,6 +100,11 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
         }
 
         public void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache)
+        {
+            throw new NotImplementedException();
+        }
+
+        public AuthenticationTelemetry GetDataForTelemetry(string requestId)
         {
             throw new NotImplementedException();
         }
