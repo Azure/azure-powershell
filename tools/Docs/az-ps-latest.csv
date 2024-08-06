@@ -21,7 +21,7 @@ pac19,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac20,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.BillingBenefits.0.1.1.zip;sourceType=sa]Az.BillingBenefits,0.1.1
 pac21,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Blueprint.0.4.3.zip;sourceType=sa]Az.Blueprint,0.4.3
 pac22,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.BotService.0.5.1.zip;sourceType=sa]Az.BotService,0.5.1
-pac23,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Cdn.3.2.0.zip;sourceType=sa]Az.Cdn,3.2.0
+pac23,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Cdn.4.0.0.zip;sourceType=sa]Az.Cdn,4.0.0
 pac24,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ChangeAnalysis.0.1.1.zip;sourceType=sa]Az.ChangeAnalysis,0.1.1
 pac25,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Chaos.0.1.0.zip;sourceType=sa]Az.Chaos,0.1.0
 pac26,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CloudService.2.0.1.zip;sourceType=sa]Az.CloudService,2.0.1
