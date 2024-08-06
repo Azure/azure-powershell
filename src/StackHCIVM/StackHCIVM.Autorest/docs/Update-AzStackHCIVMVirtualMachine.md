@@ -31,18 +31,27 @@ The operation to update a virtual machine instance.
 
 ## EXAMPLES
 
-### Example 1: Update the Size of the Virtual Machine. 
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg" -VmMemoryInMB "4"
+{{ Add code here }}
 ```
 
 ```output
-Name            ResourceGroupName
-----            -----------------
-testVm          test-rg
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command updates an existing virtual machine in the specified resource group.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

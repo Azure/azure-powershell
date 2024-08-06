@@ -1,6 +1,22 @@
-### Example 1: Start Virtual Machine 
+### Example 1: {{ Add title here }}
 ```powershell
-Start-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
-
+{{ Add code here }}
 ```
-This command starts the virtual machine in the specified resource group. 
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+

@@ -1,0 +1,85 @@
+{
+  "resourceType": "networkSecurityGroups",
+  "apiVersion": "2024-02-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.stackhcivm"
+  },
+  "commands": [
+    {
+      "name": "Get-AzStackHCIVMNetworkSecurityGroup",
+      "description": "Gets the specified network security group.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/networkSecurityGroups/{networkSecurityGroupName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmnetworksecuritygroup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the specified network security group.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.networkSecurityGroupName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzStackHCIVMNetworkSecurityGroup",
+      "description": "Deletes the specified network security group.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/networkSecurityGroups/{networkSecurityGroupName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmnetworksecuritygroup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes the specified network security group.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.networkSecurityGroupName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
