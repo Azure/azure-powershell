@@ -72,11 +72,6 @@ function Test-RebootAndReimageComputeNode
     Get-AzBatchComputeNode $poolId $computeNodeId -BatchContext $context | Restart-AzBatchComputeNode -RebootOption $rebootOption -BatchContext $context
     $computeNode = Get-AzBatchComputeNode -PoolId $poolId $computeNodeId -BatchContext $context
     Assert-AreEqual 'Rebooting' $computeNode.State
-
-    # Reimage a node
-    Get-AzBatchComputeNode $poolId $computeNodeId2 -BatchContext $context | Reset-AzBatchComputeNode -ReimageOption $reimageOption -BatchContext $context
-    $computeNode2 = Get-AzBatchComputeNode -PoolId $poolId $computeNodeId2 -BatchContext $context
-    Assert-AreEqual 'Reimaging' $computeNode2.State
 }
 
 <#

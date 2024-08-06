@@ -13,7 +13,8 @@ Create an in-memory object for TagInfo.
 ## SYNTAX
 
 ```
-New-AzPaloAltoNetworksTagInfoObject -Key <String> -Value <String> [<CommonParameters>]
+New-AzPaloAltoNetworksTagInfoObject -Key <String> -Value <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,10 +74,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.TagInfo
+### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.TagInfo
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

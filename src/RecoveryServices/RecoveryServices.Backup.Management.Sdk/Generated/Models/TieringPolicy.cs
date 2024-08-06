@@ -8,9 +8,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
     using System.Linq;
 
     /// <summary>
-    /// Tiering Policy for a target tier.
-    /// If the policy is not specified for a given target tier, service retains the
-    /// existing configured tiering policy for that tier
+    /// Tiering Policy for a target tier. If the policy is not specified for a
+    /// given target tier, service retains the existing configured tiering policy
+    /// for that tier
     /// </summary>
     public partial class TieringPolicy
     {
@@ -27,21 +27,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="tieringMode">Tiering Mode to control automatic tiering of recovery points. Supported
-        /// values are:
-        /// 1. TierRecommended: Tier all recovery points recommended to be tiered
-        /// 2. TierAfter: Tier all recovery points after a fixed period, as specified
-        /// in duration + durationType below.
-        /// 3. DoNotTier: Do not tier any recovery points
+        /// values are: 1. TierRecommended: Tier all recovery points recommended to be
+        /// tiered 2. TierAfter: Tier all recovery points after a fixed period, as
+        /// specified in duration + durationType below. 3. DoNotTier: Do not tier any
+        /// recovery points
         /// Possible values include: &#39;Invalid&#39;, &#39;TierRecommended&#39;, &#39;TierAfter&#39;,
         /// &#39;DoNotTier&#39;</param>
 
         /// <param name="duration">Number of days/weeks/months/years to retain backups in current tier before
-        /// tiering.
-        /// Used only if TieringMode is set to TierAfter
+        /// tiering. Used only if TieringMode is set to TierAfter
         /// </param>
 
-        /// <param name="durationType">Retention duration type: days/weeks/months/years
-        /// Used only if TieringMode is set to TierAfter
+        /// <param name="durationType">Retention duration type: days/weeks/months/years Used only if TieringMode
+        /// is set to TierAfter
         /// Possible values include: &#39;Invalid&#39;, &#39;Days&#39;, &#39;Weeks&#39;, &#39;Months&#39;, &#39;Years&#39;</param>
         public TieringPolicy(string tieringMode = default(string), int? duration = default(int?), string durationType = default(string))
 
@@ -60,26 +58,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <summary>
         /// Gets or sets tiering Mode to control automatic tiering of recovery points.
-        /// Supported values are:
-        /// 1. TierRecommended: Tier all recovery points recommended to be tiered
-        /// 2. TierAfter: Tier all recovery points after a fixed period, as specified
-        /// in duration + durationType below.
-        /// 3. DoNotTier: Do not tier any recovery points Possible values include: &#39;Invalid&#39;, &#39;TierRecommended&#39;, &#39;TierAfter&#39;, &#39;DoNotTier&#39;
+        /// Supported values are: 1. TierRecommended: Tier all recovery points
+        /// recommended to be tiered 2. TierAfter: Tier all recovery points after a
+        /// fixed period, as specified in duration + durationType below. 3. DoNotTier:
+        /// Do not tier any recovery points Possible values include: &#39;Invalid&#39;, &#39;TierRecommended&#39;, &#39;TierAfter&#39;, &#39;DoNotTier&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tieringMode")]
         public string TieringMode {get; set; }
 
         /// <summary>
         /// Gets or sets number of days/weeks/months/years to retain backups in current
-        /// tier before tiering.
-        /// Used only if TieringMode is set to TierAfter
+        /// tier before tiering. Used only if TieringMode is set to TierAfter
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "duration")]
         public int? Duration {get; set; }
 
         /// <summary>
-        /// Gets or sets retention duration type: days/weeks/months/years
-        /// Used only if TieringMode is set to TierAfter Possible values include: &#39;Invalid&#39;, &#39;Days&#39;, &#39;Weeks&#39;, &#39;Months&#39;, &#39;Years&#39;
+        /// Gets or sets retention duration type: days/weeks/months/years Used only if
+        /// TieringMode is set to TierAfter Possible values include: &#39;Invalid&#39;, &#39;Days&#39;, &#39;Weeks&#39;, &#39;Months&#39;, &#39;Years&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "durationType")]
         public string DurationType {get; set; }

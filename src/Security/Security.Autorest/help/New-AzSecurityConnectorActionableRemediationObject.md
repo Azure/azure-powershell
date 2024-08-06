@@ -51,7 +51,6 @@ State                  : Enabled
 
 ### -BranchConfiguration
 Repository branch configuration for PR Annotations.
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ITargetBranchConfiguration
@@ -67,7 +66,6 @@ Accept wildcard characters: False
 
 ### -CategoryConfiguration
 Gets or sets list of categories and severity levels.
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICategoryConfiguration[]

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ImportExport-help.xml
 Module Name: Az.ImportExport
 online version: https://learn.microsoft.com/powershell/module/az.importexport/update-azimportexport
 schema: 2.0.0
@@ -25,7 +25,7 @@ Update-AzImportExport -Name <String> -ResourceGroupName <String> [-SubscriptionI
  [-ReturnAddressStateOrProvince <String>] [-ReturnAddressStreetAddress1 <String>]
  [-ReturnAddressStreetAddress2 <String>] [-ReturnShippingCarrierAccountNumber <String>]
  [-ReturnShippingCarrierName <String>] [-State <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -38,7 +38,8 @@ Update-AzImportExport -InputObject <IImportExportIdentity> [-AcceptLanguage <Str
  [-ReturnAddressRecipientName <String>] [-ReturnAddressStateOrProvince <String>]
  [-ReturnAddressStreetAddress1 <String>] [-ReturnAddressStreetAddress2 <String>]
  [-ReturnShippingCarrierAccountNumber <String>] [-ReturnShippingCarrierName <String>] [-State <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -123,7 +124,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -529,33 +531,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`DRIVELIST <IDriveStatus[]>`: List of drives that comprise the job.
-  - `[BitLockerKey <String>]`: The BitLocker key used to encrypt the drive.
-  - `[BytesSucceeded <Int64?>]`: Bytes successfully transferred for the drive.
-  - `[CopyStatus <String>]`: Detailed status about the data transfer process. This field is not returned in the response until the drive is in the Transferring state.
-  - `[DriveHeaderHash <String>]`: The drive header hash value.
-  - `[DriveId <String>]`: The drive's hardware serial number, without spaces.
-  - `[ErrorLogUri <String>]`: A URI that points to the blob containing the error log for the data transfer operation.
-  - `[ManifestFile <String>]`: The relative path of the manifest file on the drive. 
-  - `[ManifestHash <String>]`: The Base16-encoded MD5 hash of the manifest file on the drive.
-  - `[ManifestUri <String>]`: A URI that points to the blob containing the drive manifest file. 
-  - `[PercentComplete <Int64?>]`: Percentage completed for the drive. 
-  - `[State <DriveState?>]`: The drive's current state. 
-  - `[VerboseLogUri <String>]`: A URI that points to the blob containing the verbose log for the data transfer operation. 
-
-`INPUTOBJECT <IImportExportIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[JobName <String>]`: The name of the import/export job.
-  - `[LocationName <String>]`: The name of the location. For example, West US or westus.
-  - `[ResourceGroupName <String>]`: The resource group name uniquely identifies the resource group within the user subscription.
-  - `[SubscriptionId <String>]`: The subscription ID for the Azure user.
-
 ## RELATED LINKS
-

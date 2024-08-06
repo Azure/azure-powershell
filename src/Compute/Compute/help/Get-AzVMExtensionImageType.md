@@ -98,5 +98,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVMExtensionImage](./Get-AzVMExtensionImage.md)
 
 [Get-AzVMImagePublisher](./Get-AzVMImagePublisher.md)
-
-

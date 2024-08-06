@@ -37,7 +37,7 @@ Retrieves information about the model view or the instance view of a hybrid mach
 
 ### Example 1: List all connected machines in a subscription
 ```powershell
-Get-AzConnectedMachine -SubscriptionId 67379433-5e19-4702-b39a-c0a03ca8d20c
+Get-AzConnectedMachine -SubscriptionId ********-****-****-****-**********
 ```
 
 ```output
@@ -165,7 +165,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachine
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachine
 
 ## NOTES
 

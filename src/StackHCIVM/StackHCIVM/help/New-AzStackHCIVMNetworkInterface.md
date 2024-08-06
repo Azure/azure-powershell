@@ -27,10 +27,18 @@ Please note some properties can be set only during network interface creation.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Create a Network Interface
+```powershell
 New-AzStackHCIVMNetworkInterface  -Name "testNic" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus" -SubnetName "testLnet"
 ```
+
+```output
+Name            ResourceGroupName
+----            -----------------
+testNic      test-rg
+```
+
+This command creates a network interface in the specified resource group.
 
 ## PARAMETERS
 
@@ -44,7 +52,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -179,7 +187,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -255,7 +263,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -314,8 +322,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmnetworkinterface](https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmnetworkinterface)

@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the Purview service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -15,7 +14,7 @@ This directory contains the PowerShell module for the Purview service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -28,7 +27,7 @@ For information on how to develop for `Az.Purview`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: ebe90b1dfef9ec9706dee06e84676a6c6979ab53
+commit: ebe90b1dfef9ec9706dee06e84676a6c6979ab53
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
@@ -41,6 +40,10 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true 
 nested-object-to-string: true
 resourcegroup-append: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs

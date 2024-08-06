@@ -58,8 +58,8 @@ Get-AzIoTDeviceProvisioningServiceAccessPolicy -ResourceGroupName "myresourcegro
 ResourceGroupName	: myresourcegroup
 Name				: myiotdps
 KeyName				: mypolicy
-PrimaryKey			: hyZJm8W7rra9O7eKhkLu9m/CIPPt9x1NXVMbMJa1rvg=
-SecondaryKey		: vbIwGCBQCIbS5BKFKdddM6uZHLhNTuz9r8CZYgmTmpY=
+PrimaryKey			: hy******vg=
+SecondaryKey		: vb******pY=
 Rights				: ServiceConfig, DeviceConnect, EnrollmentWrite
 ```
 

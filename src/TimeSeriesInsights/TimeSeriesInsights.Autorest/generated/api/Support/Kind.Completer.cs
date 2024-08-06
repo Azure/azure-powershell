@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
 {
 
-    /// <summary>Argument completer implementation for Kind.</summary>
+    /// <summary>The kind of the environment.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.KindTypeConverter))]
     public partial struct Kind :
         System.Management.Automation.IArgumentCompleter
@@ -28,19 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Gen1".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Gen1", "Gen1", global::System.Management.Automation.CompletionResultType.ParameterValue, "Gen1");
+                yield return new global::System.Management.Automation.CompletionResult("'Gen1'", "Gen1", global::System.Management.Automation.CompletionResultType.ParameterValue, "Gen1");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Gen2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Gen2", "Gen2", global::System.Management.Automation.CompletionResultType.ParameterValue, "Gen2");
+                yield return new global::System.Management.Automation.CompletionResult("'Gen2'", "Gen2", global::System.Management.Automation.CompletionResultType.ParameterValue, "Gen2");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Microsoft.EventHub".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Microsoft.EventHub", "Microsoft.EventHub", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.EventHub");
+                yield return new global::System.Management.Automation.CompletionResult("'Microsoft.EventHub'", "Microsoft.EventHub", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.EventHub");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Microsoft.IoTHub".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Microsoft.IoTHub", "Microsoft.IoTHub", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.IoTHub");
+                yield return new global::System.Management.Automation.CompletionResult("'Microsoft.IoTHub'", "Microsoft.IoTHub", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.IoTHub");
             }
         }
     }

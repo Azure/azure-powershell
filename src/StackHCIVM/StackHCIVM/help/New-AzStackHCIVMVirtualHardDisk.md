@@ -28,10 +28,18 @@ Please note some properties can be set only during virtual hard disk creation.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Create a Virtual Hard Disk
+```powershell
 New-AzStackHCIVMVirtualHardDisk -Name "testVhd" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus" -SizeGb 2
 ```
+
+```output
+Name            ResourceGroupName
+----            -----------------
+testVhd       test-rg
+```
+
+This command creates a virtual hard disk in the specified resource group.
 
 ## PARAMETERS
 
@@ -45,7 +53,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -60,7 +68,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -96,7 +104,7 @@ Accept wildcard characters: False
 ```
 
 ### -DiskFileFormat
-The format of the actual VHD file \[vhd, vhdx\]
+The format of the actual VHD file [vhd, vhdx]
 
 ```yaml
 Type: System.Object
@@ -120,13 +128,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -HyperVGeneration
-The hypervisor generation of the Virtual Machine \[V1, V2\]
+The hypervisor generation of the Virtual Machine [V1, V2]
 
 ```yaml
 Type: System.Object
@@ -165,7 +173,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -198,7 +206,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -213,7 +221,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -244,7 +252,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -305,7 +313,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -364,8 +372,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmvirtualharddisk](https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmvirtualharddisk)

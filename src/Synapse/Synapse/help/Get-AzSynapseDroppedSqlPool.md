@@ -15,7 +15,8 @@ Gets a dropped Sql pool backup of a Synapse Sql Pool.
 ### GetByNameParameterSet (Default)
 ```
 Get-AzSynapseDroppedSqlPool -ResourceGroupName <String> -WorkspaceName <String> [-Name <String>]
- [-DeletionDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DeletionDate <DateTime>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByResourceIdParameterSet

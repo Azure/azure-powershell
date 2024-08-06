@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>A paged list of addons</summary>
+    /// <summary>The response of a Addon list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(AddonListTypeConverter))]
     public partial class AddonList
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             return ToJsonString();
         }
     }
-    /// A paged list of addons
+    /// The response of a Addon list operation.
     [System.ComponentModel.TypeConverter(typeof(AddonListTypeConverter))]
     public partial interface IAddonList
 

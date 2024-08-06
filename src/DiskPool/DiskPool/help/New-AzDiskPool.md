@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DiskPool-help.xml
 Module Name: Az.DiskPool
 online version: https://learn.microsoft.com/powershell/module/az.diskpool/new-azdiskpool
 schema: 2.0.0
@@ -15,11 +15,11 @@ This is expected service behavior.
 ## SYNTAX
 
 ```
-New-AzDiskPool -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <String>
- -SubnetId <String> [-SubscriptionId <String>] [-AdditionalCapability <String[]>]
- [-AvailabilityZone <String[]>] [-DiskId <String[]>] [-ManagedBy <String>] [-ManagedByExtended <String[]>]
- [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzDiskPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
+ -SkuName <String> -SubnetId <String> [-AdditionalCapability <String[]>] [-AvailabilityZone <String[]>]
+ [-DiskId <String[]>] [-ManagedBy <String>] [-ManagedByExtended <String[]>] [-SkuTier <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -329,7 +329,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

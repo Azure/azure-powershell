@@ -14,7 +14,7 @@ Returns a list of all GitLab groups accessible by the user token consumed by the
 
 ```
 Get-AzSecurityConnectorGitLabGroupAvailable -ResourceGroupName <String> -SecurityConnectorName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,9 +23,29 @@ Returns a list of all GitLab groups accessible by the user token consumed by the
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: List available GitLab groups for onboarding
 ```powershell
 Get-AzSecurityConnectorGitLabGroupAvailable -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-gl-01
+```
+
+```output
+FullyQualifiedFriendlyName      : Defender for DevOps SDK Tests
+FullyQualifiedName              : dfdsdktests
+Id                              : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gl-01/devops/default/gitLabGroups/dfdsdktests
+Name                            : dfdsdktests
+OnboardingState                 : Onboarded
+ProvisioningState               : Succeeded
+ProvisioningStatusMessage       : Resource modification successful.
+ProvisioningStatusUpdateTimeUtc : 2/23/2024 10:42:28 PM
+ResourceGroupName               : dfdtest-sdk
+SystemDataCreatedAt             : 
+SystemDataCreatedBy             : 
+SystemDataCreatedByType         : 
+SystemDataLastModifiedAt        : 
+SystemDataLastModifiedBy        : 
+SystemDataLastModifiedByType    : 
+Type                            : Microsoft.Security/securityConnectors/devops/gitLabGroups
+Url                             : https://gitlab.com/groups/dfdsdktests
 ```
 
 ## PARAMETERS
@@ -35,9 +55,24 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -51,7 +86,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +101,7 @@ Accept wildcard characters: False
 The security connector name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -81,13 +116,13 @@ Accept wildcard characters: False
 Azure subscription ID
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -96,7 +131,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -112,7 +147,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -131,8 +166,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IGitLabGroupListResponse
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.security/get-azsecurityconnectorgitlabgroupavailable](https://learn.microsoft.com/powershell/module/az.security/get-azsecurityconnectorgitlabgroupavailable)

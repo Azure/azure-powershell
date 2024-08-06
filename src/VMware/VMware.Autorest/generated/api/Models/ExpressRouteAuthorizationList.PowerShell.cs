@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>A paged list of ExpressRoute Circuit Authorizations</summary>
+    /// <summary>The response of a ExpressRouteAuthorization list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(ExpressRouteAuthorizationListTypeConverter))]
     public partial class ExpressRouteAuthorizationList
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             return ToJsonString();
         }
     }
-    /// A paged list of ExpressRoute Circuit Authorizations
+    /// The response of a ExpressRouteAuthorization list operation.
     [System.ComponentModel.TypeConverter(typeof(ExpressRouteAuthorizationListTypeConverter))]
     public partial interface IExpressRouteAuthorizationList
 

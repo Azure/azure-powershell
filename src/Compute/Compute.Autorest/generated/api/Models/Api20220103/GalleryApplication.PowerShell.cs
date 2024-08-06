@@ -109,23 +109,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
             }
             if (content.Contains("Id"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)this).Id, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)this).Id, global::System.Convert.ToString);
             }
             if (content.Contains("Name"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)this).Name, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)this).Name, global::System.Convert.ToString);
             }
             if (content.Contains("Type"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)this).Type, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
             if (content.Contains("Location"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)this).Location, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)this).Location, global::System.Convert.ToString);
             }
             if (content.Contains("Tag"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ResourceTagsTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ResourceTagsTypeConverter.ConvertFrom);
             }
             if (content.Contains("Description"))
             {
@@ -174,23 +174,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
             }
             if (content.Contains("Id"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)this).Id, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)this).Id, global::System.Convert.ToString);
             }
             if (content.Contains("Name"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)this).Name, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)this).Name, global::System.Convert.ToString);
             }
             if (content.Contains("Type"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)this).Type, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
             if (content.Contains("Location"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)this).Location, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)this).Location, global::System.Convert.ToString);
             }
             if (content.Contains("Tag"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ResourceTagsTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ResourceTagsTypeConverter.ConvertFrom);
             }
             if (content.Contains("Description"))
             {

@@ -3208,7 +3208,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
-                        + (null != include  && include.Length > 0 ? "include=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(include, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != include  && include.Length > 0 ? "include=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(include, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -3269,7 +3269,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
-                        + (null != include  && include.Length > 0 ? "include=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(include, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != include  && include.Length > 0 ? "include=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(include, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }

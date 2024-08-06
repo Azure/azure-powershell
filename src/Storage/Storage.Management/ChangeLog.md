@@ -18,6 +18,56 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 7.2.0
+* Upgraded Microsoft.Azure.Storage.DataMovement to 2.0.5
+
+## Version 7.1.1
+* Supported Storage task assignment
+    - `New-AzStorageTaskAssignment`
+    - `Update-AzStorageTaskAssignment`
+    - `Get-AzStorageTaskAssignment`
+    - `Remove-AzStorageTaskAssignment`
+    - `Get-AzStorageTaskAssignmentinstancesReport`
+* Supported local user ACL and list local user paging/filtering 
+    - `Set-AzStorageLocalUser`
+    - `Get-AzStorageLocalUser`
+
+## Version 7.1.0
+* Fixed the issue that Azure.Core.AccessToken is used before assigned.
+* Supported TLS1_3 when creating and updating a storage account 
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Fixed sync copy blob issue with -AsJob is specified [#25105]
+    - `Copy-AzStorageBlob`
+* Updated Storage.Management.Sdk to support API version 2023-05-01
+* Updated 2 help examples of create storage account cmdlet, with MinimumTlsVersion as TLS1_2.
+    - `New-AzStorageAccount`
+
+## Version 7.0.0
+* Added a prompt that needs confirmation when upgrading a storage account from StorageV1 or BlobStorage to StorageV2. Can be suppressed with -Force.
+    - `Set-AzStorageAccount`
+* Removed references to "Microsoft.Azure.Storage.Queue" in Queue cmdlets 
+    - `Get-AzStorageQueue`
+    - `New-AzStorageQueue`
+    - `New-AzStorageQueueSASToken`
+* When uploading an Azure File with write only SAS token, take the parameter -Path as destination file path, instead of destination directory path previously.
+    - `Set-AzStorageFileContent`
+
+## Version 6.2.0
+* Introduced secrets detection feature to safeguard sensitive data.
+* Fixed object replication policy time format parsing issue [#24434]
+* Updated download offset and content length calculation logic for downloading files 
+    - `Get-AzStorageFileContent`
+    
+## Version 6.1.4
+* Removed references of "Microsoft.Azure.Storage.Queue" in Queue cmdlets 
+    - Get-AzStorageQueue 
+    - New-AzStorageQueue
+    - New-AzStorageQueueSASToken
+ 
+## Version 6.1.3
+* Introduced secrets detection feature to safeguard sensitive data.
 * Upgraded Azure.Core to 1.37.0.
 * Fixed upload file with OAuth authentication issue [#24289] 
     - `Set-AzStorageFileContent`

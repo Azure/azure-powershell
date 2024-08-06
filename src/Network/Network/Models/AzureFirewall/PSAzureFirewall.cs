@@ -150,6 +150,39 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new ArgumentException($"Hub firewall allocation attempted on a Non-hub firewall. Firewall name = {this.Name}, Sku name = {this.Sku.Name}");
             }
         }
+        public void Allocate(Management.Network.Models.SubResource virtualHub, PSPublicIpAddress[] publicIpAddresses)
+        {
+            if (this.Sku.Name.Equals("AZFW_Hub", StringComparison.OrdinalIgnoreCase))
+            {
+                this.VirtualHub = virtualHub;
+            }
+            else
+            {
+                throw new ArgumentException($"Hub firewall allocation attempted on a Non-hub firewall. Firewall name = {this.Name}, Sku name = {this.Sku.Name}");
+            }
+
+            this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
+
+            if (publicIpAddresses != null && publicIpAddresses.Count() > 0)
+            {
+                for (var i = 0; i < publicIpAddresses.Count(); i++)
+                {
+                    this.IpConfigurations.Add(
+                        new PSAzureFirewallIpConfiguration
+                        {
+                            Name = $"{AzureFirewallIpConfigurationName}{i}",
+                            PublicIpAddress = new PSResourceId { Id = publicIpAddresses[i].Id }
+                        });
+                }
+            }
+            else
+            {
+                this.IpConfigurations.Add(new PSAzureFirewallIpConfiguration { Name = $"{AzureFirewallIpConfigurationName}{0}" });
+            }
+
+            // Making HubIpAddresses property null because it is an allocate for Byopip Hub firewall, where HubIpAddress should be kept null
+            this.HubIPAddresses = null;
+        }          
 
         public void Allocate(PSVirtualNetwork virtualNetwork, PSPublicIpAddress[] publicIpAddresses, PSPublicIpAddress ManagementPublicIpAddress = null)
         {
@@ -358,7 +391,8 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new ArgumentException($"Public IP Address {publicIpAddress.Id} is not attached to firewall {this.Name}");
             }
 
-            if (this.ManagementIpConfiguration != null) {
+            if (this.ManagementIpConfiguration != null)
+            {
                 if (ipConfigToRemove.Subnet != null)
                 {
                     ipConfigToRemove.PublicIpAddress = null;
@@ -383,6 +417,24 @@ namespace Microsoft.Azure.Commands.Network.Models
                 }
 
                 this.IpConfigurations.Remove(ipConfigToRemove);
+            }
+        }
+
+        public void AddIpAddressesForByopipHubFirewall(PSPublicIpAddress[] publicIpAddresses)
+        {
+            this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
+
+            if (publicIpAddresses != null && publicIpAddresses.Length > 0)
+            {
+                for (var i = 0; i < publicIpAddresses.Length; i++)
+                {
+                    this.IpConfigurations.Add(
+                        new PSAzureFirewallIpConfiguration
+                        {
+                            Name = $"{AzureFirewallIpConfigurationName}{i}",
+                            PublicIpAddress = new PSResourceId { Id = publicIpAddresses[i].Id }
+                        });
+                }
             }
         }
 
@@ -490,41 +542,10 @@ namespace Microsoft.Azure.Commands.Network.Models
                     continue;
 
                 if (ip.Contains("/"))
-                    ValidateMaskedIpAddress(ip);
+                    NetworkValidationUtils.ValidateSubnet(ip);
                 else
-                    ValidateSingleIpAddress(ip);
+                    NetworkValidationUtils.ValidateIpAddress(ip);
             }
-        }
-
-        private void ValidateSingleIpAddress(string ipAddress)
-        {
-            IPAddress ipVal;
-            if (!IPAddress.TryParse(ipAddress, out ipVal) || ipVal.AddressFamily != System.Net.Sockets.AddressFamily.InterNetwork)
-            {
-                throw new PSArgumentException(String.Format("\'{0}\' is not a valid private range ip address", ipAddress));
-            }
-        }
-
-        private void ValidateMaskedIpAddress(string ipAddress)
-        {
-            var split = ipAddress.Split('/');
-            if (split.Length != 2)
-                throw new PSArgumentException(String.Format("\'{0}\' is not a valid private range ip address", ipAddress));
-
-            // validate the ip
-            ValidateSingleIpAddress(split[0]);
-
-            // validate mask
-            var bit = 0;
-            if (!Int32.TryParse(split[1], out bit) || bit < 0 || bit > 32)
-                throw new PSArgumentException(String.Format("\'{0}\' is not a valid private range ip address, subnet mask should between 0 and 32", ipAddress));
-
-            // validated that unmasked bits are 0
-            var splittedIp = split[0].Split('.');
-            var ip = Int32.Parse(splittedIp[0]) << 24;            
-            ip += (Int32.Parse(splittedIp[1]) << 16) + (Int32.Parse(splittedIp[2]) << 8) + Int32.Parse(splittedIp[3]);
-            if (ip << bit != 0)
-                throw new PSArgumentException(String.Format("\'{0}\' is not a valid private range ip address, bits not covered by subnet mask should be all 0", ipAddress));
         }
 
         #endregion

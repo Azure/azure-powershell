@@ -21,12 +21,12 @@ Create an in-memory object for NginxConfigurationFile.
 Create an in-memory object for NginxConfigurationFile.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxConfigurationFile
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxConfigurationFile
 .Link
 https://learn.microsoft.com/powershell/module/Az.Nginx/new-AzNginxConfigurationFileObject
 #>
 function New-AzNginxConfigurationFileObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxConfigurationFile')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxConfigurationFile')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,7 +39,7 @@ function New-AzNginxConfigurationFileObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxConfigurationFile]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxConfigurationFile]::New()
 
         if ($PSBoundParameters.ContainsKey('Content')) {
             $Object.Content = $Content

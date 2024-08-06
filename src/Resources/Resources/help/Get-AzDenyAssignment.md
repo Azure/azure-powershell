@@ -21,7 +21,8 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzDenyAssignment [-Scope <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDenyAssignment [-Scope <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
@@ -39,7 +40,8 @@ Get-AzDenyAssignment -ObjectId <Guid> -ResourceGroupName <String> [-DefaultProfi
 ### ResourceWithObjectIdParameterSet
 ```
 Get-AzDenyAssignment -ObjectId <Guid> -ResourceGroupName <String> -ResourceName <String> -ResourceType <String>
- [-ParentResource <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ParentResource <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ScopeWithObjectIdParameterSet
@@ -107,12 +109,14 @@ Get-AzDenyAssignment -ResourceGroupName <String> [-DefaultProfile <IAzureContext
 ### ResourceParameterSet
 ```
 Get-AzDenyAssignment -ResourceGroupName <String> -ResourceName <String> -ResourceType <String>
- [-ParentResource <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ParentResource <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ScopeParameterSet
 ```
-Get-AzDenyAssignment -Scope <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDenyAssignment -Scope <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### DenyAssignmentIdParameterSet

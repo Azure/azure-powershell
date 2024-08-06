@@ -103,9 +103,32 @@ Connect-AzAccount
 ```
 
 ```Output
-Account                SubscriptionName TenantId                Environment
--------                ---------------- --------                -----------
-azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
+Please select the account you want to login with.
+
+Retrieving subscriptions for the selection...
+[Tenant and subscription selection]
+
+No      Subscription name                       Subscription ID                             Tenant domain name        
+----    ------------------------------------    ----------------------------------------    --------------------------
+[1]     Subscription1                           xxxx-xxxx-xxxx-xxxx                         xxxxxxxxx.xxxxxxxxxxx.com
+[2]     Subscription2                           xxxx-xxxx-xxxx-xxxx                         xxxxxxxxx.xxxxxxxxxxx.com
+...
+[9]     Subscription9                           xxxx-xxxx-xxxx-xxxx                         xxxxxxxxx.xxxxxxxxxxx.com
+
+Select a tenant and subscription: 1 <requires user's input here>
+
+Subscription name                       Tenant domain name
+------------------------------------    --------------------------
+Subscription1                           xxxxxxxxx.xxxxxxxxxxx.com
+
+[Announcements]
+Share your feedback regarding your experience with `Connect-AzAccount` at: https://aka.ms/azloginfeedback
+
+If you encounter any problem, please open an issue at: https://aka.ms/azpsissue
+
+SubscriptionName     Tenant
+-----------------    ------
+Subscription1        xxxxxxxxx.xxxxxxxxxxx.com
 ```
 
 ### Example 2: Connect to Azure using organizational ID credentials
@@ -128,13 +151,13 @@ azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 
 ### Example 3: Connect to Azure using a service principal account
 
-The first command stores the service principal credentials in the `$Credential` variable. The second
-command connects the specified Azure tenant using the service principal credentials stored in the
+This command stores the service principal credentials in the `$Credential` variable. Then, it
+connects to the specified Azure tenant using the service principal credentials stored in the
 `$Credential` variable. The **ServicePrincipal** switch parameter indicates that the account
 authenticates as a service principal.
 
 ```powershell
-$SecurePassword = ConvertTo-SecureString -String "Password123!" -AsPlainText -Force
+$SecurePassword = Read-Host -Prompt 'Enter a Password' -AsSecureString
 $TenantId = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy'
 $ApplicationId = 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzz'
 $Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ApplicationId, $SecurePassword
@@ -242,7 +265,7 @@ This example connects to an Azure account using certificate-based service princi
 The certificate file, which is specified by `CertficatePath`, should contains both certificate and private key as the input.
 
 ```powershell
-$SecurePassword = ConvertTo-SecureString -String "Password123!" -AsPlainText -Force
+$SecurePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $TenantId = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy'
 $ApplicationId = 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzz'
 Connect-AzAccount -ServicePrincipal -ApplicationId $ApplicationId -TenantId $TenantId -CertificatePath './certificatefortest.pfx' -CertificatePassword $securePassword

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Creates a Network Fabric Controller.
+Create a Network Fabric Controller.
 .Description
-Creates a Network Fabric Controller.
+Create a Network Fabric Controller.
 .Example
 $infra = @(@{
     ExpressRouteCircuitId = "/subscriptions/b256be71-d296-4e0e-99a1-408d9edc8718/resourceGroups/example-rg/providers/Microsoft.Network/expressRouteCircuits/example-expressRouteCircuit"
@@ -93,7 +93,6 @@ param(
     # As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC.
     # This Express route is dedicated for Infrastructure services.
     # (This is a Mandatory attribute)
-    # To construct, see NOTES section for INFRASTRUCTUREEXPRESSROUTECONNECTION properties and create a hash table.
     ${InfrastructureExpressRouteConnection},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -149,7 +148,6 @@ param(
     # As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC.
     # This Express route is dedicated for Workload services.
     # (This is a Mandatory attribute).
-    # To construct, see NOTES section for WORKLOADEXPRESSROUTECONNECTION properties and create a hash table.
     ${WorkloadExpressRouteConnection},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
@@ -256,7 +254,13 @@ begin {
             CreateViaJsonString = 'Az.ManagedNetworkFabric.private\New-AzNetworkFabricController_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

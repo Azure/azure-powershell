@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Extensions;
 
-    /// <summary>Describes the status of a service of a HDInsight on aks cluster.</summary>
+    /// <summary>Describes the status of a service of a HDInsight on AKS cluster.</summary>
     public partial class ServiceStatus :
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IServiceStatus,
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IServiceStatusInternal
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
 
         }
     }
-    /// Describes the status of a service of a HDInsight on aks cluster.
+    /// Describes the status of a service of a HDInsight on AKS cluster.
     public partial interface IServiceStatus :
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IJsonSerializable
     {
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         string Ready { get; set; }
 
     }
-    /// Describes the status of a service of a HDInsight on aks cluster.
+    /// Describes the status of a service of a HDInsight on AKS cluster.
     internal partial interface IServiceStatusInternal
 
     {

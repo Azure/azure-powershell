@@ -13,6 +13,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal
     {
 
+        /// <summary>Backing field for <see cref="ApiServerAuthorizedIPRange" /> property.</summary>
+        private System.Collections.Generic.List<string> _apiServerAuthorizedIPRange;
+
+        /// <summary>
+        /// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters.
+        /// So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property
+        /// is not supported and please don't use it.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> ApiServerAuthorizedIPRange { get => this._apiServerAuthorizedIPRange; set => this._apiServerAuthorizedIPRange = value; }
+
+        /// <summary>Backing field for <see cref="EnablePrivateApiServer" /> property.</summary>
+        private bool? _enablePrivateApiServer;
+
+        /// <summary>
+        /// ClusterPool is based on AKS cluster. AKS cluster exposes the API server to public internet by default. If you set this
+        /// property to true, a private AKS cluster will be created, and it will use private apiserver, which is not exposed to public
+        /// internet.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
+        public bool? EnablePrivateApiServer { get => this._enablePrivateApiServer; set => this._enablePrivateApiServer = value; }
+
+        /// <summary>Backing field for <see cref="OutboundType" /> property.</summary>
+        private string _outboundType;
+
+        /// <summary>
+        /// This can only be set at cluster pool creation time and cannot be changed later.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
+        public string OutboundType { get => this._outboundType; set => this._outboundType = value; }
+
         /// <summary>Backing field for <see cref="SubnetId" /> property.</summary>
         private string _subnetId;
 
@@ -30,6 +61,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
     public partial interface IClusterPoolNetworkProfile :
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IJsonSerializable
     {
+        /// <summary>
+        /// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters.
+        /// So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property
+        /// is not supported and please don't use it.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property is not supported and please don't use it.",
+        SerializedName = @"apiServerAuthorizedIpRanges",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> ApiServerAuthorizedIPRange { get; set; }
+        /// <summary>
+        /// ClusterPool is based on AKS cluster. AKS cluster exposes the API server to public internet by default. If you set this
+        /// property to true, a private AKS cluster will be created, and it will use private apiserver, which is not exposed to public
+        /// internet.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"ClusterPool is based on AKS cluster. AKS cluster exposes the API server to public internet by default. If you set this property to true, a private AKS cluster will be created, and it will use private apiserver, which is not exposed to public internet.",
+        SerializedName = @"enablePrivateApiServer",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? EnablePrivateApiServer { get; set; }
+        /// <summary>
+        /// This can only be set at cluster pool creation time and cannot be changed later.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"This can only be set at cluster pool creation time and cannot be changed later. ",
+        SerializedName = @"outboundType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("loadBalancer", "userDefinedRouting")]
+        string OutboundType { get; set; }
         /// <summary>Cluster pool subnet resource id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = true,
@@ -47,6 +122,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
     internal partial interface IClusterPoolNetworkProfileInternal
 
     {
+        /// <summary>
+        /// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters.
+        /// So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property
+        /// is not supported and please don't use it.
+        /// </summary>
+        System.Collections.Generic.List<string> ApiServerAuthorizedIPRange { get; set; }
+        /// <summary>
+        /// ClusterPool is based on AKS cluster. AKS cluster exposes the API server to public internet by default. If you set this
+        /// property to true, a private AKS cluster will be created, and it will use private apiserver, which is not exposed to public
+        /// internet.
+        /// </summary>
+        bool? EnablePrivateApiServer { get; set; }
+        /// <summary>
+        /// This can only be set at cluster pool creation time and cannot be changed later.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("loadBalancer", "userDefinedRouting")]
+        string OutboundType { get; set; }
         /// <summary>Cluster pool subnet resource id.</summary>
         string SubnetId { get; set; }
 

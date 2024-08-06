@@ -20,7 +20,8 @@ Get-AzGallery [[-ResourceGroupName] <String>] [[-Name] <String>] [-Expand <Strin
 
 ### ResourceIdParameter
 ```
-Get-AzGallery [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzGallery [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SharedGalleryParameterSet

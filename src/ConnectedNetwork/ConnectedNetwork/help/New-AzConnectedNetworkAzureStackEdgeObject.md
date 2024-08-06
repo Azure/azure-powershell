@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ConnectedNetwork-help.xml
 Module Name: Az.ConnectedNetwork
 online version: https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkAzureStackEdgeObject
 schema: 2.0.0
@@ -13,7 +13,8 @@ Create a in-memory object for AzureStackEdgeFormat
 ## SYNTAX
 
 ```
-New-AzConnectedNetworkAzureStackEdgeObject [-AzureStackEdgeId <String>] [<CommonParameters>]
+New-AzConnectedNetworkAzureStackEdgeObject [-AzureStackEdgeId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +63,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -1,0 +1,57 @@
+{
+  "resourceType": "virtualMachineScaleSets/virtualMachines/runCommands",
+  "apiVersion": "2023-07-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.compute"
+  },
+  "commands": [
+    {
+      "name": "Remove-AzVmssVMRunCommand",
+      "description": "The operation to delete the VMSS VM run command.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.compute/remove-azvmssvmruncommand"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-InstanceId <String>",
+              "-ResourceGroupName <String>",
+              "-RunCommandName <String>",
+              "[-SubscriptionId <String>]",
+              "-VMScaleSetName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "The operation to delete the VMSS VM run command.",
+          "parameters": [
+            {
+              "name": "-InstanceId",
+              "value": "[Path.instanceId]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-RunCommandName",
+              "value": "[Path.runCommandName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VMScaleSetName",
+              "value": "[Path.vmScaleSetName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

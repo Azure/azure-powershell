@@ -25,11 +25,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </summary>
 
         /// <param name="alertsForCriticalOperations">
-        /// Possible values include: 'Enabled', 'Disabled'</param>
-        public ClassicAlertSettings(string alertsForCriticalOperations = default(string))
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
+
+        /// <param name="emailNotificationsForSiteRecovery">
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
+        public ClassicAlertSettings(string alertsForCriticalOperations = default(string), string emailNotificationsForSiteRecovery = default(string))
 
         {
             this.AlertsForCriticalOperations = alertsForCriticalOperations;
+            this.EmailNotificationsForSiteRecovery = emailNotificationsForSiteRecovery;
             CustomInit();
         }
 
@@ -44,5 +48,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "alertsForCriticalOperations")]
         public string AlertsForCriticalOperations {get; set; }
+
+        /// <summary>
+        /// Gets or sets Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "emailNotificationsForSiteRecovery")]
+        public string EmailNotificationsForSiteRecovery {get; set; }
     }
 }

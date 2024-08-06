@@ -189,6 +189,17 @@ namespace Microsoft.Azure.Management.Compute
         /// reservation group in the response. Possible values include:
         /// 'virtualMachineScaleSetVMs/$ref', 'virtualMachines/$ref'
         /// </param>
+        /// <param name='resourceIdsOnly'>
+        /// The query option to fetch Capacity Reservation Group Resource Ids.
+        /// &lt;br&gt; 'CreatedInSubscription' enables fetching Resource Ids
+        /// for all capacity reservation group resources created in the
+        /// subscription. &lt;br&gt; 'SharedWithSubscription' enables fetching
+        /// Resource Ids for all capacity reservation group resources shared
+        /// with the subscription. &lt;br&gt; 'All' enables fetching Resource
+        /// Ids for all capacity reservation group resources shared with the
+        /// subscription and created in the subscription. Possible values
+        /// include: 'CreatedInSubscription', 'SharedWithSubscription', 'All'
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -204,7 +215,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<CapacityReservationGroup>>> ListBySubscriptionWithHttpMessagesAsync(string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<CapacityReservationGroup>>> ListBySubscriptionWithHttpMessagesAsync(string expand = default(string), string resourceIdsOnly = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists all of the capacity reservation groups in the specified
         /// resource group. Use the nextLink property in the response to get

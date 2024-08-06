@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMarketplacePrivateStoreCollectionOffer
 
 ## SYNOPSIS
-Update or add an offer to a specific collection of the private store.
+Create or add an offer to a specific collection of the private store.
 
 ## SYNTAX
 
@@ -65,7 +65,7 @@ New-AzMarketplacePrivateStoreCollectionOffer -OfferId <String> -CollectionInputO
 ```
 
 ## DESCRIPTION
-Update or add an offer to a specific collection of the private store.
+Create or add an offer to a specific collection of the private store.
 
 ## EXAMPLES
 
@@ -102,7 +102,6 @@ Accept wildcard characters: False
 
 ### -CollectionInputObject
 Identity Parameter
-To construct, see NOTES section for COLLECTIONINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
@@ -117,7 +116,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -208,7 +208,6 @@ Accept wildcard characters: False
 
 ### -Payload
 The privateStore offer data structure.
-To construct, see NOTES section for PAYLOAD properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IOffer
@@ -224,7 +223,6 @@ Accept wildcard characters: False
 
 ### -Plan
 Offer plans
-To construct, see NOTES section for PLAN properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IPlan[]
@@ -255,7 +253,6 @@ Accept wildcard characters: False
 
 ### -PrivateStoreInputObject
 Identity Parameter
-To construct, see NOTES section for PRIVATESTOREINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
@@ -336,20 +333,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IOffer
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IOffer
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IOffer
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-PLAN <IPlan[]>: Offer plans
-  - `[Accessibility <Accessibility?>]`: Plan accessibility
 
 ## RELATED LINKS

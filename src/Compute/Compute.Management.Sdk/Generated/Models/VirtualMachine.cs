@@ -48,6 +48,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Enter any required information and then click **Save**.</param>
         /// <param name="hardwareProfile">Specifies the hardware settings for
         /// the virtual machine.</param>
+        /// <param name="scheduledEventsPolicy">Specifies Redeploy, Reboot and
+        /// ScheduledEventsAdditionalPublishingTargets Scheduled Event related
+        /// configurations for the virtual machine.</param>
         /// <param name="storageProfile">Specifies the storage settings for the
         /// virtual machine disks.</param>
         /// <param name="additionalCapabilities">Specifies additional
@@ -171,11 +174,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="etag">Etag is property returned in Create/Update/Get
         /// response of the VM, so that customer can supply it in the header to
         /// ensure optimistic updates.</param>
-        public VirtualMachine(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Plan plan = default(Plan), HardwareProfile hardwareProfile = default(HardwareProfile), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), SubResource availabilitySet = default(SubResource), SubResource virtualMachineScaleSet = default(SubResource), SubResource proximityPlacementGroup = default(SubResource), string priority = default(string), string evictionPolicy = default(string), BillingProfile billingProfile = default(BillingProfile), SubResource host = default(SubResource), SubResource hostGroup = default(SubResource), string provisioningState = default(string), VirtualMachineInstanceView instanceView = default(VirtualMachineInstanceView), string licenseType = default(string), string vmId = default(string), string extensionsTimeBudget = default(string), int? platformFaultDomain = default(int?), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), CapacityReservationProfile capacityReservation = default(CapacityReservationProfile), ApplicationProfile applicationProfile = default(ApplicationProfile), System.DateTime? timeCreated = default(System.DateTime?), IList<VirtualMachineExtension> resources = default(IList<VirtualMachineExtension>), VirtualMachineIdentity identity = default(VirtualMachineIdentity), IList<string> zones = default(IList<string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string managedBy = default(string), string etag = default(string))
+        public VirtualMachine(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Plan plan = default(Plan), HardwareProfile hardwareProfile = default(HardwareProfile), ScheduledEventsPolicy scheduledEventsPolicy = default(ScheduledEventsPolicy), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), SubResource availabilitySet = default(SubResource), SubResource virtualMachineScaleSet = default(SubResource), SubResource proximityPlacementGroup = default(SubResource), string priority = default(string), string evictionPolicy = default(string), BillingProfile billingProfile = default(BillingProfile), SubResource host = default(SubResource), SubResource hostGroup = default(SubResource), string provisioningState = default(string), VirtualMachineInstanceView instanceView = default(VirtualMachineInstanceView), string licenseType = default(string), string vmId = default(string), string extensionsTimeBudget = default(string), int? platformFaultDomain = default(int?), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), CapacityReservationProfile capacityReservation = default(CapacityReservationProfile), ApplicationProfile applicationProfile = default(ApplicationProfile), System.DateTime? timeCreated = default(System.DateTime?), IList<VirtualMachineExtension> resources = default(IList<VirtualMachineExtension>), VirtualMachineIdentity identity = default(VirtualMachineIdentity), IList<string> zones = default(IList<string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string managedBy = default(string), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             Plan = plan;
             HardwareProfile = hardwareProfile;
+            ScheduledEventsPolicy = scheduledEventsPolicy;
             StorageProfile = storageProfile;
             AdditionalCapabilities = additionalCapabilities;
             OsProfile = osProfile;
@@ -233,6 +237,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.hardwareProfile")]
         public HardwareProfile HardwareProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies Redeploy, Reboot and
+        /// ScheduledEventsAdditionalPublishingTargets Scheduled Event related
+        /// configurations for the virtual machine.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.scheduledEventsPolicy")]
+        public ScheduledEventsPolicy ScheduledEventsPolicy { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the storage settings for the virtual machine

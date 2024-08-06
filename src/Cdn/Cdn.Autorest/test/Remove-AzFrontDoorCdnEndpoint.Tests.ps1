@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorCdnEndpoint
 
 Describe 'Remove-AzFrontDoorCdnEndpoint'  {
     It 'Delete' {
-        $endpointName = 'end-pstest070'
+        $endpointName = 'e-clipstest100'
         Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
         $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
@@ -27,7 +27,7 @@ Describe 'Remove-AzFrontDoorCdnEndpoint'  {
     }
 
     It 'DeleteViaIdentity' {
-        $endpointName = 'end-pstest071'
+        $endpointName = 'e-clipstest101'
         Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
         $endpoint = New-AzFrontDoorCdnEndpoint -SubscriptionId $env.SubscriptionId -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 

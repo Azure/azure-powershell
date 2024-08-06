@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Added feature for auto scaling and upgradeprofile, and nginx configuration analysis
+
+## Version 1.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 1.0.0
 * General availability of 'Az.Nginx' module
 

@@ -14,8 +14,8 @@ Creates the Azure Resource Management Private Link Association.
 
 ```
 New-AzPrivateLinkAssociation [-ManagementGroupId] <String> [-Name] <String> [-PrivateLink] <String>
- [-PublicNetworkAccess] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PublicNetworkAccess] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

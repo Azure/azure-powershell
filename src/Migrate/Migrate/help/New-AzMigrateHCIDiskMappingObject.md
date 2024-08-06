@@ -22,10 +22,21 @@ The New-AzMigrateHCIDiskMappingObject cmdlet creates a mapping of the source dis
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Creates Disk to migrate
+```powershell
 New-AzMigrateHCIDiskMappingObject -DiskID a -IsOSDisk true -IsDynamic true -Size 1 -Format VHDX
 ```
+
+```output
+DiskFileFormat     : VHDX
+DiskId             : a
+DiskSizeGb         : 1
+IsDynamic          : True
+IsOSDisk           : True
+StorageContainerId :
+```
+
+Get disk object to provide input for New-AzMigrateHCIServerReplication
 
 ## PARAMETERS
 
@@ -33,7 +44,7 @@ New-AzMigrateHCIDiskMappingObject -DiskID a -IsOSDisk true -IsDynamic true -Size
 Specifies the disk ID of the disk attached to the discovered server to be migrated.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -48,7 +59,7 @@ Accept wildcard characters: False
 Specifies the disk format.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -63,7 +74,7 @@ Accept wildcard characters: False
 Specifies whether the disk is dynamic.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -78,7 +89,7 @@ Accept wildcard characters: False
 Specifies whether the disk contains the Operating System for the source server to be migrated.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -93,13 +104,13 @@ Accept wildcard characters: False
 Specifies the disk size in GB.
 
 ```yaml
-Type: Int64
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -112,9 +123,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCIDiskInput
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehcidiskmappingobject](https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehcidiskmappingobject)
-

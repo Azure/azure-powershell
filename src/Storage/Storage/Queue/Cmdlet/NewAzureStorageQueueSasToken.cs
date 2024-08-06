@@ -17,7 +17,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
     using global::Azure.Storage.Queues;
     using global::Azure.Storage.Queues.Models;
     using global::Azure.Storage.Sas;
-    using Microsoft.Azure.Storage;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using System;
@@ -62,10 +61,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Permission { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("Protocol", "12.0.0", "7.0.0", ChangeDescription = "The type of parameter Protocol will be changed from SharedAccessProtocol to string.")]
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
-        [ValidateNotNull]
-        public SharedAccessProtocol? Protocol { get; set; }
+        [ValidateSet("HttpsOnly", "HttpsOrHttp", IgnoreCase = true),]
+        public string Protocol { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted from by Azure Storage.")]
         [ValidateNotNullOrEmpty]

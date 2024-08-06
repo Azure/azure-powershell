@@ -65,10 +65,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_enabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("enabled"), out var __jsonEnabled) ? (bool)__jsonEnabled : Enabled;}
-            {_destination = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("destination"), out var __jsonDestination) ? (string)__jsonDestination : (string)Destination;}
-            {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)Type;}
-            {_rule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("rules"), out var __jsonRules) ? If( __jsonRules as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyRule>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyRule) (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.BlobInventoryPolicyRule.FromJson(__u) )) ))() : null : Rule;}
+            {_enabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("enabled"), out var __jsonEnabled) ? (bool)__jsonEnabled : _enabled;}
+            {_destination = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("destination"), out var __jsonDestination) ? (string)__jsonDestination : (string)_destination;}
+            {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
+            {_rule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("rules"), out var __jsonRules) ? If( __jsonRules as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyRule>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyRule) (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.BlobInventoryPolicyRule.FromJson(__u) )) ))() : null : _rule;}
             AfterFromJson(json);
         }
 

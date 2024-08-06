@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Relay-help.xml
 Module Name: Az.Relay
 online version: https://learn.microsoft.com/powershell/module/az.relay/new-azrelaykey
 schema: 2.0.0
@@ -14,23 +14,23 @@ Regenerates the primary or secondary connection strings to the namespace.
 
 ### RegenerateExpanded (Default)
 ```
-New-AzRelayKey -Name <String> -Namespace <String> -ResourceGroupName <String> -RegenerateKey <KeyType>
- [-SubscriptionId <String>] [-KeyValue <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzRelayKey -Name <String> -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -RegenerateKey <KeyType> [-KeyValue <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RegenerateExpanded1
 ```
-New-AzRelayKey -HybridConnection <String> -Name <String> -Namespace <String> -ResourceGroupName <String>
- -RegenerateKey <KeyType> [-SubscriptionId <String>] [-KeyValue <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzRelayKey -Name <String> -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -HybridConnection <String> -RegenerateKey <KeyType> [-KeyValue <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RegenerateExpanded2
 ```
-New-AzRelayKey -Name <String> -Namespace <String> -ResourceGroupName <String> -WcfRelay <String>
- -RegenerateKey <KeyType> [-SubscriptionId <String>] [-KeyValue <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzRelayKey -Name <String> -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -WcfRelay <String> -RegenerateKey <KeyType> [-KeyValue <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -259,7 +259,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

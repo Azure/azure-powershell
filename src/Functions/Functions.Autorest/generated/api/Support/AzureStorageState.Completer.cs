@@ -38,6 +38,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'InvalidShare'", "InvalidShare", global::System.Management.Automation.CompletionResultType.ParameterValue, "InvalidShare");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotValidated".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'NotValidated'", "NotValidated", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotValidated");
+            }
         }
     }
 }

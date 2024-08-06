@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the SecurityInsights service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -46,9 +45,9 @@ In this directory, run AutoRest:
 
 ``` yaml
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
-branch: 59eb5a7f1d09d0be2b80b8497785ffa2d784b5b6
+commit: 59eb5a7f1d09d0be2b80b8497785ffa2d784b5b6
 
 input-file:
   - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/AlertRules.json
@@ -74,6 +73,10 @@ title: SecurityInsights
 subject-prefix: Sentinel
   
 inlining-threshold: 50
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Fixes/overrides to swaggers

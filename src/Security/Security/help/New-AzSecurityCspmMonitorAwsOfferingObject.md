@@ -14,7 +14,7 @@ Create an in-memory object for CspmMonitorAwsOffering.
 
 ```
 New-AzSecurityCspmMonitorAwsOfferingObject [-NativeCloudConnectionCloudRoleArn <String>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,9 +22,15 @@ Create an in-memory object for CspmMonitorAwsOffering.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create new CspmMonitorAwsOffering object
 ```powershell
 New-AzSecurityCspmMonitorAwsOfferingObject -NativeCloudConnectionCloudRoleArn "arn:aws:iam::123456789012:role/CspmMonitorAws"
+```
+
+```output
+Description NativeCloudConnectionCloudRoleArn             OfferingType
+----------- ---------------------------------             ------------
+            arn:aws:iam::123456789012:role/CspmMonitorAws CspmMonitorAws
 ```
 
 ## PARAMETERS
@@ -33,9 +39,24 @@ New-AzSecurityCspmMonitorAwsOfferingObject -NativeCloudConnectionCloudRoleArn "a
 The cloud role ARN in AWS for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -52,8 +73,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.CspmMonitorAwsOffering
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritycspmmonitorawsofferingobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritycspmmonitorawsofferingobject)

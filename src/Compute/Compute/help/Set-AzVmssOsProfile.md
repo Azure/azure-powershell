@@ -52,7 +52,7 @@ $vnetname = "myVnet";
 $vnetAddress = "10.0.0.0/16";
 $subnetname = "default-slb";
 $subnetAddress = "10.0.2.0/24";
-$securePassword = "<Password>" | ConvertTo-SecureString -AsPlainText -Force;  
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force;  
 $cred = New-Object System.Management.Automation.PSCredential ("<Username>", $securePassword);
 
 # VMSS Flex requires explicit outbound access.
@@ -547,5 +547,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Add-AzVmssSecret](./Add-AzVmssSecret.md)
 
 [New-AzVmssConfig](./New-AzVmssConfig.md)
-
-

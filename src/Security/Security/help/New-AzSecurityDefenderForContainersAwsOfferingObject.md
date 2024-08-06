@@ -21,7 +21,7 @@ New-AzSecurityDefenderForContainersAwsOfferingObject [-AutoProvisioning <Boolean
  [-KuberneteServiceCloudRoleArn <String>] [-MdcContainerAgentlessDiscoveryK8SCloudRoleArn <String>]
  [-MdcContainerAgentlessDiscoveryK8SEnabled <Boolean>] [-MdcContainerImageAssessmentCloudRoleArn <String>]
  [-MdcContainerImageAssessmentEnabled <Boolean>] [-ScubaExternalId <String>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,7 +29,7 @@ Create an in-memory object for DefenderForContainersAwsOffering.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create new DefenderForContainersAwsOffering object
 ```powershell
 $arnPrefix = "arn:aws:iam::123456789012:role"
 New-AzSecurityDefenderForContainersAwsOfferingObject `
@@ -41,19 +41,38 @@ New-AzSecurityDefenderForContainersAwsOfferingObject `
     -EnableContainerVulnerabilityAssessment $false
 ```
 
+```output
+AutoProvisioning                                 : True
+CloudWatchToKinesiCloudRoleArn                   : arn:aws:iam::123456789012:role/DefenderForCloud-Containers-K8s-cloudwatch-to-kinesis
+ContainerVulnerabilityAssessmentCloudRoleArn     : 
+ContainerVulnerabilityAssessmentTaskCloudRoleArn : 
+Description                                      : 
+EnableContainerVulnerabilityAssessment           : False
+KinesiToS3CloudRoleArn                           : arn:aws:iam::123456789012:role/DefenderForCloud-Containers-K8s-kinesis-to-s3
+KubeAuditRetentionTime                           : 30
+KuberneteScubaReaderCloudRoleArn                 : arn:aws:iam::123456789012:role/DefenderForCloud-DataCollection
+KuberneteServiceCloudRoleArn                     : arn:aws:iam::123456789012:role/DefenderForCloud-Containers-K8s
+MdcContainerAgentlessDiscoveryK8SCloudRoleArn    : arn:aws:iam::123456789012:role/MDCContainersAgentlessDiscoveryK8sRole
+MdcContainerAgentlessDiscoveryK8SEnabled         : True
+MdcContainerImageAssessmentCloudRoleArn          : arn:aws:iam::123456789012:role/MDCContainersImageAssessmentRole
+MdcContainerImageAssessmentEnabled               : True
+OfferingType                                     : DefenderForContainersAws
+ScubaExternalId                                  : a47ae0a2-7bf7-482a-897a-7a139d30736c
+```
+
 ## PARAMETERS
 
 ### -AutoProvisioning
 Is audit logs pipeline auto provisioning enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -62,7 +81,7 @@ Accept wildcard characters: False
 The cloud role ARN in AWS used by CloudWatch to transfer data into Kinesis.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -77,7 +96,7 @@ Accept wildcard characters: False
 The cloud role ARN in AWS for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -92,7 +111,7 @@ Accept wildcard characters: False
 The cloud role ARN in AWS for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -107,13 +126,13 @@ Accept wildcard characters: False
 Enable container vulnerability assessment feature.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -122,7 +141,7 @@ Accept wildcard characters: False
 The cloud role ARN in AWS used by Kinesis to transfer data into S3.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -137,13 +156,13 @@ Accept wildcard characters: False
 The retention time in days of kube audit logs set on the CloudWatch log group.
 
 ```yaml
-Type: Int64
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -152,7 +171,7 @@ Accept wildcard characters: False
 The cloud role ARN in AWS for this feature used for reading data.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -167,7 +186,7 @@ Accept wildcard characters: False
 The cloud role ARN in AWS for this feature used for provisioning resources.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -182,7 +201,7 @@ Accept wildcard characters: False
 The cloud role ARN in AWS for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -197,13 +216,13 @@ Accept wildcard characters: False
 Is Microsoft Defender container agentless discovery K8s enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -212,7 +231,7 @@ Accept wildcard characters: False
 The cloud role ARN in AWS for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -227,13 +246,28 @@ Accept wildcard characters: False
 Is Microsoft Defender container image assessment enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -242,7 +276,7 @@ Accept wildcard characters: False
 The externalId used by the data reader to prevent the confused deputy attack.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -261,8 +295,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.DefenderForContainersAwsOffering
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefenderforcontainersawsofferingobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefenderforcontainersawsofferingobject)

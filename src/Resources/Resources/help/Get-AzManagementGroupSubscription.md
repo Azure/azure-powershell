@@ -14,7 +14,8 @@ Gets the details of Subscription(s) under a Management Group.
 
 ```
 Get-AzManagementGroupSubscription [-GroupName] <String> [[-SubscriptionId] <String>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

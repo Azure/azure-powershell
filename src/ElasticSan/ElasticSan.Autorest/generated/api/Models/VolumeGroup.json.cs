@@ -104,8 +104,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
                 return;
             }
             __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ProxyResource(json);
-            {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Identity.FromJson(__jsonIdentity) : Identity;}
-            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.VolumeGroupProperties.FromJson(__jsonProperties) : Property;}
+            {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Identity.FromJson(__jsonIdentity) : _identity;}
+            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.VolumeGroupProperties.FromJson(__jsonProperties) : _property;}
             AfterFromJson(json);
         }
     }

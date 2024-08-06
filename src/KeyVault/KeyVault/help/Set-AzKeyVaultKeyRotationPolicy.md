@@ -22,7 +22,8 @@ Set-AzKeyVaultKeyRotationPolicy [-VaultName] <String> [-Name] <String> [-Expires
 ### SetByRotationPolicyFileViaVaultName
 ```
 Set-AzKeyVaultKeyRotationPolicy [-VaultName] <String> [-Name] <String> -PolicyPath <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByKeyInputObject
@@ -35,13 +36,15 @@ Set-AzKeyVaultKeyRotationPolicy [-InputObject] <PSKeyVaultKeyIdentityItem> [-Exp
 ### SetByRotationPolicyFileViaKeyInputObject
 ```
 Set-AzKeyVaultKeyRotationPolicy [-InputObject] <PSKeyVaultKeyIdentityItem> -PolicyPath <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByKeyRotationPolicyInputObject
 ```
 Set-AzKeyVaultKeyRotationPolicy [-KeyRotationPolicy] <PSKeyRotationPolicy>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NewRelic-help.xml
 Module Name: Az.NewRelic
 online version: https://learn.microsoft.com/powershell/module/az.newrelic/get-aznewrelicmonitormonitoredresource
 schema: 2.0.0
@@ -14,7 +14,8 @@ List the resources currently being monitored by the NewRelic monitor resource.
 
 ```
 Get-AzNewRelicMonitorMonitoredResource -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,42 +29,41 @@ Get-AzNewRelicMonitorMonitoredResource -MonitorName test-03 -ResourceGroupName p
 ```
 
 ```output
-Id                     : /SUBSCRIPTIONS/272C26CB-7026-4B37-B190-7CB7B2ABECB0/RESOURCEGROUPS/PS-TEST/PROVIDERS/MICROSOFT.WEB/SITES/JOYERTEST
+Id                     : /SUBSCRIPTIONS/11111111-2222-3333-4444-123456789101/RESOURCEGROUPS/PS-TEST/PROVIDERS/MICROSOFT.WEB/SITES/SITETEST
 ReasonForLogsStatus    : CapturedByRules
 ReasonForMetricsStatus : 
 SendingLog             : Enabled
 SendingMetric          : 
 
-Id                     : /SUBSCRIPTIONS/272C26CB-7026-4B37-B190-7CB7B2ABECB0/RESOURCEGROUPS/PS-TEST/PROVIDERS/MICROSOFT.WEB/SERVERFARMS/PSTEST
+Id                     : /SUBSCRIPTIONS/11111111-2222-3333-4444-123456789101/RESOURCEGROUPS/PS-TEST/PROVIDERS/MICROSOFT.WEB/SERVERFARMS/PSTEST
 ReasonForLogsStatus    : CapturedByRules
 ReasonForMetricsStatus : 
 SendingLog             : Enabled
 SendingMetric          : 
 
-Id                     : /SUBSCRIPTIONS/272C26CB-7026-4B37-B190-7CB7B2ABECB0/RESOURCEGROUPS/PS-TEST/PROVIDERS/MICROSOFT.WEB/SITES/JOYERTEST2
+Id                     : /SUBSCRIPTIONS/11111111-2222-3333-4444-123456789101/RESOURCEGROUPS/PS-TEST/PROVIDERS/MICROSOFT.WEB/SITES/SITETEST2
 ReasonForLogsStatus    : CapturedByRules
 ReasonForMetricsStatus : 
 SendingLog             : Enabled
 SendingMetric          : 
 
-Id                     : /SUBSCRIPTIONS/272C26CB-7026-4B37-B190-7CB7B2ABECB0/RESOURCEGROUPS/PS-TEST/PROVIDERS/MICROSOFT.INSIGHTS/COMPONENTS/JOYERTEST2
+Id                     : /SUBSCRIPTIONS/11111111-2222-3333-4444-123456789101/RESOURCEGROUPS/PS-TEST/PROVIDERS/MICROSOFT.INSIGHTS/COMPONENTS/INSIGHTTEST2
 ReasonForLogsStatus    : CapturedByRules
 ReasonForMetricsStatus : 
 SendingLog             : Enabled
 SendingMetric          : 
 
-Id                     : /SUBSCRIPTIONS/272C26CB-7026-4B37-B190-7CB7B2ABECB0/RESOURCEGROUPS/ACCTEST9482/PROVIDERS/MICROSOFT.INSIGHTS/COMPONENTS/TEST3210
+Id                     : /SUBSCRIPTIONS/11111111-2222-3333-4444-123456789101/RESOURCEGROUPS/ACCTEST9482/PROVIDERS/MICROSOFT.INSIGHTS/COMPONENTS/TEST3210
 ReasonForLogsStatus    : DiagnosticSettingsLimitReached
 ReasonForMetricsStatus : 
 SendingLog             : Disabled
 SendingMetric          : 
 
-Id                     : /SUBSCRIPTIONS/272C26CB-7026-4B37-B190-7CB7B2ABECB0/RESOURCEGROUPS/MC_KANSINGH-RG_TESTNRCLUSTER_EASTUS/PROVIDERS/MICROSOFT.NETWORK/PUBLICIPADDRESSES/99894EC0-4C67-4D40-BF63-B640D5 
-                         9E1596
+Id                     : /SUBSCRIPTIONS/11111111-2222-3333-4444-123456789101/RESOURCEGROUPS/MC_KANSINGH-RG_TESTNRCLUSTER_EASTUS/PROVIDERS/MICROSOFT.NETWORK/PUBLICIPADDRESSES/11111111-2222-3333-4444-123456789123
 ReasonForLogsStatus    : DiagnosticSettingsLimitReached
 ReasonForMetricsStatus : 
 SendingLog             : Disabled
-SendingMetric          : 
+SendingMetric          :
 ```
 
 List the resources currently being monitored by the NewRelic monitor resource.
@@ -170,11 +170,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.IMonitoredResource
+### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredResource
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

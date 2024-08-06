@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNetworkFabricNeighborGroup
 
 ## SYNOPSIS
-Updates the Neighbor Group.
+Update the Neighbor Group.
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ Update-AzNetworkFabricNeighborGroup -Name <String> -ResourceGroupName <String> -
 ```
 
 ## DESCRIPTION
-Updates the Neighbor Group.
+Update the Neighbor Group.
 
 ## EXAMPLES
 
@@ -117,7 +117,6 @@ Accept wildcard characters: False
 
 ### -Destination
 An array of destination IPv4 Addresses or IPv6 Addresses.
-To construct, see NOTES section for DESTINATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborGroupDestination
@@ -133,7 +132,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity

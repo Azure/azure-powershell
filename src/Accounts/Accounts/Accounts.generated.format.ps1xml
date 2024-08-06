@@ -10,19 +10,11 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>Account</Label>
+            <Label>Subscription name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>SubscriptionName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>TenantId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>Environment</Label>
+            <Label>Tenant</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -30,19 +22,11 @@
             <TableColumnItems>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>$_.Context.Account.ToString()</ScriptBlock>
+                <ScriptBlock>if($null -ne $_.Context.Subscription.Name){$_.Context.Subscription.Name}else{$_.Context.Subscription.Id}</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>$_.Context.Subscription.Name</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <ScriptBlock>$_.Context.Tenant.ToString()</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <ScriptBlock>$_.Context.Environment.ToString()</ScriptBlock>
+                <ScriptBlock>if($null -ne $_.Context.Tenant.Name){$_.Context.Tenant.Name}else{$_.Context.Tenant.Id}</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

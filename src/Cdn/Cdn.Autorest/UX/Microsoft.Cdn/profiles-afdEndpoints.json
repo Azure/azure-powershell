@@ -1,10 +1,53 @@
 {
   "resourceType": "profiles/afdEndpoints",
-  "apiVersion": "2023-05-01",
+  "apiVersion": "2024-02-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.cdn"
   },
   "commands": [
+    {
+      "name": "Clear-AzFrontDoorCdnEndpointContent",
+      "description": "Removes a content from AzureFrontDoor.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/purge",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cdn/clear-azfrontdoorcdnendpointcontent"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EndpointName <String>",
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Removes a content from AzureFrontDoor.",
+          "parameters": [
+            {
+              "name": "-EndpointName",
+              "value": "[Path.endpointName]"
+            },
+            {
+              "name": "-ProfileName",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
     {
       "name": "Get-AzFrontDoorCdnEndpoint",
       "description": "Gets an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.",

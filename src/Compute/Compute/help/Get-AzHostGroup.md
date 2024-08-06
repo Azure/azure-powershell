@@ -20,7 +20,8 @@ Get-AzHostGroup [[-ResourceGroupName] <String>] [[-Name] <String>] [-InstanceVie
 
 ### ResourceIdParameter
 ```
-Get-AzHostGroup [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzHostGroup [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

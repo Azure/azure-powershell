@@ -98,6 +98,508 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAccessProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAccessProfile#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EnableInternalIngress</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PrivateLinkServiceId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EnableInternalIngress</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PrivateLinkServiceId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAksPatchUpgradeHistoryProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAksPatchUpgradeHistoryProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>UpgradeResult</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UtcTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NewVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OriginalVersion</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>UpgradeResult</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UtcTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NewVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OriginalVersion</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAksPatchVersionUpgradeProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAksPatchVersionUpgradeProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAvailableInPlaceUpgradeProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAvailableInPlaceUpgradeProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ComponentName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ExtendedProperty</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Severity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceBuildNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceClusterVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceOssVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetBuildNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetClusterVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetOssVersion</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ComponentName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ExtendedProperty</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Severity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceBuildNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceClusterVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceOssVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetBuildNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetClusterVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetOssVersion</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAvailableUpgrade</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAvailableUpgrade#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAvailableUpgradeAksPatchUpgradeProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAvailableUpgradeAksPatchUpgradeProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CurrentVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CurrentVersionStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LatestVersion</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CurrentVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CurrentVersionStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LatestVersion</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAvailableUpgradeHotfixUpgradeProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAvailableUpgradeHotfixUpgradeProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ComponentName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ExtendedProperty</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Severity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceBuildNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceClusterVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceOssVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetBuildNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetClusterVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetOssVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ComponentName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ExtendedProperty</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Severity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceBuildNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceClusterVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceOssVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetBuildNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetClusterVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetOssVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAvailableUpgradeList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAvailableUpgradeList#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAvailableUpgradePatchVersionUpgradeProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAvailableUpgradePatchVersionUpgradeProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ComponentName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ExtendedProperty</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Severity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceBuildNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceClusterVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceOssVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetBuildNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetClusterVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetOssVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ComponentName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ExtendedProperty</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Severity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceBuildNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceClusterVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceOssVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetBuildNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetClusterVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetOssVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAvailableUpgradeProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAvailableUpgradeProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterComponentsItem</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterComponentsItem#Multiple</TypeName>
@@ -181,6 +683,344 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterHotfixUpgradeHistoryProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterHotfixUpgradeHistoryProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ComponentName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Severity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceBuildNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceClusterVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceOssVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetBuildNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetClusterVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetOssVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeResult</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UtcTime</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ComponentName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Severity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceBuildNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceClusterVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceOssVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetBuildNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetClusterVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetOssVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeResult</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UtcTime</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterHotfixUpgradeProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterHotfixUpgradeProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ComponentName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetBuildNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetClusterVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetOssVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ComponentName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetBuildNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetClusterVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetOssVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterHotfixUpgradeRollbackHistoryProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterHotfixUpgradeRollbackHistoryProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ComponentName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Severity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceBuildNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceClusterVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceOssVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetBuildNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetClusterVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetOssVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeResult</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UtcTime</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ComponentName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Severity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceBuildNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceClusterVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceOssVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetBuildNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetClusterVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetOssVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeResult</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UtcTime</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterInPlaceUpgradeHistoryProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterInPlaceUpgradeHistoryProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>UpgradeResult</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UtcTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ComponentName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Severity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceBuildNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceClusterVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceOssVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetBuildNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetClusterVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetOssVersion</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>UpgradeResult</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UtcTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ComponentName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Severity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceBuildNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceClusterVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceOssVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetBuildNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetClusterVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetOssVersion</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterInPlaceUpgradeProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterInPlaceUpgradeProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ComponentName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetBuildNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetClusterVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetOssVersion</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ComponentName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetBuildNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetClusterVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetOssVersion</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -420,6 +1260,206 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterLibrary</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterLibrary#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterLibraryList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterLibraryList#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterLibraryManagementOperation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterLibraryManagementOperation#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterLibraryManagementOperationProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterLibraryManagementOperationProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Action</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Action</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterLibraryProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterLibraryProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Remark</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Timestamp</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Remark</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Timestamp</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterListResult</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterListResult#Multiple</TypeName>
@@ -498,15 +1538,342 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPatch</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPatch#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPatchTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>Item</Label>
           </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPatchVersionUpgradeHistoryProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPatchVersionUpgradeHistoryProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ComponentName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Severity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceBuildNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceClusterVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceOssVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetBuildNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetClusterVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetOssVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeResult</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UtcTime</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ComponentName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Severity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceBuildNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceClusterVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceOssVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetBuildNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetClusterVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetOssVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeResult</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UtcTime</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPatchVersionUpgradeProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPatchVersionUpgradeProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ComponentName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetBuildNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetClusterVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetOssVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ComponentName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetBuildNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetClusterVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetOssVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPatchVersionUpgradeRollbackHistoryProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPatchVersionUpgradeRollbackHistoryProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ComponentName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Severity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceBuildNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceClusterVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceOssVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetBuildNumber</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetClusterVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetOssVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeResult</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UtcTime</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ComponentName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Severity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceBuildNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceClusterVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceOssVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetBuildNumber</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetClusterVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetOssVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeResult</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UtcTime</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolAksPatchUpgradeHistoryProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolAksPatchUpgradeHistoryProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>UpgradeResult</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UtcTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NewVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OriginalVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeAllClusterNode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeClusterPool</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>UpgradeResult</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UtcTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NewVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OriginalVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeAllClusterNode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeClusterPool</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolAksPatchVersionUpgradeProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolAksPatchVersionUpgradeProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetAksVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeAllClusterNode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeClusterPool</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetAksVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeAllClusterNode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeClusterPool</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolAvailableUpgrade</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolAvailableUpgrade#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
@@ -533,9 +1900,6 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -555,6 +1919,118 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolAvailableUpgradeAksPatchUpgradeProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolAvailableUpgradeAksPatchUpgradeProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CurrentVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CurrentVersionStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LatestVersion</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CurrentVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CurrentVersionStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LatestVersion</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolAvailableUpgradeList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolAvailableUpgradeList#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolAvailableUpgradeNodeOSUpgradeProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolAvailableUpgradeNodeOSUpgradeProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LatestVersion</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LatestVersion</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolAvailableUpgradeProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolAvailableUpgradeProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -625,6 +2101,12 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>EnablePrivateApiServer</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OutboundType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>SubnetId</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -632,7 +2114,75 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>EnablePrivateApiServer</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OutboundType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>SubnetId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolNodeOSImageUpdateProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolNodeOSImageUpdateProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolNodeOSUpgradeHistoryProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolNodeOSUpgradeHistoryProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>UpgradeResult</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UtcTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NewNodeOS</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>UpgradeResult</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UtcTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NewNodeOS</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -839,6 +2389,12 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>EnablePrivateApiServer</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OutboundType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>SubnetId</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -846,7 +2402,149 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>EnablePrivateApiServer</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OutboundType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>SubnetId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolUpgradeHistory</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolUpgradeHistory#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolUpgradeHistoryListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolUpgradeHistoryListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolUpgradeHistoryProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolUpgradeHistoryProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>UpgradeResult</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UtcTime</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>UpgradeResult</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UtcTime</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolUpgradeProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolUpgradeProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -941,6 +2639,28 @@
       <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPrometheusProfile</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPrometheusProfile#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterRangerPluginProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterRangerPluginProfile#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1108,6 +2828,164 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterUpgradeHistory</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterUpgradeHistory#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterUpgradeHistoryListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterUpgradeHistoryListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterUpgradeHistoryProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterUpgradeHistoryProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>UpgradeResult</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UtcTime</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>UpgradeResult</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UtcTime</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterUpgradeProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterUpgradeProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>UpgradeType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>UpgradeType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterUpgradeRollbackProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterUpgradeRollbackProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>UpgradeHistory</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>UpgradeHistory</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterVersionProperties</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterVersionProperties#Multiple</TypeName>
@@ -1241,12 +3119,46 @@
           <TableColumnHeader>
             <Label>Fqdn</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PrivateFqdn</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Fqdn</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PrivateFqdn</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.DiskStorageProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.DiskStorageProfile#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DataDiskSize</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DataDiskType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DataDiskSize</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DataDiskType</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1295,6 +3207,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>MetastoreDbConnectionAuthenticationMode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>MetastoreDbConnectionPasswordSecret</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1308,6 +3223,9 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>MetastoreDbConnectionAuthenticationMode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>MetastoreDbConnectionPasswordSecret</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1315,6 +3233,58 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>MetastoreDbConnectionUserName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkJobProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkJobProfile#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Arg</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EntryClass</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>JarName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>JobJarDirectory</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SavePointName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradeMode</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Arg</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EntryClass</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>JarName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>JobJarDirectory</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SavePointName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradeMode</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1362,6 +3332,9 @@
             <Label>LastSavePoint</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>RunId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>SavePointName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1405,6 +3378,9 @@
                 <PropertyName>LastSavePoint</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>RunId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>SavePointName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1445,12 +3421,18 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>DeploymentMode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>NumReplica</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DeploymentMode</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>NumReplica</PropertyName>
               </TableColumnItem>
@@ -1544,6 +3526,9 @@
             <Label>CatalogName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>MetastoreDbConnectionAuthenticationMode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>MetastoreDbConnectionPasswordSecret</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1561,6 +3546,9 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>CatalogName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MetastoreDbConnectionAuthenticationMode</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>MetastoreDbConnectionPasswordSecret</PropertyName>
@@ -1614,6 +3602,62 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.KafkaConnectivityEndpoints</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.KafkaConnectivityEndpoints#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>BootstrapServerEndpoint</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>BootstrapServerEndpoint</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.KafkaProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.KafkaProfile#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EnableKRaft</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EnablePublicEndpoint</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RemoteStorageUri</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EnableKRaft</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EnablePublicEndpoint</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RemoteStorageUri</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.LoadBasedConfig</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.LoadBasedConfig#Multiple</TypeName>
@@ -1647,6 +3691,98 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PollInterval</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ManagedIdentitySpec</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ManagedIdentitySpec#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ClientId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ObjectId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ClientId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ObjectId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.MavenLibraryProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.MavenLibraryProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Remark</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Timestamp</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>GroupId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Remark</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Timestamp</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>GroupId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1898,6 +4034,154 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.PyPiLibraryProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.PyPiLibraryProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Remark</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Timestamp</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Remark</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Timestamp</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerAdminSpecDatabase</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerAdminSpecDatabase#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Host</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PasswordSecretRef</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Username</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Host</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PasswordSecretRef</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Username</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerAuditSpec</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerAuditSpec#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>StorageAccount</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>StorageAccount</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerUsersyncSpec</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerUsersyncSpec#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Mode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UserMappingLocation</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Mode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UserMappingLocation</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.Resource</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.Resource#Multiple</TypeName>
@@ -2069,10 +4353,10 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>KeyVaultObjectName</Label>
+            <Label>ReferenceName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>ReferenceName</Label>
+            <Label>SecretName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Version</Label>
@@ -2082,10 +4366,10 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>KeyVaultObjectName</PropertyName>
+                <PropertyName>ReferenceName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>ReferenceName</PropertyName>
+                <PropertyName>SecretName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Version</PropertyName>
@@ -2323,6 +4607,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>DbConnectionAuthenticationMode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>DbName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -2344,6 +4631,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DbConnectionAuthenticationMode</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DbName</PropertyName>
               </TableColumnItem>
@@ -2421,12 +4711,18 @@
           <TableColumnHeader>
             <Label>Endpoint</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PrivateSshEndpoint</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Endpoint</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PrivateSshEndpoint</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2446,6 +4742,9 @@
           <TableColumnHeader>
             <Label>PodPrefix</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VMSize</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -2455,6 +4754,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PodPrefix</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VMSize</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2761,12 +5063,18 @@
           <TableColumnHeader>
             <Label>Fqdn</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PrivateFqdn</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Fqdn</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PrivateFqdn</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

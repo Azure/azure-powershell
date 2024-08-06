@@ -17,14 +17,10 @@
 <#
 .Synopsis
 Creates a diagnostic for the specific resource using solutionId and requiredInputs* from discovery solutions.
-<br/>Diagnostics tells you precisely the root cause of the issue and the steps to address it.
-You can get diagnostics once you discover the relevant solution for your Azure issue.
-<br/><br/> <b>Note: </b> requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics API.
+<br/>Diagnostics are powerful solutions that access product resources or other relevant data and provide the root cause of the issue and the steps to address the issue.<br/><br/> <b>Note: </b> ‘requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics API.
 .Description
 Creates a diagnostic for the specific resource using solutionId and requiredInputs* from discovery solutions.
-<br/>Diagnostics tells you precisely the root cause of the issue and the steps to address it.
-You can get diagnostics once you discover the relevant solution for your Azure issue.
-<br/><br/> <b>Note: </b> requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics API.
+<br/>Diagnostics are powerful solutions that access product resources or other relevant data and provide the root cause of the issue and the steps to address the issue.<br/><br/> <b>Note: </b> ‘requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics API.
 .Example
 $insightsToInvoke = [ordered]@{
                 "solutionId" = "Demo2InsightV2"
@@ -32,7 +28,7 @@ $insightsToInvoke = [ordered]@{
 New-AzSelfHelpDiagnostic -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourceGroups/aravind-test-resources/providers/Microsoft.KeyVault/vaults/ab-tests-kv-an" -SResourceName ab-test-973 -Insight $insightsToInvoke
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticResource
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiagnosticResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -46,7 +42,7 @@ INSIGHT <IDiagnosticInvocation[]>: SolutionIds that are needed to be invoked.
 https://learn.microsoft.com/powershell/module/az.selfhelp/new-azselfhelpdiagnostic
 #>
 function New-AzSelfHelpDiagnostic {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiagnosticResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -59,20 +55,20 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [System.String]
-    # This is an extension resource provider and only resource level extension is supported at the moment.
+    # scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
     ${Scope},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticResourcePropertiesGlobalParameters]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiagnosticResourcePropertiesGlobalParameters]))]
     [System.Collections.Hashtable]
-    # Global parameters that can be passed to all solutionIds.
+    # Global parameters is an optional map which can be used to add key and value to request body to improve the diagnostics results
     ${GlobalParameter},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticInvocation[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiagnosticInvocation[]]
     # SolutionIds that are needed to be invoked.
     # To construct, see NOTES section for INSIGHT properties and create a hash table.
     ${Insight},

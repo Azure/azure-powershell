@@ -16,6 +16,7 @@ using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
@@ -178,7 +179,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                     {
                         filter.MinCreationTime = filter.MinCreationTime + "Z";
                     }
-                    this.MinCreationTime = Convert.ToDateTime(filter.MinCreationTime);
+                    this.MinCreationTime = Convert.ToDateTime(filter.MinCreationTime, CultureInfo.GetCultureInfo("en-US"));
                 }
             }
         }

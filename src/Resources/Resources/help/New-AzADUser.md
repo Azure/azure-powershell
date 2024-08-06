@@ -60,8 +60,7 @@ Create user with password profile
 
 ### Example 2: Create user with password
 ```powershell
-$password = "xxxxxxxxxx"
-$password = ConvertTo-SecureString -AsPlainText -Force $password
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzADUser -DisplayName $uname -Password $password -AccountEnabled $true -MailNickname $nickname -UserPrincipalName $upn
 ```
 
@@ -437,7 +436,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImmutableId
-This property is used to associate an on-premises Active Directory user account to their Microsoft Entra user object.
+This property is used to associate an on-premises Active Directory user account to their Azure AD user object.
 This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user's userPrincipalName (UPN) property.
 NOTE: The $ and _ characters cannot be used when specifying this property.
 Returned only on $select.

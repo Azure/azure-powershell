@@ -14,32 +14,26 @@ Shows the provisioning status of Network Fabric Controller.
 
 ### List1 (Default)
 ```
-Get-AzNetworkFabricController [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+Get-AzNetworkFabricController [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzNetworkFabricController -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzNetworkFabricController -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzNetworkFabricController -InputObject <IManagedNetworkFabricIdentity> [-DefaultProfile <PSObject>]
- [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,37 +41,52 @@ Shows the provisioning status of Network Fabric Controller.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: List Network Fabric Controllers by Subscription
+```powershell
 Get-AzNetworkFabricController -SubscriptionId $subscriptionId
 ```
 
-### EXAMPLE 2
+```output
+Location    Name                         SystemDataCreatedAt SystemDataCreatedBy    SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy      SystemDataLastModifiedByType
+--------    ----                         ------------------- -------------------    ----------------------- ------------------------ ------------------------      -----
+eastus2euap nfa-tool-ts-GA-nfc071323     07/13/2023 09:34:40 <identity>             User                    09/05/2023 10:32:49      <identity>                    Appl…
+eastus2euap nfa-automation-testing-nfc-1 08/07/2023 12:16:05 <identity>             Application             08/07/2023 13:19:01      <identity>                    Appl…
+eastus2euap nfa-automation-testing-nfc-2 08/07/2023 14:31:19 <identity>             Application             08/07/2023 15:37:20      <identity>                    Appl…
+eastus2euap nfa-tool-ts-GA-nfc081023     08/10/2023 06:43:29 <identity>             User                    09/21/2023 10:35:20      <identity>                    Appl…
+eastus2euap nfcfab3-4-0                  09/07/2023 08:56:12 <identity>             Application             09/20/2023 14:22:59      <identity>                    Appl…
+eastus2euap acctest3523                  09/15/2023 05:41:52 <identity>             User                    09/15/2023 05:41:52      <identity>                    User
+eastus      controller092123             09/21/2023 11:51:54 <identity>             User                    09/22/2023 13:22:21      <identity>                    Appl…
 ```
+
+This command lists all the Network Fabric Controllers under the given Subscription.
+
+### Example 2: List Network Fabric Controllers by Resource Group
+```powershell
 Get-AzNetworkFabricController -ResourceGroupName $resourceGroupName
 ```
 
-### EXAMPLE 3
+```output
+Annotation Id
+---------- --
+           /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/controller09…
 ```
+
+This command lists all the Network Fabric Controllers under the given Resource Group.
+
+### Example 3: Get Network Fabric Controller
+```powershell
 Get-AzNetworkFabricController -Name $name -ResourceGroupName $resourceGroupName
 ```
 
-## PARAMETERS
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+```output
+Annotation Id
+---------- --
+           /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/controller09…
 ```
+
+This command gets details of the given Network Fabric Controller.
+
+## PARAMETERS
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -95,39 +104,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
@@ -152,51 +130,6 @@ Aliases: NetworkFabricControllerName
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -228,7 +161,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -239,46 +172,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricController
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IManagedNetworkFabricIdentity\>: Identity Parameter
-  \[AccessControlListName \<String\>\]: Name of the Access Control List.
-  \[ExternalNetworkName \<String\>\]: Name of the External Network.
-  \[IPCommunityName \<String\>\]: Name of the IP Community.
-  \[IPExtendedCommunityName \<String\>\]: Name of the IP Extended Community.
-  \[IPPrefixName \<String\>\]: Name of the IP Prefix.
-  \[Id \<String\>\]: Resource identity path
-  \[InternalNetworkName \<String\>\]: Name of the Internal Network.
-  \[InternetGatewayName \<String\>\]: Name of the Internet Gateway.
-  \[InternetGatewayRuleName \<String\>\]: Name of the Internet Gateway rule.
-  \[L2IsolationDomainName \<String\>\]: Name of the L2 Isolation Domain.
-  \[L3IsolationDomainName \<String\>\]: Name of the L3 Isolation Domain.
-  \[NeighborGroupName \<String\>\]: Name of the Neighbor Group.
-  \[NetworkDeviceName \<String\>\]: Name of the Network Device.
-  \[NetworkDeviceSkuName \<String\>\]: Name of the Network Device SKU.
-  \[NetworkFabricControllerName \<String\>\]: Name of the Network Fabric Controller.
-  \[NetworkFabricName \<String\>\]: Name of the Network Fabric.
-  \[NetworkFabricSkuName \<String\>\]: Name of the Network Fabric SKU.
-  \[NetworkInterfaceName \<String\>\]: Name of the Network Interface.
-  \[NetworkPacketBrokerName \<String\>\]: Name of the Network Packet Broker.
-  \[NetworkRackName \<String\>\]: Name of the Network Rack.
-  \[NetworkTapName \<String\>\]: Name of the Network Tap.
-  \[NetworkTapRuleName \<String\>\]: Name of the Network Tap Rule.
-  \[NetworkToNetworkInterconnectName \<String\>\]: Name of the Network to Network Interconnect.
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[RoutePolicyName \<String\>\]: Name of the Route Policy.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-The value must be an UUID.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabriccontroller](https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabriccontroller)
-

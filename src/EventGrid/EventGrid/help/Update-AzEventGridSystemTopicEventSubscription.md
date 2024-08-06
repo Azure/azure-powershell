@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
 online version: https://learn.microsoft.com/powershell/module/az.eventgrid/update-azeventgridsystemtopiceventsubscription
 schema: 2.0.0
@@ -8,115 +8,96 @@ schema: 2.0.0
 # Update-AzEventGridSystemTopicEventSubscription
 
 ## SYNOPSIS
-Update the properties of an Event Grid System topic event subscription.
+Update an existing event subscription of a system topic.
 
 ## SYNTAX
 
-### TopicNameParameterSet (Default)
-```
-Update-AzEventGridSystemTopicEventSubscription [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### SystemTopicEventSuscriptionParameterSet
+### UpdateExpanded (Default)
 ```
 Update-AzEventGridSystemTopicEventSubscription -EventSubscriptionName <String> -ResourceGroupName <String>
- -SystemTopicName <String> [-DeadLetterEndpoint <String>] [-DeliveryAttributeMapping <Hashtable[]>]
- [-Endpoint <String>] [-EndpointType <String>] [-Label <String[]>] [-StorageQueueMessageTtl <Int64>]
- [-AdvancedFilter <Hashtable[]>] [-AdvancedFilteringOnArray] [-IncludedEventType <String[]>]
- [-SubjectBeginsWith <String>] [-SubjectEndsWith <String>] [-SubjectCaseSensitive]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] -SystemTopicName <String> [-DeadLetterWithResourceIdentityType <String>]
+ [-DeadLetterWithResourceIdentityUserAssignedIdentity <String>]
+ [-DeliveryWithResourceIdentityDestination <IEventSubscriptionDestination>]
+ [-DeliveryWithResourceIdentityType <String>] [-DeliveryWithResourceIdentityUserAssignedIdentity <String>]
+ [-Destination <IEventSubscriptionDestination>] [-EventDeliverySchema <String>] [-ExpirationTimeUtc <DateTime>]
+ [-FilterAdvancedFilter <IAdvancedFilter[]>] [-FilterEnableAdvancedFilteringOnArray]
+ [-FilterIncludedEventType <String[]>] [-FilterIsSubjectCaseSensitive] [-FilterSubjectBeginsWith <String>]
+ [-FilterSubjectEndsWith <String>] [-Label <String[]>] [-RetryPolicyEventTimeToLiveInMinute <Int32>]
+ [-RetryPolicyMaxDeliveryAttempt <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzEventGridSystemTopicEventSubscription -EventSubscriptionName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -SystemTopicName <String> -JsonString <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzEventGridSystemTopicEventSubscription -EventSubscriptionName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -SystemTopicName <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentitySystemTopicExpanded
+```
+Update-AzEventGridSystemTopicEventSubscription -EventSubscriptionName <String>
+ -SystemTopicInputObject <IEventGridIdentity> [-DeadLetterWithResourceIdentityType <String>]
+ [-DeadLetterWithResourceIdentityUserAssignedIdentity <String>]
+ [-DeliveryWithResourceIdentityDestination <IEventSubscriptionDestination>]
+ [-DeliveryWithResourceIdentityType <String>] [-DeliveryWithResourceIdentityUserAssignedIdentity <String>]
+ [-Destination <IEventSubscriptionDestination>] [-EventDeliverySchema <String>] [-ExpirationTimeUtc <DateTime>]
+ [-FilterAdvancedFilter <IAdvancedFilter[]>] [-FilterEnableAdvancedFilteringOnArray]
+ [-FilterIncludedEventType <String[]>] [-FilterIsSubjectCaseSensitive] [-FilterSubjectBeginsWith <String>]
+ [-FilterSubjectEndsWith <String>] [-Label <String[]>] [-RetryPolicyEventTimeToLiveInMinute <Int32>]
+ [-RetryPolicyMaxDeliveryAttempt <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzEventGridSystemTopicEventSubscription -InputObject <IEventGridIdentity>
+ [-DeadLetterWithResourceIdentityType <String>] [-DeadLetterWithResourceIdentityUserAssignedIdentity <String>]
+ [-DeliveryWithResourceIdentityDestination <IEventSubscriptionDestination>]
+ [-DeliveryWithResourceIdentityType <String>] [-DeliveryWithResourceIdentityUserAssignedIdentity <String>]
+ [-Destination <IEventSubscriptionDestination>] [-EventDeliverySchema <String>] [-ExpirationTimeUtc <DateTime>]
+ [-FilterAdvancedFilter <IAdvancedFilter[]>] [-FilterEnableAdvancedFilteringOnArray]
+ [-FilterIncludedEventType <String[]>] [-FilterIsSubjectCaseSensitive] [-FilterSubjectBeginsWith <String>]
+ [-FilterSubjectEndsWith <String>] [-Label <String[]>] [-RetryPolicyEventTimeToLiveInMinute <Int32>]
+ [-RetryPolicyMaxDeliveryAttempt <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update the properties of an Event Grid System topic event subscription. This can be used to update the filter, destination, or labels of an existing event subscription.
+Update an existing event subscription of a system topic.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Update an existing event subscription of a system topic.
 ```powershell
-Update-AzEventGridSystemTopicEventSubscription -EventSubscriptionName ES1 -SystemTopicName Topic1 -ResourceGroupName MyResourceGroupName -Endpoint https://requestb.in/1kxxoui1
+$obj = New-AzEventGridWebHookEventSubscriptionDestinationObject -EndpointUrl "https://azpsweb.azurewebsites.net/api/updates"
+Update-AzEventGridSystemTopicEventSubscription -EventSubscriptionName azps-evnetsub -ResourceGroupName azps_test_group_eventgrid -SystemTopicName azps-systopic -FilterIsSubjectCaseSensitive:$false -FilterSubjectBeginsWith "ExamplePrefix" -FilterSubjectEndsWith "ExampleSuffix" -Destination $obj
 ```
 
-Updates the endpoint of the event subscription \`ES1\` for system topic \`Topic1\` in resource group \`MyResourceGroupName\` to \`https://requestb.in/1kxxoui1\`
-
-### Example 2
-```powershell
-$labels = "Finance", "HR"
-Update-AzEventGridSystemTopicEventSubscription -EventSubscriptionName ES1 -SystemTopicName Topic1 -ResourceGroupName MyResourceGroupName -Label $labels
+```output
+Name          ResourceGroupName
+----          -----------------
+azps-evnetsub azps_test_group_eventgrid
 ```
 
-Updates the properties of the event subscription \`ES1\` for system topic \`Topic1\` in \`MyResourceGroupName\` with the new labels $labels.
-
-### Example 3
-```powershell
-Update-AzEventGridSystemTopicEventSubscription -EventSubscriptionName ES1 -SystemTopicName Topic1 -ResourceGroupName MyResourceGroupName -Endpoint https://requestb.in/1kxxoui1 -SubjectEndsWith "jpg"
-```
-
-Updates the properties of the event subscription \`ES1\` for system topic \`Topic1\` in \`MyResourceGroupName\` with new endpoint \`https://requestb.in/1kxxoui1\` and the new SubjectEndsWith filter as \`jpg\`
+Update an existing event subscription of a system topic.
 
 ## PARAMETERS
 
-### -AdvancedFilter
-Advanced filter that specifies an array of multiple Hashtable values that are used for the attribute-based filtering.
-Each Hashtable value has the following keys-value info: Operation, Key and Value or Values.
-Operator can be one of the following values: NumberIn, NumberNotIn, NumberLessThan, NumberGreaterThan, NumberLessThanOrEquals, NumberGreaterThanOrEquals, BoolEquals, StringIn, StringNotIn, StringBeginsWith, StringEndsWith or StringContains.
-Key represents the payload property where the advanced filtering policies are applied.
-Finally, Value or Values represent the value or set of values to be matched.
-This can be a single value of the corresponding type or an array of values.
-As an example of the advanced filter parameters: $AdvancedFilters=@($AdvFilter1, $AdvFilter2) where $AdvFilter1=@{operator="NumberIn"; key="Data.Key1"; Values=@(1,2)} and $AdvFilter2=@{operator="StringBringsWith"; key="Subject"; Values=@("SubjectPrefix1","SubjectPrefix2")}
-
-```yaml
-Type: System.Collections.Hashtable[]
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -AdvancedFilteringOnArray
-The presence of this parameter denotes that advanced filtering on arrays is enabled
+### -AsJob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DeadLetterEndpoint
-The endpoint used for storing undelivered events.
-Specify the Azure resource ID of a Storage blob container.
-For example: /subscriptions/\[SubscriptionId\]/resourceGroups/\[ResourceGroupName\]/providers/Microsoft.Storage/storageAccounts/\[StorageAccountName\]/blobServices/default/containers/\[ContainerName\].
-
-```yaml
-Type: System.String
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
 
 Required: False
 Position: Named
@@ -125,197 +106,431 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DeliveryAttributeMapping
-The delivery attribute mappings for this system topic event subscription.
-Each delivery attribute mapping should contain following two mandatory fields : Name and Type.
-The Type can either be 'Static' or 'Dynamic'.
-If the type is 'Static' then properties 'Value' and 'IsSecret' are required.
-If the type is 'Dynamic' then property 'SourceField' is required.
-An example of the DynamicAttributeMapping parameters: $DeliveryAttributeMapping=@($DeliveryAttributeMapping1, $DeliveryAttributeMapping2) where $DeliveryAttributeMapping1=@{Name="Name1"; Type="Static"; Values="value"; IsSecret="false"} and $DeliveryAttributeMapping2=@{Name="Name2"; Type="Dynamic"; SourceField="data.prop1"}
-
-```yaml
-Type: System.Collections.Hashtable[]
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Endpoint
-Event subscription destination endpoint.
-This can be a webhook URL, or the Azure resource ID of an EventHub, storage queue, hybridconnection, servicebusqueue, servicebustopic or azurefunction.
-For example, the resource ID for a hybrid connection takes the following form: /subscriptions/\[Azure Subscription ID\]/resourceGroups/\[ResourceGroupName\]/providers/Microsoft.Relay/namespaces/\[NamespaceName\]/hybridConnections/\[HybridConnectionName\].
-It is expected that the destination endpoint to be created and available for use before executing any Event Grid cmdlets.
+### -DeadLetterWithResourceIdentityType
+The type of managed identity used.
+The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
+The type 'None' will remove any identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySystemTopicExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EndpointType
-Endpoint Type.
-This can be webhook, eventhub, storagequeue, hybridconnection, servicebusqueue, servicebustopic or azurefunction.
-Default value is webhook.
+### -DeadLetterWithResourceIdentityUserAssignedIdentity
+The user identity associated with the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySystemTopicExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeliveryWithResourceIdentityDestination
+Information about the destination where events have to be delivered for the event subscription.Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventSubscriptionDestination
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySystemTopicExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeliveryWithResourceIdentityType
+The type of managed identity used.
+The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
+The type 'None' will remove any identity.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySystemTopicExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeliveryWithResourceIdentityUserAssignedIdentity
+The user identity associated with the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySystemTopicExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Destination
+Information about the destination where events have to be delivered for the event subscription.Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventSubscriptionDestination
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySystemTopicExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EventDeliverySchema
+The event delivery schema for the event subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySystemTopicExpanded, UpdateViaIdentityExpanded
+Aliases: DeliverySchema
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -EventSubscriptionName
-EventGrid event subscription name.
+Name of the event subscription to be created.
+Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentitySystemTopicExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IncludedEventType
-Filter that specifies a list of event types to include.
-If not specified, all event types (for the custom topics and domains) or default event types (for other topic types) will be included.
+### -ExpirationTimeUtc
+Information about the expiration time for the event subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
-Aliases:
+Type: System.DateTime
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySystemTopicExpanded, UpdateViaIdentityExpanded
+Aliases: ExpirationDate
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FilterAdvancedFilter
+An array of advanced filters that are used for filtering event subscriptions.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IAdvancedFilter[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySystemTopicExpanded, UpdateViaIdentityExpanded
+Aliases: AdvancedFilter
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FilterEnableAdvancedFilteringOnArray
+Allows advanced filters to be evaluated against an array of values instead of expecting a singular value.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySystemTopicExpanded, UpdateViaIdentityExpanded
+Aliases: AdvancedFilteringOnArray
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FilterIncludedEventType
+A list of applicable event types that need to be part of the event subscription.
+If it is desired to subscribe to all default event types, set the IncludedEventTypes to null.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySystemTopicExpanded, UpdateViaIdentityExpanded
+Aliases: IncludedEventType
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FilterIsSubjectCaseSensitive
+Specifies if the SubjectBeginsWith and SubjectEndsWith properties of the filtershould be compared in a case sensitive manner.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySystemTopicExpanded, UpdateViaIdentityExpanded
+Aliases: SubjectCaseSensitive
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FilterSubjectBeginsWith
+An optional string to filter events for an event subscription based on a resource path prefix.The format of this depends on the publisher of the events.Wildcard characters are not supported in this path.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySystemTopicExpanded, UpdateViaIdentityExpanded
+Aliases: SubjectBeginsWith
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FilterSubjectEndsWith
+An optional string to filter events for an event subscription based on a resource path suffix.Wildcard characters are not supported in this path.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySystemTopicExpanded, UpdateViaIdentityExpanded
+Aliases: SubjectEndsWith
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Label
-Labels for the event subscription.
+List of user defined labels.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySystemTopicExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Aliases: ResourceGroup
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RetryPolicyEventTimeToLiveInMinute
+Time To Live (in minutes) for events.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySystemTopicExpanded, UpdateViaIdentityExpanded
+Aliases: EventTtl
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RetryPolicyMaxDeliveryAttempt
+Maximum number of delivery retry attempts for events.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySystemTopicExpanded, UpdateViaIdentityExpanded
+Aliases: MaxDeliveryAttempt
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SystemTopicInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: UpdateViaIdentitySystemTopicExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -StorageQueueMessageTtl
-The time in milliseconds for time to live of a storage queue message
-
-```yaml
-Type: System.Int64
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SubjectBeginsWith
-Filter that specifies that only events matching the specified subject prefix will be included.
-If not specified, events with all subject prefixes will be included.
-
-```yaml
-Type: System.String
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SubjectCaseSensitive
-Filter that specifies that the subject field should be compared in a case sensitive manner.
-If not specified, subject will be compared in a case insensitive manner.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SubjectEndsWith
-Filter that specifies that only events matching the specified subject suffix will be included.
-If not specified, events with all subject suffixes will be included.
-
-```yaml
-Type: System.String
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -SystemTopicName
-EventGrid topic name.
+Name of the system topic.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -355,19 +570,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.String[]
-
-### System.Int64
-
-### System.Collections.Hashtable[]
-
-### System.Management.Automation.SwitchParameter
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventSubscription
 
 ## NOTES
 

@@ -340,7 +340,12 @@ function New-AzStackHCIVMImage{
                 }
                
             } catch {
-                Write-Error $_.Exception.Message -ErrorAction Stop
+                $e = $_
+                if ($e.FullyQualifiedErrorId -match "MissingAzureKubernetesMapping" ){
+                    Write-Error "An older version of the Arc VM cluster extension is installed on your cluster. Please downgrade the Az.StackHCIVm version to 1.0.1 to proceed." -ErrorAction Stop
+                } else {
+                    Write-Error $e.Exception.Message -ErrorAction Stop
+                }
             }
 
         
@@ -397,7 +402,12 @@ function New-AzStackHCIVMImage{
                 }
                
             } catch {
-                Write-Error $_.Exception.Message -ErrorAction Stop
+                $e = $_
+                if ($e.FullyQualifiedErrorId -match "MissingAzureKubernetesMapping" ){
+                    Write-Error "An older version of the Arc VM cluster extension is installed on your cluster. Please downgrade the Az.StackHCIVm version to 1.0.1 to proceed." -ErrorAction Stop
+                } else {
+                    Write-Error $e.Exception.Message -ErrorAction Stop
+                }
             }
 
 
@@ -405,8 +415,16 @@ function New-AzStackHCIVMImage{
 
         if ($PSCmdlet.ParameterSetName -eq "GalleryImage")
         {
-           
-            Az.StackHCIVM.internal\New-AzStackHCIVMGalleryImage @PSBoundParameters
+            try{
+                Az.StackHCIVM.internal\New-AzStackHCIVMGalleryImage -ErrorAction Stop @PSBoundParameters 
+            } catch {
+                $e = $_
+                if ($e.FullyQualifiedErrorId -match "MissingAzureKubernetesMapping" ){
+                    Write-Error "An older version of the Arc VM cluster extension is installed on your cluster. Please downgrade the Az.StackHCIVm version to 1.0.1 to proceed." -ErrorAction Stop
+                } else {
+                    Write-Error $e.Exception.Message -ErrorAction Stop
+                }
+            }
         }
 
        

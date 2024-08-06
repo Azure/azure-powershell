@@ -17,7 +17,8 @@ Lists directories and files for a path.
 ```
 Get-AzStorageFile [-ShareName] <String> [[-Path] <String>] [-ExcludeExtendedInfo] [-DisAllowTrailingDot]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### Share
@@ -25,7 +26,7 @@ Get-AzStorageFile [-ShareName] <String> [[-Path] <String>] [-ExcludeExtendedInfo
 Get-AzStorageFile [-Share] <CloudFileShare> [-ShareClient <ShareClient>] [[-Path] <String>]
  [-ExcludeExtendedInfo] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Directory
@@ -33,7 +34,7 @@ Get-AzStorageFile [-Share] <CloudFileShare> [-ShareClient <ShareClient>] [[-Path
 Get-AzStorageFile [-Directory] <CloudFileDirectory> [-ShareDirectoryClient <ShareDirectoryClient>]
  [[-Path] <String>] [-ExcludeExtendedInfo] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -194,6 +195,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ServerTimeoutPerRequest
 Specifies the service-side timeout interval, in seconds, for a request.
 If the specified interval elapses before the service processes the request, the Storage service returns an error.
@@ -303,5 +319,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzStorageFile](./Remove-AzStorageFile.md)
 
 [Set-AzStorageFileContent](./Set-AzStorageFileContent.md)
-
-

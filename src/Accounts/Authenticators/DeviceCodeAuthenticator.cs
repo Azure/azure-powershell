@@ -53,6 +53,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 TenantId = tenantId,
                 TokenCachePersistenceOptions = tokenCacheProvider.GetTokenCachePersistenceOptions(),
             };
+            options.DisableInstanceDiscovery = deviceCodeParameters.DisableInstanceDiscovery ?? options.DisableInstanceDiscovery;
             var codeCredential = new DeviceCodeCredential(options);
 
             TracingAdapter.Information($"{DateTime.Now:T} - [DeviceCodeAuthenticator] Calling DeviceCodeCredential.AuthenticateAsync - TenantId:'{options.TenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}'");

@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.ManagedServices-help.xml
 Module Name: Az.ManagedServices
-online version: https://learn.microsoft.com/powershell/module/az.ManagedServices/new-AzManagedServicesEligibleApproverObject
+online version: https://learn.microsoft.com/powershell/module/Az.ManagedServices/new-AzManagedServicesEligibleApproverObject
 schema: 2.0.0
 ---
 
@@ -38,7 +38,7 @@ Creates Azure Lighthouse eligible authorization approver object.
 ## PARAMETERS
 
 ### -PrincipalId
-The identifier of the Microsoft Entra principal.
+The identifier of the Azure Active Directory principal.
 
 ```yaml
 Type: System.String
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrincipalIdDisplayName
-The display name of the Microsoft Entra principal.
+The display name of the Azure Active Directory principal.
 
 ```yaml
 Type: System.String
@@ -77,7 +77,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleApprover
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

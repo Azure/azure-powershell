@@ -8,25 +8,25 @@ schema: 2.0.0
 # Start-AzStorageMoverJobDefinition
 
 ## SYNOPSIS
-Requests an Agent to start a new instance of this Job Definition, generating a new Job Run resource.
+Creates a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.
 
 ## SYNTAX
 
 ### Start (Default)
 ```
 Start-AzStorageMoverJobDefinition -JobDefinitionName <String> -ProjectName <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -StorageMoverName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StartViaIdentity
 ```
-Start-AzStorageMoverJobDefinition -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Start-AzStorageMoverJobDefinition -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Requests an Agent to start a new instance of this Job Definition, generating a new Job Run resource.
+Creates a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.
 
 ## EXAMPLES
 

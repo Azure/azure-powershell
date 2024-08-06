@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ADDomainServices-help.xml
 Module Name: Az.ADDomainServices
 online version: https://learn.microsoft.com/powershell/module/az.addomainservices/new-azaddomainservice
 schema: 2.0.0
@@ -14,8 +14,8 @@ If the specific service already exists, then any patchable properties will be up
 ## SYNTAX
 
 ```
-New-AzADDomainService -Name <String> -ResourceGroupName <String> -DomainName <String>
- -ReplicaSet <IReplicaSet[]> [-SubscriptionId <String>] [-DomainConfigurationType <String>]
+New-AzADDomainService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -DomainName <String> -ReplicaSet <IReplicaSet[]> [-DomainConfigurationType <String>]
  [-DomainSecuritySettingNtlmV1 <NtlmV1>] [-DomainSecuritySettingSyncKerberosPassword <SyncKerberosPasswords>]
  [-DomainSecuritySettingSyncNtlmPassword <SyncNtlmPasswords>]
  [-DomainSecuritySettingSyncOnPremPassword <SyncOnPremPasswords>] [-DomainSecuritySettingTlsV1 <TlsV1>]
@@ -25,7 +25,8 @@ New-AzADDomainService -Name <String> -ResourceGroupName <String> -DomainName <St
  [-Location <String>] [-NotificationSettingAdditionalRecipient <String[]>]
  [-NotificationSettingNotifyDcAdmin <NotifyDcAdmins>]
  [-NotificationSettingNotifyGlobalAdmin <NotifyGlobalAdmins>] [-ResourceForest <String>] [-Sku <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,15 +49,15 @@ youriADdomain youriAddomain.com westus   Enterprise
 
 Create a new ADDomainService
 
-### Example 2: Create new ADDomainService with certificate 
+### Example 2: Create new ADDomainService with certificate
 ```powershell
 # Variables
 $replicaSet = New-AzADDomainServiceReplicaSet -Location westus -SubnetId /subscriptions/********-****-****-****-**********/resourceGroups/yishitest/providers/Microsoft.Network/virtualNetworks/aadds-vnet/subnets/default\
 $certificateBytes = Get-Content "certificate.pfx" -AsByteStream
 $base64String = [System.Convert]::ToBase64String($certificateBytes) 
-$ldaps_pfx_pass = "MyStrongPassword"
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 
-New-AzADDomainService -Name youriADdomain -ResourceGroupName youriAddomain -DomainName youriAddomain.com -ReplicaSet $replicaSet -LdapSettingLdaps Enabled -LdapSettingPfxCertificate $base64String -LdapSettingPfxCertificatePassword $($ldaps_pfx_pass | ConvertTo-SecureString -Force -AsPlainText)
+New-AzADDomainService -Name youriADdomain -ResourceGroupName youriAddomain -DomainName youriAddomain.com -ReplicaSet $replicaSet -LdapSettingLdaps Enabled -LdapSettingPfxCertificate $base64String -LdapSettingPfxCertificatePassword $password
 ```
 
 ```output
@@ -536,23 +537,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-FORESTTRUST <IForestTrust[]>: List of settings for Resource Forest
-  - `[FriendlyName <String>]`: Friendly Name
-  - `[RemoteDnsIP <String>]`: Remote Dns ips
-  - `[TrustDirection <String>]`: Trust Direction
-  - `[TrustPassword <SecureString>]`: Trust Password
-  - `[TrustedDomainFqdn <String>]`: Trusted Domain FQDN
-
-REPLICASET <IReplicaSet[]>: List of ReplicaSets
-  - `[Location <String>]`: Virtual network location
-  - `[SubnetId <String>]`: The name of the virtual network that Domain Services will be deployed on. The id of the subnet that Domain Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
-
 ## RELATED LINKS
-

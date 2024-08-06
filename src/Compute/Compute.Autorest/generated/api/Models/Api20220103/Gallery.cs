@@ -16,10 +16,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IValidates
     {
         /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResource"
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResource"
         /// />
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.Resource();
+        private Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.Resource();
+
+        /// <summary>Contains info about whether community gallery sharing is enabled.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inlined)]
+        public bool? CommunityGalleryInfoCommunityGalleryEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).CommunityGalleryInfoCommunityGalleryEnabled; }
+
+        /// <summary>End-user license agreement for community gallery image.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inlined)]
+        public string CommunityGalleryInfoEula { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).CommunityGalleryInfoEula; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).CommunityGalleryInfoEula = value ?? null; }
+
+        /// <summary>Community gallery public name list.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inlined)]
+        public string[] CommunityGalleryInfoPublicName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).CommunityGalleryInfoPublicName; }
+
+        /// <summary>
+        /// The prefix of the gallery name that will be displayed publicly. Visible to all users.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inlined)]
+        public string CommunityGalleryInfoPublicNamePrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).CommunityGalleryInfoPublicNamePrefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).CommunityGalleryInfoPublicNamePrefix = value ?? null; }
+
+        /// <summary>
+        /// Community gallery publisher support email. The email address of the publisher. Visible to all users.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inlined)]
+        public string CommunityGalleryInfoPublisherContact { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).CommunityGalleryInfoPublisherContact; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).CommunityGalleryInfoPublisherContact = value ?? null; }
+
+        /// <summary>The link to the publisher website. Visible to all users.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inlined)]
+        public string CommunityGalleryInfoPublisherUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).CommunityGalleryInfoPublisherUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).CommunityGalleryInfoPublisherUri = value ?? null; }
 
         /// <summary>
         /// The description of this Shared Image Gallery resource. This property is updatable.
@@ -29,7 +57,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
 
         /// <summary>Resource Id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inherited)]
-        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)__resource).Id; }
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Id; }
 
         /// <summary>
         /// The unique name of the Shared Image Gallery. This name is generated automatically by Azure.
@@ -39,16 +67,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
 
         /// <summary>Resource location</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)__resource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)__resource).Location = value ; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Location = value ; }
 
-        /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)__resource).Id = value; }
+        /// <summary>Internal Acessors for CommunityGalleryInfoCommunityGalleryEnabled</summary>
+        bool? Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryInternal.CommunityGalleryInfoCommunityGalleryEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).CommunityGalleryInfoCommunityGalleryEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).CommunityGalleryInfoCommunityGalleryEnabled = value; }
 
-        /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)__resource).Name = value; }
-
-        /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)__resource).Type = value; }
+        /// <summary>Internal Acessors for CommunityGalleryInfoPublicName</summary>
+        string[] Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryInternal.CommunityGalleryInfoPublicName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).CommunityGalleryInfoPublicName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).CommunityGalleryInfoPublicName = value; }
 
         /// <summary>Internal Acessors for Identifier</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryIdentifier Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryInternal.Identifier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).Identifier; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).Identifier = value; }
@@ -65,6 +90,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
         /// <summary>Internal Acessors for SharingProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfile Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryInternal.SharingProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).SharingProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).SharingProfile = value; }
 
+        /// <summary>Internal Acessors for SharingProfileCommunityGalleryInfo</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ICommunityGalleryInfo Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryInternal.SharingProfileCommunityGalleryInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).SharingProfileCommunityGalleryInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).SharingProfileCommunityGalleryInfo = value; }
+
         /// <summary>Internal Acessors for SharingProfileGroup</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileGroup[] Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryInternal.SharingProfileGroup { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).SharingProfileGroup; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).SharingProfileGroup = value; }
 
@@ -77,9 +105,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
         /// <summary>Internal Acessors for SoftDeletePolicy</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISoftDeletePolicy Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryInternal.SoftDeletePolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).SoftDeletePolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).SoftDeletePolicy = value; }
 
+        /// <summary>Internal Acessors for Id</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Id = value; }
+
+        /// <summary>Internal Acessors for Name</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Name = value; }
+
+        /// <summary>Internal Acessors for Type</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Type = value; }
+
         /// <summary>Resource name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)__resource).Name; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Name; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryProperties _property;
@@ -91,10 +128,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
         /// <summary>The provisioning state, which only appears in the response.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.GalleryProvisioningState? ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).ProvisioningState; }
-
-        /// <summary>Information of community gallery if current gallery is shared to community.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IAny SharingProfileCommunityGalleryInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).SharingProfileCommunityGalleryInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryPropertiesInternal)Property).SharingProfileCommunityGalleryInfo = value ?? null /* model class */; }
 
         /// <summary>A list of sharing profile groups.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inlined)]
@@ -123,11 +156,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
 
         /// <summary>Resource tags</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)__resource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)__resource).Tag = value ?? null /* model class */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Tag = value ?? null /* model class */; }
 
         /// <summary>Resource type</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inherited)]
-        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal)__resource).Type; }
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Type; }
 
         /// <summary>Creates an new <see cref="Gallery" /> instance.</summary>
         public Gallery()
@@ -150,8 +183,60 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
     /// Specifies information about the Shared Image Gallery that you want to create or update.
     public partial interface IGallery :
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResource
+        Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResource
     {
+        /// <summary>Contains info about whether community gallery sharing is enabled.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"Contains info about whether community gallery sharing is enabled.",
+        SerializedName = @"communityGalleryEnabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? CommunityGalleryInfoCommunityGalleryEnabled { get;  }
+        /// <summary>End-user license agreement for community gallery image.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"End-user license agreement for community gallery image.",
+        SerializedName = @"eula",
+        PossibleTypes = new [] { typeof(string) })]
+        string CommunityGalleryInfoEula { get; set; }
+        /// <summary>Community gallery public name list.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"Community gallery public name list.",
+        SerializedName = @"publicNames",
+        PossibleTypes = new [] { typeof(string) })]
+        string[] CommunityGalleryInfoPublicName { get;  }
+        /// <summary>
+        /// The prefix of the gallery name that will be displayed publicly. Visible to all users.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The prefix of the gallery name that will be displayed publicly. Visible to all users.",
+        SerializedName = @"publicNamePrefix",
+        PossibleTypes = new [] { typeof(string) })]
+        string CommunityGalleryInfoPublicNamePrefix { get; set; }
+        /// <summary>
+        /// Community gallery publisher support email. The email address of the publisher. Visible to all users.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Community gallery publisher support email. The email address of the publisher. Visible to all users.",
+        SerializedName = @"publisherContact",
+        PossibleTypes = new [] { typeof(string) })]
+        string CommunityGalleryInfoPublisherContact { get; set; }
+        /// <summary>The link to the publisher website. Visible to all users.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The link to the publisher website. Visible to all users.",
+        SerializedName = @"publisherUri",
+        PossibleTypes = new [] { typeof(string) })]
+        string CommunityGalleryInfoPublisherUri { get; set; }
         /// <summary>
         /// The description of this Shared Image Gallery resource. This property is updatable.
         /// </summary>
@@ -180,14 +265,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.GalleryProvisioningState) })]
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.GalleryProvisioningState? ProvisioningState { get;  }
-        /// <summary>Information of community gallery if current gallery is shared to community.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Information of community gallery if current gallery is shared to community.",
-        SerializedName = @"communityGalleryInfo",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IAny) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IAny SharingProfileCommunityGalleryInfo { get; set; }
         /// <summary>A list of sharing profile groups.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
         Required = false,
@@ -237,8 +314,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
     }
     /// Specifies information about the Shared Image Gallery that you want to create or update.
     internal partial interface IGalleryInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceInternal
+        Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal
     {
+        /// <summary>Contains info about whether community gallery sharing is enabled.</summary>
+        bool? CommunityGalleryInfoCommunityGalleryEnabled { get; set; }
+        /// <summary>End-user license agreement for community gallery image.</summary>
+        string CommunityGalleryInfoEula { get; set; }
+        /// <summary>Community gallery public name list.</summary>
+        string[] CommunityGalleryInfoPublicName { get; set; }
+        /// <summary>
+        /// The prefix of the gallery name that will be displayed publicly. Visible to all users.
+        /// </summary>
+        string CommunityGalleryInfoPublicNamePrefix { get; set; }
+        /// <summary>
+        /// Community gallery publisher support email. The email address of the publisher. Visible to all users.
+        /// </summary>
+        string CommunityGalleryInfoPublisherContact { get; set; }
+        /// <summary>The link to the publisher website. Visible to all users.</summary>
+        string CommunityGalleryInfoPublisherUri { get; set; }
         /// <summary>
         /// The description of this Shared Image Gallery resource. This property is updatable.
         /// </summary>
@@ -256,7 +349,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
         /// <summary>Profile for gallery sharing to subscription or tenant</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfile SharingProfile { get; set; }
         /// <summary>Information of community gallery if current gallery is shared to community.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IAny SharingProfileCommunityGalleryInfo { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ICommunityGalleryInfo SharingProfileCommunityGalleryInfo { get; set; }
         /// <summary>A list of sharing profile groups.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileGroup[] SharingProfileGroup { get; set; }
         /// <summary>

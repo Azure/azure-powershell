@@ -33,7 +33,8 @@ Get-AzVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [-OSUpgr
 
 ### ResourceIdParameterSet
 ```
-Get-AzVmss [-ResourceId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVmss [-ResourceId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -255,7 +256,7 @@ $vmssSize = 'Standard_D4s_v3';
 $vmssName1 = 'vmss1' + $rgname;
 $imageName = "Win2019Datacenter";
 $adminUsername = <Username>;
-$adminPassword = <Password> | ConvertTo-SecureString -AsPlainText -Force;
+$adminPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force;
 $cred = New-Object System.Management.Automation.PSCredential($adminUsername, $adminPassword);
 
 $result = New-AzVmss -ResourceGroupName $rgname -Credential $cred -VMScaleSetName $vmssName1 -ImageName $imageName;
@@ -340,7 +341,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -402,5 +403,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Stop-AzVmss](./Stop-AzVmss.md)
 
 [Update-AzVmss](./Update-AzVmss.md)
-
-

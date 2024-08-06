@@ -25,7 +25,7 @@ New-AzSecurityDefenderCspmGcpOfferingObject [-CiemDiscoveryAzureActiveDirectoryA
  [-MdcContainerImageAssessmentEnabled <Boolean>]
  [-MdcContainerImageAssessmentServiceAccountEmailAddress <String>]
  [-MdcContainerImageAssessmentWorkloadIdentityProviderId <String>] [-VMScannerEnabled <Boolean>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +33,7 @@ Create an in-memory object for DefenderCspmGcpOffering.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create new DefenderCspmGcpOffering object
 ```powershell
 $emailSuffix = "myproject.iam.gserviceaccount.com"
 New-AzSecurityDefenderCspmGcpOfferingObject `
@@ -44,13 +44,35 @@ New-AzSecurityDefenderCspmGcpOfferingObject `
     -CiemDiscoveryServiceAccountEmailAddress "microsoft-defender-ciem@$emailSuffix" -CiemDiscoveryAzureActiveDirectoryAppName "mciem-gcp-oidc-app" -CiemDiscoveryWorkloadIdentityProviderId "ciem-discovery"
 ```
 
+```output
+CiemDiscoveryAzureActiveDirectoryAppName                    : mciem-gcp-oidc-app
+CiemDiscoveryServiceAccountEmailAddress                     : microsoft-defender-ciem@myproject.iam.gserviceaccount.com
+CiemDiscoveryWorkloadIdentityProviderId                     : ciem-discovery
+ConfigurationExclusionTag                                   : {
+                                                                "key": "value"
+                                                              }
+ConfigurationScanningMode                                   : Default
+DataSensitivityDiscoveryEnabled                             : True
+DataSensitivityDiscoveryServiceAccountEmailAddress          : mdc-data-sec-posture-storage@myproject.iam.gserviceaccount.com
+DataSensitivityDiscoveryWorkloadIdentityProviderId          : data-security-posture-storage
+Description                                                 : 
+MdcContainerAgentlessDiscoveryK8SEnabled                    : True
+MdcContainerAgentlessDiscoveryK8SServiceAccountEmailAddress : mdc-containers-k8s-operator@myproject.iam.gserviceaccount.com
+MdcContainerAgentlessDiscoveryK8SWorkloadIdentityProviderId : containers
+MdcContainerImageAssessmentEnabled                          : True
+MdcContainerImageAssessmentServiceAccountEmailAddress       : mdc-containers-artifact-assess@myproject.iam.gserviceaccount.com
+MdcContainerImageAssessmentWorkloadIdentityProviderId       : containers
+OfferingType                                                : DefenderCspmGcp
+VMScannerEnabled                                            : True
+```
+
 ## PARAMETERS
 
 ### -CiemDiscoveryAzureActiveDirectoryAppName
 the azure active directory app name used of authenticating against GCP workload identity federation.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -65,7 +87,7 @@ Accept wildcard characters: False
 The service account email address in GCP for CIEM discovery offering.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -80,7 +102,7 @@ Accept wildcard characters: False
 The GCP workload identity provider id for CIEM discovery offering.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -93,10 +115,9 @@ Accept wildcard characters: False
 
 ### -ConfigurationExclusionTag
 VM tags that indicates that VM should not be scanned.
-.
 
 ```yaml
-Type: IDefenderCspmGcpOfferingVMScannersConfigurationExclusionTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmGcpOfferingVMScannersConfigurationExclusionTags
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +132,7 @@ Accept wildcard characters: False
 The scanning mode for the VM scan.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -126,13 +147,13 @@ Accept wildcard characters: False
 Is Microsoft Defender Data Sensitivity discovery enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -141,7 +162,7 @@ Accept wildcard characters: False
 The service account email address in GCP for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -156,7 +177,7 @@ Accept wildcard characters: False
 The workload identity provider id in GCP for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -171,13 +192,13 @@ Accept wildcard characters: False
 Is Microsoft Defender container agentless discovery enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -186,7 +207,7 @@ Accept wildcard characters: False
 The service account email address in GCP for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -201,7 +222,7 @@ Accept wildcard characters: False
 The workload identity provider id in GCP for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -216,13 +237,13 @@ Accept wildcard characters: False
 Is Microsoft Defender container image assessment enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -231,7 +252,7 @@ Accept wildcard characters: False
 The service account email address in GCP for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -246,9 +267,24 @@ Accept wildcard characters: False
 The workload identity provider id in GCP for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -261,13 +297,13 @@ Accept wildcard characters: False
 Is Microsoft Defender for Server VM scanning enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -280,15 +316,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.DefenderCspmGcpOffering
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-CONFIGURATIONEXCLUSIONTAG \<IDefenderCspmGcpOfferingVMScannersConfigurationExclusionTags\>: VM tags that indicates that VM should not be scanned.
-  \[(Any) \<String\>\]: This indicates any property can be added to this object.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefendercspmgcpofferingobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefendercspmgcpofferingobject)

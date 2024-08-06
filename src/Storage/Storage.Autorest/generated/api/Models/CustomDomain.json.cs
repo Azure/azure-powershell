@@ -65,8 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
-            {_useSubDomainName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("useSubDomainName"), out var __jsonUseSubDomainName) ? (bool?)__jsonUseSubDomainName : UseSubDomainName;}
+            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
+            {_useSubDomainName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("useSubDomainName"), out var __jsonUseSubDomainName) ? (bool?)__jsonUseSubDomainName : _useSubDomainName;}
             AfterFromJson(json);
         }
 

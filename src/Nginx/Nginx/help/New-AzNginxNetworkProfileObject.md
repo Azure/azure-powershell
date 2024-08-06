@@ -1,7 +1,7 @@
 ---
 external help file: Az.Nginx-help.xml
 Module Name: Az.Nginx
-online version: https://learn.microsoft.com/powershell/module/az.Nginx/new-AzNginxNetworkProfileObject
+online version: https://learn.microsoft.com/powershell/module/Az.Nginx/new-AzNginxNetworkProfileObject
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Create an in-memory object for NginxNetworkProfile.
 
 ```
 New-AzNginxNetworkProfileObject [-FrontEndIPConfiguration <INginxFrontendIPConfiguration>]
- [-NetworkInterfaceConfiguration <INginxNetworkInterfaceConfiguration>] [<CommonParameters>]
+ [-NetworkInterfaceConfiguration <INginxNetworkInterfaceConfiguration>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +42,7 @@ Create an in-memory object for NginxNetworkProfile.
 To construct, see NOTES section for FRONTENDIPCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxFrontendIPConfiguration
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxFrontendIPConfiguration
 Parameter Sets: (All)
 Aliases:
 
@@ -56,7 +57,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for NETWORKINTERFACECONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxNetworkInterfaceConfiguration
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkInterfaceConfiguration
 Parameter Sets: (All)
 Aliases:
 
@@ -74,26 +75,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxNetworkProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxNetworkProfile
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`FRONTENDIPCONFIGURATION <INginxFrontendIPConfiguration>`: 
-  - `[PrivateIPAddress <INginxPrivateIPAddress[]>]`: 
-    - `[PrivateIPAddress <String>]`: 
-    - `[PrivateIPAllocationMethod <NginxPrivateIPAllocationMethod?>]`: 
-    - `[SubnetId <String>]`: 
-  - `[PublicIPAddress <INginxPublicIPAddress[]>]`: 
-    - `[Id <String>]`: 
-
-`NETWORKINTERFACECONFIGURATION <INginxNetworkInterfaceConfiguration>`: 
-  - `[SubnetId <String>]`: 
 
 ## RELATED LINKS

@@ -1,0 +1,85 @@
+{
+  "resourceType": "standbyVirtualMachinePools",
+  "apiVersion": "2023-12-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.standbypool"
+  },
+  "commands": [
+    {
+      "name": "Get-AzStandbyVMPool",
+      "description": "Get a StandbyVirtualMachinePoolResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.standbypool/get-azstandbyvmpool"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a StandbyVirtualMachinePoolResource",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.standbyVirtualMachinePoolName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzStandbyVMPool",
+      "description": "Delete a StandbyVirtualMachinePoolResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.standbypool/remove-azstandbyvmpool"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a StandbyVirtualMachinePoolResource",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.standbyVirtualMachinePoolName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

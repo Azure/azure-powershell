@@ -83,7 +83,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "IpConfigurationParameterValues",
             HelpMessage = "One or more Public IP Addresses. The Public IP addresses must use Standard SKU and must belong to the same resource group as the Firewall.")]
         [ValidateNotNullOrEmpty]
         public PSPublicIpAddress[] PublicIpAddress { get; set; }
@@ -302,6 +301,16 @@ namespace Microsoft.Azure.Commands.Network
                     throw new ArgumentException("The Route Server is not supported on AZFW_Hub SKU Firewalls");
                 }
 
+                if (this.VirtualNetwork != null)
+                {
+                    throw new ArgumentException("Virtual Network is not supported on AZFW_Hub sku Firewalls");
+                }
+
+                if (this.PublicIpAddress != null && this.HubIPAddress != null)
+                {
+                    throw new ArgumentException("Public IP address can only be provided as part of PublicIps or HubIPAddresses. Not both at the same time.");
+                }
+
                 firewall = new PSAzureFirewall()
                 {
                     Name = this.Name,
@@ -315,6 +324,11 @@ namespace Microsoft.Azure.Commands.Network
                     EnableFatFlowLogging = (this.EnableFatFlowLogging.IsPresent ? "True" : null),
                     EnableUDPLogOptimization = (this.EnableUDPLogOptimization.IsPresent ? "True" : null)
                 };
+
+                if (this.PublicIpAddress != null) 
+                {
+                    firewall.AddIpAddressesForByopipHubFirewall(this.PublicIpAddress);
+                }
             }
             else
             {

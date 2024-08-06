@@ -101,7 +101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 return;
             }
-            {_sizeGiB = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber>("sizeGiB"), out var __jsonSizeGiB) ? (long?)__jsonSizeGiB : SizeGiB;}
+            {_sizeGiB = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber>("sizeGiB"), out var __jsonSizeGiB) ? (long?)__jsonSizeGiB : _sizeGiB;}
             AfterFromJson(json);
         }
     }

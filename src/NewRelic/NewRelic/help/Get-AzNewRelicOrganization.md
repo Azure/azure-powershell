@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NewRelic-help.xml
 Module Name: Az.NewRelic
 online version: https://learn.microsoft.com/powershell/module/az.newrelic/get-aznewrelicorganization
 schema: 2.0.0
@@ -13,7 +13,7 @@ List all the existing organizations
 ## SYNTAX
 
 ```
-Get-AzNewRelicOrganization -Location <String> -UserEmail <String> [-SubscriptionId <String[]>]
+Get-AzNewRelicOrganization [-SubscriptionId <String[]>] -Location <String> -UserEmail <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ List all the existing organizations
 
 ### Example 1: List all the existing organizations
 ```powershell
-Get-AzNewRelicOrganization -Location eastus -UserEmail v-jiaji@outlook.com 
+Get-AzNewRelicOrganization -Location eastus -UserEmail user1@outlook.com
 ```
 
 List all the existing organizations in New Relic
@@ -99,11 +99,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.IOrganizationResource
+### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IOrganizationResource
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

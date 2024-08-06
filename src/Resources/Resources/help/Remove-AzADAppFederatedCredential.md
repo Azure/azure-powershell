@@ -14,7 +14,8 @@ Delete navigation property federatedIdentityCredentials for applications
 
 ```
 Remove-AzADAppFederatedCredential -ApplicationObjectId <String> -FederatedCredentialId <String>
- [-IfMatch <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IfMatch <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

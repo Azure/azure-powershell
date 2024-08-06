@@ -19,6 +19,16 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.4
+* Fixed the placeholder in psd1 file.
+
+## Version 1.0.3
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 1.0.2
+* Updated API to 2024-01-01 version.
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 1.0.1
 * Reported image download progress
 

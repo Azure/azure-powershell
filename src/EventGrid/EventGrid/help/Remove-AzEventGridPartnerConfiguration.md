@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
 online version: https://learn.microsoft.com/powershell/module/az.eventgrid/remove-azeventgridpartnerconfiguration
 schema: 2.0.0
@@ -8,54 +8,32 @@ schema: 2.0.0
 # Remove-AzEventGridPartnerConfiguration
 
 ## SYNOPSIS
-Removes an Azure Event Grid Partner Configuration.
+Delete existing partner configuration.
 
 ## SYNTAX
 
-### ResourceGroupNameParameterSet (Default)
 ```
-Remove-AzEventGridPartnerConfiguration [-ResourceGroupName] <String> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### PartnerConfigurationInputObjectParameterSet
-```
-Remove-AzEventGridPartnerConfiguration [-InputObject] <PSPartnerConfiguration> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzEventGridPartnerConfiguration -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Removes an Azure Event Grid Partner Configuration.
+Delete existing partner configuration.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Delete existing partner configuration.
 ```powershell
-Remove-AzEventGridPartnerConfiguration -ResourceGroupName MyResourceGroupName
+Remove-AzEventGridPartnerConfiguration -ResourceGroupName azps_test_group_eventgrid
 ```
 
-Removes the Event Grid partner configuration in resource group \`MyResourceGroupName\`.
+Delete existing partner configuration.
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Indicates that the cmdlet does not prompt you for confirmation.
-By default, this cmdlet prompts you to confirm that you want to delete the resource
+### -AsJob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -69,23 +47,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-PartnerConfiguration object.
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.EventGrid.Models.PSPartnerConfiguration
-Parameter Sets: PartnerConfigurationInputObjectParameterSet
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -100,17 +94,33 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupNameParameterSet
+Parameter Sets: (All)
 Aliases: ResourceGroup
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -149,10 +159,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### System.String
-
-### Microsoft.Azure.Commands.EventGrid.Models.PSPartnerConfiguration
 
 ## OUTPUTS
 

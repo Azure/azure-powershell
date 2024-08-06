@@ -1,3 +1,3 @@
 ### Thanks to our community contributors
-* @omahs, Fix typos (#23759)
-* @Petri-X, Update New-AzVM.md for one line break (#23577)
+* Paolo Frigo (@PaoloFrigo), Update New-AzStorageAccount.md (#25493)
+* @Skatterbrainz, Update Import-AzAutomationRunbook.md (#25587)

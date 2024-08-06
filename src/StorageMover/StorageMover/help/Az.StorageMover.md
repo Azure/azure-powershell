@@ -32,6 +32,9 @@ Gets a Project resource.
 ### [New-AzStorageMover](New-AzStorageMover.md)
 Creates or updates a top-level Storage Mover resource.
 
+### [New-AzStorageMoverAzSmbFileShareEndpoint](New-AzStorageMoverAzSmbFileShareEndpoint.md)
+Creates a Smb file share endpoint resource, which represents a data transfer source or destination.
+
 ### [New-AzStorageMoverAzStorageContainerEndpoint](New-AzStorageMoverAzStorageContainerEndpoint.md)
 Creates an AzStorageContainer endpoint resource, which represents a data transfer source or destination.
 
@@ -47,8 +50,8 @@ Creates or updates a Project resource, which is a logical grouping of related jo
 ### [New-AzStorageMoverSmbEndpoint](New-AzStorageMoverSmbEndpoint.md)
 Creates an SMB endpoint resource, which represents a data transfer source or destination.
 
-### [New-AzStorageMoverSmbFileShareEndpoint](New-AzStorageMoverSmbFileShareEndpoint.md)
-Creates a Smb file share endpoint resource, which represents a data transfer source or destination.
+### [New-AzStorageMoverUploadLimitWeeklyRecurrenceObject](New-AzStorageMoverUploadLimitWeeklyRecurrenceObject.md)
+Create an in-memory object for UploadLimitWeeklyRecurrence.
 
 ### [Remove-AzStorageMover](Remove-AzStorageMover.md)
 Deletes a Storage Mover resource.
@@ -63,7 +66,7 @@ Deletes a Job Definition resource.
 Deletes a Project resource.
 
 ### [Start-AzStorageMoverJobDefinition](Start-AzStorageMoverJobDefinition.md)
-Requests an Agent to start a new instance of this Job Definition, generating a new Job Run resource.
+Creates a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.
 
 ### [Stop-AzStorageMoverJobDefinition](Stop-AzStorageMoverJobDefinition.md)
 Requests the Agent of any active instance of this Job Definition to stop.
@@ -77,6 +80,10 @@ Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverAgent](Update-AzStorageMoverAgent.md)
 Creates or updates an Agent resource.
+
+### [Update-AzStorageMoverAzSmbFileShareEndpoint](Update-AzStorageMoverAzSmbFileShareEndpoint.md)
+Updates properties for a SMB file share endpoint resource.
+Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverAzStorageContainerEndpoint](Update-AzStorageMoverAzStorageContainerEndpoint.md)
 Updates properties for an AzStorageContainer endpoint resource.
@@ -96,9 +103,5 @@ Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverSmbEndpoint](Update-AzStorageMoverSmbEndpoint.md)
 Updates properties for a SMB endpoint resource.
-Properties not specified in the request body will be unchanged.
-
-### [Update-AzStorageMoverSmbFileShareEndpoint](Update-AzStorageMoverSmbFileShareEndpoint.md)
-Updates properties for a SMB file share endpoint resource.
 Properties not specified in the request body will be unchanged.
 

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>A list of NSX Port Mirroring</summary>
+    /// <summary>The response of a WorkloadNetworkPortMirroring list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(WorkloadNetworkPortMirroringListTypeConverter))]
     public partial class WorkloadNetworkPortMirroringList
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             AfterDeserializePSObject(content);
         }
     }
-    /// A list of NSX Port Mirroring
+    /// The response of a WorkloadNetworkPortMirroring list operation.
     [System.ComponentModel.TypeConverter(typeof(WorkloadNetworkPortMirroringListTypeConverter))]
     public partial interface IWorkloadNetworkPortMirroringList
 

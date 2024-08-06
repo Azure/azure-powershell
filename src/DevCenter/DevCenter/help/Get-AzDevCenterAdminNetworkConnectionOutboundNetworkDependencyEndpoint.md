@@ -15,7 +15,8 @@ These FQDNs should be allowed for outbound access in order for the Dev Box servi
 
 ```
 Get-AzDevCenterAdminNetworkConnectionOutboundNetworkDependencyEndpoint -NetworkConnectionName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,10 +103,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IOutboundEnvironmentEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IOutboundEnvironmentEndpoint
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

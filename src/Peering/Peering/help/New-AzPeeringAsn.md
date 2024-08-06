@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Peering-help.xml
 Module Name: Az.Peering
 online version: https://learn.microsoft.com/powershell/module/az.peering/new-azpeeringasn
 schema: 2.0.0
@@ -14,8 +14,8 @@ Creates a new peer ASN or updates an existing peer ASN with the specified name u
 
 ```
 New-AzPeeringAsn -Name <String> [-SubscriptionId <String>] [-PeerAsn <Int32>]
- [-PeerContactDetail <IContactDetail[]>] [-PeerName <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-PeerContactDetail <IContactDetail[]>] [-PeerName <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +41,8 @@ Create a new peering asn with the specified properties
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -173,17 +174,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`PEERCONTACTDETAIL <IContactDetail[]>`: The contact details of the peer.
-  - `[Email <String>]`: The e-mail address of the contact.
-  - `[Phone <String>]`: The phone number of the contact.
-  - `[Role <Role?>]`: The role of the contact.
-
 ## RELATED LINKS
-

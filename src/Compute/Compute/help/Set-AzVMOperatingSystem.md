@@ -51,7 +51,8 @@ Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [[-ComputerName] <St
 ```
 Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Linux] [[-ComputerName] <String>]
  [[-Credential] <PSCredential>] [[-CustomData] <String>] [-PatchMode <String>] [-DisablePasswordAuthentication]
- [-AssessmentMode <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AssessmentMode <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +63,7 @@ You can specify logon credentials, computer name, and operating system type.
 
 ### Example 1: Set operating system properties for a new virtual machine
 ```powershell
-$SecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force
+$SecurePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $Credential = New-Object System.Management.Automation.PSCredential ("FullerP", $SecurePassword); 
 $AvailabilitySet = Get-AzAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03" 
 $VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1" -AvailabilitySetID $AvailabilitySet.Id
@@ -90,7 +91,7 @@ The command uses variables assigned in previous commands for some parameters.
 
 ### Example 2: Set operating system properties for a new virtual machine with hot patching enabled
 ```powershell
-$SecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force
+$SecurePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $Credential = New-Object System.Management.Automation.PSCredential ("FullerP", $SecurePassword); 
 $AvailabilitySet = Get-AzAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03" 
 $VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1" -AvailabilitySetID $AvailabilitySet.Id
@@ -119,7 +120,7 @@ The command enables Hotpatching on the virtual machine.
 
 ### Example 3: Set operating system properties for a new Linux virtual machine
 ```powershell
-$SecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force
+$SecurePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $Credential = New-Object System.Management.Automation.PSCredential ("FullerP", $SecurePassword); 
 $AvailabilitySet = Get-AzAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03" 
 $VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1" -AvailabilitySetID $AvailabilitySet.Id
@@ -453,5 +454,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVM](./Get-AzVM.md)
 
 [New-AzVMConfig](./New-AzVMConfig.md)
-
-

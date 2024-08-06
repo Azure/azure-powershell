@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Profile.CommonModule;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Serialization;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Sanitizer;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
@@ -31,7 +32,6 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common
 {
-
     using GetEventData = Func<EventArgs>;
     using PipelineChangeDelegate = Action<Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>, Task<HttpResponseMessage>>>;
     using SignalDelegate = Func<string, CancellationToken, Func<EventArgs>, Task>;
@@ -66,7 +66,6 @@ namespace Microsoft.Azure.Commands.Common
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
         }
 
-
         public AzModule(ICommandRuntime runtime, IEventStore eventHandler)
         {
             _runtime = runtime;
@@ -84,10 +83,9 @@ namespace Microsoft.Azure.Commands.Common
         {
             _deferredEvents = store;
             _runtime = runtime;
-            _logger = new AdalLogger(_deferredEvents.GetDebugLogger()); ;
+            _logger = new AdalLogger(_deferredEvents.GetDebugLogger());
             _telemetry = provider;
         }
-
 
         /// <summary>
         /// Called when the module is loading. Allows adding HTTP pipeline steps that will always be present.
@@ -366,6 +364,43 @@ namespace Microsoft.Azure.Commands.Common
             }
         }
 
+        public void SanitizerHandler(object sanitizingObject, string telemetryId)
+        {
+            if (AzureSession.Instance.TryGetComponent<IOutputSanitizer>(nameof(IOutputSanitizer), out var outputSanitizer))
+            {
+                _telemetry.TryGetValue(telemetryId, out var qos);
+                if (outputSanitizer != null
+                    && outputSanitizer.RequireSecretsDetection
+                    && !outputSanitizer.IgnoredModules.Contains(qos?.ModuleName)
+                    && !outputSanitizer.IgnoredCmdlets.Contains(qos?.CommandName))
+                {
+                    outputSanitizer.Sanitize(sanitizingObject, out var telemetry);
+                    qos?.SanitizerInfo?.Combine(telemetry);
+                }
+            }
+        }
+
+        public Dictionary<string, string> GetTelemetryInfo(string telemetryId)
+        {
+            Dictionary<string, string> telemetryInfo = null;
+            if (_telemetry.TryGetValue(telemetryId, out var qos))
+            {
+                if (qos?.SanitizerInfo?.DetectedProperties?.Count > 0)
+                {
+                    var showSecretsWarning = qos.SanitizerInfo.ShowSecretsWarning && qos.SanitizerInfo.SecretsDetected;
+                    var sanitizedProperties = string.Join(", ", qos.SanitizerInfo.DetectedProperties);
+                    var invocationName = qos.InvocationName;
+                    telemetryInfo = new Dictionary<string, string>
+                    {
+                        { "ShowSecretsWarning", showSecretsWarning.ToString().ToLower() },
+                        { "SanitizedProperties", sanitizedProperties },
+                        { "InvocationName", invocationName }
+                    };
+                }
+            }
+
+            return telemetryInfo;
+        }
 
         /// <summary>
         /// Free resources associated with this instance
@@ -393,7 +428,6 @@ namespace Microsoft.Azure.Commands.Common
             }
         }
 
-
         private async void DrainDeferredEvents(SignalDelegate signal, CancellationToken token)
         {
             EventData data;
@@ -403,5 +437,4 @@ namespace Microsoft.Azure.Commands.Common
             }
         }
     }
-
 }

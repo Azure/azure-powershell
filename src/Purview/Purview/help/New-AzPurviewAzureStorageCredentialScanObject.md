@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureStorageCredentialScanObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureStorageCredentialScanObject
 schema: 2.0.0
 ---
 
@@ -187,7 +187,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageCredentialScan
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

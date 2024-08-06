@@ -35,14 +35,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// operating system disk. Possible values include: 'Local'</param>
         /// <param name="placement">Specifies the ephemeral disk placement for
         /// operating system disk. Possible values are: **CacheDisk,**
-        /// **ResourceDisk.** The defaulting behavior is: **CacheDisk** if one
-        /// is configured for the VM size otherwise **ResourceDisk** is used.
-        /// Refer to the VM size documentation for Windows VM at
+        /// **ResourceDisk,** **NvmeDisk.** The defaulting behavior is:
+        /// **CacheDisk** if one is configured for the VM size otherwise
+        /// **ResourceDisk** or **NvmeDisk** is used. Refer to the VM size
+        /// documentation for Windows VM at
         /// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and
         /// Linux VM at
         /// https://docs.microsoft.com/azure/virtual-machines/linux/sizes to
-        /// check which VM sizes exposes a cache disk. Possible values include:
-        /// 'CacheDisk', 'ResourceDisk'</param>
+        /// check which VM sizes exposes a cache disk. Minimum api-version for
+        /// NvmeDisk: 2024-03-01. Possible values include: 'CacheDisk',
+        /// 'ResourceDisk', 'NvmeDisk'</param>
         public DiffDiskSettings(string option = default(string), string placement = default(string))
         {
             Option = option;
@@ -64,15 +66,17 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <summary>
         /// Gets or sets specifies the ephemeral disk placement for operating
-        /// system disk. Possible values are: **CacheDisk,** **ResourceDisk.**
-        /// The defaulting behavior is: **CacheDisk** if one is configured for
-        /// the VM size otherwise **ResourceDisk** is used. Refer to the VM
-        /// size documentation for Windows VM at
+        /// system disk. Possible values are: **CacheDisk,** **ResourceDisk,**
+        /// **NvmeDisk.** The defaulting behavior is: **CacheDisk** if one is
+        /// configured for the VM size otherwise **ResourceDisk** or
+        /// **NvmeDisk** is used. Refer to the VM size documentation for
+        /// Windows VM at
         /// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and
         /// Linux VM at
         /// https://docs.microsoft.com/azure/virtual-machines/linux/sizes to
-        /// check which VM sizes exposes a cache disk. Possible values include:
-        /// 'CacheDisk', 'ResourceDisk'
+        /// check which VM sizes exposes a cache disk. Minimum api-version for
+        /// NvmeDisk: 2024-03-01. Possible values include: 'CacheDisk',
+        /// 'ResourceDisk', 'NvmeDisk'
         /// </summary>
         [JsonProperty(PropertyName = "placement")]
         public string Placement { get; set; }

@@ -21,7 +21,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Gets ASR vault settings information for the Recovery Services vault.
     /// </summary>
-    [CmdletOutputBreakingChangeWithVersion(typeof(ASRVaultSettings), "12.0.0", "7.0.0", DeprecatedOutputProperties = new string[] { "ResouceType" }, NewOutputProperties = new string[] { "ResourceType" })]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrVaultContext")]
     [OutputType(typeof(ASRVaultSettings))]
     [Alias(

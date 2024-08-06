@@ -16,7 +16,8 @@ Lists entities from users or get entity from users by key
 ```
 Get-AzADUser [-Count] [-Expand <String[]>] [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>]
  [-AppendSelected] [-Filter <String>] [-Orderby <String[]>] [-Search <String>] [-ConsistencyLevel <String>]
- [-DefaultProfile <PSObject>] [-CountVariable <String>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-CountVariable <String>]
+ [<CommonParameters>]
 ```
 
 ### MailParameterSet

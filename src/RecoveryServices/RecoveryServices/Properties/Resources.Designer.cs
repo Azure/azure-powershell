@@ -143,6 +143,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Immutability can only be locked when it is Unlocked(Enabled)..
+        /// </summary>
+        internal static string ImmutabilityCantBeLocked {
+            get {
+                return ResourceManager.GetString("ImmutabilityCantBeLocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Immutability State can&apos;t be updated once enabled and locked..
+        /// </summary>
+        internal static string ImmutabilityNotUnlocked {
+            get {
+                return ResourceManager.GetString("ImmutabilityNotUnlocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replication Provider {0} entered invalid for the current set of parameters..
         /// </summary>
         internal static string IncorrectReplicationProvider {
@@ -270,7 +288,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please provide the value for DisableAzureMonitorAlertsForJobFailure and DisableClassicAlerts parameters to configure alerts.
+        ///   Looks up a localized string similar to Please provide the value for DisableAzureMonitorAlertsForJobFailure, DisableClassicAlerts, DisableAzureMonitorAlertsForAllReplicationIssues, DisableAzureMonitorAlertsForAllReplicationIssues and DisableEmailNotificationsForSiteRecovery parameters to configure alerts.
         /// </summary>
         internal static string MissingParameterForAlerts {
             get {
@@ -374,6 +392,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string ProtectionEntityNotProtected {
             get {
                 return ResourceManager.GetString("ProtectionEntityNotProtected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Public Network Access is by default enabled for this vault and can be updated using Update-AzRecoveryServicesVault cmdlet.
+        /// </summary>
+        internal static string PublicNetworkAccessEnabledByDefault {
+            get {
+                return ResourceManager.GetString("PublicNetworkAccessEnabledByDefault", resourceCulture);
             }
         }
         
@@ -550,6 +577,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} is not protected via MUA, either protect or try without the Token parameter.
+        /// </summary>
+        internal static string UnexpectedParameterToken {
+            get {
+                return ResourceManager.GetString("UnexpectedParameterToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RecoveryService - Successfully uploaded the certificate.
         /// </summary>
         internal static string UploadedCertToIdmgmt {
@@ -673,39 +709,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string WaitingForCompletion {
             get {
                 return ResourceManager.GetString("WaitingForCompletion", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Immutability can only be locked when it is Unlocked(Enabled).
-        /// </summary>
-        internal static string ImmutabilityCantBeLocked
-        {
-            get
-            {
-                return ResourceManager.GetString("ImmutabilityCantBeLocked", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Immutability State can't be updated once enabled and locked.
-        /// </summary>
-        internal static string ImmutabilityNotUnlocked
-        {
-            get
-            {
-                return ResourceManager.GetString("ImmutabilityNotUnlocked", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Public Network Access is by default enabled for this vault and can be updated using Update-AzRecoveryServicesVault cmdlet.
-        /// </summary>
-        internal static string PublicNetworkAccessEnabledByDefault
-        {
-            get
-            {
-                return ResourceManager.GetString("PublicNetworkAccessEnabledByDefault", resourceCulture);
             }
         }
     }

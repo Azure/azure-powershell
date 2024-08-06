@@ -22,7 +22,8 @@ Get-AzDataMigrationSkuRecommendation [-OutputFolder <String>] [-TargetPlatform <
 
 ### ConfigFile
 ```
-Get-AzDataMigrationSkuRecommendation -ConfigFilePath <String> [-PassThru] [<CommonParameters>]
+Get-AzDataMigrationSkuRecommendation -ConfigFilePath <String> [-PassThru]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

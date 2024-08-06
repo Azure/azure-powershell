@@ -32,15 +32,57 @@ Properties not specified in the request body will be unchanged.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Update a Smb file share endpoint
+```powershell
 Update-AzStorageMoverAzSmbFileShareEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Description "updated endpoint"
 ```
 
-### EXAMPLE 2
+```output
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageMover/storageMovers/mystoragemover/endpoints/myendpoint
+Name                         : myendpoint
+Property                     : {
+                                 "endpointType": "AzureStorageSmbFileShare",
+                                 "description": "updated endpoint",
+                                 "provisioningState": "Succeeded",
+                                 "storageAccountResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myaccount",
+                                 "fileShareName": "testfs"
+                               }
+SystemDataCreatedAt          : 6/27/2023 4:30:13 AM
+SystemDataCreatedBy          : 00000000-0000-0000-0000-000000000000
+SystemDataCreatedByType      : Application
+SystemDataLastModifiedAt     : 7/13/2023 7:25:59 AM
+SystemDataLastModifiedBy     : 00000000-0000-0000-0000-000000000000
+SystemDataLastModifiedByType : Application
+Type                         : microsoft.storagemover/storagemovers/endpoints
 ```
+
+This command updates an Azure Storage SMB file share enpdoint's description by manual inputs.
+
+### Example 2: Update a Smb file share endpoint by pipeline
+```powershell
 Get-AzStorageMoverEndpoint -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Name "myendpoint" | Update-AzStorageMoverAzSmbFileShareEndpoint -Description "updated endpoint again"
 ```
+
+```output
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageMover/storageMovers/mystoragemover/endpoints/myendpoint
+Name                         : myendpoint
+Property                     : {
+                                 "endpointType": "AzureStorageSmbFileShare",
+                                 "description": "updated endpoint again",
+                                 "provisioningState": "Succeeded",
+                                 "storageAccountResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegorup/providers/Microsoft.Storage/storageAccounts/myaccount",
+                                 "fileShareName": "testfs"
+                               }
+SystemDataCreatedAt          : 6/27/2023 4:30:13 AM
+SystemDataCreatedBy          : 00000000-0000-0000-0000-000000000000
+SystemDataCreatedByType      : Application
+SystemDataLastModifiedAt     : 7/13/2023 8:21:51 AM
+SystemDataLastModifiedBy     : 00000000-0000-0000-0000-000000000000
+SystemDataLastModifiedByType : Application
+Type                         : microsoft.storagemover/storagemovers/endpoints
+```
+
+This command updates an Azure Storage SMB file share endpoint's description by pipeline.
 
 ## PARAMETERS
 
@@ -48,7 +90,7 @@ Get-AzStorageMoverEndpoint -ResourceGroupName "myresourcegroup" -StorageMoverNam
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -63,7 +105,7 @@ Accept wildcard characters: False
 A description for the endpoint.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -79,7 +121,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: IStorageMoverIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -94,7 +136,7 @@ Accept wildcard characters: False
 The name of the endpoint resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases: EndpointName
 
@@ -110,7 +152,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -125,7 +167,7 @@ Accept wildcard characters: False
 The name of the Storage Mover resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -140,13 +182,13 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -155,7 +197,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -171,7 +213,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -188,28 +230,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
 
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
+ALIASES
 
-INPUTOBJECT \<IStorageMoverIdentity\>: Identity Parameter
-  \[AgentName \<String\>\]: The name of the Agent resource.
-  \[EndpointName \<String\>\]: The name of the Endpoint resource.
-  \[Id \<String\>\]: Resource identity path
-  \[JobDefinitionName \<String\>\]: The name of the Job Definition resource.
-  \[JobRunName \<String\>\]: The name of the Job Run resource.
-  \[ProjectName \<String\>\]: The name of the Project resource.
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[StorageMoverName \<String\>\]: The name of the Storage Mover resource.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
+Update-AzStorageMoverSmbFileShareEndpoint
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverazsmbfileshareendpoint](https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverazsmbfileshareendpoint)
-

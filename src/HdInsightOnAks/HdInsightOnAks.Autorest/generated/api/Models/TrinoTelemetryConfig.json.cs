@@ -104,10 +104,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_hivecatalogName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("hivecatalogName"), out var __jsonHivecatalogName) ? (string)__jsonHivecatalogName : (string)HivecatalogName;}
-            {_hivecatalogSchema = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("hivecatalogSchema"), out var __jsonHivecatalogSchema) ? (string)__jsonHivecatalogSchema : (string)HivecatalogSchema;}
-            {_partitionRetentionInDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("partitionRetentionInDays"), out var __jsonPartitionRetentionInDays) ? (int?)__jsonPartitionRetentionInDays : PartitionRetentionInDay;}
-            {_path = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("path"), out var __jsonPath) ? (string)__jsonPath : (string)Path;}
+            {_hivecatalogName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("hivecatalogName"), out var __jsonHivecatalogName) ? (string)__jsonHivecatalogName : (string)_hivecatalogName;}
+            {_hivecatalogSchema = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("hivecatalogSchema"), out var __jsonHivecatalogSchema) ? (string)__jsonHivecatalogSchema : (string)_hivecatalogSchema;}
+            {_partitionRetentionInDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("partitionRetentionInDays"), out var __jsonPartitionRetentionInDays) ? (int?)__jsonPartitionRetentionInDays : _partitionRetentionInDay;}
+            {_path = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("path"), out var __jsonPath) ? (string)__jsonPath : (string)_path;}
             AfterFromJson(json);
         }
     }

@@ -75,14 +75,21 @@ namespace Microsoft.Azure.Commands.Batch
         [Alias("MaxTasksPerComputeNode")]
         public int? TaskSlotsPerNode { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The upgrade policy for the pool")]
+        [ValidateNotNullOrEmpty]
+        public PSUpgradePolicy UpgradePolicy { get; set; }
+
         [Parameter]
         [ValidateNotNullOrEmpty]
         public PSTaskSchedulingPolicy TaskSchedulingPolicy { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The user  defined tags to be associated with the Azure Batch Pool.When specified, these tags are propagated to the backing Azure resources associated with the pool.This property can only be specified when the Batch account was created with the poolAllocationMode property set to 'UserSubscription'.")]
+        [ValidateNotNullOrEmpty]
+        public IDictionary ResourceTag { get; set; }
+
         [Parameter]
         [ValidateNotNullOrEmpty]
         public IDictionary Metadata { get; set; }
-
         [Parameter]
         public SwitchParameter InterComputeNodeCommunicationEnabled { get; set; }
 
@@ -149,6 +156,7 @@ namespace Microsoft.Azure.Commands.Batch
                 AutoScaleFormula = this.AutoScaleFormula,
                 TaskSlotsPerNode = this.TaskSlotsPerNode,
                 TaskSchedulingPolicy = this.TaskSchedulingPolicy,
+                UpgradePolicy = this.UpgradePolicy,
                 Metadata = this.Metadata,
                 InterComputeNodeCommunicationEnabled = this.InterComputeNodeCommunicationEnabled.IsPresent,
                 StartTask = this.StartTask,
@@ -160,7 +168,8 @@ namespace Microsoft.Azure.Commands.Batch
                 UserAccounts = this.UserAccount,
                 ApplicationLicenses = this.ApplicationLicenses,
                 MountConfiguration = this.MountConfiguration,
-                TargetCommunicationMode = this.TargetNodeCommunicationMode
+                TargetCommunicationMode = this.TargetNodeCommunicationMode,
+                ResourceTags = this.ResourceTag,
             };
 
             if (ShouldProcess("AzureBatchPool"))

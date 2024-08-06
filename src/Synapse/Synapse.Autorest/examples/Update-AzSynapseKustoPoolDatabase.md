@@ -3,7 +3,9 @@
 $2ds = New-TimeSpan -Days 2
 $4ds = New-TimeSpan -Days 4
 Update-AzSynapseKustoPoolDatabase -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase -Kind ReadWrite -SoftDeletePeriod $4ds -HotCachePeriod $2ds -Location 'East US'
+```
 
+```output
 Kind      Location Name                                
 ----      -------- ----                                
 ReadWrite East US  testws/testkustopool/mykustodatabase
@@ -17,7 +19,9 @@ $database = Get-AzSynapseKustoPoolDatabase -ResourceGroupName testrg -WorkspaceN
 $2ds = New-TimeSpan -Days 2
 $4ds = New-TimeSpan -Days 4
 Update-AzSynapseKustoPoolDatabase -InputObject $database -Kind ReadWrite -SoftDeletePeriod $4ds -HotCachePeriod $2ds -Location 'East US'
+```
 
+```output
 Kind      Location Name                                
 ----      -------- ----                                
 ReadWrite East US  testws/testkustopool/mykustodatabase

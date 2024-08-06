@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.3.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 0.3.0
 * Added byDict parameter set for New-AzSapMonitorProviderInstance
 

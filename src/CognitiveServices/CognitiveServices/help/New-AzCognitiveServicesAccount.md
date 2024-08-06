@@ -44,7 +44,7 @@ specified type and SKU.
 
 ## EXAMPLES
 
-### 1:
+### Example 1:
 ```powershell
 New-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis -Type LUIS -SkuName S0 -Location 'WestUS'
 ```

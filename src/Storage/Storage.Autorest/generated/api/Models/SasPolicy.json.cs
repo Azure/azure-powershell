@@ -75,8 +75,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_sasExpirationPeriod = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("sasExpirationPeriod"), out var __jsonSasExpirationPeriod) ? (string)__jsonSasExpirationPeriod : (string)SasExpirationPeriod;}
-            {_expirationAction = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("expirationAction"), out var __jsonExpirationAction) ? (string)__jsonExpirationAction : (string)ExpirationAction;}
+            {_sasExpirationPeriod = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("sasExpirationPeriod"), out var __jsonSasExpirationPeriod) ? (string)__jsonSasExpirationPeriod : (string)_sasExpirationPeriod;}
+            {_expirationAction = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("expirationAction"), out var __jsonExpirationAction) ? (string)__jsonExpirationAction : (string)_expirationAction;}
             AfterFromJson(json);
         }
 

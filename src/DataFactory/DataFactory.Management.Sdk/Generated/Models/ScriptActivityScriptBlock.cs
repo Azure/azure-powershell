@@ -27,12 +27,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="text">The query text. Type: string (or Expression with resultType string).
         /// </param>
 
-        /// <param name="type">The type of the query. Type: string.
-        /// Possible values include: &#39;Query&#39;, &#39;NonQuery&#39;</param>
+        /// <param name="type">The type of the query. Please refer to the ScriptType for valid options.
+        /// Type: string (or Expression with resultType string).
+        /// </param>
 
         /// <param name="parameters">Array of script parameters. Type: array.
         /// </param>
-        public ScriptActivityScriptBlock(object text, string type, System.Collections.Generic.IList<ScriptActivityParameter> parameters = default(System.Collections.Generic.IList<ScriptActivityParameter>))
+        public ScriptActivityScriptBlock(object text, object type, System.Collections.Generic.IList<ScriptActivityParameter> parameters = default(System.Collections.Generic.IList<ScriptActivityParameter>))
 
         {
             this.Text = text;
@@ -55,10 +56,11 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public object Text {get; set; }
 
         /// <summary>
-        /// Gets or sets the type of the query. Type: string. Possible values include: &#39;Query&#39;, &#39;NonQuery&#39;
+        /// Gets or sets the type of the query. Please refer to the ScriptType for
+        /// valid options. Type: string (or Expression with resultType string).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; set; }
+        public object Type {get; set; }
 
         /// <summary>
         /// Gets or sets array of script parameters. Type: array.

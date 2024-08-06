@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Creates a cluster.
+Create a cluster.
 .Description
-Creates a cluster.
+Create a cluster.
 .Example
 # Create Simple Trino Cluster
 $clusterPoolName="{your cluster pool name}";
@@ -353,6 +353,7 @@ HDINSIGHTONAKSCLUSTER <ICluster>: The cluster.
   Location <String>: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
+  [AccessProfileEnableInternalIngress <Boolean?>]: Whether to create cluster using private IP instead of public IP. This property must be set at create time.
   [ApplicationLogStdErrorEnabled <Boolean?>]: True if stderror is enabled, otherwise false.
   [ApplicationLogStdOutEnabled <Boolean?>]: True if stdout is enabled, otherwise false.
   [AuthorizationProfileGroupId <List<String>>]: AAD group Ids authorized for data plane access.
@@ -361,6 +362,7 @@ HDINSIGHTONAKSCLUSTER <ICluster>: The cluster.
   [AutoscaleProfileEnabled <Boolean?>]: This indicates whether auto scale is enabled on HDInsight on AKS cluster.
   [AutoscaleProfileGracefulDecommissionTimeout <Int32?>]: This property is for graceful decommission timeout; It has a default setting of 3600 seconds before forced shutdown takes place. This is the maximal time to wait for running containers and applications to complete before transition a DECOMMISSIONING node into DECOMMISSIONED. The default value is 3600 seconds. Negative value (like -1) is handled as infinite timeout.
   [ClusterType <String>]: The type of cluster.
+  [ComputeProfileAvailabilityZone <List<String>>]: The list of Availability zones to use for AKS VMSS nodes.
   [ComputeProfileNode <List<INodeProfile>>]: The nodes definitions.
     Count <Int32>: The number of virtual machines.
     Type <String>: The node type.
@@ -369,9 +371,17 @@ HDINSIGHTONAKSCLUSTER <ICluster>: The cluster.
   [CoordinatorDebugPort <Int32?>]: The debug port.
   [CoordinatorDebugSuspend <Boolean?>]: The flag that if suspend debug or not.
   [CoordinatorHighAvailabilityEnabled <Boolean?>]: The flag that if enable coordinator HA, uses multiple coordinator replicas with auto failover, one per each head node. Default: true.
+  [DatabaseHost <String>]: The database URL
+  [DatabaseName <String>]: The database name
+  [DatabasePasswordSecretRef <String>]: Reference for the database password
+  [DatabaseUsername <String>]: The name of the database user
+  [DiskStorageDataDiskSize <Int32?>]: Managed Disk size in GB. The maximum supported disk size for Standard and Premium HDD/SSD is 32TB, except for Premium SSD v2, which supports up to 64TB.
+  [DiskStorageDataDiskType <String>]: Managed Disk Type.
+  [FlinkProfileDeploymentMode <String>]: A string property that indicates the deployment mode of Flink cluster. It can have one of the following enum values => Application, Session. Default value is Session
   [FlinkProfileNumReplica <Int32?>]: The number of task managers.
   [HistoryServerCpu <Single?>]: The required CPU.
   [HistoryServerMemory <Int64?>]: The required memory in MB, Container memory will be 110 percentile
+  [HiveMetastoreDbConnectionAuthenticationMode <String>]: The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
   [HiveMetastoreDbConnectionPasswordSecret <String>]: Secret reference name from secretsProfile.secrets containing password for database connection.
   [HiveMetastoreDbConnectionUrl <String>]: Connection string for hive metastore database.
   [HiveMetastoreDbConnectionUserName <String>]: User name for database connection.
@@ -380,6 +390,15 @@ HDINSIGHTONAKSCLUSTER <ICluster>: The cluster.
   [IdentityProfileMsiResourceId <String>]: ResourceId of the MSI.
   [JobManagerCpu <Single?>]: The required CPU.
   [JobManagerMemory <Int64?>]: The required memory in MB, Container memory will be 110 percentile
+  [JobSpecArg <String>]: A string property representing additional JVM arguments for the Flink job. It should be space separated value.
+  [JobSpecEntryClass <String>]: A string property that specifies the entry class for the Flink job. If not specified, the entry point is auto-detected from the flink job jar package.
+  [JobSpecJarName <String>]: A string property that represents the name of the job JAR.
+  [JobSpecJobJarDirectory <String>]: A string property that specifies the directory where the job JAR is located.
+  [JobSpecSavePointName <String>]: A string property that represents the name of the savepoint for the Flink job
+  [JobSpecUpgradeMode <String>]: A string property that indicates the upgrade mode to be performed on the Flink job. It can have one of the following enum values => STATELESS_UPDATE, UPDATE, LAST_STATE_UPDATE.
+  [KafkaProfileEnableKRaft <Boolean?>]: Expose Kafka cluster in KRaft mode.
+  [KafkaProfileEnablePublicEndpoint <Boolean?>]: Expose worker nodes as public endpoints.
+  [KafkaProfileRemoteStorageUri <String>]: Fully qualified path of Azure Storage container used for Tiered Storage.
   [LoadBasedConfigCooldownPeriod <Int32?>]: This is a cool down period, this is a time period in seconds, which determines the amount of time that must elapse between a scaling activity started by a rule and the start of the next scaling activity, regardless of the rule that triggers it. The default value is 300 seconds.
   [LoadBasedConfigMaxNode <Int32?>]: User needs to set the maximum number of nodes for load based scaling, the load based scaling will use this to scale up and scale down between minimum and maximum number of nodes.
   [LoadBasedConfigMinNode <Int32?>]: User needs to set the minimum number of nodes for load based scaling, the load based scaling will use this to scale up and scale down between minimum and maximum number of nodes.
@@ -392,6 +411,12 @@ HDINSIGHTONAKSCLUSTER <ICluster>: The cluster.
     ScalingMetric <String>: Metrics name for individual workloads. For example: cpu
   [LogAnalyticProfileEnabled <Boolean?>]: True if log analytics is enabled for the cluster, otherwise false.
   [LogAnalyticProfileMetricsEnabled <Boolean?>]: True if metrics are enabled, otherwise false.
+  [ManagedIdentityProfileIdentityList <List<IManagedIdentitySpec>>]: The list of managed identity.
+    ClientId <String>: ClientId of the managed identity.
+    ObjectId <String>: ObjectId of the managed identity.
+    ResourceId <String>: ResourceId of the managed identity.
+    Type <String>: The type of managed identity.
+  [MetastoreSpecDbConnectionAuthenticationMode <String>]: The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
   [MetastoreSpecDbName <String>]: The database name.
   [MetastoreSpecDbPasswordSecretName <String>]: The secret name which contains the database user password.
   [MetastoreSpecDbServerHost <String>]: The database server host.
@@ -399,8 +424,6 @@ HDINSIGHTONAKSCLUSTER <ICluster>: The cluster.
   [MetastoreSpecKeyVaultId <String>]: The key vault resource id.
   [MetastoreSpecThriftUrl <String>]: The thrift url.
   [ProfileClusterVersion <String>]: Version with 3/4 part.
-  [ProfileKafkaProfile <IClusterProfileKafkaProfile>]: Kafka cluster profile.
-    [(Any) <Object>]: This indicates any property can be added to this object.
   [ProfileLlapProfile <IClusterProfileLlapProfile>]: LLAP cluster profile.
     [(Any) <Object>]: This indicates any property can be added to this object.
   [ProfileOssVersion <String>]: Version with three part.
@@ -414,7 +437,7 @@ HDINSIGHTONAKSCLUSTER <ICluster>: The cluster.
     [TimeoutInMinute <Int32?>]: Timeout duration for the script action in minutes.
   [ProfileServiceConfigsProfile <List<IClusterServiceConfigsProfile>>]: The service configs profiles.
     Config <List<IClusterServiceConfig>>: List of service configs.
-      Component <String>: Name of the component the config files should apply to.
+      ComponentName <String>: Name of the component the config files should apply to.
       File <List<IClusterConfigFile>>: List of Config Files.
         FileName <String>: Configuration file name.
         [Content <String>]: Free form content of the entire configuration file.
@@ -426,6 +449,14 @@ HDINSIGHTONAKSCLUSTER <ICluster>: The cluster.
   [ProfileStubProfile <IClusterProfileStubProfile>]: Stub cluster profile.
     [(Any) <Object>]: This indicates any property can be added to this object.
   [PrometheuProfileEnabled <Boolean?>]: Enable Prometheus for cluster or not.
+  [RangerAdmin <List<String>>]: List of usernames that should be marked as ranger admins. These usernames should match the user principal name (UPN) of the respective AAD users.
+  [RangerAuditStorageAccount <String>]: Azure storage location of the blobs. MSI should have read/write access to this Storage account.
+  [RangerPluginProfileEnabled <Boolean?>]: Enable Ranger for cluster or not.
+  [RangerUsersyncEnabled <Boolean?>]: Denotes whether usersync service should be enabled
+  [RangerUsersyncGroup <List<String>>]: List of groups that should be synced. These group names should match the object id of the respective AAD groups.
+  [RangerUsersyncMode <String>]: User & groups can be synced automatically or via a static list that's refreshed.
+  [RangerUsersyncUser <List<String>>]: List of user names that should be synced. These usernames should match the User principal name of the respective AAD users.
+  [RangerUsersyncUserMappingLocation <String>]: Azure storage location of a mapping file that lists user & group associations.
   [ScheduleBasedConfigDefaultCount <Int32?>]: Setting default node count of current schedule configuration. Default node count specifies the number of nodes which are default when an specified scaling operation is executed (scale up/scale down)
   [ScheduleBasedConfigSchedule <List<ISchedule>>]: This specifies the schedules where scheduled based Autoscale to be enabled, the user has a choice to set multiple rules within the schedule across days and times (start/end).
     Count <Int32>: User has to set the node count anticipated at end of the scaling operation of the set current schedule configuration, format is integer.
@@ -435,14 +466,15 @@ HDINSIGHTONAKSCLUSTER <ICluster>: The cluster.
   [ScheduleBasedConfigTimeZone <String>]: User has to specify the timezone on which the schedule has to be set for schedule based autoscale configuration.
   [SecretProfileKeyVaultResourceId <String>]: Name of the user Key Vault where all the cluster specific user secrets are stored.
   [SecretProfileSecret <List<ISecretReference>>]: Properties of Key Vault secret.
-    KeyVaultObjectName <String>: Object identifier name of the secret in key vault.
     ReferenceName <String>: Reference name of the secret to be used in service configs.
+    SecretName <String>: Object identifier name of the secret in key vault.
     Type <String>: Type of key vault object: secret, key or certificate.
     [Version <String>]: Version of the secret in key vault.
   [SparkProfileDefaultStorageUrl <String>]: The default storage URL.
   [SparkProfileUserPluginsSpecPlugin <List<ISparkUserPlugin>>]: Spark user plugins.
     Path <String>: Fully qualified path to the folder containing the plugins.
   [SshProfileCount <Int32?>]: Number of ssh pods per cluster.
+  [SshProfileVMSize <String>]: The virtual machine SKU.
   [StorageHivecatalogName <String>]: Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.
   [StorageHivecatalogSchema <String>]: Schema of the above catalog to use, to mount query logs as external tables, if not specified tables will be mounted under schema trinologs.
   [StoragePartitionRetentionInDay <Int32?>]: Retention period for query log table partitions, this doesn't have any affect on actual data.
@@ -453,10 +485,11 @@ HDINSIGHTONAKSCLUSTER <ICluster>: The cluster.
   [TaskManagerMemory <Int64?>]: The required memory in MB, Container memory will be 110 percentile
   [TrinoProfileCatalogOptionsHive <List<IHiveCatalogOption>>]: hive catalog options.
     CatalogName <String>: Name of trino catalog which should use specified hive metastore.
-    MetastoreDbConnectionPasswordSecret <String>: Secret reference name from secretsProfile.secrets containing password for database connection.
     MetastoreDbConnectionUrl <String>: Connection string for hive metastore database.
-    MetastoreDbConnectionUserName <String>: User name for database connection.
     MetastoreWarehouseDir <String>: Metastore root directory URI, format: abfs[s]://<container>@<account_name>.dfs.core.windows.net/<path>. More details: https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction-abfs-uri
+    [MetastoreDbConnectionAuthenticationMode <String>]: The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
+    [MetastoreDbConnectionPasswordSecret <String>]: Secret reference name from secretsProfile.secrets containing password for database connection.
+    [MetastoreDbConnectionUserName <String>]: User name for database connection.
   [TrinoProfileUserPluginsSpecPlugin <List<ITrinoUserPlugin>>]: Trino user plugins.
     [Enabled <Boolean?>]: Denotes whether the plugin is active or not.
     [Name <String>]: This field maps to the sub-directory in trino plugins location, that will contain all the plugins under path.
@@ -480,6 +513,12 @@ LOADBASEDCONFIGSCALINGRULE <IScalingRule[]>: The scaling rules.
   EvaluationCount <Int32>: This is an evaluation count for a scaling condition, the number of times a trigger condition should be successful, before scaling activity is triggered.
   ScalingMetric <String>: Metrics name for individual workloads. For example: cpu
 
+MANAGEDIDENTITYPROFILEIDENTITYLIST <IManagedIdentitySpec[]>: The list of managed identity.
+  ClientId <String>: ClientId of the managed identity.
+  ObjectId <String>: ObjectId of the managed identity.
+  ResourceId <String>: ResourceId of the managed identity.
+  Type <String>: The type of managed identity.
+
 SCHEDULEBASEDCONFIGSCHEDULE <ISchedule[]>: This specifies the schedules where scheduled based Autoscale to be enabled, the user has a choice to set multiple rules within the schedule across days and times (start/end).
   Count <Int32>: User has to set the node count anticipated at end of the scaling operation of the set current schedule configuration, format is integer.
   Day <List<String>>: User has to set the days where schedule has to be set for autoscale operation.
@@ -496,14 +535,14 @@ SCRIPTACTIONPROFILE <IScriptActionProfile[]>: The script action profile list.
   [TimeoutInMinute <Int32?>]: Timeout duration for the script action in minutes.
 
 SECRETREFERENCE <ISecretReference[]>: Properties of Key Vault secret.
-  KeyVaultObjectName <String>: Object identifier name of the secret in key vault.
   ReferenceName <String>: Reference name of the secret to be used in service configs.
+  SecretName <String>: Object identifier name of the secret in key vault.
   Type <String>: Type of key vault object: secret, key or certificate.
   [Version <String>]: Version of the secret in key vault.
 
 SERVICECONFIGSPROFILE <IClusterServiceConfigsProfile[]>: The service configs profiles.
   Config <List<IClusterServiceConfig>>: List of service configs.
-    Component <String>: Name of the component the config files should apply to.
+    ComponentName <String>: Name of the component the config files should apply to.
     File <List<IClusterConfigFile>>: List of Config Files.
       FileName <String>: Configuration file name.
       [Content <String>]: Free form content of the entire configuration file.
@@ -518,10 +557,11 @@ SPARKPROFILEUSERPLUGINSSPECPLUGIN <ISparkUserPlugin[]>: Spark user plugins.
 
 TRINOHIVECATALOG <IHiveCatalogOption[]>: hive catalog options.
   CatalogName <String>: Name of trino catalog which should use specified hive metastore.
-  MetastoreDbConnectionPasswordSecret <String>: Secret reference name from secretsProfile.secrets containing password for database connection.
   MetastoreDbConnectionUrl <String>: Connection string for hive metastore database.
-  MetastoreDbConnectionUserName <String>: User name for database connection.
   MetastoreWarehouseDir <String>: Metastore root directory URI, format: abfs[s]://<container>@<account_name>.dfs.core.windows.net/<path>. More details: https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction-abfs-uri
+  [MetastoreDbConnectionAuthenticationMode <String>]: The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
+  [MetastoreDbConnectionPasswordSecret <String>]: Secret reference name from secretsProfile.secrets containing password for database connection.
+  [MetastoreDbConnectionUserName <String>]: User name for database connection.
 
 TRINOPROFILEUSERPLUGINSSPECPLUGIN <ITrinoUserPlugin[]>: Trino user plugins.
   [Enabled <Boolean?>]: Denotes whether the plugin is active or not.
@@ -582,7 +622,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityClusterpool', Mandatory, ValueFromPipeline)]
@@ -590,7 +629,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CLUSTERPOOLINPUTOBJECT properties and create a hash table.
     ${ClusterpoolInputObject},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
@@ -599,7 +637,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster]
     # The cluster.
-    # To construct, see NOTES section for HDINSIGHTONAKSCLUSTER properties and create a hash table.
     ${HdInsightOnAksCluster},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -700,6 +737,15 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Whether to create cluster using private IP instead of public IP.
+    # This property must be set at create time.
+    ${ClusterAccessProfileEnableInternalIngress},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
     # The type of cluster.
     ${ClusterType},
@@ -717,9 +763,17 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String[]]
+    # The list of Availability zones to use for AKS VMSS nodes.
+    ${ComputeProfileAvailabilityZone},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INodeProfile[]]
     # The nodes definitions.
-    # To construct, see NOTES section for COMPUTEPROFILENODE properties and create a hash table.
     ${ComputeProfileNode},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -759,6 +813,56 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # The database URL
+    ${DatabaseHost},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # The database name
+    ${DatabaseName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Reference for the database password
+    ${DatabasePasswordSecretRef},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # The name of the database user
+    ${DatabaseUsername},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Int32]
+    # Managed Disk size in GB.
+    # The maximum supported disk size for Standard and Premium HDD/SSD is 32TB, except for Premium SSD v2, which supports up to 64TB.
+    ${DiskStorageDataDiskSize},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("Standard_HDD_LRS", "Standard_SSD_LRS", "Standard_SSD_ZRS", "Premium_SSD_LRS", "Premium_SSD_ZRS", "Premium_SSD_v2_LRS")]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Managed Disk Type.
+    ${DiskStorageDataDiskType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # True if log analytics is enabled for the cluster, otherwise false.
     ${EnableLogAnalytics},
@@ -786,6 +890,17 @@ param(
     [System.String]
     # User name for database connection.
     ${FlinkHiveCatalogDbUserName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("Application", "Session")]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # A string property that indicates the deployment mode of Flink cluster.
+    # It can have one of the following enum values => Application, Session.
+    # Default value is Session
+    ${FlinkProfileDeploymentMode},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
@@ -822,6 +937,16 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("SqlAuth", "IdentityAuth")]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # The authentication mode to connect to your Hive metastore database.
+    # More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manageview=azuresql#authentication-and-authorization
+    ${HiveMetastoreDbConnectionAuthenticationMode},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.Single]
     # The required CPU.
@@ -839,10 +964,77 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileKafkaProfile]))]
-    [System.Collections.Hashtable]
-    # Kafka cluster profile.
-    ${KafkaProfile},
+    [System.String]
+    # A string property representing additional JVM arguments for the Flink job.
+    # It should be space separated value.
+    ${JobSpecArg},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # A string property that specifies the entry class for the Flink job.
+    # If not specified, the entry point is auto-detected from the flink job jar package.
+    ${JobSpecEntryClass},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # A string property that represents the name of the job JAR.
+    ${JobSpecJarName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # A string property that specifies the directory where the job JAR is located.
+    ${JobSpecJobJarDirectory},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # A string property that represents the name of the savepoint for the Flink job
+    ${JobSpecSavePointName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("STATELESS_UPDATE", "UPDATE", "LAST_STATE_UPDATE")]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # A string property that indicates the upgrade mode to be performed on the Flink job.
+    # It can have one of the following enum values => STATELESS_UPDATE, UPDATE, LAST_STATE_UPDATE.
+    ${JobSpecUpgradeMode},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Expose Kafka cluster in KRaft mode.
+    ${KafkaProfileEnableKRaft},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Expose worker nodes as public endpoints.
+    ${KafkaProfileEnablePublicEndpoint},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Fully qualified path of Azure Storage container used for Tiered Storage.
+    ${KafkaProfileRemoteStorageUri},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
@@ -901,7 +1093,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScalingRule[]]
     # The scaling rules.
-    # To construct, see NOTES section for LOADBASEDCONFIGSCALINGRULE properties and create a hash table.
     ${LoadBasedConfigScalingRule},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -911,6 +1102,25 @@ param(
     [System.Management.Automation.SwitchParameter]
     # True if metrics are enabled, otherwise false.
     ${LogAnalyticProfileMetricsEnabled},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentitySpec[]]
+    # The list of managed identity.
+    ${ManagedIdentityProfileIdentityList},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("SqlAuth", "IdentityAuth")]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # The authentication mode to connect to your Hive metastore database.
+    # More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manageview=azuresql#authentication-and-authorization
+    ${MetastoreSpecDbConnectionAuthenticationMode},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
@@ -931,6 +1141,78 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String[]]
+    # List of usernames that should be marked as ranger admins.
+    # These usernames should match the user principal name (UPN) of the respective AAD users.
+    ${RangerAdmin},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Azure storage location of the blobs.
+    # MSI should have read/write access to this Storage account.
+    ${RangerAuditStorageAccount},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enable Ranger for cluster or not.
+    ${RangerPluginProfileEnabled},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Denotes whether usersync service should be enabled
+    ${RangerUsersyncEnabled},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String[]]
+    # List of groups that should be synced.
+    # These group names should match the object id of the respective AAD groups.
+    ${RangerUsersyncGroup},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("static", "automatic")]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # User & groups can be synced automatically or via a static list that's refreshed.
+    ${RangerUsersyncMode},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String[]]
+    # List of user names that should be synced.
+    # These usernames should match the User principal name of the respective AAD users.
+    ${RangerUsersyncUser},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Azure storage location of a mapping file that lists user & group associations.
+    ${RangerUsersyncUserMappingLocation},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.Int32]
     # Setting default node count of current schedule configuration.
@@ -944,7 +1226,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISchedule[]]
     # This specifies the schedules where scheduled based Autoscale to be enabled, the user has a choice to set multiple rules within the schedule across days and times (start/end).
-    # To construct, see NOTES section for SCHEDULEBASEDCONFIGSCHEDULE properties and create a hash table.
     ${ScheduleBasedConfigSchedule},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -962,7 +1243,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScriptActionProfile[]]
     # The script action profile list.
-    # To construct, see NOTES section for SCRIPTACTIONPROFILE properties and create a hash table.
     ${ScriptActionProfile},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -972,7 +1252,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReference[]]
     # Properties of Key Vault secret.
-    # To construct, see NOTES section for SECRETREFERENCE properties and create a hash table.
     ${SecretReference},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -982,7 +1261,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigsProfile[]]
     # The service configs profiles.
-    # To construct, see NOTES section for SERVICECONFIGSPROFILE properties and create a hash table.
     ${ServiceConfigsProfile},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1048,6 +1326,14 @@ param(
     [System.Int32]
     # Number of ssh pods per cluster.
     ${SshProfileCount},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # The virtual machine SKU.
+    ${SshProfileVMSize},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityClusterpoolExpanded')]
@@ -1122,7 +1408,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHiveCatalogOption[]]
     # hive catalog options.
-    # To construct, see NOTES section for TRINOHIVECATALOG properties and create a hash table.
     ${TrinoHiveCatalog},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1132,7 +1417,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoUserPlugin[]]
     # Trino user plugins.
-    # To construct, see NOTES section for TRINOPROFILEUSERPLUGINSSPECPLUGIN properties and create a hash table.
     ${TrinoProfileUserPluginsSpecPlugin},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1268,7 +1552,13 @@ begin {
             CreateViaJsonString = 'Az.HdInsightOnAks.private\New-AzHdInsightOnAksCluster_CreateViaJsonString';
         }
         if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

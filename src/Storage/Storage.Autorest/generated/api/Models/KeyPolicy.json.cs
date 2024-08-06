@@ -75,7 +75,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_keyExpirationPeriodInDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("keyExpirationPeriodInDays"), out var __jsonKeyExpirationPeriodInDays) ? (int)__jsonKeyExpirationPeriodInDays : KeyExpirationPeriodInDay;}
+            {_keyExpirationPeriodInDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("keyExpirationPeriodInDays"), out var __jsonKeyExpirationPeriodInDays) ? (int)__jsonKeyExpirationPeriodInDays : _keyExpirationPeriodInDay;}
             AfterFromJson(json);
         }
 

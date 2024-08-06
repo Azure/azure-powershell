@@ -125,5 +125,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVMSqlServerExtension](./Get-AzVMSqlServerExtension.md)
 
 [Set-AzVMSqlServerExtension](./Set-AzVMSqlServerExtension.md)
-
-

@@ -598,4 +598,40 @@
   <data name="DoNotIgnoreInformationIfUserDeviceAuth" xml:space="preserve">
     <value>Please do not set InformationAction or $InformationPreference to Ignore if you want to use device code authentication.</value>
   </data>
+  <data name="PleaseSelectAccount" xml:space="preserve">
+    <value>Please select the account you want to login with.</value>
+  </data>
+  <data name="RetrievingSubscription" xml:space="preserve">
+    <value>Retrieving subscriptions for the selection...</value>
+  </data>
+  <data name="PleaseSelectSubscription" xml:space="preserve">
+    <value>Please type a number to select a subscription.</value>
+  </data>
+  <data name="SelectedSubscriptionOutOfRange" xml:space="preserve">
+    <value>Selected subscription is out of range, please type a correct number.</value>
+  </data>
+  <data name="SelectTenantAndSubscription" xml:space="preserve">
+    <value>Select a tenant and subscription: </value>
+  </data>
+  <data name="SelectTenantAndSubscriptionWithDefaultValue" xml:space="preserve">
+    <value>Select a tenant and subscription (type a number or Enter to accept default): </value>
+  </data>
+  <data name="TenantAndSubscriptionSelection" xml:space="preserve">
+    <value>[Tenant and subscription selection]</value>
+  </data>
+  <data name="TypedSubscriptionNotNumber" xml:space="preserve">
+    <value>Typed subscription is not a number.</value>
+  </data>
+  <data name="AnnouncementsHeader" xml:space="preserve">
+    <value>[Announcements]</value>
+  </data>
+  <data name="AnnouncementsMessage" xml:space="preserve">
+    <value>With the new Azure PowerShell login experience, you can select the subscription you want to use more easily. Learn more about it and its configuration at https://go.microsoft.com/fwlink/?linkid=2271909.</value>
+  </data>
+  <data name="ReportIssue" xml:space="preserve">
+    <value>If you encounter any problem, please open an issue at: https://aka.ms/azpsissue</value>
+  </data>
+  <data name="UsernamePasswordDeprecateWarningMessage" xml:space="preserve">
+    <value>Authentication with a username and password at the command line is strongly discouraged. Use one of the recommended authentication methods based on your requirements. For additional information, visit https://go.microsoft.com/fwlink/?linkid=2276971.</value>
+  </data>
 </root>

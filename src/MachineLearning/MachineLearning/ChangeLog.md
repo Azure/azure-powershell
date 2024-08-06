@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.4
+* Removed the outdated deps.json file.
+
 ## Version 1.1.3
 * Removed below cmdlets because MachineLearningCompute is not available any longer
   - Get-AzMlOpCluster

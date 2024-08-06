@@ -20,8 +20,8 @@ Get-AzAksCluster [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContext
 
 ### IdParameterSet
 ```
-Get-AzAksCluster [-Id] <String> [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>]
- [<CommonParameters>]
+Get-AzAksCluster [-Id] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### NameParameterSet
@@ -35,7 +35,7 @@ List Kubernetes managed clusters.
 
 ## EXAMPLES
 
-### List all Kubernetes clusters
+### Example 1: List all Kubernetes clusters
 ```powershell
 Get-AzAksCluster
 ```

@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume or 2400Tib for LargeVolume on exceptional basis. Specified in bytes.")]
+            HelpMessage = "Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. For regular volumes, valid values are in the range 50GiB to 100TiB. For large volumes, valid values are in the range 100TiB to 500TiB, and on an exceptional basis, from to 2400GiB to 2400TiB. Values expressed in bytes as multiples of 1 GiB.")]
         [ValidateNotNullOrEmpty]
         public long? UsageThreshold { get; set; }
         
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specifies the number of days after which data that is not accessed by clients will be tiered (minimum 7, maximum 63).")]
+            HelpMessage = "Specifies the number of days after which data that is not accessed by clients will be tiered (minimum 2, maximum 183).")]
         public int? CoolnessPeriod { get; set; }
 
         [Parameter(
@@ -177,6 +177,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             HelpMessage = "Enables access based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume")]
         [PSArgumentCompleter("Disabled", "Enabled")]
         public string SmbAccessBasedEnumeration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A hashtable array which represents the protocol types. You need to create Active Directory connections before creating an SMB/CIFS volume")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("NFSv3", "NFSv4.1", "CIFS")]
+        public string[] ProtocolType { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -248,16 +255,17 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
             }
-            if (Backup != null)
-            {
-                ExecuteCmdlet_2022_11_01(tagPairs);
-            }
+            //if (Backup != null)
+            //{
+            //    ExecuteCmdlet_2022_11_01(tagPairs);
+            //}
             PSNetAppFilesVolumeDataProtection dataProtection = null;
-            if (SnapshotPolicyId != null)
+            if (SnapshotPolicyId != null || Backup != null)
             {
                 dataProtection = new PSNetAppFilesVolumeDataProtection
                 {
-                    Snapshot = new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId }
+                    Snapshot = new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId },
+                    Backup = Backup
                 };
             }
 
@@ -275,8 +283,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 CoolnessPeriod = CoolnessPeriod,                
                 SmbAccessBasedEnumeration = SmbAccessBasedEnumeration,
                 SmbNonBrowsable = SmbNonBrowsable,
-                CoolAccessRetrievalPolicy = CoolAccessRetrievalPolicy
-            };
+                CoolAccessRetrievalPolicy = CoolAccessRetrievalPolicy,
+                ProtocolTypes = ProtocolType
+            };            
+
             if (IsDefaultQuotaEnabled.IsPresent)
             {
                 volumePatchBody.IsDefaultQuotaEnabled = IsDefaultQuotaEnabled;

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewResultProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterInstanceViewResultProperties()); set => this._property = value; }
 
         /// <summary>
-        /// List of statuses of relevant services that make up the HDInsight on aks cluster to surface to the customer.
+        /// List of statuses of relevant services that make up the HDInsight on AKS cluster to surface to the customer.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IServiceStatus> ServiceStatuses { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewPropertiesInternal)Property).ServiceStatuses; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewPropertiesInternal)Property).ServiceStatuses = value ; }
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         PossibleTypes = new [] { typeof(string) })]
         string Name { get; set; }
         /// <summary>
-        /// List of statuses of relevant services that make up the HDInsight on aks cluster to surface to the customer.
+        /// List of statuses of relevant services that make up the HDInsight on AKS cluster to surface to the customer.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = true,
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"List of statuses of relevant services that make up the HDInsight on aks cluster to surface to the customer.",
+        Description = @"List of statuses of relevant services that make up the HDInsight on AKS cluster to surface to the customer.",
         SerializedName = @"serviceStatuses",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IServiceStatus) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IServiceStatus> ServiceStatuses { get; set; }
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// <summary>Properties of the instance view.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewResultProperties Property { get; set; }
         /// <summary>
-        /// List of statuses of relevant services that make up the HDInsight on aks cluster to surface to the customer.
+        /// List of statuses of relevant services that make up the HDInsight on AKS cluster to surface to the customer.
         /// </summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IServiceStatus> ServiceStatuses { get; set; }
         /// <summary>Status of the instance view.</summary>

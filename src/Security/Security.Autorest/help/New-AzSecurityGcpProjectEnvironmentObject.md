@@ -50,7 +50,6 @@ ScanInterval                        : 24
 
 ### -OrganizationalData
 The Gcp project's organizational data.
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IGcpOrganizationalData

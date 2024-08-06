@@ -19,6 +19,45 @@
 -->
 
 ## Upcoming Release
+* Used Azure.Identity and Azure.Core directly for client assertion [#22628].
+
+## Version 3.0.3
+* Reduced the frequency of displaying sign-in announcement messages.
+* Upgraded Azure.Core to 1.41.0 to include the fix for `BearerTokenAuthenticationPolicy`
+* Removed the informational table about selected context to avoid duplication with output table.
+
+## Version 3.0.2
+* Fixed bug handling GUID type subscription Id.
+* Added a warning message in `Connect-AzAccount` to discourage the use of the username/password (a.k.a ROPC) login flow.
+* Preannounced a breaking change in `Get-AzAccessToken` to change `Token` property from `String` to `SecureString`.
+
+## Version 3.0.1
+* Disable WAM when the customers login with device code flow or username password (ROPC) flow to prevent a potential issue with token cache.
+* Fixed [CVE-2024-35255](https://github.com/advisories/GHSA-m5vv-6r4h-3vj9)
+* Updated `Microsoft.Identity.Client.NativeInterop` to fix the WAM pop window issue in elevated mode [#24967]
+* Updated the reference of Azure PowerShell Common to 1.3.98-preview.
+* Limited promotional message to interactive scenarios only
+
+## Version 3.0.0
+* Web Account Manager (WAM) was set the default experience of interactive login. For more details please refer to https://go.microsoft.com/fwlink/?linkid=2272007
+* Enabled secrets detection option by default.
+* Fixed a null reference issue during the process of `Get-AzContext -ListAvailable` [#24854].
+* Supported interactive subscription selection for user login flow. See more details at [Announcing a new login experience with Azure PowerShell and Azure CLI
+](https://techcommunity.microsoft.com/t5/azure-tools-blog/announcing-a-new-login-experience-with-azure-powershell-and/ba-p/4109357)
+* Added config `LoginExperienceV2` to allow customer to switch the default behavior of context selection back. Check the help document of `Update-AzConfig` for more details.
+* Supported auto-discovery of the endpoint of OperationalInsights (azure-powershell-common/pull/414)
+* Updated the reference of Azure PowerShell Common to 1.3.94-preview.
+* [Breaking Change] Removed config `DisableErrorRecordsPersistence` to disable writing error records, error recording is now opt-in
+* Added config `EnableErrorRecordsPersistence` to enable writing error records to file system
+
+## Version 2.19.0
+> [!IMPORTANT]
+> Preannouncement: The default interactive login experience will change from browser based to `Web Account Manager` (WAM) based on supported platforms, [learn more](https://learn.microsoft.com/en-us/entra/msal/dotnet/acquiring-tokens/desktop-mobile/wam). Only interactive login flow is influeced by WAM. This will take effect from the release of **May 21st**.
+* Fixed secrets detection issues.
+
+## Version 2.17.0
+* Enabled globally disabling instance discovery before token acquisition [#22535].
+* Implemented secrets detection feature for autorest modules.
 * Added `AsSecureString` to `Get-AzAccessToken` to convert the returned token to SecureString [#24190].
 * Upgraded Azure.Core to 1.37.0.
 
@@ -28,7 +67,7 @@
 * Redirected device code login messages from warning stream to information stream if use device authentication in `Connect-AzAccount`.
 
 ## Version 2.15.1
-* Adjusted output format to be more user-friendly for `Get-AzContext/Tenant/Subscription` and `Invoke-AzRestMethod`, including 
+* Adjusted output format to be more user-friendly for `Get-AzContext/Tenant/Subscription` and `Invoke-AzRestMethod`, including
     - ordering and grouping output items to make items easy to find.
     - re-prioritizing positions for output properties to highlight valuable properties.
 * Upgraded the reference of Azure PowerShell Common to 1.3.90-preview.

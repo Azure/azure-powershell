@@ -3,6 +3,8 @@
 This directory contains the PowerShell module for the MSGraph service.
 
 ---
+## Status
+[![Az.MSGraph](https://img.shields.io/powershellgallery/v/Az.MSGraph.svg?style=flat-square&label=Az.MSGraph "Az.MSGraph")](https://www.powershellgallery.com/packages/Az.MSGraph/)
 
 ## Info
 - Modifiable: yes
@@ -47,7 +49,7 @@ In this directory, run AutoRest:
 ``` yaml
 version: "3.9.5"
 use-extension:
-  "@autorest/powershell": "4.0.0-dev.10"
+  "@autorest/powershell": "4.0.0-dev.12"
 
 require:
   - $(this-folder)/../../readme.azure.noprofile.md

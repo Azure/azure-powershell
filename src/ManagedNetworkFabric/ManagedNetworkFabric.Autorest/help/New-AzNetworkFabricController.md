@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkFabricController
 
 ## SYNOPSIS
-Creates a Network Fabric Controller.
+Create a Network Fabric Controller.
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ New-AzNetworkFabricController -Name <String> -ResourceGroupName <String> -JsonSt
 ```
 
 ## DESCRIPTION
-Creates a Network Fabric Controller.
+Create a Network Fabric Controller.
 
 ## EXAMPLES
 
@@ -117,7 +117,6 @@ Accept wildcard characters: False
 As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC.
 This Express route is dedicated for Infrastructure services.
 (This is a Mandatory attribute)
-To construct, see NOTES section for INFRASTRUCTUREEXPRESSROUTECONNECTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation[]
@@ -348,7 +347,6 @@ Accept wildcard characters: False
 As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC.
 This Express route is dedicated for Workload services.
 (This is a Mandatory attribute).
-To construct, see NOTES section for WORKLOADEXPRESSROUTECONNECTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation[]

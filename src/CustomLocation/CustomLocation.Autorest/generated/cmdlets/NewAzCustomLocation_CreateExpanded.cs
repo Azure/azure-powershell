@@ -14,7 +14,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Cmdlets
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{resourceName}"
     /// </remarks>
-    [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzCustomLocation_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Description(@"Create a Custom Location in the specified Subscription and Resource Group")]
@@ -95,10 +94,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Cmdlets
         /// Contains the reference to the add-on that contains charts to deploy CRDs and operators.
         /// </summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Contains the reference to the add-on that contains charts to deploy CRDs and operators.")]
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Contains the reference to the add-on that contains charts to deploy CRDs and operators.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Description = @"Contains the reference to the add-on that contains charts to deploy CRDs and operators.",
         SerializedName = @"clusterExtensionIds",
@@ -126,16 +125,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string DisplayName { get => _parametersBody.DisplayName ?? null; set => _parametersBody.DisplayName = value; }
 
+        /// <summary>Decides if enable a system assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Decides if enable a system assigned identity for the resource.")]
+        public global::System.Management.Automation.SwitchParameter EnableSystemAssignedIdentity { set => _parametersBody.IdentityType = value.IsPresent ? "SystemAssigned": null ; }
+
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>
         /// Connected Cluster or AKS Cluster. The Custom Locations RP will perform a checkAccess API for listAdminCredentials permissions.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Connected Cluster or AKS Cluster. The Custom Locations RP will perform a checkAccess API for listAdminCredentials permissions.")]
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Connected Cluster or AKS Cluster. The Custom Locations RP will perform a checkAccess API for listAdminCredentials permissions.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Description = @"Connected Cluster or AKS Cluster. The Custom Locations RP will perform a checkAccess API for listAdminCredentials permissions.",
         SerializedName = @"hostResourceId",
@@ -171,18 +174,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Cmdlets
         [global::System.Management.Automation.ValidateNotNull]
         [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
-
-        /// <summary>The identity type.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The identity type.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The identity type.",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.PSArgumentCompleterAttribute("SystemAssigned", "None")]
-        public string IdentityType { get => _parametersBody.IdentityType ?? null; set => _parametersBody.IdentityType = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -221,10 +212,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Cmdlets
         public string Name { get => this._name; set => this._name = value; }
 
         /// <summary>Kubernetes namespace that will be created on the specified cluster.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Kubernetes namespace that will be created on the specified cluster.")]
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Kubernetes namespace that will be created on the specified cluster.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Description = @"Kubernetes namespace that will be created on the specified cluster.",
         SerializedName = @"namespace",
@@ -378,6 +369,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Cmdlets
             {
                 // Flush buffer
                 WriteObject(_firstResponse);
+            }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
             }
         }
 
@@ -600,6 +609,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

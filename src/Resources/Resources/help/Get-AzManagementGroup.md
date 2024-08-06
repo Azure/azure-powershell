@@ -14,7 +14,8 @@ Gets Management Group(s)
 
 ### ListOperation (Default)
 ```
-Get-AzManagementGroup [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzManagementGroup [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### GetOperation

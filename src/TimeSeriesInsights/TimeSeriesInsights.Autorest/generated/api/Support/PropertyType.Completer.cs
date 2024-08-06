@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
 {
 
-    /// <summary>Argument completer implementation for PropertyType.</summary>
+    /// <summary>The type of the property.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.PropertyTypeTypeConverter))]
     public partial struct PropertyType :
         System.Management.Automation.IArgumentCompleter
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "String".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("String", "String", global::System.Management.Automation.CompletionResultType.ParameterValue, "String");
+                yield return new global::System.Management.Automation.CompletionResult("'String'", "String", global::System.Management.Automation.CompletionResultType.ParameterValue, "String");
             }
         }
     }

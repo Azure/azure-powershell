@@ -37,13 +37,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </param>
 
         /// <param name="status">Status of the vault upgrade operation.
-        /// Possible values include: 'Unknown', 'InProgress', 'Upgraded', 'Failed'</param>
+        /// Possible values include: &#39;Unknown&#39;, &#39;InProgress&#39;, &#39;Upgraded&#39;, &#39;Failed&#39;</param>
 
         /// <param name="message">Message to the user containing information about the upgrade operation.
         /// </param>
 
         /// <param name="triggerType">The way the vault upgrade was triggered.
-        /// Possible values include: 'UserTriggered', 'ForcedUpgrade'</param>
+        /// Possible values include: &#39;UserTriggered&#39;, &#39;ForcedUpgrade&#39;</param>
 
         /// <param name="upgradedResourceId">Resource ID of the upgraded vault.
         /// </param>

@@ -40,7 +40,7 @@ Get-AzConnectedKubernetesUserCredential -ClusterName azps_test_cluster -Resource
 HybridConnectionConfigExpirationTime       : 1635508790
 HybridConnectionConfigHybridConnectionName : microsoft.kubernetes/connectedclusters/8d3bccced1f3ad1d0e01b03e87d1c8f8a312df7ff028e642512a7999542e46fc/1635497990523092736
 HybridConnectionConfigRelay                : azgnrelay-eastus-l1
-HybridConnectionConfigToken                : SharedAccessSignature sr=http%3A%2F%2Fazgnrelay-eastus-l1.servicebus.windows.net%2Fmicrosoft.kubernetes%2Fconnectedclusters%2F8d3bccced1f3ad1d0e01b03e87d1c8f8a312df7ff028e642512a7999542e46fc%2F1635497990523092736%2F&sig=wrukC6KAxVFb%2FmsdaTwSv3ChHo0hvTWjf5A80IZs2P4%3D&se=1635509390&skn=sender20211026
+HybridConnectionConfigToken                : SharedAccessSignature sr=******
 Kubeconfig                                 : {{
                                                "name": "KubeConfig",
                                                "value": "YXBpVm***G9wDQo="
@@ -220,16 +220,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.ICredentialResults
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`PROPERTY <IListClusterUserCredentialProperties>`: .
-  - `AuthenticationMethod <AuthenticationMethod>`: The mode of client authentication.
-  - `ClientProxy <Boolean>`: Boolean value to indicate whether the request is for client side proxy or not
 
 ## RELATED LINKS

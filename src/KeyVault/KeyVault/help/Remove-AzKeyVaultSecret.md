@@ -15,13 +15,15 @@ Deletes a secret in a key vault.
 ### ByVaultName (Default)
 ```
 Remove-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [-Force] [-PassThru] [-InRemovedState]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
 Remove-AzKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [-Force] [-PassThru] [-InRemovedState]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,7 +87,7 @@ Install-Module Microsoft.PowerShell.SecretManagement -Repository PSGallery -Allo
 # Register vault for Secret Management
 Register-SecretVault -Name AzKeyVault -ModuleName Az.KeyVault -VaultParameters @{ AZKVaultName = 'test-kv'; SubscriptionId = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
 # Set secret for vault AzKeyVault
-$secure = ConvertTo-SecureString -String "Password" -AsPlainText -Force
+$secure = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Set-Secret -Vault AzKeyVault -Name secureSecret -SecureStringSecret $secure 
 Remove-Secret -Vault AzKeyVault -Name secureSecret
 ```
@@ -266,4 +268,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Set-AzKeyVaultSecret](./Set-AzKeyVaultSecret.md)
 
 [Undo-AzKeyVaultSecretRemoval](./Undo-AzKeyVaultSecretRemoval.md)
-

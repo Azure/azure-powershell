@@ -184,6 +184,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-SnapshotConfigElasticSanResourceId");
         }
-        
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestSnapshotConfigTierOptionEnhancedSpeed()
+        {
+            TestRunner.RunTestScript("Test-SnapshotConfigTierOptionEnhancedSpeed");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestDiskGrantAccessGetSASWithTL()
+        {
+            TestRunner.RunTestScript("Test-DiskGrantAccessGetSASWithTL");
+        }
+
     }
 }

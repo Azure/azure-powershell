@@ -171,5 +171,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Set-AzVMChefExtension](./Set-AzVMChefExtension.md)
 
 [Remove-AzVMChefExtension](./Remove-AzVMChefExtension.md)
-
-

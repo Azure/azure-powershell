@@ -19,7 +19,8 @@ Set-AzVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>] 
  [[-SourceImageUri] <String>] [[-CreateOption] <String>] [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>]
  [-StorageAccountType <String>] [-DiskEncryptionSetId <String>] [-WriteAccelerator] [-DiffDiskSetting <String>]
  [-DiffDiskPlacement <String>] [-DeleteOption <String>] [-SecurityEncryptionType <String>]
- [-SecureVMDiskEncryptionSet <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SecureVMDiskEncryptionSet <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### WindowsParamSet
@@ -134,7 +135,7 @@ $vmSize = "Standard_DC2as_v5";
 $identityType = "SystemAssigned";
 $secureEncryptGuestState = "DiskWithVMGuestState";
 $vmSecurityType = "ConfidentialVM";
-$securePassword = "Password" | ConvertTo-SecureString -AsPlainText -Force; 
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force; 
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
 # Create Key Vault
@@ -587,5 +588,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzAvailabilitySet](./Get-AzAvailabilitySet.md)
 
 [New-AzVMConfig](./New-AzVMConfig.md)
-
-

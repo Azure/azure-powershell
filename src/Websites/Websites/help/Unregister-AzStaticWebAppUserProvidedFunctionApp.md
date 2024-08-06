@@ -15,8 +15,8 @@ Description for Detach the user provided function app from the static site
 ### Detach (Default)
 ```
 Unregister-AzStaticWebAppUserProvidedFunctionApp -FunctionAppName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DetachViaIdentity

@@ -529,7 +529,6 @@ Accept wildcard characters: False
 
 ### -Tag
 tag for rule
-To construct, see NOTES section for TAG properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ITagInfo[]

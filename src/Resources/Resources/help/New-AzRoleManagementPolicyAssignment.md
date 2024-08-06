@@ -14,7 +14,8 @@ Create a role management policy assignment
 
 ```
 New-AzRoleManagementPolicyAssignment -Name <String> -Scope <String> [-PolicyId <String>]
- [-RoleDefinitionId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RoleDefinitionId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -153,7 +154,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicyAssignment
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

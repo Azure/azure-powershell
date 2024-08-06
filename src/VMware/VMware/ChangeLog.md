@@ -19,6 +19,15 @@
 -->
 ## Upcoming Release
 
+## Version 0.7.0
+* Updated the AVS VMware cmdlets api version to `2023-09-01`. 
+
+## Version 0.6.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 0.6.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 0.6.0
 * Updated api version to `2023-03-01`
 

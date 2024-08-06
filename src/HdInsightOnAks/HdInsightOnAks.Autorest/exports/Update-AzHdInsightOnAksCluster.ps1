@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Updates an existing Cluster.
+Update an existing Cluster.
 .Description
-Updates an existing Cluster.
+Update an existing Cluster.
 .Example
 $clusterResourceGroupName = "Group"
 $clusterpoolName = "ps-test-pool"
@@ -40,10 +40,15 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+CATALOGOPTIONHIVE <IHiveCatalogOption[]>: hive catalog options.
+  CatalogName <String>: Name of trino catalog which should use specified hive metastore.
+  MetastoreDbConnectionUrl <String>: Connection string for hive metastore database.
+  MetastoreWarehouseDir <String>: Metastore root directory URI, format: abfs[s]://<container>@<account_name>.dfs.core.windows.net/<path>. More details: https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction-abfs-uri
+  [MetastoreDbConnectionAuthenticationMode <String>]: The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
+  [MetastoreDbConnectionPasswordSecret <String>]: Secret reference name from secretsProfile.secrets containing password for database connection.
+  [MetastoreDbConnectionUserName <String>]: User name for database connection.
+
 CLUSTERPATCHREQUEST <IClusterPatch>: The patch for a cluster.
-  Location <String>: The geo-location where the resource lives
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
   [ApplicationLogStdErrorEnabled <Boolean?>]: True if stderror is enabled, otherwise false.
   [ApplicationLogStdOutEnabled <Boolean?>]: True if stdout is enabled, otherwise false.
   [AuthorizationProfileGroupId <List<String>>]: AAD group Ids authorized for data plane access.
@@ -51,6 +56,13 @@ CLUSTERPATCHREQUEST <IClusterPatch>: The patch for a cluster.
   [AutoscaleProfileAutoscaleType <String>]: User to specify which type of Autoscale to be implemented - Scheduled Based or Load Based.
   [AutoscaleProfileEnabled <Boolean?>]: This indicates whether auto scale is enabled on HDInsight on AKS cluster.
   [AutoscaleProfileGracefulDecommissionTimeout <Int32?>]: This property is for graceful decommission timeout; It has a default setting of 3600 seconds before forced shutdown takes place. This is the maximal time to wait for running containers and applications to complete before transition a DECOMMISSIONING node into DECOMMISSIONED. The default value is 3600 seconds. Negative value (like -1) is handled as infinite timeout.
+  [CatalogOptionHive <List<IHiveCatalogOption>>]: hive catalog options.
+    CatalogName <String>: Name of trino catalog which should use specified hive metastore.
+    MetastoreDbConnectionUrl <String>: Connection string for hive metastore database.
+    MetastoreWarehouseDir <String>: Metastore root directory URI, format: abfs[s]://<container>@<account_name>.dfs.core.windows.net/<path>. More details: https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction-abfs-uri
+    [MetastoreDbConnectionAuthenticationMode <String>]: The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
+    [MetastoreDbConnectionPasswordSecret <String>]: Secret reference name from secretsProfile.secrets containing password for database connection.
+    [MetastoreDbConnectionUserName <String>]: User name for database connection.
   [ClusterProfileScriptActionProfile <List<IScriptActionProfile>>]: The script action profile list.
     Name <String>: Script name.
     Service <List<String>>: List of services to apply the script action.
@@ -61,7 +73,7 @@ CLUSTERPATCHREQUEST <IClusterPatch>: The patch for a cluster.
     [TimeoutInMinute <Int32?>]: Timeout duration for the script action in minutes.
   [ClusterProfileServiceConfigsProfile <List<IClusterServiceConfigsProfile>>]: The service configs profiles.
     Config <List<IClusterServiceConfig>>: List of service configs.
-      Component <String>: Name of the component the config files should apply to.
+      ComponentName <String>: Name of the component the config files should apply to.
       File <List<IClusterConfigFile>>: List of Config Files.
         FileName <String>: Configuration file name.
         [Content <String>]: Free form content of the entire configuration file.
@@ -70,6 +82,14 @@ CLUSTERPATCHREQUEST <IClusterPatch>: The patch for a cluster.
         [Value <IClusterConfigFileValues>]: List of key value pairs         where key represents a valid service configuration name and value represents the value of the config.
           [(Any) <String>]: This indicates any property can be added to this object.
     ServiceName <String>: Name of the service the configurations should apply to.
+  [CoordinatorDebugEnable <Boolean?>]: The flag that if enable debug or not.
+  [CoordinatorDebugPort <Int32?>]: The debug port.
+  [CoordinatorDebugSuspend <Boolean?>]: The flag that if suspend debug or not.
+  [CoordinatorHighAvailabilityEnabled <Boolean?>]: The flag that if enable coordinator HA, uses multiple coordinator replicas with auto failover, one per each head node. Default: true.
+  [DatabaseHost <String>]: The database URL
+  [DatabaseName <String>]: The database name
+  [DatabasePasswordSecretRef <String>]: Reference for the database password
+  [DatabaseUsername <String>]: The name of the database user
   [LoadBasedConfigCooldownPeriod <Int32?>]: This is a cool down period, this is a time period in seconds, which determines the amount of time that must elapse between a scaling activity started by a rule and the start of the next scaling activity, regardless of the rule that triggers it. The default value is 300 seconds.
   [LoadBasedConfigMaxNode <Int32?>]: User needs to set the maximum number of nodes for load based scaling, the load based scaling will use this to scale up and scale down between minimum and maximum number of nodes.
   [LoadBasedConfigMinNode <Int32?>]: User needs to set the minimum number of nodes for load based scaling, the load based scaling will use this to scale up and scale down between minimum and maximum number of nodes.
@@ -83,6 +103,14 @@ CLUSTERPATCHREQUEST <IClusterPatch>: The patch for a cluster.
   [LogAnalyticProfileEnabled <Boolean?>]: True if log analytics is enabled for the cluster, otherwise false.
   [LogAnalyticProfileMetricsEnabled <Boolean?>]: True if metrics are enabled, otherwise false.
   [PrometheuProfileEnabled <Boolean?>]: Enable Prometheus for cluster or not.
+  [RangerAdmin <List<String>>]: List of usernames that should be marked as ranger admins. These usernames should match the user principal name (UPN) of the respective AAD users.
+  [RangerAuditStorageAccount <String>]: Azure storage location of the blobs. MSI should have read/write access to this Storage account.
+  [RangerPluginProfileEnabled <Boolean?>]: Enable Ranger for cluster or not.
+  [RangerUsersyncEnabled <Boolean?>]: Denotes whether usersync service should be enabled
+  [RangerUsersyncGroup <List<String>>]: List of groups that should be synced. These group names should match the object id of the respective AAD groups.
+  [RangerUsersyncMode <String>]: User & groups can be synced automatically or via a static list that's refreshed.
+  [RangerUsersyncUser <List<String>>]: List of user names that should be synced. These usernames should match the User principal name of the respective AAD users.
+  [RangerUsersyncUserMappingLocation <String>]: Azure storage location of a mapping file that lists user & group associations.
   [ScheduleBasedConfigDefaultCount <Int32?>]: Setting default node count of current schedule configuration. Default node count specifies the number of nodes which are default when an specified scaling operation is executed (scale up/scale down)
   [ScheduleBasedConfigSchedule <List<ISchedule>>]: This specifies the schedules where scheduled based Autoscale to be enabled, the user has a choice to set multiple rules within the schedule across days and times (start/end).
     Count <Int32>: User has to set the node count anticipated at end of the scaling operation of the set current schedule configuration, format is integer.
@@ -90,7 +118,27 @@ CLUSTERPATCHREQUEST <IClusterPatch>: The patch for a cluster.
     EndTime <String>: User has to set the end time of current schedule configuration, format like 10:30 (HH:MM).
     StartTime <String>: User has to set the start time of current schedule configuration, format like 10:30 (HH:MM).
   [ScheduleBasedConfigTimeZone <String>]: User has to specify the timezone on which the schedule has to be set for schedule based autoscale configuration.
+  [SecretProfileKeyVaultResourceId <String>]: Name of the user Key Vault where all the cluster specific user secrets are stored.
+  [SecretProfileSecret <List<ISecretReference>>]: Properties of Key Vault secret.
+    ReferenceName <String>: Reference name of the secret to be used in service configs.
+    SecretName <String>: Object identifier name of the secret in key vault.
+    Type <String>: Type of key vault object: secret, key or certificate.
+    [Version <String>]: Version of the secret in key vault.
   [SshProfileCount <Int32?>]: Number of ssh pods per cluster.
+  [SshProfileVMSize <String>]: The virtual machine SKU.
+  [StorageHivecatalogName <String>]: Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.
+  [StorageHivecatalogSchema <String>]: Schema of the above catalog to use, to mount query logs as external tables, if not specified tables will be mounted under schema trinologs.
+  [StoragePartitionRetentionInDay <Int32?>]: Retention period for query log table partitions, this doesn't have any affect on actual data.
+  [StoragePath <String>]: Azure storage location of the blobs.
+  [Tag <IClusterPatchTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [UserPluginSpecPlugin <List<ITrinoUserPlugin>>]: Trino user plugins.
+    [Enabled <Boolean?>]: Denotes whether the plugin is active or not.
+    [Name <String>]: This field maps to the sub-directory in trino plugins location, that will contain all the plugins under path.
+    [Path <String>]: Fully qualified path to the folder containing the plugins.
+  [WorkerDebugEnable <Boolean?>]: The flag that if enable debug or not.
+  [WorkerDebugPort <Int32?>]: The debug port.
+  [WorkerDebugSuspend <Boolean?>]: The flag that if suspend debug or not.
 
 CLUSTERPOOLINPUTOBJECT <IHdInsightOnAksIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the HDInsight cluster.
@@ -111,7 +159,7 @@ CLUSTERPROFILESCRIPTACTIONPROFILE <IScriptActionProfile[]>: The script action pr
 
 CLUSTERPROFILESERVICECONFIGSPROFILE <IClusterServiceConfigsProfile[]>: The service configs profiles.
   Config <List<IClusterServiceConfig>>: List of service configs.
-    Component <String>: Name of the component the config files should apply to.
+    ComponentName <String>: Name of the component the config files should apply to.
     File <List<IClusterConfigFile>>: List of Config Files.
       FileName <String>: Configuration file name.
       [Content <String>]: Free form content of the entire configuration file.
@@ -141,6 +189,17 @@ SCHEDULEBASEDCONFIGSCHEDULE <ISchedule[]>: This specifies the schedules where sc
   Day <List<String>>: User has to set the days where schedule has to be set for autoscale operation.
   EndTime <String>: User has to set the end time of current schedule configuration, format like 10:30 (HH:MM).
   StartTime <String>: User has to set the start time of current schedule configuration, format like 10:30 (HH:MM).
+
+SECRETPROFILESECRET <ISecretReference[]>: Properties of Key Vault secret.
+  ReferenceName <String>: Reference name of the secret to be used in service configs.
+  SecretName <String>: Object identifier name of the secret in key vault.
+  Type <String>: Type of key vault object: secret, key or certificate.
+  [Version <String>]: Version of the secret in key vault.
+
+USERPLUGINSPECPLUGIN <ITrinoUserPlugin[]>: Trino user plugins.
+  [Enabled <Boolean?>]: Denotes whether the plugin is active or not.
+  [Name <String>]: This field maps to the sub-directory in trino plugins location, that will contain all the plugins under path.
+  [Path <String>]: Fully qualified path to the folder containing the plugins.
 .Link
 https://learn.microsoft.com/powershell/module/az.hdinsightonaks/update-azhdinsightonakscluster
 #>
@@ -196,7 +255,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityClusterpool', Mandatory, ValueFromPipeline)]
@@ -204,7 +262,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CLUSTERPOOLINPUTOBJECT properties and create a hash table.
     ${ClusterpoolInputObject},
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
@@ -213,7 +270,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatch]
     # The patch for a cluster.
-    # To construct, see NOTES section for CLUSTERPATCHREQUEST properties and create a hash table.
     ${ClusterPatchRequest},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -283,9 +339,17 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHiveCatalogOption[]]
+    # hive catalog options.
+    ${CatalogOptionHive},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScriptActionProfile[]]
     # The script action profile list.
-    # To construct, see NOTES section for CLUSTERPROFILESCRIPTACTIONPROFILE properties and create a hash table.
     ${ClusterProfileScriptActionProfile},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -295,8 +359,72 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigsProfile[]]
     # The service configs profiles.
-    # To construct, see NOTES section for CLUSTERPROFILESERVICECONFIGSPROFILE properties and create a hash table.
     ${ClusterProfileServiceConfigsProfile},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The flag that if enable debug or not.
+    ${CoordinatorDebugEnable},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Int32]
+    # The debug port.
+    ${CoordinatorDebugPort},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The flag that if suspend debug or not.
+    ${CoordinatorDebugSuspend},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The flag that if enable coordinator HA, uses multiple coordinator replicas with auto failover, one per each head node.
+    # Default: true.
+    ${CoordinatorHighAvailabilityEnabled},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # The database URL
+    ${DatabaseHost},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # The database name
+    ${DatabaseName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Reference for the database password
+    ${DatabasePasswordSecretRef},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # The name of the database user
+    ${DatabaseUsername},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
@@ -338,7 +466,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScalingRule[]]
     # The scaling rules.
-    # To construct, see NOTES section for LOADBASEDCONFIGSCALINGRULE properties and create a hash table.
     ${LoadBasedConfigScalingRule},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -368,6 +495,78 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String[]]
+    # List of usernames that should be marked as ranger admins.
+    # These usernames should match the user principal name (UPN) of the respective AAD users.
+    ${RangerAdmin},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Azure storage location of the blobs.
+    # MSI should have read/write access to this Storage account.
+    ${RangerAuditStorageAccount},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enable Ranger for cluster or not.
+    ${RangerPluginProfileEnabled},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Denotes whether usersync service should be enabled
+    ${RangerUsersyncEnabled},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String[]]
+    # List of groups that should be synced.
+    # These group names should match the object id of the respective AAD groups.
+    ${RangerUsersyncGroup},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("static", "automatic")]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # User & groups can be synced automatically or via a static list that's refreshed.
+    ${RangerUsersyncMode},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String[]]
+    # List of user names that should be synced.
+    # These usernames should match the User principal name of the respective AAD users.
+    ${RangerUsersyncUser},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Azure storage location of a mapping file that lists user & group associations.
+    ${RangerUsersyncUserMappingLocation},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.Int32]
     # Setting default node count of current schedule configuration.
@@ -381,7 +580,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISchedule[]]
     # This specifies the schedules where scheduled based Autoscale to be enabled, the user has a choice to set multiple rules within the schedule across days and times (start/end).
-    # To construct, see NOTES section for SCHEDULEBASEDCONFIGSCHEDULE properties and create a hash table.
     ${ScheduleBasedConfigSchedule},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -396,6 +594,23 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Name of the user Key Vault where all the cluster specific user secrets are stored.
+    ${SecretProfileKeyVaultResourceId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReference[]]
+    # Properties of Key Vault secret.
+    ${SecretProfileSecret},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.Int32]
     # Number of ssh pods per cluster.
     ${SshProfileCount},
@@ -404,10 +619,83 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrackedResourceTags]))]
+    [System.String]
+    # The virtual machine SKU.
+    ${SshProfileVMSize},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.
+    ${StorageHivecatalogName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Schema of the above catalog to use, to mount query logs as external tables, if not specified tables will be mounted under schema trinologs.
+    ${StorageHivecatalogSchema},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Int32]
+    # Retention period for query log table partitions, this doesn't have any affect on actual data.
+    ${StoragePartitionRetentionInDay},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Azure storage location of the blobs.
+    ${StoragePath},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoUserPlugin[]]
+    # Trino user plugins.
+    ${UserPluginSpecPlugin},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The flag that if enable debug or not.
+    ${WorkerDebugEnable},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Int32]
+    # The debug port.
+    ${WorkerDebugPort},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The flag that if suspend debug or not.
+    ${WorkerDebugSuspend},
 
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
@@ -518,7 +806,13 @@ begin {
             UpdateViaJsonString = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpdateViaJsonString';
         }
         if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
         /// Creates a new instance of <see cref="LogRules" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="LogRules" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRules FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,10 +101,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).SendAadLog = (bool?) content.GetValueForProperty("SendAadLog",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).SendAadLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).SendSubscriptionLog = (bool?) content.GetValueForProperty("SendSubscriptionLog",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).SendSubscriptionLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).SendActivityLog = (bool?) content.GetValueForProperty("SendActivityLog",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).SendActivityLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).FilteringTag = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IFilteringTag[]) content.GetValueForProperty("FilteringTag",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).FilteringTag, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IFilteringTag>(__y, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.FilteringTagTypeConverter.ConvertFrom));
+            if (content.Contains("SendAadLog"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).SendAadLog = (bool?) content.GetValueForProperty("SendAadLog",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).SendAadLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SendSubscriptionLog"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).SendSubscriptionLog = (bool?) content.GetValueForProperty("SendSubscriptionLog",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).SendSubscriptionLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SendActivityLog"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).SendActivityLog = (bool?) content.GetValueForProperty("SendActivityLog",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).SendActivityLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("FilteringTag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).FilteringTag = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IFilteringTag[]) content.GetValueForProperty("FilteringTag",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).FilteringTag, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IFilteringTag>(__y, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.FilteringTagTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -120,10 +134,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).SendAadLog = (bool?) content.GetValueForProperty("SendAadLog",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).SendAadLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).SendSubscriptionLog = (bool?) content.GetValueForProperty("SendSubscriptionLog",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).SendSubscriptionLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).SendActivityLog = (bool?) content.GetValueForProperty("SendActivityLog",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).SendActivityLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).FilteringTag = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IFilteringTag[]) content.GetValueForProperty("FilteringTag",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).FilteringTag, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IFilteringTag>(__y, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.FilteringTagTypeConverter.ConvertFrom));
+            if (content.Contains("SendAadLog"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).SendAadLog = (bool?) content.GetValueForProperty("SendAadLog",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).SendAadLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SendSubscriptionLog"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).SendSubscriptionLog = (bool?) content.GetValueForProperty("SendSubscriptionLog",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).SendSubscriptionLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SendActivityLog"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).SendActivityLog = (bool?) content.GetValueForProperty("SendActivityLog",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).SendActivityLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("FilteringTag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).FilteringTag = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IFilteringTag[]) content.GetValueForProperty("FilteringTag",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRulesInternal)this).FilteringTag, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IFilteringTag>(__y, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.FilteringTagTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

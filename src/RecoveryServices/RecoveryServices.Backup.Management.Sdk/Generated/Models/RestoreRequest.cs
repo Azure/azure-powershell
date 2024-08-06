@@ -22,11 +22,30 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
             CustomInit();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the RestoreRequest class.
+        /// </summary>
+
+        /// <param name="resourceGuardOperationRequests">ResourceGuardOperationRequests on which LAC check will be performed
+        /// </param>
+        public RestoreRequest(System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>))
+
+        {
+            this.ResourceGuardOperationRequests = resourceGuardOperationRequests;
+            CustomInit();
+        }
 
         /// <summary>
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets resourceGuardOperationRequests on which LAC check will be
+        /// performed
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "resourceGuardOperationRequests")]
+        public System.Collections.Generic.IList<string> ResourceGuardOperationRequests {get; set; }
     }
 }

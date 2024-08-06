@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DeviceUpdate-help.xml
 Module Name: Az.DeviceUpdate
 online version: https://learn.microsoft.com/powershell/module/az.DeviceUpdate/new-AzDeviceUpdateCheckNameAvailabilityRequestObject
 schema: 2.0.0
@@ -13,7 +13,8 @@ Create an in-memory object for CheckNameAvailabilityRequest.
 ## SYNTAX
 
 ```
-New-AzDeviceUpdateCheckNameAvailabilityRequestObject [-Name <String>] [-Type <String>] [<CommonParameters>]
+New-AzDeviceUpdateCheckNameAvailabilityRequestObject [-Name <String>] [-Type <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,7 +78,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

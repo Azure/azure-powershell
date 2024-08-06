@@ -22,18 +22,42 @@ Create an in-memory object for UpdateStage.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: create fleet update stage object with group string array
+```powershell
 New-AzFleetUpdateStageObject -Name stag1 -Group @{name='group-a'} -AfterStageWaitInSecond 3600 | Format-List
 ```
 
-### EXAMPLE 2
+```output
+AfterStageWaitInSecond : 3600
+Group                  : {{
+                           "name": "group-a"
+                         }}
+Name                   : stag1
 ```
+
+This command create a fleet update stage object and shows as list.
+
+### Example 2: create fleet update stage object with update group object
+```powershell
 $a = New-AzFleetUpdateGroupObject -Name 'Group-a'
 $b = New-AzFleetUpdateGroupObject -Name 'Group-b'                                                                           
 $c = New-AzFleetUpdateGroupObject -Name 'Group-c'                                                                           
 New-AzFleetUpdateStageObject -Name stag1 -Group $a,$b,$c -AfterStageWaitInSecond 3600 | Format-List
 ```
+
+```output
+AfterStageWaitInSecond : 3600
+Group                  : {{
+                           "name": "Group-a"
+                         }, {
+                           "name": "Group-b"
+                         }, {
+                           "name": "Group-c"
+                         }}
+Name                   : stag1
+```
+
+This command create a fleet update stage object and shows as list.
 
 ## PARAMETERS
 
@@ -48,7 +72,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -57,7 +81,6 @@ Accept wildcard characters: False
 Defines the groups to be executed in parallel in this stage.
 Duplicate groups are not allowed.
 Min size: 1.
-To construct, see NOTES section for GROUP properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateGroup[]
@@ -95,19 +118,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.UpdateStage
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-GROUP \<IUpdateGroup\[\]\>: Defines the groups to be executed in parallel in this stage.
-Duplicate groups are not allowed.
-Min size: 1.
-  Name \<String\>: Name of the group. 
-It must match a group name of an existing fleet member.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.Fleet/new-azfleetupdatestageobject](https://learn.microsoft.com/powershell/module/Az.Fleet/new-azfleetupdatestageobject)
-

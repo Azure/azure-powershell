@@ -1,5 +1,5 @@
 function Get-AzFunctionAppPlan {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Get function apps plans in a subscription.')]
     [CmdletBinding(DefaultParameterSetName='GetAll')]
     param(
@@ -80,6 +80,8 @@ function Get-AzFunctionAppPlan {
     )
     
     process {
+
+        RegisterFunctionsTabCompleters
 
         $plans = $null
         $locationToUse = $null

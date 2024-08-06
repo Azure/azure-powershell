@@ -66,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
                 return;
             }
             __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ProxyResource(json);
-            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolVersionProperties.FromJson(__jsonProperties) : Property;}
+            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolVersionProperties.FromJson(__jsonProperties) : _property;}
             AfterFromJson(json);
         }
 

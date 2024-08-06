@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.Storage
     public partial interface IUsagesOperations
     {
         /// <summary>
-        /// Gets the current usage count and the limit for the resources of the location under the subscription.
+        /// Gets the current usage count and the limit for the resources of the
+        /// location under the subscription.
         /// </summary>
         /// <remarks>
-        /// Gets the current usage count and the limit for the resources of the location under the subscription.
+        /// Gets the current usage count and the limit for the resources of the
+        /// location under the subscription.
         /// </remarks>
         /// <param name='location'>
         /// The location of the Azure Storage resource.

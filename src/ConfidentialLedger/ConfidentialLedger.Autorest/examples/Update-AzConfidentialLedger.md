@@ -22,7 +22,9 @@ Update-AzConfidentialLedger `
           Location="additional properties 0"
           NewTag="New tag"
       }
+```
 
+```output
 Location Name
 eastus   test-ledger
 ```

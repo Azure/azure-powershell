@@ -14,8 +14,8 @@ Migrate logins from the source Sql Servers to the target Azure Sql Servers.
 
 ### ConfigFile (Default)
 ```
-New-AzDataMigrationLoginsMigration -ConfigFilePath <String> [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzDataMigrationLoginsMigration -ConfigFilePath <String> [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CommandLine

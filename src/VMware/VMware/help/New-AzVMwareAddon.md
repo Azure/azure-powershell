@@ -14,8 +14,8 @@ Create or update a addon in a private cloud
 
 ```
 New-AzVMwareAddon -PrivateCloudName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Property <IAddonProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Property <IAddonProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Create or update a addon in a private cloud
 
 ### Example 1: Create an addon in a private cloud
 ```powershell
-$data = New-AzVMwareAddonVrPropertiesObject -VrsCount 2
+$data = New-AzVMwareAddonVrPropertyObject -VrsCount 2
 New-AzVMwareAddon -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -Property $data
 ```
 
@@ -184,18 +184,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`PROPERTY <IAddonProperties>`: The properties of an addon resource
-  - `AddonType <AddonType>`: The type of private cloud addon
 
 ## RELATED LINKS

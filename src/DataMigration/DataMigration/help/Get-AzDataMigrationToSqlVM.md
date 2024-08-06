@@ -22,7 +22,8 @@ Get-AzDataMigrationToSqlVM -ResourceGroupName <String> -SqlVirtualMachineName <S
 ### GetViaIdentity
 ```
 Get-AzDataMigrationToSqlVM -InputObject <IDataMigrationIdentity> [-Expand <String>]
- [-MigrationOperationId <String>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+ [-MigrationOperationId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

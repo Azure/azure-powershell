@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using Microsoft.Azure.Management.Sql.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
 {
@@ -75,9 +76,9 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// <summary>
         /// Lists Azure Sql Database Failover Groups
         /// </summary>
-        public IList<Management.Sql.LegacySdk.Models.FailoverGroup> List(string resourceGroupName, string serverName)
+        public IList<Management.Sql.Models.FailoverGroup> List(string resourceGroupName, string serverName)
         {
-            return GetLegacySqlClient().FailoverGroups.List(resourceGroupName, serverName).FailoverGroups;
+            return GetCurrentSqlClient().FailoverGroups.ListByServer(resourceGroupName, serverName).ToList();
         }
 
         /// <summary>

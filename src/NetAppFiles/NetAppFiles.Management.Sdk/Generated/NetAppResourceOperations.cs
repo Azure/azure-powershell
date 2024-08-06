@@ -1166,7 +1166,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// set.
         /// </param>
         /// <param name='networkFeatures'>
-        /// Network features available to the volume, some such
+        /// Network features available to the volume.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1201,7 +1201,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// set.
         /// </param>
         /// <param name='networkFeatures'>
-        /// Network features available to the volume, some such
+        /// Network features available to the volume.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.

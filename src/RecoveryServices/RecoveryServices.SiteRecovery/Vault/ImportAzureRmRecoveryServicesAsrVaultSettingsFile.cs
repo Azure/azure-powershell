@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Imports the specified ASR vault settings file to set the vault context(PowerShell session context)
     ///     for subsequent ASR operations in the PowerShell session. 
     /// </summary>
-    [CmdletOutputBreakingChangeWithVersion(typeof(ASRVaultSettings), "12.0.0", "7.0.0", DeprecatedOutputProperties = new string[] { "ResouceType" }, NewOutputProperties = new string[] { "ResourceType" })]
     [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrVaultSettingsFile",SupportsShouldProcess = true)]
     [OutputType(typeof(ASRVaultSettings))]
     [Alias(

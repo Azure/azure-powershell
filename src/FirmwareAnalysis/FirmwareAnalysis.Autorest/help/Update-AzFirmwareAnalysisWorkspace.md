@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFirmwareAnalysisWorkspace
 
 ## SYNOPSIS
-The operation to update a firmware analysis workspaces.
+The operation to Update a firmware analysis workspaces.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Update-AzFirmwareAnalysisWorkspace -InputObject <IFirmwareAnalysisIdentity> [-De
 ```
 
 ## DESCRIPTION
-The operation to update a firmware analysis workspaces.
+The operation to Update a firmware analysis workspaces.
 
 ## EXAMPLES
 
@@ -72,7 +72,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity

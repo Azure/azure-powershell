@@ -65,7 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_node = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray>("nodes"), out var __jsonNodes) ? If( __jsonNodes as Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INodeProfile>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INodeProfile) (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.NodeProfile.FromJson(__u) )) ))() : null : Node;}
+            {_node = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray>("nodes"), out var __jsonNodes) ? If( __jsonNodes as Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INodeProfile>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INodeProfile) (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.NodeProfile.FromJson(__u) )) ))() : null : _node;}
+            {_availabilityZone = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray>("availabilityZones"), out var __jsonAvailabilityZones) ? If( __jsonAvailabilityZones as Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(string) (__p is Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString __o ? (string)(__o.ToString()) : null)) ))() : null : _availabilityZone;}
             AfterFromJson(json);
         }
 
@@ -108,6 +109,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
                     AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
                 }
                 container.Add("nodes",__w);
+            }
+            if (null != this._availabilityZone)
+            {
+                var __r = new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.XNodeArray();
+                foreach( var __s in this._availabilityZone )
+                {
+                    AddIf(null != (((object)__s)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(__s.ToString()) : null ,__r.Add);
+                }
+                container.Add("availabilityZones",__r);
             }
             AfterToJson(ref container);
             return container;

@@ -116,6 +116,97 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             CertificateTransparency = certificateTransparency;
         }
 
+        internal PSKeyVaultCertificatePolicy(string filePath)
+        {
+            JsonElement policyJson;
+            if (".json".Equals(Path.GetExtension(filePath), StringComparison.OrdinalIgnoreCase))
+            {
+                using (StreamReader r = new StreamReader(filePath))
+                {
+                    string jsonContent = r.ReadToEnd();
+                    policyJson = JsonDocument.Parse(jsonContent).RootElement;
+                }
+            }
+            else
+            {
+                throw new AzPSArgumentException(string.Format(Resources.UnsupportedFileFormat, filePath), nameof(filePath));
+            }
+
+            if (policyJson.ValueKind == JsonValueKind.Null) return;
+
+            foreach (JsonProperty item in policyJson.EnumerateObject())
+            {
+                switch (item.Name)
+                {
+                    case "key_props":
+                    case "key_properties":
+                        this.ReadKeyProperties(item.Value);
+                        break;
+                    case "secret_props":
+                    case "secret_properties":
+                        this.ReadSecretProperties(item.Value);
+                        break;
+                    case "x509_props":
+                    case "x509_certificate_properties":
+                        this.ReadX509CertificateProperties(item.Value);
+                        break;
+                    case "issuer":
+                    case "issuer_parameters":
+                        this.ReadIssuerProperties(item.Value);
+                        break;
+                    case "attributes":
+                        this.ReadAttributesProperties(item.Value);
+                        break;
+
+                    case "lifetime_actions":
+                        string actionType = null;
+                        string triggerType = null;
+                        int? triggerValue = null;
+
+                        foreach (JsonElement item2 in item.Value.EnumerateArray())
+                        {
+                            if (item.Value.EnumerateArray().Count() > 1)
+                                throw new AzPSArgumentException(string.Format("Json file property {0} exceed expected number 1.", item.Name), nameof(item.Name));
+                            foreach (JsonProperty item3 in item2.EnumerateObject())
+                            {
+                                if (item3.Name == "trigger")
+                                {
+                                    foreach (JsonProperty item4 in item3.Value.EnumerateObject())
+                                    {
+                                        triggerType = item4.Name;
+                                        triggerValue = item4.Value.GetInt32();
+                                    }
+                                }
+                                else if (item3.Name == "action")
+                                {
+                                    foreach (JsonProperty item4 in item3.Value.EnumerateObject())
+                                    {
+                                        if (item4.Name == "action_type")
+                                            actionType = item4.Value.GetString();
+                                    }
+                                }
+                            }
+                        }
+
+                        if (actionType == ActionType.AutoRenew.ToString())
+                        {
+                            if (triggerType == "days_before_expiry")
+                                this.RenewAtNumberOfDaysBeforeExpiry = triggerValue;
+                            else if (triggerType == "lifetime_percentage")
+                                this.RenewAtPercentageLifetime = triggerValue;
+                        }
+                        else if (actionType == ActionType.EmailContacts.ToString())
+                        {
+                            if (triggerType == "days_before_expiry")
+                                this.EmailAtNumberOfDaysBeforeExpiry = triggerValue;
+                            else if (triggerType == "lifetime_percentage")
+                                this.EmailAtPercentageLifetime = triggerValue;
+                        }
+                        break;
+                }
+            }
+        }
+
         internal CertificatePolicy ToCertificatePolicy()
         {
             var certificatePolicy = new CertificatePolicy();
@@ -464,13 +555,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 Updated = certificatePolicy.UpdatedOn.HasValue ? certificatePolicy.UpdatedOn.Value.DateTime : (DateTime?)null,
             };
         }
+        
         private void ReadKeyProperties(JsonElement json)
         {
+            if (json.ValueKind == JsonValueKind.Null) return;
+
             foreach (JsonProperty item in json.EnumerateObject())
             {
                 switch (item.Name)
                 {
                     case "kty":
+                    case "key_type":
                         Kty = item.Value.GetString();
                         break;
                     case "reuse_key":
@@ -488,18 +583,28 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 }
             }
         }
+        
         private void ReadSecretProperties(JsonElement json)
         {
-            if (json.TryGetProperty("contentType", out var value))
+            if (json.ValueKind == JsonValueKind.Null) return;
+
+            if (json.TryGetProperty("contentType", out var value1))
             {
-                SecretContentType = value.GetString();
+                SecretContentType = value1.GetString();
+            }
+            if (json.TryGetProperty("content_type", out var value2))
+            {
+                SecretContentType = value2.GetString();
             }
         }
 
         private void ReadSubjectAlternativeNames(JsonProperty json)
         {
+            if (json.Value.ValueKind == JsonValueKind.Null) return;
+
             foreach (JsonProperty item in json.Value.EnumerateObject())
             {
+                if (item.Value.ValueKind == JsonValueKind.Null) continue;
                 switch (item.Name)
                 {
                     case "dns_names":
@@ -531,24 +636,27 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             foreach (JsonProperty item in json.EnumerateObject())
             {
+                if (item.Value.ValueKind == JsonValueKind.Null) continue;
+
                 switch (item.Name)
                 {
                     case "subject":
                         SubjectName = item.Value.GetString();
                         break;
                     case "sans":
+                    case "subject_alternative_names":
                         var SubjectAlternativeNames = new Track2CertificateSDK.SubjectAlternativeNames();
                         ReadSubjectAlternativeNames(item);
-                            // SubjectAlternativeNames .ReadProperties(item.Value);
                         break;
                     case "key_usage":
+                        KeyUsage = new List<string>();
                         foreach (JsonElement item2 in item.Value.EnumerateArray())
                         {
                             KeyUsage.Add(item2.GetString());
                         }
-
                         break;
                     case "ekus":
+                        Ekus = new List<string>();
                         foreach (JsonElement item3 in item.Value.EnumerateArray())
                         {
                             Ekus.Add(item3.GetString());
@@ -556,6 +664,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
                         break;
                     case "validity_months":
+                    case "validity_in_months":
                         ValidityInMonths = item.Value.GetInt32();
                         break;
                 }
@@ -585,6 +694,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         private void ReadAttributesProperties(JsonElement json)
         {
+            if (json.ValueKind == JsonValueKind.Null) return;
             foreach (JsonProperty item in json.EnumerateObject())
             {
                 switch (item.Name)
@@ -601,90 +711,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 }
             }
         }
+
+
         internal static PSKeyVaultCertificatePolicy FromJsonFile(string filePath)
         {
-            PSKeyVaultCertificatePolicy policy = new PSKeyVaultCertificatePolicy();
-            JsonElement policyJson;
-            if (".json".Equals(Path.GetExtension(filePath), StringComparison.OrdinalIgnoreCase))
-            {
-                using (StreamReader r = new StreamReader(filePath))
-                {
-                    string jsonContent = r.ReadToEnd();
-                    policyJson = JsonDocument.Parse(jsonContent).RootElement; 
-                }
-            }
-            else
-            {
-                throw new AzPSArgumentException(string.Format(Resources.UnsupportedFileFormat, filePath), nameof(filePath));
-            }
-            foreach (JsonProperty item in policyJson.EnumerateObject())
-            {
-                switch (item.Name)
-                {
-                    case "key_props":
-                        policy.ReadKeyProperties(item.Value);
-                        break;
-                    case "secret_props":
-                        policy.ReadSecretProperties(item.Value);
-                        break;
-                    case "x509_props":
-                        policy.ReadX509CertificateProperties(item.Value);
-                        break;
-                    case "issuer":
-                        policy.ReadIssuerProperties(item.Value);
-                        break;
-                    case "attributes":
-                        policy.ReadAttributesProperties(item.Value);
-                        break;
-
-                    case "lifetime_actions":
-                        string actionType = null;
-                        string triggerType = null;
-                        int? triggerValue = null;
-
-                        foreach (JsonElement item2 in item.Value.EnumerateArray())
-                        {
-                            if (item.Value.EnumerateArray().Count() > 1)
-                                throw new AzPSArgumentException(string.Format("Json file property {0} exceed expected number 1.", item.Name), nameof(item.Name));
-                            foreach (JsonProperty item3 in item2.EnumerateObject())
-                            {
-                                if (item3.Name == "trigger")
-                                {
-                                    foreach (JsonProperty item4 in item3.Value.EnumerateObject())
-                                    {
-                                        triggerType = item4.Name;
-                                        triggerValue = item4.Value.GetInt32();
-                                    }
-                                }
-                                else if (item3.Name == "action")
-                                {
-                                    foreach (JsonProperty item4 in item3.Value.EnumerateObject())
-                                    {
-                                        if (item4.Name == "action_type")
-                                            actionType = item4.Value.GetString();
-                                    }
-                                }
-                            }
-                        }
-
-                        if (actionType == ActionType.AutoRenew.ToString())
-                        {
-                            if (triggerType == "days_before_expiry")
-                                policy.RenewAtNumberOfDaysBeforeExpiry = triggerValue;
-                            else if (triggerType == "lifetime_percentage")
-                                policy.RenewAtPercentageLifetime = triggerValue;
-                        }
-                        else if (actionType == ActionType.EmailContacts.ToString())
-                        {
-                            if (triggerType == "days_before_expiry")
-                                policy.EmailAtNumberOfDaysBeforeExpiry = triggerValue;
-                            else if (triggerType == "lifetime_percentage")
-                                policy.EmailAtPercentageLifetime = triggerValue;
-                        }
-                        break;
-                }
-            }
-            return policy;
+            return new PSKeyVaultCertificatePolicy(filePath);
         }
 
         private static int? FindIntValueForAutoRenewAction(IEnumerable<LifetimeAction> lifetimeActions, Func<Trigger, int?> intValueGetter)

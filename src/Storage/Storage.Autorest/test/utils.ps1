@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -27,10 +52,13 @@ function setupEnv() {
     $env.RandomString = (RandomString $false 8)
     $env.ResourceGroupName = "testaccountmigrationrg"
     $env.AccountName = "testaccountmigration111"
+    $env.TaskID = "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testtaskassignmentrg/providers/Microsoft.StorageActions/storageTasks/testtask1"
+    $env.TaskAssignmentResourceGroup = "testtaskassignmentrg"
+    $env.TaskAssignmentAccount = "testassignmentaccount"
 
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 function cleanupEnv() {
-    # Clean resources you create for 
+    # Clean resources you create fortest
 }
 

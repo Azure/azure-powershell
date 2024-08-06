@@ -41,15 +41,31 @@ Gets a logical network
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1:  Get a Logical Network
+```powershell
 Get-AzStackHCIVMLogicalNetwork -Name 'testLnet' -ResourceGroupName 'test-rg'
 ```
 
-### EXAMPLE 2
+```output
+Name            ResourceGroupName
+----            -----------------
+testLnet       test-rg
 ```
+
+This command gets a specific logical network in the specified resource group.
+
+### Example 2: List all Logical Networks in a Resource Group
+```powershell
 Get-AzStackHCIVMLogicalNetwork -ResourceGroupName 'test-rg'
 ```
+
+```output
+Name            ResourceGroupName
+----            -----------------
+testLnet       test-rg
+```
+
+This command lists all logical networks in the specified resource group.
 
 ## PARAMETERS
 
@@ -94,7 +110,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -140,7 +156,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -153,8 +169,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmlogicalnetwork](https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmlogicalnetwork)

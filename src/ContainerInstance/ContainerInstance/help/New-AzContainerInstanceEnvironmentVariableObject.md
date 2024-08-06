@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ContainerInstance-help.xml
 Module Name: Az.ContainerInstance
 online version: https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceEnvironmentVariableObject
 schema: 2.0.0
@@ -13,8 +13,8 @@ Create a in-memory object for EnvironmentVariable
 ## SYNTAX
 
 ```
-New-AzContainerInstanceEnvironmentVariableObject -Name <String> [-SecureValue <SecureString>]
- [-Value <String>] [<CommonParameters>]
+New-AzContainerInstanceEnvironmentVariableObject -Name <String> [-SecureValue <SecureString>] [-Value <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +37,8 @@ This command creates an environment variable within a container instance.
 
 ### Example 2: Create a secure environment variable within a container instance
 ```powershell
-New-AzContainerInstanceEnvironmentVariableObject -Name "env2" -SecureValue (ConvertTo-SecureString -String "******" -AsPlainText -Force)
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
+New-AzContainerInstanceEnvironmentVariableObject -Name "env2" -SecureValue $pwd
 ```
 
 ```output
@@ -106,7 +107,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -19,7 +19,7 @@ $fileShareFriendlyName = "fs1"
 $skuName="Standard_LRS"
 $saName = "afspstestsa" # "pstestsa8895"
 $saRgName = "afs-pstest-rg" # "pstestrg8895"
-$fileShareName = "azurefileshare;7f34af6cfe2f3f3204cfd4d18cd6b37f7dec2c84a2d759ffab3d1367f9e17356" #"AzureFileShare;fs1"
+$fileShareName = "azurefileshare;d10" # "AzureFileShare;fs1"
 $targetSaName = "afspstesttargetsa" #"pstesttargetsa8896"
 $targetFileShareName = "fs1"
 $targetFolder = "pstestfolder3rty7d7s"
@@ -61,6 +61,8 @@ function Test-AzureFSRestoreToAnotherRegion
 	try
 	{
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		Enable-Protection $vault $fileShareFriendlyName $saName
+
 		$items = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureStorage -WorkloadType AzureFiles
 
 		$backupJob = Backup-Item $vault $items[0]
@@ -80,7 +82,7 @@ function Test-AzureFSRestoreToAnotherRegion
 	}
 	finally
 	{
-		# no cleanup
+		Cleanup-Vault $vault $items $container
 	}
 }
 
@@ -413,6 +415,6 @@ function Test-AzureFSFullRestore
 	}
 	finally
 	{
-		# Cleanup-Vault $vault $item $container
+		Cleanup-Vault $vault $item $container
 	}
 }

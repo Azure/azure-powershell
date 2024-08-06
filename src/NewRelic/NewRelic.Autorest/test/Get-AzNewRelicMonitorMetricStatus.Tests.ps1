@@ -14,8 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNewRelicMonitorMetricSt
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzNewRelicMonitorMetricStatus' {
-    It 'GetExpanded' -skip {
+Describe 'Get-AzNewRelicMonitorMetricStatus' { #Scenario Test
+    It 'GetViaJsonString' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GetViaJsonFilePath' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 

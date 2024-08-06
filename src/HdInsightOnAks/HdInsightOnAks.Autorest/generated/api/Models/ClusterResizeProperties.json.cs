@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_targetWorkerNodeCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("targetWorkerNodeCount"), out var __jsonTargetWorkerNodeCount) ? (int)__jsonTargetWorkerNodeCount : TargetWorkerNodeCount;}
+            {_targetWorkerNodeCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("targetWorkerNodeCount"), out var __jsonTargetWorkerNodeCount) ? (int)__jsonTargetWorkerNodeCount : _targetWorkerNodeCount;}
             AfterFromJson(json);
         }
 

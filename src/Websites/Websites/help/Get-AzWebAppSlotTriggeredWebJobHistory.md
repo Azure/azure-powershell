@@ -15,7 +15,8 @@ Get or list triggered web job's history for a deployment slot.
 ### List (Default)
 ```
 Get-AzWebAppSlotTriggeredWebJobHistory -AppName <String> -Name <String> -ResourceGroupName <String>
- -SlotName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+ -SlotName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
 ```
 
 ### Get

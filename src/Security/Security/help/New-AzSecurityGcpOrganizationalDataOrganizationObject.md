@@ -15,7 +15,7 @@ Create an in-memory object for GcpOrganizationalDataOrganization.
 ```
 New-AzSecurityGcpOrganizationalDataOrganizationObject [-ExcludedProjectNumber <String[]>]
  [-ServiceAccountEmailAddress <String>] [-WorkloadIdentityProviderId <String>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,9 +23,17 @@ Create an in-memory object for GcpOrganizationalDataOrganization.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create new GcpOrganizationalDataOrganization object
 ```powershell
 New-AzSecurityGcpOrganizationalDataOrganizationObject -WorkloadIdentityProviderId "provider" -ServiceAccountEmailAddress "my@email.com" -ExcludedProjectNumber @(1,2)
+```
+
+```output
+ExcludedProjectNumber      : {1, 2}
+OrganizationMembershipType : Organization
+OrganizationName           : 
+ServiceAccountEmailAddress : my@email.com
+WorkloadIdentityProviderId : provider
 ```
 
 ## PARAMETERS
@@ -34,9 +42,24 @@ New-AzSecurityGcpOrganizationalDataOrganizationObject -WorkloadIdentityProviderI
 If the multi cloud account is of membership type organization, list of accounts excluded from offering.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -49,7 +72,7 @@ Accept wildcard characters: False
 The service account email address which represents the organization level permissions container.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -64,7 +87,7 @@ Accept wildcard characters: False
 The GCP workload identity provider id which represents the permissions required to auto provision security connectors.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -83,8 +106,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.GcpOrganizationalDataOrganization
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritygcporganizationaldataorganizationobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritygcporganizationaldataorganizationobject)

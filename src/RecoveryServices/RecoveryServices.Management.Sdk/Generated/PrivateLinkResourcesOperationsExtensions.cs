@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.RecoveryServices
     public static partial class PrivateLinkResourcesOperationsExtensions
     {
         /// <summary>
-        /// Returns the list of private link resources that need to be created for Backup and SiteRecovery
+        /// Returns the list of private link resources that need to be created for
+        /// Backup and SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -30,7 +31,8 @@ namespace Microsoft.Azure.Management.RecoveryServices
         }
 
         /// <summary>
-        /// Returns the list of private link resources that need to be created for Backup and SiteRecovery
+        /// Returns the list of private link resources that need to be created for
+        /// Backup and SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -52,7 +54,8 @@ namespace Microsoft.Azure.Management.RecoveryServices
             }
         }
         /// <summary>
-        /// Returns a specified private link resource that need to be created for Backup and SiteRecovery
+        /// Returns a specified private link resource that need to be created for
+        /// Backup and SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -72,7 +75,8 @@ namespace Microsoft.Azure.Management.RecoveryServices
         }
 
         /// <summary>
-        /// Returns a specified private link resource that need to be created for Backup and SiteRecovery
+        /// Returns a specified private link resource that need to be created for
+        /// Backup and SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -97,7 +101,8 @@ namespace Microsoft.Azure.Management.RecoveryServices
             }
         }
         /// <summary>
-        /// Returns the list of private link resources that need to be created for Backup and SiteRecovery
+        /// Returns the list of private link resources that need to be created for
+        /// Backup and SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -111,7 +116,8 @@ namespace Microsoft.Azure.Management.RecoveryServices
         }
 
         /// <summary>
-        /// Returns the list of private link resources that need to be created for Backup and SiteRecovery
+        /// Returns the list of private link resources that need to be created for
+        /// Backup and SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

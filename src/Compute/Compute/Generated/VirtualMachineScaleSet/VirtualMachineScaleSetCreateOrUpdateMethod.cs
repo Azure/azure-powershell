@@ -74,15 +74,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             {
                                 // TL defaulting for default param set, config object.
                                 // if security type not set, 
-                                // if parameters.VirtualMachineProfile.StorageProfile.ImageReference.SharedGalleryImageId == null
-                                // if parameters.VirtualMachineProfile.StorageProfile.ImageReference.Id == null
-                                // if parameters.VirtualMachineProfile.StorageProfile.OsDisk == null
+
                                 if (this.VirtualMachineScaleSet.VirtualMachineProfile?.SecurityProfile?.SecurityType == null
                                     && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.ImageReference == null
                                     && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.OsDisk == null)
                                 {
                                     trustedLaunchDefaultingSecurityValues();
                                     trustedLaunchDefaultingImageValues();
+                                }
+                                // if securityType is Standard explicitly.
+                                else if (this.VirtualMachineScaleSet.VirtualMachineProfile?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.StandardSecurityType
+                                    && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.ImageReference == null
+                                    && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.OsDisk == null)
+                                {
+                                    this.ImageName = ConstantValues.TrustedLaunchDefaultImageAlias;
                                 }
 
                                 if (this.VirtualMachineScaleSet.VirtualMachineProfile?.SecurityProfile?.SecurityType == null
@@ -97,6 +102,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                     specificImageRespone = retrieveSpecificImageFromNotId();
                                     setHyperVGenForImageCheckAndTLDefaulting(specificImageRespone);
                                 }
+
                             }
 
                             string resourceGroupName = this.ResourceGroupName;
@@ -131,6 +137,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                     parameters.VirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings(true, true);
                                 }
                             }
+
 
                             // For Cross-tenant RBAC sharing
                             Dictionary<string, List<string>> auxAuthHeader = null;
@@ -176,14 +183,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 var res = VirtualMachineScaleSetsClient.CreateOrUpdateWithHttpMessagesAsync(
                                         resourceGroupName,
                                         vmScaleSetName,
-                                        parameters,null,null,
+                                        parameters, this.IfMatch, this.IfNoneMatch,
                                         auxAuthHeader).GetAwaiter().GetResult();
 
                                 result = res.Body;
                             }
                             else
                             {
-                                result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
+                                result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters, this.IfMatch, this.IfNoneMatch);
                             }
 
                             var psObject = new PSVirtualMachineScaleSet();
@@ -395,5 +402,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "UserData for the Vmss, which will be Base64 encoded. Customer should not pass any secrets in here.",
             ValueFromPipelineByPropertyName = true)]
         public string UserData { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the image becomes available.")]
+        public SwitchParameter EnableAutomaticOSUpgrade{ get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "used to make a request conditional for the PUT and other non-safe methods. The server will only return the requested resources if the resource matches one of the listed ETag values. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.")]
+        public string IfMatch { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Used to make a request conditional for the GET and HEAD methods. The server will only return the requested resources if none of the listed ETag values match the current entity. Used to make a request conditional for the GET and HEAD methods. The server will only return the requested resources if none of the listed ETag values match the current entity. Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will result in error from server as they are not supported.")]
+        public string IfNoneMatch { get; set; }
     }
 }
+

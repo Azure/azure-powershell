@@ -1,0 +1,52 @@
+{
+  "resourceType": "cloudVmClusters/dbNodes",
+  "apiVersion": "2023-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.oracle"
+  },
+  "commands": [
+    {
+      "name": "Get-AzOracleDbNode",
+      "description": "Get a DbNode",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/cloudVmClusters/{cloudvmclustername}/dbNodes/{dbnodeocid}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.oracle/get-azoracledbnode"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Cloudvmclustername <String>",
+              "-Ocid <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a DbNode",
+          "parameters": [
+            {
+              "name": "-Cloudvmclustername",
+              "value": "[Path.cloudvmclustername]"
+            },
+            {
+              "name": "-Ocid",
+              "value": "[Path.dbnodeocid]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

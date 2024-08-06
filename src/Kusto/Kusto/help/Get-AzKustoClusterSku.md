@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Kusto-help.xml
 Module Name: Az.Kusto
 online version: https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoclustersku
 schema: 2.0.0
@@ -14,12 +14,13 @@ Lists eligible SKUs for Kusto resource provider.
 
 ### List (Default)
 ```
-Get-AzKustoClusterSku [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzKustoClusterSku [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzKustoClusterSku -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzKustoClusterSku [-SubscriptionId <String[]>] -ClusterName <String> -ResourceGroupName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -74,7 +75,7 @@ The above command lists eligible SKUs.
 
 ### Example 2: Lists eligible SKUs for specific cluster
 ```powershell
- Get-AzKustoClusterSku -ResourceGroupName testrg -ClusterName testnewkustocluster
+Get-AzKustoClusterSku -ResourceGroupName testrg -ClusterName testnewkustocluster
 ```
 
 ```output
@@ -169,4 +170,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

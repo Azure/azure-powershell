@@ -1801,6 +1801,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -1813,7 +1814,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -1954,6 +1958,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -1966,7 +1971,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -2098,7 +2106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create monitored Azure DevOps organization details.</summary>
+        /// <summary>Update monitored Azure DevOps organization details.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -2150,7 +2158,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create monitored Azure DevOps organization details.</summary>
+        /// <summary>Update monitored Azure DevOps organization details.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps organization resource payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2212,7 +2220,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create monitored Azure DevOps organization details.</summary>
+        /// <summary>Update monitored Azure DevOps organization details.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps organization resource payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2272,7 +2280,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create monitored Azure DevOps organization details.</summary>
+        /// <summary>Update monitored Azure DevOps organization details.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -2323,7 +2331,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create monitored Azure DevOps organization details.</summary>
+        /// <summary>Update monitored Azure DevOps organization details.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -2372,7 +2380,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create monitored Azure DevOps organization details.</summary>
+        /// <summary>Update monitored Azure DevOps organization details.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -2449,6 +2457,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -2461,7 +2470,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -2599,6 +2611,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -2611,7 +2624,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -3737,7 +3753,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates monitored Azure DevOps organization details.</summary>
+        /// <summary>Update monitored Azure DevOps organization details.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -3789,7 +3805,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates monitored Azure DevOps organization details.</summary>
+        /// <summary>Update monitored Azure DevOps organization details.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps organization resource payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3851,7 +3867,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates monitored Azure DevOps organization details.</summary>
+        /// <summary>Update monitored Azure DevOps organization details.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps organization resource payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3911,7 +3927,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates monitored Azure DevOps organization details.</summary>
+        /// <summary>Update monitored Azure DevOps organization details.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -3962,7 +3978,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates monitored Azure DevOps organization details.</summary>
+        /// <summary>Update monitored Azure DevOps organization details.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -4011,7 +4027,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates monitored Azure DevOps organization details.</summary>
+        /// <summary>Update monitored Azure DevOps organization details.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -4086,6 +4102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -4098,7 +4115,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -4236,6 +4256,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -4248,7 +4269,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -4376,7 +4400,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a monitored Azure DevOps project resource.</summary>
+        /// <summary>Update a monitored Azure DevOps project resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -4431,7 +4455,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a monitored Azure DevOps project resource.</summary>
+        /// <summary>Update a monitored Azure DevOps project resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps project resource payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -4496,7 +4520,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a monitored Azure DevOps project resource.</summary>
+        /// <summary>Update a monitored Azure DevOps project resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps project resource payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4559,7 +4583,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a monitored Azure DevOps project resource.</summary>
+        /// <summary>Update a monitored Azure DevOps project resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -4613,7 +4637,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a monitored Azure DevOps project resource.</summary>
+        /// <summary>Update a monitored Azure DevOps project resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -4665,7 +4689,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a monitored Azure DevOps project resource.</summary>
+        /// <summary>Update a monitored Azure DevOps project resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -4745,6 +4769,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -4757,7 +4782,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -4895,6 +4923,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -4907,7 +4936,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -5727,7 +5759,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a monitored Azure DevOps project resource.</summary>
+        /// <summary>Update a monitored Azure DevOps project resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -5782,7 +5814,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a monitored Azure DevOps project resource.</summary>
+        /// <summary>Update a monitored Azure DevOps project resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps project resource payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -5847,7 +5879,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a monitored Azure DevOps project resource.</summary>
+        /// <summary>Update a monitored Azure DevOps project resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps project resource payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -5910,7 +5942,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a monitored Azure DevOps project resource.</summary>
+        /// <summary>Update a monitored Azure DevOps project resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -5964,7 +5996,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a monitored Azure DevOps project resource.</summary>
+        /// <summary>Update a monitored Azure DevOps project resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -6016,7 +6048,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a monitored Azure DevOps project resource.</summary>
+        /// <summary>Update a monitored Azure DevOps project resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -6096,6 +6128,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -6108,7 +6141,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -6246,6 +6282,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -6258,7 +6295,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -6388,7 +6428,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a monitored Azure DevOps repository resource.</summary>
+        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -6446,7 +6486,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a monitored Azure DevOps repository resource.</summary>
+        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps repository resource payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -6514,7 +6554,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a monitored Azure DevOps repository resource.</summary>
+        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps repository resource payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6580,7 +6620,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a monitored Azure DevOps repository resource.</summary>
+        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -6637,7 +6677,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a monitored Azure DevOps repository resource.</summary>
+        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -6692,7 +6732,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a monitored Azure DevOps repository resource.</summary>
+        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -6775,6 +6815,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -6787,7 +6828,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -6925,6 +6969,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -6937,7 +6982,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -7787,7 +7835,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a monitored Azure DevOps repository resource.</summary>
+        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -7845,7 +7893,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a monitored Azure DevOps repository resource.</summary>
+        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps repository resource payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -7913,7 +7961,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a monitored Azure DevOps repository resource.</summary>
+        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps repository resource payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -7979,7 +8027,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a monitored Azure DevOps repository resource.</summary>
+        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -8036,7 +8084,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a monitored Azure DevOps repository resource.</summary>
+        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -8091,7 +8139,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a monitored Azure DevOps repository resource.</summary>
+        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -8172,6 +8220,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -8184,7 +8233,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -8322,6 +8374,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -8334,7 +8387,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -8466,7 +8522,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a DevOps Configuration.</summary>
+        /// <summary>Update a DevOps Configuration.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -8516,7 +8572,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a DevOps Configuration.</summary>
+        /// <summary>Update a DevOps Configuration.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The DevOps configuration resource payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -8576,7 +8632,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a DevOps Configuration.</summary>
+        /// <summary>Update a DevOps Configuration.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The DevOps configuration resource payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8634,7 +8690,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a DevOps Configuration.</summary>
+        /// <summary>Update a DevOps Configuration.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -8683,7 +8739,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a DevOps Configuration.</summary>
+        /// <summary>Update a DevOps Configuration.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -8730,7 +8786,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a DevOps Configuration.</summary>
+        /// <summary>Update a DevOps Configuration.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -8805,6 +8861,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -8817,7 +8874,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -8955,6 +9015,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -8967,7 +9028,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -9222,6 +9286,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -9234,7 +9299,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -10018,7 +10086,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a DevOps Configuration.</summary>
+        /// <summary>Update a DevOps Configuration.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -10068,7 +10136,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a DevOps Configuration.</summary>
+        /// <summary>Update a DevOps Configuration.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The DevOps configuration resource payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -10128,7 +10196,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a DevOps Configuration.</summary>
+        /// <summary>Update a DevOps Configuration.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The DevOps configuration resource payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10186,7 +10254,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a DevOps Configuration.</summary>
+        /// <summary>Update a DevOps Configuration.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -10235,7 +10303,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a DevOps Configuration.</summary>
+        /// <summary>Update a DevOps Configuration.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -10282,7 +10350,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a DevOps Configuration.</summary>
+        /// <summary>Update a DevOps Configuration.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -10357,6 +10425,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -10369,7 +10438,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -10507,6 +10579,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -10519,7 +10592,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -14724,7 +14800,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
         }
 
         /// <summary>
-        /// Create a security connector. If a security connector is already created and a subsequent request is issued for the same
+        /// Update a security connector. If a security connector is already created and a subsequent request is issued for the same
         /// security connector id, then it will be updated.
         /// </summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
@@ -14777,7 +14853,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
         }
 
         /// <summary>
-        /// Create a security connector. If a security connector is already created and a subsequent request is issued for the same
+        /// Update a security connector. If a security connector is already created and a subsequent request is issued for the same
         /// security connector id, then it will be updated.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -14840,7 +14916,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
         }
 
         /// <summary>
-        /// Create a security connector. If a security connector is already created and a subsequent request is issued for the same
+        /// Update a security connector. If a security connector is already created and a subsequent request is issued for the same
         /// security connector id, then it will be updated.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -14900,7 +14976,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
         }
 
         /// <summary>
-        /// Create a security connector. If a security connector is already created and a subsequent request is issued for the same
+        /// Update a security connector. If a security connector is already created and a subsequent request is issued for the same
         /// security connector id, then it will be updated.
         /// </summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
@@ -14952,7 +15028,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
         }
 
         /// <summary>
-        /// Create a security connector. If a security connector is already created and a subsequent request is issued for the same
+        /// Update a security connector. If a security connector is already created and a subsequent request is issued for the same
         /// security connector id, then it will be updated.
         /// </summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
@@ -15001,7 +15077,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
         }
 
         /// <summary>
-        /// Create a security connector. If a security connector is already created and a subsequent request is issued for the same
+        /// Update a security connector. If a security connector is already created and a subsequent request is issued for the same
         /// security connector id, then it will be updated.
         /// </summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
@@ -16343,7 +16419,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a security connector</summary>
+        /// <summary>Update a security connector</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -16392,7 +16468,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a security connector</summary>
+        /// <summary>Update a security connector</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The security connector resource</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -16451,7 +16527,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a security connector</summary>
+        /// <summary>Update a security connector</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The security connector resource</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -16508,7 +16584,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a security connector</summary>
+        /// <summary>Update a security connector</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -16556,7 +16632,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a security connector</summary>
+        /// <summary>Update a security connector</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -16602,7 +16678,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a security connector</summary>
+        /// <summary>Update a security connector</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>

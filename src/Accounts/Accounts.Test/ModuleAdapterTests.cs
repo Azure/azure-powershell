@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Profile.CommonModule;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -27,7 +28,7 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
-    public class ModuleAdapterTests
+    public class ModuleAdapterTests : RMTestBase
     {
         [Theory]
         [InlineData("https://manage.windowsazure.com/subscriptions", "https://manage.windowsazure.cn", "https://manage.windowsazure.cn/subscriptions")]

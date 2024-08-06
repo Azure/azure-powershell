@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
 
@@ -112,5 +113,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// Gets or sets the value to indicate if the database operation can be cancelled
         /// </summary>
         public bool? IsCancellable { get; set; }
+
+        /// <summary>
+        /// Gets or sets the operation phase details for Sterling to Hyperscale migration
+        /// </summary>
+        public PhaseDetails OperationPhaseDetails { get; set; }
+
     }
 }

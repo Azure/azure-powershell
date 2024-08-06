@@ -15,7 +15,8 @@ Gets all versions for an Azure extension.
 
 ```
 Get-AzVMExtensionImage -Location <String> -PublisherName <String> -Type <String> [-FilterExpression <String>]
- [-Version <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Version <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -223,5 +224,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVMImage](./Get-AzVMImage.md)
 
 [Get-AzVMImagePublisher](./Get-AzVMImagePublisher.md)
-
-

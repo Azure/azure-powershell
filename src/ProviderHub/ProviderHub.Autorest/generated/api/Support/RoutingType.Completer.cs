@@ -28,39 +28,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Default".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Default", "Default", global::System.Management.Automation.CompletionResultType.ParameterValue, "Default");
+                yield return new global::System.Management.Automation.CompletionResult("'Default'", "Default", global::System.Management.Automation.CompletionResultType.ParameterValue, "Default");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ProxyOnly".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ProxyOnly", "ProxyOnly", global::System.Management.Automation.CompletionResultType.ParameterValue, "ProxyOnly");
+                yield return new global::System.Management.Automation.CompletionResult("'ProxyOnly'", "ProxyOnly", global::System.Management.Automation.CompletionResultType.ParameterValue, "ProxyOnly");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "HostBased".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("HostBased", "HostBased", global::System.Management.Automation.CompletionResultType.ParameterValue, "HostBased");
+                yield return new global::System.Management.Automation.CompletionResult("'HostBased'", "HostBased", global::System.Management.Automation.CompletionResultType.ParameterValue, "HostBased");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Extension".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Extension", "Extension", global::System.Management.Automation.CompletionResultType.ParameterValue, "Extension");
+                yield return new global::System.Management.Automation.CompletionResult("'Extension'", "Extension", global::System.Management.Automation.CompletionResultType.ParameterValue, "Extension");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Tenant".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Tenant", "Tenant", global::System.Management.Automation.CompletionResultType.ParameterValue, "Tenant");
+                yield return new global::System.Management.Automation.CompletionResult("'Tenant'", "Tenant", global::System.Management.Automation.CompletionResultType.ParameterValue, "Tenant");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Fanout".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Fanout", "Fanout", global::System.Management.Automation.CompletionResultType.ParameterValue, "Fanout");
+                yield return new global::System.Management.Automation.CompletionResult("'Fanout'", "Fanout", global::System.Management.Automation.CompletionResultType.ParameterValue, "Fanout");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "LocationBased".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LocationBased", "LocationBased", global::System.Management.Automation.CompletionResultType.ParameterValue, "LocationBased");
+                yield return new global::System.Management.Automation.CompletionResult("'LocationBased'", "LocationBased", global::System.Management.Automation.CompletionResultType.ParameterValue, "LocationBased");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Failover".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Failover", "Failover", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failover");
+                yield return new global::System.Management.Automation.CompletionResult("'Failover'", "Failover", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failover");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CascadeExtension".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CascadeExtension", "CascadeExtension", global::System.Management.Automation.CompletionResultType.ParameterValue, "CascadeExtension");
+                yield return new global::System.Management.Automation.CompletionResult("'CascadeExtension'", "CascadeExtension", global::System.Management.Automation.CompletionResultType.ParameterValue, "CascadeExtension");
             }
         }
     }

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.HanaOnAzure-help.xml
 Module Name: Az.HanaOnAzure
 online version: https://learn.microsoft.com/powershell/module/az.hanaonazure/new-azsapmonitorproviderinstance
 schema: 2.0.0
@@ -15,26 +15,28 @@ Creates a provider instance for the specified subscription, resource group, SapM
 ### ByString (Default)
 ```
 New-AzSapMonitorProviderInstance -Name <String> -ResourceGroupName <String> -SapMonitorName <String>
- -HanaDatabaseName <String> -HanaDatabasePassword <SecureString> -HanaDatabaseSqlPort <Int32>
- -HanaDatabaseUsername <String> -HanaHostname <String> -ProviderType <String> [-SubscriptionId <String>]
- [-Metadata <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] -ProviderType <String> -HanaHostname <String> -HanaDatabaseName <String>
+ -HanaDatabaseSqlPort <Int32> -HanaDatabaseUsername <String> -HanaDatabasePassword <SecureString>
+ [-Metadata <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByKeyVault
+```
+New-AzSapMonitorProviderInstance -Name <String> -ResourceGroupName <String> -SapMonitorName <String>
+ [-SubscriptionId <String>] -ProviderType <String> -HanaHostname <String> -HanaDatabaseName <String>
+ -HanaDatabaseSqlPort <Int32> -HanaDatabaseUsername <String> [-Metadata <Hashtable>]
+ -HanaDatabasePasswordKeyVaultResourceId <String> -HanaDatabasePasswordSecretId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByDict
 ```
 New-AzSapMonitorProviderInstance -Name <String> -ResourceGroupName <String> -SapMonitorName <String>
- -InstanceProperty <Hashtable> -ProviderType <String> [-SubscriptionId <String>] [-Metadata <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ByKeyVault
-```
-New-AzSapMonitorProviderInstance -Name <String> -ResourceGroupName <String> -SapMonitorName <String>
- -HanaDatabaseName <String> -HanaDatabasePasswordKeyVaultResourceId <String>
- -HanaDatabasePasswordSecretId <String> -HanaDatabaseSqlPort <Int32> -HanaDatabaseUsername <String>
- -HanaHostname <String> -ProviderType <String> [-SubscriptionId <String>] [-Metadata <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -ProviderType <String> [-Metadata <Hashtable>] -InstanceProperty <Hashtable>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +46,8 @@ Creates a provider instance for the specified subscription, resource group, SapM
 
 ### Example 1: Create an instance of SAP monitor by string for HANA
 ```powershell
-New-AzSapMonitorProviderInstance -ResourceGroupName nancyc-hn1 -Name ps-sapmonitorins-t01 -SapMonitorName yemingmonitor -ProviderType SapHana -HanaHostname 'hdb1-0' -HanaDatabaseName 'SYSTEMDB' -HanaDatabaseSqlPort 30015 -HanaDatabaseUsername SYSTEM -HanaDatabasePassword (ConvertTo-SecureString "Manager1" -AsPlainText -Force)
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
+New-AzSapMonitorProviderInstance -ResourceGroupName nancyc-hn1 -Name ps-sapmonitorins-t01 -SapMonitorName yemingmonitor -ProviderType SapHana -HanaHostname 'hdb1-0' -HanaDatabaseName 'SYSTEMDB' -HanaDatabaseSqlPort 30015 -HanaDatabaseUsername SYSTEM -HanaDatabasePassword $pwd
 ```
 
 ```output
@@ -157,7 +160,7 @@ The database name of SAP HANA instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByKeyVault, ByString
+Parameter Sets: ByString, ByKeyVault
 Aliases: HanaDbName
 
 Required: True
@@ -217,7 +220,7 @@ The SQL port of the database of SAP HANA instance.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: ByKeyVault, ByString
+Parameter Sets: ByString, ByKeyVault
 Aliases: HanaDbSqlPort
 
 Required: True
@@ -232,7 +235,7 @@ The username of the database of SAP HANA instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByKeyVault, ByString
+Parameter Sets: ByString, ByKeyVault
 Aliases: HanaDbUsername
 
 Required: True
@@ -247,7 +250,7 @@ The hostname of SAP HANA instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByKeyVault, ByString
+Parameter Sets: ByString, ByKeyVault
 Aliases:
 
 Required: True
@@ -421,7 +424,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

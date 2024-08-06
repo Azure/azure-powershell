@@ -15,20 +15,22 @@ Set the upstream settings of a SignalR service.
 ### ResourceGroupParameterSet (Default)
 ```
 Set-AzSignalRUpstream [-ResourceGroupName <String>] [-Name] <String> [-AsJob]
- [-Template <PSUpstreamTemplate[]>] [-Clear] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Template <PSUpstreamTemplate[]>] [-Clear] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Set-AzSignalRUpstream -ResourceId <String> [-AsJob] [-Template <PSUpstreamTemplate[]>] [-Clear]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Set-AzSignalRUpstream -InputObject <PSSignalRResource> [-AsJob] [-Template <PSUpstreamTemplate[]>] [-Clear]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +38,7 @@ Set the upstream settings of a SignalR service.
 
 ## EXAMPLES
 
-### Set two ordered upstream templates
+### Example 1: Set two ordered upstream templates
 ```powershell
 Set-AzSignalRUpstream -name pssignalr -ResourceGroupName test_resource_group -Template @{UrlTemplate='http://host-connections1.com'; HubPattern='chat';EventPattern='broadcast' }, @{UrlTemplate='http://host-connections2.com'}
 ```
@@ -64,7 +66,7 @@ The following JSON represents the actual templates set.
 }
 `
 
-### Clear all the upstream settings
+### Example 2: Clear all the upstream settings
 ```powershell
 Set-AzSignalRUpstream -name pssignalr -ResourceGroupName test_resource_group -Clear
 ```

@@ -5,71 +5,70 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Accounts", "Accounts", "{70259E17-25B0-4EA1-AFD0-3EC2F48DDE05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{AFDEDDC3-3075-4FF8-9D2A-219E02777E06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{AFDEDDC3-3075-4FF8-9D2A-219E02777E06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{D2B72C83-095A-4604-91E4-AEA3F579DC64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{D2B72C83-095A-4604-91E4-AEA3F579DC64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{7BF77E26-C389-4920-BFA7-9A33E5494BB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{7BF77E26-C389-4920-BFA7-9A33E5494BB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{70722253-05D7-4F45-A863-A509FC71E90A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{70722253-05D7-4F45-A863-A509FC71E90A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{CE16307E-E003-4C6E-90CC-EBDB9A0E69CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{CE16307E-E003-4C6E-90CC-EBDB9A0E69CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{AE7B103B-7D3B-438F-B484-163F97062C59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{AE7B103B-7D3B-438F-B484-163F97062C59}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{F8CD3EDA-A3B6-4571-B779-FB4DCC331DAE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DependentModules", "DependentModules", "{C4CB7C26-B809-48FD-807C-4467711FBC07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EventHub", "..\EventHub\EventHub.Autorest\Az.EventHub.csproj", "{8E7D57B9-7861-4DF7-885B-7CC5EB7A7E8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.EventHub", "..\EventHub\EventHub.Autorest\Az.EventHub.csproj", "{8E7D57B9-7861-4DF7-885B-7CC5EB7A7E8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHub", "..\EventHub\EventHub\EventHub.csproj", "{CD07D141-7C6E-4691-87DA-A6599060098E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventHub", "..\EventHub\EventHub\EventHub.csproj", "{CD07D141-7C6E-4691-87DA-A6599060098E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.KeyVault", "..\KeyVault\KeyVault.Autorest\Az.KeyVault.csproj", "{DBC6AE37-041E-4F4C-8FE2-31FB22D0F3A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.KeyVault", "..\KeyVault\KeyVault.Autorest\Az.KeyVault.csproj", "{DBC6AE37-041E-4F4C-8FE2-31FB22D0F3A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyVault.Sdk", "..\KeyVault\KeyVault.Sdk\KeyVault.Sdk.csproj", "{36C1E707-ACCB-44B3-9942-65E622A29EF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault", "..\KeyVault\KeyVault\KeyVault.csproj", "{D28A426A-4739-4B43-A502-B0D611CDEEA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyVault", "..\KeyVault\KeyVault\KeyVault.csproj", "{D28A426A-4739-4B43-A502-B0D611CDEEA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.ActionGroup", "..\Monitor\ActionGroup.Autorest\Az.ActionGroup.csproj", "{BBA9E939-8793-42FB-AD40-E11DD4BA8597}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ActionGroup", "..\Monitor\ActionGroup.Autorest\Az.ActionGroup.csproj", "{BBA9E939-8793-42FB-AD40-E11DD4BA8597}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.ActivityLogAlert", "..\Monitor\ActivityLogAlert.Autorest\Az.ActivityLogAlert.csproj", "{7364ADC7-D0F7-404B-830D-C078884D1DD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ActivityLogAlert", "..\Monitor\ActivityLogAlert.Autorest\Az.ActivityLogAlert.csproj", "{7364ADC7-D0F7-404B-830D-C078884D1DD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Autoscale", "..\Monitor\Autoscale.Autorest\Az.Autoscale.csproj", "{308E9CB0-532C-4E8F-B01C-E688BDCBCC5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Autoscale", "..\Monitor\Autoscale.Autorest\Az.Autoscale.csproj", "{308E9CB0-532C-4E8F-B01C-E688BDCBCC5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.DataCollectionRule", "..\Monitor\DataCollectionRule.Autorest\Az.DataCollectionRule.csproj", "{74456B48-E8E2-4529-A11C-FBDE0DC496E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DataCollectionRule", "..\Monitor\DataCollectionRule.Autorest\Az.DataCollectionRule.csproj", "{74456B48-E8E2-4529-A11C-FBDE0DC496E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.DiagnosticSetting", "..\Monitor\DiagnosticSetting.Autorest\Az.DiagnosticSetting.csproj", "{8D0D0419-1532-43E9-BB61-755510B0FA1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DiagnosticSetting", "..\Monitor\DiagnosticSetting.Autorest\Az.DiagnosticSetting.csproj", "{8D0D0419-1532-43E9-BB61-755510B0FA1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitor", "..\Monitor\Monitor\Monitor.csproj", "{C4E85D98-453B-4BF6-808D-8FD519A1D71F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitor", "..\Monitor\Monitor\Monitor.csproj", "{C4E85D98-453B-4BF6-808D-8FD519A1D71F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.MonitorWorkspace", "..\Monitor\MonitorWorkspace.Autorest\Az.MonitorWorkspace.csproj", "{DF2177DA-CC74-4C6B-98CB-F09F595EFF0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MonitorWorkspace", "..\Monitor\MonitorWorkspace.Autorest\Az.MonitorWorkspace.csproj", "{DF2177DA-CC74-4C6B-98CB-F09F595EFF0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.ScheduledQueryRule", "..\Monitor\ScheduledQueryRule.Autorest\Az.ScheduledQueryRule.csproj", "{BA11B746-911D-458D-AE2E-A1F8A5F1D48E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ScheduledQueryRule", "..\Monitor\ScheduledQueryRule.Autorest\Az.ScheduledQueryRule.csproj", "{BA11B746-911D-458D-AE2E-A1F8A5F1D48E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network.Management.Sdk", "..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj", "{D2109AFA-4539-4443-8D27-DB88B17252AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network.Management.Sdk", "..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj", "{D2109AFA-4539-4443-8D27-DB88B17252AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network", "..\Network\Network\Network.csproj", "{B828AA70-1A75-428E-A344-DD29A65D7510}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network", "..\Network\Network\Network.csproj", "{B828AA70-1A75-428E-A344-DD29A65D7510}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OperationalInsights", "..\OperationalInsights\OperationalInsights\OperationalInsights.csproj", "{6BE4C5E6-C58E-40CD-9C46-F69584BE3C97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperationalInsights", "..\OperationalInsights\OperationalInsights\OperationalInsights.csproj", "{6BE4C5E6-C58E-40CD-9C46-F69584BE3C97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sql.LegacySdk", "Sql.LegacySdk\Sql.LegacySdk.csproj", "{12484350-C758-4BBE-B519-283CBF2FE321}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sql.LegacySdk", "Sql.LegacySdk\Sql.LegacySdk.csproj", "{12484350-C758-4BBE-B519-283CBF2FE321}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sql.Management.Sdk", "Sql.Management.Sdk\Sql.Management.Sdk.csproj", "{737ABE2C-784A-44BA-A60C-B7B102556483}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sql.Management.Sdk", "Sql.Management.Sdk\Sql.Management.Sdk.csproj", "{737ABE2C-784A-44BA-A60C-B7B102556483}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sql.Test", "Sql.Test\Sql.Test.csproj", "{67E4B185-2CF3-4A53-AC36-58FB599B9FEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sql.Test", "Sql.Test\Sql.Test.csproj", "{67E4B185-2CF3-4A53-AC36-58FB599B9FEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sql", "Sql\Sql.csproj", "{A077A782-22BE-4A8F-B2BD-E2F3E60808AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sql", "Sql\Sql.csproj", "{A077A782-22BE-4A8F-B2BD-E2F3E60808AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{EC843402-D0CC-49BE-838D-0805565E7BAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{EC843402-D0CC-49BE-838D-0805565E7BAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Metricdata", "..\Monitor\MetricData.Autorest\Az.Metricdata.csproj", "{C87EC2B3-3CB3-4382-8A7F-8C0F12228856}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault.Management.Sdk", "..\KeyVault\KeyVault.Management.Sdk\KeyVault.Management.Sdk.csproj", "{51555910-97A7-41A3-BB8D-D628F584E395}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{AFDEDDC3-3075-4FF8-9D2A-219E02777E06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -108,10 +107,6 @@ Global
 		{DBC6AE37-041E-4F4C-8FE2-31FB22D0F3A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBC6AE37-041E-4F4C-8FE2-31FB22D0F3A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBC6AE37-041E-4F4C-8FE2-31FB22D0F3A1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{36C1E707-ACCB-44B3-9942-65E622A29EF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{36C1E707-ACCB-44B3-9942-65E622A29EF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{36C1E707-ACCB-44B3-9942-65E622A29EF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{36C1E707-ACCB-44B3-9942-65E622A29EF3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D28A426A-4739-4B43-A502-B0D611CDEEA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D28A426A-4739-4B43-A502-B0D611CDEEA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D28A426A-4739-4B43-A502-B0D611CDEEA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -180,6 +175,17 @@ Global
 		{EC843402-D0CC-49BE-838D-0805565E7BAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC843402-D0CC-49BE-838D-0805565E7BAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC843402-D0CC-49BE-838D-0805565E7BAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C87EC2B3-3CB3-4382-8A7F-8C0F12228856}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C87EC2B3-3CB3-4382-8A7F-8C0F12228856}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C87EC2B3-3CB3-4382-8A7F-8C0F12228856}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C87EC2B3-3CB3-4382-8A7F-8C0F12228856}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51555910-97A7-41A3-BB8D-D628F584E395}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51555910-97A7-41A3-BB8D-D628F584E395}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51555910-97A7-41A3-BB8D-D628F584E395}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51555910-97A7-41A3-BB8D-D628F584E395}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{AFDEDDC3-3075-4FF8-9D2A-219E02777E06} = {70259E17-25B0-4EA1-AFD0-3EC2F48DDE05}
@@ -192,7 +198,6 @@ Global
 		{8E7D57B9-7861-4DF7-885B-7CC5EB7A7E8D} = {C4CB7C26-B809-48FD-807C-4467711FBC07}
 		{CD07D141-7C6E-4691-87DA-A6599060098E} = {C4CB7C26-B809-48FD-807C-4467711FBC07}
 		{DBC6AE37-041E-4F4C-8FE2-31FB22D0F3A1} = {C4CB7C26-B809-48FD-807C-4467711FBC07}
-		{36C1E707-ACCB-44B3-9942-65E622A29EF3} = {C4CB7C26-B809-48FD-807C-4467711FBC07}
 		{D28A426A-4739-4B43-A502-B0D611CDEEA1} = {C4CB7C26-B809-48FD-807C-4467711FBC07}
 		{BBA9E939-8793-42FB-AD40-E11DD4BA8597} = {C4CB7C26-B809-48FD-807C-4467711FBC07}
 		{7364ADC7-D0F7-404B-830D-C078884D1DD5} = {C4CB7C26-B809-48FD-807C-4467711FBC07}
@@ -207,5 +212,7 @@ Global
 		{6BE4C5E6-C58E-40CD-9C46-F69584BE3C97} = {C4CB7C26-B809-48FD-807C-4467711FBC07}
 		{67E4B185-2CF3-4A53-AC36-58FB599B9FEF} = {F8CD3EDA-A3B6-4571-B779-FB4DCC331DAE}
 		{EC843402-D0CC-49BE-838D-0805565E7BAC} = {F8CD3EDA-A3B6-4571-B779-FB4DCC331DAE}
+		{C87EC2B3-3CB3-4382-8A7F-8C0F12228856} = {C4CB7C26-B809-48FD-807C-4467711FBC07}
+		{51555910-97A7-41A3-BB8D-D628F584E395} = {C4CB7C26-B809-48FD-807C-4467711FBC07}
 	EndGlobalSection
 EndGlobal

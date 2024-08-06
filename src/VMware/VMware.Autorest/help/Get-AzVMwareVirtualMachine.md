@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzVMwareVirtualMachine
 
 ## SYNOPSIS
-Get a virtual machine by id in a private cloud cluster
+Get a VirtualMachine
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ Get-AzVMwareVirtualMachine -ClusterName <String> -Id <String> -PrivateCloudInput
 ```
 
 ## DESCRIPTION
-Get a virtual machine by id in a private cloud cluster
+Get a VirtualMachine
 
 ## EXAMPLES
 
@@ -77,7 +77,6 @@ Get a virtual machine by id in a private cloud cluster
 
 ### -ClusterInputObject
 Identity Parameter
-To construct, see NOTES section for CLUSTERINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -92,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterName
-Name of the cluster in the private cloud
+Name of the cluster
 
 ```yaml
 Type: System.String
@@ -123,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-Virtual Machine identifier
+ID of the virtual machine.
 
 ```yaml
 Type: System.String
@@ -139,7 +138,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -155,7 +153,6 @@ Accept wildcard characters: False
 
 ### -PrivateCloudInputObject
 Identity Parameter
-To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -202,6 +199,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]

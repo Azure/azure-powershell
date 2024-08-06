@@ -51,13 +51,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "Ubuntu2204", 
             "FlatcarLinuxFreeGen2", 
             "Win2022Datacenter", 
-            "Win2022AzureEditionCore", 
+            "Win2022AzureEditionCore",
+            "Win2022AzureEdition",
             "Win2019Datacenter", 
             "Win2016Datacenter", 
             "Win2012R2Datacenter", 
             "Win2012Datacenter")]
         [Alias("Image")]
-        public string ImageName { get; set; } = "Win2016Datacenter";
+        public string ImageName { get; set; } = ConstantValues.DefaultVMandVMSSImage;
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = true)]
         public PSCredential Credential { get; set; }
@@ -462,7 +463,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     sharedImageGalleryId: _cmdlet.IsParameterBound(c => c.SharedGalleryImageId) ? _cmdlet.SharedGalleryImageId : null,
                     securityType: _cmdlet.SecurityType,
                     enableVtpm: _cmdlet.EnableVtpm,
-                    enableSecureBoot: _cmdlet.EnableSecureBoot
+                    enableSecureBoot: _cmdlet.EnableSecureBoot,
+                    enableAutomaticOSUpgradePolicy:  _cmdlet.EnableAutomaticOSUpgrade == true ? true : (bool?)null,
+                    ifMatch: _cmdlet.IfMatch,
+                    ifNoneMatch: _cmdlet.IfNoneMatch
                     );
             }
 
@@ -537,15 +541,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     if (_cmdlet.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || _cmdlet.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                     {
-                        _cmdlet.SecurityType = _cmdlet.SecurityType;
                         _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
                         _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
                     }
                     else if (_cmdlet.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
                     {
-                        _cmdlet.SecurityType = _cmdlet.SecurityType;
+                        // default the imagereference or image parameter to Win2022AzureEdition img.
+                        if (!_cmdlet.IsParameterBound(c => c.ImageName) && !_cmdlet.IsParameterBound(c => c.ImageReferenceId)
+                        && !_cmdlet.IsParameterBound(c => c.SharedGalleryImageId))
+                        {
+                            _cmdlet.ImageName = ConstantValues.TrustedLaunchDefaultImageAlias;
+                        }
                     }
                 }
+
                 _cmdlet.NatBackendPort = ImageAndOsType.UpdatePorts(_cmdlet.NatBackendPort);
 
                 var networkSecurityGroup = noZones
@@ -557,6 +566,25 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 var proximityPlacementGroup = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroupId);
 
                 var hostGroup = resourceGroup.CreateDedicatedHostGroupSubResourceFunc(_cmdlet.HostGroupId);
+
+                Dictionary<string, List<string>> auxAuthHeader = null;
+                if (!string.IsNullOrEmpty(_cmdlet.ImageReferenceId))
+                {
+                    var resourceId = ResourceId.TryParse(_cmdlet.ImageReferenceId);
+
+                    if (string.Equals(ComputeStrategy.Namespace, resourceId?.ResourceType?.Namespace, StringComparison.OrdinalIgnoreCase)
+                     && string.Equals("galleries", resourceId?.ResourceType?.Provider, StringComparison.OrdinalIgnoreCase)
+                     && !string.Equals(_cmdlet.ComputeClient?.ComputeManagementClient?.SubscriptionId, resourceId?.SubscriptionId, StringComparison.OrdinalIgnoreCase))
+                    {
+                        List<string> resourceIds = new List<string>();
+                        resourceIds.Add(_cmdlet.ImageReferenceId);
+                        var auxHeaderDictionary = _cmdlet.GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+                        if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                        {
+                            auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                        }
+                    }
+                }
 
                 return resourceGroup.CreateVirtualMachineScaleSetConfigOrchestrationModeFlexible(
                     name: _cmdlet.VMScaleSetName,
@@ -587,7 +615,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null,
                     securityType: _cmdlet.SecurityType,
                     enableVtpm: _cmdlet.EnableVtpm,
-                    enableSecureBoot: _cmdlet.EnableSecureBoot
+                    enableSecureBoot: _cmdlet.EnableSecureBoot,
+                    enableAutomaticOSUpgradePolicy: _cmdlet.EnableAutomaticOSUpgrade == true ? true : (bool?)null,
+                    auxAuthHeader: auxAuthHeader,
+                    ifMatch: _cmdlet.IfMatch,
+                    ifNoneMatch: _cmdlet.IfNoneMatch
                     );
             }
         }
@@ -626,7 +658,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 && !this.IsParameterBound(c => c.SharedGalleryImageId))
             {
                 this.SecurityType = ConstantValues.TrustedLaunchSecurityType;
-                if (!this.IsParameterBound(c => c.ImageName) && !this.IsParameterBound(c => c.ImageReferenceId) && !this.IsParameterBound(c => c.SharedGalleryImageId))
+                if (!this.IsParameterBound(c => c.ImageName) && !this.IsParameterBound(c => c.ImageReferenceId) 
+                    && !this.IsParameterBound(c => c.SharedGalleryImageId))
                 {
                     this.ImageName = ConstantValues.TrustedLaunchDefaultImageAlias;
                 }
@@ -639,11 +672,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.EnableVtpm = true;
                 }
             }
-            
+            // default Win2022AzureEdition img for explicitly set Standard.
+            // handles when default img was set for ImageName parameter.
+            if (this.IsParameterBound(c => c.SecurityType)
+                && this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType
+                && !this.IsParameterBound(c => c.ImageName)
+                && !this.IsParameterBound(c => c.ImageReferenceId)
+                && !this.IsParameterBound(c => c.SharedGalleryImageId))
+            {
+                this.ImageName = ConstantValues.TrustedLaunchDefaultImageAlias;
+            }
+
             // API does not currently support Standard securityType value, so need to null it out here. 
             if (this.IsParameterBound(c => c.SecurityType)
-                && this.SecurityType != null
-                && this.SecurityType.ToString().ToLower() == ConstantValues.StandardSecurityType)
+                && this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
             {
                 this.SecurityType = null;
             }
@@ -653,7 +695,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (this.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || this.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                 {
-                    this.SecurityType = this.SecurityType;
                     this.EnableVtpm = this.EnableVtpm ?? true;
                     this.EnableSecureBoot = this.EnableSecureBoot ?? true;
                 }          

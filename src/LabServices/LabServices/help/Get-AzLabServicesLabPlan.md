@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.LabServices-help.xml
 Module Name: Az.LabServices
 online version: https://learn.microsoft.com/powershell/module/az.labservices/get-azlabserviceslabplan
 schema: 2.0.0
@@ -18,6 +18,12 @@ Get-AzLabServicesLabPlan [-SubscriptionId <String[]>] [-Filter <String>] [-Defau
  [<CommonParameters>]
 ```
 
+### ListByLabPlanName
+```
+Get-AzLabServicesLabPlan -Name <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzLabServicesLabPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
@@ -30,15 +36,9 @@ Get-AzLabServicesLabPlan -ResourceGroupName <String> [-SubscriptionId <String[]>
  [<CommonParameters>]
 ```
 
-### ListByLabPlanName
-```
-Get-AzLabServicesLabPlan -Name <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### ResourceId
 ```
-Get-AzLabServicesLabPlan -ResourceId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzLabServicesLabPlan [-SubscriptionId <String[]>] -ResourceId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -65,7 +65,8 @@ Returns all lab plans in a subscription.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -100,14 +101,14 @@ Used in resource URIs and in UI.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, ListByLabPlanName
+Parameter Sets: ListByLabPlanName, Get
 Aliases: LabPlanName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
@@ -127,7 +128,6 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-
 
 ```yaml
 Type: System.String
@@ -169,7 +169,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

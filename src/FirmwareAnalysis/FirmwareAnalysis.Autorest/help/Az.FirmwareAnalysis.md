@@ -39,7 +39,7 @@ Get an analysis result summary of a firmware by name.
 Get firmware analysis workspace.
 
 ### [New-AzFirmwareAnalysisFirmware](New-AzFirmwareAnalysisFirmware.md)
-The operation to create a firmware.
+The operation to Create a firmware.
 
 ### [New-AzFirmwareAnalysisWorkspace](New-AzFirmwareAnalysisWorkspace.md)
 The operation to Create a firmware analysis workspace.
@@ -54,8 +54,8 @@ The operation to delete a firmware.
 The operation to delete a firmware analysis workspace.
 
 ### [Update-AzFirmwareAnalysisFirmware](Update-AzFirmwareAnalysisFirmware.md)
-The operation to update firmware.
+The operation to Update firmware.
 
 ### [Update-AzFirmwareAnalysisWorkspace](Update-AzFirmwareAnalysisWorkspace.md)
-The operation to update a firmware analysis workspaces.
+The operation to Update a firmware analysis workspaces.
 

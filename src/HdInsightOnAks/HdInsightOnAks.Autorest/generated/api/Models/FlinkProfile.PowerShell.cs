@@ -122,9 +122,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).CatalogOption = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkCatalogOptions) content.GetValueForProperty("CatalogOption",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).CatalogOption, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkCatalogOptionsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("JobSpec"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpec = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobProfile) content.GetValueForProperty("JobSpec",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpec, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkJobProfileTypeConverter.ConvertFrom);
+            }
             if (content.Contains("NumReplica"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).NumReplica = (int?) content.GetValueForProperty("NumReplica",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).NumReplica, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("DeploymentMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).DeploymentMode = (string) content.GetValueForProperty("DeploymentMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).DeploymentMode, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobSpecUpgradeMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpecUpgradeMode = (string) content.GetValueForProperty("JobSpecUpgradeMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpecUpgradeMode, global::System.Convert.ToString);
             }
             if (content.Contains("StorageUri"))
             {
@@ -161,6 +173,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("CatalogOptionHive"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).CatalogOptionHive = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkHiveCatalogOption) content.GetValueForProperty("CatalogOptionHive",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).CatalogOptionHive, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkHiveCatalogOptionTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("JobSpecJobJarDirectory"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpecJobJarDirectory = (string) content.GetValueForProperty("JobSpecJobJarDirectory",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpecJobJarDirectory, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobSpecJarName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpecJarName = (string) content.GetValueForProperty("JobSpecJarName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpecJarName, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobSpecEntryClass"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpecEntryClass = (string) content.GetValueForProperty("JobSpecEntryClass",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpecEntryClass, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobSpecArg"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpecArg = (string) content.GetValueForProperty("JobSpecArg",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpecArg, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobSpecSavePointName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpecSavePointName = (string) content.GetValueForProperty("JobSpecSavePointName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpecSavePointName, global::System.Convert.ToString);
+            }
+            if (content.Contains("HiveMetastoreDbConnectionAuthenticationMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).HiveMetastoreDbConnectionAuthenticationMode = (string) content.GetValueForProperty("HiveMetastoreDbConnectionAuthenticationMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).HiveMetastoreDbConnectionAuthenticationMode, global::System.Convert.ToString);
             }
             if (content.Contains("HiveMetastoreDbConnectionPasswordSecret"))
             {
@@ -211,9 +247,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).CatalogOption = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkCatalogOptions) content.GetValueForProperty("CatalogOption",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).CatalogOption, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkCatalogOptionsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("JobSpec"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpec = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobProfile) content.GetValueForProperty("JobSpec",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpec, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkJobProfileTypeConverter.ConvertFrom);
+            }
             if (content.Contains("NumReplica"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).NumReplica = (int?) content.GetValueForProperty("NumReplica",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).NumReplica, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("DeploymentMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).DeploymentMode = (string) content.GetValueForProperty("DeploymentMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).DeploymentMode, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobSpecUpgradeMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpecUpgradeMode = (string) content.GetValueForProperty("JobSpecUpgradeMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpecUpgradeMode, global::System.Convert.ToString);
             }
             if (content.Contains("StorageUri"))
             {
@@ -250,6 +298,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("CatalogOptionHive"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).CatalogOptionHive = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkHiveCatalogOption) content.GetValueForProperty("CatalogOptionHive",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).CatalogOptionHive, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkHiveCatalogOptionTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("JobSpecJobJarDirectory"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpecJobJarDirectory = (string) content.GetValueForProperty("JobSpecJobJarDirectory",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpecJobJarDirectory, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobSpecJarName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpecJarName = (string) content.GetValueForProperty("JobSpecJarName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpecJarName, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobSpecEntryClass"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpecEntryClass = (string) content.GetValueForProperty("JobSpecEntryClass",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpecEntryClass, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobSpecArg"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpecArg = (string) content.GetValueForProperty("JobSpecArg",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpecArg, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobSpecSavePointName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpecSavePointName = (string) content.GetValueForProperty("JobSpecSavePointName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).JobSpecSavePointName, global::System.Convert.ToString);
+            }
+            if (content.Contains("HiveMetastoreDbConnectionAuthenticationMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).HiveMetastoreDbConnectionAuthenticationMode = (string) content.GetValueForProperty("HiveMetastoreDbConnectionAuthenticationMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).HiveMetastoreDbConnectionAuthenticationMode, global::System.Convert.ToString);
             }
             if (content.Contains("HiveMetastoreDbConnectionPasswordSecret"))
             {

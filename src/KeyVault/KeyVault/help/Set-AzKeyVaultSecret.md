@@ -17,14 +17,16 @@ Creates or updates a secret in a key vault.
 ```
 Set-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [-SecretValue] <SecureString> [-Disable]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Set-AzKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [-SecretValue] <SecureString> [-Disable]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +38,7 @@ cmdlet creates a new version of that secret.
 
 ### Example 1: Modify the value of a secret using default attributes
 ```powershell
-$Secret = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
+$Secret = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Set-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -SecretValue $Secret
 ```
 
@@ -62,7 +64,7 @@ secret value becomes the value stored in $Secret.
 
 ### Example 2: Modify the value of a secret using custom attributes
 ```powershell
-$Secret = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
+$Secret = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $Expires = (Get-Date).AddYears(2).ToUniversalTime()
 $NBF =(Get-Date).ToUniversalTime()
 $Tags = @{ 'Severity' = 'medium'; 'IT' = 'true'}
@@ -101,7 +103,7 @@ Install-Module Microsoft.PowerShell.SecretManagement -Repository PSGallery -Allo
 # Register vault for Secret Management
 Register-SecretVault -Name AzKeyVault -ModuleName Az.KeyVault -VaultParameters @{ AZKVaultName = 'test-kv'; SubscriptionId = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
 # Set secret for vault AzKeyVault
-$secure = ConvertTo-SecureString -String "Password" -AsPlainText -Force
+$secure = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Set-Secret -Name secureSecret -SecureStringSecret $secure -Vault AzKeyVault
 ```
 

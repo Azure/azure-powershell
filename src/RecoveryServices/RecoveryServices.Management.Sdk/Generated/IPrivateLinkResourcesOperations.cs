@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.RecoveryServices
     public partial interface IPrivateLinkResourcesOperations
     {
         /// <summary>
-        /// Returns the list of private link resources that need to be created for Backup and SiteRecovery
+        /// Returns the list of private link resources that need to be created for
+        /// Backup and SiteRecovery
         /// </summary>
         /// <remarks>
-        /// Returns the list of private link resources that need to be created for Backup and SiteRecovery
+        /// Returns the list of private link resources that need to be created for
+        /// Backup and SiteRecovery
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -40,10 +42,12 @@ namespace Microsoft.Azure.Management.RecoveryServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<PrivateLinkResource>>> ListWithHttpMessagesAsync(string resourceGroupName, string vaultName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Returns a specified private link resource that need to be created for Backup and SiteRecovery
+        /// Returns a specified private link resource that need to be created for
+        /// Backup and SiteRecovery
         /// </summary>
         /// <remarks>
-        /// Returns a specified private link resource that need to be created for Backup and SiteRecovery
+        /// Returns a specified private link resource that need to be created for
+        /// Backup and SiteRecovery
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -69,10 +73,12 @@ namespace Microsoft.Azure.Management.RecoveryServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateLinkResource>> GetWithHttpMessagesAsync(string resourceGroupName, string vaultName, string privateLinkResourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Returns the list of private link resources that need to be created for Backup and SiteRecovery
+        /// Returns the list of private link resources that need to be created for
+        /// Backup and SiteRecovery
         /// </summary>
         /// <remarks>
-        /// Returns the list of private link resources that need to be created for Backup and SiteRecovery
+        /// Returns the list of private link resources that need to be created for
+        /// Backup and SiteRecovery
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

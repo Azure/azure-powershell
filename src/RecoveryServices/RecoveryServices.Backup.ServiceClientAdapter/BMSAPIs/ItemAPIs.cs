@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="resourceGroupName"></param>
         /// <param name="auxiliaryAccessToken"></param>
         /// <param name="isMUAProtected"></param>
+        /// <param name="disableWithRetainData"></param>
         /// <returns>Job created in the service for this operation</returns>
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> CreateOrUpdateProtectedItem(
             string containerName,
@@ -44,19 +45,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string vaultName = null,
             string resourceGroupName = null,
             string auxiliaryAccessToken = null,
-            bool isMUAProtected = false)
+            bool isMUAProtected = false,
+            bool disableWithRetainData = false)
         {
             Dictionary<string, List<string>> customHeaders = new Dictionary<string, List<string>>();
             if (isMUAProtected)
             {
                 List<ResourceGuardProxyBaseResource> resourceGuardMapping = ListResourceGuardMapping(vaultName, resourceGroupName);
                 string operationRequest = null;
-
+                                
                 if (resourceGuardMapping != null && resourceGuardMapping.Count != 0)
                 {
+                    string criticalOp;
+                    if (disableWithRetainData)
+                    {
+                        criticalOp = "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/write#stopProtectionWithRetainData";
+                    }
+                    else
+                    {
+                        criticalOp = "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/write";
+                    }
+
                     foreach (ResourceGuardOperationDetail operationDetail in resourceGuardMapping[0].Properties.ResourceGuardOperationDetails)
                     {
-                        if (operationDetail.VaultCriticalOperation == "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/write") operationRequest = operationDetail.DefaultResourceRequest;
+                        if (operationDetail.VaultCriticalOperation == criticalOp)
+                        {
+                            operationRequest = operationDetail.DefaultResourceRequest;
+                        }
                     }
 
                     if (operationRequest != null)
@@ -86,6 +101,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                  containerName,
                  protectedItemName,
                  request,
+                 null,
                  customHeaders,
                  cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }

@@ -1,6 +1,6 @@
 ---
 external help file: Az.ApplicationInsights-help.xml
-Module Name: Az.Applicationinsights
+Module Name: Az.ApplicationInsights
 online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/update-azapplicationinsightsmyworkbook
 schema: 2.0.0
 ---
@@ -14,8 +14,8 @@ Updates a private workbook that has already been added.
 
 ```
 Update-AzApplicationInsightsMyWorkbook -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-LinkedSourceId <String>] -WorkbookProperty <IMyWorkbook> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-LinkedSourceId <String>] -WorkbookProperty <IMyWorkbook> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +41,8 @@ Updates a private workbook that has already been added.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -175,37 +176,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20210308.IMyWorkbook
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`WORKBOOKPROPERTY <IMyWorkbook>`: An Application Insights private workbook definition.
-  - `[Etag <IMyWorkbookResourceEtag>]`: Resource etag
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[Id <String>]`: Azure resource Id
-  - `[IdentityType <String>]`: The identity type.
-  - `[Location <String>]`: Resource location
-  - `[Name <String>]`: Azure resource name
-  - `[Tag <IMyWorkbookResourceTags>]`: Resource tags
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[Type <String>]`: Azure resource type
-  - `[Category <String>]`: Workbook category, as defined by the user at creation time.
-  - `[DisplayName <String>]`: The user-defined name of the private workbook.
-  - `[Kind <Kind?>]`: The kind of workbook. Choices are user and shared.
-  - `[PropertiesTag <String[]>]`: A list of 0 or more tags that are associated with this private workbook definition
-  - `[SerializedData <String>]`: Configuration of this particular private workbook. Configuration data is a string containing valid JSON
-  - `[SourceId <String>]`: Optional resourceId for a source resource.
-  - `[StorageUri <String>]`: BYOS Storage Account URI
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[Version <String>]`: This instance's version of the data model. This can change as new features are added that can be marked private workbook.
 
 ## RELATED LINKS

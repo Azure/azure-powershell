@@ -1,9 +1,9 @@
 {
-  "AzVMwarePrivateCloud+[NoContext]+List1+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01+1": {
+  "AzVMwarePrivateCloud+[NoContext]+List1+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/lq4hfg?api-version=2023-09-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01",
-      "Content": "{\r\n  \"location\": \"centralus\",\r\n  \"sku\": {\r\n    \"name\": \"av36\"\r\n  },\r\n  \"properties\": {\r\n    \"managementCluster\": {\r\n      \"clusterSize\": 3\r\n    },\r\n    \"networkBlock\": \"192.168.48.0/22\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/lq4hfg?api-version=2023-09-01",
+      "Content": "{\r\n  \"location\": \"centralus\",\r\n  \"properties\": {\r\n    \"managementCluster\": {\r\n      \"clusterSize\": 3\r\n    },\r\n    \"networkBlock\": \"192.168.48.0/22\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"av36\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -16,30 +16,30 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 12 Jan 2024 19:08:02 GMT" ]
+        "Date": [ "Thu, 27 Jun 2024 15:43:39 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
         "Content-Length": [ "1377" ]
       },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"location\":\"eastus2\",\"tags\":{},\"sku\":{\"name\":\"AV36\"},\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\"},\"endpoints\":{\"nsxtManager\":\"https://192.168.50.3/\",\"vcsa\":\"https://192.168.50.2/\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"tags\":{},\"location\":\"eastus2\",\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\"},\"endpoints\":{\"nsxtManager\":\"https://192.168.50.3/\",\"vcsa\":\"https://192.168.50.2/\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]},\"sku\":{\"name\":\"AV36\"}}",
       "isContentBase64": false
     }
   },
-  "AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01+2": {
+  "AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/lq4hfg?api-version=2023-09-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/lq4hfg?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "78" ],
-        "x-ms-client-request-id": [ "6c1a9bc7-2552-4c9b-ae70-65dcb5847336" ],
+        "x-ms-client-request-id": [ "50b54c8c-1199-4dda-8be0-50b5a71efe09" ],
         "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
         "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.VMware/0.4.0" ]
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.4.3", "Az.VMware/0.4.0" ]
       },
       "ContentHeaders": {
       }
@@ -48,30 +48,30 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 12 Jan 2024 19:08:32 GMT" ]
+        "Date": [ "Thu, 27 Jun 2024 15:44:09 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "1990" ]
+        "Content-Length": [ "2196" ]
       },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"location\":\"eastus2\",\"tags\":{},\"sku\":{\"name\":\"AV36\"},\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"encryption\":{\"status\":\"Enabled\",\"keyVaultProperties\":{\"keyName\":\"keyname1\",\"keyVersion\":\"ver1.0\",\"keyVaultUrl\":\"https://keyvault1-kmip-kvault.vault.azure.net/\",\"keyState\":\"Connected\",\"versionType\":\"Fixed\"}},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://192.168.50.3/\",\"vcsa\":\"https://192.168.50.2/\",\"hcxCloudManager\":\"https://192.168.50.4/\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]},\"identity\":{\"principalId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"tenantId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"type\":\"SystemAssigned\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"tags\":{},\"location\":\"eastus2\",\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"encryption\":{\"status\":\"Enabled\",\"keyVaultProperties\":{\"keyName\":\"keyname1\",\"keyVersion\":\"ver1.0\",\"keyVaultUrl\":\"https://keyvault1-kmip-kvault.vault.azure.net/\",\"keyState\":\"Connected\",\"versionType\":\"Fixed\"}},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://nsx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"vcsa\":\"https://vc.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"hcxCloudManager\":\"https://hcx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"nsxtManagerIp\":\"192.168.50.3\",\"vcenterIp\":\"192.168.50.2\",\"hcxCloudManagerIp\":\"192.168.50.4\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]},\"sku\":{\"name\":\"AV36\"},\"identity\":{\"principalId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"tenantId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"type\":\"SystemAssigned\"}}",
       "isContentBase64": false
     }
   },
-  "AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01+3": {
+  "AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/lq4hfg?api-version=2023-09-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/lq4hfg?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "79" ],
-        "x-ms-client-request-id": [ "6c1a9bc7-2552-4c9b-ae70-65dcb5847336" ],
+        "x-ms-client-request-id": [ "50b54c8c-1199-4dda-8be0-50b5a71efe09" ],
         "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
         "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.VMware/0.4.0" ]
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.4.3", "Az.VMware/0.4.0" ]
       },
       "ContentHeaders": {
       }
@@ -80,29 +80,29 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 12 Jan 2024 19:08:32 GMT" ]
+        "Date": [ "Thu, 27 Jun 2024 15:44:09 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "1990" ]
+        "Content-Length": [ "2196" ]
       },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"location\":\"eastus2\",\"tags\":{},\"sku\":{\"name\":\"AV36\"},\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"encryption\":{\"status\":\"Enabled\",\"keyVaultProperties\":{\"keyName\":\"keyname1\",\"keyVersion\":\"ver1.0\",\"keyVaultUrl\":\"https://keyvault1-kmip-kvault.vault.azure.net/\",\"keyState\":\"Connected\",\"versionType\":\"Fixed\"}},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://192.168.50.3/\",\"vcsa\":\"https://192.168.50.2/\",\"hcxCloudManager\":\"https://192.168.50.4/\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]},\"identity\":{\"principalId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"tenantId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"type\":\"SystemAssigned\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"tags\":{},\"location\":\"eastus2\",\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"encryption\":{\"status\":\"Enabled\",\"keyVaultProperties\":{\"keyName\":\"keyname1\",\"keyVersion\":\"ver1.0\",\"keyVaultUrl\":\"https://keyvault1-kmip-kvault.vault.azure.net/\",\"keyState\":\"Connected\",\"versionType\":\"Fixed\"}},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://nsx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"vcsa\":\"https://vc.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"hcxCloudManager\":\"https://hcx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"nsxtManagerIp\":\"192.168.50.3\",\"vcenterIp\":\"192.168.50.2\",\"hcxCloudManagerIp\":\"192.168.50.4\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]},\"sku\":{\"name\":\"AV36\"},\"identity\":{\"principalId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"tenantId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"type\":\"SystemAssigned\"}}",
       "isContentBase64": false
     }
   },
-  "AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/privateClouds?api-version=2023-03-01+4": {
+  "AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/privateClouds?api-version=2023-09-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/privateClouds?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/privateClouds?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "80" ],
-        "x-ms-client-request-id": [ "dbba201c-c843-4bd5-adbe-e2347bda2c1d" ],
+        "x-ms-client-request-id": [ "c3458205-32fe-4b2e-bc52-77573fbb61c5" ],
         "CommandName": [ "Get-AzVMwarePrivateCloud" ],
-        "FullCommandName": [ "Get-AzVMwarePrivateCloud_List1" ],
+        "FullCommandName": [ "Get-AzVMwarePrivateCloud_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.VMware/0.4.0" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.4.3", "Az.VMware/0.4.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -112,29 +112,29 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 12 Jan 2024 19:08:32 GMT" ]
+        "Date": [ "Thu, 27 Jun 2024 15:44:09 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "1509" ]
+        "Content-Length": [ "1715" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"location\":\"eastus2\",\"tags\":{},\"sku\":{\"name\":\"AV36\"},\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://192.168.50.3/\",\"vcsa\":\"https://192.168.50.2/\",\"hcxCloudManager\":\"https://192.168.50.4/\"},\"networkBlock\":\"192.168.48.0/22\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"tags\":{},\"location\":\"eastus2\",\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://nsx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"vcsa\":\"https://vc.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"hcxCloudManager\":\"https://hcx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"nsxtManagerIp\":\"192.168.50.3\",\"vcenterIp\":\"192.168.50.2\",\"hcxCloudManagerIp\":\"192.168.50.4\"},\"networkBlock\":\"192.168.48.0/22\"},\"sku\":{\"name\":\"AV36\"}}]}",
       "isContentBase64": false
     }
   },
-  "AzVMwarePrivateCloud+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01+1": {
+  "AzVMwarePrivateCloud+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/lq4hfg?api-version=2023-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/lq4hfg?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "81" ],
-        "x-ms-client-request-id": [ "448e7e05-97bf-43b2-9b4c-55fb059e743e" ],
+        "x-ms-client-request-id": [ "8acb1dcf-0963-475c-b95a-21a76f57f276" ],
         "CommandName": [ "Get-AzVMwarePrivateCloud" ],
         "FullCommandName": [ "Get-AzVMwarePrivateCloud_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.VMware/0.4.0" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.4.3", "Az.VMware/0.4.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -144,29 +144,29 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 12 Jan 2024 19:08:32 GMT" ]
+        "Date": [ "Thu, 27 Jun 2024 15:44:09 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "1990" ]
+        "Content-Length": [ "2196" ]
       },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"location\":\"eastus2\",\"tags\":{},\"sku\":{\"name\":\"AV36\"},\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"encryption\":{\"status\":\"Enabled\",\"keyVaultProperties\":{\"keyName\":\"keyname1\",\"keyVersion\":\"ver1.0\",\"keyVaultUrl\":\"https://keyvault1-kmip-kvault.vault.azure.net/\",\"keyState\":\"Connected\",\"versionType\":\"Fixed\"}},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://192.168.50.3/\",\"vcsa\":\"https://192.168.50.2/\",\"hcxCloudManager\":\"https://192.168.50.4/\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]},\"identity\":{\"principalId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"tenantId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"type\":\"SystemAssigned\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"tags\":{},\"location\":\"eastus2\",\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"encryption\":{\"status\":\"Enabled\",\"keyVaultProperties\":{\"keyName\":\"keyname1\",\"keyVersion\":\"ver1.0\",\"keyVaultUrl\":\"https://keyvault1-kmip-kvault.vault.azure.net/\",\"keyState\":\"Connected\",\"versionType\":\"Fixed\"}},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://nsx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"vcsa\":\"https://vc.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"hcxCloudManager\":\"https://hcx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"nsxtManagerIp\":\"192.168.50.3\",\"vcenterIp\":\"192.168.50.2\",\"hcxCloudManagerIp\":\"192.168.50.4\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]},\"sku\":{\"name\":\"AV36\"},\"identity\":{\"principalId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"tenantId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"type\":\"SystemAssigned\"}}",
       "isContentBase64": false
     }
   },
-  "AzVMwarePrivateCloud+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds?api-version=2023-03-01+1": {
+  "AzVMwarePrivateCloud+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds?api-version=2023-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "82" ],
-        "x-ms-client-request-id": [ "a80c955e-704d-41b8-880f-766401fd3d2f" ],
+        "x-ms-client-request-id": [ "38eac0cd-ea41-46dc-9131-9ddb42c28937" ],
         "CommandName": [ "Get-AzVMwarePrivateCloud" ],
-        "FullCommandName": [ "Get-AzVMwarePrivateCloud_List" ],
+        "FullCommandName": [ "Get-AzVMwarePrivateCloud_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.VMware/0.4.0" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.4.3", "Az.VMware/0.4.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -176,21 +176,21 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 12 Jan 2024 19:08:32 GMT" ]
+        "Date": [ "Thu, 27 Jun 2024 15:44:09 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "1654" ]
+        "Content-Length": [ "1860" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"location\":\"eastus2\",\"tags\":{},\"sku\":{\"name\":\"AV36\"},\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://192.168.50.3/\",\"vcsa\":\"https://192.168.50.2/\",\"hcxCloudManager\":\"https://192.168.50.4/\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"tags\":{},\"location\":\"eastus2\",\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://nsx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"vcsa\":\"https://vc.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"hcxCloudManager\":\"https://hcx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"nsxtManagerIp\":\"192.168.50.3\",\"vcenterIp\":\"192.168.50.2\",\"hcxCloudManagerIp\":\"192.168.50.4\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]},\"sku\":{\"name\":\"AV36\"}}]}",
       "isContentBase64": false
     }
   },
-  "AzVMwarePrivateCloud+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01+1": {
+  "AzVMwarePrivateCloud+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/51qrlj?api-version=2023-09-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01",
-      "Content": "{\r\n  \"location\": \"centralus\",\r\n  \"sku\": {\r\n    \"name\": \"av20\"\r\n  },\r\n  \"properties\": {\r\n    \"managementCluster\": {\r\n      \"clusterSize\": 3\r\n    },\r\n    \"networkBlock\": \"192.168.48.0/22\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/51qrlj?api-version=2023-09-01",
+      "Content": "{\r\n  \"location\": \"centralus\",\r\n  \"properties\": {\r\n    \"managementCluster\": {\r\n      \"clusterSize\": 3\r\n    },\r\n    \"networkBlock\": \"192.168.48.0/22\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"av20\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -203,30 +203,30 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 12 Jan 2024 19:08:32 GMT" ]
+        "Date": [ "Thu, 27 Jun 2024 15:44:09 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
         "Content-Length": [ "1377" ]
       },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"location\":\"eastus2\",\"tags\":{},\"sku\":{\"name\":\"AV36\"},\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\"},\"endpoints\":{\"nsxtManager\":\"https://192.168.50.3/\",\"vcsa\":\"https://192.168.50.2/\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"tags\":{},\"location\":\"eastus2\",\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\"},\"endpoints\":{\"nsxtManager\":\"https://192.168.50.3/\",\"vcsa\":\"https://192.168.50.2/\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]},\"sku\":{\"name\":\"AV36\"}}",
       "isContentBase64": false
     }
   },
-  "AzVMwarePrivateCloud+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01+2": {
+  "AzVMwarePrivateCloud+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/51qrlj?api-version=2023-09-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/51qrlj?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "84" ],
-        "x-ms-client-request-id": [ "79018c20-51d1-45f7-9de6-ad4511a75afc" ],
+        "x-ms-client-request-id": [ "209b707b-a539-4d4e-a0b9-d81762bb7b37" ],
         "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
         "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.VMware/0.4.0" ]
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.4.3", "Az.VMware/0.4.0" ]
       },
       "ContentHeaders": {
       }
@@ -235,30 +235,30 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 12 Jan 2024 19:09:02 GMT" ]
+        "Date": [ "Thu, 27 Jun 2024 15:44:39 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "1990" ]
+        "Content-Length": [ "2196" ]
       },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"location\":\"eastus2\",\"tags\":{},\"sku\":{\"name\":\"AV36\"},\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"encryption\":{\"status\":\"Enabled\",\"keyVaultProperties\":{\"keyName\":\"keyname1\",\"keyVersion\":\"ver1.0\",\"keyVaultUrl\":\"https://keyvault1-kmip-kvault.vault.azure.net/\",\"keyState\":\"Connected\",\"versionType\":\"Fixed\"}},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://192.168.50.3/\",\"vcsa\":\"https://192.168.50.2/\",\"hcxCloudManager\":\"https://192.168.50.4/\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]},\"identity\":{\"principalId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"tenantId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"type\":\"SystemAssigned\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"tags\":{},\"location\":\"eastus2\",\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"encryption\":{\"status\":\"Enabled\",\"keyVaultProperties\":{\"keyName\":\"keyname1\",\"keyVersion\":\"ver1.0\",\"keyVaultUrl\":\"https://keyvault1-kmip-kvault.vault.azure.net/\",\"keyState\":\"Connected\",\"versionType\":\"Fixed\"}},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://nsx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"vcsa\":\"https://vc.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"hcxCloudManager\":\"https://hcx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"nsxtManagerIp\":\"192.168.50.3\",\"vcenterIp\":\"192.168.50.2\",\"hcxCloudManagerIp\":\"192.168.50.4\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]},\"sku\":{\"name\":\"AV36\"},\"identity\":{\"principalId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"tenantId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"type\":\"SystemAssigned\"}}",
       "isContentBase64": false
     }
   },
-  "AzVMwarePrivateCloud+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01+3": {
+  "AzVMwarePrivateCloud+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/51qrlj?api-version=2023-09-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/51qrlj?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "85" ],
-        "x-ms-client-request-id": [ "79018c20-51d1-45f7-9de6-ad4511a75afc" ],
+        "x-ms-client-request-id": [ "209b707b-a539-4d4e-a0b9-d81762bb7b37" ],
         "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
         "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.VMware/0.4.0" ]
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.4.3", "Az.VMware/0.4.0" ]
       },
       "ContentHeaders": {
       }
@@ -267,83 +267,29 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 12 Jan 2024 19:09:02 GMT" ]
+        "Date": [ "Thu, 27 Jun 2024 15:44:39 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "1990" ]
+        "Content-Length": [ "2196" ]
       },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"location\":\"eastus2\",\"tags\":{},\"sku\":{\"name\":\"AV36\"},\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"encryption\":{\"status\":\"Enabled\",\"keyVaultProperties\":{\"keyName\":\"keyname1\",\"keyVersion\":\"ver1.0\",\"keyVaultUrl\":\"https://keyvault1-kmip-kvault.vault.azure.net/\",\"keyState\":\"Connected\",\"versionType\":\"Fixed\"}},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://192.168.50.3/\",\"vcsa\":\"https://192.168.50.2/\",\"hcxCloudManager\":\"https://192.168.50.4/\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]},\"identity\":{\"principalId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"tenantId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"type\":\"SystemAssigned\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"tags\":{},\"location\":\"eastus2\",\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"encryption\":{\"status\":\"Enabled\",\"keyVaultProperties\":{\"keyName\":\"keyname1\",\"keyVersion\":\"ver1.0\",\"keyVaultUrl\":\"https://keyvault1-kmip-kvault.vault.azure.net/\",\"keyState\":\"Connected\",\"versionType\":\"Fixed\"}},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://nsx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"vcsa\":\"https://vc.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"hcxCloudManager\":\"https://hcx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"nsxtManagerIp\":\"192.168.50.3\",\"vcenterIp\":\"192.168.50.2\",\"hcxCloudManagerIp\":\"192.168.50.4\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]},\"sku\":{\"name\":\"AV36\"},\"identity\":{\"principalId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"tenantId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"type\":\"SystemAssigned\"}}",
       "isContentBase64": false
     }
   },
-  "AzVMwarePrivateCloud+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01+1": {
+  "AzVMwarePrivateCloud+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/51qrlj?api-version=2023-09-01+1": {
     "Request": {
-      "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"managementCluster\": {\r\n      \"clusterSize\": 4\r\n    }\r\n  }\r\n}",
-      "isContentBase64": false,
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "87" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Server": [ "Rocket" ],
-        "Date": [ "Fri, 12 Jan 2024 19:09:02 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "1827" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"location\":\"eastus2\",\"tags\":{},\"sku\":{\"name\":\"AV36\"},\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"encryption\":{\"status\":\"Enabled\",\"keyVaultProperties\":{\"keyName\":\"keyname1\",\"keyVersion\":\"ver1.0\",\"keyVaultUrl\":\"https://keyvault1-kmip-kvault.vault.azure.net/\",\"versionType\":\"Fixed\"}},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://192.168.50.3/\",\"vcsa\":\"https://192.168.50.2/\",\"hcxCloudManager\":\"https://192.168.50.4/\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]}}",
-      "isContentBase64": false
-    }
-  },
-  "AzVMwarePrivateCloud+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudukel?api-version=2023-03-01+1": {
-    "Request": {
-      "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudukel?api-version=2023-03-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"managementCluster\": {\r\n      \"clusterSize\": 4\r\n    }\r\n  }\r\n}",
-      "isContentBase64": false,
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "87" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Server": [ "Rocket" ],
-        "Date": [ "Fri, 12 Jan 2024 19:09:02 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "1827" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"location\":\"eastus2\",\"tags\":{},\"sku\":{\"name\":\"AV36\"},\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"encryption\":{\"status\":\"Enabled\",\"keyVaultProperties\":{\"keyName\":\"keyname1\",\"keyVersion\":\"ver1.0\",\"keyVaultUrl\":\"https://keyvault1-kmip-kvault.vault.azure.net/\",\"versionType\":\"Fixed\"}},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://192.168.50.3/\",\"vcsa\":\"https://192.168.50.2/\",\"hcxCloudManager\":\"https://192.168.50.4/\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]}}",
-      "isContentBase64": false
-    }
-  },
-  "AzVMwarePrivateCloud+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01+1": {
-    "Request": {
-      "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01",
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/51qrlj?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "88" ],
-        "x-ms-client-request-id": [ "d58fe77d-3d1f-4f50-a19e-773ee4e4fa33" ],
-        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
-        "FullCommandName": [ "Remove-AzVMwarePrivateCloud_Delete" ],
+        "x-ms-unique-id": [ "86" ],
+        "x-ms-client-request-id": [ "6c65694d-5d36-4462-a9ac-2d250cf7ea24" ],
+        "CommandName": [ "Update-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Update-AzVMwarePrivateCloud_UpdateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.VMware/0.4.0" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.4.3", "Az.VMware/0.4.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -353,7 +299,253 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 12 Jan 2024 19:09:02 GMT" ]
+        "Date": [ "Thu, 27 Jun 2024 15:44:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "2196" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"tags\":{},\"location\":\"eastus2\",\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"encryption\":{\"status\":\"Enabled\",\"keyVaultProperties\":{\"keyName\":\"keyname1\",\"keyVersion\":\"ver1.0\",\"keyVaultUrl\":\"https://keyvault1-kmip-kvault.vault.azure.net/\",\"keyState\":\"Connected\",\"versionType\":\"Fixed\"}},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://nsx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"vcsa\":\"https://vc.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"hcxCloudManager\":\"https://hcx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"nsxtManagerIp\":\"192.168.50.3\",\"vcenterIp\":\"192.168.50.2\",\"hcxCloudManagerIp\":\"192.168.50.4\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]},\"sku\":{\"name\":\"AV36\"},\"identity\":{\"principalId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"tenantId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"type\":\"SystemAssigned\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwarePrivateCloud+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/51qrlj?api-version=2023-09-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/51qrlj?api-version=2023-09-01",
+      "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"managementCluster\": {\r\n      \"clusterSize\": 4,\r\n      \"hosts\": [ \"fakehost18.nyc1.kubernetes.center\", \"fakehost19.nyc1.kubernetes.center\", \"fakehost20.nyc1.kubernetes.center\", \"fakehost21.nyc1.kubernetes.center\" ]\r\n    },\r\n    \"availability\": {\r\n      \"strategy\": \"SingleZone\",\r\n      \"zone\": 1\r\n    },\r\n    \"encryption\": {\r\n      \"keyVaultProperties\": {\r\n        \"keyName\": \"keyname1\",\r\n        \"keyVersion\": \"ver1.0\",\r\n        \"keyVaultUrl\": \"https://keyvault1-kmip-kvault.vault.azure.net/\"\r\n      },\r\n      \"status\": \"Enabled\"\r\n    },\r\n    \"internet\": \"Disabled\",\r\n    \"identitySources\": [\r\n      {\r\n        \"name\": \"group1\",\r\n        \"alias\": \"groupAlias\",\r\n        \"domain\": \"domain1\",\r\n        \"baseUserDN\": \"ou=baseUser\",\r\n        \"baseGroupDN\": \"ou=baseGroup\",\r\n        \"primaryServer\": \"ldaps://1.1.1.1:636/\",\r\n        \"secondaryServer\": \"ldaps://1.1.1.2:636/\",\r\n        \"ssl\": \"Enabled\"\r\n      }\r\n    ],\r\n    \"networkBlock\": \"192.168.48.0/22\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"AV36\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1104" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Thu, 27 Jun 2024 15:44:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1377" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"tags\":{},\"location\":\"eastus2\",\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\"},\"endpoints\":{\"nsxtManager\":\"https://192.168.50.3/\",\"vcsa\":\"https://192.168.50.2/\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]},\"sku\":{\"name\":\"AV36\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwarePrivateCloud+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/51qrlj?api-version=2023-09-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/51qrlj?api-version=2023-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "88" ],
+        "x-ms-client-request-id": [ "6c65694d-5d36-4462-a9ac-2d250cf7ea24" ],
+        "CommandName": [ "Update-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Update-AzVMwarePrivateCloud_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.4.3", "Az.VMware/0.4.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Thu, 27 Jun 2024 15:45:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "2196" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"tags\":{},\"location\":\"eastus2\",\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"encryption\":{\"status\":\"Enabled\",\"keyVaultProperties\":{\"keyName\":\"keyname1\",\"keyVersion\":\"ver1.0\",\"keyVaultUrl\":\"https://keyvault1-kmip-kvault.vault.azure.net/\",\"keyState\":\"Connected\",\"versionType\":\"Fixed\"}},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://nsx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"vcsa\":\"https://vc.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"hcxCloudManager\":\"https://hcx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"nsxtManagerIp\":\"192.168.50.3\",\"vcenterIp\":\"192.168.50.2\",\"hcxCloudManagerIp\":\"192.168.50.4\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]},\"sku\":{\"name\":\"AV36\"},\"identity\":{\"principalId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"tenantId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"type\":\"SystemAssigned\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwarePrivateCloud+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/51qrlj?api-version=2023-09-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/51qrlj?api-version=2023-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "89" ],
+        "x-ms-client-request-id": [ "6c65694d-5d36-4462-a9ac-2d250cf7ea24" ],
+        "CommandName": [ "Update-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Update-AzVMwarePrivateCloud_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.4.3", "Az.VMware/0.4.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Thu, 27 Jun 2024 15:45:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "2196" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"tags\":{},\"location\":\"eastus2\",\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"encryption\":{\"status\":\"Enabled\",\"keyVaultProperties\":{\"keyName\":\"keyname1\",\"keyVersion\":\"ver1.0\",\"keyVaultUrl\":\"https://keyvault1-kmip-kvault.vault.azure.net/\",\"keyState\":\"Connected\",\"versionType\":\"Fixed\"}},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://nsx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"vcsa\":\"https://vc.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"hcxCloudManager\":\"https://hcx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"nsxtManagerIp\":\"192.168.50.3\",\"vcenterIp\":\"192.168.50.2\",\"hcxCloudManagerIp\":\"192.168.50.4\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]},\"sku\":{\"name\":\"AV36\"},\"identity\":{\"principalId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"tenantId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"type\":\"SystemAssigned\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwarePrivateCloud+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/azps_test_cloudmbqv?api-version=2023-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/azps_test_cloudmbqv?api-version=2023-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "90" ],
+        "x-ms-client-request-id": [ "da3b4eb5-fffa-45ff-840e-3afc24e32474" ],
+        "CommandName": [ "Update-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Update-AzVMwarePrivateCloud_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.4.3", "Az.VMware/0.4.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Thu, 27 Jun 2024 15:45:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "2196" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"tags\":{},\"location\":\"eastus2\",\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"encryption\":{\"status\":\"Enabled\",\"keyVaultProperties\":{\"keyName\":\"keyname1\",\"keyVersion\":\"ver1.0\",\"keyVaultUrl\":\"https://keyvault1-kmip-kvault.vault.azure.net/\",\"keyState\":\"Connected\",\"versionType\":\"Fixed\"}},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://nsx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"vcsa\":\"https://vc.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"hcxCloudManager\":\"https://hcx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"nsxtManagerIp\":\"192.168.50.3\",\"vcenterIp\":\"192.168.50.2\",\"hcxCloudManagerIp\":\"192.168.50.4\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]},\"sku\":{\"name\":\"AV36\"},\"identity\":{\"principalId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"tenantId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"type\":\"SystemAssigned\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwarePrivateCloud+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/azps_test_cloudmbqv?api-version=2023-09-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/azps_test_cloudmbqv?api-version=2023-09-01",
+      "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"managementCluster\": {\r\n      \"clusterSize\": 4,\r\n      \"hosts\": [ \"fakehost18.nyc1.kubernetes.center\", \"fakehost19.nyc1.kubernetes.center\", \"fakehost20.nyc1.kubernetes.center\", \"fakehost21.nyc1.kubernetes.center\" ]\r\n    },\r\n    \"availability\": {\r\n      \"strategy\": \"SingleZone\",\r\n      \"zone\": 1\r\n    },\r\n    \"encryption\": {\r\n      \"keyVaultProperties\": {\r\n        \"keyName\": \"keyname1\",\r\n        \"keyVersion\": \"ver1.0\",\r\n        \"keyVaultUrl\": \"https://keyvault1-kmip-kvault.vault.azure.net/\"\r\n      },\r\n      \"status\": \"Enabled\"\r\n    },\r\n    \"internet\": \"Disabled\",\r\n    \"identitySources\": [\r\n      {\r\n        \"name\": \"group1\",\r\n        \"alias\": \"groupAlias\",\r\n        \"domain\": \"domain1\",\r\n        \"baseUserDN\": \"ou=baseUser\",\r\n        \"baseGroupDN\": \"ou=baseGroup\",\r\n        \"primaryServer\": \"ldaps://1.1.1.1:636/\",\r\n        \"secondaryServer\": \"ldaps://1.1.1.2:636/\",\r\n        \"ssl\": \"Enabled\"\r\n      }\r\n    ],\r\n    \"networkBlock\": \"192.168.48.0/22\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"AV36\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1104" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Thu, 27 Jun 2024 15:45:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1377" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"tags\":{},\"location\":\"eastus2\",\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\"},\"endpoints\":{\"nsxtManager\":\"https://192.168.50.3/\",\"vcsa\":\"https://192.168.50.2/\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]},\"sku\":{\"name\":\"AV36\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwarePrivateCloud+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/azps_test_cloudmbqv?api-version=2023-09-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/azps_test_cloudmbqv?api-version=2023-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "92" ],
+        "x-ms-client-request-id": [ "da3b4eb5-fffa-45ff-840e-3afc24e32474" ],
+        "CommandName": [ "Update-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Update-AzVMwarePrivateCloud_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.4.3", "Az.VMware/0.4.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Thu, 27 Jun 2024 15:45:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "2196" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"tags\":{},\"location\":\"eastus2\",\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"encryption\":{\"status\":\"Enabled\",\"keyVaultProperties\":{\"keyName\":\"keyname1\",\"keyVersion\":\"ver1.0\",\"keyVaultUrl\":\"https://keyvault1-kmip-kvault.vault.azure.net/\",\"keyState\":\"Connected\",\"versionType\":\"Fixed\"}},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://nsx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"vcsa\":\"https://vc.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"hcxCloudManager\":\"https://hcx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"nsxtManagerIp\":\"192.168.50.3\",\"vcenterIp\":\"192.168.50.2\",\"hcxCloudManagerIp\":\"192.168.50.4\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]},\"sku\":{\"name\":\"AV36\"},\"identity\":{\"principalId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"tenantId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"type\":\"SystemAssigned\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwarePrivateCloud+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/azps_test_cloudmbqv?api-version=2023-09-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/azps_test_cloudmbqv?api-version=2023-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "93" ],
+        "x-ms-client-request-id": [ "da3b4eb5-fffa-45ff-840e-3afc24e32474" ],
+        "CommandName": [ "Update-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Update-AzVMwarePrivateCloud_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.4.3", "Az.VMware/0.4.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Thu, 27 Jun 2024 15:45:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "2196" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1\",\"name\":\"cloud1\",\"type\":\"Microsoft.AVS/privateClouds\",\"tags\":{},\"location\":\"eastus2\",\"properties\":{\"managementCluster\":{\"clusterSize\":4,\"clusterId\":1,\"hosts\":[\"fakehost18.nyc1.kubernetes.center\",\"fakehost19.nyc1.kubernetes.center\",\"fakehost20.nyc1.kubernetes.center\",\"fakehost21.nyc1.kubernetes.center\"]},\"internet\":\"Disabled\",\"identitySources\":[{\"name\":\"group1\",\"alias\":\"groupAlias\",\"domain\":\"domain1\",\"baseUserDN\":\"ou=baseUser\",\"baseGroupDN\":\"ou=baseGroup\",\"primaryServer\":\"ldaps://1.1.1.1:636/\",\"secondaryServer\":\"ldaps://1.1.1.2:636/\",\"ssl\":\"Enabled\"}],\"availability\":{\"strategy\":\"SingleZone\",\"zone\":1},\"encryption\":{\"status\":\"Enabled\",\"keyVaultProperties\":{\"keyName\":\"keyname1\",\"keyVersion\":\"ver1.0\",\"keyVaultUrl\":\"https://keyvault1-kmip-kvault.vault.azure.net/\",\"keyState\":\"Connected\",\"versionType\":\"Fixed\"}},\"provisioningState\":\"Succeeded\",\"circuit\":{\"primarySubnet\":\"192.168.53.0/30\",\"secondarySubnet\":\"192.168.53.4/30\",\"expressRouteID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\",\"expressRoutePrivatePeeringID\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt42-cust-p01-dmo01/providers/Microsoft.Network/expressroutecircuits/tnt42-cust-p01-dmo01-er/peerings/AzurePrivatePeering\"},\"endpoints\":{\"nsxtManager\":\"https://nsx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"vcsa\":\"https://vc.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"hcxCloudManager\":\"https://hcx.290351365f5b41a19b77af.eastus.avslab.azure.com/\",\"nsxtManagerIp\":\"192.168.50.3\",\"vcenterIp\":\"192.168.50.2\",\"hcxCloudManagerIp\":\"192.168.50.4\"},\"networkBlock\":\"192.168.48.0/22\",\"externalCloudLinks\":[\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"]},\"sku\":{\"name\":\"AV36\"},\"identity\":{\"principalId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"tenantId\":\"881e5573-063f-49e4-8c08-79d7df0169d8\",\"type\":\"SystemAssigned\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwarePrivateCloud+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/51qrlj?api-version=2023-09-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupqbeopr/providers/Microsoft.AVS/privateClouds/51qrlj?api-version=2023-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "94" ],
+        "x-ms-client-request-id": [ "5d4694d3-acf9-4a6d-b423-5419ac236c17" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Remove-AzVMwarePrivateCloud_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.4.3", "Az.VMware/0.4.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Thu, 27 Jun 2024 15:45:40 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "0" ]

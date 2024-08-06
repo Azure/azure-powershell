@@ -1,7 +1,7 @@
 ---
 external help file: Az.Nginx-help.xml
 Module Name: Az.Nginx
-online version: https://learn.microsoft.com/powershell/module/az.Nginx/new-AzNginxPublicIPAddressObject
+online version: https://learn.microsoft.com/powershell/module/Az.Nginx/new-AzNginxPublicIPAddressObject
 schema: 2.0.0
 ---
 
@@ -57,10 +57,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxPublicIPAddress
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxPublicIPAddress
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

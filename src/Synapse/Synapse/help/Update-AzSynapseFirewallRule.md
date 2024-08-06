@@ -22,8 +22,8 @@ Update-AzSynapseFirewallRule [-ResourceGroupName <String>] -WorkspaceName <Strin
 ### UpdateByParentObjectParameterSet
 ```
 Update-AzSynapseFirewallRule -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-StartIpAddress <String>]
- [-EndIpAddress <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-EndIpAddress <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

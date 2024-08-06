@@ -106,6 +106,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [Announcements].
+        /// </summary>
+        internal static string AnnouncementsHeader {
+            get {
+                return ResourceManager.GetString("AnnouncementsHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to With the new Azure PowerShell login experience, you can select the subscription you want to use more easily. Learn more about it and its configuration at https://go.microsoft.com/fwlink/?linkid=2271909..
+        /// </summary>
+        internal static string AnnouncementsMessage {
+            get {
+                return ResourceManager.GetString("AnnouncementsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Turning Autosave off because an AzureRmContext was passed as a parameter..
         /// </summary>
         internal static string AutosaveDisabledForContextParameter {
@@ -817,6 +835,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please select the account you want to login with..
+        /// </summary>
+        internal static string PleaseSelectAccount {
+            get {
+                return ResourceManager.GetString("PleaseSelectAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please type a number to select a subscription..
+        /// </summary>
+        internal static string PleaseSelectSubscription {
+            get {
+                return ResourceManager.GetString("PleaseSelectSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This function is in preview. It may not be available in the selected subscription..
         /// </summary>
         internal static string PreviewFunctionMessage {
@@ -1024,6 +1060,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to If you encounter any problem, please open an issue at: https://aka.ms/azpsissue.
+        /// </summary>
+        internal static string ReportIssue {
+            get {
+                return ResourceManager.GetString("ReportIssue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retrieving subscriptions for the selection....
+        /// </summary>
+        internal static string RetrievingSubscription {
+            get {
+                return ResourceManager.GetString("RetrievingSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Resource Manager context was not properly initialized.  Please load the module again..
         /// </summary>
         internal static string RmProfileNull {
@@ -1069,6 +1123,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Selected subscription is out of range, please type a correct number..
+        /// </summary>
+        internal static string SelectedSubscriptionOutOfRange {
+            get {
+                return ResourceManager.GetString("SelectedSubscriptionOutOfRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Load modules with profile.
         /// </summary>
         internal static string SelectProfileAction {
@@ -1083,6 +1146,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string SelectProfileTarget {
             get {
                 return ResourceManager.GetString("SelectProfileTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a tenant and subscription: .
+        /// </summary>
+        internal static string SelectTenantAndSubscription {
+            get {
+                return ResourceManager.GetString("SelectTenantAndSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a tenant and subscription (type a number or Enter to accept default): .
+        /// </summary>
+        internal static string SelectTenantAndSubscriptionWithDefaultValue {
+            get {
+                return ResourceManager.GetString("SelectTenantAndSubscriptionWithDefaultValue", resourceCulture);
             }
         }
         
@@ -1276,6 +1357,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [Tenant and subscription selection].
+        /// </summary>
+        internal static string TenantAndSubscriptionSelection {
+            get {
+                return ResourceManager.GetString("TenantAndSubscriptionSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Connect-AzAccount.
         /// </summary>
         internal static string TenantAuthFailed {
@@ -1348,6 +1438,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Typed subscription is not a number..
+        /// </summary>
+        internal static string TypedSubscriptionNotNumber {
+            get {
+                return ResourceManager.GetString("TypedSubscriptionNotNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To create an access token credential, you must provide an access token account..
         /// </summary>
         internal static string TypeNotAccessToken {
@@ -1380,6 +1479,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string UnknownEnvironment {
             get {
                 return ResourceManager.GetString("UnknownEnvironment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Authentication with a username and password at the command line is strongly discouraged. Use one of the recommended authentication methods based on your requirements. For additional information, visit https://go.microsoft.com/fwlink/?linkid=2276971..
+        /// </summary>
+        internal static string UsernamePasswordDeprecateWarningMessage {
+            get {
+                return ResourceManager.GetString("UsernamePasswordDeprecateWarningMessage", resourceCulture);
             }
         }
         

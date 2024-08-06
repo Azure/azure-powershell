@@ -71,7 +71,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm]
     # Resource information with extended details.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter()]

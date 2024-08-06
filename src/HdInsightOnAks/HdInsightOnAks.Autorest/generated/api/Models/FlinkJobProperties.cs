@@ -127,6 +127,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// <summary>Internal Acessors for Status</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobPropertiesInternal.Status { get => this._status; set { {_status = value;} } }
 
+        /// <summary>Backing field for <see cref="RunId" /> property.</summary>
+        private string _runId;
+
+        /// <summary>Run id of job</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
+        public string RunId { get => this._runId; set => this._runId = value; }
+
         /// <summary>Backing field for <see cref="SavePointName" /> property.</summary>
         private string _savePointName;
 
@@ -177,7 +184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Description = @"A string property that indicates the action to be performed on the Flink job. It can have one of the following enum values => NEW, UPDATE, STATELESS_UPDATE, STOP, START, CANCEL, SAVEPOINT, LIST_SAVEPOINT, or DELETE.",
         SerializedName = @"action",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("NEW", "UPDATE", "STATELESS_UPDATE", "STOP", "START", "CANCEL", "SAVEPOINT", "LIST_SAVEPOINT", "DELETE")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("NEW", "UPDATE", "STATELESS_UPDATE", "STOP", "START", "CANCEL", "SAVEPOINT", "LIST_SAVEPOINT", "DELETE", "LAST_STATE_UPDATE", "RE_LAUNCH")]
         string Action { get; set; }
         /// <summary>Action result of job.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
@@ -263,7 +270,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         string JobJarDirectory { get; set; }
         /// <summary>Name of job</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -294,6 +301,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"lastSavePoint",
         PossibleTypes = new [] { typeof(string) })]
         string LastSavePoint { get;  }
+        /// <summary>Run id of job</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Run id of job",
+        SerializedName = @"runId",
+        PossibleTypes = new [] { typeof(string) })]
+        string RunId { get; set; }
         /// <summary>A string property that represents the name of the savepoint for the Flink job</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = false,
@@ -326,7 +344,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// A string property that indicates the action to be performed on the Flink job. It can have one of the following enum values
         /// => NEW, UPDATE, STATELESS_UPDATE, STOP, START, CANCEL, SAVEPOINT, LIST_SAVEPOINT, or DELETE.
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("NEW", "UPDATE", "STATELESS_UPDATE", "STOP", "START", "CANCEL", "SAVEPOINT", "LIST_SAVEPOINT", "DELETE")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("NEW", "UPDATE", "STATELESS_UPDATE", "STOP", "START", "CANCEL", "SAVEPOINT", "LIST_SAVEPOINT", "DELETE", "LAST_STATE_UPDATE", "RE_LAUNCH")]
         string Action { get; set; }
         /// <summary>Action result of job.</summary>
         string ActionResult { get; set; }
@@ -353,6 +371,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         string JobOutput { get; set; }
         /// <summary>The last savepoint.</summary>
         string LastSavePoint { get; set; }
+        /// <summary>Run id of job</summary>
+        string RunId { get; set; }
         /// <summary>A string property that represents the name of the savepoint for the Flink job</summary>
         string SavePointName { get; set; }
         /// <summary>Status of job.</summary>

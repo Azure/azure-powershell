@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.PowerShell;
 
-    /// <summary>Describes the status of a service of a HDInsight on aks cluster.</summary>
+    /// <summary>Describes the status of a service of a HDInsight on AKS cluster.</summary>
     [System.ComponentModel.TypeConverter(typeof(ServiceStatusTypeConverter))]
     public partial class ServiceStatus
     {
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             return ToJsonString();
         }
     }
-    /// Describes the status of a service of a HDInsight on aks cluster.
+    /// Describes the status of a service of a HDInsight on AKS cluster.
     [System.ComponentModel.TypeConverter(typeof(ServiceStatusTypeConverter))]
     public partial interface IServiceStatus
 

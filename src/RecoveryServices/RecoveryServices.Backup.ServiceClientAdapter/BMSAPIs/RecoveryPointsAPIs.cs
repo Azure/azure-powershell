@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 containerName,
                 protectedItemName,
                 moveRequest.ObjectType,
-                moveRequest.ExcludedRpList
+                moveRequest.ExcludedRPList
                 ).Result.Body;
 
             Func<string, RestAzureNS.IPage<RecoveryPointResource>> listNextAsync =

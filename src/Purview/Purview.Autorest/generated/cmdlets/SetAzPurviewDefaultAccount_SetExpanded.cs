@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Purview.Description(@"Sets the default account for the scope.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Purview.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Purview.HttpPath(Path = "/providers/Microsoft.Purview/setDefaultAccount", ApiVersion = "2021-07-01")]
     public partial class SetAzPurviewDefaultAccount_SetExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.IEventListener
     {
@@ -34,6 +35,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>Payload to get and set the default account in the given scope</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload _defaultAccountPayloadBody = new Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.DefaultAccountPayload();
+
         /// <summary>The name of the account that is set as the default.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the account that is set as the default.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Purview.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Purview.ParameterCategory.Body)]
@@ -43,7 +47,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Cmdlets
         Description = @"The name of the account that is set as the default.",
         SerializedName = @"accountName",
         PossibleTypes = new [] { typeof(string) })]
-        public string AccountName { get => DefaultAccountPayloadBody.AccountName ?? null; set => DefaultAccountPayloadBody.AccountName = value; }
+        public string AccountName { get => _defaultAccountPayloadBody.AccountName ?? null; set => _defaultAccountPayloadBody.AccountName = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -53,16 +57,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Cmdlets
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Purview.Purview Client => Microsoft.Azure.PowerShell.Cmdlets.Purview.Module.Instance.ClientAPI;
 
-        /// <summary>Backing field for <see cref="DefaultAccountPayloadBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload _defaultAccountPayloadBody= new Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.DefaultAccountPayload();
-
-        /// <summary>Payload to get and set the default account in the given scope</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload DefaultAccountPayloadBody { get => this._defaultAccountPayloadBody; set => this._defaultAccountPayloadBody = value; }
-
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Purview.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Purview.ParameterCategory.Azure)]
@@ -84,11 +83,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>
@@ -121,7 +120,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Cmdlets
         Description = @"The resource group name of the account that is set as the default.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
-        public string ResourceGroupName { get => DefaultAccountPayloadBody.ResourceGroupName ?? null; set => DefaultAccountPayloadBody.ResourceGroupName = value; }
+        public string ResourceGroupName { get => _defaultAccountPayloadBody.ResourceGroupName ?? null; set => _defaultAccountPayloadBody.ResourceGroupName = value; }
 
         /// <summary>The scope object ID. For example, sub ID or tenant ID.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The scope object ID. For example, sub ID or tenant ID.")]
@@ -132,7 +131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Cmdlets
         Description = @"The scope object ID. For example, sub ID or tenant ID.",
         SerializedName = @"scope",
         PossibleTypes = new [] { typeof(string) })]
-        public string Scope { get => DefaultAccountPayloadBody.Scope ?? null; set => DefaultAccountPayloadBody.Scope = value; }
+        public string Scope { get => _defaultAccountPayloadBody.Scope ?? null; set => _defaultAccountPayloadBody.Scope = value; }
 
         /// <summary>The scope tenant in which the default account is set.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The scope tenant in which the default account is set.")]
@@ -143,7 +142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Cmdlets
         Description = @"The scope tenant in which the default account is set.",
         SerializedName = @"scopeTenantId",
         PossibleTypes = new [] { typeof(string) })]
-        public string ScopeTenantId { get => DefaultAccountPayloadBody.ScopeTenantId ?? null; set => DefaultAccountPayloadBody.ScopeTenantId = value; }
+        public string ScopeTenantId { get => _defaultAccountPayloadBody.ScopeTenantId ?? null; set => _defaultAccountPayloadBody.ScopeTenantId = value; }
 
         /// <summary>The scope where the default account is set.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The scope where the default account is set.")]
@@ -155,7 +154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Cmdlets
         SerializedName = @"scopeType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScopeType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScopeType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScopeType ScopeType { get => DefaultAccountPayloadBody.ScopeType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScopeType)""); set => DefaultAccountPayloadBody.ScopeType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScopeType ScopeType { get => _defaultAccountPayloadBody.ScopeType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScopeType)""); set => _defaultAccountPayloadBody.ScopeType = value; }
 
         /// <summary>The subscription ID of the account that is set as the default.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The subscription ID of the account that is set as the default.")]
@@ -170,15 +169,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Cmdlets
         Name = @"",
         Description =@"",
         Script = @"(Get-AzContext).Subscription.Id")]
-        public string SubscriptionId { get => DefaultAccountPayloadBody.SubscriptionId ?? null; set => DefaultAccountPayloadBody.SubscriptionId = value; }
+        public string SubscriptionId { get => _defaultAccountPayloadBody.SubscriptionId ?? null; set => _defaultAccountPayloadBody.SubscriptionId = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IErrorResponseModel"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IErrorResponseModel">Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IErrorResponseModel</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -189,8 +188,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload">Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
@@ -201,6 +200,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.Purview.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -212,7 +216,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Purview.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -315,7 +336,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Purview.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -330,12 +350,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.DefaultAccountsSet(DefaultAccountPayloadBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.DefaultAccountsSet(_defaultAccountPayloadBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=DefaultAccountPayloadBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_defaultAccountPayloadBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -362,12 +382,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Cmdlets
             base.StopProcessing();
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Purview.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Purview.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IErrorResponseModel"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IErrorResponseModel">Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IErrorResponseModel</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
@@ -389,14 +424,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IErrorResponseModel>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=DefaultAccountPayloadBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_defaultAccountPayloadBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=DefaultAccountPayloadBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_defaultAccountPayloadBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -406,8 +441,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload">Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>

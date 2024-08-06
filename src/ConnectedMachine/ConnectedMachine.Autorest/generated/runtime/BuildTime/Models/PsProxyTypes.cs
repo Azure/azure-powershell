@@ -308,10 +308,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PowerShell
             IsMandatory = ParameterAttribute.Mandatory;
 
             var complexParameterName = ParameterName.ToUpperInvariant();
-            var complexMessage = $"{Environment.NewLine}.";
+            var complexMessage = $"{Environment.NewLine}";
             var description = ParameterAttribute.HelpMessage.NullIfEmpty() ?? HelpInfo.Description.NullIfEmpty() ?? InfoAttribute?.Description.NullIfEmpty() ?? String.Empty;
             // Remove the complex type message as it will be reinserted if this is a complex type
-            description = description.NormalizeNewLines().Replace(complexMessage, String.Empty).Replace(complexMessage.ToPsSingleLine(), String.Empty);
+            description = description.NormalizeNewLines();
             // Make an InfoAttribute for processing only if one isn't provided
             InfoAttribute = Attributes.OfType<InfoAttribute>().FirstOrDefault() ?? new InfoAttribute { PossibleTypes = new[] { ParameterType.Unwrap() }, Required = IsMandatory };
             // Set the description if the InfoAttribute does not have one since they are exported without a description

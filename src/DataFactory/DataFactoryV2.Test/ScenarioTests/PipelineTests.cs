@@ -37,5 +37,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
         {
             TestRunner.RunTestScript("Test-PipelineWithResourceId");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPipelineWithExistsActivityV2()
+        {
+            TestRunner.RunTestScript("Test-PipelineWithExistsActivity");
+        }
     }
 }

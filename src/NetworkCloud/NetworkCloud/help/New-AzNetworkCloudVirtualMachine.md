@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
 online version: https://learn.microsoft.com/powershell/module/az.networkcloud/new-aznetworkcloudvirtualmachine
 schema: 2.0.0
@@ -13,22 +13,22 @@ Create a new virtual machine or update the properties of the existing virtual ma
 ## SYNTAX
 
 ```
-New-AzNetworkCloudVirtualMachine -Name <String> -ResourceGroupName <String> -AdminUsername <String>
- -CloudServiceNetworkAttachmentAttachedNetworkId <String>
+New-AzNetworkCloudVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -AdminUsername <String> -CloudServiceNetworkAttachmentAttachedNetworkId <String>
  -CloudServiceNetworkAttachmentIPAllocationMethod <VirtualMachineIPAllocationMethod> -CpuCore <Int64>
  -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String> -MemorySizeGb <Int64>
- -OSDiskSizeGb <Int64> -VMImage <String> [-SubscriptionId <String>] [-BootMethod <VirtualMachineBootMethod>]
+ -OSDiskSizeGb <Int64> -VMImage <String> [-BootMethod <VirtualMachineBootMethod>]
  [-CloudServiceNetworkAttachmentDefaultGateway <DefaultGateway>]
  [-CloudServiceNetworkAttachmentIpv4Address <String>] [-CloudServiceNetworkAttachmentIpv6Address <String>]
  [-CloudServiceNetworkAttachmentName <String>] [-IsolateEmulatorThread <VirtualMachineIsolateEmulatorThread>]
- [-NetworkAttachment <INetworkAttachment[]>] [-NetworkData <String>]
- [-OSDiskCreateOption <OSDiskCreateOption>] [-OSDiskDeleteOption <OSDiskDeleteOption>]
- [-PlacementHint <IVirtualMachinePlacementHint[]>] [-SshPublicKey <ISshPublicKey[]>]
- [-StorageProfileVolumeAttachment <String[]>] [-Tag <Hashtable>] [-UserData <String>]
- [-VirtioInterface <VirtualMachineVirtioInterfaceType>] [-VMDeviceModel <VirtualMachineDeviceModelType>]
+ [-NetworkAttachment <INetworkAttachment[]>] [-NetworkData <String>] [-OSDiskCreateOption <OSDiskCreateOption>]
+ [-OSDiskDeleteOption <OSDiskDeleteOption>] [-PlacementHint <IVirtualMachinePlacementHint[]>]
+ [-SshPublicKey <ISshPublicKey[]>] [-StorageProfileVolumeAttachment <String[]>] [-Tag <Hashtable>]
+ [-UserData <String>] [-VMDeviceModel <VirtualMachineDeviceModelType>]
  [-VMImageRepositoryCredentialsPassword <SecureString>] [-VMImageRepositoryCredentialsRegistryUrl <String>]
- [-VMImageRepositoryCredentialsUsername <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-VMImageRepositoryCredentialsUsername <String>] [-VirtioInterface <VirtualMachineVirtioInterfaceType>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,7 +52,7 @@ $sshPublicKey = @{
     KeyData = "ssh-rsa aaaKyfsdx= fakekey@vm"
 }
 
-$securePassword = ConvertTo-SecureString "password" -asplaintext -force
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 
 New-AzNetworkCloudVirtualMachine -Name vmName  -ResourceGroupName resourceGroup -AdminUsername adminUsername -CloudServiceNetworkAttachmentAttachedNetworkId csnAttachedNetworkId -CloudServiceNetworkAttachmentIPAllocationMethod ipAllocationMethod -CpuCore cpuCore -ExtendedLocationName extendedLocationName -ExtendedLocationType "Custom" -Location location -SubscriptionId subscriptionId -MemorySizeGb memorySizeGb -OSDiskSizeGb osDiskSizeGb -VMImage vmImage -BootMethod bootMethod -CloudServiceNetworkAttachmentDefaultGateway defaultGateway -CloudServiceNetworkAttachmentName csnAttachmentName -IsolateEmulatorThread isolateEmulatorThread -NetworkAttachment $networkAttachment -NetworkData networkData -OSDiskCreateOption osDiskCreationOption -OSDiskDeleteOption osDiskDeleteOption -PlacementHint $hint -SshPublicKey $sshPublicKey -Tag @{tags = "tags"} -UserData userData -VirtioInterface virtioInterface -VMDeviceModel vmDeviceModel -VMImageRepositoryCredentialsUsername registryUsername -VMImageRepositoryCredentialsPassword $securePassword -VMImageRepositoryCredentialsRegistryUrl registryUrl
 ```
@@ -190,7 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### -CloudServiceNetworkAttachmentName
-The associated network's interface name.If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine.If the user doesn’t specify this value, the default interface name of the network resource will be used.For a CloudServicesNetwork resource, this name will be ignored.
+The associated network's interface name.If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine.If the user doesn't specify this value, the default interface name of the network resource will be used.For a CloudServicesNetwork resource, this name will be ignored.
 
 ```yaml
 Type: System.String
@@ -661,29 +661,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`NETWORKATTACHMENT <INetworkAttachment[]>`: The list of network attachments to the virtual machine.
-  - `AttachedNetworkId <String>`: The resource ID of the associated network attached to the virtual machine.         It can be one of cloudServicesNetwork, l3Network, l2Network or trunkedNetwork resources.
-  - `IPAllocationMethod <VirtualMachineIPAllocationMethod>`: The IP allocation mechanism for the virtual machine.         Dynamic and Static are only valid for l3Network which may also specify Disabled.         Otherwise, Disabled is the only permitted value.
-  - `[DefaultGateway <DefaultGateway?>]`: The indicator of whether this is the default gateway.         Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True.
-  - `[Ipv4Address <String>]`: The IPv4 address of the virtual machine.          This field is used only if the attached network has IPAllocationType of IPV4 or DualStack.          If IPAllocationMethod is:         Static - this field must contain a user specified IPv4 address from within the subnet specified in the attached network.         Dynamic - this field is read-only, but will be populated with an address from within the subnet specified in the attached network.         Disabled - this field will be empty.
-  - `[Ipv6Address <String>]`: The IPv6 address of the virtual machine.          This field is used only if the attached network has IPAllocationType of IPV6 or DualStack.          If IPAllocationMethod is:         Static - this field must contain an IPv6 address range from within the range specified in the attached network.         Dynamic - this field is read-only, but will be populated with an range from within the subnet specified in the attached network.         Disabled - this field will be empty.
-  - `[Name <String>]`: The associated network's interface name.         If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine.         If the user doesn’t specify this value, the default interface name of the network resource will be used.         For a CloudServicesNetwork resource, this name will be ignored.
-
-`PLACEMENTHINT <IVirtualMachinePlacementHint[]>`: The scheduling hints for the virtual machine.
-  - `HintType <VirtualMachinePlacementHintType>`: The specification of whether this hint supports affinity or anti-affinity with the referenced resources.
-  - `ResourceId <String>`: The resource ID of the target object that the placement hints will be checked against, e.g., the bare metal node to host the virtual machine.
-  - `SchedulingExecution <VirtualMachineSchedulingExecution>`: The indicator of whether the hint is a hard or soft requirement during scheduling.
-  - `Scope <VirtualMachinePlacementHintPodAffinityScope>`: The scope for the virtual machine affinity or anti-affinity placement hint. It should always be "Machine" in the case of node affinity.
-
-`SSHPUBLICKEY <ISshPublicKey[]>`: The list of ssh public keys. Each key will be added to the virtual machine using the cloud-init ssh_authorized_keys mechanism for the adminUsername.
-  - `KeyData <String>`: The SSH public key data.
-
 ## RELATED LINKS
-

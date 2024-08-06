@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.DataFactory
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ManagedIdentityCredentialResource>>> ListByFactoryWithHttpMessagesAsync(string resourceGroupName, string factoryName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<CredentialResource>>> ListByFactoryWithHttpMessagesAsync(string resourceGroupName, string factoryName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Management.DataFactory
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ManagedIdentityCredentialResource>>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<CredentialResource>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Management.DataFactory
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<ManagedIdentityCredentialResource>>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<CredentialResource>>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Management.DataFactory
         /// which it should match existing entity or can be * for unconditional update.
         /// </param>
         /// <param name='properties'>
-        /// Managed Identity Credential properties.
+        /// Properties of credentials.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Management.DataFactory
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedIdentityCredentialResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string factoryName, string credentialName, ManagedIdentityCredential properties, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CredentialResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string factoryName, string credentialName, Credential properties, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Management.DataFactory
             }
 
 
-            ManagedIdentityCredentialResource credential = new ManagedIdentityCredentialResource();
+            CredentialResource credential = new CredentialResource();
             if(properties != null)
             {
                 credential.Properties = properties;
@@ -536,7 +536,7 @@ namespace Microsoft.Azure.Management.DataFactory
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ManagedIdentityCredentialResource>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<CredentialResource>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -550,7 +550,7 @@ namespace Microsoft.Azure.Management.DataFactory
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ManagedIdentityCredentialResource>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CredentialResource>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -611,7 +611,7 @@ namespace Microsoft.Azure.Management.DataFactory
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedIdentityCredentialResource>> GetWithHttpMessagesAsync(string resourceGroupName, string factoryName, string credentialName, string ifNoneMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CredentialResource>> GetWithHttpMessagesAsync(string resourceGroupName, string factoryName, string credentialName, string ifNoneMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -816,7 +816,7 @@ namespace Microsoft.Azure.Management.DataFactory
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ManagedIdentityCredentialResource>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<CredentialResource>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -830,7 +830,7 @@ namespace Microsoft.Azure.Management.DataFactory
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ManagedIdentityCredentialResource>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CredentialResource>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -1124,7 +1124,7 @@ namespace Microsoft.Azure.Management.DataFactory
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ManagedIdentityCredentialResource>>> ListByFactoryNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<CredentialResource>>> ListByFactoryNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             if (nextPageLink == null)
@@ -1242,7 +1242,7 @@ namespace Microsoft.Azure.Management.DataFactory
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ManagedIdentityCredentialResource>>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<CredentialResource>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -1256,7 +1256,7 @@ namespace Microsoft.Azure.Management.DataFactory
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<ManagedIdentityCredentialResource>>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<CredentialResource>>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {

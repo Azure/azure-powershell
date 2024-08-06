@@ -46,7 +46,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAwsOrganizationalData]
     # The AWS account's organizational data.
-    # .
     ${OrganizationalData},
 
     [Parameter()]

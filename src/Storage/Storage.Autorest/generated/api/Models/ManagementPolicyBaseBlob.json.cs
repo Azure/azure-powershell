@@ -77,12 +77,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_tierToCool = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("tierToCool"), out var __jsonTierToCool) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.DateAfterModification.FromJson(__jsonTierToCool) : TierToCool;}
-            {_tierToArchive = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("tierToArchive"), out var __jsonTierToArchive) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.DateAfterModification.FromJson(__jsonTierToArchive) : TierToArchive;}
-            {_tierToCold = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("tierToCold"), out var __jsonTierToCold) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.DateAfterModification.FromJson(__jsonTierToCold) : TierToCold;}
-            {_tierToHot = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("tierToHot"), out var __jsonTierToHot) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.DateAfterModification.FromJson(__jsonTierToHot) : TierToHot;}
-            {_delete = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("delete"), out var __jsonDelete) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.DateAfterModification.FromJson(__jsonDelete) : Delete;}
-            {_enableAutoTierToHotFromCool = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("enableAutoTierToHotFromCool"), out var __jsonEnableAutoTierToHotFromCool) ? (bool?)__jsonEnableAutoTierToHotFromCool : EnableAutoTierToHotFromCool;}
+            {_tierToCool = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("tierToCool"), out var __jsonTierToCool) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.DateAfterModification.FromJson(__jsonTierToCool) : _tierToCool;}
+            {_tierToArchive = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("tierToArchive"), out var __jsonTierToArchive) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.DateAfterModification.FromJson(__jsonTierToArchive) : _tierToArchive;}
+            {_tierToCold = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("tierToCold"), out var __jsonTierToCold) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.DateAfterModification.FromJson(__jsonTierToCold) : _tierToCold;}
+            {_tierToHot = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("tierToHot"), out var __jsonTierToHot) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.DateAfterModification.FromJson(__jsonTierToHot) : _tierToHot;}
+            {_delete = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("delete"), out var __jsonDelete) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.DateAfterModification.FromJson(__jsonDelete) : _delete;}
+            {_enableAutoTierToHotFromCool = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("enableAutoTierToHotFromCool"), out var __jsonEnableAutoTierToHotFromCool) ? (bool?)__jsonEnableAutoTierToHotFromCool : _enableAutoTierToHotFromCool;}
             AfterFromJson(json);
         }
 

@@ -996,16 +996,16 @@ function Test-ManagedIdentity
 
 <#
 .SYNOPSIS
-Tests Microsoft Entra Authentication with New-AzRedisCache, Set-AzRedisCache and Get-AzRedisCache
+Tests Microsoft Entra Authentication and Disable Access Keys Authentication with New-AzRedisCache, Set-AzRedisCache and Get-AzRedisCache
 Tests GetAzureRedisCacheAccessPolicy, NewAzureRedisCacheAccessPolicy and RemoveAzureRedisCacheAccessPolicy
 Tests GetAzureRedisCacheAccessPolicyAssignment, NewAzureRedisCacheAccessPolicyAssignment and RemoveAzureRedisCacheAccessPolicyAssignment
 #>
-function Test-MicrosoftEntraAuthCache
+function Test-AuthenticationCache
 {
     # Setup
     $resourceGroupName = "PowerShellTest-21"
     # Generate random cache name
-    $cacheName = "redisteam511"
+    $cacheName = "redisteam512"
     $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "West US"
     $accessPolicyName = "testAccessPolicy"
     $accessPolicyAssignmentName = "testAccessPolicyAssignment"
@@ -1014,7 +1014,7 @@ function Test-MicrosoftEntraAuthCache
     New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Creating Cache
-    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size P1 -Sku Premium -RedisVersion latest -RedisConfiguration @{"aad-enabled" = "true"}
+    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size P1 -Sku Premium -RedisVersion latest -DisableAccessKeyAuthentication $true -RedisConfiguration @{"aad-enabled" = "true"}
 
     Assert-AreEqual $cacheName $cacheCreated.Name
     Assert-AreEqual $location $cacheCreated.Location
@@ -1023,7 +1023,7 @@ function Test-MicrosoftEntraAuthCache
     Assert-AreEqual "creating" $cacheCreated.ProvisioningState
     Assert-AreEqual "6GB" $cacheCreated.Size
     Assert-AreEqual "Premium" $cacheCreated.Sku
-    Assert-AreEqual "6" $cacheCreated.RedisVersion.split(".")[0] # May need to update if 'latest' is > 6
+    Assert-AreNotEqual "4" $cacheCreated.RedisVersion.split(".")[0]
 
     # In loop to check if cache provisioning succeeded
     for ($i = 0; $i -le 60; $i++)
@@ -1040,6 +1040,7 @@ function Test-MicrosoftEntraAuthCache
     }
     $cacheCreated = Get-AzRedisCache -Name $cacheName
     Assert-AreEqual "true" $cacheCreated.RedisConfiguration.Item("aad-enabled")
+    Assert-True  { $cacheCreated.DisableAccessKeyAuthentication }
 
     # List access polices
     $accessPolicies = Get-AzRedisCacheAccessPolicy -Name $cacheName
@@ -1064,16 +1065,23 @@ function Test-MicrosoftEntraAuthCache
     Assert-AreEqual $accessPolicyName $accessPolicy.AccessPolicyName
     Assert-AreEqual "+get allkeys" $accessPolicy.Permission
 
-    # Create an access policy assigment
+    # Create an access policy assignment with custom access policy
     $accessPolicyAssignment = New-AzRedisCacheAccessPolicyAssignment -Name $cacheName -AccessPolicyAssignmentName $accessPolicyAssignmentName -AccessPolicyName $accessPolicyName -ObjectId "69d700c5-ca77-4335-947e-4f823dd00e1a" -ObjectIdAlias "kj-aad-testing"
     Assert-AreEqual $accessPolicyAssignmentName $accessPolicyAssignment.AccessPolicyAssignmentName
     Assert-AreEqual $accessPolicyName $accessPolicyAssignment.AccessPolicyName
     Assert-AreEqual "69d700c5-ca77-4335-947e-4f823dd00e1a" $accessPolicyAssignment.ObjectId
     Assert-AreEqual "kj-aad-testing" $accessPolicyAssignment.ObjectIdAlias
 
+    # Create an access policy assignment with built-in access policy
+    $accessPolicyAssignment = New-AzRedisCacheAccessPolicyAssignment -Name $cacheName -AccessPolicyAssignmentName "builtinAccessPolicyAssignment" -AccessPolicyName "Data Owner" -ObjectId "69d700c5-ca77-4335-947e-4f823dd00e1b" -ObjectIdAlias "kj-aad-testing-builtin"
+    Assert-AreEqual "builtinAccessPolicyAssignment" $accessPolicyAssignment.AccessPolicyAssignmentName
+    Assert-AreEqual "Data Owner" $accessPolicyAssignment.AccessPolicyName
+    Assert-AreEqual "69d700c5-ca77-4335-947e-4f823dd00e1b" $accessPolicyAssignment.ObjectId
+    Assert-AreEqual "kj-aad-testing-builtin" $accessPolicyAssignment.ObjectIdAlias
+
     # List access policy assignments
     $accessPolicyAssignments = Get-AzRedisCacheAccessPolicyAssignment -Name $cacheName
-    Assert-AreEqual 1 $accessPolicyAssignments.Count
+    Assert-AreEqual 2 $accessPolicyAssignments.Count
 
     # Update access policy assignment
     $accessPolicyAssignment = New-AzRedisCacheAccessPolicyAssignment -Name $cacheName -AccessPolicyAssignmentName $accessPolicyAssignmentName -AccessPolicyName $accessPolicyName -ObjectId "69d700c5-ca77-4335-947e-4f823dd00e1a" -ObjectIdAlias "aad testing app"
@@ -1091,10 +1099,14 @@ function Test-MicrosoftEntraAuthCache
 
     # List access policy assignments
     $accessPolicyAssignments = Get-AzRedisCacheAccessPolicyAssignment -Name $cacheName
-    Assert-AreEqual 0 $accessPolicyAssignments.Count
+    Assert-AreEqual 1 $accessPolicyAssignments.Count
 
     # Delete access policy
     Assert-True {Remove-AzRedisCacheAccessPolicy -Name $cacheName -AccessPolicyName $accessPolicyName -PassThru} "Removing access policy failed."
+
+    # Enabling access keys authentication on cache
+    $cacheUpdated = Set-AzRedisCache -Name $cacheName -DisableAccessKeyAuthentication $false
+    Assert-False  { $cacheUpdated.DisableAccessKeyAuthentication }
 
     # Disabling microsoft entra authentication on cache
     $cacheUpdated = Set-AzRedisCache -Name $cacheName -RedisConfiguration @{"aad-enabled" = "false"}
@@ -1130,8 +1142,8 @@ function Test-UpdateChannel
 {
     # Setup
     $id = (New-Guid).ToString().Substring(0,8)
-    $resourceGroupName = "PowerShellTest-05968bcc"
-    $cacheName = "redisteam011-05968bcc"
+    $resourceGroupName = "PowerShellTest-05968abc"
+    $cacheName = "redisteam011-05968abc"
     $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "West US"
 
     # Create resource group

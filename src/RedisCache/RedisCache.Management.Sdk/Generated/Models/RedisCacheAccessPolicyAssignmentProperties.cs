@@ -102,9 +102,9 @@ namespace Microsoft.Azure.Management.RedisCache.Models
 
             if (this.AccessPolicyName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(this.AccessPolicyName, "^([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]|[a-zA-Z0-9])$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(this.AccessPolicyName, "^([a-zA-Z0-9][a-zA-Z0-9- ]*[a-zA-Z0-9]|[a-zA-Z0-9])$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "AccessPolicyName", "^([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]|[a-zA-Z0-9])$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "AccessPolicyName", "^([a-zA-Z0-9][a-zA-Z0-9- ]*[a-zA-Z0-9]|[a-zA-Z0-9])$");
                 }
             }
         }

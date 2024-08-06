@@ -19,6 +19,26 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+* Updated API version from 2022-07-01 to 2024-01-01.
+* Added cmdlets:
+    - Get-AzNewRelicBillingInfo
+    - Get-AzNewRelicConnectedPartnerResource
+    - New-AzNewRelicFilteringTagObject
+    - New-AzNewRelicMonitoredSubscription
+    - Get-AzNewRelicMonitoredSubscription
+    - Remove-AzNewRelicMonitoredSubscription
+    - Update-AzNewRelicMonitoredSubscription
+    - New-AzNewRelicMonitoredSubscriptionObject
+    - Get-AzNewRelicMonitorLinkedResource
+* Renamed cmdlet Get-AzNewRelicMonitorAppService to Get-AzNewRelicConnectedPartnerResource.
+* Renamed cmdlet Get-AzNewRelicMonitorAppService to Get-AzNewRelicMonitoredAppService.
+* Renamed cmdlet Get-AzNewRelicMonitorHost to Get-AzNewRelicMonitoredHost.
+* Updated manage identity design.
+
+## Version 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 0.1.0
 * First preview release for module Az.NewRelic
 

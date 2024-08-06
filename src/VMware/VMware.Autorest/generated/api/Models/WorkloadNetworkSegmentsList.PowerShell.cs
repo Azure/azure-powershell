@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>A list of NSX Segments</summary>
+    /// <summary>The response of a WorkloadNetworkSegment list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(WorkloadNetworkSegmentsListTypeConverter))]
     public partial class WorkloadNetworkSegmentsList
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             AfterDeserializePSObject(content);
         }
     }
-    /// A list of NSX Segments
+    /// The response of a WorkloadNetworkSegment list operation.
     [System.ComponentModel.TypeConverter(typeof(WorkloadNetworkSegmentsListTypeConverter))]
     public partial interface IWorkloadNetworkSegmentsList
 

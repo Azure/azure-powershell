@@ -25,6 +25,7 @@ function Test-BackupCrud
     $accName1 = Get-ResourceName
     $poolName = Get-ResourceName
     $volName1 = Get-ResourceName
+    $backupVaultName = Get-ResourceName
     $backupName1 = Get-ResourceName
     $backupName2 = Get-ResourceName    
     $backupPolicyName1 = Get-ResourceName
@@ -94,7 +95,7 @@ function Test-BackupCrud
         $i = 0 
         do
         {
-            $getRetrievedBackup = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName1
+            $getRetrievedBackup = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName -Name $backupName1
             Start-TestSleep -Seconds 10
             $i++
         }               
@@ -126,6 +127,12 @@ function Test-BackupCrud
         $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $backupLocation -Name $accName1 -Tag @{$newTagName = $newTagValue}
         Assert-AreEqual $accName1 $retrievedAcc.Name
 
+
+        # Create BackupVault
+        $retrievedVault = New-AzNetAppFilesBackupVault -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $backupVaultName -Location $backupLocation -Tag @{$newTagName = $newTagValue}
+        Assert-AreEqual "$accName1/$backupVaultName" $retrievedVault.Name
+
+        $retrievedVault = Get-AzNetAppFilesBackupVault -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $backupVaultName
         # create and check BackupPolicy
         #$retrievedBackupPolicy = New-AzNetAppFilesBackupPolicy -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -Name $backupPolicyName1 -Tag @{$newTagName = $newTagValue} -Enabled -DailyBackupsToKeep $dailyBackupsToKeep -WeeklyBackupsToKeep $weeklyBackupsToKeep -MonthlyBackupsToKeep $monthlyBackupsToKeep -YearlyBackupsToKeep $yearlyBackupsToKeep
         #Assert-NotNull $retrievedBackupPolicy.Id
@@ -145,42 +152,36 @@ function Test-BackupCrud
         Start-TestSleep -Seconds 30
         WaitForSucceeded
         
-        # get check Vaults 
-        #$retrievedVaultsList = Get-AzNetAppFilesVault -ResourceGroupName $resourceGroup -AccountName $accName1
+
         $backupObject = @{
-            #VaultId = $retrievedVaultsList[0].Id
-            BackupEnabled = $true
-            PolicyEnforced = $true
-            #BackupPolicyId = $retrievedBackupPolicy.Id
+            BackupVaultId = $retrievedVault.Id
+            PolicyEnforced = $true            
         }
 
         Start-TestSleep -Seconds 30
         WaitForSucceeded 
 
          # volume update with backup policy
-        $retrievedVolume = Update-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Backup $backupObject
+        $updatedVolume = Update-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Backup $backupObject
         Start-TestSleep -Seconds 30
+        
+       # Assert-ThrowsContains{ Get-AzNetAppFilesVolumeGroupIdListForLDAPUser -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Username $userName} 'Group Id list can be fetched for LDAP enabled volumes only. Please check that the volume is LDAP enabled'
+        Assert-ThrowsContains{New-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -BackupVaultName $backupVaultName -Name $backupName1 -Label $label -VolumeResourceId "bogus Id" } 'is an invalid resource Id'
+        
         # create and check Backup
-        $retrievedBackup = New-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName1 -Label $label
-        Assert-AreEqual "$accName1/$poolName/$volName1/$backupName1" $retrievedBackup.Name
-        WaitForBackupSucceeded $backupName1
+        $retrievedBackup = New-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName -Name $backupName1 -Label $label -VolumeResourceId $retrievedVolume.Id
+        Assert-AreEqual "$accName1/$backupVaultName/$backupName1" $retrievedBackup.Name
+        WaitForBackupSucceeded $backupName1 $backupVaultName
         # service side issue does not return label enable when fixed (ANF-8057)
         #Assert-AreEqual $label $retrievedBackup.Label
         
         # get and check a Backup by name and check again
-        $getRetrievedBackup = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName1
-        Assert-AreEqual "$accName1/$poolName/$volName1/$backupName1" $getRetrievedBackup.Name
-
-        # get and check a Backup by Account and name and check again
-        $getRetrievedAccountBackup = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -AccountBackupName $backupName1
-        Assert-AreEqual "$accName1/$poolName/$volName1/$backupName1" $getRetrievedBackup.Name
-
-        
-        # service side issue does not return label enable when fixed (ANF-8057)
-        # Assert-AreEqual $label $getRetrievedBackup.Label
+        $getRetrievedBackup = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName -Name $backupName1
+        Assert-AreEqual "$accName1/$backupVaultName/$backupName1" $getRetrievedBackup.Name        
+        Assert-AreEqual $label $getRetrievedBackup.Label
         
         # update and check a Backup by name and check again
-        $updateBackup = Update-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -Location $backupLocation -PoolName $poolName -VolumeName $volName1 -Name $backupName1 -Label $labelUpdate
+        #$updateBackup = Update-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -Location $backupLocation -PoolName $poolName -VolumeName $volName1 -Name $backupName1 -Label $labelUpdate
         # service side issue does not return label enable when fixed (ANF-8057)
         #Assert-AreEqual $labelUpdate $updateBackup.Label
         WaitForBackupSucceeded
@@ -192,38 +193,43 @@ function Test-BackupCrud
         #$getResultBackupRestore = Restore-AzNetAppFilesBackupFile -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -BackupName $backupName1 -FileList $fileList -DestinationVolumeId $retrievedVolume.Id
         
         #create second Backup       
-        $secondBackup = New-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName2 -Label $label2
-        Assert-AreEqual "$accName1/$poolName/$volName1/$backupName2" $secondBackup.Name
-        WaitForBackupSucceeded $backupName2
-        
-        # service side issue does not return label enable when fixed (ANF-8057)
-        # Assert-AreEqual $label $secondBackup.Label2
+        $secondBackup = New-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName -Name $backupName2 -Label $label2 -VolumeResourceId $retrievedVolume.Id
+        Assert-AreEqual "$accName1/$backupVaultName/$backupName2" $secondBackup.Name
+        WaitForBackupSucceeded $backupName2 $backupVaultName
+        Assert-AreEqual $label2 $secondBackup.Label
 
-        # get and check Backup by Volume (list)
-        $retrievedBackupsList = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1
+        # get and check Backup list
+        $retrievedBackupsList = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName
         # check the names but the order does not appear to be guaranteed (perhaps because the names are randomly generated)
         Assert-AreEqual 2 $retrievedBackupsList.Length
-        Assert-True {"$accName1/$poolName/$volName1/$backupName1" -eq $retrievedBackupsList[0].Name -or "$accName1/$poolName/$volName1/$backupName2" -eq $retrievedBackupsList[0].Name}
-        Assert-True {"$accName1/$poolName/$volName1/$backupName1" -eq $retrievedBackupsList[1].Name -or "$accName1/$poolName/$volName1/$backupName2" -eq $retrievedBackupsList[1].Name}
+        Assert-True {"$accName1/$backupVaultName/$backupName1" -eq $retrievedBackupsList[0].Name -or "$accName1/$backupVaultName/$backupName2" -eq $retrievedBackupsList[0].Name}
+        Assert-True {"$accName1/$backupVaultName/$backupName1" -eq $retrievedBackupsList[1].Name -or "$accName1/$backupVaultName/$backupName2" -eq $retrievedBackupsList[1].Name}
+
+        # get and check Backup by Volume (list)
+        $retrievedBackupsList = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName -Filter $retrievedVolume.Id
+        # check the names but the order does not appear to be guaranteed (perhaps because the names are randomly generated)
+        Assert-AreEqual 2 $retrievedBackupsList.Length
+        Assert-True {"$accName1/$backupVaultName/$backupName1" -eq $retrievedBackupsList[0].Name -or "$accName1/$backupVaultName/$backupName2" -eq $retrievedBackupsList[0].Name}
+        Assert-True {"$accName1/$backupVaultName/$backupName1" -eq $retrievedBackupsList[1].Name -or "$accName1/$backupVaultName/$backupName2" -eq $retrievedBackupsList[1].Name}
+
 
         # get and check a Backup by name
-        $getRetrievedBackup = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName1
-        Assert-AreEqual "$accName1/$poolName/$volName1/$backupName1" $getRetrievedBackup.Name
+        $getRetrievedBackup = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName -Name $backupName1
+        Assert-AreEqual "$accName1/$backupVaultName/$backupName1" $getRetrievedBackup.Name
 
         # get and check the Backup again using the resource id just obtained
         $getRetrievedBackupById = Get-AzNetAppFilesBackup -ResourceId $getRetrievedBackup.Id
-        Assert-AreEqual "$accName1/$poolName/$volName1/$backupName1" $getRetrievedBackupById.Name
-        Start-TestSleep -Seconds 200
+        Assert-AreEqual "$accName1/$backupVaultName/$backupName1" $getRetrievedBackupById.Name
+        
         # delete one Backup by name and check removed
         # but test the WhatIf first, should not be removed
-        Remove-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName1 -WhatIf
-        $retrievedBackupsList = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1
+        Remove-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName -Name $backupName1 -WhatIf
+        $retrievedBackupsList = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName -Filter $retrievedVolume.Id
         Assert-AreEqual 2 $retrievedBackupsList.Length
-                             
-        Start-TestSleep -Seconds 200
+      
         #remove by name
-        Remove-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName1
-        $retrievedBackupsList = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1
+        Remove-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName -Name $backupName1
+        $retrievedBackupsList = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName -Filter $retrievedVolume.Id
         Assert-AreEqual 1 $retrievedBackupsList.Length
         
         Start-TestSleep -Seconds 200
@@ -232,14 +238,14 @@ function Test-BackupCrud
         $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName
         Assert-AreEqual 0 $retrievedVolume.Length
         
-        # delete one Backup by AccountBackupFieldsParameterSet 
-        Remove-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -AccountBackupName $backupName1 -WhatIf
+        # delete one Backup  
+        Remove-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName -BackupName $backupName1 -WhatIf
         # delete one Backup by id and check removed
         Remove-AzNetAppFilesBackup -ResourceId $secondBackup.Id
         $retrievedDeletedBackup = $null
         try
         {
-            $retrievedDeletedBackup = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -AccountBackupName $backupName1
+            $retrievedDeletedBackup = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName -BackupName $backupName1
         }
         catch
         {
@@ -269,6 +275,7 @@ function Test-BackupPipelines
     $backupName1 = Get-ResourceName
     $backupName2 = Get-ResourceName
     $poolName = Get-ResourceName
+    $backupVaultName = Get-ResourceName
     $label = "powershellBackupPipelineTest"
     $updateLabel = "powershellUpdateBackupPipelineTest"
     $gibibyte = 1024 * 1024 * 1024
@@ -302,6 +309,11 @@ function Test-BackupPipelines
         $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $backupLocation -Name $accName1 -Tag @{$newTagName = $newTagValue}
         Assert-AreEqual $accName1 $retrievedAcc.Name
 
+        # Create BackupVault
+        $retrievedVault = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup| New-AzNetAppFilesBackupVault -Name $backupVaultName -Tag @{$newTagName = $newTagValue}
+        Assert-AreEqual "$accName1/$backupVaultName" $retrievedVault.Name
+
+
         # create pool
         New-AnfPool -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -Name $poolName -PoolSize $poolSize -ServiceLevel $serviceLevel 
         
@@ -314,60 +326,58 @@ function Test-BackupPipelines
         # get check Vaults 
         #$retrievedVaultsList = Get-AzNetAppFilesVault -ResourceGroupName $resourceGroup -AccountName $accName1
         $backupObject = @{
-            #VaultId = $retrievedVaultsList[0].Id
-            BackupEnabled = $true
+            BackupVaultId = $retrievedVault.Id            
             PolicyEnforced = $false
         }
          # volume update with backup 
         $retrievedVolume = Update-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Backup $backupObject
 
-        # create backup by piping from a Volume
+        # create backup by piping from a backupVault
         #$retrieveSn = Get-AnfVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName | New-AnfSnapshot -SnapshotName $snName1
-        $retrievedBackup = Get-AnfVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 | New-AnfBackup -BackupName $backupName1 -Label $label
-        Assert-AreEqual "$accName1/$poolName/$volName1/$backupName1" $retrievedBackup.Name
+        $retrievedBackup = Get-AnfBackupVault -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName | New-AnfBackup -BackupName $backupName1 -Label $label -VolumeResourceId $retrievedVolume.Id
+        Assert-AreEqual "$accName1/$backupVaultName/$backupName1" $retrievedBackup.Name
         
-        WaitForBackupSucceeded $backupName1
+        WaitForBackupSucceeded $backupName1 $backupVaultName
        # $getRetrievedBackupPolicy = Get-AnfVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -Name $volName1 | Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $backupName1
 
-        $updateRetrievedBackup = Get-AnfVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -Name $volName1 | Update-AzNetAppFilesBackup -Name $backupName1 -Label $updateLabel
+        $updateRetrievedBackup = Get-AnfBackupVault -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $backupVaultName | Update-AzNetAppFilesBackup -Name $backupName1 -Label $updateLabel
         # service side issue does not return label enable when fixed (ANF-8057)
         # Assert-AreEqual $updateLabel $updateRetrievedBackup.Label2
 
         # get the current number of backups
-        $retrievedBackups = Get-AnfBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1
+        $retrievedBackups = Get-AnfBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName
         Assert-AreEqual 1 $retrievedBackups.Length
         $numBackups = $retrievedBackups.Length
         
-        #create anoter backup
-        $retrievedBackup = Get-AnfVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 | New-AnfBackup -BackupName $backupName2 -Label $label
-        Assert-AreEqual "$accName1/$poolName/$volName1/$backupName2" $retrievedBackup.Name        
-        WaitForBackupSucceeded $backupName2
+        #create another backup
+        $retrievedBackup = Get-AnfBackupVault -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName | New-AnfBackup -BackupName $backupName2 -Label $label -VolumeResourceId $retrievedVolume.Id
+        Assert-AreEqual "$accName1/$backupVaultName/$backupName2" $retrievedBackup.Name        
+        WaitForBackupSucceeded $backupName2 $backupVaultName
 
-        $retrievedBackups = Get-AnfBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1
+        $retrievedBackups = Get-AnfBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName
         Assert-AreEqual 2 $retrievedBackups.Length
         $numBackups = $retrievedBackups.Length
-        
-        Start-TestSleep -Seconds 200
+               
         
         # delete the first backup by piping from backup get
-        Get-AnfBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -p $poolName -VolumeName $volName1 -name $backupName1 | Remove-AnfBackup
+        Get-AnfBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName -Name $backupName1 | Remove-AnfBackup
         # and check the backup list by piping from get
-        $retrievedBackup = Get-AnfVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -Name $volName1 | Get-AnfBackup
+        $retrievedBackup = Get-AnfBackupVault -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $backupVaultName | Get-AnfBackup
         Assert-AreEqual ($numBackups-1) $retrievedBackup.Length 
         Start-TestSleep -Seconds 200
         # delete volume so we can cleanup last remaining backup and check removed
         Remove-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 
         $retrievedVolumes = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName
         Assert-AreEqual 0 $retrievedVolumes.Length
-        Start-TestSleep -Seconds 400
-        # delete the last backup by piping from AccountBackup get
-        Get-AnfBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -AccountBackupName $backupName2 | Remove-AnfBackup
         Start-TestSleep -Seconds 200
-        # Check accountBackups         
+        # delete the last backup by piping from BackupVault get
+        Get-AnfBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName -Name $backupName2 | Remove-AnfBackup
+        Start-TestSleep -Seconds 200
+        # Check accountBackups
         $retrievedDeletedBackup = $null
         try
         {
-            $retrievedDeletedBackup = Get-AnfBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -AccountBackupName $backupName2
+            $retrievedDeletedBackup = Get-AnfBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName -Name $backupName2
         }
         catch
         {
@@ -393,6 +403,7 @@ function Test-VolumeBackupStatus
 
     $resourceGroup = Get-ResourceGroupName
     $accName = Get-ResourceName
+    $backupVaultName = Get-ResourceName
     $poolName = Get-ResourceName
     $poolName2 = Get-ResourceName
     $volName1 = Get-ResourceName
@@ -461,7 +472,12 @@ function Test-VolumeBackupStatus
         $newTagValue = "tagValue1"
         # create account
         $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName 
-	    # create and check BackupPolicy
+
+        #Create backupVault
+        $retrievedVault = New-AzNetAppFilesBackupVault -ResourceGroupName $resourceGroup -AccountName $accName -Name $backupVaultName -Location $backupLocation -Tag @{$newTagName = $newTagValue}
+        Assert-AreEqual "$accName/$backupVaultName" $retrievedVault.Name
+	    
+        # create and check BackupPolicy
         #$retrievedBackupPolicy = New-AzNetAppFilesBackupPolicy -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName -Name $backupPolicyName1 -Tag @{$newTagName = $newTagValue} -Enabled -DailyBackupsToKeep $dailyBackupsToKeep -WeeklyBackupsToKeep $weeklyBackupsToKeep -MonthlyBackupsToKeep $monthlyBackupsToKeep -YearlyBackupsToKeep $yearlyBackupsToKeep
         #Assert-NotNull $retrievedBackupPolicy.Id
 
@@ -486,25 +502,22 @@ function Test-VolumeBackupStatus
         # get check Vaults 
         #$retrievedVaultsList = Get-AzNetAppFilesVault -ResourceGroupName $resourceGroup -AccountName $accName
         $backupObject = @{
-            #VaultId = $retrievedVaultsList[0].Id
-            BackupEnabled = $true
-            PolicyEnforced = $true
-            #BackupPolicyId = $retrievedBackupPolicy.Id
+            BackupVaultId = $retrievedVault.Id            
+            PolicyEnforced = $true            
         }
         Start-TestSleep -Seconds 30        
         # volume update with backup policy
         $retrievedVolume = Update-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Backup $backupObject
         Start-TestSleep -Seconds 30
         # create and check Backup
-        $retrievedBackup = New-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Name $backupName1 -Label $label
-        Assert-AreEqual "$accName/$poolName/$volName1/$backupName1" $retrievedBackup.Name
+        $retrievedBackup = New-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName -BackupVaultName $backupVaultName -Name $backupName1 -VolumeResourceId $retrievedVolume.Id -Label $label
+        Assert-AreEqual "$accName/$backupVaultName/$backupName1" $retrievedBackup.Name
         Start-TestSleep -Seconds 30
         #$retrievedBackup = New-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Name $backupName2 -Label $label
         Start-TestSleep -Seconds 30
         #$retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1
-        # Get volume backup status
-        Start-TestSleep -Seconds 30
-        Start-TestSleep -Seconds 600
+        # Get volume backup status        
+        Start-TestSleep -Seconds 200
         $retrievedBackupStatus = Get-AzNetAppFilesVolumeBackupStatus -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -Name $volName1 
         Assert-NotNull $retrievedBackupStatus                
     }
@@ -514,12 +527,12 @@ function Test-VolumeBackupStatus
         Clean-ResourceGroup $resourceGroup
     }
 }
-    function WaitForBackupSucceeded ($backupName)
+    function WaitForBackupSucceeded ($backupName, $backupVaultName)
     {
         $i = 0 
         do
         {
-            $sourceBackup = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName
+            $sourceBackup = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName -Name $backupName
             Start-TestSleep -Seconds 10
             $i++
         }               

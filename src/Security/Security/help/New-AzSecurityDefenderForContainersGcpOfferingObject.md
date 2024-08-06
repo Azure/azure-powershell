@@ -24,7 +24,7 @@ New-AzSecurityDefenderForContainersGcpOfferingObject [-AuditLogsAutoProvisioning
  [-MdcContainerImageAssessmentWorkloadIdentityProviderId <String>]
  [-NativeCloudConnectionServiceAccountEmailAddress <String>]
  [-NativeCloudConnectionWorkloadIdentityProviderId <String>] [-PolicyAgentAutoProvisioningFlag <Boolean>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +32,7 @@ Create an in-memory object for DefenderForContainersGcpOffering.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create new DefenderForContainersGcpOffering object
 ```powershell
 $emailSuffix = "myproject.iam.gserviceaccount.com"
 New-AzSecurityDefenderForContainersGcpOfferingObject `
@@ -43,19 +43,37 @@ New-AzSecurityDefenderForContainersGcpOfferingObject `
     -MdcContainerImageAssessmentEnabled $true -MdcContainerImageAssessmentWorkloadIdentityProviderId "containers" -MdcContainerImageAssessmentServiceAccountEmailAddress "mdc-containers-artifact-assess@$emailSuffix"
 ```
 
+```output
+AuditLogsAutoProvisioningFlag                               : True
+DataPipelineNativeCloudConnectionServiceAccountEmailAddress : ms-defender-containers-stream@myproject.iam.gserviceaccount.com
+DataPipelineNativeCloudConnectionWorkloadIdentityProviderId : containers-streams
+DefenderAgentAutoProvisioningFlag                           : True
+Description                                                 : 
+MdcContainerAgentlessDiscoveryK8SEnabled                    : True
+MdcContainerAgentlessDiscoveryK8SServiceAccountEmailAddress : mdc-containers-k8s-operator@myproject.iam.gserviceaccount.com
+MdcContainerAgentlessDiscoveryK8SWorkloadIdentityProviderId : containers
+MdcContainerImageAssessmentEnabled                          : True
+MdcContainerImageAssessmentServiceAccountEmailAddress       : mdc-containers-artifact-assess@myproject.iam.gserviceaccount.com
+MdcContainerImageAssessmentWorkloadIdentityProviderId       : containers
+NativeCloudConnectionServiceAccountEmailAddress             : microsoft-defender-containers@myproject.iam.gserviceaccount.com
+NativeCloudConnectionWorkloadIdentityProviderId             : containers
+OfferingType                                                : DefenderForContainersGcp
+PolicyAgentAutoProvisioningFlag                             : True
+```
+
 ## PARAMETERS
 
 ### -AuditLogsAutoProvisioningFlag
 Is audit logs data collection enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -64,7 +82,7 @@ Accept wildcard characters: False
 The data collection service account email address in GCP for this offering.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -79,7 +97,7 @@ Accept wildcard characters: False
 The data collection GCP workload identity provider id for this offering.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -94,13 +112,13 @@ Accept wildcard characters: False
 Is Microsoft Defender for Cloud Kubernetes agent auto provisioning enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -109,13 +127,13 @@ Accept wildcard characters: False
 Is Microsoft Defender container agentless discovery enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -124,7 +142,7 @@ Accept wildcard characters: False
 The service account email address in GCP for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -139,7 +157,7 @@ Accept wildcard characters: False
 The workload identity provider id in GCP for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -154,13 +172,13 @@ Accept wildcard characters: False
 Is Microsoft Defender container image assessment enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -169,7 +187,7 @@ Accept wildcard characters: False
 The service account email address in GCP for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -184,7 +202,7 @@ Accept wildcard characters: False
 The workload identity provider id in GCP for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -199,7 +217,7 @@ Accept wildcard characters: False
 The service account email address in GCP for this offering.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -214,7 +232,7 @@ Accept wildcard characters: False
 The GCP workload identity provider id for this offering.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -229,13 +247,28 @@ Accept wildcard characters: False
 Is Policy Kubernetes agent auto provisioning enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -248,8 +281,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.DefenderForContainersGcpOffering
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefenderforcontainersgcpofferingobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefenderforcontainersgcpofferingobject)

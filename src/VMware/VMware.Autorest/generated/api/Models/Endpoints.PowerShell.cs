@@ -114,6 +114,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)this).HcxCloudManager = (string) content.GetValueForProperty("HcxCloudManager",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)this).HcxCloudManager, global::System.Convert.ToString);
             }
+            if (content.Contains("NsxtManagerIP"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)this).NsxtManagerIP = (string) content.GetValueForProperty("NsxtManagerIP",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)this).NsxtManagerIP, global::System.Convert.ToString);
+            }
+            if (content.Contains("VcenterIP"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)this).VcenterIP = (string) content.GetValueForProperty("VcenterIP",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)this).VcenterIP, global::System.Convert.ToString);
+            }
+            if (content.Contains("HcxCloudManagerIP"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)this).HcxCloudManagerIP = (string) content.GetValueForProperty("HcxCloudManagerIP",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)this).HcxCloudManagerIP, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -142,6 +154,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("HcxCloudManager"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)this).HcxCloudManager = (string) content.GetValueForProperty("HcxCloudManager",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)this).HcxCloudManager, global::System.Convert.ToString);
+            }
+            if (content.Contains("NsxtManagerIP"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)this).NsxtManagerIP = (string) content.GetValueForProperty("NsxtManagerIP",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)this).NsxtManagerIP, global::System.Convert.ToString);
+            }
+            if (content.Contains("VcenterIP"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)this).VcenterIP = (string) content.GetValueForProperty("VcenterIP",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)this).VcenterIP, global::System.Convert.ToString);
+            }
+            if (content.Contains("HcxCloudManagerIP"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)this).HcxCloudManagerIP = (string) content.GetValueForProperty("HcxCloudManagerIP",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpointsInternal)this).HcxCloudManagerIP, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

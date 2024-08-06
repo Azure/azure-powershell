@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 3.2.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 3.2.0
 * Fixed Ambiguous Positional Argument for `New-AzWebAppSlot`
 

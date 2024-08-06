@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedServices-help.xml
 Module Name: Az.ManagedServices
 online version: https://learn.microsoft.com/powershell/module/az.managedservices/remove-azmanagedservicesdefinition
 schema: 2.0.0
@@ -15,13 +15,13 @@ Deletes the registration definition.
 ### Delete (Default)
 ```
 Remove-AzManagedServicesDefinition -Name <String> [-Scope <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzManagedServicesDefinition -InputObject <IManagedServicesIdentity> [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +39,8 @@ Removes Azure Lighthouse registration definition at the given scope.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -158,19 +159,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IManagedServicesIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[MarketplaceIdentifier <String>]`: The Azure Marketplace identifier. Expected formats: {publisher}.{product[-preview]}.{planName}.{version} or {publisher}.{product[-preview]}.{planName} or {publisher}.{product[-preview]} or {publisher}).
-  - `[RegistrationAssignmentId <String>]`: The GUID of the registration assignment.
-  - `[RegistrationDefinitionId <String>]`: The GUID of the registration definition.
-  - `[Scope <String>]`: The scope of the resource.
-
 ## RELATED LINKS
-

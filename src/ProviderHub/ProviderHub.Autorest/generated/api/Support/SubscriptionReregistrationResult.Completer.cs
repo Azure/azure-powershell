@@ -28,19 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotApplicable".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotApplicable", "NotApplicable", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotApplicable");
+                yield return new global::System.Management.Automation.CompletionResult("'NotApplicable'", "NotApplicable", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotApplicable");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ConditionalUpdate".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ConditionalUpdate", "ConditionalUpdate", global::System.Management.Automation.CompletionResultType.ParameterValue, "ConditionalUpdate");
+                yield return new global::System.Management.Automation.CompletionResult("'ConditionalUpdate'", "ConditionalUpdate", global::System.Management.Automation.CompletionResultType.ParameterValue, "ConditionalUpdate");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ForcedUpdate".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ForcedUpdate", "ForcedUpdate", global::System.Management.Automation.CompletionResultType.ParameterValue, "ForcedUpdate");
+                yield return new global::System.Management.Automation.CompletionResult("'ForcedUpdate'", "ForcedUpdate", global::System.Management.Automation.CompletionResultType.ParameterValue, "ForcedUpdate");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Failed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Failed", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
+                yield return new global::System.Management.Automation.CompletionResult("'Failed'", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
             }
         }
     }

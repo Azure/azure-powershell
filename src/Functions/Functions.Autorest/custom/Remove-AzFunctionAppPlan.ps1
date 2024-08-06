@@ -23,7 +23,7 @@ function Remove-AzFunctionAppPlan {
         ${SubscriptionId},
 
         [Parameter(ParameterSetName='ByObjectInput', Mandatory=$true, ValueFromPipeline=$true)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan]
         [ValidateNotNull()]
         ${InputObject},
 
@@ -84,6 +84,9 @@ function Remove-AzFunctionAppPlan {
     )
     
     process {
+
+        RegisterFunctionsTabCompleters
+
         if ($PsCmdlet.ParameterSetName -eq "ByObjectInput")
         {
             if ($PSBoundParameters.ContainsKey("InputObject"))

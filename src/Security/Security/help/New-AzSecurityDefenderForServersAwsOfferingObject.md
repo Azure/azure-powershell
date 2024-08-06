@@ -19,7 +19,7 @@ New-AzSecurityDefenderForServersAwsOfferingObject [-ArcAutoProvisioningCloudRole
  [-ConfigurationPrivateLinkScope <String>] [-ConfigurationProxy <String>] [-ConfigurationScanningMode <String>]
  [-ConfigurationType <String>] [-DefenderForServerCloudRoleArn <String>]
  [-MdeAutoProvisioningConfiguration <IAny>] [-MdeAutoProvisioningEnabled <Boolean>] [-SubPlanType <String>]
- [-VMScannerEnabled <Boolean>] [-VaAutoProvisioningEnabled <Boolean>]
+ [-VMScannerEnabled <Boolean>] [-VaAutoProvisioningEnabled <Boolean>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -28,7 +28,7 @@ Create an in-memory object for DefenderForServersAwsOffering.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create new DefenderForServersAwsOffering object
 ```powershell
 $arnPrefix = "arn:aws:iam::123456789012:role"
 New-AzSecurityDefenderForServersAwsOfferingObject `
@@ -40,13 +40,34 @@ New-AzSecurityDefenderForServersAwsOfferingObject `
     -SubPlanType P2
 ```
 
+```output
+ArcAutoProvisioningCloudRoleArn  : arn:aws:iam::123456789012:role/DefenderForCloud-ArcAutoProvisioning
+ArcAutoProvisioningEnabled       : True
+ConfigurationCloudRoleArn        : arn:aws:iam::123456789012:role/DefenderForCloud-AgentlessScanner
+ConfigurationExclusionTag        : {
+                                   }
+ConfigurationPrivateLinkScope    : 
+ConfigurationProxy               : 
+ConfigurationScanningMode        : Default
+ConfigurationType                : TVM
+DefenderForServerCloudRoleArn    : arn:aws:iam::123456789012:role/DefenderForCloud-DefenderForServers
+Description                      : 
+MdeAutoProvisioningConfiguration : {
+                                   }
+MdeAutoProvisioningEnabled       : True
+OfferingType                     : DefenderForServersAws
+SubPlanType                      : P2
+VMScannerEnabled                 : True
+VaAutoProvisioningEnabled        : True
+```
+
 ## PARAMETERS
 
 ### -ArcAutoProvisioningCloudRoleArn
 The cloud role ARN in AWS for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -61,13 +82,13 @@ Accept wildcard characters: False
 Is arc auto provisioning enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -76,7 +97,7 @@ Accept wildcard characters: False
 The cloud role ARN in AWS for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -89,10 +110,9 @@ Accept wildcard characters: False
 
 ### -ConfigurationExclusionTag
 VM tags that indicates that VM should not be scanned.
-.
 
 ```yaml
-Type: IDefenderForServersAwsOfferingVMScannersConfigurationExclusionTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderForServersAwsOfferingVMScannersConfigurationExclusionTags
 Parameter Sets: (All)
 Aliases:
 
@@ -107,7 +127,7 @@ Accept wildcard characters: False
 Optional Arc private link scope resource id to link the Arc agent.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -122,7 +142,7 @@ Accept wildcard characters: False
 Optional HTTP proxy endpoint to use for the Arc agent.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -137,7 +157,7 @@ Accept wildcard characters: False
 The scanning mode for the VM scan.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -153,7 +173,7 @@ The Vulnerability Assessment solution to be provisioned.
 Can be either 'TVM' or 'Qualys'.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -168,7 +188,7 @@ Accept wildcard characters: False
 The cloud role ARN in AWS for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -183,7 +203,7 @@ Accept wildcard characters: False
 configuration for Microsoft Defender for Endpoint autoprovisioning.
 
 ```yaml
-Type: IAny
+Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAny
 Parameter Sets: (All)
 Aliases:
 
@@ -198,13 +218,28 @@ Accept wildcard characters: False
 Is Microsoft Defender for Endpoint auto provisioning enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -213,7 +248,7 @@ Accept wildcard characters: False
 The available sub plans.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -228,13 +263,13 @@ Accept wildcard characters: False
 Is Vulnerability Assessment auto provisioning enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -243,13 +278,13 @@ Accept wildcard characters: False
 Is Microsoft Defender for Server VM scanning enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -262,15 +297,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.DefenderForServersAwsOffering
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-CONFIGURATIONEXCLUSIONTAG \<IDefenderForServersAwsOfferingVMScannersConfigurationExclusionTags\>: VM tags that indicates that VM should not be scanned.
-  \[(Any) \<String\>\]: This indicates any property can be added to this object.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefenderforserversawsofferingobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefenderforserversawsofferingobject)

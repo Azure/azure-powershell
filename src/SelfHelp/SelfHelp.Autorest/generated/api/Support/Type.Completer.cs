@@ -42,6 +42,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'AutomatedCheck'", "AutomatedCheck", global::System.Management.Automation.CompletionResultType.ParameterValue, "AutomatedCheck");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Input".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Input'", "Input", global::System.Management.Automation.CompletionResultType.ParameterValue, "Input");
+            }
         }
     }
 }

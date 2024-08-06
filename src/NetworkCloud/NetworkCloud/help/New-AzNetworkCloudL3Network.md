@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
 online version: https://learn.microsoft.com/powershell/module/az.networkcloud/new-aznetworkcloudl3network
 schema: 2.0.0
@@ -13,12 +13,12 @@ Create a new layer 3 (L3) network or update the properties of the existing netwo
 ## SYNTAX
 
 ```
-New-AzNetworkCloudL3Network -Name <String> -ResourceGroupName <String> -ExtendedLocationName <String>
- -ExtendedLocationType <String> -L3IsolationDomainId <String> -Location <String> -Vlan <Int64>
- [-SubscriptionId <String>] [-HybridAksIpamEnabled <HybridAksIpamEnabled>]
- [-HybridAksPluginType <HybridAksPluginType>] [-InterfaceName <String>] [-IPAllocationType <IPAllocationType>]
- [-Ipv4ConnectedPrefix <String>] [-Ipv6ConnectedPrefix <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzNetworkCloudL3Network -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -ExtendedLocationName <String> -ExtendedLocationType <String> -L3IsolationDomainId <String> -Location <String>
+ -Vlan <Int64> [-HybridAksIpamEnabled <HybridAksIpamEnabled>] [-HybridAksPluginType <HybridAksPluginType>]
+ [-IPAllocationType <IPAllocationType>] [-InterfaceName <String>] [-Ipv4ConnectedPrefix <String>]
+ [-Ipv6ConnectedPrefix <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -363,7 +363,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

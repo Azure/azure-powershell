@@ -13,7 +13,8 @@ Creates an object to update NIC properties of a test migrating server.
 ## SYNTAX
 
 ```
-New-AzMigrateTestNicMapping -NicID <String> -TestNicSubnet <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzMigrateTestNicMapping -NicID <String> -TestNicSubnet <String>
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,7 +109,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtNicInput
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

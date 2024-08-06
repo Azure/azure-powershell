@@ -15,7 +15,8 @@ Deletes an alert processing rule
 ### ByName (Default)
 ```
 Remove-AzAlertProcessingRule -ResourceGroupName <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId

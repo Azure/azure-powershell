@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Creates or updates an App Service Plan.
+Description for Creates or updates an App Service Plan.
 .Description
-Creates or updates an App Service Plan.
+Description for Creates or updates an App Service Plan.
 .Example
 Update-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
                          -Name MyPremiumPlan `
@@ -27,11 +27,11 @@ Update-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
                          -Force
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlanPatchResource
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlanPatchResource
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -39,29 +39,36 @@ To create the parameters described below, construct a hash table containing the 
 
 APPSERVICEPLAN <IAppServicePlanPatchResource>: ARM resource for a app service plan.
   [Kind <String>]: Kind of resource.
+  [ElasticScaleEnabled <Boolean?>]: ServerFarm supports ElasticScale. Apps in this plan will scale as if the ServerFarm was ElasticPremium sku
   [FreeOfferExpirationTime <DateTime?>]: The time when the server farm free offer expires.
   [HostingEnvironmentProfileId <String>]: Resource ID of the App Service Environment.
   [HyperV <Boolean?>]: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
   [IsSpot <Boolean?>]: If <code>true</code>, this App Service Plan owns spot instances.
   [IsXenon <Boolean?>]: Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
+  [KubeEnvironmentProfileId <String>]: Resource ID of the Kubernetes Environment.
   [MaximumElasticWorkerCount <Int32?>]: Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan
   [PerSiteScaling <Boolean?>]: If <code>true</code>, apps assigned to this App Service plan can be scaled independently.         If <code>false</code>, apps assigned to this App Service plan will scale to all instances of the plan.
-  [Reserved <Boolean?>]: This needs to set to <code>true</code> when creating a Linux App Service Plan, along with <code>kind</code> set to <code>Linux</code>. It should be <code>false</code> otherwise.
+  [Reserved <Boolean?>]: If Linux app service plan <code>true</code>, <code>false</code> otherwise.
   [SpotExpirationTime <DateTime?>]: The time when the server farm expires. Valid only if it is a spot server farm.
   [TargetWorkerCount <Int32?>]: Scaling worker count.
   [TargetWorkerSizeId <Int32?>]: Scaling worker size ID.
   [WorkerTierName <String>]: Target worker tier assigned to the App Service plan.
+  [ZoneRedundant <Boolean?>]: If <code>true</code>, this App Service Plan will perform availability zone balancing.         If <code>false</code>, this App Service Plan will not perform availability zone balancing.
 
 INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
   [AnalysisName <String>]: Analysis Name
   [AppSettingKey <String>]: App Setting key name.
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
+  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
-  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
   [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
   [DetectorName <String>]: Detector Resource Name
   [DiagnosticCategory <String>]: Diagnostic Category
@@ -69,8 +76,11 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [DomainName <String>]: Name of the domain.
   [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
   [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
   [FunctionName <String>]: Function name.
   [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
   [HostName <String>]: Hostname in the hostname binding.
   [HostingEnvironmentName <String>]: Name of the hosting environment.
   [Id <String>]: Deployment ID.
@@ -81,21 +91,24 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
   [KeyName <String>]: The name of the key.
   [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
   [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
-  [PrId <String>]: The stage site identifier.
   [PremierAddOnName <String>]: Add-on name.
-  [PrivateEndpointConnectionName <String>]: 
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
   [ProcessId <String>]: PID.
   [PublicCertificateName <String>]: Public certificate name.
   [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
   [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
   [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
   [ResourceName <String>]: The name of the Application Insights component resource.
   [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
   [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
   [SiteExtensionId <String>]: Site extension name.
   [SiteName <String>]: Site Name
@@ -103,17 +116,20 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [SnapshotId <String>]: The ID of the snapshot to read.
   [SourceControlType <String>]: Type of source control
   [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
   [Userid <String>]: The user id of the user.
-  [View <String>]: The type of view. This can either be "summary" or "detailed".
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
   [VnetName <String>]: Name of the virtual network.
   [WebJobName <String>]: Name of Web Job.
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/update-azfunctionappplan
 #>
 function Update-AzFunctionAppPlan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -151,10 +167,18 @@ param(
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlanPatchResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlanPatchResource]
     # ARM resource for a app service plan.
     # To construct, see NOTES section for APPSERVICEPLAN properties and create a hash table.
     ${AppServicePlan},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # ServerFarm supports ElasticScale.
+    # Apps in this plan will scale as if the ServerFarm was ElasticPremium sku
+    ${ElasticScaleEnabled},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -201,6 +225,13 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Resource ID of the Kubernetes Environment.
+    ${KubeEnvironmentProfileId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan
     ${MaximumElasticWorkerCount},
@@ -216,9 +247,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # This needs to set to <code>true</code>
-    # when creating a Linux App Service Plan, along with <code>kind</code> set to <code>Linux</code>.
-    # It should be <code>false</code> otherwise.
+    # If Linux app service plan <code>true</code>, <code>false</code> otherwise.
     ${Reserved},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -249,6 +278,13 @@ param(
     [System.String]
     # Target worker tier assigned to the App Service plan.
     ${WorkerTierName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # If <code>true</code>, this App Service Plan will perform availability zone balancing.If <code>false</code>, this App Service Plan will not perform availability zone balancing.
+    ${ZoneRedundant},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -314,7 +350,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.Functions.private\Update-AzFunctionAppPlan_UpdateViaIdentityExpanded';
         }
         if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

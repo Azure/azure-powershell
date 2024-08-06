@@ -28,7 +28,8 @@ Please notice that this cmdlet will mark `ObjectType` as `Unknown` in output if 
 ### EmptyParameterSet (Default)
 ```
 Get-AzRoleAssignment [-RoleDefinitionName <String>] [-IncludeClassicAdministrators]
- [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
@@ -63,7 +64,8 @@ Get-AzRoleAssignment -ObjectId <String> [-RoleDefinitionName <String>] -Scope <S
 ### RoleIdWithScopeAndObjectIdParameterSet
 ```
 Get-AzRoleAssignment [-ObjectId <String>] -RoleDefinitionId <Guid> [-Scope <String>]
- [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceGroupWithSignInNameParameterSet
@@ -127,20 +129,23 @@ Get-AzRoleAssignment -ServicePrincipalName <String> [-RoleDefinitionName <String
 ### ResourceGroupParameterSet
 ```
 Get-AzRoleAssignment -ResourceGroupName <String> [-RoleDefinitionName <String>] [-IncludeClassicAdministrators]
- [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceParameterSet
 ```
 Get-AzRoleAssignment -ResourceGroupName <String> -ResourceName <String> -ResourceType <String>
  [-ParentResource <String>] [-RoleDefinitionName <String>] [-IncludeClassicAdministrators]
- [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ScopeParameterSet
 ```
 Get-AzRoleAssignment [-RoleDefinitionName <String>] -Scope <String> [-IncludeClassicAdministrators]
- [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

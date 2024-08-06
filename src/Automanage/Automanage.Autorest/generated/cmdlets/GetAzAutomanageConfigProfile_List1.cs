@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Automanage.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Automanage.Description(@"Retrieve a list of configuration profile within a subscription")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Automanage.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Automanage.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Automanage/configurationProfiles", ApiVersion = "2022-05-04")]
     public partial class GetAzAutomanageConfigProfile_List1 : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.IEventListener
     {
@@ -42,9 +43,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Automanage.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Automanage.Automanage Client => Microsoft.Azure.PowerShell.Cmdlets.Automanage.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Automanage.ParameterCategory.Azure)]
@@ -157,7 +159,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Automanage.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Automanage.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -304,6 +323,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Automanage.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Automanage.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Automanage.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

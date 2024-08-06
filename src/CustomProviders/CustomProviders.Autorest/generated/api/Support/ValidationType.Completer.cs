@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Support
 {
 
-    /// <summary>Argument completer implementation for ValidationType.</summary>
+    /// <summary>The type of validation to run against a matching request.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Support.ValidationTypeTypeConverter))]
     public partial struct ValidationType :
         System.Management.Automation.IArgumentCompleter
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Swagger".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Swagger", "Swagger", global::System.Management.Automation.CompletionResultType.ParameterValue, "Swagger");
+                yield return new global::System.Management.Automation.CompletionResult("'Swagger'", "Swagger", global::System.Management.Automation.CompletionResultType.ParameterValue, "Swagger");
             }
         }
     }

@@ -77,10 +77,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_targetSkuName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("targetSkuName"), out var __jsonTargetSkuName) ? (string)__jsonTargetSkuName : (string)TargetSkuName;}
-            {_migrationStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("migrationStatus"), out var __jsonMigrationStatus) ? (string)__jsonMigrationStatus : (string)MigrationStatus;}
-            {_migrationFailedReason = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("migrationFailedReason"), out var __jsonMigrationFailedReason) ? (string)__jsonMigrationFailedReason : (string)MigrationFailedReason;}
-            {_migrationFailedDetailedReason = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("migrationFailedDetailedReason"), out var __jsonMigrationFailedDetailedReason) ? (string)__jsonMigrationFailedDetailedReason : (string)MigrationFailedDetailedReason;}
+            {_targetSkuName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("targetSkuName"), out var __jsonTargetSkuName) ? (string)__jsonTargetSkuName : (string)_targetSkuName;}
+            {_migrationStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("migrationStatus"), out var __jsonMigrationStatus) ? (string)__jsonMigrationStatus : (string)_migrationStatus;}
+            {_migrationFailedReason = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("migrationFailedReason"), out var __jsonMigrationFailedReason) ? (string)__jsonMigrationFailedReason : (string)_migrationFailedReason;}
+            {_migrationFailedDetailedReason = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("migrationFailedDetailedReason"), out var __jsonMigrationFailedDetailedReason) ? (string)__jsonMigrationFailedDetailedReason : (string)_migrationFailedDetailedReason;}
             AfterFromJson(json);
         }
 

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a hive catalog configured as a Trino cluster.
+Create an in-memory object for HiveCatalogOption.
 .Description
-Create a hive catalog configured as a Trino cluster.
+Create an in-memory object for HiveCatalogOption.
 .Example
 $catalogName="{your catalog name}"
 $metastoreDbConnectionURL="jdbc:sqlserver://{your sql server url};database={your db name};encrypt=truetrustServerCertificate=true;loginTimeout=30;"
@@ -26,16 +26,16 @@ $metastoreDbUserName="{your db user name}"
 $metastoreDbPasswordSecret="{secretName}"
 $metastoreWarehouseDir="abfs://{your container name}@{your adls gen2 endpoint}/{your path}"
 
-New-AzHdInsightOnAksTrinoHiveCatalogObject -CatalogName $catalogName -MetastoreDbConnectionUrl $metastoreDbConnectionURL -MetastoreDbConnectionUserName $metastoreDbUserName -MetastoreDbConnectionPasswordSecret $metastoreDbPasswordSecret
+New-AzHdInsightOnAksTrinoHiveCatalogObject -CatalogName $catalogName -MetastoreDbConnectionUrl $metastoreDbConnectionURL -MetastoreDbConnectionUserName $metastoreDbUserName -MetastoreDbConnectionPasswordSecret $metastoreDbPasswordSecret -MetastoreWarehouseDir $metastoreWarehouseDir
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHiveCatalogOption
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.HiveCatalogOption
 .Link
-https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksTrinoHiveCatalogObject
+https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonakstrinohivecatalogobject
 #>
 function New-AzHdInsightOnAksTrinoHiveCatalogObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHiveCatalogOption])]
-[CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.HiveCatalogOption])]
+[CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
@@ -52,20 +52,29 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
-    # User name for hive metastore database.
-    ${MetastoreDbConnectionUserName},
+    # Metastore root directory URI, format: abfs[s]://<container>@<account_name>.dfs.core.windows.net/<path>.
+    # More details: https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction-abfs-uri.
+    ${MetastoreWarehouseDir},
 
-    [Parameter(Mandatory)]
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("SqlAuth", "IdentityAuth")]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
-    # Password secret for hive metastore database.
+    # The authentication mode to connect to your Hive metastore database.
+    # More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization.
+    ${MetastoreDbConnectionAuthenticationMode},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Secret reference name from secretsProfile.secrets containing password for database connection.
     ${MetastoreDbConnectionPasswordSecret},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
-    # Warehouse directory for hive metastore database.
-    ${MetastoreWarehouseDir}
+    # User name for database connection.
+    ${MetastoreDbConnectionUserName}
 )
 
 begin {
@@ -94,7 +103,7 @@ begin {
         }
 
         $mapping = @{
-            Create = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksTrinoHiveCatalogObject';
+            __AllParameterSets = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksTrinoHiveCatalogObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

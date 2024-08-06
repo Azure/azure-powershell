@@ -17,14 +17,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
     using Commands.Common.Storage.ResourceModel;
     using global::Azure.Storage.Queues;
     using global::Azure.Storage.Queues.Models;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
 
-    [CmdletOutputBreakingChangeWithVersion(typeof(AzureStorageQueue), "11.0.0", "6.0.0", ChangeDescription = "The child property CloudQueue and EncodeMessage from deprecated v11 SDK will be removed. Use child property QueueClient instead of CloudQueue.")]
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageQueue"),OutputType(typeof(AzureStorageQueue))]
     public class NewAzureStorageQueueCommand : StorageQueueBaseCmdlet
     {

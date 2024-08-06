@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzCdnEndpoint'))
 
 Describe 'Stop-AzCdnEndpoint'  {
     BeforeAll {
-        $endpointName = 'e-ndpstest100'
+        $endpointName = 'e-clipstest130'
         $origin = @{
             Name = "origin1"
             HostName = "host1.hello.com"

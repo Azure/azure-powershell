@@ -19,6 +19,10 @@ Describe 'Update-AzVMwareCluster' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'UpdateViaIdentityPrivateCloudExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'UpdateViaIdentityExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

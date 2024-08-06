@@ -77,8 +77,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_count = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("count"), out var __jsonCount) ? (int)__jsonCount : Count;}
-            {_podPrefix = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("podPrefix"), out var __jsonPodPrefix) ? (string)__jsonPodPrefix : (string)PodPrefix;}
+            {_count = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("count"), out var __jsonCount) ? (int)__jsonCount : _count;}
+            {_podPrefix = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("podPrefix"), out var __jsonPodPrefix) ? (string)__jsonPodPrefix : (string)_podPrefix;}
+            {_vMSize = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("vmSize"), out var __jsonVMSize) ? (string)__jsonVMSize : (string)_vMSize;}
             AfterFromJson(json);
         }
 
@@ -106,6 +107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 AddIf( null != (((object)this._podPrefix)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._podPrefix.ToString()) : null, "podPrefix" ,container.Add );
             }
+            AddIf( null != (((object)this._vMSize)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._vMSize.ToString()) : null, "vmSize" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

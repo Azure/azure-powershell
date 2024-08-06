@@ -16,20 +16,21 @@ Creates a virtual machine scale set.
 ### DefaultParameter (Default)
 ```
 New-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob]
- [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SimpleParameterSet
 ```
 New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [-UserData <String>]
- [-ImageName <String>] -Credential <PSCredential> [-InstanceCount <Int32>]
- [-VirtualNetworkName <String>] [-SubnetName <String>] [-PublicIpAddressName <String>]
- [-DomainNameLabel <String>] [-SecurityGroupName <String>] [-LoadBalancerName <String>]
- [-BackendPort <Int32[]>] [-Location <String>] [-EdgeZone <String>] [-VmSize <String>]
- [-UpgradePolicyMode <UpgradeMode>] [-AllocationMethod <String>] [-VnetAddressPrefix <String>]
- [-SubnetAddressPrefix <String>] [-FrontendPoolName <String>] [-BackendPoolName <String>]
- [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-EnableUltraSSD]
+ [-EnableAutomaticOSUpgrade] [-IfMatch <String>] [-IfNoneMatch <String>] [-ImageName <String>]
+ -Credential <PSCredential> [-InstanceCount <Int32>] [-VirtualNetworkName <String>] [-SubnetName <String>]
+ [-PublicIpAddressName <String>] [-DomainNameLabel <String>] [-SecurityGroupName <String>]
+ [-LoadBalancerName <String>] [-BackendPort <Int32[]>] [-Location <String>] [-EdgeZone <String>]
+ [-VmSize <String>] [-UpgradePolicyMode <UpgradeMode>] [-AllocationMethod <String>]
+ [-VnetAddressPrefix <String>] [-SubnetAddressPrefix <String>] [-FrontendPoolName <String>]
+ [-BackendPoolName <String>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-EnableUltraSSD]
  [-Zone <System.Collections.Generic.List`1[System.String]>] [-NatBackendPort <Int32[]>]
  [-DataDiskSizeInGb <Int32[]>] [-ProximityPlacementGroupId <String>] [-HostGroupId <String>]
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-ScaleInPolicy <String[]>]
@@ -45,15 +46,19 @@ The **New-AzVmss** cmdlet creates a Virtual Machine Scale Set (VMSS) in Azure.
 Use the simple parameter set (`SimpleParameterSet`) to quickly create a pre-set VMSS and associated resources. <br> 
 
 Use the default parameter set (`DefaultParameter`) for more advanced scenarios when you need to precisely configure each component of the VMSS and each associated resource before creation. 
-For default parameter set, first use the **[New-AzVmssConfig](https://learn.microsoft.com/en-us/powershell/module/az.compute/new-azvmss)** cmdlet to create a virtual machine scale set object. <br> <br>
+For default parameter set, first use the **[New-AzVmssConfig](https://learn.microsoft.com/en-us/powershell/module/az.compute/new-azvmss)** cmdlet to create a virtual machine scale set object. <br> 
 
 Then use the following cmdlets to set different properties of the virtual machine scale set object: <br>
 - **[Add-AzVmssNetworkInterfaceConfiguration](https://learn.microsoft.com/en-us/powershell/module/az.compute/add-azvmssnetworkinterfaceconfiguration)** to set the network profile.<br>
 - **[Set-AzVmssOsProfile](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmssosprofile)** to set the OS profile. <br>
 - **[Set-AzVmssStorageProfile](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmssstorageprofile)** to set the storage profile.<br>
-- **[Get-AzComputeResourceSku](https://learn.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku)** can also be used to find out available virtual machine sizes for your subscription and region.<br><br>
+- **[Get-AzComputeResourceSku](https://learn.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku)** can also be used to find out available virtual machine sizes for your subscription and region.<br>
 
-See other cmdlets for virtual machine scale set [here](https://learn.microsoft.com/en-us/powershell/module/az.compute/#vm-scale-sets).<br>
+See other cmdlets for virtual machine scale set [here](https://learn.microsoft.com/en-us/powershell/module/az.compute/#vm-scale-sets).<br><br>
+
+VMSS creation will default to OrchestrationMode:Flexible. Default parameter set will set properties in VirtualMachineScaleSetVMProfile by default. To create a VMSS with an empty VirtualMachineScaleSetVMProfile property, use simple parameter set by first creating a VirtualMachineScaleSet object with an empty VirtualMachineScaleSetVMProfile property using **[New-AzVmssConfig](https://learn.microsoft.com/en-us/powershell/module/az.compute/new-azvmss)**.
+
+
 <br>
 See [Quickstart: Create a virtual machine scale set with Azure PowerShell](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/quick-create-powershell) for tutorial.
 
@@ -64,7 +69,7 @@ See [Quickstart: Create a virtual machine scale set with Azure PowerShell](https
 $vmssName = 'VMSSNAME'
 # Create credentials, I am using one way to create credentials, there are others as well.
 # Pick one that makes the most sense according to your use case.
-$vmPassword = ConvertTo-SecureString "PASSWORD" -AsPlainText -Force
+$vmPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $vmCred = New-Object System.Management.Automation.PSCredential('USERNAME', $vmPassword)
 $securityTypeStnd = "Standard"
 
@@ -192,7 +197,7 @@ $vmssName = 'VMSSNAME';
 $domainNameLabel = "dnl" + $ResourceGroupName;
 # Create credentials, I am using one way to create credentials, there are others as well.
 # Pick one that makes the most sense according to your use case.
-$vmPassword = ConvertTo-SecureString 'PASSWORD' -AsPlainText -Force;
+$vmPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force;
 $vmCred = New-Object System.Management.Automation.PSCredential('USERNAME', $vmPassword);
 
 $text = "UserData value to encode";
@@ -217,7 +222,7 @@ $vmssSize = 'Standard_D4s_v3';
 $vmssName1 = 'vmss1' + $rgname;
 $imageName = "Win2022AzureEdition";
 $adminUsername = "<Username>";
-$adminPassword = "<Password>" | ConvertTo-SecureString -AsPlainText -Force;
+$adminPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force;
 $vmCred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
 
 # VMSS Creation 
@@ -237,9 +242,10 @@ $vmssConfig = New-AzVmssConfig -Location EastUs2 -UpgradePolicyMode Manual -Sing
 # VMSS Creation 
 New-AzVmss -ResourceGroupName TestRg -VMScaleSetName myVMSS -VirtualMachineScaleSet $vmssConfig
 ```
+
 This example Creates a new VMSS and it will default to OrchestrationMode Flexible. 
 
-### Example 6: Create a new VMSS with TrustedLaunch turned on by default. 
+### Example 6: Create a new VMSS with TrustedLaunch turned on by default.
 ```powershell
 $rgname = "<Resource Group>";
 $loc = "<Azure Region>";
@@ -277,6 +283,7 @@ $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
 # Verify $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled is True.
 # Verify $vmssGet.VirtualMachineProfile.StorageProfile.ImageReference.Sku is 2022-Datacenter-Azure-Edition.
 ```
+
 The virtual machine scale set above has Trusted Launch enabled by default. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
 
 ## PARAMETERS
@@ -457,6 +464,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -EnableAutomaticOSUpgrade
+Whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the image becomes available.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableSecureBoot
 Specifies whether secure boot should be enabled on the virtual machine.
 
@@ -560,6 +582,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -IfMatch
+used to make a request conditional for the PUT and other non-safe methods. The server will only return the requested resources if the resource matches one of the listed ETag values. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfNoneMatch
+Used to make a request conditional for the GET and HEAD methods. The server will only return the requested resources if none of the listed ETag values match the current entity. Used to make a request conditional for the GET and HEAD methods. The server will only return the requested resources if none of the listed ETag values match the current entity. Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will result in error from server as they are not supported.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -670,6 +722,9 @@ Accept wildcard characters: False
 
 ### -OrchestrationMode
 Specifies the orchestration mode for the virtual machine scale set. Possible values: Uniform, Flexible
+
+Creating a VMSS in OrchestrationMode:Flexible using default parameter set will result in having the VirtualMachineScaleSetVMProfile being populated by default. 
+If you want to create a VMSS with an empty VirtualMachineScaleSetVMProfile, first create a VirtualMachineScaleSet object with empty VMProfile property using **[New-AzVmssConfig](https://learn.microsoft.com/en-us/powershell/module/az.compute/new-azvmss)**, then create the VMSS using simple parameter set.
 
 ```yaml
 Type: System.String

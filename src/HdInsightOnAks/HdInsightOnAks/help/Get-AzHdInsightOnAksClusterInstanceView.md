@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.HdInsightOnAks-help.xml
 Module Name: Az.HdInsightOnAks
 online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/get-azhdinsightonaksclusterinstanceview
 schema: 2.0.0
@@ -15,25 +15,27 @@ Gets the status of a cluster instance.
 ### Get (Default)
 ```
 Get-AzHdInsightOnAksClusterInstanceView -ClusterName <String> -ClusterPoolName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List
+```
+Get-AzHdInsightOnAksClusterInstanceView -ClusterName <String> -ClusterPoolName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityClusterpool
+```
+Get-AzHdInsightOnAksClusterInstanceView -ClusterName <String> -ClusterpoolInputObject <IHdInsightOnAksIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzHdInsightOnAksClusterInstanceView -InputObject <IHdInsightOnAksIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### GetViaIdentityClusterpool
-```
-Get-AzHdInsightOnAksClusterInstanceView -ClusterName <String>
- -ClusterpoolInputObject <IHdInsightOnAksIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzHdInsightOnAksClusterInstanceView -ClusterName <String> -ClusterPoolName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,7 +71,7 @@ The name of the HDInsight cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityClusterpool, List
+Parameter Sets: Get, List, GetViaIdentityClusterpool
 Aliases:
 
 Required: True
@@ -81,7 +83,6 @@ Accept wildcard characters: False
 
 ### -ClusterpoolInputObject
 Identity Parameter
-To construct, see NOTES section for CLUSTERPOOLINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
@@ -128,7 +129,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
@@ -188,4 +188,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

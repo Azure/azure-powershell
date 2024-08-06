@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV1.dll-Help.xml
 Module Name: Az.DataFactory
 online version: https://learn.microsoft.com/powershell/module/az.datafactory/get-azdatafactorygatewayauthkey
 schema: 2.0.0

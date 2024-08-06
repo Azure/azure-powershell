@@ -31,10 +31,18 @@ The operation to delete a data disk from a  virtual machine.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Removes a Data Disk from a Virtual Machine
+```powershell
 Remove-AzStackHCIVMVirtualMachineDataDisk  -Name "testVm" -ResourceGroupName "test-rg"  -DataDiskName "testVhd"
 ```
+
+```output
+Name            ResourceGroupName
+----            -----------------
+testVm          test-rg
+```
+
+This command removes a data disk from the virtual machine in the specified resource group.
 
 ## PARAMETERS
 
@@ -108,7 +116,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -154,7 +162,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -198,8 +206,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmvirtualmachinedatadisk](https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmvirtualmachinedatadisk)

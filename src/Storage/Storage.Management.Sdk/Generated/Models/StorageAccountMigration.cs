@@ -36,13 +36,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </param>
 
         /// <param name="migrationStatus">Current status of migration
-        /// Possible values include: 'Invalid', 'SubmittedForConversion', 'InProgress',
-        /// 'Complete', 'Failed'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;SubmittedForConversion&#39;, &#39;InProgress&#39;,
+        /// &#39;Complete&#39;, &#39;Failed&#39;</param>
 
         /// <param name="targetSkuName">Target sku name for the account
-        /// Possible values include: 'Standard_LRS', 'Standard_GRS', 'Standard_RAGRS',
-        /// 'Standard_ZRS', 'Premium_LRS', 'Premium_ZRS', 'Standard_GZRS',
-        /// 'Standard_RAGZRS'</param>
+        /// Possible values include: &#39;Standard_LRS&#39;, &#39;Standard_GRS&#39;, &#39;Standard_RAGRS&#39;,
+        /// &#39;Standard_ZRS&#39;, &#39;Premium_LRS&#39;, &#39;Premium_ZRS&#39;, &#39;Standard_GZRS&#39;,
+        /// &#39;Standard_RAGZRS&#39;</param>
 
         /// <param name="migrationFailedReason">Error code for migration failure
         /// </param>

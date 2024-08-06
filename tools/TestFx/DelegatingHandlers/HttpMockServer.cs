@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Test.HttpRecorder
 
         public static string CallerIdentity { get; set; }
         public static string TestIdentity { get; set; }
-        public static HttpRecorderMode Mode { get; set; }
+        public static HttpRecorderMode Mode { get; private set; }
         public static IRecordMatcher Matcher { get; set; }
         public static string RecordsDirectory { get; set; }
         public static Dictionary<string, string> Variables { get; private set; }
@@ -45,22 +45,7 @@ namespace Microsoft.Azure.Test.HttpRecorder
         {
         }
 
-        public static void Initialize(Type callerIdentity, string testIdentity)
-        {
-            Initialize(callerIdentity, testIdentity, GetCurrentMode());
-        }
-
         public static void Initialize(string callerIdentity, string testIdentity)
-        {
-            Initialize(callerIdentity, testIdentity, GetCurrentMode());
-        }
-
-        public static void Initialize(Type callerIdentity, string testIdentity, HttpRecorderMode mode)
-        {
-            Initialize(callerIdentity.Name, testIdentity, mode);
-        }
-
-        public static void Initialize(string callerIdentity, string testIdentity, HttpRecorderMode mode)
         {
             _servers = new List<HttpMockServer>();
             _assetNames = new AssetNames();
@@ -68,8 +53,17 @@ namespace Microsoft.Azure.Test.HttpRecorder
 
             CallerIdentity = callerIdentity;
             TestIdentity = testIdentity;
-            Mode = mode;
             Variables = new Dictionary<string, string>();
+
+            string testMode = FileSystemUtilsObject?.GetEnvironmentVariable(ConnectionStringKeys.AZURE_TEST_MODE_ENVKEY);
+            if (Enum.TryParse(testMode, true, out HttpRecorderMode recorderMode) && Enum.IsDefined(typeof(HttpRecorderMode), recorderMode))
+            {
+                Mode = recorderMode;
+            }
+            else
+            {
+                Mode = HttpRecorderMode.Playback;
+            }
 
             if (Mode == HttpRecorderMode.Playback)
             {
@@ -276,23 +270,6 @@ namespace Microsoft.Azure.Test.HttpRecorder
             _servers.ForEach(s => s.Dispose());
 
             return fileName;
-        }
-
-        public static HttpRecorderMode GetCurrentMode()
-        {
-            HttpRecorderMode mode;
-            string input = FileSystemUtilsObject?.GetEnvironmentVariable(ConnectionStringKeys.AZURE_TEST_MODE_ENVKEY);
-
-            if (string.IsNullOrEmpty(input))
-            {
-                mode = HttpRecorderMode.Playback;
-            }
-            else
-            {
-                mode = (HttpRecorderMode)Enum.Parse(typeof(HttpRecorderMode), input, true);
-            }
-
-            return mode;
         }
     }
 

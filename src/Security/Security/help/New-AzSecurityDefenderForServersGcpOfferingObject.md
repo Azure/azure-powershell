@@ -19,7 +19,7 @@ New-AzSecurityDefenderForServersGcpOfferingObject [-ArcAutoProvisioningEnabled <
  [-ConfigurationType <String>] [-DefenderForServerServiceAccountEmailAddress <String>]
  [-DefenderForServerWorkloadIdentityProviderId <String>] [-MdeAutoProvisioningConfiguration <IAny>]
  [-MdeAutoProvisioningEnabled <Boolean>] [-SubPlanType <String>] [-VMScannerEnabled <Boolean>]
- [-VaAutoProvisioningEnabled <Boolean>] [<CommonParameters>]
+ [-VaAutoProvisioningEnabled <Boolean>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,7 +27,7 @@ Create an in-memory object for DefenderForServersGcpOffering.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create new DefenderForServersGcpOffering object
 ```powershell
 $emailSuffix = "myproject.iam.gserviceaccount.com"
 New-AzSecurityDefenderForServersGcpOfferingObject `
@@ -37,29 +37,48 @@ New-AzSecurityDefenderForServersGcpOfferingObject `
     -SubPlanType P2
 ```
 
+```output
+ArcAutoProvisioningEnabled                  : True
+ConfigurationExclusionTag                   : {
+                                              }
+ConfigurationPrivateLinkScope               : 
+ConfigurationProxy                          : 
+ConfigurationScanningMode                   : Default
+ConfigurationType                           : TVM
+DefenderForServerServiceAccountEmailAddress : microsoft-defender-for-servers@myproject.iam.gserviceaccount.com
+DefenderForServerWorkloadIdentityProviderId : defender-for-servers
+Description                                 : 
+MdeAutoProvisioningConfiguration            : {
+                                              }
+MdeAutoProvisioningEnabled                  : True
+OfferingType                                : DefenderForServersGcp
+SubPlanType                                 : P2
+VMScannerEnabled                            : True
+VaAutoProvisioningEnabled                   : True
+```
+
 ## PARAMETERS
 
 ### -ArcAutoProvisioningEnabled
 Is arc auto provisioning enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ConfigurationExclusionTag
 VM tags that indicate that VM should not be scanned.
-.
 
 ```yaml
-Type: IDefenderForServersGcpOfferingVMScannersConfigurationExclusionTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderForServersGcpOfferingVMScannersConfigurationExclusionTags
 Parameter Sets: (All)
 Aliases:
 
@@ -74,7 +93,7 @@ Accept wildcard characters: False
 Optional Arc private link scope resource id to link the Arc agent.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -89,7 +108,7 @@ Accept wildcard characters: False
 Optional HTTP proxy endpoint to use for the Arc agent.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -104,7 +123,7 @@ Accept wildcard characters: False
 The scanning mode for the VM scan.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -120,7 +139,7 @@ The Vulnerability Assessment solution to be provisioned.
 Can be either 'TVM' or 'Qualys'.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -135,7 +154,7 @@ Accept wildcard characters: False
 The service account email address in GCP for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -150,7 +169,7 @@ Accept wildcard characters: False
 The workload identity provider id in GCP for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -165,7 +184,7 @@ Accept wildcard characters: False
 configuration for Microsoft Defender for Endpoint autoprovisioning.
 
 ```yaml
-Type: IAny
+Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAny
 Parameter Sets: (All)
 Aliases:
 
@@ -180,13 +199,28 @@ Accept wildcard characters: False
 Is Microsoft Defender for Endpoint auto provisioning enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -195,7 +229,7 @@ Accept wildcard characters: False
 The available sub plans.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -210,13 +244,13 @@ Accept wildcard characters: False
 Is Vulnerability Assessment auto provisioning enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -225,13 +259,13 @@ Accept wildcard characters: False
 Is Microsoft Defender for Server VM scanning enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -244,15 +278,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.DefenderForServersGcpOffering
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-CONFIGURATIONEXCLUSIONTAG \<IDefenderForServersGcpOfferingVMScannersConfigurationExclusionTags\>: VM tags that indicate that VM should not be scanned.
-  \[(Any) \<String\>\]: This indicates any property can be added to this object.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefenderforserversgcpofferingobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefenderforserversgcpofferingobject)

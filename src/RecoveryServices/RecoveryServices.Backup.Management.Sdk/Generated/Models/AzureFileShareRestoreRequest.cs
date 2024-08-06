@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Initializes a new instance of the AzureFileShareRestoreRequest class.
         /// </summary>
 
+        /// <param name="resourceGuardOperationRequests">ResourceGuardOperationRequests on which LAC check will be performed
+        /// </param>
+
         /// <param name="recoveryType">Type of this recovery.
         /// Possible values include: &#39;Invalid&#39;, &#39;OriginalLocation&#39;,
         /// &#39;AlternateLocation&#39;, &#39;RestoreDisks&#39;, &#39;Offline&#39;</param>
@@ -45,8 +48,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="targetDetails">Target File Share Details
         /// </param>
-        public AzureFileShareRestoreRequest(string recoveryType = default(string), string sourceResourceId = default(string), string copyOptions = default(string), string restoreRequestType = default(string), System.Collections.Generic.IList<RestoreFileSpecs> restoreFileSpecs = default(System.Collections.Generic.IList<RestoreFileSpecs>), TargetAFSRestoreInfo targetDetails = default(TargetAFSRestoreInfo))
+        public AzureFileShareRestoreRequest(System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), string recoveryType = default(string), string sourceResourceId = default(string), string copyOptions = default(string), string restoreRequestType = default(string), System.Collections.Generic.IList<RestoreFileSpecs> restoreFileSpecs = default(System.Collections.Generic.IList<RestoreFileSpecs>), TargetAFSRestoreInfo targetDetails = default(TargetAFSRestoreInfo))
 
+        : base(resourceGuardOperationRequests)
         {
             this.RecoveryType = recoveryType;
             this.SourceResourceId = sourceResourceId;

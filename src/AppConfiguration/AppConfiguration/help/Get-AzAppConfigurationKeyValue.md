@@ -16,7 +16,8 @@ Gets a list of key-values.
 ```
 Get-AzAppConfigurationKeyValue -Endpoint <String> [-Key <String>] [-Label <String>]
  [-Select <System.Collections.Generic.List`1[System.String]>] [-AcceptDatetime <String>] [-SyncToken <String>]
- [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### List

@@ -15,7 +15,8 @@ Unregisters a resource provider.
 
 ```
 Unregister-AzResourceProvider -ProviderNamespace <String> [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -143,5 +144,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzResourceProvider](./Get-AzResourceProvider.md)
 
 [Register-AzResourceProvider](./Register-AzResourceProvider.md)
-
-

@@ -2,217 +2,133 @@
 
 ## Az.Accounts
 
-### `Clear-AzConfig`
+### `Get-AzAccessToken`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - Parameter `DisableErrorRecordsPersistence` will be deprecated, a new parameter `EnableErrorRecordsPersistence` will be added instead. Writing error records to file system will become opt-in instead of opt-out. This change will happen around May 2024
-  - This change is expected to take effect from Az.Accounts version: 2.X and Az version: 12.0.0
+  - The Token property of the output type will be changed from String to SecureString. Add the [-AsSecureString] switch to avoid the impact of this upcoming breaking change.
+  - This change is expected to take effect from Az.Accounts version: 4.0.0 and Az version: 13.0.0
 
-### `Get-AzConfig`
+## Az.NetAppFiles
 
-- Cmdlet breaking-change will happen to all parameter sets
-  - Parameter `DisableErrorRecordsPersistence` will be deprecated, a new parameter `EnableErrorRecordsPersistence` will be added instead. Writing error records to file system will become opt-in instead of opt-out. This change will happen around May 2024
-  - This change is expected to take effect from Az.Accounts version: 2.X and Az version: 12.0.0
-
-### `Update-AzConfig`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Parameter `DisableErrorRecordsPersistence` will be deprecated, a new parameter `EnableErrorRecordsPersistence` will be added instead. Writing error records to file system will become opt-in instead of opt-out. This change will happen around May 2024
-  - This change is expected to take effect from Az.Accounts version: 2.X and Az version: 12.0.0
-
-## Az.CosmosDB
-
-### `Get-AzCosmosDBAccountKey`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Output type for -Type ConnectionStrings will be changed to List<DatabaseAccountConnectionString> in next major version.
-  - This change is expected to take effect from Az.CosmosDB version: 2.0.0 and Az version: 12.0.0
-
-## Az.KeyVault
-
-### `Invoke-AzKeyVaultKeyOperation`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.KeyVault.Models.PSKeyOperationResult' is changing
-  - The following properties in the output type are being deprecated : 'Result'
-  - The following properties are being added to the output type : 'RawResult'
-  - This change is expected to take effect from Az.KeyVault version: 6.0.0 and Az version: 12.0.0
+### `Get-AzNetAppFilesBackup`
 
 - Parameter breaking-change will happen to all parameter sets
-  - `-Value`
-    - The parameter : 'Value' is being replaced by parameter : 'ByteArrayValue'.
-    - This change is expected to take effect from Az.KeyVault version: 6.0.0 and Az version: 12.0.0
+  - `-AccountBackupName`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-PoolName`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-VolumeName`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-VolumeObject`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
 
-## Az.RecoveryServices
+### `New-AzNetAppFilesBackup`
 
-### `Get-AzRecoveryServicesAsrVaultContext`
+- Parameter breaking-change will happen to all parameter sets
+  - `-Location`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-PoolName`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-VolumeName`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-VolumeObject`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
 
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVaultSettings' is changing
-  - The following properties in the output type are being deprecated : 'ResouceType'
-  - The following properties are being added to the output type : 'ResourceType'
-  - This change is expected to take effect from Az.RecoveryServices version: 7.0.0 and Az version: 12.0.0
+### `Remove-AzNetAppFilesBackup`
 
-### `Import-AzRecoveryServicesAsrVaultSettingsFile`
+- Parameter breaking-change will happen to all parameter sets
+  - `-AccountBackupName`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-PoolName`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-VolumeName`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-VolumeObject`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
 
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVaultSettings' is changing
-  - The following properties in the output type are being deprecated : 'ResouceType'
-  - The following properties are being added to the output type : 'ResourceType'
-  - This change is expected to take effect from Az.RecoveryServices version: 7.0.0 and Az version: 12.0.0
+### `Restore-AzNetAppFilesBackupFile`
 
-### `Set-AzRecoveryServicesAsrVaultContext`
+- Parameter breaking-change will happen to all parameter sets
+  - `-PoolName`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-VolumeName`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-VolumeObject`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
 
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVaultSettings' is changing
-  - The following properties in the output type are being deprecated : 'ResouceType'
-  - The following properties are being added to the output type : 'ResourceType'
-  - This change is expected to take effect from Az.RecoveryServices version: 7.0.0 and Az version: 12.0.0
+### `Update-AzNetAppFilesBackup`
 
-## Az.Resources
-
-### `Get-AzPolicyAssignment`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment' is changing
-  - The following properties in the output type are being deprecated : 'Properties'
-  - The following properties are being added to the output type : 'Description' 'DisplayName' 'EnforcementMode' 'Metadata' 'NonComplianceMessages' 'NotScopes' 'Parameters' 'PolicyDefinitionId' 'Scope'
-  - This change is expected to take effect from Az.Resources version: 7.1.0 and Az version: 12.0.0
-
-### `Get-AzPolicyDefinition`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition' is changing
-  - The following properties in the output type are being deprecated : 'Properties'
-  - The following properties are being added to the output type : 'Description' 'DisplayName' 'Metadata' 'Mode' 'Parameters' 'PolicyRule' 'PolicyType'
-  - This change is expected to take effect from Az.Resources version: 7.1.0 and Az version: 12.0.0
-
-### `Get-AzPolicyExemption`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyExemption' is changing
-  - The following properties in the output type are being deprecated : 'Properties'
-  - The following properties are being added to the output type : 'Description' 'DisplayName' 'ExemptionCategory' 'ExpiresOn' 'Metadata' 'PolicyAssignmentId' 'PolicyDefinitionReferenceIds'
-  - This change is expected to take effect from Az.Resources version: 7.1.0 and Az version: 12.0.0
-
-### `Get-AzPolicySetDefinition`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition' is changing
-  - The following properties in the output type are being deprecated : 'Properties'
-  - The following properties are being added to the output type : 'Description' 'DisplayName' 'Metadata' 'Parameters' 'PolicyDefinitionGroups' 'PolicyDefinitions' 'PolicyType'
-  - This change is expected to take effect from Az.Resources version: 7.1.0 and Az version: 12.0.0
-
-### `New-AzPolicyAssignment`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment' is changing
-  - The following properties in the output type are being deprecated : 'Properties'
-  - The following properties are being added to the output type : 'Description' 'DisplayName' 'EnforcementMode' 'Metadata' 'NonComplianceMessages' 'NotScopes' 'Parameters' 'PolicyDefinitionId' 'Scope'
-  - This change is expected to take effect from Az.Resources version: 7.1.0 and Az version: 12.0.0
-
-### `New-AzPolicyDefinition`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition' is changing
-  - The following properties in the output type are being deprecated : 'Properties'
-  - The following properties are being added to the output type : 'Description' 'DisplayName' 'Metadata' 'Mode' 'Parameters' 'PolicyRule' 'PolicyType'
-  - This change is expected to take effect from Az.Resources version: 7.1.0 and Az version: 12.0.0
-
-### `New-AzPolicyExemption`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyExemption' is changing
-  - The following properties in the output type are being deprecated : 'Properties'
-  - The following properties are being added to the output type : 'Description' 'DisplayName' 'ExemptionCategory' 'ExpiresOn' 'Metadata' 'PolicyAssignmentId' 'PolicyDefinitionReferenceIds'
-  - This change is expected to take effect from Az.Resources version: 7.1.0 and Az version: 12.0.0
-
-### `New-AzPolicySetDefinition`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition' is changing
-  - The following properties in the output type are being deprecated : 'Properties'
-  - The following properties are being added to the output type : 'Description' 'DisplayName' 'Metadata' 'Parameters' 'PolicyDefinitionGroups' 'PolicyDefinitions' 'PolicyType'
-  - This change is expected to take effect from Az.Resources version: 7.1.0 and Az version: 12.0.0
-
-### `Set-AzPolicyAssignment`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment' is changing
-  - The following properties in the output type are being deprecated : 'Properties'
-  - The following properties are being added to the output type : 'Description' 'DisplayName' 'EnforcementMode' 'Metadata' 'NonComplianceMessages' 'NotScopes' 'Parameters' 'PolicyDefinitionId' 'Scope'
-  - This change is expected to take effect from Az.Resources version: 7.1.0 and Az version: 12.0.0
-
-### `Set-AzPolicyDefinition`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition' is changing
-  - The following properties in the output type are being deprecated : 'Properties'
-  - The following properties are being added to the output type : 'Description' 'DisplayName' 'Metadata' 'Mode' 'Parameters' 'PolicyRule' 'PolicyType'
-  - This change is expected to take effect from Az.Resources version: 7.1.0 and Az version: 12.0.0
-
-### `Set-AzPolicyExemption`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyExemption' is changing
-  - The following properties in the output type are being deprecated : 'Properties'
-  - The following properties are being added to the output type : 'Description' 'DisplayName' 'ExemptionCategory' 'ExpiresOn' 'Metadata' 'PolicyAssignmentId' 'PolicyDefinitionReferenceIds'
-  - This change is expected to take effect from Az.Resources version: 7.1.0 and Az version: 12.0.0
-
-### `Set-AzPolicySetDefinition`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition' is changing
-  - The following properties in the output type are being deprecated : 'Properties'
-  - The following properties are being added to the output type : 'Description' 'DisplayName' 'Metadata' 'Parameters' 'PolicyDefinitionGroups' 'PolicyDefinitions' 'PolicyType'
-  - This change is expected to take effect from Az.Resources version: 7.1.0 and Az version: 12.0.0
+- Parameter breaking-change will happen to all parameter sets
+  - `-PoolName`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-VolumeName`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-VolumeObject`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
 
 ## Az.Sql
 
-### `New-AzSqlDatabaseFailoverGroup`
+### `Get-AzSqlInstanceLink`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The default value of FailoverPolicy will change from Automatic to Manual
-  - This change is expected to take effect from Az.Sql version: 5.0.0 and Az version: 12.0.0
+  - The output type 'Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model.AzureSqlManagedInstanceLinkModel' is changing
+  - The following properties in the output type are being deprecated : 'TargetDatabase' 'PrimaryAvailabilityGroupName' 'SecondaryAvailabilityGroupName' 'SourceEndpoint' 'SourceReplicaId' 'TargetReplicaId' 'LinkState' 'LastHardenedLsn'
+  - The following properties are being added to the output type : 'Databases' 'DistributedAvailabilityGroupName ' 'InstanceAvailabilityGroupName' 'PartnerAvailabilityGroupName' 'InstanceLinkRole' 'PartnerLinkRole' 'FailoverMode' 'SeedingMode' 'PartnerEndpoint'
+  - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
 
-### `Set-AzSqlDatabaseFailoverGroup`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The default value of FailoverPolicy will change from Automatic to Manual
-  - This change is expected to take effect from Az.Sql version: 5.0.0 and Az version: 12.0.0
-
-## Az.Storage
-
-### `Get-AzStorageQueue`
+### `New-AzSqlInstanceLink`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The child property CloudQueue and EncodeMessage from deprecated v11 SDK will be removed. Use child property QueueClient instead of CloudQueue.
-  - This change is expected to take effect from Az.Storage version: 6.0.0 and Az version: 11.0.0
-
-### `New-AzStorageQueue`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The child property CloudQueue and EncodeMessage from deprecated v11 SDK will be removed. Use child property QueueClient instead of CloudQueue.
-  - This change is expected to take effect from Az.Storage version: 6.0.0 and Az version: 11.0.0
-
-### `New-AzStorageQueueSASToken`
+  - The output type 'Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model.AzureSqlManagedInstanceLinkModel' is changing
+  - The following properties in the output type are being deprecated : 'TargetDatabase' 'PrimaryAvailabilityGroupName' 'SecondaryAvailabilityGroupName' 'SourceEndpoint' 'SourceReplicaId' 'TargetReplicaId' 'LinkState' 'LastHardenedLsn'
+  - The following properties are being added to the output type : 'Databases' 'DistributedAvailabilityGroupName ' 'InstanceAvailabilityGroupName' 'PartnerAvailabilityGroupName' 'InstanceLinkRole' 'PartnerLinkRole' 'FailoverMode' 'SeedingMode' 'PartnerEndpoint'
+  - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
 
 - Parameter breaking-change will happen to all parameter sets
-  - `-Protocol`
-    - The type of parameter Protocol will be changed from SharedAccessProtocol to string.
-    - This change is expected to take effect from Az.Storage version: 7.0.0 and Az version: 12.0.0
+  - `-PrimaryAvailabilityGroupName`
+    - The parameter : 'PrimaryAvailabilityGroupName' is being replaced by parameter : 'PartnerAvailabilityGroupName'.
+    - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
+  - `-SecondaryAvailabilityGroupName`
+    - The parameter : 'SecondaryAvailabilityGroupName' is being replaced by parameter : 'InstanceAvailabilityGroupName'.
+    - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
+  - `-SourceEndpoint`
+    - The parameter : 'SourceEndpoint' is being replaced by parameter : 'PartnerEndpoint'.
+    - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
+  - `-TargetDatabase`
+    - The parameter 'TargetDatabase' is being replaced by parameter 'Databases'. The type of new parameter is changing from 'String' to 'List<String>'
+    - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
 
-### `Set-AzStorageAccount`
+### `Remove-AzSqlInstanceLink`
 
-- Parameter breaking-change will happen to all parameter sets
-  - `-UpgradeToStorageV2`
-    - A prompt that needs users' confirmation will be added when upgrading a storage account from StorageV1 or BlobStorage to StorageV2. Suppress it with -Force.
-    - This change is expected to take effect from Az.Storage version: 7.0.0 and Az version: 12.0.0
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model.AzureSqlManagedInstanceLinkModel' is changing
+  - The following properties in the output type are being deprecated : 'TargetDatabase' 'PrimaryAvailabilityGroupName' 'SecondaryAvailabilityGroupName' 'SourceEndpoint' 'SourceReplicaId' 'TargetReplicaId' 'LinkState' 'LastHardenedLsn'
+  - The following properties are being added to the output type : 'Databases' 'DistributedAvailabilityGroupName ' 'InstanceAvailabilityGroupName' 'PartnerAvailabilityGroupName' 'InstanceLinkRole' 'PartnerLinkRole' 'FailoverMode' 'SeedingMode' 'PartnerEndpoint'
+  - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
 
-### `Set-AzStorageFileContent`
+### `Update-AzSqlInstanceLink`
 
-- Parameter breaking-change will happen to all parameter sets
-  - `-Path`
-    - When uploading using SAS token without Read permission, the destination path will be taken as a file path, instead of a directory path previously.
-    - This change is expected to take effect from Az.Storage version: 7.0.0 and Az version: 12.0.0
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model.AzureSqlManagedInstanceLinkModel' is changing
+  - The following properties in the output type are being deprecated : 'TargetDatabase' 'PrimaryAvailabilityGroupName' 'SecondaryAvailabilityGroupName' 'SourceEndpoint' 'SourceReplicaId' 'TargetReplicaId' 'LinkState' 'LastHardenedLsn'
+  - The following properties are being added to the output type : 'Databases' 'DistributedAvailabilityGroupName ' 'InstanceAvailabilityGroupName' 'PartnerAvailabilityGroupName' 'InstanceLinkRole' 'PartnerLinkRole' 'FailoverMode' 'SeedingMode' 'PartnerEndpoint'
+  - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
 

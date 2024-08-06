@@ -33,7 +33,8 @@ Get-AzVM -Location <String> [-Status] [-UserData] [-DefaultProfile <IAzureContex
 
 ### GetVirtualMachineById
 ```
-Get-AzVM [-Status] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVM [-Status] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +45,7 @@ Specify the *Status* parameter to get the instance view of a virtual machine ins
 
 ## EXAMPLES
 
-### Example 1: Get model and instance view properties
+### Example 1: Get model properties of the virtual machine named VirtualMachine07
 ```powershell
 Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 ```
@@ -442,5 +443,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Stop-AzVM](./Stop-AzVM.md)
 
 [Update-AzVM](./Update-AzVM.md)
-
-

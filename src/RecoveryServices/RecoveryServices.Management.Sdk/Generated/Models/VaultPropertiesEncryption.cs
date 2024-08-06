@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </param>
 
         /// <param name="infrastructureEncryption">Enabling/Disabling the Double Encryption state
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
         public VaultPropertiesEncryption(CmkKeyVaultProperties keyVaultProperties = default(CmkKeyVaultProperties), CmkKekIdentity kekIdentity = default(CmkKekIdentity), string infrastructureEncryption = default(string))
 
         {

@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Invalid".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Invalid", "Invalid", global::System.Management.Automation.CompletionResultType.ParameterValue, "Invalid");
+                yield return new global::System.Management.Automation.CompletionResult("'Invalid'", "Invalid", global::System.Management.Automation.CompletionResultType.ParameterValue, "Invalid");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AlreadyExists".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AlreadyExists", "AlreadyExists", global::System.Management.Automation.CompletionResultType.ParameterValue, "AlreadyExists");
+                yield return new global::System.Management.Automation.CompletionResult("'AlreadyExists'", "AlreadyExists", global::System.Management.Automation.CompletionResultType.ParameterValue, "AlreadyExists");
             }
         }
     }

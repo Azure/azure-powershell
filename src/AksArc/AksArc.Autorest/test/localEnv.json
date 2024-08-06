@@ -1,0 +1,10 @@
+{
+  "SubscriptionId": "0709bd7a-8383-4e1d-98c8-f81d1b3443fc",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47", 
+  "customLocationId1": "/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/ProvisionedCluster-HCI-PR/providers/Microsoft.ExtendedLocation/customLocations/pipeline-appl-0620-1-9459-96444497-dev-hybridaks-cl", 
+  "lnetId1": "/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/ProvisionedCluster-HCI-PR/providers/Microsoft.AzureStackHCI/logicalnetworks/lnet1arulvelm",
+  "controlPlaneIP1": "172.16.0.3", 
+  "clusterName1": "powershellcluster117", 
+  "ResourceGroupName1": "ProvisionedCluster-HCI-PR",
+  "NodepoolName1": "psnp"
+}

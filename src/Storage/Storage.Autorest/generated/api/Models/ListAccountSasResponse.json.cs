@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_accountSasToken = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("accountSasToken"), out var __jsonAccountSasToken) ? (string)__jsonAccountSasToken : (string)AccountSasToken;}
+            {_accountSasToken = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("accountSasToken"), out var __jsonAccountSasToken) ? (string)__jsonAccountSasToken : (string)_accountSasToken;}
             AfterFromJson(json);
         }
 

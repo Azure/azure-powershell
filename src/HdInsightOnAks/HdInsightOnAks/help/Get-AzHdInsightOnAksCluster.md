@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.HdInsightOnAks-help.xml
 Module Name: Az.HdInsightOnAks
 online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/get-azhdinsightonakscluster
 schema: 2.0.0
@@ -18,10 +18,17 @@ Get-AzHdInsightOnAksCluster -PoolName <String> -ResourceGroupName <String> [-Sub
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityClusterpool
+```
+Get-AzHdInsightOnAksCluster -Name <String> -ClusterpoolInputObject <IHdInsightOnAksIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -30,18 +37,12 @@ Get-AzHdInsightOnAksCluster -InputObject <IHdInsightOnAksIdentity> [-DefaultProf
  [<CommonParameters>]
 ```
 
-### GetViaIdentityClusterpool
-```
-Get-AzHdInsightOnAksCluster -ClusterpoolInputObject <IHdInsightOnAksIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Gets a HDInsight cluster.
 
 ## EXAMPLES
 
-### Example 1: lsit all HDInsight gen2 clusters in a pool.
+### Example 1: lsit all HDInsight clusters in a pool.
 ```powershell
 $clusterResourceGroupName = "your-resourceGroup"
 $clusterpoolName = "your-clusterpool"
@@ -67,7 +68,7 @@ CoordinatorDebugEnable                      :
 
 List all clusters in a pool.
 
-### Example 2: Get a HDInsight gen2 cluster
+### Example 2: Get a HDInsight cluster
 ```powershell
 $clusterResourceGroupName = "your-resourceGroup"
 $clusterpoolName = "your-clusterpool"
@@ -92,13 +93,12 @@ CoordinatorDebugEnable                      :
 ...
 ```
 
-Get a HDInsight gen2 cluster
+Get a HDInsight cluster
 
 ## PARAMETERS
 
 ### -ClusterpoolInputObject
 Identity Parameter
-To construct, see NOTES section for CLUSTERPOOLINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
@@ -130,7 +130,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
@@ -149,7 +148,7 @@ The name of the HDInsight cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityClusterpool
+Parameter Sets: GetViaIdentityClusterpool, Get
 Aliases: ClusterName
 
 Required: True
@@ -164,7 +163,7 @@ The name of the cluster pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases: ClusterPoolName
 
 Required: True
@@ -180,7 +179,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -196,7 +195,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -220,4 +219,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

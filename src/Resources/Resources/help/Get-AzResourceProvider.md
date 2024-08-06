@@ -325,5 +325,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Register-AzResourceProvider](./Register-AzResourceProvider.md)
 
 [Unregister-AzResourceProvider](./Unregister-AzResourceProvider.md)
-
-

@@ -16,83 +16,87 @@ Creates an Azure Storage context.
 ### OAuthAccount (Default)
 ```
 New-AzStorageContext [-StorageAccountName] <String> [-UseConnectedAccount] [-Protocol <String>]
- [-Endpoint <String>] [-EnableFileBackupRequestIntent] [<CommonParameters>]
+ [-Endpoint <String>] [-EnableFileBackupRequestIntent] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### AccountNameAndKey
 ```
 New-AzStorageContext [-StorageAccountName] <String> [-StorageAccountKey] <String> [-Protocol <String>]
- [-Endpoint <String>] [<CommonParameters>]
+ [-Endpoint <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### AccountNameAndKeyEnvironment
 ```
 New-AzStorageContext [-StorageAccountName] <String> [-StorageAccountKey] <String> [-Protocol <String>]
- -Environment <String> [<CommonParameters>]
+ -Environment <String> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### AnonymousAccount
 ```
 New-AzStorageContext [-StorageAccountName] <String> [-Anonymous] [-Protocol <String>] [-Endpoint <String>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### AnonymousAccountEnvironment
 ```
 New-AzStorageContext [-StorageAccountName] <String> [-Anonymous] [-Protocol <String>] -Environment <String>
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### SasToken
 ```
 New-AzStorageContext [-StorageAccountName] <String> -SasToken <String> [-Protocol <String>]
- [-Endpoint <String>] [<CommonParameters>]
+ [-Endpoint <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### SasTokenWithAzureEnvironment
 ```
 New-AzStorageContext [-StorageAccountName] <String> -SasToken <String> -Environment <String>
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### OAuthAccountEnvironment
 ```
 New-AzStorageContext [-StorageAccountName] <String> [-UseConnectedAccount] [-Protocol <String>]
- -Environment <String> [-EnableFileBackupRequestIntent] [<CommonParameters>]
+ -Environment <String> [-EnableFileBackupRequestIntent] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### AccountNameAndKeyServiceEndpoint
 ```
 New-AzStorageContext [-StorageAccountName] <String> [-StorageAccountKey] <String> -BlobEndpoint <String>
- [-FileEndpoint <String>] [-QueueEndpoint <String>] [-TableEndpoint <String>] [<CommonParameters>]
+ [-FileEndpoint <String>] [-QueueEndpoint <String>] [-TableEndpoint <String>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### SasTokenServiceEndpoint
 ```
 New-AzStorageContext -SasToken <String> [-BlobEndpoint <String>] [-FileEndpoint <String>]
- [-QueueEndpoint <String>] [-TableEndpoint <String>] [<CommonParameters>]
+ [-QueueEndpoint <String>] [-TableEndpoint <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ConnectionString
 ```
-New-AzStorageContext -ConnectionString <String> [<CommonParameters>]
+New-AzStorageContext -ConnectionString <String> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### LocalDevelopment
 ```
-New-AzStorageContext [-Local] [<CommonParameters>]
+New-AzStorageContext [-Local] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### AnonymousAccountServiceEndpoint
 ```
 New-AzStorageContext [-Anonymous] [-BlobEndpoint <String>] [-FileEndpoint <String>] [-QueueEndpoint <String>]
- [-TableEndpoint <String>] [<CommonParameters>]
+ [-TableEndpoint <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### OAuthAccountServiceEndpoint
 ```
 New-AzStorageContext [-UseConnectedAccount] [-BlobEndpoint <String>] [-FileEndpoint <String>]
- [-QueueEndpoint <String>] [-TableEndpoint <String>] [-EnableFileBackupRequestIntent] [<CommonParameters>]
+ [-QueueEndpoint <String>] [-TableEndpoint <String>] [-EnableFileBackupRequestIntent]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -367,6 +371,21 @@ Parameter Sets: LocalDevelopment
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

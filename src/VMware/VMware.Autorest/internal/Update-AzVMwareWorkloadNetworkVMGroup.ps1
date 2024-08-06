@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update a vm group by id in a private cloud workload network.
+Update a WorkloadNetworkVMGroup
 .Description
-Update a vm group by id in a private cloud workload network.
+Update a WorkloadNetworkVMGroup
 .Example
 {{ Add code here }}
 .Example
@@ -34,60 +34,58 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IVMwareIdentity>: Identity Parameter
-  [AddonName <String>]: Name of the addon for the private cloud
-  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
-  [CloudLinkName <String>]: Name of the cloud link resource
-  [ClusterName <String>]: Name of the cluster in the private cloud
-  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
-  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
-  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
-  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
-  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
-  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
-  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [AddonName <String>]: Name of the addon.
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization
+  [CloudLinkName <String>]: Name of the cloud link.
+  [ClusterName <String>]: Name of the cluster
+  [DatastoreName <String>]: Name of the datastore
+  [DhcpId <String>]: The ID of the DHCP configuration
+  [DnsServiceId <String>]: ID of the DNS service.
+  [DnsZoneId <String>]: ID of the DNS zone.
+  [GatewayId <String>]: The ID of the NSX Gateway
+  [GlobalReachConnectionName <String>]: Name of the global reach connection
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
   [Id <String>]: Resource identity path
-  [Location <String>]: Azure region
-  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
-  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [Location <String>]: The name of the Azure region.
+  [PlacementPolicyName <String>]: Name of the placement policy.
+  [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
-  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
-  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
-  [ScriptPackageName <String>]: Name of the script package in the private cloud
-  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
-  [VirtualMachineId <String>]: Virtual Machine identifier
-  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+  [ScriptCmdletName <String>]: Name of the script cmdlet.
+  [ScriptExecutionName <String>]: Name of the script cmdlet.
+  [ScriptPackageName <String>]: Name of the script package.
+  [SegmentId <String>]: The ID of the NSX Segment
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VMGroupId <String>]: ID of the VM group.
+  [VirtualMachineId <String>]: ID of the virtual machine.
 
 PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
-  [AddonName <String>]: Name of the addon for the private cloud
-  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
-  [CloudLinkName <String>]: Name of the cloud link resource
-  [ClusterName <String>]: Name of the cluster in the private cloud
-  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
-  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
-  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
-  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
-  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
-  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
-  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [AddonName <String>]: Name of the addon.
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization
+  [CloudLinkName <String>]: Name of the cloud link.
+  [ClusterName <String>]: Name of the cluster
+  [DatastoreName <String>]: Name of the datastore
+  [DhcpId <String>]: The ID of the DHCP configuration
+  [DnsServiceId <String>]: ID of the DNS service.
+  [DnsZoneId <String>]: ID of the DNS zone.
+  [GatewayId <String>]: The ID of the NSX Gateway
+  [GlobalReachConnectionName <String>]: Name of the global reach connection
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
   [Id <String>]: Resource identity path
-  [Location <String>]: Azure region
-  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
-  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [Location <String>]: The name of the Azure region.
+  [PlacementPolicyName <String>]: Name of the placement policy.
+  [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
-  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
-  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
-  [ScriptPackageName <String>]: Name of the script package in the private cloud
-  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
-  [VirtualMachineId <String>]: Virtual Machine identifier
-  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+  [ScriptCmdletName <String>]: Name of the script cmdlet.
+  [ScriptExecutionName <String>]: Name of the script cmdlet.
+  [ScriptPackageName <String>]: Name of the script package.
+  [SegmentId <String>]: The ID of the NSX Segment
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VMGroupId <String>]: ID of the VM group.
+  [VirtualMachineId <String>]: ID of the virtual machine.
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwareworkloadnetworkvmgroup
 #>
@@ -113,28 +111,26 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaIdentityPrivateCloudExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
-    # NSX VM Group identifier.
-    # Generally the same as the VM Group's display name
+    # ID of the VM group.
     ${VMGroupName},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityPrivateCloudExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
     ${PrivateCloudInputObject},
 
     [Parameter()]
@@ -231,7 +227,13 @@ begin {
             UpdateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkVMGroup_UpdateViaIdentityPrivateCloudExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

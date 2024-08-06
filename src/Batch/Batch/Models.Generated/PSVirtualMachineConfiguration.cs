@@ -48,6 +48,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSOSDisk oSDisk;
         
+        private PSSecurityProfile securityProfile;
+        
+        private PSServiceArtifactReference serviceArtifactReference;
+        
         private PSWindowsConfiguration windowsConfiguration;
         
         public PSVirtualMachineConfiguration(PSImageReference imageReference, string nodeAgentSkuId)
@@ -280,6 +284,56 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.omObject.OSDisk = value.omObject;
                 }
                 this.oSDisk = value;
+            }
+        }
+        
+        public PSSecurityProfile SecurityProfile
+        {
+            get
+            {
+                if (((this.securityProfile == null) 
+                            && (this.omObject.SecurityProfile != null)))
+                {
+                    this.securityProfile = new PSSecurityProfile(this.omObject.SecurityProfile);
+                }
+                return this.securityProfile;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.SecurityProfile = null;
+                }
+                else
+                {
+                    this.omObject.SecurityProfile = value.omObject;
+                }
+                this.securityProfile = value;
+            }
+        }
+        
+        public PSServiceArtifactReference ServiceArtifactReference
+        {
+            get
+            {
+                if (((this.serviceArtifactReference == null) 
+                            && (this.omObject.ServiceArtifactReference != null)))
+                {
+                    this.serviceArtifactReference = new PSServiceArtifactReference(this.omObject.ServiceArtifactReference);
+                }
+                return this.serviceArtifactReference;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.ServiceArtifactReference = null;
+                }
+                else
+                {
+                    this.omObject.ServiceArtifactReference = value.omObject;
+                }
+                this.serviceArtifactReference = value;
             }
         }
         

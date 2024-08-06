@@ -19,6 +19,14 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.14.4
+* Fixed the issue that Azure.Core.AccessToken is used before assigned.
+
+## Version 1.14.3
+* Removed the out-of-date breaking change message for `Get-AzCosmosDBAccountKey`.
+
+## Version 1.14.2
 * Upgraded Azure.Core to 1.37.0.
 
 ## Version 1.14.1

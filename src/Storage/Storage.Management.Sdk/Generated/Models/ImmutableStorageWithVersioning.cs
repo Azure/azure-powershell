@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="migrationState">This property denotes the container level immutability to object level
         /// immutability migration state.
-        /// Possible values include: 'InProgress', 'Completed'</param>
+        /// Possible values include: &#39;InProgress&#39;, &#39;Completed&#39;</param>
         public ImmutableStorageWithVersioning(bool? enabled = default(bool?), System.DateTime? timeStamp = default(System.DateTime?), string migrationState = default(string))
 
         {

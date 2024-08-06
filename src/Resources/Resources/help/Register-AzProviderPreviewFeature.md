@@ -14,7 +14,8 @@ Creates a feature registration in your account.
 
 ```
 Register-AzProviderPreviewFeature -Name <String> -ProviderNamespace <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

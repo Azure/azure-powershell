@@ -20,7 +20,8 @@ Get-AzTenantDeployment [[-Name] <String>] [-Pre] [-DefaultProfile <IAzureContext
 
 ### GetByDeploymentId
 ```
-Get-AzTenantDeployment -Id <String> [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzTenantDeployment -Id <String> [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

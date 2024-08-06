@@ -79,10 +79,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_blob = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("blob"), out var __jsonBlob) ? (string)__jsonBlob : (string)Blob;}
-            {_file = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("file"), out var __jsonFile) ? (string)__jsonFile : (string)File;}
-            {_web = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("web"), out var __jsonWeb) ? (string)__jsonWeb : (string)Web;}
-            {_df = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("dfs"), out var __jsonDfs) ? (string)__jsonDfs : (string)Df;}
+            {_blob = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("blob"), out var __jsonBlob) ? (string)__jsonBlob : (string)_blob;}
+            {_file = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("file"), out var __jsonFile) ? (string)__jsonFile : (string)_file;}
+            {_web = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("web"), out var __jsonWeb) ? (string)__jsonWeb : (string)_web;}
+            {_df = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("dfs"), out var __jsonDfs) ? (string)__jsonDfs : (string)_df;}
             AfterFromJson(json);
         }
 

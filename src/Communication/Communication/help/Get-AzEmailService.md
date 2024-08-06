@@ -15,25 +15,25 @@ Get the EmailService and its properties.
 ### List (Default)
 ```
 Get-AzEmailService [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzEmailService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzEmailService -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzEmailService -InputObject <IEmailServiceIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,15 +41,47 @@ Get the EmailService and its properties.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: List existing Email Services for a Subscription
+```powershell
 Get-AzCommunicationService -SubscriptionId 73fc3592-3cef-4300-5e19-8d18b65ce0e8
 ```
 
-### EXAMPLE 2
+```output
+Location Name                                         SystemDataCreatedAt SystemDataCreatedBy         SystemDataCreated
+                                                                                                      ByType
+-------- ----                                         ------------------- -------------------         -----------------
+global   ContosoResource1                             06-12-2021 20:19:45 test@microsoft.com        User
+global   ContosoResource2                             06-12-2021 20:22:48 test@microsoft.com        User
 ```
+
+Returns a list of all ACS resources under that subscription.
+
+### Example 2: Get infomation on specified Azure Email services resource
+```powershell
 Get-AzEmailService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 ```
+
+```output
+DataLocation                 : unitedstates
+Id                           : /subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/ContosoResourceProvider1/providers
+                               /Microsoft.Communication/emailServices/ContosoAcsResource1
+Location                     : global
+Name                         : ContosoAcsResource1
+ProvisioningState            : Succeeded
+ResourceGroupName            : ContosoResourceProvider1
+SystemDataCreatedAt          : 08-12-2023 05:24:48
+SystemDataCreatedBy          : test@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 12-02-2024 10:35:26
+SystemDataLastModifiedBy     : test@microsoft.com
+SystemDataLastModifiedByType : User
+Tag                          : {
+                                 "ExampleKey1": "UpdatedTagValue"
+                               }
+Type                         : microsoft.communication/emailservices
+```
+
+Returns the information on an ACS resource, if one matching provided parameters is found.
 
 ## PARAMETERS
 
@@ -58,7 +90,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -73,7 +105,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: IEmailServiceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IEmailServiceIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -88,26 +120,11 @@ Accept wildcard characters: False
 The name of the EmailService resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Get
 Aliases: EmailServiceName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -119,7 +136,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Get, List1
 Aliases:
 
@@ -135,13 +152,13 @@ The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -152,26 +169,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IEmailServiceIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IEmailServiceResource
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IEmailServiceIdentity\>: Identity Parameter
-  \[DomainName \<String\>\]: The name of the Domains resource.
-  \[EmailServiceName \<String\>\]: The name of the EmailService resource.
-  \[Id \<String\>\]: Resource identity path
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[SenderUsername \<String\>\]: The valid sender Username.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-The value must be an UUID.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.communication/get-azemailservice](https://learn.microsoft.com/powershell/module/az.communication/get-azemailservice)
-

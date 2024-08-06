@@ -15,7 +15,8 @@ Add a GalleryApplication object to the PSVirtualMachineProfile object.
 ```
 Add-AzVmssGalleryApplication -VirtualMachineScaleSetVM <PSVirtualMachineScaleSetVMProfile>
  -GalleryApplication <PSVMGalleryApplication> [-TreatFailureAsDeploymentFailure] [-Order <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

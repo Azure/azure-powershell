@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
 online version: https://learn.microsoft.com/powershell/module/az.networkcloud/new-aznetworkcloudcluster
 schema: 2.0.0
@@ -13,12 +13,12 @@ Create a new cluster or update the properties of the cluster if it exists.
 ## SYNTAX
 
 ```
-New-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String>
+New-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -AggregatorOrSingleRackDefinitionNetworkRackId <String>
- -AggregatorOrSingleRackDefinitionRackSerialNumber <String>
- -AggregatorOrSingleRackDefinitionRackSkuId <String> -ClusterType <ClusterType> -ClusterVersion <String>
- -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String> -NetworkFabricId <String>
- [-SubscriptionId <String>] [-AggregatorOrSingleRackDefinitionAvailabilityZone <String>]
+ -AggregatorOrSingleRackDefinitionRackSerialNumber <String> -AggregatorOrSingleRackDefinitionRackSkuId <String>
+ -ClusterType <ClusterType> -ClusterVersion <String> -ExtendedLocationName <String>
+ -ExtendedLocationType <String> -Location <String> -NetworkFabricId <String>
+ [-AggregatorOrSingleRackDefinitionAvailabilityZone <String>]
  [-AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration <IBareMetalMachineConfigurationData[]>]
  [-AggregatorOrSingleRackDefinitionRackLocation <String>]
  [-AggregatorOrSingleRackDefinitionStorageApplianceConfiguration <IStorageApplianceConfigurationData[]>]
@@ -29,7 +29,7 @@ New-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String>
  [-ComputeDeploymentThresholdType <ValidationThresholdType>] [-ComputeDeploymentThresholdValue <Int64>]
  [-ComputeRackDefinition <IRackDefinition[]>] [-ManagedResourceGroupConfigurationLocation <String>]
  [-ManagedResourceGroupConfigurationName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +45,7 @@ $computerackdefinition = @(@{IRackDefinition = "The list of rack definitions for
 $tagHash = @{
     tag = "tag"
 }
-$securePassword = ConvertTo-SecureString "password" -asplaintext -force
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 
 New-AzNetworkCloudCluster -ResourceGroupName resourceGroup -Name clusterName -AggregatorOrSingleRackDefinitionNetworkRackId rackId -AggregatorOrSingleRackDefinitionRackSerialNumber sr1234 -AggregatorOrSingleRackDefinitionRackSkuId rackSku -ClusterType clustertype -ClusterVersion clusterversion -ExtendedLocationName CmExtendedLocation -ExtendedLocationType CustomLocation -Location location -NetworkFabricId networkFabricId -SubscriptionId subscriptionId -AggregatorOrSingleRackDefinitionAvailabilityZone avilabilityzone -AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration $baremetalmachineconfigurationdata -AggregatorOrSingleRackDefinitionRackLocation rackLocation -AggregatorOrSingleRackDefinitionStorageApplianceConfiguration $storageapplianceconfigurationdata -AnalyticsWorkspaceId anlyticsWorkSpaceId -ClusterServicePrincipalApplicationId clusterServicePrincipalAppId -ClusterServicePrincipalId ClusterServicePrincipalId -ClusterServicePrincipalPassword $securePassword -ClusterServicePrincipalTenantId tenantId -ComputeRackDefinition $computerackdefinition -Tag $tagHash
 ```
@@ -592,51 +592,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`AGGREGATORORSINGLERACKDEFINITIONBAREMETALMACHINECONFIGURATION <IBareMetalMachineConfigurationData[]>`: The unordered list of bare metal machine configuration.
-  - `BmcCredentialsPassword <SecureString>`: The password of the administrator of the device used during initialization.
-  - `BmcCredentialsUsername <String>`: The username of the administrator of the device used during initialization.
-  - `BmcMacAddress <String>`: The MAC address of the BMC for this machine.
-  - `BootMacAddress <String>`: The MAC address associated with the PXE NIC card.
-  - `RackSlot <Int64>`: The slot the physical machine is in the rack based on the BOM configuration.
-  - `SerialNumber <String>`: The serial number of the machine. Hardware suppliers may use an alternate value. For example, service tag.
-  - `[MachineDetail <String>]`: The free-form additional information about the machine, e.g. an asset tag.
-  - `[MachineName <String>]`: The user-provided name for the bare metal machine created from this specification.         If not provided, the machine name will be generated programmatically.
-
-`AGGREGATORORSINGLERACKDEFINITIONSTORAGEAPPLIANCECONFIGURATION <IStorageApplianceConfigurationData[]>`: The list of storage appliance configuration data for this rack.
-  - `AdminCredentialsPassword <SecureString>`: The password of the administrator of the device used during initialization.
-  - `AdminCredentialsUsername <String>`: The username of the administrator of the device used during initialization.
-  - `RackSlot <Int64>`: The slot that storage appliance is in the rack based on the BOM configuration.
-  - `SerialNumber <String>`: The serial number of the appliance.
-  - `[StorageApplianceName <String>]`: The user-provided name for the storage appliance that will be created from this specification.
-
-`COMPUTERACKDEFINITION <IRackDefinition[]>`: The list of rack definitions for the compute racks in a multi-rackcluster, or an empty list in a single-rack cluster.
-  - `NetworkRackId <String>`: The resource ID of the network rack that matches this rack definition.
-  - `RackSerialNumber <String>`: The unique identifier for the rack within Network Cloud cluster. An alternate unique alphanumeric value other than a serial number may be provided if desired.
-  - `RackSkuId <String>`: The resource ID of the sku for the rack being added.
-  - `[AvailabilityZone <String>]`: The zone name used for this rack when created. Availability zones are used for workload placement.
-  - `[BareMetalMachineConfigurationData <IBareMetalMachineConfigurationData[]>]`: The unordered list of bare metal machine configuration.
-    - `BmcCredentialsPassword <SecureString>`: The password of the administrator of the device used during initialization.
-    - `BmcCredentialsUsername <String>`: The username of the administrator of the device used during initialization.
-    - `BmcMacAddress <String>`: The MAC address of the BMC for this machine.
-    - `BootMacAddress <String>`: The MAC address associated with the PXE NIC card.
-    - `RackSlot <Int64>`: The slot the physical machine is in the rack based on the BOM configuration.
-    - `SerialNumber <String>`: The serial number of the machine. Hardware suppliers may use an alternate value. For example, service tag.
-    - `[MachineDetail <String>]`: The free-form additional information about the machine, e.g. an asset tag.
-    - `[MachineName <String>]`: The user-provided name for the bare metal machine created from this specification.         If not provided, the machine name will be generated programmatically.
-  - `[RackLocation <String>]`: The free-form description of the rack's location.
-  - `[StorageApplianceConfigurationData <IStorageApplianceConfigurationData[]>]`: The list of storage appliance configuration data for this rack.
-    - `AdminCredentialsPassword <SecureString>`: The password of the administrator of the device used during initialization.
-    - `AdminCredentialsUsername <String>`: The username of the administrator of the device used during initialization.
-    - `RackSlot <Int64>`: The slot that storage appliance is in the rack based on the BOM configuration.
-    - `SerialNumber <String>`: The serial number of the appliance.
-    - `[StorageApplianceName <String>]`: The user-provided name for the storage appliance that will be created from this specification.
-
 ## RELATED LINKS
-

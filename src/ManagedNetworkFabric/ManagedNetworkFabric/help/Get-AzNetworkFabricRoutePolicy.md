@@ -14,32 +14,26 @@ Implements Route Policy GET method.
 
 ### List1 (Default)
 ```
-Get-AzNetworkFabricRoutePolicy [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+Get-AzNetworkFabricRoutePolicy [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzNetworkFabricRoutePolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzNetworkFabricRoutePolicy -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzNetworkFabricRoutePolicy -InputObject <IManagedNetworkFabricIdentity> [-DefaultProfile <PSObject>]
- [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,37 +41,72 @@ Implements Route Policy GET method.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: List Route Policies by Subscription
+```powershell
 Get-AzNetworkFabricRoutePolicy -SubscriptionId $subscriptionId
 ```
 
-### EXAMPLE 2
+```output
+Location    Name                                                                 SystemDataCreatedAt SystemDataCreatedBy    SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy
+--------    ----                                                                 ------------------- -------------------    ----------------------- ------------------------ ---------
+eastus2euap rcf-pipeline-GA-nf071423-l3domain-v4-intnw-2603-imp-policy           07/14/2023 15:34:26 <identity>             Application             09/05/2023 10:18:21      <identity>
+eastus2euap rcf-pipeline-GA-nf071423-l3domain-v4-intnw-2603-exp-policy           07/14/2023 15:36:34 <identity>             Application             09/05/2023 10:18:22      <identity>
+eastus2euap rcf-pipeline-GA-nf071423-l3domain-v4-intnw-2604-imp-policy           07/14/2023 15:38:32 <identity>             Application             09/05/2023 10:18:22      <identity>
+eastus2euap rcf-pipeline-GA-nf071423-l3domain-v4-intnw-2604-exp-policy           07/14/2023 15:40:26 <identity>             Application             09/05/2023 10:18:22      <identity>
+eastus2euap rcf-pipeline-GA-nf071423-l3domain-v4-extoptionA-imp-policy-2603-2604 07/14/2023 15:41:50 <identity>             Application             09/05/2023 10:18:22      <identity>
+eastus2euap rcf-pipeline-GA-nf071423-l3domain-v4-extoptionA-exp-policy-2603-2604 07/14/2023 15:42:56 <identity>             Application             09/05/2023 10:18:23      <identity>
+eastus2euap rcf-pipeline-GA-nf071423-l3domain-v4-intnw-2609-imp-policy           07/14/2023 17:01:58 <identity>             Application             07/19/2023 14:29:17      <identity>
+eastus2euap rcf-pipeline-GA-nf071423-l3domain-v4-intnw-2609-exp-policy           07/14/2023 17:04:04 <identity>             Application             07/19/2023 14:29:17      <identity>
+eastus2euap rcf-pipeline-GA-nf071423-l3domain-v4-intnw-2610-imp-policy           07/14/2023 17:06:02 <identity>             Application             07/19/2023 14:29:17      <identity>
+eastus2euap rcf-pipeline-GA-nf071423-l3domain-v4-intnw-2610-exp-policy           07/14/2023 17:07:59 <identity>             Application             07/19/2023 14:29:17      <identity>
+eastus2euap rcf-pipeline-GA-nf071423-l3domain-v4-extoptionB-imp-policy-2609-2610 07/14/2023 17:09:21 <identity>             Application             07/19/2023 14:29:18      <identity>
+eastus2euap rcf-pipeline-GA-nf071423-l3domain-v4-extoptionB-exp-policy-2609-2610 07/14/2023 17:10:28 <identity>             Application             07/19/2023 14:29:18      <identity>
+eastus2euap rcf-pipeline-GA-nf071423-l3domain-v6-connsubnet-ext-policy-2605-2606 07/20/2023 10:13:20 <identity>             User                    07/27/2023 10:17:59      <identity>
+eastus2euap rcf-pipeline-GA-nf071423-l3domain-v6-connsubnet-ext-policy-2613-2614 07/24/2023 15:26:21 <identity>             User                    08/01/2023 13:18:05      <identity>
+eastus2euap rcf-pipeline-GA-nf071423-l3domain-v4-intnw-2613-imp-policy           07/24/2023 15:33:14 <identity>             User                    08/01/2023 13:18:05      <identity>
+eastus2euap rcf-pipeline-GA-nf071423-l3domain-v4-intnw-2613-exp-policy           07/25/2023 06:56:46 <identity>             User                    08/01/2023 13:18:05      <identity>
+eastus2euap nfa-tool-ts-GA-routePolicy081023                                     08/18/2023 14:24:05 <identity>             User                    08/25/2023 16:10:25      <identity>
+eastus2euap rcf-pipeline-nf082823-l3domain-v6-connsubnet-ext-policy-2605-2606    09/15/2023 17:50:37 <identity>             User                    09/25/2023 11:44:14      <identity>
+eastus2euap rcf-nni-v4-ingress-patch                                             09/22/2023 06:34:25 <identity>             User                    09/22/2023 11:00:14      <identity>
+eastus2euap rcf-nni-v6-egress-patch                                              09/22/2023 07:03:22 <identity>             User                    09/22/2023 08:31:34      <identity>
+eastus2euap rcf-nni-v6-ingress-patch                                             09/22/2023 10:28:56 <identity>             User                    09/22/2023 10:46:07      <identity>
+eastus2euap rcf-nni-v6-ingress2-patch                                            09/22/2023 10:49:04 <identity>             User                    09/22/2023 11:00:14      <identity>
+eastus2euap rcf-nni-v4-egress                                                    09/21/2023 10:42:13 <identity>             Application             09/21/2023 10:58:53      <identity>
+eastus2euap rcf-nni-v6-egress                                                    09/21/2023 10:42:55 <identity>             Application             09/22/2023 05:45:36      <identity>
+eastus2euap rcf-nni-v4-ingress                                                   09/21/2023 10:43:36 <identity>             Application             09/21/2023 10:58:53      <identity>
+eastus2euap rcf-nni-v6-ingress                                                   09/21/2023 10:44:18 <identity>             Application             09/21/2023 10:58:53      <identity>
+eastus      RoutePolicyName                                                      09/22/2023 07:32:56 <identity>             User                    09/25/2023 04:58:00      <identity>
 ```
+
+This command lists all the Route Policies under the given Subscription.
+
+### Example 2: List Route Policies by Resource Group
+```powershell
 Get-AzNetworkFabricRoutePolicy -ResourceGroupName $resourceGroupName
 ```
 
-### EXAMPLE 3
+```output
+AddressFamilyType AdministrativeState Annotation ConfigurationState DefaultAction Id
+----------------- ------------------- ---------- ------------------ ------------- --
+IPv4                                                                Permit        /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/provide…
 ```
+
+This command lists all the Route Policies under the given Resource Group.
+
+### Example 3: Get Route Policy
+```powershell
 Get-AzNetworkFabricRoutePolicy -Name $name -ResourceGroupName $resourceGroupName
 ```
 
-## PARAMETERS
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+```output
+AddressFamilyType AdministrativeState Annotation ConfigurationState DefaultAction Id
+----------------- ------------------- ---------- ------------------ ------------- --
+IPv4                                                                Permit        /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/provide…
 ```
+
+This command gets details of the given Route Policy.
+
+## PARAMETERS
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -95,39 +124,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
@@ -152,51 +150,6 @@ Aliases: RoutePolicyName
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -228,7 +181,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -239,46 +192,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicy
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IManagedNetworkFabricIdentity\>: Identity Parameter
-  \[AccessControlListName \<String\>\]: Name of the Access Control List.
-  \[ExternalNetworkName \<String\>\]: Name of the External Network.
-  \[IPCommunityName \<String\>\]: Name of the IP Community.
-  \[IPExtendedCommunityName \<String\>\]: Name of the IP Extended Community.
-  \[IPPrefixName \<String\>\]: Name of the IP Prefix.
-  \[Id \<String\>\]: Resource identity path
-  \[InternalNetworkName \<String\>\]: Name of the Internal Network.
-  \[InternetGatewayName \<String\>\]: Name of the Internet Gateway.
-  \[InternetGatewayRuleName \<String\>\]: Name of the Internet Gateway rule.
-  \[L2IsolationDomainName \<String\>\]: Name of the L2 Isolation Domain.
-  \[L3IsolationDomainName \<String\>\]: Name of the L3 Isolation Domain.
-  \[NeighborGroupName \<String\>\]: Name of the Neighbor Group.
-  \[NetworkDeviceName \<String\>\]: Name of the Network Device.
-  \[NetworkDeviceSkuName \<String\>\]: Name of the Network Device SKU.
-  \[NetworkFabricControllerName \<String\>\]: Name of the Network Fabric Controller.
-  \[NetworkFabricName \<String\>\]: Name of the Network Fabric.
-  \[NetworkFabricSkuName \<String\>\]: Name of the Network Fabric SKU.
-  \[NetworkInterfaceName \<String\>\]: Name of the Network Interface.
-  \[NetworkPacketBrokerName \<String\>\]: Name of the Network Packet Broker.
-  \[NetworkRackName \<String\>\]: Name of the Network Rack.
-  \[NetworkTapName \<String\>\]: Name of the Network Tap.
-  \[NetworkTapRuleName \<String\>\]: Name of the Network Tap Rule.
-  \[NetworkToNetworkInterconnectName \<String\>\]: Name of the Network to Network Interconnect.
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[RoutePolicyName \<String\>\]: Name of the Route Policy.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-The value must be an UUID.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabricroutepolicy](https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabricroutepolicy)
-

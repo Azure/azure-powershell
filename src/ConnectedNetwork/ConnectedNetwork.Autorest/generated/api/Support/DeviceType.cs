@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support
             return new DeviceType(global::System.Convert.ToString(value));
         }
 
-        /// <summary>Creates an instance of the <see cref="DeviceType" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="DeviceType"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private DeviceType(string underlyingValue)
         {
@@ -78,8 +78,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support
         }
 
         /// <summary>Overriding != operator for enum DeviceType</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.DeviceType e1, Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.DeviceType e2)
         {
@@ -87,8 +87,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support
         }
 
         /// <summary>Overriding == operator for enum DeviceType</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.DeviceType e1, Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.DeviceType e2)
         {

@@ -14,9 +14,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IValidates
     {
         /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResource" />
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProxyResource" />
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Resource();
+        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ProxyResource();
 
         /// <summary>Name of the LUN to be used for datastore</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
@@ -24,7 +24,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         public string DiskPoolVolumeLunName { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).DiskPoolVolumeLunName; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).DiskPoolVolumeLunName = value ?? null; }
 
         /// <summary>
-        /// Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
+        /// Mode that describes whether the LUN has to be mounted as a datastore or
+        /// attached as a LUN
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
@@ -40,16 +41,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
         public string DiskPoolVolumeTargetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).DiskPoolVolumeTargetId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).DiskPoolVolumeTargetId = value ?? null; }
 
-        /// <summary>Resource ID.</summary>
+        /// <summary>Azure resource ID of the Elastic SAN Volume</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
+        public string ElasticSanVolumeTargetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).ElasticSanVolumeTargetId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).ElasticSanVolumeTargetId = value ?? null; }
+
+        /// <summary>
+        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
-        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__resource).Id; }
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Id; }
 
         /// <summary>Internal Acessors for DiskPoolVolume</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolume Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal.DiskPoolVolume { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).DiskPoolVolume; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).DiskPoolVolume = value; }
 
         /// <summary>Internal Acessors for DiskPoolVolumePath</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal.DiskPoolVolumePath { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).DiskPoolVolumePath; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).DiskPoolVolumePath = value; }
+
+        /// <summary>Internal Acessors for ElasticSanVolume</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IElasticSanVolume Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal.ElasticSanVolume { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).ElasticSanVolume; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).ElasticSanVolume = value; }
 
         /// <summary>Internal Acessors for NetAppVolume</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.INetAppVolume Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal.NetAppVolume { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).NetAppVolume; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).NetAppVolume = value; }
@@ -64,18 +75,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).Status = value; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__resource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Id = value; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__resource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Name = value; }
+
+        /// <summary>Internal Acessors for SystemData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemData = value; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__resource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Type = value; }
 
-        /// <summary>Resource name.</summary>
+        /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.FormatTable(Index = 0)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__resource).Name; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Name; }
 
         /// <summary>Azure resource ID of the NetApp volume</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
@@ -85,7 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreProperties _property;
 
-        /// <summary>The properties of a datastore resource</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
         internal Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.DatastoreProperties()); set => this._property = value; }
@@ -105,10 +119,49 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.FormatTable(Index = 1)]
         public string Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)Property).Status; }
 
-        /// <summary>Resource type.</summary>
+        /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
-        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__resource).Type; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemData; }
+
+        /// <summary>The timestamp of resource creation (UTC).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>The identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>The type of identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>The identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>The type of identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
+
+        /// <summary>
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Type; }
 
         /// <summary>Creates an new <see cref="Datastore" /> instance.</summary>
         public Datastore()
@@ -124,14 +177,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener)
         {
-            await eventListener.AssertNotNull(nameof(__resource), __resource);
-            await eventListener.AssertObjectIsValid(nameof(__resource), __resource);
+            await eventListener.AssertNotNull(nameof(__proxyResource), __proxyResource);
+            await eventListener.AssertObjectIsValid(nameof(__proxyResource), __proxyResource);
         }
     }
     /// A datastore resource
     public partial interface IDatastore :
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResource
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProxyResource
     {
         /// <summary>Name of the LUN to be used for datastore</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
@@ -145,7 +198,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         PossibleTypes = new [] { typeof(string) })]
         string DiskPoolVolumeLunName { get; set; }
         /// <summary>
-        /// Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
+        /// Mode that describes whether the LUN has to be mounted as a datastore or
+        /// attached as a LUN
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -153,7 +207,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN",
+        Description = @"Mode that describes whether the LUN has to be mounted as a datastore or
+        attached as a LUN",
         SerializedName = @"mountOption",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("MOUNT", "ATTACH")]
@@ -180,6 +235,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"targetId",
         PossibleTypes = new [] { typeof(string) })]
         string DiskPoolVolumeTargetId { get; set; }
+        /// <summary>Azure resource ID of the Elastic SAN Volume</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Azure resource ID of the Elastic SAN Volume",
+        SerializedName = @"targetId",
+        PossibleTypes = new [] { typeof(string) })]
+        string ElasticSanVolumeTargetId { get; set; }
         /// <summary>Azure resource ID of the NetApp volume</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -201,7 +267,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Description = @"The state of the datastore provisioning",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Cancelled", "Pending", "Creating", "Updating", "Deleting", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Cancelled", "Pending", "Creating", "Updating", "Deleting")]
         string ProvisioningState { get;  }
         /// <summary>The operational status of the datastore</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
@@ -219,14 +285,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
     }
     /// A datastore resource
     internal partial interface IDatastoreInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProxyResourceInternal
     {
         /// <summary>An iSCSI volume</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolume DiskPoolVolume { get; set; }
         /// <summary>Name of the LUN to be used for datastore</summary>
         string DiskPoolVolumeLunName { get; set; }
         /// <summary>
-        /// Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
+        /// Mode that describes whether the LUN has to be mounted as a datastore or
+        /// attached as a LUN
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("MOUNT", "ATTACH")]
         string DiskPoolVolumeMountOption { get; set; }
@@ -234,14 +301,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string DiskPoolVolumePath { get; set; }
         /// <summary>Azure resource ID of the iSCSI target</summary>
         string DiskPoolVolumeTargetId { get; set; }
+        /// <summary>An Elastic SAN volume</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IElasticSanVolume ElasticSanVolume { get; set; }
+        /// <summary>Azure resource ID of the Elastic SAN Volume</summary>
+        string ElasticSanVolumeTargetId { get; set; }
         /// <summary>An Azure NetApp Files volume</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.INetAppVolume NetAppVolume { get; set; }
         /// <summary>Azure resource ID of the NetApp volume</summary>
         string NetAppVolumeId { get; set; }
-        /// <summary>The properties of a datastore resource</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastoreProperties Property { get; set; }
         /// <summary>The state of the datastore provisioning</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Cancelled", "Pending", "Creating", "Updating", "Deleting", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Cancelled", "Pending", "Creating", "Updating", "Deleting")]
         string ProvisioningState { get; set; }
         /// <summary>The operational status of the datastore</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Unknown", "Accessible", "Inaccessible", "Attached", "Detached", "LostCommunication", "DeadOrError")]

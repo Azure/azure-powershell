@@ -76,10 +76,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEdgeNode
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEdgeNode
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
 online version: https://learn.microsoft.com/powershell/module/az.eventgrid/update-azeventgridchannel
 schema: 2.0.0
@@ -8,45 +8,76 @@ schema: 2.0.0
 # Update-AzEventGridChannel
 
 ## SYNOPSIS
-Updates the properties of an Event Grid channel.
+Synchronously updates a channel with the specified parameters.
 
 ## SYNTAX
 
-### ChannelNameParameterSet (Default)
+### UpdateExpanded (Default)
 ```
-Update-AzEventGridChannel [-ResourceGroupName] <String> [-PartnerNamespaceName] <String> [-Name] <String>
- [-EventTypeKind <String>] [-InlineEvent <Hashtable>] [-ExpirationTimeIfNotActivatedUtc <DateTime>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzEventGridChannel -Name <String> -PartnerNamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-EventTypeInfoInlineEventType <Hashtable>] [-EventTypeInfoKind <String>]
+ [-ExpirationTimeIfNotActivatedUtc <DateTime>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ChannelInputObjectParameterSet
+### UpdateViaJsonString
 ```
-Update-AzEventGridChannel [-InputObject] <PSChannel> [-EventTypeKind <String>] [-InlineEvent <Hashtable>]
- [-ExpirationTimeIfNotActivatedUtc <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzEventGridChannel -Name <String> -PartnerNamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzEventGridChannel -Name <String> -PartnerNamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityPartnerNamespaceExpanded
+```
+Update-AzEventGridChannel -Name <String> -PartnerNamespaceInputObject <IEventGridIdentity>
+ [-EventTypeInfoInlineEventType <Hashtable>] [-EventTypeInfoKind <String>]
+ [-ExpirationTimeIfNotActivatedUtc <DateTime>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzEventGridChannel -InputObject <IEventGridIdentity> [-EventTypeInfoInlineEventType <Hashtable>]
+ [-EventTypeInfoKind <String>] [-ExpirationTimeIfNotActivatedUtc <DateTime>] [-DefaultProfile <PSObject>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates the properties of an Event Grid channel.
+Synchronously updates a channel with the specified parameters.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Synchronously updates a channel with the specified parameters.
 ```powershell
-Update-AzEventGridChannel -ResourceGroupName MyResourceGroupName -PartnerNamespaceName PartnerNamespace1 -Name Channel1 -ExpirationTimeIfNotActivatedUtc (Get-Date).AddDays(8)
+$dateObj = Get-Date -Year 2023 -Month 11 -Day 10 -Hour 11 -Minute 06 -Second 07
+Update-AzEventGridChannel -Name azps-channel -PartnerNamespaceName azps-partnernamespace -ResourceGroupName azps_test_group_eventgrid -ExpirationTimeIfNotActivatedUtc $dateObj.ToUniversalTime()
 ```
 
-Updates the Event Grid channel so partner topics will expire 8 days from the current time if not activated.
+```output
+Name         ResourceGroupName
+----         -----------------
+azps-channel azps_test_group_eventgrid
+```
+
+Synchronously updates a channel with the specified parameters.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -55,112 +86,186 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EventTypeKind
-The kind of event type used.
-Possible values include: 'Inline'
+### -EventTypeInfoInlineEventType
+A collection of inline event types for the resource.
+The inline event type keys are of type string which represents the name of the event.An example of a valid inline event name is "Contoso.OrderCreated".The inline event type values are of type InlineEventProperties and will contain additional information for every inline event type.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
+Type: System.Collections.Hashtable
+Parameter Sets: UpdateExpanded, UpdateViaIdentityPartnerNamespaceExpanded, UpdateViaIdentityExpanded
+Aliases: InlineEvent
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EventTypeInfoKind
+The kind of event type used.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityPartnerNamespaceExpanded, UpdateViaIdentityExpanded
+Aliases: EventTypeKind
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ExpirationTimeIfNotActivatedUtc
-Expiration time of the partner topic.
-If this timer expires while the partner topic is still never activated, the partner topic and corresponding event channel are deleted.
+Expiration time of the channel.
+If this timer expires while the corresponding partner topic or partner destination is never activated,the channel and corresponding partner topic or partner destination are deleted.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
-Parameter Sets: (All)
+Type: System.DateTime
+Parameter Sets: UpdateExpanded, UpdateViaIdentityPartnerNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InlineEvent
-Hashtable representing information on inline events.
-The inline event keys are of type string which represents the name of the event.The inline event values are Hashtables containing the optional keys description, displayName, documentationUrl, and dataSchemaUrl which define the information about the inline event.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-Accepted values: Inline
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -InputObject
-Channel object
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.Commands.EventGrid.Models.PSChannel
-Parameter Sets: ChannelInputObjectParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Event Grid channel.
+Name of the channel.
 
 ```yaml
 Type: System.String
-Parameter Sets: ChannelNameParameterSet
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityPartnerNamespaceExpanded
 Aliases: ChannelName
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PartnerNamespaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: UpdateViaIdentityPartnerNamespaceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -PartnerNamespaceName
-Event Grid partner namespace name.
+Name of the partner namespace.
 
 ```yaml
 Type: System.String
-Parameter Sets: ChannelNameParameterSet
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group within the partners subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ChannelNameParameterSet
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases: ResourceGroup
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -200,17 +305,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.EventGrid.Models.PSChannel
-
-### System.Collections.Hashtable
-
-### System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventGrid.Models.PSChannel
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannel
 
 ## NOTES
 

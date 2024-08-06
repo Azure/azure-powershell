@@ -64,18 +64,11 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="failoverGroupName">The name of the Azure Sql Database FailoverGroup</param>
-        /// <param name="useV2Get">Whether to use the V2 get with current model, or the legacy get and model.</param>
         /// <returns>The Azure Sql Database FailoverGroup object</returns>
-        internal AzureSqlFailoverGroupModel GetFailoverGroup(string resourceGroupName, string serverName, string failoverGroupName, bool useV2Get = false)
+        internal AzureSqlFailoverGroupModel GetFailoverGroup(string resourceGroupName, string serverName, string failoverGroupName)
         {
-            if (useV2Get)
-            {
-                var response = Communicator.GetV2(resourceGroupName, serverName, failoverGroupName);
-                return CreateCurrentFailoverGroupModelFromResponse(response);
-            }
-            var resp = Communicator.Get(resourceGroupName, serverName, failoverGroupName);
-
-            return CreateFailoverGroupModelFromResponse(resp);
+            var response = Communicator.GetV2(resourceGroupName, serverName, failoverGroupName);
+            return CreateCurrentFailoverGroupModelFromResponse(response);
         }
 
         /// <summary>
@@ -90,7 +83,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
 
             return resp.Select((db) =>
             {
-                return CreateFailoverGroupModelFromResponse(db);
+                return CreateCurrentFailoverGroupModelFromResponse(db);
             }).ToList();
         }
 
@@ -239,16 +232,14 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// <returns>The updated Azure Sql Database FailoverGroup</returns>
         internal AzureSqlFailoverGroupModel AddOrRemoveDatabaseToFailoverGroup(string resourceGroupName, string serverName, string failoverGroupName, AzureSqlFailoverGroupModel model)
         {
-            var resp = Communicator.PatchUpdate(resourceGroupName, serverName, failoverGroupName, new FailoverGroupPatchUpdateParameters()
+            var resp = Communicator.PatchUpdateV2(resourceGroupName, serverName, failoverGroupName, new FailoverGroupUpdate()
             {
-                Location = model.Location,
-                Properties = new FailoverGroupPatchUpdateProperties()
-                {
-                    Databases = model.Databases,
-                }
+                Databases = model.Databases,
+                SecondaryType = model.SecondaryType, 
+                PartnerServers = ConvertPartnerServerList(model.PartnerServers.ToList())
             });
 
-            return CreateFailoverGroupModelFromResponse(resp);
+            return CreateCurrentFailoverGroupModelFromResponse(resp);
         }
 
         /// <summary>
@@ -364,14 +355,20 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             model.ResourceGroupName = GetUriSegment(failoverGroup.Id, 4);
             model.ServerName = GetUriSegment(failoverGroup.Id, 8);
 
-            PartnerInfo partnerServer = failoverGroup.PartnerServers.FirstOrDefault();
-            if (partnerServer != null)
+            if (failoverGroup.PartnerServers.Count == 1)
             {
-                model.PartnerSubscriptionId = GetUriSegment(partnerServer.Id, 2);
-                model.PartnerResourceGroupName = GetUriSegment(partnerServer.Id, 4);
-                model.PartnerServerName = GetUriSegment(partnerServer.Id, 8);
-                model.PartnerLocation = partnerServer.Location;
-            }
+                PartnerInfo partnerServer = failoverGroup.PartnerServers.FirstOrDefault();
+                if (partnerServer != null)
+                {
+                    model.PartnerSubscriptionId = GetUriSegment(partnerServer.Id, 2);
+                    model.PartnerResourceGroupName = GetUriSegment(partnerServer.Id, 4);
+                    model.PartnerServerName = GetUriSegment(partnerServer.Id, 8);
+                    model.PartnerLocation = partnerServer.Location;
+                }
+            } 
+
+            model.PartnerServers = ConvertPartnerInfoList(failoverGroup.PartnerServers.ToList());
+
 
             return model;
         }

@@ -19,7 +19,7 @@ Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzEventHu
 Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzEventHubNetworkRuleSet
 #>
 function New-AzEventHubIPRuleConfig{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.INwRuleSetIPRules])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INwRuleSetIPRules])]
 	[CmdletBinding(PositionalBinding = $false, ConfirmImpact = 'Medium')]
 	param(
 		[Parameter(Mandatory, HelpMessage = "IP Mask")]
@@ -28,14 +28,14 @@ function New-AzEventHubIPRuleConfig{
         ${IPMask},
 
 		[Parameter(HelpMessage = "The IP Filter Action")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.NetworkRuleIPAction]
+        [System.String]
 		# The IP Filter Action
         ${Action}
 	)
 
 	process{
 		try{
-			$ipRule = [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.INwRuleSetIPRules]@{
+			$ipRule = [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INwRuleSetIPRules]@{
 				IPMask = $IPMask
 				Action = $Action
 			}

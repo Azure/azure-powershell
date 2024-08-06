@@ -14,7 +14,8 @@ Unregisters an Azure provider feature in your account.
 
 ```
 Unregister-AzProviderFeature -FeatureName <String> -ProviderNamespace <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

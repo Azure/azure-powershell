@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NetworkFunction-help.xml
 Module Name: Az.NetworkFunction
 online version: https://learn.microsoft.com/powershell/module/az.networkfunction/new-aznetworkfunctiontrafficcollector
 schema: 2.0.0
@@ -13,9 +13,9 @@ Creates or updates a Azure Traffic Collector resource
 ## SYNTAX
 
 ```
-New-AzNetworkFunctionTrafficCollector -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzNetworkFunctionTrafficCollector -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -206,7 +206,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

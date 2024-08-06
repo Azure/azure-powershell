@@ -16,34 +16,60 @@
 
 <#
 .Synopsis
-Create cluster config file.
+Create an in-memory object for ClusterConfigFile.
 .Description
-Create cluster config file.
+Create an in-memory object for ClusterConfigFile.
 .Example
 $coreSiteConfigFile=New-AzHdInsightOnAksClusterConfigFileObject -FileName "core-site.xml" -Value @{"fs.defaultFS"="abfs://testcontainer@$teststorage.dfs.core.windows.net"}
 
-.Inputs
-System.Collections.HashTable
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterConfigFile
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterConfigFile
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+VALUE <IClusterConfigFileValues>: List of key value pairs         where key represents a valid service configuration name and value represents the value of the config.
+  [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksClusterConfigFileObject
+https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksclusterconfigfileobject
 #>
 function New-AzHdInsightOnAksClusterConfigFileObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterConfigFile])]
-[CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterConfigFile])]
+[CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
-    [Alias('Name')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
-    # The name of the config file.
+    # Configuration file name.
     ${FileName},
 
-    [Parameter(Mandatory)]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
-    [System.Collections.Hashtable]
-    # List of key value pairs where key represents a valid service configuration name and value represents the value of the config.
+    [System.String]
+    # Free form content of the entire configuration file.
+    ${Content},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("Base64", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # This property indicates if the content is encoded and is case-insensitive.
+    # Please set the value to base64 if the content is base64 encoded.
+    # Set it to none or skip it if the content is plain text.
+    ${Encoding},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Path of the config file if content is specified.
+    ${Path},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterConfigFileValues]
+    # List of key value pairs
+    #         where key represents a valid service configuration name and value represents the value of the config.
     ${Value}
 )
 
@@ -73,7 +99,7 @@ begin {
         }
 
         $mapping = @{
-            Create = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksClusterConfigFileObject';
+            __AllParameterSets = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksClusterConfigFileObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

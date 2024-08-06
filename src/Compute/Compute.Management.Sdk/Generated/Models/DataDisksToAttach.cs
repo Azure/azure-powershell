@@ -35,10 +35,29 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// value is used to identify data disks within the VM and therefore
         /// must be unique for each data disk attached to a VM. If not
         /// specified, lun would be auto assigned.</param>
-        public DataDisksToAttach(string diskId, int? lun = default(int?))
+        /// <param name="caching">Specifies the caching requirements. Possible
+        /// values are: **None,** **ReadOnly,** **ReadWrite.** The defaulting
+        /// behavior is: **None for Standard storage. ReadOnly for Premium
+        /// storage.**. Possible values include: 'None', 'ReadOnly',
+        /// 'ReadWrite'</param>
+        /// <param name="deleteOption">Specifies whether data disk should be
+        /// deleted or detached upon VM deletion. Possible values are:
+        /// **Delete.** If this value is used, the data disk is deleted when VM
+        /// is deleted. **Detach.** If this value is used, the data disk is
+        /// retained after VM is deleted. The default value is set to
+        /// **Detach**. Possible values include: 'Delete', 'Detach'</param>
+        /// <param name="diskEncryptionSet">Specifies the customer managed disk
+        /// encryption set resource id for the managed disk.</param>
+        /// <param name="writeAcceleratorEnabled">Specifies whether
+        /// writeAccelerator should be enabled or disabled on the disk.</param>
+        public DataDisksToAttach(string diskId, int? lun = default(int?), CachingTypes? caching = default(CachingTypes?), string deleteOption = default(string), DiskEncryptionSetParameters diskEncryptionSet = default(DiskEncryptionSetParameters), bool? writeAcceleratorEnabled = default(bool?))
         {
             DiskId = diskId;
             Lun = lun;
+            Caching = caching;
+            DeleteOption = deleteOption;
+            DiskEncryptionSet = diskEncryptionSet;
+            WriteAcceleratorEnabled = writeAcceleratorEnabled;
             CustomInit();
         }
 
@@ -61,6 +80,40 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "lun")]
         public int? Lun { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the caching requirements. Possible values
+        /// are: **None,** **ReadOnly,** **ReadWrite.** The defaulting behavior
+        /// is: **None for Standard storage. ReadOnly for Premium storage.**.
+        /// Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+        /// </summary>
+        [JsonProperty(PropertyName = "caching")]
+        public CachingTypes? Caching { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies whether data disk should be deleted or
+        /// detached upon VM deletion. Possible values are: **Delete.** If this
+        /// value is used, the data disk is deleted when VM is deleted.
+        /// **Detach.** If this value is used, the data disk is retained after
+        /// VM is deleted. The default value is set to **Detach**. Possible
+        /// values include: 'Delete', 'Detach'
+        /// </summary>
+        [JsonProperty(PropertyName = "deleteOption")]
+        public string DeleteOption { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the customer managed disk encryption set
+        /// resource id for the managed disk.
+        /// </summary>
+        [JsonProperty(PropertyName = "diskEncryptionSet")]
+        public DiskEncryptionSetParameters DiskEncryptionSet { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies whether writeAccelerator should be enabled
+        /// or disabled on the disk.
+        /// </summary>
+        [JsonProperty(PropertyName = "writeAcceleratorEnabled")]
+        public bool? WriteAcceleratorEnabled { get; set; }
 
         /// <summary>
         /// Validate the object.

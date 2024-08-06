@@ -263,7 +263,7 @@ Accepted values: None, 1.0, 1.1, 1.2
 
 Required: False
 Position: Named
-Default value: None
+Default value: 1.2
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

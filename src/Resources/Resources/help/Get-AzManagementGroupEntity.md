@@ -13,8 +13,8 @@ Lists all Entities under the current Tenant
 ## SYNTAX
 
 ```
-Get-AzManagementGroupEntity [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzManagementGroupEntity [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

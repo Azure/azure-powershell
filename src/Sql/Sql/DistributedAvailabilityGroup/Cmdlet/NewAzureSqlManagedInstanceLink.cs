@@ -16,6 +16,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 using Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -26,6 +28,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Managed Instance Link
     /// </summary>
+    [CmdletOutputBreakingChangeWithVersion(typeof(AzureSqlManagedInstanceLinkModel), "13.0.0", "6.0.0",
+        DeprecatedOutputProperties = new String[] { "TargetDatabase", "PrimaryAvailabilityGroupName", "SecondaryAvailabilityGroupName",
+            "SourceEndpoint", "SourceReplicaId", "TargetReplicaId", "LinkState", "LastHardenedLsn" },
+        NewOutputProperties = new String[] { "Databases", "DistributedAvailabilityGroupName ", "InstanceAvailabilityGroupName", "PartnerAvailabilityGroupName",
+            "InstanceLinkRole", "PartnerLinkRole", "FailoverMode", "SeedingMode", "PartnerEndpoint" })]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceLink",
         DefaultParameterSetName = CreateByNameParameterSet,
         SupportsShouldProcess = true),
@@ -63,6 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the primary availability group name
         /// </summary>
+        [CmdletParameterBreakingChangeWithVersion("PrimaryAvailabilityGroupName", "13.0.0", "6.0.0", ReplaceMentCmdletParameterName = "PartnerAvailabilityGroupName")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Name of the primary availability group.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Name of the primary availability group.")]
         [ValidateNotNullOrEmpty]
@@ -71,6 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the secondary availability group name
         /// </summary>
+        [CmdletParameterBreakingChangeWithVersion("SecondaryAvailabilityGroupName", "13.0.0", "6.0.0", ReplaceMentCmdletParameterName = "InstanceAvailabilityGroupName")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Name of the secondary availability group.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Name of the secondary availability group.")]
         [ValidateNotNullOrEmpty]
@@ -79,6 +88,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the target database
         /// </summary>
+        [CmdletParameterBreakingChangeWithVersion("TargetDatabase", "13.0.0", "6.0.0", ChangeDescription = "The parameter 'TargetDatabase' is being replaced by parameter 'Databases'. The type of new parameter is changing from 'String' to 'List<String>'")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Name of the target database.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Name of the target database.")]
         [ValidateNotNullOrEmpty]
@@ -87,6 +97,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the source endpoint
         /// </summary>
+        [CmdletParameterBreakingChangeWithVersion("SourceEndpoint", "13.0.0", "6.0.0", ReplaceMentCmdletParameterName = "PartnerEndpoint")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "IP adress of the source endpoint.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "IP adress of the source endpoint.")]
         [ValidateNotNullOrEmpty]
