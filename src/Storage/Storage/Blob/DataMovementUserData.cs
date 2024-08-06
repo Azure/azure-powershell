@@ -23,6 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
     /// </summary>
     public class DataMovementUserData
     {
+        
         public object Data;
         public ProgressRecord Record;
         public long TaskId;
