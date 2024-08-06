@@ -5296,7 +5296,7 @@ function Test-VirtualMachineEnableAutoUpdate
 
         # VM Credential
         $user = "usertest";
-        $password = "Testing1234567";
+        $password = Get-PasswordForVM;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
@@ -6445,7 +6445,7 @@ function Test-ConfVMSetAzDiskSecurityProfile
         $KeySize = 3072;
 
         # Creating a VM using simple parameterset
-        $securePassword = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force;
+        $securePassword = "<>" | ConvertTo-SecureString -AsPlainText -Force;
         $user = "admin01";
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
