@@ -16,7 +16,7 @@ Starts a failed runtime resource
 ```
 Start-AzInformaticaServerlessRuntimeFailedServerlessRuntime -OrganizationName <String>
  -ResourceGroupName <String> -ServerlessRuntimeName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,13 +24,13 @@ Start-AzInformaticaServerlessRuntimeFailedServerlessRuntime -OrganizationName <S
 ```
 Start-AzInformaticaServerlessRuntimeFailedServerlessRuntime -ServerlessRuntimeName <String>
  -OrganizationInputObject <IInformaticaIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StartViaIdentity
 ```
 Start-AzInformaticaServerlessRuntimeFailedServerlessRuntime -InputObject <IInformaticaIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -120,21 +120,6 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

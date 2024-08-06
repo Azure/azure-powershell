@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support
 {
 
-    /// <summary>TypeConverter implementation for ScheduleStatus.</summary>
+    /// <summary>Is the schedule enabled or disabled?</summary>
     public partial class ScheduleStatusTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

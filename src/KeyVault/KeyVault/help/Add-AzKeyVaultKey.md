@@ -278,7 +278,7 @@ For more information, see
 
 ### Example 6: Import a software-protected key
 ```powershell
-$Password = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
+$Password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITPfx' -KeyFilePath 'C:\Contoso\ITPfx.pfx' -KeyFilePassword $Password
 ```
 
@@ -304,7 +304,7 @@ location for the key and the password stored in $Password.
 
 ### Example 7: Import a key and assign attributes
 ```powershell
-$Password = ConvertTo-SecureString -String 'password' -AsPlainText -Force
+$Password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $Expires = (Get-Date).AddYears(2).ToUniversalTime()
 $Tags = @{ 'Severity' = 'high'; 'Accounting' = "true" }
 Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITPfxToHSM' -Destination 'HSM' -KeyFilePath 'C:\Contoso\ITPfx.pfx' -KeyFilePassword $Password -Expires $Expires -Tag $Tags

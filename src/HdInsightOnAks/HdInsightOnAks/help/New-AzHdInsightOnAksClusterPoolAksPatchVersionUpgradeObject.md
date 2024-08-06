@@ -14,7 +14,7 @@ Create an in-memory object for ClusterPoolAksPatchVersionUpgradeProperties.
 
 ```
 New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject [-TargetAksVersion <String>]
- [-UpgradeAllClusterNode <Boolean>] [-UpgradeClusterPool <Boolean>] [-ProgressAction <ActionPreference>]
+ [-UpgradeAllClusterNode <Boolean>] [-UpgradeClusterPool <Boolean>]
  [<CommonParameters>]
 ```
 
@@ -37,21 +37,6 @@ Property                                                                        
 Create an object to hold the flink cluster AKSPatchUpgrade parameters.
 
 ## PARAMETERS
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -TargetAksVersion
 Target AKS version.

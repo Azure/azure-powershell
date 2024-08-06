@@ -14,7 +14,7 @@ Create an in-memory object for ClusterHotfixUpgradeProperties.
 
 ```
 New-AzHdInsightOnAksClusterHotfixUpgradeObject [-ComponentName <String>] [-TargetBuildNumber <String>]
- [-TargetClusterVersion <String>] [-TargetOssVersion <String>] [-ProgressAction <ActionPreference>]
+ [-TargetClusterVersion <String>] [-TargetOssVersion <String>]
  [<CommonParameters>]
 ```
 
@@ -45,21 +45,6 @@ Name of component to be upgraded.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -120,7 +105,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterHotfixUpgradeProperties
+### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade
 
 ## NOTES
 

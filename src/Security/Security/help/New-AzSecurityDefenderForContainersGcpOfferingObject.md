@@ -24,7 +24,7 @@ New-AzSecurityDefenderForContainersGcpOfferingObject [-AuditLogsAutoProvisioning
  [-MdcContainerImageAssessmentWorkloadIdentityProviderId <String>]
  [-NativeCloudConnectionServiceAccountEmailAddress <String>]
  [-NativeCloudConnectionWorkloadIdentityProviderId <String>] [-PolicyAgentAutoProvisioningFlag <Boolean>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -250,6 +250,21 @@ Is Policy Kubernetes agent auto provisioning enabled.
 Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

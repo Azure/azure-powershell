@@ -1,8 +1,8 @@
 {
-  "NewPolicyDefinition+[NoContext]+New-AzPolicyDefinition -Name -Policy+$PUT+https://management.azure.com/subscriptions/597b2066-8f6f-4236-9c61-6d4e9891eef8/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2023-04-01+1": {
+  "NewPolicyDefinition+[NoContext]+New-AzPolicyDefinition -Name -Policy+$PUT+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2023-04-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/597b2066-8f6f-4236-9c61-6d4e9891eef8/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2023-04-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"mode\": \"All\",\r\n    \"policyRule\": {\r\n      \"someThing\": \"someOtherThing\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,15 +17,15 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "x-ms-request-id": [ "e0ac1753-5679-4122-9701-3fbf42b4aa58" ],
-        "x-ms-correlation-request-id": [ "e0ac1753-5679-4122-9701-3fbf42b4aa58" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240628T045630Z:e0ac1753-5679-4122-9701-3fbf42b4aa58" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "8891622c-77b6-4a65-a424-c308c71a9429" ],
+        "x-ms-correlation-request-id": [ "8891622c-77b6-4a65-a424-c308c71a9429" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240724T224335Z:8891622c-77b6-4a65-a424-c308c71a9429" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0A0BAE9D44104D8D8989345863F55D0E Ref B: CO6AA3150218009 Ref C: 2024-06-28T04:56:30Z" ],
-        "Date": [ "Fri, 28 Jun 2024 04:56:30 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F90CCFBD08F249F98B77745D3D58B898 Ref B: CO6AA3150220027 Ref C: 2024-07-24T22:43:35Z" ],
+        "Date": [ "Wed, 24 Jul 2024 22:43:35 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "176" ],
@@ -55,14 +55,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "45ad79c5-8673-41c9-9ea3-ab43e4d89456" ],
-        "x-ms-correlation-request-id": [ "45ad79c5-8673-41c9-9ea3-ab43e4d89456" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240628T045631Z:45ad79c5-8673-41c9-9ea3-ab43e4d89456" ],
+        "x-ms-request-id": [ "b52f9b55-6ac2-4598-911f-677691182021" ],
+        "x-ms-correlation-request-id": [ "b52f9b55-6ac2-4598-911f-677691182021" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240724T224336Z:b52f9b55-6ac2-4598-911f-677691182021" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 253C3F5B49324302925FDC30A04486A4 Ref B: CO6AA3150218009 Ref C: 2024-06-28T04:56:31Z" ],
-        "Date": [ "Fri, 28 Jun 2024 04:56:31 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 5F5BA5284824487C86E2B91B953B55E5 Ref B: CO6AA3150220027 Ref C: 2024-07-24T22:43:36Z" ],
+        "Date": [ "Wed, 24 Jul 2024 22:43:36 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "475" ],
@@ -73,10 +73,10 @@
       "isContentBase64": false
     }
   },
-  "NewPolicyDefinition+[NoContext]+New-AzPolicyDefinition -Name -Policy -SubscriptionId+$PUT+https://management.azure.com/subscriptions/597b2066-8f6f-4236-9c61-6d4e9891eef8/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2023-04-01+1": {
+  "NewPolicyDefinition+[NoContext]+New-AzPolicyDefinition -Name -Policy -SubscriptionId+$PUT+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2023-04-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/597b2066-8f6f-4236-9c61-6d4e9891eef8/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2023-04-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"mode\": \"All\",\r\n    \"policyRule\": {\r\n      \"someThing\": \"someOtherThing\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -91,15 +91,15 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "x-ms-request-id": [ "850701c6-f04b-4adc-a522-fc0b7556cfce" ],
-        "x-ms-correlation-request-id": [ "850701c6-f04b-4adc-a522-fc0b7556cfce" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240628T045632Z:850701c6-f04b-4adc-a522-fc0b7556cfce" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "3d955a03-f882-4fd0-9898-af90bbf9971a" ],
+        "x-ms-correlation-request-id": [ "3d955a03-f882-4fd0-9898-af90bbf9971a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240724T224337Z:3d955a03-f882-4fd0-9898-af90bbf9971a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: FB09297CBF274651B4B4742E0F5FFF19 Ref B: CO6AA3150218009 Ref C: 2024-06-28T04:56:32Z" ],
-        "Date": [ "Fri, 28 Jun 2024 04:56:32 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 35929D5FA7F7432A8CF2561875456EC9 Ref B: CO6AA3150220027 Ref C: 2024-07-24T22:43:37Z" ],
+        "Date": [ "Wed, 24 Jul 2024 22:43:37 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "176" ],

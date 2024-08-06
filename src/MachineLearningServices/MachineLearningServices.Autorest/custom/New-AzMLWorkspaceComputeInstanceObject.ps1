@@ -21,12 +21,12 @@ Create an in-memory object for ComputeInstance.
 Create an in-memory object for ComputeInstance.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeInstance
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ComputeInstance
 .Link
-https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceComputeInstanceObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceComputeInstanceObject
 #>
 function New-AzMLWorkspaceComputeInstanceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeInstance')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ComputeInstance')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -43,10 +43,10 @@ function New-AzMLWorkspaceComputeInstanceObject {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ApplicationSharingPolicy])]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ApplicationSharingPolicy]
         $ApplicationSharingPolicy,
-        [Parameter(HelpMessage="User’s AAD Object Id.")]
+        [Parameter(HelpMessage="User's AAD Object Id.")]
         [string]
         $AssignedUserObjectId,
-        [Parameter(HelpMessage="User’s AAD Tenant Id.")]
+        [Parameter(HelpMessage="User's AAD Tenant Id.")]
         [string]
         $AssignedUserTenantId,
         [Parameter(HelpMessage="The Compute Instance Authorization type. Available values are personal (default).")]
@@ -84,7 +84,7 @@ function New-AzMLWorkspaceComputeInstanceObject {
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationTrigger]
         $LastOperationTrigger,
         [Parameter(HelpMessage="The list of compute start stop schedules to be applied.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeStartStopSchedule[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IComputeStartStopSchedule[]]
         $ScheduleComputeStartStop,
         [Parameter(HelpMessage="Specifies the SSH rsa public key file as a string. Use `"ssh-keygen -t rsa -b 2048`" to generate your SSH key pairs.")]
         [string]
@@ -117,7 +117,7 @@ function New-AzMLWorkspaceComputeInstanceObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeInstance]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ComputeInstance]::New()
         $Object.Type = 'ComputeInstance'
 
         if ($PSBoundParameters.ContainsKey('Description')) {

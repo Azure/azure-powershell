@@ -47,7 +47,7 @@ The second command creates an encrypted value for the object stored in $Value fo
 
 ### Example 2: Encrypt a non-ODBC connection string that uses Windows authentication.
 ```powershell
-$Value = ConvertTo-SecureString 'Data Source=ContosoServer;Initial Catalog=catalog;Integrated Security=True' -AsPlainText -Force
+$Value = ConvertTo-SecureString -String 'Data Source=ContosoServer;Initial Catalog=catalog;Integrated Security=True' -AsPlainText -Force
 $Credential = Get-Credential
 New-AzDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Credential $Credential -Type OnPremisesSqlLinkedService
 ```
