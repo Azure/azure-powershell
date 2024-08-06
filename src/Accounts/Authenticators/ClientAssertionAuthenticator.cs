@@ -13,11 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Azure.Core;
-using Azure.Identity;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.PowerShell.Authenticators.Factories;
+using Microsoft.Azure.PowerShell.Authenticators.Identity;
 using Microsoft.WindowsAzure.Commands.Common;
+
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -45,9 +46,18 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 AuthorityHost = new Uri(authority),
                 TokenCachePersistenceOptions = spParameters.TokenCacheProvider.GetTokenCachePersistenceOptions()
             };
+
             options.DisableInstanceDiscovery = spParameters.DisableInstanceDiscovery ?? options.DisableInstanceDiscovery;
             options.Diagnostics.IsTelemetryEnabled = false; // disable telemetry to avoid error thrown from Azure.Core that AssemblyInformationalVersion is null
             TokenCredential tokenCredential = new ClientAssertionCredential(tenantId, spParameters.ClientId, () => GetClientAssertion(spParameters), options);
+
+            base.CollectTelemetry(tokenCredential);
+            CheckTokenCachePersistanceEnabled = () =>
+            {
+                return options?.TokenCachePersistenceOptions != null && !(options.TokenCachePersistenceOptions is UnsafeTokenCacheOptions);
+            };
+            telemetry.SetProperty(AuthTelemetryRecord.TokenCacheEnabled, CheckTokenCachePersistanceEnabled().ToString());
+
             string parametersLog = $"- ClientId:'{spParameters.ClientId}', TenantId:'{tenantId}', ClientAssertion:'***' Scopes:'{string.Join(",", scopes)}'";
             return MsalAccessToken.GetAccessTokenAsync(
                 nameof(ClientAssertionAuthenticator),
@@ -68,6 +78,5 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         {
             return parameters.ClientAssertion.ConvertToString();
         }
-
     }
 }
