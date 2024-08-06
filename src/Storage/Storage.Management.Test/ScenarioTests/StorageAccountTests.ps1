@@ -2441,6 +2441,96 @@ function Test-AzureStorageLocalUserSftp
     }
 }
 
+
+<#
+.SYNOPSIS
+Test AzureStorageLocalUserNFSV3
+.DESCRIPTION
+SmokeTest
+#>
+function Test-AzureStorageLocalUserNFSV3
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        $kind = 'StorageV2'
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableSftp $true -EnableHierarchicalNamespace $true -EnableNfsV3 $true -EnableLocalUser $true `
+                               -EnableExtendedGroups $true -NetworkRuleSet (@{bypass="AzureServices";defaultAction="deny"})  
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+        Assert-AreEqual $true $sto.EnableSftp;
+        Assert-AreEqual $true $sto.EnableNfsV3;
+        Assert-AreEqual $true $sto.EnableLocalUser;
+        Assert-AreEqual $true $sto.EnableExtendedGroups;
+        
+        Retry-IfException { $global:sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableExtendedGroups $false }
+        Assert-AreEqual $false $sto.EnableExtendedGroups;
+        
+        Retry-IfException { $global:sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableExtendedGroups $true }
+        Assert-AreEqual $true $sto.EnableExtendedGroups;
+        
+        # create local user
+		$userName1 = "nfsv3_70005"
+		$localuser1 = Set-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1 -HomeDirectory /test -IsNfSv3Enabled $true -ExtendedGroups 1,2,3,4,5 
+        Assert-AreEqual $userName1 $localuser1.Name;
+        Assert-AreEqual "/test" $localuser1.HomeDirectory;
+        Assert-AreEqual 5 $localuser1.ExtendedGroups.Count;
+        Assert-AreEqual $true $localuser1.IsNfSv3Enabled;
+
+		$userName2 = "testuser2"
+        $localuser2 = Set-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName2 -HomeDirectory "/dir1" 
+        Assert-AreEqual $userName2 $localuser2.Name;
+        Assert-Null $localuser2.HasSharedKey;
+        Assert-Null $localuser2.HasSshKey;
+        Assert-Null $localuser2.HasSshPassword;
+        Assert-AreEqual "/dir1" $localuser2.HomeDirectory;
+        Assert-Null $localuser2.PermissionScopes;
+        Assert-Null $localuser2.SshAuthorizedKeys;
+
+        # update local user
+		$localuser1 = Set-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1 -HomeDirectory /test  -ExtendedGroups 1,2,3
+        Assert-AreEqual $userName1 $localuser1.Name;
+        Assert-AreEqual "/test" $localuser1.HomeDirectory;
+        Assert-AreEqual 3 $localuser1.ExtendedGroups.Count;
+
+        #list all nfsv3 local users
+		$localusers = Get-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -IncludeNFSv3
+        Assert-AreEqual 1 $localusers.Count;
+        Assert-AreEqual $userName1 $localusers[0].Name;
+
+        #list all none-nfsv3 local users
+		$localusers = Get-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname 
+        Assert-AreEqual 1 $localusers.Count;
+        Assert-AreEqual $userName2 $localusers[0].Name;
+
+        # remove local user
+		Remove-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
+		$localusers = Get-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname 
+        Assert-AreEqual 1 $localusers.Count;
+        Assert-AreEqual $userName2 $localusers[0].Name;
+
+        #clean up
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
 <#
 .SYNOPSIS
 Test Test-StorageAccountAllowedCopyScope

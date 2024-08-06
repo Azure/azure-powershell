@@ -585,6 +585,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? enableLocalUser = null;
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enables extended group support with local users feature, if set to true.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableExtendedGroups
+        {
+            get
+            {
+                return enableExtendedGroups != null ? enableExtendedGroups.Value : false;
+            }
+            set
+            {
+                enableExtendedGroups = value;
+            }
+        }
+        private bool? enableExtendedGroups = null;
+
         [Parameter(Mandatory = false, HelpMessage = "Set restrict copy to and from Storage Accounts within a Microsoft Entra tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD'")]
         [PSArgumentCompleter("PrivateLink", "AAD")]
         [ValidateNotNullOrEmpty]
@@ -926,6 +943,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     if (this.enableLocalUser != null)
                     {
                         updateParameters.IsLocalUserEnabled = this.enableLocalUser;
+                    }
+                    if (this.enableExtendedGroups != null)
+                    {
+                        updateParameters.EnableExtendedGroups = this.enableExtendedGroups;
                     }
                     if (this.AllowedCopyScope != null)
                     {

@@ -249,6 +249,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Enables extended group support with local users feature, if set to true.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableExtendedGroups
+        {
+            get
+            {
+                return enableExtendedGroups != null ? enableExtendedGroups.Value : false;
+            }
+            set
+            {
+                enableExtendedGroups = value;
+            }
+        }
+        private bool? enableExtendedGroups = null;
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Enable HierarchicalNamespace for the Storage account.")]
         [ValidateNotNullOrEmpty]
         public bool EnableHierarchicalNamespace
@@ -914,6 +931,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (this.enableLocalUser != null)
             {
                 createParameters.IsLocalUserEnabled = this.enableLocalUser;
+            }
+            if (this.enableExtendedGroups != null)
+            {
+                createParameters.EnableExtendedGroups = this.enableExtendedGroups;
             }
             if (this.AllowedCopyScope != null)
             {
