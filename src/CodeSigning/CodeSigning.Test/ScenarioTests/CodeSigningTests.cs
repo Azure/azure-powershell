@@ -36,5 +36,12 @@ namespace Microsoft.Azure.Commands.CodeSigning.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-GetCodeSigningRootCert");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestGetSigningCertificateChain()
+        {
+            TestRunner.RunTestScript("Test-GetCodeSigningCertChain");
+        }
     }
 }

@@ -20,7 +20,7 @@ Update a Catalog
 .Description
 Update a Catalog
 .Example
-Update-AzSphereCatalog -Name test2024 -ResourceGroupName joyer-test -Tag @{"123"="abc"}
+Update-AzSphereCatalog -Name test2024 -ResourceGroupName group-test -Tag @{"123"="abc"}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity

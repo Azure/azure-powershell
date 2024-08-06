@@ -20,6 +20,9 @@ Get the access keys of the CommunicationService resource.
 ### [Get-AzEmailService](Get-AzEmailService.md)
 Get the EmailService and its properties.
 
+### [Get-AzEmailServicedataEmailSendResult](Get-AzEmailServicedataEmailSendResult.md)
+Gets the status of the email send operation.
+
 ### [Get-AzEmailServiceDomain](Get-AzEmailServiceDomain.md)
 Get the Domains resource and its properties.
 
@@ -56,6 +59,9 @@ Operation to delete a Domains resource.
 
 ### [Remove-AzEmailServiceSenderUsername](Remove-AzEmailServiceSenderUsername.md)
 Operation to delete a SenderUsernames resource.
+
+### [Send-AzEmailServicedataEmail](Send-AzEmailServicedataEmail.md)
+Queues an email message to be sent to one or more recipients
 
 ### [Set-AzCommunicationServiceNotificationHub](Set-AzCommunicationServiceNotificationHub.md)
 Links an Azure Notification Hub to this communication service.

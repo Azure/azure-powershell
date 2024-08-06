@@ -46,6 +46,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'SAS'", "SAS", global::System.Management.Automation.CompletionResultType.ParameterValue, "SAS");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AccountKey".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AccountKey'", "AccountKey", global::System.Management.Automation.CompletionResultType.ParameterValue, "AccountKey");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ServicePrincipal".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ServicePrincipal'", "ServicePrincipal", global::System.Management.Automation.CompletionResultType.ParameterValue, "ServicePrincipal");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AccessKey".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AccessKey'", "AccessKey", global::System.Management.Automation.CompletionResultType.ParameterValue, "AccessKey");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ApiKey".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ApiKey'", "ApiKey", global::System.Management.Automation.CompletionResultType.ParameterValue, "ApiKey");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "CustomKeys".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'CustomKeys'", "CustomKeys", global::System.Management.Automation.CompletionResultType.ParameterValue, "CustomKeys");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "OAuth2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'OAuth2'", "OAuth2", global::System.Management.Automation.CompletionResultType.ParameterValue, "OAuth2");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AAD".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AAD'", "AAD", global::System.Management.Automation.CompletionResultType.ParameterValue, "AAD");
+            }
         }
     }
 }

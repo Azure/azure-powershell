@@ -16,7 +16,7 @@ Create an in-memory object for DefenderForDatabasesAwsOffering.
 New-AzSecurityDefenderForDatabasesAwsOfferingObject [-ArcAutoProvisioningCloudRoleArn <String>]
  [-ArcAutoProvisioningEnabled <Boolean>] [-ConfigurationPrivateLinkScope <String>]
  [-ConfigurationProxy <String>] [-DatabaseDspmCloudRoleArn <String>] [-DatabaseDspmEnabled <Boolean>]
- [-RdCloudRoleArn <String>] [-RdEnabled <Boolean>] [<CommonParameters>]
+ [-RdCloudRoleArn <String>] [-RdEnabled <Boolean>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -129,6 +129,21 @@ Is databases data security posture management (DSPM) protection enabled.
 Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

@@ -40,7 +40,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Description = @"Type of upgrade.",
         SerializedName = @"upgradeType",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("AKSPatchUpgrade", "HotfixUpgrade")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("AKSPatchUpgrade", "HotfixUpgrade", "PatchVersionUpgrade")]
         string UpgradeType { get; set; }
 
     }
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
 
     {
         /// <summary>Type of upgrade.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("AKSPatchUpgrade", "HotfixUpgrade")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("AKSPatchUpgrade", "HotfixUpgrade", "PatchVersionUpgrade")]
         string UpgradeType { get; set; }
 
     }

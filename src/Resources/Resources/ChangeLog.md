@@ -20,6 +20,17 @@
 
 ## Upcoming Release
 
+## Version 7.3.0
+* Added null check and empty list check to the permissions object in the ToPSRoleDefinition method.
+* Added argument completer for `EnforcementMode`, `IdentityType`
+    * `New-AzPolicyAssignment`
+    * `New-AzPolicyExemption`
+    * `Update-AzPolicyAssignment`
+    * `Update-AzPolicyExemption`
+* Fixed bug deserializing property: `policyDefinitionReferenceId` [#25112] 
+* Fixed overriding of Bicep parameters in Deployment cmdlets to support `SecureString` parameters.
+* Added Test cmdlets for Deployment Stacks.
+
 ## Version 7.2.0
 * Fixed `Set-AzPolicyAssignment` loses description and Display Name [#25362]
 * Fixed `New-AzPolicyAssignment` string ID value handling for parameter '-PolicyDefinition'

@@ -1,18 +1,18 @@
 ### Example 1: Update device group
 ```powershell
-Update-AzSphereDeviceGroup -ResourceGroupName joyer-test -CatalogName test2024 -ProductName product2024 -Name testdevicegroup -Description test
+Update-AzSphereDeviceGroup -ResourceGroupName group-test -CatalogName test2024 -ProductName product2024 -Name testdevicegroup -Description test
 ```
 
 ```output
 AllowCrashDumpsCollection    : 
 Description                  : test
 HasDeployment                : 
-Id                           : /subscriptions/d1cd48f9-b94b-4645-9632-634b440db393/resourceGroups/joyer-test/providers/Microsoft.AzureSphere/catalogs/test2024/products/product2024/deviceGroups/testdevicegroup
+Id                           : /subscriptions/11111111-2222-3333-4444-123456789103/resourceGroups/group-test/providers/Microsoft.AzureSphere/catalogs/test2024/products/product2024/deviceGroups/testdevicegroup
 Name                         : testdevicegroup
 OSFeedType                   : 
 ProvisioningState            : Succeeded
 RegionalDataBoundary         : 
-ResourceGroupName            : joyer-test
+ResourceGroupName            : group-test
 SystemDataCreatedAt          : 
 SystemDataCreatedBy          : 
 SystemDataCreatedByType      : 
