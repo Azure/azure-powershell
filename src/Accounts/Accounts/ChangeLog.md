@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Updated `Connect-AzAccount` to fix a display issue in PowerShell ISE [#24556].
+* Updated the reference of Azure PowerShell Common to 1.3.100-preview.
 
 ## Version 3.0.3
 * Reduced the frequency of displaying sign-in announcement messages.
