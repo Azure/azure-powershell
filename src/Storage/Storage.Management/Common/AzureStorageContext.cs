@@ -24,6 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
     /// </summary>
     public class AzureStorageContext : IStorageContext
     {
+        
         private static AzureStorageContext emptyContextInstance = new AzureStorageContext();
 
         /// <summary>
