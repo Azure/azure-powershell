@@ -62,8 +62,8 @@ if (-not (Test-Path $parentModulePath)) {
     <#
         create csproj for parent module if not existed
     #>
-    Write-Host "Creating $parentModulePath/Az.$parentModuleName.csproj ..." -ForegroundColor DarkGreen
-    New-GeneratedFileFromTemplate -TemplateName 'HandcraftedModule.csproj' -GeneratedFileName "Az.$parentModuleName.csproj" -GeneratedDirectory $parentModulePath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
+    Write-Host "Creating $parentModulePath/$parentModuleName.csproj ..." -ForegroundColor DarkGreen
+    New-GeneratedFileFromTemplate -TemplateName 'HandcraftedModule.csproj' -GeneratedFileName "$parentModuleName.csproj" -GeneratedDirectory $parentModulePath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
     <#
         create AsemblyInfo.cs for parent module if not existed
     #>
