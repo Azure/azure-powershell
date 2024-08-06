@@ -19,7 +19,7 @@ New-AzMLWorkspaceComputeStartStopScheduleObject [-Action <ComputePowerAction>] [
  [-ScheduleHour <Int32[]>] [-ScheduleId <String>] [-ScheduleMinute <Int32[]>] [-ScheduleMonthDay <Int32[]>]
  [-ScheduleProvisioningStatus <ScheduleProvisioningState>] [-ScheduleStatus <ScheduleStatus>]
  [-ScheduleWeekDay <ComputeWeekDay[]>] [-Status <ScheduleStatus>] [-TriggerType <ComputeTriggerType>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,21 +91,6 @@ Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/def
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

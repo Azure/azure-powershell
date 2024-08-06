@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.0
 * Added feature for auto scaling and upgradeprofile, and nginx configuration analysis
 
 ## Version 1.0.1

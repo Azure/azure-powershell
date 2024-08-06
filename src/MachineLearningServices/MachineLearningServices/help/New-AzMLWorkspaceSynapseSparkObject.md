@@ -18,7 +18,7 @@ New-AzMLWorkspaceSynapseSparkObject [-AutoPausePropertyDelayInMinute <Int32>]
  [-AutoScalePropertyMaxNodeCount <Int32>] [-AutoScalePropertyMinNodeCount <Int32>] [-NodeCount <Int32>]
  [-NodeSize <String>] [-NodeSizeFamily <String>] [-PoolName <String>] [-ResourceGroup <String>]
  [-SparkVersion <String>] [-SubscriptionId <String>] [-WorkspaceName <String>] [-Description <String>]
- [-DisableLocalAuth <Boolean>] [-ResourceId <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DisableLocalAuth <Boolean>] [-ResourceId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -187,21 +187,6 @@ Pool name.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

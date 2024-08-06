@@ -14,7 +14,7 @@ Create an in-memory object for OutputPathAssetReference.
 
 ```
 New-AzMLWorkspaceOutputPathAssetReferenceObject -ReferenceType <ReferenceType> [-JobId <String>]
- [-Path <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-Path <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,21 +53,6 @@ The path of the file/directory in the job output.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
