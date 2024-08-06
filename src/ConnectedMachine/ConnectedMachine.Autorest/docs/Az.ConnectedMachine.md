@@ -89,7 +89,7 @@ The operation to Upgrade Machine Extensions.
 The operation to update a hybrid machine.
 
 ### [Update-AzConnectedMachineExtension](Update-AzConnectedMachineExtension.md)
-The operation to Update the extension.
+The operation to update the extension.
 
 ### [Update-AzConnectedMachineRunCommand](Update-AzConnectedMachineRunCommand.md)
 The operation to Create a run command.

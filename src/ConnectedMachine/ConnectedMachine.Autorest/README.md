@@ -41,12 +41,12 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
  
 ``` yaml
-commit: 9c51b17f1c544eea0f6a67c01a6b763995521f52
+commit: 2e5be0e72597c6fc8d438f20e38087d900c16427
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-03-31-preview/HybridCompute.json
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-03-31-preview/privateLinkScopes.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-05-20-preview/HybridCompute.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-05-20-preview/privateLinkScopes.json
  
 module-version: 0.5.0
 title: ConnectedMachine
@@ -336,6 +336,7 @@ directive:
   - where:
       subject: Gateway
     remove: true
+  # Remove when this API version is added
   - where:
       subject: Setting
     remove: true
