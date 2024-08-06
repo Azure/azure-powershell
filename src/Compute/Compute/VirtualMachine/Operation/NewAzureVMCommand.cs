@@ -770,6 +770,11 @@ namespace Microsoft.Azure.Commands.Compute
             PublicIpAddressName = PublicIpAddressName;
             SecurityGroupName = SecurityGroupName ?? Name;
 
+            if (this.IsParameterBound(c => c.Image))
+            {
+                WriteInformation("You can reference https://aka.ms/findImagePS on how to find VM Images using PowerShell.");
+            }
+
             // Check TrustedLaunch UEFI values defaulting
             if (this.IsParameterBound(c => c.SecurityType)
                 && this.SecurityType != null)
