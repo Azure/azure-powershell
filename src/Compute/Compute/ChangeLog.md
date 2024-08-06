@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added information on how to find VM Images when using `New-AzVM` with `-Image` parameter.
 
 ## Version 8.2.0
 * Renamed parameter `-VmId` to `-SourceId` and added `-VmId` as an alias to `New-AzRestorePointCollection` cmdlet.

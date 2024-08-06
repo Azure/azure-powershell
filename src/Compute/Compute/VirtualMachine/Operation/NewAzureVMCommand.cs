@@ -772,7 +772,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (this.IsParameterBound(c => c.Image))
             {
-                WriteInformation("You can reference https://aka.ms/findImagePS on how to find VM Images using PowerShell.");
+                WriteInformation(HelpMessages.PSVMImageMessage, new string[] { "PSHOST" });
             }
 
             // Check TrustedLaunch UEFI values defaulting
