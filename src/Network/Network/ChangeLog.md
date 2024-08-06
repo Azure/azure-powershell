@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added support for `EnabledFilteringCriteria` property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
 * Added support of `UserAssignedIdentityId` Property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
 
 ## Version 7.8.0

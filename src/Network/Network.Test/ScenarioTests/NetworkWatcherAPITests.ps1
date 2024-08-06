@@ -1453,6 +1453,178 @@ function Test-CRUDNicFlowLog
 
 <#
 .SYNOPSIS
+Test Flow log CRUD API.
+#>
+function Test-VnetFlowLogWithFiltering
+{
+    # Setup
+    $resourceGroupName = Get-NrpResourceGroupName
+    $nwName = Get-NrpResourceName
+    $nwRgName = Get-NrpResourceGroupName
+    $flowLogName = Get-NrpResourceName
+    $domainNameLabel = Get-NrpResourceName
+    $vnetName = Get-NrpResourceName
+    $stoname =  Get-NrpResourceName
+    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "eastus2euap"
+
+    try 
+    {
+        # Create Resource group
+        New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        Start-Sleep -Seconds 10
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+        
+        # Create Resource group for Network Watcher
+        New-AzResourceGroup -Name $nwRgName -Location "$location"
+        Start-Sleep -Seconds 5
+
+        # Get Network Watcher
+        $nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
+        Start-Sleep -Seconds 5
+ 
+        # Create storage
+        $stoname = 'sto' + $stoname
+        $stotype = 'Standard_GRS'
+
+        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype;
+        $sto = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname;
+        Start-Sleep -Seconds 10
+
+        # Create flow log
+        $job = New-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName -TargetResourceId $vnet.Id -StorageId $sto.Id -Enabled $true -EnabledFilteringCriteria "srcIP!=158.255.7.153 || dstPort=56891"
+        $job | Wait-Job
+        $config = $job | Receive-Job
+        Start-Sleep -Seconds 5
+
+        # Validation set operation
+        Assert-AreEqual $config.TargetResourceId $vnet.Id
+        Assert-AreEqual $config.StorageId $sto.Id
+        Assert-AreEqual $config.Enabled $true
+        Assert-AreEqual $config.Format.Type "JSON"
+        Assert-AreEqual $config.Format.Version 1
+
+        # Get flow log
+        $flowLog = Get-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName
+
+        # Validation get operation
+        Assert-AreEqual $flowLog.TargetResourceId $vnet.Id
+        Assert-AreEqual $flowLog.StorageId $sto.Id
+        Assert-AreEqual $flowLog.EnabledFilteringCriteria "srcIP!=158.255.7.153 || dstPort=56891"
+        Assert-AreEqual $flowLog.Enabled $true
+        Assert-AreEqual $flowLog.Format.Type "JSON"
+        Assert-AreEqual $flowLog.Format.Version 1
+
+        # Set flow log
+        $flowLog.Enabled = $false
+        $flowLog | Set-AzNetworkWatcherFlowLog -Force
+
+        # Get updated flowLog
+        $updatedFlowLog = Get-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName
+        Assert-AreEqual $updatedFlowLog.Enabled $false
+
+        # Delete flow log
+        Remove-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroupName
+        Clean-ResourceGroup $nwRgName
+    }
+}
+
+<#
+.SYNOPSIS
+Test Flow log CRUD API.
+#>
+function Test-VnetFlowLogWithEmptyFilteringCondition
+{
+    # Setup
+    $resourceGroupName = Get-NrpResourceGroupName
+    $nwName = Get-NrpResourceName
+    $nwRgName = Get-NrpResourceGroupName
+    $flowLogName = Get-NrpResourceName
+    $domainNameLabel = Get-NrpResourceName
+    $vnetName = Get-NrpResourceName
+    $stoname =  Get-NrpResourceName
+    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "eastus2euap"
+
+    try 
+    {
+        # Create Resource group
+        New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        Start-Sleep -Seconds 10
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+        
+        # Create Resource group for Network Watcher
+        New-AzResourceGroup -Name $nwRgName -Location "$location"
+        Start-Sleep -Seconds 5
+
+        # Get Network Watcher
+        $nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
+        Start-Sleep -Seconds 5
+ 
+        # Create storage
+        $stoname = 'sto' + $stoname
+        $stotype = 'Standard_GRS'
+
+        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype;
+        $sto = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname;
+        Start-Sleep -Seconds 10
+
+        # Create flow log
+        $job = New-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName -TargetResourceId $vnet.Id -StorageId $sto.Id -Enabled $true -EnabledFilteringCriteria ""
+        $job | Wait-Job
+        $config = $job | Receive-Job
+        Start-Sleep -Seconds 5
+
+        # Validation set operation
+        Assert-AreEqual $config.TargetResourceId $vnet.Id
+        Assert-AreEqual $config.StorageId $sto.Id
+        Assert-AreEqual $config.Enabled $true
+        Assert-AreEqual $config.Format.Type "JSON"
+        Assert-AreEqual $config.Format.Version 1
+
+        # Get flow log
+        $flowLog = Get-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName
+
+        # Validation get operation
+        Assert-AreEqual $flowLog.TargetResourceId $vnet.Id
+        Assert-AreEqual $flowLog.StorageId $sto.Id
+        Assert-AreEqual $flowLog.EnabledFilteringCriteria ""
+        Assert-AreEqual $flowLog.Enabled $true
+        Assert-AreEqual $flowLog.Format.Type "JSON"
+        Assert-AreEqual $flowLog.Format.Version 1
+
+        # Set flow log
+        $flowLog.Enabled = $false
+        $flowLog | Set-AzNetworkWatcherFlowLog -Force
+
+        # Get updated flowLog
+        $updatedFlowLog = Get-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName
+        Assert-AreEqual $updatedFlowLog.Enabled $false
+
+        # Delete flow log
+        Remove-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroupName
+        Clean-ResourceGroup $nwRgName
+    }
+}
+
+<#
+.SYNOPSIS
 Test ConnectivityCheck NetworkWatcher API.
 #>
 function Test-ConnectivityCheck

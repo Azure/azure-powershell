@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-        public void ValidateFlowLogParameters(string targetResourceId, string storageId, int? formatVersion, string formatType,
+        public void ValidateFlowLogParameters(string targetResourceId, string storageId, string enabledFilteringCriteria, int? formatVersion, string formatType,
             bool enableTrafficAnalytics, string trafficAnalyticsWorkspaceId, int? trafficAnalyticsInterval, int? retentionPolicyDays, string userAssignedIdentityId)
         {
             ResourceIdentifier targetResourceInfo = new ResourceIdentifier(targetResourceId);
@@ -116,6 +116,14 @@ namespace Microsoft.Azure.Commands.Network
                 if (!this.IsValidResourceId(workspaceInfo, "Microsoft.OperationalInsights/workspaces"))
                 {
                     throw new PSArgumentException(Properties.Resources.InvalidWorkspaceResourceId);
+                }
+            }
+
+            if (!string.IsNullOrEmpty(enabledFilteringCriteria))
+            {
+                if (enabledFilteringCriteria.Length > 1000)
+                {
+                    throw new PSArgumentException(Properties.Resources.FlowLogFilteringCriteriaExceedsLimit);
                 }
             }
 
