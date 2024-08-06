@@ -5295,7 +5295,7 @@ function Test-VirtualMachineEnableAutoUpdate
         $computerName = "v" + $rgname;
 
         # VM Credential
-        $user = "usertest";
+        $user = Get-ComputeTestResourceName;
         $password = Get-PasswordForVM;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
