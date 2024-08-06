@@ -4,6 +4,7 @@ using Xunit.Abstractions;
 
 namespace Commands.Aks.Test.ScenarioTests
 {
+
     public class KubernetesTests : AksTestRunner
     {
         public KubernetesTests(ITestOutputHelper output) : base(output)
