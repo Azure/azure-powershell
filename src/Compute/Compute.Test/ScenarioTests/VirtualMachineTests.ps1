@@ -7597,17 +7597,19 @@ function Test-VMSetAzOSCredentialNullRef
 
         # VM
         $vmConfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $vmConfig = Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmname;
+        $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
 
-        Assert-ThrowsContains { Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmname; } "A credential is required to set the VM operating system when the VM does not have an OS Profile set. Please provide a credential to the -Credential parameter."
+        # Verify a VM is created fine. 
+        Assert-ThrowsContains {New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig; } "Required parameter"
         
         $vmConfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
         $vmConfig = Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmname -Credential $cred;
         $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmconfig;
 
-        # Verify a VM is created fine. 
-        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
-
+        Assert-NotNull $vm;
     }
     finally
     {
