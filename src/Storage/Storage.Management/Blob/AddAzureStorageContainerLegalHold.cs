@@ -22,6 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
+    
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMStoragePrefix + StorageContainerLegalHoldNounStr, DefaultParameterSetName = AccountNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSLegalHold))]
     public class AddAzureStorageContainerLegalHoldCommand : StorageBlobBaseCmdlet
     {
