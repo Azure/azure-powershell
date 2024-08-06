@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV1.dll-Help.xml
 Module Name: Az.DataFactory
 ms.assetid: 4C839730-B494-45BD-B5A1-F93B02AB4B2A
 online version: https://learn.microsoft.com/powershell/module/az.datafactory/remove-azdatafactoryhub

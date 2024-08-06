@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
 online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacemodelversion
 schema: 2.0.0
@@ -14,10 +14,10 @@ Create or update version.
 
 ```
 New-AzMLWorkspaceModelVersion -Name <String> -ResourceGroupName <String> -Version <String>
- -WorkspaceName <String> [-SubscriptionId <String>] [-Description <String>] [-Flavor <Hashtable>]
- [-IsAnonymou] [-IsArchived] [-JobName <String>] [-ModelType <String>] [-ModelUri <String>]
- [-ResourceBaseProperty <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -WorkspaceName <String> [-SubscriptionId <String>] [-Description <String>] [-Flavor <Hashtable>] [-IsAnonymou]
+ [-IsArchived] [-JobName <String>] [-ModelType <String>] [-ModelUri <String>]
+ [-ResourceBaseProperty <Hashtable>] [-Stage <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +33,7 @@ New-AzMLWorkspaceModelVersion  -ResourceGroupName ml-rg-test -WorkspaceName mlwo
 ```output
 Name SystemDataCreatedAt SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy            SystemDataLastModifiedByType ResourceGroupName
 ---- ------------------- -------------------                 ----------------------- ------------------------ ------------------------            ---------------------------- -----------------
-1    6/1/2022 4:29:14 PM Lucas Yao (Wicresoft North America) User                    6/1/2022 4:29:14 PM      Lucas Yao (Wicresoft North America) User                         ml-rg-test
+1    6/1/2022 4:29:14 PM UserName (Example)         User                    6/1/2022 4:29:14 PM      UserName (Example)         User                         ml-rg-test
 ```
 
 Create or update model version
@@ -41,7 +41,8 @@ Create or update model version
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -208,6 +209,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Stage
+Stage in the model lifecycle assigned to this model
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -308,11 +324,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IModelVersion
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IModelVersion
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

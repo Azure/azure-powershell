@@ -201,7 +201,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-BODY <IMicrosoftGraphAppRoleAssignment>: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+BODY `<IMicrosoftGraphAppRoleAssignment>`: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory

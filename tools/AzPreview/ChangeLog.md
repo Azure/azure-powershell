@@ -1,3 +1,118 @@
+## 12.2.0 - August 2024
+#### Az.Accounts 3.0.3
+* Reduced the frequency of displaying sign-in announcement messages.
+* Upgraded Azure.Core to 1.41.0 to include the fix for 'BearerTokenAuthenticationPolicy'
+* Removed the informational table about selected context to avoid duplication with output table.
+
+#### Az.AksArc 0.1.1
+* Fixed bug where 'Invoke-AzAksArcClusterUpgrade' would throw false exception when kubernetes version is passed as a parameter. 
+* Fixed bug where default nodepool labels and taints parameters would not work for 'New-AzAksArcCluster' command. 
+
+#### Az.Cdn 3.2.1
+* Bypassed object id validation for KeyVault access policy during 'Start-AzFrontDoorCdnProfilePrepareMigration'
+
+#### Az.CodeSigning 0.2.0
+* Added 'Get-AzCodeSigningCertChain' cmdlet to retrieve the certificate chain for a certificate profile.
+* Added System.Formats.Asn1 dependency to the module to address a security vulnerability.
+
+#### Az.Communication 0.4.0
+* Added dataplane cmdlets:
+    * 'Get-AzEmailServicedataEmailSendResult'
+    * 'Send-AzEmailServicedataEmail'
+* Upgraded API version to 2023-06-01-preview
+
+#### Az.Compute 8.2.0
+* Renamed parameter '-VmId' to '-SourceId' and added '-VmId' as an alias to 'New-AzRestorePointCollection' cmdlet.
+
+#### Az.Databricks 1.8.1
+* Fixed Access Connector Resource update for 'Update-AzDatabricksWorkspace'
+
+#### Az.DataFactory 1.18.6
+* Added security enhancement feature snowflake support storage integration.
+* Supported 'domain' Property In Dynamics Family.
+* Enabled UAMI auth for Data Factory Sql Server connector.
+* Supported managed identity for Data Factory Azure Table connector.
+
+#### Az.HdInsightOnAks 0.2.0
+* Added commands
+  - 'New-AzHdInsightOnAksManagedIdentityObject' for create an in-memory object for ManagedIdentitySpec.
+  - 'New-AzHdInsightOnAksClusterMavenLibraryObject' for create an in-memory object for Maven library properties.
+  - 'New-AzHdInsightOnAksClusterPyPiLibraryObject' for create an in-memory object for PyPi library properties.
+  - 'Get-AzHdInsightOnAksClusterPoolUpgradeHistory' for get a list for cluster pool upgrade history.
+  - 'Get-AzHdInsightOnAksClusterUpgradeHistory' for get a list for cluster upgrade history.
+  - 'Invoke-AzHdInsightOnAksManageClusterLibrary' for manage libraries on cluster.
+  - 'Invoke-AzHdInsightOnAksClusterManualRollback' for manual rollback upgrade for a cluster.
+* Renamed command 'New-AzHdInsightOnAksClusterPoolAKSUpgradeObject' to 'New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject'. 
+* Separated the Upgrade function from command 'Update-AzHdInsightOnAksCluster', the new command is 'Invoke-AzHdInsightOnAksClusterUpgrade'. 
+* Separated the Upgrade function from command 'Update-AzHdInsightOnAksClusterPool', the new command is 'Invoke-AzHdInsightOnAksClusterPoolUpgrade'.
+
+#### Az.Informatica 0.1.0
+* First preview release for module Az.Informatica
+
+#### Az.MachineLearningServices 1.1.0
+* Updated API version to 2024-04-01
+* Added Kind and HubResourceId parameters for Workspace cmdlets
+* Fixed batch deployment creation issue
+* Fixed Connection creation issue
+* Added Connection Properties object cmdlets for connection creation
+    - 'New-AzMLWorkspaceAadAuthTypeWorkspaceConnectionPropertiesObject'
+    - 'New-AzMLWorkspaceAccessKeyAuthTypeWorkspaceConnectionPropertiesObject'
+    - 'New-AzMLWorkspaceAccountKeyAuthTypeWorkspaceConnectionPropertiesObject'
+    - 'New-AzMLWorkspaceApiKeyAuthWorkspaceConnectionPropertiesObject'
+    - 'New-AzMLWorkspaceCustomKeysWorkspaceConnectionPropertiesObject'
+    - 'New-AzMLWorkspaceManagedIdentityAuthTypeWorkspaceConnectionPropertiesObject'
+    - 'New-AzMLWorkspaceNoneAuthTypeWorkspaceConnectionPropertiesObject'
+    - 'New-AzMLWorkspaceOAuth2AuthTypeWorkspaceConnectionPropertiesObject'
+    - 'New-AzMLWorkspacePatAuthTypeWorkspaceConnectionPropertiesObject'
+    - 'New-AzMLWorkspaceSasAuthTypeWorkspaceConnectionPropertiesObject'
+    - 'New-AzMLWorkspaceServicePrincipalAuthTypeWorkspaceConnectionPropertiesObject'
+    - 'New-AzMLWorkspaceUsernamePasswordAuthTypeWorkspaceConnectionPropertiesObject'
+* Added Model reference object cmdlets for batch deployment creation
+    - 'New-AzMLWorkspaceIdAssetReferenceObject'
+    - 'New-AzMLWorkspaceDataPathAssetReferenceObject'
+    - 'New-AzMLWorkspaceOutputPathAssetReferenceObject'
+
+#### Az.NetAppFiles 0.17.0
+* Updated to api-version 2024-03-01
+
+#### Az.Nginx 1.1.0
+* Added feature for auto scaling and upgradeprofile, and nginx configuration analysis
+
+#### Az.Oracle 0.1.0
+* First preview release for module Az.Oracle
+
+#### Az.RedisCache 1.10.0
+* Added support for Disabling Access Keys Authentication
+
+#### Az.Resources 7.3.0
+* Added null check and empty list check to the permissions object in the ToPSRoleDefinition method.
+* Added argument completer for 'EnforcementMode', 'IdentityType'
+    * 'New-AzPolicyAssignment'
+    * 'New-AzPolicyExemption'
+    * 'Update-AzPolicyAssignment'
+    * 'Update-AzPolicyExemption'
+* Fixed bug deserializing property: 'policyDefinitionReferenceId' [#25112] 
+* Fixed overriding of Bicep parameters in Deployment cmdlets to support 'SecureString' parameters.
+* Added Test cmdlets for Deployment Stacks.
+
+#### Az.Sql 5.2.0
+* Added breaking change announcement for cmdlets: 'New-AzSqlInstanceLink', 'Get-AzSqlInstanceLink', 'Remove-AzSqlInstanceLink', 'Update-AzSqlInstanceLink'.
+* Added 'IsGeneralPurposeV2' and 'StorageIOps' parameters to 'New-AzSqlInstance', 'Set-AzSqlInstance' to enable the creation of GPv2 instances
+* Added IsGeneralPurposeV2 and StorageIOps fields to the model of the managed instance so that it displays information about GPv2 instances that are returned by 'Get-AzSqlInstance'.
+* Added new cmdlet 'Set-AzSqlDatabaseReplicationLink' for updating replication link type
+* Updated 'Get-AzSqlDatabaseReplicationLink' to use the new sdk
+
+#### Az.StackHCI 2.4.0
+* Upgraded API version to 2024-04-01
+* Allowed registration for 23H2 and above versions of the device
+
+#### Az.Storage 7.2.0
+* Upgraded Microsoft.Azure.Storage.DataMovement to 2.0.5
+
+#### Az.StorageSync 2.3.0
+* Fixed the Register-AzStorageSyncServer with Azure FileSync Agent v17
+* Improved performance for Managed Identity migration cmdlet
+
 ## 12.1.0 - July 2024
 #### Az.Accounts 3.0.1
 * Disable WAM when the customers login with device code flow or username password (ROPC) flow to prevent a potential issue with token cache.

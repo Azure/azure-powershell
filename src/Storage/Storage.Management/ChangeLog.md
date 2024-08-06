@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 7.2.0
+* Upgraded Microsoft.Azure.Storage.DataMovement to 2.0.5
+
 ## Version 7.1.1
 * Supported Storage task assignment
     - `New-AzStorageTaskAssignment`

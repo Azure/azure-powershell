@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
 online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacebatchdeployment
 schema: 2.0.0
@@ -14,16 +14,18 @@ Creates/updates a batch inference deployment (asynchronous).
 
 ```
 New-AzMLWorkspaceBatchDeployment -EndpointName <String> -Name <String> -ResourceGroupName <String>
- -WorkspaceName <String> -Location <String> [-SubscriptionId <String>] [-CodeId <String>]
- [-CodeScoringScript <String>] [-ComputeId <String>] [-Description <String>]
+ -WorkspaceName <String> [-SubscriptionId <String>] -Location <String> [-CodeId <String>]
+ [-CodeScoringScript <String>] [-ComputeId <String>]
+ [-DeploymentConfigurationType <BatchDeploymentConfigurationType>] [-Description <String>]
  [-EndpointDeploymentProperties <Hashtable>] [-EnvironmentId <String>] [-EnvironmentVariable <Hashtable>]
  [-ErrorThreshold <Int32>] [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssigned <Hashtable>]
  [-Kind <String>] [-LoggingLevel <BatchLoggingLevel>] [-MaxConcurrencyPerInstance <Int32>]
- [-MiniBatchSize <Int64>] [-ModelReferenceType <ReferenceType>] [-OutputAction <BatchOutputAction>]
+ [-MiniBatchSize <Int64>] [-Model <IAssetReferenceBase>] [-OutputAction <BatchOutputAction>]
  [-OutputFileName <String>] [-ResourceInstanceCount <Int32>] [-ResourceInstanceType <String>]
  [-ResourceProperty <Hashtable>] [-RetryMax <Int32>] [-RetryTimeout <TimeSpan>] [-SkuCapacity <Int32>]
  [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,17 +35,23 @@ Creates/updates a batch inference deployment (asynchronous).
 
 ### Example 1: Creates/updates a batch inference deployment (asynchronous)
 ```powershell
+# The Reference Type includes Data Path, Output Path and Id.
+# You can use following command to create it then pass it as value to Property parameter of the New-AzMLWorkspaceBatchDeployment cmdlet.
+# New-AzMLWorkspaceIdAssetReferenceObject
+# New-AzMLWorkspaceDataPathAssetReferenceObject
+# New-AzMLWorkspaceOutputPathAssetReferenceObject
+$model = New-AzMLWorkspaceIdAssetReferenceObject -AssetId '/subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/joyer-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test002/models/openai-embeddings/versions/1' -ReferenceType 'Id'
 New-AzMLWorkspaceBatchDeployment -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -EndpointName batch-pwsh03 -Name nonmlflowdp -Location "eastus" `
--CodeId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/codes/bd430754-fba7-4a63-a6b8-8ea8635767f3/versions/1" -CodeScoringScript "digit_identification.py" `
--EnvironmentId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/environments/CliV2AnonymousEnvironment/versions/5d230430f302e7876f9b64710733f68e" `
--Compute "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/computes/batch-cluster" `
--ModelReferenceType 'Id'
+-CodeId "/subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/codes/bd430754-fba7-4a63-a6b8-8ea8635767f3/versions/1" -CodeScoringScript "digit_identification.py" `
+-EnvironmentId "/subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/environments/CliV2AnonymousEnvironment/versions/5d230430f302e7876f9b64710733f68e" `
+-Model $model `
+-ComputeId "/subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/computes/batch-cluster"
 ```
 
 ```output
-Location Name        SystemDataCreatedAt SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType AzureAsyncOperation Kind ResourceGroupName
--------- ----        ------------------- -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- ------------------- ---- -----------------
-eastus   nonmlflowdp 6/1/2022 6:19:16 AM Lucas Yao (Wicresoft North America)                         6/1/2022 6:19:16 AM                                                                                     ml-rg-test
+Location Name        SystemDataCreatedAt SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType  Kind ResourceGroupName
+-------- ----        ------------------- -------------------                 ----------------------- ------------------------ ------------------------ ----------------------------  ---- -----------------
+eastus   nonmlflowdp 6/1/2022 6:19:16 AM UserName (Example)                  6/1/2022 6:19:16 AM                                                                                          ml-rg-test
 ```
 
 Creates/updates a batch inference deployment (asynchronous)
@@ -113,12 +121,28 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeploymentConfigurationType
+[Required] The type of the deployment
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.BatchDeploymentConfigurationType
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -326,11 +350,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ModelReferenceType
-[Required] Specifies the type of asset reference.
+### -Model
+Reference to the model asset for the endpoint deployment.
+To construct, see NOTES section for MODEL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ReferenceType
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IAssetReferenceBase
 Parameter Sets: (All)
 Aliases:
 
@@ -654,11 +679,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchDeployment
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IBatchDeployment
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-
