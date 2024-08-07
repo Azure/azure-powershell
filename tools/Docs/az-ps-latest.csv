@@ -44,7 +44,7 @@ pac42,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac43,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Dashboard.0.1.2.zip;sourceType=sa]Az.Dashboard,0.1.2
 pac44,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataBox.0.3.1.zip;sourceType=sa]Az.DataBox,0.3.1
 pac45,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataBoxEdge.1.1.1.zip;sourceType=sa]Az.DataBoxEdge,1.1.1
-pac46,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Databricks.1.8.1.zip;sourceType=sa]Az.Databricks,1.8.1
+pac46,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Databricks.1.8.2.zip;sourceType=sa]Az.Databricks,1.8.2
 pac47,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Datadog.0.1.1.zip;sourceType=sa]Az.Datadog,0.1.1
 pac48,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataFactory.1.18.6.zip;sourceType=sa]Az.DataFactory,1.18.6
 pac49,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataLakeAnalytics.1.0.3.zip;sourceType=sa]Az.DataLakeAnalytics,1.0.3
