@@ -68,14 +68,14 @@ function Get-AzDevCenterUserEnvironmentLog {
         [System.String]
         # The DevCenter upon which to execute operations.
         ${DevCenterName},
-    
+
         [Parameter(ParameterSetName='Get', Mandatory)]
         [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
         [System.String]
         # The name of the environment.
         ${EnvironmentName},
-    
+
         [Parameter(ParameterSetName='Get', Mandatory)]
         [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
