@@ -127,16 +127,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         public string InstanceLinkRole { get; set; }
 
         /// <summary>
-        /// Gets or sets replication mode of the link. Possible values include:
-        /// 'Async', 'Sync'
-        /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Replication mode of the link.")]
-        [Parameter(Mandatory = false, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Replication mode of the link.")]
-        [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Async", "Sync")]
-        public string ReplicationMode { get; set; }
-
-        /// <summary>
         /// Gets or sets database seeding mode – can be Automatic (default), or
         /// Manual for supported scenarios. Possible values include:
         /// 'Automatic', 'Manual'
@@ -241,7 +231,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
                     InstanceLinkRole = InstanceLinkRole,
                     FailoverMode = FailoverMode,
                     PartnerEndpoint = PartnerEndpoint,
-                    ReplicationMode = ReplicationMode,
                     SeedingMode = SeedingMode
                 }
             };
