@@ -6,7 +6,7 @@ This command lists the environment definitions in a project catalog.
 
 ### Example 2: Get a project environment definition 
 ```powershell
-Get-AzDevCenterAdminProjectEnvironmentDefinition -ProjectName DevProject -CatalogName CentralCatalog -ResourceGroupName testRg -Name envDefName
+Get-AzDevCenterAdminProjectEnvironmentDefinition -ProjectName DevProject -CatalogName CentralCatalog -ResourceGroupName testRg -EnvironmentDefinitionName envDefName
 ```
 This command gets the project environment definition "envDefName". 
 
