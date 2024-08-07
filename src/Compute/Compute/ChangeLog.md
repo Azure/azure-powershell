@@ -21,7 +21,8 @@
 -->
 ## Upcoming Release
 * Added `TimeCreated` read-only field to `PSVirtualMachineScaleSetVMProfile` object.
-* Changed the `Set-AzVMOperatingSystem` cmdlet when the `-VM` parameter is used without an OSProfile. Now it does not require the `-Credential` to be provided or throw an exception.
+* Added  parameter `-ResourceIdsOnly` to `Get-AzCapacityReservationGroup` cmdlet.
+* Changed the `Set-AzVMOperatingSystem` cmdlet when the `-VM` parameter is used without an OSProfile. Now it will not throw a null reference exception when `-Credential` is not provided.
 
 ## Version 8.2.0
 * Renamed parameter `-VmId` to `-SourceId` and added `-VmId` as an alias to `New-AzRestorePointCollection` cmdlet.
