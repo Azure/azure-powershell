@@ -406,5 +406,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzFirewallPolicyDraftExplicitProxy](./New-AzFirewallPolicyDraftExplicitProxy.md)
-[New-AzFirewallPolicyDraftSnat](./New-AzFirewallPolicyDraftSnat.md)
+[New-AzFirewallPolicyExplicitProxy](./New-AzFirewallPolicyExplicitProxy.md)
+[New-AzFirewallPolicySnat](./New-AzFirewallPolicySnat.md)
