@@ -14,7 +14,7 @@ Flushes all the keys in this database and also from its linked databases.
 
 ### FlushExpanded (Default)
 ```
-Invoke-AzRedisEnterpriseCacheDatabaseFlush -ClusterName <String> -ResourceGroupName <String> [-Name <String>]
+Invoke-AzRedisEnterpriseCacheDatabaseFlush -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Id <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -22,8 +22,8 @@ Invoke-AzRedisEnterpriseCacheDatabaseFlush -ClusterName <String> -ResourceGroupN
 ### Flush
 ```
 Invoke-AzRedisEnterpriseCacheDatabaseFlush -ClusterName <String> -ResourceGroupName <String>
- -Parameter <IFlushParameters> [-Name <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Parameter <IFlushParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### FlushViaIdentity
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterName
-The name of the RedisEnterprise cluster.
+The name of the Redis Enterprise cluster.
 
 ```yaml
 Type: System.String
@@ -84,7 +84,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -99,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-The resource identifiers of all the other database resources in the georeplication group to be flushed
+The identifiers of all the other database resources in the georeplication group to be flushed.
 
 ```yaml
 Type: System.String[]
@@ -129,21 +130,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the database.
-
-```yaml
-Type: System.String
-Parameter Sets: Flush, FlushExpanded
-Aliases: DatabaseName
-
-Required: False
-Position: Named
-Default value: "default"
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -160,11 +146,11 @@ Accept wildcard characters: False
 ```
 
 ### -Parameter
-Parameters for a Redis Enterprise active geo-replication flush operation.
+Parameters for a Redis Enterprise active geo-replication flush operation
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.IFlushParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240601Preview.IFlushParameters
 Parameter Sets: Flush, FlushViaIdentity
 Aliases:
 
@@ -257,7 +243,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.IFlushParameters
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240601Preview.IFlushParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 
@@ -266,26 +252,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
-  - `[ClusterName <String>]`: The name of the RedisEnterprise cluster.
-  - `[DatabaseName <String>]`: The name of the database.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of Azure region.
-  - `[OperationId <String>]`: The ID of an ongoing async operation.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the Azure resource
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-PARAMETER <IFlushParameters>: Parameters for a Redis Enterprise active geo-replication flush operation.
-  - `[Id <String[]>]`: The resource identifiers of all the other database resources in the georeplication group to be flushed
 
 ## RELATED LINKS
 

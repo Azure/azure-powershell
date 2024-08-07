@@ -1,8 +1,8 @@
 {
-  "New-AzRedisEnterpriseCacheKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-ukqivzwn/databases/default/regenerateKey?api-version=2023-03-01-preview+1": {
+  "New-AzRedisEnterpriseCacheKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-i1awo54c/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-b7q1ojzt/databases/default/regenerateKey?api-version=2024-06-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-ukqivzwn/databases/default/regenerateKey?api-version=2023-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-i1awo54c/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-b7q1ojzt/databases/default/regenerateKey?api-version=2024-06-01-preview",
       "Content": "{\r\n  \"keyType\": \"Primary\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,29 +17,30 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "de3525f0-eaac-4427-ac1c-f40f088d7476" ],
-        "x-rp-server-mvid": [ "394d8f0c-0bbe-4942-b962-0ddcd147e40a" ],
+        "x-ms-request-id": [ "c4e5c154-ffb5-4884-b0f5-5e3a76b18ec1" ],
+        "x-rp-server-mvid": [ "90db4d93-a2aa-4ba9-87bc-9ba6ef5c0d3a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "x-ms-correlation-request-id": [ "0851dae4-1185-44dd-bf6c-d0754ec386cd" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230406T083959Z:0851dae4-1185-44dd-bf6c-d0754ec386cd" ],
-        "Date": [ "Thu, 06 Apr 2023 08:39:58 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "b1589ba6-bb06-45a0-8c9c-41ecc889e8b2" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20240806T063033Z:b1589ba6-bb06-45a0-8c9c-41ecc889e8b2" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 865C7915D313454F8295B21537E0055E Ref B: MAA201060516033 Ref C: 2024-08-06T06:30:31Z" ],
+        "Date": [ "Tue, 06 Aug 2024 06:30:33 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"primaryKey\": \"TsMx4KRFBqLrVGYZNXosHF4ng3wmtrqAZy6dZmJU9Pc=\",\r\n  \"secondaryKey\": \"K8YhQCoRsuekCFRu2lw8T0RevbNxl66q1zFYvwUcoz4=\"\r\n}",
+      "Content": "{\r\n  \"primaryKey\": \"__FAKE_PRIMARY__KEY__\",\r\n  \"secondaryKey\": \"__FAKE_SECONDARY_KEY_\"\r\n}",
       "isContentBase64": false
     }
   },
-  "New-AzRedisEnterpriseCacheKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-ukqivzwn/databases/default/regenerateKey?api-version=2023-03-01-preview+2": {
+  "New-AzRedisEnterpriseCacheKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-i1awo54c/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-b7q1ojzt/databases/default/regenerateKey?api-version=2024-06-01-preview+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-ukqivzwn/databases/default/regenerateKey?api-version=2023-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-i1awo54c/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-b7q1ojzt/databases/default/regenerateKey?api-version=2024-06-01-preview",
       "Content": "{\r\n  \"keyType\": \"Secondary\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -54,22 +55,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "45604f99-b45c-4e59-917a-24658ea2c253" ],
-        "x-rp-server-mvid": [ "394d8f0c-0bbe-4942-b962-0ddcd147e40a" ],
+        "x-ms-request-id": [ "03fc66fc-f910-440c-8982-ca7ae37e981a" ],
+        "x-rp-server-mvid": [ "90db4d93-a2aa-4ba9-87bc-9ba6ef5c0d3a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
-        "x-ms-correlation-request-id": [ "260a90b5-fdae-4cc2-a098-ec89e19c2caf" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230406T084000Z:260a90b5-fdae-4cc2-a098-ec89e19c2caf" ],
-        "Date": [ "Thu, 06 Apr 2023 08:39:59 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "458a08c2-9181-43e1-8215-b739775ee516" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20240806T063034Z:458a08c2-9181-43e1-8215-b739775ee516" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 605CD1DA805343ECB0DBD8EF7FC0EF09 Ref B: MAA201060516033 Ref C: 2024-08-06T06:30:33Z" ],
+        "Date": [ "Tue, 06 Aug 2024 06:30:34 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"primaryKey\": \"TsMx4KRFBqLrVGYZNXosHF4ng3wmtrqAZy6dZmJU9Pc=\",\r\n  \"secondaryKey\": \"vp1WL+n2Fm/W+BNRN7GV+JBiVOncdKG/xY92vPxUqOw=\"\r\n}",
+      "Content": "{\r\n  \"primaryKey\": \"__FAKE_PRIMARY__KEY__\",\r\n  \"secondaryKey\": \"__FAKE_SECONDARY_KEY_\"\r\n}",
       "isContentBase64": false
     }
   }

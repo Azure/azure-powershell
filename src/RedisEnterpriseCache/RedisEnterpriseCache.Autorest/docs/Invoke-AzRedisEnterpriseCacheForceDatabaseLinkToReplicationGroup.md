@@ -1,55 +1,74 @@
 ---
 external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/invoke-azredisenterprisecacheforcedatabaseunlink
+online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/invoke-azredisenterprisecacheforcedatabaselinktoreplicationgroup
 schema: 2.0.0
 ---
 
-# Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink
+# Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup
 
 ## SYNOPSIS
-Forcibly removes the link to the specified database resource.
+Forcibly recreates an existing database on the specified cluster, and rejoins it to an existing replication group.
+**IMPORTANT NOTE:** All data in this database will be discarded, and the database will temporarily be unavailable while rejoining the replication group.
 
 ## SYNTAX
 
-### ForceExpanded (Default)
+### ForceViaIdentity (Default)
 ```
-Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ClusterName <String> -ResourceGroupName <String>
- -Id <String[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -InputObject <IRedisEnterpriseCacheIdentity>
+ -Parameter <IForceLinkParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Force
 ```
-Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ClusterName <String> -ResourceGroupName <String>
- -Parameter <IForceUnlinkParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -ClusterName <String> -DatabaseName <String>
+ -ResourceGroupName <String> -Parameter <IForceLinkParameters> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ForceViaIdentity
+### ForceExpanded
 ```
-Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -InputObject <IRedisEnterpriseCacheIdentity>
- -Parameter <IForceUnlinkParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -ClusterName <String> -DatabaseName <String>
+ -ResourceGroupName <String> -GroupNickname <String> -LinkedDatabase <ILinkedDatabase[]>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ForceViaIdentityExpanded
 ```
-Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -InputObject <IRedisEnterpriseCacheIdentity> -Id <String[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -InputObject <IRedisEnterpriseCacheIdentity>
+ -GroupNickname <String> -LinkedDatabase <ILinkedDatabase[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Forcibly removes the link to the specified database resource.
+Forcibly recreates an existing database on the specified cluster, and rejoins it to an existing replication group.
+**IMPORTANT NOTE:** All data in this database will be discarded, and the database will temporarily be unavailable while rejoining the replication group.
 
 ## EXAMPLES
 
-### Example 1: Unlink database
+### Example 1: {{ Add title here }}
 ```powershell
-Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ResourceGroupName "MyGroup" -ClusterName "MyCache3" -Id @("databaseId")
+{{ Add code here }}
 ```
 
-Forcibly removes the link to the database resource whose id is given, from the georeplication group the specified cache belongs to
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -83,6 +102,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DatabaseName
+The name of the Redis Enterprise database.
+
+```yaml
+Type: System.String
+Parameter Sets: Force, ForceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -99,11 +133,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-The resource IDs of the database resources to be unlinked.
+### -GroupNickname
+The name of the group of linked database resources.
+This should match the existing replication group name.
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: ForceExpanded, ForceViaIdentityExpanded
 Aliases:
 
@@ -130,6 +165,23 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -LinkedDatabase
+The resource IDs of the databases that are expected to be linked and included in the replication group.
+This parameter is used to validate that the linking is to the expected (unlinked) part of the replication group, if it is splintered.
+To construct, see NOTES section for LINKEDDATABASE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240601Preview.ILinkedDatabase[]
+Parameter Sets: ForceExpanded, ForceViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -146,11 +198,11 @@ Accept wildcard characters: False
 ```
 
 ### -Parameter
-Parameters for a Redis Enterprise Active Geo Replication Force Unlink operation.
+Parameters for reconfiguring active geo-replication, of an existing database that was previously unlinked from a replication group.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240601Preview.IForceUnlinkParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240601Preview.IForceLinkParameters
 Parameter Sets: Force, ForceViaIdentity
 Aliases:
 
@@ -158,21 +210,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -243,7 +280,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240601Preview.IForceUnlinkParameters
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240601Preview.IForceLinkParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 

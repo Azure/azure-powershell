@@ -1,17 +1,17 @@
 {
-  "Remove-AzRedisEnterpriseCacheDatabase+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-zh8bj3fi?api-version=2023-03-01-preview+1": {
+  "Remove-AzRedisEnterpriseCacheDatabase+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-i1awo54c/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-a0lvx1bq?api-version=2024-06-01-preview+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-zh8bj3fi?api-version=2023-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-i1awo54c/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-a0lvx1bq?api-version=2024-06-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "161" ],
-        "x-ms-client-request-id": [ "f9ffa76a-221a-419e-b2ec-76e69afebac3" ],
+        "x-ms-unique-id": [ "143" ],
+        "x-ms-client-request-id": [ "e21158f8-1f4c-42be-8357-578c08e0471e" ],
         "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
         "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.RedisEnterpriseCache/1.0.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.4", "Az.RedisEnterpriseCache/1.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,15 +22,15 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "87467f83-95f5-42dc-825d-3a9d45bc3ef7" ],
-        "x-rp-server-mvid": [ "394d8f0c-0bbe-4942-b962-0ddcd147e40a" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-request-id": [ "451f71ec-6d4b-4763-93b8-3a6d293d7c15" ],
+        "x-ms-correlation-request-id": [ "451f71ec-6d4b-4763-93b8-3a6d293d7c15" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20240806T064709Z:451f71ec-6d4b-4763-93b8-3a6d293d7c15" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
-        "x-ms-correlation-request-id": [ "9dab5894-4e3c-4479-aa7c-d7ee093da128" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230406T090127Z:9dab5894-4e3c-4479-aa7c-d7ee093da128" ],
-        "Date": [ "Thu, 06 Apr 2023 09:01:26 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 706816267D584A69935F19DEFE840C9F Ref B: MAA201060516033 Ref C: 2024-08-06T06:47:09Z" ],
+        "Date": [ "Tue, 06 Aug 2024 06:47:09 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]

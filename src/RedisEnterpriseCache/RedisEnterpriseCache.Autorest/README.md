@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the RedisEnterpriseCache service.
 
 ---
-## Status
-[![Az.RedisEnterpriseCache](https://img.shields.io/powershellgallery/v/Az.RedisEnterpriseCache.svg?style=flat-square&label=Az.RedisEnterpriseCache "Az.RedisEnterpriseCache")](https://www.powershellgallery.com/packages/Az.RedisEnterpriseCache/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -17,7 +14,7 @@ This directory contains the PowerShell module for the RedisEnterpriseCache servi
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -35,12 +32,12 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: aef78a6d0f0bc49b42327621fc670200d7545816
+commit: edf14cc0a577f6b9c4e3ce018cec0c383e64b7b0
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/preview/2023-03-01-preview/redisenterprise.json
+  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/preview/2024-06-01-preview/redisenterprise.json
 
 module-version: 1.0.0
 title: RedisEnterpriseCache
