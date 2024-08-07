@@ -20,7 +20,7 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
  [-IdentityType <String>] [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>]
  [-KeyName <String>] [-KeyVersion <String>] [-KeyVaultUri <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
- [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableExtendedGroups <Boolean>]
+ [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>]
  [-EnableHierarchicalNamespace <Boolean>] [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>]
  [-EnableLargeFileShare] [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AsJob]
  [-EncryptionKeyTypeForTable <String>] [-EncryptionKeyTypeForQueue <String>] [-RequireInfrastructureEncryption]
@@ -40,7 +40,7 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
  [-IdentityType <String>] [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>]
  [-KeyName <String>] [-KeyVersion <String>] [-KeyVaultUri <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
- [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableExtendedGroups <Boolean>]
+ [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>]
  [-EnableHierarchicalNamespace <Boolean>] [-EnableLargeFileShare] [-PublishMicrosoftEndpoint <Boolean>]
  [-PublishInternetEndpoint <Boolean>] -EnableAzureActiveDirectoryKerberosForFile <Boolean>
  [-ActiveDirectoryDomainName <String>] [-ActiveDirectoryDomainGuid <String>] [-AsJob]
@@ -61,7 +61,7 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
  [-IdentityType <String>] [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>]
  [-KeyName <String>] [-KeyVersion <String>] [-KeyVaultUri <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
- [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableExtendedGroups <Boolean>]
+ [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>]
  [-EnableHierarchicalNamespace <Boolean>] [-EnableLargeFileShare] [-PublishMicrosoftEndpoint <Boolean>]
  [-PublishInternetEndpoint <Boolean>] [-EnableActiveDirectoryDomainServicesForFile <Boolean>]
  [-ActiveDirectoryDomainName <String>] [-ActiveDirectoryNetBiosDomainName <String>]
@@ -782,7 +782,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableExtendedGroups
+### -EnableExtendedGroup
 Enables extended group support with local users feature, if set to true.
 
 ```yaml

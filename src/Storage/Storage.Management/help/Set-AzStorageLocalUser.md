@@ -17,7 +17,7 @@ Creates or updates a specified local user in a storage account.
 Set-AzStorageLocalUser [-ResourceGroupName] <String> [-StorageAccountName] <String> -UserName <String>
  [-HomeDirectory <String>] [-SshAuthorizedKey <PSSshPublicKey[]>] [-PermissionScope <PSPermissionScope[]>]
  [-HasSharedKey <Boolean>] [-HasSshKey <Boolean>] [-HasSshPassword <Boolean>] [-GroupId <Int32>]
- [-AllowAclAuthorization <Boolean>] [-IsNfSv3Enabled <Boolean>] [-ExtendedGroups <Int32[]>]
+ [-AllowAclAuthorization <Boolean>] [-IsNfSv3Enabled <Boolean>] [-ExtendedGroup <Int32[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Set-AzStorageLocalUser [-ResourceGroupName] <String> [-StorageAccountName] <Stri
 Set-AzStorageLocalUser -StorageAccount <PSStorageAccount> -UserName <String> [-HomeDirectory <String>]
  [-SshAuthorizedKey <PSSshPublicKey[]>] [-PermissionScope <PSPermissionScope[]>] [-HasSharedKey <Boolean>]
  [-HasSshKey <Boolean>] [-HasSshPassword <Boolean>] [-GroupId <Int32>] [-AllowAclAuthorization <Boolean>]
- [-IsNfSv3Enabled <Boolean>] [-ExtendedGroups <Int32[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-IsNfSv3Enabled <Boolean>] [-ExtendedGroup <Int32[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -108,7 +108,7 @@ This command creates or updates a local user by input permission scope and ssh k
 
 ### Example 3: Create or update a nfsv3 local user with extended groups
 ```powershell
-Set-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName nfsv3_100 -HomeDirectory /test -IsNfSv3Enabled $true -ExtendedGroups 1,2,3
+Set-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName nfsv3_100 -HomeDirectory /test -IsNfSv3Enabled $true -ExtendedGroup 1,2,3
 ```
 
 ```output
@@ -116,7 +116,7 @@ ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
 Name      Sid                                          HomeDirectory HasSharedKey HasSshKey HasSshPassword PermissionScopes UserId GroupId AllowAclAuthorization
 ----      ---                                          ------------- ------------ --------- -------------- ---------------- ------ ------- ---------------------
-nfsv3_100 S-1-2-0-3080345243-855858100-3794096380-1001 /test   
+nfsv3_100 S-1-2-0-3080345243-855858100-3794096380-1001 /test
 ```
 
 This command creates or updates a nfsv3 local user with extended groups.
@@ -153,7 +153,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExtendedGroups
+### -ExtendedGroup
 Sets extended Groups of which user is part of, only for NFSv3 User.
 
 ```yaml

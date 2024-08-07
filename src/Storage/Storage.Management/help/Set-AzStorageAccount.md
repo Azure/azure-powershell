@@ -26,7 +26,7 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
  [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
- [-EnableLocalUser <Boolean>] [-EnableExtendedGroups <Boolean>] [-AllowedCopyScope <String>] [-AsJob]
+ [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>] [-AllowedCopyScope <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -44,7 +44,7 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
  [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
- [-EnableLocalUser <Boolean>] [-EnableExtendedGroups <Boolean>] [-AllowedCopyScope <String>] [-AsJob]
+ [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>] [-AllowedCopyScope <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -61,7 +61,7 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>]
  [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>]
  [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>]
- [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableExtendedGroups <Boolean>]
+ [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>]
  [-AllowedCopyScope <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -82,7 +82,7 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>]
  [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>]
  [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>]
- [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableExtendedGroups <Boolean>]
+ [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>]
  [-AllowedCopyScope <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -800,7 +800,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableExtendedGroups
+### -EnableExtendedGroup
 Enables extended group support with local users feature, if set to true.
 
 ```yaml

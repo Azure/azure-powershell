@@ -251,18 +251,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = false,
             HelpMessage = "Enables extended group support with local users feature, if set to true.")]
         [ValidateNotNullOrEmpty]
-        public bool EnableExtendedGroups
+        public bool EnableExtendedGroup
         {
             get
             {
-                return enableExtendedGroups != null ? enableExtendedGroups.Value : false;
+                return enableExtendedGroup != null ? enableExtendedGroup.Value : false;
             }
             set
             {
-                enableExtendedGroups = value;
+                enableExtendedGroup = value;
             }
         }
-        private bool? enableExtendedGroups = null;
+        private bool? enableExtendedGroup = null;
 
         [Parameter(
             Mandatory = false,
@@ -932,9 +932,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 createParameters.IsLocalUserEnabled = this.enableLocalUser;
             }
-            if (this.enableExtendedGroups != null)
+            if (this.enableExtendedGroup != null)
             {
-                createParameters.EnableExtendedGroups = this.enableExtendedGroups;
+                createParameters.EnableExtendedGroups = this.enableExtendedGroup;
             }
             if (this.AllowedCopyScope != null)
             {

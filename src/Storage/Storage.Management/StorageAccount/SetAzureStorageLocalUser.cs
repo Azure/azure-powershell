@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(Mandatory = false,
             HelpMessage = "Sets extended Groups of which user is part of, only for NFSv3 User.")]
         [ValidateNotNullOrEmpty]
-        public int[] ExtendedGroups { get; set; }
+        public int[] ExtendedGroup { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     PermissionScopes = this.PermissionScope,
                     SshAuthorizedKeys = this.SshAuthorizedKey,
                     IsNfSv3Enabled = this.isNfSv3Enabled,
-                    ExtendedGroups = this.ExtendedGroups is null ? null : this.ExtendedGroups.Cast<int?>().ToArray(),
+                    ExtendedGroups = this.ExtendedGroup is null ? null : this.ExtendedGroup.Cast<int?>().ToArray(),
                     GroupId = this.GroupId,
                     AllowAclAuthorization = this.AllowAclAuthorization,
                 };

@@ -2463,7 +2463,7 @@ function Test-AzureStorageLocalUserNFSV3
 
         New-AzResourceGroup -Name $rgname -Location $loc;
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableSftp $true -EnableHierarchicalNamespace $true -EnableNfsV3 $true -EnableLocalUser $true `
-                               -EnableExtendedGroups $true -NetworkRuleSet (@{bypass="AzureServices";defaultAction="deny"})  
+                               -EnableExtendedGroup $true -NetworkRuleSet (@{bypass="AzureServices";defaultAction="deny"})  
 
         Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
         Assert-AreEqual $stoname $sto.StorageAccountName;
@@ -2475,15 +2475,15 @@ function Test-AzureStorageLocalUserNFSV3
         Assert-AreEqual $true $sto.EnableLocalUser;
         Assert-AreEqual $true $sto.EnableExtendedGroups;
         
-        Retry-IfException { $global:sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableExtendedGroups $false }
+        Retry-IfException { $global:sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableExtendedGroup $false }
         Assert-AreEqual $false $sto.EnableExtendedGroups;
         
-        Retry-IfException { $global:sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableExtendedGroups $true }
+        Retry-IfException { $global:sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableExtendedGroup $true }
         Assert-AreEqual $true $sto.EnableExtendedGroups;
         
         # create local user
 		$userName1 = "nfsv3_70005"
-		$localuser1 = Set-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1 -HomeDirectory /test -IsNfSv3Enabled $true -ExtendedGroups 1,2,3,4,5 
+		$localuser1 = Set-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1 -HomeDirectory /test -IsNfSv3Enabled $true -ExtendedGroup 1,2,3,4,5 
         Assert-AreEqual $userName1 $localuser1.Name;
         Assert-AreEqual "/test" $localuser1.HomeDirectory;
         Assert-AreEqual 5 $localuser1.ExtendedGroups.Count;
@@ -2500,7 +2500,7 @@ function Test-AzureStorageLocalUserNFSV3
         Assert-Null $localuser2.SshAuthorizedKeys;
 
         # update local user
-		$localuser1 = Set-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1 -HomeDirectory /test  -ExtendedGroups 1,2,3
+		$localuser1 = Set-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1 -HomeDirectory /test  -ExtendedGroup 1,2,3
         Assert-AreEqual $userName1 $localuser1.Name;
         Assert-AreEqual "/test" $localuser1.HomeDirectory;
         Assert-AreEqual 3 $localuser1.ExtendedGroups.Count;

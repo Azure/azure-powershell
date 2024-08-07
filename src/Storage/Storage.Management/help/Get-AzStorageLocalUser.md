@@ -99,7 +99,7 @@ ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 Name        Sid                                           HomeDirectory HasSharedKey HasSshKey HasSshPassword PermissionScopes UserId GroupId AllowAclAuthorization
 ----        ---                                           ------------- ------------ --------- -------------- ---------------- ------ ------- ---------------------
 nfsv3_100   S-1-2-0-3080345243-855858100-3794096380-1001  /test         False        False     False                           1001                                
-nfsv3_70005 S-1-2-0-1439193041-1066083860-1154209853-1000 /test         False        False     False                           1000        
+nfsv3_70005 S-1-2-0-1439193041-1066083860-1154209853-1000 /test         False        False     False                           1000
 ```
 
 This command lists all nfsv3 local users in a storage account.
