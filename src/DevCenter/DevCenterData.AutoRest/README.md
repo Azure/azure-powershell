@@ -43,8 +43,6 @@ use-extension:
 
 directive:
   - no-inline:
-    - DevBox
-    - AzureCoreFoundationsError
     - AzureCoreFoundationsInnerError
   - where:
       variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))

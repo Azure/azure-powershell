@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get a customization task by endpoint
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterUserDevBoxCustomizationTaskLog -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -TaskName choco -DevBoxName MyDevBox -CustomizationGroupName Provisioning -CustomizationTaskId "91835dc0-ef5a-4f58-9e3a-099aea8481f4"
 ```
+This command gets the logs of the customization task "91835dc0-ef5a-4f58-9e3a-099aea8481f4" for the customization group "Provsioning" in the dev box "MyDevBox".
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a customization task by dev center
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterUserDevBoxCustomizationTaskLog -DevCenterName Contoso -ProjectName DevProject -TaskName choco -DevBoxName MyDevBox -CustomizationGroupName Provisioning -CustomizationTaskId "91835dc0-ef5a-4f58-9e3a-099aea8481f4"
 ```
+This command gets the logs of the customization task "91835dc0-ef5a-4f58-9e3a-099aea8481f4" for the customization group "Provsioning" in the dev box "MyDevBox".
 
-```output
-{{ Add output here }}
+### Example 3: Get a customization task by endpoint and InputObject
+```powershell
+$customizationTaskLogInput = @{"CustomizationGroupName" = "Provisioning"; "TaskName" = "choco"; "ProjectName" ="DevProject"; "TaskName" = "choco";  "DevBoxName" = "MyDevBox"; "UserId" = "me"; "CustomizationTaskId" = "91835dc0-ef5a-4f58-9e3a-099aea8481f4" }
+Get-AzDevCenterUserDevBoxCustomizationTaskLog -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $customizationTaskInput
 ```
+This command gets the logs of the customization task "91835dc0-ef5a-4f58-9e3a-099aea8481f4" for the customization group "Provsioning" in the dev box "MyDevBox".
 
-{{ Add description here }}
-
+### Example 4: Get a customization task by dev center and InputObject
+```powershell
+$customizationTaskLogInput = @{"CustomizationGroupName" = "Provisioning"; "TaskName" = "choco"; "ProjectName" = "DevProject"; "TaskName" = "choco"; "DevBoxName" = "MyDevBox"; "UserId" = "786a823c-8037-48ab-89b8-8599901e67d0"; "CustomizationTaskId" = "91835dc0-ef5a-4f58-9e3a-099aea8481f4" }
+Get-AzDevCenterUserDevBoxCustomizationTaskLog -DevCenterName Contoso -InputObject $customizationTaskInput 
+```
+This command gets the logs of the customization task "91835dc0-ef5a-4f58-9e3a-099aea8481f4" for the customization group "Provsioning" in the dev box "MyDevBox".
