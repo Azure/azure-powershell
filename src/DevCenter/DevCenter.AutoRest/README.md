@@ -189,6 +189,31 @@ directive:
       $['200'] = {
         "description": "OK. The request has succeeded."
       }
+  #Use v3 for OperationStatus, remove this for breaking change version
+  - from: swagger-document
+    where: $.definitions
+    transform: >
+      $['OperationStatus'] = {
+        "description": "The current status of an async operation",
+        "type": "object",
+        "allOf": [
+          {
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/490e7fec728b018ff3ab103a6e1cb09644452ccf/specification/common-types/resource-management/v3/types.json#/definitions/OperationStatusResult"
+          }
+        ],
+        "properties": {
+          "resourceId": {
+            "description": "The id of the resource.",
+            "type": "string",
+            "readOnly": true
+          },
+          "properties": {
+            "description": "Custom operation properties, populated only for a successful operation.",
+            "type": "object",
+            "readOnly": true
+          }
+        }
+      }
   - where:
       parameter-name: Top
     hide: true
