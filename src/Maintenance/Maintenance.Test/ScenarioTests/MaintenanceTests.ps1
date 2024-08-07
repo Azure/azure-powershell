@@ -16,6 +16,84 @@
 .SYNOPSIS
 Test New-AzMaintenanceConfiguration, Get-AzMaintenanceConfiguration, Remove-AzMaintenanceConfiguration
 #>
+function Test-GetAzMaintenanceConfiguration
+{
+    $resourceGroupName = Get-RandomResourceGroupName
+    $maintenanceConfigurationName = Get-RandomMaintenanceConfigurationName
+    $location = "eastus2euap"
+    $maintenanceScope = "Host"
+    $visibility = "Custom"
+    $startDateTime = "2024-08-05 12:30"
+    $timezone = "Pacific Standard Time"
+    $recurEvery = "Day"
+    $duration = "05:00"
+    $expirationDateTime = "9999-12-31 23:59"
+    
+    try
+    {
+        # Create Resource Group
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        Write-Host "Created Resource Group $resourceGroupName in $location"
+
+        # Create Maintenance Configuration
+        $maintenanceConfiguration = New-AzMaintenanceConfiguration -ResourceGroupName $resourceGroupName -Name $maintenanceConfigurationName -MaintenanceScope $maintenanceScope -Location $location -Visibility $visibility -StartDateTime $startDateTime -Timezone $timezone -RecurEvery $recurEvery -Duration $duration -ExpirationDateTime $expirationDateTime
+        Write-Host "Created Maintenance Configuration $maintenanceConfigurationName"
+        
+        # Validate Maintenance Configuration
+        Assert-AreEqual $maintenanceConfiguration.Name $maintenanceConfigurationName
+        Assert-AreEqual $maintenanceConfiguration.Location $location
+        Assert-AreEqual $maintenanceConfiguration.MaintenanceScope $maintenanceScope
+        Assert-AreEqual $maintenanceConfiguration.Visibility $visibility
+        Assert-AreEqual $maintenanceConfiguration.StartDateTime $startDateTime
+        Assert-AreEqual $maintenanceConfiguration.Timezone $timezone
+        Assert-AreEqual $maintenanceConfiguration.RecurEvery $recurEvery
+        Assert-AreEqual $maintenanceConfiguration.Duration $duration
+        Assert-AreEqual $maintenanceConfiguration.ExpirationDateTime $expirationDateTime
+
+        # Retrieve and Validate Maintenance Configuration with ResourceGroupName
+        $retrievedMaintenanceConfiguration = Get-AzMaintenanceConfiguration -ResourceGroupName $resourceGroupName -Name $maintenanceConfigurationName
+        
+        # Validate the type of the returned object
+        if ($retrievedMaintenanceConfiguration -isnot [System.Collections.IList]) {
+            Write-Host "The retrieved maintenance configuration with ResourceGroupName is not of type list."
+        } else {
+            throw "The retrieved maintenance configuration with ResourceGroupName is of type list."
+        }
+
+        Assert-AreEqual $retrievedMaintenanceConfiguration.Name $maintenanceConfigurationName
+        Assert-AreEqual $retrievedMaintenanceConfiguration.Location $location
+        Assert-AreEqual $retrievedMaintenanceConfiguration.MaintenanceScope $maintenanceScope
+        Assert-AreEqual $retrievedMaintenanceConfiguration.Visibility $visibility
+        Assert-AreEqual $retrievedMaintenanceConfiguration.StartDateTime $startDateTime
+        Assert-AreEqual $retrievedMaintenanceConfiguration.Timezone $timezone
+        Assert-AreEqual $retrievedMaintenanceConfiguration.RecurEvery $recurEvery
+        Assert-AreEqual $retrievedMaintenanceConfiguration.Duration $duration
+        Assert-AreEqual $retrievedMaintenanceConfiguration.ExpirationDateTime $expirationDateTime
+
+        # Retrieve Maintenance Configuration without ResourceGroupName and validate it returns a list
+        $maintenanceConfigurations = Get-AzMaintenanceConfiguration -Name $maintenanceConfigurationName
+
+        # Validate that the returned object is a list
+        if ($maintenanceConfigurations -isnot [System.Collections.IList]) {
+            Write-Host "The retrieved maintenance configuration without ResourceGroupName is of type list."
+        } else {
+            throw "The retrieved maintenance configuration without ResourceGroupName is not of type list."
+        }
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzMaintenanceConfiguration -ResourceGroupName $resourceGroupName -Name $maintenanceConfigurationName -Force
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+        Write-Host "Cleaned up Resource Group $resourceGroupName and Maintenance Configuration $maintenanceConfigurationName"
+    }
+}
+
+
+<#
+.SYNOPSIS
+Test New-AzMaintenanceConfiguration, Get-AzMaintenanceConfiguration, Remove-AzMaintenanceConfiguration
+#>
 function Test-AzMaintenanceConfiguration
 {
     $resourceGroupName = Get-RandomResourceGroupName
