@@ -32,7 +32,7 @@ New-AzMLWorkspaceDataVersion  -ResourceGroupName ml-rg-test -WorkspaceName mlwor
 ```output
 Name SystemDataCreatedAt SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
 ---- ------------------- -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-2    6/1/2022 3:11:06 PM Lucas Yao (Wicresoft North America) User                    6/1/2022 3:11:06 PM                                                            ml-rg-test
+2    6/1/2022 3:11:06 PM UserName (Example)         User                    6/1/2022 3:11:06 PM                                                            ml-rg-test
 ```
 
 Create or update data version
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 
 ### -DataUri
 [Required] Uri of the data.
-Usage/meaning depends on Microsoft.MachineLearning.ManagementFrontEnd.Contracts.V20220501.Assets.DataVersionBase.DataType
+Example: https://go.microsoft.com/fwlink/linkid=2202330
 
 ```yaml
 Type: System.String
@@ -71,7 +71,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -275,11 +276,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDataVersionBase
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDataVersionBase
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

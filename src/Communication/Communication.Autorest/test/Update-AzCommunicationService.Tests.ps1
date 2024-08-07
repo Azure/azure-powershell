@@ -14,7 +14,10 @@ while(-not $mockingPath) {
 Describe 'Update-AzCommunicationService' {
     It 'UpdateExpanded' {
         $tag = @{$env.exampleKey1=$env.exampleValue1; $env.exampleKey2=$env.exampleValue2}
-        $UpdatedAzCommunicationService = Update-AzCommunicationService -Name $env.persistentResourceName -ResourceGroupName $env.resourceGroup -Tag $tag
+        $linkedDomains1 = @(
+	        $env.linkedDomain
+        )
+        $UpdatedAzCommunicationService = Update-AzCommunicationService -Name $env.persistentResourceName -ResourceGroupName $env.resourceGroup -Tag $tag -LinkedDomain $linkedDomains1
 
         $UpdatedAzCommunicationService.Tag[$env.exampleKey1] | Should -Be $env.exampleValue1
         $UpdatedAzCommunicationService.Tag[$env.exampleKey2] | Should -Be $env.exampleValue2

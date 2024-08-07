@@ -1,0 +1,2 @@
+  "Module","Severity","ResourceType","SubResourceType","Command","Description"
+  "Az.Security","1","Microsoft.Security","defenderForStorageSettings","Get-AzSecurityDefenderForStorage","settingName is defined in path but cannot find in example"
