@@ -32,7 +32,7 @@ Syncs templates for a template source.
 
 ### Example 1: Sync a project catalog
 ```powershell
-Sync-AzDevCenterAdminProjectCatalog -ProjectName DevProject -Name CentralCatalog -ResourceGroupName testRg
+Sync-AzDevCenterAdminProjectCatalog -ProjectName DevProject -CatalogName CentralCatalog -ResourceGroupName testRg
 ```
 
 This command syncs the project catalog named "CentralCatalog".
