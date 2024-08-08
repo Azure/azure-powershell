@@ -14,6 +14,7 @@ function Get-CsprojFromModule {
     $GeneratedDirectory = Join-Path $RepoRoot 'generated'
     $srcModulePath = @()
     $generatedModulePath = @()
+
     Write-Host "Finding modules under /src and /generated ..." -ForegroundColor DarkGreen
     foreach ($moduleName in $BuildModuleList) {
         $src = Join-Path $SourceDirectory $moduleName
@@ -28,29 +29,12 @@ function Get-CsprojFromModule {
         }
     }
 
-    $testCsprojPattern = @()
-    foreach ($testModule in $TestModuleList) {
-        if ($testModule -in $renamedModules.Keys) {
-            foreach ($renamedTestModule in $renamedModules[$testModule]) {
-                $testCsprojPattern += "^*.$renamedTestModule.Test.csproj$"
-            }
-        } else {
-            $testCsprojPattern += "^*.$testModule.Test.csproj$"
-        }
-    }
-    $testCsprojPattern = ($testCsprojPattern | Join-String -Separator '|')
-
     Write-Host "Finding projects to include ..." -ForegroundColor DarkGreen
     $result = @()
     foreach ($module in $srcModulePath) {
-        foreach ($csproj in (Get-ChildItem -Path $module -Recurse -Filter *.csproj -Exclude 'Az.*.csproj')) {
+        foreach ($csproj in (Get-ChildItem -Path $module -Recurse -Filter *.csproj -Exclude 'Az.*.csproj', "*.Test.csproj")) {
             $csprojPath = $csproj.FullName
-            # Release do not need test, exclude all test projects
-            $releaseReturnCondition = ("Release" -eq $Configuration) -and ($csprojPath -match ".*Test.csproj$")
-            # Debug only include: 1. not test project 2. is test projects and only in calculated test project list 
-            $debugReturnCondition = ("Debug" -eq $Configuration) -and ($csprojPath -match ".*Test.csproj$") -and ($testCsprojPattern.Length -gt 0) -and ($csprojPath -notmatch $testCsprojPattern)
-            $uniqueNameReturnCondition = $csprojPath -in $result
-            if ($uniqueNameReturnCondition -or $releaseReturnCondition -or $debugReturnCondition) {
+            if ($csprojPath -in $result) {
                 continue
             }
             $result += $csprojPath
@@ -67,6 +51,16 @@ function Get-CsprojFromModule {
             }
             $result += $csprojPath
             Write-Host "Including project: $($csprojPath)" -ForegroundColor Cyan
+        }
+    }
+
+    foreach ($testModule in $TestModuleList) {
+        if ($testModule -in $renamedModules.keys) {
+            foreach ($renamedTestModule in $renamedModules[$testModule]) {
+                result += Join-Path $SourceDirectory $testModule $renamedTestModule "$renamedTestModule.Test.csproj"
+            }
+        } else {
+            result += Join-Path $SourceDirectory $testModule $testModule "$testModule.Test.csproj"
         }
     }
 
