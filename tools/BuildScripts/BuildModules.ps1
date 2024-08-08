@@ -120,19 +120,6 @@ switch ($PSCmdlet.ParameterSetName) {
 $TargetModule = $TargetModule | Select-Object -Unique
 $testModule = $testModule | Select-Object -Unique
 
-if ($Configuration -eq 'Debug') {
-    $testCsprojFiles = Get-CsprojFromModule -BuildModuleList $testModule -TestModuleList $testModule -RepoRoot $RepoRoot -Configuration $Configuration
-    $testSln = Join-Path $RepoArtifacts "Azure.PowerShell.Test.sln"
-    if (Test-Path $testSln) {
-        Remove-Item $testSln -Force
-    }
-    & dotnet new sln -n Azure.PowerShell.Test -o $RepoArtifacts --force
-    foreach ($file in $testCsprojFiles) {
-        & dotnet sln $testSln add "$file"
-    }
-    Write-Output "Modules are added to test sln file"
-}
-
 $buildCsprojFiles = Get-CsprojFromModule -BuildModuleList $TargetModule -RepoRoot $RepoRoot -Configuration $Configuration
 # Prepare autorest based modules
 $prepareScriptPath = Join-Path $toolDirectory 'BuildScripts' 'PrepareAutorestModule.ps1'
@@ -165,6 +152,17 @@ if ('Release' -eq $Configuration) {
     $BuildAction = 'publish'
 } else {
     $BuildAction = 'build'
+
+    $testCsprojFiles = Get-CsprojFromModule -TestModuleList $testModule -RepoRoot $RepoRoot -Configuration $Configuration
+    $testSln = Join-Path $RepoArtifacts "Azure.PowerShell.Test.sln"
+    if (Test-Path $testSln) {
+        Remove-Item $testSln -Force
+    }
+    & dotnet new sln -n Azure.PowerShell.Test -o $RepoArtifacts --force
+    foreach ($file in $testCsprojFiles) {
+        & dotnet sln $testSln add "$file"
+    }
+    Write-Output "Modules are added to test sln file"
 }
 
 $buildCmdResult = "dotnet $BuildAction $Buildsln -c $Configuration -fl '/flp1:logFile=$LogFile;verbosity=quiet'"
