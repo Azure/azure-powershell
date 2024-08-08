@@ -1209,6 +1209,22 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
+              label: ConnectedMachine
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: ConnectedMachine
+        then:
+        - mentionUsers:
+            mentionees:
+            - raghushantha
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
               label: Consumption
         - hasLabel:
             label: Service Attention
@@ -1565,6 +1581,8 @@ configuration:
         - mentionUsers:
             mentionees:
             - edwinc
+            - mvvsubbu
+            - v-vyedavelly
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -3216,6 +3234,25 @@ configuration:
         - mentionUsers:
             mentionees:
             - AzmonLogA
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: Oracle
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Oracle
+        then:
+        - mentionUsers:
+            mentionees:
+            - v-rvilathurs
+            - v-jamcheung
+            - v-eelhomsi
+            - v-adhenry
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
