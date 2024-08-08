@@ -48,7 +48,7 @@ function Get-CsprojFromModule {
             # Release do not need test, exclude all test projects
             $releaseReturnCondition = ("Release" -eq $Configuration) -and ($csprojPath -match ".*Test.csproj$")
             # Debug only include: 1. not test project 2. is test projects and only in calculated test project list 
-            $debugReturnCondition = ("Debug" -eq $Configuration) -and ($csprojPath -match ".*Test.csproj$") -and ($csprojPath -notmatch $testCsprojPattern)
+            $debugReturnCondition = ("Debug" -eq $Configuration) -and ($csprojPath -match ".*Test.csproj$") -and ($testCsprojPattern.Length -gt 0) -and ($csprojPath -notmatch $testCsprojPattern)
             $uniqueNameReturnCondition = $csprojPath -in $result
             if ($uniqueNameReturnCondition -or $releaseReturnCondition -or $debugReturnCondition) {
                 continue
