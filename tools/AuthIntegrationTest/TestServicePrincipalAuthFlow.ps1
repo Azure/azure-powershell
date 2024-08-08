@@ -1,5 +1,22 @@
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
 [CmdletBinding()]
 param (
+    [Parameter(Mandatory = $true)]
+    [string]
+    $TenantId,
+
     [Parameter(ParameterSetName = 'CertificateFile', Mandatory = $true)]
     [Switch]
     $UseCertificateFile,
@@ -38,9 +55,11 @@ param (
     [string]
     $AzAccountsVersionTo,
 
+    [Parameter()]
     [Switch]
     $RunSmokeTest,
 
+    [Parameter()]
     [Switch]
     $RunInAutomation
 )
@@ -74,9 +93,7 @@ $importAzAccountsTo = "Import-Module Az.Accounts -RequiredVersion $accountsTo`n"
 $getToken = "Get-AzAccessToken`n"
 $getAzAcountVersion = "Get-Module -Name Az.Accounts`n"
 
-$baseCommand = @"
-."$PSScriptRoot/ConnectAzAccountLiveTest.ps1" -ServicePrincipalName "AzAccountsTest" -CredentialPrefix "AzAccountsTest"
-"@
+$baseCommand = ".'$PSScriptRoot/ServicePrincipalAuthFlow.ps1' -ServicePrincipalName 'AzAccountsTest' -CredentialPrefix 'AzAccountsTest' -TenantId ${TenantId}"
 
 $smokeTest = {
     try {
@@ -219,11 +236,11 @@ if ($RunSmokeTest)
 {
     Write-Host '--------------------Run Smoke Test----------------------------------------'
     Write-Host 'Run smoke test using the test version:'
-    Invoke-PowerShellCommand -ScriptBlock "`{$importAzAccountsTo + $smokeTest`}" -UseWindowsPowerShell:$useWindowsPowerShell
+    Invoke-PowerShellCommand -ScriptBlock "`{${importAzAccountsTo}`n${smokeTest}`}" -UseWindowsPowerShell:$useWindowsPowerShell
 }
 else
 {
     Write-Host '--------------------Run Short Test----------------------------------------'
     Write-Host 'Run the management plane and data plane cmdlets'
-    Invoke-PowerShellCommand -ScriptBlock "`{$importAzAccountsTo + $shortTest`}" -UseWindowsPowerShell:$useWindowsPowerShell
+    Invoke-PowerShellCommand -ScriptBlock "`{${importAzAccountsTo}`n${shortTest}`}" -UseWindowsPowerShell:$useWindowsPowerShell
 }

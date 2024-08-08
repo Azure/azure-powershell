@@ -1,5 +1,22 @@
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
 [CmdletBinding()]
 param (
+    [Parameter(Mandatory = $true)]
+    [string]
+    $TenantId,
+
     [Parameter(ParameterSetName = 'CertificateFile', Mandatory = $true)]
     [Switch]
     $UseCertificateFile,
@@ -43,20 +60,15 @@ param (
     $CredentialPrefix,
 
     [Parameter()]
-    [string]
-    $TenantId,
-
-    [Parameter()]
     [Switch]
     $ClearContext
 )
 
-Write-Host "ConnectAzAccountLiveTest: ParameterSet = $($PSCmdlet.ParameterSetName)"
+Write-Host "ServicePrincipalAuthFlow: ParameterSet = $($PSCmdlet.ParameterSetName)"
 
 $keyVaultName = if ($KeyVaultName) {$KeyVaultName} else {'LiveTestKeyVault'}
 $servicePrincipalName = if ($ServicePrincipalName) {$ServicePrincipalName} else {'AzurePowerShellAzAccountsTest'}
 $credentialPrefix = if ($CredentialPrefix) {$CredentialPrefix} else {'AzAccountsTest'}
-$tenantId = if ($TenantId) {$TenantId} else {'54826b22-38d6-4fb2-bad9-b7b93a3e9c5a'}
 
 $certificateName = "${credentialPrefix}Certificate"
 $secretName = "${credentialPrefix}Secret"
@@ -64,7 +76,7 @@ $password = 'pa88w0rd!'
 
 $null = Set-AzContext -TenantId $tenantId
 $module = Get-Module -Name "CertificateUtility"
-if ($module -eq $null)
+if ($null -eq $module)
 {
     Import-Module "$PSScriptRoot/CertificateUtility.psm1"
 }
