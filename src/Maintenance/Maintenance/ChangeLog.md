@@ -20,6 +20,8 @@
 
 ## Upcoming Release
 * Fixed bug where rebootSettings property wasn't updating.
+* Fixed bug where Get-MaintenanceConfig was returning a List.
+    - This bug was affecting Update-MaintenanceConfig's input params.
 
 ## Version 1.4.1
 * Removed outdated upcoming breaking change warning
