@@ -79,6 +79,15 @@ function Test-GetAzMaintenanceConfiguration
         } else {
             throw "The retrieved maintenance configuration without ResourceGroupName is not of type list."
         }
+
+        # As a final check, also verify that Update-Configuration can accept the inpu
+        try{
+            Update-AzMaintenanceConfiguration -ResourceGroupName $resourceGroupName -Name $maintenanceConfigurationName -Configuration $retrievedMaintenanceConfiguration
+        }
+        catch {
+            throw "Caught Exception while updating maintenace configuration."
+        }
+
     }
     finally
     {
