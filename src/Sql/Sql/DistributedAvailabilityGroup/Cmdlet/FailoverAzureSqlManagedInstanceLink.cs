@@ -65,6 +65,7 @@ namespace Microsoft.Azure.Commands.Sql.DistributedAvailabilityGroup.Cmdlet
         [Parameter(Mandatory = true, ParameterSetName = FailoverByInputObjectParameterSet, HelpMessage = "The failover type, can be ForcedAllowDataLoss or Planned.")]
         [Parameter(Mandatory = true, ParameterSetName = FailoverByResourceIdParameterSet, HelpMessage = "The failover type, can be ForcedAllowDataLoss or Planned.")]
         [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Planned", "ForcedAllowDataLoss")]
         public string FailoverType { get; set; }
 
         /// <summary>
@@ -140,7 +141,7 @@ namespace Microsoft.Azure.Commands.Sql.DistributedAvailabilityGroup.Cmdlet
                 Properties.Resources.ShouldProcessCaption))
             {
                 // message prompt requiring the customer to explicitly confirm the delete operation
-                if (FailoverType.Equals("Planned") || Force || (FailoverType.Equals("ForcedAllowDataLoss") &&
+                if (!FailoverType.Equals("ForcedAllowDataLoss") || Force || (FailoverType.Equals("ForcedAllowDataLoss") &&
                     ShouldContinue("Executing forced failover may result in loss of data which has not yet been replicated to the secondary instance. Do you wish to proceed?",
                     Properties.Resources.ShouldProcessCaption)))
                 {
