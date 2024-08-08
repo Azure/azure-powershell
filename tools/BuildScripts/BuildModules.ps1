@@ -165,7 +165,7 @@ if ('Release' -eq $Configuration) {
     $BuildAction = 'build'
 }
 
-$buildCmdResult = "dotnet $BuildAction $sln -c $Configuration -fl '/flp1:logFile=$LogFile;verbosity=quiet'"
+$buildCmdResult = "dotnet $BuildAction $Buildsln -c $Configuration -fl '/flp1:logFile=$LogFile;verbosity=quiet'"
 If ($GenerateDocumentationFile -eq "false")
 {
     $buildCmdResult += " -p:GenerateDocumentationFile=false"
