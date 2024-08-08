@@ -63,8 +63,9 @@ RequiredAssemblies = 'ActionGroup.Autorest/bin/Az.ActionGroup.private.dll',
                'DiagnosticSetting.Autorest/bin/Az.DiagnosticSetting.private.dll', 
                'MetricData.Autorest/bin/Az.Metricdata.private.dll', 
                'Microsoft.Azure.Management.Monitor.dll', 
-               'MonitorWorkspace.Autorest/bin/Az.MonitorWorkspace.private.dll', 
-               'ScheduledQueryRule.Autorest/bin/Az.ScheduledQueryRule.private.dll'
+               'MonitorWorkspace.Autorest/bin/Az.MonitorWorkspace.private.dll',
+               'ScheduledQueryRule.Autorest/bin/Az.ScheduledQueryRule.private.dll',
+               'PipelineGroup.Autorest/bin/Az.PipelineGroup.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -81,7 +82,8 @@ FormatsToProcess = 'ActionGroup.Autorest\Az.ActionGroup.format.ps1xml',
                'MetricData.Autorest\Az.Metricdata.format.ps1xml', 
                'Monitor.format.ps1xml', 
                'MonitorWorkspace.Autorest\Az.MonitorWorkspace.format.ps1xml', 
-               'ScheduledQueryRule.Autorest\Az.ScheduledQueryRule.format.ps1xml'
+               'ScheduledQueryRule.Autorest\Az.ScheduledQueryRule.format.ps1xml',
+               'PipelineGroup.Autorest\Az.PipelineGroup.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('ActionGroup.Autorest/Az.ActionGroup.psm1', 
@@ -92,7 +94,8 @@ NestedModules = @('ActionGroup.Autorest/Az.ActionGroup.psm1',
                'MetricData.Autorest/Az.Metricdata.psm1', 
                'Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll', 
                'MonitorWorkspace.Autorest/Az.MonitorWorkspace.psm1', 
-               'ScheduledQueryRule.Autorest/Az.ScheduledQueryRule.psm1')
+               'ScheduledQueryRule.Autorest/Az.ScheduledQueryRule.psm1',
+               'PipelineGroup.Autorest/Az.PipelineGroup.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Enable-AzActionGroupReceiver', 'Get-AzActionGroup', 
