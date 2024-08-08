@@ -13,7 +13,7 @@
   "MSIXImagePath": "C:\\AppAttach\\Firefox20110.0.1.vhdx",
   "PrivateEndpointNameWS": "pwshTestPrivateEndpointWS",
   "PECGroupIdWorkspace": "feed",
-  "SessionHostNameRemove": "pwshDelete-0",
+  "SessionHostNameRemove": "Delete4Test-1",
   "RemoteApplicationGroup": "ApplicationGroupPowershell2",
   "PrivateEndpointNameWS1": "pwshTestPrivateEndpointWS1",
   "PrivateEndpointConnectionNameHP": "pwshTestPECHP",

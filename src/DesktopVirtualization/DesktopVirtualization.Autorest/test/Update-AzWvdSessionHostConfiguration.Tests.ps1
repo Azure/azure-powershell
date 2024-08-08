@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzWvdSessionHostConfig
 }
 
 Describe 'Update-AzWvdSessionHostConfiguration' {
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' {    
         $configuration = Update-AzWvdSessionHostConfiguration -SubscriptionId $env.SubscriptionId `
         -ResourceGroupName $env.ResourceGroupPersistent `
         -HostPoolName $env.AutomatedHostpoolPersistent `
