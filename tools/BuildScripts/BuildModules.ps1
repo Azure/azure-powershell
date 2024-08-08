@@ -32,7 +32,8 @@ param (
 
 )
 if (($null -eq $RepoRoot) -or (0 -eq $RepoRoot.Length)) {
-    $RepoRoot = Join-Path $PSScriptRoot '..' '..'
+    $RepoRoot = Resolve-Path (Join-Path $PSScriptRoot '..' '..')
+
 }
 
 $notModules = @('lib', 'shared')

@@ -57,10 +57,10 @@ function Get-CsprojFromModule {
     foreach ($testModule in $TestModuleList) {
         if ($testModule -in $renamedModules.keys) {
             foreach ($renamedTestModule in $renamedModules[$testModule]) {
-                $result += Join-Path $SourceDirectory $testModule $renamedTestModule "$renamedTestModule.Test.csproj"
+                $result += Join-Path $SourceDirectory $testModule "$renamedTestModule.Test" "$renamedTestModule.Test.csproj"
             }
         } else {
-            $result += Join-Path $SourceDirectory $testModule $testModule "$testModule.Test.csproj"
+            $result += Join-Path $SourceDirectory $testModule "$testModule.Test" "$testModule.Test.csproj"
         }
     }
 
