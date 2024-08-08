@@ -329,7 +329,8 @@ If ($TestAutorest)
 
 If ($Test -And (($CIPlan.test.Length -Ne 0) -Or ($PSBoundParameters.ContainsKey("TargetModule"))))
 {
-    dotnet test $RepoArtifacts/Azure.PowerShell.Test.sln --filter "AcceptanceType=CheckIn&RunType!=DesktopOnly" --configuration $Configuration --framework $TestFramework --logger trx --results-directory $TestOutputDirectory
+    dotnet build $RepoArtifacts/Azure.PowerShell.Test.sln --configuration $Configuration
+    dotnet test $RepoArtifacts/Azure.PowerShell.Test.sln --no-build --filter "AcceptanceType=CheckIn&RunType!=DesktopOnly" --configuration $Configuration --framework $TestFramework --logger trx --results-directory $TestOutputDirectory
 
     $TestResultFiles = Get-ChildItem "$RepoArtifacts/TestResults/" -Filter *.trx
     $FailedTestCases = @{}
