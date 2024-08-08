@@ -32,7 +32,8 @@ param (
 
 )
 if (($null -eq $RepoRoot) -or (0 -eq $RepoRoot.Length)) {
-    $RepoRoot = Join-Path $PSScriptRoot '..' '..'
+    $RepoRoot = Resolve-Path (Join-Path $PSScriptRoot '..' '..')
+
 }
 
 $notModules = @('lib', 'shared')
@@ -120,7 +121,7 @@ switch ($PSCmdlet.ParameterSetName) {
 $TargetModule = $TargetModule | Select-Object -Unique
 $testModule = $testModule | Select-Object -Unique
 
-$csprojFiles = Get-CsprojFromModule -BuildModuleList $TargetModule -TestModuleList $testModule -RepoRoot $RepoRoot -Configuration $Configuration
+$buildCsprojFiles = Get-CsprojFromModule -BuildModuleList $TargetModule -RepoRoot $RepoRoot -Configuration $Configuration
 # Prepare autorest based modules
 $prepareScriptPath = Join-Path $toolDirectory 'BuildScripts' 'PrepareAutorestModule.ps1'
 
@@ -134,26 +135,38 @@ foreach ($moduleRootName in $TargetModule) {
 }
 
 Set-Location $RepoRoot
-$sln = Join-Path $RepoArtifacts "Azure.PowerShell.sln"
+$buildSln = Join-Path $RepoArtifacts "Azure.PowerShell.sln"
+
 & dotnet --version
-if (Test-Path $sln) {
-    Remove-Item $sln -Force
+if (Test-Path $buildSln) {
+    Remove-Item $buildSln -Force
 }
 & dotnet new sln -n Azure.PowerShell -o $RepoArtifacts --force
 
-foreach ($file in $csprojFiles) {
-    & dotnet sln $sln add "$file"
+foreach ($file in $buildCsprojFiles) {
+    & dotnet sln $buildSln add "$file"
 }
-Write-Output "Modules are added to sln file"
+Write-Output "Modules are added to build sln file"
 
 $LogFile = Join-Path $RepoArtifacts 'Build.log'
 if ('Release' -eq $Configuration) {
     $BuildAction = 'publish'
 } else {
     $BuildAction = 'build'
+
+    $testCsprojFiles = Get-CsprojFromModule -TestModuleList $testModule -RepoRoot $RepoRoot -Configuration $Configuration
+    $testSln = Join-Path $RepoArtifacts "Azure.PowerShell.Test.sln"
+    if (Test-Path $testSln) {
+        Remove-Item $testSln -Force
+    }
+    & dotnet new sln -n Azure.PowerShell.Test -o $RepoArtifacts --force
+    foreach ($file in $testCsprojFiles) {
+        & dotnet sln $testSln add "$file"
+    }
+    Write-Output "Modules are added to test sln file"
 }
 
-$buildCmdResult = "dotnet $BuildAction $sln -c $Configuration -fl '/flp1:logFile=$LogFile;verbosity=quiet'"
+$buildCmdResult = "dotnet $BuildAction $Buildsln -c $Configuration -fl '/flp1:logFile=$LogFile;verbosity=quiet'"
 If ($GenerateDocumentationFile -eq "false")
 {
     $buildCmdResult += " -p:GenerateDocumentationFile=false"
