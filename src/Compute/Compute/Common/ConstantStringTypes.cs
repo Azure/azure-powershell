@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VMPlanPublisher = "The publisher ID";
 
         public const string TrustedLaunchUpgradeMessage = "Consider upgrading security for your workloads using Azure Trusted Launch VMs. To know more about Trusted Launch, please visit https://aka.ms/TrustedLaunch";
+        public const string PSVMImageMessage = "You can reference https://aka.ms/findImagePS on how to find VM Images using PowerShell.";
     }
 
     public static class ValidateSetValues

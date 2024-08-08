@@ -770,6 +770,11 @@ namespace Microsoft.Azure.Commands.Compute
             PublicIpAddressName = PublicIpAddressName;
             SecurityGroupName = SecurityGroupName ?? Name;
 
+            if (this.IsParameterBound(c => c.Image))
+            {
+                WriteInformation(HelpMessages.PSVMImageMessage, new string[] { "PSHOST" });
+            }
+
             // Check TrustedLaunch UEFI values defaulting
             if (this.IsParameterBound(c => c.SecurityType)
                 && this.SecurityType != null)
