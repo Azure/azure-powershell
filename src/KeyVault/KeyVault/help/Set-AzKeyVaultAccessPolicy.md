@@ -512,6 +512,8 @@ The acceptable values for this parameter:
 - Recover
 - Purge
 - Rotate
+- SetRotationPolicy
+- GetRotationPolicy
 
 ```yaml
 Type: System.String[]
@@ -570,6 +572,10 @@ The acceptable values for this parameter:
 - backup
 - restore
 - purge
+- setsas
+- listsas
+- getsas
+- deletesas
 
 ```yaml
 Type: System.String[]
