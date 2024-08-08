@@ -3,6 +3,8 @@
 /src/Compute/    @bilaakpan-ms @sandido @haagha @grizzlytheodore
 /src/PolicyInsights/  @pilor
 /src/Batch/ @wiboris @dpwatrous
+/src/DataLakeStore/ @akharit @paravin
 
 # Make sure changes to .github folder go through our team's double check
 /.github/        @isra-fel
+
