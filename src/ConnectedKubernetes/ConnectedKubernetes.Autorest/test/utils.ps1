@@ -48,8 +48,10 @@ function setupEnv() {
 
     $clusterNameEUS1 = RandomString -allChars $false -len 6
     $clusterNameEUS2 = RandomString -allChars $false -len 6
+    $clusterNameEUS3 = RandomString -allChars $false -len 6
     $env.Add("clusterNameEUS1", $clusterNameEUS1)
     $env.Add("clusterNameEUS2", $clusterNameEUS2)
+    $env.Add("clusterNameEUS3", $clusterNameEUS3)
 
     $K8sName = RandomString -allChars $false -len 6
     $env.Add("K8sName", $K8sName)
