@@ -76,6 +76,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.EnableLocalUser = storageAccount.IsLocalUserEnabled;
             this.AllowedCopyScope = storageAccount.AllowedCopyScope;
             this.DnsEndpointType = storageAccount.DnsEndpointType;
+            this.EnableExtendedGroups = storageAccount.EnableExtendedGroups;
         }
         public bool? AllowCrossTenantReplication { get; set; }
 
@@ -170,6 +171,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSImmutableStorageAccount ImmutableStorageWithVersioning { get; set; }
         public PSStorageAccountSkuConversionStatus StorageAccountSkuConversionStatus { get; set; }
         public string DnsEndpointType { get; set; }
+        public bool? EnableExtendedGroups { get; set; }       
 
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
         {

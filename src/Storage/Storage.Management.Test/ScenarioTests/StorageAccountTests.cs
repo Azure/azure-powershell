@@ -291,6 +291,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureStorageLocalUserNFSV3()
+        {
+            TestRunner.RunTestScript("Test-AzureStorageLocalUserNFSV3");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageAccountAllowedCopyScope()
         {
             TestRunner.RunTestScript("Test-StorageAccountAllowedCopyScope");

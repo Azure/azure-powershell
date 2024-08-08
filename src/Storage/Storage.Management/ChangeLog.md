@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported local user IsNfSv3Enabled and ExtendedGroup
+    - `Set-AzStorageLocalUser`
+* Supported list local user with IncludeNFSv3
+    - `Get-AzStorageLocalUser`
+* Supported EnableExtendedGroup when creating and updating a storage account 
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
 
 ## Version 7.2.0
 * Upgraded Microsoft.Azure.Storage.DataMovement to 2.0.5
