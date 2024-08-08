@@ -25,12 +25,12 @@ New-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps
 New-AzConnectedKubernetes -ClusterName azps_test_cluster1 -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240701Preview.IConnectedCluster
 .Link
 https://learn.microsoft.com/powershell/module/az.connectedkubernetes/new-azconnectedkubernetes
 #>
 function New-AzConnectedKubernetes {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240701Preview.IConnectedCluster])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
