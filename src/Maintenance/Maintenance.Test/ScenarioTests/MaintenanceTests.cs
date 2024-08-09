@@ -53,6 +53,13 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzMaintenanceConfiguration()
+        {
+            TestRunner.RunTestScript("Test-GetAzMaintenanceConfiguration");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPublicMaintenanceConfiguration()
         {
             TestRunner.RunTestScript("Test-AzMaintenancePublicConfiguration");
