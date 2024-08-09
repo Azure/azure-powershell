@@ -5,6 +5,7 @@ using Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -145,7 +146,34 @@ namespace Microsoft.Azure.Commands.Sql.DistributedAvailabilityGroup.Cmdlet
                     ShouldContinue("Executing forced failover may result in loss of data which has not yet been replicated to the secondary instance. Do you wish to proceed?",
                     Properties.Resources.ShouldProcessCaption)))
                 {
-                    base.ExecuteCmdlet();
+                    // base.ExecuteCmdlet();
+                    ModelAdapter = InitModelAdapter();
+                    IEnumerable<AzureSqlManagedInstanceLinkModel> model = this.GetEntity();
+                    IEnumerable<AzureSqlManagedInstanceLinkModel> updatedModel = ApplyUserInputToModel(model);
+                    IEnumerable<AzureSqlManagedInstanceLinkModel> responseModel = default(IEnumerable<AzureSqlManagedInstanceLinkModel>);
+
+                    ConfirmAction(GetConfirmActionProcessMessage(), GetResourceId(updatedModel), () =>
+                    {
+                        responseModel = PersistChanges(updatedModel);
+                    });
+
+                    var link = ModelAdapter.GetManagedInstanceLink(ResourceGroupName, InstanceName, Name);
+                    IEnumerable<AzureSqlManagedInstanceLinkModel> response = new List<AzureSqlManagedInstanceLinkModel> { link };
+
+                    if (link != null && responseModel != null)
+                    {
+                        if (WriteResult())
+                        {
+                            WriteObject(TransformModelToOutputObject(response), true);
+                        }
+                    }
+                    else
+                    {
+                        if (WriteResult())
+                        {
+                            WriteObject(TransformModelToOutputObject(updatedModel));
+                        }
+                    }
                 }
             }
         }
