@@ -83,6 +83,7 @@ function Test-GetAzMaintenanceConfiguration
         # As a final check, also verify that Update-Configuration can accept the inpu
         try{
             Update-AzMaintenanceConfiguration -ResourceGroupName $resourceGroupName -Name $maintenanceConfigurationName -Configuration $retrievedMaintenanceConfiguration
+            $retrievedMaintenanceConfiguration | Update-AzMaintenanceConfiguration -ResourceGroupName $resourceGroupName -Name $maintenanceConfigurationName
         }
         catch {
             throw "Caught Exception while updating maintenace configuration."
