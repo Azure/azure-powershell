@@ -75,9 +75,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="spotRestorePolicy">Specifies the Spot Restore
         /// properties for the virtual machine scale set.</param>
         /// <param name="resiliencyPolicy">Policy for Resiliency</param>
+        /// <param name="zonalPlatformFaultDomainAlignMode">Specifies the align
+        /// mode between Virtual Machine Scale Set compute and storage Fault
+        /// Domain count. Possible values include: 'Aligned',
+        /// 'Unaligned'</param>
+        /// <param name="skuProfile">Specifies the sku profile for the virtual
+        /// machine scale set.</param>
         /// <param name="identity">The identity of the virtual machine scale
         /// set, if configured.</param>
-        public VirtualMachineScaleSetUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), Plan plan = default(Plan), UpgradePolicy upgradePolicy = default(UpgradePolicy), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetUpdateVMProfile virtualMachineProfile = default(VirtualMachineScaleSetUpdateVMProfile), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVMs = default(bool?), bool? singlePlacementGroup = default(bool?), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), SubResource proximityPlacementGroup = default(SubResource), PriorityMixPolicy priorityMixPolicy = default(PriorityMixPolicy), SpotRestorePolicy spotRestorePolicy = default(SpotRestorePolicy), ResiliencyPolicy resiliencyPolicy = default(ResiliencyPolicy), VirtualMachineScaleSetIdentity identity = default(VirtualMachineScaleSetIdentity))
+        /// <param name="zones">The virtual machine scale set zones.</param>
+        public VirtualMachineScaleSetUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), Plan plan = default(Plan), UpgradePolicy upgradePolicy = default(UpgradePolicy), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetUpdateVMProfile virtualMachineProfile = default(VirtualMachineScaleSetUpdateVMProfile), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVMs = default(bool?), bool? singlePlacementGroup = default(bool?), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), SubResource proximityPlacementGroup = default(SubResource), PriorityMixPolicy priorityMixPolicy = default(PriorityMixPolicy), SpotRestorePolicy spotRestorePolicy = default(SpotRestorePolicy), ResiliencyPolicy resiliencyPolicy = default(ResiliencyPolicy), string zonalPlatformFaultDomainAlignMode = default(string), SkuProfile skuProfile = default(SkuProfile), VirtualMachineScaleSetIdentity identity = default(VirtualMachineScaleSetIdentity), IList<string> zones = default(IList<string>))
             : base(tags)
         {
             Sku = sku;
@@ -94,7 +101,10 @@ namespace Microsoft.Azure.Management.Compute.Models
             PriorityMixPolicy = priorityMixPolicy;
             SpotRestorePolicy = spotRestorePolicy;
             ResiliencyPolicy = resiliencyPolicy;
+            ZonalPlatformFaultDomainAlignMode = zonalPlatformFaultDomainAlignMode;
+            SkuProfile = skuProfile;
             Identity = identity;
+            Zones = zones;
             CustomInit();
         }
 
@@ -206,11 +216,32 @@ namespace Microsoft.Azure.Management.Compute.Models
         public ResiliencyPolicy ResiliencyPolicy { get; set; }
 
         /// <summary>
+        /// Gets or sets specifies the align mode between Virtual Machine Scale
+        /// Set compute and storage Fault Domain count. Possible values
+        /// include: 'Aligned', 'Unaligned'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.zonalPlatformFaultDomainAlignMode")]
+        public string ZonalPlatformFaultDomainAlignMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the sku profile for the virtual machine
+        /// scale set.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.skuProfile")]
+        public SkuProfile SkuProfile { get; set; }
+
+        /// <summary>
         /// Gets or sets the identity of the virtual machine scale set, if
         /// configured.
         /// </summary>
         [JsonProperty(PropertyName = "identity")]
         public VirtualMachineScaleSetIdentity Identity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the virtual machine scale set zones.
+        /// </summary>
+        [JsonProperty(PropertyName = "zones")]
+        public IList<string> Zones { get; set; }
 
         /// <summary>
         /// Validate the object.

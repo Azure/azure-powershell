@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Management.Compute.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -20,18 +19,20 @@ namespace Microsoft.Azure.Management.Compute.Models
     /// Specifies the security posture to be used in the scale set. Minimum
     /// api-version: 2023-03-01
     /// </summary>
-    public partial class SecurityPostureReference
+    public partial class SecurityPostureReferenceUpdate
     {
         /// <summary>
-        /// Initializes a new instance of the SecurityPostureReference class.
+        /// Initializes a new instance of the SecurityPostureReferenceUpdate
+        /// class.
         /// </summary>
-        public SecurityPostureReference()
+        public SecurityPostureReferenceUpdate()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SecurityPostureReference class.
+        /// Initializes a new instance of the SecurityPostureReferenceUpdate
+        /// class.
         /// </summary>
         /// <param name="id">The security posture reference id in the form of
         /// /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest</param>
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// posture.</param>
         /// <param name="isOverridable">Whether the security posture can be
         /// overridden by the user.</param>
-        public SecurityPostureReference(string id, IList<string> excludeExtensions = default(IList<string>), bool? isOverridable = default(bool?))
+        public SecurityPostureReferenceUpdate(string id = default(string), IList<string> excludeExtensions = default(IList<string>), bool? isOverridable = default(bool?))
         {
             Id = id;
             ExcludeExtensions = excludeExtensions;
@@ -74,18 +75,5 @@ namespace Microsoft.Azure.Management.Compute.Models
         [JsonProperty(PropertyName = "isOverridable")]
         public bool? IsOverridable { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Id == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Id");
-            }
-        }
     }
 }

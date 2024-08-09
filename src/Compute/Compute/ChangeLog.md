@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* References are updated to use 2024-07-01 ComputeRP and 2024-03-02 DiskRP REST API calls.
 * Added `TimeCreated` read-only field to `PSVirtualMachineScaleSetVMProfile` object.
 * Added  parameter `-ResourceIdsOnly` to `Get-AzCapacityReservationGroup` cmdlet.
 * Changed the `Set-AzVMOperatingSystem` cmdlet when the `-VM` parameter is used without an OSProfile. Now it will not throw a null reference exception when `-Credential` is not provided.
