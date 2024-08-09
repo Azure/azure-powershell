@@ -47,7 +47,24 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+
 ```
+> [!WARNING]
+> Avoid using AsJob in a foreach loop as it can cause a "**Conflict with Concurrent Request**" error causing some instance updates in the scale set to fail and the health status of the instances to state "unhealthy".
+<br>
+An example of where the "-AsJob" is used in the foreach loop is shown below:
+
+
+   ```powershell
+    $VMSS = Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VmScaleSetName "myScaleSet"
+    foreach ($bi in $VMSS)
+    {
+    Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "myInstanceID" -AsJob 
+    }
+   ```
+This "-AsJob" parameter must be removed, if foreach loops are used, to avoid error messages and failure of the VMSS update. 
+<br>
+
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
