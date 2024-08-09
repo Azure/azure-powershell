@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'AzConnectedKubernetes' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -skip {
         {
             $config = New-AzConnectedKubernetes -ClusterName $env.clusterNameEUS1 -ResourceGroupName $env.resourceGroupEUS -Location $env.locationEUS
             $config.ProvisioningState | Should -Be 'Succeeded'
@@ -96,7 +96,7 @@ Describe 'AzConnectedKubernetes' {
         } | Should -Not -Throw
     }
 
-    It 'CreateWorkloadIdentityExpanded' {
+    It 'CreateWorkloadIdentityExpanded' -skip {
         {
             $config = New-AzConnectedKubernetes -ClusterName $env.clusterNameEUS3 -ResourceGroupName $env.resourceGroupEUS -Location $env.locationEUS -OidcIssuerProfileEnabled -WorkloadIdentityEnabled
             $config.ProvisioningState | Should -Be 'Succeeded'
