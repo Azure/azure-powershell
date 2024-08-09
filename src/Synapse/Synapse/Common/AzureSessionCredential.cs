@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using Azure.Core;
+
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
+
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Synapse.Common
 {
@@ -51,31 +51,36 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public override AccessToken GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
         {
-            AccessToken token;
+            DateTimeOffset expiresOn;
+            string token = string.Empty;
             accessToken.AuthorizeRequest((tokenType, tokenValue) =>
             {
-                token = new AccessToken(tokenValue, DateTimeOffset.UtcNow);
+                token = tokenValue;
+                expiresOn = DateTimeOffset.UtcNow;
             });
+
             if (this.debugLogWriter != null)
             {
-                this.debugLogWriter("[" + DateTime.Now.ToString() + "] GetToken: " + token.Token);
+                this.debugLogWriter("[" + DateTime.Now.ToString() + "] GetToken: " + token);
             }
-            return token;
+            return new AccessToken(token, expiresOn);
         }
 
         public override ValueTask<AccessToken> GetTokenAsync(TokenRequestContext requestContext, CancellationToken cancellationToken)
         {
-            AccessToken token;
+            DateTimeOffset expiresOn;
+            string token = string.Empty;
             accessToken.AuthorizeRequest((tokenType, tokenValue) =>
             {
-                token = new AccessToken(tokenValue, DateTimeOffset.UtcNow);
+                token = tokenValue;
+                expiresOn = DateTimeOffset.UtcNow;
             });
 
             if (this.debugLogWriter != null)
             {
-                this.debugLogWriter("[" + DateTime.Now.ToString() + "] GetTokenAsync: " + token.Token);
+                this.debugLogWriter("[" + DateTime.Now.ToString() + "] GetTokenAsync: " + token);
             }
-            return new ValueTask<AccessToken>(token);
+            return new ValueTask<AccessToken>(new AccessToken(token, expiresOn));
         }
 
         private IAccessToken accessToken;

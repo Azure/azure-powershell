@@ -13,6 +13,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentInternal
     {
 
+        /// <summary>The version of the policy definition to use.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public string DefinitionVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).DefinitionVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).DefinitionVersion = value ?? null; }
+
         /// <summary>This message will be part of response in case of policy violation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
@@ -228,6 +233,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
     public partial interface IPolicyAssignment :
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IJsonSerializable
     {
+        /// <summary>The version of the policy definition to use.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The version of the policy definition to use.",
+        SerializedName = @"definitionVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        string DefinitionVersion { get; set; }
         /// <summary>This message will be part of response in case of policy violation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
         Required = false,
@@ -530,6 +546,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
     internal partial interface IPolicyAssignmentInternal
 
     {
+        /// <summary>The version of the policy definition to use.</summary>
+        string DefinitionVersion { get; set; }
         /// <summary>This message will be part of response in case of policy violation.</summary>
         string Description { get; set; }
         /// <summary>The display name of the policy assignment.</summary>

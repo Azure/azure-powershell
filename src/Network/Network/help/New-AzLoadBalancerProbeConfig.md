@@ -15,7 +15,7 @@ Creates a probe configuration for a load balancer.
 
 ```
 New-AzLoadBalancerProbeConfig -Name <String> [-Protocol <String>] -Port <Int32> -IntervalInSeconds <Int32>
- -ProbeCount <Int32> [-ProbeThreshold <Int32>] [-RequestPath <String>]
+ -ProbeCount <Int32> [-ProbeThreshold <Int32>] [-RequestPath <String>] [-NoHealthyBackendsBehavior <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ The **New-AzLoadBalancerProbeConfig** cmdlet creates a probe configuration for a
 
 ### Example 1: Create a probe configuration
 ```powershell
-New-AzLoadBalancerProbeConfig -Name "MyProbe" -Protocol "http" -Port 80 -IntervalInSeconds 15 -ProbeCount 15 -ProbeThreshold 15
+New-AzLoadBalancerProbeConfig -Name "MyProbe" -Protocol "http" -Port 80 -IntervalInSeconds 15 -ProbeCount 15 -ProbeThreshold 15 -NoHealthyBackendsBehavior "AllProbedUp"
 ```
 
 This command creates a probe configuration named MyProbe using the HTTP protocol.
@@ -162,6 +162,23 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -NoHealthyBackendsBehavior
+Determines how new connections are handled by the load balancer when all backend instances are probed down.
+The acceptable values for this parameter are: AllProbedDown or AllProbedUp.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: AllProbedDown, AllProbedUp
+
+Required: False
+Position: Named
+Default value: AllProbedDown
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```

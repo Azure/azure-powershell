@@ -28,7 +28,7 @@ The **Set-AzApiManagementUser** cmdlet sets user details.
 ### Example 1: Change a user's password, email address and state
 ```powershell
 $apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-$securePassword = ConvertTo-SecureString "qwerty" -AsPlainText -Force
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Set-AzApiManagementUser -Context $apimContext -UserId "0123456789" -Email "patti.fuller@contoso.com" -Password $securePassword -State "Blocked"
 ```
 

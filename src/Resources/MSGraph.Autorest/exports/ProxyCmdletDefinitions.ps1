@@ -2266,6 +2266,7 @@ TARGETGROUPOBJECT <MicrosoftGraphGroup>: The target group object, could be used 
         [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
     [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
       [(Any) <Object>]: This indicates any property can be added to this object.
@@ -2786,6 +2787,7 @@ APPLICATIONOBJECT <IMicrosoftGraphApplication>: The application object, could be
           [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
           [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
         [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+      [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
       [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
       [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
         [(Any) <Object>]: This indicates any property can be added to this object.
@@ -2840,6 +2842,7 @@ APPLICATIONOBJECT <IMicrosoftGraphApplication>: The application object, could be
   [PasswordCredentials <IMicrosoftGraphPasswordCredential[]>]: The collection of password credentials associated with the application. Not nullable.
   [PublicClient <IMicrosoftGraphPublicClientApplication>]: publicClientApplication
   [RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]: Specifies the resources that the application needs to access. This property also specifies the set of OAuth permission scopes and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. Not nullable. Supports $filter (eq, NOT, ge, le).
+  [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
   [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
   [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
   [Tag <String[]>]: Custom strings that can be used to categorize and identify the application. Not nullable.Supports $filter (eq, NOT, ge, le, startsWith).
@@ -3202,6 +3205,7 @@ APPLICATIONOBJECT <MicrosoftGraphApplication>: application object
           [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
           [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
         [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+      [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
       [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
       [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
         [(Any) <Object>]: This indicates any property can be added to this object.
@@ -3256,6 +3260,7 @@ APPLICATIONOBJECT <MicrosoftGraphApplication>: application object
   [PasswordCredentials <IMicrosoftGraphPasswordCredential[]>]: The collection of password credentials associated with the application. Not nullable.
   [PublicClient <IMicrosoftGraphPublicClientApplication>]: publicClientApplication
   [RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]: Specifies the resources that the application needs to access. This property also specifies the set of OAuth permission scopes and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. Not nullable. Supports $filter (eq, NOT, ge, le).
+  [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
   [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
   [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
   [Tag <String[]>]: Custom strings that can be used to categorize and identify the application. Not nullable.Supports $filter (eq, NOT, ge, le, startsWith).
@@ -4342,6 +4347,7 @@ GROUPOBJECT <IMicrosoftGraphGroup>: The target group object, could be used as pi
         [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
     [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
       [(Any) <Object>]: This indicates any property can be added to this object.
@@ -4889,6 +4895,7 @@ APPLICATIONOBJECT <IMicrosoftGraphApplication>: The service principal object, co
           [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
           [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
         [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+      [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
       [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
       [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
         [(Any) <Object>]: This indicates any property can be added to this object.
@@ -4943,6 +4950,7 @@ APPLICATIONOBJECT <IMicrosoftGraphApplication>: The service principal object, co
   [PasswordCredentials <IMicrosoftGraphPasswordCredential[]>]: The collection of password credentials associated with the application. Not nullable.
   [PublicClient <IMicrosoftGraphPublicClientApplication>]: publicClientApplication
   [RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]: Specifies the resources that the application needs to access. This property also specifies the set of OAuth permission scopes and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. Not nullable. Supports $filter (eq, NOT, ge, le).
+  [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
   [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
   [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
   [Tag <String[]>]: Custom strings that can be used to categorize and identify the application. Not nullable.Supports $filter (eq, NOT, ge, le, startsWith).
@@ -5404,6 +5412,7 @@ SERVICEPRINCIPALOBJECT <IMicrosoftGraphServicePrincipal>: The service principal 
           [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
           [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
         [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+      [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
       [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
       [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
         [(Any) <Object>]: This indicates any property can be added to this object.
@@ -6118,6 +6127,7 @@ APPLICATIONOBJECT <IMicrosoftGraphApplication>: The application object, could be
           [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
           [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
         [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+      [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
       [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
       [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
         [(Any) <Object>]: This indicates any property can be added to this object.
@@ -6172,6 +6182,7 @@ APPLICATIONOBJECT <IMicrosoftGraphApplication>: The application object, could be
   [PasswordCredentials <IMicrosoftGraphPasswordCredential[]>]: The collection of password credentials associated with the application. Not nullable.
   [PublicClient <IMicrosoftGraphPublicClientApplication>]: publicClientApplication
   [RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]: Specifies the resources that the application needs to access. This property also specifies the set of OAuth permission scopes and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. Not nullable. Supports $filter (eq, NOT, ge, le).
+  [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
   [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
   [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
   [Tag <String[]>]: Custom strings that can be used to categorize and identify the application. Not nullable.Supports $filter (eq, NOT, ge, le, startsWith).
@@ -6858,6 +6869,7 @@ HOMEREALMDISCOVERYPOLICY <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>: .
         [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
     [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
       [(Any) <Object>]: This indicates any property can be added to this object.
@@ -7119,6 +7131,7 @@ TOKENISSUANCEPOLICY <IMicrosoftGraphTokenIssuancePolicy[]>: .
         [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
     [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
       [(Any) <Object>]: This indicates any property can be added to this object.
@@ -7329,6 +7342,7 @@ TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePol
         [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
     [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
       [(Any) <Object>]: This indicates any property can be added to this object.
@@ -7573,6 +7587,13 @@ param(
     # Supports $filter (eq, NOT, ge, le).
     # To construct, see NOTES section for REQUIREDRESOURCEACCESS properties and create a hash table.
     ${RequiredResourceAccess},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # References application or service contact information from a Service or Asset Management database.
+    # Nullable.
+    ${ServiceManagementReference},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -8550,6 +8571,7 @@ APPLICATIONOBJECT <IMicrosoftGraphApplication>: The application object, could be
           [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
           [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
         [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+      [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
       [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
       [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
         [(Any) <Object>]: This indicates any property can be added to this object.
@@ -8604,6 +8626,7 @@ APPLICATIONOBJECT <IMicrosoftGraphApplication>: The application object, could be
   [PasswordCredentials <IMicrosoftGraphPasswordCredential[]>]: The collection of password credentials associated with the application. Not nullable.
   [PublicClient <IMicrosoftGraphPublicClientApplication>]: publicClientApplication
   [RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]: Specifies the resources that the application needs to access. This property also specifies the set of OAuth permission scopes and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. Not nullable. Supports $filter (eq, NOT, ge, le).
+  [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
   [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
   [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
   [Tag <String[]>]: Custom strings that can be used to categorize and identify the application. Not nullable.Supports $filter (eq, NOT, ge, le, startsWith).
@@ -8810,6 +8833,7 @@ CLAIMSMAPPINGPOLICY <IMicrosoftGraphClaimsMappingPolicy[]>: The claimsMappingPol
         [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
     [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
       [(Any) <Object>]: This indicates any property can be added to this object.
@@ -9029,6 +9053,7 @@ HOMEREALMDISCOVERYPOLICY <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>: The homeRe
         [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
     [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
       [(Any) <Object>]: This indicates any property can be added to this object.
@@ -9284,6 +9309,7 @@ TOKENISSUANCEPOLICY <IMicrosoftGraphTokenIssuancePolicy[]>: The tokenIssuancePol
         [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
     [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
       [(Any) <Object>]: This indicates any property can be added to this object.
@@ -9494,6 +9520,7 @@ TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePol
         [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
     [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
       [(Any) <Object>]: This indicates any property can be added to this object.
@@ -10464,6 +10491,7 @@ SERVICEPRINCIPALOBJECT <IMicrosoftGraphServicePrincipal>: The service principal 
           [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
           [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
         [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+      [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
       [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
       [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
         [(Any) <Object>]: This indicates any property can be added to this object.
@@ -10772,8 +10800,7 @@ $password = "xxxxxxxxxx"
 $pp = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile" -Property @{Password=$password}
 New-AzADUser -DisplayName $uname -PasswordProfile $pp -AccountEnabled $true -MailNickname $nickname -UserPrincipalName $upn
 .Example
-$password = "xxxxxxxxxx"
-$password = ConvertTo-SecureString -AsPlainText -Force $password
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzADUser -DisplayName $uname -Password $password -AccountEnabled $true -MailNickname $nickname -UserPrincipalName $upn
 
 .Outputs
@@ -11499,6 +11526,7 @@ APPLICATIONOBJECT <IMicrosoftGraphApplication>: The application object, could be
           [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
           [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
         [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+      [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
       [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
       [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
         [(Any) <Object>]: This indicates any property can be added to this object.
@@ -11553,6 +11581,7 @@ APPLICATIONOBJECT <IMicrosoftGraphApplication>: The application object, could be
   [PasswordCredentials <IMicrosoftGraphPasswordCredential[]>]: The collection of password credentials associated with the application. Not nullable.
   [PublicClient <IMicrosoftGraphPublicClientApplication>]: publicClientApplication
   [RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]: Specifies the resources that the application needs to access. This property also specifies the set of OAuth permission scopes and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. Not nullable. Supports $filter (eq, NOT, ge, le).
+  [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
   [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
   [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
   [Tag <String[]>]: Custom strings that can be used to categorize and identify the application. Not nullable.Supports $filter (eq, NOT, ge, le, startsWith).
@@ -11931,6 +11960,7 @@ INPUTOBJECT <IMicrosoftGraphApplication>: The application object, could be used 
           [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
           [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
         [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+      [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
       [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
       [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
         [(Any) <Object>]: This indicates any property can be added to this object.
@@ -11985,6 +12015,7 @@ INPUTOBJECT <IMicrosoftGraphApplication>: The application object, could be used 
   [PasswordCredentials <IMicrosoftGraphPasswordCredential[]>]: The collection of password credentials associated with the application. Not nullable.
   [PublicClient <IMicrosoftGraphPublicClientApplication>]: publicClientApplication
   [RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]: Specifies the resources that the application needs to access. This property also specifies the set of OAuth permission scopes and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. Not nullable. Supports $filter (eq, NOT, ge, le).
+  [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
   [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
   [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
   [Tag <String[]>]: Custom strings that can be used to categorize and identify the application. Not nullable.Supports $filter (eq, NOT, ge, le, startsWith).
@@ -12522,6 +12553,7 @@ INPUTOBJECT <IMicrosoftGraphGroup>: user input object
         [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
     [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
       [(Any) <Object>]: This indicates any property can be added to this object.
@@ -13037,6 +13069,7 @@ GROUPOBJECT <MicrosoftGraphGroup>: The target group object, could be used as pip
         [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
     [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
       [(Any) <Object>]: This indicates any property can be added to this object.
@@ -13560,6 +13593,7 @@ APPLICATIONOBJECT <IMicrosoftGraphApplication>: key: application object
           [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
           [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
         [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+      [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
       [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
       [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
         [(Any) <Object>]: This indicates any property can be added to this object.
@@ -13614,6 +13648,7 @@ APPLICATIONOBJECT <IMicrosoftGraphApplication>: key: application object
   [PasswordCredentials <IMicrosoftGraphPasswordCredential[]>]: The collection of password credentials associated with the application. Not nullable.
   [PublicClient <IMicrosoftGraphPublicClientApplication>]: publicClientApplication
   [RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]: Specifies the resources that the application needs to access. This property also specifies the set of OAuth permission scopes and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. Not nullable. Supports $filter (eq, NOT, ge, le).
+  [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
   [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
   [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
   [Tag <String[]>]: Custom strings that can be used to categorize and identify the application. Not nullable.Supports $filter (eq, NOT, ge, le, startsWith).
@@ -13817,6 +13852,7 @@ INPUTOBJECT <IMicrosoftGraphServicePrincipal>: key: service principal object
           [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
           [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
         [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+      [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
       [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
       [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
         [(Any) <Object>]: This indicates any property can be added to this object.
@@ -14292,6 +14328,7 @@ SERVICEPRINCIPALOBJECT <IMicrosoftGraphServicePrincipal>: The service principal 
           [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
           [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
         [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+      [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
       [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
       [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
         [(Any) <Object>]: This indicates any property can be added to this object.
@@ -14762,6 +14799,7 @@ INPUTOBJECT <IMicrosoftGraphUser>: user input object
         [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
     [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
       [(Any) <Object>]: This indicates any property can be added to this object.
@@ -15362,6 +15400,7 @@ HOMEREALMDISCOVERYPOLICY <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>: .
         [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
     [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
       [(Any) <Object>]: This indicates any property can be added to this object.
@@ -15593,6 +15632,7 @@ INPUTOBJECT <IMicrosoftGraphApplication>: key: application object
           [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
           [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
         [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+      [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
       [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
       [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
         [(Any) <Object>]: This indicates any property can be added to this object.
@@ -15647,6 +15687,7 @@ INPUTOBJECT <IMicrosoftGraphApplication>: key: application object
   [PasswordCredentials <IMicrosoftGraphPasswordCredential[]>]: The collection of password credentials associated with the application. Not nullable.
   [PublicClient <IMicrosoftGraphPublicClientApplication>]: publicClientApplication
   [RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]: Specifies the resources that the application needs to access. This property also specifies the set of OAuth permission scopes and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. Not nullable. Supports $filter (eq, NOT, ge, le).
+  [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
   [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
   [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
   [Tag <String[]>]: Custom strings that can be used to categorize and identify the application. Not nullable.Supports $filter (eq, NOT, ge, le, startsWith).
@@ -15850,6 +15891,7 @@ TOKENISSUANCEPOLICY <IMicrosoftGraphTokenIssuancePolicy[]>: .
         [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
     [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
       [(Any) <Object>]: This indicates any property can be added to this object.
@@ -16060,6 +16102,7 @@ TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePol
         [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
     [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
       [(Any) <Object>]: This indicates any property can be added to this object.
@@ -16323,6 +16366,13 @@ param(
     # Supports $filter (eq, NOT, ge, le).
     # To construct, see NOTES section for REQUIREDRESOURCEACCESS properties and create a hash table.
     ${RequiredResourceAccess},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # References application or service contact information from a Service or Asset Management database.
+    # Nullable.
+    ${ServiceManagementReference},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -16732,6 +16782,7 @@ CLAIMSMAPPINGPOLICY <IMicrosoftGraphClaimsMappingPolicy[]>: The claimsMappingPol
         [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
     [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
       [(Any) <Object>]: This indicates any property can be added to this object.
@@ -16951,6 +17002,7 @@ HOMEREALMDISCOVERYPOLICY <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>: The homeRe
         [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
     [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
       [(Any) <Object>]: This indicates any property can be added to this object.
@@ -17195,6 +17247,7 @@ INPUTOBJECT <IMicrosoftGraphServicePrincipal>: service principal object
           [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
           [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
         [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+      [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
       [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
       [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
         [(Any) <Object>]: This indicates any property can be added to this object.
@@ -17476,6 +17529,7 @@ TOKENISSUANCEPOLICY <IMicrosoftGraphTokenIssuancePolicy[]>: The tokenIssuancePol
         [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
     [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
       [(Any) <Object>]: This indicates any property can be added to this object.
@@ -17686,6 +17740,7 @@ TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePol
         [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
     [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
       [(Any) <Object>]: This indicates any property can be added to this object.
@@ -18434,6 +18489,7 @@ INPUTOBJECT <IMicrosoftGraphUser>: user input object
         [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
     [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
       [(Any) <Object>]: This indicates any property can be added to this object.

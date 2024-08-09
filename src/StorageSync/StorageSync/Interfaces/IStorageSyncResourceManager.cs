@@ -35,6 +35,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Interfaces
         /// </summary>
         /// <returns>IEcsManagement.</returns>
         IEcsManagement CreateEcsManagement();
+
+        /// <summary>
+        /// Creates the ecs management.
+        /// </summary>
+        /// <returns>IEcsManagement.</returns>
+        ISyncServerRegistration CreateSyncServerManagement();
+
         /// <summary>
         /// Gets the unique identifier.
         /// </summary>

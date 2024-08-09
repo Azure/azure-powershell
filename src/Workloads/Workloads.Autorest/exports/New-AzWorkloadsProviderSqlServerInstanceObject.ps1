@@ -20,7 +20,7 @@ Create an in-memory object for MsSqlServerProviderInstanceProperties.
 .Description
 Create an in-memory object for MsSqlServerProviderInstanceProperties.
 .Example
-New-AzWorkloadsProviderSqlServerInstanceObject -Password 'Password@123' -Port 1433 -Username ams -Hostname 10.1.14.5 -SapSid X00 -SslPreference Disabled
+New-AzWorkloadsProviderSqlServerInstanceObject -Password $password -Port 1433 -Username ams -Hostname 10.1.14.5 -SapSid X00 -SslPreference Disabled
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.MSSqlServerProviderInstanceProperties

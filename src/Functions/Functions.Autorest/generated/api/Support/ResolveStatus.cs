@@ -11,6 +11,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
     {
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ResolveStatus AccessToKeyVaultDenied = @"AccessToKeyVaultDenied";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ResolveStatus FetchTimedOut = @"FetchTimedOut";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ResolveStatus Initialized = @"Initialized";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ResolveStatus InvalidSyntax = @"InvalidSyntax";
@@ -24,6 +26,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ResolveStatus SecretNotFound = @"SecretNotFound";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ResolveStatus SecretVersionNotFound = @"SecretVersionNotFound";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ResolveStatus UnauthorizedClient = @"UnauthorizedClient";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ResolveStatus VaultNotFound = @"VaultNotFound";
 

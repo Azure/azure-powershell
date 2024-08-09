@@ -14,7 +14,7 @@ Create an in-memory object for PSCredentialExecutionParameter.
 
 ```
 New-AzVMwarePSCredentialExecutionParameterObject -Name <String> [-Password <SecureString>] [-Username <String>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ Create an in-memory object for PSCredentialExecutionParameter.
 
 ### Example 1: Create a local PS Credential Execution object
 ```powershell
-$mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$mypwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzVMwarePSCredentialExecutionParameterObject -Name azps_test_credentialvalue -Password $mypwd -Username "usernameValue"
 ```
 
@@ -60,21 +60,6 @@ password for login.
 Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

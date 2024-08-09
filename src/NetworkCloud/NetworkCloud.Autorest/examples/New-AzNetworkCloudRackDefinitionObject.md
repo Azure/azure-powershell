@@ -1,6 +1,6 @@
 ### Example 1: Create an in-memory object for RackDefinition.
 ```powershell
-$password = ConvertTo-SecureString "1qaz@WSX" -AsPlainText
+$password = ConvertTo-SecureString "*******" -AsPlainText
 $bmmConfigurationData = New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername "username" -BmcMacAddress "00:BB:CC:DD:EE:FF" -BootMacAddress "00:BB:CC:DD:EE:FF" -RackSlot 1 -SerialNumber "serialNumber" -MachineDetail "machineDetail" -MachineName "machineName"
 $saConfigurationData = New-AzNetworkCloudStorageApplianceConfigurationDataObject -AdminCredentialsPassword $password -AdminCredentialsUsername "username" -RackSlot 1 -SerialNumber "serialNumber" -StorageApplianceName "storageApplianceName"
 

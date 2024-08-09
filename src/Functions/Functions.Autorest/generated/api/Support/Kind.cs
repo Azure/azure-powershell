@@ -16,6 +16,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Kind FileStorage = @"FileStorage";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Kind Stateful = @"Stateful";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Kind Stateless = @"Stateless";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Kind Storage = @"Storage";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.Kind StorageV2 = @"StorageV2";

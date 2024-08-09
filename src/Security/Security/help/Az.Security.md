@@ -144,6 +144,9 @@ Gets nested subgroups of given GitLab Group which are onboarded to the connector
 ### [Get-AzSecurityContact](Get-AzSecurityContact.md)
 Gets security contacts that were configured on this subscription
 
+### [Get-AzSecurityDefenderForStorage](Get-AzSecurityDefenderForStorage.md)
+Gets the Defender for Storage settings for the specified storage account.
+
 ### [Get-AzSecurityLocation](Get-AzSecurityLocation.md)
 Gets the location where Azure Security Center will automatically save data for the specific subscription
 
@@ -419,4 +422,7 @@ Update a monitored Azure DevOps repository resource.
 
 ### [Update-AzSecurityConnectorDevOpsConfiguration](Update-AzSecurityConnectorDevOpsConfiguration.md)
 Update a DevOps Configuration.
+
+### [Update-AzSecurityDefenderForStorage](Update-AzSecurityDefenderForStorage.md)
+Update the Defender for Storage settings on a specified storage account.
 

@@ -6,7 +6,7 @@ Get-AzMLWorkspaceDataVersion  -ResourceGroupName ml-rg-test -WorkspaceName mlwor
 ```output
 Name SystemDataCreatedAt SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
 ---- ------------------- -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-1    5/5/2022 2:58:50 AM Lucas Yao (Wicresoft North America) User                    5/5/2022 2:58:50 AM                                                            ml-rg-test
+1    5/5/2022 2:58:50 AM UserName (Example)         User                    5/5/2022 2:58:50 AM                                                            ml-rg-test
 ```
 
 Lists all data versions
@@ -19,7 +19,7 @@ Get-AzMLWorkspaceDataVersion  -ResourceGroupName ml-rg-test -WorkspaceName mlwor
 ```output
 Name SystemDataCreatedAt SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
 ---- ------------------- -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-1    5/5/2022 2:58:50 AM Lucas Yao (Wicresoft North America) User                    5/5/2022 2:58:50 AM                                                            ml-rg-test
+1    5/5/2022 2:58:50 AM UserName (Example)         User                    5/5/2022 2:58:50 AM                                                            ml-rg-test
 ```
 
 Get a data version

@@ -16,6 +16,2500 @@
 
 <#
 .Synopsis
+Lists batch Inference Endpoint keys.
+.Description
+Lists batch Inference Endpoint keys.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IEndpointAuthKeys
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacebatchendpointkey
+#>
+function Get-AzMLWorkspaceBatchEndpointKey {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IEndpointAuthKeys])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Inference Endpoint name.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceBatchEndpointKey_List';
+        }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get container.
+.Description
+Get container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICodeContainer
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacecodecontainer
+#>
+function Get-AzMLWorkspaceCodeContainer {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICodeContainer])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    # This is case-sensitive.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Continuation token for pagination.
+    ${Skip},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceCodeContainer_Get';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceCodeContainer_GetViaIdentity';
+            List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceCodeContainer_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Generate a storage location and credential for the client to upload a code asset to.
+.Description
+Generate a storage location and credential for the client to upload a code asset to.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPendingUploadRequestDto
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPendingUploadResponseDto
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IPendingUploadRequestDto>: .
+  [PendingUploadId <String>]: If PendingUploadId = null then random guid will be used.
+  [PendingUploadType <PendingUploadType?>]: TemporaryBlobReference is the only supported type
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacecodeversionstartpendingupload
+#>
+function Get-AzMLWorkspaceCodeVersionStartPendingUpload {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPendingUploadResponseDto])]
+[CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    # This is case-sensitive.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='GetExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    # This is case-sensitive.
+    ${Version},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Get', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPendingUploadRequestDto]
+    # .
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='GetExpanded')]
+    [Parameter(ParameterSetName='GetViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # If PendingUploadId = null then random guid will be used.
+    ${PendingUploadId},
+
+    [Parameter(ParameterSetName='GetExpanded')]
+    [Parameter(ParameterSetName='GetViaIdentityExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PendingUploadType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PendingUploadType]
+    # TemporaryBlobReference is the only supported type
+    ${PendingUploadType},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceCodeVersionStartPendingUpload_Get';
+            GetExpanded = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceCodeVersionStartPendingUpload_GetExpanded';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceCodeVersionStartPendingUpload_GetViaIdentity';
+            GetViaIdentityExpanded = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceCodeVersionStartPendingUpload_GetViaIdentityExpanded';
+        }
+        if (('Get', 'GetExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+List versions.
+.Description
+List versions.
+.Example
+Get-AzMLWorkspaceCodeVersion -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name 'codepwsh01' -Version 1
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICodeVersion
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacecodeversion
+#>
+function Get-AzMLWorkspaceCodeVersion {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICodeVersion])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    # This is case-sensitive.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # If specified, return CodeVersion assets with specified content hash value, regardless of name
+    ${Hash},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Hash algorithm version when listing by hash
+    ${HashVersion},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Ordering of list.
+    ${OrderBy},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Continuation token for pagination.
+    ${Skip},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.Int32]
+    # Maximum number of records to return.
+    ${Top},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceCodeVersion_List';
+        }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+List all the secrets of a machine learning workspaces connections.
+.Description
+List all the secrets of a machine learning workspaces connections.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspaceConnectionPropertiesV2BasicResource
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceconnectionsecret
+#>
+function Get-AzMLWorkspaceConnectionSecret {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspaceConnectionPropertiesV2BasicResource])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Friendly name of the workspace connection
+    ${ConnectionName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceConnectionSecret_List';
+        }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get container.
+.Description
+Get container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturesetContainer
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacefeaturesetcontainerentity
+#>
+function Get-AzMLWorkspaceFeaturesetContainerEntity {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturesetContainer])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    # This is case-sensitive.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceFeaturesetContainerEntity_Get';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceFeaturesetContainerEntity_GetViaIdentity';
+        }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+List featurestore entity containers.
+.Description
+List featurestore entity containers.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturesetContainer
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacefeaturesetcontainer
+#>
+function Get-AzMLWorkspaceFeaturesetContainer {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturesetContainer])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # createdBy user name
+    ${CreatedBy},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # description for the feature set
+    ${Description},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ListViewType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ListViewType]
+    # [ListViewType.ActiveOnly, ListViewType.ArchivedOnly, ListViewType.All]View type for including/excluding (for example) archived entities.
+    ${ListViewType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # name for the featureset
+    ${Name},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.Int32]
+    # page size
+    ${PageSize},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Continuation token for pagination.
+    ${Skip},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Comma-separated list of tag names (and optionally values).
+    # Example: tag1,tag2=value2
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceFeaturesetContainer_List';
+        }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get version.
+.Description
+Get version.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturesetVersion
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacefeaturesetversion
+#>
+function Get-AzMLWorkspaceFeaturesetVersion {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturesetVersion])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    # This is case-sensitive.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    # This is case-sensitive.
+    ${Version},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # createdBy user name
+    ${CreatedBy},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # description for the feature set version
+    ${Description},
+
+    [Parameter(ParameterSetName='List')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ListViewType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ListViewType]
+    # [ListViewType.ActiveOnly, ListViewType.ArchivedOnly, ListViewType.All]View type for including/excluding (for example) archived entities.
+    ${ListViewType},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.Int32]
+    # page size
+    ${PageSize},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Continuation token for pagination.
+    ${Skip},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Specifies the featurestore stage
+    ${Stage},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Comma-separated list of tag names (and optionally values).
+    # Example: tag1,tag2=value2
+    ${Tag},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # name for the featureset version
+    ${VersionName},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceFeaturesetVersion_Get';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceFeaturesetVersion_GetViaIdentity';
+            List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceFeaturesetVersion_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get container.
+.Description
+Get container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturestoreEntityContainer
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacefeaturestoreentitycontainerentity
+#>
+function Get-AzMLWorkspaceFeaturestoreEntityContainerEntity {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturestoreEntityContainer])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    # This is case-sensitive.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceFeaturestoreEntityContainerEntity_Get';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceFeaturestoreEntityContainerEntity_GetViaIdentity';
+        }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+List featurestore entity containers.
+.Description
+List featurestore entity containers.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturestoreEntityContainer
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacefeaturestoreentitycontainer
+#>
+function Get-AzMLWorkspaceFeaturestoreEntityContainer {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturestoreEntityContainer])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # createdBy user name
+    ${CreatedBy},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # description for the featurestore entity
+    ${Description},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ListViewType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ListViewType]
+    # [ListViewType.ActiveOnly, ListViewType.ArchivedOnly, ListViewType.All]View type for including/excluding (for example) archived entities.
+    ${ListViewType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # name for the featurestore entity
+    ${Name},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.Int32]
+    # page size
+    ${PageSize},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Continuation token for pagination.
+    ${Skip},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Comma-separated list of tag names (and optionally values).
+    # Example: tag1,tag2=value2
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceFeaturestoreEntityContainer_List';
+        }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get version.
+.Description
+Get version.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturestoreEntityVersion
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacefeaturestoreentityversion
+#>
+function Get-AzMLWorkspaceFeaturestoreEntityVersion {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturestoreEntityVersion])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    # This is case-sensitive.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    # This is case-sensitive.
+    ${Version},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # createdBy user name
+    ${CreatedBy},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # description for the feature entity version
+    ${Description},
+
+    [Parameter(ParameterSetName='List')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ListViewType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ListViewType]
+    # [ListViewType.ActiveOnly, ListViewType.ArchivedOnly, ListViewType.All]View type for including/excluding (for example) archived entities.
+    ${ListViewType},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.Int32]
+    # page size
+    ${PageSize},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Continuation token for pagination.
+    ${Skip},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Specifies the featurestore stage
+    ${Stage},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Comma-separated list of tag names (and optionally values).
+    # Example: tag1,tag2=value2
+    ${Tag},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # name for the featurestore entity version
+    ${VersionName},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceFeaturestoreEntityVersion_Get';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceFeaturestoreEntityVersion_GetViaIdentity';
+            List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceFeaturestoreEntityVersion_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Gets an outbound rule from the managed network of a machine learning workspace.
+.Description
+Gets an outbound rule from the managed network of a machine learning workspace.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IOutboundRuleBasicResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacemanagednetworksettingsrule
+#>
+function Get-AzMLWorkspaceManagedNetworkSettingsRule {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IOutboundRuleBasicResource])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of the workspace managed network outbound rule
+    ${RuleName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceManagedNetworkSettingsRule_Get';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceManagedNetworkSettingsRule_GetViaIdentity';
+            List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceManagedNetworkSettingsRule_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get container.
+.Description
+Get container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IMarketplaceSubscription
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacemarketplacesubscription
+#>
+function Get-AzMLWorkspaceMarketplaceSubscription {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IMarketplaceSubscription])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Continuation token for pagination.
+    ${Skip},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceMarketplaceSubscription_Get';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceMarketplaceSubscription_GetViaIdentity';
+            List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceMarketplaceSubscription_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Lists all of the available Azure Machine Learning Workspaces REST API operations.
 .Description
 Lists all of the available Azure Machine Learning Workspaces REST API operations.
@@ -25,12 +2519,12 @@ Lists all of the available Azure Machine Learning Workspaces REST API operations
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IAmlOperation
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api30.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceoperation
 #>
 function Get-AzMLWorkspaceOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IAmlOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api30.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -38,7 +2532,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -91,6 +2586,16007 @@ begin {
 
         $mapping = @{
             List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceOperation_List';
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get Code container.
+.Description
+Get Code container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICodeContainer
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceregistrycodecontainer
+#>
+function Get-AzMLWorkspaceRegistryCodeContainer {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICodeContainer])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${CodeName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Continuation token for pagination.
+    ${Skip},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryCodeContainer_Get';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryCodeContainer_GetViaIdentity';
+            List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryCodeContainer_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Generate a storage location and credential for the client to upload a code asset to.
+.Description
+Generate a storage location and credential for the client to upload a code asset to.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPendingUploadRequestDto
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPendingUploadResponseDto
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IPendingUploadRequestDto>: .
+  [PendingUploadId <String>]: If PendingUploadId = null then random guid will be used.
+  [PendingUploadType <PendingUploadType?>]: TemporaryBlobReference is the only supported type
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceregistrycodeversionstartpendingupload
+#>
+function Get-AzMLWorkspaceRegistryCodeVersionStartPendingUpload {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPendingUploadResponseDto])]
+[CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Pending upload name.
+    # This is case-sensitive.
+    ${CodeName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='GetExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    # This is case-sensitive.
+    ${Version},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Get', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPendingUploadRequestDto]
+    # .
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='GetExpanded')]
+    [Parameter(ParameterSetName='GetViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # If PendingUploadId = null then random guid will be used.
+    ${PendingUploadId},
+
+    [Parameter(ParameterSetName='GetExpanded')]
+    [Parameter(ParameterSetName='GetViaIdentityExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PendingUploadType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PendingUploadType]
+    # TemporaryBlobReference is the only supported type
+    ${PendingUploadType},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryCodeVersionStartPendingUpload_Get';
+            GetExpanded = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryCodeVersionStartPendingUpload_GetExpanded';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryCodeVersionStartPendingUpload_GetViaIdentity';
+            GetViaIdentityExpanded = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryCodeVersionStartPendingUpload_GetViaIdentityExpanded';
+        }
+        if (('Get', 'GetExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get version.
+.Description
+Get version.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICodeVersion
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceregistrycodeversion
+#>
+function Get-AzMLWorkspaceRegistryCodeVersion {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICodeVersion])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${CodeName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    ${Version},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Ordering of list.
+    ${OrderBy},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Continuation token for pagination.
+    ${Skip},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.Int32]
+    # Maximum number of records to return.
+    ${Top},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryCodeVersion_Get';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryCodeVersion_GetViaIdentity';
+            List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryCodeVersion_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get container.
+.Description
+Get container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IComponentContainer
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceregistrycomponentcontainer
+#>
+function Get-AzMLWorkspaceRegistryComponentContainer {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IComponentContainer])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${ComponentName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Continuation token for pagination.
+    ${Skip},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryComponentContainer_Get';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryComponentContainer_GetViaIdentity';
+            List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryComponentContainer_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get version.
+.Description
+Get version.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IComponentVersion
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceregistrycomponentversion
+#>
+function Get-AzMLWorkspaceRegistryComponentVersion {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IComponentVersion])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${ComponentName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    ${Version},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Ordering of list.
+    ${OrderBy},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Continuation token for pagination.
+    ${Skip},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.Int32]
+    # Maximum number of records to return.
+    ${Top},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryComponentVersion_Get';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryComponentVersion_GetViaIdentity';
+            List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryComponentVersion_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get container.
+.Description
+Get container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDataContainer
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceregistrydatacontainer
+#>
+function Get-AzMLWorkspaceRegistryDataContainer {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDataContainer])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='List')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ListViewType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ListViewType]
+    # View type for including/excluding (for example) archived entities.
+    ${ListViewType},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Continuation token for pagination.
+    ${Skip},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryDataContainer_Get';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryDataContainer_GetViaIdentity';
+            List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryDataContainer_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get blob reference SAS Uri.
+.Description
+Get blob reference SAS Uri.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IGetBlobReferenceSasRequestDto
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IGetBlobReferenceForConsumptionDto
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IGetBlobReferenceSasRequestDto>: BlobReferenceSASRequest for getBlobReferenceSAS API
+  [AssetId <String>]: Id of the asset to be accessed
+  [BlobUri <String>]: Blob uri of the asset to be accessed
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceregistrydatareferenceblobreferencesas
+#>
+function Get-AzMLWorkspaceRegistryDataReferenceBlobReferenceSas {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IGetBlobReferenceForConsumptionDto])]
+[CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Data reference name.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='GetExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    ${Version},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Get', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IGetBlobReferenceSasRequestDto]
+    # BlobReferenceSASRequest for getBlobReferenceSAS API
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='GetExpanded')]
+    [Parameter(ParameterSetName='GetViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Id of the asset to be accessed
+    ${AssetId},
+
+    [Parameter(ParameterSetName='GetExpanded')]
+    [Parameter(ParameterSetName='GetViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Blob uri of the asset to be accessed
+    ${BlobUri},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryDataReferenceBlobReferenceSas_Get';
+            GetExpanded = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryDataReferenceBlobReferenceSas_GetExpanded';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryDataReferenceBlobReferenceSas_GetViaIdentity';
+            GetViaIdentityExpanded = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryDataReferenceBlobReferenceSas_GetViaIdentityExpanded';
+        }
+        if (('Get', 'GetExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Generate a storage location and credential for the client to upload a data asset to.
+.Description
+Generate a storage location and credential for the client to upload a data asset to.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPendingUploadRequestDto
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPendingUploadResponseDto
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IPendingUploadRequestDto>: .
+  [PendingUploadId <String>]: If PendingUploadId = null then random guid will be used.
+  [PendingUploadType <PendingUploadType?>]: TemporaryBlobReference is the only supported type
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceregistrydataversionstartpendingupload
+#>
+function Get-AzMLWorkspaceRegistryDataVersionStartPendingUpload {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPendingUploadResponseDto])]
+[CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Data asset name.
+    # This is case-sensitive.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='GetExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    # This is case-sensitive.
+    ${Version},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Get', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPendingUploadRequestDto]
+    # .
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='GetExpanded')]
+    [Parameter(ParameterSetName='GetViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # If PendingUploadId = null then random guid will be used.
+    ${PendingUploadId},
+
+    [Parameter(ParameterSetName='GetExpanded')]
+    [Parameter(ParameterSetName='GetViaIdentityExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PendingUploadType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PendingUploadType]
+    # TemporaryBlobReference is the only supported type
+    ${PendingUploadType},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryDataVersionStartPendingUpload_Get';
+            GetExpanded = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryDataVersionStartPendingUpload_GetExpanded';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryDataVersionStartPendingUpload_GetViaIdentity';
+            GetViaIdentityExpanded = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryDataVersionStartPendingUpload_GetViaIdentityExpanded';
+        }
+        if (('Get', 'GetExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get version.
+.Description
+Get version.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDataVersionBase
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceregistrydataversion
+#>
+function Get-AzMLWorkspaceRegistryDataVersion {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDataVersionBase])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    ${Version},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='List')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ListViewType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ListViewType]
+    # [ListViewType.ActiveOnly, ListViewType.ArchivedOnly, ListViewType.All]View type for including/excluding (for example) archived entities.
+    ${ListViewType},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Please choose OrderBy value from ['createdtime', 'modifiedtime']
+    ${OrderBy},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Continuation token for pagination.
+    ${Skip},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Comma-separated list of tag names (and optionally values).
+    # Example: tag1,tag2=value2
+    ${Tag},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.Int32]
+    # Top count of results, top count cannot be greater than the page size.
+    #  If topCount > page size, results with be default page size count will be returned
+    ${Top},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryDataVersion_Get';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryDataVersion_GetViaIdentity';
+            List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryDataVersion_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get container.
+.Description
+Get container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IEnvironmentContainer
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceregistryenvironmentcontainer
+#>
+function Get-AzMLWorkspaceRegistryEnvironmentContainer {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IEnvironmentContainer])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    # This is case-sensitive.
+    ${EnvironmentName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='List')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ListViewType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ListViewType]
+    # View type for including/excluding (for example) archived entities.
+    ${ListViewType},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Continuation token for pagination.
+    ${Skip},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryEnvironmentContainer_Get';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryEnvironmentContainer_GetViaIdentity';
+            List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryEnvironmentContainer_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get version.
+.Description
+Get version.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IEnvironmentVersion
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceregistryenvironmentversion
+#>
+function Get-AzMLWorkspaceRegistryEnvironmentVersion {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IEnvironmentVersion])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    # This is case-sensitive.
+    ${EnvironmentName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    # This is case-sensitive.
+    ${Version},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='List')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ListViewType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ListViewType]
+    # View type for including/excluding (for example) archived entities.
+    ${ListViewType},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Ordering of list.
+    ${OrderBy},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Continuation token for pagination.
+    ${Skip},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.Int32]
+    # Maximum number of records to return.
+    ${Top},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryEnvironmentVersion_Get';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryEnvironmentVersion_GetViaIdentity';
+            List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryEnvironmentVersion_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get container.
+.Description
+Get container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IModelContainer
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceregistrymodelcontainer
+#>
+function Get-AzMLWorkspaceRegistryModelContainer {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IModelContainer])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    # This is case-sensitive.
+    ${ModelName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='List')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ListViewType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ListViewType]
+    # View type for including/excluding (for example) archived entities.
+    ${ListViewType},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Continuation token for pagination.
+    ${Skip},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryModelContainer_Get';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryModelContainer_GetViaIdentity';
+            List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryModelContainer_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Generate a storage location and credential for the client to upload a model asset to.
+.Description
+Generate a storage location and credential for the client to upload a model asset to.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPendingUploadRequestDto
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPendingUploadResponseDto
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IPendingUploadRequestDto>: .
+  [PendingUploadId <String>]: If PendingUploadId = null then random guid will be used.
+  [PendingUploadType <PendingUploadType?>]: TemporaryBlobReference is the only supported type
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceregistrymodelversionstartpendingupload
+#>
+function Get-AzMLWorkspaceRegistryModelVersionStartPendingUpload {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPendingUploadResponseDto])]
+[CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Model name.
+    # This is case-sensitive.
+    ${ModelName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='GetExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    # This is case-sensitive.
+    ${Version},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Get', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPendingUploadRequestDto]
+    # .
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='GetExpanded')]
+    [Parameter(ParameterSetName='GetViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # If PendingUploadId = null then random guid will be used.
+    ${PendingUploadId},
+
+    [Parameter(ParameterSetName='GetExpanded')]
+    [Parameter(ParameterSetName='GetViaIdentityExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PendingUploadType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PendingUploadType]
+    # TemporaryBlobReference is the only supported type
+    ${PendingUploadType},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryModelVersionStartPendingUpload_Get';
+            GetExpanded = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryModelVersionStartPendingUpload_GetExpanded';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryModelVersionStartPendingUpload_GetViaIdentity';
+            GetViaIdentityExpanded = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryModelVersionStartPendingUpload_GetViaIdentityExpanded';
+        }
+        if (('Get', 'GetExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get version.
+.Description
+Get version.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IModelVersion
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceregistrymodelversion
+#>
+function Get-AzMLWorkspaceRegistryModelVersion {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IModelVersion])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    # This is case-sensitive.
+    ${ModelName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    # This is case-sensitive.
+    ${Version},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Model description.
+    ${Description},
+
+    [Parameter(ParameterSetName='List')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ListViewType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ListViewType]
+    # View type for including/excluding (for example) archived entities.
+    ${ListViewType},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Ordering of list.
+    ${OrderBy},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Comma-separated list of property names (and optionally values).
+    # Example: prop1,prop2=value2
+    ${Property},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Continuation token for pagination.
+    ${Skip},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Comma-separated list of tag names (and optionally values).
+    # Example: tag1,tag2=value2
+    ${Tag},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.Int32]
+    # Maximum number of records to return.
+    ${Top},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryModelVersion_Get';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryModelVersion_GetViaIdentity';
+            List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistryModelVersion_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get registry
+.Description
+Get registry
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IRegistry
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceregistry
+#>
+function Get-AzMLWorkspaceRegistry {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IRegistry])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Alias('RegistryName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='List1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistry_Get';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistry_GetViaIdentity';
+            List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistry_List';
+            List1 = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceRegistry_List1';
+        }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get schedule.
+.Description
+Get schedule.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ISchedule
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceschedule
+#>
+function Get-AzMLWorkspaceSchedule {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ISchedule])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Schedule name.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='List')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScheduleListViewType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScheduleListViewType]
+    # Status filter for schedule.
+    ${ListViewType},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Continuation token for pagination.
+    ${Skip},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceSchedule_Get';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceSchedule_GetViaIdentity';
+            List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceSchedule_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+List EndpointAuthKeys for an Endpoint using Key-based authentication.
+.Description
+List EndpointAuthKeys for an Endpoint using Key-based authentication.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IEndpointAuthKeys
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceserverlessendpointkey
+#>
+function Get-AzMLWorkspaceServerlessEndpointKey {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IEndpointAuthKeys])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Serverless Endpoint name.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceServerlessEndpointKey_List';
+        }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get Serverless Endpoint.
+.Description
+Get Serverless Endpoint.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IServerlessEndpoint
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceserverlessendpoint
+#>
+function Get-AzMLWorkspaceServerlessEndpoint {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IServerlessEndpoint])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Serverless Endpoint name.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Query')]
+    [System.String]
+    # Continuation token for pagination.
+    ${Skip},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceServerlessEndpoint_Get';
+            GetViaIdentity = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceServerlessEndpoint_GetViaIdentity';
+            List = 'Az.MachineLearningServices.private\Get-AzMLWorkspaceServerlessEndpoint_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Backfill.
+.Description
+Backfill.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturesetVersionBackfillRequest
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.String
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IFeaturesetVersionBackfillRequest>: Request payload for creating a backfill request for a given feature set version
+  [DataAvailabilityStatus <DataAvailabilityStatus[]>]: Specified the data availability status that you want to backfill
+  [Description <String>]: Specifies description
+  [DisplayName <String>]: Specifies description
+  [FeatureWindowEnd <DateTime?>]: Specifies the feature window end time
+  [FeatureWindowStart <DateTime?>]: Specifies the feature window start time
+  [JobId <String>]: Specify the jobId to retry the failed materialization
+  [Property <IFeaturesetVersionBackfillRequestProperties>]: Specifies the properties
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [ResourceInstanceType <String>]: Specifies the instance type
+  [SparkConfiguration <IFeaturesetVersionBackfillRequestSparkConfiguration>]: Specifies the spark compute settings
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [Tag <IFeaturesetVersionBackfillRequestTags>]: Specifies the tags
+    [(Any) <String>]: This indicates any property can be added to this object.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/invoke-azmlworkspacebackfillfeaturesetversion
+#>
+function Invoke-AzMLWorkspaceBackfillFeaturesetVersion {
+[OutputType([System.String])]
+[CmdletBinding(DefaultParameterSetName='BackfillExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Backfill', Mandatory)]
+    [Parameter(ParameterSetName='BackfillExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    # This is case-sensitive.
+    ${Name},
+
+    [Parameter(ParameterSetName='Backfill', Mandatory)]
+    [Parameter(ParameterSetName='BackfillExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Backfill')]
+    [Parameter(ParameterSetName='BackfillExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Backfill', Mandatory)]
+    [Parameter(ParameterSetName='BackfillExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    # This is case-sensitive.
+    ${Version},
+
+    [Parameter(ParameterSetName='Backfill', Mandatory)]
+    [Parameter(ParameterSetName='BackfillExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='BackfillViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='BackfillViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Backfill', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='BackfillViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturesetVersionBackfillRequest]
+    # Request payload for creating a backfill request for a given feature set version
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='BackfillExpanded')]
+    [Parameter(ParameterSetName='BackfillViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DataAvailabilityStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DataAvailabilityStatus[]]
+    # Specified the data availability status that you want to backfill
+    ${DataAvailabilityStatus},
+
+    [Parameter(ParameterSetName='BackfillExpanded')]
+    [Parameter(ParameterSetName='BackfillViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Specifies description
+    ${Description},
+
+    [Parameter(ParameterSetName='BackfillExpanded')]
+    [Parameter(ParameterSetName='BackfillViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Specifies description
+    ${DisplayName},
+
+    [Parameter(ParameterSetName='BackfillExpanded')]
+    [Parameter(ParameterSetName='BackfillViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.DateTime]
+    # Specifies the feature window end time
+    ${FeatureWindowEnd},
+
+    [Parameter(ParameterSetName='BackfillExpanded')]
+    [Parameter(ParameterSetName='BackfillViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.DateTime]
+    # Specifies the feature window start time
+    ${FeatureWindowStart},
+
+    [Parameter(ParameterSetName='BackfillExpanded')]
+    [Parameter(ParameterSetName='BackfillViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Specify the jobId to retry the failed materialization
+    ${JobId},
+
+    [Parameter(ParameterSetName='BackfillExpanded')]
+    [Parameter(ParameterSetName='BackfillViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturesetVersionBackfillRequestProperties]))]
+    [System.Collections.Hashtable]
+    # Specifies the properties
+    ${Property},
+
+    [Parameter(ParameterSetName='BackfillExpanded')]
+    [Parameter(ParameterSetName='BackfillViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Specifies the instance type
+    ${ResourceInstanceType},
+
+    [Parameter(ParameterSetName='BackfillExpanded')]
+    [Parameter(ParameterSetName='BackfillViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturesetVersionBackfillRequestSparkConfiguration]))]
+    [System.Collections.Hashtable]
+    # Specifies the spark compute settings
+    ${SparkConfiguration},
+
+    [Parameter(ParameterSetName='BackfillExpanded')]
+    [Parameter(ParameterSetName='BackfillViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturesetVersionBackfillRequestTags]))]
+    [System.Collections.Hashtable]
+    # Specifies the tags
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Backfill = 'Az.MachineLearningServices.private\Invoke-AzMLWorkspaceBackfillFeaturesetVersion_Backfill';
+            BackfillExpanded = 'Az.MachineLearningServices.private\Invoke-AzMLWorkspaceBackfillFeaturesetVersion_BackfillExpanded';
+            BackfillViaIdentity = 'Az.MachineLearningServices.private\Invoke-AzMLWorkspaceBackfillFeaturesetVersion_BackfillViaIdentity';
+            BackfillViaIdentityExpanded = 'Az.MachineLearningServices.private\Invoke-AzMLWorkspaceBackfillFeaturesetVersion_BackfillViaIdentityExpanded';
+        }
+        if (('Backfill', 'BackfillExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create or update container.
+.Description
+Create or update container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICodeContainer
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacecodecontainer
+#>
+function New-AzMLWorkspaceCodeContainer {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICodeContainer])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    # This is case-sensitive.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The asset description text.
+    ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Is the asset archived
+    ${IsArchived},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]))]
+    [System.Collections.Hashtable]
+    # The asset property dictionary.
+    ${ResourceBaseProperty},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]))]
+    [System.Collections.Hashtable]
+    # Tag dictionary.
+    # Tags can be added, removed, and updated.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceCodeContainer_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Generate a storage location and credential for the client to upload a code asset to.
+.Description
+Generate a storage location and credential for the client to upload a code asset to.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPendingUploadResponseDto
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacecodeversionstartpendingupload
+#>
+function New-AzMLWorkspaceCodeVersionStartPendingUpload {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPendingUploadResponseDto])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    # This is case-sensitive.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    # This is case-sensitive.
+    ${Version},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # If PendingUploadId = null then random guid will be used.
+    ${PendingUploadId},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PendingUploadType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PendingUploadType]
+    # TemporaryBlobReference is the only supported type
+    ${PendingUploadType},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceCodeVersionStartPendingUpload_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Creating or updating a new workspace connection
+.Description
+Creating or updating a new workspace connection
+.Example
+New-AzMLWorkspaceConnection -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-test01 -Name test01 -AuthType 'None' -Category 'ContainerRegistry' -Target "www.facebook.com"
+.Example
+# The Auth type includes "PAT", "ManagedIdentity", "UsernamePassword", "None", "SAS", "AccountKey", "ServicePrincipal", "AccessKey", "ApiKey", "CustomKeys", "OAuth2", "AAD".
+# You can use following command to create it then pass it as value to Property parameter of the New-AzMLWorkspaceConnection cmdlet.
+# New-AzMLWorkspaceAadAuthTypeWorkspaceConnectionPropertiesObject
+# New-AzMLWorkspaceAccessKeyAuthTypeWorkspaceConnectionPropertiesObject
+# New-AzMLWorkspaceAccountKeyAuthTypeWorkspaceConnectionPropertiesObject
+# New-AzMLWorkspaceApiKeyAuthWorkspaceConnectionPropertiesObject
+# New-AzMLWorkspaceCustomKeysWorkspaceConnectionPropertiesObject
+# New-AzMLWorkspaceManagedIdentityAuthTypeWorkspaceConnectionPropertiesObject
+# New-AzMLWorkspaceNoneAuthTypeWorkspaceConnectionPropertiesObject
+# New-AzMLWorkspaceOAuth2AuthTypeWorkspaceConnectionPropertiesObject
+# New-AzMLWorkspacePatAuthTypeWorkspaceConnectionPropertiesObject
+# New-AzMLWorkspaceSasAuthTypeWorkspaceConnectionPropertiesObject
+# New-AzMLWorkspaceServicePrincipalAuthTypeWorkspaceConnectionPropertiesObject
+# New-AzMLWorkspaceUsernamePasswordAuthTypeWorkspaceConnectionPropertiesObject
+
+$connectproperty = New-AzMLWorkspaceNoneAuthTypeWorkspaceConnectionPropertiesObject -Category 'ContainerRegistry' -Target "www.facebook.com" -IsSharedToAll $true
+New-AzMLWorkspaceConnection -Name aiservicesconnection -ResourceGroupName ml-test -WorkspaceName mlworkspace-test2 -Property $connectproperty
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspaceConnectionPropertiesV2BasicResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+PROPERTY <IWorkspaceConnectionPropertiesV2>: .
+  AuthType <ConnectionAuthType>: Authentication type of the connection target
+  [Category <ConnectionCategory?>]: Category of the connection
+  [ExpiryTime <DateTime?>]: 
+  [IsSharedToAll <Boolean?>]: 
+  [Metadata <IWorkspaceConnectionPropertiesV2Metadata>]: Store user metadata for this connection
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [SharedUserList <String[]>]: 
+  [Target <String>]: 
+  [Value <String>]: Value details of the workspace connection.
+  [ValueFormat <ValueFormat?>]: format for the workspace connection value
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceconnection
+#>
+function New-AzMLWorkspaceConnection {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspaceConnectionPropertiesV2BasicResource])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Friendly name of the workspace connection
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspaceConnectionPropertiesV2]
+    # .
+    # To construct, see NOTES section for PROPERTY properties and create a hash table.
+    ${Property},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceConnection_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create or update container.
+.Description
+Create or update container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IEnvironmentContainer
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceenvironmentcontainer
+#>
+function New-AzMLWorkspaceEnvironmentContainer {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IEnvironmentContainer])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    # This is case-sensitive.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The asset description text.
+    ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Is the asset archived
+    ${IsArchived},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]))]
+    [System.Collections.Hashtable]
+    # The asset property dictionary.
+    ${ResourceBaseProperty},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]))]
+    [System.Collections.Hashtable]
+    # Tag dictionary.
+    # Tags can be added, removed, and updated.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceEnvironmentContainer_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create or update container.
+.Description
+Create or update container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturesetContainer
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacefeaturesetcontainer
+#>
+function New-AzMLWorkspaceFeaturesetContainer {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturesetContainer])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    # This is case-sensitive.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The asset description text.
+    ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Is the asset archived
+    ${IsArchived},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]))]
+    [System.Collections.Hashtable]
+    # The asset property dictionary.
+    ${ResourceBaseProperty},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]))]
+    [System.Collections.Hashtable]
+    # Tag dictionary.
+    # Tags can be added, removed, and updated.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceFeaturesetContainer_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create or update version.
+.Description
+Create or update version.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturesetVersion
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacefeaturesetversion
+#>
+function New-AzMLWorkspaceFeaturesetVersion {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturesetVersion])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    # This is case-sensitive.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    # This is case-sensitive.
+    ${Version},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The asset description text.
+    ${Description},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String[]]
+    # Specifies list of entities
+    ${Entity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # If the name version are system generated (anonymous registration).
+    ${IsAnonymou},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Is the asset archived
+    ${IsArchived},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IMaterializationSettingsSparkConfiguration]))]
+    [System.Collections.Hashtable]
+    # Specifies the spark compute settings
+    ${MaterializationSettingSparkConfiguration},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.MaterializationStoreType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.MaterializationStoreType]
+    # Specifies the stores to which materialization should happen
+    ${MaterializationSettingStoreType},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String[]]
+    # This is the email recipient list which has a limitation of 499 characters in total concat with comma separator
+    ${NotificationEmail},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.EmailNotificationEnableType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.EmailNotificationEnableType[]]
+    # Send email notification to user on specified notification type
+    ${NotificationEmailOn},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.INotificationSettingWebhooks]))]
+    [System.Collections.Hashtable]
+    # Send webhook callback to a service.
+    # Key is a user-provided name for the webhook.
+    ${NotificationWebhook},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]))]
+    [System.Collections.Hashtable]
+    # The asset property dictionary.
+    ${ResourceBaseProperty},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Specifies the instance type
+    ${ResourceInstanceType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Specifies end time of schedule in ISO 8601, but without a UTC offset.
+    # Refer https://en.wikipedia.org/wiki/ISO_8601.Recommented format would be "2022-06-01T00:00:01"If not present, the schedule will run indefinitely
+    ${ScheduleEndTime},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.RecurrenceFrequency])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.RecurrenceFrequency]
+    # [Required] The frequency to trigger schedule.
+    ${ScheduleFrequency},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Int32[]]
+    # [Required] List of hours for the schedule.
+    ${ScheduleHour},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Int32]
+    # [Required] Specifies schedule interval in conjunction with frequency
+    ${ScheduleInterval},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Int32[]]
+    # [Required] List of minutes for the schedule.
+    ${ScheduleMinute},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Int32[]]
+    # List of month days for the schedule
+    ${ScheduleMonthDay},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Specifies start time of schedule in ISO 8601 format, but without a UTC offset.
+    ${ScheduleStartTime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Specifies time zone in which the schedule runs.TimeZone should follow Windows time zone format.
+    # Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zonesview=windows-11
+    ${ScheduleTimeZone},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.TriggerType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.TriggerType]
+    # [Required]
+    ${ScheduleTriggerType},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.WeekDay])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.WeekDay[]]
+    # List of days for the schedule.
+    ${ScheduleWeekDay},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Specifies the spec path
+    ${SpecificationPath},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Specifies the asset stage
+    ${Stage},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]))]
+    [System.Collections.Hashtable]
+    # Tag dictionary.
+    # Tags can be added, removed, and updated.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceFeaturesetVersion_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create or update container.
+.Description
+Create or update container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturestoreEntityContainer
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacefeaturestoreentitycontainer
+#>
+function New-AzMLWorkspaceFeaturestoreEntityContainer {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturestoreEntityContainer])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    # This is case-sensitive.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The asset description text.
+    ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Is the asset archived
+    ${IsArchived},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]))]
+    [System.Collections.Hashtable]
+    # The asset property dictionary.
+    ${ResourceBaseProperty},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]))]
+    [System.Collections.Hashtable]
+    # Tag dictionary.
+    # Tags can be added, removed, and updated.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceFeaturestoreEntityContainer_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create or update version.
+.Description
+Create or update version.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturestoreEntityVersion
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INDEXCOLUMN <IIndexColumn[]>: Specifies index columns
+  [ColumnName <String>]: Specifies the column name
+  [DataType <FeatureDataType?>]: Specifies the data type
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacefeaturestoreentityversion
+#>
+function New-AzMLWorkspaceFeaturestoreEntityVersion {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFeaturestoreEntityVersion])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    # This is case-sensitive.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    # This is case-sensitive.
+    ${Version},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The asset description text.
+    ${Description},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IIndexColumn[]]
+    # Specifies index columns
+    # To construct, see NOTES section for INDEXCOLUMN properties and create a hash table.
+    ${IndexColumn},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # If the name version are system generated (anonymous registration).
+    ${IsAnonymou},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Is the asset archived
+    ${IsArchived},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]))]
+    [System.Collections.Hashtable]
+    # The asset property dictionary.
+    ${ResourceBaseProperty},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Specifies the asset stage
+    ${Stage},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]))]
+    [System.Collections.Hashtable]
+    # Tag dictionary.
+    # Tags can be added, removed, and updated.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceFeaturestoreEntityVersion_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Provisions the managed network of a machine learning workspace.
+.Description
+Provisions the managed network of a machine learning workspace.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IManagedNetworkProvisionOptions
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IManagedNetworkProvisionStatus
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IManagedNetworkProvisionOptions>: Managed Network Provisioning options for managed network of a machine learning workspace.
+  [IncludeSpark <Boolean?>]: 
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacemanagednetworkprovisionmanagednetwork
+#>
+function New-AzMLWorkspaceManagedNetworkProvisionManagedNetwork {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IManagedNetworkProvisionStatus])]
+[CmdletBinding(DefaultParameterSetName='ProvisionExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Provision', Mandatory)]
+    [Parameter(ParameterSetName='ProvisionExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Provision')]
+    [Parameter(ParameterSetName='ProvisionExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Provision', Mandatory)]
+    [Parameter(ParameterSetName='ProvisionExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='ProvisionViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ProvisionViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Provision', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ProvisionViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IManagedNetworkProvisionOptions]
+    # Managed Network Provisioning options for managed network of a machine learning workspace.
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='ProvisionExpanded')]
+    [Parameter(ParameterSetName='ProvisionViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # .
+    ${IncludeSpark},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Provision = 'Az.MachineLearningServices.private\New-AzMLWorkspaceManagedNetworkProvisionManagedNetwork_Provision';
+            ProvisionExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceManagedNetworkProvisionManagedNetwork_ProvisionExpanded';
+            ProvisionViaIdentity = 'Az.MachineLearningServices.private\New-AzMLWorkspaceManagedNetworkProvisionManagedNetwork_ProvisionViaIdentity';
+            ProvisionViaIdentityExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceManagedNetworkProvisionManagedNetwork_ProvisionViaIdentityExpanded';
+        }
+        if (('Provision', 'ProvisionExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Creates or updates an outbound rule in the managed network of a machine learning workspace.
+.Description
+Creates or updates an outbound rule in the managed network of a machine learning workspace.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IOutboundRuleBasicResource
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacemanagednetworksettingrule
+#>
+function New-AzMLWorkspaceManagedNetworkSettingRule {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IOutboundRuleBasicResource])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of the workspace managed network outbound rule
+    ${RuleName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(Mandatory)]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.RuleType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.RuleType]
+    # Type of a managed network Outbound Rule of a machine learning workspace.
+    ${PropertiesType},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.RuleCategory])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.RuleCategory]
+    # Category of a managed network Outbound Rule of a machine learning workspace.
+    ${Category},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.RuleStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.RuleStatus]
+    # Type of a managed network Outbound Rule of a machine learning workspace.
+    ${Status},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceManagedNetworkSettingRule_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create or update Marketplace Subscription (asynchronous).
+.Description
+Create or update Marketplace Subscription (asynchronous).
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IMarketplaceSubscription
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacemarketplacesubscription
+#>
+function New-AzMLWorkspaceMarketplaceSubscription {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IMarketplaceSubscription])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Marketplace Subscription name.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # [Required] Target Marketplace Model ID to create a Marketplace Subscription for.
+    ${ModelId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceMarketplaceSubscription_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create or update Code container.
+.Description
+Create or update Code container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICodeContainer
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceregistrycodecontainer
+#>
+function New-AzMLWorkspaceRegistryCodeContainer {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICodeContainer])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${CodeName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The asset description text.
+    ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Is the asset archived
+    ${IsArchived},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]))]
+    [System.Collections.Hashtable]
+    # The asset property dictionary.
+    ${ResourceBaseProperty},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]))]
+    [System.Collections.Hashtable]
+    # Tag dictionary.
+    # Tags can be added, removed, and updated.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceRegistryCodeContainer_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Generate a storage location and credential for the client to upload a code asset to.
+.Description
+Generate a storage location and credential for the client to upload a code asset to.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPendingUploadResponseDto
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceregistrycodeversionstartpendingupload
+#>
+function New-AzMLWorkspaceRegistryCodeVersionStartPendingUpload {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPendingUploadResponseDto])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Pending upload name.
+    # This is case-sensitive.
+    ${CodeName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    # This is case-sensitive.
+    ${Version},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # If PendingUploadId = null then random guid will be used.
+    ${PendingUploadId},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PendingUploadType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PendingUploadType]
+    # TemporaryBlobReference is the only supported type
+    ${PendingUploadType},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceRegistryCodeVersionStartPendingUpload_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create or update version.
+.Description
+Create or update version.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICodeVersion
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceregistrycodeversion
+#>
+function New-AzMLWorkspaceRegistryCodeVersion {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICodeVersion])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${CodeName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    ${Version},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Uri where code is located
+    ${CodeUri},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The asset description text.
+    ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # If the name version are system generated (anonymous registration).
+    ${IsAnonymou},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Is the asset archived
+    ${IsArchived},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]))]
+    [System.Collections.Hashtable]
+    # The asset property dictionary.
+    ${ResourceBaseProperty},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]))]
+    [System.Collections.Hashtable]
+    # Tag dictionary.
+    # Tags can be added, removed, and updated.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceRegistryCodeVersion_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create or update container.
+.Description
+Create or update container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IComponentContainer
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceregistrycomponentcontainer
+#>
+function New-AzMLWorkspaceRegistryComponentContainer {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IComponentContainer])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${ComponentName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The asset description text.
+    ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Is the asset archived
+    ${IsArchived},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]))]
+    [System.Collections.Hashtable]
+    # The asset property dictionary.
+    ${ResourceBaseProperty},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]))]
+    [System.Collections.Hashtable]
+    # Tag dictionary.
+    # Tags can be added, removed, and updated.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceRegistryComponentContainer_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create or update version.
+.Description
+Create or update version.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IComponentVersion
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceregistrycomponentversion
+#>
+function New-AzMLWorkspaceRegistryComponentVersion {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IComponentVersion])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${ComponentName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    ${Version},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IComponentVersionComponentSpec]))]
+    [System.Collections.Hashtable]
+    # Defines Component definition details.<see href="https://learn.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
+    ${ComponentSpec},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The asset description text.
+    ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # If the name version are system generated (anonymous registration).
+    ${IsAnonymou},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Is the asset archived
+    ${IsArchived},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]))]
+    [System.Collections.Hashtable]
+    # The asset property dictionary.
+    ${ResourceBaseProperty},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]))]
+    [System.Collections.Hashtable]
+    # Tag dictionary.
+    # Tags can be added, removed, and updated.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceRegistryComponentVersion_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create or update container.
+.Description
+Create or update container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDataContainer
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceregistrydatacontainer
+#>
+function New-AzMLWorkspaceRegistryDataContainer {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDataContainer])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(Mandatory)]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DataType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DataType]
+    # [Required] Specifies the type of data.
+    ${DataType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The asset description text.
+    ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Is the asset archived
+    ${IsArchived},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]))]
+    [System.Collections.Hashtable]
+    # The asset property dictionary.
+    ${ResourceBaseProperty},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]))]
+    [System.Collections.Hashtable]
+    # Tag dictionary.
+    # Tags can be added, removed, and updated.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceRegistryDataContainer_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Generate a storage location and credential for the client to upload a data asset to.
+.Description
+Generate a storage location and credential for the client to upload a data asset to.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPendingUploadResponseDto
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceregistrydataversionstartpendingupload
+#>
+function New-AzMLWorkspaceRegistryDataVersionStartPendingUpload {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPendingUploadResponseDto])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Data asset name.
+    # This is case-sensitive.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    # This is case-sensitive.
+    ${Version},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # If PendingUploadId = null then random guid will be used.
+    ${PendingUploadId},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PendingUploadType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PendingUploadType]
+    # TemporaryBlobReference is the only supported type
+    ${PendingUploadType},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceRegistryDataVersionStartPendingUpload_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create or update version.
+.Description
+Create or update version.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDataVersionBase
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceregistrydataversion
+#>
+function New-AzMLWorkspaceRegistryDataVersion {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDataVersionBase])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    ${Version},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(Mandatory)]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DataType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DataType]
+    # [Required] Specifies the type of data.
+    ${DataType},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # [Required] Uri of the data.
+    # Example: https://go.microsoft.com/fwlink/linkid=2202330
+    ${DataUri},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The asset description text.
+    ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # If the name version are system generated (anonymous registration).
+    ${IsAnonymou},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Is the asset archived
+    ${IsArchived},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]))]
+    [System.Collections.Hashtable]
+    # The asset property dictionary.
+    ${ResourceBaseProperty},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]))]
+    [System.Collections.Hashtable]
+    # Tag dictionary.
+    # Tags can be added, removed, and updated.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceRegistryDataVersion_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create or update container.
+.Description
+Create or update container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IEnvironmentContainer
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceregistryenvironmentcontainer
+#>
+function New-AzMLWorkspaceRegistryEnvironmentContainer {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IEnvironmentContainer])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${EnvironmentName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The asset description text.
+    ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Is the asset archived
+    ${IsArchived},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]))]
+    [System.Collections.Hashtable]
+    # The asset property dictionary.
+    ${ResourceBaseProperty},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]))]
+    [System.Collections.Hashtable]
+    # Tag dictionary.
+    # Tags can be added, removed, and updated.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceRegistryEnvironmentContainer_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create or update version.
+.Description
+Create or update version.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IEnvironmentVersion
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceregistryenvironmentversion
+#>
+function New-AzMLWorkspaceRegistryEnvironmentVersion {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IEnvironmentVersion])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${EnvironmentName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    ${Version},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.AutoRebuildSetting])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.AutoRebuildSetting]
+    # Defines if image needs to be rebuilt based on base image changes.
+    ${AutoRebuild},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # [Required] URI of the Docker build context used to build the image.
+    # Supports blob URIs on environment creation and may return blob or Git URIs.<seealso href="https://docs.docker.com/engine/reference/commandline/build/#extended-description" />
+    ${BuildContextUri},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Path to the Dockerfile in the build context.<seealso href="https://docs.docker.com/engine/reference/builder/" />
+    ${BuildDockerfilePath},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Standard configuration file used by Conda that lets you install any kind of package, including Python, R, and C/C++ packages.<see href="https://repo2docker.readthedocs.io/en/latest/config_files.html#environment-yml-install-a-conda-environment" />
+    ${CondaFile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The asset description text.
+    ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Name of the image that will be used for the environment.<seealso href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image" />
+    ${Image},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # If the name version are system generated (anonymous registration).
+    ${IsAnonymou},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Is the asset archived
+    ${IsArchived},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # [Required] The path for the route.
+    ${LivenessRoutePath},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Int32]
+    # [Required] The port for the route.
+    ${LivenessRoutePort},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperatingSystemType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperatingSystemType]
+    # The OS type of the environment.
+    ${OSType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # [Required] The path for the route.
+    ${ReadinessRoutePath},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Int32]
+    # [Required] The port for the route.
+    ${ReadinessRoutePort},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]))]
+    [System.Collections.Hashtable]
+    # The asset property dictionary.
+    ${ResourceBaseProperty},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # [Required] The path for the route.
+    ${ScoringRoutePath},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Int32]
+    # [Required] The port for the route.
+    ${ScoringRoutePort},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Stage in the environment lifecycle assigned to this environment
+    ${Stage},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]))]
+    [System.Collections.Hashtable]
+    # Tag dictionary.
+    # Tags can be added, removed, and updated.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceRegistryEnvironmentVersion_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create or update model container.
+.Description
+Create or update model container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IModelContainer
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceregistrymodelcontainer
+#>
+function New-AzMLWorkspaceRegistryModelContainer {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IModelContainer])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${ModelName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The asset description text.
+    ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Is the asset archived
+    ${IsArchived},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]))]
+    [System.Collections.Hashtable]
+    # The asset property dictionary.
+    ${ResourceBaseProperty},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]))]
+    [System.Collections.Hashtable]
+    # Tag dictionary.
+    # Tags can be added, removed, and updated.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceRegistryModelContainer_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Generate a storage location and credential for the client to upload a model asset to.
+.Description
+Generate a storage location and credential for the client to upload a model asset to.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPendingUploadResponseDto
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceregistrymodelversionstartpendingupload
+#>
+function New-AzMLWorkspaceRegistryModelVersionStartPendingUpload {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPendingUploadResponseDto])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Model name.
+    # This is case-sensitive.
+    ${ModelName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    # This is case-sensitive.
+    ${Version},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # If PendingUploadId = null then random guid will be used.
+    ${PendingUploadId},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PendingUploadType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PendingUploadType]
+    # TemporaryBlobReference is the only supported type
+    ${PendingUploadType},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceRegistryModelVersionStartPendingUpload_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create or update version.
+.Description
+Create or update version.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IModelVersion
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceregistrymodelversion
+#>
+function New-AzMLWorkspaceRegistryModelVersion {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IModelVersion])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${ModelName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    ${Version},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The asset description text.
+    ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IModelVersionFlavors]))]
+    [System.Collections.Hashtable]
+    # Mapping of model flavors to their properties.
+    ${Flavor},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # If the name version are system generated (anonymous registration).
+    ${IsAnonymou},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Is the asset archived
+    ${IsArchived},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Name of the training job which produced this model
+    ${JobName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The storage format for this entity.
+    # Used for NCD.
+    ${ModelType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The URI path to the model contents.
+    ${ModelUri},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]))]
+    [System.Collections.Hashtable]
+    # The asset property dictionary.
+    ${ResourceBaseProperty},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Stage in the model lifecycle assigned to this model
+    ${Stage},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]))]
+    [System.Collections.Hashtable]
+    # Tag dictionary.
+    # Tags can be added, removed, and updated.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceRegistryModelVersion_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create or update registry
+.Description
+Create or update registry
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IRegistry
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+REGIONDETAIL <IRegistryRegionArmDetails[]>: Details of each region the registry is in
+  [AcrDetail <IAcrDetails[]>]: List of ACR accounts
+    [SystemCreatedAcrAccountArmResourceIdResourceId <String>]: Arm ResourceId is in the format "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Storage/storageAccounts/{StorageAccountName}"         or "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{AcrName}"
+    [SystemCreatedAcrAccountName <String>]: Name of the ACR account
+    [SystemCreatedAcrAccountSku <String>]: SKU of the ACR account
+    [UserCreatedAcrAccountArmResourceIdResourceId <String>]: Arm ResourceId is in the format "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Storage/storageAccounts/{StorageAccountName}"         or "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{AcrName}"
+  [Location <String>]: The location where the registry exists
+  [StorageAccountDetail <IStorageAccountDetails[]>]: List of storage accounts
+    [SystemCreatedStorageAccountAllowBlobPublicAccess <Boolean?>]: Public blob access allowed
+    [SystemCreatedStorageAccountArmResourceIdResourceId <String>]: Arm ResourceId is in the format "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Storage/storageAccounts/{StorageAccountName}"         or "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{AcrName}"
+    [SystemCreatedStorageAccountHnsEnabled <Boolean?>]: HNS enabled for storage account
+    [SystemCreatedStorageAccountName <String>]: Name of the storage account
+    [SystemCreatedStorageAccountType <String>]: Allowed values:         "Standard_LRS",         "Standard_GRS",         "Standard_RAGRS",         "Standard_ZRS",         "Standard_GZRS",         "Standard_RAGZRS",         "Premium_LRS",         "Premium_ZRS"
+    [UserCreatedStorageAccountArmResourceIdResourceId <String>]: Arm ResourceId is in the format "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Storage/storageAccounts/{StorageAccountName}"         or "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{AcrName}"
+
+REGISTRYPRIVATEENDPOINTCONNECTION <IRegistryPrivateEndpointConnection[]>: Private endpoint connections info used for pending connections in private link portal
+  [GroupId <String[]>]: The group ids
+  [Id <String>]: This is the private endpoint connection name created on SRP         Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
+  [Location <String>]: Same as workspace location.
+  [PrivateEndpointSubnetArmId <String>]: The subnetId that the private endpoint is connected to.
+  [ProvisioningState <String>]: One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
+  [RegistryPrivateLinkServiceConnectionStateActionsRequired <String>]: Some RP chose "None". Other RPs use this for region expansion.
+  [RegistryPrivateLinkServiceConnectionStateDescription <String>]: User-defined message that, per NRP doc, may be used for approval-related message.
+  [RegistryPrivateLinkServiceConnectionStateStatus <EndpointServiceConnectionStatus?>]: Connection status of the service consumer with the service provider
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceregistry
+#>
+function New-AzMLWorkspaceRegistry {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IRegistry])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('RegistryName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Discovery URL for the Registry
+    ${DiscoveryUrl},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedServiceIdentityType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedServiceIdentityType]
+    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+    ${IdentityType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api30.IUserAssignedIdentities]))]
+    [System.Collections.Hashtable]
+    # The set of user assigned identities associated with the resource.
+    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+    # The dictionary values can be empty objects ({}) in requests.
+    ${IdentityUserAssigned},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # IntellectualPropertyPublisher for the registry
+    ${IntellectualPropertyPublisher},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
+    ${Kind},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Arm ResourceId is in the format "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Storage/storageAccounts/{StorageAccountName}"or "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{AcrName}"
+    ${ManagedResourceGroupResourceId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # MLFlow Registry URI for the Registry
+    ${MlFlowRegistryUri},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Is the Registry accessible from the internetPossible values: "Enabled" or "Disabled"
+    ${PublicNetworkAccess},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IRegistryRegionArmDetails[]]
+    # Details of each region the registry is in
+    # To construct, see NOTES section for REGIONDETAIL properties and create a hash table.
+    ${RegionDetail},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IRegistryPrivateEndpointConnection[]]
+    # Private endpoint connections info used for pending connections in private link portal
+    # To construct, see NOTES section for REGISTRYPRIVATEENDPOINTCONNECTION properties and create a hash table.
+    ${RegistryPrivateEndpointConnection},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Int32]
+    # If the SKU supports scale out/in then the capacity integer should be included.
+    # If scale out/in is not possible for the resource this may be omitted.
+    ${SkuCapacity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # If the service has different generations of hardware, for the same SKU, then that can be captured here.
+    ${SkuFamily},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The name of the SKU.
+    # Ex - P3.
+    # It is typically a letter+number code
+    ${SkuName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The SKU size.
+    # When the name field is the combination of tier and some other value, this would be the standalone code.
+    ${SkuSize},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SkuTier])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SkuTier]
+    # This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+    ${SkuTier},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api30.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceRegistry_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create or update schedule.
+.Description
+Create or update schedule.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ISchedule
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceschedule
+#>
+function New-AzMLWorkspaceSchedule {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ISchedule])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Schedule name.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(Mandatory)]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScheduleActionType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScheduleActionType]
+    # [Required] Specifies the action type of the schedule
+    ${ActionType},
+
+    [Parameter(Mandatory)]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.TriggerType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.TriggerType]
+    # [Required]
+    ${TriggerType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The asset description text.
+    ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Display name of schedule.
+    ${DisplayName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Is the schedule enabled
+    ${IsEnabled},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]))]
+    [System.Collections.Hashtable]
+    # The asset property dictionary.
+    ${ResourceBaseProperty},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]))]
+    [System.Collections.Hashtable]
+    # Tag dictionary.
+    # Tags can be added, removed, and updated.
+    ${Tag},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Specifies end time of schedule in ISO 8601, but without a UTC offset.
+    # Refer https://en.wikipedia.org/wiki/ISO_8601.Recommented format would be "2022-06-01T00:00:01"If not present, the schedule will run indefinitely
+    ${TriggerEndTime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Specifies start time of schedule in ISO 8601 format, but without a UTC offset.
+    ${TriggerStartTime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Specifies time zone in which the schedule runs.TimeZone should follow Windows time zone format.
+    # Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zonesview=windows-11
+    ${TriggerTimeZone},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceSchedule_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Regenerate EndpointAuthKeys for an Endpoint using Key-based authentication (asynchronous).
+.Description
+Regenerate EndpointAuthKeys for an Endpoint using Key-based authentication (asynchronous).
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IRegenerateEndpointKeysRequest
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IEndpointAuthKeys
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IRegenerateEndpointKeysRequest>: .
+  KeyType <KeyType>: [Required] Specification for which type of key to generate. Primary or Secondary.
+  [KeyValue <String>]: The value the key is set to.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceserverlessendpointkey
+#>
+function New-AzMLWorkspaceServerlessEndpointKey {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IEndpointAuthKeys])]
+[CmdletBinding(DefaultParameterSetName='RegenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Regenerate', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Serverless Endpoint name.
+    ${Name},
+
+    [Parameter(ParameterSetName='Regenerate', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Regenerate')]
+    [Parameter(ParameterSetName='RegenerateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Regenerate', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='RegenerateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='RegenerateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Regenerate', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='RegenerateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IRegenerateEndpointKeysRequest]
+    # .
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaIdentityExpanded', Mandatory)]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.KeyType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.KeyType]
+    # [Required] Specification for which type of key to generate.
+    # Primary or Secondary.
+    ${KeyType},
+
+    [Parameter(ParameterSetName='RegenerateExpanded')]
+    [Parameter(ParameterSetName='RegenerateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The value the key is set to.
+    ${KeyValue},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Regenerate = 'Az.MachineLearningServices.private\New-AzMLWorkspaceServerlessEndpointKey_Regenerate';
+            RegenerateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceServerlessEndpointKey_RegenerateExpanded';
+            RegenerateViaIdentity = 'Az.MachineLearningServices.private\New-AzMLWorkspaceServerlessEndpointKey_RegenerateViaIdentity';
+            RegenerateViaIdentityExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceServerlessEndpointKey_RegenerateViaIdentityExpanded';
+        }
+        if (('Regenerate', 'RegenerateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create or update Serverless Endpoint (asynchronous).
+.Description
+Create or update Serverless Endpoint (asynchronous).
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IServerlessEndpoint
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceserverlessendpoint
+#>
+function New-AzMLWorkspaceServerlessEndpoint {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IServerlessEndpoint])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Serverless Endpoint name.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ContentSafetyStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ContentSafetyStatus]
+    # [Required] Specifies the status of content safety.
+    ${ContentSafetyStatus},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedServiceIdentityType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedServiceIdentityType]
+    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+    ${IdentityType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api30.IUserAssignedIdentities]))]
+    [System.Collections.Hashtable]
+    # The set of user assigned identities associated with the resource.
+    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+    # The dictionary values can be empty objects ({}) in requests.
+    ${IdentityUserAssigned},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
+    ${Kind},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The unique model identifier that this ServerlessEndpoint should provision.
+    ${ModelSettingModelId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Int32]
+    # If the SKU supports scale out/in then the capacity integer should be included.
+    # If scale out/in is not possible for the resource this may be omitted.
+    ${SkuCapacity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # If the service has different generations of hardware, for the same SKU, then that can be captured here.
+    ${SkuFamily},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The name of the SKU.
+    # Ex - P3.
+    # It is typically a letter+number code
+    ${SkuName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The SKU size.
+    # When the name field is the combination of tier and some other value, this would be the standalone code.
+    ${SkuSize},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SkuTier])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SkuTier]
+    # This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+    ${SkuTier},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api30.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceServerlessEndpoint_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Publish version asset into registry.
+.Description
+Publish version asset into registry.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDestinationAsset
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IDestinationAsset>: Publishing destination registry asset information
+  [DestinationName <String>]: Destination asset name
+  [DestinationVersion <String>]: Destination asset version
+  [RegistryName <String>]: Destination registry name
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/publish-azmlworkspacecodeversion
+#>
+function Publish-AzMLWorkspaceCodeVersion {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='PublishExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Publish', Mandatory)]
+    [Parameter(ParameterSetName='PublishExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${Name},
+
+    [Parameter(ParameterSetName='Publish', Mandatory)]
+    [Parameter(ParameterSetName='PublishExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Publish')]
+    [Parameter(ParameterSetName='PublishExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Publish', Mandatory)]
+    [Parameter(ParameterSetName='PublishExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    ${Version},
+
+    [Parameter(ParameterSetName='Publish', Mandatory)]
+    [Parameter(ParameterSetName='PublishExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='PublishViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PublishViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Publish', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PublishViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDestinationAsset]
+    # Publishing destination registry asset information
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='PublishExpanded')]
+    [Parameter(ParameterSetName='PublishViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Destination asset name
+    ${DestinationName},
+
+    [Parameter(ParameterSetName='PublishExpanded')]
+    [Parameter(ParameterSetName='PublishViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Destination asset version
+    ${DestinationVersion},
+
+    [Parameter(ParameterSetName='PublishExpanded')]
+    [Parameter(ParameterSetName='PublishViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Destination registry name
+    ${RegistryName},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Publish = 'Az.MachineLearningServices.private\Publish-AzMLWorkspaceCodeVersion_Publish';
+            PublishExpanded = 'Az.MachineLearningServices.private\Publish-AzMLWorkspaceCodeVersion_PublishExpanded';
+            PublishViaIdentity = 'Az.MachineLearningServices.private\Publish-AzMLWorkspaceCodeVersion_PublishViaIdentity';
+            PublishViaIdentityExpanded = 'Az.MachineLearningServices.private\Publish-AzMLWorkspaceCodeVersion_PublishViaIdentityExpanded';
+        }
+        if (('Publish', 'PublishExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Publish version asset into registry.
+.Description
+Publish version asset into registry.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDestinationAsset
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IDestinationAsset>: Publishing destination registry asset information
+  [DestinationName <String>]: Destination asset name
+  [DestinationVersion <String>]: Destination asset version
+  [RegistryName <String>]: Destination registry name
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/publish-azmlworkspacecomponentversion
+#>
+function Publish-AzMLWorkspaceComponentVersion {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='PublishExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Publish', Mandatory)]
+    [Parameter(ParameterSetName='PublishExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${Name},
+
+    [Parameter(ParameterSetName='Publish', Mandatory)]
+    [Parameter(ParameterSetName='PublishExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Publish')]
+    [Parameter(ParameterSetName='PublishExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Publish', Mandatory)]
+    [Parameter(ParameterSetName='PublishExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    ${Version},
+
+    [Parameter(ParameterSetName='Publish', Mandatory)]
+    [Parameter(ParameterSetName='PublishExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='PublishViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PublishViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Publish', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PublishViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDestinationAsset]
+    # Publishing destination registry asset information
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='PublishExpanded')]
+    [Parameter(ParameterSetName='PublishViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Destination asset name
+    ${DestinationName},
+
+    [Parameter(ParameterSetName='PublishExpanded')]
+    [Parameter(ParameterSetName='PublishViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Destination asset version
+    ${DestinationVersion},
+
+    [Parameter(ParameterSetName='PublishExpanded')]
+    [Parameter(ParameterSetName='PublishViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Destination registry name
+    ${RegistryName},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Publish = 'Az.MachineLearningServices.private\Publish-AzMLWorkspaceComponentVersion_Publish';
+            PublishExpanded = 'Az.MachineLearningServices.private\Publish-AzMLWorkspaceComponentVersion_PublishExpanded';
+            PublishViaIdentity = 'Az.MachineLearningServices.private\Publish-AzMLWorkspaceComponentVersion_PublishViaIdentity';
+            PublishViaIdentityExpanded = 'Az.MachineLearningServices.private\Publish-AzMLWorkspaceComponentVersion_PublishViaIdentityExpanded';
+        }
+        if (('Publish', 'PublishExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Publish version asset into registry.
+.Description
+Publish version asset into registry.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDestinationAsset
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IDestinationAsset>: Publishing destination registry asset information
+  [DestinationName <String>]: Destination asset name
+  [DestinationVersion <String>]: Destination asset version
+  [RegistryName <String>]: Destination registry name
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/publish-azmlworkspacedataversion
+#>
+function Publish-AzMLWorkspaceDataVersion {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='PublishExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Publish', Mandatory)]
+    [Parameter(ParameterSetName='PublishExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${Name},
+
+    [Parameter(ParameterSetName='Publish', Mandatory)]
+    [Parameter(ParameterSetName='PublishExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Publish')]
+    [Parameter(ParameterSetName='PublishExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Publish', Mandatory)]
+    [Parameter(ParameterSetName='PublishExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    ${Version},
+
+    [Parameter(ParameterSetName='Publish', Mandatory)]
+    [Parameter(ParameterSetName='PublishExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='PublishViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PublishViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Publish', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PublishViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDestinationAsset]
+    # Publishing destination registry asset information
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='PublishExpanded')]
+    [Parameter(ParameterSetName='PublishViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Destination asset name
+    ${DestinationName},
+
+    [Parameter(ParameterSetName='PublishExpanded')]
+    [Parameter(ParameterSetName='PublishViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Destination asset version
+    ${DestinationVersion},
+
+    [Parameter(ParameterSetName='PublishExpanded')]
+    [Parameter(ParameterSetName='PublishViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Destination registry name
+    ${RegistryName},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Publish = 'Az.MachineLearningServices.private\Publish-AzMLWorkspaceDataVersion_Publish';
+            PublishExpanded = 'Az.MachineLearningServices.private\Publish-AzMLWorkspaceDataVersion_PublishExpanded';
+            PublishViaIdentity = 'Az.MachineLearningServices.private\Publish-AzMLWorkspaceDataVersion_PublishViaIdentity';
+            PublishViaIdentityExpanded = 'Az.MachineLearningServices.private\Publish-AzMLWorkspaceDataVersion_PublishViaIdentityExpanded';
+        }
+        if (('Publish', 'PublishExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Publish version asset into registry.
+.Description
+Publish version asset into registry.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDestinationAsset
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IDestinationAsset>: Publishing destination registry asset information
+  [DestinationName <String>]: Destination asset name
+  [DestinationVersion <String>]: Destination asset version
+  [RegistryName <String>]: Destination registry name
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/publish-azmlworkspaceenvironmentversion
+#>
+function Publish-AzMLWorkspaceEnvironmentVersion {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='PublishExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Publish', Mandatory)]
+    [Parameter(ParameterSetName='PublishExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${Name},
+
+    [Parameter(ParameterSetName='Publish', Mandatory)]
+    [Parameter(ParameterSetName='PublishExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Publish')]
+    [Parameter(ParameterSetName='PublishExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Publish', Mandatory)]
+    [Parameter(ParameterSetName='PublishExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    ${Version},
+
+    [Parameter(ParameterSetName='Publish', Mandatory)]
+    [Parameter(ParameterSetName='PublishExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='PublishViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PublishViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Publish', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PublishViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDestinationAsset]
+    # Publishing destination registry asset information
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='PublishExpanded')]
+    [Parameter(ParameterSetName='PublishViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Destination asset name
+    ${DestinationName},
+
+    [Parameter(ParameterSetName='PublishExpanded')]
+    [Parameter(ParameterSetName='PublishViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Destination asset version
+    ${DestinationVersion},
+
+    [Parameter(ParameterSetName='PublishExpanded')]
+    [Parameter(ParameterSetName='PublishViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Destination registry name
+    ${RegistryName},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Publish = 'Az.MachineLearningServices.private\Publish-AzMLWorkspaceEnvironmentVersion_Publish';
+            PublishExpanded = 'Az.MachineLearningServices.private\Publish-AzMLWorkspaceEnvironmentVersion_PublishExpanded';
+            PublishViaIdentity = 'Az.MachineLearningServices.private\Publish-AzMLWorkspaceEnvironmentVersion_PublishViaIdentity';
+            PublishViaIdentityExpanded = 'Az.MachineLearningServices.private\Publish-AzMLWorkspaceEnvironmentVersion_PublishViaIdentityExpanded';
+        }
+        if (('Publish', 'PublishExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Publish version asset into registry.
+.Description
+Publish version asset into registry.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDestinationAsset
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IDestinationAsset>: Publishing destination registry asset information
+  [DestinationName <String>]: Destination asset name
+  [DestinationVersion <String>]: Destination asset version
+  [RegistryName <String>]: Destination registry name
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/publish-azmlworkspacemodelversion
+#>
+function Publish-AzMLWorkspaceModelVersion {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='PublishExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Publish', Mandatory)]
+    [Parameter(ParameterSetName='PublishExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${Name},
+
+    [Parameter(ParameterSetName='Publish', Mandatory)]
+    [Parameter(ParameterSetName='PublishExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Publish')]
+    [Parameter(ParameterSetName='PublishExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Publish', Mandatory)]
+    [Parameter(ParameterSetName='PublishExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    ${Version},
+
+    [Parameter(ParameterSetName='Publish', Mandatory)]
+    [Parameter(ParameterSetName='PublishExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='PublishViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PublishViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Publish', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PublishViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDestinationAsset]
+    # Publishing destination registry asset information
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='PublishExpanded')]
+    [Parameter(ParameterSetName='PublishViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Destination asset name
+    ${DestinationName},
+
+    [Parameter(ParameterSetName='PublishExpanded')]
+    [Parameter(ParameterSetName='PublishViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Destination asset version
+    ${DestinationVersion},
+
+    [Parameter(ParameterSetName='PublishExpanded')]
+    [Parameter(ParameterSetName='PublishViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Destination registry name
+    ${RegistryName},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Publish = 'Az.MachineLearningServices.private\Publish-AzMLWorkspaceModelVersion_Publish';
+            PublishExpanded = 'Az.MachineLearningServices.private\Publish-AzMLWorkspaceModelVersion_PublishExpanded';
+            PublishViaIdentity = 'Az.MachineLearningServices.private\Publish-AzMLWorkspaceModelVersion_PublishViaIdentity';
+            PublishViaIdentityExpanded = 'Az.MachineLearningServices.private\Publish-AzMLWorkspaceModelVersion_PublishViaIdentityExpanded';
+        }
+        if (('Publish', 'PublishExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Delete container.
+.Description
+Delete container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacecodecontainer
+#>
+function Remove-AzMLWorkspaceCodeContainer {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    # This is case-sensitive.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Delete = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceCodeContainer_Delete';
+            DeleteViaIdentity = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceCodeContainer_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Delete container.
+.Description
+Delete container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacefeaturesetcontainer
+#>
+function Remove-AzMLWorkspaceFeaturesetContainer {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    # This is case-sensitive.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Delete = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceFeaturesetContainer_Delete';
+            DeleteViaIdentity = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceFeaturesetContainer_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Delete version.
+.Description
+Delete version.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacefeaturesetversion
+#>
+function Remove-AzMLWorkspaceFeaturesetVersion {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    # This is case-sensitive.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    # This is case-sensitive.
+    ${Version},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Delete = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceFeaturesetVersion_Delete';
+            DeleteViaIdentity = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceFeaturesetVersion_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Delete container.
+.Description
+Delete container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacefeaturestoreentitycontainer
+#>
+function Remove-AzMLWorkspaceFeaturestoreEntityContainer {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    # This is case-sensitive.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Delete = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceFeaturestoreEntityContainer_Delete';
+            DeleteViaIdentity = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceFeaturestoreEntityContainer_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Delete version.
+.Description
+Delete version.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacefeaturestoreentityversion
+#>
+function Remove-AzMLWorkspaceFeaturestoreEntityVersion {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    # This is case-sensitive.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    # This is case-sensitive.
+    ${Version},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Delete = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceFeaturestoreEntityVersion_Delete';
+            DeleteViaIdentity = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceFeaturestoreEntityVersion_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Deletes an outbound rule from the managed network of a machine learning workspace.
+.Description
+Deletes an outbound rule from the managed network of a machine learning workspace.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacemanagednetworksettingsrule
+#>
+function Remove-AzMLWorkspaceManagedNetworkSettingsRule {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of the workspace managed network outbound rule
+    ${RuleName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Delete = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceManagedNetworkSettingsRule_Delete';
+            DeleteViaIdentity = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceManagedNetworkSettingsRule_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Delete Marketplace Subscription (asynchronous).
+.Description
+Delete Marketplace Subscription (asynchronous).
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacemarketplacesubscription
+#>
+function Remove-AzMLWorkspaceMarketplaceSubscription {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Marketplace Subscription name.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Delete = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceMarketplaceSubscription_Delete';
+            DeleteViaIdentity = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceMarketplaceSubscription_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Delete Code container.
+.Description
+Delete Code container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceregistrycodecontainer
+#>
+function Remove-AzMLWorkspaceRegistryCodeContainer {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${CodeName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Delete = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistryCodeContainer_Delete';
+            DeleteViaIdentity = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistryCodeContainer_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Delete version.
+.Description
+Delete version.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceregistrycodeversion
+#>
+function Remove-AzMLWorkspaceRegistryCodeVersion {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${CodeName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    ${Version},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Delete = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistryCodeVersion_Delete';
+            DeleteViaIdentity = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistryCodeVersion_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Delete container.
+.Description
+Delete container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceregistrycomponentcontainer
+#>
+function Remove-AzMLWorkspaceRegistryComponentContainer {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${ComponentName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Delete = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistryComponentContainer_Delete';
+            DeleteViaIdentity = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistryComponentContainer_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Delete version.
+.Description
+Delete version.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceregistrycomponentversion
+#>
+function Remove-AzMLWorkspaceRegistryComponentVersion {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${ComponentName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    ${Version},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Delete = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistryComponentVersion_Delete';
+            DeleteViaIdentity = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistryComponentVersion_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Delete container.
+.Description
+Delete container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceregistrydatacontainer
+#>
+function Remove-AzMLWorkspaceRegistryDataContainer {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Delete = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistryDataContainer_Delete';
+            DeleteViaIdentity = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistryDataContainer_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Delete version.
+.Description
+Delete version.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceregistrydataversion
+#>
+function Remove-AzMLWorkspaceRegistryDataVersion {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    ${Version},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Delete = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistryDataVersion_Delete';
+            DeleteViaIdentity = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistryDataVersion_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Delete container.
+.Description
+Delete container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceregistryenvironmentcontainer
+#>
+function Remove-AzMLWorkspaceRegistryEnvironmentContainer {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${EnvironmentName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Delete = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistryEnvironmentContainer_Delete';
+            DeleteViaIdentity = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistryEnvironmentContainer_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Delete version.
+.Description
+Delete version.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceregistryenvironmentversion
+#>
+function Remove-AzMLWorkspaceRegistryEnvironmentVersion {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${EnvironmentName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    ${Version},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Delete = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistryEnvironmentVersion_Delete';
+            DeleteViaIdentity = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistryEnvironmentVersion_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Delete container.
+.Description
+Delete container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceregistrymodelcontainer
+#>
+function Remove-AzMLWorkspaceRegistryModelContainer {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${ModelName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Delete = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistryModelContainer_Delete';
+            DeleteViaIdentity = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistryModelContainer_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Delete version.
+.Description
+Delete version.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceregistrymodelversion
+#>
+function Remove-AzMLWorkspaceRegistryModelVersion {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Container name.
+    ${ModelName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Version identifier.
+    ${Version},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Delete = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistryModelVersion_Delete';
+            DeleteViaIdentity = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistryModelVersion_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Remove regions from registry
+.Description
+Remove regions from registry
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IRegistry
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IRegistry
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IRegistry>: .
+  Location <String>: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
+  [SystemDataCreatedBy <String>]: The identity that created the resource.
+  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
+  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
+  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
+  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [DiscoveryUrl <String>]: Discovery URL for the Registry
+  [IdentityType <ManagedServiceIdentityType?>]: Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+  [IdentityUserAssignedIdentity <IUserAssignedIdentities>]: The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+    [(Any) <IUserAssignedIdentity>]: This indicates any property can be added to this object.
+  [IntellectualPropertyPublisher <String>]: IntellectualPropertyPublisher for the registry
+  [Kind <String>]: Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
+  [ManagedResourceGroupResourceId <String>]: Arm ResourceId is in the format "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Storage/storageAccounts/{StorageAccountName}"         or "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{AcrName}"
+  [MlFlowRegistryUri <String>]: MLFlow Registry URI for the Registry
+  [PrivateEndpointConnection <IRegistryPrivateEndpointConnection[]>]: Private endpoint connections info used for pending connections in private link portal
+    [GroupId <String[]>]: The group ids
+    [Id <String>]: This is the private endpoint connection name created on SRP         Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
+    [Location <String>]: Same as workspace location.
+    [PrivateEndpointSubnetArmId <String>]: The subnetId that the private endpoint is connected to.
+    [ProvisioningState <String>]: One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
+    [RegistryPrivateLinkServiceConnectionStateActionsRequired <String>]: Some RP chose "None". Other RPs use this for region expansion.
+    [RegistryPrivateLinkServiceConnectionStateDescription <String>]: User-defined message that, per NRP doc, may be used for approval-related message.
+    [RegistryPrivateLinkServiceConnectionStateStatus <EndpointServiceConnectionStatus?>]: Connection status of the service consumer with the service provider
+  [PublicNetworkAccess <String>]: Is the Registry accessible from the internet?         Possible values: "Enabled" or "Disabled"
+  [RegionDetail <IRegistryRegionArmDetails[]>]: Details of each region the registry is in
+    [AcrDetail <IAcrDetails[]>]: List of ACR accounts
+      [SystemCreatedAcrAccountArmResourceIdResourceId <String>]: Arm ResourceId is in the format "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Storage/storageAccounts/{StorageAccountName}"         or "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{AcrName}"
+      [SystemCreatedAcrAccountName <String>]: Name of the ACR account
+      [SystemCreatedAcrAccountSku <String>]: SKU of the ACR account
+      [UserCreatedAcrAccountArmResourceIdResourceId <String>]: Arm ResourceId is in the format "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Storage/storageAccounts/{StorageAccountName}"         or "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{AcrName}"
+    [Location <String>]: The location where the registry exists
+    [StorageAccountDetail <IStorageAccountDetails[]>]: List of storage accounts
+      [SystemCreatedStorageAccountAllowBlobPublicAccess <Boolean?>]: Public blob access allowed
+      [SystemCreatedStorageAccountArmResourceIdResourceId <String>]: Arm ResourceId is in the format "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Storage/storageAccounts/{StorageAccountName}"         or "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{AcrName}"
+      [SystemCreatedStorageAccountHnsEnabled <Boolean?>]: HNS enabled for storage account
+      [SystemCreatedStorageAccountName <String>]: Name of the storage account
+      [SystemCreatedStorageAccountType <String>]: Allowed values:         "Standard_LRS",         "Standard_GRS",         "Standard_RAGRS",         "Standard_ZRS",         "Standard_GZRS",         "Standard_RAGZRS",         "Premium_LRS",         "Premium_ZRS"
+      [UserCreatedStorageAccountArmResourceIdResourceId <String>]: Arm ResourceId is in the format "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Storage/storageAccounts/{StorageAccountName}"         or "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{AcrName}"
+  [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+  [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
+  [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
+  [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+  [SkuTier <SkuTier?>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+
+REGIONDETAIL <IRegistryRegionArmDetails[]>: Details of each region the registry is in
+  [AcrDetail <IAcrDetails[]>]: List of ACR accounts
+    [SystemCreatedAcrAccountArmResourceIdResourceId <String>]: Arm ResourceId is in the format "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Storage/storageAccounts/{StorageAccountName}"         or "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{AcrName}"
+    [SystemCreatedAcrAccountName <String>]: Name of the ACR account
+    [SystemCreatedAcrAccountSku <String>]: SKU of the ACR account
+    [UserCreatedAcrAccountArmResourceIdResourceId <String>]: Arm ResourceId is in the format "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Storage/storageAccounts/{StorageAccountName}"         or "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{AcrName}"
+  [Location <String>]: The location where the registry exists
+  [StorageAccountDetail <IStorageAccountDetails[]>]: List of storage accounts
+    [SystemCreatedStorageAccountAllowBlobPublicAccess <Boolean?>]: Public blob access allowed
+    [SystemCreatedStorageAccountArmResourceIdResourceId <String>]: Arm ResourceId is in the format "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Storage/storageAccounts/{StorageAccountName}"         or "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{AcrName}"
+    [SystemCreatedStorageAccountHnsEnabled <Boolean?>]: HNS enabled for storage account
+    [SystemCreatedStorageAccountName <String>]: Name of the storage account
+    [SystemCreatedStorageAccountType <String>]: Allowed values:         "Standard_LRS",         "Standard_GRS",         "Standard_RAGRS",         "Standard_ZRS",         "Standard_GZRS",         "Standard_RAGZRS",         "Premium_LRS",         "Premium_ZRS"
+    [UserCreatedStorageAccountArmResourceIdResourceId <String>]: Arm ResourceId is in the format "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Storage/storageAccounts/{StorageAccountName}"         or "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{AcrName}"
+
+REGISTRYPRIVATEENDPOINTCONNECTION <IRegistryPrivateEndpointConnection[]>: Private endpoint connections info used for pending connections in private link portal
+  [GroupId <String[]>]: The group ids
+  [Id <String>]: This is the private endpoint connection name created on SRP         Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
+  [Location <String>]: Same as workspace location.
+  [PrivateEndpointSubnetArmId <String>]: The subnetId that the private endpoint is connected to.
+  [ProvisioningState <String>]: One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
+  [RegistryPrivateLinkServiceConnectionStateActionsRequired <String>]: Some RP chose "None". Other RPs use this for region expansion.
+  [RegistryPrivateLinkServiceConnectionStateDescription <String>]: User-defined message that, per NRP doc, may be used for approval-related message.
+  [RegistryPrivateLinkServiceConnectionStateStatus <EndpointServiceConnectionStatus?>]: Connection status of the service consumer with the service provider
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceregistryregion
+#>
+function Remove-AzMLWorkspaceRegistryRegion {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IRegistry])]
+[CmdletBinding(DefaultParameterSetName='RemoveExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Remove', Mandatory)]
+    [Parameter(ParameterSetName='RemoveExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${RegistryName},
+
+    [Parameter(ParameterSetName='Remove', Mandatory)]
+    [Parameter(ParameterSetName='RemoveExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Remove')]
+    [Parameter(ParameterSetName='RemoveExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='RemoveViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='RemoveViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Remove', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='RemoveViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IRegistry]
+    # .
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='RemoveExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RemoveViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
+
+    [Parameter(ParameterSetName='RemoveExpanded')]
+    [Parameter(ParameterSetName='RemoveViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Discovery URL for the Registry
+    ${DiscoveryUrl},
+
+    [Parameter(ParameterSetName='RemoveExpanded')]
+    [Parameter(ParameterSetName='RemoveViaIdentityExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedServiceIdentityType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedServiceIdentityType]
+    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+    ${IdentityType},
+
+    [Parameter(ParameterSetName='RemoveExpanded')]
+    [Parameter(ParameterSetName='RemoveViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api30.IUserAssignedIdentities]))]
+    [System.Collections.Hashtable]
+    # The set of user assigned identities associated with the resource.
+    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+    # The dictionary values can be empty objects ({}) in requests.
+    ${IdentityUserAssignedIdentity},
+
+    [Parameter(ParameterSetName='RemoveExpanded')]
+    [Parameter(ParameterSetName='RemoveViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # IntellectualPropertyPublisher for the registry
+    ${IntellectualPropertyPublisher},
+
+    [Parameter(ParameterSetName='RemoveExpanded')]
+    [Parameter(ParameterSetName='RemoveViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
+    ${Kind},
+
+    [Parameter(ParameterSetName='RemoveExpanded')]
+    [Parameter(ParameterSetName='RemoveViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Arm ResourceId is in the format "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Storage/storageAccounts/{StorageAccountName}"or "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{AcrName}"
+    ${ManagedResourceGroupResourceId},
+
+    [Parameter(ParameterSetName='RemoveExpanded')]
+    [Parameter(ParameterSetName='RemoveViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # MLFlow Registry URI for the Registry
+    ${MlFlowRegistryUri},
+
+    [Parameter(ParameterSetName='RemoveExpanded')]
+    [Parameter(ParameterSetName='RemoveViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Is the Registry accessible from the internetPossible values: "Enabled" or "Disabled"
+    ${PublicNetworkAccess},
+
+    [Parameter(ParameterSetName='RemoveExpanded')]
+    [Parameter(ParameterSetName='RemoveViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IRegistryRegionArmDetails[]]
+    # Details of each region the registry is in
+    # To construct, see NOTES section for REGIONDETAIL properties and create a hash table.
+    ${RegionDetail},
+
+    [Parameter(ParameterSetName='RemoveExpanded')]
+    [Parameter(ParameterSetName='RemoveViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IRegistryPrivateEndpointConnection[]]
+    # Private endpoint connections info used for pending connections in private link portal
+    # To construct, see NOTES section for REGISTRYPRIVATEENDPOINTCONNECTION properties and create a hash table.
+    ${RegistryPrivateEndpointConnection},
+
+    [Parameter(ParameterSetName='RemoveExpanded')]
+    [Parameter(ParameterSetName='RemoveViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Int32]
+    # If the SKU supports scale out/in then the capacity integer should be included.
+    # If scale out/in is not possible for the resource this may be omitted.
+    ${SkuCapacity},
+
+    [Parameter(ParameterSetName='RemoveExpanded')]
+    [Parameter(ParameterSetName='RemoveViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # If the service has different generations of hardware, for the same SKU, then that can be captured here.
+    ${SkuFamily},
+
+    [Parameter(ParameterSetName='RemoveExpanded')]
+    [Parameter(ParameterSetName='RemoveViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The name of the SKU.
+    # Ex - P3.
+    # It is typically a letter+number code
+    ${SkuName},
+
+    [Parameter(ParameterSetName='RemoveExpanded')]
+    [Parameter(ParameterSetName='RemoveViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The SKU size.
+    # When the name field is the combination of tier and some other value, this would be the standalone code.
+    ${SkuSize},
+
+    [Parameter(ParameterSetName='RemoveExpanded')]
+    [Parameter(ParameterSetName='RemoveViaIdentityExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SkuTier])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SkuTier]
+    # This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+    ${SkuTier},
+
+    [Parameter(ParameterSetName='RemoveExpanded')]
+    [Parameter(ParameterSetName='RemoveViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api30.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Remove = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistryRegion_Remove';
+            RemoveExpanded = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistryRegion_RemoveExpanded';
+            RemoveViaIdentity = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistryRegion_RemoveViaIdentity';
+            RemoveViaIdentityExpanded = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistryRegion_RemoveViaIdentityExpanded';
+        }
+        if (('Remove', 'RemoveExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Delete registry
+.Description
+Delete registry
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceregistry
+#>
+function Remove-AzMLWorkspaceRegistry {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Alias('RegistryName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Delete = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistry_Delete';
+            DeleteViaIdentity = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceRegistry_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Delete schedule.
+.Description
+Delete schedule.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceschedule
+#>
+function Remove-AzMLWorkspaceSchedule {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Schedule name.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Delete = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceSchedule_Delete';
+            DeleteViaIdentity = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceSchedule_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Delete Serverless Endpoint (asynchronous).
+.Description
+Delete Serverless Endpoint (asynchronous).
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceserverlessendpoint
+#>
+function Remove-AzMLWorkspaceServerlessEndpoint {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Serverless Endpoint name.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Delete = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceServerlessEndpoint_Delete';
+            DeleteViaIdentity = 'Az.MachineLearningServices.private\Remove-AzMLWorkspaceServerlessEndpoint_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update tags
+.Description
+Update tags
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IRegistry
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/update-azmlworkspaceregistry
+#>
+function Update-AzMLWorkspaceRegistry {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IRegistry])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Alias('RegistryName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning registry.
+    # This is case-insensitive
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedServiceIdentityType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedServiceIdentityType]
+    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+    ${IdentityType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api30.IUserAssignedIdentities]))]
+    [System.Collections.Hashtable]
+    # The set of user assigned identities associated with the resource.
+    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+    # The dictionary values can be empty objects ({}) in requests.
+    ${IdentityUserAssigned},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Int32]
+    # If the SKU supports scale out/in then the capacity integer should be included.
+    # If scale out/in is not possible for the resource this may be omitted.
+    ${SkuCapacity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # If the service has different generations of hardware, for the same SKU, then that can be captured here.
+    ${SkuFamily},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The name of the SKU.
+    # Ex - P3.
+    # It is typically a letter+number code.
+    ${SkuName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The SKU size.
+    # When the name field is the combination of tier and some other value, this would be the standalone code.
+    ${SkuSize},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SkuTier])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SkuTier]
+    # This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+    ${SkuTier},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPartialRegistryPartialTrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            UpdateExpanded = 'Az.MachineLearningServices.private\Update-AzMLWorkspaceRegistry_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.MachineLearningServices.private\Update-AzMLWorkspaceRegistry_UpdateViaIdentityExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update Serverless Endpoint (asynchronous).
+.Description
+Update Serverless Endpoint (asynchronous).
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IServerlessEndpoint
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
+  [ComputeName <String>]: Name of the Azure Machine Learning compute.
+  [ConnectionName <String>]: Friendly name of the workspace connection
+  [DeploymentName <String>]: Inference deployment identifier.
+  [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
+  [Id <String>]: The name and identifier for the Job. This is case-sensitive.
+  [Id1 <String>]: Resource identity path
+  [Location <String>]: The location for which resource usage is queried.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: Version identifier.
+  [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
+.Link
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/update-azmlworkspaceserverlessendpoint
+#>
+function Update-AzMLWorkspaceServerlessEndpoint {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IServerlessEndpoint])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Serverless Endpoint name.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [System.String]
+    # Name of Azure Machine Learning workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedServiceIdentityType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedServiceIdentityType]
+    # Managed service identity (system assigned and/or user assigned identities)
+    ${IdentityType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPartialManagedServiceIdentityUserAssignedIdentities]))]
+    [System.Collections.Hashtable]
+    # The set of user assigned identities associated with the resource.
+    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+    # The dictionary values can be empty objects ({}) in requests.
+    ${IdentityUserAssigned},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.Int32]
+    # If the SKU supports scale out/in then the capacity integer should be included.
+    # If scale out/in is not possible for the resource this may be omitted.
+    ${SkuCapacity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # If the service has different generations of hardware, for the same SKU, then that can be captured here.
+    ${SkuFamily},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The name of the SKU.
+    # Ex - P3.
+    # It is typically a letter+number code.
+    ${SkuName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # The SKU size.
+    # When the name field is the combination of tier and some other value, this would be the standalone code.
+    ${SkuSize},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SkuTier])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SkuTier]
+    # This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+    ${SkuTier},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPartialMinimalTrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            UpdateExpanded = 'Az.MachineLearningServices.private\Update-AzMLWorkspaceServerlessEndpoint_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.MachineLearningServices.private\Update-AzMLWorkspaceServerlessEndpoint_UpdateViaIdentityExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

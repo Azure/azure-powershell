@@ -1073,6 +1073,7 @@ param(
     ${Metadata},
 
     [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotEnforce")]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The policy assignment enforcement mode.
@@ -1080,6 +1081,7 @@ param(
     ${EnforcementMode},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The identity type.
@@ -1124,6 +1126,14 @@ param(
     [System.Management.Automation.PSObject]
     # Accept policy definition or policy set definition object
     ${PolicyDefinition},
+
+    [Parameter(ParameterSetName='PolicyDefinitionOrPolicySetDefinition')]
+    [Parameter(ParameterSetName='ParameterString')]
+    [Parameter(ParameterSetName='ParameterObject')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # Indicate version of policy definition or policy set definition
+    ${DefinitionVersion},
 
     [Parameter(ParameterSetName='ParameterString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
@@ -1523,6 +1533,14 @@ New-AzPolicyExemption -Name 'VirtualMachinePolicyExemption' -PolicyAssignment $A
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $Assignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment'
 New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $Assignment -Scope $ResourceGroup.ResourceId -ExemptionCategory Mitigated
+.Example
+$ManagementGroup = Get-AzManagementGroup -GroupName 'AManagementGroup'
+$Assignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment'
+New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $Assignment -Scope $ManagementGroup.Id -ExemptionCategory Mitigated
+.Example
+$VM = Get-AzVM -Name 'SpecialVM'
+$Assignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment'
+New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $Assignment -Scope $SpecialVM.Id -ExemptionCategory Waiver
 
 .Inputs
 System.Management.Automation.PSObject
@@ -1540,6 +1558,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 POLICYASSIGNMENT <PSObject>: The policy assignment id filter.
+  [DefinitionVersion <String>]: The version of the policy definition to use.
   [Description <String>]: This message will be part of response in case of policy violation.
   [DisplayName <String>]: The display name of the policy assignment.
   [EnforcementMode <String>]: The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
@@ -1581,6 +1600,7 @@ param(
     ${Name},
 
     [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Waiver", "Mitigated")]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The policy exemption category
@@ -1607,6 +1627,7 @@ param(
     ${PolicyDefinitionReferenceId},
 
     [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotValidate")]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # Whether to validate the exemption is at or under the assignment scope.
@@ -3031,6 +3052,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IPolicyAssignment>: 
+  [DefinitionVersion <String>]: The version of the policy definition to use.
   [Description <String>]: This message will be part of response in case of policy violation.
   [DisplayName <String>]: The display name of the policy assignment.
   [EnforcementMode <String>]: The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
@@ -3129,6 +3151,7 @@ param(
     ${Location},
 
     [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotEnforce")]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The policy assignment enforcement mode.
@@ -3136,6 +3159,7 @@ param(
     ${EnforcementMode},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The identity type.
@@ -3657,6 +3681,7 @@ param(
     ${Scope},
 
     [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Waiver", "Mitigated")]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The policy exemption category
@@ -3715,6 +3740,7 @@ param(
     ${BackwardCompatible},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotValidate")]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The option whether validate the exemption is at or under the assignment scope.
@@ -3893,6 +3919,7 @@ INPUTOBJECT <IPolicySetDefinition>:
     [(Any) <Object>]: This indicates any property can be added to this object.
   [PolicyDefinition <List<IPolicyDefinitionReference>>]: An array of policy definition references.
     PolicyDefinitionId <String>: The ID of the policy definition or policy set definition.
+    [DefinitionVersion <String>]: The version of the policy definition to use.
     [GroupName <List<String>>]: The name of the groups that this policy definition reference belongs to.
     [Id <String>]: A unique id (within the policy set definition) for this policy definition reference.
     [Parameter <IParameterValues>]: The parameter values for the referenced policy rule. The keys are the parameter names.

@@ -14,7 +14,7 @@ pr: none
 
 jobs:
 - job: DailyBuild
-  timeoutInMinutes: 180
+  timeoutInMinutes: 360
   pool: pool-windows-2019
   steps:
   - task: PowerShell@2

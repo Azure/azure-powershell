@@ -766,7 +766,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 {
                     EnabledState = psPolicy.PolicyEnabledState.ToString(),
                     Mode = psPolicy.PolicyMode,
-                    CustomBlockResponseBody = psPolicy.CustomBlockResponseBody,
+                    CustomBlockResponseBody = psPolicy.CustomBlockResponseBody == null ? psPolicy.CustomBlockResponseBody : Convert.ToBase64String(Encoding.UTF8.GetBytes(psPolicy.CustomBlockResponseBody)),
                     CustomBlockResponseStatusCode = psPolicy.CustomBlockResponseStatusCode,
                     RedirectUrl = psPolicy.RedirectUrl,
                     RequestBodyCheck = psPolicy.RequestBodyCheck?.ToString(),

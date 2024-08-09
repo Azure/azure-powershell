@@ -10,7 +10,49 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
     public partial struct RenderingType :
         System.IEquatable<RenderingType>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType AppInsight = @"AppInsight";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType AppInsightEnablement = @"AppInsightEnablement";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType Card = @"Card";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType ChangeAnalysisOnboarding = @"ChangeAnalysisOnboarding";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType ChangeSets = @"ChangeSets";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType ChangesView = @"ChangesView";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType DataSummary = @"DataSummary";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType DependencyGraph = @"DependencyGraph";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType Detector = @"Detector";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType DownTime = @"DownTime";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType DropDown = @"DropDown";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType DynamicInsight = @"DynamicInsight";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType Email = @"Email";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType Form = @"Form";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType Guage = @"Guage";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType Insights = @"Insights";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType Markdown = @"Markdown";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType NoGraph = @"NoGraph";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType PieChart = @"PieChart";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType SearchComponent = @"SearchComponent";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType Solution = @"Solution";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType SummaryCard = @"SummaryCard";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType Table = @"Table";
 

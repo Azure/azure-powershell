@@ -20,6 +20,8 @@
 
 ## Upcoming Release
 * Fixed bug where AzMaintenanceConfiguration returned a List object. [#25781]
+
+## Version 1.4.2
 * Fixed bug where rebootSettings property wasn't updating.
 
 ## Version 1.4.1

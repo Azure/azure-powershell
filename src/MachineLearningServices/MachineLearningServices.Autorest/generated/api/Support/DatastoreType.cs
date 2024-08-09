@@ -18,6 +18,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DatastoreType AzureFile = @"AzureFile";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DatastoreType OneLake = @"OneLake";
+
         /// <summary>the value for an instance of the <see cref="DatastoreType" /> Enum.</summary>
         private string _value { get; set; }
 

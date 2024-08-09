@@ -25,12 +25,12 @@ Test-AzCommunicationServiceNameAvailability -Name ContosoAcsResource1
 Test-AzCommunicationServiceNameAvailability -Name ContosoAcsResource2
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.INameAvailability
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.ICheckNameAvailabilityResponse
 .Link
 https://learn.microsoft.com/powershell/module/az.communication/test-azcommunicationservicenameavailability
 #>
 function Test-AzCommunicationServiceNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.INameAvailability])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.ICheckNameAvailabilityResponse])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter()]
@@ -38,13 +38,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
     [System.String]
-    # The CommunicationService name to validate.
-    # e.g."my-CommunicationService-name-here"
+    # The name of the resource for which availability needs to be checked.
     ${Name},
 
     [Parameter()]

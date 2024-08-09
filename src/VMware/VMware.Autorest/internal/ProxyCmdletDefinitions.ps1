@@ -5328,7 +5328,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [System.Int32]
+    [System.Int64]
     # Number of DNS Services using the DNS zone.
     ${DnsService},
 
@@ -9503,7 +9503,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [System.Int32]
+    [System.Int64]
     # Number of DNS Services using the DNS zone.
     ${DnsService},
 

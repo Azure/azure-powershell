@@ -113,10 +113,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).DiskStorage = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IDiskStorageProfile) content.GetValueForProperty("DiskStorage",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).DiskStorage, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.DiskStorageProfileTypeConverter.ConvertFrom);
             }
-            if (content.Contains("ClusterIdentity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).ClusterIdentity = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfile) content.GetValueForProperty("ClusterIdentity",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).ClusterIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IdentityProfileTypeConverter.ConvertFrom);
-            }
             if (content.Contains("ConnectivityEndpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).ConnectivityEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaConnectivityEndpoints) content.GetValueForProperty("ConnectivityEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).ConnectivityEndpoint, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.KafkaConnectivityEndpointsTypeConverter.ConvertFrom);
@@ -140,18 +136,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("DiskStorageDataDiskType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).DiskStorageDataDiskType = (string) content.GetValueForProperty("DiskStorageDataDiskType",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).DiskStorageDataDiskType, global::System.Convert.ToString);
-            }
-            if (content.Contains("ClusterIdentityMsiResourceId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).ClusterIdentityMsiResourceId = (string) content.GetValueForProperty("ClusterIdentityMsiResourceId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).ClusterIdentityMsiResourceId, global::System.Convert.ToString);
-            }
-            if (content.Contains("ClusterIdentityMsiClientId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).ClusterIdentityMsiClientId = (string) content.GetValueForProperty("ClusterIdentityMsiClientId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).ClusterIdentityMsiClientId, global::System.Convert.ToString);
-            }
-            if (content.Contains("ClusterIdentityMsiObjectId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).ClusterIdentityMsiObjectId = (string) content.GetValueForProperty("ClusterIdentityMsiObjectId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).ClusterIdentityMsiObjectId, global::System.Convert.ToString);
             }
             if (content.Contains("ConnectivityEndpointBootstrapServerEndpoint"))
             {
@@ -182,10 +166,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).DiskStorage = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IDiskStorageProfile) content.GetValueForProperty("DiskStorage",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).DiskStorage, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.DiskStorageProfileTypeConverter.ConvertFrom);
             }
-            if (content.Contains("ClusterIdentity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).ClusterIdentity = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfile) content.GetValueForProperty("ClusterIdentity",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).ClusterIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IdentityProfileTypeConverter.ConvertFrom);
-            }
             if (content.Contains("ConnectivityEndpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).ConnectivityEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaConnectivityEndpoints) content.GetValueForProperty("ConnectivityEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).ConnectivityEndpoint, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.KafkaConnectivityEndpointsTypeConverter.ConvertFrom);
@@ -209,18 +189,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("DiskStorageDataDiskType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).DiskStorageDataDiskType = (string) content.GetValueForProperty("DiskStorageDataDiskType",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).DiskStorageDataDiskType, global::System.Convert.ToString);
-            }
-            if (content.Contains("ClusterIdentityMsiResourceId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).ClusterIdentityMsiResourceId = (string) content.GetValueForProperty("ClusterIdentityMsiResourceId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).ClusterIdentityMsiResourceId, global::System.Convert.ToString);
-            }
-            if (content.Contains("ClusterIdentityMsiClientId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).ClusterIdentityMsiClientId = (string) content.GetValueForProperty("ClusterIdentityMsiClientId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).ClusterIdentityMsiClientId, global::System.Convert.ToString);
-            }
-            if (content.Contains("ClusterIdentityMsiObjectId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).ClusterIdentityMsiObjectId = (string) content.GetValueForProperty("ClusterIdentityMsiObjectId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)this).ClusterIdentityMsiObjectId, global::System.Convert.ToString);
             }
             if (content.Contains("ConnectivityEndpointBootstrapServerEndpoint"))
             {

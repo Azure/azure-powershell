@@ -32,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         /// The policy definition metadata. Metadata is an open ended object and is typically a collection of key value pairs.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny Metadata { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).Metadata; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).Metadata = value ?? null /* model class */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesMetadata Metadata { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).Metadata; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).Metadata = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionInternal.Id { get => this._id; set { {_id = value;} } }
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 
         /// <summary>The policy rule.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny PolicyRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).PolicyRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).PolicyRule = value ?? null /* model class */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesPolicyRule PolicyRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).PolicyRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesInternal)Property).PolicyRule = value ?? null /* model class */; }
 
         /// <summary>
         /// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
@@ -181,8 +181,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         Update = true,
         Description = @"The policy definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.",
         SerializedName = @"metadata",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny Metadata { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesMetadata) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesMetadata Metadata { get; set; }
         /// <summary>
         /// The policy definition mode. Some examples are All, Indexed, Microsoft.KeyVault.Data.
         /// </summary>
@@ -229,8 +229,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         Update = true,
         Description = @"The policy rule.",
         SerializedName = @"policyRule",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny PolicyRule { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesPolicyRule) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesPolicyRule PolicyRule { get; set; }
         /// <summary>
         /// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
         /// </summary>
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         /// <summary>
         /// The policy definition metadata. Metadata is an open ended object and is typically a collection of key value pairs.
         /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny Metadata { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesMetadata Metadata { get; set; }
         /// <summary>
         /// The policy definition mode. Some examples are All, Indexed, Microsoft.KeyVault.Data.
         /// </summary>
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IParameterDefinitions Parameter { get; set; }
         /// <summary>The policy rule.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny PolicyRule { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesPolicyRule PolicyRule { get; set; }
         /// <summary>
         /// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
         /// </summary>

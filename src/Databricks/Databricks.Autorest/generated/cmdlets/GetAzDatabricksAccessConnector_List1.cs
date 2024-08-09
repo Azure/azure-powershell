@@ -8,15 +8,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Extensions;
     using System;
 
-    /// <summary>Gets all the azure databricks accessConnectors within a subscription.</summary>
+    /// <summary>Gets all the Azure Databricks Access Connectors within a subscription.</summary>
     /// <remarks>
     /// [OpenAPI] ListBySubscription=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Databricks/accessConnectors"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDatabricksAccessConnector_List1")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Description(@"Gets all the azure databricks accessConnectors within a subscription.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IAccessConnector))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Description(@"Gets all the Azure Databricks Access Connectors within a subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Databricks/accessConnectors", ApiVersion = "2023-05-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Databricks/accessConnectors", ApiVersion = "2024-05-01")]
     public partial class GetAzDatabricksAccessConnector_List1 : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener
     {
@@ -105,12 +105,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string[] _subscriptionId;
 
-        /// <summary>The ID of the target subscription.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription.")]
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription. The value must be an UUID.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The ID of the target subscription.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.DefaultInfo(
@@ -137,12 +137,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnectorListResult">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnectorListResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IAccessConnectorListResult">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IAccessConnectorListResult</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnectorListResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IAccessConnectorListResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -390,12 +390,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnectorListResult">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnectorListResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IAccessConnectorListResult">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IAccessConnectorListResult</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnectorListResult> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IAccessConnectorListResult> response)
         {
             using( NoSynchronizationContext )
             {

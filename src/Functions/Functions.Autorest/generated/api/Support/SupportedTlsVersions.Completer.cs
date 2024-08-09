@@ -38,6 +38,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'1.2'", "1.2", global::System.Management.Automation.CompletionResultType.ParameterValue, "1.2");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "1.3".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'1.3'", "1.3", global::System.Management.Automation.CompletionResultType.ParameterValue, "1.3");
+            }
         }
     }
 }

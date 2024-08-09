@@ -21,7 +21,7 @@ For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayNa
 ```
 Get-AzADGroupOwner -GroupId <String> [-Count] [-Expand <String[]>] [-Filter <String>] [-Orderby <String[]>]
  [-Search <String>] [-Select <String[]>] [-ConsistencyLevel <String>] [-First <UInt64>] [-Skip <UInt64>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -143,21 +143,6 @@ Order items by property values
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

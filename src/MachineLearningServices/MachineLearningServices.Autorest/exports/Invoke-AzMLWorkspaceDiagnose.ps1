@@ -28,31 +28,40 @@ Invoke-AzMLWorkspaceDiagnose -InputObject $workspace -ApplicationInsightId @{'ke
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDiagnoseResponseResultValue
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDiagnoseResponseResultValue
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
+  [CodeName <String>]: Container name.
+  [ComponentName <String>]: Container name.
   [ComputeName <String>]: Name of the Azure Machine Learning compute.
   [ConnectionName <String>]: Friendly name of the workspace connection
   [DeploymentName <String>]: Inference deployment identifier.
   [EndpointName <String>]: Inference Endpoint name.
+  [EnvironmentName <String>]: Container name.
+  [FeatureName <String>]: Feature Name. This is case-sensitive.
+  [FeaturesetName <String>]: Featureset name. This is case-sensitive.
+  [FeaturesetVersion <String>]: Featureset Version identifier. This is case-sensitive.
   [Id <String>]: The name and identifier for the Job. This is case-sensitive.
   [Id1 <String>]: Resource identity path
   [Location <String>]: The location for which resource usage is queried.
-  [Name <String>]: Container name. This is case-sensitive.
+  [ModelName <String>]: Container name.
+  [Name <String>]: Container name.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the workspace
+  [RegistryName <String>]: Name of Azure Machine Learning registry. This is case-insensitive
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleName <String>]: Name of the workspace managed network outbound rule
   [SubscriptionId <String>]: The ID of the target subscription.
-  [Version <String>]: Version identifier. This is case-sensitive.
+  [Version <String>]: Version identifier.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
 https://learn.microsoft.com/powershell/module/az.machinelearningservices/invoke-azmlworkspacediagnose
 #>
 function Invoke-AzMLWorkspaceDiagnose {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDiagnoseResponseResultValue])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDiagnoseResponseResultValue])]
 [CmdletBinding(DefaultParameterSetName='DiagnoseExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='DiagnoseExpanded', Mandatory)]
@@ -84,63 +93,63 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDiagnoseRequestPropertiesApplicationInsights]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDiagnoseRequestPropertiesApplicationInsights]))]
     [System.Collections.Hashtable]
     # Setting for diagnosing dependent application insights
     ${ApplicationInsightId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDiagnoseRequestPropertiesContainerRegistry]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDiagnoseRequestPropertiesContainerRegistry]))]
     [System.Collections.Hashtable]
     # Setting for diagnosing dependent container registry
     ${ContainerRegistryId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDiagnoseRequestPropertiesDnsResolution]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDiagnoseRequestPropertiesDnsResolution]))]
     [System.Collections.Hashtable]
     # Setting for diagnosing dns resolution
     ${DnsResolution},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDiagnoseRequestPropertiesKeyVault]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDiagnoseRequestPropertiesKeyVault]))]
     [System.Collections.Hashtable]
     # Setting for diagnosing dependent key vault
     ${KeyVaultId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDiagnoseRequestPropertiesNsg]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDiagnoseRequestPropertiesNsg]))]
     [System.Collections.Hashtable]
     # Setting for diagnosing network security group
     ${Nsg},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDiagnoseRequestPropertiesOthers]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDiagnoseRequestPropertiesOthers]))]
     [System.Collections.Hashtable]
     # Setting for diagnosing unclassified category of problems
     ${Other},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDiagnoseRequestPropertiesResourceLock]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDiagnoseRequestPropertiesResourceLock]))]
     [System.Collections.Hashtable]
     # Setting for diagnosing resource lock
     ${ResourceLock},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDiagnoseRequestPropertiesStorageAccount]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDiagnoseRequestPropertiesStorageAccount]))]
     [System.Collections.Hashtable]
     # Setting for diagnosing dependent storage account
     ${StorageAccount},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDiagnoseRequestPropertiesUdr]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDiagnoseRequestPropertiesUdr]))]
     [System.Collections.Hashtable]
     # Setting for diagnosing user defined routing
     ${Udr},
@@ -150,7 +159,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -214,7 +224,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -235,10 +245,20 @@ begin {
             DiagnoseViaIdentityExpanded = 'Az.MachineLearningServices.private\Invoke-AzMLWorkspaceDiagnose_DiagnoseViaIdentityExpanded';
         }
         if (('DiagnoseExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

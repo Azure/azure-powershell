@@ -14,32 +14,32 @@ Gets a SQL virtual machine.
 
 ### List1 (Default)
 ```
-Get-AzSqlVM [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+Get-AzSqlVM [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzSqlVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Expand <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List2
 ```
 Get-AzSqlVM -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzSqlVM -ResourceGroupName <String> [-SubscriptionId <String[]>] -GroupName <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzSqlVM -InputObject <ISqlVirtualMachineIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -156,21 +156,6 @@ Parameter Sets: Get
 Aliases: SqlVirtualMachineName, SqlVMName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 DisplayName = servicePrincipal.DisplayName,
                 Id = servicePrincipal.Id,
                 DeletionTimestamp = servicePrincipal.DeletedDateTime,
-                ApplicationId = Guid.Parse(servicePrincipal.AppId),
+                ApplicationId = String.IsNullOrEmpty(servicePrincipal.AppId)? (Guid?)null : Guid.Parse(servicePrincipal.AppId),
                 Type = "ServicePrincipal",
                 ServicePrincipalNames = servicePrincipal.ServicePrincipalNames.ToArray(),
                 AdditionalProperties = servicePrincipal.AdditionalProperties

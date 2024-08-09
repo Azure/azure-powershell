@@ -168,6 +168,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal)this).Status, global::System.Convert.ToString);
             }
+            if (content.Contains("ComputeProfileAvailabilityZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal)this).ComputeProfileAvailabilityZone = (System.Collections.Generic.List<string>) content.GetValueForProperty("ComputeProfileAvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal)this).ComputeProfileAvailabilityZone, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("AkClusterProfileAksVersion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal)this).AkClusterProfileAksVersion = (string) content.GetValueForProperty("AkClusterProfileAksVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal)this).AkClusterProfileAksVersion, global::System.Convert.ToString);
@@ -336,6 +340,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("Status"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal)this).Status, global::System.Convert.ToString);
+            }
+            if (content.Contains("ComputeProfileAvailabilityZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal)this).ComputeProfileAvailabilityZone = (System.Collections.Generic.List<string>) content.GetValueForProperty("ComputeProfileAvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolInternal)this).ComputeProfileAvailabilityZone, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("AkClusterProfileAksVersion"))
             {

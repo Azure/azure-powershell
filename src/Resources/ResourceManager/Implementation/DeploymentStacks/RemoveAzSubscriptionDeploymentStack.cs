@@ -93,14 +93,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
                 string confirmationMessage = $"Are you sure you want to remove Subscription scoped DeploymentStack '{Name}' " +
                     $"in current Subscription with the following actions?" +
-                    (!shouldDeleteResources || !shouldDeleteResourceGroups ? "\nDetaching: " : "") +
+                    // Deleting
+                    (shouldDeleteResources || shouldDeleteResourceGroups || shouldDeleteManagementGroups ? "\nDeleting: " : "") +
+                    (shouldDeleteResources ? "resources" : "") +
+                    (shouldDeleteResources && shouldDeleteResourceGroups ? ", " : "") +
+                    (shouldDeleteResourceGroups ? "resourceGroups" : "") +
+                    (shouldDeleteResourceGroups && shouldDeleteManagementGroups ? ", " : "") +
+                    (shouldDeleteManagementGroups ? "managementGroups" : "") +
+                    // Detaching
+                    (!shouldDeleteResources || !shouldDeleteResourceGroups || !shouldDeleteManagementGroups ? "\nDetaching: " : "") +
                     (!shouldDeleteResources ? "resources" : "") +
                     (!shouldDeleteResources && !shouldDeleteResourceGroups ? ", " : "") +
                     (!shouldDeleteResourceGroups ? "resourceGroups" : "") +
-                    (shouldDeleteResources || shouldDeleteResourceGroups ? "\nDeleting: " : "") +
-                    (shouldDeleteResources ? "resources" : "") +
-                    (shouldDeleteResources && shouldDeleteResourceGroups ? ", " : "") +
-                    (shouldDeleteResourceGroups ? "resourceGroups" : "");
+                    (!shouldDeleteResourceGroups && !shouldDeleteManagementGroups ? ", " : "") +
+                    (!shouldDeleteManagementGroups ? "managementGroups" : "");
 
                 ConfirmAction(
                     Force.IsPresent,
