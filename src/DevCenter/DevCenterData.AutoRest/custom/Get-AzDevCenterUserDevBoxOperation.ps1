@@ -101,6 +101,7 @@ function Get-AzDevCenterUserDevBoxOperation {
         [Parameter(ParameterSetName='Get', Mandatory)]
         [Parameter(ParameterSetName='List', Mandatory)]
         [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
+        [Parameter(ParameterSetName='ListByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
         [System.String]
         # Name of the project.

@@ -100,6 +100,7 @@ function New-AzDevCenterUserEnvironment {
       ${Name},
   
       [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+      [Parameter(ParameterSetName = 'CreateExpandedByDevCenter', Mandatory)]
       [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
       [System.String]
       # The DevCenter Project upon which to execute operations.

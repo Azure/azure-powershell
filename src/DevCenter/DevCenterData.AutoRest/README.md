@@ -108,6 +108,18 @@ directive:
     where: $.paths["/projects"].get.operationId
     transform: >-
       return "Projects_List"
+  - from: swagger-document
+    where: $.paths["/projects/{projectName}/environmentTypes/{environmentTypeName}"].get.operationId
+    transform: >-
+      return "EnvironmentTypes_Get"
+  - from: swagger-document
+    where: $.paths["/projects/{projectName}/environmentTypes/{environmentTypeName}/users/{userId}/abilities"].get.operationId
+    transform: >-
+      return "EnvironmentTypes_GetAbilities"
+  - from: swagger-document
+    where: $.paths["/projects/{projectName}/environmentTypes"].get.operationId
+    transform: >-
+      return "EnvironmentTypes_List"
   - where:
       subject: ^(.*)(DevBoxPool)(.*)$
     set:
