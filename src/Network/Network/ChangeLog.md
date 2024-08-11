@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added support for `DefaultOutboundAccess` property in `Set-AzVirtualNetworkSubnetConfig` command
 * Added support for `EnabledFilteringCriteria` property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
 * Added support of `UserAssignedIdentityId` Property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
 
