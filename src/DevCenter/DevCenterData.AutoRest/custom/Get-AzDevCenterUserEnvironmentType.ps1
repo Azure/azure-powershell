@@ -145,7 +145,7 @@ function Get-AzDevCenterUserEnvironmentType {
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
-    )  
+    )
 
     process {
         if (-not $PSBoundParameters.ContainsKey('Endpoint')) {

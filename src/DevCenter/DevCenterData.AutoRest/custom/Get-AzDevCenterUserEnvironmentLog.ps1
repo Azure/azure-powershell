@@ -68,14 +68,14 @@ function Get-AzDevCenterUserEnvironmentLog {
         [System.String]
         # The DevCenter upon which to execute operations.
         ${DevCenterName},
-
+    
         [Parameter(ParameterSetName='Get', Mandatory)]
         [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
         [System.String]
         # The name of the environment.
         ${EnvironmentName},
-
+    
         [Parameter(ParameterSetName='Get', Mandatory)]
         [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
@@ -98,13 +98,6 @@ function Get-AzDevCenterUserEnvironmentLog {
         # The AAD object id of the user.
         # If value is 'me', the identity is taken from the authentication context.
         ${UserId},
-    
-        [Parameter(Mandatory)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-        [System.String]
-        # Path to write output file to
-        ${OutFile},
     
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
