@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added information on how to find VM Images when using `New-AzVM` with `-Image` parameter.
 * Added `TimeCreated` read-only field to `PSVirtualMachineScaleSetVMProfile` object.
 * Added  parameter `-ResourceIdsOnly` to `Get-AzCapacityReservationGroup` cmdlet.
 * Changed the `Set-AzVMOperatingSystem` cmdlet when the `-VM` parameter is used without an OSProfile. Now it will not throw a null reference exception when `-Credential` is not provided.
