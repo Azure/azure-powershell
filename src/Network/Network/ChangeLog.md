@@ -19,7 +19,10 @@
 --->
 
 ## Upcoming Release
-* Onboard Cmdlets for Azure Virtual Network Manager UDR Management Feature
+* Added support for `DefaultOutboundAccess` property in `Set-AzVirtualNetworkSubnetConfig` command
+* Added support for `EnabledFilteringCriteria` property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
+* Added support of `UserAssignedIdentityId` Property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
+* Onboarded Cmdlets for Azure Virtual Network Manager UDR Management Feature
     - `New/Get/Remove/Set-AzNetworkManagerRoutingConfiguration`
     - `New/Get/Remove/Set-AzNetworkManagerRoutingRuleCollection`
     - `New/Get/Remove/Set-AzNetworkManagerRoutingRule`
