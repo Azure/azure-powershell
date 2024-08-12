@@ -559,9 +559,9 @@ function New-AzConnectedKubernetes {
             if ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Succeeded") {
                 Write-Host "Cluster configuration succeeded."
             } elseif ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Failed") {
-                Write-Host "Cluster configuration failed."
+                Write-Error "Cluster configuration failed."
             } else {
-                Write-Host "Cluster configuration timed out after 60 minutes."
+                Write-Error "Cluster configuration timed out after 60 minutes."
             }      
         }
         Return $Response
