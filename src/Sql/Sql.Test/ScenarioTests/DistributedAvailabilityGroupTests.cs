@@ -45,5 +45,26 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 		{
 			TestRunner.RunTestScript("Test-ManagedInstanceLinkPiping");
 		}
-	}
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedInstanceLinkMIPrimaryPlannedFailover()
+        {
+            TestRunner.RunTestScript("Test-ManagedInstanceLinkMIFirstPlannedFailover");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedInstanceLinkMIPrimaryForcedFailover()
+        {
+            TestRunner.RunTestScript("Test-ManagedInstanceLinkMIFirstForcedFailover");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedInstanceLinkBOXFirstForcedFailover()
+        {
+            TestRunner.RunTestScript("Test-ManagedInstanceLinkBOXFirstForcedFailover");
+        }
+    }
 }
