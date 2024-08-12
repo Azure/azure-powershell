@@ -215,6 +215,19 @@ directive:
         }
       }
   - where:
+      verb: Get
+      subject: OperationStatus
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: OperationStatus
+        replacement-cmdlet-output-type: OperationStatus
+        deprecated-output-properties:
+          - ResourceId
+        change-description: The property 'ResourceId' of type 'Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IOperationStatus' has been removed.
+        deprecated-by-version: 3.0.0
+        deprecated-by-azversion: 13.0.0
+        change-effective-date: 2024/11/19
+  - where:
       parameter-name: Top
     hide: true
   - where:

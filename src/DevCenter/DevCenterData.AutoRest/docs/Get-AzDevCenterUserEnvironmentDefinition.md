@@ -12,7 +12,7 @@ Get an environment definition from a catalog.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzDevCenterUserEnvironmentDefinition -Endpoint <String> -ProjectName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
@@ -42,7 +42,7 @@ Get-AzDevCenterUserEnvironmentDefinition -DevCenterName <String> -InputObject <I
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzDevCenterUserEnvironmentDefinition -Endpoint <String> -CatalogName <String> -ProjectName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -50,13 +50,13 @@ Get-AzDevCenterUserEnvironmentDefinition -Endpoint <String> -CatalogName <String
 
 ### List1ByDevCenter
 ```
-Get-AzDevCenterUserEnvironmentDefinition -DevCenterName <String> -ProjectName <String>
+Get-AzDevCenterUserEnvironmentDefinition -DevCenterName <String> -CatalogName <String> -ProjectName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
-Get-AzDevCenterUserEnvironmentDefinition -DevCenterName <String> -CatalogName <String> -ProjectName <String>
+Get-AzDevCenterUserEnvironmentDefinition -DevCenterName <String> -ProjectName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -129,11 +129,11 @@ This command gets the environment definition "Sandbox" under the project "DevPro
 ## PARAMETERS
 
 ### -CatalogName
-Name of the catalog.
+The name of the catalog
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetByDevCenter, List, ListByDevCenter
+Parameter Sets: Get, GetByDevCenter, List1, List1ByDevCenter
 Aliases:
 
 Required: True
@@ -160,7 +160,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefinitionName
-Name of the environment definition.
+The name of the environment definition
 
 ```yaml
 Type: System.String
@@ -221,7 +221,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-Name of the project.
+The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
@@ -244,7 +244,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentDefinition
 
 ## NOTES
 

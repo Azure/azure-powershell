@@ -122,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnvironmentName
-Environment name.
+The name of the environment.
 
 ```yaml
 Type: System.String
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Uniquely identifies the action.
+The name of an action that will take place on an Environment.
 
 ```yaml
 Type: System.String
@@ -183,7 +183,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-Name of the project.
+The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String

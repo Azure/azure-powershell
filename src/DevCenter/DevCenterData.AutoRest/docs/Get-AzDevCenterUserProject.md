@@ -160,7 +160,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-Name of the project.
+The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
@@ -183,9 +183,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IProject
-
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IProjectAbilities
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IProject
 
 ## NOTES
 

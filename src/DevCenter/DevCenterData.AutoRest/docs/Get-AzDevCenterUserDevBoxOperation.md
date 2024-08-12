@@ -44,8 +44,8 @@ Get-AzDevCenterUserDevBoxOperation -DevCenterName <String> -InputObject <IDevCen
 
 ### ListByDevCenter
 ```
-Get-AzDevCenterUserDevBoxOperation -DevCenterName <String> -DevBoxName <String> [-UserId <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterUserDevBoxOperation -DevCenterName <String> -DevBoxName <String> -ProjectName <String>
+ [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -DevBoxName
-Display name for the Dev Box.
+The name of a Dev Box.
 
 ```yaml
 Type: System.String
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 ```
 
 ### -OperationId
-Unique identifier for the Dev Box operation.
+The id of the operation on a Dev Box.
 
 ```yaml
 Type: System.String
@@ -192,11 +192,11 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-Name of the project.
+The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetByDevCenter, List
+Parameter Sets: Get, GetByDevCenter, List, ListByDevCenter
 Aliases:
 
 Required: True
@@ -231,7 +231,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBoxOperation
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxOperation
 
 ## NOTES
 

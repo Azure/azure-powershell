@@ -177,7 +177,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the action.
+The name of an action that will take place on a Dev Box.
 
 ```yaml
 Type: System.String
@@ -192,7 +192,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-Name of the project.
+The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
@@ -231,7 +231,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBoxAction
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxAction
 
 ## NOTES
 

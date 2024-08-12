@@ -20,167 +20,176 @@ Creates or replaces a Dev Box.
 .Description
 Creates or replaces a Dev Box.
 .Example
-New-AzDevCenterUserDevBox -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -UserId 786a823c-8037-48ab-89b8-8599901e67d0 -Name myDevBox -PoolName DevPool
+{{ Add code here }}
 .Example
-New-AzDevCenterUserDevBox -DevCenterName Contoso -ProjectName DevProject -UserId "me" -Name myDevBox -PoolName DevPool
-.Example
-$devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject" }
-New-AzDevCenterUserDevBox -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $devBoxInput -PoolName DevPool
-.Example
-$devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "786a823c-8037-48ab-89b8-8599901e67d0"; "ProjectName" = "DevProject" }
-New-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput -PoolName DevPool
+{{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBox
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBox
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBox
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+BODY <IDevBox>: A Dev Box
+  PoolName <String>: The name of the Dev Box pool this machine belongs to.
+  [Code <String>]: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
+  [Detail <ICloudErrorBody[]>]: A list of additional details about the error.
+    Code <String>: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
+    Message <String>: A message describing the error, intended to be suitable for display in a user interface.
+    [Detail <ICloudErrorBody[]>]: A list of additional details about the error.
+    [Target <String>]: The target of the particular error. For example, the name of the property in error.
+  [LocalAdministrator <LocalAdminStatus?>]: Indicates whether the owner of the Dev Box is a local administrator.
+  [Message <String>]: A message describing the error, intended to be suitable for display in a user interface.
+  [Target <String>]: The target of the particular error. For example, the name of the property in error.
+
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
-  [ActionName <String>]: The name of the action.
-  [CatalogName <String>]: Name of the catalog.
-  [CustomizationGroupName <String>]: Name of the customization group.
-  [CustomizationTaskId <String>]: A customization task ID.
-  [DefinitionName <String>]: Name of the environment definition.
-  [DevBoxName <String>]: Display name for the Dev Box.
-  [EnvironmentName <String>]: Environment name.
-  [EnvironmentTypeName <String>]: Name of the environment type.
+  [Name <String>]: The name of an action that will take place on a Dev Box.
+  [CatalogName <String>]: The name of the catalog
+  [DefinitionName <String>]: The name of the environment definition
+  [DevBoxName <String>]: The name of a Dev Box.
+  [EnvironmentName <String>]: The name of the environment.
   [Id <String>]: Resource identity path
-  [OperationId <String>]: Unique identifier for the Dev Box operation.
-  [PoolName <String>]: Pool name.
-  [ProjectName <String>]: Name of the project.
-  [ScheduleName <String>]: Display name for the Schedule.
-  [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
+  [PoolName <String>]: The name of a pool of Dev Boxes.
+  [ProjectName <String>]: The DevCenter Project upon which to execute operations.
+  [ScheduleName <String>]: The name of a schedule.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteruserdevbox
 #>
 function New-AzDevCenterUserDevBox {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBox])]
-  [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBox])]
+  [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
   param(
-      [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
-      [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
-      [System.String]
-      # The DevCenter-specific URI to operate on.
-      ${Endpoint},
-
-      [Parameter(ParameterSetName = 'CreateViaIdentityExpandedByDevCenter', Mandatory)]
-      [Parameter(ParameterSetName = 'CreateExpandedByDevCenter', Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
-      [Alias('DevCenter')]
-      [System.String]
-      # The DevCenter upon which to execute operations.
-      ${DevCenterName},
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+    [System.String]
+    # The DevCenter-specific URI to operate on.
+    ${Endpoint},
   
-      [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-      [Parameter(ParameterSetName = 'CreateExpandedByDevCenter', Mandatory)]
-      [Alias('DevBoxName')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
-      [System.String]
-      # The name of a Dev Box.
-      ${Name},
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpandedByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateExpandedByDevCenter', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+    [Alias('DevCenter')]
+    [System.String]
+    # The DevCenter upon which to execute operations.
+    ${DevCenterName},
   
-      [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-      [Parameter(ParameterSetName = 'CreateExpandedByDevCenter', Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
-      [System.String]
-      # The DevCenter Project upon which to execute the operation.
-      ${ProjectName},
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateExpandedByDevCenter', Mandatory)]
+    [Alias('DevBoxName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # The name of a Dev Box.
+    ${Name},
   
-      [Parameter(ParameterSetName='CreateExpanded')]
-      [Parameter(ParameterSetName = 'CreateExpandedByDevCenter')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
-      [System.String]
-      # The AAD object id of the user.
-      # If value is 'me', the identity is taken from the authentication context.
-      ${UserId},
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateExpandedByDevCenter', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # The DevCenter Project upon which to execute operations.
+    ${ProjectName},
   
-      [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-      [Parameter(ParameterSetName = 'CreateViaIdentityExpandedByDevCenter', Mandatory, ValueFromPipeline)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
-      # Identity Parameter
-      # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-      ${InputObject},
+    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Parameter(ParameterSetName = 'CreateExpandedByDevCenter')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script = '"me"')]
+    [System.String]
+    # The AAD object id of the user.
+    # If value is 'me', the identity is taken from the authentication context.
+    ${UserId},
   
-      [Parameter(Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-      [System.String]
-      # The name of the Dev Box pool this machine belongs to.
-      ${PoolName},
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpandedByDevCenter', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
   
-      [Parameter()]
-      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.LocalAdminStatus])]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.LocalAdminStatus]
-      # Indicates whether the owner of the Dev Box is a local administrator.
-      ${LocalAdministrator},
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpandedByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateExpandedByDevCenter', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
+    [System.String]
+    # The name of the Dev Box pool this machine belongs to.
+    ${PoolName},
   
-      [Parameter()]
-      [Alias('AzureRMContext', 'AzureCredential')]
-      [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Azure')]
-      [System.Management.Automation.PSObject]
-      # The DefaultProfile parameter is not functional.
-      # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-      ${DefaultProfile},
+    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpandedByDevCenter')]
+    [Parameter(ParameterSetName = 'CreateExpandedByDevCenter')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.LocalAdminStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.LocalAdminStatus]
+    # Indicates whether the owner of the Dev Box is a local administrator.
+    ${LocalAdministrator},
   
-      [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-      [System.Management.Automation.SwitchParameter]
-      # Run the command as a job
-      ${AsJob},
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
   
-      [Parameter(DontShow)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-      [System.Management.Automation.SwitchParameter]
-      # Wait for .NET debugger to attach
-      ${Break},
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
   
-      [Parameter(DontShow)]
-      [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
-      # SendAsync Pipeline Steps to be appended to the front of the pipeline
-      ${HttpPipelineAppend},
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
   
-      [Parameter(DontShow)]
-      [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
-      # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-      ${HttpPipelinePrepend},
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
   
-      [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-      [System.Management.Automation.SwitchParameter]
-      # Run the command asynchronously
-      ${NoWait},
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
   
-      [Parameter(DontShow)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-      [System.Uri]
-      # The URI for the proxy server to use
-      ${Proxy},
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
   
-      [Parameter(DontShow)]
-      [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-      [System.Management.Automation.PSCredential]
-      # Credentials for a proxy server to use for the remote call
-      ${ProxyCredential},
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
   
-      [Parameter(DontShow)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-      [System.Management.Automation.SwitchParameter]
-      # Use the default credentials for the proxy
-      ${ProxyUseDefaultCredentials}
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+  
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
   )
 
   process {

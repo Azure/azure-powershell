@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -DevBoxName
-Display name for the Dev Box.
+The name of a Dev Box.
 
 ```yaml
 Type: System.String
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the action.
+The name of an action that will take place on a Dev Box.
 
 ```yaml
 Type: System.String
@@ -182,7 +182,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-Name of the project.
+The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String

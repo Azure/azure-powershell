@@ -8,7 +8,7 @@ schema: 2.0.0
 # Stop-AzDevCenterUserDevBox
 
 ## SYNOPSIS
-Stops a Dev Box.
+Stops a Dev Box
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Stop-AzDevCenterUserDevBox -DevCenterName <String> -InputObject <IDevCenterdataI
 ```
 
 ## DESCRIPTION
-Stops a Dev Box.
+Stops a Dev Box
 
 ## EXAMPLES
 
@@ -166,7 +166,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Display name for the Dev Box.
+The name of a Dev Box.
 
 ```yaml
 Type: System.String
@@ -196,7 +196,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-Name of the project.
+The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
@@ -266,7 +266,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus
+### System.Boolean
 
 ## NOTES
 
