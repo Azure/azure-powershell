@@ -125,8 +125,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// Cassandra and Mongo APIs only work with Tls 1.2.
         /// Possible values include: &#39;Tls&#39;, &#39;Tls11&#39;, &#39;Tls12&#39;</param>
 
-        /// <param name="enableBurstCapacity">Flag to indicate enabling/disabling of Burst Capacity Preview feature on
-        /// the account
+        /// <param name="enableBurstCapacity">Flag to indicate enabling/disabling of Burst Capacity feature on the
+        /// account
         /// </param>
 
         /// <param name="customerManagedKeyStatus">Indicates the status of the Customer Managed Key feature on the account. In
@@ -377,8 +377,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public string MinimalTlsVersion {get; set; }
 
         /// <summary>
-        /// Gets or sets flag to indicate enabling/disabling of Burst Capacity Preview
-        /// feature on the account
+        /// Gets or sets flag to indicate enabling/disabling of Burst Capacity feature
+        /// on the account
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enableBurstCapacity")]
         public bool? EnableBurstCapacity {get; set; }

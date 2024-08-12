@@ -7,18 +7,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 {
 
     /// <summary>
-    /// Defines values for ServerVersion.
+    /// Defines values for DedicatedGatewayType.
     /// </summary>
 
 
-    public static class ServerVersion
+    public static class DedicatedGatewayType
     {
-        public const string Three2 = "3.2";
-        public const string Three6 = "3.6";
-        public const string Four0 = "4.0";
-        public const string Four2 = "4.2";
-        public const string Five0 = "5.0";
-        public const string Six0 = "6.0";
-        public const string Seven0 = "7.0";
+        public const string IntegratedCache = "IntegratedCache";
+        public const string DistributedQuery = "DistributedQuery";
     }
 }
