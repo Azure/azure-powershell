@@ -26,13 +26,12 @@ namespace Commands.StorageSync.Interop.Interfaces
     public interface ISyncServerRegistration : IDisposable
     {
         /// <summary>
-        /// This function processes the registration and perform following steps
-        /// 1. EnsureSyncServerCertificate
-        /// 2. GetSyncServerCertificate
-        /// 3. GetSyncServerId
-        /// 4. Get ClusterInfo
-        /// 5. Populate RegistrationServerResource
-        /// </summary>
+        /// Note: This is used for ServerRegistration.exe (UI) and AzureRM Registration paths, NOT SDK tests/Az Modules        /// 
+        /// This function processes the registration and performs the following steps:
+        /// 1. Validates Sync Server Registration Information
+        /// 2. Sets up ServerRegistrationData
+        /// 3. Calls RegisterOnline callback to make ARM call (from caller context)
+        /// 4. Persists registered server resource from cloud to local FileSyncSvc service
         /// <param name="managementEndpointUri">Management endpoint Uri</param>
         /// <param name="subscriptionId">Subscription Id</param>
         /// <param name="storageSyncServiceName">Storage Sync Service Name</param>
@@ -42,8 +41,10 @@ namespace Commands.StorageSync.Interop.Interfaces
         /// <param name="certificateKeyLength">Certificate Key Length</param>
         /// <param name="monitoringDataPath">Monitoring data path</param>
         /// <param name="agentVersion">Agent Version</param>
-        /// <param name="registerOnlineCallback">Register online callback for updating cloud service.</param>
+        /// <param name="serverMachineName">Server Machine Name</param>
+        /// <param name="registerOnlineCallback">Register Online Callback</param>
         /// <returns>Registered Server Resource</returns>
+        /// </summary>
         RegisteredServer Register(
             Uri managementEndpointUri,
             Guid subscriptionId,
@@ -54,6 +55,7 @@ namespace Commands.StorageSync.Interop.Interfaces
             uint certificateKeyLength,
             string monitoringDataPath,
             string agentVersion,
+            string serverMachineName,
             Func<string, string, ServerRegistrationData, RegisteredServer> registerOnlineCallback);
 
         /// <summary>

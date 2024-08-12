@@ -37,6 +37,20 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateManagedInstanceHermesTesting()
+        {
+            TestRunner.RunTestScript("Test-CreateManagedInstance-HermesTesting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetManagedInstanceHermesTesting()
+        {
+            TestRunner.RunTestScript("Test-SetManagedInstance-HermesTesting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetManagedInstance()
         {
             TestRunner.RunTestScript("Test-SetManagedInstance");

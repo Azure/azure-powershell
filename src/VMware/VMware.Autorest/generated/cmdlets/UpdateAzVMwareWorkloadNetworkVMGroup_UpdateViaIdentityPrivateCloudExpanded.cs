@@ -50,8 +50,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// </summary>
         private int _responseSize = 0;
 
-        /// <summary>NSX VM Group update</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroupUpdate _workloadNetworkVMGroupBody = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.WorkloadNetworkVMGroupUpdate();
+        /// <summary>NSX VM Group</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup _workloadNetworkVMGroupBody = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.WorkloadNetworkVMGroup();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]

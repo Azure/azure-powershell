@@ -46,9 +46,9 @@ Update-AzIoTDeviceProvisioningServiceAccessPolicy -ResourceGroupName "myresource
 ResourceGroupName	: myresourcegroup
 Name				: myiotdps
 KeyName				: mypolicy
-PrimaryKey			: hyZJm8W7rra9O7eKhkLu9m/CIPPt9x1NXVMbMJa1rvg=
-SecondaryKey		: vbIwGCBQCIbS5BKFKdddM6uZHLhNTuz9r8CZYgmTmpY=
-Rights				: EnrollmentWrite
+PrimaryKey			: hy******vg=
+SecondaryKey		: vb******pY=
+Rights				: ServiceConfig, DeviceConnect, EnrollmentWrite
 ```
 
 Update access policy "mypolicy" in an Azure IoT Hub device provisioning service with EnrollmentWrite right.
@@ -62,9 +62,9 @@ Get-AzIoTDeviceProvisioningServiceAccessPolicy -ResourceGroupName "myresourcegro
 ResourceGroupName	: myresourcegroup
 Name				: myiotdps
 KeyName				: mypolicy
-PrimaryKey			: hyZJm8W7rra9O7eKhkLu9m/CIPPt9x1NXVMbMJa1rvg=
-SecondaryKey		: vbIwGCBQCIbS5BKFKdddM6uZHLhNTuz9r8CZYgmTmpY=
-Rights				: EnrollmentWrite
+PrimaryKey			: hy******vg=
+SecondaryKey		: vb******pY=
+Rights				: ServiceConfig, DeviceConnect, EnrollmentWrite
 ```
 
 Update access policy "mypolicy" in an Azure IoT Hub device provisioning service with EnrollmentWrite right using pipeline.

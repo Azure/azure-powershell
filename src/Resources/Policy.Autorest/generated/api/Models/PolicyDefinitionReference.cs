@@ -13,6 +13,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionReferenceInternal
     {
 
+        /// <summary>Backing field for <see cref="DefinitionVersion" /> property.</summary>
+        private string _definitionVersion;
+
+        /// <summary>The version of the policy definition to use.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        public string DefinitionVersion { get => this._definitionVersion; set => this._definitionVersion = value; }
+
         /// <summary>Backing field for <see cref="GroupName" /> property.</summary>
         private System.Collections.Generic.List<string> _groupName;
 
@@ -55,6 +62,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
     public partial interface IPolicyDefinitionReference :
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IJsonSerializable
     {
+        /// <summary>The version of the policy definition to use.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The version of the policy definition to use.",
+        SerializedName = @"definitionVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        string DefinitionVersion { get; set; }
         /// <summary>The name of the groups that this policy definition reference belongs to.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
         Required = false,
@@ -109,6 +127,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
     internal partial interface IPolicyDefinitionReferenceInternal
 
     {
+        /// <summary>The version of the policy definition to use.</summary>
+        string DefinitionVersion { get; set; }
         /// <summary>The name of the groups that this policy definition reference belongs to.</summary>
         System.Collections.Generic.List<string> GroupName { get; set; }
         /// <summary>

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support
 {
 
+    /// <summary>The current deployment state of schedule.</summary>
     public partial struct ScheduleProvisioningState :
         System.IEquatable<ScheduleProvisioningState>
     {

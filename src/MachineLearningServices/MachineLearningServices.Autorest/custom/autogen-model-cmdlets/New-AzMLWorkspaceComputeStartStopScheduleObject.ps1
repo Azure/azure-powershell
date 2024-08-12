@@ -21,46 +21,131 @@ Create an in-memory object for ComputeStartStopSchedule.
 Create an in-memory object for ComputeStartStopSchedule.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeStartStopSchedule
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ComputeStartStopSchedule
 .Link
-https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceComputeStartStopScheduleObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceComputeStartStopScheduleObject
 #>
 function New-AzMLWorkspaceComputeStartStopScheduleObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeStartStopSchedule')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ComputeStartStopSchedule')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(HelpMessage="The compute power action.")]
+        [Parameter(HelpMessage="[Required] The compute power action.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputePowerAction])]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputePowerAction]
         $Action,
-        [Parameter()]
+        [Parameter(HelpMessage="[Required] Specifies cron expression of schedule.
+        The expression should follow NCronTab format.")]
+        [string]
+        $CronExpression,
+        [Parameter(HelpMessage="The start time in yyyy-MM-ddTHH:mm:ss format.")]
+        [string]
+        $CronStartTime,
+        [Parameter(HelpMessage="Specifies time zone in which the schedule runs.
+        TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11.")]
+        [string]
+        $CronTimeZone,
+        [Parameter(HelpMessage="[Required] The frequency to trigger schedule.")]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeRecurrenceFrequency])]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeRecurrenceFrequency]
+        $RecurrenceFrequency,
+        [Parameter(HelpMessage="[Required] Specifies schedule interval in conjunction with frequency.")]
+        [int]
+        $RecurrenceInterval,
+        [Parameter(HelpMessage="The start time in yyyy-MM-ddTHH:mm:ss format.")]
+        [string]
+        $RecurrenceStartTime,
+        [Parameter(HelpMessage="Specifies time zone in which the schedule runs.
+        TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11.")]
+        [string]
+        $RecurrenceTimeZone,
+        [Parameter(HelpMessage="[Required] List of hours for the schedule.")]
+        [int[]]
+        $ScheduleHour,
+        [Parameter(HelpMessage="A system assigned id for the schedule.")]
         [string]
         $ScheduleId,
-        [Parameter()]
+        [Parameter(HelpMessage="[Required] List of minutes for the schedule.")]
+        [int[]]
+        $ScheduleMinute,
+        [Parameter(HelpMessage="List of month days for the schedule.")]
+        [int[]]
+        $ScheduleMonthDay,
+        [Parameter(HelpMessage="The current deployment state of schedule.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScheduleProvisioningState])]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScheduleProvisioningState]
         $ScheduleProvisioningStatus,
-        [Parameter()]
+        [Parameter(HelpMessage="Is the schedule enabled or disabled?.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScheduleStatus])]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScheduleStatus]
-        $ScheduleStatus
+        $ScheduleStatus,
+        [Parameter(HelpMessage="List of days for the schedule.")]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeWeekDay])]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeWeekDay[]]
+        $ScheduleWeekDay,
+        [Parameter(HelpMessage="Is the schedule enabled or disabled?.")]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScheduleStatus])]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScheduleStatus]
+        $Status,
+        [Parameter(HelpMessage="[Required] The schedule trigger type.")]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeTriggerType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeTriggerType]
+        $TriggerType
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeStartStopSchedule]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ComputeStartStopSchedule]::New()
 
         if ($PSBoundParameters.ContainsKey('Action')) {
             $Object.Action = $Action
         }
+        if ($PSBoundParameters.ContainsKey('CronExpression')) {
+            $Object.CronExpression = $CronExpression
+        }
+        if ($PSBoundParameters.ContainsKey('CronStartTime')) {
+            $Object.CronStartTime = $CronStartTime
+        }
+        if ($PSBoundParameters.ContainsKey('CronTimeZone')) {
+            $Object.CronTimeZone = $CronTimeZone
+        }
+        if ($PSBoundParameters.ContainsKey('RecurrenceFrequency')) {
+            $Object.RecurrenceFrequency = $RecurrenceFrequency
+        }
+        if ($PSBoundParameters.ContainsKey('RecurrenceInterval')) {
+            $Object.RecurrenceInterval = $RecurrenceInterval
+        }
+        if ($PSBoundParameters.ContainsKey('RecurrenceStartTime')) {
+            $Object.RecurrenceStartTime = $RecurrenceStartTime
+        }
+        if ($PSBoundParameters.ContainsKey('RecurrenceTimeZone')) {
+            $Object.RecurrenceTimeZone = $RecurrenceTimeZone
+        }
+        if ($PSBoundParameters.ContainsKey('ScheduleHour')) {
+            $Object.ScheduleHour = $ScheduleHour
+        }
         if ($PSBoundParameters.ContainsKey('ScheduleId')) {
             $Object.ScheduleId = $ScheduleId
+        }
+        if ($PSBoundParameters.ContainsKey('ScheduleMinute')) {
+            $Object.ScheduleMinute = $ScheduleMinute
+        }
+        if ($PSBoundParameters.ContainsKey('ScheduleMonthDay')) {
+            $Object.ScheduleMonthDay = $ScheduleMonthDay
         }
         if ($PSBoundParameters.ContainsKey('ScheduleProvisioningStatus')) {
             $Object.ScheduleProvisioningStatus = $ScheduleProvisioningStatus
         }
         if ($PSBoundParameters.ContainsKey('ScheduleStatus')) {
             $Object.ScheduleStatus = $ScheduleStatus
+        }
+        if ($PSBoundParameters.ContainsKey('ScheduleWeekDay')) {
+            $Object.ScheduleWeekDay = $ScheduleWeekDay
+        }
+        if ($PSBoundParameters.ContainsKey('Status')) {
+            $Object.Status = $Status
+        }
+        if ($PSBoundParameters.ContainsKey('TriggerType')) {
+            $Object.TriggerType = $TriggerType
         }
         return $Object
     }

@@ -899,5 +899,13 @@
   {
     "module": "AppComplianceAutomation",
     "alias": "AppComplianceAutomation"
+  },
+  {
+    "module": "Informatica",
+    "alias": "Informatica"
+  },
+  {
+    "module": "Oracle",
+    "alias": "Oracle"
   }
 ]

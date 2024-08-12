@@ -50,8 +50,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// </summary>
         private int _responseSize = 0;
 
-        /// <summary>NSX DNS Zone update</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZoneUpdate _workloadNetworkDnsZoneBody = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.WorkloadNetworkDnsZoneUpdate();
+        /// <summary>NSX DNS Zone</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone _workloadNetworkDnsZoneBody = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.WorkloadNetworkDnsZone();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -110,8 +110,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         ReadOnly = false,
         Description = @"Number of DNS Services using the DNS zone.",
         SerializedName = @"dnsServices",
-        PossibleTypes = new [] { typeof(int) })]
-        public int DnsService { get => _workloadNetworkDnsZoneBody.DnsService ?? default(int); set => _workloadNetworkDnsZoneBody.DnsService = value; }
+        PossibleTypes = new [] { typeof(long) })]
+        public long DnsService { get => _workloadNetworkDnsZoneBody.DnsService ?? default(long); set => _workloadNetworkDnsZoneBody.DnsService = value; }
 
         /// <summary>Backing field for <see cref="DnsZoneName" /> property.</summary>
         private string _dnsZoneName;

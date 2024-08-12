@@ -22,6 +22,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public string AccountName { get => this._accountName; set => this._accountName = value; }
 
+        /// <summary>Backing field for <see cref="ActionName" /> property.</summary>
+        private string _actionName;
+
+        /// <summary>The workflow action name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
+        public string ActionName { get => this._actionName; set => this._actionName = value; }
+
         /// <summary>Backing field for <see cref="AnalysisName" /> property.</summary>
         private string _analysisName;
 
@@ -57,6 +64,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public string BaseAddress { get => this._baseAddress; set => this._baseAddress = value; }
 
+        /// <summary>Backing field for <see cref="BasicAuthName" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BasicAuthName? _basicAuthName;
+
+        /// <summary>name of the basic auth entry.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BasicAuthName? BasicAuthName { get => this._basicAuthName; set => this._basicAuthName = value; }
+
         /// <summary>Backing field for <see cref="BlobServicesName" /> property.</summary>
         private string _blobServicesName;
 
@@ -73,16 +87,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public string CertificateOrderName { get => this._certificateOrderName; set => this._certificateOrderName = value; }
 
+        /// <summary>Backing field for <see cref="ConnectionStringKey" /> property.</summary>
+        private string _connectionStringKey;
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
+        public string ConnectionStringKey { get => this._connectionStringKey; set => this._connectionStringKey = value; }
+
         /// <summary>Backing field for <see cref="ContainerName" /> property.</summary>
         private string _containerName;
 
-        /// <summary>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters
-        /// in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded
-        /// and followed by a letter or number.
-        /// </summary>
+        /// <summary>Site Container Name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public string ContainerName { get => this._containerName; set => this._containerName = value; }
+
+        /// <summary>Backing field for <see cref="DatabaseConnectionName" /> property.</summary>
+        private string _databaseConnectionName;
+
+        /// <summary>Name of the database connection.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
+        public string DatabaseConnectionName { get => this._databaseConnectionName; set => this._databaseConnectionName = value; }
 
         /// <summary>Backing field for <see cref="DeletedSiteId" /> property.</summary>
         private string _deletedSiteId;
@@ -133,6 +156,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public string EntityName { get => this._entityName; set => this._entityName = value; }
 
+        /// <summary>Backing field for <see cref="EnvironmentName" /> property.</summary>
+        private string _environmentName;
+
+        /// <summary>The stage site identifier.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
+        public string EnvironmentName { get => this._environmentName; set => this._environmentName = value; }
+
+        /// <summary>Backing field for <see cref="FunctionAppName" /> property.</summary>
+        private string _functionAppName;
+
+        /// <summary>Name of the function app registered with the static site build.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
+        public string FunctionAppName { get => this._functionAppName; set => this._functionAppName = value; }
+
         /// <summary>Backing field for <see cref="FunctionName" /> property.</summary>
         private string _functionName;
 
@@ -146,6 +183,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         /// <summary>Name of the gateway. Currently, the only supported string is "primary".</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public string GatewayName { get => this._gatewayName; set => this._gatewayName = value; }
+
+        /// <summary>Backing field for <see cref="HistoryName" /> property.</summary>
+        private string _historyName;
+
+        /// <summary>
+        /// The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
+        public string HistoryName { get => this._historyName; set => this._historyName = value; }
 
         /// <summary>Backing field for <see cref="HostName" /> property.</summary>
         private string _hostName;
@@ -219,6 +265,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public string KeyType { get => this._keyType; set => this._keyType = value; }
 
+        /// <summary>Backing field for <see cref="LinkedBackendName" /> property.</summary>
+        private string _linkedBackendName;
+
+        /// <summary>Name of the linked backend that should be retrieved</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
+        public string LinkedBackendName { get => this._linkedBackendName; set => this._linkedBackendName = value; }
+
         /// <summary>Backing field for <see cref="Location" /> property.</summary>
         private string _location;
 
@@ -255,13 +308,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public string OperationId { get => this._operationId; set => this._operationId = value; }
 
-        /// <summary>Backing field for <see cref="PrId" /> property.</summary>
-        private string _prId;
-
-        /// <summary>The stage site identifier.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
-        public string PrId { get => this._prId; set => this._prId = value; }
-
         /// <summary>Backing field for <see cref="PremierAddOnName" /> property.</summary>
         private string _premierAddOnName;
 
@@ -272,6 +318,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         /// <summary>Backing field for <see cref="PrivateEndpointConnectionName" /> property.</summary>
         private string _privateEndpointConnectionName;
 
+        /// <summary>Name of the private endpoint connection.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public string PrivateEndpointConnectionName { get => this._privateEndpointConnectionName; set => this._privateEndpointConnectionName = value; }
 
@@ -305,6 +352,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public string RelayName { get => this._relayName; set => this._relayName = value; }
 
+        /// <summary>Backing field for <see cref="RepetitionName" /> property.</summary>
+        private string _repetitionName;
+
+        /// <summary>The workflow repetition.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
+        public string RepetitionName { get => this._repetitionName; set => this._repetitionName = value; }
+
+        /// <summary>Backing field for <see cref="RequestHistoryName" /> property.</summary>
+        private string _requestHistoryName;
+
+        /// <summary>The request history name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
+        public string RequestHistoryName { get => this._requestHistoryName; set => this._requestHistoryName = value; }
+
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
@@ -325,6 +386,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         /// <summary>Name of the Virtual Network route.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public string RouteName { get => this._routeName; set => this._routeName = value; }
+
+        /// <summary>Backing field for <see cref="RunName" /> property.</summary>
+        private string _runName;
+
+        /// <summary>The workflow run name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
+        public string RunName { get => this._runName; set => this._runName = value; }
 
         /// <summary>Backing field for <see cref="Scope" /> property.</summary>
         private string _scope;
@@ -379,6 +447,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
+        /// <summary>Backing field for <see cref="TriggerName" /> property.</summary>
+        private string _triggerName;
+
+        /// <summary>The workflow trigger name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
+        public string TriggerName { get => this._triggerName; set => this._triggerName = value; }
+
         /// <summary>Backing field for <see cref="Userid" /> property.</summary>
         private string _userid;
 
@@ -386,10 +461,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public string Userid { get => this._userid; set => this._userid = value; }
 
+        /// <summary>Backing field for <see cref="VersionId" /> property.</summary>
+        private string _versionId;
+
+        /// <summary>The workflow versionId.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
+        public string VersionId { get => this._versionId; set => this._versionId = value; }
+
         /// <summary>Backing field for <see cref="View" /> property.</summary>
         private string _view;
 
-        /// <summary>The type of view. This can either be "summary" or "detailed".</summary>
+        /// <summary>The type of view. Only "summary" is supported at this time.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public string View { get => this._view; set => this._view = value; }
 
@@ -421,6 +503,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public string WorkerPoolName { get => this._workerPoolName; set => this._workerPoolName = value; }
 
+        /// <summary>Backing field for <see cref="WorkflowName" /> property.</summary>
+        private string _workflowName;
+
+        /// <summary>Workflow name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
+        public string WorkflowName { get => this._workflowName; set => this._workflowName = value; }
+
         /// <summary>Creates an new <see cref="FunctionsIdentity" /> instance.</summary>
         public FunctionsIdentity()
         {
@@ -441,6 +530,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         SerializedName = @"accountName",
         PossibleTypes = new [] { typeof(string) })]
         string AccountName { get; set; }
+        /// <summary>The workflow action name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The workflow action name.",
+        SerializedName = @"actionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ActionName { get; set; }
         /// <summary>Analysis Name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
@@ -481,6 +578,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         SerializedName = @"baseAddress",
         PossibleTypes = new [] { typeof(string) })]
         string BaseAddress { get; set; }
+        /// <summary>name of the basic auth entry.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"name of the basic auth entry.",
+        SerializedName = @"basicAuthName",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BasicAuthName) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BasicAuthName? BasicAuthName { get; set; }
         /// <summary>
         /// The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
         /// </summary>
@@ -499,18 +604,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         SerializedName = @"certificateOrderName",
         PossibleTypes = new [] { typeof(string) })]
         string CertificateOrderName { get; set; }
-        /// <summary>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters
-        /// in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded
-        /// and followed by a letter or number.
-        /// </summary>
+
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.",
+        Description = @"",
+        SerializedName = @"connectionStringKey",
+        PossibleTypes = new [] { typeof(string) })]
+        string ConnectionStringKey { get; set; }
+        /// <summary>Site Container Name</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Site Container Name",
         SerializedName = @"containerName",
         PossibleTypes = new [] { typeof(string) })]
         string ContainerName { get; set; }
+        /// <summary>Name of the database connection.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the database connection.",
+        SerializedName = @"databaseConnectionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string DatabaseConnectionName { get; set; }
         /// <summary>The numeric ID of the deleted app, e.g. 12345</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
@@ -567,6 +684,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         SerializedName = @"entityName",
         PossibleTypes = new [] { typeof(string) })]
         string EntityName { get; set; }
+        /// <summary>The stage site identifier.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The stage site identifier.",
+        SerializedName = @"environmentName",
+        PossibleTypes = new [] { typeof(string) })]
+        string EnvironmentName { get; set; }
+        /// <summary>Name of the function app registered with the static site build.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the function app registered with the static site build.",
+        SerializedName = @"functionAppName",
+        PossibleTypes = new [] { typeof(string) })]
+        string FunctionAppName { get; set; }
         /// <summary>Function name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
@@ -583,6 +716,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         SerializedName = @"gatewayName",
         PossibleTypes = new [] { typeof(string) })]
         string GatewayName { get; set; }
+        /// <summary>
+        /// The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.",
+        SerializedName = @"historyName",
+        PossibleTypes = new [] { typeof(string) })]
+        string HistoryName { get; set; }
         /// <summary>Hostname in the hostname binding.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
@@ -666,6 +809,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         SerializedName = @"keyType",
         PossibleTypes = new [] { typeof(string) })]
         string KeyType { get; set; }
+        /// <summary>Name of the linked backend that should be retrieved</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the linked backend that should be retrieved",
+        SerializedName = @"linkedBackendName",
+        PossibleTypes = new [] { typeof(string) })]
+        string LinkedBackendName { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
@@ -708,14 +859,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         SerializedName = @"operationId",
         PossibleTypes = new [] { typeof(string) })]
         string OperationId { get; set; }
-        /// <summary>The stage site identifier.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The stage site identifier.",
-        SerializedName = @"prId",
-        PossibleTypes = new [] { typeof(string) })]
-        string PrId { get; set; }
         /// <summary>Add-on name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
@@ -724,11 +867,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         SerializedName = @"premierAddOnName",
         PossibleTypes = new [] { typeof(string) })]
         string PremierAddOnName { get; set; }
-
+        /// <summary>Name of the private endpoint connection.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"",
+        Description = @"Name of the private endpoint connection.",
         SerializedName = @"privateEndpointConnectionName",
         PossibleTypes = new [] { typeof(string) })]
         string PrivateEndpointConnectionName { get; set; }
@@ -766,6 +909,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         SerializedName = @"relayName",
         PossibleTypes = new [] { typeof(string) })]
         string RelayName { get; set; }
+        /// <summary>The workflow repetition.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The workflow repetition.",
+        SerializedName = @"repetitionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string RepetitionName { get; set; }
+        /// <summary>The request history name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The request history name.",
+        SerializedName = @"requestHistoryName",
+        PossibleTypes = new [] { typeof(string) })]
+        string RequestHistoryName { get; set; }
         /// <summary>Name of the resource group to which the resource belongs.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
@@ -790,6 +949,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         SerializedName = @"routeName",
         PossibleTypes = new [] { typeof(string) })]
         string RouteName { get; set; }
+        /// <summary>The workflow run name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The workflow run name.",
+        SerializedName = @"runName",
+        PossibleTypes = new [] { typeof(string) })]
+        string RunName { get; set; }
         /// <summary>
         /// The resource provider scope of the resource. Parent resource being extended by Managed Identities.
         /// </summary>
@@ -850,6 +1017,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
+        /// <summary>The workflow trigger name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The workflow trigger name.",
+        SerializedName = @"triggerName",
+        PossibleTypes = new [] { typeof(string) })]
+        string TriggerName { get; set; }
         /// <summary>The user id of the user.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
@@ -858,11 +1033,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         SerializedName = @"userid",
         PossibleTypes = new [] { typeof(string) })]
         string Userid { get; set; }
-        /// <summary>The type of view. This can either be "summary" or "detailed".</summary>
+        /// <summary>The workflow versionId.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The type of view. This can either be ""summary"" or ""detailed"".",
+        Description = @"The workflow versionId.",
+        SerializedName = @"versionId",
+        PossibleTypes = new [] { typeof(string) })]
+        string VersionId { get; set; }
+        /// <summary>The type of view. Only "summary" is supported at this time.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of view. Only ""summary"" is supported at this time.",
         SerializedName = @"view",
         PossibleTypes = new [] { typeof(string) })]
         string View { get; set; }
@@ -898,6 +1081,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         SerializedName = @"workerPoolName",
         PossibleTypes = new [] { typeof(string) })]
         string WorkerPoolName { get; set; }
+        /// <summary>Workflow name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Workflow name.",
+        SerializedName = @"workflowName",
+        PossibleTypes = new [] { typeof(string) })]
+        string WorkflowName { get; set; }
 
     }
     internal partial interface IFunctionsIdentityInternal
@@ -908,6 +1099,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         /// in length and use numbers and lower-case letters only.
         /// </summary>
         string AccountName { get; set; }
+        /// <summary>The workflow action name.</summary>
+        string ActionName { get; set; }
         /// <summary>Analysis Name</summary>
         string AnalysisName { get; set; }
         /// <summary>App Setting key name.</summary>
@@ -918,18 +1111,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         string BackupId { get; set; }
         /// <summary>Module base address.</summary>
         string BaseAddress { get; set; }
+        /// <summary>name of the basic auth entry.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BasicAuthName? BasicAuthName { get; set; }
         /// <summary>
         /// The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
         /// </summary>
         string BlobServicesName { get; set; }
         /// <summary>Name of the certificate order..</summary>
         string CertificateOrderName { get; set; }
-        /// <summary>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters
-        /// in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded
-        /// and followed by a letter or number.
-        /// </summary>
+
+        string ConnectionStringKey { get; set; }
+        /// <summary>Site Container Name</summary>
         string ContainerName { get; set; }
+        /// <summary>Name of the database connection.</summary>
+        string DatabaseConnectionName { get; set; }
         /// <summary>The numeric ID of the deleted app, e.g. 12345</summary>
         string DeletedSiteId { get; set; }
         /// <summary>Detector Resource Name</summary>
@@ -944,10 +1139,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         string DomainOwnershipIdentifierName { get; set; }
         /// <summary>Name of the hybrid connection.</summary>
         string EntityName { get; set; }
+        /// <summary>The stage site identifier.</summary>
+        string EnvironmentName { get; set; }
+        /// <summary>Name of the function app registered with the static site build.</summary>
+        string FunctionAppName { get; set; }
         /// <summary>Function name.</summary>
         string FunctionName { get; set; }
         /// <summary>Name of the gateway. Currently, the only supported string is "primary".</summary>
         string GatewayName { get; set; }
+        /// <summary>
+        /// The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+        /// </summary>
+        string HistoryName { get; set; }
         /// <summary>Hostname in the hostname binding.</summary>
         string HostName { get; set; }
         /// <summary>Name of the hosting environment.</summary>
@@ -971,6 +1174,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         string KeyName { get; set; }
         /// <summary>The type of host key.</summary>
         string KeyType { get; set; }
+        /// <summary>Name of the linked backend that should be retrieved</summary>
+        string LinkedBackendName { get; set; }
 
         string Location { get; set; }
         /// <summary>
@@ -983,11 +1188,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         string NamespaceName { get; set; }
         /// <summary>GUID of the operation.</summary>
         string OperationId { get; set; }
-        /// <summary>The stage site identifier.</summary>
-        string PrId { get; set; }
         /// <summary>Add-on name.</summary>
         string PremierAddOnName { get; set; }
-
+        /// <summary>Name of the private endpoint connection.</summary>
         string PrivateEndpointConnectionName { get; set; }
         /// <summary>PID.</summary>
         string ProcessId { get; set; }
@@ -999,12 +1202,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         string PurgeId { get; set; }
         /// <summary>The relay name for this hybrid connection.</summary>
         string RelayName { get; set; }
+        /// <summary>The workflow repetition.</summary>
+        string RepetitionName { get; set; }
+        /// <summary>The request history name.</summary>
+        string RequestHistoryName { get; set; }
         /// <summary>Name of the resource group to which the resource belongs.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>The name of the Application Insights component resource.</summary>
         string ResourceName { get; set; }
         /// <summary>Name of the Virtual Network route.</summary>
         string RouteName { get; set; }
+        /// <summary>The workflow run name.</summary>
+        string RunName { get; set; }
         /// <summary>
         /// The resource provider scope of the resource. Parent resource being extended by Managed Identities.
         /// </summary>
@@ -1023,9 +1232,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         /// Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
         /// </summary>
         string SubscriptionId { get; set; }
+        /// <summary>The workflow trigger name.</summary>
+        string TriggerName { get; set; }
         /// <summary>The user id of the user.</summary>
         string Userid { get; set; }
-        /// <summary>The type of view. This can either be "summary" or "detailed".</summary>
+        /// <summary>The workflow versionId.</summary>
+        string VersionId { get; set; }
+        /// <summary>The type of view. Only "summary" is supported at this time.</summary>
         string View { get; set; }
         /// <summary>Name of the virtual network.</summary>
         string VnetName { get; set; }
@@ -1035,6 +1248,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         string WorkerName { get; set; }
         /// <summary>Name of the worker pool.</summary>
         string WorkerPoolName { get; set; }
+        /// <summary>Workflow name.</summary>
+        string WorkflowName { get; set; }
 
     }
 }

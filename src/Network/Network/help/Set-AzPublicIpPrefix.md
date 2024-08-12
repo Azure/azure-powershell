@@ -22,7 +22,7 @@ The **Set-AzPublicIpPrefix** cmdlet sets the Tags for a public IP prefix.
 
 ## EXAMPLES
 
-### Set the tags for public ip prefix
+### Example 1: Set the tags for public ip prefix
 ```powershell
 $publicIpPrefix = Get-AzPublicIpPrefix -Name $prefixName -ResourceGroupName $rgName
 

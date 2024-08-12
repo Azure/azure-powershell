@@ -16,36 +16,36 @@ Create the agent pool in the provisioned cluster
 ```
 New-AzAksArcNodepool -ClusterName <String> -ResourceGroupName <String> -Name <String>
  [-SubscriptionId <String>] [-Count <Int32>] [-EnableAutoScaling] [-MinCount <Int32>] [-MaxCount <Int32>]
- [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] [-OSSku <String>] [-OSType <String>] [-Tag <Hashtable>]
- [-VMSize <String>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-MaxPod <Int32>] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] [-OSSku <String>] [-OSType <String>]
+ [-Tag <Hashtable>] [-VMSize <String>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzAksArcNodepool -ClusterName <String> -ResourceGroupName <String> -Name <String>
  [-SubscriptionId <String>] -InputObject <IAksArcIdentity> [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AutoScaling
 ```
 New-AzAksArcNodepool -ClusterName <String> -ResourceGroupName <String> -Name <String>
  [-SubscriptionId <String>] [-EnableAutoScaling] -MinCount <Int32> -MaxCount <Int32> [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzAksArcNodepool -ClusterName <String> -ResourceGroupName <String> -Name <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzAksArcNodepool -ClusterName <String> -ResourceGroupName <String> -Name <String>
- [-SubscriptionId <String>] -JsonString <String> [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-SubscriptionId <String>] -JsonString <String> [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -216,6 +216,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MaxPod
+The maximum number of pods that can run on a node.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MinCount
 The minimum number of nodes for auto-scaling
 
@@ -328,21 +343,6 @@ The particular KubernetesVersion Image OS Type (Linux, Windows)
 Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

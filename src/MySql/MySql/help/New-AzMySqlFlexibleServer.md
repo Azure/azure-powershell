@@ -19,7 +19,7 @@ New-AzMySqlFlexibleServer [-Name <String>] [-ResourceGroupName <String>] [-Subsc
  [-StorageInMb <Int32>] [-StorageAutogrow <StorageAutogrow>] [-Iops <Int32>] [-Tag <Hashtable>]
  [-Version <ServerVersion>] [-SubnetPrefix <String>] [-Subnet <String>] [-VnetPrefix <String>] [-Vnet <String>]
  [-PrivateDnsZone <String>] [-PublicAccess <String>] [-HighAvailability <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,7 +29,7 @@ Creates a new MySQL flexible server.
 
 ### Example 1: Create a new MySql flexible server with arguments
 ```powershell
-$password = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Location eastus -AdministratorUserName mysqltest -AdministratorLoginPassword $password -Sku Standard_D2ds_v4 -SkuTier Burstable -Version 12 -StorageInMb 20480 -PublicAccess none -Zone 1 -BackupRetentionDay 10 -StorageAutogrow Enabled -Iops 500 -HighAvailability ZoneRedundant
 ```
 
@@ -350,21 +350,6 @@ The suffix of dns zone has to be same as that of fully qualified domain of the s
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

@@ -46,6 +46,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
 
+        /// <param name="identity">The identity of the virtual network gateway, if configured.
+        /// </param>
+
         /// <param name="vpnType">The type of this virtual network gateway.
         /// Possible values include: &#39;PolicyBased&#39;, &#39;RouteBased&#39;</param>
 
@@ -132,12 +135,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="allowRemoteVnetTraffic">Configure this gateway to accept traffic from other Azure Virtual Networks.
         /// This configuration does not support connectivity to Azure Virtual WAN.
         /// </param>
-        public VirtualNetworkGateway(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string etag = default(string), string vpnType = default(string), BgpSettings bgpSettings = default(BgpSettings), string provisioningState = default(string), string adminState = default(string), VirtualNetworkGatewayAutoScaleConfiguration autoScaleConfiguration = default(VirtualNetworkGatewayAutoScaleConfiguration), System.Collections.Generic.IList<VirtualNetworkGatewayIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VirtualNetworkGatewayIPConfiguration>), string gatewayType = default(string), string vpnGatewayGeneration = default(string), bool? enableBgp = default(bool?), bool? enablePrivateIPAddress = default(bool?), bool? active = default(bool?), bool? disableIPSecReplayProtection = default(bool?), SubResource gatewayDefaultSite = default(SubResource), VirtualNetworkGatewaySku sku = default(VirtualNetworkGatewaySku), VpnClientConfiguration vpnClientConfiguration = default(VpnClientConfiguration), System.Collections.Generic.IList<VirtualNetworkGatewayPolicyGroup> virtualNetworkGatewayPolicyGroups = default(System.Collections.Generic.IList<VirtualNetworkGatewayPolicyGroup>), AddressSpace customRoutes = default(AddressSpace), string resourceGuid = default(string), bool? enableDnsForwarding = default(bool?), string inboundDnsForwardingEndpoint = default(string), string vNetExtendedLocationResourceId = default(string), System.Collections.Generic.IList<VirtualNetworkGatewayNatRule> natRules = default(System.Collections.Generic.IList<VirtualNetworkGatewayNatRule>), bool? enableBgpRouteTranslationForNat = default(bool?), bool? allowVirtualWanTraffic = default(bool?), bool? allowRemoteVnetTraffic = default(bool?))
+        public VirtualNetworkGateway(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string etag = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string vpnType = default(string), BgpSettings bgpSettings = default(BgpSettings), string provisioningState = default(string), string adminState = default(string), VirtualNetworkGatewayAutoScaleConfiguration autoScaleConfiguration = default(VirtualNetworkGatewayAutoScaleConfiguration), System.Collections.Generic.IList<VirtualNetworkGatewayIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VirtualNetworkGatewayIPConfiguration>), string gatewayType = default(string), string vpnGatewayGeneration = default(string), bool? enableBgp = default(bool?), bool? enablePrivateIPAddress = default(bool?), bool? active = default(bool?), bool? disableIPSecReplayProtection = default(bool?), SubResource gatewayDefaultSite = default(SubResource), VirtualNetworkGatewaySku sku = default(VirtualNetworkGatewaySku), VpnClientConfiguration vpnClientConfiguration = default(VpnClientConfiguration), System.Collections.Generic.IList<VirtualNetworkGatewayPolicyGroup> virtualNetworkGatewayPolicyGroups = default(System.Collections.Generic.IList<VirtualNetworkGatewayPolicyGroup>), AddressSpace customRoutes = default(AddressSpace), string resourceGuid = default(string), bool? enableDnsForwarding = default(bool?), string inboundDnsForwardingEndpoint = default(string), string vNetExtendedLocationResourceId = default(string), System.Collections.Generic.IList<VirtualNetworkGatewayNatRule> natRules = default(System.Collections.Generic.IList<VirtualNetworkGatewayNatRule>), bool? enableBgpRouteTranslationForNat = default(bool?), bool? allowVirtualWanTraffic = default(bool?), bool? allowRemoteVnetTraffic = default(bool?))
 
         : base(id, name, type, location, tags)
         {
             this.ExtendedLocation = extendedLocation;
             this.Etag = etag;
+            this.Identity = identity;
             this.VpnType = vpnType;
             this.BgpSettings = bgpSettings;
             this.ProvisioningState = provisioningState;
@@ -184,6 +188,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
+
+        /// <summary>
+        /// Gets or sets the identity of the virtual network gateway, if configured.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
+        public ManagedServiceIdentity Identity {get; set; }
 
         /// <summary>
         /// Gets or sets the type of this virtual network gateway. Possible values include: &#39;PolicyBased&#39;, &#39;RouteBased&#39;
@@ -359,6 +369,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
+
 
 
 

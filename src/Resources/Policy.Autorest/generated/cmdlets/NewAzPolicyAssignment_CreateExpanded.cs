@@ -78,6 +78,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Policy.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>The version of the policy definition to use.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The version of the policy definition to use.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Policy.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The version of the policy definition to use.",
+        SerializedName = @"definitionVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        public string DefinitionVersion { get => _parametersBody.DefinitionVersion ?? null; set => _parametersBody.DefinitionVersion = value; }
+
         /// <summary>This message will be part of response in case of policy violation.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "This message will be part of response in case of policy violation.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Policy.ParameterCategory.Body)]

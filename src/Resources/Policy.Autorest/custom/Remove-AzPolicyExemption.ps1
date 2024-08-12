@@ -195,7 +195,7 @@ process {
     if ($resolved.Scope -and $PSCmdlet.ShouldProcess($target)) {
 
         $PSBoundParameters.Name = $resolved.Name
-        $PSBoundParameters.Scope = $resolved.FullScope
+        $PSBoundParameters.Scope = $resolved.Scope
         $calledParameterSet = 'Delete'
 
         $null = $PSBoundParameters.Remove('Id')

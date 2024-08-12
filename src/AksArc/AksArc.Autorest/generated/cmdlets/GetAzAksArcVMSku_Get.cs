@@ -14,6 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/skus/default"
     /// </remarks>
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzAksArcVMSku_Get")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVMSkuProfile))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Description(@"Lists the supported VM skus for the specified custom location")]

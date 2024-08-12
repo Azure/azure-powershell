@@ -976,7 +976,8 @@ function Test-NewDeploymentFromBicepparamFileWithOverrides
     "def": "ghi"
   },
   "int": 42,
-  "bool": true
+  "bool": true,
+  "secureString": "glabble"
 }
 '@ | ConvertFrom-Json
 
@@ -986,7 +987,12 @@ function Test-NewDeploymentFromBicepparamFileWithOverrides
         New-AzResourceGroup -Name $rgname -Location $rglocation
 
         $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateParameterFile deployWithParamOverrides.bicepparam `
-          -myArray @("abc") -myObject @{"def" = "ghi";} -myString "hello" -myInt 42 -myBool $true
+          -myArray @("abc") `
+		  -myObject @{"def" = "ghi";} `
+		  -myString "hello" `
+		  -myInt 42 `
+		  -myBool $true `
+		  -mySecureString (ConvertTo-SecureString -String "glabble" -AsPlainText -Force)
 
         # Assert
         Assert-AreEqual Succeeded $deployment.ProvisioningState
