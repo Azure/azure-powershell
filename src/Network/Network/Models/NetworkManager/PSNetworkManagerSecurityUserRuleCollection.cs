@@ -13,17 +13,26 @@
 // limitations under the License.
 //
 
+
 namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
 {
     using Newtonsoft.Json;
-    using System.Collections;
     using System.Collections.Generic;
-    using WindowsAzure.Commands.Common.Attributes;
+    using System.Management.Automation;
 
-    public class PSNetworkManagerGroup : PSNetworkManagerBaseResource
+    public class PSNetworkManagerSecurityUserRuleCollection : PSNetworkManagerBaseResource
     {
         public string NetworkManagerName { get; set; }
 
-        public string MemberType { get; set; }
+        public string SecurityUserConfigurationName { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public IList<PSNetworkManagerSecurityUserGroupItem> AppliesToGroups { get; set; }
+
+        [JsonIgnore]
+        public string AppliesToGroupsText
+        {
+            get { return JsonConvert.SerializeObject(AppliesToGroups, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 }

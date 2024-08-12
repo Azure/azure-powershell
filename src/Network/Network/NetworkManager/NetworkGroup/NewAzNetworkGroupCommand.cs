@@ -63,6 +63,16 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Network Group member type. Valid values include 'VirtualNetwork' and 'Subnet'.")]
+        [ValidateSet(
+            MNM.GroupMemberType.VirtualNetwork,
+            MNM.GroupMemberType.Subnet,
+            IgnoreCase = true)]
+        public string MemberType { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
            HelpMessage = "If match header.")]
         public string IfMatch { get; set; }
 
@@ -99,6 +109,11 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrEmpty(this.Description))
             {
                 psNetworkGroup.Description = this.Description;
+            }
+
+            if (!string.IsNullOrEmpty(MemberType))
+            {
+                psNetworkGroup.MemberType = this.MemberType;
             }
 
             // Map to the sdk object

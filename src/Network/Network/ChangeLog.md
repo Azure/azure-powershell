@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Onboard Cmdlets for Azure Virtual Network Manager UDR Management Feature
+    - `New/Get/Remove/Set-AzNetworkManagerRoutingConfiguration`
+    - `New/Get/Remove/Set-AzNetworkManagerRoutingRuleCollection`
+    - `New/Get/Remove/Set-AzNetworkManagerRoutingRule`
 
 ## Version 7.8.0
 * Added new cmdlets to support Save & Commit (AzureFirewallPolicy draft)

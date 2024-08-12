@@ -13,17 +13,25 @@
 // limitations under the License.
 //
 
+
 namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
 {
+    using Microsoft.Azure.Management.Network.Models;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using WindowsAzure.Commands.Common.Attributes;
 
-    public class PSNetworkManagerGroup : PSNetworkManagerBaseResource
+    public class PSNetworkManagerRoutingRule : PSNetworkManagerBaseResource
     {
+        public PSNetworkManagerRoutingRuleDestination Destination { get; set; }
+
+        public PSNetworkManagerRoutingRuleNextHop NextHop { get; set; }
+
         public string NetworkManagerName { get; set; }
 
-        public string MemberType { get; set; }
+        public string RoutingConfigurationName { get; set; }
+
+        public string RuleCollectionName { get; set; }
     }
 }
