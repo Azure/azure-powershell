@@ -27,7 +27,7 @@ use-extension:
 
 ###
 ``` yaml
-commit: 0288340395ae617ec05d3c00b40d0411a6c83531
+commit: 1558ccf6bb3b25ca0575015dcf58b320a8d4e91a
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/applicationGateway.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/applicationGatewayWafDynamicManifests.json
@@ -66,6 +66,8 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/networkManagerGroup.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/networkManagerScopeConnection.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/networkManagerSecurityAdminConfiguration.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/networkManagerRoutingConfiguration.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/networkManagerSecurityUserConfiguration.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/networkProfile.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/networkSecurityGroup.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/networkVirtualAppliance.json
