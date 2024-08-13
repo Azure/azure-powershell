@@ -1209,7 +1209,7 @@ components:
               nullable: true
             backgroundImage:
               type: string
-              description: Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 × 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
+              description: Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 * 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
               format: base64url
               nullable: true
             backgroundImageRelativeUrl:
@@ -1218,7 +1218,7 @@ components:
               nullable: true
             bannerLogo:
               type: string
-              description: A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 × 245 pixels. We recommend using a transparent image with no padding around the logo.
+              description: A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 * 245 pixels. We recommend using a transparent image with no padding around the logo.
               format: base64url
               nullable: true
             bannerLogoRelativeUrl:

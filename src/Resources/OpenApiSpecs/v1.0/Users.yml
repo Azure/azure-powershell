@@ -1271,7 +1271,7 @@ components:
               description: 'The instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user. Read-only. Supports $filter (eq, NOT, ge, le, startsWith).'
             isResourceAccount:
               type: boolean
-              description: Do not use – reserved for future use.
+              description: Do not use - reserved for future use.
               nullable: true
             jobTitle:
               type: string
