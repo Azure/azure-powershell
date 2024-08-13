@@ -13,7 +13,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzConnectedKubernetes'))
   }
   . ($mockingPath | Select-Object -First 1).FullName
   # !!PDS: Better way to do this?
+  . "$PSScriptRoot/../custom/helpers/HelmHelper.ps1"
   . "$PSScriptRoot/../custom/helpers/ConfigDPHelper.ps1"
+  . "$PSScriptRoot/../custom/helpers/AzCloudMetadataHelper.ps1"
 }
 
 Describe 'New-AzConnectedKubernetes' {
@@ -29,26 +31,32 @@ Describe 'Invoke-ConfigDPHealthCheck' {
     It 'Golden path' {
         Mock Invoke-RestMethod {
             $Script:StatusCode = 200
-            return 
+            return
         }
         { Invoke-ConfigDPHealthCheck } | Should -Not -Throw
+        Assert-MockCalled "Invoke-RestMethod" -Times 1
+        Assert-VerifiableMock
     }
 
     It 'Env access token' {
         $env:AZURE_ACCESS_TOKEN = "This is an access token"
         Mock Invoke-RestMethod {
             $Script:StatusCode = 200
-            return 
+            return
         }
         { Invoke-ConfigDPHealthCheck } | Should -Not -Throw
+        Assert-MockCalled "Invoke-RestMethod" -Times 1
+        Assert-VerifiableMock
     }
 
     It 'Unhealthy (not 200 response)' {
         Mock Invoke-RestMethod {
             $Script:StatusCode = 500
-            return 
+            return
         }
         { Invoke-ConfigDPHealthCheck } | Should -Throw "Error while performing DP health check, StatusCode: 500"
+        Assert-MockCalled "Invoke-RestMethod" -Times 1
+        Assert-VerifiableMock
     }
 }
 
@@ -56,9 +64,9 @@ Describe 'Invoke-RestMethodWithUriParameters' {
     It 'Golden path' {
         Mock Invoke-RestMethod {
             $Script:StatusCode = 200
-            return 
+            return
         }
-        { 
+        {
             $uriParameters = [ordered]@{}
             Invoke-RestMethodWithUriParameters `
                 -Method "POST" `
@@ -69,8 +77,8 @@ Describe 'Invoke-RestMethodWithUriParameters' {
                 -MaximumRetryCount 5 `
                 -RetryIntervalSec 2 `
                 -StatusCodeVariable YesOrNo
-        } | Should -Not -Throw 
-        Assert-MockCalled "Invoke-RestMethod" -Times 1 -ParameterFilter { $Uri.AbsoluteUri -eq "https://invalid.invalid/some/page/nowhere" } 
+        } | Should -Not -Throw
+        Assert-MockCalled "Invoke-RestMethod" -Times 1 -ParameterFilter { $Uri.AbsoluteUri -eq "https://invalid.invalid/some/page/nowhere" }
         Assert-VerifiableMock
         $YesOrNo | Should -Be 200
     }
@@ -78,10 +86,10 @@ Describe 'Invoke-RestMethodWithUriParameters' {
     It 'URI parameters' {
         Mock Invoke-RestMethod {
             $Script:StatusCode = 200
-            return 
+            return
         }
 
-        { 
+        {
             # Create a hashtable with sample key-value pairs
             $uriParameters = [ordered]@{"key1"="value1"; "key2"="value2"}
 
@@ -103,9 +111,9 @@ Describe 'Invoke-RestMethodWithUriParameters' {
     It 'request failed' {
         Mock Invoke-RestMethod {
             $Script:StatusCode = 500
-            return 
+            return
         }
-        { 
+        {
             Invoke-RestMethodWithUriParameters `
                 -Method "POST" `
                 -Uri "https://invalid.invalid/some/page/nowhere" `
@@ -244,96 +252,407 @@ Describe 'Get-ConfigDpEndpoint' {
     }
 }
 
-Describe 'Get-MetaData' {
-    It 'Golden path' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+Describe 'Get-AzCloudMetadata' {
+    It 'Golden path' {
+        Mock Invoke-RestMethod {
+            $Script:StatusCode = 200
+            $rsp = @{
+                name = "AzureCloud"
+                authentication = @{
+                    audiences = @("https://management.core.windows.net/")
+                    loginEndpoint = "https://login.microsoftonline.com"
+                }
+            }
+            return $rsp
+        }
+        { Get-AzCloudMetadata } | Should -Not -Throw
+        Assert-MockCalled "Invoke-RestMethod" -Times 1
+        Assert-VerifiableMock
     }
 
-    It 'Error response' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Error response' {
+        Mock Invoke-RestMethod {
+            $Script:StatusCode = 500
+            $rsp = @{}
+            return $rsp
+        }
+        { Get-AzCloudMetadata } | Should -Throw "ARM metadata endpoint 'https://management.azure.com/metadata/endpoints?api-version=2022-09-01' failed: 500"
+        Assert-MockCalled "Invoke-RestMethod" -Times 1
+        Assert-VerifiableMock
     }
 
-    It 'Exception during REST API.' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-}
-
-Describe 'Get-ValuesFile' {
-    It 'Golden path' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'No values filename' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'No values file' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Starts/ends with quote or double-quote' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Exception during REST API.' {
+        Mock Invoke-RestMethod {
+            throw "Failed"
+        }
+        { Get-AzCloudMetadata } | Should -Throw "Failed to request ARM metadata https://management.azure.com/metadata/endpoints?api-version=2022-09-01. Please ensure you have network connection."
+        Assert-MockCalled "Invoke-RestMethod" -Times 1
+        Assert-VerifiableMock
     }
 }
 
 Describe 'Get-HelmValues' {
-    It 'Golden path' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Golden path' {
+        $rq = @{
+            identity = @{
+                tenantId = "1234"
+                principalId = "5678"
+            }
+            id = "abcd"
+        }
+        $rsp = @{
+            Frank = "Sinatra"
+            Dean = "Martin"
+        }
+        Mock Invoke-RestMethod {
+            $Script:StatusCode = 200
+            return $rsp
+        }
+        {
+            $Script:helmValues = Get-HelmValues `
+                -ConfigDpEndpoint "https://helm.azure.com" `
+                -ReleaseTrainCustom $null `
+                -RequestBody $rq
+        } | Should -Not -Throw
+        $helmValues.Frank | Should -Be "Sinatra"
+        $helmValues.Dean | Should be "Martin"
+        Assert-MockCalled "Invoke-RestMethod" -Times 1  -ParameterFilter {
+            $Uri.AbsoluteUri -eq "https://helm.azure.com/azure-arc-k8sagents/GetHelmSettings?api-version=2024-07-01-preview&releaseTrain=stable"
+        }
+        Assert-VerifiableMock
     }
 
-    It 'Custom release train' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Custom release train' {
+        $rq = @{
+            identity = @{
+                tenantId = "1234"
+                principalId = "5678"
+            }
+            id = "abcd"
+        }
+        $rsp = @{
+            Frank = "Sinatra"
+            Dean = "Martin"
+        }
+        Mock Invoke-RestMethod {
+            $Script:StatusCode = 200
+            return $rsp
+        }
+        {
+            $Script:helmValues = Get-HelmValues `
+                -ConfigDpEndpoint "https://helm.azure.com" `
+                -ReleaseTrainCustom "all-aboard"`
+                -RequestBody $rq
+        } | Should -Not -Throw
+        $helmValues.Frank | Should -Be "Sinatra"
+        $helmValues.Dean | Should be "Martin"
+        Assert-MockCalled "Invoke-RestMethod" -Times 1  -ParameterFilter {
+            $Uri.AbsoluteUri -eq "https://helm.azure.com/azure-arc-k8sagents/GetHelmSettings?api-version=2024-07-01-preview&releaseTrain=all-aboard"
+        }
+        Assert-VerifiableMock
     }
 
-    It 'Env access token' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Env access token' {
+        $env:AZURE_ACCESS_TOKEN="Tell nobody!"
+        $rq = @{
+            identity = @{
+                tenantId = "1234"
+                principalId = "5678"
+            }
+            id = "abcd"
+        }
+        $rsp = @{
+            Frank = "Sinatra"
+            Dean = "Martin"
+        }
+        Mock Invoke-RestMethod {
+            $Script:StatusCode = 200
+            return $rsp
+        }
+        {
+            $Script:helmValues = Get-HelmValues `
+                -ConfigDpEndpoint "https://helm.azure.com" `
+                -ReleaseTrainCustom $null `
+                -RequestBody $rq
+        } | Should -Not -Throw
+        $helmValues.Frank | Should -Be "Sinatra"
+        $helmValues.Dean | Should be "Martin"
+        Assert-MockCalled "Invoke-RestMethod" -Times 1 -ParameterFilter {
+            $Headers["Authorization"] -eq "Bearer Tell nobody!"
+        }
+        Assert-VerifiableMock
     }
 
-    It 'Empty content' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'REST call failed' {
+        $rq = @{
+            identity = @{
+                tenantId = "1234"
+                principalId = "5678"
+            }
+            id = "abcd"
+        }
+        $rsp = $null
+        Mock Invoke-RestMethod {
+            $Script:StatusCode = 500
+            return $rsp
+        }
+        {
+            $Script:helmValues = Get-HelmValues `
+                -ConfigDpEndpoint "https://helm.azure.com" `
+                -ReleaseTrainCustom $null `
+                -RequestBody $rq
+        } | Should -Throw "No content was found in helm registry path response, StatusCode: 500."
+        Assert-MockCalled "Invoke-RestMethod" -Times 1
+        Assert-VerifiableMock
     }
 
-    It 'Exception reading content' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Empty content' {
+        $rq = @{
+            identity = @{
+                tenantId = "1234"
+                principalId = "5678"
+            }
+            id = "abcd"
+        }
+        $rsp = $null
+        Mock Invoke-RestMethod {
+            $Script:StatusCode = 200
+            return $rsp
+        }
+        {
+            $Script:helmValues = Get-HelmValues `
+                -ConfigDpEndpoint "https://helm.azure.com" `
+                -ReleaseTrainCustom $null `
+                -RequestBody $rq
+        } | Should -Throw "No content was found in helm registry path response, StatusCode: 200."
+        Assert-MockCalled "Invoke-RestMethod" -Times 1
+        Assert-VerifiableMock
+    }
+
+    It 'Exception reading content' {
+        $rq = @{
+            identity = @{
+                tenantId = "1234"
+                principalId = "5678"
+            }
+            id = "abcd"
+        }
+        Mock Invoke-RestMethod {
+            throw "Failed!"
+        }
+        {
+            $Script:helmValues = Get-HelmValues `
+                -ConfigDpEndpoint "https://helm.azure.com" `
+                -ReleaseTrainCustom $null `
+                -RequestBody $rq
+        } | Should -Throw "Error while fetching helm values from DP from JSON response: Failed!"
+        Assert-MockCalled "Invoke-RestMethod" -Times 1
+        Assert-VerifiableMock
     }
 }
 
-Describe 'Get-ChartPath' {
-    It 'Golden Path' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+Describe 'Get-HelmChartPath' {
+
+    It 'Golden Path' {
+        Mock Get-HelmChart {
+        }
+        {
+            $Script:ChartPath = Get-HelmChartPath `
+                -RegistryPath "Dummy" `
+                -HelmClientLocation "fake-helm-client.exe"
+        } | Should -Not -Throw
+        Assert-MockCalled "Get-HelmChart" -Times 1
+        Assert-VerifiableMock
+        $ExpectedChartPath = Join-Path `
+            -Path $env:USERPROFILE `
+            -ChildPath ".azure" `
+            -AdditionalChildPath "AzureArcCharts","azure-arc-k8sagents"
+        # Write-Error -Message "ChartPath: $ChartPath" -ErrorAction Continue
+        # Write-Error -Message "ExpectedChartPath: $ExpectedChartPath" -ErrorAction Continue
+        $ChartPath | Should -eq $ExpectedChartPath
     }
 
-    It 'Cannot clean-up existing chart path' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Environment helm chart name' {
+        $helmChartName = "c:\\somewhere\\this-is-my-helm-chart"
+        $env:HELMCHART = $helmChartName
+        Mock Get-HelmChart {
+        }
+        {
+            $Script:ChartPath = Get-HelmChartPath `
+                -RegistryPath "Dummy" `
+                -HelmClientLocation "fake-helm-client.exe"
+        } | Should -Not -Throw
+        Assert-MockCalled "Get-HelmChart" -Times 1
+        Assert-VerifiableMock
+        $ChartPath | Should -eq $helmChartName
     }
 
-    It 'Pre-onboarding' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }   
+    It 'Pre-onboarding' {
+        $helmChartName = "c:\\somewhere\\this-is-my-helm-chart"
+        $env:HELMCHART = $helmChartName
+        Mock Get-HelmChart {
+        }
+        {
+            $Script:ChartPath = Get-HelmChartPath `
+                -RegistryPath "Dummy" `
+                -HelmClientLocation "fake-helm-client.exe" `
+                -ChartFolderName "PreOnboardingChecksCharts"
+        } | Should -Not -Throw
+        Assert-MockCalled "Get-HelmChart" -Times 1
+        Assert-VerifiableMock
+
+        # For Pre-onboarding we ignore environment variables.
+        $ExpectedChartPath = Join-Path `
+            -Path $env:USERPROFILE `
+            -ChildPath ".azure" `
+            -AdditionalChildPath "PreOnboardingChecksCharts","azure-arc-k8sagents"
+        # Write-Error -Message "ChartPath: $ChartPath" -ErrorAction Continue
+        # Write-Error -Message "ExpectedChartPath: $ExpectedChartPath" -ErrorAction Continue
+        $ChartPath | Should -eq $ExpectedChartPath
+        $env:HELMCHART = $null
+    }
+
+    It 'Cannot clean-up existing chart path' {
+        Mock Get-HelmChart {
+        }
+        Mock Remove-Item {
+            throw "Mock Remote-Item failure"
+        }
+        # Mock this just so that we can confirm that it is called.
+        Mock Write-Warning {
+        }
+        # Create a folder path to try and remove.
+        $folderPath = Join-Path -Path $env:USERPROFILE -ChildPath ".azure" -AdditionalChildPath "AzureArcCharts"
+        New-Item -Path $folderPath -ItemType Directory
+
+        {           
+            $Script:ChartPath = Get-HelmChartPath `
+                -RegistryPath "Dummy" `
+                -HelmClientLocation "fake-helm-client.exe"
+        } | Should -Not -Throw
+        Assert-MockCalled "Remove-Item" -Times 1
+        Assert-MockCalled "Write-Warning" -Times 1
+        Assert-MockCalled "Get-HelmChart" -Times 1
+        Assert-VerifiableMock
+        $ExpectedChartPath = Join-Path `
+            -Path $env:USERPROFILE `
+            -ChildPath ".azure" `
+            -AdditionalChildPath "AzureArcCharts","azure-arc-k8sagents"
+        $ChartPath | Should -eq $ExpectedChartPath
+    }
 }
 
 Describe 'Get-HelmChart' {
-    It 'Golden path' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Golden path' {
+        Mock Invoke-ExternalCommand {
+        }
+        {
+            Get-HelmChart `
+                -RegistryPath "SomePath/ImageName:1.20.3" `
+                -ChartExportPath "c:\temp" `
+                -HelmClientLocation "fake-helm-client.exe"
+        } | Should -Not -Throw
+        Assert-MockCalled "Invoke-ExternalCommand" -Times 1 -ParameterFilter { $Arguments -contains "oci://SomePath/ImageName" }
+        Assert-VerifiableMock
     }
 
-    It 'Agent older than 1.14.0' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'NewPath' {
+        Mock Invoke-ExternalCommand {
+        }
+        {
+            Get-HelmChart `
+                -RegistryPath "SomePath/ImageName:1.20.3" `
+                -ChartExportPath "c:\temp" `
+                -HelmClientLocation "fake-helm-client.exe" `
+                -NewPath $true
+        } | Should -Not -Throw
+        Assert-MockCalled "Invoke-ExternalCommand" -Times 1 -ParameterFilter { $Arguments -contains "oci://SomePath/v2/ImageName" }
+        Assert-VerifiableMock
     }
 
-    It 'NewPath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Agent older than 1.14.0' {
+        {
+            Get-HelmChart `
+                -RegistryPath "SomePath/ImageName:1.2.3" `
+                -ChartExportPath "c:\temp" `
+                -NewPath $true `
+                -HelmClientLocation "fake-helm-client.exe"
+        } | Should -Throw "Operation not supported on older Agents: This CLI version does not support upgrading to Agents versions older than v1.14"
     }
 
-    It 'Has KubeConfig' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Has KubeConfig' {
+        Mock Invoke-ExternalCommand {
+        }
+        {
+            Get-HelmChart `
+                -RegistryPath "SomePath:1.2.3" `
+                -ChartExportPath "c:\temp" `
+                -HelmClientLocation "fake-helm-client.exe" `
+                -KubeConfig "Some-kube-setting" `
+        } | Should -Not -Throw
+        Assert-MockCalled "Invoke-ExternalCommand" -Times 1 -ParameterFilter { $Command -contains "fake-helm-client.exe" }
+        Assert-MockCalled "Invoke-ExternalCommand" -Times 1 -ParameterFilter { $Arguments -contains "--kubeconfig" }
+        Assert-MockCalled "Invoke-ExternalCommand" -Times 1 -ParameterFilter { $Arguments -contains "some-kube-setting" }
+        Assert-VerifiableMock
     }
 
-    It 'Has KubeContext' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Has KubeContext' {
+        Mock Invoke-ExternalCommand {
+        }
+        {
+            Get-HelmChart `
+                -RegistryPath "SomePath:1.2.3" `
+                -ChartExportPath "c:\temp" `
+                -HelmClientLocation "fake-helm-client.exe" `
+                -KubeContext "some-kube-context"
+        } | Should -Not -Throw
+        Assert-MockCalled "Invoke-ExternalCommand" -Times 1 -ParameterFilter { $Command -contains "fake-helm-client.exe" }
+        Assert-MockCalled "Invoke-ExternalCommand" -Times 1 -ParameterFilter { $Arguments -contains "--kube-context" }
+        Assert-MockCalled "Invoke-ExternalCommand" -Times 1 -ParameterFilter { $Arguments -contains "some-kube-context" }
+        Assert-VerifiableMock
     }
 
-    It 'Requires retry' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Requires retry' {
+        $Script:RetryCount = 2
+        Mock Invoke-ExternalCommand {
+            if ($Script:RetryCount -gt 0) {
+                $Script:RetryCount--
+                throw "Failed"
+            }
+        }
+        {
+            Get-HelmChart `
+                -RegistryPath "SomePath:1.2.3" `
+                -ChartExportPath "c:\temp" `
+                -HelmClientLocation "fake-helm-client.exe"
+                # -KubeConfig `
+                # -KubeContext `
+                # -NewPath
+                # -ChartName = 'azure-arc-k8sagents' `
+                # -RetryCount = 5 `
+                # -RetryDelay = 3
+        } | Should -Not -Throw
+        Assert-MockCalled "Invoke-ExternalCommand" -Times 3
+        Assert-VerifiableMock
+    }
+
+    It 'Fails after retry' {
+        Mock Invoke-ExternalCommand {
+            throw "Failed"
+        }
+        {
+            Get-HelmChart `
+                -RegistryPath "SomePath:1.20.3" `
+                -ChartExportPath "c:\temp" `
+                -HelmClientLocation "fake-helm-client.exe"
+                # -KubeConfig `
+                # -KubeContext `
+                # -NewPath
+                # -ChartName = 'azure-arc-k8sagents' `
+                # -RetryCount = 5 `
+                # -RetryDelay = 3
+        } | Should -Throw "Unable to pull 'azure-arc-k8sagents' helm chart from the registry 'SomePath:1.20.3'."
+        Assert-MockCalled "Invoke-ExternalCommand" -Times 5
+        Assert-VerifiableMock
     }
 }

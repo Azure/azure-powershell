@@ -24,15 +24,16 @@ Function Get-AzCloudMetadata {
 
     try {
         $Response = Invoke-RestMethod -Uri $MetadataEndpoint -Method Get -StatusCodeVariable StatusCode
-
-        if ($StatusCode -ne 200) {
-            $Msg = "ARM metadata endpoint '$MetadataEndpoint' returned status code $($StatusCode)."
-            throw $Msg
-        }
     }
     catch {
+        $StatusCode = 500
         $Msg = "Failed to request ARM metadata $MetadataEndpoint."
         Write-Error "$Msg Please ensure you have network connection. Error: $_"
+    }
+
+    if ($StatusCode -ne 200) {
+        $Msg = "ARM metadata endpoint '$MetadataEndpoint' failed: $($StatusCode)."
+        throw $Msg
     }
 
     # The current cloud in use is set by the user so query it and then we can use
@@ -47,9 +48,9 @@ Function Get-AzCloudMetadata {
     }
     $cloudName = $context.Environment.Name
 
+    # !!PDS: Seem to only be seeing a single entry now.  Why is that?
     # Search the $armMetadata hash for the entry where the "name" parameter matches
-    # $cloud and then find the login endpoint, from which we can discern the
-    # appropriate "cloud based domain ending".
+    # $cloud.
     $cloud = $Response | Where-Object { $_.name -eq $cloudName }
     return $cloud
 }

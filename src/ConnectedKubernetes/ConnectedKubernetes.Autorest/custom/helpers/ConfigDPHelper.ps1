@@ -57,7 +57,7 @@ function Get-ConfigDPEndpoint {
     }
 
     # Get the default config dataplane endpoint.
-    if ($ConfigDpEndpoint -eq $null) {
+    if ($null -eq $ConfigDpEndpoint) {
         $ConfigDpEndpoint = Get-ConfigDpDefaultEndpoint -Location $Location -CloudMetadata $cloudMetadata
     }
     $ADResourceId = Get-AZCloudMetadataResourceId -CloudMetadata $cloudMetadata
