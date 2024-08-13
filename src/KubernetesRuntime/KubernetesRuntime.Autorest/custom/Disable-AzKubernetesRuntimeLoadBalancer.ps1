@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Enable Arc storage class service in a connected cluster.
+Disable Arc storage class service in a connected cluster.
 .Description
-Enable Arc storage class service in a connected cluster.
+Disable Arc storage class service in a connected cluster.
 .Example
 {{ Add code here }}
 .Example
@@ -30,7 +30,7 @@ Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IServiceResource
 https://learn.microsoft.com/powershell/module/az.kubernetesruntime/new-azkubernetesruntimeservice
 #>
 
-function Enable-AzKubernetesRuntimeStorageClass {
+function Disable-AzKubernetesRuntimeLoadBalancer {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IServiceResource])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
@@ -39,12 +39,6 @@ function Enable-AzKubernetesRuntimeStorageClass {
         [System.String]
         # The resource uri of the connected cluster 
         ${ResourceUri},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Category('Body')]
-        [System.String]
-        # ReleaseTrain this extension participates in
-        ${ReleaseTrain} = "preview",
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -139,46 +133,28 @@ function Enable-AzKubernetesRuntimeStorageClass {
             . "$PSScriptRoot/Helpers.ps1"
 
             $connected_cluster_resource_id = [ConnectedClusterResourceId]::Parse($ResourceUri)
-            
-            CheckRPRegistration -SubscriptionId $connected_cluster_resource_id.SubscriptionId
 
-            $oid = QueryRpObjectId 
+            Write-Output "Uninstalling Arc Networking extension in cluster $($connected_cluster_resource_id.ClusterName) in resource group $($connected_cluster_resource_id.ResourceGroup)..."
 
-            ImportModule -ModuleName Az.KubernetesConfiguration
-
-            Write-Output "Installing storage class Arc Extension in cluster $($connected_cluster_resource_id.ClusterName) in resource group $($connected_cluster_resource_id.ResourceGroup)..."
-
-            $extension = New-AzKubernetesExtension `
+            $extension = Get-AzKubernetesExtension `
                 -SubscriptionId $connected_cluster_resource_id.SubscriptionId `
                 -ResourceGroupName $connected_cluster_resource_id.ResourceGroup `
                 -ClusterName $connected_cluster_resource_id.ClusterName `
                 -ClusterType ConnectedClusters `
-                -IdentityType 'SystemAssigned' `
-                -Name "arc-k8s-storage-class" `
-                -ExtensionType "Microsoft.ManagedStorageClass" `
-                -ReleaseTrain $ReleaseTrain `
-                -ConfigurationSetting @{"k8sRuntimeFpaObjectId" = $oid }
+                -Name "arcnetworking"
 
-            Write-Output "Assign the extension with Storage Class Contributor role under the cluster scope..."
-            $sc_contributor_role_assignment = New-AzRoleAssignment `
-                -Scope $connected_cluster_resource_id.ToString() `
-                -PrincipalId $extension.IdentityPrincipalId `
-                -PrincipalType 'ServicePrincipal' `
-                -RoleDefinitionId $STORAGE_CLASS_CONTRIBUTOR_ROLE_ID
-            
-            Write-Output "Assign Storage Class RP with Kubernetes Extension Contributor role under the cluster scope..."
-            $k8s_extension_contributor_role_assignment = New-AzRoleAssignment `
-                -Scope $connected_cluster_resource_id.ToString() `
-                -PrincipalId $KubernetesRuntimeFpaAppId `
-                -PrincipalType 'ServicePrincipal' `
-                -RoleDefinitionId $KUBERNETES_EXTENSION_CONTRIBUTOR_ROLE_ID
+            if ($null -eq $extension) {
+                Write-Output "Arc Networking extension is not installed in cluster $($connected_cluster_resource_id.ClusterName) in resource group $($connected_cluster_resource_id.ResourceGroup)."
+                return
+            }
 
-            Write-Output "Arc Storage class service has been installed successfully in cluster $($connected_cluster_resource_id.ClusterName) in resource group $($connected_cluster_resource_id.ResourceGroup)."
+
+            Remove-AzKubernetesExtension -InputObject $extension
+
+            Write-Output "Arc Networking service has been uninstalled successfully in cluster $($connected_cluster_resource_id.ClusterName) in resource group $($connected_cluster_resource_id.ResourceGroup)."
 
             return @{
-                "Extension"                             = $extension;
-                "StorageClassContributorRoleAssignment" = $sc_contributor_role_assignment;
-                "K8sExtensionContributorRoleAssignment" = $k8s_extension_contributor_role_assignment; 
+                "Extension" = $extension;
             }
 
         }

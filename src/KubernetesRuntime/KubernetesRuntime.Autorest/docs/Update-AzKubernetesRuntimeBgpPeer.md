@@ -14,14 +14,16 @@ Update a BgpPeer
 
 ### UpdateExpanded (Default)
 ```
-Update-AzKubernetesRuntimeBgpPeer -Name <String> -ResourceUri <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzKubernetesRuntimeBgpPeer -Name <String> -ResourceUri <String> [-MyAsn <Int32>]
+ [-PeerAddress <String>] [-PeerAsn <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzKubernetesRuntimeBgpPeer -InputObject <IKubernetesRuntimeIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzKubernetesRuntimeBgpPeer -InputObject <IKubernetesRuntimeIdentity> [-MyAsn <Int32>]
+ [-PeerAddress <String>] [-PeerAsn <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -99,6 +101,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -MyAsn
+My ASN
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the BgpPeer
 
@@ -119,6 +136,36 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PeerAddress
+Peer Address
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PeerAsn
+Peer ASN
+
+```yaml
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 

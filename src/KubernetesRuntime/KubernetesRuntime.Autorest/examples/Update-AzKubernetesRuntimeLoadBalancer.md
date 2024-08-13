@@ -1,22 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a load balancer from a connected cluster
 ```powershell
-{{ Add code here }}
+Update-AzKubernetesRuntimeLoadBalancer -Name test1 -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Address 192.168.50.5/32
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Update a load balancer from a connected cluster
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 

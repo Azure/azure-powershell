@@ -11,8 +11,14 @@ Locale: en-US
 Microsoft Azure PowerShell: KubernetesRuntime cmdlets
 
 ## Az.KubernetesRuntime Cmdlets
+### [Disable-AzKubernetesRuntimeLoadBalancer](Disable-AzKubernetesRuntimeLoadBalancer.md)
+Disable Arc storage class service in a connected cluster.
+
 ### [Disable-AzKubernetesRuntimeStorageClass](Disable-AzKubernetesRuntimeStorageClass.md)
 Disable Arc storage class service in a connected cluster.
+
+### [Enable-AzKubernetesRuntimeLoadBalancer](Enable-AzKubernetesRuntimeLoadBalancer.md)
+Enable Arc storage class service in a connected cluster.
 
 ### [Enable-AzKubernetesRuntimeStorageClass](Enable-AzKubernetesRuntimeStorageClass.md)
 Enable Arc storage class service in a connected cluster.

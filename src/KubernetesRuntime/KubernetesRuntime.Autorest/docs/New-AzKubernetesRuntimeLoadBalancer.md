@@ -36,27 +36,28 @@ Create a LoadBalancer
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a load balancer from a connected cluster
 ```powershell
-{{ Add code here }}
+New-AzKubernetesRuntimeLoadBalancer -Name test1 -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Address "192.168.50.1/32" -AdvertiseMode ARP
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Create a load balancer from a connected cluster.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Create a load balancer with service selector specified
 ```powershell
-{{ Add code here }}
+New-AzKubernetesRuntimeLoadBalancer -Name test1 -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Address "192.168.50.1/32" -AdvertiseMode ARP -ServiceSelector @{"a"= "b"; "c"="d"}
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Create a load balancer with service selector specified.
+It restricts the load balancer works for related service.
+
+### Example 3: Create a load balancer with bgp peers specified
+```powershell
+New-AzKubernetesRuntimeLoadBalancer -Name test1 -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Address "192.168.50.1/32" -AdvertiseMode ARP -BgpPeer bgptest1
 ```
 
-{{ Add description here }}
+Create a load balancer with bgp peers specified.
+It restricts the the list of bgp peers the load balancer should advertise to.
 
 ## PARAMETERS
 

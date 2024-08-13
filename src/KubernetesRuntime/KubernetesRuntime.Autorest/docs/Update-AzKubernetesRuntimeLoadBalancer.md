@@ -14,13 +14,15 @@ Update a LoadBalancer
 
 ### UpdateExpanded (Default)
 ```
-Update-AzKubernetesRuntimeLoadBalancer -Name <String> -ResourceUri <String> [-DefaultProfile <PSObject>]
+Update-AzKubernetesRuntimeLoadBalancer -Name <String> -ResourceUri <String> [-Address <String[]>]
+ [-AdvertiseMode <String>] [-BgpPeer <String[]>] [-ServiceSelector <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzKubernetesRuntimeLoadBalancer -InputObject <IKubernetesRuntimeIdentity> [-DefaultProfile <PSObject>]
+Update-AzKubernetesRuntimeLoadBalancer -InputObject <IKubernetesRuntimeIdentity> [-Address <String[]>]
+ [-AdvertiseMode <String>] [-BgpPeer <String[]>] [-ServiceSelector <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -29,35 +31,66 @@ Update a LoadBalancer
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a load balancer from a connected cluster
 ```powershell
-{{ Add code here }}
+Update-AzKubernetesRuntimeLoadBalancer -Name test1 -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Address 192.168.50.5/32
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Update a load balancer from a connected cluster
 
 ## PARAMETERS
+
+### -Address
+IP Range
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AdvertiseMode
+Advertise Mode
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BgpPeer
+The list of BGP peers it should advertise to.
+Null or empty means to advertise to all peers.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -138,6 +171,22 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceSelector
+A dynamic label mapping to select related services.
+For instance, if you want to create a load balancer only for services with label "a=b", then please specify {"a": "b"} in the field.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

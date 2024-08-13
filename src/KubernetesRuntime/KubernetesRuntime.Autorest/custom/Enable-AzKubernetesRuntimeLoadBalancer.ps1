@@ -30,7 +30,7 @@ Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IServiceResource
 https://learn.microsoft.com/powershell/module/az.kubernetesruntime/new-azkubernetesruntimeservice
 #>
 
-function Enable-AzKubernetesRuntimeStorageClass {
+function Enable-AzKubernetesRuntimeLoadBalancer {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IServiceResource])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
@@ -44,7 +44,7 @@ function Enable-AzKubernetesRuntimeStorageClass {
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Category('Body')]
         [System.String]
         # ReleaseTrain this extension participates in
-        ${ReleaseTrain} = "preview",
+        ${ReleaseTrain} = "stable",
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -146,7 +146,7 @@ function Enable-AzKubernetesRuntimeStorageClass {
 
             ImportModule -ModuleName Az.KubernetesConfiguration
 
-            Write-Output "Installing storage class Arc Extension in cluster $($connected_cluster_resource_id.ClusterName) in resource group $($connected_cluster_resource_id.ResourceGroup)..."
+            Write-Output "Installing Arc Networking Extension in cluster $($connected_cluster_resource_id.ClusterName) in resource group $($connected_cluster_resource_id.ResourceGroup)..."
 
             $extension = New-AzKubernetesExtension `
                 -SubscriptionId $connected_cluster_resource_id.SubscriptionId `
@@ -154,31 +154,15 @@ function Enable-AzKubernetesRuntimeStorageClass {
                 -ClusterName $connected_cluster_resource_id.ClusterName `
                 -ClusterType ConnectedClusters `
                 -IdentityType 'SystemAssigned' `
-                -Name "arc-k8s-storage-class" `
-                -ExtensionType "Microsoft.ManagedStorageClass" `
+                -Name "arcnetworking" `
+                -ExtensionType "microsoft.arcnetworking" `
                 -ReleaseTrain $ReleaseTrain `
                 -ConfigurationSetting @{"k8sRuntimeFpaObjectId" = $oid }
 
-            Write-Output "Assign the extension with Storage Class Contributor role under the cluster scope..."
-            $sc_contributor_role_assignment = New-AzRoleAssignment `
-                -Scope $connected_cluster_resource_id.ToString() `
-                -PrincipalId $extension.IdentityPrincipalId `
-                -PrincipalType 'ServicePrincipal' `
-                -RoleDefinitionId $STORAGE_CLASS_CONTRIBUTOR_ROLE_ID
-            
-            Write-Output "Assign Storage Class RP with Kubernetes Extension Contributor role under the cluster scope..."
-            $k8s_extension_contributor_role_assignment = New-AzRoleAssignment `
-                -Scope $connected_cluster_resource_id.ToString() `
-                -PrincipalId $KubernetesRuntimeFpaAppId `
-                -PrincipalType 'ServicePrincipal' `
-                -RoleDefinitionId $KUBERNETES_EXTENSION_CONTRIBUTOR_ROLE_ID
-
-            Write-Output "Arc Storage class service has been installed successfully in cluster $($connected_cluster_resource_id.ClusterName) in resource group $($connected_cluster_resource_id.ResourceGroup)."
+            Write-Output "Arc Networking service has been installed successfully in cluster $($connected_cluster_resource_id.ClusterName) in resource group $($connected_cluster_resource_id.ResourceGroup)."
 
             return @{
-                "Extension"                             = $extension;
-                "StorageClassContributorRoleAssignment" = $sc_contributor_role_assignment;
-                "K8sExtensionContributorRoleAssignment" = $k8s_extension_contributor_role_assignment; 
+                "Extension" = $extension;
             }
 
         }
