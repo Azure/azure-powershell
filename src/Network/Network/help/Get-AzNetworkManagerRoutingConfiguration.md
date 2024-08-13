@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetworkManagerRoutingConfiguration
 
 ## SYNOPSIS
-Gets a network routing configuration in a network manager.
+Gets a routing configuration in a network manager.
 
 ## SYNTAX
 
@@ -53,7 +53,7 @@ SystemData         : {
                      }
 ```
 
-Get a routing configuration.
+Gets a routing configuration.
 
 ### Example 2
 ```powershell
@@ -62,7 +62,7 @@ Get-AzNetworkManagerRoutingConfiguration -NetworkManagerName "TestNMName" -Resou
 
 ```output
 Name               : TestRoutingConfig
-Description        : DESCription
+Description        : Description
 Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/routingConfigurations/TestRoutingConfig
 Type               : Microsoft.Network/networkManagers/routingConfigurations
 Etag               : "00000000-0000-0000-0000-000000000000"
@@ -76,8 +76,8 @@ SystemData         : {
                        "LastModifiedAt": "2021-10-18T04:05:59"
                      }
 
-                     Name               : TestRoutingConfig2
-Description        : DESCription
+Name               : TestRoutingConfig2
+Description        : Description
 Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/routingConfigurations/TestRoutingConfig2
 Type               : Microsoft.Network/networkManagers/routingConfigurations
 Etag               : "00000000-0000-0000-0000-000000000000"

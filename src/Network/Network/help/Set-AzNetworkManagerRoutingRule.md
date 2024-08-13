@@ -49,13 +49,13 @@ Description               : TestDescription
 Type                      : Microsoft.Network/networkManagers/routingConfigurations/ruleCollections/rules
 ProvisioningState         : Succeeded
 SystemData                : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
-SystemDataText            : {
-                              "CreatedBy": "jaredgorthy@microsoft.com",
-                              "CreatedByType": "User",
-                              "CreatedAt": "2022-08-08T00:39:56.4512419Z",
-                              "LastModifiedBy": "jaredgorthy@microsoft.com",
-                              "LastModifiedByType": "User",
-                              "LastModifiedAt": "2022-08-08T01:23:18.6454664Z"
+SystemDataTest            : {
+                               "CreatedBy": "00000000-0000-0000-0000-000000000000",
+                               "CreatedByType": "Application",
+                               "CreatedAt": "2021-10-18T04:05:57",
+                               "LastModifiedBy": "00000000-0000-0000-0000-000000000000",
+                               "LastModifiedByType": "Application",
+                               "LastModifiedAt": "2021-10-18T04:05:59"
                             }
 Name                      : psRule
 Etag                      :

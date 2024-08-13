@@ -79,10 +79,10 @@ NextHop               : {
                             "NextHopAddress": "ApiManagement",
                             "NextHopType": "ServiceTag"
                         }
-Destination          : {
+Destination           : {
                             "DestinationAddress": "10.0.0.1",
                             "Type": "AddressPrefix"
-                       }
+                        }
 SystemData            : {
                           "CreatedBy": "00000000-0000-0000-0000-000000000000",
                           "CreatedByType": "Application",
@@ -105,7 +105,7 @@ NextHop               : {
 Destination           : {
                             "DestinationAddress": "20.0.0.1",
                             "Type": "AddressPrefix"
-                       }
+                        }
 SystemData            : {
                           "CreatedBy": "00000000-0000-0000-0000-000000000000",
                           "CreatedByType": "Application",
