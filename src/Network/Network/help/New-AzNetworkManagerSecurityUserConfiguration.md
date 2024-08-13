@@ -15,7 +15,6 @@ Creates a security user configuration.
 ```
 New-AzNetworkManagerSecurityUserConfiguration -Name <String> -NetworkManagerName <String>
  -ResourceGroupName <String> [-Description <String>]
- [-ApplyOnNetworkIntentPolicyBasedService <NetworkIntentPolicyBasedServiceType[]>] [-DeleteExistingNSG]
  [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -27,8 +26,7 @@ The **New-AzNetworkManagerSecurityUserConfiguration** cmdlet creates a security 
 
 ### Example 1
 ```powershell
-$ApplyOnNetworkIntentPolicyBasedService = @("None")
-New-AzNetworkManagerSecurityUserConfiguration -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -Name "psSecurityUserConfig" -Description "TestDescription" -DeleteExistingNSG  -ApplyOnNetworkIntentPolicyBasedService $ApplyOnNetworkIntentPolicyBasedService
+New-AzNetworkManagerSecurityUserConfiguration -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -Name "psSecurityUserConfig" -Description "TestDescription"
 ```
 
 ```output

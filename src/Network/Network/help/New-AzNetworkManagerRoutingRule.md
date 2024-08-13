@@ -17,8 +17,8 @@ Creates a routing rule.
 New-AzNetworkManagerRoutingRule -Name <String> -RuleCollectionName <String>
  -RoutingConfigurationName <String> -NetworkManagerName <String> -ResourceGroupName <String>
  [-Description <String>]
- [-Destination <PSNetworkManagerRoutingRuleDestination>]
- [-NextHop <PSNetworkManagerRoutingRuleNextHop>]
+ -Destination <PSNetworkManagerRoutingRuleDestination>
+ -NextHop <PSNetworkManagerRoutingRuleNextHop>
  [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
