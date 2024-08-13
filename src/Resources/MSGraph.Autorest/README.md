@@ -335,4 +335,16 @@ directive:
           - DisplayName
           - Id
           - OdataType
+
+  - from: openapi-document
+    where: $
+    transform: $ = $.replace(/×/g, '\*');
+
+  - from: openapi-document
+    where: $
+    transform: $ = $.replace(/’/g, '\'');
+
+  - from: openapi-document
+    where: $
+    transform: $ = $.replace(/–/g, '\-');
 ```
