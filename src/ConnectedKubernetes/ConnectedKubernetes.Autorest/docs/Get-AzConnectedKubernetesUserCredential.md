@@ -1,5 +1,5 @@
 ---
-external help file: Az.ConnectedKubernetes-help.xml
+external help file:
 Module Name: Az.ConnectedKubernetes
 online version: https://learn.microsoft.com/powershell/module/az.connectedkubernetes/get-azconnectedkubernetesusercredential
 schema: 2.0.0
@@ -15,15 +15,15 @@ Gets cluster user credentials of the connected cluster with a specified resource
 ### ListExpanded (Default)
 ```
 Get-AzConnectedKubernetesUserCredential -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] -AuthenticationMethod <AuthenticationMethod> [-ClientProxy]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -AuthenticationMethod <AuthenticationMethod> -ClientProxy [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzConnectedKubernetesUserCredential -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] -Property <IListClusterUserCredentialProperties> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Property <IListClusterUserCredentialProperties> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,21 +130,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Property
 .
 To construct, see NOTES section for PROPERTY properties and create a hash table.
@@ -237,3 +222,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
