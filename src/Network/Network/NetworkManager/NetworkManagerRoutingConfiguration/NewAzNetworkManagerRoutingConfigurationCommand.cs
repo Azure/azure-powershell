@@ -27,8 +27,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManager", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManager))]
-    public class NewAzNetworkManagerCommand : NetworkManagerBaseCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingConfiguration", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerRoutingConfiguration))]
+    public class NewAzNetworkManagerRoutingConfigurationCommand : NetworkManagerRoutingConfigurationBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -36,7 +36,17 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Network/networkManagers/routingConfigurations", "ResourceGroupName", "NetworkManagerName")]
+        [SupportsWildcards]
         public virtual string Name { get; set; }
+
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The network manager name.")]
+        [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
+        public virtual string NetworkManagerName { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -44,15 +54,8 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
-
-        [Parameter(
-         Mandatory = true,
-         ValueFromPipelineByPropertyName = true,
-         HelpMessage = "location.")]
-        [LocationCompleter("Microsoft.Network/networkManagers")]
-        [ValidateNotNullOrEmpty]
-        public virtual string Location { get; set; }
 
         [Parameter(
          Mandatory = false,
@@ -62,42 +65,16 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "A hashtable which represents resource tags.")]
-        public Hashtable Tag { get; set; }
-
-        [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Network Manager Scope")]
-        public PSNetworkManagerScopes NetworkManagerScope { get; set; }
-
-        [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Network Manager Scope Access. Valid values include 'SecurityAdmin' and 'Connectivity'.")]
-        public NetworkManagerScopeAccessType[] NetworkManagerScopeAccess { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        public enum NetworkManagerScopeAccessType
-        {
-            SecurityAdmin,
-            Connectivity,
-            Routing,
-            SecurityUser
-        }
-
         public override void Execute()
         {
             base.Execute();
-            var present = this.IsNetworkManagerPresent(this.ResourceGroupName, this.Name);
+            var present = this.IsNetworkManagerRoutingConfigurationPresent(this.ResourceGroupName, this.NetworkManagerName, this.Name);
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.OverwritingResource, Name),
@@ -105,38 +82,32 @@ namespace Microsoft.Azure.Commands.Network
                 Name,
                 () =>
                 {
-                    var networkManager = this.CreateNetworkManager();
-                    WriteObject(networkManager);
+                    var networkManagerRoutingConfiguration = this.CreateNetworkManagerRoutingConfiguration();
+                    WriteObject(networkManagerRoutingConfiguration);
                 },
                 () => present);
         }
 
-        private PSNetworkManager CreateNetworkManager()
+        private PSNetworkManagerRoutingConfiguration CreateNetworkManagerRoutingConfiguration()
         {
-            var networkManager = new PSNetworkManager();
-            networkManager.Name = this.Name;
-            networkManager.Location = this.Location;
-            networkManager.NetworkManagerScopes = this.NetworkManagerScope;
-
-            networkManager.NetworkManagerScopeAccesses = new List<string>();
-            foreach (NetworkManagerScopeAccessType accessType in this.NetworkManagerScopeAccess)
+            var routingConfig = new PSNetworkManagerRoutingConfiguration
             {
-                networkManager.NetworkManagerScopeAccesses.Add(accessType.ToString());
-            }
+                Name = this.Name
+            };
+
             if (!string.IsNullOrEmpty(this.Description))
             {
-                networkManager.Description = this.Description;
+                routingConfig.Description = this.Description;
             }
 
             // Map to the sdk object
-            var networkManagerModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkManager>(networkManager);
-            this.NullifyNetworkManagerIfAbsent(networkManagerModel);
-            networkManagerModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
+            var routingConfigModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkManagerRoutingConfiguration>(routingConfig);
 
-            // Execute the Create Network call
-            this.NetworkManagerClient.CreateOrUpdate(this.ResourceGroupName, this.Name, networkManagerModel);
-            var psNetworkManager = this.GetNetworkManager(this.ResourceGroupName, this.Name);
-            return psNetworkManager;
+            // Execute the Create Routing Config call
+            this.NetworkManagerRoutingConfigurationClient.CreateOrUpdate(this.ResourceGroupName, this.NetworkManagerName, this.Name, routingConfigModel);
+
+            var psRoutingConfig = this.GetNetworkManagerRoutingConfiguration(this.ResourceGroupName, this.NetworkManagerName, this.Name);
+            return psRoutingConfig;
         }
     }
 }
