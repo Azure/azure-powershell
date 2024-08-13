@@ -466,7 +466,7 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         Assert-AreEqual  $newAdminRule.Id $effectiveSecurityAdminRuleList.Value[0].Id;
         Assert-AreEqual  $networkGroup.Id $effectiveSecurityAdminRuleList.Value[0].RuleGroups[0].Id;
         Assert-AreEqual  $networkGroup.Id $effectiveSecurityAdminRuleList.Value[0].RuleCollectionAppliesToGroups[0].NetworkGroupId;
-       
+
 
         Assert-AreEqual $securityConfig.Description $effectiveSecurityAdminRuleList.Value[0].ConfigurationDescription;
         Assert-AreEqual $ruleCollection.Description $effectiveSecurityAdminRuleList.Value[0].RuleCollectionDescription;
@@ -698,6 +698,7 @@ function Test-NetworkManagerResourceMinimumParameterCreate
         # Cleanup
         Clean-ResourceGroup $rgname
 	}
+}
 
 <#
 .SYNOPSIS
@@ -968,5 +969,4 @@ function Test-NetworkManagerSecurityUserRuleCRUD
         # Cleanup
         Clean-ResourceGroup $rgname
 	}
-}
 }

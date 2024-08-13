@@ -22,6 +22,18 @@
 * Added support for `DefaultOutboundAccess` property in `Set-AzVirtualNetworkSubnetConfig` command
 * Added support for `EnabledFilteringCriteria` property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
 * Added support of `UserAssignedIdentityId` Property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
+* Onboarded Azure Virtual Network Manager Cmdlets for UDR and NSG Management
+    - `New/Get/Remove/Set-AzNetworkManagerRoutingConfiguration`
+    - `New/Get/Remove/Set-AzNetworkManagerRoutingRuleCollection`
+    - `New/Get/Remove/Set-AzNetworkManagerRoutingRule`
+    - `New-AzNetworkManagerRoutingGroupItem`
+    - `New-AzNetworkManagerRoutingRuleDestination`
+    - `New-AzNetworkManagerRoutingRuleNextHop`
+    - `New/Get/Remove/Set-AzNetworkManagerSecurityUserConfiguration`
+    - `New/Get/Remove/Set-AzNetworkManagerSecurityUserRuleCollection`
+    - `New/Get/Remove/Set-AzNetworkManagerSecurityUserRule`
+    - `New-AzNetworkManagerSecurityUserGroupItem`
+* Added support for `MemberType` property in `New-AzNetworkManagerSecurityUserGroupItem` command
 
 ## Version 7.8.0
 * Added new cmdlets to support Save & Commit (AzureFirewallPolicy draft)
