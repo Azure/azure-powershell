@@ -403,14 +403,21 @@ function Test-ManagedInstanceLinkBOXFirstForcedFailover
 
         $failoverType = "ForcedAllowDataLoss"
         # Perform forced failover and succeed
-        $instance | Start-AzSqlInstanceLinkFailover -Name $linkName -FailoverType $failoverType -Force
+        $linkToFailover = $instance | Start-AzSqlInstanceLinkFailover -Name $linkName -FailoverType $failoverType -Force
 
         # Assert that box is secondary
-        $linkToFailover = $instance | Get-AzSqlInstanceLink -Name $linkName
         Assert-AreEqual $linkToFailover.PartnerLinkRole $secondaryRoleConst
+
+        # Remove the link
+        $linkToFailover | Remove-AzSqlInstanceLink -Force -PassThru
+
+        # Assert that we have 0 links on instance
+        $listLinksZero = $instance | Get-AzSqlInstanceLink
+        Write-Debug ('Old list is of size: ' + (ConvertTo-Json $listLinksZero))
+        Assert-AreEqual $listLinksZero.Count 0
     }
     finally
     {
-        Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Force -PassThru
+        # No need for cleanup
     }
 }
