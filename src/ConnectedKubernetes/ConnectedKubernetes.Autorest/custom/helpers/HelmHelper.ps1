@@ -120,7 +120,7 @@ function Get-HelmValues {
     if ($ReleaseTrainCustom) {
         $releaseTrain = $ReleaseTrainCustom
     }
-    $uriParameters = @{releaseTrain=$releaseTrain}
+    $uriParameters = [ordered]@{releaseTrain=$releaseTrain}
     $headers = @{
         "Content-Type" = "application/json"
     }
