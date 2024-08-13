@@ -36,12 +36,12 @@ Type                                        : Microsoft.Network/networkManagers/
 ProvisioningState                           : Succeeded
 SystemData                                  : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
 SystemDataText                              : {
-                                                "CreatedBy": "jaredgorthy@microsoft.com",
-                                                "CreatedByType": "User",
-                                                "CreatedAt": "2022-08-07T23:58:54.8549506Z",
-                                                "LastModifiedBy": "jaredgorthy@microsoft.com",
-                                                "LastModifiedByType": "User",
-                                                "LastModifiedAt": "2022-08-08T01:14:53.4574151Z"
+                                                 "CreatedBy": "00000000-0000-0000-0000-000000000000",
+                                                 "CreatedByType": "Application",
+                                                 "CreatedAt": "2021-10-18T04:05:57",
+                                                 "LastModifiedBy": "00000000-0000-0000-0000-000000000000",
+                                                 "LastModifiedByType": "Application",
+                                                 "LastModifiedAt": "2021-10-18T04:05:59"
                                               }
 Name                                        : psRoutingConfig
 Etag                                        :

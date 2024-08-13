@@ -43,11 +43,11 @@ Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 Type              : Microsoft.Network/networkManagers/routingConfigurations/ruleCollections
 Etag              : "00000000-0000-0000-0000-000000000000"
 ProvisioningState : Succeeded
-AppliesTo   : [
-                {
-                "NetworkGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/testng"
-                }
-              ]
+AppliesTo         : [
+                      {
+                        "NetworkGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/testng"
+                      }
+                    ]
 DisableBgpRoutePropagation : False
 SystemData        : {
                       "CreatedBy": "00000000-0000-0000-0000-000000000000",
@@ -73,7 +73,7 @@ Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 Type              : Microsoft.Network/networkManagers/routingConfigurations/ruleCollections
 Etag              : "00000000-0000-0000-0000-000000000000"
 ProvisioningState : Succeeded
-AppliesTo   : [
+AppliesTo         : [
                       {
                         "NetworkGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/testng"
                       }
@@ -94,7 +94,7 @@ Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 Type              : Microsoft.Network/networkManagers/routingConfigurations/ruleCollections
 Etag              : "00000000-0000-0000-0000-000000000000"
 ProvisioningState : Succeeded
-AppliesTo   : [
+AppliesTo         : [
                       {
                         "NetworkGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/testng"
                       }
