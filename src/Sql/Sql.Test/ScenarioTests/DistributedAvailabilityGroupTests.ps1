@@ -148,7 +148,7 @@ function Test-ManagedInstanceLink
         Write-Debug ('$listLinksZero is ' + (ConvertTo-Json $listLinksZero))
         Assert-Null $listLinksZero
 
-        # Delete non existant link THROWS (via DeleteByParentObjectParameterSet)
+        # Delete non-existent link THROWS (via DeleteByParentObjectParameterSet)
         $msgExcDel = "The requested resource of type '" + $linkType + "' with name '" + $linkName + "' was not found."
         Assert-Throws { Remove-AzSqlInstanceLink -InstanceObject $instance -LinkName $linkName -Force } $msgExc
     }
@@ -185,11 +185,11 @@ function Test-ManagedInstanceLinkErrHandling
         $msgExcInvalid = "Invalid value"
         Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Databases $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint "invalid_value" -SeedingMode $seedingMode } $msgExcInvalid
 
-        # Should throw when deleting non existant mi link
+        # Should throw when deleting non-existent mi link
         $msgExcNotFound = "The requested resource of type 'Microsoft.Sql/managedInstances/distributedAvailabilityGroups' with name '" + $invalidLinkName + "' was not found."
         Assert-ThrowsContains { Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $invalidLinkName -Force} $msgExcNotFound
         
-        # Should throw when getting non existant mi link
+        # Should throw when getting non-existent mi link
         Assert-ThrowsContains { Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $invalidLinkName } $msgExcNotFound
 
         # Should throw when getting links from non-existent managed instance
@@ -222,11 +222,11 @@ function Test-ManagedInstanceLinkErrHandling
         $msgExcDataLoss = "may cause data loss"
         Assert-ThrowsContains { Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $invalidLinkName } $msgExcDataLoss
 
-        # Should throw when setting non existant mi link
+        # Should throw when setting non-existent mi link
         $msgExcNotFound = "The requested resource of type 'Microsoft.Sql/managedInstances/distributedAvailabilityGroups' with name '" + $invalidLinkName + "' was not found."
         Assert-ThrowsContains { Set-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $invalidLinkName -ReplicationMode sync } $msgExcNotFound
 
-        # Should throw when setting non existant replication mode value
+        # Should throw when setting non-existent replication mode value
         $msgExcNotFound = "segment in the url is invalid"
         Assert-ThrowsContains { Set-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -ReplicationMode synca } $msgExcNotFound
     }
@@ -235,7 +235,6 @@ function Test-ManagedInstanceLinkErrHandling
         Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Force -PassThru
     }
 }
-
 
 <#
     .SYNOPSIS
@@ -373,12 +372,12 @@ function Test-ManagedInstanceLinkBOXFirstForcedFailover
     try
     {
         $instanceLinkRole = "Secondary"
-        $failoverType = "ForcedAllowDataLoss"
-        $linkName = "Link1"
-        $databaseName = "CLI1"
+        $failoverType = "Planned"
+        $linkName = "Link4"
+        $databaseName = "PS4"
         $databases = @($databaseName)
-        $instanceAgName = "AG_CLI1_MI"
-        $boxAgName = "AG_CLI1"
+        $instanceAgName = "AG_PS4_MI"
+        $boxAgName = "AG_PS4"
 
         $instance = Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName
         $listLinksZero = $instance | Get-AzSqlInstanceLink
@@ -398,6 +397,11 @@ function Test-ManagedInstanceLinkBOXFirstForcedFailover
         $linkToFailover = $instance | Get-AzSqlInstanceLink -Name $linkName
         Assert-AreEqual $linkToFailover.PartnerLinkRole $primaryRoleConst
 
+        # Perform planned failover and fail
+        $msgExc = "Planned failover can be executed on a link in the primary role only. Current state of the specified link is secondary."
+        Assert-ThrowsContains { $instance | Start-AzSqlInstanceLinkFailover -Name $linkName -FailoverType $failoverType -Force } $msgExc
+
+        $failoverType = "ForcedAllowDataLoss"
         # Perform forced failover and succeed
         $instance | Start-AzSqlInstanceLinkFailover -Name $linkName -FailoverType $failoverType -Force
 
