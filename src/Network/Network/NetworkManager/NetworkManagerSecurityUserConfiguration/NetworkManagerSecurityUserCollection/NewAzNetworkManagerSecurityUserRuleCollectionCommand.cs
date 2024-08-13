@@ -18,7 +18,6 @@ using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,8 +26,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManager", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManager))]
-    public class NewAzNetworkManagerCommand : NetworkManagerBaseCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRuleCollection", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerSecurityUserRuleCollection))]
+    public class NewAzNetworkManagerSecurityUserRuleCollectionCommand : NetworkManagerSecurityUserRuleCollectionBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -36,7 +35,26 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Network/networkManagers/securityUserConfigurations/ruleCollections", "ResourceGroupName", "NetworkManagerName", "SecurityUserConfigurationName")]
+        [SupportsWildcards]
         public virtual string Name { get; set; }
+
+        [Alias("ConfigName")]
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The network manager securityUser configuration name.")]
+        [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
+        public virtual string SecurityUserConfigurationName { get; set; }
+
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The network manager name.")]
+        [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
+        public virtual string NetworkManagerName { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -44,15 +62,8 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
-
-        [Parameter(
-         Mandatory = true,
-         ValueFromPipelineByPropertyName = true,
-         HelpMessage = "location.")]
-        [LocationCompleter("Microsoft.Network/networkManagers")]
-        [ValidateNotNullOrEmpty]
-        public virtual string Location { get; set; }
 
         [Parameter(
          Mandatory = false,
@@ -61,22 +72,10 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Description { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "A hashtable which represents resource tags.")]
-        public Hashtable Tag { get; set; }
-
-        [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Network Manager Scope")]
-        public PSNetworkManagerScopes NetworkManagerScope { get; set; }
-
-        [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Network Manager Scope Access. Valid values include 'SecurityAdmin' and 'Connectivity'.")]
-        public NetworkManagerScopeAccessType[] NetworkManagerScopeAccess { get; set; }
+         Mandatory = true,
+         ValueFromPipelineByPropertyName = true,
+         HelpMessage = "Applies To Groups.")]
+        public virtual PSNetworkManagerSecurityUserGroupItem[] AppliesToGroups { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -86,18 +85,10 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        public enum NetworkManagerScopeAccessType
-        {
-            SecurityAdmin,
-            Connectivity,
-            Routing,
-            SecurityUser
-        }
-
         public override void Execute()
         {
             base.Execute();
-            var present = this.IsNetworkManagerPresent(this.ResourceGroupName, this.Name);
+            var present = this.IsNetworkManagerSecurityUserRuleCollectionPresent(this.ResourceGroupName, this.NetworkManagerName, this.SecurityUserConfigurationName, this.Name);
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.OverwritingResource, Name),
@@ -105,38 +96,31 @@ namespace Microsoft.Azure.Commands.Network
                 Name,
                 () =>
                 {
-                    var networkManager = this.CreateNetworkManager();
-                    WriteObject(networkManager);
+                    var networkManagerSecurityUserRuleCollection = this.CreateNetworkManagerSecurityUserRuleCollection();
+                    WriteObject(networkManagerSecurityUserRuleCollection);
                 },
                 () => present);
         }
 
-        private PSNetworkManager CreateNetworkManager()
+        private PSNetworkManagerSecurityUserRuleCollection CreateNetworkManagerSecurityUserRuleCollection()
         {
-            var networkManager = new PSNetworkManager();
-            networkManager.Name = this.Name;
-            networkManager.Location = this.Location;
-            networkManager.NetworkManagerScopes = this.NetworkManagerScope;
-
-            networkManager.NetworkManagerScopeAccesses = new List<string>();
-            foreach (NetworkManagerScopeAccessType accessType in this.NetworkManagerScopeAccess)
-            {
-                networkManager.NetworkManagerScopeAccesses.Add(accessType.ToString());
-            }
+            var ruleCollection = new PSNetworkManagerSecurityUserRuleCollection();
+            ruleCollection.Name = this.Name;
             if (!string.IsNullOrEmpty(this.Description))
             {
-                networkManager.Description = this.Description;
+                ruleCollection.Description = this.Description;
             }
 
-            // Map to the sdk object
-            var networkManagerModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkManager>(networkManager);
-            this.NullifyNetworkManagerIfAbsent(networkManagerModel);
-            networkManagerModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
+            ruleCollection.AppliesToGroups = this.AppliesToGroups.ToList();
 
-            // Execute the Create Network call
-            this.NetworkManagerClient.CreateOrUpdate(this.ResourceGroupName, this.Name, networkManagerModel);
-            var psNetworkManager = this.GetNetworkManager(this.ResourceGroupName, this.Name);
-            return psNetworkManager;
+            // Map to the sdk object
+            var ruleCollectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.SecurityUserRuleCollection>(ruleCollection);
+
+            // Execute the Create SecurityUser Rule Collection call
+            this.NetworkManagerSecurityUserRuleCollectionClient.CreateOrUpdate(this.ResourceGroupName, this.NetworkManagerName, this.SecurityUserConfigurationName, this.Name, ruleCollectionModel);
+
+            var psSecurityUserRuleCollection = this.GetNetworkManagerSecurityUserRuleCollection(this.ResourceGroupName, this.NetworkManagerName, this.SecurityUserConfigurationName, this.Name);
+            return psSecurityUserRuleCollection;
         }
     }
 }
