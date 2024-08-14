@@ -16,6 +16,8 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
+
 #endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
@@ -54,14 +56,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             _handlersLock = new ReaderWriterLockSlim();
         }
 
-        public virtual TClient CreateArmClient<TClient>(IAzureContext context, string endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
+        public virtual TClient CreateArmClient<TClient>(IAzureContext context, string endpoint, ICmdletContext cmdletContext) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
             if (context == null)
             {
                 throw new AzPSApplicationException(Resources.NoSubscriptionInContext, ErrorKind.UserError);
             }
 
-            var creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, endpoint);
+            var creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, endpoint, cmdletContext);
             var baseUri = context.Environment.GetEndpointAsUri(endpoint);
             TClient client = CreateCustomArmClient<TClient>(baseUri, creds);
             var subscriptionId = typeof(TClient).GetProperty("SubscriptionId");

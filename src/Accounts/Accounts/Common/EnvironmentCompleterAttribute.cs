@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Language;
+using System.Runtime.CompilerServices;
 
 namespace Microsoft.Azure.Commands.Profile.Common
 {
@@ -27,6 +28,7 @@ namespace Microsoft.Azure.Commands.Profile.Common
         /// <returns></returns>
         public static string[] GetEnvironments()
         {
+            //jinlei:no need to set cmdletId, but maybe useful in the furture.
             var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
             return profileClient.ListEnvironments(null).Select(x => x.Name).ToArray();
         }

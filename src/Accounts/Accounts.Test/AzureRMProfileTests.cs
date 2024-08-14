@@ -1354,7 +1354,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.True(account.IsPropertySet(AzureAccount.Property.KeyVaultAccessToken));
             Assert.Equal(keyVaultToken2, account.GetProperty(AzureAccount.Property.KeyVaultAccessToken));
             var factory = new ClientFactory();
-            var rmClient = factory.CreateArmClient<MockServiceClient>(profile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+            var rmClient = factory.CreateArmClient<MockServiceClient>(profile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager, AzureCmdletContext.CmdletNone);
             var rmCred = rmClient.Credentials as RenewingTokenCredential;
             Assert.NotNull(rmCred);
             var message = new HttpRequestMessage(HttpMethod.Get, rmClient.BaseUri.ToString());
@@ -1362,7 +1362,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.NotNull(message.Headers.Authorization);
             Assert.NotNull(message.Headers.Authorization.Parameter);
             Assert.Contains(accessToken2, message.Headers.Authorization.Parameter);
-            var graphClient = factory.CreateArmClient<MockServiceClient>(profile.DefaultContext, AzureEnvironment.Endpoint.Graph);
+            var graphClient = factory.CreateArmClient<MockServiceClient>(profile.DefaultContext, AzureEnvironment.Endpoint.Graph, AzureCmdletContext.CmdletNone);
             var graphCred = graphClient.Credentials as RenewingTokenCredential;
             Assert.NotNull(graphCred);
             var graphMessage = new HttpRequestMessage(HttpMethod.Get, rmClient.BaseUri.ToString());
