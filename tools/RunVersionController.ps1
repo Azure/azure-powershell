@@ -17,6 +17,9 @@ Param(
     [Parameter(ParameterSetName='ReleaseSingleModule', Mandatory = $true)]
     [string]$ModuleName,
 
+    [Parameter(ParameterSetName='ReleaseSingleModule', Mandatory = $false)]
+    [string]$AssignedVersion,
+
     [Parameter()]
     [string]$GalleryName = "PSGallery",
 
@@ -482,9 +485,8 @@ switch ($PSCmdlet.ParameterSetName)
 {
     "ReleaseSingleModule"
     {
-        Write-Host executing dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $PSScriptRoot/../artifacts/VersionController/Exceptions $ModuleName
-        dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $PSScriptRoot/../artifacts/VersionController/Exceptions $ModuleName
-        Update-AzPreview
+        Write-Host executing dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $PSScriptRoot/../artifacts/VersionController/Exceptions $ModuleName $AssignedVersion
+        dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $PSScriptRoot/../artifacts/VersionController/Exceptions $ModuleName $AssignedVersion
     }
 
     "ReleaseAzByMonthAndYear"

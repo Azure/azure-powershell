@@ -33,6 +33,7 @@ namespace VersionController
         private static Dictionary<string, AzurePSVersion> _minimalVersion = new Dictionary<string, AzurePSVersion>();
         private static List<string> _projectDirectories, _outputDirectories;
         private static string _rootDirectory, _moduleNameFilter;
+        private static string _assignedVersion = string.Empty;
 
         private const string Psd1NameExtension = ".psd1";
 
@@ -73,6 +74,11 @@ namespace VersionController
             if (args != null && args.Length > 1)
             {
                 _moduleNameFilter = args[1] + Psd1NameExtension;
+            }
+
+            if (args != null && args.Length > 2)
+            {
+                _assignedVersion = args[2];
             }
 
             ConsolidateExceptionFiles(exceptionsDirectory);
@@ -229,8 +235,13 @@ namespace VersionController
                 }
 
                 var outputModuleManifestFile = outputModuleManifest.FirstOrDefault();
-
-                _versionBumper = new VersionBumper(new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath), changedModules);
+                if (!string.IsNullOrEmpty(_assignedVersion))
+                {
+                    _versionBumper = new VersionBumper(new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath), changedModules, new AzurePSVersion(_assignedVersion));
+                } else
+                {
+                    _versionBumper = new VersionBumper(new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath), changedModules);
+                }
                 _versionBumper.PSRepositories = targetRepositories;
                 if (_minimalVersion.ContainsKey(moduleName))
                 {

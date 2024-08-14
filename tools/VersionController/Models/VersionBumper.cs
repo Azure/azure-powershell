@@ -39,6 +39,8 @@ namespace VersionController.Models
 
         private IList<string> _changedModules { get; set; }
 
+        private AzurePSVersion _assignedVersion { get; set;}
+
         public AzurePSVersion MinimalVersion { get; set; }
         public string PSRepositories { get; set; }
 
@@ -51,6 +53,16 @@ namespace VersionController.Models
             _changedModules = changedModules;
         }
 
+        public VersionBumper(VersionFileHelper fileHelper, IList<string> changedModules, AzurePSVersion assignedVersion)
+        {
+            _fileHelper = fileHelper;
+            _metadataHelper = new VersionMetadataHelper(_fileHelper);
+            _loggerFactory = LoggerFactory.Create(builder => builder.AddConsole().AddDebug());
+            _logger = _loggerFactory.CreateLogger<VersionBumper>();
+            _changedModules = changedModules;
+            _assignedVersion = assignedVersion;
+        }
+
         /// <summary>
         /// Bump the version in all necessary files.
         /// </summary>
@@ -60,8 +72,13 @@ namespace VersionController.Models
             Console.WriteLine("Bumping version for " + moduleName + "...");
 
             (_oldVersion, _isPreview) = GetOldVersion();
-
-            _newVersion = IsNewModule() ? _oldVersion : GetBumpedVersion();
+            if (_assignedVersion != null) 
+            {
+                _newVersion = _assignedVersion.ToString();
+            } else 
+            {
+                _newVersion = IsNewModule() ? _oldVersion : GetBumpedVersion();
+            }
             if (MinimalVersion != null && MinimalVersion > new AzurePSVersion(_newVersion))
             {
                 Console.WriteLine($"Adjust version from {_newVersion} to {MinimalVersion} due to MinimalVersion.csv");
