@@ -149,17 +149,17 @@ namespace Common.Authentication.Test
             account.SetProperty(AzureAccount.Property.KeyVaultAccessToken, kvToken);
             var authFactory = new AuthenticationFactory();
             var environment = AzureEnvironment.PublicEnvironments.Values.First();
-            var checkArmToken = authFactory.Authenticate(account, environment, tenant, new System.Security.SecureString(), "Never", null);
+            var checkArmToken = authFactory.Authenticate(account, environment, tenant, new System.Security.SecureString(), "Never", null, AzureCmdletContext.CmdletNone);
             VerifyToken(checkArmToken, armToken, userId, tenant);
-            checkArmToken = authFactory.Authenticate(account, environment, tenant, new System.Security.SecureString(), "Never", null, environment.ActiveDirectoryServiceEndpointResourceId);
+            checkArmToken = authFactory.Authenticate(account, environment, tenant, new System.Security.SecureString(), "Never", null, AzureCmdletContext.CmdletNone, environment.ActiveDirectoryServiceEndpointResourceId);
             VerifyToken(checkArmToken, armToken, userId, tenant);
-            var checkGraphToken = authFactory.Authenticate(account, environment, tenant, new System.Security.SecureString(), "Never", null, AzureEnvironment.Endpoint.GraphEndpointResourceId);
+            var checkGraphToken = authFactory.Authenticate(account, environment, tenant, new System.Security.SecureString(), "Never", null, AzureCmdletContext.CmdletNone, AzureEnvironment.Endpoint.GraphEndpointResourceId);
             VerifyToken(checkGraphToken, graphToken, userId, tenant);
-            checkGraphToken = authFactory.Authenticate(account, environment, tenant, new System.Security.SecureString(), "Never", null, environment.GraphEndpointResourceId);
+            checkGraphToken = authFactory.Authenticate(account, environment, tenant, new System.Security.SecureString(), "Never", null, AzureCmdletContext.CmdletNone, environment.GraphEndpointResourceId);
             VerifyToken(checkGraphToken, graphToken, userId, tenant);
-            var checkKVToken = authFactory.Authenticate(account, environment, tenant, new System.Security.SecureString(), "Never", null, environment.AzureKeyVaultServiceEndpointResourceId);
+            var checkKVToken = authFactory.Authenticate(account, environment, tenant, new System.Security.SecureString(), "Never", null, AzureCmdletContext.CmdletNone, environment.AzureKeyVaultServiceEndpointResourceId);
             VerifyToken(checkKVToken, kvToken, userId, tenant);
-            checkKVToken = authFactory.Authenticate(account, environment, tenant, new System.Security.SecureString(), "Never", null, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId);
+            checkKVToken = authFactory.Authenticate(account, environment, tenant, new System.Security.SecureString(), "Never", null, AzureCmdletContext.CmdletNone, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId);
             VerifyToken(checkKVToken, kvToken, userId, tenant);
         }
 
@@ -210,7 +210,7 @@ namespace Common.Authentication.Test
             //};
             //AzureSession.Instance.RegisterComponent(HttpClientOperationsFactory.Name, () => TestHttpOperationsFactory.Create(responses, _output), true);
             var authFactory = new AuthenticationFactory();
-            IAccessToken token = authFactory.Authenticate(account, environment, tenant, null, null, null);
+            IAccessToken token = authFactory.Authenticate(account, environment, tenant, null, null, null, AzureCmdletContext.CmdletNone);
             _output.WriteLine($"Received access token for default Uri ${token.AccessToken}");
             Assert.Equal(expectedAccessToken, token.AccessToken);
             Assert.Null(mockManagedIdentityCredential.AccountId);
@@ -223,7 +223,7 @@ namespace Common.Authentication.Test
             };
             //account2.SetProperty(AzureAccount.Property.MSILoginUri, "http://myfunkyurl:10432/oauth2/token");
             expectedAccessToken = expectedToken2;
-            var token2 = authFactory.Authenticate(account2, environment, tenant, null, null, null, "foo");
+            var token2 = authFactory.Authenticate(account2, environment, tenant, null, null, null, AzureCmdletContext.CmdletNone, "foo");
             _output.WriteLine($"Received access token for custom Uri ${token2.AccessToken}");
             Assert.Equal(expectedToken2, token2.AccessToken);
             Assert.Equal(userId2, mockManagedIdentityCredential.AccountId);
@@ -268,7 +268,7 @@ namespace Common.Authentication.Test
             };
             AzureSession.Instance.RegisterComponent(HttpClientOperationsFactory.Name, () => TestHttpOperationsFactory.Create(responses, _output), true);
             var authFactory = new AuthenticationFactory();
-            IRenewableToken token = (IRenewableToken) authFactory.Authenticate(account, environment, tenant, null, null, null);
+            IRenewableToken token = (IRenewableToken) authFactory.Authenticate(account, environment, tenant, null, null, null, AzureCmdletContext.CmdletNone);
             _output.WriteLine($"Received access token for default Uri ${token.AccessToken}");
             Assert.Equal(expectedAccessToken, token.AccessToken);
             Assert.Equal(3600, Math.Round(token.ExpiresOn.Subtract(DateTimeOffset.Now).TotalSeconds));
@@ -277,10 +277,10 @@ namespace Common.Authentication.Test
                 Id = userId,
                 Type = AzureAccount.AccountType.ManagedService
             };
-            var token2 = authFactory.Authenticate(account2, environment, tenant, null, null, null, AzureEnvironment.Endpoint.GraphEndpointResourceId);
+            var token2 = authFactory.Authenticate(account2, environment, tenant, null, null, null, AzureCmdletContext.CmdletNone, AzureEnvironment.Endpoint.GraphEndpointResourceId);
             _output.WriteLine($"Received access token for custom Uri ${token2.AccessToken}");
             Assert.Equal(expectedToken2, token2.AccessToken);
-            var token3 = authFactory.Authenticate(account, environment, tenant, null, null, null, "bar");
+            var token3 = authFactory.Authenticate(account, environment, tenant, null, null, null, AzureCmdletContext.CmdletNone, "bar");
             Assert.Throws<InvalidOperationException>(() => token3.AccessToken);
         }
 
@@ -321,7 +321,7 @@ namespace Common.Authentication.Test
             };
             AzureSession.Instance.RegisterComponent(HttpClientOperationsFactory.Name, () => TestHttpOperationsFactory.Create(responses, _output), true);
             var authFactory = new AuthenticationFactory();
-            IRenewableToken token = (IRenewableToken) authFactory.Authenticate(account, environment, tenant, null, null, null);
+            IRenewableToken token = (IRenewableToken) authFactory.Authenticate(account, environment, tenant, null, null, null, AzureCmdletContext.CmdletNone);
             _output.WriteLine($"Received access token for default Uri ${token.AccessToken}");
             Assert.Equal(expectedAccessToken, token.AccessToken);
             Assert.Equal(3600, Math.Round(token.ExpiresOn.Subtract(DateTimeOffset.Now).TotalSeconds));
@@ -330,10 +330,10 @@ namespace Common.Authentication.Test
                 Id = userId,
                 Type = AzureAccount.AccountType.ManagedService
             };
-            var token2 = authFactory.Authenticate(account2, environment, tenant, null, null, null, AzureEnvironment.Endpoint.GraphEndpointResourceId);
+            var token2 = authFactory.Authenticate(account2, environment, tenant, null, null, null, AzureCmdletContext.CmdletNone, AzureEnvironment.Endpoint.GraphEndpointResourceId);
             _output.WriteLine($"Received access token for custom Uri ${token2.AccessToken}");
             Assert.Equal(expectedToken2, token2.AccessToken);
-            var token3 = authFactory.Authenticate(account, environment, tenant, null, null, null, "bar");
+            var token3 = authFactory.Authenticate(account, environment, tenant, null, null, null, AzureCmdletContext.CmdletNone, "bar");
             Assert.Throws<InvalidOperationException>(() => token3.AccessToken);
         }
 
@@ -374,7 +374,7 @@ namespace Common.Authentication.Test
             };
             AzureSession.Instance.RegisterComponent(HttpClientOperationsFactory.Name, () => TestHttpOperationsFactory.Create(responses, _output), true);
             var authFactory = new AuthenticationFactory();
-            IRenewableToken token = (IRenewableToken) authFactory.Authenticate(account, environment, tenant, null, null, null);
+            IRenewableToken token = (IRenewableToken) authFactory.Authenticate(account, environment, tenant, null, null, null, AzureCmdletContext.CmdletNone);
             _output.WriteLine($"Received access token for default Uri ${token.AccessToken}");
             Assert.Equal(expectedAccessToken, token.AccessToken);
             Assert.Equal(3600, Math.Round(token.ExpiresOn.Subtract(DateTimeOffset.Now).TotalSeconds));
@@ -383,10 +383,10 @@ namespace Common.Authentication.Test
                 Id = userId,
                 Type = AzureAccount.AccountType.ManagedService
             };
-            var token2 = authFactory.Authenticate(account2, environment, tenant, null, null, null, AzureEnvironment.Endpoint.GraphEndpointResourceId);
+            var token2 = authFactory.Authenticate(account2, environment, tenant, null, null, null, AzureCmdletContext.CmdletNone, AzureEnvironment.Endpoint.GraphEndpointResourceId);
             _output.WriteLine($"Received access token for custom Uri ${token2.AccessToken}");
             Assert.Equal(expectedToken2, token2.AccessToken);
-            var token3 = authFactory.Authenticate(account, environment, tenant, null, null, null, "bar");
+            var token3 = authFactory.Authenticate(account, environment, tenant, null, null, null, AzureCmdletContext.CmdletNone, "bar");
             Assert.Throws<InvalidOperationException>(() => token3.AccessToken);
         }
 
@@ -455,11 +455,11 @@ namespace Common.Authentication.Test
             {
                 Account = account
             };
-            var credentials = authFactory.GetServiceClientCredentials(mockContext);
+            var credentials = authFactory.GetServiceClientCredentials(mockContext, AzureCmdletContext.CmdletNone);
             VerifyAccessTokenInServiceClientCredentials(credentials, armToken);
-            credentials = authFactory.GetServiceClientCredentials(mockContext, AzureEnvironment.Endpoint.Graph);
+            credentials = authFactory.GetServiceClientCredentials(mockContext, AzureEnvironment.Endpoint.Graph, AzureCmdletContext.CmdletNone);
             VerifyAccessTokenInServiceClientCredentials(credentials, graphToken);
-            credentials = authFactory.GetServiceClientCredentials(mockContext, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId);
+            credentials = authFactory.GetServiceClientCredentials(mockContext, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, AzureCmdletContext.CmdletNone);
             VerifyAccessTokenInServiceClientCredentials(credentials, kvToken);
         }
 

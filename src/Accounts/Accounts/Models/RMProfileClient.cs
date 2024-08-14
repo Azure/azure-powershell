@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Models;
@@ -41,6 +42,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public Action<string> DebugLog;
         public Action<string> InteractiveInformationLog;
         internal Func<string, string> PromptAndReadLine;
+
+        public ICmdletContext CmdletContext;
 
         private List<AzureTenant> _queriedTenants = new List<AzureTenant>();
 
@@ -691,6 +694,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 promptBehavior,
                 promptAction,
                 _cache,
+                CmdletContext,
                 resourceId);
         }
 

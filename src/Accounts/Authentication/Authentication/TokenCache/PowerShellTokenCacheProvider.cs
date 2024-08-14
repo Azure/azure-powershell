@@ -21,6 +21,7 @@ using Azure.Identity;
 using Hyak.Common;
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 using Microsoft.Azure.Commands.Common.Authentication.Utilities;
 using Microsoft.Azure.Commands.Shared.Config;
 using Microsoft.Azure.Internal.Subscriptions;
@@ -92,7 +93,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     .ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
-        public List<IAccessToken> GetTenantTokensForAccount(IAccount account, IAzureEnvironment environment, Action<string> promptAction)
+        public List<IAccessToken> GetTenantTokensForAccount(IAccount account, IAzureEnvironment environment, Action<string> promptAction, ICmdletContext cmdletContext)
         {
             TracingAdapter.Information(string.Format("[AuthenticationClientFactory] Attempting to acquire tenant tokens for account '{0}'.", account.Username));
             List<IAccessToken> result = new List<IAccessToken>();
@@ -101,7 +102,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 Id = account.Username,
                 Type = AzureAccount.AccountType.User
             };
-            var commonToken = AzureSession.Instance.AuthenticationFactory.Authenticate(azureAccount, environment, organizationTenant, null, null, promptAction);
+
+            var commonToken = AzureSession.Instance.AuthenticationFactory.Authenticate(azureAccount, environment, organizationTenant, null, null, promptAction, cmdletContext);
             IEnumerable<string> tenants = Enumerable.Empty<string>();
             using (SubscriptionClient subscriptionClient = GetSubscriptionClient(commonToken, environment))
             {
@@ -112,7 +114,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             {
                 try
                 {
-                    var token = AzureSession.Instance.AuthenticationFactory.Authenticate(azureAccount, environment, tenant, null, null, promptAction);
+                    var token = AzureSession.Instance.AuthenticationFactory.Authenticate(azureAccount, environment, tenant, null, null, promptAction, cmdletContext);
                     if (token != null)
                     {
                         result.Add(token);

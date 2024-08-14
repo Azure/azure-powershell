@@ -28,6 +28,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Azure.Identity;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 
 namespace Microsoft.Azure.Commands.Common
 {
@@ -75,7 +76,7 @@ namespace Microsoft.Azure.Commands.Common
         {
             prependStep(UniqueId.Instance.SendAsync);
             appendStep(new UserAgent(invocationInfo).SendAsync);
-            appendStep(this.SendHandler(GetDefaultContext(_provider, invocationInfo), AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId));
+            appendStep(this.SendHandler(GetDefaultContext(_provider, invocationInfo), AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId, new AzureCmdletContext(correlationId)));
         }
 
         internal void AddRequestUserAgentHandler(
@@ -118,7 +119,12 @@ namespace Microsoft.Azure.Commands.Common
                 {
                     endpointResourceIdKey = endpointResourceIdKey ?? AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId;
                     var context = GetDefaultContext(_provider, invocationInfo);
-                    return await AuthenticationHelper(context, endpointResourceIdKey, endpointSuffixKey, request, cancelToken, cancelAction, signal, next);
+                    ICmdletContext cmdletContext = AzureCmdletContext.CmdletNone;
+                    if (extensibleParameters.ContainsKey(nameof(ICmdletContext)))
+                    {
+                        cmdletContext = extensibleParameters[nameof(ICmdletContext)] as ICmdletContext;
+                    }
+                    return await AuthenticationHelper(context, endpointResourceIdKey, endpointSuffixKey, request, cancelToken, cancelAction, signal, next, cmdletContext);
                 });
         }
 
@@ -193,9 +199,10 @@ namespace Microsoft.Azure.Commands.Common
             return string.Empty;
         }
 
-        internal async Task<HttpResponseMessage> AuthenticationHelper(IAzureContext context, string endpointResourceIdKey, string endpointSuffixKey, HttpRequestMessage request, CancellationToken cancelToken, Action cancelAction, SignalDelegate signal, NextDelegate next, TokenAudienceConverterDelegate tokenAudienceConverter = null)
+        internal async Task<HttpResponseMessage> AuthenticationHelper(IAzureContext context, string endpointResourceIdKey, string endpointSuffixKey, HttpRequestMessage request, CancellationToken cancelToken, Action cancelAction, SignalDelegate signal, NextDelegate next, ICmdletContext cmdletContext, TokenAudienceConverterDelegate tokenAudienceConverter = null)
         {
-            IAccessToken accessToken = await AuthorizeRequest(context, request, cancelToken, endpointResourceIdKey, endpointSuffixKey, tokenAudienceConverter);
+            var extensiableParameters = new Dictionary<string, object>() { { nameof(ICmdletContext), cmdletContext } };
+            IAccessToken accessToken = await AuthorizeRequest(context, request, cancelToken, endpointResourceIdKey, endpointSuffixKey, tokenAudienceConverter, extensiableParameters);
             using (var newRequest = await request.CloneWithContent(request.RequestUri, request.Method))
             {
                 var response = await next(request, cancelToken, cancelAction, signal);
@@ -232,13 +239,14 @@ namespace Microsoft.Azure.Commands.Common
         /// </summary>
         /// <param name="context"></param>
         /// <param name="resourceId"></param>
+        /// <param name="cmdletContext"></param>
         /// <returns></returns>
-        internal Func<HttpRequestMessage, CancellationToken, Action, SignalDelegate, NextDelegate, Task<HttpResponseMessage>> SendHandler(IAzureContext context, string resourceId)
+        internal Func<HttpRequestMessage, CancellationToken, Action, SignalDelegate, NextDelegate, Task<HttpResponseMessage>> SendHandler(IAzureContext context, string resourceId, ICmdletContext cmdletContext)
         {
             return async (request, cancelToken, cancelAction, signal, next) =>
             {
                 PatchRequestUri(context, request);
-                return await AuthenticationHelper(context, resourceId, resourceId, request, cancelToken, cancelAction, signal, next);
+                return await AuthenticationHelper(context, resourceId, resourceId, request, cancelToken, cancelAction, signal, next, cmdletContext);
             };
         }
 
@@ -269,7 +277,12 @@ namespace Microsoft.Azure.Commands.Common
                     var tokenAudience = tokenAudienceConverter.Invoke(info.CurEnvEndpointResourceId, info.CurEnvEndpointSuffix, info.BaseEnvEndpointResourceId, info.BaseEnvEndpointSuffix, request.RequestUri);
                     endpointResourceIdKey = tokenAudience ?? endpointResourceIdKey;
                 }
-                var authToken = _authenticator.Authenticate(context.Account, context.Environment, context.Tenant.Id, null, "Never", null, endpointResourceIdKey);
+                ICmdletContext cmdletContext = null;
+                if (extensibleParamters != null && extensibleParamters.ContainsKey(nameof(ICmdletContext)))
+                {
+                    cmdletContext = extensibleParamters[nameof(ICmdletContext)] as ICmdletContext;
+                }
+                var authToken = _authenticator.Authenticate(context.Account, context.Environment, context.Tenant.Id, null, "Never", null, cmdletContext, endpointResourceIdKey);
                 authToken.AuthorizeRequest((type, token) => request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(type, token));
                 return authToken;
             }, cancellationToken);

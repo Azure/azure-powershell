@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 using Microsoft.Rest;
 using System;
 using System.Collections.Generic;
@@ -45,6 +46,7 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
             string promptBehavior,
             Action<string> promptAction,
             IAzureTokenCache tokenCache,
+            ICmdletContext cmdletContext,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
             if (account.Id == null)
@@ -69,9 +71,10 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
             SecureString password,
             string promptBehavior,
             Action<string> promptAction,
+            ICmdletContext cmdletContext,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
-            return Authenticate(account, environment, tenant, password, promptBehavior, promptAction, AzureSession.Instance.TokenCache, resourceId);
+            return Authenticate(account, environment, tenant, password, promptBehavior, promptAction, AzureSession.Instance.TokenCache, cmdletContext, resourceId);
         }
 
         public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(IAzureContext context)
@@ -84,12 +87,12 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
             return new CertificateCloudCredentials(context.Subscription.Id.ToString(), Certificate);
         }
 
-        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, ICmdletContext cmdletContext)
         {
             throw new NotImplementedException();
         }
 
-        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint, ICmdletContext cmdletContext)
         {
             throw new NotImplementedException();
         }
@@ -104,7 +107,7 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
             throw new NotImplementedException();
         }
 
-        public AuthenticationTelemetry GetDataForTelemetry(string requestId)
+        public AuthenticationTelemetryData GetDataForTelemetry(string requestId)
         {
             throw new NotImplementedException();
         }
