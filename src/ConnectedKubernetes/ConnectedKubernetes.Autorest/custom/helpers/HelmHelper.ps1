@@ -132,10 +132,11 @@ function Get-HelmValues {
         $headers["Authorization"] = "Bearer $($env:AZURE_ACCESS_TOKEN)"
     }
 
+    # The response will be an object representing the ConnectedCluster and we
+    # cannot add arbitrary things to it so convert to a hashtable
+    $RequestBody = $RequestBody | ConvertTo-Json -Depth 10 -Compress | ConvertFrom-Json -AsHashtable
     $dpRequestIdentity = $RequestBody.identity
     $id = $RequestBody.id
-    # $request_body = $request_body.serialize()
-    $RequestBody = $RequestBody | ConvertTo-Json | ConvertFrom-Json -AsHashtable
     $RequestBody["Identity"] = @{
         tenantId = $dpRequestIdentity.tenantId
         principalId = $dpRequestIdentity.principalId
@@ -143,7 +144,7 @@ function Get-HelmValues {
     $RequestBody["Id"] = $id
 
     # Convert $request_body to JSON
-    $jsonBody = $RequestBody | ConvertTo-Json
+    $jsonBody = $RequestBody | ConvertTo-Json -Depth 10 -Compress
 
     # Sending request with retries
     try {

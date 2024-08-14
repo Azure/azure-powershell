@@ -251,14 +251,14 @@ Describe 'Get-AzCloudMetadata' {
 
 Describe 'Get-HelmValues' {
     It 'Golden path' {
-        $rq = @{
+        $rq = {
             identity = @{
                 tenantId = "1234"
                 principalId = "5678"
             }
             id = "abcd"
         }
-        $rsp = @{
+        $rsp = [PSObject]@{
             Frank = "Sinatra"
             Dean = "Martin"
         }
