@@ -11,7 +11,7 @@ function Invoke-ConfigDPHealthCheck {
     # Setting uri
     $apiVersion = "2024-07-01-preview"
     $chartLocationUrlSegment = "azure-arc-k8sagents/healthCheck?api-version=$apiVersion"
-    $chartLocationUrl = "$configDPEndpoint/$chartLocationUrlSegment"
+    $chartLocationUrl = "$configDPEndpoint$chartLocationUrlSegment"
     $uriParameters = [ordered]@{}
     $headers = @{}
     # Check if key AZURE_ACCESS_TOKEN exists in environment variables
@@ -48,9 +48,11 @@ function Get-ConfigDPEndpoint {
     #     $ReleaseTrain = $result.ReleaseTrain
     # }
 
+    # It is currently not clear what information might appear here in the future
+    # so the check of "arcConfigEndpoint" is left is a best guess!".
     # Get the values or endpoints required for retrieving the Helm registry URL.
-    if ($cloudMetadata.dataplaneEndpoints -and $cloudMetadata.dataplaneEndpoints.arcConfigEndpoint) {
-        $ConfigDpEndpoint = $cloudMetadata.dataplaneEndpoints.arcConfigEndpoint
+    if ($cloudMetadata.ArcConfigEndpoint) {
+        $ConfigDpEndpoint = $cloudMetadata.ArcConfigEndpoint
     }
     else {
         Write-Debug "'arcConfigEndpoint' doesn't exist under 'dataplaneEndpoints' in the ARM metadata."
@@ -60,7 +62,9 @@ function Get-ConfigDPEndpoint {
     if ($null -eq $ConfigDpEndpoint) {
         $ConfigDpEndpoint = Get-ConfigDpDefaultEndpoint -Location $Location -CloudMetadata $cloudMetadata
     }
-    $ADResourceId = Get-AZCloudMetadataResourceId -CloudMetadata $cloudMetadata
+    # !!PDS: This appears to be unused.
+    # $ADResourceId = Get-AZCloudMetadataResourceId -CloudMetadata $cloudMetadata
+    $ADResourceId = $null
 
     return @{ ConfigDpEndpoint = $ConfigDpEndpoint; ReleaseTrain = $ReleaseTrain; ADResourceId = $ADResourceId }
 }
@@ -74,10 +78,13 @@ function Get-ConfigDpDefaultEndpoint {
         [PSCustomObject]$cloudMetadata
     )
 
-    # Search the $armMetadata hash for the entry where the "name" parameter matches
-    # $cloud and then find the login endpoint, from which we can discern the
-    # appropriate "cloud based domain ending".
-    $cloudBasedDomain = ($cloudMetadata.authentication.loginEndpoint -split "\.", 3)[2]
+    # The DP endpoint uses the same final URL portion as the AAD authority.  But
+    # we also need to trim the trailing "/".
+    $cloudBasedDomain = ($cloudMetadata.ActiveDirectoryAuthority -split "\.")[2]
+
+    # Remove optional trailing "/" from $cloudBasedDomain
+    $cloudBasedDomain = $cloudBasedDomain.TrimEnd('/')
+
     $configDpEndpoint = "https://${location}.dp.kubernetesconfiguration.azure.${cloudBasedDomain}"
     return $configDpEndpoint
 }

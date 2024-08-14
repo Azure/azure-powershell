@@ -134,9 +134,7 @@ Describe 'Get-ConfigDpDefaultEndpoint' {
     It 'Golden path' {
         {
            $cloudMetadata = [PSCustomObject]@{
-                authentication = [PSCustomobject]@{
-                    loginEndpoint = "https://login.microsoftonline.com"
-               }
+               ActiveDirectoryAuthority = "https://login.microsoftonline.com/"
            }
            $script:configDpEndpoint = Get-ConfigDpDefaultEndpoint `
                 -Location "eastus2" `
@@ -146,18 +144,16 @@ Describe 'Get-ConfigDpDefaultEndpoint' {
     }
 
     # !!PDS: How do we validate this?  Need to check endpoint on a sovereign cloud.
-    It 'Soveregn cloud' {
+    It 'Sovereign cloud' {
         {
            $cloudMetadata = [PSCustomObject]@{
-                authentication = [PSCustomobject]@{
-                    loginEndpoint = "https://login.microsoftonline.sovereign.com"
-               }
+               ActiveDirectoryAuthority = "https://login.sovereign.invalid/"
            }
            $script:configDpEndpoint = Get-ConfigDpDefaultEndpoint `
                 -Location "westus3" `
                 -CloudMetadata $cloudMetadata
         } | Should -Not -Throw
-        $configDpEndpoint | Should -Be "https://westus3.dp.kubernetesconfiguration.azure.sovereign.com"
+        $configDpEndpoint | Should -Be "https://westus3.dp.kubernetesconfiguration.azure.invalid"
     }
 }
 
@@ -165,91 +161,34 @@ Describe 'Get-ConfigDpEndpoint' {
     It 'Golden path' {
         {
             $cloudMetadata = [PSCustomObject]@{
-                authentication = [PSCustomobject]@{
-                    loginEndpoint = "https://login.microsoftonline.com"
-                    audiences = @(
-                        "https://management.core.windows.net/"
-                        "https://management.azure.com/"
-                    )
-                }
+                ArcConfigEndpoint = "https://arc.microsoftonline.com"
+                ActiveDirectoryAuthority = "https://login.microsoftonline.com"
             }
            $script:configDpEndpoint = Get-ConfigDpEndpoint `
                 -Location "eastus2" `
                 -CloudMetadata $cloudMetadata
         } | Should -Not -Throw
 
-        $configDpEndpoint.ConfigDpEndpoint | Should -Be "https://eastus2.dp.kubernetesconfiguration.azure.com"
+        $configDpEndpoint.ConfigDpEndpoint | Should -Be "https://arc.microsoftonline.com"
         $configDpEndpoint.ReleaseTrain | Should -Be $null
-        $configDpEndpoint.ADResourceId | Should -Be "https://management.core.windows.net/"
+        # !!PDS: Don't believe we require this!
+        $configDpEndpoint.ADResourceId | Should -Be $null
     }
 
-    It 'Read ARM metadata' {
+    It 'No ArcconfigEndpoints' {
         {
             $cloudMetadata = [PSCustomObject]@{
-                authentication = [PSCustomobject]@{
-                    loginEndpoint = "https://login.microsoftonline.com"
-                    audiences = @(
-                        "https://management.core.windows.net/"
-                        "https://management.azure.com/"
-                    )
-                }
-            }
-           $script:configDpEndpoint = Get-ConfigDpEndpoint `
-                -Location "eastus2" `
-                -CloudMetadata $cloudMetadata
-        } | Should -Not -Throw
-
-        $configDpEndpoint.ConfigDpEndpoint | Should -Be "https://eastus2.dp.kubernetesconfiguration.azure.com"
-        $configDpEndpoint.ReleaseTrain | Should -Be $null
-        $configDpEndpoint.ADResourceId | Should -Be "https://management.core.windows.net/"
-    }
-
-    It 'DataPlaneEndpoints, no ArcconfigEndpoints' {
-        {
-            $cloudMetadata = [PSCustomObject]@{
-                dataPlaneEndpoints = [PSCustomobject]@{
-                    something = "random"
-                }
-                authentication = [PSCustomobject]@{
-                    loginEndpoint = "https://login.microsoftonline.com"
-                    audiences = @(
-                        "https://management.core.windows.net/"
-                        "https://management.azure.com/"
-                    )
-                }
-            }
-           $script:configDpEndpoint = Get-ConfigDpEndpoint `
-                -Location "eastus2" `
-                -CloudMetadata $cloudMetadata
-        } | Should -Not -Throw
-
-        $configDpEndpoint.ConfigDpEndpoint | Should -Be "https://eastus2.dp.kubernetesconfiguration.azure.com"
-        $configDpEndpoint.ReleaseTrain | Should -Be $null
-        $configDpEndpoint.ADResourceId | Should -Be "https://management.core.windows.net/"
-    }
-
-    It 'DataPlaneEndpoints and ArcConfigEndpoint' {
-        {
-            $cloudMetadata = [PSCustomObject]@{
-                dataPlaneEndpoints = [PSCustomobject]@{
-                    arcConfigEndpoint = "https://xanadu.dp.kubernetesconfiguration.azure.pleasuredome.com"
-                }
-                authentication = [PSCustomobject]@{
-                    loginEndpoint = "https://login.microsoftonline.com"
-                    audiences = @(
-                        "https://management.core.windows.net/"
-                        "https://management.azure.com/"
-                    )
-                }
+                ActiveDirectoryAuthority = "https://login.microsoftonline.com"
             }
             $script:configDpEndpoint = Get-ConfigDpEndpoint `
-                -Location "eastus2" `
-                -CloudMetadata $cloudMetadata
+                    -Location "eastus2" `
+                    -CloudMetadata $cloudMetadata
         } | Should -Not -Throw
 
-        $configDpEndpoint.ConfigDpEndpoint | Should -Be "https://xanadu.dp.kubernetesconfiguration.azure.pleasuredome.com"
+        $configDpEndpoint.ConfigDpEndpoint | Should -Be "https://eastus2.dp.kubernetesconfiguration.azure.com"
         $configDpEndpoint.ReleaseTrain | Should -Be $null
-        $configDpEndpoint.ADResourceId | Should -Be "https://management.core.windows.net/"
+        # !!PDS: Don't believe we require this!
+        $configDpEndpoint.ADResourceId | Should -Be $null
     }
 }
 
