@@ -517,8 +517,7 @@ namespace Microsoft.Azure.Commands.Profile
                     return;
                 }
 
-                IHttpOperationsFactory httpClientFactory = null;
-                AzureSession.Instance.TryGetComponent(HttpClientOperationsFactory.Name, out httpClientFactory);
+                AzureSession.Instance.TryGetComponent(HttpClientOperationsFactory.Name, out IHttpOperationsFactory httpClientFactory);
 
                 SetContextWithOverwritePrompt((localProfile, profileClient, name) =>
                 {
@@ -860,7 +859,7 @@ namespace Microsoft.Azure.Commands.Profile
                 AzureSession.Instance.RegisterComponent(nameof(MsalAccessTokenAcquirerFactory), () => new MsalAccessTokenAcquirerFactory());
                 AzureSession.Instance.RegisterComponent<ISshCredentialFactory>(nameof(ISshCredentialFactory), () => new SshCredentialFactory());
                 AzureSession.Instance.RegisterComponent<IOutputSanitizer>(nameof(IOutputSanitizer), () => new OutputSanitizer());
-                AzureSession.Instance.RegisterComponent<ThreadCmdldetMap>(nameof(ThreadCmdldetMap), () => new ThreadCmdldetMap());
+                AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(nameof(AuthenticationTelemetry), () => new AuthenticationTelemetry());
 #if DEBUG || TESTCOVERAGE
                 AzureSession.Instance.RegisterComponent<ITestCoverage>(nameof(ITestCoverage), () => new TestCoverage());
 #endif

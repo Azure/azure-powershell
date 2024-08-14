@@ -102,6 +102,7 @@ namespace Microsoft.Azure.Commands.Profile
                 TenantId = context.Tenant?.Id;
             }
 
+            context.Account.SetProperty("CmdletId", this._clientRequestId);
             IAccessToken accessToken = AzureSession.Instance.AuthenticationFactory.Authenticate(
                                 context.Account,
                                 context.Environment,
@@ -119,7 +120,7 @@ namespace Microsoft.Azure.Commands.Profile
                 UserId = accessToken.UserId,
             };
             result.ExpiresOn = (accessToken as MsalAccessToken)?.ExpiresOn ?? result.ExpiresOn;
-            if(result.ExpiresOn == default(DateTimeOffset))
+            if (result.ExpiresOn == default)
             {
                 try
                 {

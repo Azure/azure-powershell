@@ -17,6 +17,7 @@ using Azure.Core;
 using Hyak.Common;
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Utilities;
@@ -101,6 +102,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         /// <param name="promptBehavior"></param>
         /// <param name="promptAction"></param>
         /// <param name="tokenCache"></param>
+        /// <param name="cmdletContext"></param>
         /// <param name="resourceId"></param>
         /// <returns></returns>
         public IAccessToken Authenticate(
@@ -111,18 +113,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             string promptBehavior,
             Action<string> promptAction,
             IAzureTokenCache tokenCache,
+            ICmdletContext cmdletContext,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
-            var requestId = string.Empty;
-            if (AzureSession.Instance.TryGetComponent(nameof(ThreadCmdldetMap), out ThreadCmdldetMap threadCmdletMap))
+
+            if (!AzureSession.Instance.TryGetComponent(nameof(AuthenticationTelemetry), out AuthenticationTelemetry authenticationTelemetry))
             {
-                requestId = threadCmdletMap.PopCmdletId();
+                throw new NullReferenceException("AuthenticationTelemetry not registered");
             }
-            if (!string.IsNullOrEmpty(requestId) && !telemetryDataAccquirer.ContainsKey(requestId))
-            {
-                telemetryDataAccquirer[requestId] = new List<AuthTelemetryRecord>();
-            }
-            IAccessToken token = null;
 
             PowerShellTokenCacheProvider tokenCacheProvider;
             if (!AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out tokenCacheProvider))
@@ -134,6 +132,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             var processAuthenticator = Builder.Authenticator;
             var retries = 5;
             var authParamters = GetAuthenticationParameters(tokenCacheProvider, account, environment, tenant, password, promptBehavior, promptAction, tokenCache, resourceId);
+
+            IAccessToken token = null;
             while (retries-- > 0)
             {
                 try
@@ -149,10 +149,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                             {
                                 account.SetProperty(AzureAccount.Property.HomeAccountId, token.HomeAccountId);
                             }
-                            if (telemetryDataAccquirer.ContainsKey(requestId))
-                            {
-                                telemetryDataAccquirer[requestId].Add(new AuthTelemetryRecord(Builder.Authenticator.GetDataForTelemetry(), true));
-                            }
+                            authenticationTelemetry.PushTelemetryRecord(cmdletContext, new AuthTelemetryRecord(Builder.Authenticator.GetDataForTelemetry(), true));
                             break;
                         }
 
@@ -163,10 +160,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 {
                     if (!IsTransientException(e) || retries == 0)
                     {
-                        if (telemetryDataAccquirer.ContainsKey(requestId))
-                        {
-                            telemetryDataAccquirer[requestId].Add(new AuthTelemetryRecord(Builder.Authenticator.GetDataForTelemetry(), false));
-                        }
+                        authenticationTelemetry.PushTelemetryRecord(cmdletContext, new AuthTelemetryRecord(Builder.Authenticator.GetDataForTelemetry(), false));
                         var mfaException = AnalyzeMsalException(e, environment, tenant, resourceId);
                         if (mfaException != null)
                         {
@@ -242,6 +236,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             SecureString password,
             string promptBehavior,
             Action<string> promptAction,
+            ICmdletContext cmdletContext,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
             return Authenticate(
@@ -251,6 +246,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 promptBehavior,
                 promptAction,
                 null,
+                cmdletContext,
                 resourceId);
         }
 
@@ -322,7 +318,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                                 null,
                                 ShowDialog.Never,
                                 null,
-                                null,
+                                AzureCmdletContext.CmdletNone,
                                 context.Environment.GetTokenAudience(targetEndpoint));
 
                 TracingAdapter.Information(
@@ -344,22 +340,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         }
 
 
-        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, ICmdletContext cmdletContext)
         {
-            return GetServiceClientCredentials(context,
-                AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
+            return GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId, cmdletContext);
         }
 
-        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint, ICmdletContext cmdletContext)
         {
             if (context == null)
             {
                 throw new AzPSApplicationException("Azure context is empty");
             }
-            return GetServiceClientCredentials(context, targetEndpoint, context.Environment.GetTokenAudience(targetEndpoint));
+            return GetServiceClientCredentials(context, targetEndpoint, context.Environment.GetTokenAudience(targetEndpoint), cmdletContext);
         }
 
-        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint, string resourceId)
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint, string resourceId, ICmdletContext cmdletContext)
         {
             if (context.Account == null)
             {
@@ -405,7 +400,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     case AzureAccount.AccountType.User:
                     case AzureAccount.AccountType.ServicePrincipal:
                     case "ClientAssertion":
-                        token = Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, resourceId);
+                        token = Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, cmdletContext, resourceId);
                         break;
                     default:
                         throw new NotSupportedException(context.Account.Type.ToString());
@@ -642,14 +637,5 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         }
 
         private ConcurrentDictionary<string, IList<AuthTelemetryRecord>> telemetryDataAccquirer = new ConcurrentDictionary<string, IList<AuthTelemetryRecord>>();
-
-        public AuthenticationTelemetry GetDataForTelemetry(string requestId)
-        {
-            if (telemetryDataAccquirer.ContainsKey(requestId)) 
-            {
-                return new AuthenticationTelemetry(telemetryDataAccquirer[requestId]);
-            }
-            return null;
-        }
     }
 }
