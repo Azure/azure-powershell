@@ -5,7 +5,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzConnectedKubernetes'))
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzConnectedKubernetes.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -18,6 +17,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzConnectedKubernetes'))
   . "$PSScriptRoot/../custom/helpers/AzCloudMetadataHelper.ps1"
 }
 
+# The custom tests make helm requests and the framework does not mock these so
+# record/replay will not work.
 Describe 'New-AzConnectedKubernetes' {
     It 'CreateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
@@ -253,40 +254,58 @@ Describe 'Get-ConfigDpEndpoint' {
 }
 
 Describe 'Get-AzCloudMetadata' {
+    # For some reason Pester fails to "see" Get-AzureEnvirnomment so we create
+    # and empty instance here that we can the mock.
+    BeforeEach {
+        Function Get-AzureEnvironment {
+        }
+    }
+
     It 'Golden path' {
-        Mock Invoke-RestMethod {
-            $Script:StatusCode = 200
-            $rsp = @{
-                name = "AzureCloud"
-                authentication = @{
-                    audiences = @("https://management.core.windows.net/")
-                    loginEndpoint = "https://login.microsoftonline.com"
+        Mock Get-AzContext {
+            return [PSCustomObject]@{
+                Environment = [PSCustomObject]@{
+                    Name = "SovereignAzureCloud"
                 }
             }
-            return $rsp
         }
-        { Get-AzCloudMetadata } | Should -Not -Throw
-        Assert-MockCalled "Invoke-RestMethod" -Times 1
+        Mock Get-AzureEnvironment {
+            $context = [PSCustomObject]@{
+                Name = "AzureCloud"
+            }
+            return $context
+        }
+        { $Script:cloud = Get-AzCloudMetadata } | Should -Not -Throw
+        Assert-MockCalled "Get-AzContext" -Times 1
+        Assert-MockCalled "Get-AzureEnvironment" -Times 1
+        # Ref: https://github.com/pester/Pester/issues/2556
+        # Assert-MockCalled "Get-AzureEnvironment" -Times 1 -ParameterFilter { $Local:Name -eq "SovereignAzureCloud" }
+        Assert-VerifiableMock
+        $cloud.name | Should -Be "AzureCloud"
+    }
+
+    It 'Get-AzContext fails' {
+        Mock Get-AzContext {
+            throw "Some error!"
+        }
+        { Get-AzCloudMetadata } | Should -Throw "Failed to get the current Azure context. Error: Some error!"
+        Assert-MockCalled "Get-AzContext" -Times 1
         Assert-VerifiableMock
     }
 
-    It 'Error response' {
-        Mock Invoke-RestMethod {
-            $Script:StatusCode = 500
-            $rsp = @{}
-            return $rsp
+    It 'Get-AzureEnvironment fails' {
+        Mock Get-AzContext {
+            return [PSCustomObject]@{
+                Environment = [PSCustomObject]@{
+                    Name = "SovereignAzureCloud"
+                }
+            }
         }
-        { Get-AzCloudMetadata } | Should -Throw "ARM metadata endpoint 'https://management.azure.com/metadata/endpoints?api-version=2022-09-01' failed: 500"
-        Assert-MockCalled "Invoke-RestMethod" -Times 1
-        Assert-VerifiableMock
-    }
-
-    It 'Exception during REST API.' {
-        Mock Invoke-RestMethod {
-            throw "Failed"
+        Mock Get-AzureEnvironment {
+            throw "Some error!"
         }
-        { Get-AzCloudMetadata } | Should -Throw "Failed to request ARM metadata https://management.azure.com/metadata/endpoints?api-version=2022-09-01. Please ensure you have network connection."
-        Assert-MockCalled "Invoke-RestMethod" -Times 1
+        { Get-AzCloudMetadata } | Should -Throw "Failed to request ARM metadata. Error: Some error!"
+        Assert-MockCalled "Get-AzContext" -Times 1
         Assert-VerifiableMock
     }
 }
