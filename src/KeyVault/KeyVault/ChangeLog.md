@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded Get-AzKeyVaultKey for key vault key to track 2 SDK.
 
 ## Version 6.0.0
 * [Breaking change] Removed the offline fallback policy if specify parameter `UseDefaultCVMPolicy` in `Add-AzKeyVaultKey`. Key creation will fail if unable to get regional default CVM SKR policy from MAA Service Discovery API.
