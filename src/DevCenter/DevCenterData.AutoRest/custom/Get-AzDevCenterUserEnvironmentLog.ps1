@@ -53,6 +53,7 @@ https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruseren
 #>
 function Get-AzDevCenterUserEnvironmentLog {
     [OutputType([System.Boolean])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.OutputBreakingChangeAttribute("boolean", "13.0.0", "2.0.0", "2024/11/19", ReplacementCmdletOutputType="string")]
     [CmdletBinding(DefaultParameterSetName = 'Get', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'Get', Mandatory)]
@@ -102,6 +103,7 @@ function Get-AzDevCenterUserEnvironmentLog {
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
         [System.String]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ParameterBreakingChangeAttribute("OutFile", "13.0.0", "2.0.0", "2024/11/19")]
         # Path to write output file to
         ${OutFile},
 
@@ -137,6 +139,7 @@ function Get-AzDevCenterUserEnvironmentLog {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ParameterBreakingChangeAttribute("PassThru", "13.0.0", "2.0.0", "2024/11/19")]
         # Returns true when the command succeeds
         ${PassThru},
 
