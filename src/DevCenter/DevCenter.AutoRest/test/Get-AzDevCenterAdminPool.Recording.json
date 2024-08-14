@@ -1,8 +1,8 @@
 {
-  "Get-AzDevCenterAdminPool+[NoContext]+List+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/pools?api-version=2023-10-01-preview+1": {
+  "Get-AzDevCenterAdminPool+[NoContext]+List+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/pools?api-version=2024-05-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/pools?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/pools?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -40,10 +40,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDevCenterAdminPool+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/pools/vpa70o?api-version=2023-10-01-preview+1": {
+  "Get-AzDevCenterAdminPool+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/pools/vpa70o?api-version=2024-05-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/pools/vpa70o?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/pools/vpa70o?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -82,10 +82,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDevCenterAdminPool+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/pools/vpa70o?api-version=2023-10-01-preview+1": {
+  "Get-AzDevCenterAdminPool+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/pools/vpa70o?api-version=2024-05-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/pools/vpa70o?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/pools/vpa70o?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -124,10 +124,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDevCenterAdminPool+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/pools/vpa70o?api-version=2023-10-01-preview+2": {
+  "Get-AzDevCenterAdminPool+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/pools/vpa70o?api-version=2024-05-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/pools/vpa70o?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/pools/vpa70o?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

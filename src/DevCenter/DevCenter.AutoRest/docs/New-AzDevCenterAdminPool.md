@@ -17,9 +17,10 @@ Creates or updates a machine pool
 New-AzDevCenterAdminPool -Name <String> -ProjectName <String> -ResourceGroupName <String>
  -DevBoxDefinitionName <String> -LocalAdministrator <LocalAdminStatus> -Location <String>
  -NetworkConnectionName <String> [-SubscriptionId <String>] [-DisplayName <String>]
- [-ManagedVirtualNetworkRegion <String[]>] [-SingleSignOnStatus <SingleSignOnStatus>] [-Tag <Hashtable>]
- [-VirtualNetworkType <VirtualNetworkType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-ManagedVirtualNetworkRegion <String[]>] [-SingleSignOnStatus <SingleSignOnStatus>]
+ [-StopOnDisconnectGracePeriodMinute <Int32>] [-StopOnDisconnectStatus <StopOnDisconnectEnableStatus>]
+ [-Tag <Hashtable>] [-VirtualNetworkType <VirtualNetworkType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -27,6 +28,7 @@ New-AzDevCenterAdminPool -Name <String> -ProjectName <String> -ResourceGroupName
 New-AzDevCenterAdminPool -InputObject <IDevCenterIdentity> -DevBoxDefinitionName <String>
  -LocalAdministrator <LocalAdminStatus> -Location <String> -NetworkConnectionName <String>
  [-DisplayName <String>] [-ManagedVirtualNetworkRegion <String[]>] [-SingleSignOnStatus <SingleSignOnStatus>]
+ [-StopOnDisconnectGracePeriodMinute <Int32>] [-StopOnDisconnectStatus <StopOnDisconnectEnableStatus>]
  [-Tag <Hashtable>] [-VirtualNetworkType <VirtualNetworkType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -267,6 +269,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -StopOnDisconnectGracePeriodMinute
+The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StopOnDisconnectStatus
+Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -352,7 +384,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IPool
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IPool
 
 ## NOTES
 

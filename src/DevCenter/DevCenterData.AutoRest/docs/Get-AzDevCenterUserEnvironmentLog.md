@@ -15,15 +15,13 @@ Gets the logs for an operation on an environment.
 ### Get (Default)
 ```
 Get-AzDevCenterUserEnvironmentLog -Endpoint <String> -EnvironmentName <String> -OperationId <String>
- -ProjectName <String> -OutFile <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [<CommonParameters>]
+ -ProjectName <String> -OutFile <String> [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
 Get-AzDevCenterUserEnvironmentLog -DevCenterName <String> -EnvironmentName <String> -OperationId <String>
- -ProjectName <String> -OutFile <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [<CommonParameters>]
+ -ProjectName <String> -OutFile <String> [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -138,21 +136,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ProjectName
 The DevCenter Project upon which to execute operations.
 
@@ -193,7 +176,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### System.String
 
 ## NOTES
 
