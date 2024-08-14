@@ -47,7 +47,8 @@ namespace Microsoft.Azure.Commands.Profile.Common
             {
                 var client = new RMProfileClient(profile)
                 {
-                    WarningLog = (s) => WriteWarning(s)
+                    WarningLog = (s) => WriteWarning(s),
+                    CmdletContext = _cmdletContext
                 };
                 contextAction(profile.ToProfile(), client);
             }
@@ -79,7 +80,10 @@ namespace Microsoft.Azure.Commands.Profile.Common
                     result = currentProfile;
                     break;
                 case ContextModificationScope.CurrentUser:
-                    result = new AzureRmAutosaveProfile(currentProfile, ProtectedFileProvider.CreateFileProvider(Path.Combine(AzureSession.Instance.ARMProfileDirectory, AzureSession.Instance.ARMProfileFile), FileProtection.ExclusiveWrite));
+                    result = new AzureRmAutosaveProfile(currentProfile, ProtectedFileProvider.CreateFileProvider(Path.Combine(AzureSession.Instance.ARMProfileDirectory, AzureSession.Instance.ARMProfileFile), FileProtection.ExclusiveWrite))
+                    {
+                        CmdletContext = _cmdletContext
+                    };
                     break;
             }
 
