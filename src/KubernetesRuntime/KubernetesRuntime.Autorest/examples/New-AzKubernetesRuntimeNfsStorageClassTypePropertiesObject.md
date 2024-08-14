@@ -5,7 +5,7 @@ $typeProperties = New-AzKubernetesRuntimeNfsStorageClassTypePropertiesObject `
     -Share "/share" `
     -MountPermission "777" `
     -OnDelete "Delete" `
-    -SubdDir "subdir"
+    -SubDir "subdir"
 ```
 
 Create a `NfsStorageClassTypeProperties` object.

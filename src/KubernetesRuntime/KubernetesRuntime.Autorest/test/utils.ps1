@@ -43,6 +43,50 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
+
+    # Install required modules
+    Install-Module -Name Az.KubernetesConfiguration -AllowClobber -Scope CurrentUser -Force
+    Install-Module -Name Az.ConnectedKubernetes -AllowClobber -Scope CurrentUser -Force
+    Install-Module -Name Az.Aks -AllowClobber -Scope CurrentUser -Force
+    Install-Module -Name Az.Resources -AllowClobber -Scope CurrentUser -RequiredVersion 6.16.2 -Force
+    Import-Module Az.Resources
+    Remove-Module Az.Resources.TestSupport
+
+    # Prepare tested resources
+    # $aksName = RandomString -allChars $false -len 6
+    $aksName = "ty87sd"
+
+    $arcName = $aksName + "-arc"
+
+    $env.Add("AksName", $aksName)
+    $env.Add("ArcName", $arcName)
+    $env.Add("Location", "eastus2")
+    $resourceGroup = "k8sruntime-pwsh-test-rg-" + $env.aksName
+    $env.Add("ResourceGroup", $resourceGroup)
+
+    $sshKeyDir = "$([System.IO.Path]::GetTempPath())aksssh"
+
+    $tempSshKeyPath = "$sshKeyDir/id_rsa"
+    $env.Add("SshKeyPath", $tempSshKeyPath)
+
+
+    # write-host "1. start to create test group..."
+    # New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
+
+    # write-host "2. az aks create..."
+    # Remove-Item -Recurse -Force $sshKeyDir
+    # New-Item -Path $sshKeyDir -Force -ItemType Directory
+    
+
+    # ssh-keygen -b 2048 -t rsa -f $tempSshKeyPath -q -N '""'
+    # New-AzAksCluster -Name $env.aksName -ResourceGroupName $env.resourceGroup -SshKeyValue "${tempSshKeyPath}.pub" -Location $env.Location
+
+    # write-host "3. az aks get-credentials..."
+    # Import-AzAksCredential -Name $env.aksName -ResourceGroupName $env.resourceGroup -Force
+
+    # write-host "4. az connectedk8s connect..."
+    # New-AzConnectedKubernetes -ClusterName $env.arcName -ResourceGroupName $env.resourceGroup -Location $env.location
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -52,5 +96,8 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    # Remove-AzResourceGroup -Name $env.resourceGroup
+    # Remove-Item -Path $env.SshKeyPath
+    # Remove-Item -Path ${env.SshKeyPath}.pub
 }
 

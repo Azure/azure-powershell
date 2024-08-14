@@ -144,8 +144,6 @@ function Enable-AzKubernetesRuntimeStorageClass {
 
             $oid = QueryRpObjectId 
 
-            ImportModule -ModuleName Az.KubernetesConfiguration
-
             Write-Output "Installing storage class Arc Extension in cluster $($connected_cluster_resource_id.ClusterName) in resource group $($connected_cluster_resource_id.ResourceGroup)..."
 
             $extension = New-AzKubernetesExtension `
