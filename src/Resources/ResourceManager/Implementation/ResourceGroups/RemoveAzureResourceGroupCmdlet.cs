@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Resources
         {
             Name = Name ?? ResourceIdentifier.FromResourceGroupIdentifier(this.Id).ResourceGroupName;
 
-            if (ForceDeletionType.Count() <= 0)
+            if (string.IsNullOrEmpty(ForceDeletionType))
             {
                 ConfirmAction(
                     Force.IsPresent,
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Resources
                     string.Format(ProjectResources.RemovingResourceGroup, Name),
                     ProjectResources.RemoveResourceGroupMessage,
                     Name,
-                    () => NewResourceManagerSdkClient.DeleteResourceGroup(Name,ForceDeletionType));
+                    () => NewResourceManagerSdkClient.DeleteResourceGroup(Name, ForceDeletionType));
             }
 
             WriteObject(true);
