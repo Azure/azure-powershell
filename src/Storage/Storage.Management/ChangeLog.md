@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported account tier Cold
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
 * Updated list share output display format 
     - `Get-AzStorageShare`
 
