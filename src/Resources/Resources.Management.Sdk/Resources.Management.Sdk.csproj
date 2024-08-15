@@ -12,9 +12,5 @@
 		<NoWarn>$(NoWarn);CS0108;CS1573;CS1570</NoWarn>
 	</PropertyGroup>
 
-	<ItemGroup>
-	  <Folder Include="Utility\" />
-	</ItemGroup>
-
 	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 </Project>
