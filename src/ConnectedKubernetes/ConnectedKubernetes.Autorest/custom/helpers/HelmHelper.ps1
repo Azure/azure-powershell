@@ -149,8 +149,6 @@ function Get-HelmValues {
 
         # Response is a Hashtable of JSON values.
         if ($StatusCode -eq 200 -and $r) {
-            Write-Error "Helm values fetched from DP: $($r | ConvertTo-Json -Depth 10)"
-            Write-Error "Response type: $($r.GetType())"
             return $r
         }
     }

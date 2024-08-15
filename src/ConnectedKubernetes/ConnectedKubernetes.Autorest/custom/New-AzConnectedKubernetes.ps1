@@ -32,6 +32,7 @@ https://learn.microsoft.com/powershell/module/az.connectedkubernetes/new-azconne
 
 [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '',
     Justification='Kubernetes is a recognised term', Scope='Function', Target='New-AzConnectedKubernetes')]
+[CmdletBinding()]    
 param()
 
 function New-AzConnectedKubernetes {
@@ -277,7 +278,6 @@ function New-AzConnectedKubernetes {
         . "$PSScriptRoot/helpers/ConfigDPHelper.ps1"
         . "$PSScriptRoot/helpers/AZCloudMetadataHelper.ps1"
         Write-Debug "Debug: Inside of process"
-        Write-Error "Error: Inside of process"
         if($AzureHybridBenefit){
             if(!$AcceptEULA){
                 $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
@@ -413,7 +413,11 @@ function New-AzConnectedKubernetes {
             $ConfigmapRgName = $Configmap.data.AZURE_RESOURCE_GROUP
             $ConfigmapClusterName = $Configmap.data.AZURE_RESOURCE_NAME
             try {
-                $ExistConnectedKubernetes = Get-AzConnectedKubernetes -ResourceGroupName $ConfigmapRgName -ClusterName $ConfigmapClusterName @CommonPSBoundParameters
+                $ExistConnectedKubernetes = Get-AzConnectedKubernetes `
+                  -ResourceGroupName $ConfigmapRgName `
+                  -ClusterName $ConfigmapClusterName `
+                  @CommonPSBoundParameters `
+                  -ErrorAction 'silentlycontinue'
 
                 if (($ResourceGroupName -eq $ConfigmapRgName) -and ($ClusterName -eq $ConfigmapClusterName)) {
                     # This performs a re-PUT of an existing connected cluster which should really be done using
@@ -427,7 +431,8 @@ function New-AzConnectedKubernetes {
                 return
             } catch {
                 # This is attempting to delete Azure Arc resources that are orphaned.
-                helm delete azure-arc --namespace $ReleaseNamespace --kubeconfig $KubeConfig --kube-context $KubeContext
+                # We are catching and ignoring any messages here.
+                $null = helm delete azure-arc --ignore-not-found --namespace $ReleaseNamespace --kubeconfig $KubeConfig --kube-context $KubeContext
             }
         }
 
@@ -671,7 +676,10 @@ function New-AzConnectedKubernetes {
         $configDpinfo = Get-ConfigDPEndpoint -location $Location -Cloud $cloudMetadata
         $configDPEndpoint = $configDpInfo.configDPEndpoint
         $adResourceId = $configDpInfo.adResourceId
-        Invoke-ConfigDPHealthCheck -configDPEndpoint $configDPEndpoint -Resource $adResourceId
+
+        # If the health check fails (not 200 response), an exception is thrown 
+        # so we can ignore the output.
+        $null = Invoke-ConfigDPHealthCheck -configDPEndpoint $configDPEndpoint -Resource $adResourceId
 
         # This call does the "pure ARM" update of the ARM objects.
         Write-Debug "Writing Connected Kubernetes ARM objects."
@@ -698,8 +706,6 @@ function New-AzConnectedKubernetes {
 
         Write-Debug "helmValuesDp: $helmValuesDp"
         Write-Debug "OCI Artifact location: ${helmValuesDp.repositoryPath}."
-        Write-Error "helmValuesDp: $helmValuesDp" -ErrorAction Continue
-        Write-Error "OCI Artifact location: ${$helmValuesDp.repositoryPath}." -ErrorAction Continue
 
         # Allow a custom OCI registry to be set via environment variables.
         # !!PDS: Where are these variables documented?  Should they be?
@@ -716,7 +722,7 @@ function New-AzConnectedKubernetes {
         Write-Debug "RegistryPath: ${registryPath}."
 
         $helmValuesContent = $helmValuesDp.helmValuesContent
-        Write-Error "Helm values: ${helmValuesContent}."
+        Write-Debug "Helm values: ${helmValuesContent}."
 
         foreach ($field in $helmValuesContent.PSObject.Properties) {
             if ($field.Name -in @("global.httpsProxy", "global.httpProxy", "global.noProxy", "global.proxyCert")) {
@@ -742,7 +748,7 @@ function New-AzConnectedKubernetes {
         # !!PDS Aren't we supposed to read the helm config from the Cluster Config DP?
         # !!PDS: I think we might have done above, but why are we setting many options?
         $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
-        Write-Error $options -ErrorAction Continue
+        Write-Debug $options -ErrorAction Continue
         try {
             helm upgrade `
             --install azure-arc `
