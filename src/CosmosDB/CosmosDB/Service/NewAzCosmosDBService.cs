@@ -60,8 +60,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
             }
 
-            ServiceResourceCreateUpdateParameters parameters = new ServiceResourceCreateUpdateParameters(
+            ServiceResourceCreateUpdateProperties properties = new ServiceResourceCreateUpdateProperties(
                 instanceSize: InstanceSize, instanceCount: InstanceCount, serviceType: ServiceType.SqlDedicatedGateway);
+
+            ServiceResourceCreateUpdateParameters parameters = new ServiceResourceCreateUpdateParameters(properties);
 
             ServiceResource serviceResults = CosmosDBManagementClient.Service.CreateWithHttpMessagesAsync(ResourceGroupName, AccountName, ServiceName, parameters).GetAwaiter().GetResult().Body;
             WriteObject(new PSServiceGetResults(serviceResults));
