@@ -48,26 +48,24 @@ function setupEnv() {
 
     $clusterNameEUS1 = RandomString -allChars $false -len 6
     $clusterNameEUS2 = RandomString -allChars $false -len 6
-    $clusterNameEUS3 = RandomString -allChars $false -len 6
     $env.Add("clusterNameEUS1", $clusterNameEUS1)
     $env.Add("clusterNameEUS2", $clusterNameEUS2)
-    $env.Add("clusterNameEUS3", $clusterNameEUS3)
 
     $K8sName = RandomString -allChars $false -len 6
     $env.Add("K8sName", $K8sName)
 
-    $env.Add("locationEUS","eastus2euap")
+    $env.Add("locationEUS","eastus")
 
     $resourceGroupEUS = "testgroup" + $env.locationEUS
     $env.Add("resourceGroupEUS", $resourceGroupEUS)
 
-    $kubeContext = 'kind-good-cluster'
+    $kubeContext = 'youriKubtest'
     $env.Add('kubeContext', $kubeContext)
 
-    write-host "1. Creating a test resource group..."
+    write-host "1. start to create test group..."
     New-AzResourceGroup -Name $env.resourceGroupEUS -Location "eastus"
 
-    write-host "2. Creating a Connected Kubernetes..."
+    write-host "1. Create a Connected Kubernetes..."
     New-AzConnectedKubernetes -ClusterName $env.clusterNameEUS2 -ResourceGroupName $env.resourceGroupEUS -Location $env.locationEUS -KubeConfig $HOME\.kube\config -KubeContext $env.kubeContext
 
     $envFile = 'env.json'

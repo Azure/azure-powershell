@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added OIDC and WIF flags to ConnectedCluster Cmdlet
 
 ## Version 0.10.2
 * Introduced secrets detection feature to safeguard sensitive data.
