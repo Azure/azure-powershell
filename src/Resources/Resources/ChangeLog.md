@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Removed specific characters from the codebase to unblock digital signature verification.
 
 ## Version 7.3.0
 * Added null check and empty list check to the permissions object in the ToPSRoleDefinition method.

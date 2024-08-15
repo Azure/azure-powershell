@@ -15,19 +15,19 @@ Get the specified role eligibility schedule for a resource scope
 ### List (Default)
 ```
 Get-AzRoleEligibilitySchedule -Scope <String> [-Filter <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzRoleEligibilitySchedule -Name <String> -Scope <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzRoleEligibilitySchedule -InputObject <IAuthorizationIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,9 +63,9 @@ Get-AzRoleEligibilitySchedule -Scope $scope -Filter "asTarget()"
 Name                                 Type                                            Scope                                                 RoleDefinitionId
 ----                                 ----                                            -----                                                 ----------------                                                                      
 4cd7e26b-8eca-425c-969d-ec708c88bf18 Microsoft.Authorization/roleEligibilitySchedules /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d   /subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/providers/Microsoft.Authorizatio… 
-00001111-aaaa-2222-bbbb-3333cccc4444 Microsoft.Authorization/roleEligibilitySchedules /providers/Microsoft.Management/managementGroups/MG-3 /providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb… 
-00001111-aaaa-2222-bbbb-3333cccc4444 Microsoft.Authorization/roleEligibilitySchedules /providers/Microsoft.Management/managementGroups/MG-2 /providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb… 
-00001111-aaaa-2222-bbbb-3333cccc4444 Microsoft.Authorization/roleEligibilitySchedules /providers/Microsoft.Management/managementGroups/MG-1 /providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb…
+a1f32976-b8f4-4606-a91d-af097a2473a2 Microsoft.Authorization/roleEligibilitySchedules /providers/Microsoft.Management/managementGroups/MG-3 /providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb… 
+4f9bdc29-3bb9-4ad7-9c1d-3f3f5ba3e1d9 Microsoft.Authorization/roleEligibilitySchedules /providers/Microsoft.Management/managementGroups/MG-2 /providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb… 
+529e4bba-621c-4309-a4b2-73e3364d4dd3 Microsoft.Authorization/roleEligibilitySchedules /providers/Microsoft.Management/managementGroups/MG-1 /providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb…
 ```
 
 Returns all `roleEligibilitySchedules` for the `scope` which are assigned to the calling user.
@@ -177,6 +177,21 @@ Parameter Sets: Get
 Aliases: RoleEligibilityScheduleName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
