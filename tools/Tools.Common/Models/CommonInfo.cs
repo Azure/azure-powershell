@@ -10,8 +10,8 @@ namespace VersionController.Netcore.Models
             "InformationVariable", "OutBuffer", "OutVariable", "PipelineVariable", "Proxy",
             "ProxyCredential", "ProxyUseDefaultCredentials", "Verbose", "WarningAction", "WarningVariable",
             "ProgressAction",
-            // excluded for runtime dynamic parameters
-            "EnableTestCoverage", "TestCoverageLocation", "TargetName" 
+            // excluded runtime dynamic parameters
+            // "EnableTestCoverage", "TestCoverageLocation", "TargetName" 
         };
     }
 }
