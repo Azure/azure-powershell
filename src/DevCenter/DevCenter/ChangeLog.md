@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated control plane to 2024-05-01-preview and added deprecation warnings
 
 ## Version 1.1.1
 * Introduced secrets detection feature to safeguard sensitive data.
