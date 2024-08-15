@@ -671,12 +671,29 @@ function New-AzConnectedKubernetes {
 
         # This call does the "pure ARM" update of the ARM objects.
         Write-Debug "Writing Connected Kubernetes ARM objects."
-        $PSBoundParameters.Add('AgentPublicKeyCertificate', $AgentPublicKey)
+
+        # We sometimes see the AgentPublicKeyCertificate present with value $null.
+        # If this is the case, update rather than adding.
+        if ($PSBoundParameters.ContainsKey('AgentPublicKeyCertificate')) {
+            $PSBoundParameters['AgentPublicKeyCertificate'] = $AgentPublicKey
+        } else {
+            $PSBoundParameters.Add('AgentPublicKeyCertificate', $AgentPublicKey)
+        }
         $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
 
         # Retrieving Helm chart OCI (Open Container Initiative) Artifact location
         Write-Debug "Retrieving Helm chart OCI (Open Container Initiative) Artifact location."
-        $helmValuesDp = Get-HelmValues -configDPEndpoint $configDPEndpoint -releaseTrain $ReleaseTrain -requestBody $Response
+        Write-Debug "PUT response: $Response"
+        $ResponseStr = "$Response"
+        $ResponseJson = $ResponseStr | ConvertTo-Json -Depth 10
+        $helmValuesDp = Get-HelmValues `
+          -configDPEndpoint $configDPEndpoint `
+          -releaseTrain $ReleaseTrain `
+          -requestBody $ResponseJson `
+          -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+          -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+
+        Write-Debug "helmValuesDp :$helmValuesDp"
         Write-Debug "OCI Artifact location: ${helmValuesDp.repositoryPath}."
 
         # Allow a custom OCI registry to be set via environment variables.

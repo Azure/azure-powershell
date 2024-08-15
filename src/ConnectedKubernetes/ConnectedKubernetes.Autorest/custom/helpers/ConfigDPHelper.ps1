@@ -11,7 +11,7 @@ function Invoke-ConfigDPHealthCheck {
     # Setting uri
     $apiVersion = "2024-07-01-preview"
     $chartLocationUrlSegment = "azure-arc-k8sagents/healthCheck?api-version=$apiVersion"
-    $chartLocationUrl = "$configDPEndpoint$chartLocationUrlSegment"
+    $chartLocationUrl = "$configDPEndpoint/$chartLocationUrlSegment"
     $uriParameters = [ordered]@{}
     $headers = @{}
     # Check if key AZURE_ACCESS_TOKEN exists in environment variables
@@ -51,11 +51,11 @@ function Get-ConfigDPEndpoint {
     # It is currently not clear what information might appear here in the future
     # so the check of "arcConfigEndpoint" is left is a best guess!".
     # Get the values or endpoints required for retrieving the Helm registry URL.
-    if ($cloudMetadata.ArcConfigEndpoint) {
+    if ($null -ne $cloudMetadata.ArcConfigEndpoint) {
         $ConfigDpEndpoint = $cloudMetadata.ArcConfigEndpoint
     }
     else {
-        Write-Debug "'arcConfigEndpoint' doesn't exist under 'dataplaneEndpoints' in the ARM metadata."
+        Write-Debug "'ArcConfigEndpoint' doesn't exist in the ARM cloud metadata."
     }
 
     # Get the default config dataplane endpoint.
@@ -116,7 +116,20 @@ function Invoke-RestMethodWithUriParameters {
     #     $uriParametersArray = $uriParameters.GetEnumerator() | ForEach-Object { "$($_.Key)=$($_.Value)" } | ForEach-Object { $_ -join '=' } | ForEach-Object { $_ -join '&' }
     # }
     Write-Debug "Issue REST request to ${uri} with method ${method} and headers ${headers} and body ${requestBody}"
-    $rsp = Invoke-RestMethod -Method $method -Uri $uri -Headers $headers -Body $requestBody -ContentType "application/json"  -MaximumRetryCount $maximumRetryCount -RetryIntervalSec $retryintervalSec -StatusCodeVariable statusCode
+    $rsp = Invoke-RestMethod `
+        -Method $method `
+        -Uri $uri `
+        -Headers $headers `
+        -Body $requestBody `
+        -ContentType "application/json" `
+        -MaximumRetryCount $maximumRetryCount `
+        -RetryIntervalSec $retryintervalSec `
+        -StatusCodeVariable statusCode `
+        -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+        -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+
+    Write-Debug "Response: $($rsp | ConvertTo-Json -Depth 10)"
+
     Set-Variable -Name "${statusCodeVariable}" -Value $statusCode -Scope script
     return $rsp
 }

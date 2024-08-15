@@ -110,7 +110,7 @@ function Get-HelmValues {
         $ConfigDpEndpoint,
         [string]$ReleaseTrainCustom,
         [Parameter(Mandatory=$true)]
-        $RequestBody
+        [string]$RequestBody
     )
 
     # Setting uri
@@ -132,23 +132,34 @@ function Get-HelmValues {
         $headers["Authorization"] = "Bearer $($env:AZURE_ACCESS_TOKEN)"
     }
 
-    # The response will be an object representing the ConnectedCluster and we
-    # cannot add arbitrary things to it so convert to a hashtable
-    $RequestBody = $RequestBody | ConvertTo-Json -Depth 10 -Compress | ConvertFrom-Json -AsHashtable
-    $dpRequestIdentity = $RequestBody.identity
-    $id = $RequestBody.id
-    $RequestBody["Identity"] = @{
-        tenantId = $dpRequestIdentity.tenantId
-        principalId = $dpRequestIdentity.principalId
-    }
-    $RequestBody["Id"] = $id
-
-    # Convert $request_body to JSON
-    $jsonBody = $RequestBody | ConvertTo-Json -Depth 10 -Compress
+    # # The response will be an object representing the ConnectedCluster and we
+    # # cannot add arbitrary things to it so convert to a hashtable
+    # $RequestBodyAsHash = $RequestBody | ConvertFrom-Json -Depth 10 -AsHashtable
+    # $dpRequestIdentity = $RequestBodyAsHash.identity
+    # # $id = $RequestBodyAsHash["id"]
+    # $RequestBodyAsHash["Identity"] = @{
+    #     tenantId = $dpRequestIdentity.tenantId
+    #     principalId = $dpRequestIdentity.principalId
+    # }
+    # # $RequestBodyAsHash["Id"] = $id
+    # 
+    # # Stringify the hashtable.
+    # $jsonBody = $RequestBodyAsHash | ConvertTo-Json -Depth 10 -Compress
+    # Write-Debug "Request body: $jsonBody"
 
     # Sending request with retries
     try {
-        $r = Invoke-RestMethodWithUriParameters -Method 'post' -Uri $chartLocationUrl -Headers $headers -UriParameters $uriParameters -RequestBody $JsonBody -MaximumRetryCount 5 -RetryIntervalSec 3 -StatusCodeVariable StatusCode
+        $r = Invoke-RestMethodWithUriParameters `
+            -Method 'post' `
+            -Uri $chartLocationUrl `
+            -Headers $headers `
+            -UriParameters $uriParameters `
+            -RequestBody $RequestBody `
+            -MaximumRetryCount 5 `
+            -RetryIntervalSec 3 `
+            -StatusCodeVariable StatusCode `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
 
         # Response is a Hashtable of JSON values.
         if ($StatusCode -eq 200 -and $r) {

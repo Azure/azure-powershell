@@ -11,7 +11,7 @@ function Get-AZCloudMetadataResourceId {
     # Search the $armMetadata hash for the entry where the "name" parameter matches
     # $cloud and then find the login endpoint, from which we can discern the
     # appropriate "cloud based domain ending".
-    Write-Debug -Message "cloudMetaData in: $($cloudMetaData | ConvertTo-Json)."
+    Write-Debug -Message "cloudMetaData in: $($cloudMetaData | ConvertTo-Json -Depth 10)."
     return $cloudMetadata.ResourceManagerUrl
 }
 
@@ -35,7 +35,7 @@ Function Get-AzCloudMetadata {
     catch {
         Write-Error "Failed to request ARM metadata. Error: $_"
     }
-    Write-Debug -Message "cloudMetaData out: $($cloud | ConvertTo-Json)."
+    Write-Debug -Message "cloudMetaData out: $($cloud | ConvertTo-Json -Depth 10)."
 
     return $cloud
 }
