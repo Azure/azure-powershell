@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// be used to connect with related store or compute resource.
         /// </param>
 
+        /// <param name="version">Version of the linked service.
+        /// </param>
+
         /// <param name="connectVia">The integration runtime reference.
         /// </param>
 
@@ -97,9 +100,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public GoogleBigQueryLinkedService(object project, string authenticationType, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object additionalProjects = default(object), object requestGoogleDriveScope = default(object), SecretBase refreshToken = default(SecretBase), object clientId = default(object), SecretBase clientSecret = default(SecretBase), object email = default(object), object keyFilePath = default(object), object trustedCertPath = default(object), object useSystemTrustStore = default(object), string encryptedCredential = default(string))
+        public GoogleBigQueryLinkedService(object project, string authenticationType, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object additionalProjects = default(object), object requestGoogleDriveScope = default(object), SecretBase refreshToken = default(SecretBase), object clientId = default(object), SecretBase clientSecret = default(SecretBase), object email = default(object), object keyFilePath = default(object), object trustedCertPath = default(object), object useSystemTrustStore = default(object), string encryptedCredential = default(string))
 
-        : base(additionalProperties, connectVia, description, parameters, annotations)
+        : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
             this.Project = project;
             this.AdditionalProjects = additionalProjects;
