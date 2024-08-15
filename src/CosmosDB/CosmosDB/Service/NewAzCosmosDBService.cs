@@ -61,10 +61,19 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
             }
 
-            SqlDedicatedGatewayServiceResourceCreateUpdateProperties parameters = new SqlDedicatedGatewayServiceResourceCreateUpdateProperties(
-                instanceSize: InstanceSize, instanceCount: InstanceCount, dedicatedGatewayType: DedicatedGatewayType.IntegratedCache);
+            ServiceResourceCreateUpdateParameters parameters = new ServiceResourceCreateUpdateParameters()
+            {
+                Properties = new SqlDedicatedGatewayServiceResourceCreateUpdateProperties(
+                    instanceSize: InstanceSize,
+                    instanceCount: InstanceCount,
+                    dedicatedGatewayType: DedicatedGatewayType.IntegratedCache)
+            };
 
-            ServiceResource serviceResults = CosmosDBManagementClient.Service.CreateWithHttpMessagesAsync(ResourceGroupName, AccountName, ServiceName, parameters).GetAwaiter().GetResult().Body;
+            ServiceResource serviceResults = CosmosDBManagementClient.Service.CreateWithHttpMessagesAsync(
+                ResourceGroupName,
+                AccountName,
+                ServiceName,
+                parameters).GetAwaiter().GetResult().Body;
             WriteObject(new PSServiceGetResults(serviceResults));
 
             return;
