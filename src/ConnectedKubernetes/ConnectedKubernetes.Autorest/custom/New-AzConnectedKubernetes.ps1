@@ -270,10 +270,14 @@ function New-AzConnectedKubernetes {
         ${GatewayResourceId}
     )
 
+    # Write-Debug "Outside of process"
+
     process {
         . "$PSScriptRoot/helpers/HelmHelper.ps1"
         . "$PSScriptRoot/helpers/ConfigDPHelper.ps1"
         . "$PSScriptRoot/helpers/AZCloudMetadataHelper.ps1"
+        Write-Debug "Debug: Inside of process"
+        Write-Error "Error: Inside of process"
         if($AzureHybridBenefit){
             if(!$AcceptEULA){
                 $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
@@ -685,16 +689,17 @@ function New-AzConnectedKubernetes {
         Write-Debug "Retrieving Helm chart OCI (Open Container Initiative) Artifact location."
         Write-Debug "PUT response: $Response"
         $ResponseStr = "$Response"
-        $ResponseJson = $ResponseStr | ConvertTo-Json -Depth 10
         $helmValuesDp = Get-HelmValues `
           -configDPEndpoint $configDPEndpoint `
           -releaseTrain $ReleaseTrain `
-          -requestBody $ResponseJson `
+          -requestBody $ResponseStr `
           -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
           -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
 
-        Write-Debug "helmValuesDp :$helmValuesDp"
+        Write-Debug "helmValuesDp: $helmValuesDp"
         Write-Debug "OCI Artifact location: ${helmValuesDp.repositoryPath}."
+        Write-Error "helmValuesDp: $helmValuesDp" -ErrorAction Continue
+        Write-Error "OCI Artifact location: ${$helmValuesDp.repositoryPath}." -ErrorAction Continue
 
         # Allow a custom OCI registry to be set via environment variables.
         # !!PDS: Where are these variables documented?  Should they be?
@@ -707,16 +712,17 @@ function New-AzConnectedKubernetes {
         # USERPROFILE
         #
         $registryPath = if ($env:HELMREGISTRY) { $env:HELMREGISTRY } else { $helmValuesDp.repositoryPath }
+        # !!PDS: Why do these not get logged?
         Write-Debug "RegistryPath: ${registryPath}."
 
-        $helmContentValues = $helmValuesDp["helmValuesContent"]
-        Write-Debug "Helm values: ${helmContentValues}."
+        $helmValuesContent = $helmValuesDp.helmValuesContent
+        Write-Error "Helm values: ${helmValuesContent}."
 
-        foreach ($key in $helmContentValues.Keys) {
-            if ($key -in @("global.httpsProxy", "global.httpProxy", "global.noProxy", "global.proxyCert")) {
+        foreach ($field in $helmValuesContent.PSObject.Properties) {
+            if ($field.Name -in @("global.httpsProxy", "global.httpProxy", "global.noProxy", "global.proxyCert")) {
                 continue
             }
-            $options += " --set $Key=$($helmContentValues[$Key])"
+            $options += " --set $($field.Name)=$($field.Value)"
         }
         
         # !!PDS: Is there any telemetry in Powershell cmdlets?
@@ -736,9 +742,9 @@ function New-AzConnectedKubernetes {
         # !!PDS Aren't we supposed to read the helm config from the Cluster Config DP?
         # !!PDS: I think we might have done above, but why are we setting many options?
         $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
+        Write-Error $options -ErrorAction Continue
         try {
             helm upgrade `
-            --debug `
             --install azure-arc `
             $ChartPath `
             --namespace $ReleaseInstallNamespace `

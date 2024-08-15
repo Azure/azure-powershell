@@ -1,5 +1,6 @@
 [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '',
     Justification='Helm values is a recognised term', Scope='Function', Target='Get-HelmValues')]
+[CmdletBinding()]
 param()    
 
 function Set-HelmClientLocation {
@@ -132,21 +133,6 @@ function Get-HelmValues {
         $headers["Authorization"] = "Bearer $($env:AZURE_ACCESS_TOKEN)"
     }
 
-    # # The response will be an object representing the ConnectedCluster and we
-    # # cannot add arbitrary things to it so convert to a hashtable
-    # $RequestBodyAsHash = $RequestBody | ConvertFrom-Json -Depth 10 -AsHashtable
-    # $dpRequestIdentity = $RequestBodyAsHash.identity
-    # # $id = $RequestBodyAsHash["id"]
-    # $RequestBodyAsHash["Identity"] = @{
-    #     tenantId = $dpRequestIdentity.tenantId
-    #     principalId = $dpRequestIdentity.principalId
-    # }
-    # # $RequestBodyAsHash["Id"] = $id
-    # 
-    # # Stringify the hashtable.
-    # $jsonBody = $RequestBodyAsHash | ConvertTo-Json -Depth 10 -Compress
-    # Write-Debug "Request body: $jsonBody"
-
     # Sending request with retries
     try {
         $r = Invoke-RestMethodWithUriParameters `
@@ -163,6 +149,8 @@ function Get-HelmValues {
 
         # Response is a Hashtable of JSON values.
         if ($StatusCode -eq 200 -and $r) {
+            Write-Error "Helm values fetched from DP: $($r | ConvertTo-Json -Depth 10)"
+            Write-Error "Response type: $($r.GetType())"
             return $r
         }
     }
