@@ -25,12 +25,12 @@ New-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps
 New-AzConnectedKubernetes -ClusterName azps_test_cluster1 -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240701Preview.IConnectedCluster
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster
 .Link
 https://learn.microsoft.com/powershell/module/az.connectedkubernetes/new-azconnectedkubernetes
 #>
 function New-AzConnectedKubernetes {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240701Preview.IConnectedCluster])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -172,24 +172,6 @@ function New-AzConnectedKubernetes {
         [System.String]
         # OID of 'custom-locations' app.
         ${CustomLocationsOid},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-        [System.Management.Automation.SwitchParameter]
-        # Whether to enable oidc issuer for workload identity integration.
-        ${OidcIssuerProfileEnabled},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-        [System.String]
-        # The issuer url for public cloud clusters - AKS, EKS, GKE - used for the workload identity feature.
-        ${OidcIssuerProfileSelfHostedIssuerUrl},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-        [System.Management.Automation.SwitchParameter]
-        # Whether to enable or disable the workload identity Webhook
-        ${WorkloadIdentityEnabled},
 
         [Parameter()]
         [System.Management.Automation.SwitchParameter]
@@ -543,26 +525,6 @@ function New-AzConnectedKubernetes {
             helm upgrade --install azure-arc $ChartPath --namespace $ReleaseInstallNamespace --create-namespace --set global.subscriptionId=$SubscriptionId --set global.resourceGroupName=$ResourceGroupName --set global.resourceName=$ClusterName --set global.tenantId=$TenantId --set global.location=$Location --set global.onboardingPrivateKey=$AgentPrivateKey --set systemDefaultValues.spnOnboarding=false --set global.azureEnvironment=AZUREPUBLICCLOUD --set systemDefaultValues.clusterconnect-agent.enabled=true --set global.kubernetesDistro=$Distribution --set global.kubernetesInfra=$Infrastructure (-split $options)
         } catch {
             throw "Unable to install helm chart at $ChartPath"
-        }
-
-        if ($PSBoundParameters.ContainsKey('OidcIssuerProfileEnabled') -or $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled') ) {
-            $ExistConnectedKubernetes = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
-
-            Write-Host "Cluster configuration is in progress..."
-            $timeout = [datetime]::Now.AddMinutes(60)
-
-            while (($ExistConnectedKubernetes.ArcAgentProfileAgentState -ne "Succeeded") -and ($ExistConnectedKubernetes.ArcAgentProfileAgentState -ne "Failed") -and ([datetime]::Now -lt $timeout)) {
-                Start-Sleep -Seconds 30
-                $ExistConnectedKubernetes = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
-            }
-
-            if ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Succeeded") {
-                Write-Host "Cluster configuration succeeded."
-            } elseif ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Failed") {
-                Write-Error "Cluster configuration failed."
-            } else {
-                Write-Error "Cluster configuration timed out after 60 minutes."
-            }      
         }
         Return $Response
     }
