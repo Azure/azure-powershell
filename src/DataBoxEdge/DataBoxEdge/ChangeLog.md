@@ -21,6 +21,9 @@
 
 ## Upcoming Release
 
+## Version 1.1.1
+* Removed the outdated deps.json file.
+
 ## Version 1.1.0
 * Added cmdlet `Get-AzDataBoxEdgeStorageContainer`
   - Get the Edge Storage Container
@@ -132,7 +135,7 @@
   - Update a Bandwidth Schedule for the device
 
 * Added cmdlet `Set-AzDataBoxEdgeShare`
-  - Update the share 
+  - Update the share
 
 * Added cmdlet `Set-AzDataBoxEdgeUser`
   - Set the new password for the user

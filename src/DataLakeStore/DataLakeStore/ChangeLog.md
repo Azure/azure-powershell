@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.2
+* Updated signed 3rd party assembly NLog.dll to PSGallery
+
+## Version 1.3.1
+* Removed the outdated deps.json file.
+
 ## Version 1.3.0
 * Updated ADLS dataplane SDK to 1.2.4-alpha. Changes:https://github.com/Azure/azure-data-lake-store-net/blob/preview-alpha/CHANGELOG.md#version-124-alpha
 

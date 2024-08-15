@@ -44,6 +44,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// value is 5.
         /// </param>
 
+        /// <param name="noHealthyBackendsBehavior">Determines how new connections are handled by the load balancer when all
+        /// backend instances are probed down.
+        /// Possible values include: &#39;AllProbedDown&#39;, &#39;AllProbedUp&#39;</param>
+
         /// <param name="numberOfProbes">The number of probes where if no response, will result in stopping further
         /// traffic from being delivered to the endpoint. This values allows endpoints
         /// to be taken out of rotation faster or slower than the typical times used in
@@ -64,13 +68,14 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="provisioningState">The provisioning state of the probe resource.
         /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
-        public ProbePropertiesFormat(string protocol, int port, System.Collections.Generic.IList<SubResource> loadBalancingRules = default(System.Collections.Generic.IList<SubResource>), int? intervalInSeconds = default(int?), int? numberOfProbes = default(int?), int? probeThreshold = default(int?), string requestPath = default(string), string provisioningState = default(string))
+        public ProbePropertiesFormat(string protocol, int port, System.Collections.Generic.IList<SubResource> loadBalancingRules = default(System.Collections.Generic.IList<SubResource>), int? intervalInSeconds = default(int?), string noHealthyBackendsBehavior = default(string), int? numberOfProbes = default(int?), int? probeThreshold = default(int?), string requestPath = default(string), string provisioningState = default(string))
 
         {
             this.LoadBalancingRules = loadBalancingRules;
             this.Protocol = protocol;
             this.Port = port;
             this.IntervalInSeconds = intervalInSeconds;
+            this.NoHealthyBackendsBehavior = noHealthyBackendsBehavior;
             this.NumberOfProbes = numberOfProbes;
             this.ProbeThreshold = probeThreshold;
             this.RequestPath = requestPath;
@@ -117,6 +122,13 @@ namespace Microsoft.Azure.Management.Network.Models
         public int? IntervalInSeconds {get; set; }
 
         /// <summary>
+        /// Gets or sets determines how new connections are handled by the load
+        /// balancer when all backend instances are probed down. Possible values include: &#39;AllProbedDown&#39;, &#39;AllProbedUp&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "noHealthyBackendsBehavior")]
+        public string NoHealthyBackendsBehavior {get; set; }
+
+        /// <summary>
         /// Gets or sets the number of probes where if no response, will result in
         /// stopping further traffic from being delivered to the endpoint. This values
         /// allows endpoints to be taken out of rotation faster or slower than the
@@ -160,6 +172,7 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Protocol");
             }
+
 
 
 

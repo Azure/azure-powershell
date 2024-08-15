@@ -33,7 +33,7 @@ Update the navigation property appRoleAssignments in servicePrincipals
 
 ### Example 1: Update the AppRoleId
 ```powershell
-Update-AzADServicePrincipalAppRoleAssignment -AppRoleAssignmentId Zbm-cUeDXUmlicIc3eenIoFW9pZ_gRBIudKgu0gaMIw -ServicePrincipalId 71beb965-8347-495d-a589-c21cdde7a722 -AppRoleId 649ae968-bdf9-4f22-bb2c-2aa1b4af0a83
+Update-AzADServicePrincipalAppRoleAssignment -AppRoleAssignmentId Zbm-cUeDXUmlicIc3eenIoFW9pZ_gRBIudKgu0gaMIw -ServicePrincipalId 00001111-aaaa-2222-bbbb-3333cccc4444 -AppRoleId 649ae968-bdf9-4f22-bb2c-2aa1b4af0a83
 ```
 
 Update the assigned App role id.
@@ -201,7 +201,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-BODY <IMicrosoftGraphAppRoleAssignment>: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+BODY `<IMicrosoftGraphAppRoleAssignment>`: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory

@@ -100,10 +100,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The state of the  ExpressRoute Circuit Authorization provisioning",
+        Description = @"The state of the ExpressRoute Circuit Authorization provisioning",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Updating", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Updating")]
         string ProvisioningState { get;  }
 
     }
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>The ID of the ExpressRoute Circuit</summary>
         string ExpressRouteId { get; set; }
         /// <summary>The state of the ExpressRoute Circuit Authorization provisioning</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Updating", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Updating")]
         string ProvisioningState { get; set; }
 
     }

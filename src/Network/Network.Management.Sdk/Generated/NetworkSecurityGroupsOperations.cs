@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
 
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -280,7 +280,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Creates or updates a network security group in the specified resource group.
+        /// Creates or updates a network security group in the specified resource
+        /// group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -363,7 +364,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -564,7 +565,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -762,7 +763,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -967,7 +968,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1169,7 +1170,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

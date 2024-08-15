@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Network
         public NetworkManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Creates a connection to Network Virtual Appliance, if it doesn&#39;t exist else updates the existing NVA connection&#39;
+        /// Creates a connection to Network Virtual Appliance, if it doesn&#39;t exist else
+        /// updates the existing NVA connection&#39;
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -125,7 +126,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "connectionName");
             }
 
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -368,7 +369,7 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkVirtualApplianceName", "^[A-Za-z0-9_]+");
                 }
             }
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -610,7 +611,7 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "connectionName", "^[A-Za-z0-9_]+");
                 }
             }
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -852,7 +853,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "connectionName");
             }
 
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

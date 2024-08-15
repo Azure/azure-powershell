@@ -1,2 +1,3 @@
 ### Thanks to our community contributors
-* Danny Furnivall (@furnivall), updated checkout (#24634)
+* Paolo Frigo (@PaoloFrigo), Update New-AzStorageAccount.md (#25493)
+* @Skatterbrainz, Update Import-AzAutomationRunbook.md (#25587)

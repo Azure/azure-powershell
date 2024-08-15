@@ -18,16 +18,16 @@ Get-AzNetAppFilesBackupPolicy -ResourceGroupName <String> -AccountName <String> 
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByResourceIdParameterSet
-```
-Get-AzNetAppFilesBackupPolicy [-Name <String>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
 ### ByParentObjectParameterSet
 ```
 Get-AzNetAppFilesBackupPolicy [-Name <String>] -AccountObject <PSNetAppFilesAccount>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByResourceIdParameterSet
+```
+Get-AzNetAppFilesBackupPolicy -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,7 +94,7 @@ The name of the ANF backup policy
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
 Aliases: BackupPolicyName
 
 Required: False

@@ -1,0 +1,113 @@
+{
+  "Backcompat-NewPolicyDefinitionParameters+[NoContext]+parameter combinations starting with -Name+$PUT+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2023-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"mode\": \"All\",\r\n    \"policyRule\": {\r\n      \"someThing\": \"someOtherThing\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "113" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "2238edbc-4bce-47e3-aedb-50e1f3ceb97e" ],
+        "x-ms-correlation-request-id": [ "2238edbc-4bce-47e3-aedb-50e1f3ceb97e" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240724T223806Z:2238edbc-4bce-47e3-aedb-50e1f3ceb97e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E719C55DD8914A1587ED0238431606C4 Ref B: CO6AA3150220027 Ref C: 2024-07-24T22:38:06Z" ],
+        "Date": [ "Wed, 24 Jul 2024 22:38:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "176" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"InvalidPolicyRule\",\"message\":\"Failed to parse policy rule: \u0027Could not find member \u0027someThing\u0027 on object of type \u0027PolicyRuleDefinition\u0027. Path \u0027someThing\u0027.\u0027.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Backcompat-NewPolicyDefinitionParameters+[NoContext]+parameter combinations starting with -Name+$PUT+https://management.azure.com/providers/Microsoft.Management/managementGroups/someManagementGroup/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2023-04-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/someManagementGroup/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2023-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"mode\": \"All\",\r\n    \"policyRule\": {\r\n      \"someThing\": \"someOtherThing\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "113" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 403,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "9c528d5f-5b46-4e1a-997a-346746ddd837" ],
+        "x-ms-correlation-request-id": [ "9c528d5f-5b46-4e1a-997a-346746ddd837" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240724T223807Z:9c528d5f-5b46-4e1a-997a-346746ddd837" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1902F0B44D314CA49454CE9449726BC2 Ref B: CO6AA3150220027 Ref C: 2024-07-24T22:38:06Z" ],
+        "Date": [ "Wed, 24 Jul 2024 22:38:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "475" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"AuthorizationFailed\",\"message\":\"The client \u0027cstack@ntdev.microsoft.com\u0027 with object id \u00273d826307-2481-45a0-a271-bcf9333f914a\u0027 does not have authorization to perform action \u0027Microsoft.Authorization/policyDefinitions/write\u0027 over scope \u0027/providers/Microsoft.Management/managementGroups/someManagementGroup/providers/Microsoft.Authorization/policyDefinitions/someName\u0027 or the scope is invalid. If access was recently granted, please refresh your credentials.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Backcompat-NewPolicyDefinitionParameters+[NoContext]+parameter combinations starting with -Name+$PUT+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2023-04-01+3": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/someName?api-version=2023-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"mode\": \"All\",\r\n    \"policyRule\": {\r\n      \"someThing\": \"someOtherThing\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "113" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "895b26e4-2421-4bd0-bd53-f0550a0c5249" ],
+        "x-ms-correlation-request-id": [ "895b26e4-2421-4bd0-bd53-f0550a0c5249" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240724T223807Z:895b26e4-2421-4bd0-bd53-f0550a0c5249" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 33CEFAB1EB45448C923149A93EE30A29 Ref B: CO6AA3150220027 Ref C: 2024-07-24T22:38:07Z" ],
+        "Date": [ "Wed, 24 Jul 2024 22:38:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "176" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"InvalidPolicyRule\",\"message\":\"Failed to parse policy rule: \u0027Could not find member \u0027someThing\u0027 on object of type \u0027PolicyRuleDefinition\u0027. Path \u0027someThing\u0027.\u0027.\"}}",
+      "isContentBase64": false
+    }
+  }
+}

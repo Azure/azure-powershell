@@ -70,8 +70,9 @@ jobs:
       definition: $(SignPipelineDefinitionId)
       buildVersionToDownload: 'latestFromBranch'
       branchName: 'refs/heads/internal/release'
-      artifactName: 'artifacts'
+      artifactName: $(ArtifactName)
       targetPath: $(Pipeline.Workspace)
+      itemPattern: '**/artifacts/**'
 
   - task: DownloadPipelineArtifact@2
     condition: and(succeeded(), ne(variables['skipLatest'], 'true'), eq(variables['GalleryName'], 'Sign'), ne(variables['PipelineBuildId'], ''))
@@ -82,9 +83,9 @@ jobs:
       definition: $(SignPipelineDefinitionId)
       buildVersionToDownload: 'specific'
       pipelineId: $(PipelineBuildId)
-      artifactName: 'artifacts'
+      artifactName: $(ArtifactName)
       targetPath: $(Pipeline.Workspace)
-
+      itemPattern: '**/artifacts/**'
   - task: PowerShell@2
     condition: and(succeeded(), ne(variables['skipLatest'], 'true'), ne(variables['GalleryName'], 'PSGallery'))
     displayName: Copy artifacts to local repository
@@ -93,7 +94,7 @@ jobs:
       targetType: inline
       script: |
         $azPackagesDir = New-Item -Name AzPreviewPackages -Path $(DataLocation) -ItemType Directory -Force
-        $azPackagesFiles = Join-Path -Path $(Pipeline.Workspace) -ChildPath *.nupkg
+        $azPackagesFiles =  Get-ChildItem -Path "$(Pipeline.Workspace)" -Recurse -Filter "*.nupkg" 
         Move-Item -Path $azPackagesFiles -Destination $azPackagesDir
         Get-ChildItem -LiteralPath $azPackagesDir
 
@@ -133,23 +134,6 @@ jobs:
       targetType: filePath
       filePath: ./tools/TestFx/Live/InvokeLiveTestCITask.ps1
       arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/InvokeLiveTestScenarios.ps1 -OSVersion ${{ parameters.vmImage }} -RunPlatform ${{ parameters.osType }} -RunPowerShell ${{ parameters.psVersion }}'
-
-  - template: get-keyvault-secret-steps.yml
-    parameters:
-      serviceConnectionName: $(KustoServiceConnectionName)
-      keyVaultName: $(KustoServicePrincipalKeyVaultName)
-      secretName: $(KustoServicePrincipalSecretName)
-      outVar: 'KustoServicePrincipalSecret'
-      execCondition: and(succeeded(), ne(variables['skipLatest'], 'true'))
-
-  - task: PowerShell@2
-    displayName: Save live test results to Kusto
-    condition: and(succeeded(), ne(variables['skipLatest'], 'true'), or(eq(variables['Build.Reason'], 'Schedule'), eq(variables['Build.SourceBranch'], 'refs/heads/internal/release')))
-    inputs:
-      pwsh: true
-      targetType: filePath
-      filePath: ./tools/TestFx/Live/SaveLiveTestResult.ps1
-      arguments: $(KustoTenantId) $(KustoServicePrincipalId) $(KustoServicePrincipalSecret) $(KustoClusterName) $(KustoClusterRegion)
 
   - task: PublishPipelineArtifact@1
     displayName: Publish live test results to pipeline artifact

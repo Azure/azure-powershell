@@ -27,7 +27,7 @@ Get-AzNginxCertificate -DeploymentName nginx-test -Name cert -ResourceGroupName 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxCertificate
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -44,7 +44,7 @@ INPUTOBJECT <INginxIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.nginx/get-aznginxcertificate
 #>
 function Get-AzNginxCertificate {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxCertificate])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -233,7 +233,7 @@ Get-AzNginxConfiguration -DeploymentName nginx-test -Name default -ResourceGroup
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -250,7 +250,7 @@ INPUTOBJECT <INginxIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.nginx/get-aznginxconfiguration
 #>
 function Get-AzNginxConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfiguration])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -443,7 +443,7 @@ Get-AzNginxDeployment -ResourceGroupName nginx-test-rg
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -460,7 +460,7 @@ INPUTOBJECT <INginxIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.nginx/get-aznginxdeployment
 #>
 function Get-AzNginxDeployment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -635,6 +635,285 @@ end {
 
 <#
 .Synopsis
+Analyze an NGINX configuration without applying it to the NGINXaaS deployment
+.Description
+Analyze an NGINX configuration without applying it to the NGINXaaS deployment
+.Example
+$confFile = New-AzNginxConfigurationFileObject -VirtualPath "nginx.conf" -Content 'xxxx'
+        
+# configuration analysis
+$confAnalysis = Invoke-AzNginxAnalysisConfiguration -ConfigurationName default -DeploymentName xxxx -ResourceGroupName xxxx -ConfigFile $confFile -ConfigRootFile "nginx.conf"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisCreate
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisResult
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IAnalysisCreate>: The request body for creating an analysis for an NGINX configuration.
+  [ConfigFile <INginxConfigurationFile[]>]: 
+    [Content <String>]: 
+    [VirtualPath <String>]: 
+  [ConfigProtectedFile <INginxConfigurationFile[]>]: 
+  [ConfigRootFile <String>]: The root file of the NGINX config file(s). It must match one of the files' filepath.
+  [PackageData <String>]: 
+  [PackageProtectedFile <String[]>]: 
+
+CONFIGFILE <INginxConfigurationFile[]>: .
+  [Content <String>]: 
+  [VirtualPath <String>]: 
+
+CONFIGPROTECTEDFILE <INginxConfigurationFile[]>: .
+  [Content <String>]: 
+  [VirtualPath <String>]: 
+
+INPUTOBJECT <INginxIdentity>: Identity Parameter
+  [CertificateName <String>]: The name of certificate
+  [ConfigurationName <String>]: The name of configuration, only 'default' is supported value due to the singleton of NGINX conf
+  [DeploymentName <String>]: The name of targeted NGINX deployment
+  [Id <String>]: Resource identity path
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.nginx/invoke-aznginxanalysisconfiguration
+#>
+function Invoke-AzNginxAnalysisConfiguration {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisResult])]
+[CmdletBinding(DefaultParameterSetName='AnalysisExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Analysis', Mandatory)]
+    [Parameter(ParameterSetName='AnalysisExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Path')]
+    [System.String]
+    # The name of configuration, only 'default' is supported value due to the singleton of NGINX conf
+    ${ConfigurationName},
+
+    [Parameter(ParameterSetName='Analysis', Mandatory)]
+    [Parameter(ParameterSetName='AnalysisExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Path')]
+    [System.String]
+    # The name of targeted NGINX deployment
+    ${DeploymentName},
+
+    [Parameter(ParameterSetName='Analysis', Mandatory)]
+    [Parameter(ParameterSetName='AnalysisExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Analysis')]
+    [Parameter(ParameterSetName='AnalysisExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='AnalysisViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='AnalysisViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Analysis', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='AnalysisViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisCreate]
+    # The request body for creating an analysis for an NGINX configuration.
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='AnalysisExpanded')]
+    [Parameter(ParameterSetName='AnalysisViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]]
+    # .
+    # To construct, see NOTES section for CONFIGFILE properties and create a hash table.
+    ${ConfigFile},
+
+    [Parameter(ParameterSetName='AnalysisExpanded')]
+    [Parameter(ParameterSetName='AnalysisViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]]
+    # .
+    # To construct, see NOTES section for CONFIGPROTECTEDFILE properties and create a hash table.
+    ${ConfigProtectedFile},
+
+    [Parameter(ParameterSetName='AnalysisExpanded')]
+    [Parameter(ParameterSetName='AnalysisViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
+    [System.String]
+    # The root file of the NGINX config file(s).
+    # It must match one of the files' filepath.
+    ${ConfigRootFile},
+
+    [Parameter(ParameterSetName='AnalysisExpanded')]
+    [Parameter(ParameterSetName='AnalysisViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
+    [System.String]
+    # .
+    ${PackageData},
+
+    [Parameter(ParameterSetName='AnalysisExpanded')]
+    [Parameter(ParameterSetName='AnalysisViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
+    [System.String[]]
+    # .
+    ${PackageProtectedFile},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Nginx.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Analysis = 'Az.Nginx.private\Invoke-AzNginxAnalysisConfiguration_Analysis';
+            AnalysisExpanded = 'Az.Nginx.private\Invoke-AzNginxAnalysisConfiguration_AnalysisExpanded';
+            AnalysisViaIdentity = 'Az.Nginx.private\Invoke-AzNginxAnalysisConfiguration_AnalysisViaIdentity';
+            AnalysisViaIdentityExpanded = 'Az.Nginx.private\Invoke-AzNginxAnalysisConfiguration_AnalysisViaIdentityExpanded';
+        }
+        if (('Analysis', 'AnalysisExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Nginx.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Create or update the NGINX certificates for given NGINX deployment
 .Description
 Create or update the NGINX certificates for given NGINX deployment
@@ -642,12 +921,12 @@ Create or update the NGINX certificates for given NGINX deployment
 New-AzNginxCertificate -DeploymentName nginx-test -Name cert-test -ResourceGroupName nginx-test-rg -CertificateVirtualPath /etc/nginx/test.cert -KeyVirtualPath /etc/nginx/test.key -KeyVaultSecretId https://tests-kv.vault.azure.net/secrets/newcert
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxCertificate
 .Link
 https://learn.microsoft.com/powershell/module/az.nginx/new-aznginxcertificate
 #>
 function New-AzNginxCertificate {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxCertificate])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -858,7 +1137,7 @@ Create or update the NGINX configuration for given NGINX deployment
 New-AzNginxConfiguration -DeploymentName nginx-test -Name default -ResourceGroupName nginx-test-rg -File $confFile -RootFile nginx.conf
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -875,7 +1154,7 @@ PROTECTEDFILE <INginxConfigurationFile[]>: .
 https://learn.microsoft.com/powershell/module/az.nginx/new-aznginxconfiguration
 #>
 function New-AzNginxConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfiguration])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -908,7 +1187,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfigurationFile[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]]
     # .
     # To construct, see NOTES section for FILE properties and create a hash table.
     ${File},
@@ -935,7 +1214,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfigurationFile[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]]
     # .
     # To construct, see NOTES section for PROTECTEDFILE properties and create a hash table.
     ${ProtectedFile},
@@ -1103,11 +1382,16 @@ Create or update the NGINX deployment
 New-AzNginxDeployment -Name nginx-test -ResourceGroupName nginx-test-rg -Location westcentralus -NetworkProfile $networkProfile -SkuName preview_Monthly_gmz7xq9ge3py
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+AUTOSCALESETTINGPROFILE <IScaleProfile[]>: .
+  CapacityMax <Int32>: The maximum number of NCUs the deployment can be autoscaled to.
+  CapacityMin <Int32>: The minimum number of NCUs the deployment can be autoscaled to.
+  Name <String>: 
 
 NETWORKPROFILE <INginxNetworkProfile>: .
   [FrontEndIPConfiguration <INginxFrontendIPConfiguration>]: 
@@ -1123,7 +1407,7 @@ NETWORKPROFILE <INginxNetworkProfile>: .
 https://learn.microsoft.com/powershell/module/az.nginx/new-aznginxdeployment
 #>
 function New-AzNginxDeployment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1155,7 +1439,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxNetworkProfile]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkProfile]
     # .
     # To construct, see NOTES section for NETWORKPROFILE properties and create a hash table.
     ${NetworkProfile},
@@ -1165,6 +1449,14 @@ param(
     [System.String]
     # Name of the SKU.
     ${SkuName},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[]]
+    # .
+    # To construct, see NOTES section for AUTOSCALESETTINGPROFILE properties and create a hash table.
+    ${AutoScaleSettingProfile},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
@@ -1181,7 +1473,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IIdentityPropertiesUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IIdentityPropertiesUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # Dictionary of <UserIdentityProperties>
     ${IdentityUserAssignedIdentity},
@@ -1212,7 +1504,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeploymentTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeploymentTags]))]
     [System.Collections.Hashtable]
     # Dictionary of <string>
     ${Tag},
@@ -2045,11 +2337,16 @@ Update-AzNginxDeployment -Name nginx-test -ResourceGroupName nginx-test-rg -Enab
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+AUTOSCALESETTINGPROFILE <IScaleProfile[]>: .
+  CapacityMax <Int32>: The maximum number of NCUs the deployment can be autoscaled to.
+  CapacityMin <Int32>: The minimum number of NCUs the deployment can be autoscaled to.
+  Name <String>: 
 
 INPUTOBJECT <INginxIdentity>: Identity Parameter
   [CertificateName <String>]: The name of certificate
@@ -2062,7 +2359,7 @@ INPUTOBJECT <INginxIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.nginx/update-aznginxdeployment
 #>
 function Update-AzNginxDeployment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -2094,6 +2391,20 @@ param(
     ${InputObject},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[]]
+    # .
+    # To construct, see NOTES section for AUTOSCALESETTINGPROFILE properties and create a hash table.
+    ${AutoScaleSettingProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
+    [System.String]
+    # Channel used for autoupgrade.
+    ${AutoUpgradeProfileUpgradeChannel},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
@@ -2108,7 +2419,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IIdentityPropertiesUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IIdentityPropertiesUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # Dictionary of <UserIdentityProperties>
     ${IdentityUserAssignedIdentity},
@@ -2145,7 +2456,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeploymentUpdateParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeploymentUpdateParametersTags]))]
     [System.Collections.Hashtable]
     # Dictionary of <string>
     ${Tag},
@@ -2315,12 +2626,12 @@ Create an in-memory object for NginxConfigurationFile.
 New-AzNginxConfigurationFileObject -Content aHR0cCB7 -VirtualPath nginx.conf
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxConfigurationFile
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxConfigurationFile
 .Link
 https://learn.microsoft.com/powershell/module/Az.Nginx/new-AzNginxConfigurationFileObject
 #>
 function New-AzNginxConfigurationFileObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxConfigurationFile])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxConfigurationFile])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -2421,7 +2732,7 @@ Create an in-memory object for NginxNetworkProfile.
 New-AzNginxNetworkProfileObject -FrontEndIPConfiguration @{PublicIPAddress=@($publicIp)} -NetworkInterfaceConfiguration @{SubnetId='/subscriptions/xxxxxxxxxx-xxxx-xxxxx-xxxxxxxxxxxx/resourceGroups/nginx-test-rg/providers/Microsoft.Network/virtualNetworks/nginx-test-vnet/subnets/default'}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxNetworkProfile
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxNetworkProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2441,18 +2752,18 @@ NETWORKINTERFACECONFIGURATION <INginxNetworkInterfaceConfiguration>:
 https://learn.microsoft.com/powershell/module/Az.Nginx/new-AzNginxNetworkProfileObject
 #>
 function New-AzNginxNetworkProfileObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxNetworkProfile])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxNetworkProfile])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxFrontendIPConfiguration]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxFrontendIPConfiguration]
     # To construct, see NOTES section for FRONTENDIPCONFIGURATION properties and create a hash table.
     ${FrontEndIPConfiguration},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxNetworkInterfaceConfiguration]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkInterfaceConfiguration]
     # To construct, see NOTES section for NETWORKINTERFACECONFIGURATION properties and create a hash table.
     ${NetworkInterfaceConfiguration}
 )
@@ -2544,12 +2855,12 @@ Create an in-memory object for NginxPrivateIPAddress.
 New-AzNginxPrivateIPAddressObject -PrivateIPAddress 10.0.0.0 -PrivateIPAllocationMethod Static -SubnetId /subscriptions/xxxxxxxxxx-xxxx-xxxxx-xxxxxxxxxxxx/resourceGroups/nginx-test-rg/providers/Microsoft.Network/virtualNetworks/nginx-test-vnet/subnets/default
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxPrivateIPAddress
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxPrivateIPAddress
 .Link
 https://learn.microsoft.com/powershell/module/Az.Nginx/new-AzNginxPrivateIPAddressObject
 #>
 function New-AzNginxPrivateIPAddressObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxPrivateIPAddress])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxPrivateIPAddress])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -2656,12 +2967,12 @@ Create an in-memory object for NginxPublicIPAddress.
 New-AzNginxPublicIPAddressObject -Id /subscriptions/xxxxxxxxxx-xxxx-xxxxx-xxxxxxxxxxxx/resourceGroups/nginx-test-rg/providers/Microsoft.Network/publicIPAddresses/nginx-test-ip
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxPublicIPAddress
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxPublicIPAddress
 .Link
 https://learn.microsoft.com/powershell/module/Az.Nginx/new-AzNginxPublicIPAddressObject
 #>
 function New-AzNginxPublicIPAddressObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxPublicIPAddress])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxPublicIPAddress])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]

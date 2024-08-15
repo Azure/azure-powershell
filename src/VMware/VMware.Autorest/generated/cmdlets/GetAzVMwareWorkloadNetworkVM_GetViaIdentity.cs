@@ -10,16 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Get a virtual machine by id in a private cloud workload network.</summary>
+    /// <summary>Get a WorkloadNetworkVirtualMachine</summary>
     /// <remarks>
     /// [OpenAPI] GetVirtualMachine=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/virtualMachines/{virtualMachineId}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzVMwareWorkloadNetworkVM_GetViaIdentity")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVirtualMachine))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Get a virtual machine by id in a private cloud workload network.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Get a WorkloadNetworkVirtualMachine")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/virtualMachines/{virtualMachineId}", ApiVersion = "2023-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/virtualMachines/{virtualMachineId}", ApiVersion = "2023-09-01")]
     public partial class GetAzVMwareWorkloadNetworkVM_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IContext

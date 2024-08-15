@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>A list of NSX Public IP Blocks</summary>
+    /// <summary>The response of a WorkloadNetworkPublicIP list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(WorkloadNetworkPublicIPsListTypeConverter))]
     public partial class WorkloadNetworkPublicIPsList
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             AfterDeserializePSObject(content);
         }
     }
-    /// A list of NSX Public IP Blocks
+    /// The response of a WorkloadNetworkPublicIP list operation.
     [System.ComponentModel.TypeConverter(typeof(WorkloadNetworkPublicIPsListTypeConverter))]
     public partial interface IWorkloadNetworkPublicIPsList
 

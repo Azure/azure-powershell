@@ -20,7 +20,7 @@ List the device groups for the catalog.
 .Description
 List the device groups for the catalog.
 .Example
-Get-AzSphereCatalogDeviceGroup -CatalogName test2024 -ResourceGroupName joyer-test
+Get-AzSphereCatalogDeviceGroup -CatalogName test2024 -ResourceGroupName group-test
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IDeviceGroup

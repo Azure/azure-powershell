@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -249,7 +249,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Creates a VirtualWAN resource if it doesn&#39;t exist else updates the existing VirtualWAN.
+        /// Creates a VirtualWAN resource if it doesn&#39;t exist else updates the existing
+        /// VirtualWAN.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name of the VirtualWan.
@@ -331,7 +332,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "virtualWANName");
             }
 
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -562,7 +563,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
 
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -754,7 +755,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -969,7 +970,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "virtualWANName");
             }
 
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1201,7 +1202,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "virtualWANName");
             }
 
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

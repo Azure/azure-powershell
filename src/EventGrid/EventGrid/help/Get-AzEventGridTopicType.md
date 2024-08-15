@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
 online version: https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridtopictype
 schema: 2.0.0
@@ -8,53 +8,71 @@ schema: 2.0.0
 # Get-AzEventGridTopicType
 
 ## SYNOPSIS
-Gets the details about the topic types supported by Azure Event Grid.
+Get information about a topic type.
 
 ## SYNTAX
 
+### List (Default)
 ```
-Get-AzEventGridTopicType [-Name <String>] [-IncludeEventTypeData] [-DefaultProfile <IAzureContextContainer>]
+Get-AzEventGridTopicType [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzEventGridTopicType -Name <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzEventGridTopicType -InputObject <IEventGridIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the details of topic types supported by Azure Event Grid.
-If a topic type name is specified, details about that topic type are returned.
-If a topic type name is not specified, details about all topic types are returned.
-If IncludeEventTypes is specified, information about event types supported by each topic type is included in the response.
+Get information about a topic type.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: List information about topic type.
 ```powershell
 Get-AzEventGridTopicType
 ```
 
-Gets a list of the topic types.
-
-### Example 2
-```powershell
-Get-AzEventGridTopicType -Name "Microsoft.Storage.StorageAccounts"
+```output
+Name                                            ResourceGroupName
+----                                            -----------------
+Microsoft.Eventhub.Namespaces
+......
+Microsoft.EventGrid.Namespaces
 ```
 
-Gets information about the StorageAccounts topic type.
+List information about topic type.
 
-### Example 3
+### Example 2: Get information about a topic type.
 ```powershell
-Get-AzEventGridTopicType -Name "Microsoft.Storage.StorageAccounts" -IncludeEventTypeData
+Get-AzEventGridTopicType -Name Microsoft.EventGrid.Namespaces
 ```
 
-Gets information about the StorageAccounts topic type, including the event types supported by StorageAccounts.
+```output
+Name                           ResourceGroupName
+----                           -----------------
+Microsoft.EventGrid.Namespaces
+```
+
+Get information about a topic type.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -63,8 +81,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IncludeEventTypeData
-If specified, the response will include the event types supported by a topic type.
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the topic type.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: TopicTypeName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -78,33 +126,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-EventGrid Topic Type Name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfoListInstance
-
-### Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfo
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ITopicTypeInfo
 
 ## NOTES
 

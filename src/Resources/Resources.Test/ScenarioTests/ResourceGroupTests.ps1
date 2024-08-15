@@ -243,16 +243,14 @@ function Test-RemoveDeployment
 {
     # Setup
     $deploymentName = "Test"
-    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
+    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/b5a68ce5005bc186070506b8d42a25b865f047a6/100-blank-template/azuredeploy.json"
     $rgName = "TestSDK0123"
 
     try
     {
         # First create new resource group deployment
         New-AzResourceGroup -Name $rgName -Location "East US"
-        $job = New-AzResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName -TemplateUri $templateUri -AsJob
-		Wait-Job $job
-		$deployment = Receive-Job $job
+        $deployment = New-AzResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName -TemplateUri $templateUri
 
         # Test
         $res = Remove-AzResourceGroupDeployment -ResourceGroupName $deployment.ResourceGroupName -Name $deployment.DeploymentName

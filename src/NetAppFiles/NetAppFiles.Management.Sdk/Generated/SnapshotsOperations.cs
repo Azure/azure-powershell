@@ -692,7 +692,8 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Restore the specified files from the specified snapshot to the active filesystem
+        /// Restore the specified files from the specified snapshot to the active
+        /// filesystem
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

@@ -20,15 +20,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 
         /// <summary>The secondary availability zone for the private cloud</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public int? AvailabilitySecondaryZone { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).AvailabilitySecondaryZone; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).AvailabilitySecondaryZone = value ?? default(int); }
+        public int? AvailabilitySecondaryZone { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).AvailabilitySecondaryZone; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).AvailabilitySecondaryZone = value ?? default(int); }
 
         /// <summary>The availability strategy for the private cloud</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public string AvailabilityStrategy { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).AvailabilityStrategy; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).AvailabilityStrategy = value ?? null; }
+        public string AvailabilityStrategy { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).AvailabilityStrategy; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).AvailabilityStrategy = value ?? null; }
 
         /// <summary>The primary availability zone for the private cloud</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public int? AvailabilityZone { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).AvailabilityZone; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).AvailabilityZone = value ?? default(int); }
+        public int? AvailabilityZone { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).AvailabilityZone; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).AvailabilityZone = value ?? default(int); }
 
         /// <summary>Identifier of the ExpressRoute Circuit (Microsoft Colo only)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
@@ -46,122 +46,142 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public string CircuitSecondarySubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).CircuitSecondarySubnet; }
 
+        /// <summary>The type of DNS zone to use.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        public string DnsZoneType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).DnsZoneType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).DnsZoneType = value ?? null; }
+
         /// <summary>Status of customer managed encryption key</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public string EncryptionStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).EncryptionStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).EncryptionStatus = value ?? null; }
+        public string EncryptionStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EncryptionStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EncryptionStatus = value ?? null; }
 
-        /// <summary>Endpoint for the HCX Cloud Manager</summary>
+        /// <summary>Endpoint FQDN for the HCX Cloud Manager</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public string EndpointHcxCloudManager { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointHcxCloudManager; }
 
-        /// <summary>Endpoint for the NSX-T Data Center manager</summary>
+        /// <summary>Endpoint IP for the HCX Cloud Manager</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        public string EndpointHcxCloudManagerIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointHcxCloudManagerIP; }
+
+        /// <summary>Endpoint FQDN for the NSX-T Data Center manager</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public string EndpointNsxtManager { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointNsxtManager; }
 
-        /// <summary>Endpoint for Virtual Center Server Appliance</summary>
+        /// <summary>Endpoint IP for the NSX-T Data Center manager</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        public string EndpointNsxtManagerIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointNsxtManagerIP; }
+
+        /// <summary>Endpoint IP for Virtual Center Server Appliance</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        public string EndpointVcenterIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointVcenterIP; }
+
+        /// <summary>Endpoint FQDN for Virtual Center Server Appliance</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public string EndpointVcsa { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointVcsa; }
 
         /// <summary>
-        /// Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet
-        /// in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to
+        /// Array of additional networks noncontiguous with networkBlock. Networks must be
+        /// unique and non-overlapping across VNet in your subscription, on-premise, and
+        /// this privateCloud networkBlock attribute. Make sure the CIDR format conforms to
         /// (A.B.C.D/X).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> ExtendedNetworkBlock { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).ExtendedNetworkBlock; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).ExtendedNetworkBlock = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> ExtendedNetworkBlock { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ExtendedNetworkBlock; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ExtendedNetworkBlock = value ?? null /* arrayOf */; }
 
         /// <summary>Array of cloud link IDs from other clouds that connect to this one</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<string> ExternalCloudLink { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ExternalCloudLink; }
 
-        /// <summary>Resource ID.</summary>
+        /// <summary>
+        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).Id; }
 
         /// <summary>Backing field for <see cref="Identity" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudIdentity _identity;
+        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentity _identity;
 
-        /// <summary>The identity of the private cloud, if configured.</summary>
+        /// <summary>The managed service identities assigned to this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudIdentity Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PrivateCloudIdentity()); set => this._identity = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentity Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.SystemAssignedServiceIdentity()); set => this._identity = value; }
 
         /// <summary>
-        /// The principal ID of private cloud identity. This property will only be provided for a system assigned identity.
+        /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public string IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudIdentityInternal)Identity).PrincipalId; }
+        public string IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentityInternal)Identity).PrincipalId; }
 
         /// <summary>vCenter Single Sign On Identity Sources</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource> IdentitySource { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).IdentitySource; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).IdentitySource = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource> IdentitySource { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).IdentitySource; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).IdentitySource = value ?? null /* arrayOf */; }
 
         /// <summary>
-        /// The tenant ID associated with the private cloud. This property will only be provided for a system assigned identity.
+        /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public string IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudIdentityInternal)Identity).TenantId; }
+        public string IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentityInternal)Identity).TenantId; }
 
-        /// <summary>
-        /// The type of identity used for the private cloud. The type 'SystemAssigned' refers to an implicitly created identity. The
-        /// type 'None' will remove any identities from the Private Cloud.
-        /// </summary>
+        /// <summary>Type of managed service identity (either system assigned, or none).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudIdentityInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudIdentityInternal)Identity).Type = value ?? null; }
+        public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentityInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentityInternal)Identity).Type = value ?? null; }
 
         /// <summary>Connectivity to internet is enabled or disabled</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public string Internet { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).Internet; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).Internet = value ?? null; }
+        public string Internet { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Internet; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Internet = value ?? null; }
 
         /// <summary>The auto-detected version of the key if versionType is auto-detected.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public string KeyVaultPropertyAutoDetectedKeyVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).KeyVaultPropertyAutoDetectedKeyVersion; }
+        public string KeyVaultPropertyAutoDetectedKeyVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyAutoDetectedKeyVersion; }
 
         /// <summary>The name of the key.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public string KeyVaultPropertyKeyName { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).KeyVaultPropertyKeyName; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).KeyVaultPropertyKeyName = value ?? null; }
+        public string KeyVaultPropertyKeyName { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyKeyName; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyKeyName = value ?? null; }
 
         /// <summary>The state of key provided</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public string KeyVaultPropertyKeyState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).KeyVaultPropertyKeyState; }
+        public string KeyVaultPropertyKeyState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyKeyState; }
 
         /// <summary>The URL of the vault.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public string KeyVaultPropertyKeyVaultUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).KeyVaultPropertyKeyVaultUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).KeyVaultPropertyKeyVaultUrl = value ?? null; }
+        public string KeyVaultPropertyKeyVaultUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyKeyVaultUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyKeyVaultUrl = value ?? null; }
 
         /// <summary>The version of the key.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public string KeyVaultPropertyKeyVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).KeyVaultPropertyKeyVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).KeyVaultPropertyKeyVersion = value ?? null; }
+        public string KeyVaultPropertyKeyVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyKeyVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyKeyVersion = value ?? null; }
 
         /// <summary>Property of the key if user provided or auto detected</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public string KeyVaultPropertyVersionType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).KeyVaultPropertyVersionType; }
+        public string KeyVaultPropertyVersionType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyVersionType; }
 
-        /// <summary>Resource location</summary>
+        /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceInternal)__trackedResource).Location = value ; }
 
         /// <summary>The hosts</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> ManagementClusterHost { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).ManagementClusterHost; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).ManagementClusterHost = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> ManagementClusterHost { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementClusterHost; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementClusterHost = value ?? null /* arrayOf */; }
 
         /// <summary>The identity</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public int? ManagementClusterId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).ManagementClusterId; }
+        public int? ManagementClusterId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementClusterId; }
 
         /// <summary>The state of the cluster provisioning</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public string ManagementClusterProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).ManagementClusterProvisioningState; }
+        public string ManagementClusterProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementClusterProvisioningState; }
 
         /// <summary>The cluster size</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public int? ManagementClusterSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).ManagementClusterSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).ManagementClusterSize = value ?? default(int); }
+        public int? ManagementClusterSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementClusterSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementClusterSize = value ?? default(int); }
+
+        /// <summary>Name of the vsan datastore associated with the cluster</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        public string ManagementClusterVsanDatastoreName { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementClusterVsanDatastoreName; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementClusterVsanDatastoreName = value ?? null; }
 
         /// <summary>Network used to access vCenter Server and NSX-T Manager</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public string ManagementNetwork { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementNetwork; }
 
         /// <summary>Internal Acessors for Availability</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAvailabilityProperties Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.Availability { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).Availability; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).Availability = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAvailabilityProperties Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.Availability { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Availability; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Availability = value; }
 
         /// <summary>Internal Acessors for Circuit</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuit Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.Circuit { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Circuit; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Circuit = value; }
@@ -179,10 +199,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.CircuitSecondarySubnet { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).CircuitSecondarySubnet; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).CircuitSecondarySubnet = value; }
 
         /// <summary>Internal Acessors for Encryption</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryption Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.Encryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).Encryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).Encryption = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryption Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.Encryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Encryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Encryption = value; }
 
         /// <summary>Internal Acessors for EncryptionKeyVaultProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultProperties Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.EncryptionKeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).EncryptionKeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).EncryptionKeyVaultProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultProperties Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.EncryptionKeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EncryptionKeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EncryptionKeyVaultProperty = value; }
 
         /// <summary>Internal Acessors for Endpoint</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpoints Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.Endpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).Endpoint = value; }
@@ -190,8 +210,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Internal Acessors for EndpointHcxCloudManager</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.EndpointHcxCloudManager { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointHcxCloudManager; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointHcxCloudManager = value; }
 
+        /// <summary>Internal Acessors for EndpointHcxCloudManagerIP</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.EndpointHcxCloudManagerIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointHcxCloudManagerIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointHcxCloudManagerIP = value; }
+
         /// <summary>Internal Acessors for EndpointNsxtManager</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.EndpointNsxtManager { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointNsxtManager; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointNsxtManager = value; }
+
+        /// <summary>Internal Acessors for EndpointNsxtManagerIP</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.EndpointNsxtManagerIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointNsxtManagerIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointNsxtManagerIP = value; }
+
+        /// <summary>Internal Acessors for EndpointVcenterIP</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.EndpointVcenterIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointVcenterIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointVcenterIP = value; }
 
         /// <summary>Internal Acessors for EndpointVcsa</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.EndpointVcsa { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointVcsa; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).EndpointVcsa = value; }
@@ -200,31 +229,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.ExternalCloudLink { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ExternalCloudLink; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ExternalCloudLink = value; }
 
         /// <summary>Internal Acessors for Identity</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudIdentity Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PrivateCloudIdentity()); set { {_identity = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.SystemAssignedServiceIdentity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudIdentityInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentityInternal)Identity).PrincipalId = value; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudIdentityInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentityInternal)Identity).TenantId = value; }
 
         /// <summary>Internal Acessors for KeyVaultPropertyAutoDetectedKeyVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.KeyVaultPropertyAutoDetectedKeyVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).KeyVaultPropertyAutoDetectedKeyVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).KeyVaultPropertyAutoDetectedKeyVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.KeyVaultPropertyAutoDetectedKeyVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyAutoDetectedKeyVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyAutoDetectedKeyVersion = value; }
 
         /// <summary>Internal Acessors for KeyVaultPropertyKeyState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.KeyVaultPropertyKeyState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).KeyVaultPropertyKeyState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).KeyVaultPropertyKeyState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.KeyVaultPropertyKeyState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyKeyState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyKeyState = value; }
 
         /// <summary>Internal Acessors for KeyVaultPropertyVersionType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.KeyVaultPropertyVersionType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).KeyVaultPropertyVersionType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).KeyVaultPropertyVersionType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.KeyVaultPropertyVersionType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyVersionType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).KeyVaultPropertyVersionType = value; }
 
         /// <summary>Internal Acessors for ManagementCluster</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementCluster Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.ManagementCluster { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).ManagementCluster; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).ManagementCluster = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementCluster Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.ManagementCluster { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementCluster; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementCluster = value; }
 
         /// <summary>Internal Acessors for ManagementClusterId</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.ManagementClusterId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).ManagementClusterId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).ManagementClusterId = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.ManagementClusterId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementClusterId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementClusterId = value; }
 
         /// <summary>Internal Acessors for ManagementClusterProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.ManagementClusterProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).ManagementClusterProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)Property).ManagementClusterProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.ManagementClusterProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementClusterProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementClusterProvisioningState = value; }
 
         /// <summary>Internal Acessors for ManagementNetwork</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal.ManagementNetwork { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementNetwork; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).ManagementNetwork = value; }
@@ -274,22 +303,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).Name = value; }
 
+        /// <summary>Internal Acessors for SystemData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemData = value; }
+
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).Type = value; }
 
-        /// <summary>Resource name.</summary>
+        /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).Name; }
 
         /// <summary>
-        /// The block of addresses should be unique across VNet in your subscription as well as on-premise. Make sure the CIDR format
-        /// is conformed to (A.B.C.D/X) where A,B,C,D are between 0 and 255, and X is between 0 and 22
+        /// The block of addresses should be unique across VNet in your subscription as
+        /// well as on-premise. Make sure the CIDR format is conformed to (A.B.C.D/X) where
+        /// A,B,C,D are between 0 and 255, and X is between 0 and 22
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public string NetworkBlock { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).NetworkBlock; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).NetworkBlock = value ?? null; }
 
         /// <summary>
-        /// Flag to indicate whether the private cloud has the quota for provisioned NSX Public IP count raised from 64 to 1024
+        /// Flag to indicate whether the private cloud has the quota for provisioned NSX
+        /// Public IP count raised from 64 to 1024
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public string NsxPublicIPQuotaRaised { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).NsxPublicIPQuotaRaised; }
@@ -300,12 +334,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 
         /// <summary>Optionally, set the NSX-T Manager password when the private cloud is created</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public string NsxtPassword { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).NsxtPassword; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).NsxtPassword = value ?? null; }
+        public System.Security.SecureString NsxtPassword { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).NsxtPassword; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).NsxtPassword = value ?? null; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudProperties _property;
 
-        /// <summary>The properties of a private cloud resource</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PrivateCloudProperties()); set => this._property = value; }
 
@@ -340,19 +374,77 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Backing field for <see cref="Sku" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISku _sku;
 
-        /// <summary>The private cloud SKU</summary>
+        /// <summary>The SKU (Stock Keeping Unit) assigned to this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISku Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Sku()); set => this._sku = value; }
 
-        /// <summary>The name of the SKU.</summary>
+        /// <summary>
+        /// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the
+        /// resource this may be omitted.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        public int? SkuCapacity { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)Sku).Capacity; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)Sku).Capacity = value ?? default(int); }
+
+        /// <summary>
+        /// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        public string SkuFamily { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)Sku).Family; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)Sku).Family = value ?? null; }
+
+        /// <summary>The name of the SKU. E.g. P3. It is typically a letter+number code</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public string SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)Sku).Name = value ; }
 
-        /// <summary>Resource tags</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceInternal)__trackedResource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceInternal)__trackedResource).Tag = value ?? null /* model class */; }
+        /// <summary>
+        /// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        public string SkuSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)Sku).Size; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)Sku).Size = value ?? null; }
 
-        /// <summary>Resource type.</summary>
+        /// <summary>
+        /// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required
+        /// on a PUT.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        public string SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)Sku).Tier = value ?? null; }
+
+        /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemData; }
+
+        /// <summary>The timestamp of resource creation (UTC).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>The identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>The type of identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>The identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>The type of identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
+
+        /// <summary>Resource tags.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceInternal)__trackedResource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceInternal)__trackedResource).Tag = value ?? null /* model class */; }
+
+        /// <summary>
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__trackedResource).Type; }
 
@@ -362,7 +454,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 
         /// <summary>Optionally, set the vCenter admin password when the private cloud is created</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public string VcenterPassword { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VcenterPassword; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VcenterPassword = value ?? null; }
+        public System.Security.SecureString VcenterPassword { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VcenterPassword; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VcenterPassword = value ?? null; }
+
+        /// <summary>Azure resource ID of the virtual network</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        public string VirtualNetworkId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VirtualNetworkId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)Property).VirtualNetworkId = value ?? null; }
 
         /// <summary>Used for live migration of virtual machines</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
@@ -469,6 +565,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"secondarySubnet",
         PossibleTypes = new [] { typeof(string) })]
         string CircuitSecondarySubnet { get;  }
+        /// <summary>The type of DNS zone to use.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The type of DNS zone to use.",
+        SerializedName = @"dnsZoneType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Public", "Private")]
+        string DnsZoneType { get; set; }
         /// <summary>Status of customer managed encryption key</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -481,42 +589,76 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string EncryptionStatus { get; set; }
-        /// <summary>Endpoint for the HCX Cloud Manager</summary>
+        /// <summary>Endpoint FQDN for the HCX Cloud Manager</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Endpoint for the HCX Cloud Manager",
+        Description = @"Endpoint FQDN for the HCX Cloud Manager",
         SerializedName = @"hcxCloudManager",
         PossibleTypes = new [] { typeof(string) })]
         string EndpointHcxCloudManager { get;  }
-        /// <summary>Endpoint for the NSX-T Data Center manager</summary>
+        /// <summary>Endpoint IP for the HCX Cloud Manager</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Endpoint for the NSX-T Data Center manager",
+        Description = @"Endpoint IP for the HCX Cloud Manager",
+        SerializedName = @"hcxCloudManagerIp",
+        PossibleTypes = new [] { typeof(string) })]
+        string EndpointHcxCloudManagerIP { get;  }
+        /// <summary>Endpoint FQDN for the NSX-T Data Center manager</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Endpoint FQDN for the NSX-T Data Center manager",
         SerializedName = @"nsxtManager",
         PossibleTypes = new [] { typeof(string) })]
         string EndpointNsxtManager { get;  }
-        /// <summary>Endpoint for Virtual Center Server Appliance</summary>
+        /// <summary>Endpoint IP for the NSX-T Data Center manager</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Endpoint for Virtual Center Server Appliance",
+        Description = @"Endpoint IP for the NSX-T Data Center manager",
+        SerializedName = @"nsxtManagerIp",
+        PossibleTypes = new [] { typeof(string) })]
+        string EndpointNsxtManagerIP { get;  }
+        /// <summary>Endpoint IP for Virtual Center Server Appliance</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Endpoint IP for Virtual Center Server Appliance",
+        SerializedName = @"vcenterIp",
+        PossibleTypes = new [] { typeof(string) })]
+        string EndpointVcenterIP { get;  }
+        /// <summary>Endpoint FQDN for Virtual Center Server Appliance</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Endpoint FQDN for Virtual Center Server Appliance",
         SerializedName = @"vcsa",
         PossibleTypes = new [] { typeof(string) })]
         string EndpointVcsa { get;  }
         /// <summary>
-        /// Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet
-        /// in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to
+        /// Array of additional networks noncontiguous with networkBlock. Networks must be
+        /// unique and non-overlapping across VNet in your subscription, on-premise, and
+        /// this privateCloud networkBlock attribute. Make sure the CIDR format conforms to
         /// (A.B.C.D/X).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
@@ -525,7 +667,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to (A.B.C.D/X).",
+        Description = @"Array of additional networks noncontiguous with networkBlock. Networks must be
+        unique and non-overlapping across VNet in your subscription, on-premise, and
+        this privateCloud networkBlock attribute. Make sure the CIDR format conforms to
+        (A.B.C.D/X).",
         SerializedName = @"extendedNetworkBlocks",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> ExtendedNetworkBlock { get; set; }
@@ -541,7 +686,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> ExternalCloudLink { get;  }
         /// <summary>
-        /// The principal ID of private cloud identity. This property will only be provided for a system assigned identity.
+        /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -549,7 +694,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The principal ID of private cloud identity. This property will only be provided for a system assigned identity.",
+        Description = @"The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.",
         SerializedName = @"principalId",
         PossibleTypes = new [] { typeof(string) })]
         string IdentityPrincipalId { get;  }
@@ -565,7 +710,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource> IdentitySource { get; set; }
         /// <summary>
-        /// The tenant ID associated with the private cloud. This property will only be provided for a system assigned identity.
+        /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -573,24 +718,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The tenant ID associated with the private cloud. This property will only be provided for a system assigned identity.",
+        Description = @"The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.",
         SerializedName = @"tenantId",
         PossibleTypes = new [] { typeof(string) })]
         string IdentityTenantId { get;  }
-        /// <summary>
-        /// The type of identity used for the private cloud. The type 'SystemAssigned' refers to an implicitly created identity. The
-        /// type 'None' will remove any identities from the Private Cloud.
-        /// </summary>
+        /// <summary>Type of managed service identity (either system assigned, or none).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The type of identity used for the private cloud. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Private Cloud.",
+        Description = @"Type of managed service identity (either system assigned, or none).",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("SystemAssigned", "None")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("None", "SystemAssigned")]
         string IdentityType { get; set; }
         /// <summary>Connectivity to internet is enabled or disabled</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
@@ -704,7 +846,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Description = @"The state of the cluster provisioning",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Cancelled", "Deleting", "Updating", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Cancelled", "Deleting", "Updating")]
         string ManagementClusterProvisioningState { get;  }
         /// <summary>The cluster size</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
@@ -717,6 +859,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"clusterSize",
         PossibleTypes = new [] { typeof(int) })]
         int? ManagementClusterSize { get; set; }
+        /// <summary>Name of the vsan datastore associated with the cluster</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the vsan datastore associated with the cluster",
+        SerializedName = @"vsanDatastoreName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ManagementClusterVsanDatastoreName { get; set; }
         /// <summary>Network used to access vCenter Server and NSX-T Manager</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -729,21 +882,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         PossibleTypes = new [] { typeof(string) })]
         string ManagementNetwork { get;  }
         /// <summary>
-        /// The block of addresses should be unique across VNet in your subscription as well as on-premise. Make sure the CIDR format
-        /// is conformed to (A.B.C.D/X) where A,B,C,D are between 0 and 255, and X is between 0 and 22
+        /// The block of addresses should be unique across VNet in your subscription as
+        /// well as on-premise. Make sure the CIDR format is conformed to (A.B.C.D/X) where
+        /// A,B,C,D are between 0 and 255, and X is between 0 and 22
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
-        Description = @"The block of addresses should be unique across VNet in your subscription as well as on-premise. Make sure the CIDR format is conformed to (A.B.C.D/X) where A,B,C,D are between 0 and 255, and X is between 0 and 22",
+        Update = true,
+        Description = @"The block of addresses should be unique across VNet in your subscription as
+        well as on-premise. Make sure the CIDR format is conformed to (A.B.C.D/X) where
+        A,B,C,D are between 0 and 255, and X is between 0 and 22",
         SerializedName = @"networkBlock",
         PossibleTypes = new [] { typeof(string) })]
         string NetworkBlock { get; set; }
         /// <summary>
-        /// Flag to indicate whether the private cloud has the quota for provisioned NSX Public IP count raised from 64 to 1024
+        /// Flag to indicate whether the private cloud has the quota for provisioned NSX
+        /// Public IP count raised from 64 to 1024
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -751,7 +908,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Flag to indicate whether the private cloud has the quota for provisioned NSX Public IP count raised from 64 to 1024",
+        Description = @"Flag to indicate whether the private cloud has the quota for provisioned NSX
+        Public IP count raised from 64 to 1024",
         SerializedName = @"nsxPublicIpQuotaRaised",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Enabled", "Disabled")]
@@ -776,8 +934,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Update = true,
         Description = @"Optionally, set the NSX-T Manager password when the private cloud is created",
         SerializedName = @"nsxtPassword",
-        PossibleTypes = new [] { typeof(string) })]
-        string NsxtPassword { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString NsxtPassword { get; set; }
         /// <summary>Used for virtual machine cold migration, cloning, and snapshot migration</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -799,7 +957,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Description = @"The provisioning state",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Cancelled", "Pending", "Building", "Deleting", "Updating", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Cancelled", "Pending", "Building", "Deleting", "Updating")]
         string ProvisioningState { get;  }
         /// <summary>Identifier of the ExpressRoute Circuit (Microsoft Colo only)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
@@ -845,17 +1003,72 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"secondarySubnet",
         PossibleTypes = new [] { typeof(string) })]
         string SecondaryCircuitSecondarySubnet { get;  }
-        /// <summary>The name of the SKU.</summary>
+        /// <summary>
+        /// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the
+        /// resource this may be omitted.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.",
+        SerializedName = @"capacity",
+        PossibleTypes = new [] { typeof(int) })]
+        int? SkuCapacity { get; set; }
+        /// <summary>
+        /// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"If the service has different generations of hardware, for the same SKU, then that can be captured here.",
+        SerializedName = @"family",
+        PossibleTypes = new [] { typeof(string) })]
+        string SkuFamily { get; set; }
+        /// <summary>The name of the SKU. E.g. P3. It is typically a letter+number code</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The name of the SKU.",
+        Description = @"The name of the SKU. E.g. P3. It is typically a letter+number code",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string SkuName { get; set; }
+        /// <summary>
+        /// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. ",
+        SerializedName = @"size",
+        PossibleTypes = new [] { typeof(string) })]
+        string SkuSize { get; set; }
+        /// <summary>
+        /// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required
+        /// on a PUT.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.",
+        SerializedName = @"tier",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Free", "Basic", "Standard", "Premium")]
+        string SkuTier { get; set; }
         /// <summary>Thumbprint of the vCenter Server SSL certificate</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -876,8 +1089,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Update = true,
         Description = @"Optionally, set the vCenter admin password when the private cloud is created",
         SerializedName = @"vcenterPassword",
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString VcenterPassword { get; set; }
+        /// <summary>Azure resource ID of the virtual network</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"Azure resource ID of the virtual network",
+        SerializedName = @"virtualNetworkId",
         PossibleTypes = new [] { typeof(string) })]
-        string VcenterPassword { get; set; }
+        string VirtualNetworkId { get; set; }
         /// <summary>Used for live migration of virtual machines</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -914,6 +1138,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string CircuitPrimarySubnet { get; set; }
         /// <summary>CIDR of secondary subnet</summary>
         string CircuitSecondarySubnet { get; set; }
+        /// <summary>The type of DNS zone to use.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Public", "Private")]
+        string DnsZoneType { get; set; }
         /// <summary>Customer managed key encryption, can be enabled or disabled</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryption Encryption { get; set; }
         /// <summary>The key vault where the encryption key is stored</summary>
@@ -923,37 +1150,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string EncryptionStatus { get; set; }
         /// <summary>The endpoints</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpoints Endpoint { get; set; }
-        /// <summary>Endpoint for the HCX Cloud Manager</summary>
+        /// <summary>Endpoint FQDN for the HCX Cloud Manager</summary>
         string EndpointHcxCloudManager { get; set; }
-        /// <summary>Endpoint for the NSX-T Data Center manager</summary>
+        /// <summary>Endpoint IP for the HCX Cloud Manager</summary>
+        string EndpointHcxCloudManagerIP { get; set; }
+        /// <summary>Endpoint FQDN for the NSX-T Data Center manager</summary>
         string EndpointNsxtManager { get; set; }
-        /// <summary>Endpoint for Virtual Center Server Appliance</summary>
+        /// <summary>Endpoint IP for the NSX-T Data Center manager</summary>
+        string EndpointNsxtManagerIP { get; set; }
+        /// <summary>Endpoint IP for Virtual Center Server Appliance</summary>
+        string EndpointVcenterIP { get; set; }
+        /// <summary>Endpoint FQDN for Virtual Center Server Appliance</summary>
         string EndpointVcsa { get; set; }
         /// <summary>
-        /// Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet
-        /// in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to
+        /// Array of additional networks noncontiguous with networkBlock. Networks must be
+        /// unique and non-overlapping across VNet in your subscription, on-premise, and
+        /// this privateCloud networkBlock attribute. Make sure the CIDR format conforms to
         /// (A.B.C.D/X).
         /// </summary>
         System.Collections.Generic.List<string> ExtendedNetworkBlock { get; set; }
         /// <summary>Array of cloud link IDs from other clouds that connect to this one</summary>
         System.Collections.Generic.List<string> ExternalCloudLink { get; set; }
-        /// <summary>The identity of the private cloud, if configured.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudIdentity Identity { get; set; }
+        /// <summary>The managed service identities assigned to this resource.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentity Identity { get; set; }
         /// <summary>
-        /// The principal ID of private cloud identity. This property will only be provided for a system assigned identity.
+        /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
         /// </summary>
         string IdentityPrincipalId { get; set; }
         /// <summary>vCenter Single Sign On Identity Sources</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource> IdentitySource { get; set; }
         /// <summary>
-        /// The tenant ID associated with the private cloud. This property will only be provided for a system assigned identity.
+        /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
         /// </summary>
         string IdentityTenantId { get; set; }
-        /// <summary>
-        /// The type of identity used for the private cloud. The type 'SystemAssigned' refers to an implicitly created identity. The
-        /// type 'None' will remove any identities from the Private Cloud.
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("SystemAssigned", "None")]
+        /// <summary>Type of managed service identity (either system assigned, or none).</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("None", "SystemAssigned")]
         string IdentityType { get; set; }
         /// <summary>Connectivity to internet is enabled or disabled</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Enabled", "Disabled")]
@@ -979,35 +1210,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>The identity</summary>
         int? ManagementClusterId { get; set; }
         /// <summary>The state of the cluster provisioning</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Cancelled", "Deleting", "Updating", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Cancelled", "Deleting", "Updating")]
         string ManagementClusterProvisioningState { get; set; }
         /// <summary>The cluster size</summary>
         int? ManagementClusterSize { get; set; }
+        /// <summary>Name of the vsan datastore associated with the cluster</summary>
+        string ManagementClusterVsanDatastoreName { get; set; }
         /// <summary>Network used to access vCenter Server and NSX-T Manager</summary>
         string ManagementNetwork { get; set; }
         /// <summary>
-        /// The block of addresses should be unique across VNet in your subscription as well as on-premise. Make sure the CIDR format
-        /// is conformed to (A.B.C.D/X) where A,B,C,D are between 0 and 255, and X is between 0 and 22
+        /// The block of addresses should be unique across VNet in your subscription as
+        /// well as on-premise. Make sure the CIDR format is conformed to (A.B.C.D/X) where
+        /// A,B,C,D are between 0 and 255, and X is between 0 and 22
         /// </summary>
         string NetworkBlock { get; set; }
         /// <summary>
-        /// Flag to indicate whether the private cloud has the quota for provisioned NSX Public IP count raised from 64 to 1024
+        /// Flag to indicate whether the private cloud has the quota for provisioned NSX
+        /// Public IP count raised from 64 to 1024
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string NsxPublicIPQuotaRaised { get; set; }
         /// <summary>Thumbprint of the NSX-T Manager SSL certificate</summary>
         string NsxtCertificateThumbprint { get; set; }
         /// <summary>Optionally, set the NSX-T Manager password when the private cloud is created</summary>
-        string NsxtPassword { get; set; }
-        /// <summary>The properties of a private cloud resource</summary>
+        System.Security.SecureString NsxtPassword { get; set; }
+        /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudProperties Property { get; set; }
         /// <summary>Used for virtual machine cold migration, cloning, and snapshot migration</summary>
         string ProvisioningNetwork { get; set; }
         /// <summary>The provisioning state</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Cancelled", "Pending", "Building", "Deleting", "Updating", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Cancelled", "Pending", "Building", "Deleting", "Updating")]
         string ProvisioningState { get; set; }
         /// <summary>
-        /// A secondary expressRoute circuit from a separate AZ. Only present in a stretched private cloud
+        /// A secondary expressRoute circuit from a separate AZ. Only present in a
+        /// stretched private cloud
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuit SecondaryCircuit { get; set; }
         /// <summary>Identifier of the ExpressRoute Circuit (Microsoft Colo only)</summary>
@@ -1018,14 +1254,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string SecondaryCircuitPrimarySubnet { get; set; }
         /// <summary>CIDR of secondary subnet</summary>
         string SecondaryCircuitSecondarySubnet { get; set; }
-        /// <summary>The private cloud SKU</summary>
+        /// <summary>The SKU (Stock Keeping Unit) assigned to this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISku Sku { get; set; }
-        /// <summary>The name of the SKU.</summary>
+        /// <summary>
+        /// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the
+        /// resource this may be omitted.
+        /// </summary>
+        int? SkuCapacity { get; set; }
+        /// <summary>
+        /// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+        /// </summary>
+        string SkuFamily { get; set; }
+        /// <summary>The name of the SKU. E.g. P3. It is typically a letter+number code</summary>
         string SkuName { get; set; }
+        /// <summary>
+        /// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+        /// </summary>
+        string SkuSize { get; set; }
+        /// <summary>
+        /// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required
+        /// on a PUT.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Free", "Basic", "Standard", "Premium")]
+        string SkuTier { get; set; }
         /// <summary>Thumbprint of the vCenter Server SSL certificate</summary>
         string VcenterCertificateThumbprint { get; set; }
         /// <summary>Optionally, set the vCenter admin password when the private cloud is created</summary>
-        string VcenterPassword { get; set; }
+        System.Security.SecureString VcenterPassword { get; set; }
+        /// <summary>Azure resource ID of the virtual network</summary>
+        string VirtualNetworkId { get; set; }
         /// <summary>Used for live migration of virtual machines</summary>
         string VmotionNetwork { get; set; }
 

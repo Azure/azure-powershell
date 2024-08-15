@@ -13,9 +13,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzMLWorkspaceOnlineEndpoint_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineEndpoint))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IOnlineEndpoint))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Description(@"Create or update Online Endpoint (asynchronous).")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}", ApiVersion = "2024-04-01")]
     public partial class NewAzMLWorkspaceOnlineEndpoint_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.IEventListener
     {
@@ -28,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
         private string __processRecordId;
 
-        private Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineEndpoint _body = new Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.OnlineEndpoint();
+        private Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IOnlineEndpoint _body = new Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.OnlineEndpoint();
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
@@ -75,9 +76,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         public string Compute { get => _body.Compute ?? null; set => _body.Compute = value; }
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Azure)]
@@ -103,8 +105,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         ReadOnly = false,
         Description = @"Property dictionary. Properties can be added, but not removed or altered.",
         SerializedName = @"properties",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IEndpointPropertiesBaseProperties) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IEndpointPropertiesBaseProperties EndpointPropertiesBaseProperty { get => _body.EndpointPropertiesBaseProperty ?? null /* object */; set => _body.EndpointPropertiesBaseProperty = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IEndpointPropertiesBaseProperties) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IEndpointPropertiesBaseProperties EndpointPropertiesBaseProperty { get => _body.EndpointPropertiesBaseProperty ?? null /* object */; set => _body.EndpointPropertiesBaseProperty = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -205,6 +207,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
+        /// <summary>
+        /// Percentage of traffic to be mirrored to each deployment without using returned scoring. Traffic values need to sum to
+        /// utmost 50.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ExportAs(typeof(global::System.Collections.Hashtable))]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Percentage of traffic to be mirrored to each deployment without using returned scoring. Traffic values need to sum to utmost 50.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Percentage of traffic to be mirrored to each deployment without using returned scoring. Traffic values need to sum to utmost 50.",
+        SerializedName = @"mirrorTraffic",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IOnlineEndpointMirrorTraffic) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IOnlineEndpointMirrorTraffic MirrorTraffic { get => _body.MirrorTraffic ?? null /* object */; set => _body.MirrorTraffic = value; }
+
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
@@ -247,6 +264,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Use the default credentials for the proxy")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
+
+        /// <summary>
+        /// Set to "Enabled" for endpoints that should allow public access when Private Link is enabled.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Set to \"Enabled\" for endpoints that should allow public access when Private Link is enabled.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Set to ""Enabled"" for endpoints that should allow public access when Private Link is enabled.",
+        SerializedName = @"publicNetworkAccess",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PublicNetworkAccessType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PublicNetworkAccessType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PublicNetworkAccessType PublicNetworkAccess { get => _body.PublicNetworkAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.PublicNetworkAccessType)""); set => _body.PublicNetworkAccess = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -369,8 +400,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         ReadOnly = false,
         Description = @"Percentage of traffic from endpoint to divert to each deployment. Traffic values need to sum to 100.",
         SerializedName = @"traffic",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineEndpointTraffic) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineEndpointTraffic Traffic { get => _body.Traffic ?? null /* object */; set => _body.Traffic = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IOnlineEndpointTraffic) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IOnlineEndpointTraffic Traffic { get => _body.Traffic ?? null /* object */; set => _body.Traffic = value; }
 
         /// <summary>Backing field for <see cref="WorkspaceName" /> property.</summary>
         private string _workspaceName;
@@ -403,12 +434,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineEndpoint">Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineEndpoint</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IOnlineEndpoint">Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IOnlineEndpoint</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineEndpoint> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IOnlineEndpoint> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -456,7 +487,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -635,6 +683,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
             base.StopProcessing();
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
@@ -679,12 +742,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineEndpoint">Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineEndpoint</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IOnlineEndpoint">Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IOnlineEndpoint</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineEndpoint> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IOnlineEndpoint> response)
         {
             using( NoSynchronizationContext )
             {
@@ -696,7 +759,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineEndpoint
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IOnlineEndpoint
                 WriteObject((await response));
             }
         }

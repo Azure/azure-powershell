@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -28,7 +27,6 @@ using System.Net.Http.Headers;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.TestFx.DelegatingHandlers;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
@@ -104,7 +102,7 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
                 client = realClientFactory.CreateCustomArmClient<TClient>(newParameters);
             }
 
-            if (TestMockSupport.RunningMocked && HttpMockServer.GetCurrentMode() != HttpRecorderMode.Record)
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
                 if (client is IAzureClient azureClient)
                 {

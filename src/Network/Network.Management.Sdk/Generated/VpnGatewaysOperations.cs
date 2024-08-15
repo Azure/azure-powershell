@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "gatewayName");
             }
 
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -249,7 +249,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Creates a virtual wan vpn gateway if it doesn&#39;t exist else updates the existing gateway.
+        /// Creates a virtual wan vpn gateway if it doesn&#39;t exist else updates the
+        /// existing gateway.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name of the VpnGateway.
@@ -440,7 +441,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
 
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -632,7 +633,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -850,7 +851,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "gatewayName");
             }
 
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1092,7 +1093,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "gatewayName");
             }
 
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1306,7 +1307,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "gatewayName");
             }
 
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1502,7 +1503,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1722,7 +1723,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1944,7 +1945,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

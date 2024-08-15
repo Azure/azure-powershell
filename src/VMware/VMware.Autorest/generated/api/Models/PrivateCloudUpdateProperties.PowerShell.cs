@@ -133,6 +133,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ExtendedNetworkBlock = (System.Collections.Generic.List<string>) content.GetValueForProperty("ExtendedNetworkBlock",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ExtendedNetworkBlock, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("DnsZoneType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).DnsZoneType = (string) content.GetValueForProperty("DnsZoneType",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).DnsZoneType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ManagementClusterHost"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterHost = (System.Collections.Generic.List<string>) content.GetValueForProperty("ManagementClusterHost",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterHost, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("AvailabilityStrategy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).AvailabilityStrategy = (string) content.GetValueForProperty("AvailabilityStrategy",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).AvailabilityStrategy, global::System.Convert.ToString);
@@ -149,9 +157,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterId = (int?) content.GetValueForProperty("ManagementClusterId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("ManagementClusterHost"))
+            if (content.Contains("ManagementClusterVsanDatastoreName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterHost = (System.Collections.Generic.List<string>) content.GetValueForProperty("ManagementClusterHost",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterHost, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterVsanDatastoreName = (string) content.GetValueForProperty("ManagementClusterVsanDatastoreName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterVsanDatastoreName, global::System.Convert.ToString);
             }
             if (content.Contains("AvailabilityZone"))
             {
@@ -234,6 +242,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ExtendedNetworkBlock = (System.Collections.Generic.List<string>) content.GetValueForProperty("ExtendedNetworkBlock",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ExtendedNetworkBlock, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("DnsZoneType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).DnsZoneType = (string) content.GetValueForProperty("DnsZoneType",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).DnsZoneType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ManagementClusterHost"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterHost = (System.Collections.Generic.List<string>) content.GetValueForProperty("ManagementClusterHost",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterHost, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("AvailabilityStrategy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).AvailabilityStrategy = (string) content.GetValueForProperty("AvailabilityStrategy",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).AvailabilityStrategy, global::System.Convert.ToString);
@@ -250,9 +266,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterId = (int?) content.GetValueForProperty("ManagementClusterId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("ManagementClusterHost"))
+            if (content.Contains("ManagementClusterVsanDatastoreName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterHost = (System.Collections.Generic.List<string>) content.GetValueForProperty("ManagementClusterHost",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterHost, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterVsanDatastoreName = (string) content.GetValueForProperty("ManagementClusterVsanDatastoreName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterVsanDatastoreName, global::System.Convert.ToString);
             }
             if (content.Contains("AvailabilityZone"))
             {

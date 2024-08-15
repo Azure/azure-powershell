@@ -44,21 +44,21 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="publicAccess">Specifies whether data in the container may be accessed publicly and the
         /// level of access.
-        /// Possible values include: 'Container', 'Blob', 'None'</param>
+        /// Possible values include: &#39;Container&#39;, &#39;Blob&#39;, &#39;None&#39;</param>
 
         /// <param name="lastModifiedTime">Returns the date and time the container was last modified.
         /// </param>
 
         /// <param name="leaseStatus">The lease status of the container.
-        /// Possible values include: 'Locked', 'Unlocked'</param>
+        /// Possible values include: &#39;Locked&#39;, &#39;Unlocked&#39;</param>
 
         /// <param name="leaseState">Lease state of the container.
-        /// Possible values include: 'Available', 'Leased', 'Expired', 'Breaking',
-        /// 'Broken'</param>
+        /// Possible values include: &#39;Available&#39;, &#39;Leased&#39;, &#39;Expired&#39;, &#39;Breaking&#39;,
+        /// &#39;Broken&#39;</param>
 
         /// <param name="leaseDuration">Specifies whether the lease on a container is of infinite or fixed
         /// duration, only when the container is leased.
-        /// Possible values include: 'Infinite', 'Fixed'</param>
+        /// Possible values include: &#39;Infinite&#39;, &#39;Fixed&#39;</param>
 
         /// <param name="metadata">A name-value pair to associate with the container as metadata.
         /// </param>

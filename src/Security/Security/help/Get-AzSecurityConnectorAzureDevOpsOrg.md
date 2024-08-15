@@ -15,7 +15,7 @@ Returns a monitored Azure DevOps organization resource.
 ### List (Default)
 ```
 Get-AzSecurityConnectorAzureDevOpsOrg -ResourceGroupName <String> -SecurityConnectorName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -23,13 +23,13 @@ Get-AzSecurityConnectorAzureDevOpsOrg -ResourceGroupName <String> -SecurityConne
 ```
 Get-AzSecurityConnectorAzureDevOpsOrg -OrgName <String> -ResourceGroupName <String>
  -SecurityConnectorName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzSecurityConnectorAzureDevOpsOrg -InputObject <ISecurityIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -127,6 +127,21 @@ Parameter Sets: Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

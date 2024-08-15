@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacetritonmodeljobinputobject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceTritonModelJobInputObject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for TritonModelJobInput.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceTritonModelJobInputObject -Type <JobInputType> -Uri <String> [-Description <String>]
- [-Mode <InputDeliveryMode>] [<CommonParameters>]
+New-AzMLWorkspaceTritonModelJobInputObject -Uri <String> -Type <JobInputType> [-Mode <InputDeliveryMode>]
+ [-Description <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,21 +24,10 @@ Create an in-memory object for TritonModelJobInput.
 
 ### Example 1: Create an in-memory object for TritonModelJobInput
 ```powershell
-New-AzMLWorkspaceTritonModelJobInputObject
+New-AzMLWorkspaceTritonModelJobInputObject -Type <JobInputType> -Uri <String>
 ```
 
 Create an in-memory object for TritonModelJobInput
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -109,11 +98,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.TritonModelJobInput
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.TritonModelJobInput
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

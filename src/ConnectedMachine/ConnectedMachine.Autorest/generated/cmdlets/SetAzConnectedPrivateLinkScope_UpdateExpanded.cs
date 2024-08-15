@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
     using System;
 
     /// <summary>
-    /// Update (or Update) a Azure Arc PrivateLinkScope. Note: You cannot specify a different value for InstrumentationKey nor
+    /// Update (or updates) a Azure Arc PrivateLinkScope. Note: You cannot specify a different value for InstrumentationKey nor
     /// AppId in the Put operation.
     /// </summary>
     /// <remarks>
@@ -19,9 +19,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzConnectedPrivateLinkScope_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScope))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Description(@"Update (or Update) a Azure Arc PrivateLinkScope. Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Description(@"Update (or updates) a Azure Arc PrivateLinkScope. Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}", ApiVersion = "2023-10-03-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}", ApiVersion = "2024-03-31-preview")]
     public partial class SetAzConnectedPrivateLinkScope_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IContext
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         Description = @"Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.",
         SerializedName = @"publicNetworkAccess",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Enabled", "Disabled", "SecuredByPerimeter")]
         public string PublicNetworkAccess { get => _parametersBody.PublicNetworkAccess ?? null; set => _parametersBody.PublicNetworkAccess = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>

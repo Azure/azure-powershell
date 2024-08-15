@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 return;
             }
-            __resource = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Resource(json);
+            __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ProxyResource(json);
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.DatastoreProperties.FromJson(__jsonProperties) : _property;}
             AfterFromJson(json);
         }
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 return container;
             }
-            __resource?.ToJson(container, serializationMode);
+            __proxyResource?.ToJson(container, serializationMode);
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             AfterToJson(ref container);
             return container;

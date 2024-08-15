@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>A paged list of HCX Enterprise Sites</summary>
+    /// <summary>The response of a HcxEnterpriseSite list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(HcxEnterpriseSiteListTypeConverter))]
     public partial class HcxEnterpriseSiteList
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             return ToJsonString();
         }
     }
-    /// A paged list of HCX Enterprise Sites
+    /// The response of a HcxEnterpriseSite list operation.
     [System.ComponentModel.TypeConverter(typeof(HcxEnterpriseSiteListTypeConverter))]
     public partial interface IHcxEnterpriseSiteList
 

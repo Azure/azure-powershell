@@ -19,6 +19,18 @@
 -->
 ## Upcoming Release
 
+## Version 1.18.6
+* Added security enhancement feature snowflake support storage integration.
+* Supported 'domain' Property In Dynamics Family.
+* Enabled UAMI auth for Data Factory Sql Server connector.
+* Supported managed identity for Data Factory Azure Table connector.
+
+## Version 1.18.5
+* Added UAMI in DynamicsCrm LinkedService
+
+## Version 1.18.4
+* Updated ADF encryption client SDK version to 5.29.8499.2
+
 ## Version 1.18.3
 * Added ServiceNowV2, PostgreSqlV2, GoogleBigQuery in ADF
 * Fixed headers property schema deserialize issue

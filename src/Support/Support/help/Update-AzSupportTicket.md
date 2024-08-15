@@ -1,125 +1,124 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Support.dll-Help.xml
+external help file: Az.Support-help.xml
 Module Name: Az.Support
-online version:https://learn.microsoft.com/powershell/module/az.support/update-azsupportticket
+online version: https://learn.microsoft.com/powershell/module/az.support/update-azsupportticket
 schema: 2.0.0
 ---
 
 # Update-AzSupportTicket
 
 ## SYNOPSIS
-Updates support ticket.
+This API allows you to update the severity level, ticket status, advanced diagnostic consent and your contact information in the support ticket.\<br/\>\<br/\>Note: The severity levels cannot be changed if a support ticket is actively being worked upon by an Azure support engineer.
+In such a case, contact your support engineer to request severity update by adding a new communication using the Communications API.
 
 ## SYNTAX
 
-### UpdateByNameWithContactDetailParameterSet (Default)
+### UpdateExpanded (Default)
 ```
-Update-AzSupportTicket -Name <String> [-Severity <Severity>] [-Status <Status>] [-CustomerFirstName <String>]
- [-CustomerLastName <String>] [-PreferredContactMethod <ContactMethod>] [-CustomerPrimaryEmailAddress <String>]
- [-AdditionalEmailAddress <String[]>] [-CustomerPhoneNumber <String>] [-CustomerPreferredTimeZone <String>]
- [-CustomerCountry <String>] [-CustomerPreferredSupportLanguage <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateByNameWithContactObjectParameterSet
-```
-Update-AzSupportTicket -Name <String> [-Severity <Severity>] [-Status <Status>] -CustomerContactDetail <PSContactProfile>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzSupportTicket -Name <String> [-SubscriptionId <String>] [-AdvancedDiagnosticConsent <String>]
+ [-ContactDetailAdditionalEmailAddress <String[]>] [-ContactDetailCountry <String>]
+ [-ContactDetailFirstName <String>] [-ContactDetailLastName <String>] [-ContactDetailPhoneNumber <String>]
+ [-ContactDetailPreferredContactMethod <String>] [-ContactDetailPreferredSupportLanguage <String>]
+ [-ContactDetailPreferredTimeZone <String>] [-ContactDetailPrimaryEmailAddress <String>]
+ [-SecondaryConsent <ISecondaryConsent[]>] [-Severity <String>] [-Status <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateByInputObjectWithContactDetailParameterSet
+### UpdateViaIdentityExpanded
 ```
-Update-AzSupportTicket -InputObject <PSSupportTicket> [-Severity <Severity>] [-Status <Status>] [-CustomerFirstName <String>]
- [-CustomerLastName <String>] [-PreferredContactMethod <ContactMethod>] [-CustomerPrimaryEmailAddress <String>]
- [-AdditionalEmailAddress <String[]>] [-CustomerPhoneNumber <String>] [-CustomerPreferredTimeZone <String>]
- [-CustomerCountry <String>] [-CustomerPreferredSupportLanguage <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateByInputObjectWithContactObjectParameterSet
-```
-Update-AzSupportTicket -InputObject <PSSupportTicket> [-Severity <Severity>] [-Status <Status>]
- -CustomerContactDetail <PSContactProfile> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzSupportTicket -InputObject <ISupportIdentity> [-AdvancedDiagnosticConsent <String>]
+ [-ContactDetailAdditionalEmailAddress <String[]>] [-ContactDetailCountry <String>]
+ [-ContactDetailFirstName <String>] [-ContactDetailLastName <String>] [-ContactDetailPhoneNumber <String>]
+ [-ContactDetailPreferredContactMethod <String>] [-ContactDetailPreferredSupportLanguage <String>]
+ [-ContactDetailPreferredTimeZone <String>] [-ContactDetailPrimaryEmailAddress <String>]
+ [-SecondaryConsent <ISecondaryConsent[]>] [-Severity <String>] [-Status <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Use this cmdlet to update a support ticket's severity level, status or customer contact details. Note that updating a support ticket's severity level or status is not allowed when the ticket is assigned to a support engineer. If you wish to update the severity level or status after ticket assignment, contact the support engineer by sending a communication on the ticket.
+This API allows you to update the severity level, ticket status, advanced diagnostic consent and your contact information in the support ticket.\<br/\>\<br/\>Note: The severity levels cannot be changed if a support ticket is actively being worked upon by an Azure support engineer.
+In such a case, contact your support engineer to request severity update by adding a new communication using the Communications API.
 
 ## EXAMPLES
 
-### Example 1: Update severity of support ticket.
+### Example 1: - Updates the support ticket at subscription level
 ```powershell
-Update-AzSupportTicket -Name "test1" -Severity "moderate"
-```
-```output
-Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
-----  -----                        --------------- -------- ------------------            ------ -----------
-test1 test title1                  150010521000317 Moderate Virtual Machine running Linux Open   2/5/2020 1:33:53 AM
+Update-AzSupportTicket -Name "test12345678" -Status "Closed"
 ```
 
-### Example 2: Update status of support ticket.
-```powershell
-Update-AzSupportTicket -Name "test1" -Status "Closed"
-```
 ```output
-Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
-----  -----                        --------------- -------- ------------------            ------ -----------
-test1 test title1                  150010521000317 Moderate Virtual Machine running Linux Closed   2/5/2020 1:33:53 AM
+AdvancedDiagnosticConsent                  : No
+ContactDetailAdditionalEmailAddress        :
+ContactDetailCountry                       : USA
+ContactDetailFirstName                     : test
+ContactDetailLastName                      : test
+ContactDetailPhoneNumber                   :
+ContactDetailPreferredContactMethod        : Email
+ContactDetailPreferredSupportLanguage      : en-US
+ContactDetailPreferredTimeZone             : Pacific Standard Time
+ContactDetailPrimaryEmailAddress           : test@test.com
+CreatedDate                                : 2/22/2024 6:48:38 AM
+Description                                : test ticket - please ignore and close
+EnrollmentId                               :
+FileWorkspaceName                          : 2402220010002574
+Id                                         : /subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Su
+                                             pport/supportTickets/test12345678
+ModifiedDate                               : 2/22/2024 7:00:10 AM
+Name                                       : test12345678
+ProblemClassificationDisplayName           : Add or update VAT, tax id, PO number or profile information
+ProblemClassificationId                    : /providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc
+                                             /problemClassifications/3ec1a070-f242-9ecf-5a7c-e1a88ce029ef
+ProblemScopingQuestion                     :
+ProblemStartTime                           :
+QuotaTicketDetailQuotaChangeRequest        :
+QuotaTicketDetailQuotaChangeRequestSubType :
+QuotaTicketDetailQuotaChangeRequestVersion :
+Require24X7Response                        : False
+ResourceGroupName                          :
+SecondaryConsent                           :
+ServiceDisplayName                         : Billing
+ServiceId                                  : /providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc
+ServiceLevelAgreementExpirationTime        : 2/22/2024 10:00:00 PM
+ServiceLevelAgreementSlaMinute             : 480
+ServiceLevelAgreementStartTime             : 2/22/2024 6:48:38 AM
+Severity                                   : Minimal
+Status                                     : Closed
+SupportEngineerEmailAddress                :
+SupportPlanDisplayName                     : Azure Support Plan - Internal
+SupportPlanId                              : U291cmNlOkVBLFN1YnNjcmlwdGlvbklkOjc2Q0I3N0ZBLThCMTctNEVBQi05NDkzLUI2NURBQ0
+                                             U5OTgxMyxPZmZlcklkOk1TLUFaUi0wMDE1UCxTb3ZlcmVpZ25DbG91ZDpQdWJsaWMs
+SupportPlanType                            : Azure Internal
+SupportTicketId                            : 2402220010002574
+TechnicalTicketDetailResourceId            :
+Title                                      : test ticket - please ignore and close
+Type                                       : Microsoft.Support/supportTickets
 ```
 
-### Example 3: Update contact details of support ticket by specify contact object.
-```powershell
-$contactDetail = New-Object Microsoft.Azure.Commands.Support.Models.PSContactProfile
-$contactDetail.FirstName = "first name updated"
-$contactDetail.LastName = "last name updated"
-Update-AzSupportTicket -Name "test1" -CustomerContactDetail $contactDetail 
-```
-```output
-Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
-----  -----                        --------------- -------- ------------------            ------ -----------
-test1 test title1                  150010521000317 Moderate Virtual Machine running Linux Open   2/5/2020 1:33:53 AM
-```
-
-### Example 4: Update severity of support ticket by piping support ticket object.
-```powershell
-Get-AzSupportTicket -Name "test1" | Update-AzSupportTicket -Severity "moderate"
-```
-```output
-Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
-----  -----                        --------------- -------- ------------------            ------ -----------
-test1 test title1                  150010521000317 Moderate Virtual Machine running Linux Open   2/5/2020 1:33:53 AM
-```
-
-### Example 5: Update contact details of support ticket by specifying individual contact parameters.
-```powershell
-Update-AzSupportTicket -Name "test1" -CustomerFirstName "first name updated" -CustomerLastName "last name updated" -AdditionalEmailAddress @("user2@contoso.com") 
-```
-```output
-Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
-----  -----                        --------------- -------- ------------------            ------ -----------
-test1 test title1                  150010521000317 Moderate Virtual Machine running Linux Open   2/5/2020 1:33:53 AM
-```
-
-### Example 6: Update status of support ticket by piping support ticket object.
-```powershell
-Get-AzSupportTicket -Name "test1" | Update-AzSupportTicket -Status "Closed"
-```
-```output
-Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
-----  -----                        --------------- -------- ------------------            ------ -----------
-test1 test title1                  150010521000317 Moderate Virtual Machine running Linux Closed   2/5/2020 1:33:53 AM
-```
+This API allows you to update the severity level, ticket status, advanced diagnostic consent and your contact information in the support ticket.
 
 ## PARAMETERS
 
-### -AdditionalEmailAddress
-Additional email addresses.
-Email addresses listed here will be copied on any correspondence about the support ticket.
+### -AdvancedDiagnosticConsent
+Advanced diagnostic consent to be updated on the support ticket.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContactDetailAdditionalEmailAddress
+Email addresses listed will be copied on any correspondence about the support ticket.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateByNameWithContactDetailParameterSet, UpdateByInputObjectWithContactDetailParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -129,28 +128,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CustomerContactDetail
-Update Contact details on SupportTicket.
-
-```yaml
-Type: Microsoft.Azure.Commands.Support.Models.PSContactProfile
-Parameter Sets: UpdateByNameWithContactObjectParameterSet, UpdateByInputObjectWithContactObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CustomerCountry
-Customer country.
-This must be a valid ISO Alpha-3 country code (ISO 3166).
+### -ContactDetailCountry
+Country of the user.
+This is the ISO 3166-1 alpha-3 code.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameWithContactDetailParameterSet, UpdateByInputObjectWithContactDetailParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -160,12 +144,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CustomerFirstName
-Customer first name.
+### -ContactDetailFirstName
+First name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameWithContactDetailParameterSet, UpdateByInputObjectWithContactDetailParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -175,12 +159,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CustomerLastName
-Customer last name.
+### -ContactDetailLastName
+Last name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameWithContactDetailParameterSet, UpdateByInputObjectWithContactDetailParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -190,13 +174,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CustomerPhoneNumber
-Customer phone number.
+### -ContactDetailPhoneNumber
+Phone number.
 This is required if preferred contact method is phone.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameWithContactDetailParameterSet, UpdateByInputObjectWithContactDetailParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -206,13 +190,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CustomerPreferredSupportLanguage
-Customer preferred support language.
-This must be a valid language-contry code for one of the supported languages listed here https://azure.microsoft.com/support/faq/.
+### -ContactDetailPreferredContactMethod
+Preferred contact method.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameWithContactDetailParameterSet, UpdateByInputObjectWithContactDetailParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -222,13 +205,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CustomerPreferredTimeZone
-Customer preferred time zone.
-This must be a valid System.TimeZoneInfo.Id value.
+### -ContactDetailPreferredSupportLanguage
+Preferred language of support from Azure.
+Support languages vary based on the severity you choose for your support ticket.
+Learn more at [Azure Severity and responsiveness](https://azure.microsoft.com/support/plans/response/).
+Use the standard language-country code.
+Valid values are 'en-us' for English, 'zh-hans' for Chinese, 'es-es' for Spanish, 'fr-fr' for French, 'ja-jp' for Japanese, 'ko-kr' for Korean, 'ru-ru' for Russian, 'pt-br' for Portuguese, 'it-it' for Italian, 'zh-tw' for Chinese and 'de-de' for German.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameWithContactDetailParameterSet, UpdateByInputObjectWithContactDetailParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -238,12 +224,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CustomerPrimaryEmailAddress
-Customer primary email address.
+### -ContactDetailPreferredTimeZone
+Time zone of the user.
+This is the name of the time zone from [Microsoft Time Zone Index Values](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values).
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameWithContactDetailParameterSet, UpdateByInputObjectWithContactDetailParameterSet
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContactDetailPrimaryEmailAddress
+Primary email address.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -254,12 +256,13 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -269,11 +272,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-SupportTicket resource object that this cmdlet updates.
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.Commands.Support.Models.PSSupportTicket
-Parameter Sets: UpdateByInputObjectWithContactDetailParameterSet, UpdateByInputObjectWithContactObjectParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -284,12 +287,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of SupportTicket resource that this cmdlet updates.
+Support ticket name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameWithContactDetailParameterSet, UpdateByNameWithContactObjectParameterSet
-Aliases:
+Parameter Sets: UpdateExpanded
+Aliases: SupportTicketName
 
 Required: True
 Position: Named
@@ -298,14 +301,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PreferredContactMethod
-Preferred contact method.
+### -SecondaryConsent
+This property indicates secondary consents for the support ticket
 
 ```yaml
-Type: Microsoft.Azure.Commands.Support.Models.ContactMethod
-Parameter Sets: UpdateByNameWithContactDetailParameterSet, UpdateByInputObjectWithContactDetailParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISecondaryConsent[]
+Parameter Sets: (All)
 Aliases:
-Accepted values: Email, Phone
 
 Required: False
 Position: Named
@@ -315,13 +317,12 @@ Accept wildcard characters: False
 ```
 
 ### -Severity
-Update Severity of SupportTicket.
+Severity level.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Support.Models.Severity
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Minimal, Moderate, Critical, HighestCriticalImpact
 
 Required: False
 Position: Named
@@ -331,17 +332,32 @@ Accept wildcard characters: False
 ```
 
 ### -Status
-Update Status of SupportTicket.
+Status to be updated on the ticket.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Support.Models.Status
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Open, Closed
 
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -382,11 +398,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Support.Models.PSSupportTicket
+### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Support.Models.PSSupportTicket
+### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportTicketDetails
 
 ## NOTES
 

@@ -25,12 +25,12 @@ List the operations for the provider
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api30.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.newrelic/get-aznewrelicoperation
 #>
 function Get-AzNewRelicOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api30.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

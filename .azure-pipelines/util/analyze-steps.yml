@@ -5,7 +5,6 @@ parameters:
   IsGenerateBased: ''
 
 steps:
-- template: get-github-pat-steps.yml
 - template: download-build-steps.yml
   parameters:
     artifactName: build-${{ parameters.testFramework }}
@@ -50,7 +49,6 @@ steps:
     custom: msbuild
     arguments: 'build.proj /t:GenerateHelp /p:Configuration=${{ parameters.configuration }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
   env:
-      OCTOKITPAT: $(GithubToken)
       PowerShellPlatform: ${{ parameters.powerShellPlatform }}
 
 - task: DotNetCoreCLI@2
@@ -60,9 +58,8 @@ steps:
     custom: msbuild
     arguments: 'build.proj /t:StaticAnalysis /p:Configuration=${{ parameters.configuration }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
   env:
-      OCTOKITPAT: $(GithubToken)
       IsGenerateBased: ${{ parameters.IsGenerateBased }}
 
 - template: publish-artifacts-steps.yml
   parameters:
-    artifactName: analyze-${{ parameters.testFramework }}
+    artifactName: analyze-${{ parameters.testFramework }}-$(System.JobAttempt)

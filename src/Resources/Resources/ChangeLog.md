@@ -20,6 +20,52 @@
 
 ## Upcoming Release
 
+## Version 7.3.0
+* Added null check and empty list check to the permissions object in the ToPSRoleDefinition method.
+* Added argument completer for `EnforcementMode`, `IdentityType`
+    * `New-AzPolicyAssignment`
+    * `New-AzPolicyExemption`
+    * `Update-AzPolicyAssignment`
+    * `Update-AzPolicyExemption`
+* Fixed bug deserializing property: `policyDefinitionReferenceId` [#25112] 
+* Fixed overriding of Bicep parameters in Deployment cmdlets to support `SecureString` parameters.
+* Added Test cmdlets for Deployment Stacks.
+
+## Version 7.2.0
+* Fixed `Set-AzPolicyAssignment` loses description and Display Name [#25362]
+* Fixed `New-AzPolicyAssignment` string ID value handling for parameter '-PolicyDefinition'
+* Fixed policy import issue with OP (requires serialization of null values)
+* Fixed '-Scope' parameter handling at resource instance level
+* Fixed error `Get-AzPolicySetDefinition`cannot find matched parameter '-Name' [#25334]
+* Fixed serialization issue with empty arrays in PolicyParameterObject
+* Addressed a rare case where a service principal does not have AppId
+* Introduced validation of MG scoped deployment stack during New/Set cmdlet execution.
+* Updated Remove/New stack cmdlets with warnings for management groups ActionOnUnmanage and removed DeleteResourcesAndResourceGroups as valid ActionOnUnmanage value.
+* Supported get and assign versioned policy definitions and sets
+* Fixed syntax incompatible with windows powershell [#24971]
+* Fixed bug with `Get-AzPolicyExemption` requesting 'ParentResourcePath'
+* Supported `ServiceManagementReference` of Entra App
+    * `Get-AzADApplication`
+    * `New-AzADApplication`
+    * `Update-AzADApplication`
+* Fixed deployment stack validation error surfacing.
+* Fixed default formatting for output objects
+* Removed '-InputObject' for
+    * `Get-AzPolicyAssignment`
+    * `Get-AzPolicyDefinition`
+    * `Get-AzPolicyExemption`
+    * `Get-AzPolicySetDefinition`
+    * `New-AzPolicyAssignment`
+    * `New-AzPolicyDefinition`
+    * `New-AzPolicySetDefinition`
+* Implemented '-Version' and '-ListVersion' parameters on `Get-AzPolicyDefinition` and `Get-AzPolicySetDefinition`
+
+## Version 7.1.0
+* Fixed deployment and deployment stack New/Set cmdlets to fail if template/parameter uri fails to downloads.
+* Deployment Stack cmdlets GA release/updates.
+* [Breaking Change] Redesigned CRUD cmdlets for `PolicyAssignment`, `PolicyDefinition`, `PolicyExemption`, `PolicySetDefinition`. Please see Az 12 migration guide https://learn.microsoft.com/en-us/powershell/azure/migrate-az-12.0.0 for more detail.
+* Added null check to the permissions object in the ToPSRoleDefinition method to return if the whole permissions object array is null.
+
 ## Version 6.16.2
 * Introduced secrets detection feature to safeguard sensitive data.
 * Migrated SDK generation from autorest csharp to autorest powershell.

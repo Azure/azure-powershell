@@ -429,8 +429,7 @@ $clusterCreds = Get-Credential
 # ESP configuration
 $domainResourceId = "your Azure AD Domin Service resource id"
 $domainUser = "yourdomainuser"
-$domainPassword = "yourdoaminpasswd"
-$domainPassword = ConvertTo-SecureString $domainPassword -AsPlainText -Force
+$domainPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $domainCredential = New-Object System.Management.Automation.PSCredential($domainUser, $domainPassword)
 $clusterUserGroupDns = "dominusergroup"
 $ldapUrls = "ldaps://{your domain name}:636"
@@ -578,8 +577,7 @@ $virtualNetworkId="yourvnetresourceid"
 $subnetName="yoursubnetname"
 
 $databaseUserName="yourusername"
-$databasePassword="******"
-$databasePassword=ConvertTo-SecureString $databasePassword -AsPlainText -Force
+$databasePassword=ConvertTo-SecureString -String "****" -AsPlainText -Force
 
 $sqlserverCredential=New-Object System.Management.Automation.PSCredential($databaseUserName, $databasePassword)
 $sqlserver="yoursqlserver.database.windows.net"

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>A list of NSX Gateways</summary>
+    /// <summary>The response of a WorkloadNetworkGateway list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(WorkloadNetworkGatewayListTypeConverter))]
     public partial class WorkloadNetworkGatewayList
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             AfterDeserializePSObject(content);
         }
     }
-    /// A list of NSX Gateways
+    /// The response of a WorkloadNetworkGateway list operation.
     [System.ComponentModel.TypeConverter(typeof(WorkloadNetworkGatewayListTypeConverter))]
     public partial interface IWorkloadNetworkGatewayList
 

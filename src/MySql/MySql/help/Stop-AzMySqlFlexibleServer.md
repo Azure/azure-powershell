@@ -1,6 +1,6 @@
 ---
 external help file: Az.MySql-help.xml
-Module Name: Az.Mysql
+Module Name: Az.MySql
 online version: https://learn.microsoft.com/powershell/module/az.mysql/stop-azmysqlflexibleserver
 schema: 2.0.0
 ---

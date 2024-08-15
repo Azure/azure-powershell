@@ -153,7 +153,7 @@ The Storage Mover resource.
 To construct, see NOTES section for STORAGEMOVER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMoverUpdateParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverUpdateParameters
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -230,13 +230,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMoverUpdateParameters
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverUpdateParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMover
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover
 
 ## NOTES
 

@@ -7,7 +7,7 @@
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
   <ItemGroup>
-    <ProjectReference Include="..\AlertsManagement.Sdk\AlertsManagement.Sdk.csproj" />
+    <ProjectReference Include="..\AlertsManagement.Management.Sdk\AlertsManagement.Management.Sdk.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -18,6 +18,35 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported account tier Cold
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Updated list share output display format 
+    - `Get-AzStorageShare`
+
+## Version 7.2.0
+* Upgraded Microsoft.Azure.Storage.DataMovement to 2.0.5
+
+## Version 7.1.0
+* Fixed the issue that Azure.Core.AccessToken is used before assigned.
+* Supported TLS1_3 when creating and updating a storage account 
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Fixed sync copy blob issue with -AsJob is specified [#25105]
+    - `Copy-AzStorageBlob`
+* Updated Storage.Management.Sdk to support API version 2023-05-01
+* Updated 2 help examples of create storage account cmdlet, with MinimumTlsVersion as TLS1_2.
+    - `New-AzStorageAccount`
+
+## Version 7.0.0
+* Added a prompt that needs confirmation when upgrading a storage account from StorageV1 or BlobStorage to StorageV2. Can be suppressed with -Force.
+    - `Set-AzStorageAccount`
+* Removed references to "Microsoft.Azure.Storage.Queue" in Queue cmdlets 
+    - `Get-AzStorageQueue`
+    - `New-AzStorageQueue`
+    - `New-AzStorageQueueSASToken`
+* When uploading an Azure File with write only SAS token, take the parameter -Path as destination file path, instead of destination directory path previously.
+    - `Set-AzStorageFileContent`
 
 ## Version 6.2.0
 * Introduced secrets detection feature to safeguard sensitive data.

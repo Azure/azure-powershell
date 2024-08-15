@@ -122,7 +122,7 @@ Accept wildcard characters: False
 
 ### -ServiceId
 Service Classification id for the resource.
-You can find required serviceId from Services API: https://learn.microsoft.com/rest/api/support/services/listtabs=HTTP Service Id is the GUID which can be found under name field in Services List response
+You can find required serviceId from Services API: https://learn.microsoft.com/rest/api/support/services/list Service Id is the GUID which can be found under name field in Services List response
 
 ```yaml
 Type: System.String

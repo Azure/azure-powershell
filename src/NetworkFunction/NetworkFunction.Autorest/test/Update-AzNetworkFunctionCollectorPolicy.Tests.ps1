@@ -26,4 +26,10 @@ Describe 'Update-AzNetworkFunctionCollectorPolicy' {
             { Update-AzNetworkFunctionCollectorPolicy -collectorpolicyname $env.collectorPolicyName -azuretrafficcollectorname $env.azureTrafficCollectorName -resourcegroupname $env.resourceGroup -location $env.location -IngestionPolicyIngestionSource @{ResourceId = $env.ResourceIdLessThan1G} -IngestionPolicyIngestionType $env.IngestionType } | Should Throw -ExpectedMessage "CollectorPolicy can not be updated because circuit has bandwidth less than 1G. Circuit size with a bandwidth of 1G or more is supported."
         }
     }
+
+    It 'UpdateExpanded2' {
+        { 
+            { Update-AzNetworkFunctionCollectorPolicy -collectorpolicyname $env.collectorPolicyName -azuretrafficcollectorname $env.azureTrafficCollectorName -resourcegroupname $env.resourceGroup -location $env.location -IngestionPolicyIngestionSource @{ResourceId = $env.ResourceIdLessThan1G}, @{ResourceId = $env.ResourceId1G} -IngestionPolicyIngestionType $env.IngestionType } | Should Throw -ExpectedMessage "CollectorPolicy can not be updated because circuit has bandwidth less than 1G. Circuit size with a bandwidth of 1G or more is supported."
+        }
+    }
 }

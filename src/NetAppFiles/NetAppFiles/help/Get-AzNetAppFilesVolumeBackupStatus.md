@@ -19,15 +19,15 @@ Get-AzNetAppFilesVolumeBackupStatus -ResourceGroupName <String> -AccountName <St
  [<CommonParameters>]
 ```
 
+### ByParentObjectParameterSet
+```
+Get-AzNetAppFilesVolumeBackupStatus -Name <String> -PoolObject <PSNetAppFilesPool>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### ByResourceIdParameterSet
 ```
 Get-AzNetAppFilesVolumeBackupStatus -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ByParentObjectParameterSet
-```
-Get-AzNetAppFilesVolumeBackupStatus -PoolObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -101,7 +101,7 @@ The name of the ANF volume
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
 Aliases: VolumeName
 
 Required: True

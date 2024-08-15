@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>A list of the available script packages</summary>
+    /// <summary>The response of a ScriptPackage list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(ScriptPackagesListTypeConverter))]
     public partial class ScriptPackagesList
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             return ToJsonString();
         }
     }
-    /// A list of the available script packages
+    /// The response of a ScriptPackage list operation.
     [System.ComponentModel.TypeConverter(typeof(ScriptPackagesListTypeConverter))]
     public partial interface IScriptPackagesList
 

@@ -28,12 +28,16 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Ultra&#39;, &#39;StandardZRS&#39;</param>
 
         /// <param name="usageThreshold">Maximum storage quota allowed for a file system in bytes. This is a soft
-        /// quota used for alerting only. Minimum size is 100 GiB. Upper limit is
-        /// 100TiB, 500Tib for LargeVolume or 2400Tib for LargeVolume on exceptional
-        /// basis. Specified in bytes.
+        /// quota used for alerting only. For regular volumes, valid values are in the
+        /// range 50GiB to 100TiB. For large volumes, valid values are in the range
+        /// 100TiB to 500TiB, and on an exceptional basis, from to 2400GiB to 2400TiB.
+        /// Values expressed in bytes as multiples of 1 GiB.
         /// </param>
 
         /// <param name="exportPolicy">Set of export policy rules
+        /// </param>
+
+        /// <param name="protocolTypes">Set of protocol types, default NFSv3, CIFS for SMB protocol
         /// </param>
 
         /// <param name="throughputMibps">Maximum throughput in MiB/s that can be achieved by this volume and this
@@ -92,12 +96,13 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="smbNonBrowsable">Enables non-browsable property for SMB Shares. Only applicable for
         /// SMB/DualProtocol volume
         /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
-        public VolumePatchProperties(string serviceLevel = default(string), long? usageThreshold = default(long?), VolumePatchPropertiesExportPolicy exportPolicy = default(VolumePatchPropertiesExportPolicy), double? throughputMibps = default(double?), VolumePatchPropertiesDataProtection dataProtection = default(VolumePatchPropertiesDataProtection), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), string unixPermissions = default(string), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?), string coolAccessRetrievalPolicy = default(string), bool? snapshotDirectoryVisible = default(bool?), string smbAccessBasedEnumeration = default(string), string smbNonBrowsable = default(string))
+        public VolumePatchProperties(string serviceLevel = default(string), long? usageThreshold = default(long?), VolumePatchPropertiesExportPolicy exportPolicy = default(VolumePatchPropertiesExportPolicy), System.Collections.Generic.IList<string> protocolTypes = default(System.Collections.Generic.IList<string>), double? throughputMibps = default(double?), VolumePatchPropertiesDataProtection dataProtection = default(VolumePatchPropertiesDataProtection), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), string unixPermissions = default(string), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?), string coolAccessRetrievalPolicy = default(string), bool? snapshotDirectoryVisible = default(bool?), string smbAccessBasedEnumeration = default(string), string smbNonBrowsable = default(string))
 
         {
             this.ServiceLevel = serviceLevel;
             this.UsageThreshold = usageThreshold;
             this.ExportPolicy = exportPolicy;
+            this.ProtocolTypes = protocolTypes;
             this.ThroughputMibps = throughputMibps;
             this.DataProtection = dataProtection;
             this.IsDefaultQuotaEnabled = isDefaultQuotaEnabled;
@@ -127,9 +132,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <summary>
         /// Gets or sets maximum storage quota allowed for a file system in bytes. This
-        /// is a soft quota used for alerting only. Minimum size is 100 GiB. Upper
-        /// limit is 100TiB, 500Tib for LargeVolume or 2400Tib for LargeVolume on
-        /// exceptional basis. Specified in bytes.
+        /// is a soft quota used for alerting only. For regular volumes, valid values
+        /// are in the range 50GiB to 100TiB. For large volumes, valid values are in
+        /// the range 100TiB to 500TiB, and on an exceptional basis, from to 2400GiB to
+        /// 2400TiB. Values expressed in bytes as multiples of 1 GiB.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "usageThreshold")]
         public long? UsageThreshold {get; set; }
@@ -139,6 +145,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "exportPolicy")]
         public VolumePatchPropertiesExportPolicy ExportPolicy {get; set; }
+
+        /// <summary>
+        /// Gets or sets set of protocol types, default NFSv3, CIFS for SMB protocol
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "protocolTypes")]
+        public System.Collections.Generic.IList<string> ProtocolTypes {get; set; }
 
         /// <summary>
         /// Gets or sets maximum throughput in MiB/s that can be achieved by this
@@ -248,11 +260,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "UsageThreshold", 2638827906662400);
                 }
-                if (this.UsageThreshold < 107374182400)
+                if (this.UsageThreshold < 53687091200)
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "UsageThreshold", 107374182400);
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "UsageThreshold", 53687091200);
                 }
             }
+
 
 
             if (this.UnixPermissions != null)
@@ -272,9 +285,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "CoolnessPeriod", 183);
                 }
-                if (this.CoolnessPeriod < 7)
+                if (this.CoolnessPeriod < 2)
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "CoolnessPeriod", 7);
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "CoolnessPeriod", 2);
                 }
             }
 

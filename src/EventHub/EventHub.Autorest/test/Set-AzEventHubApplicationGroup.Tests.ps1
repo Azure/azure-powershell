@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubApplicationGrou
 }
 
 Describe 'Set-AzEventHubApplicationGroup' {
-    It 'SetExpanded'  {
+    It 'SetExpanded' -Skip {
         $t3 = New-AzEventHubThrottlingPolicyConfig -Name t3 -MetricId OutgoingMessages -RateLimitThreshold 12000
         $appGroup = Get-AzEventHubApplicationGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.appGroup2
         $appGroup.Policy += $t3
@@ -26,12 +26,12 @@ Describe 'Set-AzEventHubApplicationGroup' {
         $updateAppGroup.ClientAppGroupIdentifier | Should -Be $appGroup.ClientAppGroupIdentifier
     }
 
-    It 'SetViaIdentityExpanded' {
+    It 'SetViaIdentityExpanded' -Skip {
         $t4 = New-AzEventHubThrottlingPolicyConfig -Name t4 -MetricId IncomingBytes -RateLimitThreshold 13000
         $appGroup = Get-AzEventHubApplicationGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.appGroup2
         $appGroup.Policy += $t4
         
-        { Set-AzEventHubApplicationGroup -InputObject $appGroup } | Should -Throw 'Please specify the property you want to update on the -InputObject'
+        { Set-AzEventHubApplicationGroup -InputObject $appGroup -ErrorAction Stop } | Should -Throw 'Please specify the property you want to update on the -InputObject'
         
         $updateAppGroup = Set-AzEventHubApplicationGroup -InputObject $appGroup -Policy $appGroup.Policy
         $updateAppGroup.Name | Should -Be $env.appGroup2

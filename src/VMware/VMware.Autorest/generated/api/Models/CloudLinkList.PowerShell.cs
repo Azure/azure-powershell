@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>A paged list of cloud links</summary>
+    /// <summary>The response of a CloudLink list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(CloudLinkListTypeConverter))]
     public partial class CloudLinkList
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             return ToJsonString();
         }
     }
-    /// A paged list of cloud links
+    /// The response of a CloudLink list operation.
     [System.ComponentModel.TypeConverter(typeof(CloudLinkListTypeConverter))]
     public partial interface ICloudLinkList
 

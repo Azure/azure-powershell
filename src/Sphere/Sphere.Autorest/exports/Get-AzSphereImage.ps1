@@ -22,7 +22,7 @@ Get a Image
 .Example
 Get-AzSphereImage -CatalogName MyCatalog1 -ResourceGroupName ResourceGroup1
 .Example
-Get-AzSphereImage -CatalogName anotherCatalog -Name 14a6729e-5819-4737-8713-37b4798533f8 -ResourceGroupName Sphere-test
+Get-AzSphereImage -CatalogName anotherCatalog -Name 11111111-2222-3333-4444-123456789104 -ResourceGroupName Sphere-test
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity

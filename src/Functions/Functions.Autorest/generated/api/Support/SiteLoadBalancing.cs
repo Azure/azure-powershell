@@ -14,6 +14,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing LeastResponseTime = @"LeastResponseTime";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing PerSiteRoundRobin = @"PerSiteRoundRobin";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing RequestHash = @"RequestHash";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing WeightedRoundRobin = @"WeightedRoundRobin";

@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-Update (or Update) a Azure Arc PrivateLinkScope.
+Update (or updates) a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 .Description
-Update (or Update) a Azure Arc PrivateLinkScope.
+Update (or updates) a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 .Example
 Set-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName -PublicNetworkAccess "Disabled" -Tag $tags -Location $location
@@ -80,7 +80,7 @@ param(
     ${Location},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Enabled", "Disabled", "SecuredByPerimeter")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
     # Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.

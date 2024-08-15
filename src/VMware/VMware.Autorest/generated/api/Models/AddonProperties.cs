@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Backing field for <see cref="AddonType" /> property.</summary>
         private string _addonType;
 
-        /// <summary>The type of private cloud addon</summary>
+        /// <summary>Addon type</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string AddonType { get => this._addonType; set => this._addonType = value; }
 
@@ -40,14 +40,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
     public partial interface IAddonProperties :
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IJsonSerializable
     {
-        /// <summary>The type of private cloud addon</summary>
+        /// <summary>Addon type</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The type of private cloud addon",
+        Description = @"Addon type",
         SerializedName = @"addonType",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("SRM", "VR", "HCX", "Arc")]
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Description = @"The state of the addon provisioning",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Cancelled", "Building", "Deleting", "Updating", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Cancelled", "Building", "Deleting", "Updating")]
         string ProvisioningState { get;  }
 
     }
@@ -70,11 +70,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
     internal partial interface IAddonPropertiesInternal
 
     {
-        /// <summary>The type of private cloud addon</summary>
+        /// <summary>Addon type</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("SRM", "VR", "HCX", "Arc")]
         string AddonType { get; set; }
         /// <summary>The state of the addon provisioning</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Cancelled", "Building", "Deleting", "Updating", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Cancelled", "Building", "Deleting", "Updating")]
         string ProvisioningState { get; set; }
 
     }

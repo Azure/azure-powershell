@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>A list of NSX VM Groups</summary>
+    /// <summary>The response of a WorkloadNetworkVMGroup list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(WorkloadNetworkVMGroupsListTypeConverter))]
     public partial class WorkloadNetworkVMGroupsList
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             AfterDeserializePSObject(content);
         }
     }
-    /// A list of NSX VM Groups
+    /// The response of a WorkloadNetworkVMGroup list operation.
     [System.ComponentModel.TypeConverter(typeof(WorkloadNetworkVMGroupsListTypeConverter))]
     public partial interface IWorkloadNetworkVMGroupsList
 

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Lists all of the available operations
+List the operations for the provider
 .Description
-Lists all of the available operations
+List the operations for the provider
 .Example
 {{ Add code here }}
 .Example

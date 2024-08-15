@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
 online version: https://learn.microsoft.com/powershell/module/az.eventgrid/update-azeventgridpartnertopic
 schema: 2.0.0
@@ -8,61 +8,60 @@ schema: 2.0.0
 # Update-AzEventGridPartnerTopic
 
 ## SYNOPSIS
-Updates the properties of an Event Grid partner topic.
+Asynchronously creates a new partner topic with the specified parameters.
 
 ## SYNTAX
 
-### PartnerTopicNameParameterSet (Default)
+### UpdateExpanded (Default)
 ```
-Update-AzEventGridPartnerTopic [-ResourceGroupName] <String> [-Name] <String> [-Tag <Hashtable>]
- [-IdentityType <String>] [-IdentityId <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzEventGridPartnerTopic -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-ActivationState <String>] [-EnableSystemAssignedIdentity <Boolean>]
+ [-EventTypeInfoInlineEventType <Hashtable>] [-EventTypeInfoKind <String>]
+ [-ExpirationTimeIfNotActivatedUtc <DateTime>] [-IdentityPrincipalId <String>] [-IdentityTenantId <String>]
+ [-Location <String>] [-MessageForActivation <String>] [-PartnerRegistrationImmutableId <String>]
+ [-PartnerTopicFriendlyDescription <String>] [-Source <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### PartnerTopicInputObjectParameterSet
+### UpdateViaIdentityExpanded
 ```
-Update-AzEventGridPartnerTopic [-InputObject] <PSPartnerTopic> [-Tag <Hashtable>] [-IdentityType <String>]
- [-IdentityId <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzEventGridPartnerTopic -InputObject <IEventGridIdentity> [-ActivationState <String>]
+ [-EnableSystemAssignedIdentity <Boolean>] [-EventTypeInfoInlineEventType <Hashtable>]
+ [-EventTypeInfoKind <String>] [-ExpirationTimeIfNotActivatedUtc <DateTime>] [-IdentityPrincipalId <String>]
+ [-IdentityTenantId <String>] [-Location <String>] [-MessageForActivation <String>]
+ [-PartnerRegistrationImmutableId <String>] [-PartnerTopicFriendlyDescription <String>] [-Source <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates the properties of an Event Grid partner topic. Can be used to update the identity and tags of a partner topic.
+Asynchronously creates a new partner topic with the specified parameters.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Asynchronously updates a partner topic with the specified parameters.
 ```powershell
-Update-AzEventGridPartnerTopic -ResourceGroup MyResourceGroupName -Name Topic1 -Tag @{ Department="Finance"; Environment="Test" }
+Update-AzEventGridPartnerTopic -Name default -ResourceGroupName azps_test_group_eventgrid -UserAssignedIdentity "/subscriptions/{subId}/resourcegroups/azps_test_group_eventgrid/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uami"
 ```
 
-Sets the properties of the Event Grid Partner topic \`Topic1\` in resource group \`MyResourceGroupName\` to replace the tags with the specified tags "Department" and "Environment".
-
-### Example 2
-```powershell
-Update-AzEventGridPartnerTopic -ResourceGroup MyResourceGroupName -Name Topic1 -IdentityType "SystemAssigned"
+```output
+Location Name    ResourceGroupName
+-------- ----    -----------------
+eastus   default azps_test_group_eventgrid
 ```
 
-Sets the properties of the Event Grid Partner topic \`Topic1\` in resource group \`MyResourceGroupName\` to change identity type to \`SystemAssigned\`.
-
-### Example 3
-```powershell
-$id1 = '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
-$id2 = '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
-
-Update-AzEventGridPartnerTopic -ResourceGroup MyResourceGroupName -Name Topic1 -IdentityType "UserAssigned" -IdentityId $id1,$id2
-```
-
-Sets the properties of the Event Grid Partner topic \`Topic1\` in resource group \`MyResourceGroupName\` to change identity type to \`UserAssigned\` with given identity ids.
+Asynchronously updates a partner topic with the specified parameters.
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -ActivationState
+Activation state of the partner topic.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.String
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
 
 Required: False
 Position: Named
@@ -71,85 +70,269 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityId
-The list of user assigned identities
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: System.String[]
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Different identity types.
-Could be either  of following 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+### -EventTypeInfoInlineEventType
+A collection of inline event types for the resource.
+The inline event type keys are of type string which represents the name of the event.An example of a valid inline event name is "Contoso.OrderCreated".The inline event type values are of type InlineEventProperties and will contain additional information for every inline event type.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases: InlineEvent
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EventTypeInfoKind
+The kind of event type used.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: EventTypeKind
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExpirationTimeIfNotActivatedUtc
+Expiration time of the partner topic.
+If this timer expires while the partner topic is still never activated,the partner topic and corresponding event channel are deleted.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityPrincipalId
+The principal ID of resource identity.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: SystemAssigned, UserAssigned, SystemAssigned, UserAssigned, None
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityTenantId
+The tenant ID of resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -InputObject
-PartnerTopic object.
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.Commands.EventGrid.Models.PSPartnerTopic
-Parameter Sets: PartnerTopicInputObjectParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Location
+Location of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MessageForActivation
+Context or helpful message that can be used during the approval process by the subscriber.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-Event Grid partner topic name.
+Name of the partner topic.
 
 ```yaml
 Type: System.String
-Parameter Sets: PartnerTopicNameParameterSet
+Parameter Sets: UpdateExpanded
 Aliases: PartnerTopicName
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PartnerRegistrationImmutableId
+The immutableId of the corresponding partner registration.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PartnerTopicFriendlyDescription
+Friendly description about the topic.
+This can be set by the publisher/partner to show custom description for the customer partner topic.This will be helpful to remove any ambiguity of the origin of creation of the partner topic for the customer.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: PartnerTopicNameParameterSet
+Parameter Sets: UpdateExpanded
 Aliases: ResourceGroup
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Source
+Source associated with this partner topic.
+This represents a unique partner resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Tag
-Hashtable which represents resource Tags.
+Tags of the resource.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -159,7 +342,23 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases: IdentityId
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -199,17 +398,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.EventGrid.Models.PSPartnerTopic
-
-### System.Collections.Hashtable
-
-### System.String[]
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventGrid.Models.PSPartnerTopic
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerTopic
 
 ## NOTES
 

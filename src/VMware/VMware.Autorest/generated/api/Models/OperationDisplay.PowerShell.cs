@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>Contains the localized display information for this operation</summary>
+    /// <summary>Localized display information for this particular operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(OperationDisplayTypeConverter))]
     public partial class OperationDisplay
     {
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             return ToJsonString();
         }
     }
-    /// Contains the localized display information for this operation
+    /// Localized display information for this particular operation.
     [System.ComponentModel.TypeConverter(typeof(OperationDisplayTypeConverter))]
     public partial interface IOperationDisplay
 

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
 online version: https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridsystemtopiceventsubscription
 schema: 2.0.0
@@ -8,66 +8,78 @@ schema: 2.0.0
 # Get-AzEventGridSystemTopicEventSubscription
 
 ## SYNOPSIS
-Gets the details of an event subscription, or gets a list of all event subscriptions for a given Azure Eventgrid system topic.
+Get an event subscription.
 
 ## SYNTAX
 
-### TopicNameParameterSet (Default)
+### List (Default)
 ```
-Get-AzEventGridSystemTopicEventSubscription [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzEventGridSystemTopicEventSubscription -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -SystemTopicName <String> [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
 ```
 
-### SystemTopicEventSuscriptionParameterSet
+### GetViaIdentitySystemTopic
 ```
-Get-AzEventGridSystemTopicEventSubscription [-EventSubscriptionName <String>] -ResourceGroupName <String>
- -SystemTopicName <String> [-IncludeFullEndpointUrl] [-ODataQuery <String>] [-Top <Int32>] [-NextLink <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzEventGridSystemTopicEventSubscription -EventSubscriptionName <String>
+ -SystemTopicInputObject <IEventGridIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzEventGridSystemTopicEventSubscription -EventSubscriptionName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] -SystemTopicName <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzEventGridSystemTopicEventSubscription -InputObject <IEventGridIdentity> [-DefaultProfile <PSObject>]
+ [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzEventGridSystemTopicEventSubscription cmdlet gets either the details of a specified Event Grid sytem topic subscription, or a list of all Event Grid sytem topic subscriptions for a given Azure Eventgrid system topic.
+Get an event subscription.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get an event subscription.
 ```powershell
-Get-AzEventGridSystemTopicEventSubscription -ResourceGroupName MyResourceGroupName -SystemTopicName Topic1 -EventSubscriptionName EventSubscription1
+Get-AzEventGridSystemTopicEventSubscription -ResourceGroupName azps_test_group_eventgrid -SystemTopicName azps-systopic
 ```
 
-Gets the details of event subscription \`EventSubscription1\` created for system topic \`Topic1\` in resource group \`MyResourceGroupName\`.
-
-### Example 2
-```powershell
-Get-AzEventGridSystemTopicEventSubscription -ResourceGroupName MyResourceGroupName -SystemTopicName Topic1 -EventSubscriptionName EventSubscription1 -IncludeFullEndpointUrl
+```output
+Name          ResourceGroupName
+----          -----------------
+azps-evnetsub azps_test_group_eventgrid
 ```
 
-Gets the details of event subscription \`EventSubscription1\` created for system topic \`Topic1\` in resource group \`MyResourceGroupName\`, including the full endpoint URL if it is a webhook based event subscription.
+Get an event subscription.
 
-### Example 3
+### Example 2: Get an event subscription.
 ```powershell
-Get-AzEventGridSystemTopicEventSubscription -ResourceGroupName MyResourceGroupName -SystemTopicName Topic1
+Get-AzEventGridSystemTopicEventSubscription -ResourceGroupName azps_test_group_eventgrid -SystemTopicName azps-systopic -EventSubscriptionName azps-evnetsub
 ```
 
-Get a list of all the event subscriptions created for system topic \`Topic1\` in resource group \`MyResourceGroupName\` without pagination.
-
-### Example 4
-```powershell
-$odataFilter = "Name ne 'ABCD'"
-Get-AzEventGridSystemTopicEventSubscription -ResourceGroupName MyResourceGroupName -TopicName Topic1 -Top 10 -ODataQuery $odataFilter
-Get-AzEventGridSystemTopicEventSubscription -ResourceGroupName MyResourceGroupName -TopicName Topic1 $result.NextLink
+```output
+Name          ResourceGroupName
+----          -----------------
+azps-evnetsub azps_test_group_eventgrid
 ```
 
-List the first 10 event subscriptions (if any) created for system topic \`Topic1\` in resource group \`MyResourceGroupName\` that satisfies the $odataFilter query. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of event subscriptions, user is expected to re-call Get-AzEventGridSystemTopicEventSubscription and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
+Get an event subscription.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -77,26 +89,32 @@ Accept wildcard characters: False
 ```
 
 ### -EventSubscriptionName
-EventGrid event subscription name.
+Name of the event subscription to be created.
+Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
+Parameter Sets: GetViaIdentitySystemTopic, Get
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IncludeFullEndpointUrl
-If specified, include the full endpoint URL of the event subscription destination in the response.
+### -Filter
+The query used to filter the search results using OData syntax.
+Filtering is permitted on the 'name' property only and with limited number of OData operations.
+These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal).
+No arithmetic operations are supported.
+The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'.
+The following is not a valid filter example: $filter=location eq 'westus'.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
+Type: System.String
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -106,83 +124,111 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NextLink
-The link for the next page of resources to be obtained.
-This value is obtained with the first Get-AzEventGrid cmdlet call when more resources are still available to be queried.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ODataQuery
-The OData query used for filtering the list results.
-Filtering is currently allowed on the Name property only.The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.String
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
+Parameter Sets: List, Get
+Aliases: ResourceGroup
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String[]
+Parameter Sets: List, Get
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SystemTopicInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: GetViaIdentitySystemTopic
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -SystemTopicName
-EventGrid topic name.
+Name of the system topic.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Top
-The maximum number of resources to be obtained.
-Valid value is between 1 and 100.
-If top value is specified and more results are still available, the result will contain a link to the next page to be queried in NextLink.
-If the Top value is not specified, the full list of resources will be returned at once.
+The number of results to return per page for the list operation.
+Valid range for top parameter is 1 to 100.
+If not specified, the default number of results to be returned is 20 items per page.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
+Type: System.Int32
+Parameter Sets: List
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -191,15 +237,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription
-
-### Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscriptionListInstance
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventSubscription
 
 ## NOTES
 

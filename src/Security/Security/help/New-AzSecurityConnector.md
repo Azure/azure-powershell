@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Create a security connector.
-If a security connector is already Created and a subsequent request is issued for the same security connector id, then it will be Created.
+If a security connector is already created and a subsequent request is issued for the same security connector id, then it will be updated.
 
 ## SYNTAX
 
@@ -17,13 +17,13 @@ If a security connector is already Created and a subsequent request is issued fo
 New-AzSecurityConnector -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-EnvironmentData <ISecurityConnectorEnvironment>] [-EnvironmentName <String>] [-Etag <String>]
  [-HierarchyIdentifier <String>] [-Kind <String>] [-Location <String>] [-Offering <ICloudOffering[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Create a security connector.
-If a security connector is already Created and a subsequent request is issued for the same security connector id, then it will be Created.
+If a security connector is already created and a subsequent request is issued for the same security connector id, then it will be updated.
 
 ## EXAMPLES
 
@@ -501,6 +501,21 @@ A collection of offerings for the security connector.
 Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOffering[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

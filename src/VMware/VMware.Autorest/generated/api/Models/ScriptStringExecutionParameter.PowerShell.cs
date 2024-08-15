@@ -113,13 +113,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptStringExecutionParameterInternal)this).Value = (string) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptStringExecutionParameterInternal)this).Value, global::System.Convert.ToString);
             }
-            if (content.Contains("Name"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)this).Name, global::System.Convert.ToString);
-            }
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)this).Name, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -142,13 +142,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptStringExecutionParameterInternal)this).Value = (string) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptStringExecutionParameterInternal)this).Value, global::System.Convert.ToString);
             }
-            if (content.Contains("Name"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)this).Name, global::System.Convert.ToString);
-            }
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)this).Name, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

@@ -15,7 +15,7 @@ Updates an Azure NetApp Files (ANF) backup to the optional modifiers provided.
 ### ByFieldsParameterSet (Default)
 ```
 Update-AzNetAppFilesBackup -ResourceGroupName <String> -Location <String> -AccountName <String> -Name <String>
- -PoolName <String> -VolumeName <String> [-Label <String>] [-Tag <Hashtable>]
+ [-PoolName <String>] [-VolumeName <String>] -BackupVaultName <String> [-Label <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -23,8 +23,9 @@ Update-AzNetAppFilesBackup -ResourceGroupName <String> -Location <String> -Accou
 ### ByParentObjectParameterSet
 ```
 Update-AzNetAppFilesBackup -Name <String> [-Label <String>] [-Tag <Hashtable>]
- -VolumeObject <PSNetAppFilesVolume> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-VolumeObject <PSNetAppFilesVolume>] -BackupVaultObject <PSNetAppFilesBackupVault>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
@@ -67,6 +68,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupVaultName
+The name of the ANF BackupVault
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupVaultObject
+The BackupVault object containing the backup to return
+
+```yaml
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupVault
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -153,7 +184,7 @@ Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -213,7 +244,7 @@ Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -228,7 +259,7 @@ Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -274,6 +305,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
+
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupVault
 
 ### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackup
 

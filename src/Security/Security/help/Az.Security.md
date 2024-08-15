@@ -1,14 +1,14 @@
 ---
 Module Name: Az.Security
-Module Guid: 5e312bb4-9d3a-4c88-94c3-8e5bbb2e3da4
+Module Guid: 6f1c0dfd-dfcd-4e5b-b77c-a64a9d355ebf
 Download Help Link: https://learn.microsoft.com/powershell/module/az.security
-Help Version: 0.1.0
+Help Version: 1.0.0.0
 Locale: en-US
 ---
 
 # Az.Security Module
 ## Description
-Azure Security Center gives you control over the security of your Azure subscriptions and other machines that you connected to it outside of Azure.
+Microsoft Azure PowerShell: Security cmdlets
 
 ## Az.Security Cmdlets
 ### [Add-AzSecurityAdaptiveNetworkHardening](Add-AzSecurityAdaptiveNetworkHardening.md)
@@ -144,6 +144,9 @@ Gets nested subgroups of given GitLab Group which are onboarded to the connector
 ### [Get-AzSecurityContact](Get-AzSecurityContact.md)
 Gets security contacts that were configured on this subscription
 
+### [Get-AzSecurityDefenderForStorage](Get-AzSecurityDefenderForStorage.md)
+Gets the Defender for Storage settings for the specified storage account.
+
 ### [Get-AzSecurityLocation](Get-AzSecurityLocation.md)
 Gets the location where Azure Security Center will automatically save data for the specific subscription
 
@@ -253,7 +256,7 @@ Create an in-memory object for AzureDevOpsScopeEnvironment.
 
 ### [New-AzSecurityConnector](New-AzSecurityConnector.md)
 Create a security connector.
-If a security connector is already Created and a subsequent request is issued for the same security connector id, then it will be Created.
+If a security connector is already created and a subsequent request is issued for the same security connector id, then it will be updated.
 
 ### [New-AzSecurityConnectorActionableRemediationObject](New-AzSecurityConnectorActionableRemediationObject.md)
 Create an in-memory object for ActionableRemediation.
@@ -419,4 +422,7 @@ Update a monitored Azure DevOps repository resource.
 
 ### [Update-AzSecurityConnectorDevOpsConfiguration](Update-AzSecurityConnectorDevOpsConfiguration.md)
 Update a DevOps Configuration.
+
+### [Update-AzSecurityDefenderForStorage](Update-AzSecurityDefenderForStorage.md)
+Update the Defender for Storage settings on a specified storage account.
 

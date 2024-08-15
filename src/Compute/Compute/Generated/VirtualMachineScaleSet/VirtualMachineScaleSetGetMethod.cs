@@ -34,7 +34,6 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [GenericBreakingChangeWithVersionAttribute("Starting in May 2024 the \"Get-AzVmss\" cmdlet will no longer allow an empty value for resource group name and virtual machine scale set name.", "12.0.0", "8.0.0")]
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Vmss", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class GetAzureRmVmss : ComputeAutomationBaseCmdlet
@@ -168,6 +167,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [SupportsWildcards]
+        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -184,6 +184,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets", "ResourceGroupName")]
         [SupportsWildcards]
+        [ValidateNotNullOrEmpty]
         [Alias("Name")]
         public string VMScaleSetName { get; set; }
 

@@ -23,12 +23,12 @@ Get the access keys of the CommunicationService resource.
 Get-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceKeys
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceKeys
 .Link
 https://learn.microsoft.com/powershell/module/az.communication/get-azcommunicationservicekey
 #>
 function Get-AzCommunicationServiceKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceKeys])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -49,6 +49,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter()]

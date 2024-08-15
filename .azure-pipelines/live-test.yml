@@ -10,11 +10,11 @@ parameters:
 - name: os_linux
   displayName: Linux Image Version
   type: string
-  default: ubuntu-20.04
+  default: ubuntu-latest
 - name: os_macos
   displayName: MacOS Image Version
   type: string
-  default: macOS-11
+  default: macOS-latest
 - name: win_ps_5_1
   displayName: Windows PowerShell 5.1 Version
   type: string
@@ -180,37 +180,37 @@ stages:
       psVersion: ${{ parameters.ps_latest }}
       dotnetVersion: ${{ parameters.dotnet_sdk_8 }}
 
-  - template: util/live-test-steps.yml
-    parameters:
-      name: 'ps_7_2_x_macOS'
-      vmImage: ${{ parameters.os_macos }}
-      osType: 'MacOS'
-      psVersion: ${{ parameters.ps_7_2_x }}
-      dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
+  # - template: util/live-test-steps.yml
+  #   parameters:
+  #     name: 'ps_7_2_x_macOS'
+  #     vmImage: ${{ parameters.os_macos }}
+  #     osType: 'MacOS'
+  #     psVersion: ${{ parameters.ps_7_2_x }}
+  #     dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
 
-  - template: util/live-test-steps.yml
-    parameters:
-      name: 'ps_7_3_x_macOS'
-      vmImage: ${{ parameters.os_macos }}
-      osType: 'MacOS'
-      psVersion: ${{ parameters.ps_7_3_x }}
-      dotnetVersion: ${{ parameters.dotnet_sdk_7 }}
+  # - template: util/live-test-steps.yml
+  #   parameters:
+  #     name: 'ps_7_3_x_macOS'
+  #     vmImage: ${{ parameters.os_macos }}
+  #     osType: 'MacOS'
+  #     psVersion: ${{ parameters.ps_7_3_x }}
+  #     dotnetVersion: ${{ parameters.dotnet_sdk_7 }}
 
-  - template: util/live-test-steps.yml
-    parameters:
-      name: 'ps_7_4_x_macOS'
-      vmImage: ${{ parameters.os_macos }}
-      osType: 'MacOS'
-      psVersion: ${{ parameters.ps_7_4_x }}
-      dotnetVersion: ${{ parameters.dotnet_sdk_8 }}
+  # - template: util/live-test-steps.yml
+  #   parameters:
+  #     name: 'ps_7_4_x_macOS'
+  #     vmImage: ${{ parameters.os_macos }}
+  #     osType: 'MacOS'
+  #     psVersion: ${{ parameters.ps_7_4_x }}
+  #     dotnetVersion: ${{ parameters.dotnet_sdk_8 }}
 
-  - template: util/live-test-steps.yml
-    parameters:
-      name: 'ps_latest_macOS'
-      vmImage: ${{ parameters.os_macos }}
-      osType: 'MacOS'
-      psVersion: ${{ parameters.ps_latest }}
-      dotnetVersion: ${{ parameters.dotnet_sdk_8 }}
+  # - template: util/live-test-steps.yml
+  #   parameters:
+  #     name: 'ps_latest_macOS'
+  #     vmImage: ${{ parameters.os_macos }}
+  #     osType: 'MacOS'
+  #     psVersion: ${{ parameters.ps_latest }}
+  #     dotnetVersion: ${{ parameters.dotnet_sdk_8 }}
 
 - stage: Report
   displayName: Send Report
@@ -240,3 +240,13 @@ stages:
         targetType: filePath
         filePath: ./tools/TestFx/Live/SendLiveTestReport.ps1
         arguments: -EmailServiceConnectionString '$(EmailServiceConnectionString)' -EmailFrom '$(EmailFrom)'
+
+    - task: AzurePowerShell@5
+      displayName: Save live test results
+      condition: or(eq(variables['Build.Reason'], 'Schedule'), eq(variables['Build.SourceBranch'], 'refs/heads/internal/release'))
+      inputs:
+        pwsh: true
+        azurePowerShellVersion: latestVersion
+        azureSubscription: $(KustoServiceConnectionName)
+        scriptType: filePath
+        scriptPath: ./tools/TestFx/Live/SaveLiveTestResult.ps1

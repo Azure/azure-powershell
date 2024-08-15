@@ -20,6 +20,28 @@
 
 -->
 ## Upcoming Release
+* Added information on how to find VM Images when using `New-AzVM` with `-Image` parameter.
+* Added `TimeCreated` read-only field to `PSVirtualMachineScaleSetVMProfile` object.
+* Added  parameter `-ResourceIdsOnly` to `Get-AzCapacityReservationGroup` cmdlet.
+* Changed the `Set-AzVMOperatingSystem` cmdlet when the `-VM` parameter is used without an OSProfile. Now it will not throw a null reference exception when `-Credential` is not provided.
+
+## Version 8.2.0
+* Renamed parameter `-VmId` to `-SourceId` and added `-VmId` as an alias to `New-AzRestorePointCollection` cmdlet.
+
+## Version 8.1.0
+* Added parameter `-SourceResourceId` to cmdlet `Add-AzVMDataDisk`.
+* Added parameter `-IdentityType` to cmdlet `Update-AzDiskEncryptionSet`.
+* Added `Invoke-AzSpotPlacementScore` cmdlet, which calls the latest Spot Placement Score API. Set the original `Invoke-AzSpotPlacementRecommender` as alias to avoid breaking changes.
+
+## Version 8.0.0
+* Added new optional parameter `SecureVMGuestStateSAS` to cmdlet `Grant-AzDiskAccess`.
+* [Breaking Change] Added ValidateNotNullOrEmpty for `-ResourceGroupName` and `-VMScaleSetName` parameters to `Get-AzVmss` cmdlet. [#20095]
+* Added `Etag` property to PSVirtualMachine and PSVirtualMachineScaleSet objects.   
+* Added parameters `-IfMatch` and `-IfNoneMatch` to `Update-AzVM`, `Update-AzVmss`, `New-AzVm`, `New-AzVmss`, `New-AzVmConfig`, and `New-AzVmssConfig` cmdlets.
+* [Breaking Change] Cmdlet `New-AzGalleryImageDefinition` will default parameter `-HyperVGeneration` to `V2` if it is not set as `V1` explicitly, and also default parameter `-Feature` by adding `@{Name='SecurityType';Value='TrustedLaunchSupported'}` if the `SecurityType` feature is not set explicitly. 
+* Resolved the bug with `New-AzVMConfig` for `-CommunityGalleryImageId` and `-SharedGalleryImageId` parameters.
+* [Breaking Change] Added ValidateNotNullOrEmpty for `-ResourceGroupName` and `-VMScaleSetName` parameters to `Get-AzVmss` cmdlet. [#20095]
+* [Breaking Change] Added new business logic to `New-AzVmss` and `New-AzVM` cmdlets. When the user explicitly sets the `SecurityType` to `Standard`, the Image alias defaults to `Win2022AzureEdition` to make future migrations to Trusted Launch easier.
 
 ## Version 7.3.0
 * Added cmdlet `Invoke-AzSpotPlacementRecommender`.

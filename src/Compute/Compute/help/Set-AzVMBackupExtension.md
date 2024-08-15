@@ -22,7 +22,7 @@ Set-AzVMBackupExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name]
 
 ## EXAMPLES
 
-### 1:
+### Example 1:
 ```powershell
 Set-AzVMBackupExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoTest" -Tag "Backup"
 ```

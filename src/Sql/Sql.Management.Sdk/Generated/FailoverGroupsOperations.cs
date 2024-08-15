@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Sql
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2023-02-01-preview";
+            string apiVersion = "2023-05-01-preview";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Management.Sql
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2023-02-01-preview";
+            string apiVersion = "2023-05-01-preview";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -581,7 +581,8 @@ namespace Microsoft.Azure.Management.Sql
         }
 
         /// <summary>
-        /// Fails over from the current primary server to this server. This operation might result in data loss.
+        /// Fails over from the current primary server to this server. This operation
+        /// might result in data loss.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
@@ -607,7 +608,8 @@ namespace Microsoft.Azure.Management.Sql
         }
 
         /// <summary>
-        /// Fails over from the current primary server to this server. This operation tries planned before forced failover but might still result in data loss.
+        /// Fails over from the current primary server to this server. This operation
+        /// tries planned before forced failover but might still result in data loss.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
@@ -703,7 +705,7 @@ namespace Microsoft.Azure.Management.Sql
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2023-02-01-preview";
+            string apiVersion = "2023-05-01-preview";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -946,7 +948,7 @@ namespace Microsoft.Azure.Management.Sql
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2023-02-01-preview";
+            string apiVersion = "2023-05-01-preview";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1156,7 +1158,7 @@ namespace Microsoft.Azure.Management.Sql
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2023-02-01-preview";
+            string apiVersion = "2023-05-01-preview";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1384,7 +1386,7 @@ namespace Microsoft.Azure.Management.Sql
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2023-02-01-preview";
+            string apiVersion = "2023-05-01-preview";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1606,7 +1608,7 @@ namespace Microsoft.Azure.Management.Sql
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2023-02-01-preview";
+            string apiVersion = "2023-05-01-preview";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1828,7 +1830,7 @@ namespace Microsoft.Azure.Management.Sql
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2023-02-01-preview";
+            string apiVersion = "2023-05-01-preview";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

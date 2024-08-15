@@ -37,7 +37,7 @@ Delete a managed Kubernetes cluster.
 
 ## EXAMPLES
 
-### Delete an existing managed Kubernetes cluster
+### Example 1: Delete an existing managed Kubernetes cluster
 ```powershell
 Remove-AzAksCluster -ResourceGroupName group -Name myCluster
 ```

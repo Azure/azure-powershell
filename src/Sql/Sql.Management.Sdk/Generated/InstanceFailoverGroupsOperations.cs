@@ -526,7 +526,8 @@ namespace Microsoft.Azure.Management.Sql
         }
 
         /// <summary>
-        /// Fails over from the current primary managed instance to this managed instance.
+        /// Fails over from the current primary managed instance to this managed
+        /// instance.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
@@ -552,7 +553,8 @@ namespace Microsoft.Azure.Management.Sql
         }
 
         /// <summary>
-        /// Fails over from the current primary managed instance to this managed instance. This operation might result in data loss.
+        /// Fails over from the current primary managed instance to this managed
+        /// instance. This operation might result in data loss.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
