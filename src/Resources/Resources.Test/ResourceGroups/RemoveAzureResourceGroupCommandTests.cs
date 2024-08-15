@@ -30,21 +30,26 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         private Mock<ResourceManagerSdkClient> resourcesClientMock;
 
+        private Mock<NewResourceManagerSdkClient> newResourceClientMock;
+
         private Mock<ICommandRuntime> commandRuntimeMock;
 
         private string resourceGroupName = "myResourceGroup";
         private string resourceGroupId = "/subscriptions/subId/resourceGroups/myResourceGroup";
         private string resourceId = "/subscriptions/subId/resourceGroups/myResourceGroup/providers/myResourceProvider/resourceType/myResource";
+        private string resourceForceDeletionType = "Microsoft.Compute/virtualMachineScaleSets,Microsoft.Compute/virtualMachines,Microsoft.Databricks/workspaces";
 
         public RemoveAzureResourceGroupCommandTests(ITestOutputHelper output)
         {
             resourcesClientMock = new Mock<ResourceManagerSdkClient>();
+            newResourceClientMock = new Mock<NewResourceManagerSdkClient>();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new RemoveAzureResourceGroupCmdlet()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                ResourceManagerSdkClient = resourcesClientMock.Object
+                ResourceManagerSdkClient = resourcesClientMock.Object,
+                NewResourceManagerSdkClient = newResourceClientMock.Object
             };
         }
 
@@ -98,6 +103,22 @@ namespace Microsoft.Azure.Commands.Resources.Test
             }
 
             resourcesClientMock.Verify(f => f.DeleteResourceGroup(resourceGroupName), Times.Never());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RemovesResourceGroupFromForceDeletionType()
+        {
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            newResourceClientMock.Setup(f => f.DeleteResourceGroup(resourceGroupName, resourceForceDeletionType));
+
+            cmdlet.Name = resourceGroupName;
+            cmdlet.ForceDeletionType = resourceForceDeletionType;
+            cmdlet.Force = true;
+
+            cmdlet.ExecuteCmdlet();
+
+            newResourceClientMock.Verify(f => f.DeleteResourceGroup(resourceGroupName, resourceForceDeletionType), Times.Once());
         }
     }
 }

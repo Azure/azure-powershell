@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Resources
         {
             Name = Name ?? ResourceIdentifier.FromResourceGroupIdentifier(this.Id).ResourceGroupName;
 
-            if (string.IsNullOrEmpty(ForceDeletionType))
+            if (string.IsNullOrWhiteSpace(ForceDeletionType))
             {
                 ConfirmAction(
                     Force.IsPresent,
