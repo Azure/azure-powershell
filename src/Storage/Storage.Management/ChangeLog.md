@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported account tier Cold
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Updated list share output display format 
+    - `Get-AzStorageShare`
 
 ## Version 7.2.0
 * Upgraded Microsoft.Azure.Storage.DataMovement to 2.0.5
