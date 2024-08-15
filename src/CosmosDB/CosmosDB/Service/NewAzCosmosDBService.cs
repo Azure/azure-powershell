@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = true, HelpMessage = Constants.ServiceInstanceCount)]
         public int InstanceCount { get; set; }
 
+
         [ValidateNotNull]
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
         public PSDatabaseAccountGetResults ParentObject { get; set; }
@@ -60,8 +61,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
             }
 
-            ServiceResourceCreateUpdateParameters parameters = new ServiceResourceCreateUpdateParameters(
-                instanceSize: InstanceSize, instanceCount: InstanceCount, serviceType: ServiceType.SqlDedicatedGateway);
+            SqlDedicatedGatewayServiceResourceCreateUpdateProperties parameters = new SqlDedicatedGatewayServiceResourceCreateUpdateProperties(
+                instanceSize: InstanceSize, instanceCount: InstanceCount, dedicatedGatewayType: DedicatedGatewayType.IntegratedCache);
 
             ServiceResource serviceResults = CosmosDBManagementClient.Service.CreateWithHttpMessagesAsync(ResourceGroupName, AccountName, ServiceName, parameters).GetAwaiter().GetResult().Body;
             WriteObject(new PSServiceGetResults(serviceResults));
