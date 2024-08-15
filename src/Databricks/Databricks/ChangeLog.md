@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* test
 
 ## Version 1.8.1
 * Fixed Access Connector Resource update for `Update-AzDatabricksWorkspace`
