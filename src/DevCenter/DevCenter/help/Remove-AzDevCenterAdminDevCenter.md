@@ -15,14 +15,14 @@ Deletes a devcenter
 ### Delete (Default)
 ```
 Remove-AzDevCenterAdminDevCenter -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzDevCenterAdminDevCenter -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,14 +32,14 @@ Deletes a devcenter
 
 ### Example 1: Delete a dev center
 ```powershell
-Remove-AzDevCenterAdminDevCenter -Name Contoso -ResourceGroupName DevProject
+Remove-AzDevCenterAdminDevCenter -Name Contoso -ResourceGroupName testRg
 ```
 
 This command deletes the dev center "Contoso" in the resource group "testRg".
 
 ### Example 2: Delete a dev center using InputObject
 ```powershell
-$devCenter = Get-AzDevCenterAdminDevCenter -ResourceGroupName DevProject -Name Contoso
+$devCenter = Get-AzDevCenterAdminDevCenter -ResourceGroupName testRg -Name Contoso
 
 Remove-AzDevCenterAdminDevCenter -InputObject $devCenter
 ```
@@ -132,6 +132,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
