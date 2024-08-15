@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
 
         /// <summary>
         /// Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and
-        /// not larger than 1920 × 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
+        /// not larger than 1920 * 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Inherited)]
         public byte[] BackgroundImage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationalBrandingPropertiesInternal)__microsoftGraphOrganizationalBrandingProperties).BackgroundImage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationalBrandingPropertiesInternal)__microsoftGraphOrganizationalBrandingProperties).BackgroundImage = value ?? null /* byte array */; }
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
 
         /// <summary>
         /// A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than
-        /// 36 × 245 pixels. We recommend using a transparent image with no padding around the logo.
+        /// 36 * 245 pixels. We recommend using a transparent image with no padding around the logo.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Inherited)]
         public byte[] BannerLogo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationalBrandingPropertiesInternal)__microsoftGraphOrganizationalBrandingProperties).BannerLogo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationalBrandingPropertiesInternal)__microsoftGraphOrganizationalBrandingProperties).BannerLogo = value ?? null /* byte array */; }
