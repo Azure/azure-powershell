@@ -58,7 +58,7 @@ jobs:
       script: |
         $command = "`$PSVersionTable `
         Get-PSRepository `
-        ./tools/RunVersionController.ps1 -Release 'Daily Build $(today)' `
+        ./tools/RunVersionController.ps1 -Release 'Daily Build $(today)' -ReleaseType $(ReleaseType)`
         Exit"
         dotnet tool run pwsh -c $command
 

@@ -21,7 +21,11 @@ Param(
     [string]$GalleryName = "PSGallery",
 
     [Parameter()]
-    [string]$ArtifactsOutputPath = "$PSScriptRoot/../artifacts/Release/"
+    [string]$ArtifactsOutputPath = "$PSScriptRoot/../artifacts/Release/",
+
+    [Parameter()]
+    [ValidateSet("STS", "LTS")]
+    [string]$ReleaseType = "STS"
 )
 
 enum PSVersion
@@ -194,15 +198,20 @@ function Bump-AzVersion
 {
     Write-Host "Getting local Az information..." -ForegroundColor Yellow
     $localAz = Import-PowerShellDataFile -Path "$PSScriptRoot\Az\Az.psd1"
-
-    Write-Host "Getting gallery Az information..." -ForegroundColor Yellow
-    $galleryAz = Find-Module -Name Az -Repository $GalleryName
+    Write-Host $localAz.ModuleVersion
+    Write-Host "Getting Az $ReleaseType information from gallery..." -ForegroundColor Yellow
+    if("LTS" -eq $ReleaseType){
+        $galleryAz = (Find-Module -Name Az -Repository $GalleryName -AllVersions | Where-Object {([System.Version]($_.Version)).Major -eq ([System.Version]($localAz.ModuleVersion)).Major} | Sort-Object {[System.Version]$_.Version} -Descending)[0]
+        Write-Host $galleryAz.ModuleVersion
+    }else{
+        $galleryAz = Find-Module -Name Az -Repository $GalleryName
+    }
 
     $versionBump = [PSVersion]::NONE
     $updatedModules = @()
     foreach ($localDependency in $localAz.RequiredModules)
     {
-        $galleryDependency = $galleryAz.Dependencies | where { $_.Name -eq $localDependency.ModuleName }
+        $galleryDependency = $galleryAz.Dependencies | Where-Object { $_.Name -eq $localDependency.ModuleName }
         if ($null -eq $galleryDependency)
         {
             $updatedModules += $localDependency.ModuleName
@@ -313,7 +322,7 @@ function Update-AzPreview
         $Psd1Object = Import-PowerShellDataFile $Psd1FilePath
         $moduleName = [System.IO.Path]::GetFileName($Psd1FilePath) -replace ".psd1"
         $moduleVersion = $Psd1Object.ModuleVersion.ToString()
-        if('Az.Accounts' -eq $moduleName)
+        if('Az.Accounts' -eq $moduleName -and "STS" -eq $ReleaseType)
         {
             $requiredModulesString += "@{ModuleName = '$moduleName'; ModuleVersion = '$moduleVersion'; }, `n            "
         }
@@ -482,8 +491,8 @@ switch ($PSCmdlet.ParameterSetName)
 {
     "ReleaseSingleModule"
     {
-        Write-Host executing dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $PSScriptRoot/../artifacts/VersionController/Exceptions $ModuleName
-        dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $PSScriptRoot/../artifacts/VersionController/Exceptions $ModuleName
+        Write-Host executing dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $PSScriptRoot/../artifacts/VersionController/Exceptions $ModuleName $ReleaseType
+        dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $PSScriptRoot/../artifacts/VersionController/Exceptions $ModuleName $ReleaseType
         Update-AzPreview
     }
 
@@ -521,8 +530,8 @@ switch ($PSCmdlet.ParameterSetName)
             }
         }
 
-        Write-Host executing dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll
-        dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll
+        Write-Host executing dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $ReleaseType
+        dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $ReleaseType
 
         $versionBump = Bump-AzVersion
         # Each release needs to update AzPreview.psd1 and dotnet csv
