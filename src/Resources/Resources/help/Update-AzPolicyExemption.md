@@ -17,8 +17,10 @@ This operation updates a policy exemption with the given scope and name.
 Update-AzPolicyExemption -Name <String> [-Scope <String>] [-ExemptionCategory <String>]
  [-PolicyDefinitionReferenceId <String[]>] [-DisplayName <String>] [-Description <String>]
  [-ExpiresOn <DateTime>] [-ClearExpiration] [-Metadata <String>] [-BackwardCompatible]
- [-AssignmentScopeValidation <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AssignmentScopeValidation <String>] [-DefaultProfile <PSObject>] [-Break]
+ [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Id
@@ -26,7 +28,9 @@ Update-AzPolicyExemption -Name <String> [-Scope <String>] [-ExemptionCategory <S
 Update-AzPolicyExemption [-ExemptionCategory <String>] [-PolicyDefinitionReferenceId <String[]>] -Id <String>
  [-DisplayName <String>] [-Description <String>] [-ExpiresOn <DateTime>] [-ClearExpiration]
  [-Metadata <String>] [-BackwardCompatible] [-AssignmentScopeValidation <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
@@ -34,8 +38,9 @@ Update-AzPolicyExemption [-ExemptionCategory <String>] [-PolicyDefinitionReferen
 Update-AzPolicyExemption [-ExemptionCategory <String>] [-PolicyDefinitionReferenceId <String[]>]
  [-DisplayName <String>] [-Description <String>] [-ExpiresOn <DateTime>] [-ClearExpiration]
  [-Metadata <String>] [-BackwardCompatible] [-AssignmentScopeValidation <String>]
- -InputObject <IPolicyExemption> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -InputObject <IPolicyExemption> [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -140,6 +145,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Break
+Wait for .NET debugger to attach
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ClearExpiration
 Indicates whether to clear the expiration date and time of the policy exemption.
 
@@ -231,6 +251,36 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -HttpPipelineAppend
+SendAsync Pipeline Steps to be appended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelinePrepend
+SendAsync Pipeline Steps to be prepended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Id
 The ID of the policy assignment to delete.
 Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
@@ -304,6 +354,66 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Proxy
+The URI for the proxy server to use
+
+```yaml
+Type: System.Uri
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyCredential
+Credentials for a proxy server to use for the remote call
+
+```yaml
+Type: System.Management.Automation.PSCredential
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyUseDefaultCredentials
+Use the default credentials for the proxy
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

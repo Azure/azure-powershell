@@ -14,19 +14,25 @@ Get the specified role eligibility schedule for a resource scope
 
 ### List (Default)
 ```
-Get-AzRoleEligibilitySchedule -Scope <String> [-Filter <String>] [-DefaultProfile <PSObject>]
+Get-AzRoleEligibilitySchedule -Scope <String> [-Filter <String>] [-DefaultProfile <PSObject>] [-Break]
+ [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzRoleEligibilitySchedule -Name <String> -Scope <String> [-DefaultProfile <PSObject>]
+Get-AzRoleEligibilitySchedule -Name <String> -Scope <String> [-DefaultProfile <PSObject>] [-Break]
+ [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzRoleEligibilitySchedule -InputObject <IAuthorizationIdentity> [-DefaultProfile <PSObject>]
+Get-AzRoleEligibilitySchedule -InputObject <IAuthorizationIdentity> [-DefaultProfile <PSObject>] [-Break]
+ [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -117,6 +123,21 @@ Name                                 Type                                       
 
 ## PARAMETERS
 
+### -Break
+Wait for .NET debugger to attach
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -143,6 +164,36 @@ Use $filter=asTarget() to return all role eligibility schedules created for the 
 ```yaml
 Type: System.String
 Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelineAppend
+SendAsync Pipeline Steps to be appended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelinePrepend
+SendAsync Pipeline Steps to be prepended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -179,6 +230,66 @@ Aliases: RoleEligibilityScheduleName
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Proxy
+The URI for the proxy server to use
+
+```yaml
+Type: System.Uri
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyCredential
+Credentials for a proxy server to use for the remote call
+
+```yaml
+Type: System.Management.Automation.PSCredential
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyUseDefaultCredentials
+Use the default credentials for the proxy
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

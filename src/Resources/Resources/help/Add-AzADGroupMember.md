@@ -15,41 +15,49 @@ Adds member to group.
 ### MemberObjectIdWithGroupObjectIdParameterSet (Default)
 ```
 Add-AzADGroupMember -TargetGroupObjectId <String> -MemberObjectId <String[]> [-DefaultProfile <PSObject>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-PassThru]
+ [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MemberUPNWithGroupObjectIdParameterSet
 ```
 Add-AzADGroupMember -TargetGroupObjectId <String> -MemberUserPrincipalName <String[]>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-PassThru] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MemberObjectIdWithGroupObjectParameterSet
 ```
 Add-AzADGroupMember -MemberObjectId <String[]> -TargetGroupObject <MicrosoftGraphGroup>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-PassThru] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MemberObjectIdWithGroupDisplayNameParameterSet
 ```
 Add-AzADGroupMember -MemberObjectId <String[]> -TargetGroupDisplayName <String> [-DefaultProfile <PSObject>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-PassThru]
+ [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MemberUPNWithGroupObjectParameterSet
 ```
 Add-AzADGroupMember -MemberUserPrincipalName <String[]> -TargetGroupObject <MicrosoftGraphGroup>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-PassThru] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MemberUPNWithGroupDisplayNameParameterSet
 ```
 Add-AzADGroupMember -MemberUserPrincipalName <String[]> -TargetGroupDisplayName <String>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-PassThru] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,6 +78,21 @@ Add members to group
 
 ## PARAMETERS
 
+### -Break
+Wait for .NET debugger to attach
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -77,6 +100,36 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelineAppend
+SendAsync Pipeline Steps to be appended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelinePrepend
+SendAsync Pipeline Steps to be prepended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -126,6 +179,66 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Proxy
+The URI for the proxy server to use
+
+```yaml
+Type: System.Uri
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyCredential
+Credentials for a proxy server to use for the remote call
+
+```yaml
+Type: System.Management.Automation.PSCredential
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyUseDefaultCredentials
+Use the default credentials for the proxy
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -556,6 +669,12 @@ TARGETGROUPOBJECT `<MicrosoftGraphGroup>`: The target group object, could be use
   - `[DisplayName <String>]`: The name displayed in directory
 
 ## RELATED LINKS
+
+## RELATED LINKS
+
+
+## RELATED LINKS
+
 
 ## RELATED LINKS
 

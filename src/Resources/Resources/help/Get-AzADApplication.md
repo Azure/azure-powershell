@@ -16,44 +16,58 @@ Lists entities from applications or get entity from applications by key
 ```
 Get-AzADApplication [-Select <String[]>] [-Count] [-Filter <String>] [-Orderby <String[]>] [-Search <String>]
  [-ConsistencyLevel <String>] [-First <UInt64>] [-Skip <UInt64>] [-AppendSelected] [-DefaultProfile <PSObject>]
- [-CountVariable <String>] [<CommonParameters>]
+ [-CountVariable <String>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ApplicationObjectIdParameterSet
 ```
 Get-AzADApplication -ObjectId <String> [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>]
- [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### OwnedApplicationParameterSet
 ```
 Get-AzADApplication [-OwnedApplication] [-Select <String[]>] [-Orderby <String[]>] [-First <UInt64>]
- [-Skip <UInt64>] [-AppendSelected] [-DefaultProfile <PSObject>]
+ [-Skip <UInt64>] [-AppendSelected] [-DefaultProfile <PSObject>] [-Break]
+ [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### SearchStringParameterSet
 ```
 Get-AzADApplication [-Select <String[]>] -DisplayNameStartWith <String> [-First <UInt64>] [-Skip <UInt64>]
- [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
 Get-AzADApplication [-Select <String[]>] -DisplayName <String> [-First <UInt64>] [-Skip <UInt64>]
- [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ApplicationIdParameterSet
 ```
 Get-AzADApplication [-Select <String[]>] -ApplicationId <Guid> [-First <UInt64>] [-Skip <UInt64>]
- [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ApplicationIdentifierUriParameterSet
 ```
 Get-AzADApplication [-Select <String[]>] -IdentifierUri <String> [-First <UInt64>] [-Skip <UInt64>]
- [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -139,6 +153,21 @@ Aliases: AppId
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Break
+Wait for .NET debugger to attach
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -250,6 +279,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -HttpPipelineAppend
+SendAsync Pipeline Steps to be appended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelinePrepend
+SendAsync Pipeline Steps to be prepended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IdentifierUri
 application identifier uri
 
@@ -306,6 +365,66 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Proxy
+The URI for the proxy server to use
+
+```yaml
+Type: System.Uri
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyCredential
+Credentials for a proxy server to use for the remote call
+
+```yaml
+Type: System.Management.Automation.PSCredential
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyUseDefaultCredentials
+Use the default credentials for the proxy
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

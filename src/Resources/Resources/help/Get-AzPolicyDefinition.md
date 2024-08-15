@@ -14,56 +14,74 @@ Gets policy set definitions.
 
 ### Name (Default)
 ```
-Get-AzPolicyDefinition [-Name <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+Get-AzPolicyDefinition [-Name <String>] [-Filter <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+ [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
-Get-AzPolicyDefinition [-Name <String>] -ManagementGroupName <String> [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyDefinition [-Name <String>] -ManagementGroupName <String> [-Filter <String>] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
-Get-AzPolicyDefinition [-Name <String>] -SubscriptionId <String> [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyDefinition [-Name <String>] -SubscriptionId <String> [-Filter <String>] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Version
 ```
-Get-AzPolicyDefinition [-Name <String>] [-Id <String>] [-BackwardCompatible] -Version <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyDefinition [-Name <String>] [-Id <String>] [-Filter <String>] [-BackwardCompatible]
+ -Version <String> [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ListVersion
 ```
-Get-AzPolicyDefinition [-Name <String>] [-Id <String>] [-ListVersion] [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyDefinition [-Name <String>] [-Id <String>] [-Filter <String>] [-ListVersion] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Id
 ```
-Get-AzPolicyDefinition -Id <String> [-BackwardCompatible] [-DefaultProfile <PSObject>]
+Get-AzPolicyDefinition -Id <String> [-Filter <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+ [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### Builtin
 ```
-Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Builtin]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Filter <String>] [-Builtin]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Custom
 ```
-Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Custom]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Filter <String>] [-Custom]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Static
 ```
-Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Static]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Filter <String>] [-Static]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -141,6 +159,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Break
+Wait for .NET debugger to attach
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Builtin
 Causes cmdlet to return only built-in policy definitions.
 
@@ -178,6 +211,57 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Filter
+The filter to apply on the operation.
+Valid values for $filter are: 'atExactScope()', 'policyType -eq {value}' or 'category eq '{value}''.
+If $filter is not provided, no filtering is performed.
+If $filter=atExactScope() is provided, the returned list only includes all policy definitions that at the given scope.
+If $filter='policyType -eq {value}' is provided, the returned list only includes all policy definitions whose type match the {value}.
+Possible policyType values are NotSpecified, Builtin, Custom, and Static.
+If $filter='category -eq {value}' is provided, the returned list only includes all policy definitions whose category match the {value}.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelineAppend
+SendAsync Pipeline Steps to be appended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelinePrepend
+SendAsync Pipeline Steps to be prepended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -267,6 +351,66 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Proxy
+The URI for the proxy server to use
+
+```yaml
+Type: System.Uri
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyCredential
+Credentials for a proxy server to use for the remote call
+
+```yaml
+Type: System.Management.Automation.PSCredential
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyUseDefaultCredentials
+Use the default credentials for the proxy
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -24,8 +24,9 @@ Update-AzADUser -UPNOrObjectId <String> [-AccountEnabled <Boolean>] [-Password <
  [-OnPremisesImmutableId <String>] [-OtherMail <String[]>] [-PasswordPolicy <String>]
  [-PasswordProfile <IMicrosoftGraphPasswordProfile>] [-PostalCode <String>] [-PreferredLanguage <String>]
  [-ShowInAddressList] [-State <String>] [-StreetAddress <String>] [-Surname <String>] [-UsageLocation <String>]
- [-UserType <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-UserType <String>] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-PassThru] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
@@ -40,8 +41,9 @@ Update-AzADUser [-AccountEnabled <Boolean>] [-Password <SecureString>] [-ForceCh
  [-PasswordPolicy <String>] [-PasswordProfile <IMicrosoftGraphPasswordProfile>] [-PostalCode <String>]
  [-PreferredLanguage <String>] [-ShowInAddressList] [-State <String>] [-StreetAddress <String>]
  [-Surname <String>] [-UsageLocation <String>] [-UserType <String>] -ObjectId <String>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-PassThru] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
@@ -56,8 +58,9 @@ Update-AzADUser [-AccountEnabled <Boolean>] [-Password <SecureString>] [-ForceCh
  [-PasswordPolicy <String>] [-PasswordProfile <IMicrosoftGraphPasswordProfile>] [-PostalCode <String>]
  [-PreferredLanguage <String>] [-ShowInAddressList] [-State <String>] [-StreetAddress <String>]
  [-Surname <String>] [-UsageLocation <String>] [-UserType <String>] -InputObject <IMicrosoftGraphUser>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-PassThru] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UPNParameterSet
@@ -72,8 +75,9 @@ Update-AzADUser [-AccountEnabled <Boolean>] [-Password <SecureString>] [-ForceCh
  [-PasswordPolicy <String>] [-PasswordProfile <IMicrosoftGraphPasswordProfile>] [-PostalCode <String>]
  [-PreferredLanguage <String>] [-ShowInAddressList] [-State <String>] [-StreetAddress <String>]
  [-Surname <String>] [-UsageLocation <String>] [-UserType <String>] -UserPrincipalName <String>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-PassThru] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -121,6 +125,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Break
+Wait for .NET debugger to attach
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -380,6 +399,36 @@ Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelineAppend
+SendAsync Pipeline Steps to be appended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelinePrepend
+SendAsync Pipeline Steps to be prepended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[]
 Parameter Sets: (All)
 Aliases:
 
@@ -677,6 +726,66 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Proxy
+The URI for the proxy server to use
+
+```yaml
+Type: System.Uri
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyCredential
+Credentials for a proxy server to use for the remote call
+
+```yaml
+Type: System.Management.Automation.PSCredential
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyUseDefaultCredentials
+Use the default credentials for the proxy
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -1301,6 +1410,12 @@ PASSWORDPROFILE `<IMicrosoftGraphPasswordProfile>`: passwordProfile
   - `[Password <String>]`: The password for the user. This property is required when a user is created. It can be updated, but the user will be required to change the password on the next login. The password must satisfy minimum requirements as specified by the user's passwordPolicies property. By default, a strong password is required.
 
 ## RELATED LINKS
+
+## RELATED LINKS
+
+
+## RELATED LINKS
+
 
 ## RELATED LINKS
 

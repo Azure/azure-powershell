@@ -15,113 +15,138 @@ Creates key credentials or password credentials for an application.
 ### ApplicationObjectIdWithPasswordParameterSet (Default)
 ```
 New-AzADAppCredential -ObjectId <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-CustomKeyIdentifier <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-CustomKeyIdentifier <String>] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationObjectIdWithCertValueParameterSet
 ```
 New-AzADAppCredential -ObjectId <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-CustomKeyIdentifier <String>] -CertValue <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CustomKeyIdentifier <String>] -CertValue <String> [-DefaultProfile <PSObject>] [-Break]
+ [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationObjectIdWithKeyCredentialParameterSet
 ```
 New-AzADAppCredential -ObjectId <String> [-CustomKeyIdentifier <String>]
- -KeyCredentials <MicrosoftGraphKeyCredential[]> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -KeyCredentials <MicrosoftGraphKeyCredential[]> [-DefaultProfile <PSObject>] [-Break]
+ [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationObjectIdWithPasswordCredentialParameterSet
 ```
 New-AzADAppCredential -ObjectId <String> [-CustomKeyIdentifier <String>]
- -PasswordCredentials <MicrosoftGraphPasswordCredential[]> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -PasswordCredentials <MicrosoftGraphPasswordCredential[]> [-DefaultProfile <PSObject>] [-Break]
+ [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationObjectWithPasswordParameterSet
 ```
 New-AzADAppCredential [-StartDate <DateTime>] [-EndDate <DateTime>] [-CustomKeyIdentifier <String>]
- -ApplicationObject <IMicrosoftGraphApplication> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ApplicationObject <IMicrosoftGraphApplication> [-DefaultProfile <PSObject>] [-Break]
+ [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationObjectWithCertValueParameterSet
 ```
 New-AzADAppCredential [-StartDate <DateTime>] [-EndDate <DateTime>] [-CustomKeyIdentifier <String>]
- -CertValue <String> -ApplicationObject <IMicrosoftGraphApplication> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -CertValue <String> -ApplicationObject <IMicrosoftGraphApplication> [-DefaultProfile <PSObject>] [-Break]
+ [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameWithPasswordParameterSet
 ```
 New-AzADAppCredential [-StartDate <DateTime>] [-EndDate <DateTime>] [-CustomKeyIdentifier <String>]
- -DisplayName <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -DisplayName <String> [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameWithCertValueParameterSet
 ```
 New-AzADAppCredential [-StartDate <DateTime>] [-EndDate <DateTime>] [-CustomKeyIdentifier <String>]
- -CertValue <String> -DisplayName <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -CertValue <String> -DisplayName <String> [-DefaultProfile <PSObject>] [-Break]
+ [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationIdWithCertValueParameterSet
 ```
 New-AzADAppCredential [-StartDate <DateTime>] [-EndDate <DateTime>] [-CustomKeyIdentifier <String>]
- -CertValue <String> -ApplicationId <Guid> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -CertValue <String> -ApplicationId <Guid> [-DefaultProfile <PSObject>] [-Break]
+ [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationIdWithPasswordParameterSet
 ```
 New-AzADAppCredential [-StartDate <DateTime>] [-EndDate <DateTime>] [-CustomKeyIdentifier <String>]
- -ApplicationId <Guid> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ApplicationId <Guid> [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationObjectWithPasswordCredentialParameterSet
 ```
 New-AzADAppCredential [-CustomKeyIdentifier <String>] -PasswordCredentials <MicrosoftGraphPasswordCredential[]>
- -ApplicationObject <IMicrosoftGraphApplication> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ApplicationObject <IMicrosoftGraphApplication> [-DefaultProfile <PSObject>] [-Break]
+ [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameWithPasswordCredentialParameterSet
 ```
 New-AzADAppCredential [-CustomKeyIdentifier <String>] -PasswordCredentials <MicrosoftGraphPasswordCredential[]>
- -DisplayName <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -DisplayName <String> [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationIdWithPasswordCredentialParameterSet
 ```
 New-AzADAppCredential [-CustomKeyIdentifier <String>] -PasswordCredentials <MicrosoftGraphPasswordCredential[]>
- -ApplicationId <Guid> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ApplicationId <Guid> [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationObjectWithKeyCredentialParameterSet
 ```
 New-AzADAppCredential [-CustomKeyIdentifier <String>] -KeyCredentials <MicrosoftGraphKeyCredential[]>
- -ApplicationObject <IMicrosoftGraphApplication> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ApplicationObject <IMicrosoftGraphApplication> [-DefaultProfile <PSObject>] [-Break]
+ [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameWithKeyCredentialParameterSet
 ```
 New-AzADAppCredential [-CustomKeyIdentifier <String>] -KeyCredentials <MicrosoftGraphKeyCredential[]>
- -DisplayName <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -DisplayName <String> [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationIdWithKeyCredentialParameterSet
 ```
 New-AzADAppCredential [-CustomKeyIdentifier <String>] -KeyCredentials <MicrosoftGraphKeyCredential[]>
- -ApplicationId <Guid> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ApplicationId <Guid> [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -182,6 +207,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Break
+Wait for .NET debugger to attach
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -262,6 +302,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -HttpPipelineAppend
+SendAsync Pipeline Steps to be appended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelinePrepend
+SendAsync Pipeline Steps to be prepended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KeyCredentials
 key credentials associated with the application.
 To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
@@ -305,6 +375,66 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Proxy
+The URI for the proxy server to use
+
+```yaml
+Type: System.Uri
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyCredential
+Credentials for a proxy server to use for the remote call
+
+```yaml
+Type: System.Management.Automation.PSCredential
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyUseDefaultCredentials
+Use the default credentials for the proxy
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -641,6 +771,12 @@ PASSWORDCREDENTIALS <MicrosoftGraphPasswordCredential[]>: Password credentials a
   - `[StartDateTime <DateTime?>]`: The date and time at which the password becomes valid. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Optional.
 
 ## RELATED LINKS
+
+## RELATED LINKS
+
+
+## RELATED LINKS
+
 
 ## RELATED LINKS
 
