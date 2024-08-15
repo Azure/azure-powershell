@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
 
 ## Version 7.3.0
 * Added null check and empty list check to the permissions object in the ToPSRoleDefinition method.

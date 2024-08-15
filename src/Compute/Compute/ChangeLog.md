@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
 * Added information on how to find VM Images when using `New-AzVM` with `-Image` parameter.
 * Added `TimeCreated` read-only field to `PSVirtualMachineScaleSetVMProfile` object.
 * Added  parameter `-ResourceIdsOnly` to `Get-AzCapacityReservationGroup` cmdlet.
