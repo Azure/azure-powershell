@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The name of the virtual machine.
             /// </param>
             /// <param name='hibernate'>
-            /// Optional parameter to hibernate a virtual machine. (Feature in Preview)
+            /// Optional parameter to hibernate a virtual machine.
             /// </param>
             public static void Deallocate(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? hibernate = default(bool?))
             {
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The name of the virtual machine.
             /// </param>
             /// <param name='hibernate'>
-            /// Optional parameter to hibernate a virtual machine. (Feature in Preview)
+            /// Optional parameter to hibernate a virtual machine.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -1513,7 +1513,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The name of the virtual machine.
             /// </param>
             /// <param name='hibernate'>
-            /// Optional parameter to hibernate a virtual machine. (Feature in Preview)
+            /// Optional parameter to hibernate a virtual machine.
             /// </param>
             public static void BeginDeallocate(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? hibernate = default(bool?))
             {
@@ -1534,7 +1534,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The name of the virtual machine.
             /// </param>
             /// <param name='hibernate'>
-            /// Optional parameter to hibernate a virtual machine. (Feature in Preview)
+            /// Optional parameter to hibernate a virtual machine.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
