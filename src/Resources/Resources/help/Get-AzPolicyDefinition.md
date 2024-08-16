@@ -15,55 +15,55 @@ Gets policy set definitions.
 ### Name (Default)
 ```
 Get-AzPolicyDefinition [-Name <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
 Get-AzPolicyDefinition [-Name <String>] -ManagementGroupName <String> [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
 Get-AzPolicyDefinition [-Name <String>] -SubscriptionId <String> [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Version
 ```
 Get-AzPolicyDefinition [-Name <String>] [-Id <String>] [-BackwardCompatible] -Version <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ListVersion
 ```
 Get-AzPolicyDefinition [-Name <String>] [-Id <String>] [-ListVersion] [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Id
 ```
 Get-AzPolicyDefinition -Id <String> [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Builtin
 ```
 Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Builtin]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Custom
 ```
 Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Custom]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Static
 ```
 Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Static]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -267,6 +267,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -16,6 +16,483 @@
 
 <#
 .Synopsis
+Connects a catalog to enable syncing.
+.Description
+Connects a catalog to enable syncing.
+.Example
+Connect-AzDevCenterAdminCatalog -DevCenterName Contoso -Name CentralCatalog -ResourceGroupName testRg
+.Example
+$catalog = @{"ResourceGroupName" = "testRg"; "DevCenterName" = "Contoso"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+$catalog = Connect-AzDevCenterAdminCatalog -InputObject $catalog
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
+  [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [CatalogName <String>]: The name of the Catalog.
+  [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
+  [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
+  [EnvironmentTypeName <String>]: The name of the environment type.
+  [GalleryName <String>]: The name of the gallery.
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the image.
+  [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
+  [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
+  [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
+  [PoolName <String>]: Name of the pool.
+  [ProjectName <String>]: The name of the project.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
+  [VersionName <String>]: The version of the image.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/connect-azdevcenteradmincatalog
+#>
+function Connect-AzDevCenterAdminCatalog {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Connect', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Connect', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the devcenter.
+    ${DevCenterName},
+
+    [Parameter(ParameterSetName='Connect', Mandatory)]
+    [Alias('CatalogName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the Catalog.
+    ${Name},
+
+    [Parameter(ParameterSetName='Connect', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Connect')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='ConnectViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Connect = 'Az.DevCenter.private\Connect-AzDevCenterAdminCatalog_Connect';
+            ConnectViaIdentity = 'Az.DevCenter.private\Connect-AzDevCenterAdminCatalog_ConnectViaIdentity';
+        }
+        if (('Connect') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Connects a project catalog to enable syncing.
+.Description
+Connects a project catalog to enable syncing.
+.Example
+Connect-AzDevCenterAdminProjectCatalog -ProjectName DevProject -CatalogName CentralCatalog -ResourceGroupName testRg
+.Example
+$catalog = @{"ResourceGroupName" = "testRg"; "ProjectName" = "DevProject"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+$catalog = Connect-AzDevCenterAdminProjectCatalog -InputObject $catalog
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
+  [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [CatalogName <String>]: The name of the Catalog.
+  [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
+  [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
+  [EnvironmentTypeName <String>]: The name of the environment type.
+  [GalleryName <String>]: The name of the gallery.
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the image.
+  [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
+  [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
+  [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
+  [PoolName <String>]: Name of the pool.
+  [ProjectName <String>]: The name of the project.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
+  [VersionName <String>]: The version of the image.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/connect-azdevcenteradminprojectcatalog
+#>
+function Connect-AzDevCenterAdminProjectCatalog {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Connect', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Connect', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the Catalog.
+    ${CatalogName},
+
+    [Parameter(ParameterSetName='Connect', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the project.
+    ${ProjectName},
+
+    [Parameter(ParameterSetName='Connect', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Connect')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='ConnectViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Connect = 'Az.DevCenter.private\Connect-AzDevCenterAdminProjectCatalog_Connect';
+            ConnectViaIdentity = 'Az.DevCenter.private\Connect-AzDevCenterAdminProjectCatalog_ConnectViaIdentity';
+        }
+        if (('Connect') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Gets an attached NetworkConnection.
 .Description
 Gets an attached NetworkConnection.
@@ -31,7 +508,7 @@ Get-AzDevCenterAdminAttachedNetwork -ProjectName DevProject -ResourceGroupName t
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IAttachedNetworkConnection
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IAttachedNetworkConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,14 +519,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -61,7 +541,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminattachednetwork
 #>
 function Get-AzDevCenterAdminAttachedNetwork {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IAttachedNetworkConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IAttachedNetworkConnection])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -267,7 +747,7 @@ $catalogErrorDetail = Get-AzDevCenterAdminCatalogSyncErrorDetail -InputObject $c
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ISyncErrorDetails
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ISyncErrorDetails
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -278,14 +758,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -297,7 +780,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradmincatalogsyncerrordetail
 #>
 function Get-AzDevCenterAdminCatalogSyncErrorDetail {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ISyncErrorDetails])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ISyncErrorDetails])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -486,7 +969,7 @@ $catalog = Get-AzDevCenterAdminCatalog -InputObject $catalog
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ICatalog
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalog
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -497,14 +980,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -516,7 +1002,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradmincatalog
 #>
 function Get-AzDevCenterAdminCatalog {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ICatalog])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalog])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -696,6 +1182,465 @@ end {
 
 <#
 .Synopsis
+Gets Customization Task error details
+.Description
+Gets Customization Task error details
+.Example
+Get-AzDevCenterAdminCustomizationTaskErrorDetail -CatalogName CentralCatalog -DevCenterName Contoso -ResourceGroupName testRg -TaskName SampleTask
+.Example
+$customizationTask = @{"ResourceGroupName" = "testRg"; "DevCenterName" = "Contoso"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"; "TaskName" = "SampleTask"}
+$customizationTaskErrorDetail = Get-AzDevCenterAdminCustomizationTaskErrorDetail -InputObject $customizationTask
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalogErrorDetails
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
+  [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [CatalogName <String>]: The name of the Catalog.
+  [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
+  [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
+  [EnvironmentTypeName <String>]: The name of the environment type.
+  [GalleryName <String>]: The name of the gallery.
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the image.
+  [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
+  [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
+  [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
+  [PoolName <String>]: Name of the pool.
+  [ProjectName <String>]: The name of the project.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
+  [VersionName <String>]: The version of the image.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradmincustomizationtaskerrordetail
+#>
+function Get-AzDevCenterAdminCustomizationTaskErrorDetail {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalogErrorDetails])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the Catalog.
+    ${CatalogName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the devcenter.
+    ${DevCenterName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the Task.
+    ${TaskName},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.DevCenter.private\Get-AzDevCenterAdminCustomizationTaskErrorDetail_Get';
+            GetViaIdentity = 'Az.DevCenter.private\Get-AzDevCenterAdminCustomizationTaskErrorDetail_GetViaIdentity';
+        }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Gets a Task from the catalog
+.Description
+Gets a Task from the catalog
+.Example
+Get-AzDevCenterAdminCustomizationTask -CatalogName CentralCatalog -DevCenterName Contoso -ResourceGroupName testRg
+.Example
+Get-AzDevCenterAdminCustomizationTask -CatalogName CentralCatalog -DevCenterName Contoso -ResourceGroupName testRg -TaskName SampleTask
+.Example
+$customizationTask = @{"ResourceGroupName" = "testRg"; "DevCenterName" = "Contoso"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"; "TaskName" = "SampleTask"}
+$customizationTask = Get-AzDevCenterAdminCustomizationTask -InputObject $customizationTask
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICustomizationTask
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
+  [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [CatalogName <String>]: The name of the Catalog.
+  [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
+  [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
+  [EnvironmentTypeName <String>]: The name of the environment type.
+  [GalleryName <String>]: The name of the gallery.
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the image.
+  [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
+  [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
+  [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
+  [PoolName <String>]: Name of the pool.
+  [ProjectName <String>]: The name of the project.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
+  [VersionName <String>]: The version of the image.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradmincustomizationtask
+#>
+function Get-AzDevCenterAdminCustomizationTask {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICustomizationTask])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the Catalog.
+    ${CatalogName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the devcenter.
+    ${DevCenterName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the Task.
+    ${TaskName},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.DevCenter.private\Get-AzDevCenterAdminCustomizationTask_Get';
+            GetViaIdentity = 'Az.DevCenter.private\Get-AzDevCenterAdminCustomizationTask_GetViaIdentity';
+            List = 'Az.DevCenter.private\Get-AzDevCenterAdminCustomizationTask_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Gets a Dev Box definition
 .Description
 Gets a Dev Box definition
@@ -711,7 +1656,7 @@ Get-AzDevCenterAdminDevBoxDefinition -ResourceGroupName testRg -ProjectName DevP
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevBoxDefinition
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevBoxDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -722,14 +1667,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -741,7 +1689,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradmindevboxdefinition
 #>
 function Get-AzDevCenterAdminDevBoxDefinition {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevBoxDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevBoxDefinition])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -951,7 +1899,7 @@ Get-AzDevCenterAdminDevCenter -InputObject $devCenter
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevCenter
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenter
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -962,14 +1910,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -981,7 +1932,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradmindevcenter
 #>
 function Get-AzDevCenterAdminDevCenter {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevCenter])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenter])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1168,7 +2119,7 @@ $environmentDefinitionErrorDetail = Get-AzDevCenterAdminEnvironmentDefinitionErr
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ICatalogErrorDetails
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalogErrorDetails
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1179,14 +2130,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -1198,7 +2152,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminenvironmentdefinitionerrordetail
 #>
 function Get-AzDevCenterAdminEnvironmentDefinitionErrorDetail {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ICatalogErrorDetails])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalogErrorDetails])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1393,7 +2347,7 @@ $environmentDefinition = Get-AzDevCenterAdminEnvironmentDefinition -InputObject 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IEnvironmentDefinition
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IEnvironmentDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1404,14 +2358,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -1423,7 +2380,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminenvironmentdefinition
 #>
 function Get-AzDevCenterAdminEnvironmentDefinition {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IEnvironmentDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IEnvironmentDefinition])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1623,7 +2580,7 @@ Get-AzDevCenterAdminEnvironmentType -ResourceGroupName testRg -DevCenterName Con
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IEnvironmentType
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IEnvironmentType
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1634,14 +2591,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -1653,7 +2613,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminenvironmenttype
 #>
 function Get-AzDevCenterAdminEnvironmentType {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IEnvironmentType])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IEnvironmentType])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1847,7 +2807,7 @@ Get-AzDevCenterAdminGallery -InputObject $gallery
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IGallery
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IGallery
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1858,14 +2818,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -1877,7 +2840,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradmingallery
 #>
 function Get-AzDevCenterAdminGallery {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IGallery])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IGallery])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2071,7 +3034,7 @@ Get-AzDevCenterAdminImageVersion -InputObject $imageVersion
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IImageVersion
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IImageVersion
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2082,14 +3045,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -2101,7 +3067,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminimageversion
 #>
 function Get-AzDevCenterAdminImageVersion {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IImageVersion])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IImageVersion])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2310,7 +3276,7 @@ Get-AzDevCenterAdminImage -InputObject $image
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IImage
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IImage
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2321,14 +3287,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -2340,7 +3309,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminimage
 #>
 function Get-AzDevCenterAdminImage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IImage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IImage])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2543,7 +3512,7 @@ Get-AzDevCenterAdminNetworkConnectionHealthDetail -InputObject $networkConnectio
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IHealthCheckStatusDetails
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IHealthCheckStatusDetails
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2554,14 +3523,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -2573,7 +3545,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminnetworkconnectionhealthdetail
 #>
 function Get-AzDevCenterAdminNetworkConnectionHealthDetail {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IHealthCheckStatusDetails])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IHealthCheckStatusDetails])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -2751,12 +3723,12 @@ These FQDNs should be allowed for outbound access in order for the Dev Box servi
 Get-AzDevCenterAdminNetworkConnectionOutboundNetworkDependencyEndpoint -ResourceGroupName testRg -NetworkConnectionName eastusNetwork
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IOutboundEnvironmentEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IOutboundEnvironmentEndpoint
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminnetworkconnectionoutboundnetworkdependencyendpoint
 #>
 function Get-AzDevCenterAdminNetworkConnectionOutboundNetworkDependencyEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IOutboundEnvironmentEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IOutboundEnvironmentEndpoint])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -2933,7 +3905,7 @@ Get-AzDevCenterAdminNetworkConnection -InputObject $networkConnection
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.INetworkConnection
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.INetworkConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2944,14 +3916,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -2963,7 +3938,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminnetworkconnection
 #>
 function Get-AzDevCenterAdminNetworkConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.INetworkConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.INetworkConnection])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -3150,7 +4125,7 @@ Get-AzDevCenterAdminOperationStatus -InputObject $operation
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IOperationStatus
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IOperationStatus
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3161,14 +4136,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -3180,7 +4158,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminoperationstatus
 #>
 function Get-AzDevCenterAdminOperationStatus {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IOperationStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IOperationStatus])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -3348,6 +4326,456 @@ end {
 
 <#
 .Synopsis
+Gets a devcenter plan member.
+.Description
+Gets a devcenter plan member.
+.Example
+Get-AzDevCenterAdminPlanMember -PlanName ContosoPlan -ResourceGroupName testRg
+.Example
+Get-AzDevCenterAdminPlanMember -PlanName ContosoPlan -MemberName d702f662-b3f2-4796-9e8c-13c22378ced3 -ResourceGroupName testRg
+.Example
+$planMember = @{"ResourceGroupName" = "testRg"; "PlanName" = "ContosoPlan"; "MemberName" = "d702f662-b3f2-4796-9e8c-13c22378ced3"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+$planMember = Get-AzDevCenterAdminPlanMember -InputObject $planMember
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenterPlanMember
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
+  [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [CatalogName <String>]: The name of the Catalog.
+  [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
+  [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
+  [EnvironmentTypeName <String>]: The name of the environment type.
+  [GalleryName <String>]: The name of the gallery.
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the image.
+  [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
+  [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
+  [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
+  [PoolName <String>]: Name of the pool.
+  [ProjectName <String>]: The name of the project.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
+  [VersionName <String>]: The version of the image.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminplanmember
+#>
+function Get-AzDevCenterAdminPlanMember {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenterPlanMember])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of a devcenter plan member.
+    ${MemberName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the devcenter plan.
+    ${PlanName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.DevCenter.private\Get-AzDevCenterAdminPlanMember_Get';
+            GetViaIdentity = 'Az.DevCenter.private\Get-AzDevCenterAdminPlanMember_GetViaIdentity';
+            List = 'Az.DevCenter.private\Get-AzDevCenterAdminPlanMember_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Gets a devcenter plan.
+.Description
+Gets a devcenter plan.
+.Example
+Get-AzDevCenterAdminPlan
+.Example
+Get-AzDevCenterAdminPlan -ResourceGroupName testRg
+.Example
+Get-AzDevCenterAdminPlan -ResourceGroupName testRg -Name ContosoPlan
+.Example
+$plan = @{"ResourceGroupName" = "testRg"; "PlanName" = "ContosoPlan"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+Get-AzDevCenterAdminPlan -InputObject $plan
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenterPlan
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
+  [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [CatalogName <String>]: The name of the Catalog.
+  [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
+  [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
+  [EnvironmentTypeName <String>]: The name of the environment type.
+  [GalleryName <String>]: The name of the gallery.
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the image.
+  [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
+  [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
+  [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
+  [PoolName <String>]: Name of the pool.
+  [ProjectName <String>]: The name of the project.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
+  [VersionName <String>]: The version of the image.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminplan
+#>
+function Get-AzDevCenterAdminPlan {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenterPlan])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Alias('PlanName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the devcenter plan.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='List1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.DevCenter.private\Get-AzDevCenterAdminPlan_Get';
+            GetViaIdentity = 'Az.DevCenter.private\Get-AzDevCenterAdminPlan_GetViaIdentity';
+            List = 'Az.DevCenter.private\Get-AzDevCenterAdminPlan_List';
+            List1 = 'Az.DevCenter.private\Get-AzDevCenterAdminPlan_List1';
+        }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Gets a machine pool
 .Description
 Gets a machine pool
@@ -3362,7 +4790,7 @@ Get-AzDevCenterAdminPool -InputObject $pool
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IPool
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IPool
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3373,14 +4801,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -3392,7 +4823,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminpool
 #>
 function Get-AzDevCenterAdminPool {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IPool])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IPool])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -3586,7 +5017,7 @@ Get-AzDevCenterAdminProjectAllowedEnvironmentType -InputObject $envType
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IAllowedEnvironmentType
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IAllowedEnvironmentType
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3597,14 +5028,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -3616,7 +5050,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminprojectallowedenvironmenttype
 #>
 function Get-AzDevCenterAdminProjectAllowedEnvironmentType {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IAllowedEnvironmentType])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IAllowedEnvironmentType])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -3795,6 +5229,911 @@ end {
 
 <#
 .Synopsis
+Gets project catalog synchronization error details
+.Description
+Gets project catalog synchronization error details
+.Example
+Get-AzDevCenterAdminProjectCatalogSyncErrorDetail -ProjectName DevProject -CatalogName CentralCatalog -ResourceGroupName testRg
+.Example
+$catalog = @{"ResourceGroupName" = "testRg"; "ProjectName" = "DevProject"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+$catalogErrorDetail = Get-AzDevCenterAdminProjectCatalogSyncErrorDetail -InputObject $catalog
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ISyncErrorDetails
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
+  [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [CatalogName <String>]: The name of the Catalog.
+  [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
+  [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
+  [EnvironmentTypeName <String>]: The name of the environment type.
+  [GalleryName <String>]: The name of the gallery.
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the image.
+  [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
+  [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
+  [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
+  [PoolName <String>]: Name of the pool.
+  [ProjectName <String>]: The name of the project.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
+  [VersionName <String>]: The version of the image.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminprojectcatalogsyncerrordetail
+#>
+function Get-AzDevCenterAdminProjectCatalogSyncErrorDetail {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ISyncErrorDetails])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the Catalog.
+    ${CatalogName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the project.
+    ${ProjectName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.DevCenter.private\Get-AzDevCenterAdminProjectCatalogSyncErrorDetail_Get';
+            GetViaIdentity = 'Az.DevCenter.private\Get-AzDevCenterAdminProjectCatalogSyncErrorDetail_GetViaIdentity';
+        }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Gets an associated project catalog.
+.Description
+Gets an associated project catalog.
+.Example
+Get-AzDevCenterAdminProjectCatalog -ProjectName DevProject -ResourceGroupName testRg
+.Example
+Get-AzDevCenterAdminProjectCatalog -ProjectName DevProject -CatalogName CentralCatalog -ResourceGroupName testRg
+.Example
+$catalog = @{"ResourceGroupName" = "testRg"; "ProjectName" = "DevProject"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+$catalog = Get-AzDevCenterAdminProjectCatalog -InputObject $catalog
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalog
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
+  [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [CatalogName <String>]: The name of the Catalog.
+  [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
+  [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
+  [EnvironmentTypeName <String>]: The name of the environment type.
+  [GalleryName <String>]: The name of the gallery.
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the image.
+  [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
+  [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
+  [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
+  [PoolName <String>]: Name of the pool.
+  [ProjectName <String>]: The name of the project.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
+  [VersionName <String>]: The version of the image.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminprojectcatalog
+#>
+function Get-AzDevCenterAdminProjectCatalog {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalog])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the Catalog.
+    ${CatalogName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the project.
+    ${ProjectName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.DevCenter.private\Get-AzDevCenterAdminProjectCatalog_Get';
+            GetViaIdentity = 'Az.DevCenter.private\Get-AzDevCenterAdminProjectCatalog_GetViaIdentity';
+            List = 'Az.DevCenter.private\Get-AzDevCenterAdminProjectCatalog_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Gets Environment Definition error details
+.Description
+Gets Environment Definition error details
+.Example
+Get-AzDevCenterAdminProjectEnvironmentDefinitionErrorDetail -ProjectName DevProject -CatalogName CentralCatalog -ResourceGroupName testRg -EnvironmentDefinitionName envDefName
+.Example
+$environmentDefinition = @{"ResourceGroupName" = "testRg"; "ProjectName" = "DevProject"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"; "EnvironmentDefinitionName"="envDefName"}
+$environmentDefinitionErrorDetail = Get-AzDevCenterAdminProjectEnvironmentDefinitionErrorDetail -InputObject $environmentDefinition
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalogErrorDetails
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
+  [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [CatalogName <String>]: The name of the Catalog.
+  [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
+  [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
+  [EnvironmentTypeName <String>]: The name of the environment type.
+  [GalleryName <String>]: The name of the gallery.
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the image.
+  [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
+  [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
+  [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
+  [PoolName <String>]: Name of the pool.
+  [ProjectName <String>]: The name of the project.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
+  [VersionName <String>]: The version of the image.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminprojectenvironmentdefinitionerrordetail
+#>
+function Get-AzDevCenterAdminProjectEnvironmentDefinitionErrorDetail {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalogErrorDetails])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the Catalog.
+    ${CatalogName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the Environment Definition.
+    ${EnvironmentDefinitionName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the project.
+    ${ProjectName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.DevCenter.private\Get-AzDevCenterAdminProjectEnvironmentDefinitionErrorDetail_Get';
+            GetViaIdentity = 'Az.DevCenter.private\Get-AzDevCenterAdminProjectEnvironmentDefinitionErrorDetail_GetViaIdentity';
+        }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Gets an environment definition from the catalog.
+.Description
+Gets an environment definition from the catalog.
+.Example
+Get-AzDevCenterAdminProjectEnvironmentDefinition -ProjectName DevProject -CatalogName CentralCatalog -ResourceGroupName testRg
+.Example
+Get-AzDevCenterAdminProjectEnvironmentDefinition -ProjectName DevProject -CatalogName CentralCatalog -ResourceGroupName testRg -EnvironmentDefinitionName envDefName
+.Example
+$environmentDefinition = @{"ResourceGroupName" = "testRg"; "ProjectName" = "DevProject"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"; "EnvironmentDefinitionName"="envDefName"}
+$environmentDefinition = Get-AzDevCenterAdminProjectEnvironmentDefinition -InputObject $environmentDefinition
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IEnvironmentDefinition
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
+  [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [CatalogName <String>]: The name of the Catalog.
+  [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
+  [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
+  [EnvironmentTypeName <String>]: The name of the environment type.
+  [GalleryName <String>]: The name of the gallery.
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the image.
+  [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
+  [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
+  [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
+  [PoolName <String>]: Name of the pool.
+  [ProjectName <String>]: The name of the project.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
+  [VersionName <String>]: The version of the image.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminprojectenvironmentdefinition
+#>
+function Get-AzDevCenterAdminProjectEnvironmentDefinition {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IEnvironmentDefinition])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the Catalog.
+    ${CatalogName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the Environment Definition.
+    ${EnvironmentDefinitionName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the project.
+    ${ProjectName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.DevCenter.private\Get-AzDevCenterAdminProjectEnvironmentDefinition_Get';
+            GetViaIdentity = 'Az.DevCenter.private\Get-AzDevCenterAdminProjectEnvironmentDefinition_GetViaIdentity';
+            List = 'Az.DevCenter.private\Get-AzDevCenterAdminProjectEnvironmentDefinition_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Gets a project environment type.
 .Description
 Gets a project environment type.
@@ -3809,7 +6148,7 @@ Get-AzDevCenterAdminProjectEnvironmentType -InputObject $envType
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IProjectEnvironmentType
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProjectEnvironmentType
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3820,14 +6159,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -3839,7 +6181,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminprojectenvironmenttype
 #>
 function Get-AzDevCenterAdminProjectEnvironmentType {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IProjectEnvironmentType])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProjectEnvironmentType])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -4018,6 +6360,220 @@ end {
 
 <#
 .Synopsis
+Gets applicable inherited settings for this project.
+.Description
+Gets applicable inherited settings for this project.
+.Example
+Get-AzDevCenterAdminProjectInheritedSetting -ProjectName DevProject -ResourceGroupName testRg
+.Example
+$project = @{"ResourceGroupName" = "testRg"; "ProjectName" = "DevProject"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+$inheritedSettings = Get-AzDevCenterAdminProjectInheritedSetting -InputObject $project
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IInheritedSettingsForProject
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
+  [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [CatalogName <String>]: The name of the Catalog.
+  [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
+  [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
+  [EnvironmentTypeName <String>]: The name of the environment type.
+  [GalleryName <String>]: The name of the gallery.
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the image.
+  [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
+  [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
+  [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
+  [PoolName <String>]: Name of the pool.
+  [ProjectName <String>]: The name of the project.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
+  [VersionName <String>]: The version of the image.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminprojectinheritedsetting
+#>
+function Get-AzDevCenterAdminProjectInheritedSetting {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IInheritedSettingsForProject])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the project.
+    ${ProjectName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.DevCenter.private\Get-AzDevCenterAdminProjectInheritedSetting_Get';
+            GetViaIdentity = 'Az.DevCenter.private\Get-AzDevCenterAdminProjectInheritedSetting_GetViaIdentity';
+        }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Gets a specific project.
 .Description
 Gets a specific project.
@@ -4034,7 +6590,7 @@ Get-AzDevCenterAdminProject -InputObject $project
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IProject
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProject
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -4045,14 +6601,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -4064,7 +6623,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminproject
 #>
 function Get-AzDevCenterAdminProject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IProject])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProject])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -4246,12 +6805,12 @@ Lists the Microsoft.DevCenter SKUs available in a subscription
 Get-AzDevCenterAdminSku
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevCenterSku
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenterSku
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminsku
 #>
 function Get-AzDevCenterAdminSku {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevCenterSku])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenterSku])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -4406,12 +6965,12 @@ Lists the current usages and limits in this location for the provided subscripti
 Get-AzDevCenterAdminUsage -Location "westus3"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IUsage
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IUsage
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminusage
 #>
 function Get-AzDevCenterAdminUsage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IUsage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IUsage])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -4585,14 +7144,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -4772,6 +7334,224 @@ end {
 
 <#
 .Synopsis
+Check the availability of name for resource
+.Description
+Check the availability of name for resource
+.Example
+Invoke-AzDevCenterAdminExecuteCheckScopedNameAvailability -Name "CentralCatalog" -Type "Microsoft.DevCenter/projects/catalogs" -Scope "/subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff/resourceGroups/rg1/providers/Microsoft.DevCenter/projects/DevProject"
+.Example
+Invoke-AzDevCenterAdminExecuteCheckScopedNameAvailability -Name "CentralCatalog" -Type "Microsoft.DevCenter/devcenters/catalogs" -Scope "/subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff/resourceGroups/rg1/providers/Microsoft.DevCenter/devcenters/Contoso"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api30.ICheckNameAvailabilityResponse
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
+  [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [CatalogName <String>]: The name of the Catalog.
+  [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
+  [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
+  [EnvironmentTypeName <String>]: The name of the environment type.
+  [GalleryName <String>]: The name of the gallery.
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the image.
+  [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
+  [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
+  [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
+  [PoolName <String>]: Name of the pool.
+  [ProjectName <String>]: The name of the project.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
+  [VersionName <String>]: The version of the image.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/invoke-azdevcenteradminexecutecheckscopednameavailability
+#>
+function Invoke-AzDevCenterAdminExecuteCheckScopedNameAvailability {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api30.ICheckNameAvailabilityResponse])]
+[CmdletBinding(DefaultParameterSetName='ExecuteExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='ExecuteExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='ExecuteViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The name of the resource for which availability needs to be checked.
+    ${Name},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The resource id to scope the name check.
+    ${Scope},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The resource type.
+    ${Type},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            ExecuteExpanded = 'Az.DevCenter.private\Invoke-AzDevCenterAdminExecuteCheckScopedNameAvailability_ExecuteExpanded';
+            ExecuteViaIdentityExpanded = 'Az.DevCenter.private\Invoke-AzDevCenterAdminExecuteCheckScopedNameAvailability_ExecuteViaIdentityExpanded';
+        }
+        if (('ExecuteExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Creates or updates a devcenter resource
 .Description
 Creates or updates a devcenter resource
@@ -4790,7 +7570,7 @@ New-AzDevCenterAdminDevCenter -InputObject $devCenter -Location eastus -Identity
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevCenter
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenter
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -4801,14 +7581,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -4820,7 +7603,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradmindevcenter
 #>
 function New-AzDevCenterAdminDevCenter {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevCenter])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenter])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -4858,6 +7641,13 @@ param(
     ${Location},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.InstallAzureMonitorAgentEnableStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.InstallAzureMonitorAgentEnableStatus]
+    # Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
+    ${DevBoxProvisioningSettingInstallAzureMonitorAgentEnableStatus},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # The display name of the devcenter.
@@ -4880,8 +7670,29 @@ param(
     ${IdentityUserAssignedIdentity},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.MicrosoftHostedNetworkEnableStatus])]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.MicrosoftHostedNetworkEnableStatus]
+    # Indicates whether pools in this Dev Center can use Microsoft Hosted Networks.
+    # Defaults to Enabled if not set.
+    ${NetworkSettingMicrosoftHostedNetworkEnableStatus},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # Resource Id of an associated Plan
+    ${PlanId},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogItemSyncEnableStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogItemSyncEnableStatus]
+    # Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
+    ${ProjectCatalogSettingCatalogItemSyncEnableStatus},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -5051,7 +7862,7 @@ New-AzDevCenterAdminEnvironmentType -InputObject $envType -Tag $tags
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IEnvironmentType
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IEnvironmentType
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -5062,14 +7873,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -5081,7 +7895,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradminenvironmenttype
 #>
 function New-AzDevCenterAdminEnvironmentType {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IEnvironmentType])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IEnvironmentType])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -5126,7 +7940,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ITags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ITags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -5295,14 +8109,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -5531,14 +8348,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -5769,14 +8589,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -5986,9 +8809,9 @@ Deletes a devcenter
 .Description
 Deletes a devcenter
 .Example
-Remove-AzDevCenterAdminDevCenter -Name Contoso -ResourceGroupName DevProject
+Remove-AzDevCenterAdminDevCenter -Name Contoso -ResourceGroupName testRg
 .Example
-$devCenter = Get-AzDevCenterAdminDevCenter -ResourceGroupName DevProject -Name Contoso
+$devCenter = Get-AzDevCenterAdminDevCenter -ResourceGroupName testRg -Name Contoso
 
 Remove-AzDevCenterAdminDevCenter -InputObject $devCenter
 
@@ -6006,14 +8829,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -6236,14 +9062,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -6460,14 +9289,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -6696,14 +9528,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -6903,6 +9738,478 @@ end {
 
 <#
 .Synopsis
+Deletes a devcenter plan member
+.Description
+Deletes a devcenter plan member
+.Example
+Remove-AzDevCenterAdminPlanMember -ResourceGroupName testRg -PlanName ContosoPlan -MemberName d702f662-b3f2-4796-9e8c-13c22378ced3
+.Example
+$planMember = Get-AzDevCenterAdminPlanMember -ResourceGroupName testRg -PlanName ContosoPlan -MemberName d702f662-b3f2-4796-9e8c-13c22378ced3
+Remove-AzDevCenterAdminPlanMember -InputObject $planMember
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
+  [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [CatalogName <String>]: The name of the Catalog.
+  [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
+  [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
+  [EnvironmentTypeName <String>]: The name of the environment type.
+  [GalleryName <String>]: The name of the gallery.
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the image.
+  [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
+  [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
+  [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
+  [PoolName <String>]: Name of the pool.
+  [ProjectName <String>]: The name of the project.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
+  [VersionName <String>]: The version of the image.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/remove-azdevcenteradminplanmember
+#>
+function Remove-AzDevCenterAdminPlanMember {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of a devcenter plan member.
+    ${MemberName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the devcenter plan.
+    ${PlanName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Delete = 'Az.DevCenter.private\Remove-AzDevCenterAdminPlanMember_Delete';
+            DeleteViaIdentity = 'Az.DevCenter.private\Remove-AzDevCenterAdminPlanMember_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Deletes a devcenter plan
+.Description
+Deletes a devcenter plan
+.Example
+Remove-AzDevCenterAdminPlan -Name ContosoPlan -ResourceGroupName testRg
+.Example
+$plan = Get-AzDevCenterAdminPlan -ResourceGroupName testRg -Name ContosoPlan
+
+Remove-AzDevCenterAdminPlan -InputObject $plan
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
+  [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [CatalogName <String>]: The name of the Catalog.
+  [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
+  [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
+  [EnvironmentTypeName <String>]: The name of the environment type.
+  [GalleryName <String>]: The name of the gallery.
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the image.
+  [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
+  [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
+  [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
+  [PoolName <String>]: Name of the pool.
+  [ProjectName <String>]: The name of the project.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
+  [VersionName <String>]: The version of the image.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/remove-azdevcenteradminplan
+#>
+function Remove-AzDevCenterAdminPlan {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Alias('PlanName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the devcenter plan.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Delete = 'Az.DevCenter.private\Remove-AzDevCenterAdminPlan_Delete';
+            DeleteViaIdentity = 'Az.DevCenter.private\Remove-AzDevCenterAdminPlan_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Deletes a machine pool
 .Description
 Deletes a machine pool
@@ -6926,14 +10233,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -7139,6 +10449,244 @@ end {
 
 <#
 .Synopsis
+Deletes a project catalog resource.
+.Description
+Deletes a project catalog resource.
+.Example
+Remove-AzDevCenterAdminProjectCatalog -ProjectName DevProject -CatalogName CentralCatalog -ResourceGroupName testRg
+.Example
+$catalog = Get-AzDevCenterAdminProjectCatalog -ProjectName DevProject -CatalogName CentralCatalog -ResourceGroupName testRg
+Remove-AzDevCenterAdminProjectCatalog -InputObject $catalog
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
+  [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [CatalogName <String>]: The name of the Catalog.
+  [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
+  [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
+  [EnvironmentTypeName <String>]: The name of the environment type.
+  [GalleryName <String>]: The name of the gallery.
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the image.
+  [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
+  [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
+  [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
+  [PoolName <String>]: Name of the pool.
+  [ProjectName <String>]: The name of the project.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
+  [VersionName <String>]: The version of the image.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/remove-azdevcenteradminprojectcatalog
+#>
+function Remove-AzDevCenterAdminProjectCatalog {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the Catalog.
+    ${CatalogName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the project.
+    ${ProjectName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Delete = 'Az.DevCenter.private\Remove-AzDevCenterAdminProjectCatalog_Delete';
+            DeleteViaIdentity = 'Az.DevCenter.private\Remove-AzDevCenterAdminProjectCatalog_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Deletes a project environment type.
 .Description
 Deletes a project environment type.
@@ -7162,14 +10710,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -7385,14 +10936,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -7617,14 +11171,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -7846,14 +11403,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -8081,14 +11641,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -8294,6 +11857,244 @@ end {
 
 <#
 .Synopsis
+Syncs templates for a template source.
+.Description
+Syncs templates for a template source.
+.Example
+Sync-AzDevCenterAdminProjectCatalog -ProjectName DevProject -CatalogName CentralCatalog -ResourceGroupName testRg
+.Example
+$catalog = @{"ResourceGroupName" = "testRg"; "ProjectName" = "DevProject"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+Sync-AzDevCenterAdminProjectCatalog -InputObject $catalog
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
+  [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [CatalogName <String>]: The name of the Catalog.
+  [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
+  [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
+  [EnvironmentTypeName <String>]: The name of the environment type.
+  [GalleryName <String>]: The name of the gallery.
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the image.
+  [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
+  [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
+  [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
+  [PoolName <String>]: Name of the pool.
+  [ProjectName <String>]: The name of the project.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
+  [VersionName <String>]: The version of the image.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/sync-azdevcenteradminprojectcatalog
+#>
+function Sync-AzDevCenterAdminProjectCatalog {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Sync', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Sync', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the Catalog.
+    ${CatalogName},
+
+    [Parameter(ParameterSetName='Sync', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the project.
+    ${ProjectName},
+
+    [Parameter(ParameterSetName='Sync', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Sync')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='SyncViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Sync = 'Az.DevCenter.private\Sync-AzDevCenterAdminProjectCatalog_Sync';
+            SyncViaIdentity = 'Az.DevCenter.private\Sync-AzDevCenterAdminProjectCatalog_SyncViaIdentity';
+        }
+        if (('Sync') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Partially updates a catalog.
 .Description
 Partially updates a catalog.
@@ -8307,7 +12108,7 @@ Update-AzDevCenterAdminCatalog -InputObject $catalogInput -GitHubPath "testpath"
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ICatalog
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalog
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -8318,14 +12119,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -8337,7 +12141,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteradmincatalog
 #>
 function Update-AzDevCenterAdminCatalog {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ICatalog])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalog])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -8431,7 +12235,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ICatalogUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalogUpdatePropertiesTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -8607,7 +12411,7 @@ Update-AzDevCenterAdminDevBoxDefinition -InputObject $devBoxDefinitionId -Hibern
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevBoxDefinition
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevBoxDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -8618,14 +12422,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -8637,7 +12444,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteradmindevboxdefinition
 #>
 function Update-AzDevCenterAdminDevBoxDefinition {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevBoxDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevBoxDefinition])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -8713,7 +12520,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # The name of the SKU.
-    # Ex - P3.
+    # E.g.
+    # P3.
     # It is typically a letter+number code
     ${SkuName},
 
@@ -8733,7 +12541,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ITags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ITags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -8902,7 +12710,7 @@ Update-AzDevCenterAdminDevCenter -InputObject $devCenterInput -IdentityType "Sys
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevCenter
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenter
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -8913,14 +12721,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -8932,7 +12743,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteradmindevcenter
 #>
 function Update-AzDevCenterAdminDevCenter {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevCenter])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenter])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -8964,6 +12775,13 @@ param(
     ${InputObject},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.InstallAzureMonitorAgentEnableStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.InstallAzureMonitorAgentEnableStatus]
+    # Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
+    ${DevBoxProvisioningSettingInstallAzureMonitorAgentEnableStatus},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # The display name of the devcenter.
@@ -8986,8 +12804,29 @@ param(
     ${IdentityUserAssignedIdentity},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.MicrosoftHostedNetworkEnableStatus])]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ITags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.MicrosoftHostedNetworkEnableStatus]
+    # Indicates whether pools in this Dev Center can use Microsoft Hosted Networks.
+    # Defaults to Enabled if not set.
+    ${NetworkSettingMicrosoftHostedNetworkEnableStatus},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # Resource Id of an associated Plan
+    ${PlanId},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogItemSyncEnableStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogItemSyncEnableStatus]
+    # Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
+    ${ProjectCatalogSettingCatalogItemSyncEnableStatus},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ITags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -9159,7 +12998,7 @@ Update-AzDevCenterAdminEnvironmentType -InputObject $envType -Tag $tags
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IEnvironmentType
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IEnvironmentType
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -9170,14 +13009,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -9189,7 +13031,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteradminenvironmenttype
 #>
 function Update-AzDevCenterAdminEnvironmentType {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IEnvironmentType])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IEnvironmentType])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -9234,7 +13076,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ITags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ITags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -9395,7 +13237,7 @@ Update-AzDevCenterAdminNetworkConnection -InputObject $hybridNetworkConnectionIn
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.INetworkConnection
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.INetworkConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -9406,14 +13248,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -9425,7 +13270,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteradminnetworkconnection
 #>
 function Update-AzDevCenterAdminNetworkConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.INetworkConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.INetworkConnection])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -9489,7 +13334,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ITags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ITags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -9645,6 +13490,519 @@ end {
 
 <#
 .Synopsis
+Partially updates a devcenter plan.
+.Description
+Partially updates a devcenter plan.
+.Example
+$tags = @{"dev" = "test" }
+
+Update-AzDevCenterAdminPlanMember -PlanName ContosoPlan -MemberName d702f662-b3f2-4796-9e8c-13c22378ced3 -ResourceGroupName testRg -Tag $tags
+.Example
+$planMember = @{"ResourceGroupName" = "testRg"; "PlanName" = "ContosoPlan"; "MemberName" = "d702f662-b3f2-4796-9e8c-13c22378ced3"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+$tags = @{"dev" = "test" }
+
+Update-AzDevCenterAdminPlanMember -InputObject $planMember -Tag $tags
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenterPlanMember
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
+  [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [CatalogName <String>]: The name of the Catalog.
+  [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
+  [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
+  [EnvironmentTypeName <String>]: The name of the environment type.
+  [GalleryName <String>]: The name of the gallery.
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the image.
+  [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
+  [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
+  [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
+  [PoolName <String>]: Name of the pool.
+  [ProjectName <String>]: The name of the project.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
+  [VersionName <String>]: The version of the image.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteradminplanmember
+#>
+function Update-AzDevCenterAdminPlanMember {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenterPlanMember])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of a devcenter plan member.
+    ${MemberName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the devcenter plan.
+    ${PlanName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ITags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.DevCenter.private\Update-AzDevCenterAdminPlanMember_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.DevCenter.private\Update-AzDevCenterAdminPlanMember_UpdateViaIdentityExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Partially updates a devcenter plan.
+.Description
+Partially updates a devcenter plan.
+.Example
+Update-AzDevCenterAdminPlan -Name ContosoPlan -ResourceGroupName testRg -SkuName CCOG_Standard
+.Example
+$plan = @{"ResourceGroupName" = "testRg"; "PlanName" = "ContosoPlan"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+Update-AzDevCenterAdminPlan -InputObject $plan -SkuName CCOG_Standard
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenterPlan
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
+  [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [CatalogName <String>]: The name of the Catalog.
+  [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
+  [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
+  [EnvironmentTypeName <String>]: The name of the environment type.
+  [GalleryName <String>]: The name of the gallery.
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the image.
+  [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
+  [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
+  [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
+  [PoolName <String>]: Name of the pool.
+  [ProjectName <String>]: The name of the project.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
+  [VersionName <String>]: The version of the image.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteradminplan
+#>
+function Update-AzDevCenterAdminPlan {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenterPlan])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Alias('PlanName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the devcenter plan.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.Int32]
+    # If the SKU supports scale out/in then the capacity integer should be included.
+    # If scale out/in is not possible for the resource this may be omitted.
+    ${SkuCapacity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # If the service has different generations of hardware, for the same SKU, then that can be captured here.
+    ${SkuFamily},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The name of the SKU.
+    # E.g.
+    # P3.
+    # It is typically a letter+number code
+    ${SkuName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The SKU size.
+    # When the name field is the combination of tier and some other value, this would be the standalone code.
+    ${SkuSize},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SkuTier])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SkuTier]
+    # This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+    ${SkuTier},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ITags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.DevCenter.private\Update-AzDevCenterAdminPlan_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.DevCenter.private\Update-AzDevCenterAdminPlan_UpdateViaIdentityExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Partially updates a machine pool
 .Description
 Partially updates a machine pool
@@ -9658,7 +14016,7 @@ Update-AzDevCenterAdminPool -InputObject $poolInput -DevBoxDefinitionName WebDev
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IPool
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IPool
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -9669,14 +14027,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -9688,7 +14049,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteradminpool
 #>
 function Update-AzDevCenterAdminPool {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IPool])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IPool])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -9780,7 +14141,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ITags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ITags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -9946,6 +14307,342 @@ end {
 
 <#
 .Synopsis
+Partially updates a project catalog.
+.Description
+Partially updates a project catalog.
+.Example
+Update-AzDevCenterAdminProjectCatalog -ProjectName DevProject -CatalogName CentralCatalog -ResourceGroupName testRg -GitHubPath "testpath" -GitHubSecretIdentifier "https://contosokv.vault.azure.net/secrets/CentralRepoPat"
+.Example
+$catalogInput = Get-AzDevCenterAdminProjectCatalog -ProjectName DevProject -CatalogName CentralCatalog -ResourceGroupName testRg
+
+Update-AzDevCenterAdminProjectCatalog -InputObject $catalogInput -GitHubPath "testpath" -GitHubSecretIdentifier "https://contosokv.vault.azure.net/secrets/CentralRepoPat"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalogUpdate
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalog
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <ICatalogUpdate>: The catalog's properties for partial update. Properties not provided in the update request will not be changed.
+  [AdoGitBranch <String>]: Git branch.
+  [AdoGitPath <String>]: The folder where the catalog items can be found inside the repository.
+  [AdoGitSecretIdentifier <String>]: A reference to the Key Vault secret containing a security token to authenticate to a Git repository.
+  [AdoGitUri <String>]: Git URI.
+  [GitHubBranch <String>]: Git branch.
+  [GitHubPath <String>]: The folder where the catalog items can be found inside the repository.
+  [GitHubSecretIdentifier <String>]: A reference to the Key Vault secret containing a security token to authenticate to a Git repository.
+  [GitHubUri <String>]: Git URI.
+  [SyncType <CatalogSyncType?>]: Indicates the type of sync that is configured for the catalog.
+  [Tag <ICatalogUpdatePropertiesTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+
+INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
+  [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [CatalogName <String>]: The name of the Catalog.
+  [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
+  [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
+  [EnvironmentTypeName <String>]: The name of the environment type.
+  [GalleryName <String>]: The name of the gallery.
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the image.
+  [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
+  [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
+  [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
+  [PoolName <String>]: Name of the pool.
+  [ProjectName <String>]: The name of the project.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
+  [VersionName <String>]: The version of the image.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteradminprojectcatalog
+#>
+function Update-AzDevCenterAdminProjectCatalog {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalog])]
+[CmdletBinding(DefaultParameterSetName='PatchExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Patch', Mandatory)]
+    [Parameter(ParameterSetName='PatchExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the Catalog.
+    ${CatalogName},
+
+    [Parameter(ParameterSetName='Patch', Mandatory)]
+    [Parameter(ParameterSetName='PatchExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the project.
+    ${ProjectName},
+
+    [Parameter(ParameterSetName='Patch', Mandatory)]
+    [Parameter(ParameterSetName='PatchExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Patch')]
+    [Parameter(ParameterSetName='PatchExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='PatchViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PatchViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Patch', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PatchViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalogUpdate]
+    # The catalog's properties for partial update.
+    # Properties not provided in the update request will not be changed.
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='PatchExpanded')]
+    [Parameter(ParameterSetName='PatchViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # Git branch.
+    ${AdoGitBranch},
+
+    [Parameter(ParameterSetName='PatchExpanded')]
+    [Parameter(ParameterSetName='PatchViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The folder where the catalog items can be found inside the repository.
+    ${AdoGitPath},
+
+    [Parameter(ParameterSetName='PatchExpanded')]
+    [Parameter(ParameterSetName='PatchViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # A reference to the Key Vault secret containing a security token to authenticate to a Git repository.
+    ${AdoGitSecretIdentifier},
+
+    [Parameter(ParameterSetName='PatchExpanded')]
+    [Parameter(ParameterSetName='PatchViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # Git URI.
+    ${AdoGitUri},
+
+    [Parameter(ParameterSetName='PatchExpanded')]
+    [Parameter(ParameterSetName='PatchViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # Git branch.
+    ${GitHubBranch},
+
+    [Parameter(ParameterSetName='PatchExpanded')]
+    [Parameter(ParameterSetName='PatchViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The folder where the catalog items can be found inside the repository.
+    ${GitHubPath},
+
+    [Parameter(ParameterSetName='PatchExpanded')]
+    [Parameter(ParameterSetName='PatchViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # A reference to the Key Vault secret containing a security token to authenticate to a Git repository.
+    ${GitHubSecretIdentifier},
+
+    [Parameter(ParameterSetName='PatchExpanded')]
+    [Parameter(ParameterSetName='PatchViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # Git URI.
+    ${GitHubUri},
+
+    [Parameter(ParameterSetName='PatchExpanded')]
+    [Parameter(ParameterSetName='PatchViaIdentityExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogSyncType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogSyncType]
+    # Indicates the type of sync that is configured for the catalog.
+    ${SyncType},
+
+    [Parameter(ParameterSetName='PatchExpanded')]
+    [Parameter(ParameterSetName='PatchViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalogUpdatePropertiesTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Patch = 'Az.DevCenter.private\Update-AzDevCenterAdminProjectCatalog_Patch';
+            PatchExpanded = 'Az.DevCenter.private\Update-AzDevCenterAdminProjectCatalog_PatchExpanded';
+            PatchViaIdentity = 'Az.DevCenter.private\Update-AzDevCenterAdminProjectCatalog_PatchViaIdentity';
+            PatchViaIdentityExpanded = 'Az.DevCenter.private\Update-AzDevCenterAdminProjectCatalog_PatchViaIdentityExpanded';
+        }
+        if (('Patch', 'PatchExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Partially updates a project environment type.
 .Description
 Partially updates a project environment type.
@@ -9979,7 +14676,7 @@ Update-AzDevCenterAdminProjectEnvironmentType -InputObject $projEnvTypeInput -Cr
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IProjectEnvironmentType
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProjectEnvironmentType
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -9990,14 +14687,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -10009,7 +14709,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteradminprojectenvironmenttype
 #>
 function Update-AzDevCenterAdminProjectEnvironmentType {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IProjectEnvironmentType])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProjectEnvironmentType])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -10047,7 +14747,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentRoles]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentRoles]))]
     [System.Collections.Hashtable]
     # A map of roles to assign to the environment creator.
     ${CreatorRoleAssignmentRole},
@@ -10058,6 +14758,12 @@ param(
     # Id of a subscription that the environment type will be mapped to.
     # The environment's resources will be deployed into this subscription.
     ${DeploymentTargetId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The display name of the project environment type.
+    ${DisplayName},
 
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ManagedServiceIdentityType])]
@@ -10084,14 +14790,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ITags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ITags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IProjectEnvironmentTypeUpdatePropertiesUserRoleAssignments]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProjectEnvironmentTypeUpdatePropertiesUserRoleAssignments]))]
     [System.Collections.Hashtable]
     # Role Assignments created on environment backing resources.
     # This is a mapping from a user object ID to an object of role definition IDs.
@@ -10249,7 +14955,7 @@ Update-AzDevCenterAdminProject -InputObject $projectInput -MaxDevBoxesPerUser 5
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IProject
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProject
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -10260,14 +14966,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -10279,7 +14988,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteradminproject
 #>
 function Update-AzDevCenterAdminProject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IProject])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProject])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -10311,6 +15020,14 @@ param(
     ${InputObject},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogItemType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogItemType[]]
+    # Indicates catalog item types that can be synced.
+    ${CatalogSettingCatalogItemSyncType},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # Description of the project.
@@ -10323,6 +15040,22 @@ param(
     ${DisplayName},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ManagedServiceIdentityType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ManagedServiceIdentityType]
+    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+    ${IdentityType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.IUserAssignedIdentities]))]
+    [System.Collections.Hashtable]
+    # The set of user assigned identities associated with the resource.
+    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+    # The dictionary values can be empty objects ({}) in requests.
+    ${IdentityUserAssignedIdentity},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.Int32]
     # When specified, limits the maximum number of Dev Boxes a single user can create across all pools in the project.
@@ -10331,7 +15064,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ITags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ITags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -10499,7 +15232,7 @@ Get-AzDevCenterAdminSchedule -InputObject $schedule
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ISchedule
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ISchedule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -10510,14 +15243,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -10529,7 +15265,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminschedule
 #>
 function Get-AzDevCenterAdminSchedule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ISchedule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ISchedule])]
 [CmdletBinding(DefaultParameterSetName='GetWithDefault', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='GetWithDefault', Mandatory)]
@@ -10716,7 +15452,7 @@ New-AzDevCenterAdminAttachedNetwork -InputObject $attachedNetwork -NetworkConnec
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IAttachedNetworkConnection
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IAttachedNetworkConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -10727,14 +15463,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -10746,7 +15485,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradminattachednetwork
 #>
 function New-AzDevCenterAdminAttachedNetwork {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IAttachedNetworkConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IAttachedNetworkConnection])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -10957,7 +15696,7 @@ New-AzDevCenterAdminCatalog -InputObject $catalog -GitHubBranch main -GitHubPath
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ICatalog
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalog
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -10968,14 +15707,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -10987,7 +15729,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradmincatalog
 #>
 function New-AzDevCenterAdminCatalog {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ICatalog])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalog])]
 [CmdletBinding(DefaultParameterSetName='CreateExpandedAdo', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpandedAdo', Mandatory)]
@@ -11056,6 +15798,20 @@ param(
     [System.String]
     # The folder where the catalog items can be found inside the repository.
     ${AdoGitPath},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogSyncType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogSyncType]
+    # Indicates the type of sync that is configured for the catalog.
+    ${SyncType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalogUpdatePropertiesTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
 
     [Parameter(ParameterSetName='CreateExpandedGitHub', Mandatory)]
     [Parameter(ParameterSetName='CreateViaIdentityExpandedGitHub', Mandatory)]
@@ -11250,7 +16006,7 @@ New-AzDevCenterAdminDevBoxDefinition -InputObject $devBoxDefinition -Location "w
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevBoxDefinition
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevBoxDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -11261,14 +16017,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -11280,7 +16039,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradmindevboxdefinition
 #>
 function New-AzDevCenterAdminDevBoxDefinition {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevBoxDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevBoxDefinition])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -11340,7 +16099,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # The name of the SKU.
-    # Ex - P3.
+    # E.g.
+    # P3.
     # It is typically a letter+number code
     ${SkuName},
 
@@ -11382,7 +16142,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -11550,7 +16310,7 @@ New-AzDevCenterAdminGallery -InputObject $gallery -GalleryResourceId "/subscript
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IGallery
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IGallery
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -11561,14 +16321,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -11580,7 +16343,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradmingallery
 #>
 function New-AzDevCenterAdminGallery {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IGallery])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IGallery])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -11792,7 +16555,7 @@ New-AzDevCenterAdminNetworkConnection -InputObject $networkConnection -Location 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.INetworkConnection
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.INetworkConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -11803,14 +16566,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -11822,7 +16588,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradminnetworkconnection
 #>
 function New-AzDevCenterAdminNetworkConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.INetworkConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.INetworkConnection])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -11905,7 +16671,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -12061,6 +16827,543 @@ end {
 
 <#
 .Synopsis
+Creates or updates a devcenter plan resource
+.Description
+Creates or updates a devcenter plan resource
+.Example
+New-AzDevCenterAdminPlan -Name ContosoPlan -ResourceGroupName testRg -Location eastus -SkuName CCOG_Standard
+.Example
+$plan = @{"ResourceGroupName" = "testRg"; "PlanName" = "ContosoPlan"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+New-AzDevCenterAdminPlan -InputObject $plan -Location eastus -SkuName CCOG_Standard
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenterPlan
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
+  [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [CatalogName <String>]: The name of the Catalog.
+  [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
+  [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
+  [EnvironmentTypeName <String>]: The name of the environment type.
+  [GalleryName <String>]: The name of the gallery.
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the image.
+  [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
+  [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
+  [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
+  [PoolName <String>]: Name of the pool.
+  [ProjectName <String>]: The name of the project.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
+  [VersionName <String>]: The version of the image.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradminplan
+#>
+function New-AzDevCenterAdminPlan {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenterPlan])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Alias('PlanName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the devcenter plan.
+    ${Name},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.Int32]
+    # If the SKU supports scale out/in then the capacity integer should be included.
+    # If scale out/in is not possible for the resource this may be omitted.
+    ${SkuCapacity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # If the service has different generations of hardware, for the same SKU, then that can be captured here.
+    ${SkuFamily},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The name of the SKU.
+    # E.g.
+    # P3.
+    # It is typically a letter+number code
+    ${SkuName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The SKU size.
+    # When the name field is the combination of tier and some other value, this would be the standalone code.
+    ${SkuSize},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SkuTier])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SkuTier]
+    # This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+    ${SkuTier},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.DevCenter.custom\New-AzDevCenterAdminPlan';
+            CreateViaIdentityExpanded = 'Az.DevCenter.custom\New-AzDevCenterAdminPlan';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Creates or updates a devcenter plan member resource
+.Description
+Creates or updates a devcenter plan member resource
+.Example
+$tags = @{"dev" ="test"}
+New-AzDevCenterAdminPlanMember -PlanName ContosoPlan -MemberName d702f662-b3f2-4796-9e8c-13c22378ced3 -ResourceGroupName testRg -Tag $tags -MemberId d702f662-b3f2-4796-9e8c-13c22378ced3 -MemberType User
+.Example
+$tags = @{"dev" ="test"}
+$planMember = @{"ResourceGroupName" = "testRg"; "PlanName" = "ContosoPlan"; "MemberName" = "d702f662-b3f2-4796-9e8c-13c22378ced3"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+New-AzDevCenterAdminPlanMember -InputObject $planMember -Tag $tags -MemberId d702f662-b3f2-4796-9e8c-13c22378ced3 -MemberType User
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenterPlanMember
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
+  [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [CatalogName <String>]: The name of the Catalog.
+  [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
+  [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
+  [EnvironmentTypeName <String>]: The name of the environment type.
+  [GalleryName <String>]: The name of the gallery.
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the image.
+  [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
+  [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
+  [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
+  [PoolName <String>]: Name of the pool.
+  [ProjectName <String>]: The name of the project.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
+  [VersionName <String>]: The version of the image.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradminplanmember
+#>
+function New-AzDevCenterAdminPlanMember {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenterPlanMember])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of a devcenter plan member.
+    ${MemberName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the devcenter plan.
+    ${PlanName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The unique id of the member.
+    ${MemberId},
+
+    [Parameter(Mandatory)]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.PlanMemberType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.PlanMemberType]
+    # The type of the member (user, group)
+    ${MemberType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ITags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${PropertiesTag},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ITags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.DevCenter.custom\New-AzDevCenterAdminPlanMember';
+            CreateViaIdentityExpanded = 'Az.DevCenter.custom\New-AzDevCenterAdminPlanMember';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Creates or updates a machine pool
 .Description
 Creates or updates a machine pool
@@ -12073,7 +17376,7 @@ New-AzDevCenterAdminPool -InputObject $pool -Location westus2 -DevBoxDefinitionN
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IPool
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IPool
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -12084,14 +17387,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -12103,7 +17409,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradminpool
 #>
 function New-AzDevCenterAdminPool {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IPool])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IPool])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -12179,19 +17485,32 @@ param(
     ${ManagedVirtualNetworkRegion},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api30.ITrackedResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SingleSignOnStatus])]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SingleSignOnStatus]
     # Indicates whether Dev Boxes in this pool are created with single sign on enabled.
     # The also requires that single sign on be enabled on the tenant.
     ${SingleSignOnStatus},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.Int32]
+    # The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
+    ${StopOnDisconnectGracePeriodMinute},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus]
+    # Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
+    ${StopOnDisconnectStatus},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
 
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.VirtualNetworkType])]
@@ -12363,7 +17682,7 @@ New-AzDevCenterAdminProject -InputObject $project -Location eastus -DevCenterId 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IProject
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProject
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -12374,14 +17693,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -12393,7 +17715,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradminproject
 #>
 function New-AzDevCenterAdminProject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IProject])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProject])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -12437,10 +17759,40 @@ param(
     ${DevCenterId},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogItemType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogItemType[]]
+    # Indicates catalog item types that can be synced.
+    ${CatalogSettingCatalogItemSyncType},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # Description of the project.
     ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The display name of the project.
+    ${DisplayName},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ManagedServiceIdentityType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ManagedServiceIdentityType]
+    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+    ${IdentityType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.IUserAssignedIdentities]))]
+    [System.Collections.Hashtable]
+    # The set of user assigned identities associated with the resource.
+    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+    # The dictionary values can be empty objects ({}) in requests.
+    ${IdentityUserAssignedIdentity},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
@@ -12451,16 +17803,10 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [System.String]
-    # The display name of the project.
-    ${DisplayName},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -12613,6 +17959,321 @@ end {
 
 <#
 .Synopsis
+Creates or updates a project catalog.
+.Description
+Creates or updates a project catalog.
+.Example
+New-AzDevCenterAdminProjectCatalog -ProjectName DevProject -Name CentralCatalog -ResourceGroupName testRg -AdoGitBranch main -AdoGitPath "/templates" -AdoGitSecretIdentifier "https://contosokv.vault.azure.net/secrets/CentralRepoPat" -AdoGitUri "https://contoso@dev.azure.com/contoso/contosoOrg/_git/centralrepo-fakecontoso"
+.Example
+New-AzDevCenterAdminProjectCatalog -ProjectName DevProject -Name CentralCatalog -ResourceGroupName testRg -GitHubBranch main -GitHubPath "/templates" -GitHubSecretIdentifier "https://contosokv.vault.azure.net/secrets/CentralRepoPat" -GitHubUri "https://github.com/DevProject/centralrepo-fake.git"
+.Example
+$catalog = @{"ResourceGroupName" = "testRg"; "ProjectName" = "DevProject"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+New-AzDevCenterAdminProjectCatalog -InputObject $catalog -AdoGitBranch main -AdoGitPath "/templates" -AdoGitSecretIdentifier "https://contosokv.vault.azure.net/secrets/CentralRepoPat" -AdoGitUri "https://contoso@dev.azure.com/contoso/contosoOrg/_git/centralrepo-fakecontoso"
+.Example
+$catalog = @{"ResourceGroupName" = "testRg"; "ProjectName" = "DevProject"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+New-AzDevCenterAdminProjectCatalog -InputObject $catalog -GitHubBranch main -GitHubPath "/templates" -GitHubSecretIdentifier "https://contosokv.vault.azure.net/secrets/CentralRepoPat" -GitHubUri "https://github.com/DevProject/centralrepo-fake.git"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalog
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
+  [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [CatalogName <String>]: The name of the Catalog.
+  [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
+  [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
+  [EnvironmentTypeName <String>]: The name of the environment type.
+  [GalleryName <String>]: The name of the gallery.
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the image.
+  [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
+  [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
+  [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
+  [PoolName <String>]: Name of the pool.
+  [ProjectName <String>]: The name of the project.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
+  [VersionName <String>]: The version of the image.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradminprojectcatalog
+#>
+function New-AzDevCenterAdminProjectCatalog {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalog])]
+[CmdletBinding(DefaultParameterSetName='CreateExpandedAdo', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='CreateExpandedAdo', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpandedGitHub', Mandatory)]
+    [Alias('Name')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the Catalog.
+    ${CatalogName},
+
+    [Parameter(ParameterSetName='CreateExpandedAdo', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpandedGitHub', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the project.
+    ${ProjectName},
+
+    [Parameter(ParameterSetName='CreateExpandedAdo', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpandedGitHub', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpandedAdo')]
+    [Parameter(ParameterSetName='CreateExpandedGitHub')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityExpandedGitHub', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpandedAdo', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateExpandedAdo', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpandedAdo', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # A reference to the Key Vault secret containing a security token to authenticate to a Git repository.
+    ${AdoGitSecretIdentifier},
+
+    [Parameter(ParameterSetName='CreateExpandedAdo', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpandedAdo', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # Git URI.
+    ${AdoGitUri},
+
+    [Parameter(ParameterSetName='CreateExpandedAdo')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpandedAdo')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # Git branch.
+    ${AdoGitBranch},
+
+    [Parameter(ParameterSetName='CreateExpandedAdo')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpandedAdo')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The folder where the catalog items can be found inside the repository.
+    ${AdoGitPath},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogSyncType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogSyncType]
+    # Indicates the type of sync that is configured for the catalog.
+    ${SyncType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalogUpdatePropertiesTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='CreateExpandedGitHub', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpandedGitHub', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # A reference to the Key Vault secret containing a security token to authenticate to a Git repository.
+    ${GitHubSecretIdentifier},
+
+    [Parameter(ParameterSetName='CreateExpandedGitHub', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpandedGitHub', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # Git URI.
+    ${GitHubUri},
+
+    [Parameter(ParameterSetName='CreateExpandedGitHub')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpandedGitHub')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # Git branch.
+    ${GitHubBranch},
+
+    [Parameter(ParameterSetName='CreateExpandedGitHub')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpandedGitHub')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The folder where the catalog items can be found inside the repository.
+    ${GitHubPath},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpandedAdo = 'Az.DevCenter.custom\New-AzDevCenterAdminProjectCatalog';
+            CreateExpandedGitHub = 'Az.DevCenter.custom\New-AzDevCenterAdminProjectCatalog';
+            CreateViaIdentityExpandedGitHub = 'Az.DevCenter.custom\New-AzDevCenterAdminProjectCatalog';
+            CreateViaIdentityExpandedAdo = 'Az.DevCenter.custom\New-AzDevCenterAdminProjectCatalog';
+        }
+        if (('CreateExpandedAdo', 'CreateExpandedGitHub') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Creates or updates a project environment type.
 .Description
 Creates or updates a project environment type.
@@ -12647,7 +18308,7 @@ New-AzDevCenterAdminProjectEnvironmentType -InputObject $envType -CreatorRoleAss
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IProjectEnvironmentType
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProjectEnvironmentType
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -12658,14 +18319,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -12677,7 +18341,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradminprojectenvironmenttype
 #>
 function New-AzDevCenterAdminProjectEnvironmentType {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IProjectEnvironmentType])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProjectEnvironmentType])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -12729,10 +18393,16 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentRoles]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentRoles]))]
     [System.Collections.Hashtable]
     # A map of roles to assign to the environment creator.
     ${CreatorRoleAssignmentRole},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The display name of the project environment type.
+    ${DisplayName},
 
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ManagedServiceIdentityType])]
@@ -12758,14 +18428,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ITags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ITags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IProjectEnvironmentTypeUpdatePropertiesUserRoleAssignments]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProjectEnvironmentTypeUpdatePropertiesUserRoleAssignments]))]
     [System.Collections.Hashtable]
     # Role Assignments created on environment backing resources.
     # This is a mapping from a user object ID to an object of role definition IDs.
@@ -12922,7 +18592,7 @@ New-AzDevCenterAdminSchedule -InputObject $schedule
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ISchedule
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ISchedule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -12933,14 +18603,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -12952,7 +18625,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradminschedule
 #>
 function New-AzDevCenterAdminSchedule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ISchedule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ISchedule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -13182,14 +18855,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -13407,7 +19083,7 @@ New-AzDevCenterAdminSchedule -InputObject $scheduleInput -State "Disabled" -Time
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ISchedule
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ISchedule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -13418,14 +19094,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -13437,7 +19116,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteradminschedule
 #>
 function Update-AzDevCenterAdminSchedule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ISchedule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ISchedule])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -13482,7 +19161,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ITags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ITags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

@@ -16,14 +16,14 @@ Gets the logs for an operation on an environment.
 ```
 Get-AzDevCenterUserEnvironmentLog -Endpoint <String> -EnvironmentName <String> -OperationId <String>
  -ProjectName <String> [-UserId <String>] -OutFile <String> [-DefaultProfile <PSObject>] [-PassThru]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
 Get-AzDevCenterUserEnvironmentLog -DevCenterName <String> -EnvironmentName <String> -OperationId <String>
  -ProjectName <String> [-UserId <String>] -OutFile <String> [-DefaultProfile <PSObject>] [-PassThru]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -145,6 +145,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
