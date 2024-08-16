@@ -129,6 +129,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
         [ValidateNotNullOrEmpty]
         public SwitchParameter UseExistingSnapshot { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The name of the snapshot, use with UseExistingSnapshot")]
+        [ValidateNotNullOrEmpty]
+        public string SnapshotName { get; set; }
+
         [CmdletParameterBreakingChangeWithVersion("VolumeObject", "12", "0.16", ChangeDescription = ChangeDesc)]
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,
@@ -163,17 +169,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
 
             var backupBody = new Management.NetApp.Models.Backup()
             {                
-                Label = Label,
+                Label = Label,                
+                VolumeResourceId = VolumeResourceId,
                 UseExistingSnapshot = UseExistingSnapshot,
-                VolumeResourceId = VolumeResourceId
+                SnapshotName = SnapshotName
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
                 try
                 {
-                    var anfBackupPolicy = AzureNetAppFilesManagementClient.Backups.Create(ResourceGroupName, AccountName, backupVaultName:BackupVaultName, backupName: Name, body: backupBody);
-                    WriteObject(anfBackupPolicy.ConvertToPs());
+                    var anfBackup = AzureNetAppFilesManagementClient.Backups.Create(ResourceGroupName, AccountName, backupVaultName:BackupVaultName, backupName: Name, body: backupBody);
+                    WriteObject(anfBackup.ConvertToPs());
                 }
                 catch (ErrorResponseException ex)
                 {

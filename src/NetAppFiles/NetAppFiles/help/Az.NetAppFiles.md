@@ -50,6 +50,9 @@ Gets details of an Azure NetApp Files (ANF) snapshot.
 ### [Get-AzNetAppFilesSnapshotPolicy](Get-AzNetAppFilesSnapshotPolicy.md)
 Gets details of an Azure NetApp Files (ANF) snapshot policy.
 
+### [Get-AzNetAppFilesSnapshotPolicyVolumeList](Get-AzNetAppFilesSnapshotPolicyVolumeList.md)
+Get Volumes for Azure NetApp Files (ANF) Snapshot Policy
+
 ### [Get-AzNetAppFilesSubvolume](Get-AzNetAppFilesSubvolume.md)
 Gets details of an Azure NetApp Files (ANF) subvolume.
 
