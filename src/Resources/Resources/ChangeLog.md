@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* `Remove-AzResourceGroup` - support parameter "[-ForceDeletionType]".
 * Removed specific characters from the codebase to unblock digital signature verification.
 
 ## Version 7.3.0
