@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed some minor issues
+* Added `SnapshotName` to `New-AzNetAppFilesBackup`
 
 ## Version 0.17.0
 * Updated to api-version 2024-03-01
