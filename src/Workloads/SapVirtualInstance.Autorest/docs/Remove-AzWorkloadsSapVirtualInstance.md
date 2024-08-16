@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Workloads
-online version: https://learn.microsoft.com/powershell/module/az.workloads/remove-azworkloadssapvirtualinstance
+Module Name: Az.SapVirtualInstance
+online version: https://learn.microsoft.com/powershell/module/az.sapvirtualinstance/remove-azworkloadssapvirtualinstance
 schema: 2.0.0
 ---
 
@@ -20,8 +20,8 @@ Remove-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> 
 
 ### DeleteViaIdentity
 ```
-Remove-AzWorkloadsSapVirtualInstance -InputObject <IWorkloadsIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzWorkloadsSapVirtualInstance -InputObject <ISapVirtualInstanceIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,7 +89,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -212,7 +212,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 
 ## OUTPUTS
 

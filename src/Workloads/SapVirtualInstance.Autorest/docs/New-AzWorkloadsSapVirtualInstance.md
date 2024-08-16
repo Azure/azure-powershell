@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.Workloads
+Module Name: Az.SapVirtualInstance
 online version: https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadssapvirtualinstance
 schema: 2.0.0
 ---
@@ -36,19 +36,27 @@ Creates a Virtual Instance for SAP solutions (VIS) resource
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
 {{ Add code here }}
 ```
 
+```output
+{{ Add output here }}
+```
 
+{{ Add description here }}
 
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: {{ Add title here }}
 ```powershell
 {{ Add code here }}
 ```
 
+```output
+{{ Add output here }}
+```
 
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -116,7 +124,7 @@ Accept wildcard characters: False
 Defines the environment type - Production/Non Production.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapEnvironmentType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapEnvironmentType
 Parameter Sets: (All)
 Aliases:
 
@@ -131,7 +139,7 @@ Accept wildcard characters: False
 Type of manage identity
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.ManagedServiceIdentityType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ManagedServiceIdentityType
 Parameter Sets: (All)
 Aliases:
 
@@ -256,7 +264,7 @@ Accept wildcard characters: False
 Defines the SAP Product type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapProductType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapProductType
 Parameter Sets: (All)
 Aliases:
 
@@ -350,7 +358,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapVirtualInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapVirtualInstance
 
 ## NOTES
 

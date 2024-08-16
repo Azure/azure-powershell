@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Workloads
-online version: https://learn.microsoft.com/powershell/module/az.workloads/update-azworkloadssapvirtualinstance
+Module Name: Az.SapVirtualInstance
+online version: https://learn.microsoft.com/powershell/module/az.sapvirtualinstance/update-azworkloadssapvirtualinstance
 schema: 2.0.0
 ---
 
@@ -23,7 +23,7 @@ Update-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> 
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWorkloadsSapVirtualInstance -InputObject <IWorkloadsIdentity>
+Update-AzWorkloadsSapVirtualInstance -InputObject <ISapVirtualInstanceIdentity>
  [-IdentityType <ManagedServiceIdentityType>]
  [-ManagedResourcesNetworkAccessType <ManagedResourcesNetworkAccessType>] [-Tag <Hashtable>]
  [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 Type of manage identity
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.ManagedServiceIdentityType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ManagedServiceIdentityType
 Parameter Sets: (All)
 Aliases:
 
@@ -110,7 +110,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -130,7 +130,7 @@ This setting is currently applicable only to Storage Account.
 Learn more here https://go.microsoft.com/fwlink/linkid=2247228
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.ManagedResourcesNetworkAccessType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ManagedResourcesNetworkAccessType
 Parameter Sets: (All)
 Aliases:
 
@@ -268,11 +268,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapVirtualInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapVirtualInstance
 
 ## NOTES
 

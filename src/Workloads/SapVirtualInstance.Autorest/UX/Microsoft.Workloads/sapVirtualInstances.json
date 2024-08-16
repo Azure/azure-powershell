@@ -2,7 +2,7 @@
   "resourceType": "sapVirtualInstances",
   "apiVersion": "2023-10-01-preview",
   "learnMore": {
-    "url": "https://learn.microsoft.com/powershell/module/az.workloads"
+    "url": "https://learn.microsoft.com/powershell/module/az.sapvirtualinstance"
   },
   "commands": [
     {
@@ -11,7 +11,7 @@
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.workloads/get-azworkloadssapvirtualinstance"
+          "url": "https://learn.microsoft.com/powershell/module/az.sapvirtualinstance/get-azworkloadssapvirtualinstance"
         },
         "parameterSets": [
           {
@@ -49,7 +49,7 @@
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.workloads/remove-azworkloadssapvirtualinstance"
+          "url": "https://learn.microsoft.com/powershell/module/az.sapvirtualinstance/remove-azworkloadssapvirtualinstance"
         },
         "parameterSets": [
           {
@@ -87,7 +87,7 @@
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/start",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.workloads/start-azworkloadssapvirtualinstance"
+          "url": "https://learn.microsoft.com/powershell/module/az.sapvirtualinstance/start-azworkloadssapvirtualinstance"
         },
         "parameterSets": [
           {
@@ -121,3 +121,4 @@
     }
   ]
 }
+

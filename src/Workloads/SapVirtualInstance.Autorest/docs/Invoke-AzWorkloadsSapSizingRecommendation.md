@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Workloads
-online version: https://learn.microsoft.com/powershell/module/az.workloads/invoke-azworkloadssapsizingrecommendation
+Module Name: Az.SapVirtualInstance
+online version: https://learn.microsoft.com/powershell/module/az.sapvirtualinstance/invoke-azworkloadssapsizingrecommendation
 schema: 2.0.0
 ---
 
@@ -23,7 +23,7 @@ Invoke-AzWorkloadsSapSizingRecommendation -Location <String> -AppLocation <Strin
 
 ### SapViaIdentityExpanded
 ```
-Invoke-AzWorkloadsSapSizingRecommendation -InputObject <IWorkloadsIdentity> -AppLocation <String>
+Invoke-AzWorkloadsSapSizingRecommendation -InputObject <ISapVirtualInstanceIdentity> -AppLocation <String>
  -DatabaseType <SapDatabaseType> -DbMemory <Int64> -DeploymentType <SapDeploymentType>
  -Environment <SapEnvironmentType> -Sap <Int64> -SapProduct <SapProductType>
  [-DbScaleMethod <SapDatabaseScaleMethod>] [-HighAvailabilityType <SapHighAvailabilityType>]
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 The database type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapDatabaseType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDatabaseType
 Parameter Sets: (All)
 Aliases:
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 The DB scale method.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapDatabaseScaleMethod
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDatabaseScaleMethod
 Parameter Sets: (All)
 Aliases:
 
@@ -140,7 +140,7 @@ The deployment type.
 Eg: SingleServer/ThreeTier
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapDeploymentType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDeploymentType
 Parameter Sets: (All)
 Aliases:
 
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 Defines the environment type - Production/Non Production.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapEnvironmentType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapEnvironmentType
 Parameter Sets: (All)
 Aliases:
 
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 The high availability type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapHighAvailabilityType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapHighAvailabilityType
 Parameter Sets: (All)
 Aliases:
 
@@ -186,7 +186,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 Parameter Sets: SapViaIdentityExpanded
 Aliases:
 
@@ -231,7 +231,7 @@ Accept wildcard characters: False
 Defines the SAP Product type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapProductType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapProductType
 Parameter Sets: (All)
 Aliases:
 
@@ -293,11 +293,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapDeploymentType
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDeploymentType
 
 ## NOTES
 

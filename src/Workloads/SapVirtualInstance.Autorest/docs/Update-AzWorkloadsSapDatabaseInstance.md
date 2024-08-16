@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Workloads
-online version: https://learn.microsoft.com/powershell/module/az.workloads/update-azworkloadssapdatabaseinstance
+Module Name: Az.SapVirtualInstance
+online version: https://learn.microsoft.com/powershell/module/az.sapvirtualinstance/update-azworkloadssapdatabaseinstance
 schema: 2.0.0
 ---
 
@@ -22,7 +22,7 @@ Update-AzWorkloadsSapDatabaseInstance -Name <String> -ResourceGroupName <String>
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWorkloadsSapDatabaseInstance -InputObject <IWorkloadsIdentity> [-Tag <Hashtable>]
+Update-AzWorkloadsSapDatabaseInstance -InputObject <ISapVirtualInstanceIdentity> [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -77,7 +77,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -200,11 +200,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDatabaseInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapDatabaseInstance
 
 ## NOTES
 
