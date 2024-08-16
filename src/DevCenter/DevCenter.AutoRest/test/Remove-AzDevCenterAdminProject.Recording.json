@@ -1,8 +1,8 @@
 {
-  "Remove-AzDevCenterAdminProject+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshPro2og402n?api-version=2023-10-01-preview+1": {
+  "Remove-AzDevCenterAdminProject+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshPro2og402n?api-version=2024-05-01-preview+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshPro2og402n?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshPro2og402n?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -23,14 +23,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"3d012105-0000-0a00-0000-6494eb9f0000\"" ],
-        "Location": [ "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/179f829a-6de6-4fa4-a7f9-9e25772b8f5b*723BD0BCD35A273FD4BE134F6717FDFE8245F6488C2CC8F06C8C42FC0AC37A9C?api-version=2023-10-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/179f829a-6de6-4fa4-a7f9-9e25772b8f5b*723BD0BCD35A273FD4BE134F6717FDFE8245F6488C2CC8F06C8C42FC0AC37A9C?api-version=2024-05-01-preview" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14983" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-06-23T00:48:27.5544731Z" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/179f829a-6de6-4fa4-a7f9-9e25772b8f5b*723BD0BCD35A273FD4BE134F6717FDFE8245F6488C2CC8F06C8C42FC0AC37A9C?api-version=2023-10-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/179f829a-6de6-4fa4-a7f9-9e25772b8f5b*723BD0BCD35A273FD4BE134F6717FDFE8245F6488C2CC8F06C8C42FC0AC37A9C?api-version=2024-05-01-preview" ],
         "x-ms-request-id": [ "179f829a-6de6-4fa4-a7f9-9e25772b8f5b" ],
         "x-ms-correlation-request-id": [ "b8d9d09a-6988-48ed-8bcc-a81d8303d6c2" ],
         "x-ms-routing-request-id": [ "WESTUS:20230623T004728Z:b8d9d09a-6988-48ed-8bcc-a81d8303d6c2" ],
@@ -46,10 +46,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDevCenterAdminProject+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/179f829a-6de6-4fa4-a7f9-9e25772b8f5b*723BD0BCD35A273FD4BE134F6717FDFE8245F6488C2CC8F06C8C42FC0AC37A9C?api-version=2023-10-01-preview+2": {
+  "Remove-AzDevCenterAdminProject+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/179f829a-6de6-4fa4-a7f9-9e25772b8f5b*723BD0BCD35A273FD4BE134F6717FDFE8245F6488C2CC8F06C8C42FC0AC37A9C?api-version=2024-05-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/179f829a-6de6-4fa4-a7f9-9e25772b8f5b*723BD0BCD35A273FD4BE134F6717FDFE8245F6488C2CC8F06C8C42FC0AC37A9C?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/179f829a-6de6-4fa4-a7f9-9e25772b8f5b*723BD0BCD35A273FD4BE134F6717FDFE8245F6488C2CC8F06C8C42FC0AC37A9C?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -87,10 +87,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDevCenterAdminProject+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/179f829a-6de6-4fa4-a7f9-9e25772b8f5b*723BD0BCD35A273FD4BE134F6717FDFE8245F6488C2CC8F06C8C42FC0AC37A9C?api-version=2023-10-01-preview+3": {
+  "Remove-AzDevCenterAdminProject+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/179f829a-6de6-4fa4-a7f9-9e25772b8f5b*723BD0BCD35A273FD4BE134F6717FDFE8245F6488C2CC8F06C8C42FC0AC37A9C?api-version=2024-05-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/179f829a-6de6-4fa4-a7f9-9e25772b8f5b*723BD0BCD35A273FD4BE134F6717FDFE8245F6488C2CC8F06C8C42FC0AC37A9C?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/179f829a-6de6-4fa4-a7f9-9e25772b8f5b*723BD0BCD35A273FD4BE134F6717FDFE8245F6488C2CC8F06C8C42FC0AC37A9C?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -128,10 +128,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDevCenterAdminProject+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/179f829a-6de6-4fa4-a7f9-9e25772b8f5b*723BD0BCD35A273FD4BE134F6717FDFE8245F6488C2CC8F06C8C42FC0AC37A9C?api-version=2023-10-01-preview+4": {
+  "Remove-AzDevCenterAdminProject+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/179f829a-6de6-4fa4-a7f9-9e25772b8f5b*723BD0BCD35A273FD4BE134F6717FDFE8245F6488C2CC8F06C8C42FC0AC37A9C?api-version=2024-05-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/179f829a-6de6-4fa4-a7f9-9e25772b8f5b*723BD0BCD35A273FD4BE134F6717FDFE8245F6488C2CC8F06C8C42FC0AC37A9C?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/179f829a-6de6-4fa4-a7f9-9e25772b8f5b*723BD0BCD35A273FD4BE134F6717FDFE8245F6488C2CC8F06C8C42FC0AC37A9C?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -169,10 +169,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDevCenterAdminProject+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/179f829a-6de6-4fa4-a7f9-9e25772b8f5b*723BD0BCD35A273FD4BE134F6717FDFE8245F6488C2CC8F06C8C42FC0AC37A9C?api-version=2023-10-01-preview+5": {
+  "Remove-AzDevCenterAdminProject+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/179f829a-6de6-4fa4-a7f9-9e25772b8f5b*723BD0BCD35A273FD4BE134F6717FDFE8245F6488C2CC8F06C8C42FC0AC37A9C?api-version=2024-05-01-preview+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/179f829a-6de6-4fa4-a7f9-9e25772b8f5b*723BD0BCD35A273FD4BE134F6717FDFE8245F6488C2CC8F06C8C42FC0AC37A9C?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/179f829a-6de6-4fa4-a7f9-9e25772b8f5b*723BD0BCD35A273FD4BE134F6717FDFE8245F6488C2CC8F06C8C42FC0AC37A9C?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -210,10 +210,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDevCenterAdminProject+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/179f829a-6de6-4fa4-a7f9-9e25772b8f5b*723BD0BCD35A273FD4BE134F6717FDFE8245F6488C2CC8F06C8C42FC0AC37A9C?api-version=2023-10-01-preview+6": {
+  "Remove-AzDevCenterAdminProject+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/179f829a-6de6-4fa4-a7f9-9e25772b8f5b*723BD0BCD35A273FD4BE134F6717FDFE8245F6488C2CC8F06C8C42FC0AC37A9C?api-version=2024-05-01-preview+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/179f829a-6de6-4fa4-a7f9-9e25772b8f5b*723BD0BCD35A273FD4BE134F6717FDFE8245F6488C2CC8F06C8C42FC0AC37A9C?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/179f829a-6de6-4fa4-a7f9-9e25772b8f5b*723BD0BCD35A273FD4BE134F6717FDFE8245F6488C2CC8F06C8C42FC0AC37A9C?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -251,10 +251,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDevCenterAdminProject+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshPro2og402n?api-version=2023-10-01-preview+7": {
+  "Remove-AzDevCenterAdminProject+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshPro2og402n?api-version=2024-05-01-preview+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshPro2og402n?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshPro2og402n?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -291,10 +291,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDevCenterAdminProject+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/vepyst?api-version=2023-10-01-preview+1": {
+  "Remove-AzDevCenterAdminProject+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/vepyst?api-version=2024-05-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/vepyst?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/vepyst?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -333,10 +333,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDevCenterAdminProject+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/vepyst?api-version=2023-10-01-preview+2": {
+  "Remove-AzDevCenterAdminProject+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/vepyst?api-version=2024-05-01-preview+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/vepyst?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/vepyst?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -357,14 +357,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"3d019109-0000-0a00-0000-6494ec190000\"" ],
-        "Location": [ "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/3aa2a1c9-4ffb-4284-ab60-3cc65ff7e87f*4857BD45D1C096EDD004160BE514FAA9D375B6BA57E17EF22DDA1716D40274A4?api-version=2023-10-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/3aa2a1c9-4ffb-4284-ab60-3cc65ff7e87f*4857BD45D1C096EDD004160BE514FAA9D375B6BA57E17EF22DDA1716D40274A4?api-version=2024-05-01-preview" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14982" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "X-Rate-Limit-Limit": [ "1m" ],
         "X-Rate-Limit-Remaining": [ "299" ],
         "X-Rate-Limit-Reset": [ "2023-06-23T00:50:29.4641181Z" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/3aa2a1c9-4ffb-4284-ab60-3cc65ff7e87f*4857BD45D1C096EDD004160BE514FAA9D375B6BA57E17EF22DDA1716D40274A4?api-version=2023-10-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/3aa2a1c9-4ffb-4284-ab60-3cc65ff7e87f*4857BD45D1C096EDD004160BE514FAA9D375B6BA57E17EF22DDA1716D40274A4?api-version=2024-05-01-preview" ],
         "x-ms-request-id": [ "3aa2a1c9-4ffb-4284-ab60-3cc65ff7e87f" ],
         "x-ms-correlation-request-id": [ "42c330fa-6eb0-4ef8-93e3-e28a23acb02e" ],
         "x-ms-routing-request-id": [ "WESTUS:20230623T004929Z:42c330fa-6eb0-4ef8-93e3-e28a23acb02e" ],
@@ -380,10 +380,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDevCenterAdminProject+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/3aa2a1c9-4ffb-4284-ab60-3cc65ff7e87f*4857BD45D1C096EDD004160BE514FAA9D375B6BA57E17EF22DDA1716D40274A4?api-version=2023-10-01-preview+3": {
+  "Remove-AzDevCenterAdminProject+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/3aa2a1c9-4ffb-4284-ab60-3cc65ff7e87f*4857BD45D1C096EDD004160BE514FAA9D375B6BA57E17EF22DDA1716D40274A4?api-version=2024-05-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/3aa2a1c9-4ffb-4284-ab60-3cc65ff7e87f*4857BD45D1C096EDD004160BE514FAA9D375B6BA57E17EF22DDA1716D40274A4?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/3aa2a1c9-4ffb-4284-ab60-3cc65ff7e87f*4857BD45D1C096EDD004160BE514FAA9D375B6BA57E17EF22DDA1716D40274A4?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -421,10 +421,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDevCenterAdminProject+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/3aa2a1c9-4ffb-4284-ab60-3cc65ff7e87f*4857BD45D1C096EDD004160BE514FAA9D375B6BA57E17EF22DDA1716D40274A4?api-version=2023-10-01-preview+4": {
+  "Remove-AzDevCenterAdminProject+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/3aa2a1c9-4ffb-4284-ab60-3cc65ff7e87f*4857BD45D1C096EDD004160BE514FAA9D375B6BA57E17EF22DDA1716D40274A4?api-version=2024-05-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/3aa2a1c9-4ffb-4284-ab60-3cc65ff7e87f*4857BD45D1C096EDD004160BE514FAA9D375B6BA57E17EF22DDA1716D40274A4?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/3aa2a1c9-4ffb-4284-ab60-3cc65ff7e87f*4857BD45D1C096EDD004160BE514FAA9D375B6BA57E17EF22DDA1716D40274A4?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -462,10 +462,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDevCenterAdminProject+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/3aa2a1c9-4ffb-4284-ab60-3cc65ff7e87f*4857BD45D1C096EDD004160BE514FAA9D375B6BA57E17EF22DDA1716D40274A4?api-version=2023-10-01-preview+5": {
+  "Remove-AzDevCenterAdminProject+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/3aa2a1c9-4ffb-4284-ab60-3cc65ff7e87f*4857BD45D1C096EDD004160BE514FAA9D375B6BA57E17EF22DDA1716D40274A4?api-version=2024-05-01-preview+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/3aa2a1c9-4ffb-4284-ab60-3cc65ff7e87f*4857BD45D1C096EDD004160BE514FAA9D375B6BA57E17EF22DDA1716D40274A4?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/3aa2a1c9-4ffb-4284-ab60-3cc65ff7e87f*4857BD45D1C096EDD004160BE514FAA9D375B6BA57E17EF22DDA1716D40274A4?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -503,10 +503,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDevCenterAdminProject+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/3aa2a1c9-4ffb-4284-ab60-3cc65ff7e87f*4857BD45D1C096EDD004160BE514FAA9D375B6BA57E17EF22DDA1716D40274A4?api-version=2023-10-01-preview+6": {
+  "Remove-AzDevCenterAdminProject+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/3aa2a1c9-4ffb-4284-ab60-3cc65ff7e87f*4857BD45D1C096EDD004160BE514FAA9D375B6BA57E17EF22DDA1716D40274A4?api-version=2024-05-01-preview+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/3aa2a1c9-4ffb-4284-ab60-3cc65ff7e87f*4857BD45D1C096EDD004160BE514FAA9D375B6BA57E17EF22DDA1716D40274A4?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/locations/CANADACENTRAL/operationStatuses/3aa2a1c9-4ffb-4284-ab60-3cc65ff7e87f*4857BD45D1C096EDD004160BE514FAA9D375B6BA57E17EF22DDA1716D40274A4?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -544,10 +544,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDevCenterAdminProject+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/vepyst?api-version=2023-10-01-preview+7": {
+  "Remove-AzDevCenterAdminProject+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/vepyst?api-version=2024-05-01-preview+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/vepyst?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/vepyst?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
