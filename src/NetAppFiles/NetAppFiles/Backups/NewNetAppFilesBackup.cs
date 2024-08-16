@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
         public string VolumeResourceId { get; set; }
 
         [Parameter(
-            Mandatory = true,            
+            Mandatory = false,            
             HelpMessage = "Label for backup")]
         [ValidateNotNullOrEmpty]
         public string Label { get; set; }
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
         public SwitchParameter UseExistingSnapshot { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The name of the snapshot, use with UseExistingSnapshot")]
         [ValidateNotNullOrEmpty]
         public string SnapshotName { get; set; }

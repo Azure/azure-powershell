@@ -16,15 +16,15 @@ Creates a new Azure NetApp Files (ANF) backup.
 ```
 New-AzNetAppFilesBackup -ResourceGroupName <String> [-Location <String>] -AccountName <String>
  [-PoolName <String>] [-VolumeName <String>] -BackupVaultName <String> -Name <String>
- -VolumeResourceId <String> -Label <String> [-UseExistingSnapshot] -SnapshotName <String>
+ -VolumeResourceId <String> [-Label <String>] [-UseExistingSnapshot] [-SnapshotName <String>]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-New-AzNetAppFilesBackup -Name <String> -VolumeResourceId <String> -Label <String> [-UseExistingSnapshot]
- -SnapshotName <String> [-VolumeObject <PSNetAppFilesVolume>] -BackupVaultObject <PSNetAppFilesBackupVault>
+New-AzNetAppFilesBackup -Name <String> -VolumeResourceId <String> [-Label <String>] [-UseExistingSnapshot]
+ [-SnapshotName <String>] [-VolumeObject <PSNetAppFilesVolume>] -BackupVaultObject <PSNetAppFilesBackupVault>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -111,7 +111,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -201,7 +201,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
