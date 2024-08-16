@@ -2647,22 +2647,6 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
-              label: Mobile Engagement
-        - hasLabel:
-            label: Service Attention
-        - hasLabel:
-            label: Mobile Engagement
-        then:
-        - mentionUsers:
-            mentionees:
-            - kpiteira
-            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
-            assignMentionees: False
-      - if:
-        - or:
-          - labelAdded:
-              label: Service Attention
-          - labelAdded:
               label: Monitor
         - hasLabel:
             label: Service Attention
