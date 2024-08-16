@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ConnectedKubernetes.private.dll'
   FormatsToProcess = './Az.ConnectedKubernetes.format.ps1xml'
-  FunctionsToExport = 'Get-AzConnectedKubernetes', 'Get-AzConnectedKubernetesUserCredential', 'New-AzConnectedKubernetes', 'Remove-AzConnectedKubernetes', 'Update-AzConnectedKubernetes', '*'
+  FunctionsToExport = 'Get-AZCloudMetadataResourceId', 'Get-AzConnectedKubernetes', 'Get-AzConnectedKubernetesUserCredential', 'Get-ConfigDpDefaultEndpoint', 'Get-ConfigDPEndpoint', 'Get-HelmValues', 'New-AzConnectedKubernetes', 'Remove-AzConnectedKubernetes', 'Update-AzConnectedKubernetes', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
