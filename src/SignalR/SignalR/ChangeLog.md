@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Improve the doc for `Test-AzSignalRName`.
 
 ## Version 2.0.1
 * Introduced secrets detection feature to safeguard sensitive data.
