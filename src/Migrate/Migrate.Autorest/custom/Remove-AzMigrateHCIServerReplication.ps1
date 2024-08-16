@@ -22,7 +22,7 @@ The Remove-AzMigrateHCIServerReplication cmdlet stops the replication for a migr
 https://learn.microsoft.com/powershell/module/az.migrate/remove-azmigratehciserverreplication
 #>
 function Remove-AzMigrateHCIServerReplication {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel])]
     [CmdletBinding(DefaultParameterSetName = 'ByID', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName = 'ByID', Mandatory)]
@@ -146,7 +146,7 @@ function Remove-AzMigrateHCIServerReplication {
             $null = $PSBoundParameters.Remove('ForceDelete')
 
             $null = $PSBoundParameters.Add('JobName', $jobName)
-            return Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters
+            return Az.Migrate.Internal\Get-AzMigrateHCIReplicationJob @PSBoundParameters
         }
     }
 }
