@@ -254,6 +254,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-## RELATED LINKS
+ALIASES
 
+Stop-AzVISDatabaseInstance
+
+## RELATED LINKS
 

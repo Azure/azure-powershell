@@ -12,7 +12,7 @@
   RequiredAssemblies = './bin/Az.SapVirtualInstance.private.dll'
   FormatsToProcess = './Az.SapVirtualInstance.format.ps1xml'
   FunctionsToExport = 'Get-AzWorkloadsSapApplicationInstance', 'Get-AzWorkloadsSapCentralInstance', 'Get-AzWorkloadsSapDatabaseInstance', 'Get-AzWorkloadsSapVirtualInstance', 'Invoke-AzWorkloadsSapDiskConfiguration', 'Invoke-AzWorkloadsSapSizingRecommendation', 'Invoke-AzWorkloadsSapSupportedSku', 'New-AzWorkloadsSapVirtualInstance', 'Remove-AzWorkloadsSapVirtualInstance', 'Start-AzWorkloadsSapApplicationInstance', 'Start-AzWorkloadsSapCentralInstance', 'Start-AzWorkloadsSapDatabaseInstance', 'Start-AzWorkloadsSapVirtualInstance', 'Stop-AzWorkloadsSapApplicationInstance', 'Stop-AzWorkloadsSapCentralInstance', 'Stop-AzWorkloadsSapDatabaseInstance', 'Stop-AzWorkloadsSapVirtualInstance', 'Update-AzWorkloadsSapApplicationInstance', 'Update-AzWorkloadsSapCentralInstance', 'Update-AzWorkloadsSapDatabaseInstance', 'Update-AzWorkloadsSapVirtualInstance', '*'
-  AliasesToExport = 'Get-AzVisSapVirtualInstance', 'Remove-AzVisSapVirtualInstance', '*'
+  AliasesToExport = 'Get-AzVISApplicationInstance', 'Get-AzVISCentralInstance', 'Get-AzVISDatabaseInstance', 'Get-AzVIS', 'Invoke-AzVISDiskConfiguration', 'Invoke-AzVISSizingRecommendation', 'Invoke-AzVISSupportedSku', 'Remove-AzVIS', 'Start-AzVISApplicationInstance', 'Start-AzVISCentralInstance', 'Start-AzVISDatabaseInstance', 'Start-AzVIS', 'Stop-AzVISApplicationInstance', 'Stop-AzVISCentralInstance', 'Stop-AzVISDatabaseInstance', 'Stop-AzVIS', 'Update-AzVISApplicationInstance', 'Update-AzVISCentralInstance', 'Update-AzVISDatabaseInstance', 'Update-AzVIS', '*'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'SapVirtualInstance'

@@ -79,4 +79,3 @@ This can be used to update tags on the resource.
 ### [Update-AzWorkloadsSapVirtualInstance](Update-AzWorkloadsSapVirtualInstance.md)
 Updates a Virtual Instance for SAP solutions resource
 
-

@@ -166,6 +166,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-## RELATED LINKS
+ALIASES
 
+Get-AzVISApplicationInstance
+
+## RELATED LINKS
 

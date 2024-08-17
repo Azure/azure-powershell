@@ -222,8 +222,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ALIASES
 
-Remove-AzVisSapVirtualInstance
+Remove-AzVIS
 
 ## RELATED LINKS
-
 
