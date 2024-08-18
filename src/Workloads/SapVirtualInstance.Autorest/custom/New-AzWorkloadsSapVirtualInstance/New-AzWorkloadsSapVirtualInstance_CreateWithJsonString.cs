@@ -14,6 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Cmdlet
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzWorkloadsSapVirtualInstance_CreateWithJsonString", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.Alias("New-AzVIS")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapVirtualInstance))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Description(@"Creates a Virtual Instance for SAP solutions (VIS) resource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Generated]

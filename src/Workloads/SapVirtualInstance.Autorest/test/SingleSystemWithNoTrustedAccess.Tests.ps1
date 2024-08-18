@@ -26,4 +26,16 @@ Describe 'SingleSystemWithNoTrustedAccess' {
     It 'InstallSingleSystemWithNoTrustedAccess' -skip {
         $MsiIdentityName = @{ $env.IdentityName = @{}}
     }
+
+    It 'CreateSingleSystemWithNoTrustedAccessAlias' {
+        $MsiIdentityName = @{ $env.IdentityName = @{}}
+        $CreateSingleSystemWithNoTrustedAccessAliasConfig = Join-Path $PSScriptRoot $env.CreateSingleSystemWithNoTrustedAccessConfigPath
+        $CreateSingleSystemWithNoTrustedAccessAliasResponse = New-AzVIS -SubscriptionId $env.WaaSSubscriptionId -Name $env.CreateSingleSystemWithNoTrustedAccessSID -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -Configuration $CreateSingleSystemWithNoTrustedAccessAliasConfig -ManagedResourcesNetworkAccessType $env.MrgNetAccTypPub -IdentityType $env.IdentityType -UserAssignedIdentity $MsiIdentityName
+        $CreateSingleSystemWithNoTrustedAccessAliasResponse.provisioningState | Should -Be $env.ProvisioningStateSucceeded
+        $CreateSingleSystemWithNoTrustedAccessAliasResponse.managedResourcesNetworkAccessType | Should -Be $env.MrgNetAccTypPub
+    }
+
+    It 'InstallSingleSystemWithNoTrustedAccessAlias' -skip {
+        $MsiIdentityName = @{ $env.IdentityName = @{}}
+    }
 }

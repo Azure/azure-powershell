@@ -213,7 +213,7 @@ directive:
 #Aliasing
 - where:
     verb: New
-    subject:  ^SapVirtualInstance$
+    subject: ^SapVirtualInstance$
   set:
     alias: New-AzVIS
 

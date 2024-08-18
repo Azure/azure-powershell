@@ -19,4 +19,9 @@ Describe 'RemoveOperationsAzWorkloads' {
         $RemoveOperationsAzWorkloadsResponse = Remove-AzWorkloadsSapVirtualInstance -Name $env.DeletionVIS -ResourceGroupName $env.DeletionRG
         $RemoveOperationsAzWorkloadsResponse.Status | Should -Be $null
     }
+
+    It 'RemoveOperationsAzWorkloadsAlias' {
+        $RemoveOperationsAzWorkloadsAliasResponse = Remove-AzVIS -Name $env.DeletionVIS -ResourceGroupName $env.DeletionRG
+        $RemoveOperationsAzWorkloadsAliasResponse.Status | Should -Be $null
+    }
 }

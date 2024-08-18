@@ -52,4 +52,42 @@ Describe 'UpdateTagsTrustedAccess' {
         $UpdateTrustedAcessPrivateResponse = Get-AzWorkloadsSapVirtualInstance -SubscriptionId $env.WaaSSubscriptionId -ResourceGroupName $env.ResourceGroupName -Name $env.SapVirtualInstanceName
         $UpdateTrustedAcessPrivateResponse.ManagedResourcesNetworkAccessType | Should -Be $env.MrgNetAccTypPrvt
     }
+
+    It 'UpdateTagsDatabaseInstanceAlias' {
+        $UpdateTags = @{ $env.TestType = $env.TestTypeValue}
+        $UpdateTagsDatabaseInstanceAliasResponse = Update-AzVISDatabaseInstance -SubscriptionId $env.WaaSSubscriptionId  -Name $env.SapDatabseInstanceName -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName -Tag $UpdateTags
+        $UpdateTagsDatabaseInstanceAliasResponse.Tag.Count | Should -BeGreaterOrEqual 1
+    }
+
+    It 'UpdateTagsCentralInstanceAlias' {
+        $UpdateTags = @{ $env.TestType = $env.TestTypeValue}
+        $UpdateTagsCentralInstanceAliasResponse = Update-AzVISCentralInstance -SubscriptionId $env.WaaSSubscriptionId  -Name $env.SapCentralInstanceName -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName -Tag $UpdateTags
+        $UpdateTagsCentralInstanceAliasResponse.Tag.Count | Should -BeGreaterOrEqual 1
+    }
+
+    It 'UpdateTagsApplicationInstanceAlias' {
+        $UpdateTags = @{ $env.TestType = $env.TestTypeValue}
+        $UpdateTagsApplicationInstanceAliasResponse = Update-AzVISApplicationInstance -SubscriptionId $env.WaaSSubscriptionId -Name $env.SapApplicationInstanceName -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName -Tag $UpdateTags
+        $UpdateTagsApplicationInstanceAliasResponse.Tag.Count | Should -BeGreaterOrEqual 1
+    }
+
+    It 'UpdateTagsSapVirtualInstanceAlias' {
+        $UpdateTags = @{ $env.TestType = $env.TestTypeValue}
+        $UpdateTagsSapVirtualInstanceAliasResponse = Update-AzVIS -SubscriptionId $env.WaaSSubscriptionId  -Name $env.SapVirtualInstanceName -ResourceGroupName $env.ResourceGroupName -Tag $UpdateTags
+        $UpdateTagsSapVirtualInstanceAliasResponse.Tag.Count | Should -BeGreaterOrEqual 1
+    }
+
+    It 'UpdateTrustedAccessToPublicAlias' {
+        $MsiIdentityName = @{ $env.IdentityName = @{}}
+        $null = Update-AzVIS -SubscriptionId $env.WaaSSubscriptionId  -Name $env.SapVirtualInstanceName -ResourceGroupName $env.ResourceGroupName -ManagedResourcesNetworkAccessType $env.MrgNetAccTypPub -IdentityType $env.IdentityType -UserAssignedIdentity $MsiIdentityName
+        $UpdateTrustedAcessPublicAliasResponse = Get-AzVIS -SubscriptionId $env.WaaSSubscriptionId -ResourceGroupName $env.ResourceGroupName -Name $env.SapVirtualInstanceName
+        $UpdateTrustedAcessPublicAliasResponse.ManagedResourcesNetworkAccessType | Should -Be $env.MrgNetAccTypPub
+    }
+
+    It 'UpdateTrustedAccessToPrivateAlias' {
+        $MsiIdentityName = @{ $env.IdentityName = @{}}
+        $null = Update-AzVIS -SubscriptionId $env.WaaSSubscriptionId  -Name $env.SapVirtualInstanceName -ResourceGroupName $env.ResourceGroupName -ManagedResourcesNetworkAccessType $env.MrgNetAccTypPrvt -IdentityType $env.IdentityType -UserAssignedIdentity $MsiIdentityName
+        $UpdateTrustedAcessPrivateAliasResponse = Get-AzVIS -SubscriptionId $env.WaaSSubscriptionId -ResourceGroupName $env.ResourceGroupName -Name $env.SapVirtualInstanceName
+        $UpdateTrustedAcessPrivateAliasResponse.ManagedResourcesNetworkAccessType | Should -Be $env.MrgNetAccTypPrvt
+    }
 }

@@ -29,4 +29,19 @@ Describe 'RegisterWithTrustedAccessCustomSaMrg' {
         ($RegisterWithTrustedAccessCustomSaMrgResponse.Configuration | ConvertFrom-Json).managedRgStorageAccountName | Should -Be $env.MrgSAName
         $RegisterWithTrustedAccessCustomSaMrgResponse.managedResourceGroupConfigurationName | Should -Be $env.MrgRGName
     }
+
+    It 'DeleteRegisterWithTrustedAccessCustomSaMrgAlias' {
+        $DeleteRegisterWithTrustedAccessCustomSaMrgAliasResponse = Remove-AzVIS -Name $env.CreateDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareSID -ResourceGroupName $env.DeletionRG
+        $DeleteRegisterWithTrustedAccessCustomSaMrgAliasResponse.Status | Should -Be $null
+        Start-TestSleep 60
+    }
+
+    It 'RegisterWithTrustedAccessCustomSaMrgAlias' {
+        $MsiIdentityName = @{ $env.IdentityName = @{}}
+        $RegisterWithTrustedAccessCustomSaMrgAliasResponse = New-AzVIS -SubscriptionId $env.WaaSSubscriptionId -Name $env.CreateDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareSID -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -CentralServerVmId $env.CentralServerVmId -ManagedResourceGroupName $env.MrgRGName -ManagedRgStorageAccountName $env.MrgSAName -ManagedResourcesNetworkAccessType $env.MrgNetAccTypPrvt -IdentityType $env.IdentityType -UserAssignedIdentity $MsiIdentityName
+        $RegisterWithTrustedAccessCustomSaMrgAliasResponse.provisioningState | Should -Be $env.ProvisioningStateSucceeded
+        $RegisterWithTrustedAccessCustomSaMrgAliasResponse.managedResourcesNetworkAccessType | Should -Be $env.MrgNetAccTypPrvt
+        ($RegisterWithTrustedAccessCustomSaMrgAliasResponse.Configuration | ConvertFrom-Json).managedRgStorageAccountName | Should -Be $env.MrgSAName
+        $RegisterWithTrustedAccessCustomSaMrgAliasResponse.managedResourceGroupConfigurationName | Should -Be $env.MrgRGName
+    }
 }

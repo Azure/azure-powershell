@@ -38,6 +38,7 @@ https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadssapvir
 #>
 function New-AzWorkloadsSapVirtualInstance {
   [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapVirtualInstance])]
+  [Alias('New-AzVIS')]
   [CmdletBinding(DefaultParameterSetName='CreateWithDiscovery', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
   param(
       [Parameter(Mandatory)]
