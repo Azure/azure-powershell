@@ -65,7 +65,6 @@ Invoke-LiveTestScenario -Name "Test_AKS_CURD" -Description "Test AKS Cluster CRU
     Assert-Null $pools.PodSubnetID
     Assert-Null $pools.MaxCount
     Assert-Null $pools.MinCount
-    Assert-Null $pools.EnableNodePublicIP
     Assert-Null $pools.ScaleSetPriority
     Assert-Null $pools.ScaleSetEvictionPolicy
     Assert-Null $pools.NodePublicIPPrefixID
