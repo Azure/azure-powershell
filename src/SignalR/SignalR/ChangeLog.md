@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
 * Improve the doc for `Test-AzSignalRName`.
 
 ## Version 2.0.1

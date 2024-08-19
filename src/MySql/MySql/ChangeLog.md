@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
 
 ## Version 1.2.0
 * Added cmdlets: `Get-AzMySqlFlexibleServerAdvancedThreatProtectionSetting` and `Update-AzMySqlFlexibleServerAdvancedThreatProtectionSetting`
