@@ -884,6 +884,15 @@ namespace Microsoft.Azure.Commands.Network.Properties
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Filtering string can be maximum of 1000 characters in length..
+        /// </summary>
+        internal static string FlowLogFilteringCriteriaExceedsLimit {
+            get {
+                return ResourceManager.GetString("FlowLogFilteringCriteriaExceedsLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A hub is required for HubAndSpoke connectivity topology..
         /// </summary>
         internal static string HubRequiredForHubAndSpokeTopology

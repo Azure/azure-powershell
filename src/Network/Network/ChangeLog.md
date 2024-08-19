@@ -21,6 +21,8 @@
 ## Upcoming Release
 * Updated cmdlet to add the property of `Sensitivity`, and updated corresponding cmdlets.
     - `New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`
+* Added support for `DefaultOutboundAccess` property in `Set-AzVirtualNetworkSubnetConfig` command
+* Added support for `EnabledFilteringCriteria` property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
 * Added support of `UserAssignedIdentityId` Property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
 
 ## Version 7.8.0
