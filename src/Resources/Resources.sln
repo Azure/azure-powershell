@@ -41,8 +41,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization.Management.Sd
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Authorization", "..\..\generated\Resources\Authorization.Autorest\Az.Authorization.csproj", "{10ECB4E7-5167-4B3C-95EF-CCD3F7928EF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MSGraph", "..\..\generated\Resources\MSGraph.Autorest\Az.MSGraph.csproj", "{7D5AE0B4-35D3-47D9-90C8-85E25EB8AE6A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Policy", "..\..\generated\Resources\Policy.Autorest\Az.Policy.csproj", "{CAE73129-4919-4807-8475-6ABE23DD2E7A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ManagedServiceIdentity", "..\..\generated\ManagedServiceIdentity\ManagedServiceIdentity.Autorest\Az.ManagedServiceIdentity.csproj", "{5A26CA39-50D9-492F-A7A3-5EC7068020A3}"
@@ -62,6 +60,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MonitorWorkspace", "..\..\generated\Monitor\MonitorWorkspace.Autorest\Az.MonitorWorkspace.csproj", "{3D054BA7-A94A-477A-B406-2B3DFDE81BCD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ScheduledQueryRule", "..\..\generated\Monitor\ScheduledQueryRule.Autorest\Az.ScheduledQueryRule.csproj", "{D434DEF0-87C5-4C66-BC80-125DCA2F05C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MSGraph", "MSGraph.Autorest\Az.MSGraph.csproj", "{1215AF44-B643-4513-A27F-0B6C6D62A12B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -138,10 +138,6 @@ Global
 		{10ECB4E7-5167-4B3C-95EF-CCD3F7928EF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10ECB4E7-5167-4B3C-95EF-CCD3F7928EF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10ECB4E7-5167-4B3C-95EF-CCD3F7928EF9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7D5AE0B4-35D3-47D9-90C8-85E25EB8AE6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D5AE0B4-35D3-47D9-90C8-85E25EB8AE6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D5AE0B4-35D3-47D9-90C8-85E25EB8AE6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D5AE0B4-35D3-47D9-90C8-85E25EB8AE6A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CAE73129-4919-4807-8475-6ABE23DD2E7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CAE73129-4919-4807-8475-6ABE23DD2E7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAE73129-4919-4807-8475-6ABE23DD2E7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -182,6 +178,10 @@ Global
 		{D434DEF0-87C5-4C66-BC80-125DCA2F05C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D434DEF0-87C5-4C66-BC80-125DCA2F05C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D434DEF0-87C5-4C66-BC80-125DCA2F05C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1215AF44-B643-4513-A27F-0B6C6D62A12B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1215AF44-B643-4513-A27F-0B6C6D62A12B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1215AF44-B643-4513-A27F-0B6C6D62A12B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1215AF44-B643-4513-A27F-0B6C6D62A12B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5323D4CC-D4B7-44A7-B79A-F91C47AC9650} = {23F657BD-37C1-4E91-8548-5783E43D40B0}

@@ -375,8 +375,8 @@
         <TypeName>Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageFileShare</TypeName>
       </ViewSelectedBy>      
       <GroupBy>
-        <ScriptBlock>$_.ShareClient.AccountName</ScriptBlock>
-        <Label>Storage Account Name</Label>
+        <ScriptBlock>$_.Context.FileEndPoint</ScriptBlock>
+        <Label>File End Point</Label>
       </GroupBy>
       <TableControl>
         <TableHeaders>

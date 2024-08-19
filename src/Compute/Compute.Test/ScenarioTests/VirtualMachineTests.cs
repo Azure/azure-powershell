@@ -650,6 +650,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCapacityReservationGroupResourceIdsOnly()
+        {
+            TestRunner.RunTestScript("Test-CapacityReservationGroupResourceIdsOnly");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddVMDataDisk()
         {
             TestRunner.RunTestScript("Test-AddVMDataDisk");
