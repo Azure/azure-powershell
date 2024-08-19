@@ -113,12 +113,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,            
-            HelpMessage = "ResourceId used to identify the Volume")]        
+            Mandatory = true,
+            HelpMessage = "ResourceId used to identify the Volume")]
         public string VolumeResourceId { get; set; }
 
         [Parameter(
-            Mandatory = false,            
+            Mandatory = false,
             HelpMessage = "Label for backup")]
         [ValidateNotNullOrEmpty]
         public string Label { get; set; }
@@ -129,15 +129,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
         [ValidateNotNullOrEmpty]
         public SwitchParameter UseExistingSnapshot { get; set; }
 
-<<<<<<< HEAD
         [Parameter(
             Mandatory = false,
             HelpMessage = "The name of the snapshot, use with UseExistingSnapshot")]
         [ValidateNotNullOrEmpty]
         public string SnapshotName { get; set; }
 
-=======
->>>>>>> parent of 71502b2351d (add snapshotName)
         [CmdletParameterBreakingChangeWithVersion("VolumeObject", "12", "0.16", ChangeDescription = ChangeDesc)]
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,
@@ -163,7 +160,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
                 Location = BackupVaultObject.Location;
                 var NameParts = BackupVaultObject.Name.Split('/');
                 AccountName = NameParts[0];
-                BackupVaultName = NameParts[1];                
+                BackupVaultName = NameParts[1];
             }
             if (!ResourceIdentifier.TryParse(VolumeResourceId, out _))
             {
@@ -171,18 +168,19 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             }
 
             var backupBody = new Management.NetApp.Models.Backup()
-            {                
+            {
                 Label = Label,
+                VolumeResourceId = VolumeResourceId,
                 UseExistingSnapshot = UseExistingSnapshot,
-                VolumeResourceId = VolumeResourceId
+                SnapshotName = SnapshotName
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
                 try
                 {
-                    var anfBackupPolicy = AzureNetAppFilesManagementClient.Backups.Create(ResourceGroupName, AccountName, backupVaultName:BackupVaultName, backupName: Name, body: backupBody);
-                    WriteObject(anfBackupPolicy.ConvertToPs());
+                    var anfBackup = AzureNetAppFilesManagementClient.Backups.Create(ResourceGroupName, AccountName, backupVaultName: BackupVaultName, backupName: Name, body: backupBody);
+                    WriteObject(anfBackup.ConvertToPs());
                 }
                 catch (ErrorResponseException ex)
                 {

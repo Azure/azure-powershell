@@ -16,27 +16,16 @@ Creates a new Azure NetApp Files (ANF) backup.
 ```
 New-AzNetAppFilesBackup -ResourceGroupName <String> [-Location <String>] -AccountName <String>
  [-PoolName <String>] [-VolumeName <String>] -BackupVaultName <String> -Name <String>
-<<<<<<< HEAD
  -VolumeResourceId <String> [-Label <String>] [-UseExistingSnapshot] [-SnapshotName <String>]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
-=======
- -VolumeResourceId <String> -Label <String> [-UseExistingSnapshot] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
->>>>>>> parent of 71502b2351d (add snapshotName)
 ```
 
 ### ByParentObjectParameterSet
 ```
-<<<<<<< HEAD
 New-AzNetAppFilesBackup -Name <String> -VolumeResourceId <String> [-Label <String>] [-UseExistingSnapshot]
  [-SnapshotName <String>] [-VolumeObject <PSNetAppFilesVolume>] -BackupVaultObject <PSNetAppFilesBackupVault>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
-=======
-New-AzNetAppFilesBackup -Name <String> -VolumeResourceId <String> -Label <String> [-UseExistingSnapshot]
- [-VolumeObject <PSNetAppFilesVolume>] -BackupVaultObject <PSNetAppFilesBackupVault>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
->>>>>>> parent of 71502b2351d (add snapshotName)
  [<CommonParameters>]
 ```
 
@@ -174,6 +163,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group of the ANF account
 
@@ -189,7 +193,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-<<<<<<< HEAD
 ### -SnapshotName
 The name of the snapshot, use with UseExistingSnapshot
 
@@ -205,8 +208,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-=======
->>>>>>> parent of 71502b2351d (add snapshotName)
 ### -UseExistingSnapshot
 Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups
 
