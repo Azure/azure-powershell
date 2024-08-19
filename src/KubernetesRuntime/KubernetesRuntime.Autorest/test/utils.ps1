@@ -53,15 +53,15 @@ function setupEnv() {
     Remove-Module Az.Resources.TestSupport
 
     # Prepare tested resources
-    # $aksName = RandomString -allChars $false -len 6
-    $aksName = "ty87sd"
+    $aksName = RandomString -allChars $false -len 6
+    # $aksName = "v7g9qa"
 
     $arcName = $aksName + "-arc"
 
     $env.Add("AksName", $aksName)
     $env.Add("ArcName", $arcName)
-    $env.Add("Location", "eastus2")
-    $resourceGroup = "k8sruntime-pwsh-test-rg-" + $env.aksName
+    $env.Add("Location", "eastus2euap")
+    $resourceGroup = "k8sruntime-pwsh-test-rg-" + $env.AksName
     $env.Add("ResourceGroup", $resourceGroup)
 
     $sshKeyDir = "$([System.IO.Path]::GetTempPath())aksssh"
@@ -69,23 +69,24 @@ function setupEnv() {
     $tempSshKeyPath = "$sshKeyDir/id_rsa"
     $env.Add("SshKeyPath", $tempSshKeyPath)
 
+    write-host "1. start to create test group..."
+    New-AzResourceGroup -Name $env.ResourceGroup -Location $env.location -Force
 
-    # write-host "1. start to create test group..."
-    # New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
-
-    # write-host "2. az aks create..."
-    # Remove-Item -Recurse -Force $sshKeyDir
-    # New-Item -Path $sshKeyDir -Force -ItemType Directory
+    write-host "2. az aks create..."
+    if (Test-Path $sshKeyDir) {
+        Remove-Item -Recurse -Force $sshKeyDir
+    }
+    New-Item -Path $sshKeyDir -Force -ItemType Directory
     
 
-    # ssh-keygen -b 2048 -t rsa -f $tempSshKeyPath -q -N '""'
-    # New-AzAksCluster -Name $env.aksName -ResourceGroupName $env.resourceGroup -SshKeyValue "${tempSshKeyPath}.pub" -Location $env.Location
+    ssh-keygen -b 2048 -t rsa -f $tempSshKeyPath -q -N '""'
+    New-AzAksCluster -Name $env.AksName -ResourceGroupName $env.ResourceGroup -SshKeyValue "${tempSshKeyPath}.pub" -Location $env.Location
 
-    # write-host "3. az aks get-credentials..."
-    # Import-AzAksCredential -Name $env.aksName -ResourceGroupName $env.resourceGroup -Force
+    write-host "3. az aks get-credentials..."
+    Import-AzAksCredential -Name $env.AksName -ResourceGroupName $env.ResourceGroup -Force
 
-    # write-host "4. az connectedk8s connect..."
-    # New-AzConnectedKubernetes -ClusterName $env.arcName -ResourceGroupName $env.resourceGroup -Location $env.location
+    write-host "4. az connectedk8s connect..."
+    New-AzConnectedKubernetes -ClusterName $env.ArcName -ResourceGroupName $env.ResourceGroup -Location $env.Location
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
