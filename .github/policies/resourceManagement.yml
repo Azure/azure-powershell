@@ -3302,8 +3302,8 @@ configuration:
         - mentionUsers:
             mentionees:
             - gbowerman
-            - sr-msft
-            - niklarin
+            - jasomaning
+            - nachoalonsoportillo
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -3319,8 +3319,9 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - daeunyim
-            - rajsell
+            - gbowerman
+            - jasomaning
+            - nachoalonsoportillo
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
