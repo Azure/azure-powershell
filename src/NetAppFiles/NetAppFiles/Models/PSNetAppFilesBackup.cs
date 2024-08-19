@@ -105,14 +105,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// false for scheduled backups and true/false for manual backups
         /// </remarks>
         public bool? UseExistingSnapshot { get; set; }
-
-        /// <summary>
-        /// Gets or sets SnapshotName
-        /// </summary>
-        /// <remarks>
-        ///  The name of the snapshot
-        /// </remarks>        
-        public string SnapshotName { get; set; }
-
+        
     }
 }
