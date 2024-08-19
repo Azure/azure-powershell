@@ -31,15 +31,15 @@ https://learn.microsoft.com/powershell/module/az.connectedkubernetes/new-azconne
 #>
 
 [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '',
-    Justification='Kubernetes is a recognised term', Scope='Function', Target='New-AzConnectedKubernetes')]
-[CmdletBinding()]    
+    Justification = 'Kubernetes is a recognised term', Scope = 'Function', Target = 'New-AzConnectedKubernetes')]
+[CmdletBinding()]
 param()
 
 function New-AzConnectedKubernetes {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240701Preview.IConnectedCluster])]
-    [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingConvertToSecureStringWithPlainText', '',
-        Justification='Code published before this issue was identified')]
+        Justification = 'Code published before this issue was identified')]
     param(
         [Parameter(Mandatory)]
         [Alias('Name')]
@@ -57,7 +57,7 @@ function New-AzConnectedKubernetes {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
@@ -88,7 +88,7 @@ function New-AzConnectedKubernetes {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
-        [ValidateRange(0,3600)]
+        [ValidateRange(0, 3600)]
         [Int]
         # The time required (in seconds) for the arc-agent pods to be installed on the kubernetes cluster.
         ${OnboardingTimeout} = 600,
@@ -105,13 +105,13 @@ function New-AzConnectedKubernetes {
         # Override the default container log path to enable fluent-bit logging.
         ${ContainerLogPath},
 
-        [Parameter(HelpMessage="Path to the kube config file")]
+        [Parameter(HelpMessage = "Path to the kube config file")]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [System.String]
         # Path to the kube config file
         ${KubeConfig},
 
-        [Parameter(HelpMessage="Kubconfig context from current machine")]
+        [Parameter(HelpMessage = "Kubconfig context from current machine")]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [System.String]
         # Kubconfig context from current machine
@@ -170,7 +170,7 @@ function New-AzConnectedKubernetes {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.ITrackedResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.ITrackedResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},
@@ -256,13 +256,13 @@ function New-AzConnectedKubernetes {
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Runtime')]
         [System.Collections.Hashtable]
         # Arc Agentry System Configuration
-        ${ArcAgentrySettings},
+        ${ConfigurationSetting},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Runtime')]
         [System.Collections.Hashtable]
         # Arc Agentry System Protected Configuration
-        ${ArcAgentryProtectedSettings},
+        ${ConfigurationProtectedSetting},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Runtime')]
@@ -278,17 +278,18 @@ function New-AzConnectedKubernetes {
         . "$PSScriptRoot/helpers/ConfigDPHelper.ps1"
         . "$PSScriptRoot/helpers/AZCloudMetadataHelper.ps1"
         Write-Debug "Debug: Inside of process"
-        if($AzureHybridBenefit){
-            if(!$AcceptEULA){
+        if ($AzureHybridBenefit) {
+            if (!$AcceptEULA) {
                 $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
                 try {
                     $legalTerm = (Get-Content -Path $legalTermPath) -join "`r`n"
-                } catch {
+                }
+                catch {
                     Write-Error "Get legal term failed."
                     throw
                 }
                 $confirmation = Read-Host $legalTerm"`n[Y] Yes  [N] No  (default is `"N`")"
-                if($confirmation -ine "Y"){
+                if ($confirmation -ine "Y") {
                     Return
                 }
             }
@@ -298,11 +299,14 @@ function New-AzConnectedKubernetes {
 
         if ($PSBoundParameters:KubeConfig) {
             $Null = $PSBoundParameters.Remove('KubeConfig')
-        } elseif (Test-Path Env:KUBECONFIG) {
+        }
+        elseif (Test-Path Env:KUBECONFIG) {
             $KubeConfig = Get-ChildItem -Path Env:KUBECONFIG
-        } elseif (Test-Path Env:Home) {
+        }
+        elseif (Test-Path Env:Home) {
             $KubeConfig = Join-Path -Path $Env:Home -ChildPath '.kube' | Join-Path -ChildPath 'config'
-        } else {
+        }
+        else {
             $KubeConfig = Join-Path -Path $Home -ChildPath '.kube' | Join-Path -ChildPath 'config'
         }
         if (-not (Test-Path $KubeConfig)) {
@@ -347,22 +351,22 @@ function New-AzConnectedKubernetes {
         }
         $IdentityType = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ResourceIdentityType]::SystemAssigned
         $PSBoundParameters.Add('IdentityType', $IdentityType)
-        
+
         # Region Deal with settings and protected settings
         # If a new Kubernetes feature is added then code may need to be added here
         # to suport protected settings as the Config DP is unable to process these
         # themselves.  Add a check here to see if there are any that we currently
         # do not suport.
         $supportedFeatures = @("proxy")
-        if ($arcAgentrySettings) {
-            foreach ($key in $arcAgentrySettings.Keys) {
+        if ($ConfigurationSetting) {
+            foreach ($key in $ConfigurationSetting.Keys) {
                 if (-not $supportedFeatures.Contains($key.ToLower())) {
                     Write-Warning "Arc Agentry feature '${key}' is not supported for Connected Kubernetes"
                 }
             }
         }
-        if ($arcAgentryProtectedSettings) {
-            foreach ($key in $arcAgentryProtectedSettings.Keys) {
+        if ($ConfigurationProtectedSetting) {
+            foreach ($key in $ConfigurationProtectedSetting.Keys) {
                 if (-not $supportedFeatures.Contains($key.ToLower())) {
                     Write-Warning "ArcAgentry feature '${key}' is not supported for Connected Kubernetes"
                 }
@@ -385,12 +389,13 @@ function New-AzConnectedKubernetes {
             $HelmVersion = $HelmVersion.Substring(1)
             $HelmVersion = $HelmVersion.Split('+')[0]
             $helmV380 = [System.Version]::Parse("3.8.0")
-            $helmThisVersion= [System.Version]::Parse($HelmVersion)
+            $helmThisVersion = [System.Version]::Parse($HelmVersion)
             if ($helmThisVersion -lt $helmV380) {
                 Write-Error "Helm version of at least 3.8 is required for latest OCI handling."
                 Return
             }
-        } catch {
+        }
+        catch {
             throw "Failed to install Helm version 3+ ($_). Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
         }
         #EndRegion
@@ -402,7 +407,8 @@ function New-AzConnectedKubernetes {
         try {
             # !!PDS: Seems like this showing "Error: Release: Not found" is not an error but a warning that implies there just is not a release.  Can we quench this?
             $ReleaseNamespace = (helm status azure-arc -o json --kubeconfig $KubeConfig --kube-context $KubeContext -n $ReleaseInstallNamespace 2> $null | ConvertFrom-Json).namespace
-        } catch {
+        }
+        catch {
             Write-Error "Fail to find the namespace for azure-arc."
         }
         #Endregion
@@ -414,22 +420,24 @@ function New-AzConnectedKubernetes {
             $ConfigmapClusterName = $Configmap.data.AZURE_RESOURCE_NAME
             try {
                 $ExistConnectedKubernetes = Get-AzConnectedKubernetes `
-                  -ResourceGroupName $ConfigmapRgName `
-                  -ClusterName $ConfigmapClusterName `
-                  @CommonPSBoundParameters `
-                  -ErrorAction 'silentlycontinue'
+                    -ResourceGroupName $ConfigmapRgName `
+                    -ClusterName $ConfigmapClusterName `
+                    @CommonPSBoundParameters `
+                    -ErrorAction 'silentlycontinue'
 
                 if (($ResourceGroupName -eq $ConfigmapRgName) -and ($ClusterName -eq $ConfigmapClusterName)) {
                     # This performs a re-PUT of an existing connected cluster which should really be done using
                     # a Set-AzConnectedKubernetes cmdlet!
                     $PSBoundParameters.Add('AgentPublicKeyCertificate', $ExistConnectedKubernetes.AgentPublicKeyCertificate)
                     return Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
-                } else {
+                }
+                else {
                     # We have a cluster with the same Kubernetes settings but already associated via a different RG - error!
                     Write-Error "The kubernetes cluster you are trying to onboard is already onboarded to the resource group '${ConfigmapRgName}' with resource name '${ConfigmapClusterName}'."
                 }
                 return
-            } catch {
+            }
+            catch {
                 # This is attempting to delete Azure Arc resources that are orphaned.
                 # We are catching and ignoring any messages here.
                 $null = helm delete azure-arc --ignore-not-found --namespace $ReleaseNamespace --kubeconfig $KubeConfig --kube-context $KubeContext
@@ -449,19 +457,22 @@ function New-AzConnectedKubernetes {
         }
         if (Test-Path Env:HELMREGISTRY) {
             $RegistryPath = Get-ChildItem -Path Env:HELMREGISTRY
-        } else {
+        }
+        else {
             $ReleaseTrain = ''
             if ((Test-Path Env:RELEASETRAIN) -and (Test-Path Env:RELEASETRAIN)) {
                 $ReleaseTrain = Get-ChildItem -Path Env:RELEASETRAIN
-            } else {
+            }
+            else {
                 $ReleaseTrain = 'stable'
             }
-            $AzLocation = Get-AzLocation | Where-Object { ($_.DisplayName -ieq $Location) -or ($_.Location -ieq $Location)}
+            $AzLocation = Get-AzLocation | Where-Object { ($_.DisplayName -ieq $Location) -or ($_.Location -ieq $Location) }
             $Region = $AzLocation.Location
             if ($null -eq $Region) {
                 Write-Error "Invalid location: $Location"
                 return
-            } else {
+            }
+            else {
                 $Location = $Region
             }
             $ChartLocationUrl = "https://${Location}.dp.kubernetesconfiguration.azure.com/azure-arc-k8sagents/GetLatestHelmPackagePath?api-version=2019-11-01-preview&releaseTrain=${ReleaseTrain}"
@@ -481,7 +492,8 @@ function New-AzConnectedKubernetes {
             $Response = Invoke-WebRequest -Uri $Uri -Headers $HeaderParameter -Method Post -UseBasicParsing
             if ($Response.StatusCode -eq 200) {
                 $RegistryPath = ($Response.Content | ConvertFrom-Json).repositoryPath
-            } else {
+            }
+            else {
                 Write-Error "Error while fetching helm chart registry path: ${$Response.RawContent}"
                 return
             }
@@ -496,10 +508,12 @@ function New-AzConnectedKubernetes {
                 $AgentPublicKey = ExportRSAPublicKeyBase64($RSA)
                 $AgentPrivateKey = ExportRSAPrivateKeyBase64($RSA)
                 $AgentPrivateKey = "-----BEGIN RSA PRIVATE KEY-----`n" + $AgentPrivateKey + "`n-----END RSA PRIVATE KEY-----"
-            } catch {
+            }
+            catch {
                 throw "Unable to generate RSA keys"
             }
-        } else {
+        }
+        else {
             $AgentPublicKey = [System.Convert]::ToBase64String($RSA.ExportRSAPublicKey())
             $AgentPrivateKey = "-----BEGIN RSA PRIVATE KEY-----`n" + [System.Convert]::ToBase64String($RSA.ExportRSAPrivateKey()) + "`n-----END RSA PRIVATE KEY-----"
         }
@@ -518,45 +532,45 @@ function New-AzConnectedKubernetes {
 
         $options = ""
         $proxyEnableState = $false
-        
+
         if (![string]::IsNullOrEmpty($HttpProxy) -or ![string]::IsNullOrEmpty($HttpsProxy) -or ![string]::IsNullOrEmpty($NoProxy) -or ![string]::IsNullOrEmpty($HttpProxy) ) {
-            if (-not $ArcAgentrySettings.ContainsKey("proxy")) {
-                $ArcAgentrySettings["proxy"] = @{}
+            if (-not $ConfigurationSetting.ContainsKey("proxy")) {
+                $ConfigurationSetting["proxy"] = @{}
             }
-            if (-not $ArcAgentryProtectedSettings.ContainsKey("proxy")) {
-                $ArcAgentryProtectedSettings["proxy"] = @{}
+            if (-not $ConfigurationProtectedSetting.ContainsKey("proxy")) {
+                $ConfigurationProtectedSetting["proxy"] = @{}
             }
         }
 
         if (-not ([string]::IsNullOrEmpty($HttpProxy))) {
             $HttpProxyStr = $HttpProxy.ToString()
-            $HttpProxyStr = $HttpProxyStr -replace ',','\,'
-            $HttpProxyStr = $HttpProxyStr -replace '/','\/'
+            $HttpProxyStr = $HttpProxyStr -replace ',', '\,'
+            $HttpProxyStr = $HttpProxyStr -replace '/', '\/'
             $options += " --set global.httpProxy=$HttpProxyStr"
             $proxyEnableState = $true
-            $ArcAgentrySettings["proxy"]["http_proxy"] = $HttpProxyStr
-            $ArcAgentryProtectedSettings["proxy"]["http_proxy"] = $HttpProxyStr
+            $ConfigurationSetting["proxy"]["http_proxy"] = $HttpProxyStr
+            $ConfigurationProtectedSetting["proxy"]["http_proxy"] = $HttpProxyStr
             # Note how we are removing k8s parameters from the list of parameters
             # to pass to the internal (creates ARM object) command.
             $Null = $PSBoundParameters.Remove('HttpProxy')
         }
         if (-not ([string]::IsNullOrEmpty($HttpsProxy))) {
             $HttpsProxyStr = $HttpsProxy.ToString()
-            $HttpsProxyStr = $HttpsProxyStr -replace ',','\,'
-            $HttpsProxyStr = $HttpsProxyStr -replace '/','\/'
+            $HttpsProxyStr = $HttpsProxyStr -replace ',', '\,'
+            $HttpsProxyStr = $HttpsProxyStr -replace '/', '\/'
             $options += " --set global.httpsProxy=$HttpsProxyStr"
             $proxyEnableState = $true
-            $ArcAgentrySettings["proxy"]["https_proxy"] = $HttpsProxyStr
-            $ArcAgentryProtectedSettings["proxy"]["https_proxy"] = $HttpsProxyStr
+            $ConfigurationSetting["proxy"]["https_proxy"] = $HttpsProxyStr
+            $ConfigurationProtectedSetting["proxy"]["https_proxy"] = $HttpsProxyStr
             $Null = $PSBoundParameters.Remove('HttpsProxy')
         }
         if (-not ([string]::IsNullOrEmpty($NoProxy))) {
-            $NoProxy = $NoProxy -replace ',','\,'
-            $NoProxy = $NoProxy -replace '/','\/'
+            $NoProxy = $NoProxy -replace ',', '\,'
+            $NoProxy = $NoProxy -replace '/', '\/'
             $options += " --set global.noProxy=$NoProxy"
             $proxyEnableState = $true
-            $ArcAgentrySettings["proxy"]["no_proxy"] = $NoProxy
-            $ArcAgentryProtectedSettings["proxy"]["no_proxy"] = $NoProxy 
+            $ConfigurationSetting["proxy"]["no_proxy"] = $NoProxy
+            $ConfigurationProtectedSetting["proxy"]["no_proxy"] = $NoProxy
             $Null = $PSBoundParameters.Remove('NoProxy')
         }
         if ($proxyEnableState) {
@@ -566,10 +580,11 @@ function New-AzConnectedKubernetes {
             if ((-not ([string]::IsNullOrEmpty($ProxyCert))) -and (Test-Path $ProxyCert)) {
                 $options += " --set-file global.proxyCert=$ProxyCert"
                 $options += " --set global.isCustomCert=true"
-                $ArcAgentrySettings["proxy"]["proxy_cert"] = $ProxyCert
-                $ArcAgentryProtectedSettings["proxy"]["proxy_cert"] = $ProxyCert 
+                $ConfigurationSetting["proxy"]["proxy_cert"] = $ProxyCert
+                $ConfigurationProtectedSetting["proxy"]["proxy_cert"] = $ProxyCert
             }
-        } catch {
+        }
+        catch {
             throw "Unable to find ProxyCert from file path"
         }
         if ($DisableAutoUpgrade) {
@@ -600,15 +615,17 @@ function New-AzConnectedKubernetes {
         }
         if ((-not ([string]::IsNullOrEmpty($Proxy))) -and (-not $PSBoundParameters.ContainsKey('ProxyCredential'))) {
             if (-not ([string]::IsNullOrEmpty($Proxy.UserInfo))) {
-                try{
+                try {
                     $userInfo = $Proxy.UserInfo -Split ':'
                     $pass = ConvertTo-SecureString $userInfo[1] -AsPlainText -Force
                     $ProxyCredential = New-Object System.Management.Automation.PSCredential ($userInfo[0] , $pass)
                     $PSBoundParameters.Add('ProxyCredential', $ProxyCredential)
-                } catch {
+                }
+                catch {
                     throw "Please set ProxyCredential or provide username and password in the Proxy parameter"
                 }
-            } else {
+            }
+            else {
                 Write-Warning "If the proxy is a private proxy, pass ProxyCredential parameter or provide username and password in the Proxy parameter"
             }
         }
@@ -627,39 +644,39 @@ function New-AzConnectedKubernetes {
         #             protected settings.
         #
         #          This DOES mean that code changes are required both in the
-        #          Config DP annd this Powershell script if a new Kubernetes 
+        #          Config DP annd this Powershell script if a new Kubernetes
         #          feature is added.
         $arcAgentryConfigs = @(
         )
 
         # !!PDS: The name "Setting" below is SINGULAR but in the Swagger it is PLURAL - why is this?
-        if ($ArcAgentrySettings) {
-            foreach ($key in $ArcAgentrySettings.Keys) {
+        if ($ConfigurationSetting) {
+            foreach ($key in $ConfigurationSetting.Keys) {
                 $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240701Preview.ArcAgentryConfigurations]@{
                     Feature = $key
-                    Setting = $ArcAgentrySettings[$key]
+                    Setting = $ConfigurationSetting[$key]
                 }
-                if ($ArcAgentryProtectedSettings -and $ArcAgentryProtectedSettings[$key]) {
-                    $ArcAgentryConfiguration.ProtectedSetting = $ArcAgentryProtectedSettings[$key]
+                if ($ConfigurationProtectedSetting -and $ConfigurationProtectedSetting[$key]) {
+                    $ArcAgentryConfiguration.ProtectedSetting = $ConfigurationProtectedSetting[$key]
 
-                    # Remove this key from ArcAgentryProtectedSettings.
-                    $Null = $ArcAgentryProtectedSettings.Remove($key)
+                    # Remove this key from ConfigurationProtectedSetting.
+                    $Null = $ConfigurationProtectedSetting.Remove($key)
                 }
                 $arcAgentryConfigs += $ArcAgentryConfiguration
             }
-            $PSBoundParameters.Remove('ArcAgentrySettings')
+            $PSBoundParameters.Remove('ConfigurationSetting')
         }
 
         # Add the remaining (protected only) settings.
-        if ($ArcAgentryProtectedSettings) {
-            foreach ($key in $ArcAgentryProtectedSettings.Keys) {
+        if ($ConfigurationProtectedSetting) {
+            foreach ($key in $ConfigurationProtectedSetting.Keys) {
                 $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240701Preview.ArcAgentryConfigurations]@{
-                    Feature = $key
-                    ProtectedSetting = $ArcAgentryprotectedSettings[$key]
+                    Feature          = $key
+                    ProtectedSetting = $ConfigurationProtectedSetting[$key]
                 }
                 $argAgentryConfigs += $ArcAgentryConfiguration
             }
-            $PSBoundParameters.Remove('ArcAgentryProtectedSettings')
+            $PSBoundParameters.Remove('ConfigurationProtectedSetting')
         }
 
         $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
@@ -677,7 +694,7 @@ function New-AzConnectedKubernetes {
         $configDPEndpoint = $configDpInfo.configDPEndpoint
         $adResourceId = $configDpInfo.adResourceId
 
-        # If the health check fails (not 200 response), an exception is thrown 
+        # If the health check fails (not 200 response), an exception is thrown
         # so we can ignore the output.
         $null = Invoke-ConfigDPHealthCheck -configDPEndpoint $configDPEndpoint -Resource $adResourceId
 
@@ -688,7 +705,8 @@ function New-AzConnectedKubernetes {
         # If this is the case, update rather than adding.
         if ($PSBoundParameters.ContainsKey('AgentPublicKeyCertificate')) {
             $PSBoundParameters['AgentPublicKeyCertificate'] = $AgentPublicKey
-        } else {
+        }
+        else {
             $PSBoundParameters.Add('AgentPublicKeyCertificate', $AgentPublicKey)
         }
         $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
@@ -698,11 +716,11 @@ function New-AzConnectedKubernetes {
         Write-Debug "PUT response: $Response"
         $ResponseStr = "$Response"
         $helmValuesDp = Get-HelmValues `
-          -configDPEndpoint $configDPEndpoint `
-          -releaseTrain $ReleaseTrain `
-          -requestBody $ResponseStr `
-          -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
-          -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+            -configDPEndpoint $configDPEndpoint `
+            -releaseTrain $ReleaseTrain `
+            -requestBody $ResponseStr `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
 
         Write-Debug "helmValuesDp: $helmValuesDp"
         Write-Debug "OCI Artifact location: ${helmValuesDp.repositoryPath}."
@@ -730,7 +748,7 @@ function New-AzConnectedKubernetes {
             }
             $options += " --set $($field.Name)=$($field.Value)"
         }
-        
+
         # !!PDS: Is there any telemetry in Powershell cmdlets?
         # # Get azure-arc agent version for telemetry
         # azure_arc_agent_version = registry_path.split(":")[1]
@@ -751,23 +769,24 @@ function New-AzConnectedKubernetes {
         Write-Debug $options -ErrorAction Continue
         try {
             helm upgrade `
-            --install azure-arc `
-            $ChartPath `
-            --namespace $ReleaseInstallNamespace `
-            --create-namespace `
-            --set global.subscriptionId=$SubscriptionId `
-            --set global.resourceGroupName=$ResourceGroupName `
-            --set global.resourceName=$ClusterName `
-            --set global.tenantId=$TenantId `
-            --set global.location=$Location `
-            --set global.onboardingPrivateKey=$AgentPrivateKey `
-            --set systemDefaultValues.spnOnboarding=false `
-            --set global.azureEnvironment=AZUREPUBLICCLOUD `
-            --set systemDefaultValues.clusterconnect-agent.enabled=true `
-            --set global.kubernetesDistro=$Distribution `
-            --set global.kubernetesInfra=$Infrastructure (-split $options)
+                --install azure-arc `
+                $ChartPath `
+                --namespace $ReleaseInstallNamespace `
+                --create-namespace `
+                --set global.subscriptionId=$SubscriptionId `
+                --set global.resourceGroupName=$ResourceGroupName `
+                --set global.resourceName=$ClusterName `
+                --set global.tenantId=$TenantId `
+                --set global.location=$Location `
+                --set global.onboardingPrivateKey=$AgentPrivateKey `
+                --set systemDefaultValues.spnOnboarding=false `
+                --set global.azureEnvironment=AZUREPUBLICCLOUD `
+                --set systemDefaultValues.clusterconnect-agent.enabled=true `
+                --set global.kubernetesDistro=$Distribution `
+                --set global.kubernetesInfra=$Infrastructure (-split $options)
 
-        } catch {
+        }
+        catch {
             throw "Unable to install helm chart at $ChartPath"
         }
         Return $Response
