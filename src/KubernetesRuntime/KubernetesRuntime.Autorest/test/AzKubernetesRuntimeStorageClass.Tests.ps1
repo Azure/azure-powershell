@@ -70,13 +70,9 @@ Describe 'AzKubernetesRuntimeStorageClass' {
                 -Name $newStorageClassName `
                 -TypeProperty $typeProperty -Verbose
     
-            Write-Host "SC created" $output
-
             $output.TypeProperty.Type | Should -Be $typeProperty.Type
     
             Get-AzKubernetesRuntimeStorageClass -ResourceUri $resourceUri -Name $newStorageClassName | ConvertTo-Json | Should -Be ($output | ConvertTo-Json)
-
-            Write-Host "Removing SC $newStorageClassName"
 
             Remove-AzKubernetesRuntimeStorageClass -ResourceUri $resourceUri -Name $newStorageClassName
 
