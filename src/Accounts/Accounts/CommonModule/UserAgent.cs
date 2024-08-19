@@ -48,6 +48,12 @@ namespace Microsoft.Azure.Commands.Common
             {
                 list.Add(new ProductInfoHeaderValue(moduleName, moduleVersion));
             }
+            string hostEnv = Environment.GetEnvironmentVariable("AZUREPS_HOST_ENVIRONMENT");
+            if (!String.IsNullOrWhiteSpace(hostEnv))
+            {
+                hostEnv= hostEnv.Trim(); 
+                list.Add(new ProductInfoHeaderValue(hostEnv, ""));
+            }
             _userAgents = list.ToArray();
         }
 
