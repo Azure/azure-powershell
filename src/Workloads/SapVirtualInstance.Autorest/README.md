@@ -40,6 +40,7 @@ try-require:
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
+root-module-name: $(prefix).Workloads
 # Normally, title is the service name
 title: SapVirtualInstance
 subject-prefix: Workloads
