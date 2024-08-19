@@ -7,15 +7,16 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for ConfigurationType.
+    /// Defines values for ExceptionEntryValueMatchOperator.
     /// </summary>
 
 
-    public static class ConfigurationType
+    public static class ExceptionEntryValueMatchOperator
     {
-        public const string SecurityAdmin = "SecurityAdmin";
-        public const string Connectivity = "Connectivity";
-        public const string SecurityUser = "SecurityUser";
-        public const string Routing = "Routing";
+        public const string Equals = "Equals";
+        public const string Contains = "Contains";
+        public const string StartsWith = "StartsWith";
+        public const string EndsWith = "EndsWith";
+        public const string IPMatch = "IPMatch";
     }
 }

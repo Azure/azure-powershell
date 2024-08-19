@@ -7,15 +7,13 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for ConfigurationType.
+    /// Defines values for PrivateEndpointVNetPolicies.
     /// </summary>
 
 
-    public static class ConfigurationType
+    public static class PrivateEndpointVNetPolicies
     {
-        public const string SecurityAdmin = "SecurityAdmin";
-        public const string Connectivity = "Connectivity";
-        public const string SecurityUser = "SecurityUser";
-        public const string Routing = "Routing";
+        public const string Disabled = "Disabled";
+        public const string Basic = "Basic";
     }
 }
