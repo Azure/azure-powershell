@@ -116,7 +116,7 @@ Accept wildcard characters: False
 
 ### -Filter
 OData filter expression.
-Valid properties for filtering are package name and host pool.
+Valid properties for filtering are package name, host pool, package owner name, and custom data.
 
 ```yaml
 Type: System.String
@@ -201,7 +201,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IAppAttachPackage
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240306Preview.IAppAttachPackage
 
 ## NOTES
 

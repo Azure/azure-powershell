@@ -15,15 +15,15 @@ Update an App Attach Package
 ### UpdateExpanded (Default)
 ```
 Update-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-FailHealthCheckOnStagingFailure <FailHealthCheckOnStagingFailure>] [-HostPoolReference <String[]>]
- [-ImageCertificateExpiry <DateTime>] [-ImageCertificateName <String>] [-ImageDisplayName <String>]
- [-ImageIsActive] [-ImageIsPackageTimestamped <PackageTimestamped>] [-ImageIsRegularRegistration]
- [-ImageLastUpdated <DateTime>] [-ImagePackageAlias <String>]
+ [-CustomData <String>] [-FailHealthCheckOnStagingFailure <FailHealthCheckOnStagingFailure>]
+ [-HostPoolReference <String[]>] [-ImageCertificateExpiry <DateTime>] [-ImageCertificateName <String>]
+ [-ImageDisplayName <String>] [-ImageIsActive] [-ImageIsPackageTimestamped <PackageTimestamped>]
+ [-ImageIsRegularRegistration] [-ImageLastUpdated <DateTime>] [-ImagePackageAlias <String>]
  [-ImagePackageApplication <IMsixPackageApplications[]>]
  [-ImagePackageDependency <IMsixPackageDependencies[]>] [-ImagePackageFamilyName <String>]
  [-ImagePackageFullName <String>] [-ImagePackageName <String>] [-ImagePackageRelativePath <String>]
- [-ImagePath <String>] [-ImageVersion <String>] [-KeyVaultUrl <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ImagePath <String>] [-ImageVersion <String>] [-KeyVaultUrl <String>] [-PackageLookbackUrl <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ImageObject
@@ -36,7 +36,7 @@ Update-AzWvdAppAttachPackage [-AppAttachPackage] <AppAttachPackage> -Name <Strin
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWvdAppAttachPackage -InputObject <IDesktopVirtualizationIdentity>
+Update-AzWvdAppAttachPackage -InputObject <IDesktopVirtualizationIdentity> [-CustomData <String>]
  [-FailHealthCheckOnStagingFailure <FailHealthCheckOnStagingFailure>] [-HostPoolReference <String[]>]
  [-ImageCertificateExpiry <DateTime>] [-ImageCertificateName <String>] [-ImageDisplayName <String>]
  [-ImageIsActive] [-ImageIsPackageTimestamped <PackageTimestamped>] [-ImageIsRegularRegistration]
@@ -44,8 +44,8 @@ Update-AzWvdAppAttachPackage -InputObject <IDesktopVirtualizationIdentity>
  [-ImagePackageApplication <IMsixPackageApplications[]>]
  [-ImagePackageDependency <IMsixPackageDependencies[]>] [-ImagePackageFamilyName <String>]
  [-ImagePackageFullName <String>] [-ImagePackageName <String>] [-ImagePackageRelativePath <String>]
- [-ImagePath <String>] [-ImageVersion <String>] [-KeyVaultUrl <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ImagePath <String>] [-ImageVersion <String>] [-KeyVaultUrl <String>] [-PackageLookbackUrl <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -115,7 +115,7 @@ This command updates an Azure Virtual Desktop App Attach Package in a resource g
 To construct, see NOTES section for APPATTACHPACKAGE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.AppAttachPackage
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240306Preview.AppAttachPackage
 Parameter Sets: ImageObject
 Aliases:
 
@@ -123,6 +123,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -CustomData
+Field that can be populated with custom data and filtered on in list GET calls
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -263,7 +278,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImageLastUpdated
-Date Package was last updated, found in the appxmanifest.xml.
+Date the package source was last updated, for Msix packages this is found in the appxmanifest.xml.
 
 ```yaml
 Type: System.DateTime
@@ -299,7 +314,7 @@ List of package applications.
 To construct, see NOTES section for IMAGEPACKAGEAPPLICATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IMsixPackageApplications[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240306Preview.IMsixPackageApplications[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -316,7 +331,7 @@ List of package dependencies.
 To construct, see NOTES section for IMAGEPACKAGEDEPENDENCY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IMsixPackageDependencies[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240306Preview.IMsixPackageDependencies[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -328,8 +343,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImagePackageFamilyName
-Package Family Name from appxmanifest.xml.
-Contains Package Name and Publisher name.
+Identifier not including the package version, for Msix packages it is the family name from the appxmanifest.xml.
 
 ```yaml
 Type: System.String
@@ -344,7 +358,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImagePackageFullName
-Package Full Name from appxmanifest.xml.
+Identifier including the package version, for Msix packages it is the full name from the appxmanifest.xml.
 
 ```yaml
 Type: System.String
@@ -389,7 +403,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImagePath
-VHD/CIM image path on Network Share.
+VHD/CIM/APP-V image path on Network Share.
 
 ```yaml
 Type: System.String
@@ -458,6 +472,21 @@ Parameter Sets: ImageObject, UpdateExpanded
 Aliases: AppAttachPackageName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PackageLookbackUrl
+Lookback url to third party control plane, should be null for first party packages
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -561,13 +590,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.AppAttachPackage
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240306Preview.AppAttachPackage
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IAppAttachPackage
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240306Preview.IAppAttachPackage
 
 ## NOTES
 
