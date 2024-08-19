@@ -78,13 +78,6 @@ param(
     ${BackwardCompatible} = $false,
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.String]
     # The filter to apply on the operation.
@@ -224,14 +217,11 @@ process {
                     $calledParameters.ResourceGroupName = $resolved.ResourceGroupName
                 }
                 'resource' {
-                    $resourceId = $resolved.Scope
-                    $parts = ($resourceId -split '/')
-                    $first = 1
-                    $last = $parts.Length - 2
                     $calledParameterSet = 'List2'
-                    $calledParameters.ResourceProviderNamespace = $parts[0]
-                    $calledParameters.ResourceName = $parts[$parts.Length-1]
-                    $calledParameters.ResourceType = [System.String]::Join('/', $parts[$first..$last])
+                    $calledParameters.ResourceProviderNamespace = $resolved.ResourceNamespace
+                    $calledParameters.ResourceName = $resolved.ResourceName
+                    $calledParameters.ResourceType = $resolved.ResourceType
+                    $calledParameters.ParentResourcePath = '.'
                     $calledParameters.SubscriptionId = @($resolved.SubscriptionId)
                     $calledParameters.ResourceGroupName = $resolved.ResourceGroupName
                 }

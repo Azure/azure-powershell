@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the MySql service.
 
 ---
-## Status
-[![Az.MySql](https://img.shields.io/powershellgallery/v/Az.MySql.svg?style=flat-square&label=Az.MySql "Az.MySql")](https://www.powershellgallery.com/packages/Az.MySql/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -54,6 +51,8 @@ input-file:
   - $(repo)/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json
   - $(repo)/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/ServerSecurityAlertPolicies.json
   - $(repo)/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/mysql.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/2d973fccf9f28681a481e9760fa12b2334216e21/specification/mysql/resource-manager/Microsoft.DBforMySQL/FlexibleServers/stable/2023-12-30/AdvancedThreatProtectionSettings.json
+
 module-version: 0.1.0
 title: MySQL
 subject-prefix: 'MySQL'
@@ -128,6 +127,27 @@ directive:
       subject: VirtualNetworkRule
     set:
       parameter-name: SubnetId
+
+  - where:
+      verb: Set
+      subject: AdvancedThreatProtectionSettingPut
+    hide: true
+  - where:
+      subject: ^AdvancedThreatProtectionSetting$
+    set:
+      subject: FlexibleServerAdvancedThreatProtectionSetting
+  - where:
+      verb: Get
+      subject: FlexibleServerAdvancedThreatProtectionSetting
+      variant: ^List$|^GetViaIdentity$
+    remove: true
+  - where:
+      model-name: AdvancedThreatProtection
+    set:
+      format-table:
+        properties:
+          - State
+
   - where:
       model-name: Server
     set:

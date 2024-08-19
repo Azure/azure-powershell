@@ -42,7 +42,7 @@ variables:
   linuxAgentPoolName: pool-ubuntu-2004
   linuxAgentPoolVMImage: ''
   macOsAgentPoolName: Azure Pipelines
-  macOsAgentPoolVMImage: macOS-11
+  macOsAgentPoolVMImage: macOS-latest
 
 pr: none
 trigger: none

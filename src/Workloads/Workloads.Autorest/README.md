@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Workloads service.
 
 ---
-## Status
-[![Az.Workloads](https://img.shields.io/powershellgallery/v/Az.Workloads.svg?style=flat-square&label=Az.Workloads "Az.Workloads")](https://www.powershellgallery.com/packages/Az.Workloads/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

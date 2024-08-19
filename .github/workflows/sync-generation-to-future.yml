@@ -37,7 +37,7 @@ jobs:
           calculate changed modules
         #>
         $modulePaths = @()
-        git status --short | Where-Object { $_ -match ".*src.*" } | ForEach-Object { $modulePaths += $_.substring($_.IndexOf("src"), $_.IndexOf(".Autorest")+6) }
+        git status --short --untracked-files | Where-Object { $_ -match ".*src.*" } | ForEach-Object { $modulePaths += $_.substring($_.IndexOf("src"), $_.IndexOf(".Autorest")+6) }
         if (0 -eq $modulePaths.Count) {
           return
         }

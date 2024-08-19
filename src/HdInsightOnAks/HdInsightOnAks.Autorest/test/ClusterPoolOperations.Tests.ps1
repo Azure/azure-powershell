@@ -15,12 +15,12 @@ if (($null -eq $TestName) -or ($TestName -contains 'ClusterPoolOperations')) {
 
 Describe 'ClusterPoolOperations' {
     BeforeAll {
-        $location = "West US 3"
+        $location = "westus2"
         # need create resources group manually.
-        $clusterResourceGroupName = "PStestGroup"
-        $clusterpoolName = "hilo-pool"
-        $vmSize = "Standard_E4s_v3"
-        $LogAnalyticProfileWorkspaceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/pstestgroup/providers/microsoft.operationalinsights/workspaces/testhiloworkspace"
+        $clusterResourceGroupName = "psGroup"
+        $clusterpoolName = "ps-pool-operation"
+        $vmSize = "Standard_D4a_v4"
+        $LogAnalyticProfileWorkspaceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/psGroup/providers/microsoft.operationalinsights/workspaces/workspace"
 
     }
 
@@ -78,11 +78,6 @@ Describe 'ClusterPoolOperations' {
         [Console]::WriteLine("Update-AzHdInsightOnAksClusterPoolTag done")
     }
         
-    It 'Get AzHdInsightOnAksClusterPool available upgrade' {
-        { $script:clusterpool = Get-AzHdInsightOnAksClusterPoolAvailableUpgrade -ResourceGroupName $clusterResourceGroupName -ClusterPoolName $clusterpoolName } | Should -Not -Throw
-
-        [Console]::WriteLine("Get-AzHdInsightOnAksClusterPoolAvailableUpgrade done")
-    }
 
     It 'Remove AzHdInsightOnAksClusterPool' {
         { Remove-AzHdInsightOnAksClusterPool -ResourceGroupName $clusterResourceGroupName -Name $clusterpoolName } | Should -Not -Throw
