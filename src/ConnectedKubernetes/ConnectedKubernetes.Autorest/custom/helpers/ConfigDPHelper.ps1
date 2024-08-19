@@ -48,19 +48,23 @@ function Get-ConfigDPEndpoint {
     #     $ReleaseTrain = $result.ReleaseTrain
     # }
 
+    # It is currently not clear what information might appear here in the future
+    # so the check of "arcConfigEndpoint" is left is a best guess!".
     # Get the values or endpoints required for retrieving the Helm registry URL.
-    if ($cloudMetadata.dataplaneEndpoints -and $cloudMetadata.dataplaneEndpoints.arcConfigEndpoint) {
-        $ConfigDpEndpoint = $cloudMetadata.dataplaneEndpoints.arcConfigEndpoint
+    if ($null -ne $cloudMetadata.ArcConfigEndpoint) {
+        $ConfigDpEndpoint = $cloudMetadata.ArcConfigEndpoint
     }
     else {
-        Write-Debug "'arcConfigEndpoint' doesn't exist under 'dataplaneEndpoints' in the ARM metadata."
+        Write-Debug "'ArcConfigEndpoint' doesn't exist in the ARM cloud metadata."
     }
 
     # Get the default config dataplane endpoint.
     if ($null -eq $ConfigDpEndpoint) {
         $ConfigDpEndpoint = Get-ConfigDpDefaultEndpoint -Location $Location -CloudMetadata $cloudMetadata
     }
-    $ADResourceId = Get-AZCloudMetadataResourceId -CloudMetadata $cloudMetadata
+    # !!PDS: This appears to be unused.
+    # $ADResourceId = Get-AZCloudMetadataResourceId -CloudMetadata $cloudMetadata
+    $ADResourceId = $null
 
     return @{ ConfigDpEndpoint = $ConfigDpEndpoint; ReleaseTrain = $ReleaseTrain; ADResourceId = $ADResourceId }
 }
@@ -74,10 +78,13 @@ function Get-ConfigDpDefaultEndpoint {
         [PSCustomObject]$cloudMetadata
     )
 
-    # Search the $armMetadata hash for the entry where the "name" parameter matches
-    # $cloud and then find the login endpoint, from which we can discern the
-    # appropriate "cloud based domain ending".
-    $cloudBasedDomain = ($cloudMetadata.authentication.loginEndpoint -split "\.", 3)[2]
+    # The DP endpoint uses the same final URL portion as the AAD authority.  But
+    # we also need to trim the trailing "/".
+    $cloudBasedDomain = ($cloudMetadata.ActiveDirectoryAuthority -split "\.")[2]
+
+    # Remove optional trailing "/" from $cloudBasedDomain
+    $cloudBasedDomain = $cloudBasedDomain.TrimEnd('/')
+
     $configDpEndpoint = "https://${location}.dp.kubernetesconfiguration.azure.${cloudBasedDomain}"
     return $configDpEndpoint
 }
@@ -109,7 +116,20 @@ function Invoke-RestMethodWithUriParameters {
     #     $uriParametersArray = $uriParameters.GetEnumerator() | ForEach-Object { "$($_.Key)=$($_.Value)" } | ForEach-Object { $_ -join '=' } | ForEach-Object { $_ -join '&' }
     # }
     Write-Debug "Issue REST request to ${uri} with method ${method} and headers ${headers} and body ${requestBody}"
-    $rsp = Invoke-RestMethod -Method $method -Uri $uri -Headers $headers -Body $requestBody -ContentType "application/json"  -MaximumRetryCount $maximumRetryCount -RetryIntervalSec $retryintervalSec -StatusCodeVariable statusCode
+    $rsp = Invoke-RestMethod `
+        -Method $method `
+        -Uri $uri `
+        -Headers $headers `
+        -Body $requestBody `
+        -ContentType "application/json" `
+        -MaximumRetryCount $maximumRetryCount `
+        -RetryIntervalSec $retryintervalSec `
+        -StatusCodeVariable statusCode `
+        -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+        -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+
+    Write-Debug "Response: $($rsp | ConvertTo-Json -Depth 10)"
+
     Set-Variable -Name "${statusCodeVariable}" -Value $statusCode -Scope script
     return $rsp
 }

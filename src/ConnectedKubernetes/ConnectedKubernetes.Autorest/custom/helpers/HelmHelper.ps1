@@ -1,5 +1,6 @@
 [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '',
     Justification='Helm values is a recognised term', Scope='Function', Target='Get-HelmValues')]
+[CmdletBinding()]
 param()    
 
 function Set-HelmClientLocation {
@@ -110,7 +111,7 @@ function Get-HelmValues {
         $ConfigDpEndpoint,
         [string]$ReleaseTrainCustom,
         [Parameter(Mandatory=$true)]
-        $RequestBody
+        [string]$RequestBody
     )
 
     # Setting uri
@@ -132,22 +133,19 @@ function Get-HelmValues {
         $headers["Authorization"] = "Bearer $($env:AZURE_ACCESS_TOKEN)"
     }
 
-    $dpRequestIdentity = $RequestBody.identity
-    $id = $RequestBody.id
-    # $request_body = $request_body.serialize()
-    $RequestBody = $RequestBody | ConvertTo-Json | ConvertFrom-Json -AsHashtable
-    $RequestBody["Identity"] = @{
-        tenantId = $dpRequestIdentity.tenantId
-        principalId = $dpRequestIdentity.principalId
-    }
-    $RequestBody["Id"] = $id
-
-    # Convert $request_body to JSON
-    $jsonBody = $RequestBody | ConvertTo-Json
-
     # Sending request with retries
     try {
-        $r = Invoke-RestMethodWithUriParameters -Method 'post' -Uri $chartLocationUrl -Headers $headers -UriParameters $uriParameters -RequestBody $JsonBody -MaximumRetryCount 5 -RetryIntervalSec 3 -StatusCodeVariable StatusCode
+        $r = Invoke-RestMethodWithUriParameters `
+            -Method 'post' `
+            -Uri $chartLocationUrl `
+            -Headers $headers `
+            -UriParameters $uriParameters `
+            -RequestBody $RequestBody `
+            -MaximumRetryCount 5 `
+            -RetryIntervalSec 3 `
+            -StatusCodeVariable StatusCode `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
 
         # Response is a Hashtable of JSON values.
         if ($StatusCode -eq 200 -and $r) {
