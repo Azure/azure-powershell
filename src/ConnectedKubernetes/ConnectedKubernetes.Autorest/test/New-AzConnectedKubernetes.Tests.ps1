@@ -472,6 +472,13 @@ Describe 'Get-HelmValues' {
 
 Describe 'Get-HelmChartPath' {
 
+    BeforeAll {
+        # No user profile if running in the 'autorest' Docker container.
+        if (-not $env:USERPROFILE) {
+            $env:USERPROFILE = '/tmp'
+        }
+    }
+
     It 'Golden Path' {
         Mock Get-HelmChart {
         }
