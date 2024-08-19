@@ -92,10 +92,10 @@ namespace Tools.Common.Models
                 }
                 modulesEqual &= thisCmdlet.Equals(otherCmdlet);
             }
-            if(this.Cmdlets.Count != other.Cmdlets.Count)
+            /*if(this.Cmdlets.Count != other.Cmdlets.Count)
             {
-                // Console.WriteLine($"The number of cmdlets is unmatched in old and new module");
-            }
+                Console.WriteLine($"The number of cmdlets is unmatched in old and new module");
+            }*/
             modulesEqual &= this.Cmdlets.Count == other.Cmdlets.Count;
             return modulesEqual;
         }

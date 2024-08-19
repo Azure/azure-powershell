@@ -50,6 +50,7 @@ namespace VersionController
         };
         public static void Main(string[] args)
         {
+            // bez: to do: change positional parameters to dictionary parameters
             Initialize(args);
             ConsolidateExceptionFiles(_exceptionsDirectory);
             ValidateManifest();

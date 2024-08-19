@@ -361,10 +361,10 @@ namespace Tools.Common.Models
                 cmdletsEqual &= thisParameterSet.Equals(otherParameterSet);
             }
 
-            if (this.ParameterSets.Count != other.ParameterSets.Count)
-            {
-                // Console.WriteLine($"The number of parameter sets in cmdlet {this.Name} is unmatched.");
-            }
+            /*if (this.ParameterSets.Count != other.ParameterSets.Count)
+             {
+                 Console.WriteLine($"The number of parameter sets in cmdlet {this.Name} is unmatched.");
+             }*/
             cmdletsEqual &= this.ParameterSets.Count == other.ParameterSets.Count;
             return cmdletsEqual;
         }
