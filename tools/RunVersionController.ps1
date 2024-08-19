@@ -198,7 +198,6 @@ function Bump-AzVersion
 {
     Write-Host "Getting local Az information..." -ForegroundColor Yellow
     $localAz = Import-PowerShellDataFile -Path "$PSScriptRoot\Az\Az.psd1"
-    Write-Host $localAz.ModuleVersion
     Write-Host "Getting Az $ReleaseType information from gallery..." -ForegroundColor Yellow
     if("LTS" -eq $ReleaseType){
         $galleryAz = (Find-Module -Name Az -Repository $GalleryName -AllVersions | Where-Object {([System.Version]($_.Version)).Major -eq ([System.Version]($localAz.ModuleVersion)).Major} | Sort-Object {[System.Version]$_.Version} -Descending)[0]
