@@ -18,7 +18,8 @@ Update-AzGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <Strin
  [-GalleryImageDefinitionName] <String> [-Name] <String> [-AsJob] [-PublishingProfileEndOfLifeDate <DateTime>]
  [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>] [-Tag <Hashtable>] [-TargetRegion <Hashtable[]>]
  [-TargetExtendedLocation <Hashtable[]>] [-AllowDeletionOfReplicatedLocation <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
@@ -26,7 +27,8 @@ Update-AzGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <Strin
 Update-AzGalleryImageVersion [-ResourceId] <String> [-AsJob] [-PublishingProfileEndOfLifeDate <DateTime>]
  [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>] [-Tag <Hashtable>] [-TargetRegion <Hashtable[]>]
  [-TargetExtendedLocation <Hashtable[]>] [-AllowDeletionOfReplicatedLocation <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ObjectParameter
@@ -34,8 +36,8 @@ Update-AzGalleryImageVersion [-ResourceId] <String> [-AsJob] [-PublishingProfile
 Update-AzGalleryImageVersion [-InputObject] <PSGalleryImageVersion> [-AsJob]
  [-PublishingProfileEndOfLifeDate <DateTime>] [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>]
  [-Tag <Hashtable>] [-TargetRegion <Hashtable[]>] [-TargetExtendedLocation <Hashtable[]>]
- [-AllowDeletionOfReplicatedLocation <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AllowDeletionOfReplicatedLocation <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

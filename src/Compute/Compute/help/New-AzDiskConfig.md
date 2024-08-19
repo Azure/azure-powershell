@@ -26,7 +26,8 @@ New-AzDiskConfig [[-SkuName] <String>] [-Tier <String>] [-LogicalSectorSize <Int
  [-NetworkAccessPolicy <String>] [-BurstingEnabled <Boolean>] [-PublicNetworkAccess <String>]
  [-AcceleratedNetwork <Boolean>] [-DataAccessAuthMode <String>] [-Architecture <String>]
  [-PerformancePlus <Boolean>] [-OptimizedForFrequentAttach <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

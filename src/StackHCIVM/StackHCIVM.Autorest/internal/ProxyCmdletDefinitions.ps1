@@ -80,7 +80,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for OSTYPEINPUTOBJECT properties and create a hash table.
     ${OSTypeInputObject},
 
     [Parameter()]
@@ -306,21 +305,18 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for EXTENSIONTYPEINPUTOBJECT properties and create a hash table.
     ${ExtensionTypeInputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityLocation', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for LOCATIONINPUTOBJECT properties and create a hash table.
     ${LocationInputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityPublisher', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for PUBLISHERINPUTOBJECT properties and create a hash table.
     ${PublisherInputObject},
 
     [Parameter()]
@@ -388,7 +384,13 @@ begin {
             List = 'Az.StackHCIVM.private\Get-AzStackHCIVMExtensionMetadata_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -525,7 +527,13 @@ begin {
             List1 = 'Az.StackHCIVM.private\Get-AzStackHCIVMGalleryImage_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -763,7 +771,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MACHINEINPUTOBJECT properties and create a hash table.
     ${MachineInputObject},
 
     [Parameter()]
@@ -831,7 +838,13 @@ begin {
             List1 = 'Az.StackHCIVM.private\Get-AzStackHCIVMHybridIdentityMetadata_List1';
         }
         if (('Get1', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -943,7 +956,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MACHINEINPUTOBJECT properties and create a hash table.
     ${MachineInputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -1015,7 +1027,13 @@ begin {
             List = 'Az.StackHCIVM.private\Get-AzStackHCIVMMachineExtension_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -1159,7 +1177,13 @@ begin {
             List1 = 'Az.StackHCIVM.private\Get-AzStackHCIVMMachine_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -1296,7 +1320,13 @@ begin {
             List1 = 'Az.StackHCIVM.private\Get-AzStackHCIVMMarketplaceGalleryImage_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -1429,7 +1459,13 @@ begin {
             Get = 'Az.StackHCIVM.private\Get-AzStackHCIVMNetworkProfile_Get';
         }
         if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -1464,23 +1500,21 @@ end {
 
 <#
 .Synopsis
-List all the supported operations.
+Gets a list of hybrid compute operations.
 .Description
-List all the supported operations.
+Gets a list of hybrid compute operations.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperation
-.Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationValue
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmoperation
 #>
 function Get-AzStackHCIVMOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperation], [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationValue])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationValue])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -1542,7 +1576,6 @@ begin {
 
         $mapping = @{
             List = 'Az.StackHCIVM.private\Get-AzStackHCIVMOperation_List';
-            List1 = 'Az.StackHCIVM.private\Get-AzStackHCIVMOperation_List1';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -1694,10 +1727,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a gallery image.
+The operation to create or update a gallery image.
 Please note some properties can be set only during gallery image creation.
 .Description
-The operation to Create a gallery image.
+The operation to create or update a gallery image.
 Please note some properties can be set only during gallery image creation.
 .Example
 {{ Add code here }}
@@ -1897,7 +1930,13 @@ begin {
             CreateViaJsonString = 'Az.StackHCIVM.private\New-AzStackHCIVMGalleryImage_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('ExtendedLocationType') ) {
             $PSBoundParameters['ExtendedLocationType'] = "CustomLocation"
@@ -2096,10 +2135,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a logical network.
+The operation to create or update a logical network.
 Please note some properties can be set only during logical network creation.
 .Description
-The operation to Create a logical network.
+The operation to create or update a logical network.
 Please note some properties can be set only during logical network creation.
 .Example
 New-AzStackHCIVMLogicalNetwork  -Name "testLnet" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus" -VmSwitchName "testswitch"
@@ -2180,7 +2219,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISubnet[]]
     # Subnet - list of subnets under the logical network
-    # To construct, see NOTES section for SUBNET properties and create a hash table.
     ${Subnet},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -2283,7 +2321,13 @@ begin {
             CreateViaJsonString = 'Az.StackHCIVM.private\New-AzStackHCIVMLogicalNetwork_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('ExtendedLocationType') ) {
             $PSBoundParameters['ExtendedLocationType'] = "CustomLocation"
@@ -2321,9 +2365,9 @@ end {
 
 <#
 .Synopsis
-The operation to Create the extension.
+The operation to create or update the extension.
 .Description
-The operation to Create the extension.
+The operation to create or update the extension.
 .Example
 {{ Add code here }}
 .Example
@@ -2426,7 +2470,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MACHINEINPUTOBJECT properties and create a hash table.
     ${MachineInputObject},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -2564,7 +2607,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtension]
     # Describes a Machine Extension.
-    # To construct, see NOTES section for EXTENSIONPARAMETER properties and create a hash table.
     ${ExtensionParameter},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
@@ -2656,7 +2698,13 @@ begin {
             CreateViaJsonString = 'Az.StackHCIVM.private\New-AzStackHCIVMMachineExtension_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -2691,10 +2739,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a hybrid machine.
+The operation to create or update a hybrid machine.
 Please note some properties can be set only during machine creation.
 .Description
-The operation to Create a hybrid machine.
+The operation to create or update a hybrid machine.
 Please note some properties can be set only during machine creation.
 .Example
 {{ Add code here }}
@@ -2780,7 +2828,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtensionInstanceView[]]
     # Machine Extensions information (deprecated field)
-    # To construct, see NOTES section for EXTENSION properties and create a hash table.
     ${Extension},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -2985,7 +3032,13 @@ begin {
             CreateViaJsonString = 'Az.StackHCIVM.private\New-AzStackHCIVMMachine_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -3020,10 +3073,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a marketplace gallery image.
+The operation to create or update a marketplace gallery image.
 Please note some properties can be set only during marketplace gallery image creation.
 .Description
-The operation to Create a marketplace gallery image.
+The operation to create or update a marketplace gallery image.
 Please note some properties can be set only during marketplace gallery image creation.
 .Example
 {{ Add code here }}
@@ -3217,7 +3270,13 @@ begin {
             CreateViaJsonString = 'Az.StackHCIVM.private\New-AzStackHCIVMMarketplaceGalleryImage_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('ExtendedLocationType') ) {
             $PSBoundParameters['ExtendedLocationType'] = "CustomLocation"
@@ -3255,10 +3314,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a network interface.
+The operation to create or update a network interface.
 Please note some properties can be set only during network interface creation.
 .Description
-The operation to Create a network interface.
+The operation to create or update a network interface.
 Please note some properties can be set only during network interface creation.
 .Example
 New-AzStackHCIVMNetworkInterface  -Name "testNic" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus" -SubnetName "testLnet" 
@@ -3326,7 +3385,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfiguration[]]
     # IPConfigurations - A list of IPConfigurations of the network interface.
-    # To construct, see NOTES section for IPCONFIGURATION properties and create a hash table.
     ${IPConfiguration},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -3429,7 +3487,13 @@ begin {
             CreateViaJsonString = 'Az.StackHCIVM.private\New-AzStackHCIVMNetworkInterface_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('ExtendedLocationType') ) {
             $PSBoundParameters['ExtendedLocationType'] = "CustomLocation"
@@ -3467,10 +3531,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a storage container.
+The operation to create or update a storage container.
 Please note some properties can be set only during storage container creation.
 .Description
-The operation to Create a storage container.
+The operation to create or update a storage container.
 Please note some properties can be set only during storage container creation.
 .Example
 New-AzStackHCIVMStoragePath  -Name "testStoragePath" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"-Location "eastus" -Path "C:\ClusterStorage\Volume1\testpath"
@@ -3617,7 +3681,13 @@ begin {
             CreateViaJsonString = 'Az.StackHCIVM.private\New-AzStackHCIVMStoragePath_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('ExtendedLocationType') ) {
             $PSBoundParameters['ExtendedLocationType'] = "CustomLocation"
@@ -3655,10 +3725,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a virtual hard disk.
+The operation to create or update a virtual hard disk.
 Please note some properties can be set only during virtual hard disk creation.
 .Description
-The operation to Create a virtual hard disk.
+The operation to create or update a virtual hard disk.
 Please note some properties can be set only during virtual hard disk creation.
 .Example
 New-AzStackHCIVMVirtualHardDisk -Name "testVhd" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus" -SizeGb 2
@@ -3849,7 +3919,13 @@ begin {
             CreateViaJsonString = 'Az.StackHCIVM.private\New-AzStackHCIVMVirtualHardDisk_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('ExtendedLocationType') ) {
             $PSBoundParameters['ExtendedLocationType'] = "CustomLocation"
@@ -3887,10 +3963,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a virtual machine instance.
+The operation to create or update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Description
-The operation to Create a virtual machine instance.
+The operation to create or update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Example
 New-AzStackHCIVMVirtualMachine -Name "testVm" -OsType "Linux"  -ImageName "testImage" -VmSize "Standard_K8S_v1"  -AdminUsername "localadmin" -ComputerName "testVm"  -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus"
@@ -4047,7 +4123,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshPublicKey[]]
     # The list of SSH public keys used to authenticate with linux based VMs.
-    # To construct, see NOTES section for LINUXCONFIGURATIONSSHPUBLICKEY properties and create a hash table.
     ${LinuxConfigurationSshPublicKey},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -4055,7 +4130,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem[]]
     # NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
-    # To construct, see NOTES section for NETWORKPROFILENETWORKINTERFACE properties and create a hash table.
     ${NetworkProfileNetworkInterface},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -4103,7 +4177,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesStorageProfileDataDisksItem[]]
     # adds data disks to the virtual machine instance
-    # To construct, see NOTES section for STORAGEPROFILEDATADISK properties and create a hash table.
     ${StorageProfileDataDisk},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -4148,7 +4221,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshPublicKey[]]
     # The list of SSH public keys used to authenticate with linux based VMs.
-    # To construct, see NOTES section for WINDOWSCONFIGURATIONSSHPUBLICKEY properties and create a hash table.
     ${WindowsConfigurationSshPublicKey},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
@@ -4341,7 +4413,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -4424,7 +4495,13 @@ begin {
             DeleteViaIdentity = 'Az.StackHCIVM.private\Remove-AzStackHCIVMGalleryImage_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -4659,7 +4736,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -4742,7 +4818,13 @@ begin {
             DeleteViaIdentity = 'Az.StackHCIVM.private\Remove-AzStackHCIVMLogicalNetwork_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -4871,14 +4953,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityMachine', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MACHINEINPUTOBJECT properties and create a hash table.
     ${MachineInputObject},
 
     [Parameter()]
@@ -4962,7 +5042,13 @@ begin {
             DeleteViaIdentityMachine = 'Az.StackHCIVM.private\Remove-AzStackHCIVMMachineExtension_DeleteViaIdentityMachine';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -5065,7 +5151,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -5136,7 +5221,13 @@ begin {
             DeleteViaIdentity = 'Az.StackHCIVM.private\Remove-AzStackHCIVMMachine_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -5239,7 +5330,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -5322,7 +5412,13 @@ begin {
             DeleteViaIdentity = 'Az.StackHCIVM.private\Remove-AzStackHCIVMMarketplaceGalleryImage_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -5423,7 +5519,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -5506,7 +5601,13 @@ begin {
             DeleteViaIdentity = 'Az.StackHCIVM.private\Remove-AzStackHCIVMNetworkInterface_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -5608,7 +5709,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -5691,7 +5791,13 @@ begin {
             DeleteViaIdentity = 'Az.StackHCIVM.private\Remove-AzStackHCIVMStoragePath_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -5793,7 +5899,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -5876,7 +5981,13 @@ begin {
             DeleteViaIdentity = 'Az.StackHCIVM.private\Remove-AzStackHCIVMVirtualHardDisk_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -6171,10 +6282,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a gallery image.
+The operation to create or update a gallery image.
 Please note some properties can be set only during gallery image creation.
 .Description
-The operation to Create a gallery image.
+The operation to create or update a gallery image.
 Please note some properties can be set only during gallery image creation.
 .Example
 {{ Add code here }}
@@ -6381,7 +6492,13 @@ begin {
             UpdateViaJsonString = 'Az.StackHCIVM.private\Set-AzStackHCIVMGalleryImage_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -6416,10 +6533,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a logical network.
+The operation to create or update a logical network.
 Please note some properties can be set only during logical network creation.
 .Description
-The operation to Create a logical network.
+The operation to create or update a logical network.
 Please note some properties can be set only during logical network creation.
 .Example
 {{ Add code here }}
@@ -6509,7 +6626,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISubnet[]]
     # Subnet - list of subnets under the logical network
-    # To construct, see NOTES section for SUBNET properties and create a hash table.
     ${Subnet},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -6612,7 +6728,13 @@ begin {
             UpdateViaJsonString = 'Az.StackHCIVM.private\Set-AzStackHCIVMLogicalNetwork_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -6647,9 +6769,9 @@ end {
 
 <#
 .Synopsis
-The operation to Create the extension.
+The operation to create or update the extension.
 .Description
-The operation to Create the extension.
+The operation to create or update the extension.
 .Example
 {{ Add code here }}
 .Example
@@ -6890,7 +7012,13 @@ begin {
             UpdateViaJsonString = 'Az.StackHCIVM.private\Set-AzStackHCIVMMachineExtension_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -6925,10 +7053,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a hybrid machine.
+The operation to create or update a hybrid machine.
 Please note some properties can be set only during machine creation.
 .Description
-The operation to Create a hybrid machine.
+The operation to create or update a hybrid machine.
 Please note some properties can be set only during machine creation.
 .Example
 {{ Add code here }}
@@ -7014,7 +7142,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtensionInstanceView[]]
     # Machine Extensions information (deprecated field)
-    # To construct, see NOTES section for EXTENSION properties and create a hash table.
     ${Extension},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -7219,7 +7346,13 @@ begin {
             UpdateViaJsonString = 'Az.StackHCIVM.private\Set-AzStackHCIVMMachine_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -7254,10 +7387,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a marketplace gallery image.
+The operation to create or update a marketplace gallery image.
 Please note some properties can be set only during marketplace gallery image creation.
 .Description
-The operation to Create a marketplace gallery image.
+The operation to create or update a marketplace gallery image.
 Please note some properties can be set only during marketplace gallery image creation.
 .Example
 {{ Add code here }}
@@ -7458,7 +7591,13 @@ begin {
             UpdateViaJsonString = 'Az.StackHCIVM.private\Set-AzStackHCIVMMarketplaceGalleryImage_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -7493,10 +7632,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a network interface.
+The operation to create or update a network interface.
 Please note some properties can be set only during network interface creation.
 .Description
-The operation to Create a network interface.
+The operation to create or update a network interface.
 Please note some properties can be set only during network interface creation.
 .Example
 {{ Add code here }}
@@ -7573,7 +7712,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfiguration[]]
     # IPConfigurations - A list of IPConfigurations of the network interface.
-    # To construct, see NOTES section for IPCONFIGURATION properties and create a hash table.
     ${IPConfiguration},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -7676,7 +7814,13 @@ begin {
             UpdateViaJsonString = 'Az.StackHCIVM.private\Set-AzStackHCIVMNetworkInterface_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -7711,10 +7855,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a storage container.
+The operation to create or update a storage container.
 Please note some properties can be set only during storage container creation.
 .Description
-The operation to Create a storage container.
+The operation to create or update a storage container.
 Please note some properties can be set only during storage container creation.
 .Example
 {{ Add code here }}
@@ -7870,7 +8014,13 @@ begin {
             UpdateViaJsonString = 'Az.StackHCIVM.private\Set-AzStackHCIVMStorageContainer_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -7905,10 +8055,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a virtual hard disk.
+The operation to create or update a virtual hard disk.
 Please note some properties can be set only during virtual hard disk creation.
 .Description
-The operation to Create a virtual hard disk.
+The operation to create or update a virtual hard disk.
 Please note some properties can be set only during virtual hard disk creation.
 .Example
 {{ Add code here }}
@@ -8108,7 +8258,13 @@ begin {
             UpdateViaJsonString = 'Az.StackHCIVM.private\Set-AzStackHCIVMVirtualHardDisk_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -8143,10 +8299,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a virtual machine instance.
+The operation to create or update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Description
-The operation to Create a virtual machine instance.
+The operation to create or update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Example
 {{ Add code here }}
@@ -8299,7 +8455,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshPublicKey[]]
     # The list of SSH public keys used to authenticate with linux based VMs.
-    # To construct, see NOTES section for LINUXCONFIGURATIONSSHPUBLICKEY properties and create a hash table.
     ${LinuxConfigurationSshPublicKey},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -8307,7 +8462,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem[]]
     # NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
-    # To construct, see NOTES section for NETWORKPROFILENETWORKINTERFACE properties and create a hash table.
     ${NetworkProfileNetworkInterface},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -8367,7 +8521,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesStorageProfileDataDisksItem[]]
     # adds data disks to the virtual machine instance
-    # To construct, see NOTES section for STORAGEPROFILEDATADISK properties and create a hash table.
     ${StorageProfileDataDisk},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -8411,7 +8564,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshPublicKey[]]
     # The list of SSH public keys used to authenticate with linux based VMs.
-    # To construct, see NOTES section for WINDOWSCONFIGURATIONSSHPUBLICKEY properties and create a hash table.
     ${WindowsConfigurationSshPublicKey},
 
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
@@ -8870,7 +9022,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Upgrade', Mandatory, ValueFromPipeline)]
@@ -8878,7 +9029,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtensionUpgrade]
     # Describes the Machine Extension Upgrade Properties.
-    # To construct, see NOTES section for EXTENSIONUPGRADEPARAMETER properties and create a hash table.
     ${ExtensionUpgradeParameter},
 
     [Parameter(ParameterSetName='UpgradeExpanded')]
@@ -8985,7 +9135,13 @@ begin {
             UpgradeViaJsonString = 'Az.StackHCIVM.private\Update-AzStackHCIVMExtension_UpgradeViaJsonString';
         }
         if (('Upgrade', 'UpgradeExpanded', 'UpgradeViaJsonFilePath', 'UpgradeViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -9094,7 +9250,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -9193,7 +9348,13 @@ begin {
             UpdateViaJsonString = 'Az.StackHCIVM.private\Update-AzStackHCIVMGalleryImage_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -9228,9 +9389,9 @@ end {
 
 <#
 .Synopsis
-Create GuestAgent.
+Update GuestAgent.
 .Description
-Create GuestAgent.
+Update GuestAgent.
 .Example
 {{ Add code here }}
 .Example
@@ -9375,9 +9536,9 @@ end {
 
 <#
 .Synopsis
-The operation to Update the extension.
+The operation to create or update the extension.
 .Description
-The operation to Update the extension.
+The operation to create or update the extension.
 .Example
 {{ Add code here }}
 .Example
@@ -9494,7 +9655,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityMachine', Mandatory, ValueFromPipeline)]
@@ -9502,7 +9662,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MACHINEINPUTOBJECT properties and create a hash table.
     ${MachineInputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -9585,7 +9744,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtensionUpdate]
     # Describes a Machine Extension Update.
-    # To construct, see NOTES section for EXTENSIONPARAMETER properties and create a hash table.
     ${ExtensionParameter},
 
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
@@ -9678,7 +9836,13 @@ begin {
             UpdateViaJsonString = 'Az.StackHCIVM.private\Update-AzStackHCIVMMachineExtension_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -9787,7 +9951,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -9985,7 +10148,13 @@ begin {
             UpdateViaJsonString = 'Az.StackHCIVM.private\Update-AzStackHCIVMMachine_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -10094,7 +10263,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -10193,7 +10361,13 @@ begin {
             UpdateViaJsonString = 'Az.StackHCIVM.private\Update-AzStackHCIVMMarketplaceGalleryImage_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -10228,9 +10402,11 @@ end {
 
 <#
 .Synopsis
-The operation to update a virtual machine instance.
+The operation to create or update a virtual machine instance.
+Please note some properties can be set only during virtual machine instance creation.
 .Description
-The operation to update a virtual machine instance.
+The operation to create or update a virtual machine instance.
+Please note some properties can be set only during virtual machine instance creation.
 .Example
 Update-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg" -VmMemoryInMB "4"
 
@@ -10241,11 +10417,19 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-NETWORKPROFILENETWORKINTERFACE <INetworkProfileUpdateNetworkInterfacesItem[]>: NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
-  [Id <String>]: ID - Resource ID of the network interface
+LINUXCONFIGURATIONSSHPUBLICKEY <ISshPublicKey[]>: The list of SSH public keys used to authenticate with linux based VMs.
+  [KeyData <String>]: SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format.    For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+  [Path <String>]: Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
 
-STORAGEPROFILEDATADISK <IStorageProfileUpdateDataDisksItem[]>: adds data disks to the virtual machine instance for the update call
-  [Id <String>]: 
+NETWORKPROFILENETWORKINTERFACE <IVirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem[]>: NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
+  [Id <String>]: ID - Resource Id of the network interface
+
+STORAGEPROFILEDATADISK <IVirtualMachineInstancePropertiesStorageProfileDataDisksItem[]>: adds data disks to the virtual machine instance
+  [Id <String>]: Resource ID of the data disk
+
+WINDOWSCONFIGURATIONSSHPUBLICKEY <ISshPublicKey[]>: The list of SSH public keys used to authenticate with linux based VMs.
+  [KeyData <String>]: SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format.    For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+  [Path <String>]: Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmvirtualmachine
 #>
@@ -10259,89 +10443,217 @@ param(
     # The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
     ${ResourceUri},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.Int32]
+    # Defines the amount of extra memory that should be reserved for a virtual machine instance at runtime, as a percentage of the total memory that the virtual machine instance is thought to need.
+    # This only applies to virtual systems with dynamic memory enabled.
+    # This property can be in the range of 5 to 2000.
+    ${DynamicMemoryConfigTargetMemoryBuffer},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.Int64]
+    # .
+    ${DynamicMemoryMaximumMemoryInMb},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.Int64]
+    # .
+    ${DynamicMemoryMinimumMemoryInMb},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.String]
+    # The name of the extended location.
+    ${ExtendedLocationName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PSArgumentCompleterAttribute("CustomLocation")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.String]
+    # The type of the extended location.
+    ${ExtendedLocationType},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.Int64]
     # RAM in MB for the virtual machine instance
     ${HardwareProfileMemoryMb},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.Int32]
     # number of processors for the virtual machine instance
     ${HardwareProfileProcessor},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PSArgumentCompleterAttribute("Default", "Standard_A2_v2", "Standard_A4_v2", "Standard_D2s_v3", "Standard_D4s_v3", "Standard_D8s_v3", "Standard_D16s_v3", "Standard_D32s_v3", "Standard_DS2_v2", "Standard_DS3_v2", "Standard_DS4_v2", "Standard_DS5_v2", "Standard_DS13_v2", "Standard_K8S_v1", "Standard_K8S2_v1", "Standard_K8S3_v1", "Standard_K8S4_v1", "Standard_NK6", "Standard_NK12", "Standard_NV6", "Standard_NV12", "Standard_K8S5_v1", "Custom")]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.String]
     # .
     ${HardwareProfileVMSize},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.String]
+    # The HTTP proxy server endpoint to use.
+    ${HttpProxyConfigHttpProxy},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.String]
+    # The HTTPS proxy server endpoint to use.
+    ${HttpProxyConfigHttpsProxy},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.String[]]
+    # The endpoints that should not go through proxy.
+    ${HttpProxyConfigNoProxy},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.String]
+    # Alternative CA cert to use for connecting to proxy servers.
+    ${HttpProxyConfigTrustedCa},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PSArgumentCompleterAttribute("SystemAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.String]
     # The identity type.
     ${IdentityType},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # DisablePasswordAuthentication - whether password authentication should be disabled
+    ${LinuxConfigurationDisablePasswordAuthentication},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process.
     ${LinuxConfigurationProvisionVMAgent},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
     ${LinuxConfigurationProvisionVMConfigAgent},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkProfileUpdateNetworkInterfacesItem[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshPublicKey[]]
+    # The list of SSH public keys used to authenticate with linux based VMs.
+    ${LinuxConfigurationSshPublicKey},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem[]]
     # NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
-    # To construct, see NOTES section for NETWORKPROFILENETWORKINTERFACE properties and create a hash table.
     ${NetworkProfileNetworkInterface},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.String]
-    # ComputerName - name of the computer
+    # Resource ID of the OS disk
+    ${OSDiskId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PSArgumentCompleterAttribute("Windows", "Linux")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.String]
+    # This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD.
+    # Possible values are: **Windows,** **Linux.**
+    ${OSDiskOstype},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.String]
+    # AdminUsername - admin username
+    ${OSProfileAdminUsername},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.String]
+    # ComputerName - name of the compute
     ${OSProfileComputerName},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.String]
+    # Unique identifier defined by ARC to identify the guest of the VM.
+    ${ResourceUid},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # .
+    ${SecurityProfileEnableTpm},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PSArgumentCompleterAttribute("TrustedLaunch", "ConfidentialVM")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.String]
+    # Specifies the SecurityType of the virtual machine.
+    # EnableTPM and SecureBootEnabled must be set to true for SecurityType to function.
+    ${SecurityProfileSecurityType},
+
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageProfileUpdateDataDisksItem[]]
-    # adds data disks to the virtual machine instance for the update call
-    # To construct, see NOTES section for STORAGEPROFILEDATADISK properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesStorageProfileDataDisksItem[]]
+    # adds data disks to the virtual machine instance
     ${StorageProfileDataDisk},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.String]
+    # Id of the storage container that hosts the VM configuration file
+    ${StorageProfileVMConfigStoragePathId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Specifies whether secure boot should be enabled on the virtual machine instance.
+    ${UefiSettingSecureBootEnabled},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Whether to EnableAutomaticUpdates on the machine
+    ${WindowConfigurationEnableAutomaticUpdate},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process.
     ${WindowConfigurationProvisionVMAgent},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
     ${WindowConfigurationProvisionVMConfigAgent},
 
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.String]
-    # Path of Json file supplied to the Update operation
-    ${JsonFilePath},
+    # TimeZone for the virtual machine instance
+    ${WindowConfigurationTimeZone},
 
-    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [System.String]
-    # Json string supplied to the Update operation
-    ${JsonString},
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshPublicKey[]]
+    # The list of SSH public keys used to authenticate with linux based VMs.
+    ${WindowsConfigurationSshPublicKey},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -10414,8 +10726,6 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.StackHCIVM.private\Update-AzStackHCIVMVirtualMachine_UpdateExpanded';
-            UpdateViaJsonFilePath = 'Az.StackHCIVM.private\Update-AzStackHCIVMVirtualMachine_UpdateViaJsonFilePath';
-            UpdateViaJsonString = 'Az.StackHCIVM.private\Update-AzStackHCIVMVirtualMachine_UpdateViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

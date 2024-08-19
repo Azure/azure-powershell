@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a cluster in a private cloud</summary>
+    /// <summary>Update a Cluster</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzVMwareCluster_UpdateViaIdentityPrivateCloudExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Update a cluster in a private cloud")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Update a Cluster")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}", ApiVersion = "2023-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}", ApiVersion = "2023-09-01")]
     public partial class UpdateAzVMwareCluster_UpdateViaIdentityPrivateCloudExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IContext
@@ -118,12 +118,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
-        /// <summary>Name of the cluster in the private cloud</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the cluster in the private cloud")]
+        /// <summary>Name of the cluster</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the cluster")]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Name of the cluster in the private cloud",
+        Description = @"Name of the cluster",
         SerializedName = @"clusterName",
         PossibleTypes = new [] { typeof(string) })]
         [global::System.Management.Automation.Alias("ClusterName")]
@@ -178,6 +178,72 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Use the default credentials for the proxy")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
+
+        /// <summary>
+        /// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the
+        /// resource this may be omitted.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.",
+        SerializedName = @"capacity",
+        PossibleTypes = new [] { typeof(int) })]
+        public int SkuCapacity { get => _clusterUpdateBody.SkuCapacity ?? default(int); set => _clusterUpdateBody.SkuCapacity = value; }
+
+        /// <summary>
+        /// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "If the service has different generations of hardware, for the same SKU, then that can be captured here.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"If the service has different generations of hardware, for the same SKU, then that can be captured here.",
+        SerializedName = @"family",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SkuFamily { get => _clusterUpdateBody.SkuFamily ?? null; set => _clusterUpdateBody.SkuFamily = value; }
+
+        /// <summary>The name of the SKU. E.g. P3. It is typically a letter+number code</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the SKU. E.g. P3. It is typically a letter+number code")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the SKU. E.g. P3. It is typically a letter+number code",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SkuName { get => _clusterUpdateBody.SkuName ?? null; set => _clusterUpdateBody.SkuName = value; }
+
+        /// <summary>
+        /// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. ")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. ",
+        SerializedName = @"size",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SkuSize { get => _clusterUpdateBody.SkuSize ?? null; set => _clusterUpdateBody.SkuSize = value; }
+
+        /// <summary>
+        /// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required
+        /// on a PUT.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.",
+        SerializedName = @"tier",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Free", "Basic", "Standard", "Premium")]
+        public string SkuTier { get => _clusterUpdateBody.SkuTier ?? null; set => _clusterUpdateBody.SkuTier = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -252,6 +318,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
             {
                 // Flush buffer
                 WriteObject(_firstResponse);
+            }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.VMware.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
             }
         }
 
@@ -491,6 +575,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         public UpdateAzVMwareCluster_UpdateViaIdentityPrivateCloudExpanded()
         {
 
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.VMware.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.VMware.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

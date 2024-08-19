@@ -33,7 +33,8 @@ Update-AzSqlVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <Stri
  [-WsfcDomainCredentialsClusterBootstrapAccountPassword <SecureString>]
  [-WsfcDomainCredentialsClusterOperatorAccountPassword <SecureString>]
  [-WsfcDomainCredentialsSqlServiceAccountPassword <SecureString>] [-WsfcStaticIP <String>]
- [-EnableAutomaticUpgrade] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-EnableAutomaticUpgrade] [-ManagedIdentityClientId <String>] [-IdentityType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -57,7 +58,8 @@ Update-AzSqlVM -InputObject <ISqlVirtualMachineIdentity> [-LicenseType <SqlServe
  [-WsfcDomainCredentialsClusterBootstrapAccountPassword <SecureString>]
  [-WsfcDomainCredentialsClusterOperatorAccountPassword <SecureString>]
  [-WsfcDomainCredentialsSqlServiceAccountPassword <SecureString>] [-WsfcStaticIP <String>]
- [-EnableAutomaticUpgrade] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-EnableAutomaticUpgrade] [-ManagedIdentityClientId <String>] [-IdentityType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -166,8 +168,7 @@ Update a SQL virtual machine to enable assessment.
 
 ### Example 8
 ```powershell
-# $pwd is the password for cluster accounts
-$securepwd = ConvertTo-SecureString -String $pwd -AsPlainText -Force
+$securepwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' `
 -SqlVirtualMachineGroupResourceId '<group resource id>' `
 -WsfcDomainCredentialsClusterBootstrapAccountPassword $securepwd `
@@ -208,6 +209,32 @@ eastus		sqlvm1		ResourceGroup01
 ```
 
 Update a SQL virtual machine's tag as a background job.
+
+### Example 11
+```powershell
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType 'SystemAssigned'
+```
+
+```output
+Location	Name		ResourceGroupName
+--------	----		-----------------
+eastus		sqlvm1		ResourceGroup01
+```
+
+Update a SQL virtual machine to enable Microsoft Entra authentication using "System-assigned managed identity"
+
+### Example 12
+```powershell
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType 'UserAssigned' -ManagedIdentityClientId '00001111-aaaa-2222-bbbb-3333cccc4444'
+```
+
+```output
+Location	Name		ResourceGroupName
+--------	----		-----------------
+eastus		sqlvm1		ResourceGroup01
+```
+
+Update a SQL virtual machine to enable Microsoft Entra authentication using "User-assigned managed identity"
 
 ## PARAMETERS
 
@@ -561,6 +588,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IdentityType
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -582,6 +624,22 @@ SQL Server license type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedIdentityClientId
+The client Id of the Managed Identity to query Microsoft Graph API.
+An empty string must be used for the system assigned Managed Identity
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -927,20 +985,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISqlVirtualMachineIdentity>`: Identity Parameter
-  - `[AvailabilityGroupListenerName <String>]`: Name of the availability group listener.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  - `[SqlVirtualMachineGroupName <String>]`: Name of the SQL virtual machine group.
-  - `[SqlVirtualMachineName <String>]`: Name of the SQL virtual machine.
-  - `[SubscriptionId <String>]`: Subscription ID that identifies an Azure subscription.
 
 ## RELATED LINKS

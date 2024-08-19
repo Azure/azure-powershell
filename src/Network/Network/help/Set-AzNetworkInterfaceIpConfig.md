@@ -38,7 +38,7 @@ The **Set-AzNetworkInterfaceIpConfig** cmdlet updates an IP configuration for a 
 
 ## EXAMPLES
 
-### 1: Changing the IP address of an IP configuration
+### Example 1: Changing the IP address of an IP configuration
 ```powershell
 $vnet = Get-AzVirtualNetwork -Name myvnet -ResourceGroupName myrg
 $subnet = Get-AzVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
@@ -57,7 +57,7 @@ The first two commands get a virtual network called myvnet and a subnet called m
     have been made successfully.
     
 
-### 2: Associating an IP configuration with an application security group
+### Example 2: Associating an IP configuration with an application security group
 ```powershell
 $vnet = Get-AzVirtualNetwork -Name myvnet -ResourceGroupName myrg
 $subnet = Get-AzVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
@@ -77,7 +77,7 @@ In this example, the variable $asg contains a reference to an application securi
     Finally, the last command updates the network interface ensuring the changes
     have been made successfully.
 
-### 3: Disassociating an IP configuration with an application gateway backend address pool
+### Example 3: Disassociating an IP configuration with an application gateway backend address pool
 ```powershell
 $nic = Get-AzNetworkInterface -Name nic1 -ResourceGroupName myrg
 

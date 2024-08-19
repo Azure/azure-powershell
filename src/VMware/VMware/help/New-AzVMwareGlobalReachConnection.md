@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwareGlobalReachConnection
 
 ## SYNOPSIS
-Create or update a global reach connection in a private cloud
+Create a GlobalReachConnection
 
 ## SYNTAX
 
@@ -16,15 +16,16 @@ Create or update a global reach connection in a private cloud
 ```
 New-AzVMwareGlobalReachConnection -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AuthorizationKey <String>] [-ExpressRouteId <String>]
- [-PeerExpressRouteResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PeerExpressRouteResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityPrivateCloudExpanded
 ```
 New-AzVMwareGlobalReachConnection -Name <String> -PrivateCloudInputObject <IVMwareIdentity>
  [-AuthorizationKey <String>] [-ExpressRouteId <String>] [-PeerExpressRouteResourceId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -35,7 +36,7 @@ New-AzVMwareGlobalReachConnection -InputObject <IVMwareIdentity> [-Authorization
 ```
 
 ## DESCRIPTION
-Create or update a global reach connection in a private cloud
+Create a GlobalReachConnection
 
 ## EXAMPLES
 
@@ -70,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -AuthorizationKey
-Authorization key from the peer express route used for the global reach connection
+Authorization key from the peer express route used for the global reachconnection
 
 ```yaml
 Type: System.String
@@ -85,7 +86,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -100,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExpressRouteId
-The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection
+The ID of the Private Cloud's ExpressRoute Circuit that is participating in theglobal reach connection
 
 ```yaml
 Type: System.String
@@ -116,7 +118,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -131,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the global reach connection in the private cloud
+Name of the global reach connection
 
 ```yaml
 Type: System.String
@@ -161,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ### -PeerExpressRouteResourceId
-Identifier of the ExpressRoute Circuit to peer with in the global reach connection
+Identifier of the ExpressRoute Circuit to peer with in the global reachconnection
 
 ```yaml
 Type: System.String
@@ -177,7 +178,6 @@ Accept wildcard characters: False
 
 ### -PrivateCloudInputObject
 Identity Parameter
-To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -192,7 +192,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateCloudName
-The name of the private cloud.
+Name of the private cloud
 
 ```yaml
 Type: System.String
@@ -224,6 +224,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -273,12 +274,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IGlobalReachConnection
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnection
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

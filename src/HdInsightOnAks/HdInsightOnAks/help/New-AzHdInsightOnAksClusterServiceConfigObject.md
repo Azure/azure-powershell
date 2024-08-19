@@ -1,31 +1,37 @@
 ---
-external help file:
+external help file: Az.HdInsightOnAks-help.xml
 Module Name: Az.HdInsightOnAks
-online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksClusterServiceConfigObject
+online version: https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksclusterserviceconfigobject
 schema: 2.0.0
 ---
 
 # New-AzHdInsightOnAksClusterServiceConfigObject
 
 ## SYNOPSIS
-Create a component config.
+Create an in-memory object for ClusterServiceConfig.
 
 ## SYNTAX
 
 ```
-New-AzHdInsightOnAksClusterServiceConfigObject -ComponentName <String> -File <IClusterConfigFile[]> [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzHdInsightOnAksClusterServiceConfigObject -ComponentName <String> -File <IClusterConfigFile[]>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a component config.
+Create an in-memory object for ClusterServiceConfig.
 
 ## EXAMPLES
 
 ### Example 1: Create a component config.
 ```powershell
 $coreSiteConfigFile=New-AzHdInsightOnAksClusterConfigFileObject -FileName "core-site.xml" -Value @{"fs.defaultFS"="abfs://testcontainer@$teststorage.dfs.core.windows.net"}
-$yarnComponentConfig= New-AzHdInsightOnAksClusterServiceConfigObject -ComponentName "yarn-config" -File $coreSiteConfigFile
+New-AzHdInsightOnAksClusterServiceConfigObject -ComponentName "yarn-config" -File $coreSiteConfigFile
+```
+
+```output
+Component   File
+---------   ----
+yarn-config {{…
 ```
 
 This cmdlet create the component config of "yarn-config" based the existing config file $coreSiteConfigFile.
@@ -38,7 +44,7 @@ Name of the component the config files should apply to.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: Name
+Aliases:
 
 Required: True
 Position: Named
@@ -49,7 +55,6 @@ Accept wildcard characters: False
 
 ### -File
 List of Config Files.
-To construct, see NOTES section for FILE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterConfigFile[]
@@ -63,49 +68,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterConfigFile[]
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfig
+### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterServiceConfig
 
 ## NOTES
 
 ## RELATED LINKS
-

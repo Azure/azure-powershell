@@ -18,5 +18,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     {
         public const string CacheDisk = "CacheDisk";
         public const string ResourceDisk = "ResourceDisk";
+        public const string NvmeDisk = "NvmeDisk";
     }
 }

@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the PaloAltoNetworks service.
 
 ---
-## Status
-[![Az.PaloAltoNetworks](https://img.shields.io/powershellgallery/v/Az.PaloAltoNetworks.svg?style=flat-square&label=Az.PaloAltoNetworks "Az.PaloAltoNetworks")](https://www.powershellgallery.com/packages/Az.PaloAltoNetworks/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -41,7 +38,7 @@ module-version: 0.2.0
 subject-prefix: $(service-name)
 
 directive:
-  - from: swagger-document 
+  - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/{localRulestackName}/commit"].post.responses
     transform: >-
       return {
@@ -59,7 +56,7 @@ directive:
         }
       }
 
-  - from: swagger-document 
+  - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/{localRulestackName}/revert"].post.responses
     transform: >-
       return {
@@ -87,14 +84,13 @@ directive:
   - where:
       verb: Set
     remove: true
-# # Some of the parameters are of type Object and need to be expanded into a command for the convenience of the user
-# # The following are commented out and their generated cmdlets may be renamed and custom logic
-# # Do not delete this code
-#   - model-cmdlet:
-#       - IPAddress
-#       - FrontendSetting
-#       - NetworkProfile
-#       - TagInfo
+
+  - model-cmdlet:
+      - model-name: IPAddress
+      - model-name: FrontendSetting
+      - model-name: NetworkProfile
+        cmdlet-name: New-AzPaloAltoNetworksProfileObject
+      - model-name: TagInfo
 
   - where:
       subject: PostRule

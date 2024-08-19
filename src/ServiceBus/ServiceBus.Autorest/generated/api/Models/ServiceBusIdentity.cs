@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         public string AuthorizationRuleName { get => this._authorizationRuleName; set => this._authorizationRuleName = value; }
 
         /// <summary>Backing field for <see cref="ConfigName" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.MigrationConfigurationName? _configName;
+        private string _configName;
 
         /// <summary>The configuration name. Should always be "$default".</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.MigrationConfigurationName? ConfigName { get => this._configName; set => this._configName = value; }
+        public string ConfigName { get => this._configName; set => this._configName = value; }
 
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
@@ -113,6 +113,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The Disaster Recovery configuration name",
         SerializedName = @"alias",
         PossibleTypes = new [] { typeof(string) })]
@@ -121,6 +124,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The authorization rule name.",
         SerializedName = @"authorizationRuleName",
         PossibleTypes = new [] { typeof(string) })]
@@ -129,14 +135,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The configuration name. Should always be ""$default"".",
         SerializedName = @"configName",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.MigrationConfigurationName) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.MigrationConfigurationName? ConfigName { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("$default")]
+        string ConfigName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -145,6 +158,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The namespace name",
         SerializedName = @"namespaceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -153,6 +169,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The PrivateEndpointConnection name",
         SerializedName = @"privateEndpointConnectionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -161,6 +180,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The queue name.",
         SerializedName = @"queueName",
         PossibleTypes = new [] { typeof(string) })]
@@ -169,6 +191,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the Resource group within the Azure subscription.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -177,6 +202,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The rule name.",
         SerializedName = @"ruleName",
         PossibleTypes = new [] { typeof(string) })]
@@ -188,6 +216,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -196,6 +227,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The subscription name.",
         SerializedName = @"subscriptionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -204,6 +238,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The topic name.",
         SerializedName = @"topicName",
         PossibleTypes = new [] { typeof(string) })]
@@ -218,7 +255,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         /// <summary>The authorization rule name.</summary>
         string AuthorizationRuleName { get; set; }
         /// <summary>The configuration name. Should always be "$default".</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.MigrationConfigurationName? ConfigName { get; set; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("$default")]
+        string ConfigName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>The namespace name</summary>

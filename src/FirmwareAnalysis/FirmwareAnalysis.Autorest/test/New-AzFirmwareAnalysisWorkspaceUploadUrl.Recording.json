@@ -1,0 +1,42 @@
+{
+  "New-AzFirmwareAnalysisWorkspaceUploadUrl+[NoContext]+Generate+$POST+https://management.azure.com/subscriptions/4a6ec1c4-e0e2-4e4c-b532-fe37a0d9b3ab/resourceGroups/FirmwareAnalysisRG/providers/Microsoft.IoTFirmwareDefense/workspaces/default/generateUploadUrl?api-version=2024-01-10+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/4a6ec1c4-e0e2-4e4c-b532-fe37a0d9b3ab/resourceGroups/FirmwareAnalysisRG/providers/Microsoft.IoTFirmwareDefense/workspaces/default/generateUploadUrl?api-version=2024-01-10",
+      "Content": "{\n  \"firmwareId\": \"e0a16256-d186-4d4f-87fc-24bd0dab91cf\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "58" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=ff3a6090-3ef9-4621-b02c-e0abfd9da371,objectId=32d56fca-9a4a-417e-8daf-c99d3d86423a/centralus/9f2de21e-a224-4523-bede-17ad4f5163d8" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-envoy-upstream-service-time": [ "592" ],
+        "x-ms-request-id": [ "aa6b2332-9cb8-41ca-89a3-a7eda280e995" ],
+        "x-ms-correlation-request-id": [ "d9e4f1f4-aba4-410e-b12a-6512fc5ecc25" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "197" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20240216T193000Z:d9e4f1f4-aba4-410e-b12a-6512fc5ecc25" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1EF908E1950B4D09BBE4098C3F86C109 Ref B: CO6AA3150217023 Ref C: 2024-02-16T19:29:59Z" ],
+        "Date": [ "Fri, 16 Feb 2024 19:30:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "472" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"url\":\"https://storfistdeveusuploadkalb.blob.core.windows.net/4a6ec1c4-e0e2-4e4c-b532-fe37a0d9b3ab/e0a16256-d186-4d4f-87fc-24bd0dab91cf/def04ba2-d406-48f7-bdd8-e280b85b1db2?skoid=8cd0a9b4-5c2c-4190-a129-c8939eb2d83f\u0026sktid=72f988bf-86f1-41af-91ab-2d7cd011db47\u0026skt=2024-02-16T19%3A30%3A00Z\u0026ske=2024-02-17T19%3A30%3A00Z\u0026sks=b\u0026skv=2021-08-06\u0026sv=2021-08-06\u0026st=2024-02-16T19%3A30%3A00Z\u0026se=2024-02-16T23%3A30%3A00Z\u0026sr=b\u0026sp=cw\u0026sig=fWw3BGmYd11UQq39MY4BPYVQPSZsZrVtkIZg2w7lKNk%3D\"}",
+      "isContentBase64": false
+    }
+  }
+}

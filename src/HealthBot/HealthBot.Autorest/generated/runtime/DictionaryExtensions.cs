@@ -8,26 +8,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime
     {
         internal static void HashTableToDictionary<V>(System.Collections.Hashtable hashtable, System.Collections.Generic.IDictionary<string, V> dictionary)
         {
+            if (null == hashtable)
+            {
+                return;
+            }
             foreach (var each in hashtable.Keys)
             {
                 var key = each.ToString();
                 var value = hashtable[key];
                 if (null != value)
                 {
-                    if (value is System.Collections.Hashtable nested)
+                    try
                     {
-                        HashTableToDictionary<V>(nested, new System.Collections.Generic.Dictionary<string, V>());
+                        dictionary[key] = (V)value;
                     }
-                    else
+                    catch
                     {
-                        try
-                        {
-                            dictionary[key] = (V)value;
-                        }
-                        catch
-                        {
-                            // Values getting dropped; not compatible with target dictionary. Not sure what to do here.
-                        }
+                        // Values getting dropped; not compatible with target dictionary. Not sure what to do here.
                     }
                 }
             }

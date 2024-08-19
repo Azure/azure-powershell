@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMarketplacePrivateStoreCollectionOffer
 
 ## SYNOPSIS
-Update or add an offer to a specific collection of the private store.
+Create or add an offer to a specific collection of the private store.
 
 ## SYNTAX
 
@@ -60,7 +60,7 @@ New-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId <St
 ```
 
 ## DESCRIPTION
-Update or add an offer to a specific collection of the private store.
+Create or add an offer to a specific collection of the private store.
 
 ## EXAMPLES
 
@@ -97,7 +97,6 @@ Accept wildcard characters: False
 
 ### -CollectionInputObject
 Identity Parameter
-To construct, see NOTES section for COLLECTIONINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
@@ -204,7 +203,6 @@ Accept wildcard characters: False
 
 ### -Payload
 The privateStore offer data structure.
-To construct, see NOTES section for PAYLOAD properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IOffer
@@ -220,7 +218,6 @@ Accept wildcard characters: False
 
 ### -Plan
 Offer plans
-To construct, see NOTES section for PLAN properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IPlan[]
@@ -251,7 +248,6 @@ Accept wildcard characters: False
 
 ### -PrivateStoreInputObject
 Identity Parameter
-To construct, see NOTES section for PRIVATESTOREINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity

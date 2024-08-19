@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Advisor service.
 
 ---
-## Status
-[![Az.Advisor](https://img.shields.io/powershellgallery/v/Az.Advisor.svg?style=flat-square&label=Az.Advisor "Az.Advisor")](https://www.powershellgallery.com/packages/Az.Advisor/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -31,10 +28,10 @@ For information on how to develop for `Az.Advisor`, see [how-to.md](how-to.md).
 
 ``` yaml
 # pin the swagger version by using the commit id instead of branch name
-branch: 2a07629a9919989375ab04490fb24051f78d1a7c
+commit: 2a07629a9919989375ab04490fb24051f78d1a7c
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
   - $(repo)/specification/advisor/resource-manager/Microsoft.Advisor/stable/2020-01-01/advisor.json
@@ -51,6 +48,10 @@ resourcegroup-append: true
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs
@@ -116,4 +117,3 @@ directive:
           - Ttl
         labels:
           ResourceGroupName: Resource Group
-```

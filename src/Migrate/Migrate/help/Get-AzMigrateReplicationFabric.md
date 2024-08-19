@@ -21,7 +21,8 @@ Get-AzMigrateReplicationFabric -ResourceGroupName <String> -ResourceName <String
 ### Get
 ```
 Get-AzMigrateReplicationFabric -ResourceGroupName <String> -ResourceName <String> -FabricName <String>
- [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -188,7 +189,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IFabric
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

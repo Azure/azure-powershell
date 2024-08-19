@@ -13,8 +13,8 @@ Creates security automation rule set object
 ## SYNTAX
 
 ```
-New-AzSecurityAutomationRuleSetObject -Rules <PSSecurityAutomationTriggeringRule[]>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzSecurityAutomationRuleSetObject -Rule <PSSecurityAutomationTriggeringRule[]>
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +35,7 @@ Creates security automation rule set object
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -46,13 +46,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Rules
-A rule which is evaluated upon event interception.
-The rule is configured by comparing a specific value from the event model to an expected value.
-This comparison is done by using one of the supported operators set
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: PSSecurityAutomationTriggeringRule[]
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Rule
+A rule which is evaluated upon event interception. The rule is configured by comparing a specific value from the event model to an expected value. This comparison is done by using one of the supported operators set
+
+```yaml
+Type: Microsoft.Azure.Commands.Security.Models.Automations.PSSecurityAutomationTriggeringRule[]
 Parameter Sets: (All)
 Aliases:
 

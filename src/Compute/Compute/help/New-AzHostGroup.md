@@ -15,8 +15,8 @@ Creates a host group.
 ```
 New-AzHostGroup [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  -PlatformFaultDomain <Int32> [-Zone <String[]>] [-SupportAutomaticPlacement <Boolean>] [-Tag <Hashtable>]
- [-EnableUltraSSD] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-EnableUltraSSD] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ConnectedNetwork-help.xml
 Module Name: Az.ConnectedNetwork
 online version: https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkFunctionUserConfigurationObject
 schema: 2.0.0
@@ -14,7 +14,8 @@ Create a in-memory object for NetworkFunctionUserConfiguration
 
 ```
 New-AzConnectedNetworkFunctionUserConfigurationObject [-NetworkInterface <INetworkInterface[]>]
- [-OSProfileCustomData <String>] [-RoleName <String>] [-UserDataParameter <IAny>] [<CommonParameters>]
+ [-OSProfileCustomData <String>] [-RoleName <String>] [-UserDataParameter <IAny>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,7 +69,7 @@ The maximum length of the binary array is 65535 bytes.
  customData is passed to the VM to be saved as a file.
 For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) 
 
- For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](/azure/virtual-machines/linux/using-cloud-init).
+ For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://learn.microsoft.com/azure/virtual-machines/linux/tutorial-automate-vm-deployment).
 
 ```yaml
 Type: System.String
@@ -123,24 +124,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-NETWORKINTERFACE <INetworkInterface[]>: The network interface configuration.
-  - `[IPConfiguration <INetworkInterfaceIPConfiguration[]>]`: A list of IP configurations of the network interface.
-    - `[DnsServer <String[]>]`: The list of DNS servers IP addresses.
-    - `[Gateway <String>]`: The value of the gateway.
-    - `[IPAddress <String>]`: The value of the IP address.
-    - `[IPAllocationMethod <IPAllocationMethod?>]`: IP address allocation method.
-    - `[IPVersion <IPVersion?>]`: IP address version.
-    - `[Subnet <String>]`: The value of the subnet.
-  - `[MacAddress <String>]`: The MAC address of the network interface.
-  - `[Name <String>]`: The name of the network interface.
-  - `[VMSwitchType <VMSwitchType?>]`: The type of the VM switch.
-
 ## RELATED LINKS
-

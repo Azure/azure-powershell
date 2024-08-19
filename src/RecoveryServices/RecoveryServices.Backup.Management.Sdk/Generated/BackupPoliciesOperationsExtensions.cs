@@ -13,8 +13,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public static partial class BackupPoliciesOperationsExtensions
     {
         /// <summary>
-        /// Lists of backup policies associated with Recovery Services Vault. API provides pagination parameters to fetch
-        /// scoped results.
+        /// Lists of backup policies associated with Recovery Services Vault. API
+        /// provides pagination parameters to fetch scoped results.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<ProtectionPolicyResource> List(this IBackupPoliciesOperations operations, string vaultName, string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<ProtectionPolicyQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ProtectionPolicyQueryObject>))
         {
@@ -34,8 +35,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Lists of backup policies associated with Recovery Services Vault. API provides pagination parameters to fetch
-        /// scoped results.
+        /// Lists of backup policies associated with Recovery Services Vault. API
+        /// provides pagination parameters to fetch scoped results.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -47,7 +48,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -60,8 +62,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             }
         }
         /// <summary>
-        /// Lists of backup policies associated with Recovery Services Vault. API provides pagination parameters to fetch
-        /// scoped results.
+        /// Lists of backup policies associated with Recovery Services Vault. API
+        /// provides pagination parameters to fetch scoped results.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -75,8 +77,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Lists of backup policies associated with Recovery Services Vault. API provides pagination parameters to fetch
-        /// scoped results.
+        /// Lists of backup policies associated with Recovery Services Vault. API
+        /// provides pagination parameters to fetch scoped results.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

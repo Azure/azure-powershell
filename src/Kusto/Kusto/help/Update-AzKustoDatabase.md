@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Kusto-help.xml
 Module Name: Az.Kusto
 online version: https://learn.microsoft.com/powershell/module/az.kusto/update-azkustodatabase
 schema: 2.0.0
@@ -14,21 +14,21 @@ Updates a database.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzKustoDatabase -ClusterName <String> -Name <String> -ResourceGroupName <String> -Kind <Kind>
- -Location <String> [-SubscriptionId <String>] [-CallerRole <CallerRole>] [-HotCachePeriod <TimeSpan>]
- [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUri <String>]
- [-KeyVaultPropertyKeyVersion <String>] [-KeyVaultPropertyUserIdentity <String>]
- [-SoftDeletePeriod <TimeSpan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzKustoDatabase -ClusterName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-CallerRole <CallerRole>] -Kind <Kind> -Location <String>
+ [-HotCachePeriod <TimeSpan>] [-SoftDeletePeriod <TimeSpan>] [-KeyVaultPropertyKeyName <String>]
+ [-KeyVaultPropertyKeyVaultUri <String>] [-KeyVaultPropertyKeyVersion <String>]
+ [-KeyVaultPropertyUserIdentity <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzKustoDatabase -InputObject <IKustoIdentity> -Kind <Kind> -Location <String>
- [-CallerRole <CallerRole>] [-HotCachePeriod <TimeSpan>] [-KeyVaultPropertyKeyName <String>]
+Update-AzKustoDatabase -InputObject <IKustoIdentity> [-CallerRole <CallerRole>] -Kind <Kind> -Location <String>
+ [-HotCachePeriod <TimeSpan>] [-SoftDeletePeriod <TimeSpan>] [-KeyVaultPropertyKeyName <String>]
  [-KeyVaultPropertyKeyVaultUri <String>] [-KeyVaultPropertyKeyVersion <String>]
- [-KeyVaultPropertyUserIdentity <String>] [-SoftDeletePeriod <TimeSpan>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-KeyVaultPropertyUserIdentity <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -401,4 +401,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

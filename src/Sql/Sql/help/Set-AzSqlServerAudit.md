@@ -37,7 +37,7 @@ Set-AzSqlServerAudit [-AuditActionGroup <AuditActionGroups[]>] [-PredicateExpres
 ## DESCRIPTION
 The **Set-AzSqlServerAudit** cmdlet changes the auditing settings of an Azure SQL server.
 To use the cmdlet, use the *ResourceGroupName* and *ServerName* parameters to identify the server.
-When blob storage is a destination for audit logs, specify the *StorageAccountResourceId* parameter to determine the storage account for the audit logs and the *StorageKeyType* parameter to define the storage keys. You can also define retention for the audit logs by setting the value of the *RetentionInDays* parameter to define the period for the audit logs.
+When blob storage is a destination for audit logs, specify the *StorageAccountResourceId* parameter to determine the storage account for the audit logs and the *StorageKeyType* parameter to define the storage keys. If using blob storage as destination, you can also define retention for the audit logs by setting the value of the *RetentionInDays* parameter to define the period for the audit logs.
 
 ## EXAMPLES
 
@@ -274,7 +274,7 @@ Accept wildcard characters: False
 ```
 
 ### -RetentionInDays
-The number of retention days for the audit logs.
+The number of retention days for the audit logs. Only applies to Storage account as destination.
 
 ```yaml
 Type: System.Nullable`1[System.UInt32]

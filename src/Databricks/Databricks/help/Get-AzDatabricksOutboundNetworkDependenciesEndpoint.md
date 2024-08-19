@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Databricks-help.xml
 Module Name: Az.Databricks
 online version: https://learn.microsoft.com/powershell/module/az.databricks/get-azdatabricksoutboundnetworkdependenciesendpoint
 schema: 2.0.0
@@ -16,7 +16,8 @@ For more information, see https://docs.microsoft.com/en-us/azure/databricks/admi
 
 ```
 Get-AzDatabricksOutboundNetworkDependenciesEndpoint -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,6 +83,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
@@ -117,11 +119,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IOutboundEnvironmentEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IOutboundEnvironmentEndpoint
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

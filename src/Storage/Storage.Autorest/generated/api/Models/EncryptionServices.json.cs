@@ -65,10 +65,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_blob = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("blob"), out var __jsonBlob) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionService.FromJson(__jsonBlob) : Blob;}
-            {_file = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("file"), out var __jsonFile) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionService.FromJson(__jsonFile) : File;}
-            {_table = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("table"), out var __jsonTable) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionService.FromJson(__jsonTable) : Table;}
-            {_queue = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("queue"), out var __jsonQueue) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionService.FromJson(__jsonQueue) : Queue;}
+            {_blob = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("blob"), out var __jsonBlob) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionService.FromJson(__jsonBlob) : _blob;}
+            {_file = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("file"), out var __jsonFile) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionService.FromJson(__jsonFile) : _file;}
+            {_table = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("table"), out var __jsonTable) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionService.FromJson(__jsonTable) : _table;}
+            {_queue = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("queue"), out var __jsonQueue) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionService.FromJson(__jsonQueue) : _queue;}
             AfterFromJson(json);
         }
 

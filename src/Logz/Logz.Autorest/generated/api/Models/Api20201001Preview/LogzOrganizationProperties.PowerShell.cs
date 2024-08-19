@@ -30,7 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -83,7 +85,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
         /// Creates a new instance of <see cref="LogzOrganizationProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="LogzOrganizationProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -100,10 +102,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).CompanyName = (string) content.GetValueForProperty("CompanyName",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).CompanyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).EnterpriseAppId = (string) content.GetValueForProperty("EnterpriseAppId",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).EnterpriseAppId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).SingleSignOnUrl = (string) content.GetValueForProperty("SingleSignOnUrl",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).SingleSignOnUrl, global::System.Convert.ToString);
+            if (content.Contains("CompanyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).CompanyName = (string) content.GetValueForProperty("CompanyName",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).CompanyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnterpriseAppId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).EnterpriseAppId = (string) content.GetValueForProperty("EnterpriseAppId",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).EnterpriseAppId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SingleSignOnUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).SingleSignOnUrl = (string) content.GetValueForProperty("SingleSignOnUrl",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).SingleSignOnUrl, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -121,10 +135,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).CompanyName = (string) content.GetValueForProperty("CompanyName",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).CompanyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).EnterpriseAppId = (string) content.GetValueForProperty("EnterpriseAppId",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).EnterpriseAppId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).SingleSignOnUrl = (string) content.GetValueForProperty("SingleSignOnUrl",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).SingleSignOnUrl, global::System.Convert.ToString);
+            if (content.Contains("CompanyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).CompanyName = (string) content.GetValueForProperty("CompanyName",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).CompanyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnterpriseAppId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).EnterpriseAppId = (string) content.GetValueForProperty("EnterpriseAppId",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).EnterpriseAppId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SingleSignOnUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).SingleSignOnUrl = (string) content.GetValueForProperty("SingleSignOnUrl",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzOrganizationPropertiesInternal)this).SingleSignOnUrl, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

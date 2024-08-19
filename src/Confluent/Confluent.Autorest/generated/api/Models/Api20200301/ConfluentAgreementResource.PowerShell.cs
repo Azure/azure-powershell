@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -66,18 +68,54 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.ConfluentAgreementPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Publisher = (string) content.GetValueForProperty("Publisher",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Publisher, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Product = (string) content.GetValueForProperty("Product",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Product, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Plan = (string) content.GetValueForProperty("Plan",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Plan, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).LicenseTextLink = (string) content.GetValueForProperty("LicenseTextLink",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).LicenseTextLink, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).PrivacyPolicyLink = (string) content.GetValueForProperty("PrivacyPolicyLink",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).PrivacyPolicyLink, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).RetrieveDatetime = (global::System.DateTime?) content.GetValueForProperty("RetrieveDatetime",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).RetrieveDatetime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Signature = (string) content.GetValueForProperty("Signature",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Signature, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Accepted = (bool?) content.GetValueForProperty("Accepted",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Accepted, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.ConfluentAgreementPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Publisher"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Publisher = (string) content.GetValueForProperty("Publisher",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Publisher, global::System.Convert.ToString);
+            }
+            if (content.Contains("Product"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Product = (string) content.GetValueForProperty("Product",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Product, global::System.Convert.ToString);
+            }
+            if (content.Contains("Plan"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Plan = (string) content.GetValueForProperty("Plan",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Plan, global::System.Convert.ToString);
+            }
+            if (content.Contains("LicenseTextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).LicenseTextLink = (string) content.GetValueForProperty("LicenseTextLink",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).LicenseTextLink, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivacyPolicyLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).PrivacyPolicyLink = (string) content.GetValueForProperty("PrivacyPolicyLink",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).PrivacyPolicyLink, global::System.Convert.ToString);
+            }
+            if (content.Contains("RetrieveDatetime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).RetrieveDatetime = (global::System.DateTime?) content.GetValueForProperty("RetrieveDatetime",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).RetrieveDatetime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("Signature"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Signature = (string) content.GetValueForProperty("Signature",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Signature, global::System.Convert.ToString);
+            }
+            if (content.Contains("Accepted"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Accepted = (bool?) content.GetValueForProperty("Accepted",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Accepted, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -95,18 +133,54 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.ConfluentAgreementPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Publisher = (string) content.GetValueForProperty("Publisher",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Publisher, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Product = (string) content.GetValueForProperty("Product",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Product, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Plan = (string) content.GetValueForProperty("Plan",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Plan, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).LicenseTextLink = (string) content.GetValueForProperty("LicenseTextLink",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).LicenseTextLink, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).PrivacyPolicyLink = (string) content.GetValueForProperty("PrivacyPolicyLink",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).PrivacyPolicyLink, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).RetrieveDatetime = (global::System.DateTime?) content.GetValueForProperty("RetrieveDatetime",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).RetrieveDatetime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Signature = (string) content.GetValueForProperty("Signature",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Signature, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Accepted = (bool?) content.GetValueForProperty("Accepted",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Accepted, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.ConfluentAgreementPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Publisher"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Publisher = (string) content.GetValueForProperty("Publisher",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Publisher, global::System.Convert.ToString);
+            }
+            if (content.Contains("Product"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Product = (string) content.GetValueForProperty("Product",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Product, global::System.Convert.ToString);
+            }
+            if (content.Contains("Plan"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Plan = (string) content.GetValueForProperty("Plan",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Plan, global::System.Convert.ToString);
+            }
+            if (content.Contains("LicenseTextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).LicenseTextLink = (string) content.GetValueForProperty("LicenseTextLink",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).LicenseTextLink, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivacyPolicyLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).PrivacyPolicyLink = (string) content.GetValueForProperty("PrivacyPolicyLink",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).PrivacyPolicyLink, global::System.Convert.ToString);
+            }
+            if (content.Contains("RetrieveDatetime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).RetrieveDatetime = (global::System.DateTime?) content.GetValueForProperty("RetrieveDatetime",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).RetrieveDatetime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("Signature"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Signature = (string) content.GetValueForProperty("Signature",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Signature, global::System.Convert.ToString);
+            }
+            if (content.Contains("Accepted"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Accepted = (bool?) content.GetValueForProperty("Accepted",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResourceInternal)this).Accepted, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -142,7 +216,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301
         /// Creates a new instance of <see cref="ConfluentAgreementResource" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="ConfluentAgreementResource" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResource FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

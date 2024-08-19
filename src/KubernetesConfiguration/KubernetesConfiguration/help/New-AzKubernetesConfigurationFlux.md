@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.KubernetesConfiguration-help.xml
 Module Name: Az.KubernetesConfiguration
 online version: https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfigurationflux
 schema: 2.0.0
@@ -20,16 +20,16 @@ New-AzKubernetesConfigurationFlux -ClusterName <String> -ClusterType <String> -N
  [-BucketAccessKey <SecureString>] [-BucketInsecure] [-BucketLocalAuthRef <String>] [-BucketName <String>]
  [-BucketSyncIntervalInSecond <Int64>] [-BucketTimeoutInSecond <Int64>] [-BucketUrl <String>]
  [-ConfigurationProtectedSetting <Hashtable>] [-GitRepositoryHttpsCaCert <String>]
- [-GitRepositoryHttpsUser <String>] [-GitRepositoryLocalAuthRef <String>]
- [-GitRepositorySshKnownHost <String>] [-GitRepositorySyncIntervalInSecond <Int64>]
- [-GitRepositoryTimeoutInSecond <Int64>] [-GitRepositoryUrl <String>] [-Kustomization <Hashtable>]
- [-ManagedIdentityClientId <String>] [-Namespace <String>] [-RepositoryRefBranch <String>]
- [-RepositoryRefCommit <String>] [-RepositoryRefSemver <String>] [-RepositoryRefTag <String>]
- [-Scope <ScopeType>] [-ServicePrincipalClientCertificate <String>]
- [-ServicePrincipalClientCertificatePassword <String>] [-ServicePrincipalClientCertificateSendChain]
- [-ServicePrincipalClientId <String>] [-ServicePrincipalClientSecret <String>]
- [-ServicePrincipalTenantId <String>] [-SourceKind <SourceKindType>] [-Suspend] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-GitRepositoryHttpsUser <String>] [-GitRepositoryLocalAuthRef <String>] [-GitRepositorySshKnownHost <String>]
+ [-GitRepositorySyncIntervalInSecond <Int64>] [-GitRepositoryTimeoutInSecond <Int64>]
+ [-GitRepositoryUrl <String>] [-Kustomization <Hashtable>] [-ManagedIdentityClientId <String>]
+ [-Namespace <String>] [-RepositoryRefBranch <String>] [-RepositoryRefCommit <String>]
+ [-RepositoryRefSemver <String>] [-RepositoryRefTag <String>] [-Scope <ScopeType>]
+ [-ServicePrincipalClientCertificate <String>] [-ServicePrincipalClientCertificatePassword <String>]
+ [-ServicePrincipalClientCertificateSendChain] [-ServicePrincipalClientId <String>]
+ [-ServicePrincipalClientSecret <String>] [-ServicePrincipalTenantId <String>] [-SourceKind <SourceKindType>]
+ [-Suspend] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -810,4 +810,3 @@ ALIASES
 New-AzK8sConfigurationFlux
 
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.CloudService-help.xml
 Module Name: Az.CloudService
 online version: https://learn.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceroleinstanceview
 schema: 2.0.0
@@ -14,7 +14,8 @@ Retrieves information about the run-time state of a role instance in a cloud ser
 
 ```
 Get-AzCloudServiceRoleInstanceView -CloudServiceName <String> -ResourceGroupName <String>
- -RoleInstanceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -RoleInstanceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,7 +126,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

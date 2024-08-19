@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a datastore in a private cloud cluster</summary>
+    /// <summary>Update a Datastore</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores/{datastoreName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores/{datastoreName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzVMwareDatastore_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastore))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Create a datastore in a private cloud cluster")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Update a Datastore")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
     public partial class UpdateAzVMwareDatastore_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener,
@@ -90,14 +90,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         public string DiskPoolVolumeLunName { get => _datastoreBody.DiskPoolVolumeLunName ?? null; set => _datastoreBody.DiskPoolVolumeLunName = value; }
 
         /// <summary>
-        /// Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
+        /// Mode that describes whether the LUN has to be mounted as a datastore orattached as a LUN
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Mode that describes whether the LUN has to be mounted as a datastore orattached as a LUN")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN",
+        Description = @"Mode that describes whether the LUN has to be mounted as a datastore orattached as a LUN",
         SerializedName = @"mountOption",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("MOUNT", "ATTACH")]
@@ -113,6 +113,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         SerializedName = @"targetId",
         PossibleTypes = new [] { typeof(string) })]
         public string DiskPoolVolumeTargetId { get => _datastoreBody.DiskPoolVolumeTargetId ?? null; set => _datastoreBody.DiskPoolVolumeTargetId = value; }
+
+        /// <summary>Azure resource ID of the Elastic SAN Volume</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Azure resource ID of the Elastic SAN Volume")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Azure resource ID of the Elastic SAN Volume",
+        SerializedName = @"targetId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ElasticSanVolumeTargetId { get => _datastoreBody.ElasticSanVolumeTargetId ?? null; set => _datastoreBody.ElasticSanVolumeTargetId = value; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
@@ -258,6 +269,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
             {
                 // Flush buffer
                 WriteObject(_firstResponse);
+            }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.VMware.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
             }
         }
 
@@ -450,7 +479,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                     {
                         _datastoreBody = await this.Client.DatastoresGetViaIdentityWithResult(InputObject.Id, this, Pipeline);
                         this.Update_datastoreBody();
-                        await this.Client.DatastoresCreateOrUpdateViaIdentity(InputObject.Id, _datastoreBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.DatastoresCreateOrUpdateViaIdentity(InputObject.Id, _datastoreBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -477,7 +506,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                         }
                         _datastoreBody = await this.Client.DatastoresGetWithResult(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.PrivateCloudName ?? null, InputObject.ClusterName ?? null, InputObject.DatastoreName ?? null, this, Pipeline);
                         this.Update_datastoreBody();
-                        await this.Client.DatastoresCreateOrUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.PrivateCloudName ?? null, InputObject.ClusterName ?? null, InputObject.DatastoreName ?? null, _datastoreBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.DatastoresCreateOrUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.PrivateCloudName ?? null, InputObject.ClusterName ?? null, InputObject.DatastoreName ?? null, _datastoreBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -524,10 +553,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
             {
                 this.DiskPoolVolumeLunName = (string)(this.MyInvocation?.BoundParameters["DiskPoolVolumeLunName"]);
             }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ElasticSanVolumeTargetId")))
+            {
+                this.ElasticSanVolumeTargetId = (string)(this.MyInvocation?.BoundParameters["ElasticSanVolumeTargetId"]);
+            }
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DiskPoolVolumeMountOption")))
             {
                 this.DiskPoolVolumeMountOption = (string)(this.MyInvocation?.BoundParameters["DiskPoolVolumeMountOption"]);
             }
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.VMware.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.VMware.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

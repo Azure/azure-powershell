@@ -307,7 +307,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Creates or updates an Azure Cosmos DB database account. The &#34;Update&#34; method is preferred when performing updates on an account.
+        /// Creates or updates an Azure Cosmos DB database account. The &#34;Update&#34; method
+        /// is preferred when performing updates on an account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -354,7 +355,11 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Changes the failover priority for the Azure Cosmos DB database account. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
+        /// Changes the failover priority for the Azure Cosmos DB database account. A
+        /// failover priority of 0 indicates a write region. The maximum value for a
+        /// failover priority = (total number of regions - 1). Failover priority values
+        /// must be unique for each of the regions in which the database account
+        /// exists.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1286,7 +1291,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Offline the specified region for the specified Azure Cosmos DB database account.
+        /// Offline the specified region for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1311,7 +1317,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Online the specified region for the specified Azure Cosmos DB database account.
+        /// Online the specified region for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1824,7 +1831,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Regenerates an access key for the specified Azure Cosmos DB database account.
+        /// Regenerates an access key for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

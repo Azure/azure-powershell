@@ -55,6 +55,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 SendCertificateChain = spParameters.SendCertificateChain ?? default(bool)
             };
 
+            options.DisableInstanceDiscovery = spParameters.DisableInstanceDiscovery ?? options.DisableInstanceDiscovery;
             TokenCredential tokenCredential = null;
             string parametersLog = null;
             if (!string.IsNullOrEmpty(spParameters.Thumbprint))

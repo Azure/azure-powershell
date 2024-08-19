@@ -15,40 +15,43 @@ Sets properties for an Azure SQL Managed Instance.
 ### SetInstanceFromInputParameters (Default)
 ```
 Set-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-AdministratorPassword <SecureString>]
- [-Edition <String>] [-SubnetId <String>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>]
+ [-Edition <String>] [-IsGeneralPurposeV2 <Boolean>] [-SubnetId <String>] [-LicenseType <String>]
+ [-StorageSizeInGB <Int32>] [-StorageIOps <Int32>] [-VCore <Int32>]
  [-PublicDataEndpointEnabled <Boolean>] [-ProxyOverride <String>] [-Tag <Hashtable>] [-AssignIdentity]
  [-InstancePoolName <String>] [-MinimalTlsVersion <String>] [-PrimaryUserAssignedIdentityId <String>]
  [-KeyId <String>] [-Force] [-ComputeGeneration <String>] [-MaintenanceConfigurationId <String>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>]
  [-BackupStorageRedundancy <String>] [-AsJob] [-ZoneRedundant] [-ServicePrincipalType <String>]
- [-DatabaseFormat <String>] [-PricingModel <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DatabaseFormat <String>] [-PricingModel <String>] [-AuthenticationMetadata <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
 ```
 Set-AzSqlInstance [-InputObject] <AzureSqlManagedInstanceModel> [-AdministratorPassword <SecureString>]
- [-Edition <String>] [-SubnetId <String>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>]
+ [-Edition <String>] [-IsGeneralPurposeV2 <Boolean>] [-SubnetId <String>] [-LicenseType <String>]
+ [-StorageSizeInGB <Int32>] [-StorageIOps <Int32>]  [-VCore <Int32>]
  [-PublicDataEndpointEnabled <Boolean>] [-ProxyOverride <String>] [-Tag <Hashtable>] [-AssignIdentity]
  [-InstancePoolName <String>] [-MinimalTlsVersion <String>] [-PrimaryUserAssignedIdentityId <String>]
  [-KeyId <String>] [-Force] [-ComputeGeneration <String>] [-MaintenanceConfigurationId <String>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>]
  [-BackupStorageRedundancy <String>] [-AsJob] [-ZoneRedundant] [-ServicePrincipalType <String>]
- [-DefaultProfile <IAzureContextContainer>] [-DatabaseFormat <String>] [-PricingModel <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DatabaseFormat <String>] [-PricingModel <String>] [-AuthenticationMetadata <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetInstanceFromAzureResourceId
 ```
 Set-AzSqlInstance [-ResourceId] <String> [-AdministratorPassword <SecureString>] [-Edition <String>]
- [-SubnetId <String>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>]
+ [-IsGeneralPurposeV2 <Boolean>] [-SubnetId <String>] [-LicenseType <String>]
+ [-StorageSizeInGB <Int32>] [-StorageIOps <Int32>] [-VCore <Int32>]
  [-PublicDataEndpointEnabled <Boolean>] [-ProxyOverride <String>] [-Tag <Hashtable>] [-AssignIdentity]
  [-InstancePoolName <String>] [-MinimalTlsVersion <String>] [-PrimaryUserAssignedIdentityId <String>]
  [-KeyId <String>] [-Force] [-ComputeGeneration <String>] [-MaintenanceConfigurationId <String>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>]
  [-BackupStorageRedundancy <String>] [-AsJob] [-ZoneRedundant] [-ServicePrincipalType <String>]
- [-DatabaseFormat <String>] [-PricingModel <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DatabaseFormat <String>] [-PricingModel <String>] [-AuthenticationMetadata <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,8 +61,7 @@ The **Set-AzSqlInstance** cmdlet modifies properties of an Azure SQL Managed ins
 
 ### Example 1: Set existing instance using new values for -AdministratorPassword, -LicenseType, -StorageSizeInGB, -VCore and -Edition
 ```powershell
-$InstancePassword = "Newpassword1234"
-$SecureString = ConvertTo-SecureString $InstancePassword -AsPlainText -Force
+$SecureString = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -AdministratorPassword $SecureString -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 16 -Edition BusinessCritical
 ```
 
@@ -71,6 +73,7 @@ ManagedInstanceName      : managedInstance1
 Tags                     :
 Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
 Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2       :
 FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
 AdministratorLogin       : adminLogin1
 AdministratorPassword    :
@@ -78,6 +81,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : LicenseIncluded
 VCores                   : 16
 StorageSizeInGB          : 1024
+StorageIOps              :
 InstancePoolName         :
 ```
 
@@ -94,6 +98,7 @@ ManagedInstanceName      : managedInstance1
 Tags                     :
 Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
 Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2       :
 FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
 AdministratorLogin       : adminLogin1
 AdministratorPassword    :
@@ -101,15 +106,42 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : LicenseIncluded
 VCores                   : 16
 StorageSizeInGB          : 1024
+StorageIOps              :
 InstancePoolName         :
 ```
 
 This command sets existing instance using new values for -AdministratorPassword, -LicenseType, -StorageSizeInGB and -VCore
 
-### Example 3: Set existing instance using new values for -AdministratorPassword, -LicenseType, -StorageSizeInGB and -VCore for an instance within an instance pool
+### Example 3: Change existing instance to GPv2 by setting new values for -Edition, -ComputeGeneration, -IsGeneralPurposeV2. Also set new values for -VCore, StorageSizeInGB, StorageIOps
 ```powershell
-$InstancePassword = "Newpassword1234"
-$SecureString = ConvertTo-SecureString $InstancePassword -AsPlainText -Force
+Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -Edition "GeneralPurpose" -ComputeGeneration "Gen5" -IsGeneralPurposeV2 $true -VCore 8 -StorageSizeInGB 1024 -StorageIOps 4000
+```
+
+```output
+Location                 : westcentralus
+Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
+ResourceGroupName        : resourcegroup01
+ManagedInstanceName      : managedInstance1
+Tags                     :
+Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
+Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2       : true
+FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
+AdministratorLogin       : adminLogin1
+AdministratorPassword    :
+SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+LicenseType              : LicenseIncluded
+VCores                   : 8
+StorageSizeInGB          : 1024
+StorageIOps              : 4000
+InstancePoolName         :
+```
+
+This command changes existing instance to GPv2 by setting new values for -Edition, -ComputeGeneration, -IsGeneralPurposeV2. Also sets new values for -VCore, StorageSizeInGB, StorageIOps
+
+### Example 4: Set existing instance using new values for -AdministratorPassword, -LicenseType, -StorageSizeInGB and -VCore for an instance within an instance pool
+```powershell
+$SecureString = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -AdministratorPassword $SecureString -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 2 -InstancePoolName instancePool0
 ```
 
@@ -133,7 +165,7 @@ InstancePoolName         : instancePool0
 
 This command sets existing instance using new values for -AdministratorPassword, -LicenseType, -StorageSizeInGB and -VCore for an instance within an instance pool
 
-### Example 4: Update maintenance configuration for existing instance
+### Example 5: Update maintenance configuration for existing instance
 ```powershell
 Set-AzSqlInstance -Name "managedInstance1" -ResourceGroupName "resourcegroup01" -MaintenanceConfigurationId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_WestUS_MI_2"
 ```
@@ -146,6 +178,7 @@ ManagedInstanceName        : managedInstance1
 Tags                       :
 Identity                   :
 Sku                        : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2         :
 FullyQualifiedDomainName   : managedInstance1.wusxxxxxxxxxxxxx.database.windows.net
 AdministratorLogin         : adminLogin1
 AdministratorPassword      :
@@ -153,6 +186,7 @@ SubnetId                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LicenseType                : LicenseIncluded
 VCores                     : 8
 StorageSizeInGB            : 256
+StorageIOps                :
 Collation                  : SQL_Latin1_General_CP1_CI_AS
 PublicDataEndpointEnabled  : False
 ProxyOverride              :
@@ -168,7 +202,7 @@ MaintenanceConfigurationId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
 This command updates existing instance with maintenance configuration MI_2
 
-### Example 5: Remove maintenance configuration from existing instance
+### Example 6: Remove maintenance configuration from existing instance
 ```powershell
 Set-AzSqlInstance -Name "managediInstance1" -ResourceGroupName "Resourcegroup01" -MaintenanceConfigurationId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_Default"
 ```
@@ -181,6 +215,7 @@ ManagedInstanceName        : managedInstance1
 Tags                       :
 Identity                   :
 Sku                        : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2         :
 FullyQualifiedDomainName   : managedInstance1.wusxxxxxxxxxxxxx.database.windows.net
 AdministratorLogin         : adminLogin1
 AdministratorPassword      :
@@ -188,6 +223,7 @@ SubnetId                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LicenseType                : LicenseIncluded
 VCores                     : 8
 StorageSizeInGB            : 256
+StorageIOps                :
 Collation                  : SQL_Latin1_General_CP1_CI_AS
 PublicDataEndpointEnabled  : False
 ProxyOverride              :
@@ -203,7 +239,7 @@ MaintenanceConfigurationId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
 This command resets maintenance configuration to default for existing instance
 
-### Example 6: Move managed instance to another subnet
+### Example 7: Move managed instance to another subnet
 ```powershell
 Set-AzSqlInstance -Name "managediInstance1" -ResourceGroupName "Resourcegroup01" -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/target_subnet_name"
 ```
@@ -216,6 +252,7 @@ ManagedInstanceName        : managedInstance1
 Tags                       :
 Identity                   :
 Sku                        : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2         :
 FullyQualifiedDomainName   : managedInstance1.wusxxxxxxxxxxxxx.database.windows.net
 AdministratorLogin         : adminLogin1
 AdministratorPassword      :
@@ -223,6 +260,7 @@ SubnetId                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LicenseType                : LicenseIncluded
 VCores                     : 8
 StorageSizeInGB            : 256
+StorageIOps                :
 Collation                  : SQL_Latin1_General_CP1_CI_AS
 PublicDataEndpointEnabled  : False
 ProxyOverride              :
@@ -236,11 +274,11 @@ CurrentBackupStorageRedundancy    : Geo
 MaintenanceConfigurationId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_Default
 ```
 
-This command updates an existing instance to be zone - redundant
+This command moves managed instance to another subnet
 
-### Example 7: Update an existing instance to be zone - redundant
+### Example 8: Update an existing instance to be zone - redundant
 ```powershell
-Set-AzSqlInstance -Name "managediInstance1" -ResourceGroupName "Resourcegroup01" -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/target_subnet_name" -ZoneRedundant
+Set-AzSqlInstance -Name "managediInstance1" -ResourceGroupName "Resourcegroup01" -ZoneRedundant
 ```
 
 ```output
@@ -251,6 +289,7 @@ ManagedInstanceName        : managedInstance1
 Tags                       :
 Identity                   :
 Sku                        : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2         :
 FullyQualifiedDomainName   : managedInstance1.wusxxxxxxxxxxxxx.database.windows.net
 AdministratorLogin         : adminLogin1
 AdministratorPassword      :
@@ -258,6 +297,7 @@ SubnetId                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LicenseType                : LicenseIncluded
 VCores                     : 8
 StorageSizeInGB            : 256
+StorageIOps                :
 Collation                  : SQL_Latin1_General_CP1_CI_AS
 PublicDataEndpointEnabled  : False
 ProxyOverride              :
@@ -272,9 +312,9 @@ MaintenanceConfigurationId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ZoneRedundant              : true
 ```
 
-This command moves managed instance to another subnet
+This command updates an existing instance to be zone - redundant.
 
-### Example 8: Update backup storage redundancy on existing instance
+### Example 9: Update backup storage redundancy on existing instance
 ```powershell
 Set-AzSqlInstance -Name "managediInstance1" -ResourceGroupName "Resourcegroup01" -BackupStorageRedundancy Local -Force
 ```
@@ -287,6 +327,7 @@ ManagedInstanceName              : managedInstance1
 Tags                             :
 Identity                         :
 Sku                              : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2               :
 FullyQualifiedDomainName         : managedInstance1.wusxxxxxxxxxxxxx.database.windows.net
 AdministratorLogin               : adminLogin1
 AdministratorPassword            :
@@ -294,6 +335,7 @@ SubnetId                         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxx
 LicenseType                      : LicenseIncluded
 VCores                           : 8
 StorageSizeInGB                  : 256
+StorageIOps                      :
 Collation                        : SQL_Latin1_General_CP1_CI_AS
 PublicDataEndpointEnabled        : False
 ProxyOverride                    :
@@ -311,9 +353,9 @@ ZoneRedundant                    : False
 
 This command changes backups storage redundancy type for managed instance
 
-### Example 9: Update an existing instance with database format and pricing model
+### Example 10: Update an existing instance with database format and pricing model
 ```powershell
-Set-AzSqlInstance -Name "managediInstance1" -ResourceGroupName "Resourcegroup01" -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/target_subnet_name" -DatabaseFormat AlwaysUpToDate -PricingModel Regular
+Set-AzSqlInstance -Name "managediInstance1" -ResourceGroupName "Resourcegroup01" -DatabaseFormat AlwaysUpToDate -PricingModel Regular
 ```
 
 ```output
@@ -324,6 +366,7 @@ ManagedInstanceName        : managedInstance1
 Tags                       :
 Identity                   :
 Sku                        : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2         :
 FullyQualifiedDomainName   : managedInstance1.wusxxxxxxxxxxxxx.database.windows.net
 AdministratorLogin         : adminLogin1
 AdministratorPassword      :
@@ -331,6 +374,7 @@ SubnetId                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 LicenseType                : LicenseIncluded
 VCores                     : 8
 StorageSizeInGB            : 256
+StorageIOps                :
 Collation                  : SQL_Latin1_General_CP1_CI_AS
 PublicDataEndpointEnabled  : False
 ProxyOverride              :
@@ -347,7 +391,52 @@ DatabaseFormat             : AlwaysUpToDate
 PricingModel               : Regular
 ```
 
-This command moves managed instance to another subnet
+This command updates managed instance with given with database format and pricing model specified.
+
+### Example 10: Update an existing managed instance to use Windows authentication metadata mode
+```powershell
+Set-AzSqlInstance -Name managedInstance1 -ResourceGroupName ResourceGroup01 -AuthenticationMetadata Windows
+```
+
+```output
+Location                         : westcentralus
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
+ResourceGroupName                : resourcegroup01
+ManagedInstanceName              : managedInstance1
+Tags                             :
+Identity                         :
+Sku                              : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+FullyQualifiedDomainName         : managedInstance1.xxxxxxxxxxxx.database.windows.net
+AdministratorLogin               : adminLogin1
+AdministratorPassword            :
+SubnetId                         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+LicenseType                      : LicenseIncluded
+VCores                           : 8
+StorageSizeInGB                  : 256
+Collation                        : SQL_Latin1_General_CP1_CI_AS
+PublicDataEndpointEnabled        : False
+ProxyOverride                    : Proxy
+TimezoneId                       : UTC
+DnsZonePartner                   :
+DnsZone                          : ad35cna0mw
+InstancePoolName                 :
+MinimalTlsVersion                :
+BackupStorageRedundancy          : Geo
+RequestedBackupStorageRedundancy : Geo
+CurrentBackupStorageRedundancy   : Geo
+MaintenanceConfigurationId       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_Default
+Administrators                   :
+PrimaryUserAssignedIdentityId    :
+KeyId                            :
+ZoneRedundant                    : False
+ServicePrincipal                 :
+DatabaseFormat                   : SQLServer2022
+PricingModel                     : Regular
+ExternalGovernanceStatus         : Disabled
+AuthenticationMetadata           : Windows
+```
+
+This command updates an existing managed instance to use Windows metadata for authentication of synced users.
 
 ## PARAMETERS
 
@@ -388,6 +477,22 @@ Generate and assign a Microsoft Entra identity for this instance for use with ke
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AuthenticationMetadata
+Preferred metadata to use for authentication of synced on-prem users. Default is AzureAD.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: AzureAD, Paired, Windows
 
 Required: False
 Position: Named
@@ -507,6 +612,21 @@ The instance pool name.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsGeneralPurposeV2
+Whether or not this is a GPv2 variant of General Purpose edition.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -686,6 +806,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -StorageIOps
+Determines how much Storage IOps to associate with instance
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -StorageSizeInGB
 Determines how much Storage size to associate with instance
 
@@ -777,7 +912,9 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseFormat
-The database format for the instance.
+The database format for the instance. Possible values are:
+- AlwaysUpToDate - The instance gets access to all new SQL engine features as soon as they are released in Azure. Database format keeps evolving to accommodate new features. 
+- SQLServer2022 - The instance keeps getting SQL engine bug fixes, security patches and small functional improvements via Cumulative Updates for SQL Server 2022 during its mainstream support period. Database format remains compatible with SQL Server 2022 during that time.
 
 ```yaml
 Type: System.String

@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
     using System.IO;
     using System.Text.RegularExpressions;
     using Microsoft.Azure.Commands.Common.Authentication;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
     public class BicepBuildParamsStdout
     {
@@ -127,7 +128,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             {
                 CheckMinimalVersionRequirement(MinimalVersionRequirementForBicepparamFileBuildWithInlineOverrides);
                 writeVerbose?.Invoke($"Overriding the following parameters: {string.Join(", ", overrideParams.Keys)}");
-                envVars["BICEP_PARAMETERS_OVERRIDES"] = PSJsonSerializer.Serialize(overrideParams);
+                // As per https://github.com/Azure/bicep/issues/12481, secure string parameters must be serialized.
+                envVars["BICEP_PARAMETERS_OVERRIDES"] = PSJsonSerializer.Serialize(overrideParams, serializeSecureString: true);
             }
 
             var stdout = RunBicepCommand(
@@ -137,7 +139,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                 writeVerbose: writeVerbose,
                 writeWarning: writeWarning);
 
-            return JsonConvert.DeserializeObject<BicepBuildParamsStdout>(stdout);
+            return stdout.FromJson<BicepBuildParamsStdout>();
         }
 
         public void PublishFile(string bicepFilePath, string target, string documentationUri = null, bool withSource = false, bool force = false, OutputCallback writeVerbose = null, OutputCallback writeWarning = null)
@@ -212,7 +214,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             }
 
             // print warning message
-            if (!string.IsNullOrEmpty(output.Stderr))
+            if (!string.IsNullOrWhiteSpace(output.Stderr))
             {
                 writeWarning?.Invoke(output.Stderr);
             }

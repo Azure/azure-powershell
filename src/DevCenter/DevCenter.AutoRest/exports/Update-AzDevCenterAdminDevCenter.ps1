@@ -29,7 +29,7 @@ Update-AzDevCenterAdminDevCenter -InputObject $devCenterInput -IdentityType "Sys
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevCenter
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenter
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,14 +40,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
   [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -59,7 +62,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteradmindevcenter
 #>
 function Update-AzDevCenterAdminDevCenter {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevCenter])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenter])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -91,6 +94,13 @@ param(
     ${InputObject},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.InstallAzureMonitorAgentEnableStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.InstallAzureMonitorAgentEnableStatus]
+    # Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
+    ${DevBoxProvisioningSettingInstallAzureMonitorAgentEnableStatus},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # The display name of the devcenter.
@@ -113,8 +123,29 @@ param(
     ${IdentityUserAssignedIdentity},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.MicrosoftHostedNetworkEnableStatus])]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ITags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.MicrosoftHostedNetworkEnableStatus]
+    # Indicates whether pools in this Dev Center can use Microsoft Hosted Networks.
+    # Defaults to Enabled if not set.
+    ${NetworkSettingMicrosoftHostedNetworkEnableStatus},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # Resource Id of an associated Plan
+    ${PlanId},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogItemSyncEnableStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogItemSyncEnableStatus]
+    # Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
+    ${ProjectCatalogSettingCatalogItemSyncEnableStatus},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ITags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -210,7 +241,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.DevCenter.private\Update-AzDevCenterAdminDevCenter_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

@@ -192,6 +192,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Required if createOption is CopyFromSanSnapshot. This is the ARM id of the source elastic san volume snapshot.")]
         public string ElasticSanResourceId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "When createOption CopyStart, the snapshot will be copied at a quicker speed. Possible values include: 'None', 'Enhanced'")]
+        [PSArgumentCompleter("Enhanced", "None")]
+        public string TierOption { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("Snapshot", "New"))
@@ -281,6 +288,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vCreationData = new CreationData();
                 }
                 vCreationData.ElasticSanResourceId = this.ElasticSanResourceId;
+            }
+
+            if (this.IsParameterBound(c => c.TierOption))
+            {
+                if (vCreationData == null)
+                {
+                    vCreationData = new CreationData();
+                }
+                vCreationData.ProvisionedBandwidthCopySpeed = this.TierOption;
             }
 
             if (this.IsParameterBound(c => c.EncryptionSettingsEnabled))

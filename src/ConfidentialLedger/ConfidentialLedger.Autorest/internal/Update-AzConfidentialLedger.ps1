@@ -20,7 +20,7 @@ Updates properties of Confidential Ledger
 .Description
 Updates properties of Confidential Ledger
 .Example
-PS C:\> Update-AzConfidentialLedger `
+Update-AzConfidentialLedger `
   -Name test-ledger `
   -ResourceGroupName rg-000 `
   -SubscriptionId 00000000-0000-0000-0000-000000000000 `
@@ -42,9 +42,6 @@ PS C:\> Update-AzConfidentialLedger `
           Location="additional properties 0"
           NewTag="New tag"
       }
-
-Location Name
-eastus   test-ledger
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IConfidentialLedgerIdentity
@@ -146,7 +143,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -214,7 +212,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.ConfidentialLedger.private\Update-AzConfidentialLedger_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

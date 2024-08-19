@@ -15,13 +15,13 @@ Fetch all subscriptions in tenant, only for marketplace admin
 ### Fetch (Default)
 ```
 Get-AzMarketplacePrivateStoreAllSubscriptionInTenant -PrivateStoreId <String> [-NextPageToken <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FetchViaIdentity
 ```
 Get-AzMarketplacePrivateStoreAllSubscriptionInTenant -InputObject <IMarketplaceIdentity>
- [-NextPageToken <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-NextPageToken <String>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -30,10 +30,12 @@ Fetch all subscriptions in tenant, only for marketplace admin
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Fetch all subscriptions in a tenant
+```powershell
 Get-AzMarketplacePrivateStoreAllSubscriptionInTenant -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6
 ```
+
+Fetch all subscriptions in tenant, only for marketplace admin.
 
 ## PARAMETERS
 
@@ -42,7 +44,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -55,10 +57,9 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: IMarketplaceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
 Parameter Sets: FetchViaIdentity
 Aliases:
 
@@ -73,7 +74,7 @@ Accept wildcard characters: False
 The skip token to get the next page.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -88,7 +89,7 @@ Accept wildcard characters: False
 The store ID - must use the tenant ID
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fetch
 Aliases:
 
@@ -99,26 +100,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -134,7 +120,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -151,24 +137,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISubscriptionsResponse
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IMarketplaceIdentity\>: Identity Parameter
-  \[AdminRequestApprovalId \<String\>\]: The admin request approval ID to get create or update
-  \[CollectionId \<String\>\]: The collection ID
-  \[Id \<String\>\]: Resource identity path
-  \[OfferId \<String\>\]: The offer ID to update or delete
-  \[PrivateStoreId \<String\>\]: The store ID - must use the tenant ID
-  \[RequestApprovalId \<String\>\]: The request approval ID to get create or update
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestoreallsubscriptionintenant](https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestoreallsubscriptionintenant)
-

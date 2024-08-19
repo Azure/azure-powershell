@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Compute service.
 
 ---
-## Status
-[![Az.Compute](https://img.shields.io/powershellgallery/v/Az.Compute.svg?style=flat-square&label=Az.Compute "Az.Compute")](https://www.powershellgallery.com/packages/Az.Compute/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -29,16 +26,18 @@ For information on how to develop for `Az.Compute`, see [how-to.md](how-to.md).
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-branch: 4640dfc655f8641962814663fd03fd667e5c1a88
+commit: 6f498e0646e1bb978b8b6f8b4e701938dd79df2b
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/stable/2022-01-03/GalleryRP/gallery.json
-  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/runCommands.json
+  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2022-01-03/gallery.json
+  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-07-01/runCommand.json
+  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/common-types/v1/common.json
+  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/DiagnosticRP/preview/2024-06-01-preview/diagnostic.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
-module-version: 0.2.0
+module-version: 0.3.0
 # Normally, title is the service name
 title: Compute
 subject-prefix: ""
@@ -46,6 +45,10 @@ subject-prefix: ""
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs
@@ -230,4 +233,52 @@ directive:
       subject: VMRunCommand|VmssVMRunCommand
       verb: Get
     remove: true
+  ### Remove All Diagnostic cmdlets aside from Invoke Spot Placement Recommender - generate ONLY SpotPlacementScore cmdlets
+  - where:
+      verb: Get
+      subject: Diagnostic
+    remove: true
+  - where:
+      verb: Get
+      subject: DiskInspection
+    remove: true
+  - where:
+      verb: New
+      subject: DiskInspection
+    remove: true
+  - where:
+      verb: Read
+      subject: DiagnosticOperation
+    remove: true
+  - where:
+      verb: Register
+      subject: DiskInspectionStorageConfiguration
+    remove: true
+  - where:
+      verb: Test
+      subject: DiskInspectionStorageConfiguration
+    remove: true
+  - where:
+      verb: Get
+      subject: SpotPlacementRecommender
+    remove: true
+  - where:
+      verb: Get
+      subject: SpotPlacementScore
+    remove: true
+
+  ## Add Alias for Invoke-AzSpotPlacementScore
+  - where:
+      verb: Invoke
+      subject: SpotPlacementRecommender
+    remove: true
+  - where:
+      verb: Invoke
+      subject: SpotPlacementScore
+    set:
+      alias: Invoke-AzSpotPlacementRecommender
+  - where:
+      parameter-name: SpotPlacementScoresInput
+    set:
+      alias: SpotPlacementRecommenderInput
 ```

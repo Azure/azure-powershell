@@ -40,8 +40,7 @@ $SubnetAddressPrefix = "10.0.0.0/24";
 $VnetAddressPrefix = "10.0.0.0/16";
 
 # Credential setup.
-$password = "Password" |ConvertTo-SecureString -AsPlainText -Force; 
-$securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force;
 $credential = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
 $SecurityType = "ConfidentialVM";
@@ -59,14 +58,14 @@ $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'Micros
 $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -StorageAccountType "StandardSSD_LRS" -CreateOption "FromImage";
 
 # Set the SecurityType and necessary values on the Uefi settings. 
-$VirtualMachine = Set-AzVmSecurityProfile -VM $VirtualMachine -SecurityType $SecurityType;
-$VirtualMachine = Set-AzVmUefi -VM $VirtualMachine -EnableVtpm $true -EnableSecureBoot $true;
+$VirtualMachine = Set-AzVMSecurityProfile -VM $VirtualMachine -SecurityType $SecurityType;
+$VirtualMachine = Set-AzVMUefi -VM $VirtualMachine -EnableVtpm $true -EnableSecureBoot $true;
 
 # Set the Disk Encryption Type. 
 $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -StorageAccountType "StandardSSD_LRS" -CreateOption "FromImage" -SecurityEncryptionType $vmDiskSEcurityEncryptionType;
 
 $vm = New-AzVM -ResourceGroupName $rgname -Location $LocationName -VM $VirtualMachine;
-$vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+$vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
 # Verify SecurityType value.
 # $vm.SecurityProfile.SecurityType == "ConfidentialVM";
 ```
@@ -95,7 +94,6 @@ Specifies the SecurityType of the virtual machine. It has to be set to any speci
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: TrustedLaunch, ConfidentialVM, Standard
 
 Required: False
 Position: Named

@@ -94,7 +94,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PowerShell
                 sb.Append($"## RELATED LINKS{Environment.NewLine}{Environment.NewLine}");
                 foreach (var relatedLink in markdownInfo.RelatedLinks)
                 {
-                    sb.Append($"{relatedLink}{Environment.NewLine}{Environment.NewLine}");
+                    sb.Append($"[{relatedLink}]({relatedLink}){Environment.NewLine}{Environment.NewLine}");
                 }
 
                 File.WriteAllText(Path.Combine(docsFolder, $"{markdownInfo.CmdletName}.md"), sb.ToString());

@@ -38,7 +38,8 @@ function TestSetup-CreateResourceGroup
 {
     $resourceGroupName = getAssetName
     $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-    $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -location $rglocation -Force
+    $tag = @{Owner='jingnanxu'}
+    $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -location $rglocation -Force -Tag $tag
     return $resourceGroup
 }
 

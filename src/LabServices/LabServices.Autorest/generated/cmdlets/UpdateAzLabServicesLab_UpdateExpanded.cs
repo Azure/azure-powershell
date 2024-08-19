@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.LabServices.Description(@"Operation to update a lab resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.LabServices.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.LabServices.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}", ApiVersion = "2021-10-01-preview")]
     public partial class UpdateAzLabServicesLab_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener
     {
@@ -28,6 +29,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
 
         /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
         private string __processRecordId;
+
+        /// <summary>The lab resource for updates.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabUpdate _body = new Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabUpdate();
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
@@ -44,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         SerializedName = @"installGpuDrivers",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState))]
-        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState AdditionalCapabilityInstallGpuDriver { get => Body.AdditionalCapabilityInstallGpuDriver ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState)""); set => Body.AdditionalCapabilityInstallGpuDriver = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState AdditionalCapabilityInstallGpuDriver { get => _body.AdditionalCapabilityInstallGpuDriver ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState)""); set => _body.AdditionalCapabilityInstallGpuDriver = value; }
 
         /// <summary>The password for the user. This is required for the TemplateVM createOption.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The password for the user. This is required for the TemplateVM createOption.")]
@@ -55,7 +59,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"The password for the user. This is required for the TemplateVM createOption.",
         SerializedName = @"password",
         PossibleTypes = new [] { typeof(string) })]
-        public string AdminUserPassword { get => Body.AdminUserPassword ?? null; set => Body.AdminUserPassword = value; }
+        public string AdminUserPassword { get => _body.AdminUserPassword ?? null; set => _body.AdminUserPassword = value; }
 
         /// <summary>The username to use when signing in to lab VMs.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The username to use when signing in to lab VMs.")]
@@ -66,7 +70,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"The username to use when signing in to lab VMs.",
         SerializedName = @"username",
         PossibleTypes = new [] { typeof(string) })]
-        public string AdminUserUsername { get => Body.AdminUserUsername ?? null; set => Body.AdminUserUsername = value; }
+        public string AdminUserUsername { get => _body.AdminUserUsername ?? null; set => _body.AdminUserUsername = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -84,7 +88,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"The amount of time a VM will stay running after a user disconnects if this behavior is enabled.",
         SerializedName = @"disconnectDelay",
         PossibleTypes = new [] { typeof(global::System.TimeSpan) })]
-        public global::System.TimeSpan AutoShutdownProfileDisconnectDelay { get => Body.AutoShutdownProfileDisconnectDelay ?? default(global::System.TimeSpan); set => Body.AutoShutdownProfileDisconnectDelay = value; }
+        public global::System.TimeSpan AutoShutdownProfileDisconnectDelay { get => _body.AutoShutdownProfileDisconnectDelay ?? default(global::System.TimeSpan); set => _body.AutoShutdownProfileDisconnectDelay = value; }
 
         /// <summary>
         /// The amount of time a VM will idle before it is shutdown if this behavior is enabled.
@@ -97,7 +101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"The amount of time a VM will idle before it is shutdown if this behavior is enabled.",
         SerializedName = @"idleDelay",
         PossibleTypes = new [] { typeof(global::System.TimeSpan) })]
-        public global::System.TimeSpan AutoShutdownProfileIdleDelay { get => Body.AutoShutdownProfileIdleDelay ?? default(global::System.TimeSpan); set => Body.AutoShutdownProfileIdleDelay = value; }
+        public global::System.TimeSpan AutoShutdownProfileIdleDelay { get => _body.AutoShutdownProfileIdleDelay ?? default(global::System.TimeSpan); set => _body.AutoShutdownProfileIdleDelay = value; }
 
         /// <summary>
         /// The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
@@ -110,7 +114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.",
         SerializedName = @"noConnectDelay",
         PossibleTypes = new [] { typeof(global::System.TimeSpan) })]
-        public global::System.TimeSpan AutoShutdownProfileNoConnectDelay { get => Body.AutoShutdownProfileNoConnectDelay ?? default(global::System.TimeSpan); set => Body.AutoShutdownProfileNoConnectDelay = value; }
+        public global::System.TimeSpan AutoShutdownProfileNoConnectDelay { get => _body.AutoShutdownProfileNoConnectDelay ?? default(global::System.TimeSpan); set => _body.AutoShutdownProfileNoConnectDelay = value; }
 
         /// <summary>Whether shutdown on disconnect is enabled</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether shutdown on disconnect is enabled")]
@@ -122,7 +126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         SerializedName = @"shutdownOnDisconnect",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState))]
-        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState AutoShutdownProfileShutdownOnDisconnect { get => Body.AutoShutdownProfileShutdownOnDisconnect ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState)""); set => Body.AutoShutdownProfileShutdownOnDisconnect = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState AutoShutdownProfileShutdownOnDisconnect { get => _body.AutoShutdownProfileShutdownOnDisconnect ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState)""); set => _body.AutoShutdownProfileShutdownOnDisconnect = value; }
 
         /// <summary>Whether a VM will get shutdown when it has idled for a period of time.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether a VM will get shutdown when it has idled for a period of time.")]
@@ -134,7 +138,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         SerializedName = @"shutdownOnIdle",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ShutdownOnIdleMode) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ShutdownOnIdleMode))]
-        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ShutdownOnIdleMode AutoShutdownProfileShutdownOnIdle { get => Body.AutoShutdownProfileShutdownOnIdle ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ShutdownOnIdleMode)""); set => Body.AutoShutdownProfileShutdownOnIdle = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ShutdownOnIdleMode AutoShutdownProfileShutdownOnIdle { get => _body.AutoShutdownProfileShutdownOnIdle ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ShutdownOnIdleMode)""); set => _body.AutoShutdownProfileShutdownOnIdle = value; }
 
         /// <summary>
         /// Whether a VM will get shutdown when it hasn't been connected to after a period of time.
@@ -148,13 +152,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         SerializedName = @"shutdownWhenNotConnected",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState))]
-        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState AutoShutdownProfileShutdownWhenNotConnected { get => Body.AutoShutdownProfileShutdownWhenNotConnected ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState)""); set => Body.AutoShutdownProfileShutdownWhenNotConnected = value; }
-
-        /// <summary>Backing field for <see cref="Body" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabUpdate _body= new Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabUpdate();
-
-        /// <summary>The lab resource for updates.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabUpdate Body { get => this._body; set => this._body = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState AutoShutdownProfileShutdownWhenNotConnected { get => _body.AutoShutdownProfileShutdownWhenNotConnected ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState)""); set => _body.AutoShutdownProfileShutdownWhenNotConnected = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -174,7 +172,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         SerializedName = @"clientRdpAccess",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType ConnectionProfileClientRdpAccess { get => Body.ConnectionProfileClientRdpAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType)""); set => Body.ConnectionProfileClientRdpAccess = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType ConnectionProfileClientRdpAccess { get => _body.ConnectionProfileClientRdpAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType)""); set => _body.ConnectionProfileClientRdpAccess = value; }
 
         /// <summary>The enabled access level for Client Access over SSH.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The enabled access level for Client Access over SSH.")]
@@ -186,7 +184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         SerializedName = @"clientSshAccess",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType ConnectionProfileClientSshAccess { get => Body.ConnectionProfileClientSshAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType)""); set => Body.ConnectionProfileClientSshAccess = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType ConnectionProfileClientSshAccess { get => _body.ConnectionProfileClientSshAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType)""); set => _body.ConnectionProfileClientSshAccess = value; }
 
         /// <summary>The enabled access level for Web Access over RDP.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The enabled access level for Web Access over RDP.")]
@@ -198,7 +196,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         SerializedName = @"webRdpAccess",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType ConnectionProfileWebRdpAccess { get => Body.ConnectionProfileWebRdpAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType)""); set => Body.ConnectionProfileWebRdpAccess = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType ConnectionProfileWebRdpAccess { get => _body.ConnectionProfileWebRdpAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType)""); set => _body.ConnectionProfileWebRdpAccess = value; }
 
         /// <summary>The enabled access level for Web Access over SSH.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The enabled access level for Web Access over SSH.")]
@@ -210,12 +208,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         SerializedName = @"webSshAccess",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType ConnectionProfileWebSshAccess { get => Body.ConnectionProfileWebSshAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType)""); set => Body.ConnectionProfileWebSshAccess = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType ConnectionProfileWebSshAccess { get => _body.ConnectionProfileWebSshAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType)""); set => _body.ConnectionProfileWebSshAccess = value; }
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.LabServices.ParameterCategory.Azure)]
@@ -230,7 +229,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"The description of the lab.",
         SerializedName = @"description",
         PossibleTypes = new [] { typeof(string) })]
-        public string Description { get => Body.Description ?? null; set => Body.Description = value; }
+        public string Description { get => _body.Description ?? null; set => _body.Description = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -253,7 +252,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"Image resource ID",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
-        public string ImageReferenceId { get => Body.ImageReferenceId ?? null; set => Body.ImageReferenceId = value; }
+        public string ImageReferenceId { get => _body.ImageReferenceId ?? null; set => _body.ImageReferenceId = value; }
 
         /// <summary>The image offer if applicable.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The image offer if applicable.")]
@@ -264,7 +263,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"The image offer if applicable.",
         SerializedName = @"offer",
         PossibleTypes = new [] { typeof(string) })]
-        public string ImageReferenceOffer { get => Body.ImageReferenceOffer ?? null; set => Body.ImageReferenceOffer = value; }
+        public string ImageReferenceOffer { get => _body.ImageReferenceOffer ?? null; set => _body.ImageReferenceOffer = value; }
 
         /// <summary>The image publisher</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The image publisher")]
@@ -275,7 +274,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"The image publisher",
         SerializedName = @"publisher",
         PossibleTypes = new [] { typeof(string) })]
-        public string ImageReferencePublisher { get => Body.ImageReferencePublisher ?? null; set => Body.ImageReferencePublisher = value; }
+        public string ImageReferencePublisher { get => _body.ImageReferencePublisher ?? null; set => _body.ImageReferencePublisher = value; }
 
         /// <summary>The image SKU</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The image SKU")]
@@ -286,7 +285,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"The image SKU",
         SerializedName = @"sku",
         PossibleTypes = new [] { typeof(string) })]
-        public string ImageReferenceSku { get => Body.ImageReferenceSku ?? null; set => Body.ImageReferenceSku = value; }
+        public string ImageReferenceSku { get => _body.ImageReferenceSku ?? null; set => _body.ImageReferenceSku = value; }
 
         /// <summary>The image version specified on creation.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The image version specified on creation.")]
@@ -297,7 +296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"The image version specified on creation.",
         SerializedName = @"version",
         PossibleTypes = new [] { typeof(string) })]
-        public string ImageReferenceVersion { get => Body.ImageReferenceVersion ?? null; set => Body.ImageReferenceVersion = value; }
+        public string ImageReferenceVersion { get => _body.ImageReferenceVersion ?? null; set => _body.ImageReferenceVersion = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -314,14 +313,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..",
         SerializedName = @"labPlanId",
         PossibleTypes = new [] { typeof(string) })]
-        public string LabPlanId { get => Body.LabPlanId ?? null; set => Body.LabPlanId = value; }
+        public string LabPlanId { get => _body.LabPlanId ?? null; set => _body.LabPlanId = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -358,7 +357,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"The password for the user. This is required for the TemplateVM createOption.",
         SerializedName = @"password",
         PossibleTypes = new [] { typeof(string) })]
-        public string NonAdminUserPassword { get => Body.NonAdminUserPassword ?? null; set => Body.NonAdminUserPassword = value; }
+        public string NonAdminUserPassword { get => _body.NonAdminUserPassword ?? null; set => _body.NonAdminUserPassword = value; }
 
         /// <summary>The username to use when signing in to lab VMs.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The username to use when signing in to lab VMs.")]
@@ -369,7 +368,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"The username to use when signing in to lab VMs.",
         SerializedName = @"username",
         PossibleTypes = new [] { typeof(string) })]
-        public string NonAdminUserUsername { get => Body.NonAdminUserUsername ?? null; set => Body.NonAdminUserUsername = value; }
+        public string NonAdminUserUsername { get => _body.NonAdminUserUsername ?? null; set => _body.NonAdminUserUsername = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.HttpPipeline" /> that the remote call will use.
@@ -417,7 +416,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.",
         SerializedName = @"activeDirectoryGroupId",
         PossibleTypes = new [] { typeof(string) })]
-        public string RosterProfileActiveDirectoryGroupId { get => Body.RosterProfileActiveDirectoryGroupId ?? null; set => Body.RosterProfileActiveDirectoryGroupId = value; }
+        public string RosterProfileActiveDirectoryGroupId { get => _body.RosterProfileActiveDirectoryGroupId ?? null; set => _body.RosterProfileActiveDirectoryGroupId = value; }
 
         /// <summary>The base URI identifying the lms instance.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The base URI identifying the lms instance.")]
@@ -428,7 +427,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"The base URI identifying the lms instance.",
         SerializedName = @"lmsInstance",
         PossibleTypes = new [] { typeof(string) })]
-        public string RosterProfileLmsInstance { get => Body.RosterProfileLmsInstance ?? null; set => Body.RosterProfileLmsInstance = value; }
+        public string RosterProfileLmsInstance { get => _body.RosterProfileLmsInstance ?? null; set => _body.RosterProfileLmsInstance = value; }
 
         /// <summary>The unique id of the azure lab services tool in the lms.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The unique id of the azure lab services tool in the lms.")]
@@ -439,7 +438,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"The unique id of the azure lab services tool in the lms.",
         SerializedName = @"ltiClientId",
         PossibleTypes = new [] { typeof(string) })]
-        public string RosterProfileLtiClientId { get => Body.RosterProfileLtiClientId ?? null; set => Body.RosterProfileLtiClientId = value; }
+        public string RosterProfileLtiClientId { get => _body.RosterProfileLtiClientId ?? null; set => _body.RosterProfileLtiClientId = value; }
 
         /// <summary>The unique context identifier for the lab in the lms.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The unique context identifier for the lab in the lms.")]
@@ -450,7 +449,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"The unique context identifier for the lab in the lms.",
         SerializedName = @"ltiContextId",
         PossibleTypes = new [] { typeof(string) })]
-        public string RosterProfileLtiContextId { get => Body.RosterProfileLtiContextId ?? null; set => Body.RosterProfileLtiContextId = value; }
+        public string RosterProfileLtiContextId { get => _body.RosterProfileLtiContextId ?? null; set => _body.RosterProfileLtiContextId = value; }
 
         /// <summary>
         /// The uri of the names and roles service endpoint on the lms for the class attached to this lab.
@@ -463,7 +462,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"The uri of the names and roles service endpoint on the lms for the class attached to this lab.",
         SerializedName = @"ltiRosterEndpoint",
         PossibleTypes = new [] { typeof(string) })]
-        public string RosterProfileLtiRosterEndpoint { get => Body.RosterProfileLtiRosterEndpoint ?? null; set => Body.RosterProfileLtiRosterEndpoint = value; }
+        public string RosterProfileLtiRosterEndpoint { get => _body.RosterProfileLtiRosterEndpoint ?? null; set => _body.RosterProfileLtiRosterEndpoint = value; }
 
         /// <summary>Whether any user or only specified users can register to a lab.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether any user or only specified users can register to a lab.")]
@@ -475,7 +474,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         SerializedName = @"openAccess",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState))]
-        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState SecurityProfileOpenAccess { get => Body.SecurityProfileOpenAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState)""); set => Body.SecurityProfileOpenAccess = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState SecurityProfileOpenAccess { get => _body.SecurityProfileOpenAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState)""); set => _body.SecurityProfileOpenAccess = value; }
 
         /// <summary>
         /// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the
@@ -489,7 +488,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.",
         SerializedName = @"capacity",
         PossibleTypes = new [] { typeof(int) })]
-        public int SkuCapacity { get => Body.SkuCapacity ?? default(int); set => Body.SkuCapacity = value; }
+        public int SkuCapacity { get => _body.SkuCapacity ?? default(int); set => _body.SkuCapacity = value; }
 
         /// <summary>
         /// If the service has different generations of hardware, for the same SKU, then that can be captured here.
@@ -502,7 +501,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"If the service has different generations of hardware, for the same SKU, then that can be captured here.",
         SerializedName = @"family",
         PossibleTypes = new [] { typeof(string) })]
-        public string SkuFamily { get => Body.SkuFamily ?? null; set => Body.SkuFamily = value; }
+        public string SkuFamily { get => _body.SkuFamily ?? null; set => _body.SkuFamily = value; }
 
         /// <summary>The name of the SKU. Ex - P3. It is typically a letter+number code</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the SKU. Ex - P3. It is typically a letter+number code")]
@@ -513,7 +512,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"The name of the SKU. Ex - P3. It is typically a letter+number code",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        public string SkuName { get => Body.SkuName ?? null; set => Body.SkuName = value; }
+        public string SkuName { get => _body.SkuName ?? null; set => _body.SkuName = value; }
 
         /// <summary>
         /// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
@@ -526,7 +525,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. ",
         SerializedName = @"size",
         PossibleTypes = new [] { typeof(string) })]
-        public string SkuSize { get => Body.SkuSize ?? null; set => Body.SkuSize = value; }
+        public string SkuSize { get => _body.SkuSize ?? null; set => _body.SkuSize = value; }
 
         /// <summary>
         /// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required
@@ -541,7 +540,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         SerializedName = @"tier",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.SkuTier) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.SkuTier))]
-        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.SkuTier SkuTier { get => Body.SkuTier ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.SkuTier)""); set => Body.SkuTier = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.SkuTier SkuTier { get => _body.SkuTier ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.SkuTier)""); set => _body.SkuTier = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -571,7 +570,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"Resource tags.",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] Tag { get => Body.Tag ?? null /* arrayOf */; set => Body.Tag = value; }
+        public string[] Tag { get => _body.Tag ?? null /* arrayOf */; set => _body.Tag = value; }
 
         /// <summary>The title of the lab.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The title of the lab.")]
@@ -582,7 +581,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"The title of the lab.",
         SerializedName = @"title",
         PossibleTypes = new [] { typeof(string) })]
-        public string Title { get => Body.Title ?? null; set => Body.Title = value; }
+        public string Title { get => _body.Title ?? null; set => _body.Title = value; }
 
         /// <summary>Indicates what lab virtual machines are created from.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Indicates what lab virtual machines are created from.")]
@@ -594,7 +593,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         SerializedName = @"createOption",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.CreateOption) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.CreateOption))]
-        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.CreateOption VirtualMachineProfileCreateOption { get => Body.VirtualMachineProfileCreateOption ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.CreateOption)""); set => Body.VirtualMachineProfileCreateOption = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.CreateOption VirtualMachineProfileCreateOption { get => _body.VirtualMachineProfileCreateOption ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.CreateOption)""); set => _body.VirtualMachineProfileCreateOption = value; }
 
         /// <summary>
         /// The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
@@ -607,7 +606,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.",
         SerializedName = @"usageQuota",
         PossibleTypes = new [] { typeof(global::System.TimeSpan) })]
-        public global::System.TimeSpan VirtualMachineProfileUsageQuota { get => Body.VirtualMachineProfileUsageQuota ?? default(global::System.TimeSpan); set => Body.VirtualMachineProfileUsageQuota = value; }
+        public global::System.TimeSpan VirtualMachineProfileUsageQuota { get => _body.VirtualMachineProfileUsageQuota ?? default(global::System.TimeSpan); set => _body.VirtualMachineProfileUsageQuota = value; }
 
         /// <summary>Enabling this option will use the same password for all user VMs.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Enabling this option will use the same password for all user VMs.")]
@@ -619,15 +618,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         SerializedName = @"useSharedPassword",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState))]
-        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState VirtualMachineProfileUseSharedPassword { get => Body.VirtualMachineProfileUseSharedPassword ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState)""); set => Body.VirtualMachineProfileUseSharedPassword = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState VirtualMachineProfileUseSharedPassword { get => _body.VirtualMachineProfileUseSharedPassword ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState)""); set => _body.VirtualMachineProfileUseSharedPassword = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.IErrorResponse</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -638,8 +637,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab">Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
@@ -650,6 +649,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.LabServices.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -675,7 +679,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.Body = this.Body;
+            clone._body = this._body;
             clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.Name = this.Name;
@@ -685,7 +689,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.LabServices.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -818,7 +839,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.LabServices.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -833,12 +853,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.LabsUpdate(SubscriptionId, ResourceGroupName, Name, Body, onOk, onDefault, this, Pipeline);
+                    await this.Client.LabsUpdate(SubscriptionId, ResourceGroupName, Name, _body, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=Body})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=_body})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -865,12 +885,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
 
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.LabServices.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.LabServices.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.IErrorResponse</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
@@ -892,14 +927,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=Body })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=Body })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -909,8 +944,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab">Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>

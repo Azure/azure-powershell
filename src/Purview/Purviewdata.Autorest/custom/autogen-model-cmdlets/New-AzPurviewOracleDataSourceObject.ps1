@@ -23,7 +23,7 @@ Create an in-memory object for OracleDataSource.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.OracleDataSource
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewOracleDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewOracleDataSourceObject
 #>
 function New-AzPurviewOracleDataSourceObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.OracleDataSource')]

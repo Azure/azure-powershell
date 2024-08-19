@@ -60,6 +60,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 RedirectUri = GetReplyUrl(onPremise, interactiveParameters.PromptAction),
                 LoginHint = interactiveParameters.UserId
             };
+            options.DisableInstanceDiscovery = interactiveParameters.DisableInstanceDiscovery ?? options.DisableInstanceDiscovery;
             var browserCredential = new InteractiveBrowserCredential(options);
 
             TracingAdapter.Information($"{DateTime.Now:T} - [InteractiveWamAuthenticator] Calling InteractiveBrowserCredential.AuthenticateAsync with TenantId:'{options.TenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}', RedirectUri:'{options.RedirectUri}'");

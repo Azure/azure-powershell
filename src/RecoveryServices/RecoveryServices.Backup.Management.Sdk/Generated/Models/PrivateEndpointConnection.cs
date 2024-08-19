@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="provisioningState">Gets or sets provisioning state of the private endpoint connection
-        /// Possible values include: 'Succeeded', 'Deleting', 'Failed', 'Pending'</param>
+        /// Possible values include: &#39;Succeeded&#39;, &#39;Deleting&#39;, &#39;Failed&#39;, &#39;Pending&#39;</param>
 
         /// <param name="privateEndpoint">Gets or sets private endpoint associated with the private endpoint
         /// connection

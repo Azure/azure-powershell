@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.LabServices-help.xml
 Module Name: Az.LabServices
 online version: https://learn.microsoft.com/powershell/module/az.labservices/start-azlabservicesuservm
 schema: 2.0.0
@@ -14,15 +14,15 @@ API to start the assigned vm for the user.
 
 ### Start (Default)
 ```
-Start-AzLabServicesUserVM -Email <String> -LabName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Start-AzLabServicesUserVM -ResourceGroupName <String> -LabName <String> -Email <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### User
 ```
-Start-AzLabServicesUserVM -User <User> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzLabServicesUserVM [-SubscriptionId <String>] -User <User> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,7 +88,6 @@ Accept wildcard characters: False
 
 ### -LabName
 
-
 ```yaml
 Type: System.String
 Parameter Sets: Start
@@ -117,7 +116,6 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
 
 ```yaml
 Type: System.String
@@ -205,22 +203,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-USER `<User>`: 
-  - `Email <String>`: Email address of the user.
-  - `[AdditionalUsageQuota <TimeSpan?>]`: The amount of usage quota time the user gets in addition to the lab usage quota.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-
 ## RELATED LINKS
-

@@ -16,22 +16,22 @@ Reset the ServicePrincipal of an existing AKS cluster.
 ```
 Set-AzAksClusterCredential [-ResourceGroupName] <String> [-Name] <String>
  -ServicePrincipalIdAndSecret <PSCredential> [-PassThru] [-AsJob] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Set-AzAksClusterCredential -InputObject <PSKubernetesCluster> -ServicePrincipalIdAndSecret <PSCredential>
- [-PassThru] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-PassThru] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
 Set-AzAksClusterCredential [-Id] <String> -ServicePrincipalIdAndSecret <PSCredential> [-PassThru] [-AsJob]
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +41,7 @@ Reset the ServicePrincipal of an existing AKS cluster.
 
 ### Example 1
 ```powershell
-$SecPasswd = ConvertTo-SecureString $password -AsPlainText -Force
+$SecPasswd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $Credential = $(New-Object System.Management.Automation.PSCredential ('6f277dd3-e481-4518-8aab-35c31662bad9', $SecPasswd))
 Set-AzAksClusterCredential -ResourceGroupName $ResourceGroupName -Name $Name -ServicePrincipalIdAndSecret $Credential -force
 ```

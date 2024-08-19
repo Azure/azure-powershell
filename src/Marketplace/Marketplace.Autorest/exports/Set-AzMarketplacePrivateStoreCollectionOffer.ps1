@@ -75,7 +75,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IPlan[]]
     # Offer plans
-    # To construct, see NOTES section for PLAN properties and create a hash table.
     ${Plan},
 
     [Parameter(ParameterSetName='UpdateExpanded')]

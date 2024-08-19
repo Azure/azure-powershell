@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
+
+## Version 1.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 1.0.0
 * General availability of 'Az.NetworkCloud' module

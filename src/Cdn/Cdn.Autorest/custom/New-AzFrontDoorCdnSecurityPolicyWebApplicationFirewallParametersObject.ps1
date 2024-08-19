@@ -21,17 +21,17 @@ Create an in-memory object for SecurityPolicyWebApplicationFirewallParameters.
 Create an in-memory object for SecurityPolicyWebApplicationFirewallParameters.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.SecurityPolicyWebApplicationFirewallParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecurityPolicyWebApplicationFirewallParameters
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-azfrontdoorcdnsecuritypolicywebapplicationfirewallparametersobject
 #>
 function New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.SecurityPolicyWebApplicationFirewallParameters')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecurityPolicyWebApplicationFirewallParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Waf associations.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicyWebApplicationFirewallAssociation[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicyWebApplicationFirewallAssociation[]]
         $Association,
         [Parameter(HelpMessage="Resource ID.")]
         [string]
@@ -39,7 +39,7 @@ function New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject 
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.SecurityPolicyWebApplicationFirewallParameters]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecurityPolicyWebApplicationFirewallParameters]::New()
 
         if ($PSBoundParameters.ContainsKey('Association')) {
             $Object.Association = $Association

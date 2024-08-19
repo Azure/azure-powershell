@@ -15,32 +15,32 @@ For a given subscriptions list, the API will return a map of collections and the
 ### CollectionsExpanded (Default)
 ```
 Get-AzMarketplaceCollectionToSubscriptionMapping -PrivateStoreId <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CollectionsViaJsonString
 ```
 Get-AzMarketplaceCollectionToSubscriptionMapping -PrivateStoreId <String> -JsonString <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CollectionsViaJsonFilePath
 ```
 Get-AzMarketplaceCollectionToSubscriptionMapping -PrivateStoreId <String> -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Collections
 ```
 Get-AzMarketplaceCollectionToSubscriptionMapping -PrivateStoreId <String>
  -Payload <ICollectionsToSubscriptionsMappingPayload> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CollectionsViaIdentityExpanded
 ```
 Get-AzMarketplaceCollectionToSubscriptionMapping -InputObject <IMarketplaceIdentity>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -48,7 +48,7 @@ Get-AzMarketplaceCollectionToSubscriptionMapping -InputObject <IMarketplaceIdent
 ```
 Get-AzMarketplaceCollectionToSubscriptionMapping -InputObject <IMarketplaceIdentity>
  -Payload <ICollectionsToSubscriptionsMappingPayload> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,7 +56,7 @@ For a given subscriptions list, the API will return a map of collections and the
 
 ## EXAMPLES
 
-### Example 1: For a given subscriptions list, the Cmdlet will return a map of collections and the related subscriptions from the supplied list.
+### Example 1: Map subscriptions to collections
 ```powershell
 $res = Get-AzMarketplaceCollectionToSubscriptionMapping -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -Payload @{SubscriptionId = "53425a7b-4ac1-4729-8340-e1da5046212c"}
 $res.keys
@@ -72,7 +72,8 @@ This command For a given subscriptions list, will return a map of collections an
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -88,7 +89,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
@@ -134,7 +134,6 @@ Accept wildcard characters: False
 
 ### -Payload
 The subscriptions list to get the related collections
-To construct, see NOTES section for PAYLOAD properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollectionsToSubscriptionsMappingPayload
@@ -157,21 +156,6 @@ Parameter Sets: CollectionsExpanded, CollectionsViaJsonString, CollectionsViaJso
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -229,32 +213,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollectionsToSubscriptionsMappingPayload
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollectionsToSubscriptionsMappingPayload
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollectionsToSubscriptionsMappingResponseProperties
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollectionsToSubscriptionsMappingResponse
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IMarketplaceIdentity>`: Identity Parameter
-  - `[AdminRequestApprovalId <String>]`: The admin request approval ID to get create or update
-  - `[CollectionId <String>]`: The collection ID
-  - `[Id <String>]`: Resource identity path
-  - `[OfferId <String>]`: The offer ID to update or delete
-  - `[PrivateStoreId <String>]`: The store ID - must use the tenant ID
-  - `[RequestApprovalId <String>]`: The request approval ID to get create or update
-
-PAYLOAD `<ICollectionsToSubscriptionsMappingPayload>`: The subscriptions list to get the related collections
-  - `[SubscriptionId <String[]>]`: Subscriptions ids list
 
 ## RELATED LINKS

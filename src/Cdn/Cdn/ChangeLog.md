@@ -19,6 +19,18 @@
 -->
 
 ## Upcoming Release
+* Added support to enable ManagedIdentity when no BYOC in the classic front door during migration
+
+## Version 3.2.1
+* Bypassed object id validation for KeyVault access policy during `Start-AzFrontDoorCdnProfilePrepareMigration`
+
+## Version 3.2.0
+* Introduced secrets detection feature to safeguard sensitive data.
+* Upgrade API version to 2024-02-01
+* Added support to configure rules to scrub PII values from the AFDx logs when new or update a AFDx resource.
+  
+## Version 3.1.2
+* Fixed the case sensitive issue when do preparing migration steps for `Start-AzFrontDoorCdnProfilePrepareMigration`
 
 ## Version 3.1.1
 * Customized output property for `Get-AzCdnEdgeNode` command

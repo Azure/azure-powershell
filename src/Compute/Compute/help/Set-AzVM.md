@@ -39,7 +39,8 @@ Set-AzVM [-ResourceGroupName] <String> [-Name] <String> [-SimulateEviction] [-As
 
 ### GeneralizeIdParameterSetName
 ```
-Set-AzVM [-Id] <String> [-Generalized] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzVM [-Id] <String> [-Generalized] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### RedeployIdParameterSetName
@@ -268,5 +269,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Get-AzVM](./Get-AzVM.md)
-
-

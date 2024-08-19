@@ -15,6 +15,14 @@
     {
       "serviceDatasourceType": "Microsoft.ContainerService/managedClusters",
       "clientDatasourceType": "AzureKubernetesService"
+    },
+    {
+      "serviceDatasourceType": "Microsoft.DBforPostgreSQL/flexibleServers",
+      "clientDatasourceType": "AzureDatabaseForPGFlexServer"
+    },
+    {
+      "serviceDatasourceType": "Microsoft.DBforMySQL/flexibleServers",
+      "clientDatasourceType": "AzureDatabaseForMySQL"
     }
   ]
 }

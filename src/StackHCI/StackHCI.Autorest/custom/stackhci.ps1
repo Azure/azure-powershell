@@ -76,7 +76,6 @@ $StartingArcAgentMessage = "Enabling Azure Arc integration on every clustered no
 $VerifyingArcMessage = "Verifying Azure Arc for Servers registration"
 $WaitingUnregisterMessage = "Disabling Azure Arc integration on every clustered node"
 $CleanArcMessage = "Cleaning up Azure Arc integration"
-$NonCloudDeploymentFor23H2DevicesErrorMessage = "Azure stack HCI version 23H2 and higher cannot be registered using this method. See details: https://learn.microsoft.com/en-us/azure-stack/hci/deploy/deploy-via-portal"
 
 $MissingDependentModulesError = "Can't find PowerShell module(s): {0}. Please install the missing module(s) using 'Install-Module -Name <Module_Name>' and try again."
 $ArcAlreadyEnabledInADifferentResourceError = "Below mentioned cluster node(s) are already Arc enabled with a different ARM Resource Id:`n{0}`nDisconnect Arc agent on these nodes and run Register-AzStackHCI again."
@@ -2895,21 +2894,6 @@ param(
         Write-VerboseLog ("Cloud Management supported: {0}" -f $isCloudManagementSupported)
         Write-VerboseLog ("Cloud Management Infra supported: {0}" -f $isCloudManagementInfraSupported)
         Write-VerboseLog ("Installing Mandatory extensions supported: {0}" -f $isDefaultExtensionSupported)
-        
-        $allowFor23H2Devices = Verify-23H2VanillaRegistration -clusterNodeSession $clusterNodeSession
-        if(([Int]::Parse($osVersionInfo.BuildNumber) -ge $23H2BuildNumber) -and !($allowFor23H2Devices))
-        {
-            #error message
-            Write-ErrorLog -Message $NonCloudDeploymentFor23H2DevicesErrorMessage -Category OperationStopped
-            $resultValue = [OperationStatus]::Failed
-            $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed -ErrorAction Continue
-            $NonCloudDeploymentFor23H2DevicesErrorCode = 9132
-            Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
-            Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $NonCloudDeploymentFor23H2DevicesErrorCode -Output $registrationOutput
-            Write-Output $registrationOutput | Format-List
-            Write-NodeEventLog -Message $NonCloudDeploymentFor23H2DevicesErrorMessage -EventID 9132 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Error
-            throw
-        }
 
             if(-Not ([string]::IsNullOrEmpty($RegContext.AzureResourceUri)))
             {
@@ -3888,17 +3872,6 @@ Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -Prop
     }
 }
 
-function Verify-23H2VanillaRegistration {
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
-    param(
-        [System.Management.Automation.Runspaces.PSSession] $clusterNodeSession
-    )
-
-    $detectRegKeyfor23H2 = { $lcmRegKey = Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\LCMAzureStackStampInformation" -Name "InitializationComplete" -ErrorAction SilentlyContinue; $lcmRegKey -ne $null }
-    $allowFor23H2Devices = Invoke-Command -Session $clusterNodeSession -ScriptBlock $detectRegKeyfor23H2
-
-    return $allowFor23H2Devices
-}
 
 function Set-ArcRoleforRPSpn {
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
@@ -4723,7 +4696,6 @@ param(
     $nodeSessionParams  = @{}
     $subscriptionId     = [string]::Empty
     $armResourceId      = [string]::Empty
-    $armResource        = $null
 
     $successMessage     = New-Object -TypeName System.Text.StringBuilder
 
@@ -4845,42 +4817,28 @@ param(
             $TenantId = Azure-Login @azureLoginParameters
         }
 
-        $armResource = Get-AzResource -ResourceId $armResourceId -ExpandProperties -ApiVersion $RPAPIVersion -ErrorAction Stop
-
         $properties = [PSCustomObject]@{
-            desiredProperties = $armResource.Properties.desiredProperties
-            aadClientId = $armResource.Properties.aadClientId
-            aadTenantId = $armResource.Properties.aadTenantId
-            aadServicePrincipalObjectId = $armResource.Properties.aadServicePrincipalObjectId
-            aadApplicationObjectId = $armResource.Properties.aadApplicationObjectId
-        }
-
-        if ($properties.desiredProperties -eq $null)
-        {
-            #
-            # Create desiredProperties object with default values
-            #
-            $desiredProperties = New-Object -TypeName PSObject
-            $desiredProperties | Add-Member -MemberType NoteProperty -Name 'windowsServerSubscription' -Value 'Disabled'
-            $desiredProperties | Add-Member -MemberType NoteProperty -Name 'diagnosticLevel' -Value 'Basic'
-
-            $properties | Add-Member -MemberType NoteProperty -Name 'desiredProperties' -Value $desiredProperties
+            desiredProperties = New-Object -TypeName PSObject
         }
 
         if ($PSBoundParameters.ContainsKey('EnableWSSubscription'))
         {
+            $windowsServerSubscriptionValue = $Null
+
             if ($EnableWSSubscription -eq $true)
             {
-                $properties.desiredProperties.windowsServerSubscription = 'Enabled';
+                $windowsServerSubscriptionValue = 'Enabled';
 
                 $successMessage.Append($SetAzResourceSuccessWSSE) | Out-Null;
             }
             else
             {
-                $properties.desiredProperties.windowsServerSubscription = 'Disabled';
+                $windowsServerSubscriptionValue = 'Disabled';
 
                 $successMessage.Append($SetAzResourceSuccessWSSD) | Out-Null;
             }
+
+            $properties.desiredProperties | Add-Member -MemberType NoteProperty -Name 'windowsServerSubscription' -Value $windowsServerSubscriptionValue
 
             $doSetResource      = $true
             $needShouldContinue = $true
@@ -4888,7 +4846,7 @@ param(
 
         if ($PSBoundParameters.ContainsKey('DiagnosticLevel'))
         {
-            $properties.desiredProperties.diagnosticLevel = $DiagnosticLevel.ToString()
+            $properties.desiredProperties | Add-Member -MemberType NoteProperty -Name 'diagnosticLevel' -Value $($DiagnosticLevel.ToString())
 
             if ($successMessage.Length -gt 0)
             {
@@ -4917,12 +4875,12 @@ param(
                 Write-Progress -Id $MainProgressBarId -Activity $SetProgressActivityName -Status $SetProgressStatusUpdatingProps -PercentComplete 60
 
                 $setAzResourceParameters = @{
-                                            'ResourceId'  = $armResource.Id;
+                                            'ResourceId'  = $armResourceId;
                                             'Properties'  = $properties;
                                             'ApiVersion'  = $RPAPIVersion
                                             }
 
-                $localResult = Set-AzResource @setAzResourceParameters -Confirm:$false -Force -ErrorAction Stop
+                $localResult = Set-AzResource @setAzResourceParameters -UsePatchSemantics -Confirm:$false -Force -ErrorAction Stop
 
                 if ($PSBoundParameters.ContainsKey('EnableWSSubscription') -and ($EnableWSSubscription -eq $false))
                 {

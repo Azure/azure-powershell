@@ -22,6 +22,7 @@ The update action will overwrite the existing server.
 Creates a new server or updates an existing server.
 The update action will overwrite the existing server.
 .Example
+$password = ConvertTo-SecureString -String "1234" -Force -AsPlainText
 New-AzMySqlServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Location eastus -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku GP_Gen5_4
 
 .Inputs
@@ -36,6 +37,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  [AdvancedThreatProtectionName <AdvancedThreatProtectionName?>]: The name of the Advanced Threat Protection state.
   [BackupName <String>]: The name of the backup.
   [ConfigurationName <String>]: The name of the server configuration.
   [DatabaseName <String>]: The name of the database.
@@ -333,7 +335,13 @@ begin {
             CreateViaIdentityExpanded = 'Az.MySql.private\New-AzMySqlServer_CreateViaIdentityExpanded';
         }
         if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

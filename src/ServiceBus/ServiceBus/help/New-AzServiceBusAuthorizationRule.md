@@ -15,21 +15,21 @@ Creates a ServiceBus Namespace, Queue, Topic Authorization Rule
 ### NewExpandedNamespace (Default)
 ```
 New-AzServiceBusAuthorizationRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Rights <AccessRights[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] -Rights <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewExpandedQueue
 ```
 New-AzServiceBusAuthorizationRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -QueueName <String> -Rights <AccessRights[]> [-DefaultProfile <PSObject>] [-AsJob]
+ [-SubscriptionId <String>] -QueueName <String> -Rights <String[]> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewExpandedTopic
 ```
 New-AzServiceBusAuthorizationRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -TopicName <String> -Rights <AccessRights[]> [-DefaultProfile <PSObject>] [-AsJob]
+ [-SubscriptionId <String>] -TopicName <String> -Rights <String[]> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -180,7 +180,7 @@ Accept wildcard characters: False
 The rights associated with the rule.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.AccessRights[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -259,10 +259,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

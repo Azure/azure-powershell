@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="headers">Represents the headers that will be sent to the request. For example, to
         /// set the language and type on a request: &#34;headers&#34; : { &#34;Accept-Language&#34;:
-        /// &#34;en-us&#34;, &#34;Content-Type&#34;: &#34;application/json&#34; }. Type: dictionary (or
-        /// Expression with resultType dictionary).
+        /// &#34;en-us&#34;, &#34;Content-Type&#34;: &#34;application/json&#34; }. Type: string (or Expression
+        /// with resultType string).
         /// </param>
 
         /// <param name="body">Represents the payload that will be sent to the endpoint. Required for
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="connectVia">The integration runtime reference.
         /// </param>
-        public WebActivityTypeProperties(string method, object url, object headers = default(object), object body = default(object), WebActivityAuthentication authentication = default(WebActivityAuthentication), bool? disableCertValidation = default(bool?), object httpRequestTimeout = default(object), bool? turnOffAsync = default(bool?), System.Collections.Generic.IList<DatasetReference> datasets = default(System.Collections.Generic.IList<DatasetReference>), System.Collections.Generic.IList<LinkedServiceReference> linkedServices = default(System.Collections.Generic.IList<LinkedServiceReference>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference))
+        public WebActivityTypeProperties(string method, object url, System.Collections.Generic.IDictionary<string, object> headers = default(System.Collections.Generic.IDictionary<string, object>), object body = default(object), WebActivityAuthentication authentication = default(WebActivityAuthentication), bool? disableCertValidation = default(bool?), object httpRequestTimeout = default(object), bool? turnOffAsync = default(bool?), System.Collections.Generic.IList<DatasetReference> datasets = default(System.Collections.Generic.IList<DatasetReference>), System.Collections.Generic.IList<LinkedServiceReference> linkedServices = default(System.Collections.Generic.IList<LinkedServiceReference>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference))
 
         {
             this.Method = method;
@@ -108,10 +108,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Gets or sets represents the headers that will be sent to the request. For
         /// example, to set the language and type on a request: &#34;headers&#34; : {
         /// &#34;Accept-Language&#34;: &#34;en-us&#34;, &#34;Content-Type&#34;: &#34;application/json&#34; }. Type:
-        /// dictionary (or Expression with resultType dictionary).
+        /// string (or Expression with resultType string).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "headers")]
-        public object Headers {get; set; }
+        public System.Collections.Generic.IDictionary<string, object> Headers {get; set; }
 
         /// <summary>
         /// Gets or sets represents the payload that will be sent to the endpoint.

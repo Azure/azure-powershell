@@ -25,8 +25,8 @@ Stop-AzStorageFileCopy [-ShareName] <String> [-FilePath] <String> [-CopyId <Stri
 ```
 Stop-AzStorageFileCopy [-File] <CloudFile> [-ShareFileClient <ShareFileClient>] [-CopyId <String>] [-Force]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

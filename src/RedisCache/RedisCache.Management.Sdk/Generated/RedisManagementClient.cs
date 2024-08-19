@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.RedisCache
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+        /// The ID of the target subscription.
         /// </summary>
         public string SubscriptionId { get; set;}
 
@@ -49,14 +49,14 @@ namespace Microsoft.Azure.Management.RedisCache
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set;}
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set;}
 
@@ -92,6 +92,14 @@ namespace Microsoft.Azure.Management.RedisCache
         /// Gets the IAsyncOperationStatusOperations
         /// </summary>
         public virtual IAsyncOperationStatusOperations AsyncOperationStatus { get; private set; }
+        /// <summary>
+        /// Gets the IAccessPolicyOperations
+        /// </summary>
+        public virtual IAccessPolicyOperations AccessPolicy { get; private set; }
+        /// <summary>
+        /// Gets the IAccessPolicyAssignmentOperations
+        /// </summary>
+        public virtual IAccessPolicyAssignmentOperations AccessPolicyAssignment { get; private set; }
         /// <summary>
         /// Initializes a new instance of the RedisManagementClient class.
         /// </summary>
@@ -335,8 +343,10 @@ namespace Microsoft.Azure.Management.RedisCache
             this.PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
             this.PrivateLinkResources = new PrivateLinkResourcesOperations(this);
             this.AsyncOperationStatus = new AsyncOperationStatusOperations(this);
+            this.AccessPolicy = new AccessPolicyOperations(this);
+            this.AccessPolicyAssignment = new AccessPolicyAssignmentOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2023-04-01";
+            this.ApiVersion = "2024-03-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

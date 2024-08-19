@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Communication", "Communi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Communication", "Communication\Communication.csproj", "{BC377B3E-760F-4C72-8E2B-64F295F35AC6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EmailService", "EmailService.Autorest\Az.EmailService.csproj", "{FC1241C9-8A04-4E0D-9C8E-658CCD5C0B23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EmailServicedata", "EmailServicedata.Autorest\Az.EmailServicedata.csproj", "{695CDAA1-885B-48EA-B42C-E4B74620FE00}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +66,14 @@ Global
 		{BC377B3E-760F-4C72-8E2B-64F295F35AC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC377B3E-760F-4C72-8E2B-64F295F35AC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC377B3E-760F-4C72-8E2B-64F295F35AC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC1241C9-8A04-4E0D-9C8E-658CCD5C0B23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC1241C9-8A04-4E0D-9C8E-658CCD5C0B23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC1241C9-8A04-4E0D-9C8E-658CCD5C0B23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC1241C9-8A04-4E0D-9C8E-658CCD5C0B23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{695CDAA1-885B-48EA-B42C-E4B74620FE00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{695CDAA1-885B-48EA-B42C-E4B74620FE00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{695CDAA1-885B-48EA-B42C-E4B74620FE00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{695CDAA1-885B-48EA-B42C-E4B74620FE00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BDECA744-485E-4FBF-BDBC-D58635179F45} = {8C6025CF-0F63-49CE-8FBE-8275AFC0AD14}

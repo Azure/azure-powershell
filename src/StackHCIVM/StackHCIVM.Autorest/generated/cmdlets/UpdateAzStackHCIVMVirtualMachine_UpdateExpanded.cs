@@ -10,16 +10,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Cmdlets;
     using System;
 
-    /// <summary>The operation to update a virtual machine instance.</summary>
+    /// <summary>
+    /// The operation to create or update a virtual machine instance. Please note some properties can be set only during virtual
+    /// machine instance creation.
+    /// </summary>
     /// <remarks>
-    /// [OpenAPI] Update=>PATCH:"/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default"
+    /// [OpenAPI] Get=>GET:"/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default"
+    /// [OpenAPI] CreateOrUpdate=>PUT:"/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzStackHCIVMVirtualMachine_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Description(@"The operation to update a virtual machine instance.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Description(@"The operation to create or update a virtual machine instance. Please note some properties can be set only during virtual machine instance creation.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.HttpPath(Path = "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default", ApiVersion = "2023-09-01-preview")]
     public partial class UpdateAzStackHCIVMVirtualMachine_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IContext
@@ -50,8 +53,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
         /// </summary>
         private int _responseSize = 0;
 
-        /// <summary>The virtual machine instance resource patch definition.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceUpdateRequest _virtualMachineInstanceBody = new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.VirtualMachineInstanceUpdateRequest();
+        /// <summary>The virtual machine instance resource definition.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance _virtualMachineInstanceBody = new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.VirtualMachineInstance();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -78,6 +81,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>
+        /// Defines the amount of extra memory that should be reserved for a virtual machine instance at runtime, as a percentage
+        /// of the total memory that the virtual machine instance is thought to need. This only applies to virtual systems with dynamic
+        /// memory enabled. This property can be in the range of 5 to 2000.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Defines the amount of extra memory that should be reserved for a virtual machine instance at runtime, as a percentage of the total memory that the virtual machine instance is thought to need. This only applies to virtual systems with dynamic memory enabled. This property can be in the range of 5 to 2000.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Defines the amount of extra memory that should be reserved for a virtual machine instance at runtime, as a percentage of the total memory that the virtual machine instance is thought to need. This only applies to virtual systems with dynamic memory enabled. This property can be in the range of 5 to 2000.",
+        SerializedName = @"targetMemoryBuffer",
+        PossibleTypes = new [] { typeof(int) })]
+        public int DynamicMemoryConfigTargetMemoryBuffer { get => _virtualMachineInstanceBody.DynamicMemoryConfigTargetMemoryBuffer ?? default(int); set => _virtualMachineInstanceBody.DynamicMemoryConfigTargetMemoryBuffer = value; }
+
+        /// <summary>.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @".",
+        SerializedName = @"maximumMemoryMB",
+        PossibleTypes = new [] { typeof(long) })]
+        public long DynamicMemoryMaximumMemoryInMb { get => _virtualMachineInstanceBody.DynamicMemoryConfigMaximumMemoryMb ?? default(long); set => _virtualMachineInstanceBody.DynamicMemoryConfigMaximumMemoryMb = value; }
+
+        /// <summary>.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @".",
+        SerializedName = @"minimumMemoryMB",
+        PossibleTypes = new [] { typeof(long) })]
+        public long DynamicMemoryMinimumMemoryInMb { get => _virtualMachineInstanceBody.DynamicMemoryConfigMinimumMemoryMb ?? default(long); set => _virtualMachineInstanceBody.DynamicMemoryConfigMinimumMemoryMb = value; }
+
+        /// <summary>The name of the extended location.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the extended location.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the extended location.",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ExtendedLocationName { get => _virtualMachineInstanceBody.ExtendedLocationName ?? null; set => _virtualMachineInstanceBody.ExtendedLocationName = value; }
+
+        /// <summary>The type of the extended location.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of the extended location.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of the extended location.",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PSArgumentCompleterAttribute("CustomLocation")]
+        public string ExtendedLocationType { get => _virtualMachineInstanceBody.ExtendedLocationType ?? null; set => _virtualMachineInstanceBody.ExtendedLocationType = value; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
@@ -128,6 +191,51 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
+        /// <summary>The HTTP proxy server endpoint to use.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The HTTP proxy server endpoint to use.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The HTTP proxy server endpoint to use.",
+        SerializedName = @"httpProxy",
+        PossibleTypes = new [] { typeof(string) })]
+        public string HttpProxyConfigHttpProxy { get => _virtualMachineInstanceBody.HttpProxyConfigHttpProxy ?? null; set => _virtualMachineInstanceBody.HttpProxyConfigHttpProxy = value; }
+
+        /// <summary>The HTTPS proxy server endpoint to use.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The HTTPS proxy server endpoint to use.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The HTTPS proxy server endpoint to use.",
+        SerializedName = @"httpsProxy",
+        PossibleTypes = new [] { typeof(string) })]
+        public string HttpProxyConfigHttpsProxy { get => _virtualMachineInstanceBody.HttpProxyConfigHttpsProxy ?? null; set => _virtualMachineInstanceBody.HttpProxyConfigHttpsProxy = value; }
+
+        /// <summary>The endpoints that should not go through proxy.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The endpoints that should not go through proxy.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The endpoints that should not go through proxy.",
+        SerializedName = @"noProxy",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] HttpProxyConfigNoProxy { get => _virtualMachineInstanceBody.HttpProxyConfigNoProxy?.ToArray() ?? null /* fixedArrayOf */; set => _virtualMachineInstanceBody.HttpProxyConfigNoProxy = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
+
+        /// <summary>Alternative CA cert to use for connecting to proxy servers.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Alternative CA cert to use for connecting to proxy servers.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Alternative CA cert to use for connecting to proxy servers.",
+        SerializedName = @"trustedCa",
+        PossibleTypes = new [] { typeof(string) })]
+        public string HttpProxyConfigTrustedCa { get => _virtualMachineInstanceBody.HttpProxyConfigTrustedCa ?? null; set => _virtualMachineInstanceBody.HttpProxyConfigTrustedCa = value; }
+
         /// <summary>The identity type.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The identity type.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
@@ -142,6 +250,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
+
+        /// <summary>
+        /// DisablePasswordAuthentication - whether password authentication should be disabled
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "DisablePasswordAuthentication - whether password authentication should be disabled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"DisablePasswordAuthentication - whether password authentication should be disabled",
+        SerializedName = @"disablePasswordAuthentication",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter LinuxConfigurationDisablePasswordAuthentication { get => _virtualMachineInstanceBody.LinuxConfigurationDisablePasswordAuthentication ?? default(global::System.Management.Automation.SwitchParameter); set => _virtualMachineInstanceBody.LinuxConfigurationDisablePasswordAuthentication = value; }
 
         /// <summary>
         /// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation
@@ -170,6 +291,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter LinuxConfigurationProvisionVMConfigAgent { get => _virtualMachineInstanceBody.LinuxConfigurationProvisionVMConfigAgent ?? default(global::System.Management.Automation.SwitchParameter); set => _virtualMachineInstanceBody.LinuxConfigurationProvisionVMConfigAgent = value; }
 
+        /// <summary>The list of SSH public keys used to authenticate with linux based VMs.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of SSH public keys used to authenticate with linux based VMs.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The list of SSH public keys used to authenticate with linux based VMs.",
+        SerializedName = @"publicKeys",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshPublicKey) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshPublicKey[] LinuxConfigurationSshPublicKey { get => _virtualMachineInstanceBody.LinuxConfigurationSshPublicKey?.ToArray() ?? null /* fixedArrayOf */; set => _virtualMachineInstanceBody.LinuxConfigurationSshPublicKey = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshPublicKey>(value) : null); }
+
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
@@ -189,8 +322,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
         ReadOnly = false,
         Description = @"NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance",
         SerializedName = @"networkInterfaces",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkProfileUpdateNetworkInterfacesItem) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkProfileUpdateNetworkInterfacesItem[] NetworkProfileNetworkInterface { get => _virtualMachineInstanceBody.NetworkProfileNetworkInterface?.ToArray() ?? null /* fixedArrayOf */; set => _virtualMachineInstanceBody.NetworkProfileNetworkInterface = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkProfileUpdateNetworkInterfacesItem>(value) : null); }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem[] NetworkProfileNetworkInterface { get => _virtualMachineInstanceBody.NetworkProfileNetworkInterface?.ToArray() ?? null /* fixedArrayOf */; set => _virtualMachineInstanceBody.NetworkProfileNetworkInterface = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem>(value) : null); }
 
         /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
@@ -200,13 +333,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
 
-        /// <summary>ComputerName - name of the computer</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "ComputerName - name of the computer")]
+        /// <summary>Resource ID of the OS disk</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource ID of the OS disk")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"ComputerName - name of the computer",
+        Description = @"Resource ID of the OS disk",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        public string OSDiskId { get => _virtualMachineInstanceBody.OSDiskId ?? null; set => _virtualMachineInstanceBody.OSDiskId = value; }
+
+        /// <summary>
+        /// This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or
+        /// a specialized VHD. Possible values are: **Windows,** **Linux.**
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**",
+        SerializedName = @"osType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PSArgumentCompleterAttribute("Windows", "Linux")]
+        public string OSDiskOstype { get => _virtualMachineInstanceBody.OSDiskOstype ?? null; set => _virtualMachineInstanceBody.OSDiskOstype = value; }
+
+        /// <summary>AdminUsername - admin username</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "AdminUsername - admin username")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"AdminUsername - admin username",
+        SerializedName = @"adminUsername",
+        PossibleTypes = new [] { typeof(string) })]
+        public string OSProfileAdminUsername { get => _virtualMachineInstanceBody.OSProfileAdminUsername ?? null; set => _virtualMachineInstanceBody.OSProfileAdminUsername = value; }
+
+        /// <summary>ComputerName - name of the compute</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "ComputerName - name of the compute")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"ComputerName - name of the compute",
         SerializedName = @"computerName",
         PossibleTypes = new [] { typeof(string) })]
         public string OSProfileComputerName { get => _virtualMachineInstanceBody.OSProfileComputerName ?? null; set => _virtualMachineInstanceBody.OSProfileComputerName = value; }
@@ -232,6 +402,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
+        /// <summary>Unique identifier defined by ARC to identify the guest of the VM.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Unique identifier defined by ARC to identify the guest of the VM.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Unique identifier defined by ARC to identify the guest of the VM.",
+        SerializedName = @"resourceUid",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ResourceUid { get => _virtualMachineInstanceBody.ResourceUid ?? null; set => _virtualMachineInstanceBody.ResourceUid = value; }
+
         /// <summary>Backing field for <see cref="ResourceUri" /> property.</summary>
         private string _resourceUri;
 
@@ -248,17 +429,78 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Path)]
         public string ResourceUri { get => this._resourceUri; set => this._resourceUri = value; }
 
-        /// <summary>adds data disks to the virtual machine instance for the update call</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "adds data disks to the virtual machine instance for the update call")]
+        /// <summary>.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"adds data disks to the virtual machine instance for the update call",
+        Description = @".",
+        SerializedName = @"enableTPM",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter SecurityProfileEnableTpm { get => _virtualMachineInstanceBody.SecurityProfileEnableTpm ?? default(global::System.Management.Automation.SwitchParameter); set => _virtualMachineInstanceBody.SecurityProfileEnableTpm = value; }
+
+        /// <summary>
+        /// Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType
+        /// to function.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function.",
+        SerializedName = @"securityType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PSArgumentCompleterAttribute("TrustedLaunch", "ConfidentialVM")]
+        public string SecurityProfileSecurityType { get => _virtualMachineInstanceBody.SecurityProfileSecurityType ?? null; set => _virtualMachineInstanceBody.SecurityProfileSecurityType = value; }
+
+        /// <summary>adds data disks to the virtual machine instance</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "adds data disks to the virtual machine instance")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"adds data disks to the virtual machine instance",
         SerializedName = @"dataDisks",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageProfileUpdateDataDisksItem) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageProfileUpdateDataDisksItem[] StorageProfileDataDisk { get => _virtualMachineInstanceBody.StorageProfileDataDisk?.ToArray() ?? null /* fixedArrayOf */; set => _virtualMachineInstanceBody.StorageProfileDataDisk = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageProfileUpdateDataDisksItem>(value) : null); }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesStorageProfileDataDisksItem) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesStorageProfileDataDisksItem[] StorageProfileDataDisk { get => _virtualMachineInstanceBody.StorageProfileDataDisk?.ToArray() ?? null /* fixedArrayOf */; set => _virtualMachineInstanceBody.StorageProfileDataDisk = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesStorageProfileDataDisksItem>(value) : null); }
+
+        /// <summary>Id of the storage container that hosts the VM configuration file</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Id of the storage container that hosts the VM configuration file")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Id of the storage container that hosts the VM configuration file",
+        SerializedName = @"vmConfigStoragePathId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string StorageProfileVMConfigStoragePathId { get => _virtualMachineInstanceBody.StorageProfileVMConfigStoragePathId ?? null; set => _virtualMachineInstanceBody.StorageProfileVMConfigStoragePathId = value; }
+
+        /// <summary>
+        /// Specifies whether secure boot should be enabled on the virtual machine instance.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies whether secure boot should be enabled on the virtual machine instance.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Specifies whether secure boot should be enabled on the virtual machine instance.",
+        SerializedName = @"secureBootEnabled",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter UefiSettingSecureBootEnabled { get => _virtualMachineInstanceBody.UefiSettingSecureBootEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _virtualMachineInstanceBody.UefiSettingSecureBootEnabled = value; }
+
+        /// <summary>Whether to EnableAutomaticUpdates on the machine</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether to EnableAutomaticUpdates on the machine")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Whether to EnableAutomaticUpdates on the machine",
+        SerializedName = @"enableAutomaticUpdates",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter WindowConfigurationEnableAutomaticUpdate { get => _virtualMachineInstanceBody.WindowConfigurationEnableAutomaticUpdate ?? default(global::System.Management.Automation.SwitchParameter); set => _virtualMachineInstanceBody.WindowConfigurationEnableAutomaticUpdate = value; }
 
         /// <summary>
         /// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation
@@ -286,6 +528,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
         SerializedName = @"provisionVMConfigAgent",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter WindowConfigurationProvisionVMConfigAgent { get => _virtualMachineInstanceBody.WindowConfigurationProvisionVMConfigAgent ?? default(global::System.Management.Automation.SwitchParameter); set => _virtualMachineInstanceBody.WindowConfigurationProvisionVMConfigAgent = value; }
+
+        /// <summary>TimeZone for the virtual machine instance</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "TimeZone for the virtual machine instance")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"TimeZone for the virtual machine instance",
+        SerializedName = @"timeZone",
+        PossibleTypes = new [] { typeof(string) })]
+        public string WindowConfigurationTimeZone { get => _virtualMachineInstanceBody.WindowConfigurationTimeZone ?? null; set => _virtualMachineInstanceBody.WindowConfigurationTimeZone = value; }
+
+        /// <summary>The list of SSH public keys used to authenticate with linux based VMs.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of SSH public keys used to authenticate with linux based VMs.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The list of SSH public keys used to authenticate with linux based VMs.",
+        SerializedName = @"publicKeys",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshPublicKey) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshPublicKey[] WindowsConfigurationSshPublicKey { get => _virtualMachineInstanceBody.WindowsConfigurationSshPublicKey?.ToArray() ?? null /* fixedArrayOf */; set => _virtualMachineInstanceBody.WindowsConfigurationSshPublicKey = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshPublicKey>(value) : null); }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -358,6 +623,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
             {
                 // Flush buffer
                 WriteObject(_firstResponse);
+            }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
             }
         }
 
@@ -482,7 +765,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'VirtualMachineInstancesUpdate' operation"))
+                if (ShouldProcess($"Call remote 'VirtualMachineInstancesCreateOrUpdate' operation"))
                 {
                     if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
                     {
@@ -546,7 +829,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.VirtualMachineInstancesUpdate(ResourceUri, _virtualMachineInstanceBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate);
+                    await this.Client.VirtualMachineInstancesCreateOrUpdate(ResourceUri, _virtualMachineInstanceBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.UndeclaredResponseException urexception)
@@ -576,6 +859,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
         public UpdateAzStackHCIVMVirtualMachine_UpdateExpanded()
         {
 
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
-Module Name: Az.WebSites
+Module Name: Az.Websites
 ms.assetid: DC400E32-CAB9-4354-99B2-ABA4AA776030
 online version: https://learn.microsoft.com/powershell/module/az.websites/restore-azwebappbackup
 schema: 2.0.0
@@ -25,7 +25,8 @@ Restore-AzWebAppBackup [-AppServicePlan <String>] [-Databases <DatabaseBackupSet
 ```
 Restore-AzWebAppBackup [-AppServicePlan <String>] [-Databases <DatabaseBackupSetting[]>]
  [-IgnoreConflictingHostNames] [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
- [-StorageAccountUrl] <String> [-BlobName] <String> [-Overwrite] [<CommonParameters>]
+ [-StorageAccountUrl] <String> [-BlobName] <String> [-Overwrite]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Kusto-help.xml
 Module Name: Az.Kusto
 online version: https://learn.microsoft.com/powershell/module/az.kusto/new-azkustoclusterprincipalassignment
 schema: 2.0.0
@@ -16,7 +16,8 @@ Create a Kusto cluster principalAssignment.
 New-AzKustoClusterPrincipalAssignment -ClusterName <String> -PrincipalAssignmentName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-PrincipalId <String>]
  [-PrincipalType <PrincipalType>] [-Role <ClusterPrincipalRole>] [-TenantId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +27,7 @@ Create a Kusto cluster principalAssignment.
 
 ### Example 1: Create a Kusto cluster principalAssignment
 ```powershell
-New-AzKustoClusterPrincipalAssignment -ResourceGroupName testrg -ClusterName testnewkustocluster -PrincipalAssignmentName kustoprincipal1 -PrincipalId "7e1cb39f-d2cb-4f0d-801a-c9ea1f376e96" -PrincipalType App -Role AllDatabasesAdmin
+New-AzKustoClusterPrincipalAssignment -ResourceGroupName testrg -ClusterName testnewkustocluster -PrincipalAssignmentName kustoprincipal1 -PrincipalId "00001111-aaaa-2222-bbbb-3333cccc4444" -PrincipalType App -Role AllDatabasesAdmin
 ```
 
 ```output
@@ -250,4 +251,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

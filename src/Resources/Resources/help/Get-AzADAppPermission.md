@@ -14,12 +14,14 @@ Lists API permissions the application has requested.
 
 ### ObjectIdParameterSet (Default)
 ```
-Get-AzADAppPermission -ObjectId <Guid> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADAppPermission -ObjectId <Guid> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### AppIdParameterSet
 ```
-Get-AzADAppPermission -ApplicationId <Guid> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADAppPermission -ApplicationId <Guid> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +41,7 @@ ApiId                                Id                                   Type
 00000003-0000-0000-c000-000000000000 5b567255-7703-4780-807c-7be8301ae99b Scope
 ```
 
-Fetches all API permissions of Microsoft Entra object 18797549-86a9-4906-b2a9-54f08cd3c427
+Fetches all API permissions of Azure AD object 18797549-86a9-4906-b2a9-54f08cd3c427
 
 ## PARAMETERS
 
@@ -82,6 +84,21 @@ Parameter Sets: ObjectIdParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

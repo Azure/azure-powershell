@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNginxConfiguration
 
 ## SYNOPSIS
-Create or update the Nginx configuration for given Nginx deployment
+Create or update the NGINX configuration for given NGINX deployment
 
 ## SYNTAX
 
@@ -16,11 +16,12 @@ Create or update the Nginx configuration for given Nginx deployment
 New-AzNginxConfiguration -DeploymentName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-File <INginxConfigurationFile[]>] [-Location <String>] [-PackageData <String>]
  [-PackageProtectedFile <String[]>] [-ProtectedFile <INginxConfigurationFile[]>] [-RootFile <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update the Nginx configuration for given Nginx deployment
+Create or update the NGINX configuration for given NGINX deployment
 
 ## EXAMPLES
 
@@ -55,7 +56,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -70,7 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeploymentName
-The name of targeted Nginx deployment
+The name of targeted NGINX deployment
 
 ```yaml
 Type: System.String
@@ -89,7 +91,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for FILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfigurationFile[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of configuration, only 'default' is supported value due to the singleton of Nginx conf
+The name of configuration, only 'default' is supported value due to the singleton of NGINX conf
 
 ```yaml
 Type: System.String
@@ -180,7 +182,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for PROTECTEDFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfigurationFile[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]
 Parameter Sets: (All)
 Aliases:
 
@@ -275,23 +277,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfiguration
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`FILE <INginxConfigurationFile[]>`: .
-  - `[Content <String>]`: 
-  - `[VirtualPath <String>]`: 
-
-`PROTECTEDFILE <INginxConfigurationFile[]>`: .
-  - `[Content <String>]`: 
-  - `[VirtualPath <String>]`: 
 
 ## RELATED LINKS

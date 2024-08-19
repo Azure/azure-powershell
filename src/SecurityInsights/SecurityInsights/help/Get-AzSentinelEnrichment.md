@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SecurityInsights-help.xml
 Module Name: Az.SecurityInsights
 online version: https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelenrichment
 schema: 2.0.0
@@ -14,25 +14,25 @@ Get geodata for a single IP address
 
 ### Get (Default)
 ```
-Get-AzSentinelEnrichment -ResourceGroupName <String> -IPAddress <String> [-SubscriptionId <String[]>]
+Get-AzSentinelEnrichment -ResourceGroupName <String> [-SubscriptionId <String[]>] -IPAddress <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
-Get-AzSentinelEnrichment -ResourceGroupName <String> -Domain <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzSentinelEnrichment -InputObject <ISecurityInsightsIdentity> -IPAddress <String>
+Get-AzSentinelEnrichment -ResourceGroupName <String> [-SubscriptionId <String[]>] -Domain <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity1
 ```
-Get-AzSentinelEnrichment -InputObject <ISecurityInsightsIdentity> -Domain <String>
+Get-AzSentinelEnrichment -InputObject <ISecurityInsightsIdentity> -Domain <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzSentinelEnrichment -InputObject <ISecurityInsightsIdentity> -IPAddress <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -43,7 +43,7 @@ Get geodata for a single IP address
 
 ### Example 1: Get a Domain Enrichment
 ```powershell
- Get-AzSentinelEnrichment -ResourceGroupName "myResourceGroupName" -Domain "microsoft.com"
+Get-AzSentinelEnrichment -ResourceGroupName "myResourceGroupName" -Domain "microsoft.com"
 ```
 
 ```output
@@ -58,7 +58,7 @@ This command gets an enrichment for a domain.
 
 ### Example 2: Get a IP Enrichment
 ```powershell
- Get-AzSentinelEnrichment -ResourceGroupName "myResourceGroupName" -IPAddress "1.1.1.1"
+Get-AzSentinelEnrichment -ResourceGroupName "myResourceGroupName" -IPAddress "1.1.1.1"
 ```
 
 ```output
@@ -79,7 +79,6 @@ Region           :
 State            : victoria
 StateCf          : 95
 StateCode        :
-
 ```
 
 This command an enrichment for an IP Address.
@@ -123,7 +122,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentity1
+Parameter Sets: GetViaIdentity1, GetViaIdentity
 Aliases:
 
 Required: True
@@ -194,36 +193,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
-  - `[ActionId <String>]`: Action ID
-  - `[AlertRuleTemplateId <String>]`: Alert rule template ID
-  - `[AutomationRuleId <String>]`: Automation rule ID
-  - `[BookmarkId <String>]`: Bookmark ID
-  - `[ConsentId <String>]`: consent ID
-  - `[DataConnectorId <String>]`: Connector ID
-  - `[EntityId <String>]`: entity ID
-  - `[EntityQueryId <String>]`: entity query ID
-  - `[EntityQueryTemplateId <String>]`: entity query template ID
-  - `[Id <String>]`: Resource identity path
-  - `[IncidentCommentId <String>]`: Incident comment ID
-  - `[IncidentId <String>]`: Incident ID
-  - `[MetadataName <String>]`: The Metadata name.
-  - `[Name <String>]`: Threat intelligence indicator name field.
-  - `[RelationName <String>]`: Relation Name
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleId <String>]`: Alert rule ID
-  - `[SentinelOnboardingStateName <String>]`: The Sentinel onboarding state name. Supports - default
-  - `[SettingsName <String>]`: The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
-  - `[SourceControlId <String>]`: Source control Id
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[WorkspaceName <String>]`: The name of the workspace.
-
 ## RELATED LINKS
-

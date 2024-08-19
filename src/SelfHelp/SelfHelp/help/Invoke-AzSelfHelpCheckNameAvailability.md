@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SelfHelp-help.xml
 Module Name: Az.SelfHelp
 online version: https://learn.microsoft.com/powershell/module/az.selfhelp/invoke-azselfhelpchecknameavailability
 schema: 2.0.0
@@ -15,27 +15,27 @@ This API is used to check the uniqueness of a resource name used for a diagnosti
 ### PostExpanded (Default)
 ```
 Invoke-AzSelfHelpCheckNameAvailability -Scope <String> [-Name <String>] [-Type <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Post
 ```
 Invoke-AzSelfHelpCheckNameAvailability -Scope <String>
- -CheckNameAvailabilityRequest <ICheckNameAvailabilityRequest> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### PostViaIdentity
-```
-Invoke-AzSelfHelpCheckNameAvailability -InputObject <ISelfHelpIdentity>
- -CheckNameAvailabilityRequest <ICheckNameAvailabilityRequest> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -CheckNameAvailabilityRequest <ICheckNameAvailabilityRequest> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PostViaIdentityExpanded
 ```
 Invoke-AzSelfHelpCheckNameAvailability -InputObject <ISelfHelpIdentity> [-Name <String>] [-Type <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PostViaIdentity
+```
+Invoke-AzSelfHelpCheckNameAvailability -InputObject <ISelfHelpIdentity>
+ -CheckNameAvailabilityRequest <ICheckNameAvailabilityRequest> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,10 +47,10 @@ This API is used to check the uniqueness of a resource name used for a diagnosti
 ```powershell
 $CHECKNAMEAVAILABILITYREQUEST = [ordered]@{ 
     "name" ="helloworld" 
-    “type” = “solutions” 
+    "type" = "solutions" 
 
 } 
- Invoke-AzSelfHelpCheckNameAvailability -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba" -CheckNameAvailabilityRequest $CHECKNAMEAVAILABILITYREQUEST 
+ Invoke-AzSelfHelpCheckNameAvailability -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba" -CheckNameAvailabilityRequest $CHECKNAMEAVAILABILITYREQUEST
 ```
 
 ```output
@@ -58,7 +58,7 @@ Message NameAvailable Reason
 
 ------- ------------- ------ 
 
-        True 
+        True
 ```
 
 Checks if resource name is avilabale/unique for the scope or not
@@ -103,7 +103,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
-Parameter Sets: PostViaIdentity, PostViaIdentityExpanded
+Parameter Sets: PostViaIdentityExpanded, PostViaIdentity
 Aliases:
 
 Required: True
@@ -129,11 +129,11 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-This is an extension resource provider and only resource level extension is supported at the moment.
+scope = resourceUri of affected resource.\<br/\> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
 
 ```yaml
 Type: System.String
-Parameter Sets: Post, PostExpanded
+Parameter Sets: PostExpanded, Post
 Aliases:
 
 Required: True
@@ -200,9 +200,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ICheckNameAvailabilityResponse
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ICheckNameAvailabilityResponse
 
 ## NOTES
 
 ## RELATED LINKS
-

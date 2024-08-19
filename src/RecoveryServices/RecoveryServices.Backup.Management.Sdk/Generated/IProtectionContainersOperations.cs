@@ -14,16 +14,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public partial interface IProtectionContainersOperations
     {
         /// <summary>
-        /// Gets details of the specific container registered to your Recovery Services Vault.
+        /// Gets details of the specific container registered to your Recovery Services
+        /// Vault.
         /// </summary>
         /// <remarks>
-        /// Gets details of the specific container registered to your Recovery Services Vault.
+        /// Gets details of the specific container registered to your Recovery Services
+        /// Vault.
         /// </remarks>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Name of the fabric where the container belongs.
@@ -46,20 +49,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProtectionContainerResource>> GetWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Registers the container with Recovery Services vault.
-        /// This is an asynchronous operation. To track the operation status, use location header to call get latest status of
-        /// the operation.
+        /// Registers the container with Recovery Services vault. This is an
+        /// asynchronous operation. To track the operation status, use location header
+        /// to call get latest status of the operation.
         /// </summary>
         /// <remarks>
-        /// Registers the container with Recovery Services vault.
-        /// This is an asynchronous operation. To track the operation status, use location header to call get latest status of
-        /// the operation.
+        /// Registers the container with Recovery Services vault. This is an
+        /// asynchronous operation. To track the operation status, use location header
+        /// to call get latest status of the operation.
         /// </remarks>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the container.
@@ -85,24 +89,28 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProtectionContainerResource>> RegisterWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string containerName, ProtectionContainerResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Unregisters the given container from your Recovery Services Vault. This is an asynchronous operation. To determine
-        /// whether the backend service has finished processing the request, call Get Container Operation Result API.
+        /// Unregisters the given container from your Recovery Services Vault. This is
+        /// an asynchronous operation. To determine whether the backend service has
+        /// finished processing the request, call Get Container Operation Result API.
         /// </summary>
         /// <remarks>
-        /// Unregisters the given container from your Recovery Services Vault. This is an asynchronous operation. To determine
-        /// whether the backend service has finished processing the request, call Get Container Operation Result API.
+        /// Unregisters the given container from your Recovery Services Vault. This is
+        /// an asynchronous operation. To determine whether the backend service has
+        /// finished processing the request, call Get Container Operation Result API.
         /// </remarks>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Name of the fabric where the container belongs.
         /// </param>
         /// <param name='containerName'>
-        /// Name of the container which needs to be unregistered from the Recovery Services Vault.
+        /// Name of the container which needs to be unregistered from the Recovery
+        /// Services Vault.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -116,10 +124,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> UnregisterWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// This is an async operation and the results should be tracked using location header or Azure-async-url.
+        /// This is an async operation and the results should be tracked using location
+        /// header or Azure-async-url.
         /// </summary>
         /// <remarks>
-        /// This is an async operation and the results should be tracked using location header or Azure-async-url.
+        /// This is an async operation and the results should be tracked using location
+        /// header or Azure-async-url.
         /// </remarks>
         /// <param name='odataQuery'>
         /// 
@@ -128,7 +138,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric Name associated with the container.
@@ -148,12 +159,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> InquireWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string containerName, Microsoft.Rest.Azure.OData.ODataQuery<BMSContainersInquiryQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BMSContainersInquiryQueryObject>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Discovers all the containers in the subscription that can be backed up to Recovery Services Vault. This is an
-        /// asynchronous operation. To know the status of the operation, call GetRefreshOperationResult API.
+        /// Discovers all the containers in the subscription that can be backed up to
+        /// Recovery Services Vault. This is an asynchronous operation. To know the
+        /// status of the operation, call GetRefreshOperationResult API.
         /// </summary>
         /// <remarks>
-        /// Discovers all the containers in the subscription that can be backed up to Recovery Services Vault. This is an
-        /// asynchronous operation. To know the status of the operation, call GetRefreshOperationResult API.
+        /// Discovers all the containers in the subscription that can be backed up to
+        /// Recovery Services Vault. This is an asynchronous operation. To know the
+        /// status of the operation, call GetRefreshOperationResult API.
         /// </remarks>
         /// <param name='odataQuery'>
         /// 
@@ -162,7 +175,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated the container.
@@ -179,20 +193,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RefreshWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, Microsoft.Rest.Azure.OData.ODataQuery<BMSRefreshContainersQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BMSRefreshContainersQueryObject>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Registers the container with Recovery Services vault.
-        /// This is an asynchronous operation. To track the operation status, use location header to call get latest status of
-        /// the operation.
+        /// Registers the container with Recovery Services vault. This is an
+        /// asynchronous operation. To track the operation status, use location header
+        /// to call get latest status of the operation.
         /// </summary>
         /// <remarks>
-        /// Registers the container with Recovery Services vault.
-        /// This is an asynchronous operation. To track the operation status, use location header to call get latest status of
-        /// the operation.
+        /// Registers the container with Recovery Services vault. This is an
+        /// asynchronous operation. To track the operation status, use location header
+        /// to call get latest status of the operation.
         /// </remarks>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the container.

@@ -8,18 +8,34 @@ schema: 2.0.0
 # New-AzEventHubApplicationGroup
 
 ## SYNOPSIS
-Creates or updates an ApplicationGroup for a Namespace.
+Create an ApplicationGroup for a Namespace.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzEventHubApplicationGroup -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-ClientAppGroupIdentifier <String>] [-IsEnabled]
- [-Policy <IApplicationGroupPolicy[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Policy <IApplicationGroupPolicy[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityNamespaceExpanded
+```
+New-AzEventHubApplicationGroup -Name <String> -NamespaceInputObject <IEventHubIdentity>
+ [-ClientAppGroupIdentifier <String>] [-IsEnabled] [-Policy <IApplicationGroupPolicy[]>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityNamespace
+```
+New-AzEventHubApplicationGroup -Name <String> -NamespaceInputObject <IEventHubIdentity>
+ -Parameter <IApplicationGroup> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates an ApplicationGroup for a Namespace.
+Create an ApplicationGroup for a Namespace.
 
 ## EXAMPLES
 
@@ -60,7 +76,7 @@ The Unique identifier for application group.Supports SAS(SASKeyName=KeyName) or 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: False
@@ -92,7 +108,7 @@ Once the isEnabled is set to false, all the existing connections of application 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: False
@@ -117,12 +133,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NamespaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+Parameter Sets: CreateViaIdentityNamespaceExpanded, CreateViaIdentityNamespace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -NamespaceName
 The Namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -132,14 +163,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Parameter
+The Application Group object
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IApplicationGroup
+Parameter Sets: CreateViaIdentityNamespace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Policy
 List of group policies that define the behavior of application group.
 The policies can support resource governance scenarios such as limiting ingress or egress traffic.
-To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IApplicationGroupPolicy[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IApplicationGroupPolicy[]
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: False
@@ -154,7 +199,7 @@ Name of the resource group within the azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -170,7 +215,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -216,9 +261,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IApplicationGroup
+
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IApplicationGroup
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IApplicationGroup
 
 ## NOTES
 

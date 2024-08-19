@@ -14,36 +14,38 @@ Gets a project.
 
 ### List (Default)
 ```
-Get-AzDevCenterUserProject -Endpoint <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterUserProject -Endpoint <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDevCenterUserProject -Endpoint <String> -ProjectName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzDevCenterUserProject -Endpoint <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
-Get-AzDevCenterUserProject -DevCenterName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterUserProject -DevCenterName <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityByDevCenter
 ```
 Get-AzDevCenterUserProject -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
 Get-AzDevCenterUserProject -DevCenterName <String> -ProjectName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,7 +62,7 @@ This command lists the projects under the endpoint.
 
 ### Example 2: List projects by dev center
 ```powershell
-Get-AzDevCenterUserProject -DevCenter Contoso -ProjectName DevProject
+Get-AzDevCenterUserProject -DevCenterName Contoso -ProjectName DevProject
 ```
 
 This command lists the projects under the dev center.
@@ -74,7 +76,7 @@ This command gets the project "DevProject".
 
 ### Example 4: Get project by dev center
 ```powershell
-Get-AzDevCenterUserProject -DevCenter Contoso -ProjectName DevProject
+Get-AzDevCenterUserProject -DevCenterName Contoso -ProjectName DevProject
 ```
 
 This command gets the project "DevProject".
@@ -90,7 +92,7 @@ This command gets the project "DevProject".
 ### Example 6: Get project by dev center and InputObject
 ```powershell
 $devBoxInput = @{"ProjectName" = "DevProject";}
-Get-AzDevCenterUserProject -DevCenter Contoso -InputObject $devBoxInput
+Get-AzDevCenterUserProject -DevCenterName Contoso -InputObject $devBoxInput
 ```
 
 This command gets the project "DevProject".
@@ -159,6 +161,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The DevCenter Project upon which to execute operations.
 
@@ -183,27 +200,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IProject
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IProject
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDevCenterdataIdentity>`: Identity Parameter
-  - `[ActionName <String>]`: The name of an action that will take place on a Dev Box.
-  - `[CatalogName <String>]`: The name of the catalog
-  - `[DefinitionName <String>]`: The name of the environment definition
-  - `[DevBoxName <String>]`: The name of a Dev Box.
-  - `[EnvironmentName <String>]`: The name of the environment.
-  - `[Id <String>]`: Resource identity path
-  - `[PoolName <String>]`: The name of a pool of Dev Boxes.
-  - `[ProjectName <String>]`: The DevCenter Project upon which to execute operations.
-  - `[ScheduleName <String>]`: The name of a schedule.
-  - `[UserId <String>]`: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 
 ## RELATED LINKS

@@ -15,7 +15,8 @@ This cmdlet can create a New Restore Point
 ```
 New-AzRestorePoint [-ResourceGroupName] <String> [-RestorePointCollectionName] <String> [-Name] <String>
  [[-Location] <String>] [-RestorePointId <String>] [-DisksToExclude <String[]>] [-ConsistencyMode <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

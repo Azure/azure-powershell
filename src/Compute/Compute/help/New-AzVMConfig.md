@@ -34,7 +34,8 @@ New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <Stri
  [-CapacityReservationGroupId <String>] [-ImageReferenceId <String>] [-DiskControllerType <String>]
  [-UserData <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>]
  [-vCPUCountPerCore <Int32>] [-SharedGalleryImageId <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
- [-EnableSecureBoot <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-EnableSecureBoot <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +68,7 @@ $securityTypeStnd = "Standard";
         
 # Credential. Input Username and Password values
 $user = "";
-$securePassword = "" | ConvertTo-SecureString -AsPlainText -Force;  
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force;  
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         
 # Creating a VMConfig 
@@ -129,7 +130,7 @@ $SKU = "2019-Datacenter";
         
 # Credential. Input Username and Password values.
 $user = "";
-$securePassword = "" | ConvertTo-SecureString -AsPlainText -Force;  
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force;  
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
@@ -180,8 +181,7 @@ $enable = $true;
 $extDefaultName = "GuestAttestation";
 $vmGADefaultIDentity = "SystemAssigned";
 # Credential
-$password = <Password>;
-$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force;  
 $user = <Username>;
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 # Network resources
@@ -697,5 +697,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Set-AzVMSourceImage](./Set-AzVMSourceImage.md)
 
 [Get-AzAvailabilitySet](./Get-AzAvailabilitySet.md)
-
-

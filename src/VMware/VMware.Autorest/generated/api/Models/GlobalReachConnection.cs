@@ -14,18 +14,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IValidates
     {
         /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResource" />
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProxyResource" />
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Resource();
+        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ProxyResource();
 
         /// <summary>
-        /// The network used for global reach carved out from the original network block provided for the private cloud
+        /// The network used for global reach carved out from the original network block
+        /// provided for the private cloud
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public string AddressPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnectionPropertiesInternal)Property).AddressPrefix; }
 
         /// <summary>
-        /// Authorization key from the peer express route used for the global reach connection
+        /// Authorization key from the peer express route used for the global reach
+        /// connection
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public string AuthorizationKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnectionPropertiesInternal)Property).AuthorizationKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnectionPropertiesInternal)Property).AuthorizationKey = value ?? null; }
@@ -35,14 +37,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         public string CircuitConnectionStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnectionPropertiesInternal)Property).CircuitConnectionStatus; }
 
         /// <summary>
-        /// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection
+        /// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the
+        /// global reach connection
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public string ExpressRouteId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnectionPropertiesInternal)Property).ExpressRouteId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnectionPropertiesInternal)Property).ExpressRouteId = value ?? null; }
 
-        /// <summary>Resource ID.</summary>
+        /// <summary>
+        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
-        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__resource).Id; }
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Id; }
 
         /// <summary>Internal Acessors for AddressPrefix</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnectionInternal.AddressPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnectionPropertiesInternal)Property).AddressPrefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnectionPropertiesInternal)Property).AddressPrefix = value; }
@@ -57,20 +62,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnectionInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnectionPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnectionPropertiesInternal)Property).ProvisioningState = value; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__resource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Id = value; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__resource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Name = value; }
+
+        /// <summary>Internal Acessors for SystemData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemData = value; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__resource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Type = value; }
 
-        /// <summary>Resource name.</summary>
+        /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__resource).Name; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Name; }
 
         /// <summary>
-        /// Identifier of the ExpressRoute Circuit to peer with in the global reach connection
+        /// Identifier of the ExpressRoute Circuit to peer with in the global reach
+        /// connection
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public string PeerExpressRouteCircuit { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnectionPropertiesInternal)Property).PeerExpressRouteCircuit; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnectionPropertiesInternal)Property).PeerExpressRouteCircuit = value ?? null; }
@@ -78,7 +87,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnectionProperties _property;
 
-        /// <summary>The properties of a global reach connection resource</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnectionProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.GlobalReachConnectionProperties()); set => this._property = value; }
 
@@ -90,9 +99,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
 
-        /// <summary>Resource type.</summary>
+        /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
-        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__resource).Type; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemData; }
+
+        /// <summary>The timestamp of resource creation (UTC).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>The identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>The type of identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>The identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>The type of identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
+
+        /// <summary>
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Type; }
 
         /// <summary>Creates an new <see cref="GlobalReachConnection" /> instance.</summary>
         public GlobalReachConnection()
@@ -108,17 +149,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener)
         {
-            await eventListener.AssertNotNull(nameof(__resource), __resource);
-            await eventListener.AssertObjectIsValid(nameof(__resource), __resource);
+            await eventListener.AssertNotNull(nameof(__proxyResource), __proxyResource);
+            await eventListener.AssertObjectIsValid(nameof(__proxyResource), __proxyResource);
         }
     }
     /// A global reach connection resource
     public partial interface IGlobalReachConnection :
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResource
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProxyResource
     {
         /// <summary>
-        /// The network used for global reach carved out from the original network block provided for the private cloud
+        /// The network used for global reach carved out from the original network block
+        /// provided for the private cloud
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -126,12 +168,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The network used for global reach carved out from the original network block provided for the private cloud",
+        Description = @"The network used for global reach carved out from the original network block
+        provided for the private cloud",
         SerializedName = @"addressPrefix",
         PossibleTypes = new [] { typeof(string) })]
         string AddressPrefix { get;  }
         /// <summary>
-        /// Authorization key from the peer express route used for the global reach connection
+        /// Authorization key from the peer express route used for the global reach
+        /// connection
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -139,7 +183,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Authorization key from the peer express route used for the global reach connection",
+        Description = @"Authorization key from the peer express route used for the global reach
+        connection",
         SerializedName = @"authorizationKey",
         PossibleTypes = new [] { typeof(string) })]
         string AuthorizationKey { get; set; }
@@ -156,7 +201,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Connected", "Connecting", "Disconnected")]
         string CircuitConnectionStatus { get;  }
         /// <summary>
-        /// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection
+        /// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the
+        /// global reach connection
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -164,12 +210,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection",
+        Description = @"The ID of the Private Cloud's ExpressRoute Circuit that is participating in the
+        global reach connection",
         SerializedName = @"expressRouteId",
         PossibleTypes = new [] { typeof(string) })]
         string ExpressRouteId { get; set; }
         /// <summary>
-        /// Identifier of the ExpressRoute Circuit to peer with in the global reach connection
+        /// Identifier of the ExpressRoute Circuit to peer with in the global reach
+        /// connection
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -177,7 +225,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Identifier of the ExpressRoute Circuit to peer with in the global reach connection",
+        Description = @"Identifier of the ExpressRoute Circuit to peer with in the global reach
+        connection",
         SerializedName = @"peerExpressRouteCircuit",
         PossibleTypes = new [] { typeof(string) })]
         string PeerExpressRouteCircuit { get; set; }
@@ -191,37 +240,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Description = @"The state of the  ExpressRoute Circuit Authorization provisioning",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Updating", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Updating")]
         string ProvisioningState { get;  }
 
     }
     /// A global reach connection resource
     internal partial interface IGlobalReachConnectionInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IProxyResourceInternal
     {
         /// <summary>
-        /// The network used for global reach carved out from the original network block provided for the private cloud
+        /// The network used for global reach carved out from the original network block
+        /// provided for the private cloud
         /// </summary>
         string AddressPrefix { get; set; }
         /// <summary>
-        /// Authorization key from the peer express route used for the global reach connection
+        /// Authorization key from the peer express route used for the global reach
+        /// connection
         /// </summary>
         string AuthorizationKey { get; set; }
         /// <summary>The connection status of the global reach connection</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Connected", "Connecting", "Disconnected")]
         string CircuitConnectionStatus { get; set; }
         /// <summary>
-        /// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection
+        /// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the
+        /// global reach connection
         /// </summary>
         string ExpressRouteId { get; set; }
         /// <summary>
-        /// Identifier of the ExpressRoute Circuit to peer with in the global reach connection
+        /// Identifier of the ExpressRoute Circuit to peer with in the global reach
+        /// connection
         /// </summary>
         string PeerExpressRouteCircuit { get; set; }
-        /// <summary>The properties of a global reach connection resource</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnectionProperties Property { get; set; }
         /// <summary>The state of the ExpressRoute Circuit Authorization provisioning</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Updating", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Updating")]
         string ProvisioningState { get; set; }
 
     }

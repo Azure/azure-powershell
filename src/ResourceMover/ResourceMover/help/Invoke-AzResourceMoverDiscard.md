@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ResourceMover-help.xml
 Module Name: Az.ResourceMover
 online version: https://learn.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemoverdiscard
 schema: 2.0.0
@@ -17,9 +17,10 @@ To aid the user to prerequisite the operation the client can call operation with
 ## SYNTAX
 
 ```
-Invoke-AzResourceMoverDiscard -Name <String> -ResourceGroupName <String> -MoveResource <String[]>
- [-SubscriptionId <String>] [-MoveResourceInputType <MoveResourceInputType>] [-ValidateOnly]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzResourceMoverDiscard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -MoveResource <String[]> [-MoveResourceInputType <MoveResourceInputType>] [-ValidateOnly]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,7 +49,6 @@ Name           : 095f3d51-ebd1-4c5b-9a65-d78ebe3ac345
 Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
 StartTime      : 2/10/2021 12:39:37 PM
 Status         : Succeeded
-
 ```
 
 Validate the dependecies before Discard of  the resources.
@@ -70,7 +70,6 @@ Name           : 290472e3-c8de-4c55-aba1-3a34a7a4ab38
 Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
 StartTime      : 2/10/2021 12:55:21 PM
 Status         : Succeeded
-
 ```
 
 Discards the move of the resources using "MoveResource Name" as input.
@@ -92,8 +91,6 @@ Name           : 955fd43c-10b6-481e-888b-d26d6ec42aea
 Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
 StartTime      : 2/10/2021 1:00:00 PM
 Status         : Succeeded
-
-
 ```
 
 Discards the move of the resources using "SourceARMID" as input.
@@ -278,7 +275,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -3,7 +3,8 @@
     <PsModuleName>Compute</PsModuleName>
     <PsRootModuleName>Compute</PsRootModuleName>
   </PropertyGroup>
-  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.autorest.props" />
+  
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>

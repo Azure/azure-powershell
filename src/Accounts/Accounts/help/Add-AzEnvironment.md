@@ -59,6 +59,8 @@ The built-in environments AzureCloud and AzureChinaCloud target existing public 
 
 ### Example 1: Creating and modifying a new environment
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 Add-AzEnvironment -Name TestEnvironment `
         -ActiveDirectoryEndpoint TestADEndpoint `

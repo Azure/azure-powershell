@@ -28,35 +28,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotSpecified".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotSpecified", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
+                yield return new global::System.Management.Automation.CompletionResult("'NotSpecified'", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Internal".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Internal", "Internal", global::System.Management.Automation.CompletionResultType.ParameterValue, "Internal");
+                yield return new global::System.Management.Automation.CompletionResult("'Internal'", "Internal", global::System.Management.Automation.CompletionResultType.ParameterValue, "Internal");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "External".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("External", "External", global::System.Management.Automation.CompletionResultType.ParameterValue, "External");
+                yield return new global::System.Management.Automation.CompletionResult("'External'", "External", global::System.Management.Automation.CompletionResultType.ParameterValue, "External");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Hidden".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Hidden", "Hidden", global::System.Management.Automation.CompletionResultType.ParameterValue, "Hidden");
+                yield return new global::System.Management.Automation.CompletionResult("'Hidden'", "Hidden", global::System.Management.Automation.CompletionResultType.ParameterValue, "Hidden");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "RegistrationFree".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("RegistrationFree", "RegistrationFree", global::System.Management.Automation.CompletionResultType.ParameterValue, "RegistrationFree");
+                yield return new global::System.Management.Automation.CompletionResult("'RegistrationFree'", "RegistrationFree", global::System.Management.Automation.CompletionResultType.ParameterValue, "RegistrationFree");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "LegacyRegistrationRequired".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LegacyRegistrationRequired", "LegacyRegistrationRequired", global::System.Management.Automation.CompletionResultType.ParameterValue, "LegacyRegistrationRequired");
+                yield return new global::System.Management.Automation.CompletionResult("'LegacyRegistrationRequired'", "LegacyRegistrationRequired", global::System.Management.Automation.CompletionResultType.ParameterValue, "LegacyRegistrationRequired");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TenantOnly".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("TenantOnly", "TenantOnly", global::System.Management.Automation.CompletionResultType.ParameterValue, "TenantOnly");
+                yield return new global::System.Management.Automation.CompletionResult("'TenantOnly'", "TenantOnly", global::System.Management.Automation.CompletionResultType.ParameterValue, "TenantOnly");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AuthorizationFree".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AuthorizationFree", "AuthorizationFree", global::System.Management.Automation.CompletionResultType.ParameterValue, "AuthorizationFree");
+                yield return new global::System.Management.Automation.CompletionResult("'AuthorizationFree'", "AuthorizationFree", global::System.Management.Automation.CompletionResultType.ParameterValue, "AuthorizationFree");
             }
         }
     }

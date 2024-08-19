@@ -7,31 +7,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Extensions;
 
-    /// <summary>Pageable list of script executions</summary>
+    /// <summary>The response of a ScriptExecution list operation.</summary>
     public partial class ScriptExecutionsList :
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionsList,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionsListInternal
     {
 
-        /// <summary>Internal Acessors for NextLink</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionsListInternal.NextLink { get => this._nextLink; set { {_nextLink = value;} } }
-
-        /// <summary>Internal Acessors for Value</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution> Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionsListInternal.Value { get => this._value; set { {_value = value;} } }
-
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>URL to get the next page if any</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
-        public string NextLink { get => this._nextLink; }
+        public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution> _value;
 
-        /// <summary>List of scripts</summary>
+        /// <summary>The ScriptExecution items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution> Value { get => this._value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution> Value { get => this._value; set => this._value = value; }
 
         /// <summary>Creates an new <see cref="ScriptExecutionsList" /> instance.</summary>
         public ScriptExecutionsList()
@@ -39,41 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 
         }
     }
-    /// Pageable list of script executions
+    /// The response of a ScriptExecution list operation.
     public partial interface IScriptExecutionsList :
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IJsonSerializable
     {
-        /// <summary>URL to get the next page if any</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"URL to get the next page if any",
+        Create = true,
+        Update = true,
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
-        string NextLink { get;  }
-        /// <summary>List of scripts</summary>
+        string NextLink { get; set; }
+        /// <summary>The ScriptExecution items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"List of scripts",
+        Create = true,
+        Update = true,
+        Description = @"The ScriptExecution items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution> Value { get;  }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution> Value { get; set; }
 
     }
-    /// Pageable list of script executions
+    /// The response of a ScriptExecution list operation.
     internal partial interface IScriptExecutionsListInternal
 
     {
-        /// <summary>URL to get the next page if any</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>List of scripts</summary>
+        /// <summary>The ScriptExecution items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution> Value { get; set; }
 
     }

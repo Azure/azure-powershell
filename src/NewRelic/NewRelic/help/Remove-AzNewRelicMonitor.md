@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NewRelic-help.xml
 Module Name: Az.NewRelic
 online version: https://learn.microsoft.com/powershell/module/az.newrelic/remove-aznewrelicmonitor
 schema: 2.0.0
@@ -14,15 +14,15 @@ Delete a NewRelicMonitorResource
 
 ### Delete (Default)
 ```
-Remove-AzNewRelicMonitor -Name <String> -ResourceGroupName <String> -UserEmail <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzNewRelicMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -UserEmail <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzNewRelicMonitor -InputObject <INewRelicIdentity> -UserEmail <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +32,7 @@ Delete a NewRelicMonitorResource
 
 ### Example 1: Delete a NewRelic Monitor Resource
 ```powershell
-Remove-AzNewRelicMonitor -Name test-03 -ResourceGroupName ps-test -UserEmail v-jiaji@outlook.com
+Remove-AzNewRelicMonitor -Name test-03 -ResourceGroupName ps-test -UserEmail user1@outlook.com
 ```
 
 Delete a NewRelic Monitor Resource
@@ -72,7 +72,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentity
@@ -221,19 +220,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <INewRelicIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[MonitorName <String>]`: Name of the Monitors resource
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleSetName <String>]`: Name of the TagRule
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
 ## RELATED LINKS
-

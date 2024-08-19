@@ -1,5 +1,4 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <PsModuleName>FrontDoor</PsModuleName>
   </PropertyGroup>
@@ -11,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.FrontDoor" Version="4.0.0" />
+    	<ProjectReference Include="..\FrontDoor.Management.Sdk\FrontDoor.Management.Sdk.csproj" />
   </ItemGroup>
 
 </Project>

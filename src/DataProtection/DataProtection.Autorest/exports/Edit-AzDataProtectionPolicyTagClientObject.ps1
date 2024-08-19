@@ -26,7 +26,7 @@ Edit-AzDataProtectionPolicyTagClientObject -Policy $pol -Name Weekly -Criteria $
 Edit-AzDataProtectionPolicyTagClientObject -Policy $pol -Name Weekly -RemoveRule
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupPolicy
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -67,12 +67,12 @@ POLICY <IBackupPolicy>: Backup Policy Object.
 https://learn.microsoft.com/powershell/module/az.dataprotection/edit-azdataprotectionpolicytagclientobject
 #>
 function Edit-AzDataProtectionPolicyTagClientObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupPolicy])]
 [CmdletBinding(DefaultParameterSetName='RemoveTag', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupPolicy]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupPolicy]
     # Backup Policy Object.
     # To construct, see NOTES section for POLICY properties and create a hash table.
     ${Policy},
@@ -91,7 +91,7 @@ param(
 
     [Parameter(ParameterSetName='updateTag', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IScheduleBasedBackupCriteria[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IScheduleBasedBackupCriteria[]]
     # Criterias to be associated with the schedule tag.
     # To construct, see NOTES section for CRITERIA properties and create a hash table.
     ${Criteria}

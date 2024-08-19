@@ -15,16 +15,25 @@ Partially updates a devcenter.
 ### UpdateExpanded (Default)
 ```
 Update-AzDevCenterAdminDevCenter -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DevBoxProvisioningSettingInstallAzureMonitorAgentEnableStatus <InstallAzureMonitorAgentEnableStatus>]
  [-DisplayName <String>] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IdentityUserAssignedIdentity <Hashtable>]
+ [-NetworkSettingMicrosoftHostedNetworkEnableStatus <MicrosoftHostedNetworkEnableStatus>] [-PlanId <String>]
+ [-ProjectCatalogSettingCatalogItemSyncEnableStatus <CatalogItemSyncEnableStatus>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDevCenterAdminDevCenter -InputObject <IDevCenterIdentity> [-DisplayName <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzDevCenterAdminDevCenter -InputObject <IDevCenterIdentity>
+ [-DevBoxProvisioningSettingInstallAzureMonitorAgentEnableStatus <InstallAzureMonitorAgentEnableStatus>]
+ [-DisplayName <String>] [-IdentityType <ManagedServiceIdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>]
+ [-NetworkSettingMicrosoftHostedNetworkEnableStatus <MicrosoftHostedNetworkEnableStatus>] [-PlanId <String>]
+ [-ProjectCatalogSettingCatalogItemSyncEnableStatus <CatalogItemSyncEnableStatus>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,6 +82,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DevBoxProvisioningSettingInstallAzureMonitorAgentEnableStatus
+Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.InstallAzureMonitorAgentEnableStatus
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -159,11 +183,72 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NetworkSettingMicrosoftHostedNetworkEnableStatus
+Indicates whether pools in this Dev Center can use Microsoft Hosted Networks.
+Defaults to Enabled if not set.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.MicrosoftHostedNetworkEnableStatus
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlanId
+Resource Id of an associated Plan
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProjectCatalogSettingCatalogItemSyncEnableStatus
+Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogItemSyncEnableStatus
 Parameter Sets: (All)
 Aliases:
 
@@ -260,34 +345,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IDevCenter
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenter
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDevCenterIdentity>`: Identity Parameter
-  - `[AttachedNetworkConnectionName <String>]`: The name of the attached NetworkConnection.
-  - `[CatalogName <String>]`: The name of the Catalog.
-  - `[DevBoxDefinitionName <String>]`: The name of the Dev Box definition.
-  - `[DevCenterName <String>]`: The name of the devcenter.
-  - `[EnvironmentTypeName <String>]`: The name of the environment type.
-  - `[GalleryName <String>]`: The name of the gallery.
-  - `[Id <String>]`: Resource identity path
-  - `[ImageName <String>]`: The name of the image.
-  - `[Location <String>]`: The Azure region
-  - `[NetworkConnectionName <String>]`: Name of the Network Connection that can be applied to a Pool.
-  - `[OperationId <String>]`: The ID of an ongoing async operation
-  - `[PoolName <String>]`: Name of the pool.
-  - `[ProjectName <String>]`: The name of the project.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ScheduleName <String>]`: The name of the schedule that uniquely identifies it.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VersionName <String>]`: The version of the image.
 
 ## RELATED LINKS

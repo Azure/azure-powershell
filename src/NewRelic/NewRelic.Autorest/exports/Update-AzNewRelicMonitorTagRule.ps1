@@ -25,13 +25,14 @@ Update-AzNewRelicMonitorTagRule -MonitorName test-03 -ResourceGroupName ps-test 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.ITagRule
+Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <INewRelicIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [MonitorName <String>]: Name of the Monitors resource
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -39,28 +40,40 @@ INPUTOBJECT <INewRelicIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
 
 LOGRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for capturing logs. This only takes effect if SendActivityLogs flag is enabled. If empty, all resources will be captured.If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
-  [Action <TagAction?>]: Valid actions for a filtering tag. Exclusion takes priority over inclusion.
+  [Action <String>]: Valid actions for a filtering tag. Exclusion takes priority over inclusion.
   [Name <String>]: The name (also known as the key) of the tag.
   [Value <String>]: The value of the tag.
 
 METRICRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for capturing metrics.
-  [Action <TagAction?>]: Valid actions for a filtering tag. Exclusion takes priority over inclusion.
+  [Action <String>]: Valid actions for a filtering tag. Exclusion takes priority over inclusion.
   [Name <String>]: The name (also known as the key) of the tag.
   [Value <String>]: The value of the tag.
+
+MONITORINPUTOBJECT <INewRelicIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
+  [Id <String>]: Resource identity path
+  [MonitorName <String>]: Name of the Monitors resource
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleSetName <String>]: Name of the TagRule
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.newrelic/update-aznewrelicmonitortagrule
 #>
 function Update-AzNewRelicMonitorTagRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.ITagRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Path')]
     [System.String]
     # Name of the Monitors resource
     ${MonitorName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -68,12 +81,17 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityMonitorExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Path')]
     [System.String]
     # Name of the TagRule
     ${RuleSetName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -84,61 +102,90 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateViaIdentityMonitorExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentity]
+    # Identity Parameter
+    ${MonitorInputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityMonitorExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.IFilteringTag[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IFilteringTag[]]
     # List of filtering tags to be used for capturing logs.
     # This only takes effect if SendActivityLogs flag is enabled.
     # If empty, all resources will be captured.If only Exclude action is specified, the rules will apply to the list of all available resources.
     # If Include actions are specified, the rules will only include resources with the associated tags.
-    # To construct, see NOTES section for LOGRULEFILTERINGTAG properties and create a hash table.
     ${LogRuleFilteringTag},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.SendAadLogsStatus])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityMonitorExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.SendAadLogsStatus]
+    [System.String]
     # Flag specifying if AAD logs should be sent for the Monitor resource.
     ${LogRuleSendAadLog},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.SendActivityLogsStatus])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityMonitorExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.SendActivityLogsStatus]
+    [System.String]
     # Flag specifying if activity logs from Azure resources should be sent for the Monitor resource.
     ${LogRuleSendActivityLog},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.SendSubscriptionLogsStatus])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityMonitorExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.SendSubscriptionLogsStatus]
+    [System.String]
     # Flag specifying if subscription logs should be sent for the Monitor resource.
     ${LogRuleSendSubscriptionLog},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityMonitorExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.IFilteringTag[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IFilteringTag[]]
     # List of filtering tags to be used for capturing metrics.
-    # To construct, see NOTES section for METRICRULEFILTERINGTAG properties and create a hash table.
     ${MetricRuleFilteringTag},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.SendMetricsStatus])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityMonitorExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.SendMetricsStatus]
+    [System.String]
     # Flag specifying if metrics should be sent for the Monitor resource.
     ${MetricRuleSendMetric},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityMonitorExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
     [System.String]
     # User Email
     ${MetricRuleUserEmail},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -217,12 +264,25 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.NewRelic.private\Update-AzNewRelicMonitorTagRule_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.NewRelic.private\Update-AzNewRelicMonitorTagRule_UpdateViaIdentityExpanded';
+            UpdateViaIdentityMonitorExpanded = 'Az.NewRelic.private\Update-AzNewRelicMonitorTagRule_UpdateViaIdentityMonitorExpanded';
+            UpdateViaJsonFilePath = 'Az.NewRelic.private\Update-AzNewRelicMonitorTagRule_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.NewRelic.private\Update-AzNewRelicMonitorTagRule_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

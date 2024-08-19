@@ -1,17 +1,17 @@
 {
-  "ClusterJob+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.HDInsight/locations/West US 3/availableClusterVersions?api-version=2023-06-01-preview+1": {
+  "ClusterJob+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/providers/Microsoft.HDInsight/locations/westus2/availableClusterVersions?api-version=2024-05-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.HDInsight/locations/West%20US%203/availableClusterVersions?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/providers/Microsoft.HDInsight/locations/westus2/availableClusterVersions?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "0f6aa3df-6e5c-42f0-bd4e-5a1ab1d64d45" ],
+        "x-ms-client-request-id": [ "976cc144-68d5-4e37-924c-d52841e8290f" ],
         "CommandName": [ "Get-AzHdInsightOnAksAvailableClusterVersion" ],
         "FullCommandName": [ "Get-AzHdInsightOnAksAvailableClusterVersion_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.HdInsightOnAks/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v11.4.0", "PSVersion/v7.4.2", "Az.HdInsightOnAks/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,38 +22,39 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "72e7e7a6-ebd5-468a-a15f-41547820f1f3" ],
-        "x-ms-request-id": [ "8b779da9-ae0c-4f81-9b6c-7f4c2ff9ab90" ],
-        "x-ms-correlation-request-id": [ "4f83a5f4-2513-46b1-899d-ecb2de5011c4" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230915T041846Z:4f83a5f4-2513-46b1-899d-ecb2de5011c4" ],
+        "mise-correlation-id": [ "265f2c84-81ce-41c5-a281-e5829b362ec4" ],
+        "x-ms-request-id": [ "d18e9db4-1d52-46a7-8179-4efc7e1bca99" ],
+        "x-ms-correlation-request-id": [ "656ea83e-d2ef-49b5-8cb6-371203645e7d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240521T065727Z:656ea83e-d2ef-49b5-8cb6-371203645e7d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F3FC199D3CF44964B775401180CAC20D Ref B: TYO201100114025 Ref C: 2023-09-15T04:18:45Z" ],
-        "Date": [ "Fri, 15 Sep 2023 04:18:45 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 179698C1D46D4D7CA3CDB232BB60D594 Ref B: MAA201060515051 Ref C: 2024-05-21T06:57:26Z" ],
+        "Date": [ "Tue, 21 May 2024 06:57:26 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2762" ],
+        "Content-Length": [ "6199" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.HDInsight/locations/West US 3/availableclusterversions/flink_1.16.0-1.0.6\",\"name\":\"flink_1.16.0-1.0.6\",\"properties\":{\"clusterVersion\":\"1.0.6\",\"ossVersion\":\"1.16.0\",\"clusterType\":\"Flink\",\"clusterPoolVersion\":\"1.0\",\"isPreview\":false,\"components\":[{\"name\":\"Flink\",\"version\":\"1.16.0\"},{\"name\":\"Hive Metastore\",\"version\":\"3.1.2\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.HDInsight/locations/West US 3/availableclusterversions/spark_3.3.1-1.0.6\",\"name\":\"spark_3.3.1-1.0.6\",\"properties\":{\"clusterVersion\":\"1.0.6\",\"ossVersion\":\"3.3.1\",\"clusterType\":\"Spark\",\"clusterPoolVersion\":\"1.0\",\"isPreview\":false,\"components\":[{\"name\":\"Yarn\",\"version\":\"3.3.1\"},{\"name\":\"Spark\",\"version\":\"3.3.1\"},{\"name\":\"Hive Metastore\",\"version\":\"3.1.2\"},{\"name\":\"Zookeeper\",\"version\":\"3.6.2\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.HDInsight/locations/West US 3/availableclusterversions/stub_2.4.1-1.0.0\",\"name\":\"stub_2.4.1-1.0.0\",\"properties\":{\"clusterVersion\":\"1.0.0\",\"ossVersion\":\"2.4.1\",\"clusterType\":\"Stub\",\"clusterPoolVersion\":\"1.0\",\"isPreview\":false,\"components\":[{\"name\":\"ResourceManager\",\"version\":\"2.4.1\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.HDInsight/locations/West US 3/availableclusterversions/stub_2.4.1-1.0.1\",\"name\":\"stub_2.4.1-1.0.1\",\"properties\":{\"clusterVersion\":\"1.0.1\",\"ossVersion\":\"2.4.1\",\"clusterType\":\"Stub\",\"clusterPoolVersion\":\"1.0\",\"isPreview\":false,\"components\":[{\"name\":\"ResourceManager\",\"version\":\"2.4.1\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.HDInsight/locations/West US 3/availableclusterversions/stub_2.4.2-1.0.0\",\"name\":\"stub_2.4.2-1.0.0\",\"properties\":{\"clusterVersion\":\"1.0.0\",\"ossVersion\":\"2.4.2\",\"clusterType\":\"Stub\",\"clusterPoolVersion\":\"1.0\",\"isPreview\":false,\"components\":[{\"name\":\"ResourceManager\",\"version\":\"2.4.2\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.HDInsight/locations/West US 3/availableclusterversions/stub_2.4.3-1.1.0\",\"name\":\"stub_2.4.3-1.1.0\",\"properties\":{\"clusterVersion\":\"1.1.0\",\"ossVersion\":\"2.4.3\",\"clusterType\":\"Stub\",\"clusterPoolVersion\":\"\",\"isPreview\":false,\"components\":[{\"name\":\"ResourceManager\",\"version\":\"2.4.3\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.HDInsight/locations/West US 3/availableclusterversions/trino_0.410.0-1.0.6\",\"name\":\"trino_0.410.0-1.0.6\",\"properties\":{\"clusterVersion\":\"1.0.6\",\"ossVersion\":\"0.410.0\",\"clusterType\":\"Trino\",\"clusterPoolVersion\":\"1.0\",\"isPreview\":false,\"components\":[{\"name\":\"Trino\",\"version\":\"410\"},{\"name\":\"Hive metastore\",\"version\":\"3.1.2\"}]}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-0000000000000/providers/Microsoft.HDInsight/locations/westus2/availableclusterversions/flink_1.16.0-1.0.6\",\"name\":\"flink_1.16.0-1.0.6\",\"properties\":{\"clusterVersion\":\"1.0.6\",\"ossVersion\":\"1.16.0\",\"clusterType\":\"Flink\",\"clusterPoolVersion\":\"\",\"isPreview\":false,\"components\":[{\"name\":\"Flink\",\"version\":\"1.16.0\"},{\"name\":\"Hive Metastore\",\"version\":\"3.1.2\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-0000000000000/providers/Microsoft.HDInsight/locations/westus2/availableclusterversions/flink_1.17.0-1.1.0\",\"name\":\"flink_1.17.0-1.1.0\",\"properties\":{\"clusterVersion\":\"1.1.0\",\"ossVersion\":\"1.17.0\",\"clusterType\":\"Flink\",\"clusterPoolVersion\":\"1.1\",\"isPreview\":false,\"components\":[{\"name\":\"Flink\",\"version\":\"1.17.0\"},{\"name\":\"Hive Metastore\",\"version\":\"3.1.2\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-0000000000000/providers/Microsoft.HDInsight/locations/westus2/availableclusterversions/flink_1.17.0-1.1.1\",\"name\":\"flink_1.17.0-1.1.1\",\"properties\":{\"clusterVersion\":\"1.1.1\",\"ossVersion\":\"1.17.0\",\"clusterType\":\"Flink\",\"clusterPoolVersion\":\"1.1\",\"isPreview\":false,\"components\":[{\"name\":\"Flink\",\"version\":\"1.17.0\"},{\"name\":\"Hive Metastore\",\"version\":\"3.1.2\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-0000000000000/providers/Microsoft.HDInsight/locations/westus2/availableclusterversions/flink_1.17.0-1.2.0\",\"name\":\"flink_1.17.0-1.2.0\",\"properties\":{\"clusterVersion\":\"1.2.0\",\"ossVersion\":\"1.17.0\",\"clusterType\":\"Flink\",\"clusterPoolVersion\":\"1.2\",\"isPreview\":false,\"components\":[{\"name\":\"Flink\",\"version\":\"1.17.0\"},{\"name\":\"Hive Metastore\",\"version\":\"3.1.2\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-0000000000000/providers/Microsoft.HDInsight/locations/westus2/availableclusterversions/kafka_3.6.0-1.1.1\",\"name\":\"kafka_3.6.0-1.1.1\",\"properties\":{\"clusterVersion\":\"1.1.1\",\"ossVersion\":\"3.6.0\",\"clusterType\":\"Kafka\",\"clusterPoolVersion\":\"1.1\",\"isPreview\":false,\"components\":[{\"name\":\"Kafka\",\"version\":\"3.6.0\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-0000000000000/providers/Microsoft.HDInsight/locations/westus2/availableclusterversions/kafka_3.6.0-1.2.0\",\"name\":\"kafka_3.6.0-1.2.0\",\"properties\":{\"clusterVersion\":\"1.2.0\",\"ossVersion\":\"3.6.0\",\"clusterType\":\"Kafka\",\"clusterPoolVersion\":\"1.2\",\"isPreview\":false,\"components\":[{\"name\":\"Kafka\",\"version\":\"3.6.0\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-0000000000000/providers/Microsoft.HDInsight/locations/westus2/availableclusterversions/ranger_2.3.0-1.1.1\",\"name\":\"ranger_2.3.0-1.1.1\",\"properties\":{\"clusterVersion\":\"1.1.1\",\"ossVersion\":\"2.3.0\",\"clusterType\":\"Ranger\",\"clusterPoolVersion\":\"1.1\",\"isPreview\":false,\"components\":[]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-0000000000000/providers/Microsoft.HDInsight/locations/westus2/availableclusterversions/ranger_2.3.0-1.2.0\",\"name\":\"ranger_2.3.0-1.2.0\",\"properties\":{\"clusterVersion\":\"1.2.0\",\"ossVersion\":\"2.3.0\",\"clusterType\":\"Ranger\",\"clusterPoolVersion\":\"1.2\",\"isPreview\":false,\"components\":[]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-0000000000000/providers/Microsoft.HDInsight/locations/westus2/availableclusterversions/spark_3.3.1-1.1.1\",\"name\":\"spark_3.3.1-1.1.1\",\"properties\":{\"clusterVersion\":\"1.1.1\",\"ossVersion\":\"3.3.1\",\"clusterType\":\"Spark\",\"clusterPoolVersion\":\"1.1\",\"isPreview\":false,\"components\":[{\"name\":\"Yarn\",\"version\":\"3.3.4\"},{\"name\":\"Spark\",\"version\":\"3.3.1\"},{\"name\":\"Hive Metastore\",\"version\":\"3.1.2\"},{\"name\":\"Zookeeper\",\"version\":\"3.8.3\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-0000000000000/providers/Microsoft.HDInsight/locations/westus2/availableclusterversions/spark_3.4.1-1.2.0\",\"name\":\"spark_3.4.1-1.2.0\",\"properties\":{\"clusterVersion\":\"1.2.0\",\"ossVersion\":\"3.4.1\",\"clusterType\":\"Spark\",\"clusterPoolVersion\":\"1.2\",\"isPreview\":false,\"components\":[{\"name\":\"Yarn\",\"version\":\"3.3.4\"},{\"name\":\"Spark\",\"version\":\"3.4.1\"},{\"name\":\"Hive Metastore\",\"version\":\"3.1.2\"},{\"name\":\"Zookeeper\",\"version\":\"3.8.3\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-0000000000000/providers/Microsoft.HDInsight/locations/westus2/availableclusterversions/stub_2.4.1-1.0.0\",\"name\":\"stub_2.4.1-1.0.0\",\"properties\":{\"clusterVersion\":\"1.0.0\",\"ossVersion\":\"2.4.1\",\"clusterType\":\"Stub\",\"clusterPoolVersion\":\"\",\"isPreview\":false,\"components\":[{\"name\":\"ResourceManager\",\"version\":\"2.4.1\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-0000000000000/providers/Microsoft.HDInsight/locations/westus2/availableclusterversions/stub_2.4.1-1.0.1\",\"name\":\"stub_2.4.1-1.0.1\",\"properties\":{\"clusterVersion\":\"1.0.1\",\"ossVersion\":\"2.4.1\",\"clusterType\":\"Stub\",\"clusterPoolVersion\":\"\",\"isPreview\":false,\"components\":[{\"name\":\"ResourceManager\",\"version\":\"2.4.1\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-0000000000000/providers/Microsoft.HDInsight/locations/westus2/availableclusterversions/stub_2.4.2-1.0.0\",\"name\":\"stub_2.4.2-1.0.0\",\"properties\":{\"clusterVersion\":\"1.0.0\",\"ossVersion\":\"2.4.2\",\"clusterType\":\"Stub\",\"clusterPoolVersion\":\"\",\"isPreview\":false,\"components\":[{\"name\":\"ResourceManager\",\"version\":\"2.4.2\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-0000000000000/providers/Microsoft.HDInsight/locations/westus2/availableclusterversions/stub_2.4.3-1.1.0\",\"name\":\"stub_2.4.3-1.1.0\",\"properties\":{\"clusterVersion\":\"1.1.0\",\"ossVersion\":\"2.4.3\",\"clusterType\":\"Stub\",\"clusterPoolVersion\":\"1.1\",\"isPreview\":false,\"components\":[{\"name\":\"ResourceManager\",\"version\":\"2.4.3\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-0000000000000/providers/Microsoft.HDInsight/locations/westus2/availableclusterversions/trino_0.440.0-1.2.0\",\"name\":\"trino_0.440.0-1.2.0\",\"properties\":{\"clusterVersion\":\"1.2.0\",\"ossVersion\":\"0.440.0\",\"clusterType\":\"Trino\",\"clusterPoolVersion\":\"1.2\",\"isPreview\":false,\"components\":[{\"name\":\"Trino\",\"version\":\"440\"},{\"name\":\"Hive metastore\",\"version\":\"3.1.2\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-0000000000000/providers/Microsoft.HDInsight/locations/westus2/availableclusterversions/trino_0.426.0-1.1.1\",\"name\":\"trino_0.426.0-1.1.1\",\"properties\":{\"clusterVersion\":\"1.1.1\",\"ossVersion\":\"0.426.0\",\"clusterType\":\"Trino\",\"clusterPoolVersion\":\"1.1\",\"isPreview\":false,\"components\":[{\"name\":\"Trino\",\"version\":\"426\"},{\"name\":\"Hive metastore\",\"version\":\"3.1.2\"}]}}]}",
       "isContentBase64": false
     }
   },
-  "ClusterJob+[NoContext]+Start-AzHdInsightOnAksClusterJob+$POST+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Group/providers/Microsoft.HDInsight/clusterpools/ps-test-pool/clusters/flinkcluster/runJob?api-version=2023-06-01-preview+1": {
+  "ClusterJob+[NoContext]+Start-AzHdInsightOnAksClusterJob+$POST+https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/psGroup/providers/Microsoft.HDInsight/clusterpools/ps-hilopool/clusters/ps-flink12/runJob?api-version=2024-05-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Group/providers/Microsoft.HDInsight/clusterpools/ps-test-pool/clusters/flinkcluster/runJob?api-version=2023-06-01-preview",
-      "Content": "{\r\n  \"properties\": {\r\n    \"jobType\": \"FlinkJob\",\r\n    \"jobName\": \"job1\",\r\n    \"jobJarDirectory\": \"abfs://flinkjob@hilosa.dfs.core.windows.net/jars\",\r\n    \"jarName\": \"JarName\",\r\n    \"entryClass\": \"com.microsoft.hilo.flink.job.streaming.SleepJob\",\r\n    \"args\": \"\",\r\n    \"action\": \"NEW\",\r\n    \"flinkConfiguration\": {\r\n      \"parallelism\": \"1\"\r\n    }\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/psGroup/providers/Microsoft.HDInsight/clusterpools/ps-hilopool/clusters/ps-flink12/runJob?api-version=2024-05-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"jobType\": \"FlinkJob\",\r\n    \"jobName\": \"job1\",\r\n    \"jobJarDirectory\": \"abfs://flinkdemo125dfsuoi@flinkdemo125stuoi.dfs.core.windows.net/jars\",\r\n    \"jarName\": \"FlinkJobDemo-1.0-SNAPSHOT.jar\",\r\n    \"entryClass\": \"org.example.SleepJob\",\r\n    \"args\": \"\",\r\n    \"action\": \"NEW\",\r\n    \"flinkConfiguration\": {\r\n      \"parallelism\": \"1\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "354" ]
+        "Content-Length": [ "370" ]
       }
     },
     "Response": {
@@ -61,19 +62,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/providers/Microsoft.HDInsight/locations/WESTUS3/operationStatuses/28527709-43cb-4b9d-84b9-d6d221bb1e18*93BE3F5F38E851939A0189D16172AE096513F606F83B4B31C7549306E4C696F3?api-version=2023-06-01-preview" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.HDInsight/locations/WESTUS2/operationStatuses/ab8e3bdc-423c-4b0b-90f4-2911090820bd*664227998D56910A384B82C345F5262CFC139050D600E239CECF0A839403CF56?api-version=2024-05-01-preview\u0026t=638518714497850985\u0026c=MIIHpTCCBo2gAwIBAgITfwNAzkFewm_NciphkAAEA0DOQTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjQwNTE3MTkyMjQwWhcNMjUwNTEyMTkyMjQwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJuJT5HwtZYeMETB2FErJ9p7P7i0j5K1z_6Q8ubSfyaHW5BXsFmRWgdTUjKJeDSJeyiDXrTUG_vHsfl5LFuBUd0wRJdi6qPSdJBdjtQBJeEuHnufrh29AhuQ3GWJDrfdtarbHmIM-iXChLaLDQRvAyrn53r4TLJtSXo-E1Nrko3diGh5O-pU8z8JNR1eM_KSRpMlbaKuCB6O4iL0UDcKoYasw64KhNhDeBWLNuZeFBOZlFiurb2p7OZLyPrCVo9R7w5IOOIJ1by-Z8xXliKu4y8En6XZW4zydhykuZhlt1QXtLV_wQlqMBqHzqniOg0cFlPxbHSUfAw3EPoQWdvzZzUCAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBSkfu1z-bxmu3Ewf496cDhz0adszDAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAGTAsFHn-v_Myc5P-Oa3IJEoH6iGQLYP4rMw8VHz6mNtg8tKrt7uCKm8hnXaILxDW53ybQpLCrIkir-vEkIZRaG_S7xsSov4PJ14t7p21zw25PTidIeFY3Kdx4uG8vhZBZ6nkgAOPe6v-VA7WmYBikI6El7jpz1MaRJMtqxJQIEXw_PbacRK7lughh6X2XvVv0LbV5_jSkYanML03gsTTOQItymOtXsNk0sKM8rhG4XBRFy8vSDa9vBXfWHw3S2-ZvYKpnaklc8_16F4aVu2cPRlAXwaG6XJGkkwl1ClCALQlYxeUWeobHFi0RpMZDprs7h6rHmFARmjrWRf_3vnxqg\u0026s=TZu6K7MgTBcib5NS6uaq1besLRnL4MDb8aib5mMpJkpxIAy7BRDTS4kPlpq7T9IVIUFiGiZK7RpY9Xi9hx9Ewg5HtqnPMy3qRsXiT71RebxsqqMIydfriLucR6Jj1u2rEODLFXjPdAPANyG-nf1xmYrsc7bJTdgtRVwQ8dDgqjXVwQZNuI17ogMwl5wMi0xDTgt1UkNzMb8DsxWEIFCRZdd_xJ2vS9e4Azf3HlTRpjUxB0ulnzZoV8XOl3_tsyJLDDzEXpvSCK9b791fnPiENa_rFRe-b6rl9bB-dwnzg5wXKWKhbYsWXYFPkF9FwcuDQ7WY27wrpwlLtDULjSAhow\u0026h=z26_rQVW8LOWhJSazEAuZwYciuiZRrznYiZS2EpEOHc" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "73e7085f-2460-4e55-95af-14c7bd8a6e19" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.HDInsight/locations/WESTUS3/operationStatuses/28527709-43cb-4b9d-84b9-d6d221bb1e18*93BE3F5F38E851939A0189D16172AE096513F606F83B4B31C7549306E4C696F3?api-version=2023-06-01-preview" ],
-        "x-ms-request-id": [ "28527709-43cb-4b9d-84b9-d6d221bb1e18" ],
-        "x-ms-correlation-request-id": [ "95c980b9-ddd0-407c-8c5c-333e755a9c3f" ],
-        "x-ms-routing-request-id": [ "JAPANWEST:20230915T041849Z:95c980b9-ddd0-407c-8c5c-333e755a9c3f" ],
+        "mise-correlation-id": [ "dca8b4d5-c765-43e7-a3af-7acb4f390681" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.HDInsight/locations/WESTUS2/operationStatuses/ab8e3bdc-423c-4b0b-90f4-2911090820bd*664227998D56910A384B82C345F5262CFC139050D600E239CECF0A839403CF56?api-version=2024-05-01-preview\u0026t=638518714497850985\u0026c=MIIHpTCCBo2gAwIBAgITfwNAzkFewm_NciphkAAEA0DOQTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjQwNTE3MTkyMjQwWhcNMjUwNTEyMTkyMjQwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJuJT5HwtZYeMETB2FErJ9p7P7i0j5K1z_6Q8ubSfyaHW5BXsFmRWgdTUjKJeDSJeyiDXrTUG_vHsfl5LFuBUd0wRJdi6qPSdJBdjtQBJeEuHnufrh29AhuQ3GWJDrfdtarbHmIM-iXChLaLDQRvAyrn53r4TLJtSXo-E1Nrko3diGh5O-pU8z8JNR1eM_KSRpMlbaKuCB6O4iL0UDcKoYasw64KhNhDeBWLNuZeFBOZlFiurb2p7OZLyPrCVo9R7w5IOOIJ1by-Z8xXliKu4y8En6XZW4zydhykuZhlt1QXtLV_wQlqMBqHzqniOg0cFlPxbHSUfAw3EPoQWdvzZzUCAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBSkfu1z-bxmu3Ewf496cDhz0adszDAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAGTAsFHn-v_Myc5P-Oa3IJEoH6iGQLYP4rMw8VHz6mNtg8tKrt7uCKm8hnXaILxDW53ybQpLCrIkir-vEkIZRaG_S7xsSov4PJ14t7p21zw25PTidIeFY3Kdx4uG8vhZBZ6nkgAOPe6v-VA7WmYBikI6El7jpz1MaRJMtqxJQIEXw_PbacRK7lughh6X2XvVv0LbV5_jSkYanML03gsTTOQItymOtXsNk0sKM8rhG4XBRFy8vSDa9vBXfWHw3S2-ZvYKpnaklc8_16F4aVu2cPRlAXwaG6XJGkkwl1ClCALQlYxeUWeobHFi0RpMZDprs7h6rHmFARmjrWRf_3vnxqg\u0026s=TZu6K7MgTBcib5NS6uaq1besLRnL4MDb8aib5mMpJkpxIAy7BRDTS4kPlpq7T9IVIUFiGiZK7RpY9Xi9hx9Ewg5HtqnPMy3qRsXiT71RebxsqqMIydfriLucR6Jj1u2rEODLFXjPdAPANyG-nf1xmYrsc7bJTdgtRVwQ8dDgqjXVwQZNuI17ogMwl5wMi0xDTgt1UkNzMb8DsxWEIFCRZdd_xJ2vS9e4Azf3HlTRpjUxB0ulnzZoV8XOl3_tsyJLDDzEXpvSCK9b791fnPiENa_rFRe-b6rl9bB-dwnzg5wXKWKhbYsWXYFPkF9FwcuDQ7WY27wrpwlLtDULjSAhow\u0026h=z26_rQVW8LOWhJSazEAuZwYciuiZRrznYiZS2EpEOHc" ],
+        "x-ms-request-id": [ "ab8e3bdc-423c-4b0b-90f4-2911090820bd" ],
+        "x-ms-correlation-request-id": [ "5c1e4a01-67d2-4932-894d-03af2941d0be" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240521T065729Z:5c1e4a01-67d2-4932-894d-03af2941d0be" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 1C3A9C5F80204B2FBAE5037E75A13F29 Ref B: TYO201100114025 Ref C: 2023-09-15T04:18:46Z" ],
-        "Date": [ "Fri, 15 Sep 2023 04:18:49 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D911A18831DD43C3B47C43F9FB9CC581 Ref B: MAA201060515051 Ref C: 2024-05-21T06:57:27Z" ],
+        "Date": [ "Tue, 21 May 2024 06:57:28 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "4" ],
@@ -84,20 +86,20 @@
       "isContentBase64": false
     }
   },
-  "ClusterJob+[NoContext]+Start-AzHdInsightOnAksClusterJob+$GET+https://management.azure.com/providers/Microsoft.HDInsight/locations/WESTUS3/operationStatuses/28527709-43cb-4b9d-84b9-d6d221bb1e18*93BE3F5F38E851939A0189D16172AE096513F606F83B4B31C7549306E4C696F3?api-version=2023-06-01-preview+2": {
+  "ClusterJob+[NoContext]+Start-AzHdInsightOnAksClusterJob+$GET+https://management.azure.com/providers/Microsoft.HDInsight/locations/WESTUS2/operationStatuses/ab8e3bdc-423c-4b0b-90f4-2911090820bd*664227998D56910A384B82C345F5262CFC139050D600E239CECF0A839403CF56?api-version=2024-05-01-preview\u0026t=638518714497850985\u0026c=MIIHpTCCBo2gAwIBAgITfwNAzkFewm_NciphkAAEA0DOQTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjQwNTE3MTkyMjQwWhcNMjUwNTEyMTkyMjQwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJuJT5HwtZYeMETB2FErJ9p7P7i0j5K1z_6Q8ubSfyaHW5BXsFmRWgdTUjKJeDSJeyiDXrTUG_vHsfl5LFuBUd0wRJdi6qPSdJBdjtQBJeEuHnufrh29AhuQ3GWJDrfdtarbHmIM-iXChLaLDQRvAyrn53r4TLJtSXo-E1Nrko3diGh5O-pU8z8JNR1eM_KSRpMlbaKuCB6O4iL0UDcKoYasw64KhNhDeBWLNuZeFBOZlFiurb2p7OZLyPrCVo9R7w5IOOIJ1by-Z8xXliKu4y8En6XZW4zydhykuZhlt1QXtLV_wQlqMBqHzqniOg0cFlPxbHSUfAw3EPoQWdvzZzUCAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBSkfu1z-bxmu3Ewf496cDhz0adszDAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAGTAsFHn-v_Myc5P-Oa3IJEoH6iGQLYP4rMw8VHz6mNtg8tKrt7uCKm8hnXaILxDW53ybQpLCrIkir-vEkIZRaG_S7xsSov4PJ14t7p21zw25PTidIeFY3Kdx4uG8vhZBZ6nkgAOPe6v-VA7WmYBikI6El7jpz1MaRJMtqxJQIEXw_PbacRK7lughh6X2XvVv0LbV5_jSkYanML03gsTTOQItymOtXsNk0sKM8rhG4XBRFy8vSDa9vBXfWHw3S2-ZvYKpnaklc8_16F4aVu2cPRlAXwaG6XJGkkwl1ClCALQlYxeUWeobHFi0RpMZDprs7h6rHmFARmjrWRf_3vnxqg\u0026s=TZu6K7MgTBcib5NS6uaq1besLRnL4MDb8aib5mMpJkpxIAy7BRDTS4kPlpq7T9IVIUFiGiZK7RpY9Xi9hx9Ewg5HtqnPMy3qRsXiT71RebxsqqMIydfriLucR6Jj1u2rEODLFXjPdAPANyG-nf1xmYrsc7bJTdgtRVwQ8dDgqjXVwQZNuI17ogMwl5wMi0xDTgt1UkNzMb8DsxWEIFCRZdd_xJ2vS9e4Azf3HlTRpjUxB0ulnzZoV8XOl3_tsyJLDDzEXpvSCK9b791fnPiENa_rFRe-b6rl9bB-dwnzg5wXKWKhbYsWXYFPkF9FwcuDQ7WY27wrpwlLtDULjSAhow\u0026h=z26_rQVW8LOWhJSazEAuZwYciuiZRrznYiZS2EpEOHc+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.HDInsight/locations/WESTUS3/operationStatuses/28527709-43cb-4b9d-84b9-d6d221bb1e18*93BE3F5F38E851939A0189D16172AE096513F606F83B4B31C7549306E4C696F3?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HDInsight/locations/WESTUS2/operationStatuses/ab8e3bdc-423c-4b0b-90f4-2911090820bd*664227998D56910A384B82C345F5262CFC139050D600E239CECF0A839403CF56?api-version=2024-05-01-preview\u0026t=638518714497850985\u0026c=MIIHpTCCBo2gAwIBAgITfwNAzkFewm_NciphkAAEA0DOQTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjQwNTE3MTkyMjQwWhcNMjUwNTEyMTkyMjQwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJuJT5HwtZYeMETB2FErJ9p7P7i0j5K1z_6Q8ubSfyaHW5BXsFmRWgdTUjKJeDSJeyiDXrTUG_vHsfl5LFuBUd0wRJdi6qPSdJBdjtQBJeEuHnufrh29AhuQ3GWJDrfdtarbHmIM-iXChLaLDQRvAyrn53r4TLJtSXo-E1Nrko3diGh5O-pU8z8JNR1eM_KSRpMlbaKuCB6O4iL0UDcKoYasw64KhNhDeBWLNuZeFBOZlFiurb2p7OZLyPrCVo9R7w5IOOIJ1by-Z8xXliKu4y8En6XZW4zydhykuZhlt1QXtLV_wQlqMBqHzqniOg0cFlPxbHSUfAw3EPoQWdvzZzUCAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBSkfu1z-bxmu3Ewf496cDhz0adszDAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAGTAsFHn-v_Myc5P-Oa3IJEoH6iGQLYP4rMw8VHz6mNtg8tKrt7uCKm8hnXaILxDW53ybQpLCrIkir-vEkIZRaG_S7xsSov4PJ14t7p21zw25PTidIeFY3Kdx4uG8vhZBZ6nkgAOPe6v-VA7WmYBikI6El7jpz1MaRJMtqxJQIEXw_PbacRK7lughh6X2XvVv0LbV5_jSkYanML03gsTTOQItymOtXsNk0sKM8rhG4XBRFy8vSDa9vBXfWHw3S2-ZvYKpnaklc8_16F4aVu2cPRlAXwaG6XJGkkwl1ClCALQlYxeUWeobHFi0RpMZDprs7h6rHmFARmjrWRf_3vnxqg\u0026s=TZu6K7MgTBcib5NS6uaq1besLRnL4MDb8aib5mMpJkpxIAy7BRDTS4kPlpq7T9IVIUFiGiZK7RpY9Xi9hx9Ewg5HtqnPMy3qRsXiT71RebxsqqMIydfriLucR6Jj1u2rEODLFXjPdAPANyG-nf1xmYrsc7bJTdgtRVwQ8dDgqjXVwQZNuI17ogMwl5wMi0xDTgt1UkNzMb8DsxWEIFCRZdd_xJ2vS9e4Azf3HlTRpjUxB0ulnzZoV8XOl3_tsyJLDDzEXpvSCK9b791fnPiENa_rFRe-b6rl9bB-dwnzg5wXKWKhbYsWXYFPkF9FwcuDQ7WY27wrpwlLtDULjSAhow\u0026h=z26_rQVW8LOWhJSazEAuZwYciuiZRrznYiZS2EpEOHc",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "391fe896-3a8d-4782-bde3-da97e31b5dce" ],
+        "x-ms-client-request-id": [ "100ee5e8-a925-4e4d-81a8-781d7f0627ef" ],
         "CommandName": [ "Start-AzHdInsightOnAksClusterJob" ],
         "FullCommandName": [ "Start-AzHdInsightOnAksClusterJob_Run" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.HdInsightOnAks/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v11.4.0", "PSVersion/v7.4.2", "Az.HdInsightOnAks/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -107,40 +109,41 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"24009d32-0000-4d00-0000-6503db320000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
-        "x-ms-request-id": [ "9dbfb659-3927-4a21-8adb-54df8650d4d5" ],
-        "x-ms-correlation-request-id": [ "8588a8e9-be99-4fca-8584-56ae65e4fc3b" ],
-        "x-ms-routing-request-id": [ "JAPANWEST:20230915T041920Z:8588a8e9-be99-4fca-8584-56ae65e4fc3b" ],
+        "ETag": [ "\"e902dea8-0000-0800-0000-664c45e40000\"" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-request-id": [ "d0444cc2-0478-4adf-85b5-ae0e7ca95ea9" ],
+        "x-ms-correlation-request-id": [ "61e2f9e5-f61f-4588-a769-c56a72726cd7" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11992" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240521T065800Z:61e2f9e5-f61f-4588-a769-c56a72726cd7" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: B1BA3A862BD94D9CBD1D688677DC22EE Ref B: TYO201100114025 Ref C: 2023-09-15T04:19:19Z" ],
-        "Date": [ "Fri, 15 Sep 2023 04:19:19 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C9F35D5B86E246A59F7652ABA7009A8C Ref B: MAA201060515051 Ref C: 2024-05-21T06:58:00Z" ],
+        "Date": [ "Tue, 21 May 2024 06:58:00 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "584" ],
+        "Content-Length": [ "603" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.HDInsight/locations/WESTUS3/operationStatuses/28527709-43cb-4b9d-84b9-d6d221bb1e18*93BE3F5F38E851939A0189D16172AE096513F606F83B4B31C7549306E4C696F3\",\"name\":\"28527709-43cb-4b9d-84b9-d6d221bb1e18*93BE3F5F38E851939A0189D16172AE096513F606F83B4B31C7549306E4C696F3\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Group/providers/Microsoft.HDInsight/clusterpools/ps-test-pool/clusters/flinkcluster\",\"status\":\"Succeeded\",\"startTime\":\"2023-09-15T04:18:47.1160518Z\",\"endTime\":\"2023-09-15T04:18:58.9750179Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/providers/Microsoft.HDInsight/locations/WESTUS2/operationStatuses/ab8e3bdc-423c-4b0b-90f4-2911090820bd*664227998D56910A384B82C345F5262CFC139050D600E239CECF0A839403CF56\",\"name\":\"ab8e3bdc-423c-4b0b-90f4-2911090820bd*664227998D56910A384B82C345F5262CFC139050D600E239CECF0A839403CF56\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/psGroup/providers/Microsoft.HDInsight/clusterpools/ps-hilopool/clusters/ps-flink12\",\"status\":\"Succeeded\",\"startTime\":\"2024-05-21T06:57:28.5625009Z\",\"endTime\":\"2024-05-21T06:57:40.5787649Z\",\"properties\":{\"jobStatus\":\"SUBMITTED\"}}",
       "isContentBase64": false
     }
   },
-  "ClusterJob+[NoContext]+Start-AzHdInsightOnAksClusterJob+$GET+https://management.azure.com/providers/Microsoft.HDInsight/locations/WESTUS3/operationStatuses/28527709-43cb-4b9d-84b9-d6d221bb1e18*93BE3F5F38E851939A0189D16172AE096513F606F83B4B31C7549306E4C696F3?api-version=2023-06-01-preview+3": {
+  "ClusterJob+[NoContext]+Start-AzHdInsightOnAksClusterJob+$GET+https://management.azure.com/providers/Microsoft.HDInsight/locations/WESTUS2/operationStatuses/ab8e3bdc-423c-4b0b-90f4-2911090820bd*664227998D56910A384B82C345F5262CFC139050D600E239CECF0A839403CF56?api-version=2024-05-01-preview\u0026t=638518714497850985\u0026c=MIIHpTCCBo2gAwIBAgITfwNAzkFewm_NciphkAAEA0DOQTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjQwNTE3MTkyMjQwWhcNMjUwNTEyMTkyMjQwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJuJT5HwtZYeMETB2FErJ9p7P7i0j5K1z_6Q8ubSfyaHW5BXsFmRWgdTUjKJeDSJeyiDXrTUG_vHsfl5LFuBUd0wRJdi6qPSdJBdjtQBJeEuHnufrh29AhuQ3GWJDrfdtarbHmIM-iXChLaLDQRvAyrn53r4TLJtSXo-E1Nrko3diGh5O-pU8z8JNR1eM_KSRpMlbaKuCB6O4iL0UDcKoYasw64KhNhDeBWLNuZeFBOZlFiurb2p7OZLyPrCVo9R7w5IOOIJ1by-Z8xXliKu4y8En6XZW4zydhykuZhlt1QXtLV_wQlqMBqHzqniOg0cFlPxbHSUfAw3EPoQWdvzZzUCAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBSkfu1z-bxmu3Ewf496cDhz0adszDAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAGTAsFHn-v_Myc5P-Oa3IJEoH6iGQLYP4rMw8VHz6mNtg8tKrt7uCKm8hnXaILxDW53ybQpLCrIkir-vEkIZRaG_S7xsSov4PJ14t7p21zw25PTidIeFY3Kdx4uG8vhZBZ6nkgAOPe6v-VA7WmYBikI6El7jpz1MaRJMtqxJQIEXw_PbacRK7lughh6X2XvVv0LbV5_jSkYanML03gsTTOQItymOtXsNk0sKM8rhG4XBRFy8vSDa9vBXfWHw3S2-ZvYKpnaklc8_16F4aVu2cPRlAXwaG6XJGkkwl1ClCALQlYxeUWeobHFi0RpMZDprs7h6rHmFARmjrWRf_3vnxqg\u0026s=TZu6K7MgTBcib5NS6uaq1besLRnL4MDb8aib5mMpJkpxIAy7BRDTS4kPlpq7T9IVIUFiGiZK7RpY9Xi9hx9Ewg5HtqnPMy3qRsXiT71RebxsqqMIydfriLucR6Jj1u2rEODLFXjPdAPANyG-nf1xmYrsc7bJTdgtRVwQ8dDgqjXVwQZNuI17ogMwl5wMi0xDTgt1UkNzMb8DsxWEIFCRZdd_xJ2vS9e4Azf3HlTRpjUxB0ulnzZoV8XOl3_tsyJLDDzEXpvSCK9b791fnPiENa_rFRe-b6rl9bB-dwnzg5wXKWKhbYsWXYFPkF9FwcuDQ7WY27wrpwlLtDULjSAhow\u0026h=z26_rQVW8LOWhJSazEAuZwYciuiZRrznYiZS2EpEOHc+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.HDInsight/locations/WESTUS3/operationStatuses/28527709-43cb-4b9d-84b9-d6d221bb1e18*93BE3F5F38E851939A0189D16172AE096513F606F83B4B31C7549306E4C696F3?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HDInsight/locations/WESTUS2/operationStatuses/ab8e3bdc-423c-4b0b-90f4-2911090820bd*664227998D56910A384B82C345F5262CFC139050D600E239CECF0A839403CF56?api-version=2024-05-01-preview\u0026t=638518714497850985\u0026c=MIIHpTCCBo2gAwIBAgITfwNAzkFewm_NciphkAAEA0DOQTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjQwNTE3MTkyMjQwWhcNMjUwNTEyMTkyMjQwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJuJT5HwtZYeMETB2FErJ9p7P7i0j5K1z_6Q8ubSfyaHW5BXsFmRWgdTUjKJeDSJeyiDXrTUG_vHsfl5LFuBUd0wRJdi6qPSdJBdjtQBJeEuHnufrh29AhuQ3GWJDrfdtarbHmIM-iXChLaLDQRvAyrn53r4TLJtSXo-E1Nrko3diGh5O-pU8z8JNR1eM_KSRpMlbaKuCB6O4iL0UDcKoYasw64KhNhDeBWLNuZeFBOZlFiurb2p7OZLyPrCVo9R7w5IOOIJ1by-Z8xXliKu4y8En6XZW4zydhykuZhlt1QXtLV_wQlqMBqHzqniOg0cFlPxbHSUfAw3EPoQWdvzZzUCAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBSkfu1z-bxmu3Ewf496cDhz0adszDAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAGTAsFHn-v_Myc5P-Oa3IJEoH6iGQLYP4rMw8VHz6mNtg8tKrt7uCKm8hnXaILxDW53ybQpLCrIkir-vEkIZRaG_S7xsSov4PJ14t7p21zw25PTidIeFY3Kdx4uG8vhZBZ6nkgAOPe6v-VA7WmYBikI6El7jpz1MaRJMtqxJQIEXw_PbacRK7lughh6X2XvVv0LbV5_jSkYanML03gsTTOQItymOtXsNk0sKM8rhG4XBRFy8vSDa9vBXfWHw3S2-ZvYKpnaklc8_16F4aVu2cPRlAXwaG6XJGkkwl1ClCALQlYxeUWeobHFi0RpMZDprs7h6rHmFARmjrWRf_3vnxqg\u0026s=TZu6K7MgTBcib5NS6uaq1besLRnL4MDb8aib5mMpJkpxIAy7BRDTS4kPlpq7T9IVIUFiGiZK7RpY9Xi9hx9Ewg5HtqnPMy3qRsXiT71RebxsqqMIydfriLucR6Jj1u2rEODLFXjPdAPANyG-nf1xmYrsc7bJTdgtRVwQ8dDgqjXVwQZNuI17ogMwl5wMi0xDTgt1UkNzMb8DsxWEIFCRZdd_xJ2vS9e4Azf3HlTRpjUxB0ulnzZoV8XOl3_tsyJLDDzEXpvSCK9b791fnPiENa_rFRe-b6rl9bB-dwnzg5wXKWKhbYsWXYFPkF9FwcuDQ7WY27wrpwlLtDULjSAhow\u0026h=z26_rQVW8LOWhJSazEAuZwYciuiZRrznYiZS2EpEOHc",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "391fe896-3a8d-4782-bde3-da97e31b5dce" ],
+        "x-ms-client-request-id": [ "100ee5e8-a925-4e4d-81a8-781d7f0627ef" ],
         "CommandName": [ "Start-AzHdInsightOnAksClusterJob" ],
         "FullCommandName": [ "Start-AzHdInsightOnAksClusterJob_Run" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.HdInsightOnAks/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v11.4.0", "PSVersion/v7.4.2", "Az.HdInsightOnAks/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -150,39 +153,40 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"24009d32-0000-4d00-0000-6503db320000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11998" ],
-        "x-ms-request-id": [ "f996d7d9-228f-4acf-908d-ee4c503f38df" ],
-        "x-ms-correlation-request-id": [ "2f205aba-6ba3-4b20-b392-aca89878324c" ],
-        "x-ms-routing-request-id": [ "JAPANWEST:20230915T041920Z:2f205aba-6ba3-4b20-b392-aca89878324c" ],
+        "ETag": [ "\"e902dea8-0000-0800-0000-664c45e40000\"" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-request-id": [ "7a0522ca-afc7-47e3-a7c5-91836636c222" ],
+        "x-ms-correlation-request-id": [ "e0d8805c-e364-456b-b3d6-a70b8a596413" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11990" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240521T065801Z:e0d8805c-e364-456b-b3d6-a70b8a596413" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 00900EB2CA23467FB5FF5817C342614B Ref B: TYO201100114025 Ref C: 2023-09-15T04:19:20Z" ],
-        "Date": [ "Fri, 15 Sep 2023 04:19:20 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 4D3D20A419B742018047512EB6704823 Ref B: MAA201060515051 Ref C: 2024-05-21T06:58:01Z" ],
+        "Date": [ "Tue, 21 May 2024 06:58:00 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "584" ],
+        "Content-Length": [ "603" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.HDInsight/locations/WESTUS3/operationStatuses/28527709-43cb-4b9d-84b9-d6d221bb1e18*93BE3F5F38E851939A0189D16172AE096513F606F83B4B31C7549306E4C696F3\",\"name\":\"28527709-43cb-4b9d-84b9-d6d221bb1e18*93BE3F5F38E851939A0189D16172AE096513F606F83B4B31C7549306E4C696F3\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Group/providers/Microsoft.HDInsight/clusterpools/ps-test-pool/clusters/flinkcluster\",\"status\":\"Succeeded\",\"startTime\":\"2023-09-15T04:18:47.1160518Z\",\"endTime\":\"2023-09-15T04:18:58.9750179Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/providers/Microsoft.HDInsight/locations/WESTUS2/operationStatuses/ab8e3bdc-423c-4b0b-90f4-2911090820bd*664227998D56910A384B82C345F5262CFC139050D600E239CECF0A839403CF56\",\"name\":\"ab8e3bdc-423c-4b0b-90f4-2911090820bd*664227998D56910A384B82C345F5262CFC139050D600E239CECF0A839403CF56\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/psGroup/providers/Microsoft.HDInsight/clusterpools/ps-hilopool/clusters/ps-flink12\",\"status\":\"Succeeded\",\"startTime\":\"2024-05-21T06:57:28.5625009Z\",\"endTime\":\"2024-05-21T06:57:40.5787649Z\",\"properties\":{\"jobStatus\":\"SUBMITTED\"}}",
       "isContentBase64": false
     }
   },
-  "ClusterJob+[NoContext]+Start-AzHdInsightOnAksClusterJob+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Group/providers/Microsoft.HDInsight/clusterpools/ps-test-pool/clusters/flinkcluster/jobs?api-version=2023-06-01-preview+1": {
+  "ClusterJob+[NoContext]+Get-AzHdInsightOnAksClusterJob+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/psGroup/providers/Microsoft.HDInsight/clusterpools/ps-hilopool/clusters/ps-flink12/jobs?api-version=2024-05-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Group/providers/Microsoft.HDInsight/clusterpools/ps-test-pool/clusters/flinkcluster/jobs?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/psGroup/providers/Microsoft.HDInsight/clusterpools/ps-hilopool/clusters/ps-flink12/jobs?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "10e65fe6-38da-4357-87fa-db7975d7d612" ],
+        "x-ms-client-request-id": [ "8118e8eb-efc1-4091-b85e-4e0b99d362d2" ],
         "CommandName": [ "Get-AzHdInsightOnAksClusterJob" ],
         "FullCommandName": [ "Get-AzHdInsightOnAksClusterJob_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.HdInsightOnAks/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v11.4.0", "PSVersion/v7.4.2", "Az.HdInsightOnAks/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -193,24 +197,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "af30926f-6c2f-479f-b56c-530d155e5937" ],
-        "x-ms-request-id": [ "0db4485b-db4d-430f-9450-6cdb0f311c04" ],
-        "x-ms-correlation-request-id": [ "140eea69-3f7e-4a21-9a08-d6cbddfb2d59" ],
-        "x-ms-routing-request-id": [ "JAPANWEST:20230915T041922Z:140eea69-3f7e-4a21-9a08-d6cbddfb2d59" ],
+        "mise-correlation-id": [ "0ec1d912-c02d-4d1b-94a8-af7af59e3d9d" ],
+        "x-ms-request-id": [ "a0cf14fc-4a8e-4234-81d4-4a63a9e242a7" ],
+        "x-ms-correlation-request-id": [ "389cc844-ddd6-4d82-8408-cd9534452a2a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240521T065804Z:389cc844-ddd6-4d82-8408-cd9534452a2a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 252E1E0DAB8D438A96FF0BD22CF85BBC Ref B: TYO201100114025 Ref C: 2023-09-15T04:19:20Z" ],
-        "Date": [ "Fri, 15 Sep 2023 04:19:22 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: B06542B5BE4B48869090D59835B8FA36 Ref B: MAA201060515051 Ref C: 2024-05-21T06:58:01Z" ],
+        "Date": [ "Tue, 21 May 2024 06:58:03 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "573" ],
+        "Content-Length": [ "677" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Group/providers/Microsoft.HDInsight/clusterpools/ps-test-pool/clusters/flinkcluster/jobs/job1\",\"properties\":{\"jobType\":\"FlinkJob\",\"jobName\":\"job1\",\"jobJarDirectory\":\"abfs://flinkjob@hilosa.dfs.core.windows.net/jars\",\"jarName\":\"JarName\",\"action\":\"NEW\",\"entryClass\":\"com.microsoft.hilo.flink.job.streaming.SleepJob\",\"args\":\"\",\"flinkConfiguration\":{\"parallelism\":\"1\"},\"status\":\"JOB_LAUNCH_FAILED\",\"jobOutput\":\"Job execution failed. \\nFailed to download jar\",\"actionResult\":\"FAILED\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/psGroup/providers/Microsoft.HDInsight/clusterpools/ps-hilopool/clusters/ps-flink12/jobs/job-c5d-4b48-abba-5ee598dbd653\",\"properties\":{\"jobType\":\"FlinkJob\",\"runId\":\"job-c5d-4b48-abba-5ee598dbd653\",\"jobName\":\"job1\",\"jobJarDirectory\":\"abfs://flinkdemo125dfsuoi@flinkdemo125stuoi.dfs.core.windows.net/jars\",\"jarName\":\"FlinkJobDemo-1.0-SNAPSHOT.jar\",\"action\":\"NEW\",\"entryClass\":\"org.example.SleepJob\",\"args\":\"\",\"flinkConfiguration\":{\"parallelism\":\"1\"},\"jobId\":\"25e318907f786a2c6aee392df6580035\",\"status\":\"RUNNING\",\"jobOutput\":\"Flink internal job status : RUNNING\",\"actionResult\":\"SUCCESS\"}}]}",
       "isContentBase64": false
     }
   }

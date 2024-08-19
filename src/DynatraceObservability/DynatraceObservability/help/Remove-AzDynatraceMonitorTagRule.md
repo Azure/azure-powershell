@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DynatraceObservability-help.xml
 Module Name: Az.DynatraceObservability
 online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/remove-azdynatracemonitortagrule
 schema: 2.0.0
@@ -15,13 +15,14 @@ Delete a TagRule
 ### Delete (Default)
 ```
 Remove-AzDynatraceMonitorTagRule -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzDynatraceMonitorTagRule -InputObject <IDynatraceObservabilityIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -212,20 +213,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDynatraceObservabilityIdentity>`: Identity Parameter
-  - `[ConfigurationName <String>]`: Single Sign On Configuration Name
-  - `[Id <String>]`: Resource identity path
-  - `[MonitorName <String>]`: Monitor resource name
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleSetName <String>]`: Monitor resource name
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
 ## RELATED LINKS
-

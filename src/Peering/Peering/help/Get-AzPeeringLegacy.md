@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Peering-help.xml
 Module Name: Az.Peering
 online version: https://learn.microsoft.com/powershell/module/az.peering/get-azpeeringlegacy
 schema: 2.0.0
@@ -13,8 +13,9 @@ Lists all of the legacy peerings under the given subscription matching the speci
 ## SYNTAX
 
 ```
-Get-AzPeeringLegacy -Kind <LegacyPeeringsKind> -PeeringLocation <String> [-SubscriptionId <String[]>]
- [-Asn <Int32>] [-DirectPeeringType <DirectPeeringType>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPeeringLegacy [-SubscriptionId <String[]>] -Kind <LegacyPeeringsKind> -PeeringLocation <String>
+ [-Asn <Int32>] [-DirectPeeringType <DirectPeeringType>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +56,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -140,7 +142,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

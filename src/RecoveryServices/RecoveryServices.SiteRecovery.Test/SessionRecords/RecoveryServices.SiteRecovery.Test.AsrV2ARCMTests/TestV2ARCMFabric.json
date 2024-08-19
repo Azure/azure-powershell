@@ -1,8 +1,8 @@
 {
     "Entries":  [
                     {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwP2FwaS12ZXJzaW9uPTIwMjMtMDItMDE=",
+                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150?api-version=2024-04-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwP2FwaS12ZXJzaW9uPTIwMjQtMDQtMDE=",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -51,7 +51,7 @@
                                                                                 "CENTRALUSEUAP:20210826T062546Z:ed94a6c1-ff9f-4cf0-9490-40fbda04b4dc"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:13 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:14 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "460"
@@ -67,8 +67,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/extendedInformation/vaultExtendedInfo?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL2V4dGVuZGVkSW5mb3JtYXRpb24vdmF1bHRFeHRlbmRlZEluZm8/YXBpLXZlcnNpb249MjAyMy0wMi0wMQ==",
+                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults/Rcm-Vault-150/extendedInformation/vaultExtendedInfo?api-version=2024-04-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9SY20tVmF1bHQtMTUwL2V4dGVuZGVkSW5mb3JtYXRpb24vdmF1bHRFeHRlbmRlZEluZm8/YXBpLXZlcnNpb249MjAyNC0wNC0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -120,7 +120,7 @@
                                                                                 "CENTRALUSEUAP:20210826T062547Z:a40123fc-4d43-4e0a-85ef-d314edfbedee"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:13 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:14 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "390"
@@ -136,8 +136,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cz9hcGktdmVyc2lvbj0yMDIzLTAyLTAx",
+                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.RecoveryServices/vaults?api-version=2024-04-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL1YyQS1FQ1kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cz9hcGktdmVyc2lvbj0yMDI0LTA0LTAx",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -186,7 +186,7 @@
                                                                                 "CENTRALUSEUAP:20210826T062547Z:781cb50b-68e2-4280-99a0-3aa43a88fb6e"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:13 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:14 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "941"
@@ -256,7 +256,7 @@
                                                                                 "CENTRALUSEUAP:20210826T062549Z:321438b4-e72b-4890-9d7e-15d46aaf0b0c"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:13 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:14 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "9940"

@@ -23,12 +23,12 @@ Create ArcSetting for HCI cluster.
 New-AzStackHciArcSetting -ResourceGroupName "test-rg" -ClusterName "myCluster"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IArcSetting
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IArcSetting
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhciarcsetting
 #>
 function New-AzStackHciArcSetting {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IArcSetting])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IArcSetting])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -49,6 +49,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter()]
@@ -169,7 +170,13 @@ begin {
             $PSBoundParameters['Name'] = "default"
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

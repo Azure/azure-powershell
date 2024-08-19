@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdncustomdomain
 schema: 2.0.0
@@ -16,7 +16,8 @@ Creates a new domain within the specified profile.
 New-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AzureDnsZoneId <String>] [-ExtendedProperty <Hashtable>] [-HostName <String>]
  [-PropertiesPreValidatedCustomDomainResourceId <String>] [-TlsSetting <IAfdDomainHttpsParameters>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -164,6 +165,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PropertiesPreValidatedCustomDomainResourceId
 Resource ID.
 
@@ -215,7 +231,7 @@ If not specified, enabling ssl uses AzureFrontDoor managed certificate by defaul
 To construct, see NOTES section for TLSSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomainHttpsParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomainHttpsParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -264,22 +280,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomain
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomain
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`TLSSETTING <IAfdDomainHttpsParameters>`: The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
-  - `CertificateType <AfdCertificateType>`: Defines the source of the SSL certificate.
-  - `[MinimumTlsVersion <AfdMinimumTlsVersion?>]`: TLS protocol version that will be used for Https
-  - `[Secret <IResourceReference>]`: Resource reference to the secret. ie. subs/rg/profile/secret
-    - `[Id <String>]`: Resource ID.
-
 ## RELATED LINKS
-

@@ -65,8 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrackedResource(json);
-            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPatchProperties.FromJson(__jsonProperties) : Property;}
+            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPatchProperties.FromJson(__jsonProperties) : _property;}
+            {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPatchTags.FromJson(__jsonTags) : _tag;}
             AfterFromJson(json);
         }
 
@@ -101,8 +101,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return container;
             }
-            __trackedResource?.ToJson(container, serializationMode);
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
+            AddIf( null != this._tag ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) this._tag.ToJson(null,serializationMode) : null, "tags" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

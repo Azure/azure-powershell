@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.ElasticSan",
-  "ModuleVersion": "1.0.0",
+  "ModuleVersion": "1.0.2",
   "Cmdlets": [
     {
       "VerbName": "Add",

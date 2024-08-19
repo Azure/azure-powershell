@@ -14,7 +14,8 @@ Get HCI cluster.
 
 ### List (Default)
 ```
-Get-AzStackHciCluster [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStackHciCluster [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -31,7 +32,8 @@ Get-AzStackHciCluster -ResourceGroupName <String> [-SubscriptionId <String[]>] [
 
 ### GetViaIdentity
 ```
-Get-AzStackHciCluster -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStackHciCluster -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -135,6 +137,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
@@ -157,7 +160,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ICluster
 
 ## NOTES
 

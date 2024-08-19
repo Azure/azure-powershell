@@ -14,32 +14,26 @@ Retrieves details of this L3 Isolation Domain.
 
 ### List1 (Default)
 ```
-Get-AzNetworkFabricL3Domain [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+Get-AzNetworkFabricL3Domain [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzNetworkFabricL3Domain -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzNetworkFabricL3Domain -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzNetworkFabricL3Domain -InputObject <IManagedNetworkFabricIdentity> [-DefaultProfile <PSObject>] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+Get-AzNetworkFabricL3Domain -InputObject <IManagedNetworkFabricIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,37 +41,51 @@ Retrieves details of this L3 Isolation Domain.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: List L3 Isolation Domains by Subscription
+```powershell
 Get-AzNetworkFabricL3Domain -SubscriptionId $subscriptionId
 ```
 
-### EXAMPLE 2
+```output
+Location    Name                                    SystemDataCreatedAt SystemDataCreatedBy            SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy
+--------    ----                                    ------------------- -------------------            ----------------------- ------------------------ ------------------------
+eastus2euap nfa-tool-ts-GA-cli-l3Domain081423       08/18/2023 13:59:59 <identity>                     User                    08/25/2023 16:34:44      <identity>
+eastus2euap pipeline-nf082823-l3domain-v6-2605-2606 09/15/2023 17:52:08 <identity>                     User                    09/15/2023 17:52:13      <identity>
+eastus2euap nffab341-l3isd-patch                    09/22/2023 04:56:55 <identity>                     Application             09/22/2023 04:56:55      <identity>
+eastus2euap nffab341-l3isd-patch2                   09/22/2023 05:00:15 <identity>                     Application             09/22/2023 05:00:15      <identity>
+eastus2euap nffab341-l3isd-patch4                   09/22/2023 07:04:22 <identity>                     User                    09/25/2023 05:30:06      <identity>
+eastus      l3DomainName                            09/25/2023 04:29:55 <identity>                     User                    09/25/2023 04:58:52      <identity>
 ```
+
+This command lists all the L3 Isolation Domains under the given Subscription.
+
+### Example 2: List L3 Isolation Domains by Resource Group
+```powershell
 Get-AzNetworkFabricL3Domain -ResourceGroupName $resourceGroupName
 ```
 
-### EXAMPLE 3
+```output
+AdministrativeState AggregateRouteConfiguration   Annotation ConfigurationState ConnectedSubnetRoutePolicy
+------------------- ---------------------------   ---------- ------------------ --------
+Disabled                                                     Succeeded
 ```
+
+This command lists all the L3 Isolation Domains under the given Resource Group.
+
+### Example 3: Get L3 Isolation Domain
+```powershell
 Get-AzNetworkFabricL3Domain -Name $name -ResourceGroupName $resourceGroupName
 ```
 
-## PARAMETERS
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+```output
+AdministrativeState AggregateRouteConfiguration   Annotation ConfigurationState ConnectedSubnetRoutePolicy
+------------------- ---------------------------   ---------- ------------------ --------
+Disabled                                                     Succeeded
 ```
+
+This command gets details of the given L3 Isolation Domain.
+
+## PARAMETERS
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -95,39 +103,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
@@ -152,51 +129,6 @@ Aliases: L3IsolationDomainName
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -228,7 +160,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -239,46 +171,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomain
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IManagedNetworkFabricIdentity\>: Identity Parameter
-  \[AccessControlListName \<String\>\]: Name of the Access Control List.
-  \[ExternalNetworkName \<String\>\]: Name of the External Network.
-  \[IPCommunityName \<String\>\]: Name of the IP Community.
-  \[IPExtendedCommunityName \<String\>\]: Name of the IP Extended Community.
-  \[IPPrefixName \<String\>\]: Name of the IP Prefix.
-  \[Id \<String\>\]: Resource identity path
-  \[InternalNetworkName \<String\>\]: Name of the Internal Network.
-  \[InternetGatewayName \<String\>\]: Name of the Internet Gateway.
-  \[InternetGatewayRuleName \<String\>\]: Name of the Internet Gateway rule.
-  \[L2IsolationDomainName \<String\>\]: Name of the L2 Isolation Domain.
-  \[L3IsolationDomainName \<String\>\]: Name of the L3 Isolation Domain.
-  \[NeighborGroupName \<String\>\]: Name of the Neighbor Group.
-  \[NetworkDeviceName \<String\>\]: Name of the Network Device.
-  \[NetworkDeviceSkuName \<String\>\]: Name of the Network Device SKU.
-  \[NetworkFabricControllerName \<String\>\]: Name of the Network Fabric Controller.
-  \[NetworkFabricName \<String\>\]: Name of the Network Fabric.
-  \[NetworkFabricSkuName \<String\>\]: Name of the Network Fabric SKU.
-  \[NetworkInterfaceName \<String\>\]: Name of the Network Interface.
-  \[NetworkPacketBrokerName \<String\>\]: Name of the Network Packet Broker.
-  \[NetworkRackName \<String\>\]: Name of the Network Rack.
-  \[NetworkTapName \<String\>\]: Name of the Network Tap.
-  \[NetworkTapRuleName \<String\>\]: Name of the Network Tap Rule.
-  \[NetworkToNetworkInterconnectName \<String\>\]: Name of the Network to Network Interconnect.
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[RoutePolicyName \<String\>\]: Name of the Route Policy.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-The value must be an UUID.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabricl3domain](https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabricl3domain)
-

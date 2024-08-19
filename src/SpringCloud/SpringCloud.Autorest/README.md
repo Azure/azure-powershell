@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the SpringCloud service.
 
 ---
-## Status
-[![Az.SpringCloud](https://img.shields.io/powershellgallery/v/Az.SpringCloud.svg?style=flat-square&label=Az.SpringCloud "Az.SpringCloud")](https://www.powershellgallery.com/packages/Az.SpringCloud/)
 
 ## Info
 - Modifiable: yes

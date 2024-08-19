@@ -16,13 +16,14 @@ Creates or updates a gallery.
 ```
 New-AzDevCenterAdminGallery -DevCenterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -GalleryResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzDevCenterAdminGallery -InputObject <IDevCenterIdentity> -GalleryResourceId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -154,6 +155,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -225,34 +241,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IGallery
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IGallery
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDevCenterIdentity>`: Identity Parameter
-  - `[AttachedNetworkConnectionName <String>]`: The name of the attached NetworkConnection.
-  - `[CatalogName <String>]`: The name of the Catalog.
-  - `[DevBoxDefinitionName <String>]`: The name of the Dev Box definition.
-  - `[DevCenterName <String>]`: The name of the devcenter.
-  - `[EnvironmentTypeName <String>]`: The name of the environment type.
-  - `[GalleryName <String>]`: The name of the gallery.
-  - `[Id <String>]`: Resource identity path
-  - `[ImageName <String>]`: The name of the image.
-  - `[Location <String>]`: The Azure region
-  - `[NetworkConnectionName <String>]`: Name of the Network Connection that can be applied to a Pool.
-  - `[OperationId <String>]`: The ID of an ongoing async operation
-  - `[PoolName <String>]`: Name of the pool.
-  - `[ProjectName <String>]`: The name of the project.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ScheduleName <String>]`: The name of the schedule that uniquely identifies it.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VersionName <String>]`: The version of the image.
 
 ## RELATED LINKS

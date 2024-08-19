@@ -27,6 +27,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkMetastoreSpec MetastoreSpec { get => (this._metastoreSpec = this._metastoreSpec ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SparkMetastoreSpec()); set => this._metastoreSpec = value; }
 
+        /// <summary>
+        /// The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string MetastoreSpecDbConnectionAuthenticationMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkMetastoreSpecInternal)MetastoreSpec).DbConnectionAuthenticationMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkMetastoreSpecInternal)MetastoreSpec).DbConnectionAuthenticationMode = value ?? null; }
+
         /// <summary>The database name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
         public string MetastoreSpecDbName { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkMetastoreSpecInternal)MetastoreSpec).DbName; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkMetastoreSpecInternal)MetastoreSpec).DbName = value ?? null; }
@@ -89,6 +95,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"defaultStorageUrl",
         PossibleTypes = new [] { typeof(string) })]
         string DefaultStorageUrl { get; set; }
+        /// <summary>
+        /// The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization",
+        SerializedName = @"dbConnectionAuthenticationMode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("SqlAuth", "IdentityAuth")]
+        string MetastoreSpecDbConnectionAuthenticationMode { get; set; }
         /// <summary>The database name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = false,
@@ -176,6 +196,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         string DefaultStorageUrl { get; set; }
         /// <summary>The metastore specification for Spark cluster.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkMetastoreSpec MetastoreSpec { get; set; }
+        /// <summary>
+        /// The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("SqlAuth", "IdentityAuth")]
+        string MetastoreSpecDbConnectionAuthenticationMode { get; set; }
         /// <summary>The database name.</summary>
         string MetastoreSpecDbName { get; set; }
         /// <summary>The secret name which contains the database user password.</summary>

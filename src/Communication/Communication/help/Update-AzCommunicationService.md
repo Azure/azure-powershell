@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Communication-help.xml
 Module Name: Az.Communication
 online version: https://learn.microsoft.com/powershell/module/az.communication/update-azcommunicationservice
 schema: 2.0.0
@@ -15,15 +15,17 @@ Operation to update an existing CommunicationService.
 ### UpdateExpanded (Default)
 ```
 Update-AzCommunicationService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DataLocation <String>] [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-LinkedDomain <String[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzCommunicationService -InputObject <ICommunicationIdentity> [-DataLocation <String>]
- [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzCommunicationService -InputObject <ICommunicationIdentity>
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-LinkedDomain <String[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,24 +35,57 @@ Operation to update an existing CommunicationService.
 
 ### Example 1: Update an existing ACS resource to have tags
 ```powershell
-Update-AzCommunicationService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Tag @{ExampleKey1="ExampleValue1"}
+Update-AzCommunicationService -Name ContosoAcsResource2 -ResourceGroupName ContosoResourceProvider1 -Tag @{ExampleKey1="ExampleValue1"}
 ```
 
 ```output
-Location Name           Type                                          AzureAsyncOperation
--------- ----           ----                                          -------------------
-Global   ContosoAcsResource1 Microsoft.Communication/communicationServices
+Location Name                SystemDataCreatedAt  SystemDataCreatedBy        SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy  SystemDataLastModifiedByType
+-------- ----                -------------------  -------------------        ----------------------- ------------------------ ------------------------  ----------------------------
+Global   ContosoAcsResource2 7/10/2024 5:41:40 AM contosouser@microsoft.com  User                    7/16/2024 3:40:40 AM     contosouser@microsoft.com User
 ```
 
 Attaches the given tags to the specified ACS resource.
 
+### Example 2: Update an existing ACS resource to have tags and link the domain
+```powershell
+$linkedDomains = @(
+	"/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/tcsacstest/providers/Microsoft.Communication/emailServices/tcsacstestECSps/domains/AzureManagedDomain"
+)
+
+Update-AzCommunicationService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Tag @{ExampleKey1="ExampleValue1"}  -LinkedDomain @linkedDomains
+```
+
+```output
+Location Name                SystemDataCreatedAt  SystemDataCreatedBy        SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy  SystemDataLastModifiedByType
+-------- ----                -------------------  -------------------        ----------------------- ------------------------ ------------------------  ----------------------------
+Global   ContosoAcsResource1 7/10/2024 5:41:40 AM contosouser@microsoft.com  User                    7/16/2024 3:40:40 AM     contosouser@microsoft.com User
+```
+
+Attaches the given tags and links the doamin to the specified ACS resource.
+
 ## PARAMETERS
 
-### -DataLocation
-The location where the communication service stores its data at rest.
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.ManagedServiceIdentityType
 Parameter Sets: (All)
 Aliases:
 
@@ -61,13 +96,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -IdentityUserAssignedIdentity
+The set of user assigned identities associated with the resource.
+The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The dictionary values can be empty objects ({}) in requests.
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases:
 
 Required: False
 Position: Named
@@ -92,11 +129,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Location
-The Azure location where the CommunicationService is running.
+### -LinkedDomain
+List of email Domain resource Ids.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -140,6 +177,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -208,22 +246,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceResource
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<ICommunicationIdentity>`: Identity Parameter
-  - `[CommunicationServiceName <String>]`: The name of the CommunicationService resource.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
 ## RELATED LINKS
-

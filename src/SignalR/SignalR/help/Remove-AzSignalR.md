@@ -15,19 +15,21 @@ Remove a SignalR service.
 ### ResourceGroupParameterSet (Default)
 ```
 Remove-AzSignalR [-ResourceGroupName <String>] [-Name] <String> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Remove-AzSignalR -ResourceId <String> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzSignalR -ResourceId <String> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Remove-AzSignalR -InputObject <PSSignalRResource> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +37,7 @@ Remove a SignalR service.
 
 ## EXAMPLES
 
-### Remove a SignalR service
+### Example 1: Remove a SignalR service
 ```powershell
 Remove-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -PassThru
 ```
@@ -44,7 +46,7 @@ Remove-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -PassThru
 True
 ```
 
-### Remove all SignalR service from pipe
+### Example 2: Remove all SignalR service from pipe
 ```powershell
 Get-AzSignalR -ResourceGroupName myResourceGroup | Remove-AzSignalR
 ```

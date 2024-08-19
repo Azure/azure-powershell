@@ -1,21 +1,21 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Cache?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2FjaGU/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/providers/Microsoft.Cache?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmI5YWM3ZDItN2Y2ZC00ZGU0LTk2MmMtNDNmZGE0NGJjM2YyL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2FjaGU/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "eab75235-5fcf-4038-883c-6a805078e693"
+          "728de9e3-661b-443e-81f0-ebfeb534b206"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2223.42425",
+          "FxVersion/6.0.3124.26714",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.86"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.98"
         ]
       },
       "RequestBody": "",
@@ -26,83 +26,20 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
-        ],
-        "x-ms-request-id": [
-          "1c5e412f-6055-43de-ac5e-9e4ce8ac81cb"
-        ],
-        "x-ms-correlation-request-id": [
-          "1c5e412f-6055-43de-ac5e-9e4ce8ac81cb"
-        ],
-        "x-ms-routing-request-id": [
-          "JAPANEAST:20230927T020614Z:1c5e412f-6055-43de-ac5e-9e4ce8ac81cb"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: AB1CDC0A50604175BF22BAB4CEC56B01 Ref B: TYO201100113027 Ref C: 2023-09-27T02:06:14Z"
-        ],
-        "Date": [
-          "Wed, 27 Sep 2023 02:06:13 GMT"
-        ],
-        "Content-Length": [
-          "16309"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Cache\",\r\n  \"namespace\": \"Microsoft.Cache\",\r\n  \"authorization\": {\r\n    \"applicationId\": \"96231a05-34ce-4eb4-aa6a-70759cbb5e83\",\r\n    \"roleDefinitionId\": \"4f731528-ba85-45c7-acfb-cd0a9b3cf31b\"\r\n  },\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"Redis\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"South India\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"Jio India West\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\",\r\n        \"Italy North\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-08-01\",\r\n        \"2023-05-01-preview\",\r\n        \"2023-04-01\",\r\n        \"2022-06-01\",\r\n        \"2022-05-01\",\r\n        \"2021-06-01\",\r\n        \"2020-12-01\",\r\n        \"2020-06-01\",\r\n        \"2019-07-01\",\r\n        \"2018-03-01\",\r\n        \"2017-10-01\",\r\n        \"2017-02-01\",\r\n        \"2016-04-01\",\r\n        \"2015-08-01\",\r\n        \"2015-03-01\",\r\n        \"2014-04-01-preview\",\r\n        \"2014-04-01\"\r\n      ],\r\n      \"zoneMappings\": [\r\n        {\r\n          \"location\": \"Australia East\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Brazil South\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Canada Central\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Central India\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Central US\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Central US EUAP\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"East Asia\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"East US\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"East US 2\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"East US 2 EUAP\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"France Central\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Germany West Central\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Japan East\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Korea Central\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"North Central US\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"North Europe\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Norway East\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Qatar Central\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"South Africa North\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"South Central US\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Southeast Asia\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Sweden Central\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Switzerland North\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"UAE North\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"UK South\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"West Europe\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"West US\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"West US 2\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"West US 3\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Italy North\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Poland Central\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        }\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove, SystemAssignedResourceIdentity\"\r\n    },\r\n    {\r\n      \"resourceType\": \"Redis/privateEndpointConnectionProxies\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"South India\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"Jio India West\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\",\r\n        \"Italy North\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-08-01\",\r\n        \"2023-05-01-preview\",\r\n        \"2023-04-01\",\r\n        \"2022-06-01\",\r\n        \"2022-05-01\",\r\n        \"2021-06-01\",\r\n        \"2020-12-01\",\r\n        \"2020-06-01\",\r\n        \"2019-07-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"Redis/privateEndpointConnectionProxies/validate\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"South India\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"Jio India West\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\",\r\n        \"Italy North\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-08-01\",\r\n        \"2023-05-01-preview\",\r\n        \"2023-04-01\",\r\n        \"2022-06-01\",\r\n        \"2022-05-01\",\r\n        \"2021-06-01\",\r\n        \"2020-12-01\",\r\n        \"2020-06-01\",\r\n        \"2019-07-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"Redis/privateEndpointConnections\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"South India\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"Jio India West\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\",\r\n        \"Italy North\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-08-01\",\r\n        \"2023-05-01-preview\",\r\n        \"2023-04-01\",\r\n        \"2022-06-01\",\r\n        \"2022-05-01\",\r\n        \"2021-06-01\",\r\n        \"2020-12-01\",\r\n        \"2020-06-01\",\r\n        \"2019-07-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"Redis/privateLinkResources\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"South India\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"Jio India West\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\",\r\n        \"Italy North\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-08-01\",\r\n        \"2023-05-01-preview\",\r\n        \"2023-04-01\",\r\n        \"2022-06-01\",\r\n        \"2022-05-01\",\r\n        \"2021-06-01\",\r\n        \"2020-12-01\",\r\n        \"2020-06-01\",\r\n        \"2019-07-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/asyncOperations\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"South India\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"Jio India West\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\",\r\n        \"Italy North\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-08-01\",\r\n        \"2023-05-01-preview\",\r\n        \"2023-04-01\",\r\n        \"2022-06-01\",\r\n        \"2022-05-01\",\r\n        \"2021-06-01\",\r\n        \"2020-12-01\",\r\n        \"2020-06-01\",\r\n        \"2019-07-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2023-07-01\",\r\n        \"2023-05-01-preview\",\r\n        \"2023-04-01\",\r\n        \"2023-03-01-preview\",\r\n        \"2022-11-01-preview\",\r\n        \"2022-06-01\",\r\n        \"2022-05-01\",\r\n        \"2022-01-01\",\r\n        \"2021-08-01\",\r\n        \"2021-06-01\",\r\n        \"2021-03-01\",\r\n        \"2021-02-01-preview\",\r\n        \"2020-12-01\",\r\n        \"2020-06-01\",\r\n        \"2020-04-01-preview\",\r\n        \"2019-07-01\",\r\n        \"2018-03-01\",\r\n        \"2017-10-01\",\r\n        \"2017-02-01\",\r\n        \"2016-04-01\",\r\n        \"2015-08-01\",\r\n        \"2015-03-01\",\r\n        \"2014-04-01-preview\",\r\n        \"2014-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operationResults\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"South India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"Jio India West\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\",\r\n        \"Italy North\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-08-01\",\r\n        \"2023-05-01-preview\",\r\n        \"2023-04-01\",\r\n        \"2022-06-01\",\r\n        \"2022-05-01\",\r\n        \"2021-06-01\",\r\n        \"2020-12-01\",\r\n        \"2020-06-01\",\r\n        \"2019-07-01\",\r\n        \"2018-03-01\",\r\n        \"2017-10-01\",\r\n        \"2017-02-01\",\r\n        \"2016-04-01\",\r\n        \"2015-08-01\",\r\n        \"2015-03-01\",\r\n        \"2014-04-01-preview\",\r\n        \"2014-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operationsStatus\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"West US\",\r\n        \"East US 2\",\r\n        \"West US 2\",\r\n        \"West US 3\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"UK South\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"Central India\",\r\n        \"West Central US\",\r\n        \"Canada Central\",\r\n        \"Brazil South\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-07-01\",\r\n        \"2023-03-01-preview\",\r\n        \"2022-11-01-preview\",\r\n        \"2022-01-01\",\r\n        \"2021-08-01\",\r\n        \"2021-03-01\",\r\n        \"2021-02-01-preview\",\r\n        \"2020-10-01-preview\",\r\n        \"2020-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkNameAvailability\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2023-08-01\",\r\n        \"2023-05-01-preview\",\r\n        \"2023-04-01\",\r\n        \"2022-06-01\",\r\n        \"2022-05-01\",\r\n        \"2021-06-01\",\r\n        \"2020-12-01\",\r\n        \"2020-06-01\",\r\n        \"2019-07-01\",\r\n        \"2018-03-01\",\r\n        \"2017-10-01\",\r\n        \"2017-02-01\",\r\n        \"2016-04-01\",\r\n        \"2015-08-01\",\r\n        \"2015-03-01\",\r\n        \"2014-04-01-preview\",\r\n        \"2014-04-01-alpha\",\r\n        \"2014-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2023-07-01\",\r\n        \"2023-05-01-preview\",\r\n        \"2023-04-01\",\r\n        \"2023-03-01-preview\",\r\n        \"2022-11-01-preview\",\r\n        \"2022-06-01\",\r\n        \"2022-05-01\",\r\n        \"2021-06-01\",\r\n        \"2021-03-01\",\r\n        \"2021-02-01-preview\",\r\n        \"2020-12-01\",\r\n        \"2020-10-01-preview\",\r\n        \"2020-06-01\",\r\n        \"2019-07-01\",\r\n        \"2018-03-01\",\r\n        \"2017-10-01\",\r\n        \"2017-02-01\",\r\n        \"2016-04-01\",\r\n        \"2015-08-01\",\r\n        \"2015-03-01\",\r\n        \"2014-04-01-preview\",\r\n        \"2014-04-01-alpha\",\r\n        \"2014-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"redisEnterprise\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"West US\",\r\n        \"East US 2\",\r\n        \"West US 2\",\r\n        \"West US 3\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"UK South\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"Central India\",\r\n        \"West Central US\",\r\n        \"Canada Central\",\r\n        \"Brazil South\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-07-01\",\r\n        \"2023-03-01-preview\",\r\n        \"2022-11-01-preview\",\r\n        \"2022-01-01\",\r\n        \"2021-08-01\",\r\n        \"2021-03-01\",\r\n        \"2021-02-01-preview\",\r\n        \"2020-10-01-preview\",\r\n        \"2020-04-01-preview\"\r\n      ],\r\n      \"zoneMappings\": [\r\n        {\r\n          \"location\": \"Australia East\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Brazil South\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Canada Central\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Central India\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Central US\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Central US EUAP\",\r\n          \"zones\": [\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"East US\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"East US 2\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"North Central US\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"North Europe\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"South Central US\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Southeast Asia\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"UK South\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"West Europe\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"West US\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"West US 2\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"West US 3\",\r\n          \"zones\": [\r\n            \"3\",\r\n            \"2\",\r\n            \"1\"\r\n          ]\r\n        }\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove, SystemAssignedResourceIdentity\"\r\n    },\r\n    {\r\n      \"resourceType\": \"RedisEnterprise/privateEndpointConnectionProxies\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"West US\",\r\n        \"East US 2\",\r\n        \"West US 2\",\r\n        \"West US 3\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"UK South\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"Central India\",\r\n        \"West Central US\",\r\n        \"Canada Central\",\r\n        \"Brazil South\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-07-01\",\r\n        \"2023-03-01-preview\",\r\n        \"2022-11-01-preview\",\r\n        \"2022-01-01\",\r\n        \"2021-08-01\",\r\n        \"2021-03-01\",\r\n        \"2021-02-01-preview\",\r\n        \"2020-10-01-preview\",\r\n        \"2020-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"RedisEnterprise/privateEndpointConnectionProxies/validate\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"West US\",\r\n        \"East US 2\",\r\n        \"West US 2\",\r\n        \"West US 3\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"UK South\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"Central India\",\r\n        \"West Central US\",\r\n        \"Canada Central\",\r\n        \"Brazil South\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-07-01\",\r\n        \"2023-03-01-preview\",\r\n        \"2022-11-01-preview\",\r\n        \"2022-01-01\",\r\n        \"2021-08-01\",\r\n        \"2021-03-01\",\r\n        \"2021-02-01-preview\",\r\n        \"2020-10-01-preview\",\r\n        \"2020-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"RedisEnterprise/privateEndpointConnectionProxies/operationresults\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"West US\",\r\n        \"East US 2\",\r\n        \"West US 2\",\r\n        \"West US 3\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"UK South\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"Central India\",\r\n        \"West Central US\",\r\n        \"Canada Central\",\r\n        \"Brazil South\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-07-01\",\r\n        \"2023-03-01-preview\",\r\n        \"2022-11-01-preview\",\r\n        \"2022-01-01\",\r\n        \"2021-08-01\",\r\n        \"2021-03-01\",\r\n        \"2021-02-01-preview\",\r\n        \"2020-10-01-preview\",\r\n        \"2020-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"RedisEnterprise/privateEndpointConnections\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"West US\",\r\n        \"East US 2\",\r\n        \"West US 2\",\r\n        \"West US 3\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"UK South\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"Central India\",\r\n        \"West Central US\",\r\n        \"Canada Central\",\r\n        \"Brazil South\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-07-01\",\r\n        \"2023-03-01-preview\",\r\n        \"2022-11-01-preview\",\r\n        \"2022-01-01\",\r\n        \"2021-08-01\",\r\n        \"2021-03-01\",\r\n        \"2021-02-01-preview\",\r\n        \"2020-10-01-preview\",\r\n        \"2020-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"RedisEnterprise/privateEndpointConnections/operationresults\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"West US\",\r\n        \"East US 2\",\r\n        \"West US 2\",\r\n        \"West US 3\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"UK South\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"Central India\",\r\n        \"West Central US\",\r\n        \"Canada Central\",\r\n        \"Brazil South\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-07-01\",\r\n        \"2023-03-01-preview\",\r\n        \"2022-11-01-preview\",\r\n        \"2022-01-01\",\r\n        \"2021-08-01\",\r\n        \"2021-03-01\",\r\n        \"2021-02-01-preview\",\r\n        \"2020-10-01-preview\",\r\n        \"2020-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"RedisEnterprise/privateLinkResources\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"West US\",\r\n        \"East US 2\",\r\n        \"West US 2\",\r\n        \"West US 3\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"UK South\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"Central India\",\r\n        \"West Central US\",\r\n        \"Canada Central\",\r\n        \"Brazil South\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-07-01\",\r\n        \"2023-03-01-preview\",\r\n        \"2022-11-01-preview\",\r\n        \"2022-01-01\",\r\n        \"2021-08-01\",\r\n        \"2021-03-01\",\r\n        \"2021-02-01-preview\",\r\n        \"2020-10-01-preview\",\r\n        \"2020-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"redisEnterprise/databases\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"West US\",\r\n        \"East US 2\",\r\n        \"West US 2\",\r\n        \"West US 3\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"UK South\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"Central India\",\r\n        \"West Central US\",\r\n        \"Canada Central\",\r\n        \"Brazil South\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-07-01\",\r\n        \"2023-03-01-preview\",\r\n        \"2022-11-01-preview\",\r\n        \"2022-01-01\",\r\n        \"2021-08-01\",\r\n        \"2021-03-01\",\r\n        \"2021-02-01-preview\",\r\n        \"2020-10-01-preview\",\r\n        \"2020-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/checkNameAvailability\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"West US\",\r\n        \"East US 2\",\r\n        \"West US 2\",\r\n        \"West US 3\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"UK South\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"Central India\",\r\n        \"West Central US\",\r\n        \"Canada Central\",\r\n        \"Brazil South\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-07-01\",\r\n        \"2023-03-01-preview\",\r\n        \"2022-11-01-preview\",\r\n        \"2022-01-01\",\r\n        \"2021-08-01\",\r\n        \"2021-03-01\",\r\n        \"2021-02-01-preview\",\r\n        \"2020-10-01-preview\",\r\n        \"2020-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"Redis/EventGridFilters\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"South India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"Australia Central 2\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"UAE Central\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"Jio India West\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\",\r\n        \"Italy North\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-08-01\",\r\n        \"2023-05-01-preview\",\r\n        \"2023-04-01\",\r\n        \"2022-06-01\",\r\n        \"2022-05-01\",\r\n        \"2021-06-01\",\r\n        \"2020-12-01\",\r\n        \"2020-06-01\",\r\n        \"2019-07-01\",\r\n        \"2018-03-01\",\r\n        \"2017-10-01\",\r\n        \"2017-02-01\",\r\n        \"2016-04-01\",\r\n        \"2015-08-01\",\r\n        \"2015-03-01\",\r\n        \"2014-04-01-preview\",\r\n        \"2014-04-01\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/PowerShellTestNonExisting/providers/Microsoft.Cache/redis/nonexistingrediscache?api-version=2023-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWUyMjNkYmUtMzM5OS00ZTE5LTg4ZWItMDk3NWYwMmFjODdmL3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0Tm9uRXhpc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9yZWRpcy9ub25leGlzdGluZ3JlZGlzY2FjaGU/YXBpLXZlcnNpb249MjAyMy0wNC0wMQ==",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "f2e0a3b1-a734-46ab-9bca-04c20b1bc347"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/6.0.2223.42425",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.RedisCache.RedisManagementClient/1.8.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
+        "WWW-Authenticate": [
+          "Bearer authorization_uri=\"https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47\", error=\"invalid_token\", error_description=\"The access token has expired.\""
         ],
         "x-ms-failure-cause": [
           "gateway"
         ],
         "x-ms-request-id": [
-          "af27e979-5d15-423f-b98d-aeb4664fd638"
+          "d92e23a0-7c1c-4633-86d7-822a994427c9"
         ],
         "x-ms-correlation-request-id": [
-          "af27e979-5d15-423f-b98d-aeb4664fd638"
+          "d92e23a0-7c1c-4633-86d7-822a994427c9"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20230927T020614Z:af27e979-5d15-423f-b98d-aeb4664fd638"
+          "WESTINDIA:20240707T184624Z:d92e23a0-7c1c-4633-86d7-822a994427c9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -114,13 +51,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 8B2250D87AFB41DA83636D72F86B4CCF Ref B: TYO201100114011 Ref C: 2023-09-27T02:06:14Z"
+          "Ref A: AF0A14A613424061B0C2FD1AF5CA3E64 Ref B: MAA201060516017 Ref C: 2024-07-07T18:46:24Z"
         ],
         "Date": [
-          "Wed, 27 Sep 2023 02:06:14 GMT"
+          "Sun, 07 Jul 2024 18:46:23 GMT"
         ],
         "Content-Length": [
-          "117"
+          "170"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -129,12 +66,81 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'PowerShellTestNonExisting' could not be found.\"\r\n  }\r\n}",
-      "StatusCode": 404
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ExpiredAuthenticationToken\",\r\n    \"message\": \"The access token expiry UTC time '7/7/2024 6:46:10 PM' is earlier than current UTC time '7/7/2024 6:46:24 PM'.\"\r\n  }\r\n}",
+      "StatusCode": 401
+    },
+    {
+      "RequestUri": "/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/PowerShellTestNonExisting/providers/Microsoft.Cache/redis/nonexistingrediscache?api-version=2024-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmI5YWM3ZDItN2Y2ZC00ZGU0LTk2MmMtNDNmZGE0NGJjM2YyL3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0Tm9uRXhpc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9yZWRpcy9ub25leGlzdGluZ3JlZGlzY2FjaGU/YXBpLXZlcnNpb249MjAyNC0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b32ff8ca-9501-4ca1-b55e-b39bbd898a63"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3124.26714",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.RedisCache.RedisManagementClient/1.9.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "WWW-Authenticate": [
+          "Bearer authorization_uri=\"https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47\", error=\"invalid_token\", error_description=\"The access token has expired.\""
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "f18562af-7382-4d54-9a86-135fb4ed2dd6"
+        ],
+        "x-ms-correlation-request-id": [
+          "f18562af-7382-4d54-9a86-135fb4ed2dd6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20240707T184624Z:f18562af-7382-4d54-9a86-135fb4ed2dd6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 912D9A21AEF64AD1BF8DCD524FCE372C Ref B: MAA201060515051 Ref C: 2024-07-07T18:46:24Z"
+        ],
+        "Date": [
+          "Sun, 07 Jul 2024 18:46:24 GMT"
+        ],
+        "Content-Length": [
+          "170"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ExpiredAuthenticationToken\",\r\n    \"message\": \"The access token expiry UTC time '7/7/2024 6:46:10 PM' is earlier than current UTC time '7/7/2024 6:46:24 PM'.\"\r\n  }\r\n}",
+      "StatusCode": 401
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "9e223dbe-3399-4e19-88eb-0975f02ac87f"
+    "SubscriptionId": "6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2"
   }
 }

@@ -1,14 +1,14 @@
 ---
 Module Name: Az.Security
-Module Guid: 5e312bb4-9d3a-4c88-94c3-8e5bbb2e3da4
+Module Guid: 6f1c0dfd-dfcd-4e5b-b77c-a64a9d355ebf
 Download Help Link: https://learn.microsoft.com/powershell/module/az.security
-Help Version: 0.1.0
+Help Version: 1.0.0.0
 Locale: en-US
 ---
 
 # Az.Security Module
 ## Description
-Azure Security Center gives you control over the security of your Azure subscriptions and other machines that you connected to it outside of Azure.
+Microsoft Azure PowerShell: Security cmdlets
 
 ## Az.Security Cmdlets
 ### [Add-AzSecurityAdaptiveNetworkHardening](Add-AzSecurityAdaptiveNetworkHardening.md)
@@ -83,6 +83,10 @@ Gets the advanced threat protection policy for a storage / cosmosDB account.
 ### [Get-AzSecurityAlert](Get-AzSecurityAlert.md)
 Gets security alerts that were detected by Azure Security Center
 
+### [Get-AzSecurityApiCollection](Get-AzSecurityApiCollection.md)
+Gets an Azure API Management API if it has been onboarded to Microsoft Defender for APIs.
+If an Azure API Management API is onboarded to Microsoft Defender for APIs, the system will monitor the operations within the Azure API Management API for intrusive behaviors and provide alerts for attacks that have been detected.
+
 ### [Get-AzSecurityAssessment](Get-AzSecurityAssessment.md)
 Gets security assessments and their results on a subscription
 
@@ -90,7 +94,7 @@ Gets security assessments and their results on a subscription
 Gets security assessments types and metadta in a subscription.
 
 ### [Get-AzSecurityAutomation](Get-AzSecurityAutomation.md)
-Gets security automation(s)
+Gets security automations
 
 ### [Get-AzSecurityAutoProvisioningSetting](Get-AzSecurityAutoProvisioningSetting.md)
 Gets the security automatic provisioning settings
@@ -98,8 +102,50 @@ Gets the security automatic provisioning settings
 ### [Get-AzSecurityCompliance](Get-AzSecurityCompliance.md)
 Get the security compliance of a subscription over time
 
+### [Get-AzSecurityConnector](Get-AzSecurityConnector.md)
+Retrieves details of a specific security connector
+
+### [Get-AzSecurityConnectorAzureDevOpsOrg](Get-AzSecurityConnectorAzureDevOpsOrg.md)
+Returns a monitored Azure DevOps organization resource.
+
+### [Get-AzSecurityConnectorAzureDevOpsOrgAvailable](Get-AzSecurityConnectorAzureDevOpsOrgAvailable.md)
+Returns a list of all Azure DevOps organizations accessible by the user token consumed by the connector.
+
+### [Get-AzSecurityConnectorAzureDevOpsProject](Get-AzSecurityConnectorAzureDevOpsProject.md)
+Returns a monitored Azure DevOps project resource.
+
+### [Get-AzSecurityConnectorAzureDevOpsRepo](Get-AzSecurityConnectorAzureDevOpsRepo.md)
+Returns a monitored Azure DevOps repository resource.
+
+### [Get-AzSecurityConnectorDevOpsConfiguration](Get-AzSecurityConnectorDevOpsConfiguration.md)
+Gets a DevOps Configuration.
+
+### [Get-AzSecurityConnectorGitHubOwner](Get-AzSecurityConnectorGitHubOwner.md)
+Returns a monitored GitHub owner.
+
+### [Get-AzSecurityConnectorGitHubOwnerAvailable](Get-AzSecurityConnectorGitHubOwnerAvailable.md)
+Returns a list of all GitHub owners accessible by the user token consumed by the connector.
+
+### [Get-AzSecurityConnectorGitHubRepo](Get-AzSecurityConnectorGitHubRepo.md)
+Returns a monitored GitHub repository.
+
+### [Get-AzSecurityConnectorGitLabGroup](Get-AzSecurityConnectorGitLabGroup.md)
+Returns a monitored GitLab Group resource for a given fully-qualified name.
+
+### [Get-AzSecurityConnectorGitLabGroupAvailable](Get-AzSecurityConnectorGitLabGroupAvailable.md)
+Returns a list of all GitLab groups accessible by the user token consumed by the connector.
+
+### [Get-AzSecurityConnectorGitLabProject](Get-AzSecurityConnectorGitLabProject.md)
+Returns a monitored GitLab Project resource for a given fully-qualified group name and project name.
+
+### [Get-AzSecurityConnectorGitLabSubgroup](Get-AzSecurityConnectorGitLabSubgroup.md)
+Gets nested subgroups of given GitLab Group which are onboarded to the connector.
+
 ### [Get-AzSecurityContact](Get-AzSecurityContact.md)
 Gets security contacts that were configured on this subscription
+
+### [Get-AzSecurityDefenderForStorage](Get-AzSecurityDefenderForStorage.md)
+Gets the Defender for Storage settings for the specified storage account.
 
 ### [Get-AzSecurityLocation](Get-AzSecurityLocation.md)
 Gets the location where Azure Security Center will automatically save data for the specific subscription
@@ -118,6 +164,12 @@ Gets security secure score control definitions on a subscription
 
 ### [Get-AzSecuritySetting](Get-AzSecuritySetting.md)
 Get security settings in Azure Security Center
+
+### [Get-AzSecuritySolution](Get-AzSecuritySolution.md)
+Get Security Solutions
+
+### [Get-AzSecuritySolutionsReferenceData](Get-AzSecuritySolutionsReferenceData.md)
+Get Security Solutions Reference Data
 
 ### [Get-AzSecuritySqlVulnerabilityAssessmentBaseline](Get-AzSecuritySqlVulnerabilityAssessmentBaseline.md)
 Get SQL vulnerability assessment baseline.
@@ -143,6 +195,14 @@ Gets the configured security workspace settings on a subscription.
 ### [Get-AzSqlInformationProtectionPolicy](Get-AzSqlInformationProtectionPolicy.md)
 Retrieves the effective tenant SQL information protection policy.
 
+### [Invoke-AzSecurityApiCollectionApimOffboard](Invoke-AzSecurityApiCollectionApimOffboard.md)
+Offboard an Azure API Management API from Microsoft Defender for APIs.
+The system will stop monitoring the operations within the Azure API Management API for intrusive behaviors.
+
+### [Invoke-AzSecurityApiCollectionApimOnboard](Invoke-AzSecurityApiCollectionApimOnboard.md)
+Onboard an Azure API Management API to Microsoft Defender for APIs.
+The system will start monitoring the operations within the Azure Management API for intrusive behaviors and provide alerts for attacks that have been detected.
+
 ### [New-AzAlertsSuppressionRuleScope](New-AzAlertsSuppressionRuleScope.md)
 Helper cmdlet to create PSIScopeElement.
 
@@ -164,9 +224,6 @@ Create new recommendation configuration for iot security solution
 ### [New-AzIotSecuritySolutionUserDefinedResourcesObject](New-AzIotSecuritySolutionUserDefinedResourcesObject.md)
 Create new user defined resources for iot security solution
 
-### [Remove-AzAlertsSuppressionRule](Remove-AzAlertsSuppressionRule.md)
-Deletes an alerts suppression rule.
-
 ### [New-AzSecurityAutomation](New-AzSecurityAutomation.md)
 Creates new security automation
 
@@ -174,16 +231,98 @@ Creates new security automation
 Creates new security automation action object
 
 ### [New-AzSecurityAutomationRuleObject](New-AzSecurityAutomationRuleObject.md)
-Creates new security automation rule object
+Creates security automation rule object
 
 ### [New-AzSecurityAutomationRuleSetObject](New-AzSecurityAutomationRuleSetObject.md)
-Creates new security automation rule set object
+Creates security automation rule set object
 
 ### [New-AzSecurityAutomationScopeObject](New-AzSecurityAutomationScopeObject.md)
-Creates new security automation scope object
+Creates security automation scope object
 
 ### [New-AzSecurityAutomationSourceObject](New-AzSecurityAutomationSourceObject.md)
-Creates new security automation source object
+Creates security automation source object
+
+### [New-AzSecurityAwsEnvironmentObject](New-AzSecurityAwsEnvironmentObject.md)
+Create an in-memory object for AwsEnvironment.
+
+### [New-AzSecurityAwsOrganizationalDataMasterObject](New-AzSecurityAwsOrganizationalDataMasterObject.md)
+Create an in-memory object for AwsOrganizationalDataMaster.
+
+### [New-AzSecurityAwsOrganizationalDataMemberObject](New-AzSecurityAwsOrganizationalDataMemberObject.md)
+Create an in-memory object for AwsOrganizationalDataMember.
+
+### [New-AzSecurityAzureDevOpsScopeEnvironmentObject](New-AzSecurityAzureDevOpsScopeEnvironmentObject.md)
+Create an in-memory object for AzureDevOpsScopeEnvironment.
+
+### [New-AzSecurityConnector](New-AzSecurityConnector.md)
+Create a security connector.
+If a security connector is already created and a subsequent request is issued for the same security connector id, then it will be updated.
+
+### [New-AzSecurityConnectorActionableRemediationObject](New-AzSecurityConnectorActionableRemediationObject.md)
+Create an in-memory object for ActionableRemediation.
+
+### [New-AzSecurityConnectorDevOpsConfiguration](New-AzSecurityConnectorDevOpsConfiguration.md)
+Create a DevOps Configuration.
+
+### [New-AzSecurityCspmMonitorAwsOfferingObject](New-AzSecurityCspmMonitorAwsOfferingObject.md)
+Create an in-memory object for CspmMonitorAwsOffering.
+
+### [New-AzSecurityCspmMonitorAzureDevOpsOfferingObject](New-AzSecurityCspmMonitorAzureDevOpsOfferingObject.md)
+Create an in-memory object for CspmMonitorAzureDevOpsOffering.
+
+### [New-AzSecurityCspmMonitorGcpOfferingObject](New-AzSecurityCspmMonitorGcpOfferingObject.md)
+Create an in-memory object for CspmMonitorGcpOffering.
+
+### [New-AzSecurityCspmMonitorGithubOfferingObject](New-AzSecurityCspmMonitorGithubOfferingObject.md)
+Create an in-memory object for CspmMonitorGithubOffering.
+
+### [New-AzSecurityCspmMonitorGitLabOfferingObject](New-AzSecurityCspmMonitorGitLabOfferingObject.md)
+Create an in-memory object for CspmMonitorGitLabOffering.
+
+### [New-AzSecurityDefenderCspmAwsOfferingObject](New-AzSecurityDefenderCspmAwsOfferingObject.md)
+Create an in-memory object for DefenderCspmAwsOffering.
+
+### [New-AzSecurityDefenderCspmGcpOfferingObject](New-AzSecurityDefenderCspmGcpOfferingObject.md)
+Create an in-memory object for DefenderCspmGcpOffering.
+
+### [New-AzSecurityDefenderForContainersAwsOfferingObject](New-AzSecurityDefenderForContainersAwsOfferingObject.md)
+Create an in-memory object for DefenderForContainersAwsOffering.
+
+### [New-AzSecurityDefenderForContainersGcpOfferingObject](New-AzSecurityDefenderForContainersGcpOfferingObject.md)
+Create an in-memory object for DefenderForContainersGcpOffering.
+
+### [New-AzSecurityDefenderForDatabasesAwsOfferingObject](New-AzSecurityDefenderForDatabasesAwsOfferingObject.md)
+Create an in-memory object for DefenderForDatabasesAwsOffering.
+
+### [New-AzSecurityDefenderForDatabasesGcpOfferingObject](New-AzSecurityDefenderForDatabasesGcpOfferingObject.md)
+Create an in-memory object for DefenderForDatabasesGcpOffering.
+
+### [New-AzSecurityDefenderForServersAwsOfferingObject](New-AzSecurityDefenderForServersAwsOfferingObject.md)
+Create an in-memory object for DefenderForServersAwsOffering.
+
+### [New-AzSecurityDefenderForServersGcpOfferingObject](New-AzSecurityDefenderForServersGcpOfferingObject.md)
+Create an in-memory object for DefenderForServersGcpOffering.
+
+### [New-AzSecurityGcpOrganizationalDataMemberObject](New-AzSecurityGcpOrganizationalDataMemberObject.md)
+Create an in-memory object for GcpOrganizationalDataMember.
+
+### [New-AzSecurityGcpOrganizationalDataOrganizationObject](New-AzSecurityGcpOrganizationalDataOrganizationObject.md)
+Create an in-memory object for GcpOrganizationalDataOrganization.
+
+### [New-AzSecurityGcpProjectEnvironmentObject](New-AzSecurityGcpProjectEnvironmentObject.md)
+Create an in-memory object for GcpProjectEnvironment.
+
+### [New-AzSecurityGitHubScopeEnvironmentObject](New-AzSecurityGitHubScopeEnvironmentObject.md)
+Create an in-memory object for GitHubScopeEnvironment.
+
+### [New-AzSecurityGitLabScopeEnvironmentObject](New-AzSecurityGitLabScopeEnvironmentObject.md)
+Create an in-memory object for GitLabScopeEnvironment.
+
+### [New-AzSecurityInformationProtectionAwsOfferingObject](New-AzSecurityInformationProtectionAwsOfferingObject.md)
+Create an in-memory object for InformationProtectionAwsOffering.
+
+### [Remove-AzAlertsSuppressionRule](Remove-AzAlertsSuppressionRule.md)
+Deletes an alerts suppression rule.
 
 ### [Remove-AzDeviceSecurityGroup](Remove-AzDeviceSecurityGroup.md)
 Delete device security group
@@ -202,6 +341,12 @@ Deletes a security assessment metadata from a subscription.
 
 ### [Remove-AzSecurityAutomation](Remove-AzSecurityAutomation.md)
 Deletes security automation
+
+### [Remove-AzSecurityConnector](Remove-AzSecurityConnector.md)
+Deletes a security connector.
+
+### [Remove-AzSecurityConnectorDevOpsConfiguration](Remove-AzSecurityConnectorDevOpsConfiguration.md)
+Deletes a DevOps Connector.
 
 ### [Remove-AzSecurityContact](Remove-AzSecurityContact.md)
 Deletes a security contact.
@@ -233,9 +378,6 @@ Create or update a security assessment result on a resource
 ### [Set-AzSecurityAssessmentMetadata](Set-AzSecurityAssessmentMetadata.md)
 Creates or updates a security assessment type.
 
-### [Set-AzSecurityAutomation](Set-AzSecurityAutomation.md)
-Creates or updates a security automation. If a security automation is already created and a subsequent request is issued for the same automation id, then it will be updated.
-
 ### [Set-AzSecurityAutoProvisioningSetting](Set-AzSecurityAutoProvisioningSetting.md)
 Updates automatic provisioning setting
 
@@ -243,7 +385,10 @@ Updates automatic provisioning setting
 Updates a security contact for a subscription.
 
 ### [Set-AzSecurityPricing](Set-AzSecurityPricing.md)
-Enables or disables Azure Defender plans for a subscription in Azure Security Center.
+Enables or disables Microsoft Defender plans for a subscription in Microsoft Defender for Cloud.
+
+> [!NOTE]
+> For CloudPosture (Defender Cloud Security Posture Management), [the agentless extensions](https://techcommunity.microsoft.com/t5/microsoft-defender-for-cloud/enhanced-cloud-security-value-added-with-defender-cspm-s/ba-p/3880746) will not be enabled when using this command. To enable extensions, please use the Azure Policy definition or scripts in the [Microsoft Defender for Cloud Community Repository](https://github.com/Azure/Microsoft-Defender-for-Cloud/tree/main/Policy/Configure-DCSPM-Extensions).
 
 ### [Set-AzSecuritySetting](Set-AzSecuritySetting.md)
 Update a security setting in Azure Security Center
@@ -262,4 +407,22 @@ Invokes a temporary network access request.
 
 ### [Update-AzIotSecuritySolution](Update-AzIotSecuritySolution.md)
 Update one or more of the following properties in IoT security solution: tags, recommendation configuration, user defined resources
+
+### [Update-AzSecurityConnector](Update-AzSecurityConnector.md)
+Update a security connector
+
+### [Update-AzSecurityConnectorAzureDevOpsOrg](Update-AzSecurityConnectorAzureDevOpsOrg.md)
+Update monitored Azure DevOps organization details.
+
+### [Update-AzSecurityConnectorAzureDevOpsProject](Update-AzSecurityConnectorAzureDevOpsProject.md)
+Update a monitored Azure DevOps project resource.
+
+### [Update-AzSecurityConnectorAzureDevOpsRepo](Update-AzSecurityConnectorAzureDevOpsRepo.md)
+Update a monitored Azure DevOps repository resource.
+
+### [Update-AzSecurityConnectorDevOpsConfiguration](Update-AzSecurityConnectorDevOpsConfiguration.md)
+Update a DevOps Configuration.
+
+### [Update-AzSecurityDefenderForStorage](Update-AzSecurityDefenderForStorage.md)
+Update the Defender for Storage settings on a specified storage account.
 

@@ -20,7 +20,7 @@ Updates a ServiceBus Subscription
 #>
 
 function Set-AzServiceBusSubscription{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbSubscription])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
 		[Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the Subscription.")]
@@ -95,7 +95,7 @@ function Set-AzServiceBusSubscription{
 
         [Parameter(HelpMessage = "Enumerates the possible values for the status of a messaging entity.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus]
+        [System.String]
         # Enumerates the possible values for the status of a messaging entity.
         ${Status},
 

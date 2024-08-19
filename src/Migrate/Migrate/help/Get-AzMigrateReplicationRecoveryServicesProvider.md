@@ -15,7 +15,8 @@ Gets the details of registered recovery services provider.
 ### List (Default)
 ```
 Get-AzMigrateReplicationRecoveryServicesProvider -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -146,7 +147,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryServicesProvider
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

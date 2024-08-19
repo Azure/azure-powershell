@@ -381,7 +381,7 @@
     <comment>0 = key of the config</comment>
   </data>
   <data name="HelpMessageOfEnableWamLogin" xml:space="preserve">
-    <value>[Preview] When enabled, Web Account Manager (WAM) will be the default interactive login experience. It will fall back to using the browser if the platform does not support WAM. Note that this feature is under preview. Microsoft Account (MSA) is currently not supported. Feel free to reach out to Azure PowerShell team if you have any feedbacks: https://aka.ms/azpsissue</value>
+    <value>When enabled, Web Account Manager (WAM) will be the default interactive login experience. It will fall back to using the browser if the platform does not support WAM. For more details please refer to https://go.microsoft.com/fwlink/?linkid=2272007</value>
   </data>
   <data name="RecommendationMessageForLocation" xml:space="preserve">
     <value>Selecting “{0}” may reduce your costs. The region you’ve selected may cost more for the same services. You can disable this message in the future with the command “Update-AzConfig -DisplayRegionIdentified $false”. Learn more at https://go.microsoft.com/fwlink/?linkid=2225665</value>
@@ -389,9 +389,6 @@
   </data>
   <data name="HelpMessageOfDisplayRegionIdentified" xml:space="preserve">
     <value>When enabled, Azure PowerShell displays recommendations on regions which may reduce your costs.</value>
-  </data>
-  <data name="HelpMessageOfDisableErrorRecordsPersistence" xml:space="preserve">
-    <value>When disabled, error records will not be written to ~/.Azure/ErrorRecords. This config will be replaced by "EnableErrorRecordsPersistence" as opt-in in the next major release of Az around November 2023.</value>
   </data>
   <data name="HelpMessageOfEnableErrorRecordsPersistence" xml:space="preserve">
     <value>When enabled, error records will be written to ~/.Azure/ErrorRecords.</value>
@@ -401,5 +398,25 @@
   </data>
   <data name="FailedToMigrateMsalCacheWithLegayName" xml:space="preserve">
     <value>INITIALIZATION: Failed to migrate MSAL token cache of the legacy name with error : {0}</value>
+  </data>
+  <data name="HelpMessageOfDisplaySecretsWarning" xml:space="preserve">
+    <value>When enabled, a warning message will be displayed when the cmdlet output contains secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844</value>
+  </data>
+  <data name="DisableInstanceDiscoveryWarning" xml:space="preserve">
+    <value>Set it to true to disable both instance discovery and authority validation. This functionality is intended for use in scenarios where the metadata endpoint cannot be reached, such as in private clouds or Azure Stack. It is crucial to ensure that the configured authority host is valid and trustworthy.</value>
+  </data>
+  <data name="HelpMessageOfDisableInstanceDiscovery" xml:space="preserve">
+    <value>Set it to true to disable both instance discovery and authority validation. This functionality is intended for use in scenarios where the metadata endpoint cannot be reached, such as in private clouds or Azure Stack. The process of instance discovery entails retrieving authority metadata from https://login.microsoft.com/ to validate the authority. By setting this to true, the validation of the authority is disabled. As a result, it is crucial to ensure that the configured authority host is valid and trustworthy.</value>
+  </data>
+  <data name="HelpMessageOfLoginExperienceV2" xml:space="preserve">
+    <value>Only active when authenticating interactively, allows the user to choose the subscription and tenant used in subsequent commands. Possible values ad 'On' (Default) and 'Off'. 'On' requires user's input. 'Off' will use the first tenant and subscription returned by Azure, can change without notice and lead to command execution in an unwanted context (not recommended).</value>
+  </data>
+  <data name="ErrorMessageMsalInteractionRequiredWithTid" xml:space="preserve">
+    <value>Authentication failed against tenant {0}. User interaction is required. This may be due to the conditional access policy settings such as multi-factor authentication (MFA). If you need to access subscriptions in that tenant, please rerun 'Connect-AzAccount' with additional parameter '-TenantId {0}'.</value>
+    <comment>0 = tenant ID</comment>
+  </data>
+  <data name="ErrorMsgMsalInteractionRequiredWithResourceID" xml:space="preserve">
+    <value>Authentication failed against resource {0}. User interaction is required. This may be due to the conditional access policy settings such as multi-factor authentication (MFA). Please rerun 'Connect-AzAccount' with additional parameter '-AuthScope {0}'.</value>
+    <comment>0 = resource ID</comment>
   </data>
 </root>

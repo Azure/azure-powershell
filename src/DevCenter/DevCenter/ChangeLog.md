@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
+* Updated control plane to 2024-05-01-preview and added deprecation warnings
+
+## Version 1.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 1.1.0
 * Updated the default parameter set for Get-AzDevCenterUserSchedule to "list"

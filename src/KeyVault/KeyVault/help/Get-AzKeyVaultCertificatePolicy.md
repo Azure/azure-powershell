@@ -138,4 +138,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzKeyVaultCertificatePolicy](./New-AzKeyVaultCertificatePolicy.md)
 
 [Set-AzKeyVaultCertificatePolicy](./Set-AzKeyVaultCertificatePolicy.md)
-

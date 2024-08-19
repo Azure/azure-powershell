@@ -185,7 +185,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for NETWORKFABRICINPUTOBJECT properties and create a hash table.
     ${NetworkFabricInputObject},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -210,7 +209,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExportRoutePolicyInformation]
     # Export Route Policy configuration.
-    # To construct, see NOTES section for EXPORTROUTEPOLICY properties and create a hash table.
     ${ExportRoutePolicy},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -218,7 +216,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IImportRoutePolicyInformation]
     # Import Route Policy configuration.
-    # To construct, see NOTES section for IMPORTROUTEPOLICY properties and create a hash table.
     ${ImportRoutePolicy},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -243,7 +240,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer2Configuration]
     # Common properties for Layer2 Configuration.
-    # To construct, see NOTES section for LAYER2CONFIGURATION properties and create a hash table.
     ${Layer2Configuration},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -260,7 +256,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INpbStaticRouteConfiguration]
     # NPB Static Route Configuration properties.
-    # To construct, see NOTES section for NPBSTATICROUTECONFIGURATION properties and create a hash table.
     ${NpbStaticRouteConfiguration},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -268,14 +263,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration]
     # Common properties for Layer3Configuration.
-    # To construct, see NOTES section for OPTIONBLAYER3CONFIGURATION properties and create a hash table.
     ${OptionBLayer3Configuration},
 
     [Parameter(ParameterSetName='CreateViaIdentityNetworkFabric', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkToNetworkInterconnect]
     # The Network To Network Interconnect resource definition.
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
@@ -384,7 +377,13 @@ begin {
             CreateViaJsonString = 'Az.ManagedNetworkFabric.private\New-AzNetworkFabricNni_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

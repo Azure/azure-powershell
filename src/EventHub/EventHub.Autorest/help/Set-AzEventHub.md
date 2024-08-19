@@ -16,22 +16,21 @@ Updates an EventHub Entity
 ```
 Set-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ArchiveNameFormat <String>] [-BlobContainer <String>] [-CaptureEnabled] [-DestinationName <String>]
- [-Encoding <EncodingCaptureDescription>] [-IdentityType <ManagedServiceIdentityType>]
- [-IntervalInSeconds <Int32>] [-PartitionCount <Int64>] [-RetentionTimeInHour <Int64>]
- [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <EntityStatus>] [-StorageAccountResourceId <String>]
- [-TombstoneRetentionTimeInHour <Int32>] [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Encoding <String>] [-IdentityType <String>] [-IntervalInSeconds <Int32>] [-PartitionCount <Int64>]
+ [-RetentionTimeInHour <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <String>]
+ [-StorageAccountResourceId <String>] [-TombstoneRetentionTimeInHour <Int32>]
+ [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
 Set-AzEventHub -InputObject <IEventHubIdentity> [-ArchiveNameFormat <String>] [-BlobContainer <String>]
- [-CaptureEnabled] [-DestinationName <String>] [-Encoding <EncodingCaptureDescription>]
- [-IdentityType <ManagedServiceIdentityType>] [-IntervalInSeconds <Int32>] [-PartitionCount <Int64>]
- [-RetentionTimeInHour <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <EntityStatus>]
- [-StorageAccountResourceId <String>] [-TombstoneRetentionTimeInHour <Int32>]
- [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-CaptureEnabled] [-DestinationName <String>] [-Encoding <String>] [-IdentityType <String>]
+ [-IntervalInSeconds <Int32>] [-PartitionCount <Int64>] [-RetentionTimeInHour <Int64>]
+ [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <String>] [-StorageAccountResourceId <String>]
+ [-TombstoneRetentionTimeInHour <Int32>] [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -225,7 +224,7 @@ Enumerates the possible values for the encoding format of capture description.
 Note: 'AvroDeflate' will be deprecated in New API Version
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.EncodingCaptureDescription
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -240,7 +239,7 @@ Accept wildcard characters: False
 Type of managed service identity.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -410,7 +409,7 @@ Accept wildcard characters: False
 Enumerates the possible values for the status of the Event Hub.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.EntityStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -523,7 +522,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEventhub
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub
 
 ## NOTES
 

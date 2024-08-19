@@ -15,19 +15,22 @@ Gets or lists Storage file shares.
 ### AccountNameSingle (Default)
 ```
 Get-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String> [-Name <String>]
- [-SnapshotTime <DateTime>] [-GetShareUsage] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SnapshotTime <DateTime>] [-GetShareUsage] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### AccountName
 ```
 Get-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String> [-IncludeDeleted]
- [-IncludeSnapshot] [-Filter <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-IncludeSnapshot] [-Filter <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### AccountObjectSingle
 ```
 Get-AzRmStorageShare -StorageAccount <PSStorageAccount> -Name <String> [-SnapshotTime <DateTime>]
- [-GetShareUsage] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-GetShareUsage] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### AccountObject
@@ -153,6 +156,7 @@ Name       QuotaGiB EnabledProtocols AccessTier           Deleted Version ShareU
 testshare1 5120     SMB              TransactionOptimized
 testshare2 5120     SMB              TransactionOptimized
 ```
+
 This command lists all Storage file shares with names that begin with "test".
 
 ## PARAMETERS

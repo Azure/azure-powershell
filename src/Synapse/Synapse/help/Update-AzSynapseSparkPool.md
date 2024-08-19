@@ -22,8 +22,8 @@ Update-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> 
  [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>]
  [-SparkConfiguration <PSSparkConfigurationResource>] [-PackageAction <PackageActionType>]
  [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
- [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByParentObjectParameterSet
@@ -36,8 +36,8 @@ Update-AzSynapseSparkPool -Name <String> -WorkspaceObject <PSSynapseWorkspace> [
  [-LibraryRequirementsFilePath <String>] [-SparkConfiguration <PSSparkConfigurationResource>]
  [-PackageAction <PackageActionType>]
  [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
- [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
@@ -49,8 +49,8 @@ Update-AzSynapseSparkPool -InputObject <PSSynapseSparkPool> [-Tag <Hashtable>] [
  [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>]
  [-SparkConfiguration <PSSparkConfigurationResource>] [-PackageAction <PackageActionType>]
  [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
- [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
@@ -62,12 +62,15 @@ Update-AzSynapseSparkPool -ResourceId <String> [-Tag <Hashtable>] [-EnableAutoSc
  [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>]
  [-SparkConfiguration <PSSparkConfigurationResource>] [-PackageAction <PackageActionType>]
  [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
- [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Update-AzSynapseSparkPool** cmdlet updates an Apache Spark pool in Azure Synapse Analytics.
+
+> [!NOTE]
+> If the `-SparkVersion` parameter is used to upgrade the Synapse Spark runtime version, ensure that the Spark pool doesn't have any attached custom libraries or packages. Refer to [Migration between Apache Spark versions](https://learn.microsoft.com/azure/synapse-analytics/spark/apache-spark-version-support#migration-between-apache-spark-versions---support) for more details.
 
 ## EXAMPLES
 
@@ -550,7 +553,7 @@ Accept wildcard characters: False
 
 ### -SparkVersion
 Apache Spark version.
-Allowed values: 2.3,2.4,3.1,3.2
+Allowed values: 3.1,3.2,3.3,3.4
 
 ```yaml
 Type: System.String

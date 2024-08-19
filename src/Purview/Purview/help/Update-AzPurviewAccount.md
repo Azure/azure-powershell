@@ -16,7 +16,8 @@ Updates an account
 ```
 Update-AzPurviewAccount -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ManagedResourceGroupName <String>] [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -39,14 +40,14 @@ Update-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg -Tag @{"k"="v"}
 ```output
 CloudConnectorAwsExternalId      : xxxxxxxxxx-d074-4f8f-9d7f-10811b250738
 CreatedAt                        : 8/17/2021 6:18:57 AM
-CreatedBy                        : xxxxx.Zhou@microsoft.com
+CreatedBy                        : xxxxx.xxxxx@microsoft.com
 CreatedByObjectId                : xxxxxxx-5be9-4f43-abd2-04561777c8b0
 EndpointCatalog                  : https://test-pa.catalog.purview.azure.com
 EndpointGuardian                 : https://test-pa.guardian.purview.azure.com
 EndpointScan                     : https://test-pa.scan.purview.azure.com
 FriendlyName                     : test-pa
-Id                               : /subscriptions/xxxxxxxx-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/providers/Microsoft.Purview/a 
-                                   ccounts/bez-pa
+Id                               : /subscriptions/xxxxxxxx-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg/providers/Microsoft.Purview/a 
+                                   ccounts/test-pa
 Identity                         : {
                                      "principalId": "xxxxxxxx-7956-4978-87e8-9ddd82cfe2b7",
                                      "tenantId": "xxxxxxxx-38d6-4fb2-bad9-b7b93a3e9c5a",
@@ -71,17 +72,17 @@ SkuCapacity                      : 1
 SkuName                          : Standard
 SystemData                       : {
                                      "createdAt": "2021-08-17T06:18:57.7274115Z",
-                                     "createdBy": "xxxxx.Zhou@microsoft.com",
+                                     "createdBy": "xxxxx.xxxxx@microsoft.com",
                                      "createdByType": "User",
                                      "lastModifiedAt": "xxxxxx-08-17T06:18:57.7274115Z",
-                                     "lastModifiedBy": "Beisi.Zhou@microsoft.com",
+                                     "lastModifiedBy": "xxxxx.xxxxx@microsoft.com",
                                      "lastModifiedByType": "User"
                                    }
 SystemDataCreatedAt              : 8/17/2021 6:18:57 AM
-SystemDataCreatedBy              : xxxxx.Zhou@microsoft.com
+SystemDataCreatedBy              : xxxxx.xxxxx@microsoft.com
 SystemDataCreatedByType          : User
 SystemDataLastModifiedAt         : 8/17/2021 6:18:57 AM
-SystemDataLastModifiedBy         : xxxxxx.Zhou@microsoft.com
+SystemDataLastModifiedBy         : xxxxxx.xxxxx@microsoft.com
 SystemDataLastModifiedByType     : User
 Tag                              : {
                                      "k": "v"
@@ -100,14 +101,14 @@ Update-AzPurviewAccount -InputObject $get -Tag @{"k"="v"}
 ```output
 CloudConnectorAwsExternalId      : xxxxxxxxxx-d074-4f8f-9d7f-10811b250738
 CreatedAt                        : 8/17/2021 6:18:57 AM
-CreatedBy                        : xxxxx.Zhou@microsoft.com
+CreatedBy                        : xxxxx.xxxxx@microsoft.com
 CreatedByObjectId                : xxxxxxx-5be9-4f43-abd2-04561777c8b0
 EndpointCatalog                  : https://test-pa.catalog.purview.azure.com
 EndpointGuardian                 : https://test-pa.guardian.purview.azure.com
 EndpointScan                     : https://test-pa.scan.purview.azure.com
 FriendlyName                     : test-pa
-Id                               : /subscriptions/xxxxxxxx-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/providers/Microsoft.Purview/a 
-                                   ccounts/bez-pa
+Id                               : /subscriptions/xxxxxxxx-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg/providers/Microsoft.Purview/a 
+                                   ccounts/test-pa
 Identity                         : {
                                      "principalId": "xxxxxxxx-7956-4978-87e8-9ddd82cfe2b7",
                                      "tenantId": "xxxxxxxx-38d6-4fb2-bad9-b7b93a3e9c5a",
@@ -132,17 +133,17 @@ SkuCapacity                      : 1
 SkuName                          : Standard
 SystemData                       : {
                                      "createdAt": "2021-08-17T06:18:57.7274115Z",
-                                     "createdBy": "xxxxx.Zhou@microsoft.com",
+                                     "createdBy": "xxxxx.xxxxx@microsoft.com",
                                      "createdByType": "User",
                                      "lastModifiedAt": "xxxxxx-08-17T06:18:57.7274115Z",
-                                     "lastModifiedBy": "Beisi.Zhou@microsoft.com",
+                                     "lastModifiedBy": "xxxxx.xxxxx@microsoft.com",
                                      "lastModifiedByType": "User"
                                    }
 SystemDataCreatedAt              : 8/17/2021 6:18:57 AM
-SystemDataCreatedBy              : xxxxx.Zhou@microsoft.com
+SystemDataCreatedBy              : xxxxx.xxxxx@microsoft.com
 SystemDataCreatedByType          : User
 SystemDataLastModifiedAt         : 8/17/2021 6:18:57 AM
-SystemDataLastModifiedBy         : xxxxxx.Zhou@microsoft.com
+SystemDataLastModifiedBy         : xxxxxx.xxxxx@microsoft.com
 SystemDataLastModifiedByType     : User
 Tag                              : {
                                      "k": "v"
@@ -170,7 +171,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -348,20 +350,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccount
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IPurviewIdentity>`: Identity Parameter
-  - `[AccountName <String>]`: The name of the account.
-  - `[GroupId <String>]`: The group identifier.
-  - `[Id <String>]`: Resource identity path
-  - `[PrivateEndpointConnectionName <String>]`: Name of the private endpoint connection.
-  - `[ResourceGroupName <String>]`: The resource group name.
-  - `[SubscriptionId <String>]`: The subscription identifier
 
 ## RELATED LINKS

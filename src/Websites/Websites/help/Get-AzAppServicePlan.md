@@ -21,7 +21,8 @@ Get-AzAppServicePlan [[-ResourceGroupName] <String>] [[-Name] <String>]
 
 ### S2
 ```
-Get-AzAppServicePlan [-Location] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAppServicePlan [-Location] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,5 +126,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzAppServicePlan](./Remove-AzAppServicePlan.md)
 
 [Set-AzAppServicePlan](./Set-AzAppServicePlan.md)
-
-

@@ -105,10 +105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models
                 return container;
             }
             __proxyResource?.ToJson(container, serializationMode);
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SerializationMode.IncludeCreate))
-            {
-                AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
-            }
+            AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._eTag)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Json.JsonString(this._eTag.ToString()) : null, "eTag" ,container.Add );

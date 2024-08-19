@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.HdInsightOnAks-help.xml
 Module Name: Az.HdInsightOnAks
 online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/update-azhdinsightonaksclusterpooltag
 schema: 2.0.0
@@ -8,52 +8,54 @@ schema: 2.0.0
 # Update-AzHdInsightOnAksClusterPoolTag
 
 ## SYNOPSIS
-Updates an existing Cluster Pool Tags.
+Update an existing Cluster Pool Tags.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzHdInsightOnAksClusterPoolTag -ClusterPoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzHdInsightOnAksClusterPoolTag -ClusterPoolName <String> -ResourceGroupName <String>
- -ClusterPoolTag <ITagsObject> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzHdInsightOnAksClusterPoolTag -InputObject <IHdInsightOnAksIdentity> -ClusterPoolTag <ITagsObject>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzHdInsightOnAksClusterPoolTag -InputObject <IHdInsightOnAksIdentity> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzHdInsightOnAksClusterPoolTag -ClusterPoolName <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzHdInsightOnAksClusterPoolTag -ClusterPoolName <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzHdInsightOnAksClusterPoolTag -ClusterPoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Update
+```
+Update-AzHdInsightOnAksClusterPoolTag -ClusterPoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -ClusterPoolTag <ITagsObject> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzHdInsightOnAksClusterPoolTag -InputObject <IHdInsightOnAksIdentity> [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Update-AzHdInsightOnAksClusterPoolTag -InputObject <IHdInsightOnAksIdentity> -ClusterPoolTag <ITagsObject>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates an existing Cluster Pool Tags.
+Update an existing Cluster Pool Tags.
 
 ## EXAMPLES
 
@@ -121,7 +123,7 @@ The name of the cluster pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update
 Aliases:
 
 Required: True
@@ -133,7 +135,6 @@ Accept wildcard characters: False
 
 ### -ClusterPoolTag
 Tags object for patch operations.
-To construct, see NOTES section for CLUSTERPOOLTAG properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITagsObject
@@ -165,11 +166,10 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -230,7 +230,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update
 Aliases:
 
 Required: True
@@ -246,7 +246,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update
 Aliases:
 
 Required: False
@@ -318,4 +318,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -16,6 +16,7 @@
 //This class is split from the ResourcesExtensions class. Since this module has both cmdlets that use the old sdk version and cmdlets that use the new one, we needed client extension classes for both and with this split
 //this class acts as the client for the cmdlets using the newer bits while the ResourcesExtensions class acts as the client for the cmdlets using old sdk
 
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Resources.Models;
@@ -321,12 +322,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.NewSdkExtensions
 
                 if (properties.Outputs != null)
                 {
-                    Dictionary<string, DeploymentVariable> outputs = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Outputs.ToString());
+                    var outputs = properties.Outputs.ToString().FromJson<Dictionary<string, DeploymentVariable>>();
                     // Continue deserialize if the type of Value in DeploymentVariable is array
                     outputs?.Values.ForEach(dv => {
-                        if ("Array".Equals(dv?.Type))
+                        if ("Array".Equals(dv?.Type) && dv?.Value != null)
                         {
-                            dv.Value = JsonConvert.DeserializeObject<object[]>(dv.Value.ToString());
+                            dv.Value = dv.Value.ToString().FromJson<object[]>();
                         }
                     });
                     deploymentObject.Outputs = outputs;
@@ -334,12 +335,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.NewSdkExtensions
 
                 if (properties.Parameters != null)
                 {
-                    Dictionary<string, DeploymentVariable> parameters = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Parameters.ToString());
+                    var parameters = properties.Parameters.ToString().FromJson<Dictionary<string, DeploymentVariable>>();
                     // Continue deserialize if the type of Value in DeploymentVariable is array
                     parameters?.Values.ForEach(dv => {
-                        if ("Array".Equals(dv?.Type))
+                        if ("Array".Equals(dv?.Type) && dv?.Value != null)
                         {
-                            dv.Value = JsonConvert.DeserializeObject<object[]>(dv.Value.ToString());
+                            dv.Value = dv.Value.ToString().FromJson<object[]>();
                         }
                     });
                     deploymentObject.Parameters = parameters;

@@ -18,6 +18,37 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
+* Upgraded Get-AzKeyVaultKey for key vault key to track 2 SDK.
+
+## Version 6.0.1
+* Fixed an issue during merging certificate process. [#24323]
+
+## Version 6.0.0
+* [Breaking change] Removed the offline fallback policy if specify parameter `UseDefaultCVMPolicy` in `Add-AzKeyVaultKey`. Key creation will fail if unable to get regional default CVM SKR policy from MAA Service Discovery API.
+* [Breaking change] Removed parameter `Value` from `Invoke-AzKeyVaultKeyOperation`.
+* [Breaking change] Removed property `Result` from the output type `PSKeyOperationResult` of `Invoke-AzKeyVaultKeyOperation`.
+* [Breaking Change] Replaced parameter `EnableRbacAuthorization` by `DisableRbacAuthorization` in `New-AzKeyVault` and `Update-AzKeyVault`.
+    - RBAC will be enabled by default during the process of key vault creation. 
+    
+## Version 5.3.0
+* Introduced secrets detection feature to safeguard sensitive data.
+* [Upcoming Breaking Change] Added breaking change warning message for parameter `UseDefaultCVMPolicy` of `Add-AzKeyVaultKey`.
+    - The offline fallback policy will be removed. Key creation will fail if unable to get regional default CVM SKR policy from MAA Service Discovery API.
+* Added parameter `PolicyPath` in `Add-AzKeyVaultCertificate` to support custom policy in the process of certificate enrollment. 
+* Upgraded the API version of merging certificate to 7.5. [#24323]
+
+## Version 5.2.2
+* Introduced secrets detection feature to safeguard sensitive data.
+* Formatted the output of Azure Key Vault certificate in removed state. [#24333]
+* [Upcoming Breaking Change] Added breaking change warning message for parameter `EnableRbacAuthorization` of `New-AzKeyVault` and `Update-AzKeyVault`.
+    - RBAC will be enabled by default during the process of key vault creation. To disable RBAC authorization, please use parameter 'DisableRbacAuthorization'.
+    - Parameter `EnableRbacAuthorization` is expected to be removed in Az.KeyVault 6.0.0 and Az 12.0.0.
+    - Parameter `EnableRbacAuthorization` is expected to be replaced by `DisableRbacAuthorization`.
+* Upgraded Azure.Core to 1.37.0.
+
+## Version 5.2.1
+* Supported `HsmPlatform` in `KeyAttributes`.
 
 ## Version 5.2.0
 * Supported authentication via User Managed Identity by adding parameter `UseUserManagedIdentity` and making `SasToken` optional.

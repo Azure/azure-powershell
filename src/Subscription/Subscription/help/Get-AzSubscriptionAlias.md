@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Subscription-help.xml
 Module Name: Az.Subscription
 online version: https://learn.microsoft.com/powershell/module/az.subscription/get-azsubscriptionalias
 schema: 2.0.0
@@ -19,12 +19,14 @@ Get-AzSubscriptionAlias [-DefaultProfile <PSObject>] [<CommonParameters>]
 
 ### Get
 ```
-Get-AzSubscriptionAlias -AliasName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSubscriptionAlias -AliasName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzSubscriptionAlias -InputObject <ISubscriptionIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSubscriptionAlias -InputObject <ISubscriptionIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +65,7 @@ Get Alias Subscription.
 
 ### -AliasName
 AliasName is the name for the subscription creation request.
-Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
+Note that this is not the same as subscription name and this doesn't have any other lifecycle need beyond the request for subscription creation.
 
 ```yaml
 Type: System.String
@@ -125,4 +127,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

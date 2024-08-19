@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 using Microsoft.Azure.Commands.Profile.CommonModule;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Sanitizer;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
@@ -175,6 +176,13 @@ namespace Microsoft.Azure.Commands.Common
                     qosEvent.Uid = MetricHelper.GenerateSha256HashString(context.Account.Id.ToString());
                 }
             }
+
+            var showSecretsWarning = false;
+            if (AzureSession.Instance.TryGetComponent<IOutputSanitizer>(nameof(IOutputSanitizer), out var outputSanitizer))
+            {
+                showSecretsWarning = outputSanitizer?.RequireSecretsDetection == true;
+            }
+            qosEvent.SanitizerInfo = new SanitizerTelemetry(showSecretsWarning);
 
             this[processRecordId] = qosEvent;
             return qosEvent;

@@ -16,14 +16,14 @@
 
 <#
 .Synopsis
-Create a in-memory object for VMResources
+Create an in-memory object for VMResources.
 .Description
-Create a in-memory object for VMResources
+Create an in-memory object for VMResources.
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.VMResources
 .Link
-https://learn.microsoft.com/powershell/module/az.Logz/new-AzLogzVMResourcesObject
+https://learn.microsoft.com/powershell/module/Az.Logz/new-AzLogzVMResourcesObject
 #>
 function New-AzLogzVMResourcesObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.VMResources')]
@@ -41,8 +41,12 @@ function New-AzLogzVMResourcesObject {
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.VMResources]::New()
 
-        $Object.AgentVersion = $AgentVersion
-        $Object.Id = $Id
+        if ($PSBoundParameters.ContainsKey('AgentVersion')) {
+            $Object.AgentVersion = $AgentVersion
+        }
+        if ($PSBoundParameters.ContainsKey('Id')) {
+            $Object.Id = $Id
+        }
         return $Object
     }
 }

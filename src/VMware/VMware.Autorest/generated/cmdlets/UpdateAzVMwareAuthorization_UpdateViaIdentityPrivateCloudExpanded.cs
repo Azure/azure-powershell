@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create an ExpressRoute Circuit Authorization in a private cloud</summary>
+    /// <summary>Update a ExpressRouteAuthorization</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations/{authorizationName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations/{authorizationName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzVMwareAuthorization_UpdateViaIdentityPrivateCloudExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IExpressRouteAuthorization))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Create an ExpressRoute Circuit Authorization in a private cloud")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Update a ExpressRouteAuthorization")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
     public partial class UpdateAzVMwareAuthorization_UpdateViaIdentityPrivateCloudExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener,
@@ -78,6 +78,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>The ID of the ExpressRoute Circuit</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The ID of the ExpressRoute Circuit")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The ID of the ExpressRoute Circuit",
+        SerializedName = @"expressRouteId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ExpressRouteId { get => _authorizationBody.ExpressRouteId ?? null; set => _authorizationBody.ExpressRouteId = value; }
+
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
@@ -107,12 +118,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
-        /// <summary>Name of the ExpressRoute Circuit Authorization in the private cloud</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the ExpressRoute Circuit Authorization in the private cloud")]
+        /// <summary>Name of the ExpressRoute Circuit Authorization</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the ExpressRoute Circuit Authorization")]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Name of the ExpressRoute Circuit Authorization in the private cloud",
+        Description = @"Name of the ExpressRoute Circuit Authorization",
         SerializedName = @"authorizationName",
         PossibleTypes = new [] { typeof(string) })]
         [global::System.Management.Automation.Alias("AuthorizationName")]
@@ -229,6 +240,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
             {
                 // Flush buffer
                 WriteObject(_firstResponse);
+            }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.VMware.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
             }
         }
 
@@ -422,7 +451,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                         this.PrivateCloudInputObject.Id += $"/authorizations/{(global::System.Uri.EscapeDataString(this.Name.ToString()))}";
                         _authorizationBody = await this.Client.AuthorizationsGetViaIdentityWithResult(PrivateCloudInputObject.Id, this, Pipeline);
                         this.Update_authorizationBody();
-                        await this.Client.AuthorizationsCreateOrUpdateViaIdentity(PrivateCloudInputObject.Id, _authorizationBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.AuthorizationsCreateOrUpdateViaIdentity(PrivateCloudInputObject.Id, _authorizationBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -441,7 +470,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                         }
                         _authorizationBody = await this.Client.AuthorizationsGetWithResult(PrivateCloudInputObject.SubscriptionId ?? null, PrivateCloudInputObject.ResourceGroupName ?? null, PrivateCloudInputObject.PrivateCloudName ?? null, Name, this, Pipeline);
                         this.Update_authorizationBody();
-                        await this.Client.AuthorizationsCreateOrUpdate(PrivateCloudInputObject.SubscriptionId ?? null, PrivateCloudInputObject.ResourceGroupName ?? null, PrivateCloudInputObject.PrivateCloudName ?? null, Name, _authorizationBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.AuthorizationsCreateOrUpdate(PrivateCloudInputObject.SubscriptionId ?? null, PrivateCloudInputObject.ResourceGroupName ?? null, PrivateCloudInputObject.PrivateCloudName ?? null, Name, _authorizationBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -477,7 +506,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
 
         private void Update_authorizationBody()
         {
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ExpressRouteId")))
+            {
+                this.ExpressRouteId = (string)(this.MyInvocation?.BoundParameters["ExpressRouteId"]);
+            }
+        }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.VMware.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.VMware.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

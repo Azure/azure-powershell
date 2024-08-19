@@ -15,18 +15,21 @@ Get particular Arc Extension of HCI Cluster.
 ### List (Default)
 ```
 Get-AzStackHciExtension -ArcSettingName <String> -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzStackHciExtension -ArcSettingName <String> -ClusterName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzStackHciExtension -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStackHciExtension -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -145,6 +148,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
@@ -167,7 +171,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtension
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IExtension
 
 ## NOTES
 

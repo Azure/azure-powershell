@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         /// <param name="obj">The object.</param>
         public static string ToFormattedJson(this object obj)
         {
-            return JsonConvert.SerializeObject(obj, Formatting.Indented);
+            return JsonConvert.SerializeObject(obj, Formatting.Indented, JsonExtensions.ObjectSerializationSettings);
         }
 
         /// <summary>

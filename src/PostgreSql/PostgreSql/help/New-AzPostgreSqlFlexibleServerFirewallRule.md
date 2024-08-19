@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PostgreSql-help.xml
 Module Name: Az.PostgreSql
 online version: https://learn.microsoft.com/powershell/module/az.postgresql/new-azpostgresqlflexibleserverfirewallrule
 schema: 2.0.0
@@ -14,23 +14,23 @@ Creates a new firewall rule or updates an existing firewall rule.
 
 ### CreateExpanded (Default)
 ```
-New-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName <String> -ServerName <String>
- -EndIPAddress <String> -StartIPAddress <String> [-Name <String>] [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AllowAll
-```
-New-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName <String> -ServerName <String> -AllowAll
- [-Name <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName <String> -ServerName <String> [-Name <String>]
+ [-SubscriptionId <String>] -EndIPAddress <String> -StartIPAddress <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ClientIPAddress
 ```
-New-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName <String> -ServerName <String>
- -ClientIPAddress <String> [-Name <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName <String> -ServerName <String> [-Name <String>]
+ [-SubscriptionId <String>] -ClientIPAddress <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AllowAll
+```
+New-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName <String> -ServerName <String> [-Name <String>]
+ [-SubscriptionId <String>] [-AllowAll] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -292,7 +292,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

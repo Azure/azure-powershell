@@ -20,18 +20,19 @@ Get metric status
 .Description
 Get metric status
 .Example
-Get-AzNewRelicMonitorMetricStatus -MonitorName test-03 -ResourceGroupName ps-test -UserEmail v-jiaji@outlook.com -AzureResourceId /subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/Microsoft.Web/sites/joyertest
+Get-AzNewRelicMonitorMetricStatus -MonitorName test-03 -ResourceGroupName ps-test -UserEmail user1@outlook.com -AzureResourceId /subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ps-test/providers/Microsoft.Web/sites/grouptest
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentity
 .Outputs
-System.String
+Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricsStatusResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <INewRelicIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [MonitorName <String>]: Name of the Monitors resource
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -41,16 +42,20 @@ INPUTOBJECT <INewRelicIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.newrelic/get-aznewrelicmonitormetricstatus
 #>
 function Get-AzNewRelicMonitorMetricStatus {
-[OutputType([System.String])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricsStatusResponse])]
 [CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Parameter(ParameterSetName='GetViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='GetViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Path')]
     [System.String]
     # Name of the Monitors resource
     ${MonitorName},
 
     [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Parameter(ParameterSetName='GetViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='GetViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -58,6 +63,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='GetExpanded')]
+    [Parameter(ParameterSetName='GetViaJsonFilePath')]
+    [Parameter(ParameterSetName='GetViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
@@ -68,21 +75,34 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='GetExpanded', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
     [System.String]
     # User Email
     ${UserEmail},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='GetExpanded')]
+    [Parameter(ParameterSetName='GetViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
     [System.String[]]
     # Azure resource IDs
     ${AzureResourceId},
+
+    [Parameter(ParameterSetName='GetViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Get operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='GetViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
+    [System.String]
+    # Json string supplied to the Get operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -161,12 +181,24 @@ begin {
         $mapping = @{
             GetExpanded = 'Az.NewRelic.private\Get-AzNewRelicMonitorMetricStatus_GetExpanded';
             GetViaIdentityExpanded = 'Az.NewRelic.private\Get-AzNewRelicMonitorMetricStatus_GetViaIdentityExpanded';
+            GetViaJsonFilePath = 'Az.NewRelic.private\Get-AzNewRelicMonitorMetricStatus_GetViaJsonFilePath';
+            GetViaJsonString = 'Az.NewRelic.private\Get-AzNewRelicMonitorMetricStatus_GetViaJsonString';
         }
-        if (('GetExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('GetExpanded', 'GetViaJsonFilePath', 'GetViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

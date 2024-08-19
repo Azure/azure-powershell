@@ -21,7 +21,8 @@ Test-AzEventHubName -NamespaceName <String> [-SubscriptionId <String>] [-Default
 ### AliasAvailability
 ```
 Test-AzEventHubName -NamespaceName <String> [-SubscriptionId <String>] -AliasName <String>
- -ResourceGroupName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
+ -ResourceGroupName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -169,7 +170,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ICheckNameAvailabilityResult
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICheckNameAvailabilityResult
 
 ## NOTES
 

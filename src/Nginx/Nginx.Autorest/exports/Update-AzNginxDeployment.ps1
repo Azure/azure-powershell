@@ -27,11 +27,16 @@ Update-AzNginxDeployment -Name nginx-test -ResourceGroupName nginx-test-rg -Enab
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+AUTOSCALESETTINGPROFILE <IScaleProfile[]>: .
+  CapacityMax <Int32>: The maximum number of NCUs the deployment can be autoscaled to.
+  CapacityMin <Int32>: The minimum number of NCUs the deployment can be autoscaled to.
+  Name <String>: 
 
 INPUTOBJECT <INginxIdentity>: Identity Parameter
   [CertificateName <String>]: The name of certificate
@@ -44,7 +49,7 @@ INPUTOBJECT <INginxIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.nginx/update-aznginxdeployment
 #>
 function Update-AzNginxDeployment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -76,6 +81,20 @@ param(
     ${InputObject},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[]]
+    # .
+    # To construct, see NOTES section for AUTOSCALESETTINGPROFILE properties and create a hash table.
+    ${AutoScaleSettingProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
+    [System.String]
+    # Channel used for autoupgrade.
+    ${AutoUpgradeProfileUpgradeChannel},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
@@ -90,7 +109,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IIdentityPropertiesUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IIdentityPropertiesUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # Dictionary of <UserIdentityProperties>
     ${IdentityUserAssignedIdentity},
@@ -127,7 +146,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeploymentUpdateParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeploymentUpdateParametersTags]))]
     [System.Collections.Hashtable]
     # Dictionary of <string>
     ${Tag},
@@ -230,7 +249,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.Nginx.private\Update-AzNginxDeployment_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

@@ -18,7 +18,8 @@ Add-AzMetricAlertRule -WindowSize <TimeSpan> -Operator <ConditionOperator> -Thre
  -TargetResourceId <String> -MetricName <String> -TimeAggregationOperator <TimeAggregationOperator>
  -Location <String> [-Description <String>] [-DisableRule] -ResourceGroupName <String> -Name <String>
  [-Action <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -343,5 +344,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzAlertRuleWebhook](./New-AzAlertRuleWebhook.md)
 
 [Remove-AzAlertRule](./Remove-AzAlertRule.md)
-
-

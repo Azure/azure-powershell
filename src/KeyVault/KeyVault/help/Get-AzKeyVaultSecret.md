@@ -289,7 +289,7 @@ Install-Module Microsoft.PowerShell.SecretManagement -Repository PSGallery -Allo
 # Register vault for Secret Management
 Register-SecretVault -Name AzKeyVault -ModuleName Az.KeyVault -VaultParameters @{ AZKVaultName = 'test-kv'; SubscriptionId = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
 # Set secret for vault AzKeyVault
-$secure = ConvertTo-SecureString -String "Password" -AsPlainText -Force
+$secure = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Set-Secret -Vault AzKeyVault -Name secureSecret -SecureStringSecret $secure 
 Get-Secret -Vault AzKeyVault -Name secureSecret -AsPlainText
 ```
@@ -482,4 +482,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Undo-AzKeyVaultSecretRemoval](./Undo-AzKeyVaultSecretRemoval.md)
 
 [Set-AzKeyVaultSecret](./Set-AzKeyVaultSecret.md)
-

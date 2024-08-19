@@ -13,8 +13,8 @@ Create new navigation property ref to owners for groups
 ## SYNTAX
 
 ```
-New-AzADGroupOwner -GroupId <String> -OwnerId <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzADGroupOwner -GroupId <String> -OwnerId <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,14 +22,14 @@ Create new navigation property ref to owners for groups
 
 ## EXAMPLES
 
-### Example 1: Assign a user as onwer of a group
+### Example 1: Assign a user as owner of a group
 ```powershell
 $userId = (Get-AzADUser -DisplayName "John Doe").Id
 $groupId = (Get-AzADGroup -DisplayName "someGroup").Id
 New-AzADGroupOwner -GroupId $groupId -OwnerId $userId
 ```
 
-Assign a user as onwer of a group
+Assign a user as owner of a group
 
 ## PARAMETERS
 
@@ -85,6 +85,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
+
+## Version 4.0.3
+* Removed the outdated deps.json file.
 
 ## Version 4.0.2
 * Updated description of ResourceId param 'New-AzApiManagementBackend' and 'Set-AzApiManagementBackend' cmdlet [#16868]
@@ -48,21 +52,21 @@
 * Added new `New-AzApiManagementKeyVaultObject` cmdlet.
 * Added new optional [-useFromLocation] parameter to the `Get-ApiManagementCache` `New-ApiManagementCache``Update-ApiManagementCache` cmdlet.
 
-* Updated cmdlet **New-AzApiManagement** to manage ApiManagement service 
+* Updated cmdlet **New-AzApiManagement** to manage ApiManagement service
     - Added support for the new `Isolated` SKU
     - Added support for managing Availability Zones using `Zone` property
     - Added support for Disabling Gateway in a Region using `DisableGateway` property
     - Added support for managing the minimum Api Version to allow for Control Plane using `MinimalControlPlaneApiVersion` property.
 
-* Updated cmdlet **New-AzApiManagementRegion** to manage ApiManagement service     
+* Updated cmdlet **New-AzApiManagementRegion** to manage ApiManagement service
     - Added support for managing Availability Zones using `Zone` property
     - Added support for Disabling Gateway in a Region using `DisableGateway` property
 
-* Updated cmdlet **Add-AzApiManagementRegion** to manage ApiManagement service     
+* Updated cmdlet **Add-AzApiManagementRegion** to manage ApiManagement service
     - Added support for managing Availability Zones using `Zone` property
     - Added support for Disabling Gateway in a Region using `DisableGateway` property
 
-* Updated cmdlet **Update-AzApiManagementRegion** to manage ApiManagement service     
+* Updated cmdlet **Update-AzApiManagementRegion** to manage ApiManagement service
     - Added support for managing Availability Zones using `Zone` property
     - Added support for Disabling Gateway in a Region using `DisableGateway` property
 
@@ -93,7 +97,7 @@
 * `New-AzApiManagement` and `Set-AzApiManagement`: [-AssignIdentity] parameter renamed as [-SystemAssignedIdentity]
 * `New-AzApiManagement` and `Set-AzApiManagement`: New parameter added: [-UserAssignedIdentity <String[]>]
 * `Get-AzApiManagementProperty`: renamed as `Get-AzApiManagementNamedValue`. PropertyId parameter renamed as NamedValueId.
-* `New-AzApiManagementProperty`: renamed as `New-AzApiManagementNamedValue`. PropertyId parameter renamed as NamedValueId. 
+* `New-AzApiManagementProperty`: renamed as `New-AzApiManagementNamedValue`. PropertyId parameter renamed as NamedValueId.
 * `Set-AzApiManagementProperty`: renamed as `Set-AzApiManagementNamedValue`. PropertyId parameter renamed as NamedValueId.
 * `Remove-AzApiManagementProperty`: renamed as `Remove-AzApiManagementNamedValue`. PropertyId parameter renamed as NamedValueId.
 * Added new `Get-AzApiManagementAuthorizationServerClientSecret` cmdlet and `Get-AzApiManagementAuthorizationServer` will not return client secret anymore.
@@ -124,7 +128,7 @@
 ## Version 1.3.2
 * **Set-AzApiManagementApi** - Added support for Updating Api into ApiVersionSet
     - Fix for issue https://github.com/Azure/azure-powershell/issues/10068
-    
+
 ## Version 1.3.1
 * Update `-Format` parameter description in `Set-AzApiManagementPolicy` reference documentation
 * Removed references of deprecated cmdlet `Update-AzApiManagementDeployment` from reference documentation. Use `Set-AzApiManagement` instead.
@@ -135,7 +139,7 @@
 * Fix for issue https://github.com/Azure/azure-powershell/issues/9351
 	- Update .net nuget version, which does not enforce restrictions on productId, apiId, groupId and userId
 
-* **Get-AzApiManagementProduct** - Added support for querying products using Api. 
+* **Get-AzApiManagementProduct** - Added support for querying products using Api.
   https://github.com/Azure/azure-powershell/issues/9482
 
 * **New-AzApiManagementApiRevision** - Fix for issue where ApiRevisionDescription was not being set when creating new api revision
@@ -146,7 +150,7 @@ https://github.com/Azure/azure-powershell/issues/9752
 ## Version 1.2.0
 
 * Fix for issue https://github.com/Azure/azure-powershell/issues/8671
-    - **Get-AzApiManagementSubscription** 
+    - **Get-AzApiManagementSubscription**
         - Added support for querying subscriptions by User and Product
         - Added support for querying using Scope "/", "/apis", "/apis/echo-api"
 
@@ -164,7 +168,7 @@ https://github.com/Azure/azure-powershell/issues/9752
     - **New-AzApiManagementSamplingSetting** - Create Sampling Setting  for the requests/response for a diagnostic
     - **Remove-AzApiManagementDiagnostic** - Remove a diagnostic entity at global or api scope
     - **Set-AzApiManagementDiagnostic** - Update a diagnostic Entity at global or api scope
-    
+
 * Created new Cmdlets for managing Cache in ApiManagement service
     - **Get-AzApiManagementCache** - Get the details of the Cache specified by identifier or all caches
     - **New-AzApiManagementCache** - Create a new `default` Cache or Cache in a particular azure `region`
@@ -177,20 +181,20 @@ https://github.com/Azure/azure-powershell/issues/9752
     - **Remove-AzApiManagementSchema** - Remove the schema configured in the API
     - **Set-AzApiManagementSchema** - Update the schema configured in the API
 
-* Created new Cmdlet for generating a User Token. 
+* Created new Cmdlet for generating a User Token.
     - **New-AzApiManagementUserToken** - Generate a new User Token valid for 8 hours by default.Token for the `GIT` user can be generated using this cmdlet./
-    
+
 * Created a new cmdlet to retrieving the Network Status
     - **Get-AzApiManagementNetworkStatus** - Get the Network status connectivity of resources on which API Management service depends on. This is useful when deploying ApiManagement service into a Virtual Network and validing whether any of the dependencies are broken.
 
-* Updated cmdlet **New-AzApiManagement** to manage ApiManagement service 
+* Updated cmdlet **New-AzApiManagement** to manage ApiManagement service
     - Added support for the new `Consumption` SKU
     - Added support to turn the `EnableClientCertificate` flag on for `Consumption` SKU
     - The new cmdlet **New-AzApiManagementSslSetting** allows configuring `TLS/SSL` setting on the `Backend` and `Frontend`. This can also be used to configure `Ciphers` like `3DES` and `ServerProtocols` like `Http2` on the `Frontend` of an ApiManagement service.
     - Added support for configuring the `DeveloperPortal` hostname on ApiManagement service.
 
 * Updated cmdlets **Get-AzApiManagementSsoToken** to take `PsApiManagement` object as input
-* Updated the cmdlet to display Error Messages inline 
+* Updated the cmdlet to display Error Messages inline
      - `PS D:\github\azure-powershell> Set-AzApiManagementPolicy -Context  -PolicyFilePath C:\wrongpolicy.xml -ApiId httpbin`
        - `Set-AzApiManagementPolicy :`
        - `Error Code: ValidationError`
@@ -206,16 +210,16 @@ https://github.com/Azure/azure-powershell/issues/9752
 * Updated cmdlet **Get-AzApiManagementPolicy** to return policy in Non-Xml escaped `format` using `rawxml`
 * Updated cmdlet **Set-AzApiManagementPolicy** to accept policy in Non-Xml escaped `format` using `rawxml` and Xml escaped using `xml`
 
-* Updated cmdlet **New-AzApiManagementApi** 
+* Updated cmdlet **New-AzApiManagementApi**
     - To configure API with `OpenId` authorization server.
     - To create an API in an `ApiVersionSet`
     - To clone an API using `SourceApiId` and `SourceApiRevision`.
-    - Ability to configure `SubscriptionRequired` at the Api scope. 
+    - Ability to configure `SubscriptionRequired` at the Api scope.
 
 * Updated cmdlet **Set-AzApiManagementApi**
     - To configure API with `OpenId` authorization server.
-    - To updated an API into an `ApiVersionSet`    
-    - Ability to configure `SubscriptionRequired` at the Api scope. 
+    - To updated an API into an `ApiVersionSet`
+    - Ability to configure `SubscriptionRequired` at the Api scope.
 
 * Updated cmdlet **New-AzApiManagementRevision**
     - To clone (copy tags, products, operations and policies) an existing revision using `SourceApiRevision`. The new Revision assumes the `ApiId` of the parent.
@@ -246,7 +250,7 @@ https://github.com/Azure/azure-powershell/issues/9752
     - 'Get-AzApiManagementAuthorizationServer'
     - 'Get-AzApiManagementBackend'
       - `Get-AzApiManagementBackend -ResourceId /subscriptions/subid/resourceGroups/rgName/providers/Microsoft.ApiManagement/service/contoso/backends/servicefabric`
-    - `Get-AzApiManagementCertificate` 
+    - `Get-AzApiManagementCertificate`
     - `Remove-AzApiManagementApiVersionSet`
     - `Remove-AzApiManagementSubscription`
 

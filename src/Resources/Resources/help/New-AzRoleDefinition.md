@@ -20,13 +20,13 @@ Finally, use this command to create a custom role using role definition.
 ### InputFileParameterSet
 ```
 New-AzRoleDefinition [-InputFile] <String> [-SkipClientSideScopeValidation]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### RoleDefinitionParameterSet
 ```
 New-AzRoleDefinition [-Role] <PSRoleDefinition> [-SkipClientSideScopeValidation]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -143,6 +143,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Role
 Role definition object.
 
@@ -196,4 +211,3 @@ Keywords: azure, azurerm, arm, resource, management, manager, resource, group, t
 [Set-AzRoleDefinition](./Set-AzRoleDefinition.md)
 
 [Remove-AzRoleDefinition](./Remove-AzRoleDefinition.md)
-

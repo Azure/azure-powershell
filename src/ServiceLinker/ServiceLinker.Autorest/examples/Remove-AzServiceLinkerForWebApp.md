@@ -3,8 +3,4 @@
 Remove-AzServiceLinkerForWebApp -WebApp servicelinker-app -ResourceGroupName servicelinker-test-group -Name testLinker       
 ```
 
-```output
-
-```
-
 Remove linker

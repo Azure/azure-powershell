@@ -37,8 +37,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         /// <param name="osType">This property allows you to specify the type
         /// of the OS that is included in the disk when creating a VM from a
-        /// managed image. &lt;br&gt;&lt;br&gt; Possible values are:
-        /// &lt;br&gt;&lt;br&gt; **Windows** &lt;br&gt;&lt;br&gt; **Linux**.
+        /// managed image. Possible values are: **Windows,** **Linux.**.
         /// Possible values include: 'Windows', 'Linux'</param>
         /// <param name="osState">This property allows the user to specify
         /// whether the virtual machines created under this image are
@@ -61,7 +60,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// current community gallery image.</param>
         /// <param name="eula">End-user license agreement for the current
         /// community gallery image.</param>
-        public SharedGalleryImage(OperatingSystemTypes osType, OperatingSystemStateTypes osState, GalleryImageIdentifier identifier, string name = default(string), string location = default(string), string uniqueId = default(string), System.DateTime? endOfLifeDate = default(System.DateTime?), RecommendedMachineConfiguration recommended = default(RecommendedMachineConfiguration), Disallowed disallowed = default(Disallowed), string hyperVGeneration = default(string), IList<GalleryImageFeature> features = default(IList<GalleryImageFeature>), ImagePurchasePlan purchasePlan = default(ImagePurchasePlan), string architecture = default(string), string privacyStatementUri = default(string), string eula = default(string))
+        public SharedGalleryImage(OperatingSystemTypes osType, OperatingSystemStateTypes osState, GalleryImageIdentifier identifier, string name = default(string), string location = default(string), string uniqueId = default(string), System.DateTime? endOfLifeDate = default(System.DateTime?), RecommendedMachineConfiguration recommended = default(RecommendedMachineConfiguration), Disallowed disallowed = default(Disallowed), string hyperVGeneration = default(string), IList<GalleryImageFeature> features = default(IList<GalleryImageFeature>), ImagePurchasePlan purchasePlan = default(ImagePurchasePlan), string architecture = default(string), string privacyStatementUri = default(string), string eula = default(string), IDictionary<string, string> artifactTags = default(IDictionary<string, string>))
             : base(name, location, uniqueId)
         {
             OsType = osType;
@@ -76,6 +75,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             Architecture = architecture;
             PrivacyStatementUri = privacyStatementUri;
             Eula = eula;
+            ArtifactTags = artifactTags;
             CustomInit();
         }
 
@@ -87,10 +87,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Gets or sets this property allows you to specify the type of the OS
         /// that is included in the disk when creating a VM from a managed
-        /// image. &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; Possible values are:
-        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; **Windows**
-        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; **Linux**. Possible values
-        /// include: 'Windows', 'Linux'
+        /// image. Possible values are: **Windows,** **Linux.**. Possible
+        /// values include: 'Windows', 'Linux'
         /// </summary>
         [JsonProperty(PropertyName = "properties.osType")]
         public OperatingSystemTypes OsType { get; set; }
@@ -164,6 +162,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.eula")]
         public string Eula { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.artifactTags")]
+        public IDictionary<string, string> ArtifactTags { get; set; }
 
         /// <summary>
         /// Validate the object.

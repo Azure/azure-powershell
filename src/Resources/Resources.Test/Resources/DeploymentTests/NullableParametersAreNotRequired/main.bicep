@@ -20,3 +20,12 @@ type nullableCustomType = {
 type customTypeWithRequired = customType!
 
 param optionalRequiredCustomType customTypeWithRequired?
+
+// repro for https://github.com/Azure/bicep/issues/13350
+type nullableArrayOfObjectsType = {
+  property1: string
+}[]?
+
+param param1 nullableArrayOfObjectsType
+
+output output1 nullableArrayOfObjectsType = param1

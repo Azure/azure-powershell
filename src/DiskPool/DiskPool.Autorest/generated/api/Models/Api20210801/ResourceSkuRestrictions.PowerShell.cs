@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -90,7 +92,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801
         /// Creates a new instance of <see cref="ResourceSkuRestrictions" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="ResourceSkuRestrictions" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictions FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -107,12 +109,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).RestrictionInfo = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionInfo) content.GetValueForProperty("RestrictionInfo",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).RestrictionInfo, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ResourceSkuRestrictionInfoTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ResourceSkuRestrictionsType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ResourceSkuRestrictionsType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).Value = (string[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).ReasonCode = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ResourceSkuRestrictionsReasonCode?) content.GetValueForProperty("ReasonCode",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).ReasonCode, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ResourceSkuRestrictionsReasonCode.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).RestrictionInfoLocation = (string[]) content.GetValueForProperty("RestrictionInfoLocation",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).RestrictionInfoLocation, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).RestrictionInfoZone = (string[]) content.GetValueForProperty("RestrictionInfoZone",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).RestrictionInfoZone, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("RestrictionInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).RestrictionInfo = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionInfo) content.GetValueForProperty("RestrictionInfo",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).RestrictionInfo, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ResourceSkuRestrictionInfoTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ResourceSkuRestrictionsType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ResourceSkuRestrictionsType.CreateFrom);
+            }
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).Value = (string[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ReasonCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).ReasonCode = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ResourceSkuRestrictionsReasonCode?) content.GetValueForProperty("ReasonCode",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).ReasonCode, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ResourceSkuRestrictionsReasonCode.CreateFrom);
+            }
+            if (content.Contains("RestrictionInfoLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).RestrictionInfoLocation = (string[]) content.GetValueForProperty("RestrictionInfoLocation",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).RestrictionInfoLocation, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("RestrictionInfoZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).RestrictionInfoZone = (string[]) content.GetValueForProperty("RestrictionInfoZone",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).RestrictionInfoZone, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -130,12 +150,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).RestrictionInfo = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionInfo) content.GetValueForProperty("RestrictionInfo",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).RestrictionInfo, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ResourceSkuRestrictionInfoTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ResourceSkuRestrictionsType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ResourceSkuRestrictionsType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).Value = (string[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).ReasonCode = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ResourceSkuRestrictionsReasonCode?) content.GetValueForProperty("ReasonCode",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).ReasonCode, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ResourceSkuRestrictionsReasonCode.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).RestrictionInfoLocation = (string[]) content.GetValueForProperty("RestrictionInfoLocation",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).RestrictionInfoLocation, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).RestrictionInfoZone = (string[]) content.GetValueForProperty("RestrictionInfoZone",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).RestrictionInfoZone, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("RestrictionInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).RestrictionInfo = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionInfo) content.GetValueForProperty("RestrictionInfo",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).RestrictionInfo, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ResourceSkuRestrictionInfoTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ResourceSkuRestrictionsType?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ResourceSkuRestrictionsType.CreateFrom);
+            }
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).Value = (string[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ReasonCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).ReasonCode = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ResourceSkuRestrictionsReasonCode?) content.GetValueForProperty("ReasonCode",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).ReasonCode, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ResourceSkuRestrictionsReasonCode.CreateFrom);
+            }
+            if (content.Contains("RestrictionInfoLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).RestrictionInfoLocation = (string[]) content.GetValueForProperty("RestrictionInfoLocation",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).RestrictionInfoLocation, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("RestrictionInfoZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).RestrictionInfoZone = (string[]) content.GetValueForProperty("RestrictionInfoZone",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuRestrictionsInternal)this).RestrictionInfoZone, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializePSObject(content);
         }
 

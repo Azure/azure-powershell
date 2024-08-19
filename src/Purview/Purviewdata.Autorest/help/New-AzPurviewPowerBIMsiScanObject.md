@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewPowerBIMsiScanObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewPowerBIMsiScanObject
 schema: 2.0.0
 ---
 
@@ -26,7 +26,6 @@ Create an in-memory object for PowerBIMsiScan.
 ### Example 1: Create PowerBI delegated scan object
 ```powershell
 New-AzPurviewPowerBIMsiScanObject -Kind 'PowerBIMsi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -IncludePersonalWorkspace $true
-
 ```
 
 ```output
@@ -180,8 +179,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBiMsiScan
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

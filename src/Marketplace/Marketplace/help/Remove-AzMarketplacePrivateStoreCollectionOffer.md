@@ -15,7 +15,7 @@ Deletes an offer from the given collection of private store.
 ### Delete (Default)
 ```
 Remove-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId <String>
- -PrivateStoreId <String> [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>]
+ -PrivateStoreId <String> [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,20 +23,20 @@ Remove-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId 
 ```
 Remove-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId <String>
  -PrivateStoreInputObject <IMarketplaceIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityCollection
 ```
 Remove-AzMarketplacePrivateStoreCollectionOffer -OfferId <String> -CollectionInputObject <IMarketplaceIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzMarketplacePrivateStoreCollectionOffer -InputObject <IMarketplaceIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -71,7 +71,6 @@ Accept wildcard characters: False
 
 ### -CollectionInputObject
 Identity Parameter
-To construct, see NOTES section for COLLECTIONINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
@@ -86,7 +85,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -102,7 +102,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
@@ -163,7 +162,6 @@ Accept wildcard characters: False
 
 ### -PrivateStoreInputObject
 Identity Parameter
-To construct, see NOTES section for PRIVATESTOREINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
@@ -174,21 +172,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -235,20 +218,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IMarketplaceIdentity>`: Identity Parameter
-  - `[AdminRequestApprovalId <String>]`: The admin request approval ID to get create or update
-  - `[CollectionId <String>]`: The collection ID
-  - `[Id <String>]`: Resource identity path
-  - `[OfferId <String>]`: The offer ID to update or delete
-  - `[PrivateStoreId <String>]`: The store ID - must use the tenant ID
-  - `[RequestApprovalId <String>]`: The request approval ID to get create or update
 
 ## RELATED LINKS

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Creates InternalNetwork PUT method.
+Create InternalNetwork PUT method.
 .Description
-Creates InternalNetwork PUT method.
+Create InternalNetwork PUT method.
 .Example
 $bgpConfiguration = @{
     AllowAs = 2
@@ -223,7 +223,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for L3ISOLATIONDOMAININPUTOBJECT properties and create a hash table.
     ${L3IsolationDomainInputObject},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -246,7 +245,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternalNetworkPropertiesBgpConfiguration]
     # BGP configuration properties.
-    # To construct, see NOTES section for BGPCONFIGURATION properties and create a hash table.
     ${BgpConfiguration},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -255,7 +253,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IConnectedSubnet[]]
     # List of Connected IPv4 Subnets.
-    # To construct, see NOTES section for CONNECTEDIPV4SUBNET properties and create a hash table.
     ${ConnectedIPv4Subnet},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -264,7 +261,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IConnectedSubnet[]]
     # List of connected IPv6 Subnets.
-    # To construct, see NOTES section for CONNECTEDIPV6SUBNET properties and create a hash table.
     ${ConnectedIPv6Subnet},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -280,7 +276,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExportRoutePolicy]
     # Export Route Policy either IPv4 or IPv6.
-    # To construct, see NOTES section for EXPORTROUTEPOLICY properties and create a hash table.
     ${ExportRoutePolicy},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -305,7 +300,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IImportRoutePolicy]
     # Import Route Policy either IPv4 or IPv6.
-    # To construct, see NOTES section for IMPORTROUTEPOLICY properties and create a hash table.
     ${ImportRoutePolicy},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -345,7 +339,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration]
     # BFD configuration properties
-    # To construct, see NOTES section for STATICROUTECONFIGURATIONBFDCONFIGURATION properties and create a hash table.
     ${StaticRouteConfigurationBfdConfiguration},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -363,7 +356,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties[]]
     # List of IPv4 Routes.
-    # To construct, see NOTES section for STATICROUTECONFIGURATIONIPV4ROUTE properties and create a hash table.
     ${StaticRouteConfigurationIpv4Route},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -372,14 +364,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties[]]
     # List of IPv6 Routes.
-    # To construct, see NOTES section for STATICROUTECONFIGURATIONIPV6ROUTE properties and create a hash table.
     ${StaticRouteConfigurationIpv6Route},
 
     [Parameter(ParameterSetName='CreateViaIdentityL3IsolationDomain', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternalNetwork]
     # Defines the Internal Network resource.
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
@@ -488,7 +478,13 @@ begin {
             CreateViaJsonString = 'Az.ManagedNetworkFabric.private\New-AzNetworkFabricInternalNetwork_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

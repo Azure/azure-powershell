@@ -48,6 +48,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// then click **Want to deploy programmatically, Get Started -&gt;**.
         /// Enter any required information and then click **Save**.</param>
         /// <param name="upgradePolicy">The upgrade policy.</param>
+        /// <param name="scheduledEventsPolicy">The
+        /// ScheduledEventsPolicy.</param>
         /// <param name="automaticRepairsPolicy">Policy for automatic
         /// repairs.</param>
         /// <param name="virtualMachineProfile">The virtual machine
@@ -104,22 +106,27 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="constrainedMaximumCapacity">Optional property which
         /// must either be set to True or omitted.</param>
         /// <param name="resiliencyPolicy">Policy for Resiliency</param>
+        /// <param name="zonalPlatformFaultDomainAlignMode">Specifies the align
+        /// mode between Virtual Machine Scale Set compute and storage Fault
+        /// Domain count. Possible values include: 'Aligned',
+        /// 'Unaligned'</param>
+        /// <param name="skuProfile">Specifies the sku profile for the virtual
+        /// machine scale set.</param>
         /// <param name="identity">The identity of the virtual machine scale
         /// set, if configured.</param>
-        /// <param name="zones">The virtual machine scale set zones. NOTE:
-        /// Availability zones can only be set when you create the scale
-        /// set</param>
+        /// <param name="zones">The virtual machine scale set zones.</param>
         /// <param name="extendedLocation">The extended location of the Virtual
         /// Machine Scale Set.</param>
         /// <param name="etag">Etag is property returned in Create/Update/Get
         /// response of the VMSS, so that customer can supply it in the header
         /// to ensure optimistic updates</param>
-        public VirtualMachineScaleSet(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), Plan plan = default(Plan), UpgradePolicy upgradePolicy = default(UpgradePolicy), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetVMProfile virtualMachineProfile = default(VirtualMachineScaleSetVMProfile), string provisioningState = default(string), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVMs = default(bool?), string uniqueId = default(string), bool? singlePlacementGroup = default(bool?), bool? zoneBalance = default(bool?), int? platformFaultDomainCount = default(int?), SubResource proximityPlacementGroup = default(SubResource), SubResource hostGroup = default(SubResource), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), string orchestrationMode = default(string), SpotRestorePolicy spotRestorePolicy = default(SpotRestorePolicy), PriorityMixPolicy priorityMixPolicy = default(PriorityMixPolicy), System.DateTime? timeCreated = default(System.DateTime?), bool? constrainedMaximumCapacity = default(bool?), ResiliencyPolicy resiliencyPolicy = default(ResiliencyPolicy), VirtualMachineScaleSetIdentity identity = default(VirtualMachineScaleSetIdentity), IList<string> zones = default(IList<string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string etag = default(string))
+        public VirtualMachineScaleSet(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), Plan plan = default(Plan), UpgradePolicy upgradePolicy = default(UpgradePolicy), ScheduledEventsPolicy scheduledEventsPolicy = default(ScheduledEventsPolicy), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetVMProfile virtualMachineProfile = default(VirtualMachineScaleSetVMProfile), string provisioningState = default(string), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVMs = default(bool?), string uniqueId = default(string), bool? singlePlacementGroup = default(bool?), bool? zoneBalance = default(bool?), int? platformFaultDomainCount = default(int?), SubResource proximityPlacementGroup = default(SubResource), SubResource hostGroup = default(SubResource), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), string orchestrationMode = default(string), SpotRestorePolicy spotRestorePolicy = default(SpotRestorePolicy), PriorityMixPolicy priorityMixPolicy = default(PriorityMixPolicy), System.DateTime? timeCreated = default(System.DateTime?), bool? constrainedMaximumCapacity = default(bool?), ResiliencyPolicy resiliencyPolicy = default(ResiliencyPolicy), string zonalPlatformFaultDomainAlignMode = default(string), SkuProfile skuProfile = default(SkuProfile), VirtualMachineScaleSetIdentity identity = default(VirtualMachineScaleSetIdentity), IList<string> zones = default(IList<string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             Sku = sku;
             Plan = plan;
             UpgradePolicy = upgradePolicy;
+            ScheduledEventsPolicy = scheduledEventsPolicy;
             AutomaticRepairsPolicy = automaticRepairsPolicy;
             VirtualMachineProfile = virtualMachineProfile;
             ProvisioningState = provisioningState;
@@ -139,6 +146,8 @@ namespace Microsoft.Azure.Management.Compute.Models
             TimeCreated = timeCreated;
             ConstrainedMaximumCapacity = constrainedMaximumCapacity;
             ResiliencyPolicy = resiliencyPolicy;
+            ZonalPlatformFaultDomainAlignMode = zonalPlatformFaultDomainAlignMode;
+            SkuProfile = skuProfile;
             Identity = identity;
             Zones = zones;
             ExtendedLocation = extendedLocation;
@@ -174,6 +183,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.upgradePolicy")]
         public UpgradePolicy UpgradePolicy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ScheduledEventsPolicy.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.scheduledEventsPolicy")]
+        public ScheduledEventsPolicy ScheduledEventsPolicy { get; set; }
 
         /// <summary>
         /// Gets or sets policy for automatic repairs.
@@ -317,6 +332,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         public ResiliencyPolicy ResiliencyPolicy { get; set; }
 
         /// <summary>
+        /// Gets or sets specifies the align mode between Virtual Machine Scale
+        /// Set compute and storage Fault Domain count. Possible values
+        /// include: 'Aligned', 'Unaligned'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.zonalPlatformFaultDomainAlignMode")]
+        public string ZonalPlatformFaultDomainAlignMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the sku profile for the virtual machine
+        /// scale set.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.skuProfile")]
+        public SkuProfile SkuProfile { get; set; }
+
+        /// <summary>
         /// Gets or sets the identity of the virtual machine scale set, if
         /// configured.
         /// </summary>
@@ -324,8 +354,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public VirtualMachineScaleSetIdentity Identity { get; set; }
 
         /// <summary>
-        /// Gets or sets the virtual machine scale set zones. NOTE:
-        /// Availability zones can only be set when you create the scale set
+        /// Gets or sets the virtual machine scale set zones.
         /// </summary>
         [JsonProperty(PropertyName = "zones")]
         public IList<string> Zones { get; set; }

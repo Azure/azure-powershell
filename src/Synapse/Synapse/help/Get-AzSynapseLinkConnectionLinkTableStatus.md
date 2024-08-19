@@ -29,7 +29,8 @@ Get-AzSynapseLinkConnectionLinkTableStatus -WorkspaceObject <PSSynapseWorkspace>
 ### GetByInputObject
 ```
 Get-AzSynapseLinkConnectionLinkTableStatus -MaxSegmentCount <Int32> -InputObject <PSLinkConnectionResource>
- [-ContinuationToken <Object>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ContinuationToken <Object>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,7 +67,7 @@ This command gets status of link tables with max segment count 50 under a link c
 Continuation token to query table status.
 
 ```yaml
-Type: Object
+Type: System.Object
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +82,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -96,7 +97,7 @@ Accept wildcard characters: False
 The information about the link connection.
 
 ```yaml
-Type: PSLinkConnectionResource
+Type: Microsoft.Azure.Commands.Synapse.Models.PSLinkConnectionResource
 Parameter Sets: GetByInputObject
 Aliases:
 
@@ -111,7 +112,7 @@ Accept wildcard characters: False
 Name of link connection.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByName, GetByObject
 Aliases:
 
@@ -126,7 +127,7 @@ Accept wildcard characters: False
 Max segment count to query table status.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -141,7 +142,7 @@ Accept wildcard characters: False
 Name of Synapse workspace.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByName
 Aliases:
 
@@ -156,7 +157,7 @@ Accept wildcard characters: False
 workspace input object, usually passed through the pipeline.
 
 ```yaml
-Type: PSSynapseWorkspace
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
 Parameter Sets: GetByObject
 Aliases:
 

@@ -19,6 +19,21 @@
 -->
 
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
+
+## Version 3.0.9
+* Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.20.
+* Fixed the issue that Azure.Core.AccessToken is used before assigned.
+
+## Version 3.0.8
+* Upgraded `Microsoft.DataTransfer.Gateway.Encryption` to `5.29.8499.2`
+
+## Version 3.0.7
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 3.0.6
+* Upgraded Azure.Core to 1.37.0.
+* Fixed vulnerability https://github.com/advisories/GHSA-98g6-xh36-x2p7
 
 ## Version 3.0.5
 * Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.19
@@ -219,7 +234,7 @@
    - Updated `Get-AzSynapseRoleAssignment` cmdlet
    - Updated `Remove-AzSynapseRoleAssignment` cmdlet
    - Added `Get-AzSynapseRoleScope` cmdlet
-* Renamed -AllowAllAzureIP to -AllowAllAzureIp and changed IP range to 0.0.0.0-0.0.0.0 
+* Renamed -AllowAllAzureIP to -AllowAllAzureIp and changed IP range to 0.0.0.0-0.0.0.0
 * Added -AllowAllIp and set IP range to 0.0.0.0-255.255.255.255
 * Fixed the issue of retrieving Apache Spark pool information through management API
 
@@ -359,7 +374,7 @@
 
 * Added support for gen3 Sql Pools
     - For `Get-AzSynapseSqlPool`, `New-AzSynapseSqlPool`, ` Remove-AzSynapseSqlPool`, ` Test-AzSynapseSqlPool` and `Update-AzSynapseSqlPool` cmdlet
-        - Add Version parameter to cmdlets to specify version 3. 
+        - Add Version parameter to cmdlets to specify version 3.
         - For this release, these cmdlets will not work unless a customer's subscription is on the allowlist.
 * Added support for gen3 Sql Databases
     - Add `Get-AzSynapseSqlDatabase` cmdlet
@@ -402,10 +417,10 @@
 ## Version 0.1.1
 
 * Added support for operation of Synapse FirewallRule
-    - Add `New-AzSynapseFirewallRule` cmdlet 
-    - Add `Remove-AzSynapseFirewallRule` cmdlet 
-    - Add `Get-AzSynapseFirewallRule` cmdlet 
-    - Add `Update-AzSynapseFirewallRule` cmdlet 
+    - Add `New-AzSynapseFirewallRule` cmdlet
+    - Add `Remove-AzSynapseFirewallRule` cmdlet
+    - Add `Get-AzSynapseFirewallRule` cmdlet
+    - Add `Update-AzSynapseFirewallRule` cmdlet
 * Removed '-DisallowAllConnection' parameter from the 'New-AzSynapseWorkspace' cmdlet
 * Updated parameter set for New-AzSynapseSparkPool to fix node count issue for auto scale
 

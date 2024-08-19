@@ -69,6 +69,9 @@ namespace Microsoft.Azure.Commands.RedisCache
         [PSArgumentCompleter(TlsStrings.One0, TlsStrings.One1, TlsStrings.One2)]
         public string MinimumTlsVersion { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Authentication to Redis through access keys is disabled when set as true")]
+        public bool? DisableAccessKeyAuthentication { get; set; }
+
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "The full resource ID of a subnet in a virtual network to deploy the Azure Cache for Redis in. Example format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/{vnetName}/subnets/{subnetName}")]
         public string SubnetId { get; set; }
 
@@ -83,6 +86,9 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Redis version. This should be in the form 'major[.minor]' (only 'major' is required) or the value 'latest' which refers to the latest stable Redis version that is available. Supported versions: 4.0, 6.0 (latest). Default value is 'latest'.")]
         public string RedisVersion { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Optional: Specifies the update channel for the monthly Redis updates your Redis Cache will receive. Caches using 'Preview' update channel get latest Redis updates at least 4 weeks ahead of 'Stable' channel caches. Default value is 'Stable'. Possible values include: 'Stable', 'Preview'")]
+        public string UpdateChannel { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Specifies the type of identity used for the Azure Cache for Redis. Valid values: \"SystemAssigned\" or \"UserAssigned\" or \"SystemAssignedUserAssigned\" or \"None\" ")]
         [PSArgumentCompleter("SystemAssigned", "UserAssigned", "SystemAssignedUserAssigned", "None")]
@@ -103,9 +109,13 @@ namespace Microsoft.Azure.Commands.RedisCache
             if (string.IsNullOrEmpty(Size))
             {
                 if (SkuStrings.Premium.Equals(Sku, StringComparison.OrdinalIgnoreCase))
+                {
                     Size = SizeConverter.P1String;
+                }
                 else
+                {
                     Size = SizeConverter.C1String;
+                }
             }
             else
             {
@@ -113,10 +123,9 @@ namespace Microsoft.Azure.Commands.RedisCache
                 SizeConverter.ValidateSize(Size.ToUpper(), SkuStrings.Premium.Equals(Sku));
             }
 
-            int skuCapacity = 1;
             // Size to SkuFamily and SkuCapacity conversion
             string skuFamily = Size.Substring(0, 1);
-            int.TryParse(Size.Substring(1), out skuCapacity);
+            int.TryParse(Size.Substring(1), out int skuCapacity);
 
 
             // If Force flag is not avaliable than check if cache is already available or not
@@ -167,7 +176,7 @@ namespace Microsoft.Azure.Commands.RedisCache
               () =>
               {
                   var redisResource = CacheClient.CreateCache(ResourceGroupName, Name, Location, skuFamily, skuCapacity, Sku,
-                      RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, MinimumTlsVersion, SubnetId, StaticIP, Tag, Zone, RedisVersion, IdentityType, UserAssignedIdentity);
+                      RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, MinimumTlsVersion, DisableAccessKeyAuthentication, SubnetId, StaticIP, Tag, Zone, RedisVersion, IdentityType, UserAssignedIdentity, UpdateChannel);
                   var redisAccessKeys = CacheClient.GetAccessKeys(ResourceGroupName, Name);
                   WriteObject(new RedisCacheAttributesWithAccessKeys(redisResource, redisAccessKeys, ResourceGroupName));
               });

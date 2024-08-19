@@ -15,15 +15,15 @@ Creates or updates a Project resource, which is a logical grouping of related jo
 ### CreateExpanded (Default)
 ```
 New-AzStorageMoverProject -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
- [-SubscriptionId <String>] [-Description <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-Description <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzStorageMoverProject -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
- [-SubscriptionId <String>] -Project <IProject> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -Project <IProject> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,7 +106,7 @@ The Project resource.
 To construct, see NOTES section for PROJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject
 Parameter Sets: Create
 Aliases:
 
@@ -199,11 +199,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject
 
 ## NOTES
 

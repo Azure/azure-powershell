@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleObject
 schema: 2.0.0
@@ -14,7 +14,8 @@ Create an in-memory object for DeliveryRule.
 
 ```
 New-AzCdnDeliveryRuleObject -Action <IDeliveryRuleAction1[]> -Order <Int32>
- [-Condition <IDeliveryRuleCondition[]>] [-Name <String>] [<CommonParameters>]
+ [-Condition <IDeliveryRuleCondition[]>] [-Name <String>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,7 +50,7 @@ A list of actions that are executed when all the conditions of a rule are satisf
 To construct, see NOTES section for ACTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IDeliveryRuleAction1[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRuleAction1[]
 Parameter Sets: (All)
 Aliases:
 
@@ -65,7 +66,7 @@ A list of conditions that must be matched for the actions to be executed.
 To construct, see NOTES section for CONDITION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IDeliveryRuleCondition[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRuleCondition[]
 Parameter Sets: (All)
 Aliases:
 
@@ -110,6 +111,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -117,22 +133,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRule
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRule
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`ACTION <IDeliveryRuleAction1[]>`: A list of actions that are executed when all the conditions of a rule are satisfied.
-  - `Name <DeliveryRuleAction>`: The name of the action for the delivery rule.
-
-`CONDITION <IDeliveryRuleCondition[]>`: A list of conditions that must be matched for the actions to be executed.
-  - `Name <MatchVariable>`: The name of the condition for the delivery rule.
-
 ## RELATED LINKS
-

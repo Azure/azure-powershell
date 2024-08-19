@@ -16,32 +16,32 @@ Creates or updates an environment.
 ```
 New-AzDevCenterUserEnvironment -Endpoint <String> -Name <String> -ProjectName <String> [-UserId <String>]
  -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <Hashtable>]
- [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzDevCenterUserEnvironment -Endpoint <String> -InputObject <IDevCenterdataIdentity> -CatalogName <String>
  -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <Hashtable>]
- [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpandedByDevCenter
 ```
 New-AzDevCenterUserEnvironment -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <Hashtable>]
- [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpandedByDevCenter
 ```
 New-AzDevCenterUserEnvironment -DevCenterName <String> -Name <String> -ProjectName <String> [-UserId <String>]
  -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <Hashtable>]
- [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,15 +52,20 @@ Creates or updates an environment.
 ### Example 1: Create an environment by endpoint
 ```powershell
 $functionAppParameters = @{"name" = "testfuncApp" }
+$currentDate = Get-Date
+$dateIn8Months = $currentDate.AddMonths(8)
 
-New-AzDevCenterUserEnvironment -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -Name "envtest" -ProjectName DevProject -CatalogName CentralCatalog -EnvironmentDefinitionName FunctionApp -EnvironmentType DevTest -Parameter $functionAppParameters
+New-AzDevCenterUserEnvironment -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -Name "envtest" -ProjectName DevProject -CatalogName CentralCatalog -EnvironmentDefinitionName FunctionApp -EnvironmentType DevTest -Parameter $functionAppParameters -ExpirationDate $dateIn8Months
 ```
 
 This command creates an environment named envtest" to the project "DevProject".
 
 ### Example 2: Create an environment by dev center
 ```powershell
-New-AzDevCenterUserEnvironment -DevCenter Contoso -Name "envtest" -ProjectName DevProject -CatalogName CentralCatalog -EnvironmentDefinitionName Sandbox -EnvironmentType DevTest
+$currentDate = Get-Date
+$dateIn8Months = $currentDate.AddMonths(8)
+
+New-AzDevCenterUserEnvironment -DevCenterName Contoso -Name "envtest" -ProjectName DevProject -CatalogName CentralCatalog -EnvironmentDefinitionName Sandbox -EnvironmentType DevTest -ExpirationDate $dateIn8Months
 ```
 
 This command creates an environment named envtest" to the project "DevProject".
@@ -68,9 +73,10 @@ This command creates an environment named envtest" to the project "DevProject".
 ### Example 3: Create an environment by endpoint and InputObject
 ```powershell
 $envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" = "envtest" }
+$currentDate = Get-Date
+$dateIn8Months = $currentDate.AddMonths(8)
 
-
-New-AzDevCenterUserEnvironment -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $envInput -CatalogName CentralCatalog -EnvironmentDefinitionName Sandbox -EnvironmentType DevTest
+New-AzDevCenterUserEnvironment -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $envInput -CatalogName CentralCatalog -EnvironmentDefinitionName Sandbox -EnvironmentType DevTest -ExpirationDate $dateIn8Months
 ```
 
 This command creates an environment named envtest" to the project "DevProject".
@@ -79,8 +85,10 @@ This command creates an environment named envtest" to the project "DevProject".
 ```powershell
 $functionAppParameters = @{"name" = "testfuncApp" }
 $envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" = "envtest" }
+$currentDate = Get-Date
+$dateIn8Months = $currentDate.AddMonths(8)
 
-New-AzDevCenterUserEnvironment -DevCenter Contoso -InputObject $envInput -CatalogName CentralCatalog -EnvironmentDefinitionName FunctionApp -EnvironmentType DevTest -Parameter $functionAppParameters
+New-AzDevCenterUserEnvironment -DevCenterName Contoso -InputObject $envInput -CatalogName CentralCatalog -EnvironmentDefinitionName FunctionApp -EnvironmentType DevTest -Parameter $functionAppParameters -ExpirationDate $dateIn8Months
 ```
 
 This command creates an environment named envtest" to the project "DevProject".
@@ -269,6 +277,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The DevCenter Project upon which to execute operations.
 
@@ -343,24 +366,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDevCenterdataIdentity>`: Identity Parameter
-  - `[ActionName <String>]`: The name of an action that will take place on a Dev Box.
-  - `[CatalogName <String>]`: The name of the catalog
-  - `[DefinitionName <String>]`: The name of the environment definition
-  - `[DevBoxName <String>]`: The name of a Dev Box.
-  - `[EnvironmentName <String>]`: The name of the environment.
-  - `[Id <String>]`: Resource identity path
-  - `[PoolName <String>]`: The name of a pool of Dev Boxes.
-  - `[ProjectName <String>]`: The DevCenter Project upon which to execute operations.
-  - `[ScheduleName <String>]`: The name of a schedule.
-  - `[UserId <String>]`: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 
 ## RELATED LINKS

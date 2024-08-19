@@ -1,5 +1,5 @@
 function Get-AzFunctionApp {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Gets function apps in a subscription.')]
     [CmdletBinding(DefaultParametersetname="GetAll")]
     param(
@@ -84,6 +84,8 @@ function Get-AzFunctionApp {
     )
     
     process {
+
+        RegisterFunctionsTabCompleters
 
         $apps = $null
         $locationToUse = $null

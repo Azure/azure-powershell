@@ -14,7 +14,8 @@ Create an in-memory object for MetricSettings.
 
 ```
 New-AzDiagnosticSettingMetricSettingsObject -Enabled <Boolean> [-Category <String>]
- [-RetentionPolicyDay <Int32>] [-RetentionPolicyEnabled <Boolean>] [-TimeGrain <TimeSpan>] [<CommonParameters>]
+ [-RetentionPolicyDay <Int32>] [-RetentionPolicyEnabled <Boolean>] [-TimeGrain <TimeSpan>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

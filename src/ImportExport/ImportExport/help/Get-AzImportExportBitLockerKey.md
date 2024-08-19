@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ImportExport-help.xml
 Module Name: Az.ImportExport
 online version: https://learn.microsoft.com/powershell/module/az.importexport/get-azimportexportbitlockerkey
 schema: 2.0.0
@@ -14,7 +14,8 @@ Returns the BitLocker Keys for all drives in the specified job.
 
 ```
 Get-AzImportExportBitLockerKey -JobName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-AcceptLanguage <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-AcceptLanguage <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -123,7 +124,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

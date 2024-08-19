@@ -73,14 +73,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityPrivateStore', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for PRIVATESTOREINPUTOBJECT properties and create a hash table.
     ${PrivateStoreInputObject},
 
     [Parameter()]

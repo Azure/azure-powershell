@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {

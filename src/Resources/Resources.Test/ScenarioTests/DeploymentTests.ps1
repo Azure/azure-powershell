@@ -976,7 +976,8 @@ function Test-NewDeploymentFromBicepparamFileWithOverrides
     "def": "ghi"
   },
   "int": 42,
-  "bool": true
+  "bool": true,
+  "secureString": "glabble"
 }
 '@ | ConvertFrom-Json
 
@@ -986,7 +987,12 @@ function Test-NewDeploymentFromBicepparamFileWithOverrides
         New-AzResourceGroup -Name $rgname -Location $rglocation
 
         $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateParameterFile deployWithParamOverrides.bicepparam `
-          -myArray @("abc") -myObject @{"def" = "ghi";} -myString "hello" -myInt 42 -myBool $true
+          -myArray @("abc") `
+		  -myObject @{"def" = "ghi";} `
+		  -myString "hello" `
+		  -myInt 42 `
+		  -myBool $true `
+		  -mySecureString (ConvertTo-SecureString -String "glabble" -AsPlainText -Force)
 
         # Assert
         Assert-AreEqual Succeeded $deployment.ProvisioningState
@@ -1330,76 +1336,6 @@ Tests symbolic name resource deployment
 #>
 function Test-SymbolicNameDeployment
 {
-<# 
-* main.bicep:
-    ```bicep
-    @description('Location for all resources.')
-    param location string = resourceGroup().location
-    
-    var storageAccountName = 'storage${uniqueString(resourceGroup().id)}'
-    var endpointName = 'endpoint-${uniqueString(resourceGroup().id)}'
-    var profileName = 'cdn-${uniqueString(resourceGroup().id)}'
-    var storageAccountHostName = replace(replace(storageAccount.properties.primaryEndpoints.blob, 'https://', ''), '/', '')
-    
-    resource storageAccount 'Microsoft.Storage/storageAccounts@2021-01-01' = {
-      name: storageAccountName
-      location: location
-      tags: {
-        displayName: storageAccountName
-      }
-      kind: 'StorageV2'
-      sku: {
-        name: 'Standard_LRS'
-      }
-    }
-    
-    resource cdnProfile 'Microsoft.Cdn/profiles@2020-09-01' = {
-      name: profileName
-      location: location
-      tags: {
-        displayName: profileName
-      }
-      sku: {
-        name: 'Standard_Verizon'
-      }
-    }
-    
-    resource endpoint 'Microsoft.Cdn/profiles/endpoints@2020-09-01' = {
-      parent: cdnProfile
-      name: endpointName
-      location: location
-      tags: {
-        displayName: endpointName
-      }
-      properties: {
-        originHostHeader: storageAccountHostName
-        isHttpAllowed: true
-        isHttpsAllowed: true
-        queryStringCachingBehavior: 'IgnoreQueryString'
-        contentTypesToCompress: [
-          'text/plain'
-          'text/html'
-          'text/css'
-          'application/x-javascript'
-          'text/javascript'
-        ]
-        isCompressionEnabled: true
-        origins: [
-          {
-            name: 'origin1'
-            properties: {
-              hostName: storageAccountHostName
-            }
-          }
-        ]
-      }
-    }
-    
-    output hostName string = endpoint.properties.hostName
-    output originHostHeader string = endpoint.properties.originHostHeader
-    ```
-#>
-
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
@@ -1411,10 +1347,10 @@ function Test-SymbolicNameDeployment
 		New-AzResourceGroup -Name $rgname -Location $rglocation
 
 		# Validate
-		$deployment = Test-AzResourceGroupDeployment -ResourceGroupName $rgname -TemplateFile symbolicNameTemplate.json
+		$deployment = Test-AzResourceGroupDeployment -ResourceGroupName $rgname -TemplateFile Resources/DeploymentTests/SymbolicNameDeployment/main.bicep
 
 		# Deploy
-		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile symbolicNameTemplate.json
+		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile Resources/DeploymentTests/SymbolicNameDeployment/main.bicep
 		
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
@@ -1433,235 +1369,6 @@ Tests symbolic name resource deployment
 #>
 function Test-ExtensibleResourceDeployment
 {
-<# 
-* aks.bicep:
-    ```bicep
-    param location string = resourceGroup().location
-    param baseName string
-    param dnsPrefix string
-    param linuxAdminUsername string
-    param sshRSAPublicKey string
-    
-    var osDiskSizeGB = 0
-    var agentCount = 3
-    var agentVMSize = 'standard_f2s_v2' //'Standard_DS2_v2'
-    var resourceNamee = toLower('${baseName}${uniqueString(resourceGroup().id)}')
-    
-    resource aks 'Microsoft.ContainerService/managedClusters@2020-09-01' = {
-      name: resourceNamee
-      location: location
-      properties: {
-        dnsPrefix: dnsPrefix
-        agentPoolProfiles: [
-          {
-            name: 'agentpool'
-            osDiskSizeGB: osDiskSizeGB
-            count: agentCount
-            vmSize: agentVMSize
-            osType: 'Linux'
-            mode: 'System'
-          }
-        ]
-        linuxProfile: {
-          adminUsername: linuxAdminUsername
-          ssh: {
-            publicKeys: [
-              {
-                keyData: sshRSAPublicKey
-              }
-            ]
-          }
-        }
-      }
-      identity: {
-        type: 'SystemAssigned'
-      }
-    }
-    
-    resource keyVault 'Microsoft.KeyVault/vaults@2022-07-01' = {
-      name: resourceNamee
-      location: location
-      properties: {
-        sku: {
-          family: 'A'
-          name: 'standard'
-        }
-        tenantId: subscription().tenantId
-        accessPolicies: []
-        enabledForTemplateDeployment: true
-      }
-    }
-    
-    resource secret 'Microsoft.KeyVault/vaults/secrets@2022-07-01' = {
-      parent: keyVault
-      name: 'kubeconfig'
-      properties: {
-        value: aks.listClusterAdminCredential().kubeconfigs[0].value
-      }
-    }
-    
-    output keyVaultId string = keyVault.id
-    output secretName string = secret.name
-    ```
-* kubernetes.bicep:
-    ```bicep
-    @secure()
-    param kubeConfig string
-    
-    import kubernetes as k8s {
-      kubeConfig: kubeConfig
-      namespace: 'default'
-    }
-    
-    var backName = 'azure-vote-back'
-    var backPort = 6379
-    
-    var frontName = 'azure-vote-front'
-    var frontPort = 80
-    
-    @description('Application back-end deployment (redis)')
-    resource backDeploy 'apps/Deployment@v1' = {
-      metadata: {
-        name: backName
-      }
-      spec: {
-        replicas: 1
-        selector: {
-          matchLabels: {
-            app: backName
-          }
-        }
-        template: {
-          metadata: {
-            labels: {
-              app: backName
-            }
-          }
-          spec: {
-            containers: [
-              {
-                name: backName
-                image: 'mcr.microsoft.com/oss/bitnami/redis:6.0.8'
-                env: [
-                  {
-                    name: 'ALLOW_EMPTY_PASSWORD'
-                    value: 'yes'
-                  }
-                ]
-                resources: {
-                  requests: {
-                    cpu: '100m'
-                    memory: '128Mi'
-                  }
-                  limits: {
-                    cpu: '250m'
-                    memory: '256Mi'
-                  }
-                }
-                ports: [
-                  {
-                    containerPort: backPort
-                    name: 'redis'
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      }
-    }
-    
-    @description('Configure back-end service')
-    resource backSvc 'core/Service@v1' = {
-      metadata: {
-        name: backName
-      }
-      spec: {
-        ports: [
-          {
-            port: backPort
-          }
-        ]
-        selector: {
-          app: backName
-        }
-      }
-    }
-    
-    @description('Application front-end deployment (website)')
-    resource frontDeploy 'apps/Deployment@v1' = {
-      metadata: {
-        name: frontName
-      }
-      spec: {
-        replicas: 1
-        selector: {
-          matchLabels: {
-            app: frontName
-          }
-        }
-        template: {
-          metadata: {
-            labels: {
-              app: frontName
-            }
-          }
-          spec: {
-            nodeSelector: {
-              'beta.kubernetes.io/os': 'linux'
-            }
-            containers: [
-              {
-                name: frontName
-                image: 'mcr.microsoft.com/azuredocs/azure-vote-front:v1'
-                resources: {
-                  requests: {
-                    cpu: '100m'
-                    memory: '128Mi'
-                  }
-                  limits: {
-                    cpu: '250m'
-                    memory: '256Mi'
-                  }
-                }
-                ports: [
-                  {
-                    containerPort: frontPort
-                  }
-                ]
-                env: [
-                  {
-                    name: 'REDIS'
-                    value: backName
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      }
-    }
-    
-    @description('Configure front-end service')
-    resource frontSvc 'core/Service@v1' = {
-      metadata: {
-        name: frontName
-      }
-      spec: {
-        type: 'LoadBalancer'
-        ports: [
-          {
-            port: frontPort
-          }
-        ]
-        selector: {
-          app: frontName
-        }
-      }
-    }
-    ```
-#>
-
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
@@ -1672,16 +1379,16 @@ function Test-ExtensibleResourceDeployment
 		# Test
 		New-AzResourceGroup -Name $rgname -Location $rglocation
 		$parameters = @{ "baseName" = $rname; "dnsPrefix" = $rname; "linuxAdminUsername" = "admin$rname"; "sshRSAPublicKey" = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCd0Z7O2n3XcN0nm1DXGu0LkFMtW9bNyEXQC1FgPskQ1FN1FNIuumHdRC6h1w44/aUiDBaOZ+Tb/opB30OZDNAqdc0L0tBqatZiP1oIorFrjAS15vCdMUy3S6u9WxJKPteB2O45gMvTVz+80mYmWwTsRpSNXXJ6TPKazNwNtgQw0fpKHsnkFHSnBOpqXqtZPhJMCPggHOzU49iK1tPyInMPqhvk4Kk9OC7E3SU7l6hQn76wIpREkIdEVxhlLhxN37N+wPk5d1krreJE+EOVg/EJOORIpeG/MIn6ticeCb+dXnyfJkZTh/7J/zmTKlIzF43Eeg3OLMPunQGgPCDtRujZJAA+lFFT4m0h+LmtlWeBO9VlsAmfC2hm0OgGgkn69qLJ3pw5WLBp1NDpgeIwp6jvCYw2sUr4b2VzRfOMKiRngCrNrt9LKdJ57W2t8Y1kkfK9xlLEI/+goLT2KD07NmU4wuFsBHA2uh55S0j/NAUpgouB+nONrelIy8IUnpzlPkM= ant@ant-mbp-work.lan" }
-		$deployment = New-AzResourceGroupDeployment -Name "setup" -ResourceGroupName $rgname -TemplateFile extensibleResources_aks.json -TemplateParameterObject $parameters
+		$deployment = New-AzResourceGroupDeployment -Name "setup" -ResourceGroupName $rgname -TemplateFile Resources/DeploymentTests/ExtensibleResourceDeployment/aks.bicep -TemplateParameterObject $parameters
 		$keyVaultId = $deployment.Outputs["keyVaultId"].Value
 		$secretName = $deployment.Outputs["secretName"].Value
 
 		# Validate
 		$parameters = @{ "kubeConfig" = @{ "reference" = @{ "keyVault" = @{ "id" = $keyVaultId }; "secretName" = $secretName }}}
-		$deployment = Test-AzResourceGroupDeployment -ResourceGroupName $rgname -TemplateFile extensibleResources_kubernetes.json -TemplateParameterObject $parameters
+		$deployment = Test-AzResourceGroupDeployment -ResourceGroupName $rgname -TemplateFile Resources/DeploymentTests/ExtensibleResourceDeployment/kubernetes.bicep -TemplateParameterObject $parameters
 
 		# Deploy
-		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile extensibleResources_kubernetes.json -TemplateParameterObject $parameters
+		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile Resources/DeploymentTests/ExtensibleResourceDeployment/kubernetes.bicep -TemplateParameterObject $parameters
 		
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState

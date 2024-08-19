@@ -78,11 +78,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
                 return;
             }
             __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.TrackedResource(json);
-            {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("sku"), out var __jsonSku) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Sku.FromJson(__jsonSku) : Sku;}
-            {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Identity.FromJson(__jsonIdentity) : Identity;}
-            {_extendedLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("extendedLocation"), out var __jsonExtendedLocation) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ExtendedLocation.FromJson(__jsonExtendedLocation) : ExtendedLocation;}
-            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountProperties.FromJson(__jsonProperties) : Property;}
-            {_kind = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("kind"), out var __jsonKind) ? (string)__jsonKind : (string)Kind;}
+            {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("sku"), out var __jsonSku) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Sku.FromJson(__jsonSku) : _sku;}
+            {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Identity.FromJson(__jsonIdentity) : _identity;}
+            {_extendedLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("extendedLocation"), out var __jsonExtendedLocation) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ExtendedLocation.FromJson(__jsonExtendedLocation) : _extendedLocation;}
+            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountProperties.FromJson(__jsonProperties) : _property;}
+            {_kind = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("kind"), out var __jsonKind) ? (string)__jsonKind : (string)_kind;}
             AfterFromJson(json);
         }
 

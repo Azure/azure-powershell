@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
+
+## Version 2.7.6
+* Removed the outdated deps.json file.
 
 ## Version 2.7.5
 * Updated IoT Hub Management SDK to version 4.2.0 (api-version 2021-07-02)
@@ -120,7 +124,7 @@
 
 ## Version 1.3.1
 * Add new routing source: DigitalTwinChangeEvents
-* Minor bug fix: Get-AzIothub not returning subscriptionId 
+* Minor bug fix: Get-AzIothub not returning subscriptionId
 
 ## Version 1.3.0
 * Add support to invoke failover for an IotHub to the geo-paired disaster recovery region.

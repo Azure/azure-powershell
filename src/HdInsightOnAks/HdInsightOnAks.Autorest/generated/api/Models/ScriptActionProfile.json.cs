@@ -77,13 +77,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)Type;}
-            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
-            {_url = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("url"), out var __jsonUrl) ? (string)__jsonUrl : (string)Url;}
-            {_parameter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("parameters"), out var __jsonParameters) ? (string)__jsonParameters : (string)Parameter;}
-            {_service = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray>("services"), out var __jsonServices) ? If( __jsonServices as Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : Service;}
-            {_timeoutInMinute = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("timeoutInMinutes"), out var __jsonTimeoutInMinutes) ? (int?)__jsonTimeoutInMinutes : TimeoutInMinute;}
-            {_shouldPersist = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("shouldPersist"), out var __jsonShouldPersist) ? (bool?)__jsonShouldPersist : ShouldPersist;}
+            {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
+            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
+            {_url = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("url"), out var __jsonUrl) ? (string)__jsonUrl : (string)_url;}
+            {_parameter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("parameters"), out var __jsonParameters) ? (string)__jsonParameters : (string)_parameter;}
+            {_service = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray>("services"), out var __jsonServices) ? If( __jsonServices as Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _service;}
+            {_timeoutInMinute = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("timeoutInMinutes"), out var __jsonTimeoutInMinutes) ? (int?)__jsonTimeoutInMinutes : _timeoutInMinute;}
+            {_shouldPersist = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("shouldPersist"), out var __jsonShouldPersist) ? (bool?)__jsonShouldPersist : _shouldPersist;}
             AfterFromJson(json);
         }
 

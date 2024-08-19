@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the LoadTesting service.
 
 ---
-## Status
-[![Az.LoadTesting](https://img.shields.io/powershellgallery/v/Az.LoadTesting.svg?style=flat-square&label=Az.LoadTesting "Az.LoadTesting")](https://www.powershellgallery.com/packages/Az.LoadTesting/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -30,9 +27,9 @@ For information on how to develop for `Az.LoadTesting`, see [how-to.md](how-to.m
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 7d98899a9e242ef529368c9ba6d1686725a8b23b
+commit: 7d98899a9e242ef529368c9ba6d1686725a8b23b
 require:
-  - $(this-folder)/../readme.azure.noprofile.md 
+  - $(this-folder)/../../readme.azure.noprofile.md 
 input-file:
   - $(repo)/specification/loadtestservice/resource-manager/Microsoft.LoadTestService/stable/2022-12-01/loadtestservice.json
 
@@ -43,6 +40,10 @@ subject-prefix: ""
 resourcegroup-append: true
 nested-object-to-string: true
 inlining-threshold: 200
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # https://stackoverflow.microsoft.com/questions/333196

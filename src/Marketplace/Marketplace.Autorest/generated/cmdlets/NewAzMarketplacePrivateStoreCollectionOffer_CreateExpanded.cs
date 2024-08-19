@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update or add an offer to a specific collection of the private store.</summary>
+    /// <summary>Create or add an offer to a specific collection of the private store.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzMarketplacePrivateStoreCollectionOffer_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IOffer))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Description(@"Update or add an offer to a specific collection of the private store.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Description(@"Create or add an offer to a specific collection of the private store.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.HttpPath(Path = "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}", ApiVersion = "2023-01-01")]
     public partial class NewAzMarketplacePrivateStoreCollectionOffer_CreateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -273,6 +273,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
                 // Flush buffer
                 WriteObject(_firstResponse);
             }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -444,6 +462,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

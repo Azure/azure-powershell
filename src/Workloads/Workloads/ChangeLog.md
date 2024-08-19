@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
+
+## Version 0.2.0
+* Added trusted access parameter in Create and Register VIS.
+
+## Version 0.1.2
+* Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 0.1.1
 * Upgraded API version to 2023-10-01-preview

@@ -29,9 +29,8 @@ New-AzRedisCacheKey -ResourceGroupName "ResourceGroup03" -Name "myCache" -KeyTyp
 ```
 
 ```output
-          PrimaryKey        : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
-
-          SecondaryKey      : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          PrimaryKey        : ******
+          SecondaryKey      : ******
 ```
 
 This command regenerates the primary key of a Redis Cache.
@@ -42,9 +41,8 @@ New-AzRedisCacheKey -ResourceGroupName "ResourceGroup03" -Name "myCache" -KeyTyp
 ```
 
 ```output
-          PrimaryKey        : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
-
-          SecondaryKey      : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          PrimaryKey        : ******
+          SecondaryKey      : ******
 ```
 
 This command regenerates the secondary key of a Redis Cache.

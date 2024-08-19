@@ -30,7 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -81,7 +83,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models
         /// Creates a new instance of <see cref="LogzIdentity" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="LogzIdentity" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentity FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -98,13 +100,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).MonitorName = (string) content.GetValueForProperty("MonitorName",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).MonitorName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).RuleSetName = (string) content.GetValueForProperty("RuleSetName",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).RuleSetName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).ConfigurationName = (string) content.GetValueForProperty("ConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).ConfigurationName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).SubAccountName = (string) content.GetValueForProperty("SubAccountName",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).SubAccountName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MonitorName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).MonitorName = (string) content.GetValueForProperty("MonitorName",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).MonitorName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RuleSetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).RuleSetName = (string) content.GetValueForProperty("RuleSetName",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).RuleSetName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConfigurationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).ConfigurationName = (string) content.GetValueForProperty("ConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).ConfigurationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubAccountName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).SubAccountName = (string) content.GetValueForProperty("SubAccountName",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).SubAccountName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -122,13 +145,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).MonitorName = (string) content.GetValueForProperty("MonitorName",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).MonitorName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).RuleSetName = (string) content.GetValueForProperty("RuleSetName",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).RuleSetName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).ConfigurationName = (string) content.GetValueForProperty("ConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).ConfigurationName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).SubAccountName = (string) content.GetValueForProperty("SubAccountName",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).SubAccountName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MonitorName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).MonitorName = (string) content.GetValueForProperty("MonitorName",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).MonitorName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RuleSetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).RuleSetName = (string) content.GetValueForProperty("RuleSetName",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).RuleSetName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConfigurationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).ConfigurationName = (string) content.GetValueForProperty("ConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).ConfigurationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubAccountName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).SubAccountName = (string) content.GetValueForProperty("SubAccountName",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).SubAccountName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

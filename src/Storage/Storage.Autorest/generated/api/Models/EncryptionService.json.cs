@@ -65,9 +65,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_enabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("enabled"), out var __jsonEnabled) ? (bool?)__jsonEnabled : Enabled;}
-            {_lastEnabledTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("lastEnabledTime"), out var __jsonLastEnabledTime) ? global::System.DateTime.TryParse((string)__jsonLastEnabledTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastEnabledTimeValue) ? __jsonLastEnabledTimeValue : LastEnabledTime : LastEnabledTime;}
-            {_keyType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("keyType"), out var __jsonKeyType) ? (string)__jsonKeyType : (string)KeyType;}
+            {_enabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("enabled"), out var __jsonEnabled) ? (bool?)__jsonEnabled : _enabled;}
+            {_lastEnabledTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("lastEnabledTime"), out var __jsonLastEnabledTime) ? global::System.DateTime.TryParse((string)__jsonLastEnabledTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastEnabledTimeValue) ? __jsonLastEnabledTimeValue : _lastEnabledTime : _lastEnabledTime;}
+            {_keyType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("keyType"), out var __jsonKeyType) ? (string)__jsonKeyType : (string)_keyType;}
             AfterFromJson(json);
         }
 

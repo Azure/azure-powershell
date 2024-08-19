@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_enabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("enabled"), out var __jsonEnabled) ? (bool)__jsonEnabled : Enabled;}
+            {_enabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("enabled"), out var __jsonEnabled) ? (bool)__jsonEnabled : _enabled;}
             AfterFromJson(json);
         }
 

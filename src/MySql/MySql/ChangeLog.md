@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
+
+## Version 1.2.0
+* Added cmdlets: `Get-AzMySqlFlexibleServerAdvancedThreatProtectionSetting` and `Update-AzMySqlFlexibleServerAdvancedThreatProtectionSetting`
+
+## Version 1.1.2
+* Fixed for various docs erroneously pointing to Postgres instead of MySQL
 
 ## Version 1.1.1
 * Fixed iops and high availability parameters issue

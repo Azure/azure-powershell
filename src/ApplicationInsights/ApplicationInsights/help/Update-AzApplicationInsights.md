@@ -1,6 +1,6 @@
 ---
 external help file: Az.ApplicationInsights-help.xml
-Module Name: Az.Applicationinsights
+Module Name: Az.ApplicationInsights
 online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/update-azapplicationinsights
 schema: 2.0.0
 ---
@@ -384,7 +384,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

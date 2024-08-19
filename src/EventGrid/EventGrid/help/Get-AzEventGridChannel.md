@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
 online version: https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridchannel
 schema: 2.0.0
@@ -8,59 +8,91 @@ schema: 2.0.0
 # Get-AzEventGridChannel
 
 ## SYNOPSIS
-Gets the details of an Event Grid channel or gets a list of all Event Grid channels in a given partner namespace.
+Get properties of a channel.
 
 ## SYNTAX
 
-### ChannelListByPartnerNamespaceParameterSet (Default)
+### List (Default)
 ```
-Get-AzEventGridChannel -ResourceGroupName <String> -PartnerNamespaceName <String> [-ODataQuery <String>]
- [-Top <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ChannelNameParameterSet
-```
-Get-AzEventGridChannel -ResourceGroupName <String> -PartnerNamespaceName <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzEventGridChannel -PartnerNamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
 ```
 
-### NextLinkParameterSet
+### GetViaIdentityPartnerNamespace
 ```
-Get-AzEventGridChannel -NextLink <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzEventGridChannel -Name <String> -PartnerNamespaceInputObject <IEventGridIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzEventGridChannel -Name <String> -PartnerNamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzEventGridChannel -InputObject <IEventGridIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzEventGridChannel cmdlet gets either the detauls of a specified Event Grid channel, or a list of all Event Grid channels in the specified Event Grid partner namespace.
-If the channel name is provided, the details of a single Event Grid channel is returned.
-If the channel name is not provided, a list of domains is returned. The number of elements returned in this list is controlled by the Top parameter. If the Top value is not specified or $null, the list will contain all the domains items returned at once. Otherwise, Top will indicate the maximum number of elements to be returned in the list.
-If more channels are still available, the value in NextLink should be used in the next call to get the next page of channels.
-Finally, ODataQuery parameter is used to perform filtering for the search results. The filtering query follows OData syntax using the Name property only. The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.
+Get properties of a channel.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: List properties of channel.
 ```powershell
-Get-AzEventGridChannel -ResourceGroup MyResourceGroupName -PartnerNamespaceName PartnerNamespace1 -Name Channel1
+Get-AzEventGridChannel -ResourceGroupName azps_test_group_eventgrid -PartnerNamespaceName azps-partnernamespace
 ```
 
-Gets the details of Event Grid channel \`Channel1\` in partner namespace \`PartnerNameSpace1\` in resource group \`MyResourceGroupName\`.
-
-### Example 2
-```powershell
-Get-AzEventGridChannel -ResourceGroup MyResourceGroupName -PartnerNamespaceName PartnerNameSpace1
+```output
+Name         ResourceGroupName
+----         -----------------
+azps-channel azps_test_group_eventgrid
 ```
 
-Lists the details of Event Grid channels in partner namespace \`PartnerNameSpace1\` in resource group \`MyResourceGroupName\`.
+List properties of channel.
+
+### Example 2: Get properties of a channel.
+```powershell
+Get-AzEventGridChannel -ResourceGroupName azps_test_group_eventgrid -PartnerNamespaceName azps-partnernamespace -Name azps-channel
+```
+
+```output
+Name         ResourceGroupName
+----         -----------------
+azps-channel azps_test_group_eventgrid
+```
+
+Get properties of a channel.
+
+### Example 3: Get properties of a channel.
+```powershell
+$partnerNamespace = Get-AzEventGridPartnerNamespace -ResourceGroupName azps_test_group_eventgrid -Name azps-partnernamespace
+Get-AzEventGridChannel -PartnerNamespaceInputObject $partnerNamespace -Name azps-channel
+```
+
+```output
+Name         ResourceGroupName
+----         -----------------
+azps-channel azps_test_group_eventgrid
+```
+
+Get properties of a channel.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -69,98 +101,146 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the Event Grid channel.
+### -Filter
+The query used to filter the search results using OData syntax.
+Filtering is permitted on the 'name' property only and with limited number of OData operations.
+These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal).
+No arithmetic operations are supported.
+The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'.
+The following is not a valid filter example: $filter=location eq 'westus'.
 
 ```yaml
 Type: System.String
-Parameter Sets: ChannelNameParameterSet
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the channel.
+
+```yaml
+Type: System.String
+Parameter Sets: GetViaIdentityPartnerNamespace, Get
 Aliases: ChannelName
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NextLink
-The link for the next page of resources to be obtained.
-This value is obtained with the first Get-AzEventGrid cmdlet call when more resources are still available to be queried.
+### -PartnerNamespaceInputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: NextLinkParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: GetViaIdentityPartnerNamespace
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ODataQuery
-The OData query used for filtering the list results.
-Filtering is currently allowed on the Name property only.The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.
+### -PartnerNamespaceName
+Name of the partner namespace.
 
 ```yaml
 Type: System.String
-Parameter Sets: ChannelListByPartnerNamespaceParameterSet
+Parameter Sets: List, Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PartnerNamespaceName
-Event Grid partner namespace name.
-
-```yaml
-Type: System.String
-Parameter Sets: ChannelListByPartnerNamespaceParameterSet, ChannelNameParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group within the partners subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ChannelListByPartnerNamespaceParameterSet, ChannelNameParameterSet
+Parameter Sets: List, Get
 Aliases: ResourceGroup
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String[]
+Parameter Sets: List, Get
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Top
-The maximum number of resources to be obtained.
-Valid value is between 1 and 100.
-If top value is specified and more results are still available, the result will contain a link to the next page to be queried in NextLink.
-If the Top value is not specified, the full list of resources will be returned at once.
+The number of results to return per page for the list operation.
+Valid range for top parameter is 1 to 100.
+If not specified, the default number of results to be returned is 20 items per page.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: ChannelListByPartnerNamespaceParameterSet
+Type: System.Int32
+Parameter Sets: List
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -169,15 +249,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventGrid.Models.PSChannelListInstance
-
-### Microsoft.Azure.Commands.EventGrid.Models.PSChannel
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannel
 
 ## NOTES
 

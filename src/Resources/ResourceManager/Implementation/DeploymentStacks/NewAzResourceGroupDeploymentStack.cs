@@ -16,21 +16,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Resources.Models;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using System;
     using System.Collections;
-    using System.IO;
     using System.Management.Automation;
-    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks;
 
     [Cmdlet("New", Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeploymentStack",
         SupportsShouldProcess = true, DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSDeploymentStack))]
-    [CmdletPreview("The cmdlet is in preview and under development.")]
     public class NewAzResourceGroupDeploymentStack : DeploymentStacksCreateCmdletBase
     { 
         #region Cmdlet Parameters
@@ -50,15 +46,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Description for the stack.")]
         public string Description { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Signal to delete both unmanaged Resources and ResourceGroups after updating stack.")]
-        public SwitchParameter DeleteAll { get; set; }
+        [Parameter(Mandatory = true, HelpMessage = "Action to take on resources that become unmanaged on deletion or update of the deployment stack. Possible values include: " +
+            "'detachAll' (do not delete any unmanaged resources), 'deleteResources' (delete all unmanaged resources that are not RGs or MGs)," +
+            " and 'deleteAll' (delete every unmanaged resource).")]
+        public PSActionOnUnmanage ActionOnUnmanage { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Signal to delete unmanaged stack Resources after updating stack.")]
-        public SwitchParameter DeleteResources { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Signal to delete unmanaged stack ResourceGroups after updating stack.")]
-        public SwitchParameter DeleteResourceGroups { get; set; }
-        
         [Parameter(Mandatory = true, HelpMessage = "Mode for DenySettings. Possible values include: 'denyDelete', 'denyWriteAndDelete', and 'none'.")]
         public PSDenySettingsMode DenySettingsMode { get; set; }
 
@@ -82,6 +74,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background.")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Bypass errors for the stack being out of sync when running the operation. If the stack is out of sync and this parameter " +
+            "is not set, the operation will fail. Only include this parameter if instructed to do so on a failed stack operation.")]
+        public SwitchParameter BypassStackOutOfSyncError { get; set; }
+
         #endregion
 
         #region Cmdlet Overrides
@@ -90,70 +86,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             try
             {
-                Hashtable parameters = new Hashtable();
-
-                switch (ParameterSetName)
-                {
-                    case ParameterlessTemplateFileParameterSetName:
-                    case ParameterUriTemplateFileParameterSetName:
-                        ResolveTemplate();
-                        break;
-                    case ParameterFileTemplateSpecParameterSetName:
-                    case ParameterFileTemplateUriParameterSetName:
-                        parameters = ResolveParameters();
-
-                        // contruct the protected template URI if a query string was provided
-                        if (!string.IsNullOrEmpty(QueryString))
-                        {
-                            if (QueryString.Substring(0, 1) == "?")
-                                protectedTemplateUri = TemplateUri + QueryString;
-                            else
-                                protectedTemplateUri = TemplateUri + "?" + QueryString;
-                        }
-                        break;
-                    case ParameterFileTemplateFileParameterSetName:
-                        parameters = ResolveParameters();
-                        ResolveTemplate();
-                        break;
-                    case ByParameterFileWithNoTemplateParameterSetName:
-                        parameters = ResolveParameters();
-                        break;
-                    case ParameterObjectTemplateFileParameterSetName:
-                        ResolveTemplate();
-                        parameters = GetTemplateParameterObject(TemplateParameterObject);
-                        break;
-                    case ParameterObjectTemplateSpecParameterSetName:
-                    case ParameterObjectTemplateUriParameterSetName:
-                        parameters = GetTemplateParameterObject(TemplateParameterObject);
-                        
-                        // contruct the protected template URI if a query string was provided
-                        if (!string.IsNullOrEmpty(QueryString))
-                        {
-                            if (QueryString.Substring(0, 1) == "?")
-                                protectedTemplateUri = TemplateUri + QueryString;
-                            else
-                                protectedTemplateUri = TemplateUri + "?" + QueryString;
-                        }
-                        break;
-                    case ParameterlessTemplateUriParameterSetName:
-                        // contruct the protected template URI if a query string was provided
-                        if (!string.IsNullOrEmpty(QueryString))
-                        {
-                            if (QueryString.Substring(0, 1) == "?")
-                                protectedTemplateUri = TemplateUri + QueryString;
-                            else
-                                protectedTemplateUri = TemplateUri + "?" + QueryString;
-                        }
-                        break;
-                }
-
-                var shouldDeleteResources = (DeleteAll.ToBool() || DeleteResources.ToBool()) ? true : false;
-                var shouldDeleteResourceGroups = (DeleteAll.ToBool() || DeleteResourceGroups.ToBool()) ? true : false;
+                var shouldDeleteResources = (ActionOnUnmanage is PSActionOnUnmanage.DeleteAll || ActionOnUnmanage is PSActionOnUnmanage.DeleteResources) ? true : false;
+                var shouldDeleteResourceGroups = (ActionOnUnmanage is PSActionOnUnmanage.DeleteAll) ? true : false;
+                var shouldDeleteManagementGroups = (ActionOnUnmanage is PSActionOnUnmanage.DeleteAll) ? true : false;
 
                 var currentStack = DeploymentStacksSdkClient.GetResourceGroupDeploymentStack(ResourceGroupName, Name, throwIfNotExists: false);
                 if (currentStack != null && Tag == null)
                 {
-                    Tag = TagsConversionHelper.CreateTagHashtable(currentStack.Tags);
+                    Tag = TagsConversionHelper.CreateTagHashtable(currentStack.tags);
                 }
 
                 Action createOrUpdateAction = () =>
@@ -161,20 +101,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     var deploymentStack = DeploymentStacksSdkClient.ResourceGroupCreateOrUpdateDeploymentStack(
                         deploymentStackName: Name,
                         resourceGroupName: ResourceGroupName,
+                        templateFile: TemplateFile,
                         templateUri: !string.IsNullOrEmpty(protectedTemplateUri) ? protectedTemplateUri : TemplateUri,
                         templateSpec: TemplateSpecId,
-                        templateJson: TemplateJson,
+                        templateObject: TemplateObject,
                         parameterUri: TemplateParameterUri,
-                        parameters: parameters,
+                        parameters: GetTemplateParameterObject(),
                         description: Description,
                         resourcesCleanupAction: shouldDeleteResources ? "delete" : "detach",
                         resourceGroupsCleanupAction: shouldDeleteResourceGroups ? "delete" : "detach",
-                        managementGroupsCleanupAction: "detach",
+                        managementGroupsCleanupAction: shouldDeleteManagementGroups ? "delete" : "detach",
                         denySettingsMode: DenySettingsMode.ToString(),
                         denySettingsExcludedPrincipals: DenySettingsExcludedPrincipal,
                         denySettingsExcludedActions: DenySettingsExcludedAction,
                         denySettingsApplyToChildScopes: DenySettingsApplyToChildScopes.IsPresent,
-                        tags: Tag
+                        tags: Tag,
+                        bypassStackOutOfSyncError: BypassStackOutOfSyncError.IsPresent
                     );
 
                     WriteObject(deploymentStack);
@@ -185,14 +127,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     string confirmationMessage = $"The DeploymentStack '{Name}' you're trying to create already exists in ResourceGroup '{ResourceGroupName}'. " +
                         $"Do you want to overwrite it?\n" +
                         $"The following actions will be applied to any resources the are no longer managed by the deployment stack after the template is applied:" +
-                        (shouldDeleteResources || shouldDeleteResourceGroups ? "\nDeleting: " : "") +
+                        // Deleting
+                        (shouldDeleteResources || shouldDeleteResourceGroups || shouldDeleteManagementGroups ? "\nDeleting: " : "") +
                         (shouldDeleteResources ? "resources" : "") +
                         (shouldDeleteResources && shouldDeleteResourceGroups ? ", " : "") +
                         (shouldDeleteResourceGroups ? "resourceGroups" : "") +
-                        (!shouldDeleteResources || !shouldDeleteResourceGroups ? "\nDetaching: " : "") +
+                        (shouldDeleteResourceGroups && shouldDeleteManagementGroups ? ", " : "") +
+                        (shouldDeleteManagementGroups ? "managementGroups" : "") +
+                        // Detaching
+                        (!shouldDeleteResources || !shouldDeleteResourceGroups || !shouldDeleteManagementGroups ? "\nDetaching: " : "") +
                         (!shouldDeleteResources ? "resources" : "") +
                         (!shouldDeleteResources && !shouldDeleteResourceGroups ? ", " : "") +
-                        (!shouldDeleteResourceGroups ? "resourceGroups" : "");
+                        (!shouldDeleteResourceGroups ? "resourceGroups" : "") +
+                        (!shouldDeleteResourceGroups && !shouldDeleteManagementGroups ? ", " : "") +
+                        (!shouldDeleteManagementGroups ? "managementGroups" : "");
 
                     ConfirmAction(
                         Force.IsPresent,

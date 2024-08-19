@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://learn.microsoft.com/powershell/module/az.compute/new-azdiskpurchaseplanconfig.md
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azdiskpurchaseplanconfig
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Creates a PurchasePlan Object
 
 ```
 New-AzDiskPurchasePlanConfig -Publisher <String> -Name <String> -Product <String> [-PromotionCode <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

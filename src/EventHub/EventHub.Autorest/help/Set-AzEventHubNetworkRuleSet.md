@@ -15,15 +15,15 @@ Sets an EventHub Namespace Network Rule Set
 ### SetExpanded (Default)
 ```
 Set-AzEventHubNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultAction <DefaultAction>] [-IPRule <INwRuleSetIPRules[]>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-DefaultAction <String>] [-IPRule <INwRuleSetIPRules[]>] [-PublicNetworkAccess <String>]
  [-TrustedServiceAccessEnabled] [-VirtualNetworkRule <INwRuleSetVirtualNetworkRules[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
-Set-AzEventHubNetworkRuleSet -InputObject <IEventHubIdentity> [-DefaultAction <DefaultAction>]
- [-IPRule <INwRuleSetIPRules[]>] [-PublicNetworkAccess <PublicNetworkAccess>] [-TrustedServiceAccessEnabled]
+Set-AzEventHubNetworkRuleSet -InputObject <IEventHubIdentity> [-DefaultAction <String>]
+ [-IPRule <INwRuleSetIPRules[]>] [-PublicNetworkAccess <String>] [-TrustedServiceAccessEnabled]
  [-VirtualNetworkRule <INwRuleSetVirtualNetworkRules[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 Default Action for Network Rule Set
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.DefaultAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -185,10 +185,9 @@ Accept wildcard characters: False
 
 ### -IPRule
 List of IpRules
-To construct, see NOTES section for IPRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.INwRuleSetIPRules[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INwRuleSetIPRules[]
 Parameter Sets: (All)
 Aliases:
 
@@ -235,7 +234,7 @@ By default it is enabled.
 If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.PublicNetworkAccess
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -294,10 +293,9 @@ Accept wildcard characters: False
 
 ### -VirtualNetworkRule
 List of VirtualNetwork Rules
-To construct, see NOTES section for VIRTUALNETWORKRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.INwRuleSetVirtualNetworkRules[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INwRuleSetVirtualNetworkRules[]
 Parameter Sets: (All)
 Aliases:
 
@@ -348,7 +346,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.INetworkRuleSet
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkRuleSet
 
 ## NOTES
 

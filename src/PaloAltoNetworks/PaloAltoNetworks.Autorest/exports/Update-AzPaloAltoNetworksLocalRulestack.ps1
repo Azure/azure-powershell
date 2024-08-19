@@ -72,122 +72,28 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPaloAltoNetworksIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
+    [System.Nullable[System.Boolean]]
+    # Decides if enable a system assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
     [System.String[]]
-    # subscription scope of global rulestack
-    ${AssociatedSubscription},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("IPS", "FIREWALL", "NONE")]
-    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
-    [System.String]
-    # Mode for default rules creation
-    ${DefaultMode},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
-    [System.String]
-    # rulestack description
-    ${Description},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
-    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
-    [System.String]
-    # The type of managed identity assigned to this resource.
-    ${IdentityType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IAzureResourceManagerManagedIdentityPropertiesUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The identities assigned to this resource by the user.
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
-    [System.String]
-    # minimum version
-    ${MinAppIdVersion},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
-    [System.String]
-    # PanEtag info
-    ${PanEtag},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
-    [System.String]
-    # Rulestack Location, Required for GlobalRulestacks, Not for LocalRulestacks
-    ${PanLocation},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("LOCAL", "GLOBAL")]
-    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
-    [System.String]
-    # Rulestack Type
-    ${Scope},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
-    [System.String]
-    # Anti spyware Profile data
-    ${SecurityServiceAntiSpywareProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
-    [System.String]
-    # anti virus profile data
-    ${SecurityServiceAntiVirusProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
-    [System.String]
-    # DNS Subscription profile data
-    ${SecurityServiceDnsSubscription},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
-    [System.String]
-    # File blocking profile data
-    ${SecurityServiceFileBlockingProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
-    [System.String]
-    # Trusted Egress Decryption profile data
-    ${SecurityServiceOutboundTrustCertificate},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
-    [System.String]
-    # Untrusted Egress Decryption profile data
-    ${SecurityServiceOutboundUnTrustCertificate},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
-    [System.String]
-    # URL filtering profile data
-    ${SecurityServiceUrlFilteringProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
-    [System.String]
-    # IPs Vulnerability Profile Data
-    ${SecurityServiceVulnerabilityProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResourceUpdateTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -197,6 +103,12 @@ param(
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Runtime')]
@@ -217,6 +129,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Runtime')]
@@ -268,7 +186,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.PaloAltoNetworks.private\Update-AzPaloAltoNetworksLocalRulestack_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedPrivateLinkScopeTag
 
 ## SYNOPSIS
-Updates an existing PrivateLinkScope's tags.
+Update an existing PrivateLinkScope's tags.
 To update other fields use the CreateOrUpdate method.
 
 ## SYNTAX
@@ -16,29 +16,29 @@ To update other fields use the CreateOrUpdate method.
 ### UpdateExpanded (Default)
 ```
 Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName <String> -ScopeName <String>
- [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName <String> -ScopeName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName <String> -ScopeName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName <String> -ScopeName <String>
- [-SubscriptionId <String>] -PrivateLinkScopeTag <ITagsResource> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] -PrivateLinkScopeTag <ITagsResource> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -50,11 +50,12 @@ Update-AzConnectedPrivateLinkScopeTag -InputObject <IConnectedMachineIdentity> [
 ### UpdateViaIdentity
 ```
 Update-AzConnectedPrivateLinkScopeTag -InputObject <IConnectedMachineIdentity>
- -PrivateLinkScopeTag <ITagsResource> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -PrivateLinkScopeTag <ITagsResource> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates an existing PrivateLinkScope's tags.
+Update an existing PrivateLinkScope's tags.
 To update other fields use the CreateOrUpdate method.
 
 ## EXAMPLES
@@ -93,7 +94,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -139,7 +139,6 @@ Accept wildcard characters: False
 
 ### -PrivateLinkScopeTag
 A container holding only the Tags for a resource, allowing the user to update the tags on a PrivateLinkScope instance.
-To construct, see NOTES section for PRIVATELINKSCOPETAG properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITagsResource
@@ -250,13 +249,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.ITagsResource
-
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITagsResource
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IHybridComputePrivateLinkScope
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScope
 
 ## NOTES
 

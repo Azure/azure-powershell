@@ -15,27 +15,17 @@ Update a LocalRulestackResource
 ### UpdateExpanded (Default)
 ```
 Update-AzPaloAltoNetworksLocalRulestack -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AssociatedSubscription <String[]>] [-DefaultMode <String>] [-Description <String>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-MinAppIdVersion <String>] [-PanEtag <String>]
- [-PanLocation <String>] [-Scope <String>] [-SecurityServiceAntiSpywareProfile <String>]
- [-SecurityServiceAntiVirusProfile <String>] [-SecurityServiceDnsSubscription <String>]
- [-SecurityServiceFileBlockingProfile <String>] [-SecurityServiceOutboundTrustCertificate <String>]
- [-SecurityServiceOutboundUnTrustCertificate <String>] [-SecurityServiceUrlFilteringProfile <String>]
- [-SecurityServiceVulnerabilityProfile <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EnableSystemAssignedIdentity <Boolean>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzPaloAltoNetworksLocalRulestack -InputObject <IPaloAltoNetworksIdentity>
- [-AssociatedSubscription <String[]>] [-DefaultMode <String>] [-Description <String>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-MinAppIdVersion <String>] [-PanEtag <String>]
- [-PanLocation <String>] [-Scope <String>] [-SecurityServiceAntiSpywareProfile <String>]
- [-SecurityServiceAntiVirusProfile <String>] [-SecurityServiceDnsSubscription <String>]
- [-SecurityServiceFileBlockingProfile <String>] [-SecurityServiceOutboundTrustCertificate <String>]
- [-SecurityServiceOutboundUnTrustCertificate <String>] [-SecurityServiceUrlFilteringProfile <String>]
- [-SecurityServiceVulnerabilityProfile <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EnableSystemAssignedIdentity <Boolean>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,26 +48,11 @@ Update a LocalRulestackResource.
 
 ## PARAMETERS
 
-### -AssociatedSubscription
-subscription scope of global rulestack
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultMode
-Mode for default rules creation
-
-```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -104,41 +79,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Description
-rulestack description
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-The type of managed identity assigned to this resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The identities assigned to this resource by the user.
-
-```yaml
-Type: System.Collections.Hashtable
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -151,7 +96,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPaloAltoNetworksIdentity
@@ -162,21 +106,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -MinAppIdVersion
-minimum version
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -195,26 +124,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PanEtag
-PanEtag info
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PanLocation
-Rulestack Location, Required for GlobalRulestacks, Not for LocalRulestacks
-
-```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -241,141 +155,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Scope
-Rulestack Type
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityServiceAntiSpywareProfile
-Anti spyware Profile data
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityServiceAntiVirusProfile
-anti virus profile data
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityServiceDnsSubscription
-DNS Subscription profile data
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityServiceFileBlockingProfile
-File blocking profile data
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityServiceOutboundTrustCertificate
-Trusted Egress Decryption profile data
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityServiceOutboundUnTrustCertificate
-Untrusted Egress Decryption profile data
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityServiceUrlFilteringProfile
-URL filtering profile data
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityServiceVulnerabilityProfile
-IPs Vulnerability Profile Data
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -396,6 +175,22 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -446,25 +241,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.ILocalRulestackResource
+### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IPaloAltoNetworksIdentity>`: Identity Parameter
-  - `[FirewallName <String>]`: Firewall resource name
-  - `[GlobalRulestackName <String>]`: GlobalRulestack resource name
-  - `[Id <String>]`: Resource identity path
-  - `[LocalRulestackName <String>]`: LocalRulestack resource name
-  - `[Name <String>]`: certificate name
-  - `[Priority <String>]`: Post Rule priority
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS

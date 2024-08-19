@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SelfHelp-help.xml
 Module Name: Az.SelfHelp
 online version: https://learn.microsoft.com/powershell/module/az.selfhelp/new-azselfhelptroubleshooter
 schema: 2.0.0
@@ -8,27 +8,25 @@ schema: 2.0.0
 # New-AzSelfHelpTroubleshooter
 
 ## SYNOPSIS
-Creates the specific troubleshooter action under a resource or subscription using the ‘solutionId’ and  ‘properties.parameters’ as the trigger.
-\<br/\> Troubleshooters are step-by-step interactive guidance that scope the problem by collecting additional inputs from you in each stage while troubleshooting an Azure issue.
-You will be guided down decision tree style workflow and the best possible solution will be presented at the end of the workflow.
-\<br/\> Create API creates the Troubleshooter API using ‘parameters’ and ‘solutionId’ \<br/\> After creating the Troubleshooter instance, the following APIs can be used:\<br/\> CONTINUE API: to move to the next step in the flow \<br/\>GET API: to identify the next step after executing the CONTINUE API.
- \<br/\>\<br/\> \<b\>Note:\</b\> ‘requiredParameters’ from solutions response must be passed via ‘properties.
-parameters’ in the request body of Troubleshooters API.
+Creates the specific troubleshooter action under a resource or subscription using the 'solutionId' and  'properties.parameters' as the trigger.
+\<br/\> Azure Troubleshooters help with hard to classify issues, reducing the gap between customer observed problems and solutions by guiding the user effortlessly through the troubleshooting process.
+Each Troubleshooter flow represents a problem area within Azure and has a complex tree-like structure that addresses many root causes.
+These flows are prepared with the help of Subject Matter experts and customer support engineers by carefully considering previous support requests raised by customers.
+Troubleshooters terminate at a well curated solution based off of resource backend signals and customer manual selections.
 
 ## SYNTAX
 
 ```
 New-AzSelfHelpTroubleshooter -Name <String> -Scope <String> [-Parameter <Hashtable>] [-SolutionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates the specific troubleshooter action under a resource or subscription using the ‘solutionId’ and  ‘properties.parameters’ as the trigger.
-\<br/\> Troubleshooters are step-by-step interactive guidance that scope the problem by collecting additional inputs from you in each stage while troubleshooting an Azure issue.
-You will be guided down decision tree style workflow and the best possible solution will be presented at the end of the workflow.
-\<br/\> Create API creates the Troubleshooter API using ‘parameters’ and ‘solutionId’ \<br/\> After creating the Troubleshooter instance, the following APIs can be used:\<br/\> CONTINUE API: to move to the next step in the flow \<br/\>GET API: to identify the next step after executing the CONTINUE API.
- \<br/\>\<br/\> \<b\>Note:\</b\> ‘requiredParameters’ from solutions response must be passed via ‘properties.
-parameters’ in the request body of Troubleshooters API.
+Creates the specific troubleshooter action under a resource or subscription using the 'solutionId' and  'properties.parameters' as the trigger.
+\<br/\> Azure Troubleshooters help with hard to classify issues, reducing the gap between customer observed problems and solutions by guiding the user effortlessly through the troubleshooting process.
+Each Troubleshooter flow represents a problem area within Azure and has a complex tree-like structure that addresses many root causes.
+These flows are prepared with the help of Subject Matter experts and customer support engineers by carefully considering previous support requests raised by customers.
+Troubleshooters terminate at a well curated solution based off of resource backend signals and customer manual selections.
 
 ## EXAMPLES
 
@@ -99,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-This is an extension resource provider and only resource level extension is supported at the moment.
+scope = resourceUri of affected resource.\<br/\> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
 
 ```yaml
 Type: System.String
@@ -166,9 +164,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResource
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITroubleshooterResource
 
 ## NOTES
 
 ## RELATED LINKS
-

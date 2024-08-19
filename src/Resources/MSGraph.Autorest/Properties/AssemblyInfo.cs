@@ -16,13 +16,13 @@ using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Microsoft Azure Powershell - Resources MSGraph")]
+[assembly: AssemblyTitle("Microsoft Azure Powershell - MSGraph")]
 [assembly: AssemblyCompany(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCompany)]
 [assembly: AssemblyProduct(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyProduct)]
 [assembly: AssemblyCopyright(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCopyright)]
 
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
-[assembly: Guid("113AD566-7045-45C4-8D01-BCFF72F4CE7B")]
-[assembly: AssemblyVersion("6.15.0")]
-[assembly: AssemblyFileVersion("6.15.0")]
+[assembly: Guid("52f53286-1f17-4f3b-89aa-6f751e50b484")]
+[assembly: AssemblyVersion("7.3.0")]
+[assembly: AssemblyFileVersion("7.3.0")]

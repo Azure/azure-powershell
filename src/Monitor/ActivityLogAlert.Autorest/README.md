@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the ActivityLogAlert service.
 
 ---
-## Status
-[![Az.ActivityLogAlert](https://img.shields.io/powershellgallery/v/Az.ActivityLogAlert.svg?style=flat-square&label=Az.ActivityLogAlert "Az.ActivityLogAlert")](https://www.powershellgallery.com/packages/Az.ActivityLogAlert/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -29,12 +26,13 @@ For information on how to develop for `Az.ActivityLogAlert`, see [how-to.md](how
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
+commit: e94b0da0c7f80e2986af90c1dd7e9c8f4c336c61
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/Azure/azure-rest-api-specs/blob/e94b0da0c7f80e2986af90c1dd7e9c8f4c336c61/specification/monitor/resource-manager/Microsoft.Insights/stable/2020-10-01/activityLogAlerts_API.json
+  - $(repo)/specification/monitor/resource-manager/Microsoft.Insights/stable/2020-10-01/activityLogAlerts_API.json
 
 root-module-name: $(prefix).Monitor
 title: ActivityLogAlert
@@ -47,6 +45,10 @@ nested-object-to-string: true
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs

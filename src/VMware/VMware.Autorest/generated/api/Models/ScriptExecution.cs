@@ -23,7 +23,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         public System.Collections.Generic.List<string> Error { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionPropertiesInternal)Property).Error; }
 
         /// <summary>
-        /// Error message if the script was able to run, but if the script itself had errors or powershell threw an exception
+        /// Error message if the script was able to run, but if the script itself had
+        /// errors or powershell threw an exception
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public string FailureReason { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionPropertiesInternal)Property).FailureReason; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionPropertiesInternal)Property).FailureReason = value ?? null; }
@@ -33,12 +34,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         public global::System.DateTime? FinishedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionPropertiesInternal)Property).FinishedAt; }
 
         /// <summary>
-        /// Parameters that will be hidden/not visible to ARM, such as passwords and credentials
+        /// Parameters that will be hidden/not visible to ARM, such as passwords and
+        /// credentials
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameter> HiddenParameter { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionPropertiesInternal)Property).HiddenParameter; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionPropertiesInternal)Property).HiddenParameter = value ?? null /* arrayOf */; }
 
-        /// <summary>Resource ID.</summary>
+        /// <summary>
+        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Id; }
 
@@ -51,6 +55,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Name = value; }
+
+        /// <summary>Internal Acessors for SystemData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemData = value; }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Type = value; }
@@ -79,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Internal Acessors for Warning</summary>
         System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionInternal.Warning { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionPropertiesInternal)Property).Warning; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionPropertiesInternal)Property).Warning = value; }
 
-        /// <summary>Resource name.</summary>
+        /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Name; }
 
@@ -98,7 +105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionProperties _property;
 
-        /// <summary>The properties of a script execution resource</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ScriptExecutionProperties()); set => this._property = value; }
 
@@ -126,11 +133,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public global::System.DateTime? SubmittedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionPropertiesInternal)Property).SubmittedAt; }
 
+        /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemData; }
+
+        /// <summary>The timestamp of resource creation (UTC).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>The identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>The type of identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>The identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>The type of identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
+
         /// <summary>Time limit for execution</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public string Timeout { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionPropertiesInternal)Property).Timeout; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionPropertiesInternal)Property).Timeout = value ?? null; }
 
-        /// <summary>Resource type.</summary>
+        /// <summary>
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)__proxyResource).Type; }
 
@@ -173,7 +212,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> Error { get;  }
         /// <summary>
-        /// Error message if the script was able to run, but if the script itself had errors or powershell threw an exception
+        /// Error message if the script was able to run, but if the script itself had
+        /// errors or powershell threw an exception
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -181,7 +221,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Error message if the script was able to run, but if the script itself had errors or powershell threw an exception",
+        Description = @"Error message if the script was able to run, but if the script itself had
+        errors or powershell threw an exception",
         SerializedName = @"failureReason",
         PossibleTypes = new [] { typeof(string) })]
         string FailureReason { get; set; }
@@ -197,7 +238,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? FinishedAt { get;  }
         /// <summary>
-        /// Parameters that will be hidden/not visible to ARM, such as passwords and credentials
+        /// Parameters that will be hidden/not visible to ARM, such as passwords and
+        /// credentials
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -205,7 +247,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Parameters that will be hidden/not visible to ARM, such as passwords and credentials",
+        Description = @"Parameters that will be hidden/not visible to ARM, such as passwords and
+        credentials",
         SerializedName = @"hiddenParameters",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameter) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameter> HiddenParameter { get; set; }
@@ -263,7 +306,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Description = @"The state of the script execution resource",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Pending", "Running", "Succeeded", "Failed", "Cancelling", "Cancelled", "Deleting", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Pending", "Running", "Cancelling", "Cancelled", "Deleting")]
         string ProvisioningState { get;  }
         /// <summary>Time to live for the resource. If not provided, will be available for 60 days</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
@@ -340,13 +383,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Standard error output stream from the powershell execution</summary>
         System.Collections.Generic.List<string> Error { get; set; }
         /// <summary>
-        /// Error message if the script was able to run, but if the script itself had errors or powershell threw an exception
+        /// Error message if the script was able to run, but if the script itself had
+        /// errors or powershell threw an exception
         /// </summary>
         string FailureReason { get; set; }
         /// <summary>Time the script execution was finished</summary>
         global::System.DateTime? FinishedAt { get; set; }
         /// <summary>
-        /// Parameters that will be hidden/not visible to ARM, such as passwords and credentials
+        /// Parameters that will be hidden/not visible to ARM, such as passwords and
+        /// credentials
         /// </summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameter> HiddenParameter { get; set; }
         /// <summary>Standard information out stream from the powershell execution</summary>
@@ -357,10 +402,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         System.Collections.Generic.List<string> Output { get; set; }
         /// <summary>Parameters the script will accept</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameter> Parameter { get; set; }
-        /// <summary>The properties of a script execution resource</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionProperties Property { get; set; }
         /// <summary>The state of the script execution resource</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Pending", "Running", "Succeeded", "Failed", "Cancelling", "Cancelled", "Deleting", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Pending", "Running", "Cancelling", "Cancelled", "Deleting")]
         string ProvisioningState { get; set; }
         /// <summary>Time to live for the resource. If not provided, will be available for 60 days</summary>
         string Retention { get; set; }

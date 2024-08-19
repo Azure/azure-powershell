@@ -13,14 +13,14 @@
 
   <ItemGroup>
     <PackageReference Include="Azure.Analytics.Synapse.AccessControl" Version="1.0.0-preview.5" />
-    <PackageReference Include="Azure.Analytics.Synapse.Artifacts" Version="1.0.0-preview.19" />
+    <PackageReference Include="Azure.Analytics.Synapse.Artifacts" Version="1.0.0-preview.20" />
     <PackageReference Include="Azure.Analytics.Synapse.ManagedPrivateEndpoints" Version="1.0.0-beta.5" />
     <PackageReference Include="Azure.Analytics.Synapse.Spark" Version="1.0.0-preview.7" />
     <PackageReference Include="Microsoft.Azure.Management.Synapse" Version="2.6.0-preview" />
-    <PackageReference Include="Microsoft.DataTransfer.Gateway.Encryption" Version="4.14.7587.7" />
+    <PackageReference Include="Microsoft.DataTransfer.Gateway.Encryption" Version="5.29.8499.2" />
     <!-- Include the following DLLs for security issue -->
     <PackageReference Include="System.Security.Cryptography.Xml" Version="4.7.1" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,7 +41,7 @@
   <ItemGroup>
     <None Remove="Models\ManagementModels\AdvancedThreatProtection\Templates\DeployWorkspaceVaTemplate.json" />
   </ItemGroup>
-	
+
   <ItemGroup>
     <EmbeddedResource Include="Models\ManagementModels\AdvancedThreatProtection\Templates\DeployWorkspaceVaTemplate.json" />
   </ItemGroup>

@@ -14,14 +14,14 @@ Get raw access token. When using -ResourceUrl, please make sure the value does m
 
 ### KnownResourceTypeName (Default)
 ```
-Get-AzAccessToken [-ResourceTypeName <String>] [-TenantId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzAccessToken [-ResourceTypeName <String>] [-TenantId <String>] [-AsSecureString]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceUrl
 ```
-Get-AzAccessToken -ResourceUrl <String> [-TenantId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzAccessToken -ResourceUrl <String> [-TenantId <String>] [-AsSecureString]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,11 +52,26 @@ Get access token of Microsoft Graph endpoint for current account
 
 ## PARAMETERS
 
+### -AsSecureString
+Specifiy to convert output token as a secure string.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -68,10 +83,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceTypeName
-Optional resource type name, supported values: AadGraph, AnalysisServices, AppConfiguration, Arm, Attestation, Batch, DataLake, KeyVault, MSGraph, OperationalInsights, ResourceManager, Storage, Synapse. Default value is Arm if not specified.
+Optional resource type name, supported values: AadGraph, AnalysisServices, AppConfiguration, Arm, Attestation, Batch, CommunicationEmail, DataLake, KeyVault, MSGraph, OperationalInsights, ResourceManager, Storage, Synapse. Default value is Arm if not specified.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: KnownResourceTypeName
 Aliases:
 
@@ -86,7 +101,7 @@ Accept wildcard characters: False
 Resource url for that you're requesting token, e.g. 'https://graph.microsoft.com/'.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceUrl
 Aliases: Resource, ResourceUri
 
@@ -101,7 +116,7 @@ Accept wildcard characters: False
 Optional Tenant Id. Use tenant id of default context if not specified.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -122,6 +137,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Profile.Models.PSAccessToken
+
+### Microsoft.Azure.Commands.Profile.Models.PSSecureAccessToken
 
 ## NOTES
 

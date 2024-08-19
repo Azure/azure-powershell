@@ -27,15 +27,42 @@ New-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName sarath-r
 $sub = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 $storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -DataStoreType VaultStore -Type LocallyRedundant
 New-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -Location westus -StorageSetting $storagesetting -CrossSubscriptionRestoreState Enabled -ImmutabilityState Unlocked -SoftDeleteRetentionDurationInDay 100 -SoftDeleteState On
+.Example
+$storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -DataStoreType VaultStore -Type LocallyRedundant
+$userAssignedIdentity = @{
+    "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/samplerg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sampleuami" = @{
+        clientId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        principalId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    }
+    "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/samplerg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sampleuami2" = @{
+        clientId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        principalId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    }
+}
+
+$cmkIdentityId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/samplerg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sampleuami"
+
+$cmkKeyUri = "https://samplekvazbckp.vault.azure.net/keys/testkey/3cd5235ad6ac4c11b40a6f35444bcbe1"
+
+New-AzDataProtectionBackupVault -SubscriptionId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -Location "location" -StorageSetting $storagesetting -IdentityType UserAssigned -UserAssignedIdentity $userAssignedIdentity -CmkEncryptionState Enabled -CmkIdentityType UserAssigned -CmkUserAssignedIdentityId $cmkIdentityId -CmkEncryptionKeyUri $cmkKeyUri -CmkInfrastructureEncryption Enabled
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupVaultResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupVaultResource
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupVaultResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupVaultResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+ENCRYPTIONSETTING <IEncryptionSettings>: Customer Managed Key details of the resource.
+  [CmkIdentity <ICmkKekIdentity>]: The details of the managed identity used for CMK
+    [IdentityId <String>]: The managed identity to be used which has access permissions to the Key Vault. Provide a value here in case identity types: 'UserAssigned' only.
+    [IdentityType <IdentityType?>]: The identity type. 'SystemAssigned' and 'UserAssigned' are mutually exclusive. 'SystemAssigned' will use implicitly created managed identity.
+  [CmkInfrastructureEncryption <InfrastructureEncryptionState?>]: Enabling/Disabling the Double Encryption state
+  [CmkKeyVaultProperty <ICmkKeyVaultProperties>]: The properties of the Key Vault which hosts CMK
+    [KeyUri <String>]: The key uri of the Customer Managed Key
+  [State <EncryptionState?>]: Encryption state of the Backup Vault.
 
 PARAMETER <IBackupVaultResource>: Backup Vault Resource
   StorageSetting <IStorageSetting[]>: Storage Settings
@@ -51,8 +78,17 @@ PARAMETER <IBackupVaultResource>: Backup Vault Resource
   [AzureMonitorAlertsForAllJobFailure <AlertsState?>]: 
   [CrossRegionRestoreState <CrossRegionRestoreState?>]: CrossRegionRestore state
   [CrossSubscriptionRestoreState <CrossSubscriptionRestoreState?>]: CrossSubscriptionRestore state
+  [EncryptionSetting <IEncryptionSettings>]: Customer Managed Key details of the resource.
+    [CmkIdentity <ICmkKekIdentity>]: The details of the managed identity used for CMK
+      [IdentityId <String>]: The managed identity to be used which has access permissions to the Key Vault. Provide a value here in case identity types: 'UserAssigned' only.
+      [IdentityType <IdentityType?>]: The identity type. 'SystemAssigned' and 'UserAssigned' are mutually exclusive. 'SystemAssigned' will use implicitly created managed identity.
+    [CmkInfrastructureEncryption <InfrastructureEncryptionState?>]: Enabling/Disabling the Double Encryption state
+    [CmkKeyVaultProperty <ICmkKeyVaultProperties>]: The properties of the Key Vault which hosts CMK
+      [KeyUri <String>]: The key uri of the Customer Managed Key
+    [State <EncryptionState?>]: Encryption state of the Backup Vault.
   [ImmutabilityState <ImmutabilityState?>]: Immutability state
   [ReplicatedRegion <String[]>]: List of replicated regions for Backup Vault
+  [ResourceGuardOperationRequest <String[]>]: ResourceGuardOperationRequests on which LAC check will be performed
   [ResourceMoveDetailCompletionTimeUtc <String>]: Completion time in UTC of latest ResourceMove operation attempted. ISO 8601 format.
   [ResourceMoveDetailOperationId <String>]: CorrelationId of latest ResourceMove operation attempted
   [ResourceMoveDetailSourceResourcePath <String>]: ARM resource path of source resource
@@ -68,7 +104,7 @@ STORAGESETTING <IStorageSetting[]>: Storage Settings
 https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupvault
 #>
 function New-AzDataProtectionBackupVault {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupVaultResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupVaultResource])]
 [CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -92,9 +128,16 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Header')]
+    [System.String]
+    # Parameter to authorize operations protected by cross tenant resource guard.
+    # Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
+    ${Token},
+
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupVaultResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupVaultResource]
     # Backup Vault Resource
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -102,7 +145,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IStorageSetting[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IStorageSetting[]]
     # Storage Settings
     # To construct, see NOTES section for STORAGESETTING properties and create a hash table.
     ${StorageSetting},
@@ -139,6 +182,13 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IEncryptionSettings]
+    # Customer Managed Key details of the resource.
+    # To construct, see NOTES section for ENCRYPTIONSETTING properties and create a hash table.
+    ${EncryptionSetting},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
     # The identityType which can be either SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' or None
     ${IdentityType},
@@ -172,6 +222,13 @@ param(
     ${ReplicatedRegion},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String[]]
+    # ResourceGuardOperationRequests on which LAC check will be performed
+    ${ResourceGuardOperationRequest},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.Double]
     # Soft delete retention duration in days.
@@ -187,7 +244,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IDppBaseTrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IDppBaseTrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -266,7 +323,13 @@ begin {
             CreateExpanded = 'Az.DataProtection.private\New-AzDataProtectionBackupVault_CreateExpanded';
         }
         if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

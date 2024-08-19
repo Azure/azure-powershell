@@ -9,17 +9,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
     using System;
 
     /// <summary>
-    /// Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
+    /// Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzFunctionApp_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}", ApiVersion = "2019-08-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}", ApiVersion = "2023-12-01")]
     public partial class NewAzFunctionApp_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener
     {
@@ -38,12 +38,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>A web app, a mobile app backend, or an API app.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite _siteEnvelopeBody = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.Site();
+        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite _siteEnvelopeBody = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.Site();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
+
+        /// <summary>
+        /// Use this property for StorageAccountConnectionString. Set the name of the app setting that has the storage account connection
+        /// string. Do not set a value for this property when using other authentication type.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Use this property for StorageAccountConnectionString. Set the name of the app setting that has the storage account connection string. Do not set a value for this property when using other authentication type.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Use this property for StorageAccountConnectionString. Set the name of the app setting that has the storage account connection string. Do not set a value for this property when using other authentication type.",
+        SerializedName = @"storageAccountConnectionStringName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string AuthenticationStorageAccountConnectionStringName { get => _siteEnvelopeBody.AuthenticationStorageAccountConnectionStringName ?? null; set => _siteEnvelopeBody.AuthenticationStorageAccountConnectionStringName = value; }
+
+        /// <summary>
+        /// Property to select authentication type to access the selected storage account. Available options: SystemAssignedIdentity,
+        /// UserAssignedIdentity, StorageAccountConnectionString.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Property to select authentication type to access the selected storage account. Available options: SystemAssignedIdentity, UserAssignedIdentity, StorageAccountConnectionString.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Property to select authentication type to access the selected storage account. Available options: SystemAssignedIdentity, UserAssignedIdentity, StorageAccountConnectionString.",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AuthenticationType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AuthenticationType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AuthenticationType AuthenticationType { get => _siteEnvelopeBody.AuthenticationType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AuthenticationType)""); set => _siteEnvelopeBody.AuthenticationType = value; }
+
+        /// <summary>
+        /// Use this property for UserAssignedIdentity. Set the resource ID of the identity. Do not set a value for this property
+        /// when using other authentication type.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Use this property for UserAssignedIdentity. Set the resource ID of the identity. Do not set a value for this property when using other authentication type.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Use this property for UserAssignedIdentity. Set the resource ID of the identity. Do not set a value for this property when using other authentication type.",
+        SerializedName = @"userAssignedIdentityResourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string AuthenticationUserAssignedIdentityResourceId { get => _siteEnvelopeBody.AuthenticationUserAssignedIdentityResourceId ?? null; set => _siteEnvelopeBody.AuthenticationUserAssignedIdentityResourceId = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -93,6 +136,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         public string ClientCertExclusionPath { get => _siteEnvelopeBody.ClientCertExclusionPath ?? null; set => _siteEnvelopeBody.ClientCertExclusionPath = value; }
 
         /// <summary>
+        /// This composes with ClientCertEnabled setting.- ClientCertEnabled: false means ClientCert is ignored.- ClientCertEnabled:
+        /// true and ClientCertMode: Required means ClientCert is required.- ClientCertEnabled: true and ClientCertMode: Optional
+        /// means ClientCert is optional or accepted.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "This composes with ClientCertEnabled setting.- ClientCertEnabled: false means ClientCert is ignored.- ClientCertEnabled: true and ClientCertMode: Required means ClientCert is required.- ClientCertEnabled: true and ClientCertMode: Optional means ClientCert is optional or accepted.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"This composes with ClientCertEnabled setting.- ClientCertEnabled: false means ClientCert is ignored.- ClientCertEnabled: true and ClientCertMode: Required means ClientCert is required.- ClientCertEnabled: true and ClientCertMode: Optional means ClientCert is optional or accepted.",
+        SerializedName = @"clientCertMode",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ClientCertMode) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ClientCertMode))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ClientCertMode ClientCertMode { get => _siteEnvelopeBody.ClientCertMode ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ClientCertMode)""); set => _siteEnvelopeBody.ClientCertMode = value; }
+
+        /// <summary>
         /// Application setting overrides for cloned app. If specified, these settings override the settings cloned from source app.
         /// Otherwise, application settings from source app are retained.
         /// </summary>
@@ -104,8 +163,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"Application setting overrides for cloned app. If specified, these settings override the settings cloned from source app. Otherwise, application settings from source app are retained.",
         SerializedName = @"appSettingsOverrides",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICloningInfoAppSettingsOverrides CloningInfoAppSettingsOverride { get => _siteEnvelopeBody.CloningInfoAppSettingsOverride ?? null /* object */; set => _siteEnvelopeBody.CloningInfoAppSettingsOverride = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICloningInfoAppSettingsOverrides) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICloningInfoAppSettingsOverrides CloningInfoAppSettingsOverride { get => _siteEnvelopeBody.CloningInfoAppSettingsOverride ?? null /* object */; set => _siteEnvelopeBody.CloningInfoAppSettingsOverride = value; }
 
         /// <summary>
         /// <code>true</code> to clone custom hostnames from source app; otherwise, <code>false</code>.
@@ -242,6 +301,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         PossibleTypes = new [] { typeof(int) })]
         public int ContainerSize { get => _siteEnvelopeBody.ContainerSize ?? default(int); set => _siteEnvelopeBody.ContainerSize = value; }
 
+        /// <summary>
+        /// Unique identifier that verifies the custom domains assigned to the app. Customer will add this id to a txt record for
+        /// verification.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Unique identifier that verifies the custom domains assigned to the app. Customer will add this id to a txt record for verification.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Unique identifier that verifies the custom domains assigned to the app. Customer will add this id to a txt record for verification.",
+        SerializedName = @"customDomainVerificationId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string CustomDomainVerificationId { get => _siteEnvelopeBody.CustomDomainVerificationId ?? null; set => _siteEnvelopeBody.CustomDomainVerificationId = value; }
+
         /// <summary>Maximum allowed daily memory-time quota (applicable on dynamic apps only).</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Maximum allowed daily memory-time quota (applicable on dynamic apps only).")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
@@ -253,6 +326,90 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         PossibleTypes = new [] { typeof(int) })]
         public int DailyMemoryTimeQuota { get => _siteEnvelopeBody.DailyMemoryTimeQuota ?? default(int); set => _siteEnvelopeBody.DailyMemoryTimeQuota = value; }
 
+        /// <summary>Dapr application identifier</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Dapr application identifier")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Dapr application identifier",
+        SerializedName = @"appId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string DaprConfigAppId { get => _siteEnvelopeBody.DaprConfigAppId ?? null; set => _siteEnvelopeBody.DaprConfigAppId = value; }
+
+        /// <summary>Tells Dapr which port your application is listening on</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Tells Dapr which port your application is listening on")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Tells Dapr which port your application is listening on",
+        SerializedName = @"appPort",
+        PossibleTypes = new [] { typeof(int) })]
+        public int DaprConfigAppPort { get => _siteEnvelopeBody.DaprConfigAppPort ?? default(int); set => _siteEnvelopeBody.DaprConfigAppPort = value; }
+
+        /// <summary>Enables API logging for the Dapr sidecar</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Enables API logging for the Dapr sidecar")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Enables API logging for the Dapr sidecar",
+        SerializedName = @"enableApiLogging",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter DaprConfigEnableApiLogging { get => _siteEnvelopeBody.DaprConfigEnableApiLogging ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.DaprConfigEnableApiLogging = value; }
+
+        /// <summary>Boolean indicating if the Dapr side car is enabled</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Boolean indicating if the Dapr side car is enabled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Boolean indicating if the Dapr side car is enabled",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter DaprConfigEnabled { get => _siteEnvelopeBody.DaprConfigEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.DaprConfigEnabled = value; }
+
+        /// <summary>
+        /// Increasing max size of request body http servers parameter in MB to handle uploading of big files. Default is 4 MB.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Increasing max size of request body http servers parameter in MB to handle uploading of big files. Default is 4 MB.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Increasing max size of request body http servers parameter in MB to handle uploading of big files. Default is 4 MB.",
+        SerializedName = @"httpMaxRequestSize",
+        PossibleTypes = new [] { typeof(int) })]
+        public int DaprConfigHttpMaxRequestSize { get => _siteEnvelopeBody.DaprConfigHttpMaxRequestSize ?? default(int); set => _siteEnvelopeBody.DaprConfigHttpMaxRequestSize = value; }
+
+        /// <summary>
+        /// Dapr max size of http header read buffer in KB to handle when sending multi-KB headers. Default is 65KB.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Dapr max size of http header read buffer in KB to handle when sending multi-KB headers. Default is 65KB.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Dapr max size of http header read buffer in KB to handle when sending multi-KB headers. Default is 65KB.",
+        SerializedName = @"httpReadBufferSize",
+        PossibleTypes = new [] { typeof(int) })]
+        public int DaprConfigHttpReadBufferSize { get => _siteEnvelopeBody.DaprConfigHttpReadBufferSize ?? default(int); set => _siteEnvelopeBody.DaprConfigHttpReadBufferSize = value; }
+
+        /// <summary>
+        /// Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.",
+        SerializedName = @"logLevel",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DaprLogLevel) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DaprLogLevel))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DaprLogLevel DaprConfigLogLevel { get => _siteEnvelopeBody.DaprConfigLogLevel ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DaprLogLevel)""); set => _siteEnvelopeBody.DaprConfigLogLevel = value; }
+
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
         /// against a different subscription
@@ -262,6 +419,68 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>
+        /// Alternate DNS server to be used by apps. This property replicates the WEBSITE_DNS_ALT_SERVER app setting.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Alternate DNS server to be used by apps. This property replicates the WEBSITE_DNS_ALT_SERVER app setting.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Alternate DNS server to be used by apps. This property replicates the WEBSITE_DNS_ALT_SERVER app setting.",
+        SerializedName = @"dnsAltServer",
+        PossibleTypes = new [] { typeof(string) })]
+        public string DnsConfigurationDnsAltServer { get => _siteEnvelopeBody.DnsConfigurationDnsAltServer ?? null; set => _siteEnvelopeBody.DnsConfigurationDnsAltServer = value; }
+
+        /// <summary>
+        /// Custom time for DNS to be cached in seconds. Allowed range: 0-60. Default is 30 seconds. 0 means caching disabled.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Custom time for DNS to be cached in seconds. Allowed range: 0-60. Default is 30 seconds. 0 means caching disabled.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Custom time for DNS to be cached in seconds. Allowed range: 0-60. Default is 30 seconds. 0 means caching disabled.",
+        SerializedName = @"dnsMaxCacheTimeout",
+        PossibleTypes = new [] { typeof(int) })]
+        public int DnsConfigurationDnsMaxCacheTimeout { get => _siteEnvelopeBody.DnsConfigurationDnsMaxCacheTimeout ?? default(int); set => _siteEnvelopeBody.DnsConfigurationDnsMaxCacheTimeout = value; }
+
+        /// <summary>Total number of retries for dns lookup. Allowed range: 1-5. Default is 3.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Total number of retries for dns lookup. Allowed range: 1-5. Default is 3.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Total number of retries for dns lookup. Allowed range: 1-5. Default is 3.",
+        SerializedName = @"dnsRetryAttemptCount",
+        PossibleTypes = new [] { typeof(int) })]
+        public int DnsConfigurationDnsRetryAttemptCount { get => _siteEnvelopeBody.DnsConfigurationDnsRetryAttemptCount ?? default(int); set => _siteEnvelopeBody.DnsConfigurationDnsRetryAttemptCount = value; }
+
+        /// <summary>Timeout for a single dns lookup in seconds. Allowed range: 1-30. Default is 3.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Timeout for a single dns lookup in seconds. Allowed range: 1-30. Default is 3.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Timeout for a single dns lookup in seconds. Allowed range: 1-30. Default is 3.",
+        SerializedName = @"dnsRetryAttemptTimeout",
+        PossibleTypes = new [] { typeof(int) })]
+        public int DnsConfigurationDnsRetryAttemptTimeout { get => _siteEnvelopeBody.DnsConfigurationDnsRetryAttemptTimeout ?? default(int); set => _siteEnvelopeBody.DnsConfigurationDnsRetryAttemptTimeout = value; }
+
+        /// <summary>
+        /// List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.",
+        SerializedName = @"dnsServers",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] DnsConfigurationDnsServer { get => _siteEnvelopeBody.DnsConfigurationDnsServer ?? null /* arrayOf */; set => _siteEnvelopeBody.DnsConfigurationDnsServer = value; }
 
         /// <summary>
         /// <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes
@@ -277,6 +496,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter Enabled { get => _siteEnvelopeBody.Enabled ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.Enabled = value; }
 
+        /// <summary>Name of extended location.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of extended location.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of extended location.",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ExtendedLocationName { get => _siteEnvelopeBody.ExtendedLocationName ?? null; set => _siteEnvelopeBody.ExtendedLocationName = value; }
+
         /// <summary>Hostname SSL states are used to manage the SSL bindings for app's hostnames.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Hostname SSL states are used to manage the SSL bindings for app's hostnames.")]
@@ -286,8 +516,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"Hostname SSL states are used to manage the SSL bindings for app's hostnames.",
         SerializedName = @"hostNameSslStates",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[] HostNameSslState { get => _siteEnvelopeBody.HostNameSslState ?? null /* arrayOf */; set => _siteEnvelopeBody.HostNameSslState = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IHostNameSslState) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IHostNameSslState[] HostNameSslState { get => _siteEnvelopeBody.HostNameSslState ?? null /* arrayOf */; set => _siteEnvelopeBody.HostNameSslState = value; }
 
         /// <summary>
         /// <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>. If <code>true</code>, the
@@ -313,6 +543,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         public string HostingEnvironmentProfileId { get => _siteEnvelopeBody.HostingEnvironmentProfileId ?? null; set => _siteEnvelopeBody.HostingEnvironmentProfileId = value; }
+
+        /// <summary>The maximum number of concurrent HTTP trigger invocations per instance.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The maximum number of concurrent HTTP trigger invocations per instance.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The maximum number of concurrent HTTP trigger invocations per instance.",
+        SerializedName = @"perInstanceConcurrency",
+        PossibleTypes = new [] { typeof(float) })]
+        public float HttpPerInstanceConcurrency { get => _siteEnvelopeBody.HttpPerInstanceConcurrency ?? default(float); set => _siteEnvelopeBody.HttpPerInstanceConcurrency = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -374,8 +615,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}",
         SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => _siteEnvelopeBody.IdentityUserAssignedIdentity ?? null /* object */; set => _siteEnvelopeBody.IdentityUserAssignedIdentity = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IManagedServiceIdentityUserAssignedIdentities) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => _siteEnvelopeBody.IdentityUserAssignedIdentity ?? null /* object */; set => _siteEnvelopeBody.IdentityUserAssignedIdentity = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -390,6 +631,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         SerializedName = @"isXenon",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter IsXenon { get => _siteEnvelopeBody.IsXenon ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.IsXenon = value; }
+
+        /// <summary>Identity to use for Key Vault Reference authentication.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Identity to use for Key Vault Reference authentication.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Identity to use for Key Vault Reference authentication.",
+        SerializedName = @"keyVaultReferenceIdentity",
+        PossibleTypes = new [] { typeof(string) })]
+        public string KeyVaultReferenceIdentity { get => _siteEnvelopeBody.KeyVaultReferenceIdentity ?? null; set => _siteEnvelopeBody.KeyVaultReferenceIdentity = value; }
 
         /// <summary>Kind of resource.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Kind of resource.")]
@@ -412,6 +664,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         public string Location { get => _siteEnvelopeBody.Location ?? null; set => _siteEnvelopeBody.Location = value; }
+
+        /// <summary>
+        /// Azure Resource Manager ID of the customer's selected Managed Environment on which to host this app. This must be of the
+        /// form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Azure Resource Manager ID of the customer's selected Managed Environment on which to host this app. This must be of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Azure Resource Manager ID of the customer's selected Managed Environment on which to host this app. This must be of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}",
+        SerializedName = @"managedEnvironmentId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ManagedEnvironmentId { get => _siteEnvelopeBody.ManagedEnvironmentId ?? null; set => _siteEnvelopeBody.ManagedEnvironmentId = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -466,6 +732,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
+        /// <summary>
+        /// Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled' or an empty string.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled' or an empty string.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled' or an empty string.",
+        SerializedName = @"publicNetworkAccess",
+        PossibleTypes = new [] { typeof(string) })]
+        public string PublicNetworkAccess { get => _siteEnvelopeBody.PublicNetworkAccess ?? null; set => _siteEnvelopeBody.PublicNetworkAccess = value; }
+
         /// <summary>Site redundancy mode</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Site redundancy mode")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
@@ -489,6 +768,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter Reserved { get => _siteEnvelopeBody.Reserved ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.Reserved = value; }
 
+        /// <summary>Required CPU in cores, e.g. 0.5</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Required CPU in cores, e.g. 0.5")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Required CPU in cores, e.g. 0.5",
+        SerializedName = @"cpu",
+        PossibleTypes = new [] { typeof(double) })]
+        public double ResourceConfigCpu { get => _siteEnvelopeBody.ResourceConfigCpu ?? default(double); set => _siteEnvelopeBody.ResourceConfigCpu = value; }
+
+        /// <summary>Required memory, e.g. "1Gi"</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Required memory, e.g. \"1Gi\"")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Required memory, e.g. ""1Gi""",
+        SerializedName = @"memory",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ResourceConfigMemory { get => _siteEnvelopeBody.ResourceConfigMemory ?? null; set => _siteEnvelopeBody.ResourceConfigMemory = value; }
+
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
@@ -502,6 +803,68 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
+
+        /// <summary>
+        /// Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RuntimeName) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RuntimeName))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RuntimeName RuntimeName { get => _siteEnvelopeBody.RuntimeName ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RuntimeName)""); set => _siteEnvelopeBody.RuntimeName = value; }
+
+        /// <summary>Function app runtime version. Example: 8 (for dotnet-isolated)</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Function app runtime version. Example: 8 (for dotnet-isolated)")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Function app runtime version. Example: 8 (for dotnet-isolated)",
+        SerializedName = @"version",
+        PossibleTypes = new [] { typeof(string) })]
+        public string RuntimeVersion { get => _siteEnvelopeBody.RuntimeVersion ?? null; set => _siteEnvelopeBody.RuntimeVersion = value; }
+
+        /// <summary>'Always Ready' configuration for the function app.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "'Always Ready' configuration for the function app.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"'Always Ready' configuration for the function app.",
+        SerializedName = @"alwaysReady",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsAlwaysReadyConfig) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsAlwaysReadyConfig[] ScaleAndConcurrencyAlwaysReady { get => _siteEnvelopeBody.ScaleAndConcurrencyAlwaysReady ?? null /* arrayOf */; set => _siteEnvelopeBody.ScaleAndConcurrencyAlwaysReady = value; }
+
+        /// <summary>
+        /// Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated
+        /// proportionally.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.",
+        SerializedName = @"instanceMemoryMB",
+        PossibleTypes = new [] { typeof(float) })]
+        public float ScaleAndConcurrencyInstanceMemoryMb { get => _siteEnvelopeBody.ScaleAndConcurrencyInstanceMemoryMb ?? default(float); set => _siteEnvelopeBody.ScaleAndConcurrencyInstanceMemoryMb = value; }
+
+        /// <summary>The maximum number of instances for the function app.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The maximum number of instances for the function app.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The maximum number of instances for the function app.",
+        SerializedName = @"maximumInstanceCount",
+        PossibleTypes = new [] { typeof(float) })]
+        public float ScaleAndConcurrencyMaximumInstanceCount { get => _siteEnvelopeBody.ScaleAndConcurrencyMaximumInstanceCount ?? default(float); set => _siteEnvelopeBody.ScaleAndConcurrencyMaximumInstanceCount = value; }
 
         /// <summary>
         /// <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
@@ -537,8 +900,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"Configuration of the app.",
         SerializedName = @"siteConfig",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfig) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfig SiteConfig { get => _siteEnvelopeBody.Config ?? null /* object */; set => _siteEnvelopeBody.Config = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfig) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfig SiteConfig { get => _siteEnvelopeBody.Config ?? null /* object */; set => _siteEnvelopeBody.Config = value; }
+
+        /// <summary>Checks if Customer provided storage account is required</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Checks if Customer provided storage account is required")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Checks if Customer provided storage account is required",
+        SerializedName = @"storageAccountRequired",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter StorageAccountRequired { get => _siteEnvelopeBody.StorageAccountRequired ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.StorageAccountRequired = value; }
+
+        /// <summary>Property to select Azure Storage type. Available options: blobContainer.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Property to select Azure Storage type. Available options: blobContainer.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Property to select Azure Storage type. Available options: blobContainer.",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionsDeploymentStorageType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionsDeploymentStorageType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionsDeploymentStorageType StorageType { get => _siteEnvelopeBody.StorageType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionsDeploymentStorageType)""); set => _siteEnvelopeBody.StorageType = value; }
+
+        /// <summary>
+        /// Property to set the URL for the selected Azure Storage type. Example: For blobContainer, the value could be https://<storageAccountName>.blob.core.windows.net/<containerName>.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Property to set the URL for the selected Azure Storage type. Example: For blobContainer, the value could be https://<storageAccountName>.blob.core.windows.net/<containerName>.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Property to set the URL for the selected Azure Storage type. Example: For blobContainer, the value could be https://<storageAccountName>.blob.core.windows.net/<containerName>.",
+        SerializedName = @"value",
+        PossibleTypes = new [] { typeof(string) })]
+        public string StorageValue { get => _siteEnvelopeBody.StorageValue ?? null; set => _siteEnvelopeBody.StorageValue = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -569,32 +968,104 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceTags Tag { get => _siteEnvelopeBody.Tag ?? null /* object */; set => _siteEnvelopeBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IResourceTags Tag { get => _siteEnvelopeBody.Tag ?? null /* object */; set => _siteEnvelopeBody.Tag = value; }
+
+        /// <summary>
+        /// Azure Resource Manager ID of the Virtual network and subnet to be joined by Regional VNET Integration.This must be of
+        /// the form /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Azure Resource Manager ID of the Virtual network and subnet to be joined by Regional VNET Integration.This must be of the form /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Azure Resource Manager ID of the Virtual network and subnet to be joined by Regional VNET Integration.This must be of the form /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}",
+        SerializedName = @"virtualNetworkSubnetId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string VirtualNetworkSubnetId { get => _siteEnvelopeBody.VirtualNetworkSubnetId ?? null; set => _siteEnvelopeBody.VirtualNetworkSubnetId = value; }
+
+        /// <summary>To enable Backup and Restore operations over virtual network</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "To enable Backup and Restore operations over virtual network")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"To enable Backup and Restore operations over virtual network",
+        SerializedName = @"vnetBackupRestoreEnabled",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter VnetBackupRestoreEnabled { get => _siteEnvelopeBody.VnetBackupRestoreEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.VnetBackupRestoreEnabled = value; }
+
+        /// <summary>To enable accessing content over virtual network</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "To enable accessing content over virtual network")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"To enable accessing content over virtual network",
+        SerializedName = @"vnetContentShareEnabled",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter VnetContentShareEnabled { get => _siteEnvelopeBody.VnetContentShareEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.VnetContentShareEnabled = value; }
+
+        /// <summary>To enable pulling image over Virtual Network</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "To enable pulling image over Virtual Network")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"To enable pulling image over Virtual Network",
+        SerializedName = @"vnetImagePullEnabled",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter VnetImagePullEnabled { get => _siteEnvelopeBody.VnetImagePullEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.VnetImagePullEnabled = value; }
+
+        /// <summary>
+        /// Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined
+        /// Routes applied.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.",
+        SerializedName = @"vnetRouteAllEnabled",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter VnetRouteAllEnabled { get => _siteEnvelopeBody.VnetRouteAllEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.VnetRouteAllEnabled = value; }
+
+        /// <summary>Workload profile name for function app to execute on.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Workload profile name for function app to execute on.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Workload profile name for function app to execute on.",
+        SerializedName = @"workloadProfileName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string WorkloadProfileName { get => _siteEnvelopeBody.WorkloadProfileName ?? null; set => _siteEnvelopeBody.WorkloadProfileName = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDefaultErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDefaultErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDefaultErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDefaultErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite">Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite">Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -641,7 +1112,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -820,16 +1308,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
             base.StopProcessing();
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDefaultErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDefaultErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDefaultErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDefaultErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -846,7 +1349,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDefaultErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDefaultErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=_siteEnvelopeBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -864,12 +1367,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite">Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite">Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite> response)
         {
             using( NoSynchronizationContext )
             {
@@ -881,7 +1384,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
                 WriteObject((await response));
             }
         }

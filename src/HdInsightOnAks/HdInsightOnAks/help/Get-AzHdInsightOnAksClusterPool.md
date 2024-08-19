@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.HdInsightOnAks-help.xml
 Module Name: Az.HdInsightOnAks
 online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/get-azhdinsightonaksclusterpool
 schema: 2.0.0
@@ -14,12 +14,19 @@ Gets a cluster pool.
 
 ### List (Default)
 ```
-Get-AzHdInsightOnAksClusterPool [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzHdInsightOnAksClusterPool [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzHdInsightOnAksClusterPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzHdInsightOnAksClusterPool -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -29,18 +36,12 @@ Get-AzHdInsightOnAksClusterPool -InputObject <IHdInsightOnAksIdentity> [-Default
  [<CommonParameters>]
 ```
 
-### List1
-```
-Get-AzHdInsightOnAksClusterPool -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Gets a cluster pool.
 
 ## EXAMPLES
 
-### Example 1: list all HDInsight gen2 cluster pools in current subscription
+### Example 1: list all HDInsight cluster pools in current subscription
 ```powershell
 Get-AzHdInsightOnAksClusterPool
 ```
@@ -70,9 +71,9 @@ SystemDataCreatedAt                            :
 ...
 ```
 
-list all HDInsight gen2 cluster pools in current subscription.
+list all HDInsight cluster pools in current subscription.
 
-### Example 2: list all HDInsight gen2 cluster pools in a resource group
+### Example 2: list all HDInsight cluster pools in a resource group
 ```powershell
 $clusterResourceGroupName = "your-resourceGroup"
 Get-AzHdInsightOnAksClusterPool -ResourceGroupName $clusterResourceGroupName
@@ -103,9 +104,9 @@ SystemDataCreatedAt                            :
 ...
 ```
 
-list all HDInsight gen2 cluster pools in a resource group.
+list all HDInsight cluster pools in a resource group.
 
-### Example 3: Get a HDInsight gen2 cluster pool in a resource group
+### Example 3: Get a HDInsight cluster pool in a resource group
 ```powershell
 $clusterResourceGroupName = "your-resourceGroup"
 $clusterpoolName = "your-clusterpool"
@@ -137,7 +138,7 @@ SystemDataCreatedAt                            :
 ...
 ```
 
-Get a HDInsight gen2 cluster pool in a resource group.
+Get a HDInsight cluster pool in a resource group.
 
 ## PARAMETERS
 
@@ -159,7 +160,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
@@ -210,7 +210,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
@@ -234,4 +234,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

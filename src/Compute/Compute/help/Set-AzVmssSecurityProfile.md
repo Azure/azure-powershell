@@ -58,7 +58,7 @@ The second command sets the SecurityType enum to "TrustedLaunch".
     # New VMSS Parameters
     $vmssName = 'vmss' + $rgname
     $adminUsername = <User Name>
-    $adminPassword = <Password> | ConvertTo-SecureString -AsPlainText -Force
+    $adminPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 
     $imgRef = New-Object -TypeName 'Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage'
     $imgRef.PublisherName = $PublisherName
@@ -105,8 +105,7 @@ The second command sets the SecurityType enum to "TrustedLaunch".
     $vmSize = "Standard_DC2as_v5"
     $vmssSize = "Standard_DC2as_v5"
 
-    $password = <Password>
-    $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
+    $securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
     $username = <User Name>
     $vmCred = New-Object System.Management.Automation.PSCredential ($username, $securePassword)
 
@@ -240,8 +239,7 @@ The second command sets the SecurityType enum to "TrustedLaunch".
     $vmName = "v" + $rgname;
     $vmSize = "Standard_DC2as_v5";
     $vmssSize = "Standard_DC2as_v5";
-    $password = <Password>;
-    $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force; 
+    $securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force; 
     $username = <Username>;
     $vmCred = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
     $imagePublisher = "MicrosoftWindowsServer";
@@ -264,7 +262,7 @@ The second command sets the SecurityType enum to "TrustedLaunch".
     $keyVaultName = "kv" + $rgname;
     $keyName = "k" + $rgname;
     $desName = "des" + $rgname;
-    $cvmAgent = Get-AzADServicePrincipal -ApplicationId "bf7b6499-ff71-4aa2-97a4-f372087be7f0";
+    $cvmAgent = Get-AzADServicePrincipal -ApplicationId "00001111-aaaa-2222-bbbb-3333cccc4444";
     $kv = New-AzKeyVault -Name $keyVaultName -ResourceGroupName $rgName -Location $loc -Sku "Premium" -EnablePurgeProtection -SoftDeleteRetentionInDays 7;
     Set-AzKeyVaultAccessPolicy -ObjectId $cvmAgent.Id -VaultName $keyVaultName -ResourceGroupName $rgName -PermissionsToKeys "get","release";
     Start-BitsTransfer -Source https://cvmprivatepreviewsa.blob.core.windows.net/cvmpublicpreviewcontainer/skr-policy.json -Destination ".\skr-policy.json";
@@ -411,7 +409,6 @@ Parameter to set the SecurityType on the VMs of the scale set.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: TrustedLaunch, ConfidentialVM, Standard
 
 Required: False
 Position: 1

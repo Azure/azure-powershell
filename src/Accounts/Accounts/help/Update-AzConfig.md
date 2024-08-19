@@ -15,9 +15,10 @@ Updates the configs of Azure PowerShell.
 ```
 Update-AzConfig [-AppliesTo <String>] [-Scope <ConfigScope>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-CheckForUpgrade <Boolean>] [-DefaultSubscriptionForLogin <String>]
- [-DisableErrorRecordsPersistence <Boolean>] [-DisplayBreakingChangeWarning <Boolean>]
- [-DisplayRegionIdentified <Boolean>] [-DisplaySurveyMessage <Boolean>] [-EnableDataCollection <Boolean>]
- [-EnableLoginByWam <Boolean>] [<CommonParameters>]
+ [-DisableInstanceDiscovery <Boolean>] [-DisplayBreakingChangeWarning <Boolean>]
+ [-DisplayRegionIdentified <Boolean>] [-DisplaySecretsWarning <Boolean>] [-DisplaySurveyMessage <Boolean>]
+ [-EnableDataCollection <Boolean>] [-EnableErrorRecordsPersistence <Boolean>] [-EnableLoginByWam <Boolean>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,6 +69,19 @@ EnableDataCollection True  Az         CurrentUser When enabled, Azure PowerShell
 
 Sets the "EnableDataCollection" config as "$true". This enables sending the telemetry data.
 Setting this config is equivalent to `Enable-AzDataCollection` and `Disable-AzDataCollection`.
+
+### Example 4
+```powershell
+Update-AzConfig -DisplaySecretsWarning $true
+```
+
+```output
+Key                   Value Applies To Scope       Help Message
+---                   ----- ---------- -----       ------------
+DisplaySecretsWarning True  Az         CurrentUser When enabled, a warning message for secrets redaction will be displ…
+```
+
+Sets the "DisplaySecretsWarning" config as "$true". This enables the secrets detection during the cmdlet execution and displays a warning message if any secrets are found in the output.
 
 ## PARAMETERS
 
@@ -139,8 +153,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DisableErrorRecordsPersistence
-When disabled, error records will not be written to ~/.Azure/ErrorRecords. This config will be replaced by "EnableErrorRecordsPersistence" as opt-in in the next major release of Az around November 2023.
+### -DisableInstanceDiscovery
+Set it to true to disable both instance discovery and authority validation. This functionality is intended for use in scenarios where the metadata endpoint cannot be reached, such as in private clouds or Azure Stack. The process of instance discovery entails retrieving authority metadata from https://login.microsoft.com/ to validate the authority. By setting this to true, the validation of the authority is disabled. As a result, it is crucial to ensure that the configured authority host is valid and trustworthy.
 
 ```yaml
 Type: System.Boolean
@@ -171,6 +185,21 @@ Accept wildcard characters: False
 
 ### -DisplayRegionIdentified
 When enabled, Azure PowerShell displays recommendations on regions which may reduce your costs.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DisplaySecretsWarning
+When enabled, a warning message will be displayed when the cmdlet output contains secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844
 
 ```yaml
 Type: System.Boolean
@@ -215,6 +244,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -EnableErrorRecordsPersistence
+When enabled, error records will be written to ~/.Azure/ErrorRecords.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -EnableLoginByWam
 \[Preview\] When enabled, Web Account Manager (WAM) will be the default interactive login experience.
 It will fall back to using the browser if the platform does not support WAM.
@@ -225,6 +269,22 @@ Feel free to reach out to Azure PowerShell team if you have any feedbacks: https
 Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -LoginExperienceV2
+Only active when authenticating interactively, allows the user to choose the subscription and tenant used in subsequent commands. Possible values ad 'On' (Default) and 'Off'. 'On' requires user's input. 'Off' will use the first tenant and subscription returned by Azure, can change without notice and lead to command execution in an unwanted context (not recommended).
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Config.Models.LoginExperienceConfig
+Parameter Sets: (All)
+Aliases:
+Accepted values: On, Off
 
 Required: False
 Position: Named
@@ -286,9 +346,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### System.Boolean
+
+### System.String
 
 ## OUTPUTS
 

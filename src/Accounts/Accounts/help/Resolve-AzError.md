@@ -36,7 +36,7 @@ Resolve-AzError -Last
 ```
 
 ```Output
-   HistoryId: 3
+HistoryId: 3
 
 
 Message        : Run Connect-AzAccount to login.
@@ -64,7 +64,7 @@ Resolve-AzError
 ```
 
 ```Output
-   HistoryId: 8
+HistoryId: 8
 
 
 RequestId      : b61309e8-09c9-4f0d-ba56-08a6b28c731d
@@ -133,7 +133,7 @@ Resolve-AzError $Error[0]
 ```
 
 ```Output
-   HistoryId: 8
+HistoryId: 8
 
 
 RequestId      : b61309e8-09c9-4f0d-ba56-08a6b28c731d

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzCustomLocation
 
 ## SYNOPSIS
-Updates a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
+Update a Custom Location in the specified Subscription and Resource Group
 
 ## SYNTAX
 
@@ -16,69 +16,115 @@ Updates a Custom Location with the specified Resource Name in the specified Reso
 ```
 Update-AzCustomLocation -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AuthenticationType <String>] [-AuthenticationValue <String>] [-ClusterExtensionId <String[]>]
- [-DisplayName <String>] [-HostResourceId <String>] [-IdentityType <String>] [-Namespace <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzCustomLocation -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzCustomLocation -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DisplayName <String>] [-EnableSystemAssignedIdentity <Boolean>] [-HostResourceId <String>]
+ [-Namespace <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzCustomLocation -InputObject <ICustomLocationIdentity> [-AuthenticationType <String>]
  [-AuthenticationValue <String>] [-ClusterExtensionId <String[]>] [-DisplayName <String>]
- [-HostResourceId <String>] [-IdentityType <String>] [-Namespace <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableSystemAssignedIdentity <Boolean>] [-HostResourceId <String>] [-Namespace <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
+Update a Custom Location in the specified Subscription and Resource Group
 
 ## EXAMPLES
 
 ### Example 1: Updates a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
 ```powershell
-Update-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster_1 -ClusterExtensionId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster/providers/Microsoft.KubernetesConfiguration/extensions/azps_test_extension" -HostResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster" -Namespace arc
+$HostResourceId = (Get-AzConnectedKubernetes -ClusterName azps-connect -ResourceGroupName azps_test_cluster).Id
+$ClusterExtensionId = (Get-AzKubernetesExtension -ClusterName azps-connect -ClusterType ConnectedClusters -ResourceGroupName azps_test_cluster -Name azps-extension).Id
+Update-AzCustomLocation -ResourceGroupName azps_test_cluster -Name azps-customlocation -ClusterExtensionId $ClusterExtensionId -HostResourceId $HostResourceId -Namespace azps-namespace -Tag @{"Key1"="Value1"}
 ```
 
 ```output
-Location Name                Namespace
--------- ----                ----
-eastus   azps_test_cluster_1 arc
+Location Name                Namespace      ResourceGroupName
+-------- ----                ---------      -----------------
+eastus   azps-customlocation azps-namespace azps_test_cluster
 ```
 
 Updates a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
 
 ### Example 2: Updates a Custom Location.
 ```powershell
-Get-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster | Update-AzCustomLocation
+$obj = Get-AzCustomLocation -ResourceGroupName azps_test_cluster -Name azps-customlocation
+Update-AzCustomLocation -InputObject $obj -Tag @{"Key1"="Value1"}
 ```
 
 ```output
-Location Name                Namespace
--------- ----                ----
-eastus   azps_test_cluster_1 arc
+Location Name                Namespace      ResourceGroupName
+-------- ----                ---------      -----------------
+eastus   azps-customlocation azps-namespace azps_test_cluster
 ```
 
 Updates a Custom Location.
 
+### Example 3: Updates a Custom Location with disable system assigned identity
+```powershell
+Update-AzCustomLocation -Name azps-customlocation -ResourceGroupName group01 -EnableSystemAssignedIdentity $false -Tag @{"aaa"= "111"}
+```
+
+```output
+AuthenticationType           : 
+AuthenticationValue          : 
+ClusterExtensionId           : {/subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/group01/providers/Microsoft.Kubernetes/ConnectedClusters/azps- 
+                               connect/providers/Microsoft.KubernetesConfiguration/extensions/azps-extension}
+DisplayName                  : 
+HostResourceId               : /subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/group01/providers/Microsoft.Kubernetes/connectedClusters/azps-c 
+                               onnect
+HostType                     : Kubernetes
+Id                           : /subscriptions/11111111-2222-3333-4444-123456789101/resourcegroups/group01/providers/microsoft.extendedlocation/customlocations/az 
+                               ps-customlocation
+IdentityPrincipalId          : 
+IdentityTenantId             : 
+IdentityType                 : None
+Location                     : eastus
+Name                         : azps-customlocation
+Namespace                    : azps-namespace
+ProvisioningState            : Succeeded
+ResourceGroupName            : group01
+SystemDataCreatedAt          : 4/30/2024 7:57:50 AM
+SystemDataCreatedBy          : user@example.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 4/30/2024 8:08:55 AM
+SystemDataLastModifiedBy     : user@example.com
+SystemDataLastModifiedByType : User
+Tag                          : {
+                                 "aaa": "111"
+                               }
+Type                         : Microsoft.ExtendedLocation/customLocations
+```
+
+This command updates a Custom Location with disable system assigned identity.
+
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AuthenticationType
 The type of the Custom Locations authentication
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -93,7 +139,7 @@ The kubeconfig value.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -108,7 +154,7 @@ Contains the reference to the add-on that contains charts to deploy CRDs and ope
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -119,7 +165,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -138,7 +185,22 @@ Display name for the Custom Locations location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -154,22 +216,7 @@ The Custom Locations RP will perform a checkAccess API for listAdminCredentials 
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-The identity type.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -181,7 +228,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
@@ -195,42 +241,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 Custom Locations name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -245,7 +261,22 @@ Kubernetes namespace that will be created on the specified cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -261,7 +292,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -276,7 +307,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -287,11 +318,11 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -341,21 +372,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation
+### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocation
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<ICustomLocationIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ResourceName <String>]`: Custom Locations name.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS

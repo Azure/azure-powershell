@@ -14,33 +14,26 @@ Gets an Internet Gateway Rule resource.
 
 ### List1 (Default)
 ```
-Get-AzNetworkFabricInternetGatewayRule [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+Get-AzNetworkFabricInternetGatewayRule [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzNetworkFabricInternetGatewayRule -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzNetworkFabricInternetGatewayRule -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzNetworkFabricInternetGatewayRule -InputObject <IManagedNetworkFabricIdentity>
- [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,37 +41,49 @@ Gets an Internet Gateway Rule resource.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: List Internet Gateway Rules by Subscription
+```powershell
 Get-AzNetworkFabricInternetGatewayRule -SubscriptionId $subscriptionId
 ```
 
-### EXAMPLE 2
+```output
+Location    Name                          SystemDataCreatedAt SystemDataCreatedBy        SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy      SystemDataLastModifiedByType
+--------    ----                          ------------------- -------------------        ----------------------- ------------------------ ------------------------      ----
+eastus2euap nfcfab3-4-1-GF1-infra-system  09/21/2023 08:47:10 <identity>                 Application             09/21/2023 08:47:22      <identity>                    App…
+eastus2euap nfa-tool-ts-GA-IGwRule081023  08/10/2023 11:05:30 <identity>                 User                    09/04/2023 15:35:53      <identity>                    App…
+eastus2euap nfcfab1-4-1-BF-infra-system   09/22/2023 02:33:21 <identity>                 Application             09/22/2023 02:33:29      <identity>                    App…
+eastus      controller092123-infra-system 09/21/2023 12:14:52 <identity>                 Application             09/21/2023 12:15:03      <identity>                    App…
 ```
+
+This command lists all the Internet Gateway Rules under the given Subscription.
+
+### Example 2: List Internet Gateway Rules by Resource Group
+```powershell
 Get-AzNetworkFabricInternetGatewayRule -ResourceGroupName $resourceGroupName
 ```
 
-### EXAMPLE 3
+```output
+Annotation Id
+---------- --
+           /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/InternetGatewayRules/controller092123…
 ```
+
+This command lists all the Internet Gateway Rules under the given Resource Group.
+
+### Example 3: Get Internet Gateway Rule
+```powershell
 Get-AzNetworkFabricInternetGatewayRule -Name $name -ResourceGroupName $resourceGroupName
 ```
 
-## PARAMETERS
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+```output
+Annotation Id
+---------- --
+           /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/InternetGatewayRules/controller092123…
 ```
+
+This command gets details of the given Internet Gateway Rule.
+
+## PARAMETERS
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -96,39 +101,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
@@ -153,51 +127,6 @@ Aliases: InternetGatewayRuleName
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -229,7 +158,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -240,46 +169,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayRule
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IManagedNetworkFabricIdentity\>: Identity Parameter
-  \[AccessControlListName \<String\>\]: Name of the Access Control List.
-  \[ExternalNetworkName \<String\>\]: Name of the External Network.
-  \[IPCommunityName \<String\>\]: Name of the IP Community.
-  \[IPExtendedCommunityName \<String\>\]: Name of the IP Extended Community.
-  \[IPPrefixName \<String\>\]: Name of the IP Prefix.
-  \[Id \<String\>\]: Resource identity path
-  \[InternalNetworkName \<String\>\]: Name of the Internal Network.
-  \[InternetGatewayName \<String\>\]: Name of the Internet Gateway.
-  \[InternetGatewayRuleName \<String\>\]: Name of the Internet Gateway rule.
-  \[L2IsolationDomainName \<String\>\]: Name of the L2 Isolation Domain.
-  \[L3IsolationDomainName \<String\>\]: Name of the L3 Isolation Domain.
-  \[NeighborGroupName \<String\>\]: Name of the Neighbor Group.
-  \[NetworkDeviceName \<String\>\]: Name of the Network Device.
-  \[NetworkDeviceSkuName \<String\>\]: Name of the Network Device SKU.
-  \[NetworkFabricControllerName \<String\>\]: Name of the Network Fabric Controller.
-  \[NetworkFabricName \<String\>\]: Name of the Network Fabric.
-  \[NetworkFabricSkuName \<String\>\]: Name of the Network Fabric SKU.
-  \[NetworkInterfaceName \<String\>\]: Name of the Network Interface.
-  \[NetworkPacketBrokerName \<String\>\]: Name of the Network Packet Broker.
-  \[NetworkRackName \<String\>\]: Name of the Network Rack.
-  \[NetworkTapName \<String\>\]: Name of the Network Tap.
-  \[NetworkTapRuleName \<String\>\]: Name of the Network Tap Rule.
-  \[NetworkToNetworkInterconnectName \<String\>\]: Name of the Network to Network Interconnect.
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[RoutePolicyName \<String\>\]: Name of the Route Policy.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-The value must be an UUID.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabricinternetgatewayrule](https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabricinternetgatewayrule)
-

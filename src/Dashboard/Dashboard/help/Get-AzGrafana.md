@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Dashboard-help.xml
 Module Name: Az.Dashboard
 online version: https://learn.microsoft.com/powershell/module/az.dashboard/get-azgrafana
 schema: 2.0.0
@@ -14,7 +14,8 @@ Get the properties of a specific workspace for Grafana resource.
 
 ### List (Default)
 ```
-Get-AzGrafana [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzGrafana [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -23,14 +24,15 @@ Get-AzGrafana -Name <String> -ResourceGroupName <String> [-SubscriptionId <Strin
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzGrafana -InputObject <IDashboardIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### List1
 ```
 Get-AzGrafana -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzGrafana -InputObject <IDashboardIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -81,7 +83,8 @@ Get the properties of a specific workspace for Grafana resource.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -147,7 +150,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
@@ -170,20 +173,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDashboardIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[PrivateEndpointConnectionName <String>]`: The private endpoint connection name of Azure Managed Grafana.
-  - `[PrivateLinkResourceName <String>]`: 
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[WorkspaceName <String>]`: The workspace name of Azure Managed Grafana.
-
 ## RELATED LINKS
-

@@ -15,7 +15,8 @@ Reimage an Azure virtual machine.
 ```
 Invoke-AzVMReimage [-ResourceGroupName] <String> [-VMName] <String> [-TempDisk] [-AsJob]
  [-ExactVersion <String>] [-CustomData <String>] [-AdminPassword <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +33,7 @@ This command reimages the virtual machine named VirtualMachine07 in ResourceGrou
 
 ### Example 2
 ```powershell
-$SecurePassword = ConvertTo-SecureString "password" -AsPlainText 
+$SecurePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Invoke-AzVMReimage -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -TempDisk -CustomData $CustomData -AdminPassword $SecurePassword -ExactVersion "10.0.14393.0"
 ```
 

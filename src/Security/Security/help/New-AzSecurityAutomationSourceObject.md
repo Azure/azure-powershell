@@ -14,13 +14,14 @@ Creates security automation source object
 
 ### SecurityAutomationSource (Default)
 ```
-New-AzSecurityAutomationSourceObject [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzSecurityAutomationSourceObject [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### SecurityAutomationActionLogicApp
 ```
-New-AzSecurityAutomationSourceObject -EventSource <String> -RuleSets <PSSecurityAutomationRuleSet[]>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzSecurityAutomationSourceObject -EventSource <String> -RuleSet <PSSecurityAutomationRuleSet[]>
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +42,7 @@ Creates security automation source object
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -57,7 +58,7 @@ The triggered Logic App Azure Resource ID.
 This can also reside on other subscriptions, given that you have permissions to trigger the Logic App
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SecurityAutomationActionLogicApp
 Aliases:
 
@@ -68,11 +69,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuleSets
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuleSet
 The Logic App trigger URI endpoint (it will not be included in any response)
 
 ```yaml
-Type: PSSecurityAutomationRuleSet[]
+Type: Microsoft.Azure.Commands.Security.Models.Automations.PSSecurityAutomationRuleSet[]
 Parameter Sets: SecurityAutomationActionLogicApp
 Aliases:
 

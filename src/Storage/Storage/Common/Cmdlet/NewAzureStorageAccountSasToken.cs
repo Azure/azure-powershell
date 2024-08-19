@@ -62,11 +62,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         public override int? ConcurrentTaskCount { get; set; }
         public override string TagCondition { get; set; }
 
-        protected override bool UseTrack2Sdk()
-        {
-            return true;                                                                                                                                                                                                                                                                                              
-        }
-
         /// <summary>
         /// Initializes a new instance of the NewAzureStorageAccountSasTokenCommand class.
         /// </summary>

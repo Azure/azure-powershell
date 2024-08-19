@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Initializes a new instance of the Replication class.
         /// </summary>
 
+        /// <param name="replicationId">UUID v4 used to identify the replication.
+        /// </param>
+
         /// <param name="endpointType">Indicates whether the local volume is the source or destination for the
         /// Volume Replication
         /// Possible values include: &#39;src&#39;, &#39;dst&#39;</param>
@@ -36,9 +39,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="remoteVolumeRegion">The remote region for the other end of the Volume Replication.
         /// </param>
-        public Replication(string remoteVolumeResourceId, string endpointType = default(string), string replicationSchedule = default(string), string remoteVolumeRegion = default(string))
+        public Replication(string remoteVolumeResourceId, string replicationId = default(string), string endpointType = default(string), string replicationSchedule = default(string), string remoteVolumeRegion = default(string))
 
         {
+            this.ReplicationId = replicationId;
             this.EndpointType = endpointType;
             this.ReplicationSchedule = replicationSchedule;
             this.RemoteVolumeResourceId = remoteVolumeResourceId;
@@ -51,6 +55,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets uUID v4 used to identify the replication.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "replicationId")]
+        public string ReplicationId {get; private set; }
 
         /// <summary>
         /// Gets or sets indicates whether the local volume is the source or
@@ -87,6 +97,21 @@ namespace Microsoft.Azure.Management.NetApp.Models
             if (this.RemoteVolumeResourceId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "RemoteVolumeResourceId");
+            }
+            if (this.ReplicationId != null)
+            {
+                if (this.ReplicationId.Length > 36)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "ReplicationId", 36);
+                }
+                if (this.ReplicationId.Length < 36)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "ReplicationId", 36);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(this.ReplicationId, "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "ReplicationId", "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$");
+                }
             }
 
 

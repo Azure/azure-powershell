@@ -19,6 +19,57 @@
 --->
 
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
+* Onboarded `Microsoft.App/managedEnvironments` to private link cmdlets
+
+## Version 7.8.0
+* Added new cmdlets to support Save & Commit (AzureFirewallPolicy draft)
+    - `New-AzFirewallPolicyDraft`
+    - `New-AzFirewallPolicyRuleCollectionGroupDraft`
+    - `Get-AzFirewallPolicyDraft`
+    - `Get-AzFirewallPolicyRuleCollectionGroupDraft`
+    - `Set-AzFirewallPolicyDraft`
+    - `Set-AzFirewallPolicyRuleCollectionGroupDraft`
+    - `Remove-AzFirewallPolicyDraft`
+    - `Remove-AzFirewallPolicyRuleCollectionGroupDraft`
+    - `Deploy-AzFirewallPolicy`
+* Added 'NoHealthyBackendsBehavior' to 'PSProbe', and updated corresponding cmdlets.
+    - `New-AzLoadBalancerProbeConfig`
+    - `Add-AzLoadBalancerProbeConfig`
+    - `Set-AzLoadBalancerProbeConfig`
+* Upgraded API version to `2024-01-01`
+* Updated cmdlet to add 'Premium' as a valid value for 'Sku' parameter and 'enableSessionRecording' feature for Bastion resources
+    - `New-AzBastion`
+    - `Set-AzBastion`
+* Updated cmdlet `Add-AzVirtualNetworkSubnetConfig`, `Set-AzVirtualNetworkSubnetConfig` and `New-AzVirtualNetworkSubnetConfig` to support Network Identifier for Subnet Service Endpoint.
+* Added cmdlet `Restart-AzNetworkVirtualAppliance` for allowing a restart of Network Virtual Appliance instances from the customer subscription.
+* Fixed a bug in `Update-AzNetworkVirtualApplianceConnection`
+* Updated the Azure Firewall and Azure Firewall Policy setter for their respective Private Range properties
+  - Fixed a bug that prevented using /32 in private ranges on classic Azure Firewalls
+  - Updated the error message to provide a suggested private range when the supplied range is not correctly masked by the host identifier
+  - Added a new Allocate function for Azure Firewall that allows allocating customer public ip address to the firewall
+  - Fixed a bug that caused firewalls and policies to lose their private range property value when using their 'Get' cmdlets
+
+## Version 7.6.0
+* Added cmdlet `New-AzVirtualApplianceNetworkProfile` to build network profile for network virtual appliance and pass as a parameter.
+* Added cmdlet `New-AzVirtualApplianceNetworkInterfaceConfiguration` and `New-AzVirtualApplianceIpConfiguration` to build `New-AzVirtualApplianceNetworkProfile`.
+* Added support for ApplicationGatewaySkuFamily 
+* Updated cmdlet to add the property of JSChallengeCookieExpirationInMins
+    - `New-AzApplicationGatewayFirewallPolicySetting`
+* Added optional property `HeaderValueMatcher` to `New-AzApplicationGatewayRewriteRuleHeaderConfiguration`
+* Added new cmdlet `New-AzApplicationGatewayHeaderValueMatcher` to support for the new property `HeaderValueMatcher`
+* Added new cmdlet `Update-AzVirtualApplianceInboundSecurityRule` to support Inbound Security Rule for Network Virtual Appliance
+* Added new cmdlet `New-AzVirtualApplianceInboundSecurityRulesProperty` to support for the property 'rules' of Inbound Security Rules
+* Added AdminState parameter to Load Balancer Backend Address
+    - `New-AzLoadBalancerBackendAddressConfig`
+* Updated PS SDK to older SDK removing identity field
+
+## Version 7.5.0
+* Added cmdlet `Convert-AzNetworkWatcherClassicConnectionMonitor` for converting a classic connection monitor to V2 connection monitor.
+
+## Version 7.4.1
+* Fixed a bug caused by the introduction of the new property `GlobalConfiguration` in `PSApplicationGateway`
+* Added support for Bring Your Own Public IP feature for Hub Firewalls
 
 ## Version 7.4.0
 * Fixed a few minor issues

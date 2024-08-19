@@ -14,7 +14,8 @@ Create an in-memory object for AzureFunctionReceiver.
 
 ```
 New-AzActionGroupAzureFunctionReceiverObject -FunctionAppResourceId <String> -FunctionName <String>
- -HttpTriggerUrl <String> -Name <String> [-UseCommonAlertSchema <Boolean>] [<CommonParameters>]
+ -HttpTriggerUrl <String> -Name <String> [-UseCommonAlertSchema <Boolean>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -19,7 +19,15 @@ Describe 'Get-AzVMwareVirtualMachine' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'GetViaIdentityPrivateCloud' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'Get' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GetViaIdentityCluster' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 

@@ -15,15 +15,15 @@ Creates a workspace key.
 ### CreateByNameParameterSet (Default)
 ```
 New-AzSynapseWorkspaceKey [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
- -EncryptionKeyIdentifier <String> [-Activate] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -EncryptionKeyIdentifier <String> [-Activate] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByParentObjectParameterSet
 ```
 New-AzSynapseWorkspaceKey -WorkspaceObject <PSSynapseWorkspace> -Name <String>
- -EncryptionKeyIdentifier <String> [-Activate] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -EncryptionKeyIdentifier <String> [-Activate] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

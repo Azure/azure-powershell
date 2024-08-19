@@ -17,7 +17,8 @@ Copy a blob synchronously.
 Copy-AzStorageBlob [-SrcBlob] <String> -SrcContainer <String> -DestContainer <String> [-DestBlob <String>]
  [-DestBlobType <String>] [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>]
  [-EncryptionScope <String>] [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force] [-AsJob]
- [-TagCondition <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TagCondition <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BlobInstance
@@ -25,7 +26,8 @@ Copy-AzStorageBlob [-SrcBlob] <String> -SrcContainer <String> -DestContainer <St
 Copy-AzStorageBlob [-BlobBaseClient <BlobBaseClient>] -DestContainer <String> [-DestBlob <String>]
  [-DestBlobType <String>] [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>]
  [-EncryptionScope <String>] [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force] [-AsJob]
- [-TagCondition <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TagCondition <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UriPipeline
@@ -33,7 +35,8 @@ Copy-AzStorageBlob [-BlobBaseClient <BlobBaseClient>] -DestContainer <String> [-
 Copy-AzStorageBlob -AbsoluteUri <String> -DestContainer <String> -DestBlob <String> [-DestBlobType <String>]
  [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>] [-EncryptionScope <String>]
  [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force] [-AsJob] [-TagCondition <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

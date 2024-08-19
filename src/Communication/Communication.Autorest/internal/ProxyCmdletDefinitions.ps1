@@ -20,21 +20,17 @@ Lists all of the available REST API operations of the Microsoft.Communication pr
 .Description
 Lists all of the available REST API operations of the Microsoft.Communication provider.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.communication/get-azcommunicationoperation
 #>
 function Get-AzCommunicationOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -42,7 +38,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -92,6 +89,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             List = 'Az.Communication.private\Get-AzCommunicationOperation_List';
         }
@@ -101,6 +99,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -109,15 +108,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

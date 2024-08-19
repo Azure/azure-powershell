@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="type">Backup management type for this container.
-        /// Possible values include: 'Invalid', 'BackupProtectedItemCountSummary',
-        /// 'BackupProtectionContainerCountSummary'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;BackupProtectedItemCountSummary&#39;,
+        /// &#39;BackupProtectionContainerCountSummary&#39;</param>
         public BMSBackupSummariesQueryObject(string type = default(string))
 
         {

@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the DataMigration service.
 
 ---
-## Status
-[![Az.DataMigration](https://img.shields.io/powershellgallery/v/Az.DataMigration.svg?style=flat-square&label=Az.DataMigration "Az.DataMigration")](https://www.powershellgallery.com/packages/Az.DataMigration/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

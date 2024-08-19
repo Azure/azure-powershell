@@ -18,25 +18,22 @@ New-AzNetworkFabricL3Domain -Name <String> -ResourceGroupName <String> [-Subscri
  -Location <String> -NetworkFabricId <String> [-AggregateRouteConfiguration <IAggregateRouteConfiguration>]
  [-Annotation <String>] [-ConnectedSubnetRoutePolicy <IConnectedSubnetRoutePolicy>]
  [-RedistributeConnectedSubnet <String>] [-RedistributeStaticRoute <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzNetworkFabricL3Domain -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzNetworkFabricL3Domain -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,12 +41,12 @@ Create isolation domain resources for layer 3 connectivity between compute nodes
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Create the L3 Isolation Domain Resource
+```powershell
 $connectedSubnetRoutePolicy = @{
     ExportRoutePolicy = @(@{
-        ExportIpv4RoutePolicyId = "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName"
-        ExportIpv6RoutePolicyId = "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName"
+        ExportIpv4RoutePolicyId = "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName"
+        ExportIpv6RoutePolicyId = "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName"
     })
 }
 $aggregateRouteConfiguration = @{
@@ -60,15 +57,22 @@ $aggregateRouteConfiguration = @{
         Prefix = "2fff::/64"
     })
 }
-```
 
 New-AzNetworkFabricL3Domain -Name $name -ResourceGroupName $resourceGroupName -Location $location -NetworkFabricId $nfId -AggregateRouteConfiguration $aggregateRouteConfiguration -RedistributeConnectedSubnet "True" -RedistributeStaticRoute "True" -ConnectedSubnetRoutePolicy $connectedSubnetRoutePolicy
+```
+
+```output
+AdministrativeState AggregateRouteConfiguration
+------------------- ---------------------------
+Disabled
+```
+
+This command creates the L3 Isolation Domain resource.
 
 ## PARAMETERS
 
 ### -AggregateRouteConfiguration
 Aggregate route configurations.
-To construct, see NOTES section for AGGREGATEROUTECONFIGURATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAggregateRouteConfiguration
@@ -107,29 +111,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ConnectedSubnetRoutePolicy
 Connected Subnet RoutePolicy
-To construct, see NOTES section for CONNECTEDSUBNETROUTEPOLICY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IConnectedSubnetRoutePolicy
@@ -151,36 +139,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -274,52 +232,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -383,7 +296,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -442,25 +355,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3IsolationDomain
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-AGGREGATEROUTECONFIGURATION \<IAggregateRouteConfiguration\>: Aggregate route configurations.
-  \[Ipv4Route \<List\<IAggregateRoute\>\>\]: List of IPv4 Route prefixes.
-    Prefix \<String\>: IPv4 Prefix of the aggregate Ipv4Route.
-  \[Ipv6Route \<List\<IAggregateRoute\>\>\]: List of Ipv6Routes prefixes.
-
-CONNECTEDSUBNETROUTEPOLICY \<IConnectedSubnetRoutePolicy\>: Connected Subnet RoutePolicy
-  \[ExportRoutePolicy \<IL3ExportRoutePolicy\>\]: Array of ARM Resource ID of the RoutePolicies.
-    \[ExportIpv4RoutePolicyId \<String\>\]: ARM Resource ID of the RoutePolicy.
-    \[ExportIpv6RoutePolicyId \<String\>\]: ARM Resource ID of the RoutePolicy.
-  \[ExportRoutePolicyId \<String\>\]: ARM Resource ID of the Route Policy.
-This is used for the backward compatibility.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabricl3domain](https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabricl3domain)
-

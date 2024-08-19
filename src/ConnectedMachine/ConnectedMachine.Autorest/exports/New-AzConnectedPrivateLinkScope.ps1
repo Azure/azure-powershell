@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-Creates (or updates) a Azure Arc PrivateLinkScope.
+Create (or updates) a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 .Description
-Creates (or updates) a Azure Arc PrivateLinkScope.
+Create (or updates) a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 .Example
 New-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName -PublicNetworkAccess "Enabled" -Location $location
@@ -36,8 +36,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
+  [BaseProvider <String>]: The name of the base Resource Provider.
+  [BaseResourceName <String>]: The name of the base resource.
+  [BaseResourceType <String>]: The name of the base Resource Type.
   [ExtensionName <String>]: The name of the machine extension.
   [ExtensionType <String>]: The extensionType of the Extension being received.
+  [GatewayName <String>]: The name of the Gateway.
   [GroupName <String>]: The name of the private link resource.
   [Id <String>]: Resource identity path
   [LicenseName <String>]: The name of the license.
@@ -55,12 +59,13 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
+  [SettingsResourceName <String>]: The name of the settings resource.
   [SubscriptionId <String>]: The ID of the target subscription.
   [Version <String>]: The version of the Extension being received.
 
 PARAMETER <IHybridComputePrivateLinkScope>: An Azure Arc PrivateLinkScope definition.
   Location <String>: Resource location
-  [Tag <IPrivateLinkScopesResourceTags>]: Resource tags
+  [Tags <IPrivateLinkScopesResourceTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.
   [PublicNetworkAccess <String>]: Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
 .Link
@@ -105,7 +110,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
@@ -113,7 +117,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScope]
     # An Azure Arc PrivateLinkScope definition.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -126,7 +129,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Enabled", "Disabled", "SecuredByPerimeter")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
     # Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
@@ -235,7 +238,13 @@ begin {
             CreateViaJsonString = 'Az.ConnectedMachine.private\New-AzConnectedPrivateLinkScope_CreateViaJsonString';
         }
         if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

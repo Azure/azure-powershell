@@ -58,6 +58,12 @@ namespace Microsoft.Azure.Commands.Common
                     // this gets called at module load time (allows you to change the http pipeline)
                     OnModuleLoad = module.OnModuleLoad,
 
+                    // this gets called to sanitize the output object
+                    SanitizerHandler = module.SanitizerHandler,
+
+                    // this gets called to get the sanitizer info
+                    GetTelemetryInfo = module.GetTelemetryInfo,
+
                     // this gets called before the generated cmdlet makes a call across the wire (allows you to change the HTTP pipeline)
                     OnNewRequest = ContextAdapter.Instance.OnNewRequest,
 

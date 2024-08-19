@@ -82,8 +82,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// network setting
         /// </param>
 
-        /// <param name="extendedLocation">Extended location of the VM recovery point,
-        /// should be null if VM is in public cloud
+        /// <param name="extendedLocation">Extended location of the VM recovery point, should be null if VM is in
+        /// public cloud
         /// </param>
         public IaasVMRecoveryPoint(string recoveryPointType = default(string), System.DateTime? recoveryPointTime = default(System.DateTime?), string recoveryPointAdditionalInfo = default(string), string sourceVMStorageType = default(string), bool? isSourceVMEncrypted = default(bool?), KeyAndSecretDetails keyAndSecret = default(KeyAndSecretDetails), bool? isInstantIlrSessionActive = default(bool?), System.Collections.Generic.IList<RecoveryPointTierInformationV2> recoveryPointTierDetails = default(System.Collections.Generic.IList<RecoveryPointTierInformationV2>), bool? isManagedVirtualMachine = default(bool?), string virtualMachineSize = default(string), bool? originalStorageAccountOption = default(bool?), string osType = default(string), RecoveryPointDiskConfiguration recoveryPointDiskConfiguration = default(RecoveryPointDiskConfiguration), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IDictionary<string, RecoveryPointMoveReadinessInfo> recoveryPointMoveReadinessInfo = default(System.Collections.Generic.IDictionary<string, RecoveryPointMoveReadinessInfo>), string securityType = default(string), RecoveryPointProperties recoveryPointProperties = default(RecoveryPointProperties), bool? isPrivateAccessEnabledOnAnyDisk = default(bool?), ExtendedLocation extendedLocation = default(ExtendedLocation))
 
@@ -230,8 +230,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public bool? IsPrivateAccessEnabledOnAnyDisk {get; set; }
 
         /// <summary>
-        /// Gets or sets extended location of the VM recovery point,
-        /// should be null if VM is in public cloud
+        /// Gets or sets extended location of the VM recovery point, should be null if
+        /// VM is in public cloud
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "extendedLocation")]
         public ExtendedLocation ExtendedLocation {get; set; }

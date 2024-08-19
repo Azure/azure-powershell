@@ -16,7 +16,7 @@ Upsert an offer with multiple context details.
 ```
 New-AzMarketplacePrivateStoreCollectionOfferMultiContext -OfferId <String> -CollectionId <String>
  -PrivateStoreId <String> [-ETag <String>] [-PlansContext <IContextAndPlansDetails[]>]
- [-PropertiesOfferId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-PropertiesOfferId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ New-AzMarketplacePrivateStoreCollectionOfferMultiContext -OfferId <String> -Coll
 ```
 New-AzMarketplacePrivateStoreCollectionOfferMultiContext -OfferId <String> -CollectionId <String>
  -PrivateStoreInputObject <IMarketplaceIdentity> [-ETag <String>] [-PlansContext <IContextAndPlansDetails[]>]
- [-PropertiesOfferId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-PropertiesOfferId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ New-AzMarketplacePrivateStoreCollectionOfferMultiContext -OfferId <String> -Coll
 ```
 New-AzMarketplacePrivateStoreCollectionOfferMultiContext -OfferId <String>
  -CollectionInputObject <IMarketplaceIdentity> [-ETag <String>] [-PlansContext <IContextAndPlansDetails[]>]
- [-PropertiesOfferId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-PropertiesOfferId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ New-AzMarketplacePrivateStoreCollectionOfferMultiContext -OfferId <String>
 ```
 New-AzMarketplacePrivateStoreCollectionOfferMultiContext -OfferId <String> -InputObject <IMarketplaceIdentity>
  [-ETag <String>] [-PlansContext <IContextAndPlansDetails[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,13 +48,12 @@ Upsert an offer with multiple context details.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Upsert an offer with multiple contexts
+```powershell
 $plan1 = @{
     context = "1f58b5dd-313c-42ed-84fc-f1e351bba7fb"
     planId = "plan1"
 }
-```
 
 $plan2 = @{
     context = "ab3de7bc-7a6e-4e9f-a34a-f6922df453e4"
@@ -64,6 +63,9 @@ $plan2 = @{
 $plans = @($plan1,$plan2)
 
 New-AzMarketplacePrivateStoreCollectionOfferMultiContext -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa01f1 -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6  -OfferId test_pmc2pc1.vm_4plans -PlansContext $plans
+```
+
+Upsert an offer with multiple context details.
 
 ## PARAMETERS
 
@@ -71,7 +73,7 @@ New-AzMarketplacePrivateStoreCollectionOfferMultiContext -CollectionId fdb889a1-
 The collection ID
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: OfferExpanded, OfferViaIdentityPrivateStoreExpanded
 Aliases:
 
@@ -84,10 +86,9 @@ Accept wildcard characters: False
 
 ### -CollectionInputObject
 Identity Parameter
-To construct, see NOTES section for COLLECTIONINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: IMarketplaceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
 Parameter Sets: OfferViaIdentityCollectionExpanded
 Aliases:
 
@@ -103,7 +104,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -118,7 +119,7 @@ Accept wildcard characters: False
 The offer's eTag.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -131,10 +132,9 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: IMarketplaceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
 Parameter Sets: OfferViaIdentityExpanded
 Aliases:
 
@@ -149,7 +149,7 @@ Accept wildcard characters: False
 The offer ID to update or delete
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -162,10 +162,9 @@ Accept wildcard characters: False
 
 ### -PlansContext
 .
-To construct, see NOTES section for PLANSCONTEXT properties and create a hash table.
 
 ```yaml
-Type: IContextAndPlansDetails[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IContextAndPlansDetails[]
 Parameter Sets: (All)
 Aliases:
 
@@ -180,7 +179,7 @@ Accept wildcard characters: False
 The store ID - must use the tenant ID
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: OfferExpanded
 Aliases:
 
@@ -193,10 +192,9 @@ Accept wildcard characters: False
 
 ### -PrivateStoreInputObject
 Identity Parameter
-To construct, see NOTES section for PRIVATESTOREINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: IMarketplaceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
 Parameter Sets: OfferViaIdentityPrivateStoreExpanded
 Aliases:
 
@@ -207,26 +205,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PropertiesOfferId
 The offer ID which contains the plans.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: OfferExpanded, OfferViaIdentityPrivateStoreExpanded, OfferViaIdentityCollectionExpanded
 Aliases:
 
@@ -241,7 +224,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -257,7 +240,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -274,45 +257,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IOffer
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-COLLECTIONINPUTOBJECT \<IMarketplaceIdentity\>: Identity Parameter
-  \[AdminRequestApprovalId \<String\>\]: The admin request approval ID to get create or update
-  \[CollectionId \<String\>\]: The collection ID
-  \[Id \<String\>\]: Resource identity path
-  \[OfferId \<String\>\]: The offer ID to update or delete
-  \[PrivateStoreId \<String\>\]: The store ID - must use the tenant ID
-  \[RequestApprovalId \<String\>\]: The request approval ID to get create or update
-
-INPUTOBJECT \<IMarketplaceIdentity\>: Identity Parameter
-  \[AdminRequestApprovalId \<String\>\]: The admin request approval ID to get create or update
-  \[CollectionId \<String\>\]: The collection ID
-  \[Id \<String\>\]: Resource identity path
-  \[OfferId \<String\>\]: The offer ID to update or delete
-  \[PrivateStoreId \<String\>\]: The store ID - must use the tenant ID
-  \[RequestApprovalId \<String\>\]: The request approval ID to get create or update
-
-PLANSCONTEXT \<IContextAndPlansDetails\[\]\>: .
-  \[Context \<String\>\]: Plan's context, e.g.
-subscription ID, tenant ID.
-  \[PlanId \<List\<String\>\>\]: List of plan IDs.
-
-PRIVATESTOREINPUTOBJECT \<IMarketplaceIdentity\>: Identity Parameter
-  \[AdminRequestApprovalId \<String\>\]: The admin request approval ID to get create or update
-  \[CollectionId \<String\>\]: The collection ID
-  \[Id \<String\>\]: Resource identity path
-  \[OfferId \<String\>\]: The offer ID to update or delete
-  \[PrivateStoreId \<String\>\]: The store ID - must use the tenant ID
-  \[RequestApprovalId \<String\>\]: The request approval ID to get create or update
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestorecollectionoffermulticontext](https://learn.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestorecollectionoffermulticontext)
-

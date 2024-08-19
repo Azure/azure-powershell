@@ -15,13 +15,15 @@ Regenerate SSH password of a specified local user in a storage account.
 ### AccountName (Default)
 ```
 New-AzStorageLocalUserSshPassword [-ResourceGroupName] <String> [-StorageAccountName] <String>
- -UserName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -UserName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 New-AzStorageLocalUserSshPassword -StorageAccount <PSStorageAccount> -UserName <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UserObject

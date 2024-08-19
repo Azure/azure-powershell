@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>A list of NSX dhcp entities</summary>
+    /// <summary>The response of a WorkloadNetworkDhcp list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(WorkloadNetworkDhcpListTypeConverter))]
     public partial class WorkloadNetworkDhcpList
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             AfterDeserializePSObject(content);
         }
     }
-    /// A list of NSX dhcp entities
+    /// The response of a WorkloadNetworkDhcp list operation.
     [System.ComponentModel.TypeConverter(typeof(WorkloadNetworkDhcpListTypeConverter))]
     public partial interface IWorkloadNetworkDhcpList
 

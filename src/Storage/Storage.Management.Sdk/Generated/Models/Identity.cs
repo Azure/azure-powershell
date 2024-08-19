@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </param>
 
         /// <param name="type">The identity type.
-        /// Possible values include: 'None', 'SystemAssigned', 'UserAssigned',
-        /// 'SystemAssigned,UserAssigned'</param>
+        /// Possible values include: &#39;None&#39;, &#39;SystemAssigned&#39;, &#39;UserAssigned&#39;,
+        /// &#39;SystemAssigned,UserAssigned&#39;</param>
 
         /// <param name="userAssignedIdentities">Gets or sets a list of key value pairs that describe the set of User
         /// Assigned identities that will be used with this storage account. The key is

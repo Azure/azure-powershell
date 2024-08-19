@@ -17,7 +17,8 @@ Sets the Azure SQL Server extension on a virtual machine.
 Set-AzVMSqlServerExtension [[-Version] <String>] [-ResourceGroupName] <String> [-VMName] <String>
  [[-Name] <String>] [[-AutoPatchingSettings] <AutoPatchingSettings>]
  [[-AutoBackupSettings] <AutoBackupSettings>] [[-KeyVaultCredentialSettings] <KeyVaultCredentialSettings>]
- [[-Location] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-Location] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -219,5 +220,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzVMSqlServerExtension](./Remove-AzVMSqlServerExtension.md)
 
 [Update-AzVM](./Update-AzVM.md)
-
-

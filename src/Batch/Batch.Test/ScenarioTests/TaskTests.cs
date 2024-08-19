@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -105,9 +106,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 mockContext =>
                 {
                     context = new ScenarioTestContext();
+                    //ScenarioTestHelpers.CreateTestPoolVirtualMachine(this, context, "mpiPool", targetDedicated: 2, targetLowPriority: 0);
+
                     ScenarioTestHelpers.CreateMpiPoolIfNotExists(this, context);
                     ScenarioTestHelpers.CreateTestJob(this, context, jobId, ScenarioTestHelpers.MpiPoolId);
-                    ScenarioTestHelpers.CreateTestTask(this, context, jobId, taskId, "cmd /c hostname", numInstances);
+                    ScenarioTestHelpers.CreateTestTask(this, context, jobId, taskId, "/bin/bash -c 'echo task'", numInstances);
                     ScenarioTestHelpers.WaitForTaskCompletion(this, context, jobId, taskId);
                 },
                 () =>

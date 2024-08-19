@@ -32,6 +32,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public int? AvailabilityZone { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAvailabilityPropertiesInternal)Availability).Zone; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAvailabilityPropertiesInternal)Availability).Zone = value ?? default(int); }
 
+        /// <summary>Backing field for <see cref="DnsZoneType" /> property.</summary>
+        private string _dnsZoneType;
+
+        /// <summary>The type of DNS zone to use.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string DnsZoneType { get => this._dnsZoneType; set => this._dnsZoneType = value; }
+
         /// <summary>Backing field for <see cref="Encryption" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryption _encryption;
 
@@ -47,8 +54,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         private System.Collections.Generic.List<string> _extendedNetworkBlock;
 
         /// <summary>
-        /// Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet
-        /// in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to
+        /// Array of additional networks noncontiguous with networkBlock. Networks must be
+        /// unique and non-overlapping across VNet in your subscription, on-premise, and
+        /// this privateCloud networkBlock attribute. Make sure the CIDR format conforms to
         /// (A.B.C.D/X).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
@@ -101,19 +109,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 
         /// <summary>The hosts</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> ManagementClusterHost { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)ManagementCluster).Host; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)ManagementCluster).Host = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> ManagementClusterHost { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).Host; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).Host = value ?? null /* arrayOf */; }
 
         /// <summary>The identity</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public int? ManagementClusterId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)ManagementCluster).ClusterId; }
+        public int? ManagementClusterId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).ClusterId; }
 
         /// <summary>The state of the cluster provisioning</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public string ManagementClusterProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)ManagementCluster).ProvisioningState; }
+        public string ManagementClusterProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).ProvisioningState; }
 
         /// <summary>The cluster size</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public int? ManagementClusterSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)ManagementCluster).ClusterSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)ManagementCluster).ClusterSize = value ?? default(int); }
+        public int? ManagementClusterSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).ClusterSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).ClusterSize = value ?? default(int); }
+
+        /// <summary>Name of the vsan datastore associated with the cluster</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        public string ManagementClusterVsanDatastoreName { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).VsanDatastoreName; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).VsanDatastoreName = value ?? null; }
 
         /// <summary>Internal Acessors for Availability</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAvailabilityProperties Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal.Availability { get => (this._availability = this._availability ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AvailabilityProperties()); set { {_availability = value;} } }
@@ -137,10 +149,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementCluster Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal.ManagementCluster { get => (this._managementCluster = this._managementCluster ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ManagementCluster()); set { {_managementCluster = value;} } }
 
         /// <summary>Internal Acessors for ManagementClusterId</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal.ManagementClusterId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)ManagementCluster).ClusterId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)ManagementCluster).ClusterId = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal.ManagementClusterId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).ClusterId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).ClusterId = value; }
 
         /// <summary>Internal Acessors for ManagementClusterProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal.ManagementClusterProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)ManagementCluster).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)ManagementCluster).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal.ManagementClusterProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).ProvisioningState = value; }
 
         /// <summary>Creates an new <see cref="PrivateCloudUpdateProperties" /> instance.</summary>
         public PrivateCloudUpdateProperties()
@@ -186,6 +198,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"zone",
         PossibleTypes = new [] { typeof(int) })]
         int? AvailabilityZone { get; set; }
+        /// <summary>The type of DNS zone to use.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The type of DNS zone to use.",
+        SerializedName = @"dnsZoneType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Public", "Private")]
+        string DnsZoneType { get; set; }
         /// <summary>Status of customer managed encryption key</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -199,8 +223,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string EncryptionStatus { get; set; }
         /// <summary>
-        /// Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet
-        /// in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to
+        /// Array of additional networks noncontiguous with networkBlock. Networks must be
+        /// unique and non-overlapping across VNet in your subscription, on-premise, and
+        /// this privateCloud networkBlock attribute. Make sure the CIDR format conforms to
         /// (A.B.C.D/X).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
@@ -209,7 +234,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to (A.B.C.D/X).",
+        Description = @"Array of additional networks noncontiguous with networkBlock. Networks must be
+        unique and non-overlapping across VNet in your subscription, on-premise, and
+        this privateCloud networkBlock attribute. Make sure the CIDR format conforms to
+        (A.B.C.D/X).",
         SerializedName = @"extendedNetworkBlocks",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> ExtendedNetworkBlock { get; set; }
@@ -336,7 +364,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Description = @"The state of the cluster provisioning",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Cancelled", "Deleting", "Updating", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Cancelled", "Deleting", "Updating")]
         string ManagementClusterProvisioningState { get;  }
         /// <summary>The cluster size</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
@@ -349,6 +377,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"clusterSize",
         PossibleTypes = new [] { typeof(int) })]
         int? ManagementClusterSize { get; set; }
+        /// <summary>Name of the vsan datastore associated with the cluster</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the vsan datastore associated with the cluster",
+        SerializedName = @"vsanDatastoreName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ManagementClusterVsanDatastoreName { get; set; }
 
     }
     /// The properties of a private cloud resource that may be updated
@@ -364,6 +403,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string AvailabilityStrategy { get; set; }
         /// <summary>The primary availability zone for the private cloud</summary>
         int? AvailabilityZone { get; set; }
+        /// <summary>The type of DNS zone to use.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Public", "Private")]
+        string DnsZoneType { get; set; }
         /// <summary>Customer managed key encryption, can be enabled or disabled</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryption Encryption { get; set; }
         /// <summary>The key vault where the encryption key is stored</summary>
@@ -372,8 +414,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string EncryptionStatus { get; set; }
         /// <summary>
-        /// Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet
-        /// in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to
+        /// Array of additional networks noncontiguous with networkBlock. Networks must be
+        /// unique and non-overlapping across VNet in your subscription, on-premise, and
+        /// this privateCloud networkBlock attribute. Make sure the CIDR format conforms to
         /// (A.B.C.D/X).
         /// </summary>
         System.Collections.Generic.List<string> ExtendedNetworkBlock { get; set; }
@@ -403,10 +446,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>The identity</summary>
         int? ManagementClusterId { get; set; }
         /// <summary>The state of the cluster provisioning</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Cancelled", "Deleting", "Updating", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Cancelled", "Deleting", "Updating")]
         string ManagementClusterProvisioningState { get; set; }
         /// <summary>The cluster size</summary>
         int? ManagementClusterSize { get; set; }
+        /// <summary>Name of the vsan datastore associated with the cluster</summary>
+        string ManagementClusterVsanDatastoreName { get; set; }
 
     }
 }

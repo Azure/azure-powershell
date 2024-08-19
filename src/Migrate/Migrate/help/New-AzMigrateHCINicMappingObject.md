@@ -13,8 +13,9 @@ Creates an object to update NIC properties of a replicating server.
 ## SYNTAX
 
 ```
-New-AzMigrateHCINicMappingObject -NicID <String> -TargetVirtualSwitchId <String>
- [-TargetTestVirtualSwitchId <String>] [-CreateAtTarget <String>] [<CommonParameters>]
+New-AzMigrateHCINicMappingObject -NicID <String> [-TargetVirtualSwitchId <String>]
+ [-TargetTestVirtualSwitchId <String>] [-CreateAtTarget <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,10 +24,19 @@ This object is provided as an input to the Set-AzMigrateServerReplication cmdlet
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Create NIC to migrate
+```powershell
 New-AzMigrateHCINicMappingObject -NicID a -TargetVirtualSwitchId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/external"
 ```
+
+```output
+NicId                    : a
+TargetNetworkId          : /subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/external
+TestNetworkId            : /subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/external
+SelectionTypeForFailover : SelectedByUser
+```
+
+Get NIC object to provide input for New-AzMigrateHCIServerReplication and Set-AzMigrateHCIServerReplication
 
 ## PARAMETERS
 
@@ -34,7 +44,7 @@ New-AzMigrateHCINicMappingObject -NicID a -TargetVirtualSwitchId "/subscriptions
 Specifies whether the this Nic should be created at target.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -49,7 +59,7 @@ Accept wildcard characters: False
 Specifies the ID of the NIC to be updated.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -64,7 +74,7 @@ Accept wildcard characters: False
 Specifies the test logical network ARM ID that the VMs will use.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -79,11 +89,11 @@ Accept wildcard characters: False
 Specifies the logical network ARM ID that the VMs will use.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -98,9 +108,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCINicInput
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehcinicmappingobject](https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehcinicmappingobject)
-

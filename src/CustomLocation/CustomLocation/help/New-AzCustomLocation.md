@@ -8,48 +8,91 @@ schema: 2.0.0
 # New-AzCustomLocation
 
 ## SYNOPSIS
-Creates or updates a Custom Location in the specified Subscription and Resource Group
+Create a Custom Location in the specified Subscription and Resource Group
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
-New-AzCustomLocation -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- -ClusterExtensionId <String[]> -HostResourceId <String> -Namespace <String> [-AuthenticationType <String>]
- [-AuthenticationValue <String>] [-DisplayName <String>] [-IdentityType <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzCustomLocation -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -ClusterExtensionId <String[]> -HostResourceId <String> -Location <String> -Namespace <String>
+ [-AuthenticationType <String>] [-AuthenticationValue <String>] [-DisplayName <String>]
+ [-EnableSystemAssignedIdentity] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzCustomLocation -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzCustomLocation -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates a Custom Location in the specified Subscription and Resource Group
+Create a Custom Location in the specified Subscription and Resource Group
 
 ## EXAMPLES
 
-### Example 1: Creates or updates a Custom Location in the specified Subscription and Resource Group
+### Example 1: Creates or updates a Custom Location in the specified Subscription and Resource Group.
 ```powershell
-New-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster -Location eastus -ClusterExtensionId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster/providers/Microsoft.KubernetesConfiguration/extensions/azps_test_extension" -HostResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster" -Namespace arc
+$HostResourceId = (Get-AzConnectedKubernetes -ClusterName azps-connect -ResourceGroupName azps_test_cluster).Id
+$ClusterExtensionId = (Get-AzKubernetesExtension -ClusterName azps-connect -ClusterType ConnectedClusters -ResourceGroupName azps_test_cluster -Name azps-extension).Id
+New-AzCustomLocation -ResourceGroupName azps_test_cluster -Name azps-customlocation -Location eastus -ClusterExtensionId $ClusterExtensionId -HostResourceId $HostResourceId -Namespace azps-namespace
 ```
 
 ```output
-Location Name              Namespace
--------- ----              ----
-eastus   azps_test_cluster arc
+Location Name                Namespace      ResourceGroupName
+-------- ----                ---------      -----------------
+eastus   azps-customlocation azps-namespace azps_test_cluster
 ```
 
-Creates or updates a Custom Location in the specified Subscription and Resource Group
+Creates or updates a Custom Location in the specified Subscription and Resource Group.
+
+### Example 2: Creates or updates a Custom Location that enable system assigned identity
+```powershell
+$HostResourceId = (Get-AzConnectedKubernetes -ClusterName azps-connect -ResourceGroupName group01).Id
+$ClusterExtensionId = (Get-AzKubernetesExtension -ClusterName azps-connect -ClusterType ConnectedClusters -ResourceGroupName group01 -Name azps-extension).Id
+New-AzCustomLocation -ResourceGroupName group01 -Name azps-customlocation -Location eastus -ClusterExtensionId $ClusterExtensionId -HostResourceId $HostResourceId -Namespace azps-namespace -EnableSystemAssignedIdentity
+```
+
+```output
+AuthenticationType           : 
+AuthenticationValue          : 
+ClusterExtensionId           : {/subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/group01/providers/Microsoft.Kubernetes/ConnectedClusters/azps- 
+                               connect/providers/Microsoft.KubernetesConfiguration/extensions/azps-extension}
+DisplayName                  : 
+HostResourceId               : /subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/group01/providers/Microsoft.Kubernetes/connectedClusters/azps-c 
+                               onnect
+HostType                     : Kubernetes
+Id                           : /subscriptions/11111111-2222-3333-4444-123456789101/resourcegroups/group01/providers/microsoft.extendedlocation/customlocations/az 
+                               ps-customlocation
+IdentityPrincipalId          : 00001111-aaaa-2222-bbbb-3333cccc4444
+IdentityTenantId             : 00001111-aaaa-2222-bbbb-3333cccc4444
+IdentityType                 : SystemAssigned
+Location                     : eastus
+Name                         : azps-customlocation
+Namespace                    : azps-namespace
+ProvisioningState            : Succeeded
+ResourceGroupName            : group01
+SystemDataCreatedAt          : 4/30/2024 7:57:50 AM
+SystemDataCreatedBy          : user@example.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 4/30/2024 7:57:50 AM
+SystemDataLastModifiedBy     : user@example.com
+SystemDataLastModifiedByType : User
+Tag                          : {
+                               }
+Type                         : Microsoft.ExtendedLocation/customLocations
+```
+
+The third command creates or updates a Custom Location that enable system assigned identity.
 
 ## PARAMETERS
 
@@ -114,7 +157,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -143,6 +187,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -HostResourceId
 Connected Cluster or AKS Cluster.
 The Custom Locations RP will perform a checkAccess API for listAdminCredentials permissions.
@@ -153,21 +212,6 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-The identity type.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -348,10 +392,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation
+### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocation
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

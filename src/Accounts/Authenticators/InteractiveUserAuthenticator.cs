@@ -12,22 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Diagnostics;
-using System.Net;
-using System.Net.Sockets;
-using System.Runtime.InteropServices;
-using System.Threading;
-using System.Threading.Tasks;
-
 using Azure.Core;
 using Azure.Identity;
-using Azure.Identity.Broker;
 
 using Hyak.Common;
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+
+using System;
+using System.Net;
+using System.Net.Sockets;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -68,6 +65,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 RedirectUri = GetReplyUrl(onPremise, interactiveParameters.PromptAction),
                 LoginHint = interactiveParameters.UserId,
             };
+            options.DisableInstanceDiscovery = interactiveParameters.DisableInstanceDiscovery ?? options.DisableInstanceDiscovery;
             var browserCredential = new InteractiveBrowserCredential(options);
 
             TracingAdapter.Information($"{DateTime.Now:T} - [InteractiveUserAuthenticator] Calling InteractiveBrowserCredential.AuthenticateAsync with TenantId:'{options.TenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}', RedirectUri:'{options.RedirectUri}'");

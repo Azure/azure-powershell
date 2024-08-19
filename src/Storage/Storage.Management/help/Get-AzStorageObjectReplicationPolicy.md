@@ -15,7 +15,8 @@ Gets or lists object replication policy of a Storage account.
 ### AccountName (Default)
 ```
 Get-AzStorageObjectReplicationPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
- [-PolicyId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PolicyId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### AccountObject

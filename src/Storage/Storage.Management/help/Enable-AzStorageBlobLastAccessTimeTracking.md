@@ -15,13 +15,15 @@ Enable last access time tracking for the Azure Storage Blob service.
 ### AccountName (Default)
 ```
 Enable-AzStorageBlobLastAccessTimeTracking [-ResourceGroupName] <String> [-StorageAccountName] <String>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Enable-AzStorageBlobLastAccessTimeTracking -StorageAccount <PSStorageAccount> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

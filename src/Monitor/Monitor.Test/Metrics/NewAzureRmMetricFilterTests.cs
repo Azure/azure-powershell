@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Insights.Metrics;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using System;
 using System.Management.Automation;
@@ -21,7 +22,7 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Metrics
 {
-    public class NewAzureRmMetricFilterTests
+    public class NewAzureRmMetricFilterTests : RMTestBase
     {
         private Mock<ICommandRuntime> commandRuntimeMock;
 

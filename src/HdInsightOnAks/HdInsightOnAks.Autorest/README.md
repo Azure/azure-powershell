@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the HdInsightOnAks service.
 
 ---
-## Status
-[![Az.HdInsightOnAks](https://img.shields.io/powershellgallery/v/Az.HdInsightOnAks.svg?style=flat-square&label=Az.HdInsightOnAks "Az.HdInsightOnAks")](https://www.powershellgallery.com/packages/Az.HdInsightOnAks/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -49,14 +46,12 @@ In this directory, run AutoRest:
 ### General settings
 > Values
 ``` yaml
-branch: f09aacf4c6b63be416212cb182f6b31e8bc6d545
+tag: package-preview-2024-05
+commit: c766bb559e93067acf5a852e63f7edcee75a2f5b
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/hdinsight/resource-manager/Microsoft.HDInsight/HDInsightOnAks/readme.md
-
-# input-file:
-#  - D:\source\azure-rest-api-specs\specification\hdinsight\resource-manager\Microsoft.HDInsight\HDInsightOnAks\preview\2023-06-01-preview\hdinsight.json
-inlining-threshold: 100
+inlining-threshold: 200
 ```
 
 > Names
@@ -75,9 +70,24 @@ default-exclude-tableview-properties: true
 > Directives
 ``` yaml
 identity-correction-for-post: true
-use-extension:
-  "@autorest/powershell": "4.0.644"
 directive:
+  - model-cmdlet:
+    - model-name: ManagedIdentitySpec
+      cmdlet-name: New-AzHdInsightOnAksManagedIdentityObject
+    - model-name: ClusterPoolAksPatchVersionUpgradeProperties
+      cmdlet-name: New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject
+    - model-name: NodeProfile
+      cmdlet-name: New-AzHdInsightOnAksNodeProfileObject
+    - model-name: SecretReference
+      cmdlet-name: New-AzHdInsightOnAksSecretReferenceObject
+    - model-name: HiveCatalogOption
+      cmdlet-name: New-AzHdInsightOnAksTrinoHiveCatalogObject
+    - model-name: ClusterConfigFile
+      cmdlet-name: New-AzHdInsightOnAksClusterConfigFileObject
+    - model-name: ClusterServiceConfig
+      cmdlet-name: New-AzHdInsightOnAksClusterServiceConfigObject
+    - model-name: ClusterServiceConfigsProfile
+      cmdlet-name: New-AzHdInsightOnAksClusterServiceConfigsProfileObject
   - from: swagger-document
     where: $.paths..responses.202
     transform: delete $.headers
@@ -129,7 +139,17 @@ directive:
       model-name: ClusterVersion
       property-name: PropertiesClusterVersion
     set:
-      property-name: ClusterVersionValue      
+      property-name: ClusterVersionValue
+  - where:
+      model-name: SecretReference
+      property-name: KeyVaultObjectName
+    set:
+      property-name: SecretName   
+  - where:
+      model-name: ClusterServiceConfig
+      property-name: Component
+    set:
+      property-name: ComponentName  
 # the below is cmdlet part      
   - where:
       verb: New|Set
@@ -316,5 +336,24 @@ directive:
     set:
       parameter-name: FlinkHiveCatalogDbUserName
 # The below customize the output model   
-
+  - where:
+      verb: Update
+      subject: [Cluster] 
+      variant: [Upgrade|UpgradeExpanded|UpgradeViaIdentity|UpgradeViaIdentityExpanded|UpgradeViaJsonFilePath|UpgradeViaJsonString]
+    set:
+      verb: Invoke
+      subject: ClusterUpgrade
+  - where:
+      verb: Update
+      subject: [ClusterManualRollback] 
+      variant: [Upgrade|UpgradeExpanded|UpgradeViaIdentity|UpgradeViaIdentityExpanded|UpgradeViaJsonFilePath|UpgradeViaJsonString]
+    set:
+      verb: Invoke
+  - where:
+      verb: Update
+      subject: [ClusterPool] 
+      variant: [Upgrade|UpgradeExpanded|UpgradeViaIdentity|UpgradeViaIdentityExpanded|UpgradeViaJsonFilePath|UpgradeViaJsonString]
+    set:
+      verb: Invoke
+      subject: ClusterPoolUpgrade
 ```

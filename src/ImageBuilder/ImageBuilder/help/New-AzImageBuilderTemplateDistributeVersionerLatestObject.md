@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ImageBuilder-help.xml
 Module Name: Az.ImageBuilder
 online version: https://learn.microsoft.com/powershell/module/Az.ImageBuilder/new-azimagebuildertemplatedistributeversionerlatestobject
 schema: 2.0.0
@@ -13,7 +13,8 @@ Create an in-memory object for DistributeVersionerLatest.
 ## SYNTAX
 
 ```
-New-AzImageBuilderTemplateDistributeVersionerLatestObject [-Major <Int32>] [<CommonParameters>]
+New-AzImageBuilderTemplateDistributeVersionerLatestObject [-Major <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,7 +65,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-The operation to Create a hybrid machine.
+The operation to create or update a hybrid machine.
 Please note some properties can be set only during machine creation.
 .Description
-The operation to Create a hybrid machine.
+The operation to create or update a hybrid machine.
 Please note some properties can be set only during machine creation.
 .Example
 {{ Add code here }}
@@ -105,7 +105,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtensionInstanceView[]]
     # Machine Extensions information (deprecated field)
-    # To construct, see NOTES section for EXTENSION properties and create a hash table.
     ${Extension},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -310,7 +309,13 @@ begin {
             UpdateViaJsonString = 'Az.StackHCIVM.private\Set-AzStackHCIVMMachine_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

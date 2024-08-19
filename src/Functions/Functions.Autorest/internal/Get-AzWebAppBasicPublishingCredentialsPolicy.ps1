@@ -16,100 +16,36 @@
 
 <#
 .Synopsis
-Returns whether Scm basic auth is allowed and whether Ftp is allowed for a given site.
+Description for Returns whether Scm basic auth is allowed and whether Ftp is allowed for a given site.
 .Description
-Returns whether Scm basic auth is allowed and whether Ftp is allowed for a given site.
+Description for Returns whether Scm basic auth is allowed and whether Ftp is allowed for a given site.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesCollection
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
-  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  [AnalysisName <String>]: Analysis Name
-  [AppSettingKey <String>]: App Setting key name.
-  [Authprovider <String>]: The auth provider for the users.
-  [BackupId <String>]: ID of the backup.
-  [BaseAddress <String>]: Module base address.
-  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
-  [CertificateOrderName <String>]: Name of the certificate order..
-  [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
-  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
-  [DetectorName <String>]: Detector Resource Name
-  [DiagnosticCategory <String>]: Diagnostic Category
-  [DiagnosticsName <String>]: Name of the diagnostics item.
-  [DomainName <String>]: Name of the domain.
-  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
-  [EntityName <String>]: Name of the hybrid connection.
-  [FunctionName <String>]: Function name.
-  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
-  [HostName <String>]: Hostname in the hostname binding.
-  [HostingEnvironmentName <String>]: Name of the hosting environment.
-  [Id <String>]: Deployment ID.
-  [Id1 <String>]: Resource identity path
-  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
-  [Instance <String>]: Name of the instance in the multi-role pool.
-  [InstanceId <String>]: 
-  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
-  [KeyName <String>]: The name of the key.
-  [KeyType <String>]: The type of host key.
-  [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
-  [Name <String>]: Name of the certificate.
-  [NamespaceName <String>]: The namespace for this hybrid connection.
-  [OperationId <String>]: GUID of the operation.
-  [PrId <String>]: The stage site identifier.
-  [PremierAddOnName <String>]: Add-on name.
-  [PrivateEndpointConnectionName <String>]: 
-  [ProcessId <String>]: PID.
-  [PublicCertificateName <String>]: Public certificate name.
-  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
-  [RelayName <String>]: The relay name for this hybrid connection.
-  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
-  [ResourceName <String>]: The name of the Application Insights component resource.
-  [RouteName <String>]: Name of the Virtual Network route.
-  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
-  [SiteExtensionId <String>]: Site extension name.
-  [SiteName <String>]: Site Name
-  [Slot <String>]: Slot Name
-  [SnapshotId <String>]: The ID of the snapshot to read.
-  [SourceControlType <String>]: Type of source control
-  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  [Userid <String>]: The user id of the user.
-  [View <String>]: The type of view. This can either be "summary" or "detailed".
-  [VnetName <String>]: Name of the virtual network.
-  [WebJobName <String>]: Name of Web Job.
-  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
-  [WorkerPoolName <String>]: Name of the worker pool.
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICsmPublishingCredentialsPoliciesEntity
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/get-azwebappbasicpublishingcredentialspolicy
 #>
 function Get-AzWebAppBasicPublishingCredentialsPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesCollection])]
-[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICsmPublishingCredentialsPoliciesEntity])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the app.
     ${Name},
 
-    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the resource group to which the resource belongs.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Get')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
@@ -117,13 +53,6 @@ param(
     # This is a GUID-formatted string (e.g.
     # 00000000-0000-0000-0000-000000000000).
     ${SubscriptionId},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -183,11 +112,16 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         $mapping = @{
-            Get = 'Az.Functions.private\Get-AzWebAppBasicPublishingCredentialsPolicy_Get';
-            GetViaIdentity = 'Az.Functions.private\Get-AzWebAppBasicPublishingCredentialsPolicy_GetViaIdentity';
+            List = 'Az.Functions.private\Get-AzWebAppBasicPublishingCredentialsPolicy_List';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

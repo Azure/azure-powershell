@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the ManagedNetworkFabric service.
 
 ---
-## Status
-[![Az.ManagedNetworkFabric](https://img.shields.io/powershellgallery/v/Az.ManagedNetworkFabric.svg?style=flat-square&label=Az.ManagedNetworkFabric "Az.ManagedNetworkFabric")](https://www.powershellgallery.com/packages/Az.ManagedNetworkFabric/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

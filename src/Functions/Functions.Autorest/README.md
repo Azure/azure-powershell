@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Functions service.
 
 ---
-## Status
-[![Az.Functions](https://img.shields.io/powershellgallery/v/Az.Functions.svg?style=flat-square&label=Az.Functions "Az.Functions")](https://www.powershellgallery.com/packages/Az.Functions/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -49,6 +46,10 @@ In this directory, run AutoRest:
 ### Suppression
 
 ``` yaml
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
   - suppress: XmsResourceInPutResponse
     from: WebApps.json
@@ -65,27 +66,27 @@ directive:
 ```
 
 ``` yaml
-branch: main
+commit: d9f06f3de6cb00796a91b86b622dcf50340952a2
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/web/resource-manager/Microsoft.CertificateRegistration/stable/2019-08-01/AppServiceCertificateOrders.json
-  - $(repo)/specification/web/resource-manager/Microsoft.CertificateRegistration/stable/2019-08-01/CertificateRegistrationProvider.json
-  - $(repo)/specification/web/resource-manager/Microsoft.DomainRegistration/stable/2019-08-01/Domains.json
-  - $(repo)/specification/web/resource-manager/Microsoft.DomainRegistration/stable/2019-08-01/TopLevelDomains.json
-  - $(repo)/specification/web/resource-manager/Microsoft.DomainRegistration/stable/2019-08-01/DomainRegistrationProvider.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/Certificates.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/CommonDefinitions.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/DeletedWebApps.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/Diagnostics.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/Provider.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/Recommendations.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/ResourceProvider.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/WebApps.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/StaticSites.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/AppServiceEnvironments.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/AppServicePlans.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/ResourceHealthMetadata.json
+  - $(repo)/specification/web/resource-manager/Microsoft.CertificateRegistration/stable/2023-12-01/AppServiceCertificateOrders.json
+  - $(repo)/specification/web/resource-manager/Microsoft.CertificateRegistration/stable/2023-12-01/CertificateRegistrationProvider.json
+  - $(repo)/specification/web/resource-manager/Microsoft.DomainRegistration/stable/2023-12-01/Domains.json
+  - $(repo)/specification/web/resource-manager/Microsoft.DomainRegistration/stable/2023-12-01/TopLevelDomains.json
+  - $(repo)/specification/web/resource-manager/Microsoft.DomainRegistration/stable/2023-12-01/DomainRegistrationProvider.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/Certificates.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/CommonDefinitions.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/DeletedWebApps.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/Diagnostics.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/Provider.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/Recommendations.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/ResourceProvider.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/WebApps.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/StaticSites.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/AppServiceEnvironments.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/AppServicePlans.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/ResourceHealthMetadata.json
 module-version: 1.0.1
 title: Functions
 subject-prefix: ''
@@ -122,6 +123,9 @@ metadata:
     - Update-AzFunctionAppSetting
 
 directive:
+  - remove-operation: WebApps_GetProductionSiteDeploymentStatus
+  - remove-operation: WebApps_GetSlotSiteDeploymentStatusSlot
+  - remove-operation: Workflows_RegenerateAccessKey
   - from: WebApps.json
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateEndpointConnections/{privateEndpointConnectionName}"].delete.responses.200
     transform: delete $.schema
@@ -215,16 +219,16 @@ directive:
       subject: SystemAssignedIdentity(.*)
     hide: true
   - where:
-      subject: WebAppBasicPublishingCredentialsPolicy
+      subject: (.*)BasicPublishingCredentialsPolicy(.*)
     hide: true
   - where:
       subject: WebAppFunctionKey(.*)
     hide: true
   - where:
-      subject: WebAppScmAllowed
+      subject: (.*)ScmAllowed(.*)
     hide: true
   - where:
-      subject: WebAppSettingKeyVaultReference
+      subject: WebAppSettingKeyVaultReference(.*)
     hide: true
   - where:
       subject: WebAppSyncStatus(.*)
@@ -241,7 +245,7 @@ directive:
     hide: true
 # Cmdlets to remove
   - where:
-      subject: WebAppFtpAllowed
+      subject: (.*)WebAppFtpAllowed(.*)
     remove: true
   - where:
       subject: WebAppPremierAddOn(.*)
@@ -439,7 +443,7 @@ directive:
       subject: (.*)WebAppTriggered(.*)
     remove: true
   - where:
-      subject: (.*)WebAppUsage(.*)
+      subject: (.*)Usage(.*)
     remove: true
   - where:
       subject: (.*)AzWebAppWeb(.*)
@@ -457,7 +461,7 @@ directive:
       subject: (.*)Connection(.*)
     remove: true
   - where:
-      subject: (.*)WebAppDeployment(.*)
+      subject: (.*)OneDeploy(.*)
     remove: true
   - where:
       subject: (.*)WebAppHost(.*)
@@ -508,7 +512,7 @@ directive:
       subject: (.*)WebAppClone(.*)
     remove: true
   - where:
-      subject: Move(.*)
+      subject: (.*)Move(.*)
     remove: true
   - where:
       subject: (.*)WebAppRepository(.*)
@@ -534,6 +538,21 @@ directive:
   - where:
       subject: (.*)StaticSite(.*)
     remove: true
+  - where:
+      subject: (.*)Backup(.*)
+    remove: true
+  - where:
+      subject: (.*)CustomName(.*)
+    remove: true
+  - where:
+      subject: (.*)CustomHostName(.*)
+    remove: true
+  - where:
+      subject: (.*)Workflow(.*)
+    remove: true
+  - where:
+      subject: (.*)AseRegion(.*)
+    remove: true
   - from: source-file-csharp
     where: $
     transform: $ = $.replace(/sb.AppendLine\(\$@\"\{Indent\}AliasesToExport = \{aliasesList\}\"\);/, '')
@@ -546,8 +565,8 @@ directive:
 
 # Add Storage and AppInsights cmdlet subset
 require:
-  - $(this-folder)/../helpers/Storage/readme.noprofile.md
-  - $(this-folder)/../helpers/AppInsights/readme.noprofile.md
-  - $(this-folder)/../helpers/ManagedIdentity/readme.noprofile.md
+  - $(this-folder)/../../helpers/Storage/readme.noprofile.md
+  - $(this-folder)/../../helpers/AppInsights/readme.noprofile.md
+  - $(this-folder)/../../helpers/ManagedIdentity/readme.noprofile.md
   
 ```

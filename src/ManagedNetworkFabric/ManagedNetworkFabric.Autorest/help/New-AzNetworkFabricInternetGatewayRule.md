@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkFabricInternetGatewayRule
 
 ## SYNOPSIS
-Creates an Internet Gateway rule resource.
+Create an Internet Gateway rule resource.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ New-AzNetworkFabricInternetGatewayRule -Name <String> -ResourceGroupName <String
 ```
 
 ## DESCRIPTION
-Creates an Internet Gateway rule resource.
+Create an Internet Gateway rule resource.
 
 ## EXAMPLES
 
@@ -199,7 +199,6 @@ Accept wildcard characters: False
 
 ### -RuleProperty
 Rules for the InternetGateways
-To construct, see NOTES section for RULEPROPERTY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRuleProperties

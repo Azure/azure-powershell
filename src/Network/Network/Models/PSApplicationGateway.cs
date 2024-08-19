@@ -15,6 +15,7 @@
 
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
@@ -90,12 +91,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get
             {
-                if (this.GlobalConfiguration == null)
+                if (this.GlobalConfiguration == null && !string.Equals(this.Sku.Tier, "Standard", StringComparison.OrdinalIgnoreCase) && !string.Equals(this.Sku.Tier, "WAF", StringComparison.OrdinalIgnoreCase))
                 {
                     this.GlobalConfiguration = new PSApplicationGatewayGlobalConfiguration();
                     this.GlobalConfiguration.EnableRequestBuffering = true;
                 }
-                return this.GlobalConfiguration.EnableRequestBuffering;
+                return this.GlobalConfiguration?.EnableRequestBuffering;
             }
 
             set
@@ -110,12 +111,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get
             {
-                if (this.GlobalConfiguration == null)
+                if (this.GlobalConfiguration == null && !string.Equals(this.Sku.Tier, "Standard", StringComparison.OrdinalIgnoreCase) && !string.Equals(this.Sku.Tier, "WAF", StringComparison.OrdinalIgnoreCase))
                 {
                     this.GlobalConfiguration = new PSApplicationGatewayGlobalConfiguration();
                     this.GlobalConfiguration.EnableResponseBuffering = true;
                 }
-                return this.GlobalConfiguration.EnableResponseBuffering;
+                return this.GlobalConfiguration?.EnableResponseBuffering;
             }
                 
             set

@@ -1,6 +1,6 @@
 ---
 external help file: Az.ApplicationInsights-help.xml
-Module Name: Az.Applicationinsights
+Module Name: Az.ApplicationInsights
 online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsights
 schema: 2.0.0
 ---
@@ -14,7 +14,8 @@ Returns an Application Insights component.
 
 ### ListBySubscription (Default)
 ```
-Get-AzApplicationInsights [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzApplicationInsights [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -31,7 +32,8 @@ Get-AzApplicationInsights [-SubscriptionId <String[]>] -ResourceGroupName <Strin
 
 ### GetByResourceId
 ```
-Get-AzApplicationInsights -ResourceId <String> [-Full] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzApplicationInsights -ResourceId <String> [-Full] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetByInputObject
@@ -181,26 +183,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.PSApplicationInsightsComponentWithPricingPlan
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IApplicationInsightsIdentity>`: Identity Parameter
-  - `[AnnotationId <String>]`: The unique annotation ID. This is unique within a Application Insights component.
-  - `[ComponentName <String>]`: The name of the Application Insights component resource.
-  - `[ExportId <String>]`: The Continuous Export configuration ID. This is unique within a Application Insights component.
-  - `[Id <String>]`: Resource identity path
-  - `[KeyId <String>]`: The API Key ID. This is unique within a Application Insights component.
-  - `[PurgeId <String>]`: In a purge status request, this is the Id of the operation the status of which is returned.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ResourceName <String>]`: The name of the Application Insights component resource.
-  - `[RevisionId <String>]`: The id of the workbook's revision.
-  - `[StorageType <StorageType?>]`: The type of the Application Insights component data source for the linked storage account.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[WebTestName <String>]`: The name of the Application Insights WebTest resource.
 
 ## RELATED LINKS

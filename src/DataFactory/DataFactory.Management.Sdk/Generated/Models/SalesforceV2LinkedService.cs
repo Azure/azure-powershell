@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// be used to connect with related store or compute resource.
         /// </param>
 
+        /// <param name="version">Version of the linked service.
+        /// </param>
+
         /// <param name="connectVia">The integration runtime reference.
         /// </param>
 
@@ -45,6 +48,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="environmentUrl">The URL of Salesforce instance. For example,
         /// &#39;https://[domain].my.salesforce.com&#39;. Type: string (or Expression with
         /// resultType string).
+        /// </param>
+
+        /// <param name="authenticationType">The authentication type to be used to connect to the Salesforce. Currently,
+        /// we only support OAuth2ClientCredentials, it is also the default value
         /// </param>
 
         /// <param name="clientId">The client Id for OAuth 2.0 Client Credentials Flow authentication of the
@@ -63,11 +70,12 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public SalesforceV2LinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object environmentUrl = default(object), object clientId = default(object), SecretBase clientSecret = default(SecretBase), object apiVersion = default(object), string encryptedCredential = default(string))
+        public SalesforceV2LinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object environmentUrl = default(object), object authenticationType = default(object), object clientId = default(object), SecretBase clientSecret = default(SecretBase), object apiVersion = default(object), string encryptedCredential = default(string))
 
-        : base(additionalProperties, connectVia, description, parameters, annotations)
+        : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
             this.EnvironmentUrl = environmentUrl;
+            this.AuthenticationType = authenticationType;
             this.ClientId = clientId;
             this.ClientSecret = clientSecret;
             this.ApiVersion = apiVersion;
@@ -88,6 +96,14 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.environmentUrl")]
         public object EnvironmentUrl {get; set; }
+
+        /// <summary>
+        /// Gets or sets the authentication type to be used to connect to the
+        /// Salesforce. Currently, we only support OAuth2ClientCredentials, it is also
+        /// the default value
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.authenticationType")]
+        public object AuthenticationType {get; set; }
 
         /// <summary>
         /// Gets or sets the client Id for OAuth 2.0 Client Credentials Flow
@@ -128,6 +144,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public override void Validate()
         {
             base.Validate();
+
 
 
 

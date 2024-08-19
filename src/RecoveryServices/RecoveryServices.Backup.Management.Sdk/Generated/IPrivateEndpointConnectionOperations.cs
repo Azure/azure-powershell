@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection.
@@ -43,16 +44,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnectionResource>> GetWithHttpMessagesAsync(string vaultName, string resourceGroupName, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Approve or Reject Private Endpoint requests. This call is made by Backup Admin.
+        /// Approve or Reject Private Endpoint requests. This call is made by Backup
+        /// Admin.
         /// </summary>
         /// <remarks>
-        /// Approve or Reject Private Endpoint requests. This call is made by Backup Admin.
+        /// Approve or Reject Private Endpoint requests. This call is made by Backup
+        /// Admin.
         /// </remarks>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection.
@@ -84,7 +88,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection.
@@ -101,16 +106,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string vaultName, string resourceGroupName, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Approve or Reject Private Endpoint requests. This call is made by Backup Admin.
+        /// Approve or Reject Private Endpoint requests. This call is made by Backup
+        /// Admin.
         /// </summary>
         /// <remarks>
-        /// Approve or Reject Private Endpoint requests. This call is made by Backup Admin.
+        /// Approve or Reject Private Endpoint requests. This call is made by Backup
+        /// Admin.
         /// </remarks>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection.
@@ -142,7 +150,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection.

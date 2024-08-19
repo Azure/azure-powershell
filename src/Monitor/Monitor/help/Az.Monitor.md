@@ -90,6 +90,9 @@ Gets V2 (non-classic) metric alert rules
 ### [Get-AzMetricDefinition](Get-AzMetricDefinition.md)
 Gets metric definitions.
 
+### [Get-AzMetricsBatch](Get-AzMetricsBatch.md)
+Lists the metric values for multiple resources.
+
 ### [Get-AzMonitorWorkspace](Get-AzMonitorWorkspace.md)
 Returns the specific Azure Monitor workspace
 
@@ -100,7 +103,7 @@ Retrieve an scheduled query rule definition.
 Gets the active subscription diagnostic settings for the specified resource.
 
 ### [New-AzActionGroup](New-AzActionGroup.md)
-Create a new action group or update an existing one.
+Create a new action group or Create an existing one.
 
 ### [New-AzActionGroupArmRoleReceiverObject](New-AzActionGroupArmRoleReceiverObject.md)
 Create an in-memory object for ArmRoleReceiver.
@@ -319,7 +322,7 @@ Deletes existing subscription diagnostic settings for the specified resource.
 Send test notifications to a set of provided receivers
 
 ### [Update-AzActionGroup](Update-AzActionGroup.md)
-Create a new action group or update an existing one.
+Update a new action group or Update an existing one.
 
 ### [Update-AzActivityLogAlert](Update-AzActivityLogAlert.md)
 Updates 'tags' and 'enabled' fields in an existing Alert rule.
@@ -331,13 +334,13 @@ Updates an existing AutoscaleSettingsResource.
 To update other fields use the CreateOrUpdate method.
 
 ### [Update-AzDataCollectionEndpoint](Update-AzDataCollectionEndpoint.md)
-Updates part of a data collection endpoint.
+Update part of a data collection endpoint.
 
 ### [Update-AzDataCollectionRule](Update-AzDataCollectionRule.md)
 Update a data collection rule.
 
 ### [Update-AzDataCollectionRuleAssociation](Update-AzDataCollectionRuleAssociation.md)
-Create an association.
+Update an association.
 
 ### [Update-AzInsightsPrivateLinkScope](Update-AzInsightsPrivateLinkScope.md)
 Update for private link scope

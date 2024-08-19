@@ -153,9 +153,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("Tag"))
+            if (content.Contains("Tags"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.TrackedResourceTagsTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceInternal)this).Tags = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceTags) content.GetValueForProperty("Tags",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceInternal)this).Tags, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.TrackedResourceTagsTypeConverter.ConvertFrom);
             }
             if (content.Contains("Location"))
             {
@@ -204,6 +204,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("DetailType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).DetailType = (string) content.GetValueForProperty("DetailType",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).DetailType, global::System.Convert.ToString);
+            }
+            if (content.Contains("DetailVolumeLicenseDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).DetailVolumeLicenseDetail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IVolumeLicenseDetails>) content.GetValueForProperty("DetailVolumeLicenseDetail",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).DetailVolumeLicenseDetail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IVolumeLicenseDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.VolumeLicenseDetailsTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
@@ -266,9 +270,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("Tag"))
+            if (content.Contains("Tags"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.TrackedResourceTagsTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceInternal)this).Tags = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceTags) content.GetValueForProperty("Tags",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceInternal)this).Tags, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.TrackedResourceTagsTypeConverter.ConvertFrom);
             }
             if (content.Contains("Location"))
             {
@@ -317,6 +321,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("DetailType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).DetailType = (string) content.GetValueForProperty("DetailType",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).DetailType, global::System.Convert.ToString);
+            }
+            if (content.Contains("DetailVolumeLicenseDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).DetailVolumeLicenseDetail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IVolumeLicenseDetails>) content.GetValueForProperty("DetailVolumeLicenseDetail",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).DetailVolumeLicenseDetail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IVolumeLicenseDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.VolumeLicenseDetailsTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }

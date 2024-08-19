@@ -113,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshConnectivityEndpointInternal)this).Endpoint = (string) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshConnectivityEndpointInternal)this).Endpoint, global::System.Convert.ToString);
             }
+            if (content.Contains("PrivateSshEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshConnectivityEndpointInternal)this).PrivateSshEndpoint = (string) content.GetValueForProperty("PrivateSshEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshConnectivityEndpointInternal)this).PrivateSshEndpoint, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -133,6 +137,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("Endpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshConnectivityEndpointInternal)this).Endpoint = (string) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshConnectivityEndpointInternal)this).Endpoint, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateSshEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshConnectivityEndpointInternal)this).PrivateSshEndpoint = (string) content.GetValueForProperty("PrivateSshEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshConnectivityEndpointInternal)this).PrivateSshEndpoint, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

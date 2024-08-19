@@ -14,18 +14,23 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public partial interface IExportJobsOperationResultsOperations
     {
         /// <summary>
-        /// Gets the operation result of operation triggered by Export Jobs API. If the operation is successful, then it also
-        /// contains URL of a Blob and a SAS key to access the same. The blob contains exported jobs in JSON serialized format.
+        /// Gets the operation result of operation triggered by Export Jobs API. If the
+        /// operation is successful, then it also contains URL of a Blob and a SAS key
+        /// to access the same. The blob contains exported jobs in JSON serialized
+        /// format.
         /// </summary>
         /// <remarks>
-        /// Gets the operation result of operation triggered by Export Jobs API. If the operation is successful, then it also
-        /// contains URL of a Blob and a SAS key to access the same. The blob contains exported jobs in JSON serialized format.
+        /// Gets the operation result of operation triggered by Export Jobs API. If the
+        /// operation is successful, then it also contains URL of a Blob and a SAS key
+        /// to access the same. The blob contains exported jobs in JSON serialized
+        /// format.
         /// </remarks>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='operationId'>
         /// OperationID which represents the export job.

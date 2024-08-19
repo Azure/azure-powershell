@@ -19,6 +19,14 @@
 -->
 ## Upcoming Release
 
+## Version 2.3.0
+* Fixed the Register-AzStorageSyncServer with Azure FileSync Agent v17
+* Improved performance for Managed Identity migration cmdlet
+
+## Version 2.2.0
+* Onboarded Service Api version 2022-09-01
+* Enabled ManagedIdentity Feature (Preview)
+  
 ## Version 2.1.1
 * Updated dataset limit from 5 Tb to 100 Tib.
   

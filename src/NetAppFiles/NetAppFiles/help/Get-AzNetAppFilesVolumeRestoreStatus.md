@@ -15,26 +15,26 @@ Get volume's restore status
 ### ByFieldsParameterSet (Default)
 ```
 Get-AzNetAppFilesVolumeRestoreStatus -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- -Name <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ -Name <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
+```
+
+### ByParentObjectParameterSet
+```
+Get-AzNetAppFilesVolumeRestoreStatus -Name <String> -PoolObject <PSNetAppFilesPool>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Get-AzNetAppFilesVolumeRestoreStatus -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
-```
-
-### ByParentObjectParameterSet
-```
-Get-AzNetAppFilesVolumeRestoreStatus -PoolObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Get-AzNetAppFilesVolumeRestoreStatus -InputObject <PSNetAppFilesVolume>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,7 +101,7 @@ The name of the ANF volume
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
 Aliases: VolumeName
 
 Required: True
@@ -138,21 +138,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

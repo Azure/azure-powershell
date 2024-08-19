@@ -14,17 +14,20 @@ Add-AzStackHCIVMAttestation configures guests for AzureStack HCI IMDS Attestatio
 
 ### VMName (Default)
 ```
-Add-AzStackHCIVMAttestation [-VMName] <String[]> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzStackHCIVMAttestation [-VMName] <String[]> [-Force] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### VMObject
 ```
-Add-AzStackHCIVMAttestation [-Force] [-VM] <Object[]> [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzStackHCIVMAttestation [-Force] [-VM] <Object[]> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AddAll
 ```
-Add-AzStackHCIVMAttestation [-Force] [-AddAll] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzStackHCIVMAttestation [-Force] [-AddAll] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

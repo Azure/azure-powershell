@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="targetDiskNetworkAccessOption">Network access settings to be used for restored disks
-        /// Possible values include: 'SameAsOnSourceDisks',
-        /// 'EnablePrivateAccessForAllDisks', 'EnablePublicAccessForAllDisks'</param>
+        /// Possible values include: &#39;SameAsOnSourceDisks&#39;,
+        /// &#39;EnablePrivateAccessForAllDisks&#39;, &#39;EnablePublicAccessForAllDisks&#39;</param>
 
         /// <param name="targetDiskAccessId">Gets or sets the ARM resource ID of the target disk access to be used when
         /// TargetDiskNetworkAccessOption is set to

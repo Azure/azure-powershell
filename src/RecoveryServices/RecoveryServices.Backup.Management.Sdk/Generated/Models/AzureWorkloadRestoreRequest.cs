@@ -25,9 +25,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Initializes a new instance of the AzureWorkloadRestoreRequest class.
         /// </summary>
 
+        /// <param name="resourceGuardOperationRequests">ResourceGuardOperationRequests on which LAC check will be performed
+        /// </param>
+
         /// <param name="recoveryType">Type of this recovery.
-        /// Possible values include: 'Invalid', 'OriginalLocation',
-        /// 'AlternateLocation', 'RestoreDisks', 'Offline'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;OriginalLocation&#39;,
+        /// &#39;AlternateLocation&#39;, &#39;RestoreDisks&#39;, &#39;Offline&#39;</param>
 
         /// <param name="sourceResourceId">Fully qualified ARM ID of the VM on which workload that was running is
         /// being recovered.
@@ -41,20 +44,34 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="recoveryMode">Defines whether the current recovery mode is file restore or database
         /// restore
-        /// Possible values include: 'Invalid', 'FileRecovery', 'WorkloadRecovery'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;FileRecovery&#39;, &#39;WorkloadRecovery&#39;,
+        /// &#39;SnapshotAttach&#39;, &#39;RecoveryUsingSnapshot&#39;, &#39;SnapshotAttachAndRecover&#39;</param>
 
-        /// <param name="targetVirtualMachineId">This is the complete ARM Id of the target VM
-        /// For e.g.
+        /// <param name="targetResourceGroupName">Defines the Resource group of the Target VM
+        /// </param>
+
+        /// <param name="userAssignedManagedIdentityDetails">User Assigned managed identity details Currently used for snapshot.
+        /// </param>
+
+        /// <param name="snapshotRestoreParameters">Additional details for snapshot recovery Currently used for snapshot for
+        /// SAP Hana.
+        /// </param>
+
+        /// <param name="targetVirtualMachineId">This is the complete ARM Id of the target VM For e.g.
         /// /subscriptions/{subId}/resourcegroups/{rg}/provider/Microsoft.Compute/virtualmachines/{vm}
         /// </param>
-        public AzureWorkloadRestoreRequest(string recoveryType = default(string), string sourceResourceId = default(string), System.Collections.Generic.IDictionary<string, string> propertyBag = default(System.Collections.Generic.IDictionary<string, string>), TargetRestoreInfo targetInfo = default(TargetRestoreInfo), string recoveryMode = default(string), string targetVirtualMachineId = default(string))
+        public AzureWorkloadRestoreRequest(System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), string recoveryType = default(string), string sourceResourceId = default(string), System.Collections.Generic.IDictionary<string, string> propertyBag = default(System.Collections.Generic.IDictionary<string, string>), TargetRestoreInfo targetInfo = default(TargetRestoreInfo), string recoveryMode = default(string), string targetResourceGroupName = default(string), UserAssignedManagedIdentityDetails userAssignedManagedIdentityDetails = default(UserAssignedManagedIdentityDetails), SnapshotRestoreParameters snapshotRestoreParameters = default(SnapshotRestoreParameters), string targetVirtualMachineId = default(string))
 
+        : base(resourceGuardOperationRequests)
         {
             this.RecoveryType = recoveryType;
             this.SourceResourceId = sourceResourceId;
             this.PropertyBag = propertyBag;
             this.TargetInfo = targetInfo;
             this.RecoveryMode = recoveryMode;
+            this.TargetResourceGroupName = targetResourceGroupName;
+            this.UserAssignedManagedIdentityDetails = userAssignedManagedIdentityDetails;
+            this.SnapshotRestoreParameters = snapshotRestoreParameters;
             this.TargetVirtualMachineId = targetVirtualMachineId;
             CustomInit();
         }
@@ -92,14 +109,33 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <summary>
         /// Gets or sets defines whether the current recovery mode is file restore or
-        /// database restore Possible values include: &#39;Invalid&#39;, &#39;FileRecovery&#39;, &#39;WorkloadRecovery&#39;
+        /// database restore Possible values include: &#39;Invalid&#39;, &#39;FileRecovery&#39;, &#39;WorkloadRecovery&#39;, &#39;SnapshotAttach&#39;, &#39;RecoveryUsingSnapshot&#39;, &#39;SnapshotAttachAndRecover&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryMode")]
         public string RecoveryMode {get; set; }
 
         /// <summary>
-        /// Gets or sets this is the complete ARM Id of the target VM
-        /// For e.g.
+        /// Gets or sets defines the Resource group of the Target VM
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetResourceGroupName")]
+        public string TargetResourceGroupName {get; set; }
+
+        /// <summary>
+        /// Gets or sets user Assigned managed identity details Currently used for
+        /// snapshot.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "userAssignedManagedIdentityDetails")]
+        public UserAssignedManagedIdentityDetails UserAssignedManagedIdentityDetails {get; set; }
+
+        /// <summary>
+        /// Gets or sets additional details for snapshot recovery Currently used for
+        /// snapshot for SAP Hana.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "snapshotRestoreParameters")]
+        public SnapshotRestoreParameters SnapshotRestoreParameters {get; set; }
+
+        /// <summary>
+        /// Gets or sets this is the complete ARM Id of the target VM For e.g.
         /// /subscriptions/{subId}/resourcegroups/{rg}/provider/Microsoft.Compute/virtualmachines/{vm}
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "targetVirtualMachineId")]

@@ -129,6 +129,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkProfileInternal)this).MetastoreSpecDbName = (string) content.GetValueForProperty("MetastoreSpecDbName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkProfileInternal)this).MetastoreSpecDbName, global::System.Convert.ToString);
             }
+            if (content.Contains("MetastoreSpecDbConnectionAuthenticationMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkProfileInternal)this).MetastoreSpecDbConnectionAuthenticationMode = (string) content.GetValueForProperty("MetastoreSpecDbConnectionAuthenticationMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkProfileInternal)this).MetastoreSpecDbConnectionAuthenticationMode, global::System.Convert.ToString);
+            }
             if (content.Contains("MetastoreSpecDbUserName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkProfileInternal)this).MetastoreSpecDbUserName = (string) content.GetValueForProperty("MetastoreSpecDbUserName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkProfileInternal)this).MetastoreSpecDbUserName, global::System.Convert.ToString);
@@ -185,6 +189,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("MetastoreSpecDbName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkProfileInternal)this).MetastoreSpecDbName = (string) content.GetValueForProperty("MetastoreSpecDbName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkProfileInternal)this).MetastoreSpecDbName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MetastoreSpecDbConnectionAuthenticationMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkProfileInternal)this).MetastoreSpecDbConnectionAuthenticationMode = (string) content.GetValueForProperty("MetastoreSpecDbConnectionAuthenticationMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkProfileInternal)this).MetastoreSpecDbConnectionAuthenticationMode, global::System.Convert.ToString);
             }
             if (content.Contains("MetastoreSpecDbUserName"))
             {

@@ -1,256 +1,258 @@
 {
-  "Entries": [
-    {
-      "RequestUri": "/subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/pstestrg/providers/Microsoft.RecoveryServices/vaults?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHM/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "f5ceb295-329f-4eea-8ad4-3628eaf7dc20-2016-11-17 12:44:31Z-P"
-        ],
-        "x-ms-version": [
-          "2015-01-01"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesManagementClient/3.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"westus\",\r\n      \"name\": \"pstestrsvault\",\r\n      \"etag\": \"W/\\\"datetime'2016-11-10T12%3A32%3A19.0555189Z'\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"id\": \"/subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/pstestrg/providers/Microsoft.RecoveryServices/vaults/pstestrsvault\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "384"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "a8dbb397-bbac-4b96-939b-486780c9f464"
-        ],
-        "x-ms-client-request-id": [
-          "f5ceb295-329f-4eea-8ad4-3628eaf7dc20-2016-11-17 12:44:31Z-P"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14876"
-        ],
-        "x-ms-correlation-request-id": [
-          "a8dbb397-bbac-4b96-939b-486780c9f464"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20161117T124433Z:a8dbb397-bbac-4b96-939b-486780c9f464"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 17 Nov 2016 12:44:32 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/pstestrg/providers/Microsoft.RecoveryServices/vaults/pstestrsvault?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvcHN0ZXN0cnN2YXVsdD9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "7bacf3c1-bc82-4801-bfdf-ad92f0cb45f4-2016-11-17 12:44:33Z-P"
-        ],
-        "x-ms-version": [
-          "2015-01-01"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesManagementClient/3.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"location\": \"westus\",\r\n  \"name\": \"pstestrsvault\",\r\n  \"etag\": \"W/\\\"datetime'2016-11-10T12%3A32%3A19.0555189Z'\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/pstestrg/providers/Microsoft.RecoveryServices/vaults/pstestrsvault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "372"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "4ef9d399-12a5-4589-a3ea-94b27356b626"
-        ],
-        "x-ms-client-request-id": [
-          "7bacf3c1-bc82-4801-bfdf-ad92f0cb45f4-2016-11-17 12:44:33Z-P"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14875"
-        ],
-        "x-ms-correlation-request-id": [
-          "4ef9d399-12a5-4589-a3ea-94b27356b626"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20161117T124433Z:4ef9d399-12a5-4589-a3ea-94b27356b626"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 17 Nov 2016 12:44:32 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/pstestrg/providers/Microsoft.RecoveryServices/vaults/pstestrsvault/backupEngines?$top=200&api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvcHN0ZXN0cnN2YXVsdC9iYWNrdXBFbmdpbmVzPyR0b3A9MjAwJmFwaS12ZXJzaW9uPTIwMTYtMTItMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "d2b9f922-4c6d-4ec6-92ae-d87979e4d9ab"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/pstestrg/providers/Microsoft.RecoveryServices/vaults/pstestrsvault/backupEngines/PRCHIDEL-VEN2.FAREAST.CORP.MICROSOFT.COM\",\r\n      \"name\": \"PRCHIDEL-VEN2.FAREAST.CORP.MICROSOFT.COM\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupEngines\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"PRCHIDEL-VEN2.FAREAST.CORP.MICROSOFT.COM\",\r\n        \"backupManagementType\": \"AzureBackupServer\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Healthy\",\r\n        \"backupEngineType\": \"AzureBackupServerEngine\",\r\n        \"canReRegister\": true,\r\n        \"backupEngineId\": \"638292\"\r\n      }\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "583"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "1c8c9e4e-8c80-40dd-944b-d0074072d3e1"
-        ],
-        "x-ms-client-request-id": [
-          "d2b9f922-4c6d-4ec6-92ae-d87979e4d9ab",
-          "d2b9f922-4c6d-4ec6-92ae-d87979e4d9ab"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14869"
-        ],
-        "x-ms-correlation-request-id": [
-          "1c8c9e4e-8c80-40dd-944b-d0074072d3e1"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20161117T124434Z:1c8c9e4e-8c80-40dd-944b-d0074072d3e1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 17 Nov 2016 12:44:33 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/pstestrg/providers/Microsoft.RecoveryServices/vaults/pstestrsvault/backupEngines?$top=200&api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvcHN0ZXN0cnN2YXVsdC9iYWNrdXBFbmdpbmVzPyR0b3A9MjAwJmFwaS12ZXJzaW9uPTIwMTYtMTItMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "8646b50e-cba9-4b14-bf37-bfda8db7a29b"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/pstestrg/providers/Microsoft.RecoveryServices/vaults/pstestrsvault/backupEngines/PRCHIDEL-VEN2.FAREAST.CORP.MICROSOFT.COM\",\r\n      \"name\": \"PRCHIDEL-VEN2.FAREAST.CORP.MICROSOFT.COM\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupEngines\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"PRCHIDEL-VEN2.FAREAST.CORP.MICROSOFT.COM\",\r\n        \"backupManagementType\": \"AzureBackupServer\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Healthy\",\r\n        \"backupEngineType\": \"AzureBackupServerEngine\",\r\n        \"canReRegister\": true,\r\n        \"backupEngineId\": \"638292\"\r\n      }\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "583"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "facb10a8-2213-4079-8705-fb0cc63d135d"
-        ],
-        "x-ms-client-request-id": [
-          "8646b50e-cba9-4b14-bf37-bfda8db7a29b",
-          "8646b50e-cba9-4b14-bf37-bfda8db7a29b"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14868"
-        ],
-        "x-ms-correlation-request-id": [
-          "facb10a8-2213-4079-8705-fb0cc63d135d"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20161117T124434Z:facb10a8-2213-4079-8705-fb0cc63d135d"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 17 Nov 2016 12:44:33 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    }
-  ],
-  "Names": {},
-  "Variables": {
-    "SubscriptionId": "f7424430-103b-4ba3-bd9e-b6f0986f848a"
-  }
+    "Entries":  [
+                    {
+                        "RequestUri":  "/subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/pstestrg/providers/Microsoft.RecoveryServices/vaults?api-version=2016-06-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHM/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "f5ceb295-329f-4eea-8ad4-3628eaf7dc20-2016-11-17 12:44:31Z-P"
+                                                                          ],
+                                               "x-ms-version":  [
+                                                                    "2015-01-01"
+                                                                ],
+                                               "User-Agent":  [
+                                                                  "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesManagementClient/3.0.0.0"
+                                                              ]
+                                           },
+                        "ResponseBody":  "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"westus\",\r\n      \"name\": \"pstestrsvault\",\r\n      \"etag\": \"W/\\\"datetime\u00272016-11-10T12%3A32%3A19.0555189Z\u0027\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"id\": \"/subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/pstestrg/providers/Microsoft.RecoveryServices/vaults/pstestrsvault\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
+                        "ResponseHeaders":  {
+                                                "Content-Length":  [
+                                                                       "384"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "a8dbb397-bbac-4b96-939b-486780c9f464"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "f5ceb295-329f-4eea-8ad4-3628eaf7dc20-2016-11-17 12:44:31Z-P"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "14876"
+                                                                                                ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "a8dbb397-bbac-4b96-939b-486780c9f464"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20161117T124433Z:a8dbb397-bbac-4b96-939b-486780c9f464"
+                                                                            ],
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:08:52 GMT"
+                                                         ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/8.0"
+                                                           ]
+                                            },
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/pstestrg/providers/Microsoft.RecoveryServices/vaults/pstestrsvault?api-version=2016-06-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvcHN0ZXN0cnN2YXVsdD9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "7bacf3c1-bc82-4801-bfdf-ad92f0cb45f4-2016-11-17 12:44:33Z-P"
+                                                                          ],
+                                               "x-ms-version":  [
+                                                                    "2015-01-01"
+                                                                ],
+                                               "User-Agent":  [
+                                                                  "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesManagementClient/3.0.0.0"
+                                                              ]
+                                           },
+                        "ResponseBody":  "{\r\n  \"location\": \"westus\",\r\n  \"name\": \"pstestrsvault\",\r\n  \"etag\": \"W/\\\"datetime\u00272016-11-10T12%3A32%3A19.0555189Z\u0027\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/pstestrg/providers/Microsoft.RecoveryServices/vaults/pstestrsvault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+                        "ResponseHeaders":  {
+                                                "Content-Length":  [
+                                                                       "372"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "4ef9d399-12a5-4589-a3ea-94b27356b626"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "7bacf3c1-bc82-4801-bfdf-ad92f0cb45f4-2016-11-17 12:44:33Z-P"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "14875"
+                                                                                                ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "4ef9d399-12a5-4589-a3ea-94b27356b626"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20161117T124433Z:4ef9d399-12a5-4589-a3ea-94b27356b626"
+                                                                            ],
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:08:52 GMT"
+                                                         ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/8.0"
+                                                           ]
+                                            },
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/pstestrg/providers/Microsoft.RecoveryServices/vaults/pstestrsvault/backupEngines?$top=200\u0026api-version=2016-12-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvcHN0ZXN0cnN2YXVsdC9iYWNrdXBFbmdpbmVzPyR0b3A9MjAwJmFwaS12ZXJzaW9uPTIwMTYtMTItMDE=",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "d2b9f922-4c6d-4ec6-92ae-d87979e4d9ab"
+                                                                          ],
+                                               "accept-language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
+                                                              ]
+                                           },
+                        "ResponseBody":  "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/pstestrg/providers/Microsoft.RecoveryServices/vaults/pstestrsvault/backupEngines/PRCHIDEL-VEN2.FAREAST.CORP.MICROSOFT.COM\",\r\n      \"name\": \"PRCHIDEL-VEN2.FAREAST.CORP.MICROSOFT.COM\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupEngines\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"PRCHIDEL-VEN2.FAREAST.CORP.MICROSOFT.COM\",\r\n        \"backupManagementType\": \"AzureBackupServer\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Healthy\",\r\n        \"backupEngineType\": \"AzureBackupServerEngine\",\r\n        \"canReRegister\": true,\r\n        \"backupEngineId\": \"638292\"\r\n      }\r\n    }\r\n  ]\r\n}",
+                        "ResponseHeaders":  {
+                                                "Content-Length":  [
+                                                                       "583"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "1c8c9e4e-8c80-40dd-944b-d0074072d3e1"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "d2b9f922-4c6d-4ec6-92ae-d87979e4d9ab",
+                                                                               "d2b9f922-4c6d-4ec6-92ae-d87979e4d9ab"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "14869"
+                                                                                                ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "1c8c9e4e-8c80-40dd-944b-d0074072d3e1"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20161117T124434Z:1c8c9e4e-8c80-40dd-944b-d0074072d3e1"
+                                                                            ],
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:08:52 GMT"
+                                                         ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/8.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ]
+                                            },
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/pstestrg/providers/Microsoft.RecoveryServices/vaults/pstestrsvault/backupEngines?$top=200\u0026api-version=2016-12-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvcHN0ZXN0cnN2YXVsdC9iYWNrdXBFbmdpbmVzPyR0b3A9MjAwJmFwaS12ZXJzaW9uPTIwMTYtMTItMDE=",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "8646b50e-cba9-4b14-bf37-bfda8db7a29b"
+                                                                          ],
+                                               "accept-language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
+                                                              ]
+                                           },
+                        "ResponseBody":  "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/pstestrg/providers/Microsoft.RecoveryServices/vaults/pstestrsvault/backupEngines/PRCHIDEL-VEN2.FAREAST.CORP.MICROSOFT.COM\",\r\n      \"name\": \"PRCHIDEL-VEN2.FAREAST.CORP.MICROSOFT.COM\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupEngines\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"PRCHIDEL-VEN2.FAREAST.CORP.MICROSOFT.COM\",\r\n        \"backupManagementType\": \"AzureBackupServer\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Healthy\",\r\n        \"backupEngineType\": \"AzureBackupServerEngine\",\r\n        \"canReRegister\": true,\r\n        \"backupEngineId\": \"638292\"\r\n      }\r\n    }\r\n  ]\r\n}",
+                        "ResponseHeaders":  {
+                                                "Content-Length":  [
+                                                                       "583"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "facb10a8-2213-4079-8705-fb0cc63d135d"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "8646b50e-cba9-4b14-bf37-bfda8db7a29b",
+                                                                               "8646b50e-cba9-4b14-bf37-bfda8db7a29b"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "14868"
+                                                                                                ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "facb10a8-2213-4079-8705-fb0cc63d135d"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20161117T124434Z:facb10a8-2213-4079-8705-fb0cc63d135d"
+                                                                            ],
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:08:52 GMT"
+                                                         ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/8.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ]
+                                            },
+                        "StatusCode":  200
+                    }
+                ],
+    "Names":  {
+
+              },
+    "Variables":  {
+                      "SubscriptionId":  "f7424430-103b-4ba3-bd9e-b6f0986f848a"
+                  }
 }

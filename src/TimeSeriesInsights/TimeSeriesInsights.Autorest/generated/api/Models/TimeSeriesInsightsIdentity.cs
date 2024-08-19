@@ -29,9 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models
         /// <summary>Backing field for <see cref="EventSourceName" /> property.</summary>
         private string _eventSourceName;
 
-        /// <summary>
-        /// The name of the Time Series Insights event source associated with the specified environment.
-        /// </summary>
+        /// <summary>Name of the event source.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Origin(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.PropertyOrigin.Owned)]
         public string EventSourceName { get => this._eventSourceName; set => this._eventSourceName = value; }
 
@@ -88,13 +86,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models
         SerializedName = @"environmentName",
         PossibleTypes = new [] { typeof(string) })]
         string EnvironmentName { get; set; }
-        /// <summary>
-        /// The name of the Time Series Insights event source associated with the specified environment.
-        /// </summary>
+        /// <summary>Name of the event source.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of the Time Series Insights event source associated with the specified environment.",
+        Description = @"Name of the event source.",
         SerializedName = @"eventSourceName",
         PossibleTypes = new [] { typeof(string) })]
         string EventSourceName { get; set; }
@@ -139,9 +135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models
         string AccessPolicyName { get; set; }
         /// <summary>Name of the environment</summary>
         string EnvironmentName { get; set; }
-        /// <summary>
-        /// The name of the Time Series Insights event source associated with the specified environment.
-        /// </summary>
+        /// <summary>Name of the event source.</summary>
         string EventSourceName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }

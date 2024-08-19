@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the VMware service.
 
 ---
-## Status
-[![Az.VMware](https://img.shields.io/powershellgallery/v/Az.VMware.svg?style=flat-square&label=Az.VMware "Az.VMware")](https://www.powershellgallery.com/packages/Az.VMware/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -47,11 +44,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 0baf811c3c76c87b3c127d098519bd97141222dd
+commit: f1546dc981fa5d164d7ecd13588520457462c22c
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
-input-file: 
-  - $(repo)/specification/vmware/resource-manager/Microsoft.AVS/stable/2023-03-01/vmware.json
+input-file:
+  - $(repo)/specification/vmware/resource-manager/Microsoft.AVS/stable/2023-09-01/vmware.json
 
 module-version: 0.4.0
 title: VMware
@@ -60,7 +57,7 @@ subject-prefix: $(service-name)
 support-json-input: false
 
 directive:
-  - from: swagger-document 
+  - from: swagger-document
     where: $.definitions.AdminCredentials.properties.nsxtPassword
     transform: >-
       return {
@@ -70,7 +67,7 @@ directive:
           "x-ms-secret": true,
           "format": "password"
       }
-  - from: swagger-document 
+  - from: swagger-document
     where: $.definitions.AdminCredentials.properties.vcenterPassword
     transform: >-
       return {
@@ -138,7 +135,7 @@ directive:
   #     verb: Test
   #     subject: ^LocationTrialAvailability$
   #   hide: true
-  # Remove the list variant as the workloadNetwork only have one enum value 
+  # Remove the list variant as the workloadNetwork only have one enum value
   - where:
       verb: Get
       subject: WorkloadNetwork
@@ -158,17 +155,19 @@ directive:
   - no-inline:
       - AddonProperties
       - PlacementPolicyProperties
-  - model-cmdlet:
-    - model-name: IdentitySource
   # Re-name and custom it
-  # - model-cmdlet:
-  #     - VMPlacementPolicyProperties
-  #     - VmHostPlacementPolicyProperties
-  #     - ScriptSecureStringExecutionParameter
-  #     - ScriptStringExecutionParameter
-  #     - PSCredentialExecutionParameter
-  #     - AddonSrmProperties
-  #     - AddonVrProperties
+  - model-cmdlet:
+      - model-name: VMPlacementPolicyProperties
+        cmdlet-name: New-AzVMwareVMPlacementPolicyPropertyObject
+      - model-name: VmHostPlacementPolicyProperties
+        cmdlet-name: New-AzVMwareVmHostPlacementPolicyPropertyObject
+      # - model-name: ScriptSecureStringExecutionParameter
+      # - model-name: ScriptStringExecutionParameter
+      # - model-name: PSCredentialExecutionParameter
+      # - model-name: AddonSrmProperties
+      #   cmdlet-name: New-AzVMwareAddonSrmPropertyObject
+      # - model-name: AddonVrProperties
+      #   cmdlet-name: New-AzVMwareAddonVrPropertyObject
   - where:
       verb: Get
       subject: ^PrivateCloudAdminCredentials$

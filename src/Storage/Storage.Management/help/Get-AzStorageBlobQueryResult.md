@@ -19,8 +19,8 @@ Get-AzStorageBlobQueryResult [-Blob] <String> [-Container] <String> [-SnapshotTi
  [-InputTextConfiguration <PSBlobQueryTextConfiguration>]
  [-OutputTextConfiguration <PSBlobQueryTextConfiguration>] [-PassThru] [-Force] [-TagCondition <String>]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BlobPipeline
@@ -29,8 +29,8 @@ Get-AzStorageBlobQueryResult -BlobBaseClient <BlobBaseClient> -QueryString <Stri
  [-InputTextConfiguration <PSBlobQueryTextConfiguration>]
  [-OutputTextConfiguration <PSBlobQueryTextConfiguration>] [-PassThru] [-Force] [-TagCondition <String>]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ContainerPipeline
@@ -40,8 +40,8 @@ Get-AzStorageBlobQueryResult -BlobContainerClient <BlobContainerClient> [-Blob] 
  [-InputTextConfiguration <PSBlobQueryTextConfiguration>]
  [-OutputTextConfiguration <PSBlobQueryTextConfiguration>] [-PassThru] [-Force] [-TagCondition <String>]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

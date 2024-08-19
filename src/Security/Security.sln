@@ -45,6 +45,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Security", "Security\Securi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{5CAAE885-B0C8-4951-869C-A982BE1B9204}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Security", "Security.Autorest\Az.Security.csproj", "{94C7F7FA-9F77-41A0-A145-0291DB96ABAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DefenderForStorage", "DefenderForStorage.Autorest\Az.DefenderForStorage.csproj", "{9A26DCFF-572E-4DD3-B957-BA7CF6D4625A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -126,6 +130,14 @@ Global
 		{5CAAE885-B0C8-4951-869C-A982BE1B9204}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CAAE885-B0C8-4951-869C-A982BE1B9204}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CAAE885-B0C8-4951-869C-A982BE1B9204}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94C7F7FA-9F77-41A0-A145-0291DB96ABAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94C7F7FA-9F77-41A0-A145-0291DB96ABAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94C7F7FA-9F77-41A0-A145-0291DB96ABAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94C7F7FA-9F77-41A0-A145-0291DB96ABAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A26DCFF-572E-4DD3-B957-BA7CF6D4625A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A26DCFF-572E-4DD3-B957-BA7CF6D4625A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A26DCFF-572E-4DD3-B957-BA7CF6D4625A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A26DCFF-572E-4DD3-B957-BA7CF6D4625A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5C3BCAE2-2337-45E5-83D8-872FD589C773} = {CFA0BCE7-FC56-4150-9366-4B530A8E3DD6}

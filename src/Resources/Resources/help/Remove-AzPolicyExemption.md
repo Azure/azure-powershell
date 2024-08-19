@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azpolicyexemption
 schema: 2.0.0
@@ -8,30 +8,34 @@ schema: 2.0.0
 # Remove-AzPolicyExemption
 
 ## SYNOPSIS
-Removes a policy exemption.
+This operation deletes a policy exemption, given its name and the scope it was created in.
+The scope of a policy exemption is the part of its ID preceding '/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}'.
 
 ## SYNTAX
 
-### NameParameterSet (Default)
+### Name (Default)
 ```
-Remove-AzPolicyExemption -Name <String> [-Scope <String>] [-Force] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### IdParameterSet
-```
-Remove-AzPolicyExemption -Id <String> [-Force] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPolicyExemption -Name <String> [-Scope <String>] [-Force] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### InputObjectParameterSet
+### Id
 ```
-Remove-AzPolicyExemption [-Force] -InputObject <PsPolicyExemption> [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPolicyExemption -Id <String> [-Force] [-BackwardCompatible] [-DefaultProfile <PSObject>] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObject
+```
+Remove-AzPolicyExemption -InputObject <IPolicyIdentity> [-Force] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzPolicyExemption** cmdlet removes the specified policy exemption.
+This operation deletes a policy exemption, given its name and the scope it was created in.
+The scope of a policy exemption is the part of its ID preceding '/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}'.
 
 ## EXAMPLES
 
@@ -58,14 +62,26 @@ The second command gets the policy exemption at a resource group level, and then
 The **ResourceId** property of $ResourceGroup identifies the resource group.
 The final command removes the policy exemption that the **ResourceId** property of $PolicyExemption identifies.
 
+### Example 3: [Backcompat] Remove policy exemption by ID
+```powershell
+$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
+$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId
+Remove-AzPolicyExemption -Id $PolicyExemption.ResourceId -Force -BackwardCompatible
+True
+```
+
+The first command gets a resource group named ResourceGroup11, and then stores that object in the $ResourceGroup variable.
+The second command gets the policy exemption at a resource group level, and then stores it in the $PolicyExemption variable.
+The **ResourceId** property of $ResourceGroup identifies the resource group.
+The final command removes the policy exemption that the **ResourceId** property of $PolicyExemption identifies.
+
 ## PARAMETERS
 
-### -ApiVersion
-When set, indicates the version of the resource provider API to use.
-If not specified, the API version is automatically determined as the latest available.
+### -BackwardCompatible
+Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -77,12 +93,13 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -92,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Do not ask for confirmation.
+When $true, skip confirmation prompts
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -107,13 +124,13 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-The fully qualified policy exemption ID to delete, including the scope, e.g.
-/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}.
+The ID of the policy exemption to delete.
+Use the format '{scope}/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}'.
 
 ```yaml
 Type: System.String
-Parameter Sets: IdParameterSet
-Aliases: ResourceId
+Parameter Sets: Id
+Aliases: ResourceId, PolicyExemptionId
 
 Required: True
 Position: Named
@@ -123,11 +140,12 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The policy exemption object to remove that was output from another cmdlet.
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyExemption
-Parameter Sets: InputObjectParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
+Parameter Sets: InputObject
 Aliases:
 
 Required: True
@@ -142,8 +160,8 @@ The name of the policy exemption to delete.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet
-Aliases:
+Parameter Sets: Name
+Aliases: PolicyExemptionName
 
 Required: True
 Position: Named
@@ -152,8 +170,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Pre
-When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -167,13 +185,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Scope
-The scope of the policy exemption to delete, e.g.
-/providers/managementGroups/{managementGroupName}, defaults to current subscription.
+The scope of the policy exemption.
+Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet
+Parameter Sets: Name
 Aliases:
 
 Required: False
@@ -219,9 +252,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
 
-### Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyExemption
+### System.String
 
 ## OUTPUTS
 

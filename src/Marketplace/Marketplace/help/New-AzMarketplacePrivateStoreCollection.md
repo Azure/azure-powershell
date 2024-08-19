@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMarketplacePrivateStoreCollection
 
 ## SYNOPSIS
-Create or update private store collection
+Create private store collection
 
 ## SYNTAX
 
@@ -16,37 +16,37 @@ Create or update private store collection
 ```
 New-AzMarketplacePrivateStoreCollection -CollectionId <String> -PrivateStoreId <String> [-AllSubscription]
  [-Claim <String>] [-CollectionName <String>] [-Enabled] [-SubscriptionsList <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzMarketplacePrivateStoreCollection -CollectionId <String> -PrivateStoreId <String> -JsonString <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzMarketplacePrivateStoreCollection -CollectionId <String> -PrivateStoreId <String> -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityPrivateStoreExpanded
 ```
 New-AzMarketplacePrivateStoreCollection -CollectionId <String> -PrivateStoreInputObject <IMarketplaceIdentity>
  [-AllSubscription] [-Claim <String>] [-CollectionName <String>] [-Enabled] [-SubscriptionsList <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityPrivateStore
 ```
 New-AzMarketplacePrivateStoreCollection -CollectionId <String> -PrivateStoreInputObject <IMarketplaceIdentity>
- -Payload <ICollection> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ -Payload <ICollection> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update private store collection
+Create private store collection
 
 ## EXAMPLES
 
@@ -126,7 +126,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -187,7 +188,6 @@ Accept wildcard characters: False
 
 ### -Payload
 The Collection data structure.
-To construct, see NOTES section for PAYLOAD properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection
@@ -218,7 +218,6 @@ Accept wildcard characters: False
 
 ### -PrivateStoreInputObject
 Identity Parameter
-To construct, see NOTES section for PRIVATESTOREINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
@@ -229,21 +228,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -300,12 +284,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection
+
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollection
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

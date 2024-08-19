@@ -30,11 +30,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Adjust".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Adjust", "Adjust", global::System.Management.Automation.CompletionResultType.ParameterValue, "Adjust");
+                yield return new global::System.Management.Automation.CompletionResult("'Adjust'", "Adjust", global::System.Management.Automation.CompletionResultType.ParameterValue, "Adjust");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Drop".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Drop", "Drop", global::System.Management.Automation.CompletionResultType.ParameterValue, "Drop");
+                yield return new global::System.Management.Automation.CompletionResult("'Drop'", "Drop", global::System.Management.Automation.CompletionResultType.ParameterValue, "Drop");
             }
         }
     }

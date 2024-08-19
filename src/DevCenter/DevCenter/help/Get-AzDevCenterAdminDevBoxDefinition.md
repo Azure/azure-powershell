@@ -15,31 +15,33 @@ Gets a Dev Box definition
 ### List (Default)
 ```
 Get-AzDevCenterAdminDevBoxDefinition -DevCenterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDevCenterAdminDevBoxDefinition -DevCenterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### Get1
 ```
 Get-AzDevCenterAdminDevBoxDefinition -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -ProjectName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ProjectName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzDevCenterAdminDevBoxDefinition -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -ProjectName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ProjectName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzDevCenterAdminDevBoxDefinition -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -139,6 +141,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The name of the project.
 
@@ -194,34 +211,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IDevBoxDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevBoxDefinition
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDevCenterIdentity>`: Identity Parameter
-  - `[AttachedNetworkConnectionName <String>]`: The name of the attached NetworkConnection.
-  - `[CatalogName <String>]`: The name of the Catalog.
-  - `[DevBoxDefinitionName <String>]`: The name of the Dev Box definition.
-  - `[DevCenterName <String>]`: The name of the devcenter.
-  - `[EnvironmentTypeName <String>]`: The name of the environment type.
-  - `[GalleryName <String>]`: The name of the gallery.
-  - `[Id <String>]`: Resource identity path
-  - `[ImageName <String>]`: The name of the image.
-  - `[Location <String>]`: The Azure region
-  - `[NetworkConnectionName <String>]`: Name of the Network Connection that can be applied to a Pool.
-  - `[OperationId <String>]`: The ID of an ongoing async operation
-  - `[PoolName <String>]`: Name of the pool.
-  - `[ProjectName <String>]`: The name of the project.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ScheduleName <String>]`: The name of the schedule that uniquely identifies it.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VersionName <String>]`: The version of the image.
 
 ## RELATED LINKS

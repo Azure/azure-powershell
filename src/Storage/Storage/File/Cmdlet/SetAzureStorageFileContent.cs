@@ -238,28 +238,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         using (FileStream stream = File.OpenRead(localFile.FullName))
                         {
                             byte[] buffer = null;
-                            long lastBlockSize = 0;
-                            for (long offset = 0; offset < fileSize; offset += blockSize)
+                            for (long offset = 0; offset < fileSize;)
                             {
-                                long currentBlockSize = offset + blockSize < fileSize ? blockSize : fileSize - offset;
+                                long targetBlockSize = offset + blockSize < fileSize ? blockSize : fileSize - offset;
 
-                                // Only need to create new buffer when chunk size change
-                                if (currentBlockSize != lastBlockSize)
-                                {
-                                    buffer = new byte[currentBlockSize];
-                                    lastBlockSize = currentBlockSize;
-                                }
-                                await stream.ReadAsync(buffer: buffer, offset: 0, count: (int)currentBlockSize);
+                                // create new buffer, the old buffer will be GC
+                                buffer = new byte[targetBlockSize];
+
+                                int actualBlockSize = await stream.ReadAsync(buffer: buffer, offset: 0, count: (int)targetBlockSize);
                                 if (!fipsEnabled && hash != null)
                                 {
-                                    hash.AppendData(buffer);
+                                    hash.AppendData(buffer, 0, actualBlockSize);
                                 }
 
                                 Task task = UploadFileRangAsync(fileClient,
-                                    new HttpRange(offset, currentBlockSize),
-                                    new MemoryStream(buffer),
+                                    new HttpRange(offset, actualBlockSize),
+                                    new MemoryStream(buffer, 0, actualBlockSize),
                                     progressHandler);
                                 runningTasks.Add(task);
+
+                                offset += actualBlockSize;
 
                                 // Check if any of upload range tasks are still busy
                                 if (runningTasks.Count >= maxWorkers)
@@ -394,9 +392,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     e.RequestInformation.HttpStatusCode == (int)HttpStatusCode.Forbidden)
                 {
                     //Forbidden to check directory existence, might caused by a write only SAS
-                    //Don't report error here since should not block upload with write only SAS
-                    //If the directory not exist, Error will be reported when upload with DMlib later
-                    directoryExists = true;
+                    //Don't report error here since should not block upload with write only SAS,
+                    //Will take as directory not exist here, and take the path as file path (instead of parent dir path), to allow upload file with specific file name and write only sas
+                    //If the dir already exist, will get error later, and customer can set the path to file path to unblock it.
+                    directoryExists = false;
                 }
                 else
                 {
@@ -489,9 +488,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 if (e.Status == 403)
                 {
                     //Forbidden to check directory existence, might caused by a write only SAS
-                    //Don't report error here since should not block upload with write only SAS
-                    //If the directory not exist, Error will be reported when upload with DMlib later
-                    directoryExists = true;
+                    //Don't report error here since should not block upload with write only SAS,
+                    //Will take as directory not exist here, and take the path as file path (instead of parent dir path), to allow upload file with specific file name and write only sas
+                    //If the dir already exist, will get error later, and customer can set the path to file path to unblock it.
+                    directoryExists = false;
                 }
                 else
                 {

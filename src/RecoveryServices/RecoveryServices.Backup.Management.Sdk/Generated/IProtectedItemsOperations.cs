@@ -14,12 +14,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public partial interface IProtectedItemsOperations
     {
         /// <summary>
-        /// Provides the details of the backed up item. This is an asynchronous operation. To know the status of the operation,
-        /// call the GetItemOperationResult API.
+        /// Provides the details of the backed up item. This is an asynchronous
+        /// operation. To know the status of the operation, call the
+        /// GetItemOperationResult API.
         /// </summary>
         /// <remarks>
-        /// Provides the details of the backed up item. This is an asynchronous operation. To know the status of the operation,
-        /// call the GetItemOperationResult API.
+        /// Provides the details of the backed up item. This is an asynchronous
+        /// operation. To know the status of the operation, call the
+        /// GetItemOperationResult API.
         /// </remarks>
         /// <param name='odataQuery'>
         /// 
@@ -28,7 +30,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backed up item.
@@ -54,18 +57,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProtectedItemResource>> GetWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, Microsoft.Rest.Azure.OData.ODataQuery<GetProtectedItemQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<GetProtectedItemQueryObject>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Enables backup of an item or to modifies the backup policy information of an already backed up item. This is an
-        /// asynchronous operation. To know the status of the operation, call the GetItemOperationResult API.
+        /// Enables backup of an item or to modifies the backup policy information of
+        /// an already backed up item. This is an asynchronous operation. To know the
+        /// status of the operation, call the GetItemOperationResult API.
         /// </summary>
         /// <remarks>
-        /// Enables backup of an item or to modifies the backup policy information of an already backed up item. This is an
-        /// asynchronous operation. To know the status of the operation, call the GetItemOperationResult API.
+        /// Enables backup of an item or to modifies the backup policy information of
+        /// an already backed up item. This is an asynchronous operation. To know the
+        /// status of the operation, call the GetItemOperationResult API.
         /// </remarks>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backup item.
@@ -75,6 +81,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// </param>
         /// <param name='protectedItemName'>
         /// Item name to be backed up.
+        /// </param>
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
         /// </param>
         /// <param name='parameters'>
         /// resource backed up item
@@ -91,21 +100,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProtectedItemResource>> CreateOrUpdateWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, ProtectedItemResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProtectedItemResource>> CreateOrUpdateWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, ProtectedItemResource parameters, string xMsAuthorizationAuxiliary = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Used to disable backup of an item within a container. This is an asynchronous operation. To know the status of the
-        /// request, call the GetItemOperationResult API.
+        /// Used to disable backup of an item within a container. This is an
+        /// asynchronous operation. To know the status of the request, call the
+        /// GetItemOperationResult API.
         /// </summary>
         /// <remarks>
-        /// Used to disable backup of an item within a container. This is an asynchronous operation. To know the status of the
-        /// request, call the GetItemOperationResult API.
+        /// Used to disable backup of an item within a container. This is an
+        /// asynchronous operation. To know the status of the request, call the
+        /// GetItemOperationResult API.
         /// </remarks>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backed up item.

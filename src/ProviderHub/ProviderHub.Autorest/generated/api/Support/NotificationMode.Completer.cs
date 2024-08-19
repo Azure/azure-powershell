@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotSpecified".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotSpecified", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
+                yield return new global::System.Management.Automation.CompletionResult("'NotSpecified'", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "EventHub".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("EventHub", "EventHub", global::System.Management.Automation.CompletionResultType.ParameterValue, "EventHub");
+                yield return new global::System.Management.Automation.CompletionResult("'EventHub'", "EventHub", global::System.Management.Automation.CompletionResultType.ParameterValue, "EventHub");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "WebHook".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("WebHook", "WebHook", global::System.Management.Automation.CompletionResultType.ParameterValue, "WebHook");
+                yield return new global::System.Management.Automation.CompletionResult("'WebHook'", "WebHook", global::System.Management.Automation.CompletionResultType.ParameterValue, "WebHook");
             }
         }
     }

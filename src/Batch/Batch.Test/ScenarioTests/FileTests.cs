@@ -75,18 +75,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             );
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetRemoteDesktopProtocolFile()
-        {
-            TestRunner.RunTestScript(
-                mockContext =>
-                {
-                    _ = new ScenarioTestContext();
-                },
-                $"Test-GetRDPFile '{poolId}'"
-            );
-        }
+       
 
         [Fact(Skip = "Successful re-recording, but fails in playback. See issue https://github.com/Azure/azure-powershell/issues/7512")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

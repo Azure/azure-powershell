@@ -23,7 +23,7 @@ Create an in-memory object for Authorization.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.Authorization
 .Link
-https://learn.microsoft.com/powershell/module/az.ManagedServices/new-AzManagedServicesAuthorizationObject
+https://learn.microsoft.com/powershell/module/Az.ManagedServices/new-AzManagedServicesAuthorizationObject
 #>
 function New-AzManagedServicesAuthorizationObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.Authorization')]

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Synapse-help.xml
 Module Name: Az.Synapse
 online version: https://learn.microsoft.com/powershell/module/az.synapse/update-azsynapsekustopooldataconnection
 schema: 2.0.0
@@ -14,59 +14,60 @@ Updates a data connection.
 
 ### UpdateExpandedEventHub (Default)
 ```
-Update-AzSynapseKustoPoolDataConnection -DatabaseName <String> -DataConnectionName <String>
- -KustoPoolName <String> -ResourceGroupName <String> -WorkspaceName <String> -ConsumerGroup <String>
- -EventHubResourceId <String> -Kind <DataConnectionKind> -Location <String> [-SubscriptionId <String>]
- [-Compression <Compression>] [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>]
- [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzSynapseKustoPoolDataConnection -DataConnectionName <String> -DatabaseName <String>
+ -KustoPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String>] -WorkspaceName <String>
+ -Kind <DataConnectionKind> -ConsumerGroup <String> -Location <String> -EventHubResourceId <String>
+ [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
+ [-TableName <String>] [-Compression <Compression>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateExpandedEventGrid
 ```
-Update-AzSynapseKustoPoolDataConnection -DatabaseName <String> -DataConnectionName <String>
- -KustoPoolName <String> -ResourceGroupName <String> -WorkspaceName <String> -ConsumerGroup <String>
- -EventHubResourceId <String> -Kind <DataConnectionKind> -Location <String> -StorageAccountResourceId <String>
- [-SubscriptionId <String>] [-BlobStorageEventType <BlobStorageEventType>] [-DataFormat <EventGridDataFormat>]
- [-IgnoreFirstRecord] [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSynapseKustoPoolDataConnection -DataConnectionName <String> -DatabaseName <String>
+ -KustoPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String>] -WorkspaceName <String>
+ -Kind <DataConnectionKind> -ConsumerGroup <String> -Location <String> -EventHubResourceId <String>
+ [-DataFormat <EventGridDataFormat>] [-MappingRuleName <String>] [-TableName <String>]
+ -StorageAccountResourceId <String> [-BlobStorageEventType <BlobStorageEventType>] [-IgnoreFirstRecord]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateExpandedIotHub
 ```
-Update-AzSynapseKustoPoolDataConnection -DatabaseName <String> -DataConnectionName <String>
- -KustoPoolName <String> -ResourceGroupName <String> -WorkspaceName <String> -ConsumerGroup <String>
- -IotHubResourceId <String> -Kind <DataConnectionKind> -Location <String> -SharedAccessPolicyName <String>
- [-SubscriptionId <String>] [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>]
- [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpandedEventGrid
-```
-Update-AzSynapseKustoPoolDataConnection -InputObject <ISynapseIdentity> -ConsumerGroup <String>
- -EventHubResourceId <String> -Kind <DataConnectionKind> -Location <String> -StorageAccountResourceId <String>
- [-BlobStorageEventType <BlobStorageEventType>] [-DataFormat <EventGridDataFormat>] [-IgnoreFirstRecord]
- [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzSynapseKustoPoolDataConnection -DataConnectionName <String> -DatabaseName <String>
+ -KustoPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String>] -WorkspaceName <String>
+ -Kind <DataConnectionKind> -ConsumerGroup <String> -Location <String> [-DataFormat <EventGridDataFormat>]
+ [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-TableName <String>] -IotHubResourceId <String>
+ -SharedAccessPolicyName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpandedEventHub
 ```
-Update-AzSynapseKustoPoolDataConnection -InputObject <ISynapseIdentity> -ConsumerGroup <String>
- -EventHubResourceId <String> -Kind <DataConnectionKind> -Location <String> [-Compression <Compression>]
- [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
- [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzSynapseKustoPoolDataConnection -InputObject <ISynapseIdentity> -Kind <DataConnectionKind>
+ -ConsumerGroup <String> -Location <String> -EventHubResourceId <String> [-DataFormat <EventGridDataFormat>]
+ [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-TableName <String>]
+ [-Compression <Compression>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpandedEventGrid
+```
+Update-AzSynapseKustoPoolDataConnection -InputObject <ISynapseIdentity> -Kind <DataConnectionKind>
+ -ConsumerGroup <String> -Location <String> -EventHubResourceId <String> [-DataFormat <EventGridDataFormat>]
+ [-MappingRuleName <String>] [-TableName <String>] -StorageAccountResourceId <String>
+ [-BlobStorageEventType <BlobStorageEventType>] [-IgnoreFirstRecord] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpandedIotHub
 ```
-Update-AzSynapseKustoPoolDataConnection -InputObject <ISynapseIdentity> -ConsumerGroup <String>
- -IotHubResourceId <String> -Kind <DataConnectionKind> -Location <String> -SharedAccessPolicyName <String>
- [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
- [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzSynapseKustoPoolDataConnection -InputObject <ISynapseIdentity> -Kind <DataConnectionKind>
+ -ConsumerGroup <String> -Location <String> [-DataFormat <EventGridDataFormat>]
+ [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-TableName <String>] -IotHubResourceId <String>
+ -SharedAccessPolicyName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -222,7 +223,7 @@ The name of the database in the Kusto pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedEventGrid, UpdateExpandedEventHub, UpdateExpandedIotHub
+Parameter Sets: UpdateExpandedEventHub, UpdateExpandedEventGrid, UpdateExpandedIotHub
 Aliases:
 
 Required: True
@@ -237,7 +238,7 @@ The name of the data connection.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedEventGrid, UpdateExpandedEventHub, UpdateExpandedIotHub
+Parameter Sets: UpdateExpandedEventHub, UpdateExpandedEventGrid, UpdateExpandedIotHub
 Aliases: Name
 
 Required: True
@@ -283,7 +284,7 @@ The resource ID of the event hub to be used to create a data connection / event 
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedEventGrid, UpdateExpandedEventHub, UpdateViaIdentityExpandedEventGrid, UpdateViaIdentityExpandedEventHub
+Parameter Sets: UpdateExpandedEventHub, UpdateExpandedEventGrid, UpdateViaIdentityExpandedEventHub, UpdateViaIdentityExpandedEventGrid
 Aliases:
 
 Required: True
@@ -329,7 +330,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentity
-Parameter Sets: UpdateViaIdentityExpandedEventGrid, UpdateViaIdentityExpandedEventHub, UpdateViaIdentityExpandedIotHub
+Parameter Sets: UpdateViaIdentityExpandedEventHub, UpdateViaIdentityExpandedEventGrid, UpdateViaIdentityExpandedIotHub
 Aliases:
 
 Required: True
@@ -374,7 +375,7 @@ The name of the Kusto pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedEventGrid, UpdateExpandedEventHub, UpdateExpandedIotHub
+Parameter Sets: UpdateExpandedEventHub, UpdateExpandedEventGrid, UpdateExpandedIotHub
 Aliases:
 
 Required: True
@@ -436,7 +437,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedEventGrid, UpdateExpandedEventHub, UpdateExpandedIotHub
+Parameter Sets: UpdateExpandedEventHub, UpdateExpandedEventGrid, UpdateExpandedIotHub
 Aliases:
 
 Required: True
@@ -481,10 +482,10 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedEventGrid, UpdateExpandedEventHub, UpdateExpandedIotHub
+Parameter Sets: UpdateExpandedEventHub, UpdateExpandedEventGrid, UpdateExpandedIotHub
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
@@ -512,7 +513,7 @@ The name of the workspace
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedEventGrid, UpdateExpandedEventHub, UpdateExpandedIotHub
+Parameter Sets: UpdateExpandedEventHub, UpdateExpandedEventGrid, UpdateExpandedIotHub
 Aliases:
 
 Required: True
@@ -566,24 +567,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<ISynapseIdentity>`: Identity Parameter
-  - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
-  - `[DataConnectionName <String>]`: The name of the data connection.
-  - `[DatabaseName <String>]`: The name of the database in the Kusto pool.
-  - `[Id <String>]`: Resource identity path
-  - `[KustoPoolName <String>]`: The name of the Kusto pool.
-  - `[Location <String>]`: The name of Azure region.
-  - `[PrincipalAssignmentName <String>]`: The name of the Kusto principalAssignment.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[WorkspaceName <String>]`: The name of the workspace
-
 ## RELATED LINKS
-

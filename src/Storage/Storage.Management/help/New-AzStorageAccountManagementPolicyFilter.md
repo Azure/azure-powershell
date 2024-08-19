@@ -14,7 +14,8 @@ Creates a ManagementPolicy rule filter object, which can be used in New-AzStorag
 
 ```
 New-AzStorageAccountManagementPolicyFilter [-PrefixMatch <String[]>] [-BlobType <String[]>]
- [-BlobIndexMatch <PSTagFilter[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-BlobIndexMatch <PSTagFilter[]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

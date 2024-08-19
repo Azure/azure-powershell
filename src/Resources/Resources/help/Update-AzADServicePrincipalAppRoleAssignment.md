@@ -15,15 +15,15 @@ Update the navigation property appRoleAssignments in servicePrincipals
 ### UpdateExpanded (Default)
 ```
 Update-AzADServicePrincipalAppRoleAssignment -AppRoleAssignmentId <String> -ServicePrincipalId <String>
- [-AdditionalProperties <Hashtable>] [-AppRoleId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-AdditionalProperties <Hashtable>] [-AppRoleId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Update-AzADServicePrincipalAppRoleAssignment -AppRoleAssignmentId <String> -ServicePrincipalId <String>
- -Body <IMicrosoftGraphAppRoleAssignment> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -Body <IMicrosoftGraphAppRoleAssignment> [-DefaultProfile <PSObject>] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,10 +31,12 @@ Update the navigation property appRoleAssignments in servicePrincipals
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### Example 1: Update the AppRoleId
+```powershell
+Update-AzADServicePrincipalAppRoleAssignment -AppRoleAssignmentId Zbm-cUeDXUmlicIc3eenIoFW9pZ_gRBIudKgu0gaMIw -ServicePrincipalId 00001111-aaaa-2222-bbbb-3333cccc4444 -AppRoleId 649ae968-bdf9-4f22-bb2c-2aa1b4af0a83
 ```
-Update-AzADServicePrincipalAppRoleAssignment -AppRoleAssignmentId Zbm-cUeDXUmlicIc3eenIoFW9pZ_gRBIudKgu0gaMIw -ServicePrincipalId 71beb965-8347-495d-a589-c21cdde7a722 -AppRoleId 649ae968-bdf9-4f22-bb2c-2aa1b4af0a83
-```
+
+Update the assigned App role id.
 
 ## PARAMETERS
 
@@ -42,7 +44,7 @@ Update-AzADServicePrincipalAppRoleAssignment -AppRoleAssignmentId Zbm-cUeDXUmlic
 Additional Parameters
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -57,7 +59,7 @@ Accept wildcard characters: False
 key: id of appRoleAssignment
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -75,7 +77,7 @@ If the resource application has not declared any app roles, a default app role I
 Required on create.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -92,7 +94,7 @@ The directoryObject type is the base type for many other directory entity types.
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: IMicrosoftGraphAppRoleAssignment
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment
 Parameter Sets: Update
 Aliases:
 
@@ -107,7 +109,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -122,13 +124,28 @@ Accept wildcard characters: False
 Returns true when the command succeeds
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -137,7 +154,7 @@ Accept wildcard characters: False
 key: id of servicePrincipal
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -152,7 +169,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -168,7 +185,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -185,32 +202,27 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment
+
 ## OUTPUTS
 
 ### System.Boolean
+
 ## NOTES
+
+ALIASES
+
 COMPLEX PARAMETER PROPERTIES
 
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY \<IMicrosoftGraphAppRoleAssignment\>: Represents an Azure Active Directory object.
-The directoryObject type is the base type for many other directory entity types.
-  \[(Any) \<Object\>\]: This indicates any property can be added to this object.
-  \[DeletedDateTime \<DateTime?\>\]: 
-  \[DisplayName \<String\>\]: The name displayed in directory
-  \[AppRoleId \<String\>\]: The identifier (id) for the app role which is assigned to the principal.
-This app role must be exposed in the appRoles property on the resource application's service principal (resourceId).
-If the resource application has not declared any app roles, a default app role ID of 00000000-0000-0000-0000-000000000000 can be specified to signal that the principal is assigned to the resource app without any specific app roles.
-Required on create.
-  \[PrincipalId \<String\>\]: The unique identifier (id) for the user, group or service principal being granted the app role.
-Required on create.
-  \[ResourceDisplayName \<String\>\]: The display name of the resource app's service principal to which the assignment is made.
-  \[ResourceId \<String\>\]: The unique identifier (id) for the resource service principal for which the assignment is made.
-Required on create.
-Supports $filter (eq only).
+
+BODY `<IMicrosoftGraphAppRoleAssignment>`: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+  - `[(Any) <Object>]`: This indicates any property can be added to this object.
+  - `[DeletedDateTime <DateTime?>]`: 
+  - `[DisplayName <String>]`: The name displayed in directory
+  - `[AppRoleId <String>]`: The identifier (id) for the app role which is assigned to the principal. This app role must be exposed in the appRoles property on the resource application's service principal (resourceId). If the resource application has not declared any app roles, a default app role ID of 00000000-0000-0000-0000-000000000000 can be specified to signal that the principal is assigned to the resource app without any specific app roles. Required on create.
+  - `[PrincipalId <String>]`: The unique identifier (id) for the user, group or service principal being granted the app role. Required on create.
+  - `[ResourceDisplayName <String>]`: The display name of the resource app's service principal to which the assignment is made.
+  - `[ResourceId <String>]`: The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.resources/update-azadserviceprincipalapproleassignment](https://learn.microsoft.com/powershell/module/az.resources/update-azadserviceprincipalapproleassignment)
-

@@ -6,7 +6,11 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
 {
 
-    /// <summary>Argument completer implementation for StorageLimitExceededBehavior.</summary>
+    /// <summary>
+    /// The behavior the Time Series Insights service should take when the environment's capacity has been exceeded. If "PauseIngress"
+    /// is specified, new events will not be read from the event source. If "PurgeOldData" is specified, new events will continue
+    /// to be read and old events will be deleted from the environment. The default behavior is PurgeOldData.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.StorageLimitExceededBehaviorTypeConverter))]
     public partial struct StorageLimitExceededBehavior :
         System.Management.Automation.IArgumentCompleter
@@ -28,11 +32,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PurgeOldData".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("PurgeOldData", "PurgeOldData", global::System.Management.Automation.CompletionResultType.ParameterValue, "PurgeOldData");
+                yield return new global::System.Management.Automation.CompletionResult("'PurgeOldData'", "PurgeOldData", global::System.Management.Automation.CompletionResultType.ParameterValue, "PurgeOldData");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PauseIngress".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("PauseIngress", "PauseIngress", global::System.Management.Automation.CompletionResultType.ParameterValue, "PauseIngress");
+                yield return new global::System.Management.Automation.CompletionResult("'PauseIngress'", "PauseIngress", global::System.Management.Automation.CompletionResultType.ParameterValue, "PauseIngress");
             }
         }
     }

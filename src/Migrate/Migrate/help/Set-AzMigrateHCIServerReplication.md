@@ -24,21 +24,87 @@ The Set-AzMigrateHCIServerReplication cmdlet updates the target properties for t
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Update target VM name
+```powershell
 Set-AzMigrateHCIServerReplication -TargetObjectID  '/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/proj62434replicationvault/protectedItems/503a4f02-916c-d6b0-8d14-222bbd4767e5' -TargetVMName "targetName1"
 ```
 
-### EXAMPLE 2
+```output
+ActivityId                         : ActivityId: 00000000-0000-0000-0000-000000000000
+AllowedAction                      : {}
+CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelCustomPropertiesAffectedObjectDetails
+CustomPropertyInstanceType         : WorkflowDetails
+DisplayName                        : Create or update protected item
+EndTime                            : 1/1/1900 8:54:47 PM
+Error                              : {}
+Id                                 : /subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/proj62434replicationvault/jobs/f2d3430a-2977-419f-abd5-11d171e17f5e
+Name                               : f2d3430a-2977-419f-abd5-11d171e17f5e
+ObjectId                           : /subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/proj62434replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94555     
+ObjectInternalId                   : a8b5ee68-102c-5aae-9499-c57a475a8fd4
+ObjectInternalName                 : test_vm
+ObjectName                         : 0ec082d5-6827-457a-bae2-f986e1b94555
+ObjectType                         : ProtectedItem
+ReplicationProviderId              : xxx-xxx-xxx
+SourceFabricProviderId             : b35da11c-d69e-4220-9a90-d81ed93ad2fc
+StartTime                          : 1/1/1900 8:49:27 PM
+State                              : Succeeded
+SystemDataCreatedAt                : 
+SystemDataCreatedBy                : 
+SystemDataCreatedByType            : 
+SystemDataLastModifiedAt           : 
+SystemDataLastModifiedBy           : 
+SystemDataLastModifiedByType       : 
+Tag                                : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelTags
+TargetFabricProviderId             : 22f00372-a1b7-467f-87ce-d95e17a6e7c7
+Task                               : {Creating or updating the protected item, Initializing Protection, Enabling Protection, Starting Replication}
+Type                               : Microsoft.DataReplication/replicationVaults/jobs
 ```
+
+Update target VM name
+
+### Example 2: Update dynamic memory configuration
+```powershell
 $memoryConfig = [PSCustomObject]@{
 	MinimumMemoryInMegaByte = 1024
 	MaximumMemoryInMegaByte = 34816
 	TargetMemoryBufferPercentage = 20
 }
-```
 
 Set-AzMigrateHCIServerReplication -TargetObjectID  '/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/proj62434replicationvault/protectedItems/503a4f02-916c-d6b0-8d14-222bbd4767e5' -DynamicMemoryConfig $memoryConfig
+```
+
+```output
+ActivityId                         : ActivityId: 00000000-0000-0000-0000-000000000000
+AllowedAction                      : {}
+CustomPropertyAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelCustomPropertiesAffectedObjectDetails
+CustomPropertyInstanceType         : WorkflowDetails
+DisplayName                        : Create or update protected item
+EndTime                            : 1/1/1900 8:54:47 PM
+Error                              : {}
+Id                                 : /subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/proj62434replicationvault/jobs/f2d3430a-2977-419f-abd5-11d171e17f5e
+Name                               : f2d3430a-2977-419f-abd5-11d171e17f5e
+ObjectId                           : /subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/proj62434replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94555     
+ObjectInternalId                   : a8b5ee68-102c-5aae-9499-c57a475a8fd4
+ObjectInternalName                 : test_vm
+ObjectName                         : 0ec082d5-6827-457a-bae2-f986e1b94555
+ObjectType                         : ProtectedItem
+ReplicationProviderId              : xxx-xxx-xxx
+SourceFabricProviderId             : b35da11c-d69e-4220-9a90-d81ed93ad2fc
+StartTime                          : 1/1/1900 8:49:27 PM
+State                              : Succeeded
+SystemDataCreatedAt                : 
+SystemDataCreatedBy                : 
+SystemDataCreatedByType            : 
+SystemDataLastModifiedAt           : 
+SystemDataLastModifiedBy           : 
+SystemDataLastModifiedByType       : 
+Tag                                : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.WorkflowModelTags
+TargetFabricProviderId             : 22f00372-a1b7-467f-87ce-d95e17a6e7c7
+Task                               : {Creating or updating the protected item, Initializing Protection, Enabling Protection, Starting Replication}
+Type                               : Microsoft.DataReplication/replicationVaults/jobs
+```
+
+Update dynamic memory configuration.
 
 ## PARAMETERS
 
@@ -46,7 +112,7 @@ Set-AzMigrateHCIServerReplication -TargetObjectID  '/subscriptions/xxx-xxx-xxx/r
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -62,7 +128,7 @@ Specifies the dynamic memory configration of RAM.
 To construct, see NOTES section for DYNAMICMEMORYCONFIG properties and create a hash table.
 
 ```yaml
-Type: ProtectedItemDynamicMemoryConfig
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.ProtectedItemDynamicMemoryConfig
 Parameter Sets: (All)
 Aliases:
 
@@ -77,7 +143,7 @@ Accept wildcard characters: False
 Specifies if RAM is dynamic or not.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -92,7 +158,7 @@ Accept wildcard characters: False
 Specifies the nics on the source server to be included for replication.
 
 ```yaml
-Type: AzStackHCINicInput[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCINicInput[]
 Parameter Sets: (All)
 Aliases:
 
@@ -107,13 +173,13 @@ Accept wildcard characters: False
 The subscription Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -123,7 +189,7 @@ Specifies the replicating server for which the properties need to be updated.
 The ID should be retrieved using the Get-AzMigrateHCIServerReplication cmdlet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -138,13 +204,13 @@ Accept wildcard characters: False
 Specifies the number of CPU cores.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -153,7 +219,7 @@ Accept wildcard characters: False
 Specifies the target VM name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -168,13 +234,13 @@ Accept wildcard characters: False
 Specifies the target RAM size in MB.
 
 ```yaml
-Type: Int64
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -183,7 +249,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -199,7 +265,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -218,18 +284,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-DYNAMICMEMORYCONFIG \<ProtectedItemDynamicMemoryConfig\>: Specifies the dynamic memory configration of RAM.
-  MaximumMemoryInMegaByte \<Int64\>: Gets or sets maximum memory in MB.
-  MinimumMemoryInMegaByte \<Int64\>: Gets or sets minimum memory in MB.
-  TargetMemoryBufferPercentage \<Int32\>: Gets or sets target memory buffer in %.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.migrate/set-azmigratehciserverreplication](https://learn.microsoft.com/powershell/module/az.migrate/set-azmigratehciserverreplication)
-

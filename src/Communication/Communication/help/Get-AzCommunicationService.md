@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Communication-help.xml
 Module Name: Az.Communication
 online version: https://learn.microsoft.com/powershell/module/az.communication/get-azcommunicationservice
 schema: 2.0.0
@@ -14,12 +14,19 @@ Get the CommunicationService and its properties.
 
 ### List (Default)
 ```
-Get-AzCommunicationService [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzCommunicationService [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzCommunicationService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzCommunicationService -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -29,12 +36,6 @@ Get-AzCommunicationService -InputObject <ICommunicationIdentity> [-DefaultProfil
  [<CommonParameters>]
 ```
 
-### List1
-```
-Get-AzCommunicationService -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Get the CommunicationService and its properties.
 
@@ -42,29 +43,30 @@ Get the CommunicationService and its properties.
 
 ### Example 1: List existing CommunicationServices for a Subscription
 ```powershell
-Get-AzCommunicationService -SubscriptionId 73fc3592-3cef-4300-5e19-8d18b65ce0e8
+Get-AzCommunicationService -SubscriptionId 632ec9eb-fad7-4cbd-993a-e72973ba2acc
 ```
 
 ```output
-Location Name             Type                                          AzureAsyncOperation
--------- ----             ----                                          -------------------
-global   ContosoResource1   Microsoft.Communication/communicationServices
-global   ContosoResource4   Microsoft.Communication/communicationServices
-global   ContosoResource3   Microsoft.Communication/communicationServices
-global   ContosoResource5   Microsoft.Communication/communicationServices
+Location Name                SystemDataCreatedAt  SystemDataCreatedBy         SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy   SystemDataLastModifiedByType
+-------- ----                -------------------  -------------------         ----------------------- ------------------------ ------------------------   ----------------------------
+Global   ContosoAcsResource1 7/09/2024 4:41:40 AM contosouser@microsoft.com   User                    7/09/2024 4:41:40 AM     contosouser@microsoft.com  User
+Global   ContosoAcsResource2 4/10/2024 2:41:40 AM contosouser2@microsoft.com  User                    4/10/2024 2:41:40 AM     contosouser2@microsoft.com User
+Global   ContosoAcsResource3 5/01/2024 1:41:40 AM contosouser3@microsoft.com  User                    5/01/2024 1:41:40 AM     contosouser3@microsoft.com User
+Global   ContosoAcsResource4 6/08/2024 5:41:40 AM contosouser4@microsoft.com  User                    6/08/2024 5:41:40 AM     contosouser4@microsoft.com User
+Global   ContosoAcsResource5 6/09/2024 4:41:40 AM contosouser5@microsoft.com  User                    6/09/2024 4:41:40 AM     contosouser5@microsoft.com User
 ```
 
 Returns a list of all ACS resources under that subscription.
 
 ### Example 2: Get infomation on specified Azure Communication resource
 ```powershell
-Get-AzCommunicationService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
+Get-AzCommunicationService -Name ContosoAcsResource34 -ResourceGroupName ContosoResourceProvider1
 ```
 
 ```output
-Location Name           Type                                          AzureAsyncOperation
--------- ----           ----                                          -------------------
-Global   ContosoAcsResource1 Microsoft.Communication/communicationServices
+Location Name                SystemDataCreatedAt  SystemDataCreatedBy        SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy  SystemDataLastModifiedByType
+-------- ----                -------------------  -------------------        ----------------------- ------------------------ ------------------------  ----------------------------
+Global   ContosoAcsResource1 7/10/2024 4:41:40 AM contosouser@microsoft.com  User                    7/10/2024 9:02:15 AM     contosouser@microsoft.com User
 ```
 
 Returns the information on an ACS resource, if one matching provided parameters is found.
@@ -72,7 +74,8 @@ Returns the information on an ACS resource, if one matching provided parameters 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -135,10 +138,11 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
@@ -157,22 +161,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceResource
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<ICommunicationIdentity>`: Identity Parameter
-  - `[CommunicationServiceName <String>]`: The name of the CommunicationService resource.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
 ## RELATED LINKS
-

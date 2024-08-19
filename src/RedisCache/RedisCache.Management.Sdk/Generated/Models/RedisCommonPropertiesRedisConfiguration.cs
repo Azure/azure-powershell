@@ -9,8 +9,9 @@ namespace Microsoft.Azure.Management.RedisCache.Models
 
     /// <summary>
     /// All Redis Settings. Few possible keys:
-    /// rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
-    /// etc.
+    /// rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,
+    /// maxmemory-policy,notify-keyspace-events, aof-backup-enabled,
+    /// aof-storage-connection-string-0, aof-storage-connection-string-1 etc.
     /// </summary>
     public partial class RedisCommonPropertiesRedisConfiguration
     {
@@ -27,8 +28,9 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// </summary>
 
         /// <param name="additionalProperties">All Redis Settings. Few possible keys:
-        /// rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
-        /// etc.
+        /// rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,
+        /// maxmemory-policy,notify-keyspace-events, aof-backup-enabled,
+        /// aof-storage-connection-string-0, aof-storage-connection-string-1 etc.
         /// </param>
 
         /// <param name="rdbBackupEnabled">Specifies whether the rdb backup is enabled
@@ -69,6 +71,9 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// <param name="maxclients">The max clients config
         /// </param>
 
+        /// <param name="notifyKeyspaceEvents">The keyspace events which should be monitored.
+        /// </param>
+
         /// <param name="preferredDataArchiveAuthMethod">Preferred auth method to communicate to storage account used for data
         /// archive, specify SAS or ManagedIdentity, default value is SAS
         /// </param>
@@ -87,7 +92,11 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// <param name="storageSubscriptionId">SubscriptionId of the storage account for persistence (aof/rdb) using
         /// ManagedIdentity.
         /// </param>
-        public RedisCommonPropertiesRedisConfiguration(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string rdbBackupEnabled = default(string), string rdbBackupFrequency = default(string), string rdbBackupMaxSnapshotCount = default(string), string rdbStorageConnectionString = default(string), string aofBackupEnabled = default(string), string aofStorageConnectionString0 = default(string), string aofStorageConnectionString1 = default(string), string maxfragmentationmemoryReserved = default(string), string maxmemoryPolicy = default(string), string maxmemoryReserved = default(string), string maxmemoryDelta = default(string), string maxclients = default(string), string preferredDataArchiveAuthMethod = default(string), string preferredDataPersistenceAuthMethod = default(string), string zonalConfiguration = default(string), string authnotrequired = default(string), string storageSubscriptionId = default(string))
+
+        /// <param name="aadEnabled">Specifies whether AAD based authentication has been enabled or disabled for
+        /// the cache
+        /// </param>
+        public RedisCommonPropertiesRedisConfiguration(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string rdbBackupEnabled = default(string), string rdbBackupFrequency = default(string), string rdbBackupMaxSnapshotCount = default(string), string rdbStorageConnectionString = default(string), string aofBackupEnabled = default(string), string aofStorageConnectionString0 = default(string), string aofStorageConnectionString1 = default(string), string maxfragmentationmemoryReserved = default(string), string maxmemoryPolicy = default(string), string maxmemoryReserved = default(string), string maxmemoryDelta = default(string), string maxclients = default(string), string notifyKeyspaceEvents = default(string), string preferredDataArchiveAuthMethod = default(string), string preferredDataPersistenceAuthMethod = default(string), string zonalConfiguration = default(string), string authnotrequired = default(string), string storageSubscriptionId = default(string), string aadEnabled = default(string))
 
         {
             this.AdditionalProperties = additionalProperties;
@@ -103,11 +112,13 @@ namespace Microsoft.Azure.Management.RedisCache.Models
             this.MaxmemoryReserved = maxmemoryReserved;
             this.MaxmemoryDelta = maxmemoryDelta;
             this.Maxclients = maxclients;
+            this.NotifyKeyspaceEvents = notifyKeyspaceEvents;
             this.PreferredDataArchiveAuthMethod = preferredDataArchiveAuthMethod;
             this.PreferredDataPersistenceAuthMethod = preferredDataPersistenceAuthMethod;
             this.ZonalConfiguration = zonalConfiguration;
             this.Authnotrequired = authnotrequired;
             this.StorageSubscriptionId = storageSubscriptionId;
+            this.AadEnabled = aadEnabled;
             CustomInit();
         }
 
@@ -119,8 +130,9 @@ namespace Microsoft.Azure.Management.RedisCache.Models
 
         /// <summary>
         /// Gets or sets all Redis Settings. Few possible keys:
-        /// rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
-        /// etc.
+        /// rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,
+        /// maxmemory-policy,notify-keyspace-events, aof-backup-enabled,
+        /// aof-storage-connection-string-0, aof-storage-connection-string-1 etc.
         /// </summary>
         [Newtonsoft.Json.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties {get; set; }
@@ -202,6 +214,12 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         public string Maxclients {get; private set; }
 
         /// <summary>
+        /// Gets or sets the keyspace events which should be monitored.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "notify-keyspace-events")]
+        public string NotifyKeyspaceEvents {get; set; }
+
+        /// <summary>
         /// Gets preferred auth method to communicate to storage account used for data
         /// archive, specify SAS or ManagedIdentity, default value is SAS
         /// </summary>
@@ -234,5 +252,12 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "storage-subscription-id")]
         public string StorageSubscriptionId {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies whether AAD based authentication has been enabled or
+        /// disabled for the cache
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "aad-enabled")]
+        public string AadEnabled {get; set; }
     }
 }

@@ -17,7 +17,7 @@ Update or add an offer to a specific collection of the private store.
 Update-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId <String>
  -PrivateStoreId <String> [-ETag <String>] [-IconFileUri <Hashtable>] [-Plan <IPlan[]>]
  [-SpecificPlanIdLimitation <String[]>] [-UpdateSuppressedDueIdempotence] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityPrivateStoreExpanded
@@ -25,28 +25,28 @@ Update-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId 
 Update-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId <String>
  -PrivateStoreInputObject <IMarketplaceIdentity> [-ETag <String>] [-IconFileUri <Hashtable>] [-Plan <IPlan[]>]
  [-SpecificPlanIdLimitation <String[]>] [-UpdateSuppressedDueIdempotence] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityPrivateStore
 ```
 Update-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId <String>
  -PrivateStoreInputObject <IMarketplaceIdentity> -Payload <IOffer> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityCollectionExpanded
 ```
 Update-AzMarketplacePrivateStoreCollectionOffer -OfferId <String> -CollectionInputObject <IMarketplaceIdentity>
  [-ETag <String>] [-IconFileUri <Hashtable>] [-Plan <IPlan[]>] [-SpecificPlanIdLimitation <String[]>]
- [-UpdateSuppressedDueIdempotence] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-UpdateSuppressedDueIdempotence] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityCollection
 ```
 Update-AzMarketplacePrivateStoreCollectionOffer -OfferId <String> -CollectionInputObject <IMarketplaceIdentity>
- -Payload <IOffer> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ -Payload <IOffer> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -54,7 +54,7 @@ Update-AzMarketplacePrivateStoreCollectionOffer -OfferId <String> -CollectionInp
 ```
 Update-AzMarketplacePrivateStoreCollectionOffer -InputObject <IMarketplaceIdentity> [-ETag <String>]
  [-IconFileUri <Hashtable>] [-Plan <IPlan[]>] [-SpecificPlanIdLimitation <String[]>]
- [-UpdateSuppressedDueIdempotence] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-UpdateSuppressedDueIdempotence] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -63,10 +63,12 @@ Update or add an offer to a specific collection of the private store.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Update private store collection offer
+```powershell
 Update-AzMarketplacePrivateStoreCollectionOffer -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId 8c7a91db-cd41-43b6-af47-2e869654126d -OfferId "aumatics.azure_managedservices" -SpecificPlanIdLimitation $null
 ```
+
+Update private store collection offer.
 
 ## PARAMETERS
 
@@ -74,7 +76,7 @@ Update-AzMarketplacePrivateStoreCollectionOffer -PrivateStoreId a260d38c-96cf-49
 The collection ID
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityPrivateStoreExpanded, UpdateViaIdentityPrivateStore
 Aliases:
 
@@ -87,10 +89,9 @@ Accept wildcard characters: False
 
 ### -CollectionInputObject
 Identity Parameter
-To construct, see NOTES section for COLLECTIONINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: IMarketplaceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
 Parameter Sets: UpdateViaIdentityCollectionExpanded, UpdateViaIdentityCollection
 Aliases:
 
@@ -106,7 +107,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -121,7 +122,7 @@ Accept wildcard characters: False
 Identifier for purposes of race condition
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityPrivateStoreExpanded, UpdateViaIdentityCollectionExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -136,7 +137,7 @@ Accept wildcard characters: False
 Icon File Uris
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded, UpdateViaIdentityPrivateStoreExpanded, UpdateViaIdentityCollectionExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -149,10 +150,9 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: IMarketplaceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -167,7 +167,7 @@ Accept wildcard characters: False
 The offer ID to update or delete
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityPrivateStoreExpanded, UpdateViaIdentityPrivateStore, UpdateViaIdentityCollectionExpanded, UpdateViaIdentityCollection
 Aliases:
 
@@ -180,10 +180,9 @@ Accept wildcard characters: False
 
 ### -Payload
 The privateStore offer data structure.
-To construct, see NOTES section for PAYLOAD properties and create a hash table.
 
 ```yaml
-Type: IOffer
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IOffer
 Parameter Sets: UpdateViaIdentityPrivateStore, UpdateViaIdentityCollection
 Aliases:
 
@@ -196,10 +195,9 @@ Accept wildcard characters: False
 
 ### -Plan
 Offer plans
-To construct, see NOTES section for PLAN properties and create a hash table.
 
 ```yaml
-Type: IPlan[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IPlan[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityPrivateStoreExpanded, UpdateViaIdentityCollectionExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -214,7 +212,7 @@ Accept wildcard characters: False
 The store ID - must use the tenant ID
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -227,10 +225,9 @@ Accept wildcard characters: False
 
 ### -PrivateStoreInputObject
 Identity Parameter
-To construct, see NOTES section for PRIVATESTOREINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: IMarketplaceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
 Parameter Sets: UpdateViaIdentityPrivateStoreExpanded, UpdateViaIdentityPrivateStore
 Aliases:
 
@@ -241,26 +238,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SpecificPlanIdLimitation
 Plan ids limitation for this offer
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityPrivateStoreExpanded, UpdateViaIdentityCollectionExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -276,13 +258,13 @@ Indicating whether the offer was not updated to db (true = not updated).
 If the allow list is identical to the existed one in db, the offer would not be updated.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: UpdateExpanded, UpdateViaIdentityPrivateStoreExpanded, UpdateViaIdentityCollectionExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -291,7 +273,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -307,7 +289,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -324,54 +306,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+
 ### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IOffer
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IOffer
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-COLLECTIONINPUTOBJECT \<IMarketplaceIdentity\>: Identity Parameter
-  \[AdminRequestApprovalId \<String\>\]: The admin request approval ID to get create or update
-  \[CollectionId \<String\>\]: The collection ID
-  \[Id \<String\>\]: Resource identity path
-  \[OfferId \<String\>\]: The offer ID to update or delete
-  \[PrivateStoreId \<String\>\]: The store ID - must use the tenant ID
-  \[RequestApprovalId \<String\>\]: The request approval ID to get create or update
-
-INPUTOBJECT \<IMarketplaceIdentity\>: Identity Parameter
-  \[AdminRequestApprovalId \<String\>\]: The admin request approval ID to get create or update
-  \[CollectionId \<String\>\]: The collection ID
-  \[Id \<String\>\]: Resource identity path
-  \[OfferId \<String\>\]: The offer ID to update or delete
-  \[PrivateStoreId \<String\>\]: The store ID - must use the tenant ID
-  \[RequestApprovalId \<String\>\]: The request approval ID to get create or update
-
-PAYLOAD \<IOffer\>: The privateStore offer data structure.
-  \[ETag \<String\>\]: Identifier for purposes of race condition
-  \[IconFileUri \<IOfferPropertiesIconFileUris\>\]: Icon File Uris
-    \[(Any) \<String\>\]: This indicates any property can be added to this object.
-  \[Plan \<List\<IPlan\>\>\]: Offer plans
-    \[Accessibility \<String\>\]: Plan accessibility
-  \[SpecificPlanIdsLimitation \<List\<String\>\>\]: Plan ids limitation for this offer
-  \[UpdateSuppressedDueIdempotence \<Boolean?\>\]: Indicating whether the offer was not updated to db (true = not updated).
-If the allow list is identical to the existed one in db, the offer would not be updated.
-
-PLAN \<IPlan\[\]\>: Offer plans
-  \[Accessibility \<String\>\]: Plan accessibility
-
-PRIVATESTOREINPUTOBJECT \<IMarketplaceIdentity\>: Identity Parameter
-  \[AdminRequestApprovalId \<String\>\]: The admin request approval ID to get create or update
-  \[CollectionId \<String\>\]: The collection ID
-  \[Id \<String\>\]: Resource identity path
-  \[OfferId \<String\>\]: The offer ID to update or delete
-  \[PrivateStoreId \<String\>\]: The store ID - must use the tenant ID
-  \[RequestApprovalId \<String\>\]: The request approval ID to get create or update
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.marketplace/update-azmarketplaceprivatestorecollectionoffer](https://learn.microsoft.com/powershell/module/az.marketplace/update-azmarketplaceprivatestorecollectionoffer)
-

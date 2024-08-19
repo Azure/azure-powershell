@@ -134,7 +134,7 @@ function Test-CreateNewVault {
         Assert-AreEqual 10 $actual.SoftDeleteRetentionInDays "SoftDeleteRetentionInDays should be the same value as set"
 
         # Test enable RbacAuthorization
-        $actual = New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $rgName -Location $vaultLocation -EnableRbacAuthorization
+        $actual = New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $rgName -Location $vaultLocation
         Assert-True { $actual.EnableRbacAuthorization } "If specified, EnableRbacAuthorization should be true"
 
         # Test positional parameters
@@ -823,11 +823,11 @@ function Test-UpdateKeyVault {
         # Assert-Throws { $vault = $vault | Update-AzKeyVault -SoftDeleteRetentionInDays 80}
 
         #Set EnableRbacAuthorization true
-        $vault = $vault | Update-AzKeyVault -EnableRbacAuthorization $true
+        $vault = $vault | Update-AzKeyVault -DisableRbacAuthorization $false
         Assert-True { $vault.EnableRbacAuthorization } "5. EnableRbacAuthorization should be true"
 
         #Set EnableRbacAuthorization false
-        $vault = $vault | Update-AzKeyVault -EnableRbacAuthorization $false
+        $vault = $vault | Update-AzKeyVault -DisableRbacAuthorization $true
         Assert-False { $vault.EnableRbacAuthorization } "6. EnableRbacAuthorization should be false"
 
         # Update Tags

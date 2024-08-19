@@ -65,9 +65,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_activeDirectoryProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("activeDirectoryProperties"), out var __jsonActiveDirectoryProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ActiveDirectoryProperties.FromJson(__jsonActiveDirectoryProperties) : ActiveDirectoryProperty;}
-            {_directoryServiceOption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("directoryServiceOptions"), out var __jsonDirectoryServiceOptions) ? (string)__jsonDirectoryServiceOptions : (string)DirectoryServiceOption;}
-            {_defaultSharePermission = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("defaultSharePermission"), out var __jsonDefaultSharePermission) ? (string)__jsonDefaultSharePermission : (string)DefaultSharePermission;}
+            {_activeDirectoryProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("activeDirectoryProperties"), out var __jsonActiveDirectoryProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ActiveDirectoryProperties.FromJson(__jsonActiveDirectoryProperties) : _activeDirectoryProperty;}
+            {_directoryServiceOption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("directoryServiceOptions"), out var __jsonDirectoryServiceOptions) ? (string)__jsonDirectoryServiceOptions : (string)_directoryServiceOption;}
+            {_defaultSharePermission = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("defaultSharePermission"), out var __jsonDefaultSharePermission) ? (string)__jsonDefaultSharePermission : (string)_defaultSharePermission;}
             AfterFromJson(json);
         }
 

@@ -16,23 +16,29 @@
 
 <#
 .Synopsis
-Create a node profile with SKU and worker count.
+Create an in-memory object for NodeProfile.
 .Description
-Create a node profile with SKU and worker count.
+Create an in-memory object for NodeProfile.
 .Example
 $vmSize="Standard_E8ads_v5";
 $workerCount=5;
 $nodeProfile = New-AzHdInsightOnAksNodeProfileObject -Type "Worker" -Count $workerCount -VMSize $vmSize
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INodeProfile
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.NodeProfile
 .Link
-https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksNodeProfileObject
+https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksnodeprofileobject
 #>
 function New-AzHdInsightOnAksNodeProfileObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INodeProfile])]
-[CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.NodeProfile])]
+[CmdletBinding(PositionalBinding=$false)]
 param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Int32]
+    # The number of virtual machines.
+    ${Count},
+
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
@@ -41,14 +47,8 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
-    [System.Int32]
-    # The virtual machine SKU.
-    ${Count},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
-    # The number of virtual machines.
+    # The virtual machine SKU.
     ${VMSize}
 )
 
@@ -78,7 +78,7 @@ begin {
         }
 
         $mapping = @{
-            Create = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksNodeProfileObject';
+            __AllParameterSets = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksNodeProfileObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

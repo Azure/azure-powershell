@@ -15,8 +15,8 @@ Create an object representing the network rule settings.
 ```
 New-AzKeyVaultNetworkRuleSetObject [-DefaultAction <PSKeyVaultNetworkRuleDefaultActionEnum>]
  [-Bypass <PSKeyVaultNetworkRuleBypassEnum>] [-IpAddressRange <String[]>]
- [-VirtualNetworkResourceId <String[]>] [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-VirtualNetworkResourceId <String[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

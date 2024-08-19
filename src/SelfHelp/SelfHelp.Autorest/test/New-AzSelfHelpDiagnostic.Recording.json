@@ -1,0 +1,130 @@
+{
+  "New-AzSelfHelpDiagnostic+[NoContext]+CreateExpanded+$PUT+https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/sm1dxne74h/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/diagnostics/yku6n4wiej?api-version=2024-03-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/sm1dxne74h/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/diagnostics/yku6n4wiej?api-version=2024-03-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"insights\": [\n      {\n        \"solutionId\": \"Demo2InsightV2\"\n      }\n    ]\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "104" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/providers/Microsoft.Help/Diagnostics/yku6n4wiej/operationResults/0b4e0071-7115-4d30-b75e-874f9163e87f?api-version=2024-03-01-preview\u0026t=638479468022616431\u0026c=MIIHHjCCBgagAwIBAgITOgKYMsjF2b7LauhN0AAEApgyyDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSU5GUkEgQ0EgMDEwHhcNMjQwMjAxMTIyNjQyWhcNMjUwMTI2MTIyNjQyWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMc6LeWeOAaTapwYz_M49L1VnORab6YTpwLCwmxVWB4gwKTMBTmZE4saFVHP8ucZaaSOGOKBWpswbI7pIUIor6tJZtCkG43ZSGvPP8k8R2tzhLBkAqnyiF7I2NPVowqOCrUhoTfTw5_Rp1bjqTvjRnTtPsbSQX6rOcZ6PLNv5kPzxHtubphb-8oLxSX0xoAjYbiUfoO-Gnf1qVOFFWTgyWFpk17LRz8h04unm1y8YKkpfjcQ2bRNL5Gmr4zX_eLNFtC-x2zlYTK7F84MnG0jRyjImNx0jLTSY0Ug2kBcjC9NtGcrVIgwMRo8mtAqJbl-t1oT9_g6iTDwGRm2XP9UklUCAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CWTJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSU5GUkElMjBDQSUyMDAxKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MB0GA1UdDgQWBBTzsBP1TbO4yLR6cLGeWQ2ro5HzZzAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTl2Ztn_PjsurvwwKidileIud8-YzAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAD4mRGDGmDi9qTaK0C1VvqM3Z09ZRygYqrV4phOqa2GNdfahu_bsZlimgC1O_Lx6hJwrIAXuIIv1B4BpMW4aOYUANoElTlzJM15ai4ijNhOYktD-Fu1wR6tgp8V9Leq_iSbNal00zg9ePy2McmeIsMUDUd4CW5jYRf8XjPjclj311ODC-7XxRexpD_XMQkp_l6rcl0pApBrzRVsqAYrNnZHgOa1174EzcdTgivQjSW3pcHnG_byS7heC4Sj8rCGmef456Oo7W81yYY23Tyg7uAfq3iJuOEdrmNNpDQDPEVmncEOYezS6m1DWB8mLoNORo_vpAR9MiyFBNUDF2YK9KQo\u0026s=CBb_6a0dy8x2Riy2CmY-K-kmh6a8MWhRthvukNkOivKH8xqvSqwk_e2QU3IN1jdYSJoYHlt1vufTkfE5q5uWRhjzcYy777_5PWHfGXDPvG6osfzROfAIpFR5rMoJGp69sR3uGIEGRhdtOueHtwcsuIegtU3sI2v6S8wzObR2GlknA1dWLlJcc5m7YxAZXjfCKnMwu9k4g3NrpmZtOA5YMbExoLcGZ4jYgeIjlwVndykI10BbAR7XQPm0TxYYmnLXGl0tE4beVEcziBRcj6mDR0w1sRv8tePbZ-nCHaOy8erJkt6ooRsjSGJz_GLVwtlQEzFEQbAo3iqkdbVWZjxUnA\u0026h=Lx0vzcaOcxNdl9S3LbiCm2977QtEHyC8j2CZWVXXQXI" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "74" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/providers/Microsoft.Help/Diagnostics/yku6n4wiej/operationResults/0b4e0071-7115-4d30-b75e-874f9163e87f?api-version=2024-03-01-preview\u0026t=638479468022460218\u0026c=MIIHHjCCBgagAwIBAgITOgKYMsjF2b7LauhN0AAEApgyyDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSU5GUkEgQ0EgMDEwHhcNMjQwMjAxMTIyNjQyWhcNMjUwMTI2MTIyNjQyWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMc6LeWeOAaTapwYz_M49L1VnORab6YTpwLCwmxVWB4gwKTMBTmZE4saFVHP8ucZaaSOGOKBWpswbI7pIUIor6tJZtCkG43ZSGvPP8k8R2tzhLBkAqnyiF7I2NPVowqOCrUhoTfTw5_Rp1bjqTvjRnTtPsbSQX6rOcZ6PLNv5kPzxHtubphb-8oLxSX0xoAjYbiUfoO-Gnf1qVOFFWTgyWFpk17LRz8h04unm1y8YKkpfjcQ2bRNL5Gmr4zX_eLNFtC-x2zlYTK7F84MnG0jRyjImNx0jLTSY0Ug2kBcjC9NtGcrVIgwMRo8mtAqJbl-t1oT9_g6iTDwGRm2XP9UklUCAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CWTJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSU5GUkElMjBDQSUyMDAxKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MB0GA1UdDgQWBBTzsBP1TbO4yLR6cLGeWQ2ro5HzZzAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTl2Ztn_PjsurvwwKidileIud8-YzAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAD4mRGDGmDi9qTaK0C1VvqM3Z09ZRygYqrV4phOqa2GNdfahu_bsZlimgC1O_Lx6hJwrIAXuIIv1B4BpMW4aOYUANoElTlzJM15ai4ijNhOYktD-Fu1wR6tgp8V9Leq_iSbNal00zg9ePy2McmeIsMUDUd4CW5jYRf8XjPjclj311ODC-7XxRexpD_XMQkp_l6rcl0pApBrzRVsqAYrNnZHgOa1174EzcdTgivQjSW3pcHnG_byS7heC4Sj8rCGmef456Oo7W81yYY23Tyg7uAfq3iJuOEdrmNNpDQDPEVmncEOYezS6m1DWB8mLoNORo_vpAR9MiyFBNUDF2YK9KQo\u0026s=lE6ugIzuhm4EcZ62LnMyrFhXnYhNrnxfO_DEfHElvJd45KA5vwLMYT3Pl9y_Ea3ur18WzRUiMSn0PiiNOsqXOLpFrpzIqaPJzvL7x-lCbg2npwM9ht_jCxxAgOCvkIlPATuWCjSk720-Q4x3BjfZA-TBrTNquBciwRBCNNxMqekeJbM1gDt7WyHdKgp6fkm2zu8qCEFBQx-6qxaf4ISPOO-IBTk5zzkOTeIinUT3LeAdussQJiDz_yVAAdOhLAjeMA8QK2xzY58T5ftR3YChwIvySKWix5QU6ZMtO0B0qtJBH-Dv5hJBeo26xtnPHNz5ZxrHQMmOatoeIT_1oDQumw\u0026h=DFXFbWCR-mA_gO01byF_HInJry4UhEV6INHialLQqWM" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "ec48d8a4-5219-4927-811f-ba305c71c358" ],
+        "x-ms-correlation-request-id": [ "ec48d8a4-5219-4927-811f-ba305c71c358" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20240405T204642Z:ec48d8a4-5219-4927-811f-ba305c71c358" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E78AAE4A3F2447B39407458B914FCD29 Ref B: BN1AA2051015017 Ref C: 2024-04-05T20:46:41Z" ],
+        "Date": [ "Fri, 05 Apr 2024 20:46:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "346" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/sm1dxne74h/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/diagnostics/yku6n4wiej\",\"name\":\"yku6n4wiej\",\"type\":\"Microsoft.Help/Diagnostics\",\"properties\":{\"provisioningState\":\"Running\",\"acceptedAt\":\"2024-04-05T20:46:42.1848827Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzSelfHelpDiagnostic+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/providers/Microsoft.Help/Diagnostics/yku6n4wiej/operationResults/0b4e0071-7115-4d30-b75e-874f9163e87f?api-version=2024-03-01-preview\u0026t=638479468022460218\u0026c=MIIHHjCCBgagAwIBAgITOgKYMsjF2b7LauhN0AAEApgyyDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSU5GUkEgQ0EgMDEwHhcNMjQwMjAxMTIyNjQyWhcNMjUwMTI2MTIyNjQyWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMc6LeWeOAaTapwYz_M49L1VnORab6YTpwLCwmxVWB4gwKTMBTmZE4saFVHP8ucZaaSOGOKBWpswbI7pIUIor6tJZtCkG43ZSGvPP8k8R2tzhLBkAqnyiF7I2NPVowqOCrUhoTfTw5_Rp1bjqTvjRnTtPsbSQX6rOcZ6PLNv5kPzxHtubphb-8oLxSX0xoAjYbiUfoO-Gnf1qVOFFWTgyWFpk17LRz8h04unm1y8YKkpfjcQ2bRNL5Gmr4zX_eLNFtC-x2zlYTK7F84MnG0jRyjImNx0jLTSY0Ug2kBcjC9NtGcrVIgwMRo8mtAqJbl-t1oT9_g6iTDwGRm2XP9UklUCAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CWTJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSU5GUkElMjBDQSUyMDAxKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MB0GA1UdDgQWBBTzsBP1TbO4yLR6cLGeWQ2ro5HzZzAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTl2Ztn_PjsurvwwKidileIud8-YzAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAD4mRGDGmDi9qTaK0C1VvqM3Z09ZRygYqrV4phOqa2GNdfahu_bsZlimgC1O_Lx6hJwrIAXuIIv1B4BpMW4aOYUANoElTlzJM15ai4ijNhOYktD-Fu1wR6tgp8V9Leq_iSbNal00zg9ePy2McmeIsMUDUd4CW5jYRf8XjPjclj311ODC-7XxRexpD_XMQkp_l6rcl0pApBrzRVsqAYrNnZHgOa1174EzcdTgivQjSW3pcHnG_byS7heC4Sj8rCGmef456Oo7W81yYY23Tyg7uAfq3iJuOEdrmNNpDQDPEVmncEOYezS6m1DWB8mLoNORo_vpAR9MiyFBNUDF2YK9KQo\u0026s=lE6ugIzuhm4EcZ62LnMyrFhXnYhNrnxfO_DEfHElvJd45KA5vwLMYT3Pl9y_Ea3ur18WzRUiMSn0PiiNOsqXOLpFrpzIqaPJzvL7x-lCbg2npwM9ht_jCxxAgOCvkIlPATuWCjSk720-Q4x3BjfZA-TBrTNquBciwRBCNNxMqekeJbM1gDt7WyHdKgp6fkm2zu8qCEFBQx-6qxaf4ISPOO-IBTk5zzkOTeIinUT3LeAdussQJiDz_yVAAdOhLAjeMA8QK2xzY58T5ftR3YChwIvySKWix5QU6ZMtO0B0qtJBH-Dv5hJBeo26xtnPHNz5ZxrHQMmOatoeIT_1oDQumw\u0026h=DFXFbWCR-mA_gO01byF_HInJry4UhEV6INHialLQqWM+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/providers/Microsoft.Help/Diagnostics/yku6n4wiej/operationResults/0b4e0071-7115-4d30-b75e-874f9163e87f?api-version=2024-03-01-preview\u0026t=638479468022460218\u0026c=MIIHHjCCBgagAwIBAgITOgKYMsjF2b7LauhN0AAEApgyyDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSU5GUkEgQ0EgMDEwHhcNMjQwMjAxMTIyNjQyWhcNMjUwMTI2MTIyNjQyWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMc6LeWeOAaTapwYz_M49L1VnORab6YTpwLCwmxVWB4gwKTMBTmZE4saFVHP8ucZaaSOGOKBWpswbI7pIUIor6tJZtCkG43ZSGvPP8k8R2tzhLBkAqnyiF7I2NPVowqOCrUhoTfTw5_Rp1bjqTvjRnTtPsbSQX6rOcZ6PLNv5kPzxHtubphb-8oLxSX0xoAjYbiUfoO-Gnf1qVOFFWTgyWFpk17LRz8h04unm1y8YKkpfjcQ2bRNL5Gmr4zX_eLNFtC-x2zlYTK7F84MnG0jRyjImNx0jLTSY0Ug2kBcjC9NtGcrVIgwMRo8mtAqJbl-t1oT9_g6iTDwGRm2XP9UklUCAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CWTJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSU5GUkElMjBDQSUyMDAxKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MB0GA1UdDgQWBBTzsBP1TbO4yLR6cLGeWQ2ro5HzZzAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTl2Ztn_PjsurvwwKidileIud8-YzAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAD4mRGDGmDi9qTaK0C1VvqM3Z09ZRygYqrV4phOqa2GNdfahu_bsZlimgC1O_Lx6hJwrIAXuIIv1B4BpMW4aOYUANoElTlzJM15ai4ijNhOYktD-Fu1wR6tgp8V9Leq_iSbNal00zg9ePy2McmeIsMUDUd4CW5jYRf8XjPjclj311ODC-7XxRexpD_XMQkp_l6rcl0pApBrzRVsqAYrNnZHgOa1174EzcdTgivQjSW3pcHnG_byS7heC4Sj8rCGmef456Oo7W81yYY23Tyg7uAfq3iJuOEdrmNNpDQDPEVmncEOYezS6m1DWB8mLoNORo_vpAR9MiyFBNUDF2YK9KQo\u0026s=lE6ugIzuhm4EcZ62LnMyrFhXnYhNrnxfO_DEfHElvJd45KA5vwLMYT3Pl9y_Ea3ur18WzRUiMSn0PiiNOsqXOLpFrpzIqaPJzvL7x-lCbg2npwM9ht_jCxxAgOCvkIlPATuWCjSk720-Q4x3BjfZA-TBrTNquBciwRBCNNxMqekeJbM1gDt7WyHdKgp6fkm2zu8qCEFBQx-6qxaf4ISPOO-IBTk5zzkOTeIinUT3LeAdussQJiDz_yVAAdOhLAjeMA8QK2xzY58T5ftR3YChwIvySKWix5QU6ZMtO0B0qtJBH-Dv5hJBeo26xtnPHNz5ZxrHQMmOatoeIT_1oDQumw\u0026h=DFXFbWCR-mA_gO01byF_HInJry4UhEV6INHialLQqWM",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "2ac5c3db-12ee-433b-96f8-1ba6b0ca22db" ],
+        "CommandName": [ "New-AzSelfHelpDiagnostic" ],
+        "FullCommandName": [ "New-AzSelfHelpDiagnostic_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.SelfHelp/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "38552cba-a114-4cad-b4c4-3c0fa784c792" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "38552cba-a114-4cad-b4c4-3c0fa784c792" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20240405T204712Z:38552cba-a114-4cad-b4c4-3c0fa784c792" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3694643DCBD0466EA8A6306A0D6E4CD7 Ref B: BN1AA2051015017 Ref C: 2024-04-05T20:47:12Z" ],
+        "Date": [ "Fri, 05 Apr 2024 20:47:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "229" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/providers/Microsoft.Help/Diagnostics/yku6n4wiej/operationResults/0b4e0071-7115-4d30-b75e-874f9163e87f\",\"name\":\"0b4e0071-7115-4d30-b75e-874f9163e87f\",\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzSelfHelpDiagnostic+[NoContext]+CreateExpanded+$GET+https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/sm1dxne74h/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/diagnostics/yku6n4wiej?api-version=2024-03-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/sm1dxne74h/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/diagnostics/yku6n4wiej?api-version=2024-03-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "2ac5c3db-12ee-433b-96f8-1ba6b0ca22db" ],
+        "CommandName": [ "New-AzSelfHelpDiagnostic" ],
+        "FullCommandName": [ "New-AzSelfHelpDiagnostic_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.SelfHelp/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "c4d379ba-d20f-40b5-a9d2-70403b1346bf" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "74" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "c4d379ba-d20f-40b5-a9d2-70403b1346bf" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20240405T204713Z:c4d379ba-d20f-40b5-a9d2-70403b1346bf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6A4D9AEC59E04E3D81955777B989C4C4 Ref B: BN1AA2051015017 Ref C: 2024-04-05T20:47:12Z" ],
+        "Date": [ "Fri, 05 Apr 2024 20:47:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2289" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/sm1dxne74h/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/diagnostics/yku6n4wiej\",\"name\":\"yku6n4wiej\",\"type\":\"Microsoft.Help/Diagnostics\",\"properties\":{\"provisioningState\":\"Succeeded\",\"acceptedAt\":\"2024-04-05T20:46:42.1848827Z\",\"diagnostics\":[{\"solutionId\":\"Demo2InsightV2\",\"status\":\"Succeeded\",\"insights\":[{\"id\":\"perfinsights-available-linux\",\"title\":\"Windows Unable to Boot Test hardcoded string for unknown resource (Demo Insight)\",\"results\":\"\u003c!--issueDescription--\u003e\\n\u003cp\u003eWe have detected that PerfInsights is already installed on your VM. You can run PerfInsights on-demand through the Portal and view reports for your analysis.\u003c/p\u003e\\n\u003c!--/issueDescription--\u003e\\n\u003cp\u003ePerfInsights is a diagnostics tool that can help you analyze operating system level metrics such as:\u003c/p\u003e\\n\u003cul\u003e\\n\u003cli\u003eBest Practices recommendations for Linux\u003c/li\u003e\\n\u003cli\u003eTop CPU consumers\u003c/li\u003e\\n\u003cli\u003eTop Memory consumers\u003c/li\u003e\\n\u003cli\u003eStorage/RAID/LVM layout\u003c/li\u003e\\n\u003c/ul\u003e\\n\u003ch2\u003e\u003cstrong\u003eRecommended Steps\u003c/strong\u003e\u003c/h2\u003e\\n\u003cp\u003e\u003ca data-blade=\\\"Microsoft_Azure_Compute.PerformanceDiagnosticsBlade.resourceId.$resourceId\\\" button-data-blade=\\\"button-data-blade\\\"\u003eRun PerfInsights\u003c/a\u003e\u003c/p\u003e\\n\u003cp\u003eFor the machine \u003c!--$vmname--\u003e[vmname]\u003c!--/$vmname--\u003e, you can \u003ca href=\\\"https://portal.azure.com/#@microsoft.onmicrosoft.com/resource/{$resourceIdDecoded}/performanceDiagnostics\\\"\u003eaccess PerfInsights here\u003c/a\u003e and review results directly in the Azure portal.\u003c/p\u003e\\n\u003cp\u003eYou may also \u003ca href=\\\"https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm\\\"\u003edownload PerfInsights\u003c/a\u003e and run it on your virtual machine.\u003c/p\u003e\\n\u003cp\u003eIf you open a support case, attach the PerfInsights report for the Support Engineer to analyze.\u003c/p\u003e\\n\u003ch2\u003e\u003cstrong\u003eRecommended Documents\u003c/strong\u003e\u003c/h2\u003e\\n\u003cul\u003e\\n\u003cli\u003e\u003ca href=\\\"https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights\\\"\u003eHow to use PerfInsights\u003c/a\u003e\u003c/li\u003e\\n\u003cli\u003e\u003ca href=\\\"https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-performance-bottlenecks-linux\\\"\u003eTroubleshoot performance and isolate bottlenecks in Linux\u003c/a\u003e\u003c/li\u003e\\n\u003c/ul\u003e\\n\",\"importanceLevel\":\"Warning\"}]}]}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -20,6 +20,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
         public string Endpoint { get => this._endpoint; set => this._endpoint = value; }
 
+        /// <summary>Backing field for <see cref="PrivateSshEndpoint" /> property.</summary>
+        private string _privateSshEndpoint;
+
+        /// <summary>
+        /// Private SSH connectivity endpoint. This property will only be returned when enableInternalIngress is true.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
+        public string PrivateSshEndpoint { get => this._privateSshEndpoint; set => this._privateSshEndpoint = value; }
+
         /// <summary>Creates an new <see cref="SshConnectivityEndpoint" /> instance.</summary>
         public SshConnectivityEndpoint()
         {
@@ -41,6 +50,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"endpoint",
         PossibleTypes = new [] { typeof(string) })]
         string Endpoint { get; set; }
+        /// <summary>
+        /// Private SSH connectivity endpoint. This property will only be returned when enableInternalIngress is true.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Private SSH connectivity endpoint. This property will only be returned when enableInternalIngress is true.",
+        SerializedName = @"privateSshEndpoint",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrivateSshEndpoint { get; set; }
 
     }
     /// SSH connectivity endpoint details.
@@ -49,6 +71,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
     {
         /// <summary>SSH connectivity endpoint.</summary>
         string Endpoint { get; set; }
+        /// <summary>
+        /// Private SSH connectivity endpoint. This property will only be returned when enableInternalIngress is true.
+        /// </summary>
+        string PrivateSshEndpoint { get; set; }
 
     }
 }

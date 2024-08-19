@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.3
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 0.1.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 0.1.1
 * Upgraded API version to 2023-11-01
 

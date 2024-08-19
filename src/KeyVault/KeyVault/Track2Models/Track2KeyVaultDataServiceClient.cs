@@ -2,6 +2,8 @@ using Azure.Security.KeyVault.Keys;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.KeyVault.Models;
+using Org.BouncyCastle.X509;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -63,14 +65,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return VaultClient.Encrypt(vaultName, keyName, version, value, encryptAlgorithm);
         }
 
-        public PSDeletedKeyVaultKey GetDeletedKey(string vaultName, string name)
+        public PSDeletedKeyVaultKey GetDeletedKey(string vaultName, string keyName)
         {
-            throw new NotImplementedException();
+            return VaultClient.GetDeletedKey(vaultName, keyName);
         }
 
         public IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetDeletedKeys(KeyVaultObjectFilterOptions options)
         {
-            throw new NotImplementedException();
+            return VaultClient.GetDeletedKeys(options.VaultName);
         }
 
 
@@ -81,12 +83,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         public IEnumerable<PSKeyVaultKeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options)
         {
-            throw new NotImplementedException();
+            return VaultClient.GetKeys(options.VaultName);
         }
 
         public IEnumerable<PSKeyVaultKeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options)
         {
-            throw new NotImplementedException();
+            return VaultClient.GetKeyVersions(options.VaultName, options.Name);
         }
 
         public PSKeyVaultKey ImportKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, Microsoft.Azure.KeyVault.WebKey.JsonWebKey webKey, bool? importToHsm)
@@ -257,10 +259,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         public PSKeyVaultCertificate MergeCertificate(string vaultName, string certName, X509Certificate2Collection certs, IDictionary<string, string> tags)
         {
-            throw new NotImplementedException();
+            // Export content ref: https://github.com/Azure/azure-sdk-for-net/blob/376b04164356dc9821923b75f2223163a2701669/sdk/keyvault/Microsoft.Azure.KeyVault/src/Customized/KeyVaultClientExtensions.cs#L634
+            var X5C = new List<byte[]>();
+            foreach (var cert in certs)
+            {
+                X5C.Add(cert.Export(X509ContentType.Cert));
+            }
+            return VaultClient.MergeCertificate(vaultName, certName, X5C, tags);
         }
 
-        public PSKeyVaultCertificate MergeCertificate(string vaultName, string name, byte[] certBytes, Dictionary<string, string> tags)
+        public PSKeyVaultCertificate MergeCertificate(string vaultName, string name, IEnumerable<byte[]> certBytes, Dictionary<string, string> tags)
         {
             return VaultClient.MergeCertificate(vaultName, name, certBytes, tags);
         }

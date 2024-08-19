@@ -74,6 +74,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string ResourceId { get; set; }
 
+        [Parameter(
+            Mandatory = false)]
+        public string[] SharingProfile { get; set; }
+
         [Parameter(Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -117,8 +121,26 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     capacityReservationGroupUpdate.Tags = tags;
                 }
 
-                result = CapacityReservationGroupClient.Update(resourceGroupName, name, capacityReservationGroupUpdate);
+                if (this.IsParameterBound(c => c.SharingProfile))
+                {
+                    ResourceSharingProfile resourceSharingProfile = new ResourceSharingProfile();
+                    foreach (var item in this.SharingProfile)
+                    {
+                        SubResource subResource = new SubResource(item);
+                        if (resourceSharingProfile.SubscriptionIds == null)
+                        {
+                            resourceSharingProfile.SubscriptionIds = new List<SubResource>();
+                        }
+                        if (!string.IsNullOrEmpty(item))
+                        { 
+                            resourceSharingProfile.SubscriptionIds.Add(subResource);
+                        }
+                    }
+                    capacityReservationGroupUpdate.SharingProfile = resourceSharingProfile;
+                }
 
+
+                result = CapacityReservationGroupClient.Update(resourceGroupName, name, capacityReservationGroupUpdate);
 
                 var psObject = new PSCapacityReservationGroup();
                 ComputeAutomationAutoMapperProfile.Mapper.Map<CapacityReservationGroup, PSCapacityReservationGroup>(result, psObject);

@@ -873,7 +873,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -898,7 +899,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1977,7 +1979,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB collection from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB MongoDB collection from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -2005,7 +2008,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB collection from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB MongoDB collection from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

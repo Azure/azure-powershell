@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
 {
 
-    /// <summary>Argument completer implementation for IngressState.</summary>
+    /// <summary>
+    /// This string represents the state of ingress operations on an environment. It can be "Disabled", "Ready", "Running", "Paused"
+    /// or "Unknown"
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.IngressStateTypeConverter))]
     public partial struct IngressState :
         System.Management.Automation.IArgumentCompleter
@@ -28,23 +31,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Disabled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Disabled", "Disabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disabled");
+                yield return new global::System.Management.Automation.CompletionResult("'Disabled'", "Disabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disabled");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Ready".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Ready", "Ready", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ready");
+                yield return new global::System.Management.Automation.CompletionResult("'Ready'", "Ready", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ready");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Running".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Running", "Running", global::System.Management.Automation.CompletionResultType.ParameterValue, "Running");
+                yield return new global::System.Management.Automation.CompletionResult("'Running'", "Running", global::System.Management.Automation.CompletionResultType.ParameterValue, "Running");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Paused".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Paused", "Paused", global::System.Management.Automation.CompletionResultType.ParameterValue, "Paused");
+                yield return new global::System.Management.Automation.CompletionResult("'Paused'", "Paused", global::System.Management.Automation.CompletionResultType.ParameterValue, "Paused");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Unknown".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Unknown", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
+                yield return new global::System.Management.Automation.CompletionResult("'Unknown'", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
             }
         }
     }

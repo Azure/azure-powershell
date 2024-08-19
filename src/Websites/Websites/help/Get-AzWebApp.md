@@ -27,7 +27,8 @@ Get-AzWebApp [-AppServicePlan] <PSAppServicePlan> [-DefaultProfile <IAzureContex
 
 ### S3
 ```
-Get-AzWebApp [-Location] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzWebApp [-Location] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -143,5 +144,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Start-AzWebApp](./Start-AzWebApp.md)
 
 [Stop-AzWebApp](./Stop-AzWebApp.md)
-
-

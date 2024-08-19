@@ -1,5 +1,5 @@
 function Get-AzFunctionAppAvailableLocation {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IGeoRegion])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Gets the location where a function app for the given os and plan type is available.')]
     [CmdletBinding()]
     param(
@@ -72,6 +72,8 @@ function Get-AzFunctionAppAvailableLocation {
     )
     
     process {
+
+        RegisterFunctionsTabCompleters
 
         # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets
         $paramsToRemove = @(

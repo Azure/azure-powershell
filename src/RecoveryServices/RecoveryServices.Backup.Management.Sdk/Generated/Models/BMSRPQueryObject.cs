@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="restorePointQueryType">RestorePoint type
-        /// Possible values include: 'Invalid', 'Full', 'Log', 'Differential',
-        /// 'FullAndDifferential', 'All', 'Incremental', 'SnapshotFull',
-        /// 'SnapshotCopyOnlyFull'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Full&#39;, &#39;Log&#39;, &#39;Differential&#39;,
+        /// &#39;FullAndDifferential&#39;, &#39;All&#39;, &#39;Incremental&#39;, &#39;SnapshotFull&#39;,
+        /// &#39;SnapshotCopyOnlyFull&#39;</param>
 
         /// <param name="extendedInfo">In Get Recovery Point, it tells whether extended information about recovery
         /// point is asked.

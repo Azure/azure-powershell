@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/get-azpolicyexemption
 schema: 2.0.0
@@ -12,27 +12,26 @@ Gets policy exemptions.
 
 ## SYNTAX
 
-### NameParameterSet (Default)
+### Name (Default)
 ```
 Get-AzPolicyExemption [-Name <String>] [-Scope <String>] [-PolicyAssignmentIdFilter <String>]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
-### IncludeDescendentParameterSet
+### IncludeDescendent
 ```
-Get-AzPolicyExemption [-Scope <String>] [-IncludeDescendent] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPolicyExemption [-Scope <String>] [-IncludeDescendent] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
-### IdParameterSet
+### Id
 ```
-Get-AzPolicyExemption -Id <String> [-PolicyAssignmentIdFilter <String>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPolicyExemption [-PolicyAssignmentIdFilter <String>] -Id <String> [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzPolicyExemption** cmdlet gets all policy exemptions or particular exemptions.
-Identify a policy exemption to get by name and scope or by ID.
+The **Get-AzPolicyExemption** cmdlet gets a collection of policy exemptions or a specific policy exemption identified by name or ID.
 
 ## EXAMPLES
 
@@ -41,7 +40,8 @@ Identify a policy exemption to get by name and scope or by ID.
 Get-AzPolicyExemption
 ```
 
-This command gets all the policy exemptions in the current subscription. If you need to list all the exemptions related to the given scope, including those from ancestor scopes and those from descendent scopes you need to pass the `-IncludeDescendent` parameter.
+This command gets all the policy exemptions in the current subscription.
+If you need to list all the exemptions related to the given scope, including those from ancestor scopes and those from descendent scopes you need to pass the `-IncludeDescendent` parameter.
 
 ### Example 2: Get a specific policy exemption
 ```powershell
@@ -63,12 +63,11 @@ The second command gets all of the policy exemptions that are assigned with the 
 
 ## PARAMETERS
 
-### -ApiVersion
-When set, indicates the version of the resource provider API to use.
-If not specified, the API version is automatically determined as the latest available.
+### -BackwardCompatible
+Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -80,12 +79,13 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -95,12 +95,11 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-The fully qualified policy exemption ID to get, including the scope, e.g.
-/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}.
+The fully qualified resource Id of the exemption.
 
 ```yaml
 Type: System.String
-Parameter Sets: IdParameterSet
+Parameter Sets: Id
 Aliases: ResourceId
 
 Required: True
@@ -112,11 +111,10 @@ Accept wildcard characters: False
 
 ### -IncludeDescendent
 Causes the list of returned policy exemptions to include all exemptions related to the given scope, including those from ancestor scopes and those from descendent scopes.
-This parameter doesn't work when the requested scope is a management group scope.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: IncludeDescendentParameterSet
+Parameter Sets: IncludeDescendent
 Aliases:
 
 Required: True
@@ -127,12 +125,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the policy exemption to get.
+The name of the policy exemption.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet
-Aliases:
+Parameter Sets: Name
+Aliases: PolicyExemptionName
 
 Required: False
 Position: Named
@@ -142,11 +140,11 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyAssignmentIdFilter
-Limits the list of returned policy exemptions to those assigning the policy assignment identified by this fully qualified Id.
+The policy assignment id filter.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet, IdParameterSet
+Parameter Sets: Name, Id
 Aliases:
 
 Required: False
@@ -156,13 +154,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Pre
-When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
-Aliases:
+Aliases: proga
 
 Required: False
 Position: Named
@@ -172,12 +170,12 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-The scope of the policy exemption to get, e.g.
-/providers/managementGroups/{managementGroupName}, defaults to current subscription.
+The scope of the policy exemption.
+Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet, IncludeDescendentParameterSet
+Parameter Sets: Name, IncludeDescendent
 Aliases:
 
 Required: False
@@ -192,13 +190,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### System.Management.Automation.SwitchParameter
+
+### System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyExemption
+### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption
 
 ## NOTES
 

@@ -1,36 +1,37 @@
 ---
 external help file: Az.VMware-help.xml
 Module Name: Az.VMware
-online version: https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwarePSCredentialExecutionParameterObject
+online version: https://learn.microsoft.com/powershell/module/Az.VMware/new-azvmwarepscredentialexecutionparameterobject
 schema: 2.0.0
 ---
 
 # New-AzVMwarePSCredentialExecutionParameterObject
 
 ## SYNOPSIS
-Create a in-memory object for PSCredentialExecutionParameter
+Create an in-memory object for PSCredentialExecutionParameter.
 
 ## SYNTAX
 
 ```
-New-AzVMwarePSCredentialExecutionParameterObject -Name <String> [-Password <String>] [-Username <String>]
+New-AzVMwarePSCredentialExecutionParameterObject -Name <String> [-Password <SecureString>] [-Username <String>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for PSCredentialExecutionParameter
+Create an in-memory object for PSCredentialExecutionParameter.
 
 ## EXAMPLES
 
 ### Example 1: Create a local PS Credential Execution object
 ```powershell
-New-AzVMwarePSCredentialExecutionParameterObject -Name azps_test_credentialvalue -Password "passwordValue" -Username "usernameValue"
+$mypwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
+New-AzVMwarePSCredentialExecutionParameterObject -Name azps_test_credentialvalue -Password $mypwd -Username "usernameValue"
 ```
 
 ```output
-Name                      Type       Password      Username
-----                      ----       --------      --------
-azps_test_credentialvalue Credential passwordValue usernameValue
+Name                                          Password Type       Username
+----                                          -------- ----       --------
+azps_test_credentialvalue System.Security.SecureString Credential usernameValue
 ```
 
 Create a local PS Credential Execution object
@@ -56,7 +57,7 @@ Accept wildcard characters: False
 password for login.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -89,10 +90,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.PsCredentialExecutionParameter
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PsCredentialExecutionParameter
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

@@ -19,6 +19,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfile __clusterPoolNetworkProfile = new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolNetworkProfile();
 
+        /// <summary>
+        /// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters.
+        /// So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property
+        /// is not supported and please don't use it.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
+        public System.Collections.Generic.List<string> ApiServerAuthorizedIPRange { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal)__clusterPoolNetworkProfile).ApiServerAuthorizedIPRange; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal)__clusterPoolNetworkProfile).ApiServerAuthorizedIPRange = value ?? null /* arrayOf */; }
+
+        /// <summary>
+        /// ClusterPool is based on AKS cluster. AKS cluster exposes the API server to public internet by default. If you set this
+        /// property to true, a private AKS cluster will be created, and it will use private apiserver, which is not exposed to public
+        /// internet.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
+        public bool? EnablePrivateApiServer { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal)__clusterPoolNetworkProfile).EnablePrivateApiServer; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal)__clusterPoolNetworkProfile).EnablePrivateApiServer = value ?? default(bool); }
+
+        /// <summary>
+        /// This can only be set at cluster pool creation time and cannot be changed later.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
+        public string OutboundType { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal)__clusterPoolNetworkProfile).OutboundType; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal)__clusterPoolNetworkProfile).OutboundType = value ?? null; }
+
         /// <summary>Cluster pool subnet resource id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
         public string SubnetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal)__clusterPoolNetworkProfile).SubnetId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal)__clusterPoolNetworkProfile).SubnetId = value ; }

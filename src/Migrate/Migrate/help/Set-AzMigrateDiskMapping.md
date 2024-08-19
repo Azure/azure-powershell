@@ -13,7 +13,8 @@ Updates disk mapping
 ## SYNTAX
 
 ```
-Set-AzMigrateDiskMapping -DiskID <String> [-DiskName <String>] [-IsOSDisk <String>] [<CommonParameters>]
+Set-AzMigrateDiskMapping -DiskID <String> [-DiskName <String>] [-IsOSDisk <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,7 +92,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtUpdateDiskInput
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

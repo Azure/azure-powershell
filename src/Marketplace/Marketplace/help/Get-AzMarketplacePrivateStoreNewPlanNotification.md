@@ -14,7 +14,7 @@ List new plans notifications
 
 ```
 Get-AzMarketplacePrivateStoreNewPlanNotification -PrivateStoreId <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,10 +22,12 @@ List new plans notifications
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: List new plans notifications
+```powershell
 Get-AzMarketplacePrivateStoreNewPlanNotification -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6
 ```
+
+List new plans notifications.
 
 ## PARAMETERS
 
@@ -34,7 +36,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -49,7 +51,7 @@ Accept wildcard characters: False
 The store ID - must use the tenant ID
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -60,26 +62,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -95,7 +82,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -114,9 +101,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.INewPlansNotificationsList
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestorenewplannotification](https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestorenewplannotification)
-

@@ -99,16 +99,16 @@ Create Network Fabric resource.
 Implements Access Control List PUT method.
 
 ### [New-AzNetworkFabricController](New-AzNetworkFabricController.md)
-Creates a Network Fabric Controller.
+Create a Network Fabric Controller.
 
 ### [New-AzNetworkFabricExternalNetwork](New-AzNetworkFabricExternalNetwork.md)
-Creates ExternalNetwork PUT method.
+Create ExternalNetwork PUT method.
 
 ### [New-AzNetworkFabricInternalNetwork](New-AzNetworkFabricInternalNetwork.md)
-Creates InternalNetwork PUT method.
+Create InternalNetwork PUT method.
 
 ### [New-AzNetworkFabricInternetGatewayRule](New-AzNetworkFabricInternetGatewayRule.md)
-Creates an Internet Gateway rule resource.
+Create an Internet Gateway rule resource.
 
 ### [New-AzNetworkFabricIPCommunity](New-AzNetworkFabricIPCommunity.md)
 Implements an IP Community PUT method.
@@ -120,7 +120,7 @@ Implements IP Extended Community PUT method.
 Implements IP Prefix PUT method.
 
 ### [New-AzNetworkFabricL2Domain](New-AzNetworkFabricL2Domain.md)
-Creates layer 2 network connectivity between compute nodes within a rack and across racks.The configuration is applied on the devices only after the isolation domain is enabled.
+Create layer 2 network connectivity between compute nodes within a rack and across racks.The configuration is applied on the devices only after the isolation domain is enabled.
 
 ### [New-AzNetworkFabricL3Domain](New-AzNetworkFabricL3Domain.md)
 Create isolation domain resources for layer 3 connectivity between compute nodes and for communication with external services .This configuration is applied on the devices only after the creation of networks is completed and isolation domain is enabled.
@@ -135,7 +135,7 @@ Configuration used to setup CE-PE connectivity PUT Method.
 Implements Route Policy PUT method.
 
 ### [New-AzNetworkFabricTap](New-AzNetworkFabricTap.md)
-Creates a Network Tap.
+Create a Network Tap.
 
 ### [New-AzNetworkFabricTapRule](New-AzNetworkFabricTapRule.md)
 Create Network Tap Rule resource.
@@ -195,5 +195,5 @@ Update certain properties of the Network Device resource.
 Execute patch on Network Fabric Service Internet Gateway.
 
 ### [Update-AzNetworkFabricNeighborGroup](Update-AzNetworkFabricNeighborGroup.md)
-Updates the Neighbor Group.
+Update the Neighbor Group.
 

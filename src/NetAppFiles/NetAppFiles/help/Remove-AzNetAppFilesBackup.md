@@ -14,35 +14,36 @@ Deletes an Azure NetApp Files (ANF) backup.
 
 ### ByFieldsParameterSet (Default)
 ```
-Remove-AzNetAppFilesBackup -ResourceGroupName <String> [-AccountName <String>] -PoolName <String>
- [-VolumeName <String>] -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzNetAppFilesBackup -ResourceGroupName <String> [-AccountName <String>] [-PoolName <String>]
+ [-VolumeName <String>] -BackupVaultName <String> -Name <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByAccountBackupFieldsParameterSet
 ```
-Remove-AzNetAppFilesBackup -ResourceGroupName <String> -AccountName <String> -AccountBackupName <String>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+Remove-AzNetAppFilesBackup -ResourceGroupName <String> -AccountName <String> [-AccountBackupName <String>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Remove-AzNetAppFilesBackup -Name <String> -VolumeObject <PSNetAppFilesVolume> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzNetAppFilesBackup -Name <String> [-VolumeObject <PSNetAppFilesVolume>]
+ -BackupVaultObject <PSNetAppFilesBackupVault> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Remove-AzNetAppFilesBackup -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Remove-AzNetAppFilesBackup -InputObject <PSNetAppFilesBackup> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -75,7 +76,7 @@ Type: System.String
 Parameter Sets: ByAccountBackupFieldsParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -106,6 +107,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupVaultName
+The name of the ANF BackupVault
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupVaultObject
+The BackupVault object containing the backup to return
+
+```yaml
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupVault
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -177,21 +208,6 @@ Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
 Required: False
 Position: Named
 Default value: None
@@ -252,7 +268,7 @@ Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -298,6 +314,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
+
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupVault
 
 ### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackup
 

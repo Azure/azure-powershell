@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
-Module Name: Az.WebSites
+Module Name: Az.Websites
 ms.assetid: 22ACB910-0C41-4649-8D22-537E38CB4570
 online version: https://learn.microsoft.com/powershell/module/az.websites/new-azwebappdatabasebackupsetting
 schema: 2.0.0
@@ -15,7 +15,8 @@ Creates a new Azure Web App Backup setting.
 
 ```
 New-AzWebAppDatabaseBackupSetting [-Name] <String> [-DatabaseType] <String> [-ConnectionString] <String>
- [[-ConnectionStringName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-ConnectionStringName] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -13,9 +13,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzCommunicationService_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Communication.Description(@"Operation to update an existing CommunicationService.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Communication.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Communication.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}", ApiVersion = "2023-06-01-preview")]
     public partial class UpdateAzCommunicationService_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IEventListener
     {
@@ -33,6 +34,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A class representing update parameters for CommunicationService resource.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceResourceUpdate _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.CommunicationServiceResourceUpdate();
+
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Communication.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Communication.ParameterCategory.Runtime)]
@@ -41,21 +45,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Communication.Communication Client => Microsoft.Azure.PowerShell.Cmdlets.Communication.Module.Instance.ClientAPI;
 
-        /// <summary>The location where the communication service stores its data at rest.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The location where the communication service stores its data at rest.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Communication.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Communication.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The location where the communication service stores its data at rest.",
-        SerializedName = @"dataLocation",
-        PossibleTypes = new [] { typeof(string) })]
-        public string DataLocation { get => ParametersBody.DataLocation ?? null; set => ParametersBody.DataLocation = value; }
-
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Communication.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Communication.ParameterCategory.Azure)]
@@ -73,6 +67,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Communication.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Communication.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Communication.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Communication.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.ManagedServiceIdentityType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.ManagedServiceIdentityType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.ManagedServiceIdentityType IdentityType { get => _parametersBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.ManagedServiceIdentityType)""); set => _parametersBody.IdentityType = value; }
+
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Communication.ExportAs(typeof(global::System.Collections.Hashtable))]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Communication.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Communication.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
+        SerializedName = @"userAssignedIdentities",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api50.IUserAssignedIdentities) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api50.IUserAssignedIdentities IdentityUserAssignedIdentity { get => _parametersBody.IdentityUserAssignedIdentity ?? null /* object */; set => _parametersBody.IdentityUserAssignedIdentity = value; }
+
         /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity _inputObject;
 
@@ -84,30 +108,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
-        /// <summary>The Azure location where the CommunicationService is running.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Azure location where the CommunicationService is running.")]
+        /// <summary>List of email Domain resource Ids.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of email Domain resource Ids.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Communication.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Communication.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The Azure location where the CommunicationService is running.",
-        SerializedName = @"location",
+        Description = @"List of email Domain resource Ids.",
+        SerializedName = @"linkedDomains",
         PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => ParametersBody.Location ?? null; set => ParametersBody.Location = value; }
+        public string[] LinkedDomain { get => _parametersBody.LinkedDomain ?? null /* arrayOf */; set => _parametersBody.LinkedDomain = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
-
-        /// <summary>Backing field for <see cref="ParametersBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.CommunicationServiceResource();
-
-        /// <summary>A class representing a CommunicationService resource.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.HttpPipeline" /> that the remote call will use.
@@ -141,38 +160,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
         ReadOnly = false,
         Description = @"Tags of the service which is a list of key value pairs that describe the resource.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ITaggedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ITaggedResourceTags Tag { get => ParametersBody.Tag ?? null /* object */; set => ParametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ITaggedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ITaggedResourceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.IErrorResponse</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceResource">Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceResource</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.Communication.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -184,7 +208,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Communication.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -249,7 +290,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'CommunicationServiceUpdate' operation"))
+                if (ShouldProcess($"Call remote 'CommunicationServicesUpdate' operation"))
                 {
                     using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IEventListener)this).Token) )
                     {
@@ -287,7 +328,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Communication.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -304,7 +344,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.CommunicationServiceUpdateViaIdentity(InputObject.Id, ParametersBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.CommunicationServicesUpdateViaIdentity(InputObject.Id, _parametersBody, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -321,13 +361,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.CommunicationServiceName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.CommunicationServiceUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.CommunicationServiceName ?? null, ParametersBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.CommunicationServicesUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.CommunicationServiceName ?? null, _parametersBody, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=ParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_parametersBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -354,16 +394,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
 
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Communication.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Communication.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.IErrorResponse</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -380,15 +435,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=ParametersBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=ParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -398,12 +453,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceResource">Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceResource</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -415,7 +470,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceResource
                 WriteObject((await response));
             }
         }

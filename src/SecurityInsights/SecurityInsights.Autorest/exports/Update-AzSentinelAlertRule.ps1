@@ -480,7 +480,13 @@ begin {
             UpdateViaIdentityFusionMLTI = 'Az.SecurityInsights.custom\Update-AzSentinelAlertRule';
         }
         if (('UpdateScheduled', 'UpdateNRT', 'UpdateMicrosoftSecurityIncidentCreation', 'UpdateFusionMLTI') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         if (('UpdateScheduled', 'UpdateNRT', 'UpdateViaIdentityUpdateScheduled', 'UpdateViaIdentityNRT') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SuppressionDuration')) {
             $PSBoundParameters['SuppressionDuration'] = New-TimeSpan -Hours 5

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.RedisCache.Models
 
         /// <param name="rebootType">Which Redis node(s) to reboot. Depending on this value data loss is
         /// possible.
-        /// Possible values include: 'PrimaryNode', 'SecondaryNode', 'AllNodes'</param>
+        /// Possible values include: &#39;PrimaryNode&#39;, &#39;SecondaryNode&#39;, &#39;AllNodes&#39;</param>
 
         /// <param name="shardId">If clustering is enabled, the ID of the shard to be rebooted.
         /// </param>

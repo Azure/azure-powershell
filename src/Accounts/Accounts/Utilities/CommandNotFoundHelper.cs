@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         private static readonly Regex AzOrAzureRMRegex = new Regex(@"^\w+-az\w+$", RegexOptions.IgnoreCase);
         private static readonly Regex AzureRMRegex = new Regex(@"^\w+-azurerm\w+$", RegexOptions.IgnoreCase);
         private static readonly Lazy<AllCommandInfo> LazyAllCommandInfo = new Lazy<AllCommandInfo>(LoadAllCommandInfo);
-        private static bool HaveAskedForFeedback = false;
 
         /// <summary>
         /// Mappings from command names to their module names.
@@ -135,7 +134,6 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             // We are not interested in such cases.
             if (args.CommandOrigin == CommandOrigin.Runspace && IsAzOrAzureRMCmdlet(args.CommandName))
             {
-                bool isHelpful = true;
                 if (IsAzureRMCommand(args.CommandName))
                 {
                     WriteWarning(string.Format(Resources.CommandNotFoundAzureRM, args.CommandName, Resources.AzureRMToAzMigrationGuideLink));
@@ -151,15 +149,6 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 else if (EnableFuzzyString && TryGetFuzzyStringSuggestions(args.CommandName, out IEnumerable<string> suggestions))
                 {
                     WriteWarning(FormatFuzzyStringMessage(args.CommandName, suggestions));
-                }
-                else
-                {
-                    isHelpful = false;
-                }
-                if (isHelpful && !HaveAskedForFeedback)
-                {
-                    HaveAskedForFeedback = true;
-                    WriteWarning("The intelligent recommendation feature is in preview. Help us improve it by sharing your experience: https://go.microsoft.com/fwlink/?linkid=2202436");
                 }
             }
             args.StopSearch = false;

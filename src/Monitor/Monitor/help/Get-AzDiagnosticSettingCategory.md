@@ -14,7 +14,8 @@ Gets the diagnostic settings category for the specified resource.
 
 ### List (Default)
 ```
-Get-AzDiagnosticSettingCategory -ResourceId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDiagnosticSettingCategory -ResourceId <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get

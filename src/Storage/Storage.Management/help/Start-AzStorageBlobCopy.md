@@ -20,8 +20,8 @@ Start-AzStorageBlobCopy [-SrcBlob] <String> -SrcContainer <String> -DestContaine
  [-RehydratePriority <RehydratePriority>] [-Tag <Hashtable>] [-Context <IStorageContext>]
  [-DestContext <IStorageContext>] [-DestTagCondition <String>] [-TagCondition <String>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BlobInstance
@@ -31,8 +31,8 @@ Start-AzStorageBlobCopy -CloudBlob <CloudBlob> [-BlobBaseClient <BlobBaseClient>
  [-RehydratePriority <RehydratePriority>] [-Tag <Hashtable>] [-Context <IStorageContext>]
  [-DestContext <IStorageContext>] [-DestTagCondition <String>] [-TagCondition <String>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BlobInstanceToBlobInstance
@@ -42,8 +42,8 @@ Start-AzStorageBlobCopy -CloudBlob <CloudBlob> [-BlobBaseClient <BlobBaseClient>
  [-RehydratePriority <RehydratePriority>] [-Tag <Hashtable>] [-Context <IStorageContext>]
  [-DestContext <IStorageContext>] [-DestTagCondition <String>] [-TagCondition <String>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ContainerInstance
@@ -53,8 +53,8 @@ Start-AzStorageBlobCopy -CloudBlobContainer <CloudBlobContainer> [-SrcBlob] <Str
  [-RehydratePriority <RehydratePriority>] [-Tag <Hashtable>] [-Context <IStorageContext>]
  [-DestContext <IStorageContext>] [-DestTagCondition <String>] [-TagCondition <String>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ShareName
@@ -63,8 +63,8 @@ Start-AzStorageBlobCopy -SrcShareName <String> -SrcFilePath <String> -DestContai
  [-DestBlob <String>] [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>] [-Tag <Hashtable>]
  [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-DestTagCondition <String>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ShareInstance
@@ -73,8 +73,8 @@ Start-AzStorageBlobCopy -SrcShare <CloudFileShare> -SrcFilePath <String> -DestCo
  [-DestBlob <String>] [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>] [-Tag <Hashtable>]
  [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-DestTagCondition <String>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DirInstance
@@ -83,8 +83,8 @@ Start-AzStorageBlobCopy -SrcDir <CloudFileDirectory> -SrcFilePath <String> -Dest
  [-DestBlob <String>] [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>] [-Tag <Hashtable>]
  [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-DestTagCondition <String>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FileInstance
@@ -93,8 +93,8 @@ Start-AzStorageBlobCopy -SrcFile <CloudFile> -DestContainer <String> [-DestBlob 
  [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>] [-Tag <Hashtable>]
  [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-DestTagCondition <String>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FileInstanceToBlobInstance
@@ -112,8 +112,8 @@ Start-AzStorageBlobCopy -AbsoluteUri <String> -DestContainer <String> -DestBlob 
  [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>] [-Tag <Hashtable>]
  [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-DestTagCondition <String>]
  [-TagCondition <String>] [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -15,37 +15,39 @@ Gets an operation on a Dev Box.
 ### List (Default)
 ```
 Get-AzDevCenterUserDevBoxOperation -Endpoint <String> -DevBoxName <String> -ProjectName <String>
- [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-UserId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDevCenterUserDevBoxOperation -Endpoint <String> -DevBoxName <String> -ProjectName <String>
- [-UserId <String>] -OperationId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-UserId <String>] -OperationId <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzDevCenterUserDevBoxOperation -Endpoint <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityByDevCenter
 ```
 Get-AzDevCenterUserDevBoxOperation -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
 Get-AzDevCenterUserDevBoxOperation -DevCenterName <String> -DevBoxName <String> -ProjectName <String>
- [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-UserId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
 Get-AzDevCenterUserDevBoxOperation -DevCenterName <String> -DevBoxName <String> -ProjectName <String>
- [-UserId <String>] -OperationId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-UserId <String>] -OperationId <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,37 +55,49 @@ Gets an operation on a Dev Box.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: List operations on the dev box by endpoint
+```powershell
 Get-AzDevCenterUserDevBoxOperation -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -ProjectName DevProject
 ```
 
-### EXAMPLE 2
-```
+This command lists the operations on the dev box "myDevBox".
+
+### Example 2: List operations on the dev box by dev center
+```powershell
 Get-AzDevCenterUserDevBoxOperation -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject
 ```
 
-### EXAMPLE 3
-```
+This command lists the operations on the dev box "myDevBox".
+
+### Example 3: Get an operation on the dev box by endpoint
+```powershell
 Get-AzDevCenterUserDevBoxOperation -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -ProjectName DevProject -OperationId "d0954a94-3550-4919-bcbe-1c94ed79e0cd"
 ```
 
-### EXAMPLE 4
-```
+This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the dev box "myDevBox".
+
+### Example 4: Get an operation on the dev box by dev center
+```powershell
 Get-AzDevCenterUserDevBoxOperation -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject -OperationId "d0954a94-3550-4919-bcbe-1c94ed79e0cd"
 ```
 
-### EXAMPLE 5
-```
+This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the dev box "myDevBox".
+
+### Example 5: Get an operation on the dev box by endpoint and InputObject
+```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject"; "OperationId" = "d0954a94-3550-4919-bcbe-1c94ed79e0cd"}
 Get-AzDevCenterUserDevBoxOperation -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $devBoxInput
 ```
 
-### EXAMPLE 6
-```
+This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the dev box "myDevBox".
+
+### Example 6: Get an operation on the dev box by dev center and InputObject
+```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject"; "OperationId" = "d0954a94-3550-4919-bcbe-1c94ed79e0cd"}
 Get-AzDevCenterUserDevBoxOperation -DevCenterName Contoso -InputObject $devBoxInput
 ```
+
+This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the dev box "myDevBox".
 
 ## PARAMETERS
 
@@ -92,7 +106,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -107,7 +121,7 @@ Accept wildcard characters: False
 The name of a Dev Box.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List, Get, ListByDevCenter, GetByDevCenter
 Aliases:
 
@@ -122,7 +136,7 @@ Accept wildcard characters: False
 The DevCenter upon which to execute operations.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetViaIdentityByDevCenter, ListByDevCenter, GetByDevCenter
 Aliases:
 
@@ -137,7 +151,7 @@ Accept wildcard characters: False
 The DevCenter-specific URI to operate on.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List, Get, GetViaIdentity
 Aliases:
 
@@ -153,7 +167,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: IDevCenterdataIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 Parameter Sets: GetViaIdentity, GetViaIdentityByDevCenter
 Aliases:
 
@@ -168,7 +182,7 @@ Accept wildcard characters: False
 The id of the operation on a Dev Box.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Get, GetByDevCenter
 Aliases:
 
@@ -179,11 +193,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The DevCenter Project upon which to execute operations.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List, Get, ListByDevCenter, GetByDevCenter
 Aliases:
 
@@ -199,13 +228,13 @@ The AAD object id of the user.
 If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List, Get, ListByDevCenter, GetByDevCenter
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: "me"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -216,33 +245,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxOperation
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IDevCenterdataIdentity\>: Identity Parameter
-  \[ActionName \<String\>\]: The name of an action that will take place on a Dev Box.
-  \[CatalogName \<String\>\]: The name of the catalog
-  \[CustomizationGroupName \<String\>\]: A customization group name.
-  \[CustomizationTaskId \<String\>\]: A customization task ID.
-  \[DefinitionName \<String\>\]: The name of the environment definition
-  \[DevBoxName \<String\>\]: The name of a Dev Box.
-  \[EnvironmentName \<String\>\]: The name of the environment.
-  \[Id \<String\>\]: Resource identity path
-  \[OperationId \<String\>\]: The id of the operation on a Dev Box.
-  \[PoolName \<String\>\]: The name of a pool of Dev Boxes.
-  \[ProjectName \<String\>\]: The DevCenter Project upon which to execute operations.
-  \[ScheduleName \<String\>\]: The name of a schedule.
-  \[TaskName \<String\>\]: A customization task name.
-  \[UserId \<String\>\]: The AAD object id of the user.
-If value is 'me', the identity is taken from the authentication context.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxoperation](https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxoperation)
-

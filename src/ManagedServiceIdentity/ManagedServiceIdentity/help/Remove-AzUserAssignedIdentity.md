@@ -15,7 +15,8 @@ Deletes the identity.
 ### Delete (Default)
 ```
 Remove-AzUserAssignedIdentity -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -46,7 +47,8 @@ This command deletes an user assigned identity by pipeline.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -179,20 +181,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IManagedServiceIdentity>`: Identity Parameter
-  - `[FederatedIdentityCredentialResourceName <String>]`: The name of the federated identity credential resource.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the Resource Group to which the identity belongs.
-  - `[ResourceName <String>]`: The name of the identity resource.
-  - `[Scope <String>]`: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
-  - `[SubscriptionId <String>]`: The Id of the Subscription to which the identity belongs.
 
 ## RELATED LINKS

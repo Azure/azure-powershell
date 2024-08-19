@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacepipelinejobobject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspacePipelineJobObject
 schema: 2.0.0
 ---
 
@@ -13,11 +13,11 @@ Create an in-memory object for PipelineJob.
 ## SYNTAX
 
 ```
-New-AzMLWorkspacePipelineJobObject [-ComputeId <String>] [-Description <String>] [-DisplayName <String>]
+New-AzMLWorkspacePipelineJobObject [-JobInput <IPipelineJobInputs>] [-Job <IPipelineJobJobs>]
+ [-JobOutput <IPipelineJobOutputs>] [-Setting <IAny>] [-ComputeId <String>] [-DisplayName <String>]
  [-ExperimentName <String>] [-IdentityType <IdentityConfigurationType>] [-IsArchived <Boolean>]
- [-Job <IPipelineJobJobs>] [-JobInput <IPipelineJobInputs>] [-JobOutput <IPipelineJobOutputs>]
- [-Property <IResourceBaseProperties>] [-ServiceEndpoint <String>] [-ServicePort <Int32>]
- [-ServiceProperty <IJobServiceProperties>] [-ServiceType <String>] [-Setting <IAny>]
+ [-ServiceEndpoint <String>] [-ServicePort <Int32>] [-ServiceProperty <IJobServiceProperties>]
+ [-ServiceType <String>] [-Description <String>] [-Property <IResourceBaseProperties>]
  [-Tag <IResourceBaseTags>] [<CommonParameters>]
 ```
 
@@ -148,7 +148,7 @@ Jobs construct the Pipeline Job.
 To construct, see NOTES section for JOB properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IPipelineJobJobs
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPipelineJobJobs
 Parameter Sets: (All)
 Aliases:
 
@@ -164,7 +164,7 @@ Inputs for the pipeline job.
 To construct, see NOTES section for JOBINPUT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IPipelineJobInputs
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPipelineJobInputs
 Parameter Sets: (All)
 Aliases:
 
@@ -180,7 +180,7 @@ Outputs for the pipeline job.
 To construct, see NOTES section for JOBOUTPUT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IPipelineJobOutputs
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPipelineJobOutputs
 Parameter Sets: (All)
 Aliases:
 
@@ -196,7 +196,7 @@ The asset property dictionary.
 To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceBaseProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -242,7 +242,7 @@ Additional properties to set on the endpoint.
 To construct, see NOTES section for SERVICEPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobServiceProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobServiceProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -289,7 +289,7 @@ Tags can be added, removed, and updated.
 To construct, see NOTES section for TAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceBaseTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags
 Parameter Sets: (All)
 Aliases:
 
@@ -307,34 +307,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.PipelineJob
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.PipelineJob
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-JOB `<IPipelineJobJobs>`: Jobs construct the Pipeline Job.
-  - `[(Any) <Object>]`: This indicates any property can be added to this object.
-
-JOBINPUT `<IPipelineJobInputs>`: Inputs for the pipeline job.
-  - `[(Any) <IJobInput>]`: This indicates any property can be added to this object.
-
-JOBOUTPUT `<IPipelineJobOutputs>`: Outputs for the pipeline job.
-  - `[(Any) <IJobOutput>]`: This indicates any property can be added to this object.
-
-PROPERTY `<IResourceBaseProperties>`: The asset property dictionary.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-SERVICEPROPERTY `<IJobServiceProperties>`: Additional properties to set on the endpoint.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-TAG `<IResourceBaseTags>`: Tag dictionary. Tags can be added, removed, and updated.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
 ## RELATED LINKS
-

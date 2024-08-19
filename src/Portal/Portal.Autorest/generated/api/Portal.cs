@@ -9,6 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
 
     /// <summary>
     /// Low-level API implementation for the Portal service.
+    /// Allows creation and deletion of Azure Shared Dashboards.
     /// </summary>
     public partial class Portal
     {
@@ -34,8 +35,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
@@ -43,19 +44,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
                         + global::System.Uri.EscapeDataString(dashboardName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Method.Put, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DashboardsCreateOrUpdate_Call(request,onOk,onCreated,onDefault,eventListener,sender);
             }
@@ -81,7 +83,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Portal/dashboards/(?<dashboardName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Portal/dashboards/(?<dashboardName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards/{dashboardName}'");
@@ -92,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var dashboardName = _match.Groups["dashboardName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
@@ -101,19 +103,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
                         + dashboardName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Method.Put, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DashboardsCreateOrUpdate_Call(request,onOk,onCreated,onDefault,eventListener,sender);
             }
@@ -137,8 +140,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -220,8 +224,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
@@ -229,15 +233,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
                         + global::System.Uri.EscapeDataString(dashboardName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Method.Delete, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DashboardsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
             }
@@ -262,7 +267,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Portal/dashboards/(?<dashboardName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Portal/dashboards/(?<dashboardName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards/{dashboardName}'");
@@ -273,8 +278,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var dashboardName = _match.Groups["dashboardName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
@@ -282,15 +287,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
                         + dashboardName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Method.Delete, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DashboardsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
             }
@@ -314,8 +320,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -379,6 +386,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
         /// <param name="resourceGroupName">The name of the resource group.</param>
         /// <param name="dashboardName">The name of the dashboard.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNotFound">a delegate that is called when the remote service returns 404 (NotFound).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -386,15 +394,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DashboardsGet(string subscriptionId, string resourceGroupName, string dashboardName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DashboardsGet(string subscriptionId, string resourceGroupName, string dashboardName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNotFound, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2019-01-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
@@ -402,23 +410,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
                         + global::System.Uri.EscapeDataString(dashboardName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DashboardsGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DashboardsGet_Call(request,onOk,onNotFound,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Gets the Dashboard.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNotFound">a delegate that is called when the remote service returns 404 (NotFound).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -426,7 +436,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DashboardsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DashboardsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNotFound, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2019-01-01-preview";
             // Constant Parameters
@@ -434,7 +444,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Portal/dashboards/(?<dashboardName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Portal/dashboards/(?<dashboardName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards/{dashboardName}'");
@@ -445,8 +455,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var dashboardName = _match.Groups["dashboardName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
@@ -454,23 +464,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
                         + dashboardName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DashboardsGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DashboardsGet_Call(request,onOk,onNotFound,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="DashboardsGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNotFound">a delegate that is called when the remote service returns 404 (NotFound).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -478,15 +490,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DashboardsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DashboardsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNotFound, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -496,6 +509,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.Dashboard.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        case global::System.Net.HttpStatusCode.NotFound:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNotFound(_response);
                             break;
                         }
                         default:
@@ -557,23 +576,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
                         + "/providers/Microsoft.Portal/dashboards"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DashboardsListByResourceGroup_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -597,7 +617,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Portal/dashboards$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Portal/dashboards$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards'");
@@ -607,23 +627,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
                 var subscriptionId = _match.Groups["subscriptionId"].Value;
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
                         + "/providers/Microsoft.Portal/dashboards"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DashboardsListByResourceGroup_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -646,8 +667,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -713,21 +735,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/providers/Microsoft.Portal/dashboards"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DashboardsListBySubscription_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -751,7 +774,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.Portal/dashboards$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.Portal/dashboards$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.Portal/dashboards'");
@@ -760,21 +783,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
                 // replace URI parameters with values from identity
                 var subscriptionId = _match.Groups["subscriptionId"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + subscriptionId
                         + "/providers/Microsoft.Portal/dashboards"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DashboardsListBySubscription_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -797,8 +821,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -851,6 +876,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
         /// <param name="dashboardName">The name of the dashboard.</param>
         /// <param name="body">The updatable fields of a Dashboard.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNotFound">a delegate that is called when the remote service returns 404 (NotFound).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -858,15 +884,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DashboardsUpdate(string subscriptionId, string resourceGroupName, string dashboardName, Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IPatchableDashboard body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DashboardsUpdate(string subscriptionId, string resourceGroupName, string dashboardName, Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IPatchableDashboard body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNotFound, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2019-01-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
@@ -874,21 +900,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
                         + global::System.Uri.EscapeDataString(dashboardName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Method.Patch, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DashboardsUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DashboardsUpdate_Call(request,onOk,onNotFound,onDefault,eventListener,sender);
             }
         }
 
@@ -896,6 +923,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
         /// <param name="viaIdentity"></param>
         /// <param name="body">The updatable fields of a Dashboard.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNotFound">a delegate that is called when the remote service returns 404 (NotFound).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -903,7 +931,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DashboardsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IPatchableDashboard body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DashboardsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IPatchableDashboard body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNotFound, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2019-01-01-preview";
             // Constant Parameters
@@ -911,7 +939,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Portal/dashboards/(?<dashboardName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Portal/dashboards/(?<dashboardName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards/{dashboardName}'");
@@ -922,8 +950,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var dashboardName = _match.Groups["dashboardName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
@@ -931,27 +959,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
                         + dashboardName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Method.Patch, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DashboardsUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DashboardsUpdate_Call(request,onOk,onNotFound,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="DashboardsUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNotFound">a delegate that is called when the remote service returns 404 (NotFound).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -959,15 +989,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DashboardsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DashboardsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNotFound, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -977,6 +1008,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.Dashboard.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        case global::System.Net.HttpStatusCode.NotFound:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNotFound(_response);
                             break;
                         }
                         default:
@@ -1039,19 +1076,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.Portal/operations"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.Portal/operations"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.OperationsList_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1075,7 +1113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.Portal/operations$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.Portal/operations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.Portal/operations'");
@@ -1083,19 +1121,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
 
                 // replace URI parameters with values from identity
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.Portal/operations"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.Portal/operations"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.OperationsList_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1118,8 +1157,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 

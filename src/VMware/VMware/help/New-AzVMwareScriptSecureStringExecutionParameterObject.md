@@ -1,36 +1,37 @@
 ---
 external help file: Az.VMware-help.xml
 Module Name: Az.VMware
-online version: https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareScriptSecureStringExecutionParameterObject
+online version: https://learn.microsoft.com/powershell/module/Az.VMware/new-azvmwarescriptsecurestringexecutionparameterobject
 schema: 2.0.0
 ---
 
 # New-AzVMwareScriptSecureStringExecutionParameterObject
 
 ## SYNOPSIS
-Create a in-memory object for ScriptSecureStringExecutionParameter
+Create an in-memory object for ScriptSecureStringExecutionParameter.
 
 ## SYNTAX
 
 ```
-New-AzVMwareScriptSecureStringExecutionParameterObject -Name <String> [-SecureValue <String>]
+New-AzVMwareScriptSecureStringExecutionParameterObject -Name <String> [-SecureValue <SecureString>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for ScriptSecureStringExecutionParameter
+Create an in-memory object for ScriptSecureStringExecutionParameter.
 
 ## EXAMPLES
 
 ### Example 1: Create a local Script Secure String Execution object
 ```powershell
-New-AzVMwareScriptSecureStringExecutionParameterObject -Name azps_test_securevalue -SecureValue "passwordValue"
+$mypwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
+New-AzVMwareScriptSecureStringExecutionParameterObject -Name azps_test_securevalue -SecureValue $mypwd
 ```
 
 ```output
-Name                  Type        SecureValue
-----                  ----        -----------
-azps_test_securevalue SecureValue passwordValue
+Name                                   SecureValue Type
+----                                   ----------- ----
+azps_test_securevalue System.Security.SecureString SecureValue
 ```
 
 Create a local Script Secure String Execution object
@@ -56,7 +57,7 @@ Accept wildcard characters: False
 A secure value for the passed parameter, not to be stored in logs.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -74,10 +75,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ScriptSecureStringExecutionParameter
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ScriptSecureStringExecutionParameter
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Migrate service.
 
 ---
-## Status
-[![Az.Migrate](https://img.shields.io/powershellgallery/v/Az.Migrate.svg?style=flat-square&label=Az.Migrate "Az.Migrate")](https://www.powershellgallery.com/packages/Az.Migrate/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

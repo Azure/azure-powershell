@@ -14,12 +14,14 @@ Get a data source
 
 ### List (Default)
 ```
-Get-AzPurviewDataSource -Endpoint <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPurviewDataSource -Endpoint <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzPurviewDataSource -Endpoint <String> -Name <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPurviewDataSource -Endpoint <String> -Name <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,7 +95,8 @@ Get all data sources
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -148,7 +151,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

@@ -14,7 +14,8 @@ Returns resource collection belonging to a subscription.
 
 ### Get (Default)
 ```
-Get-AzDataProtectionBackupVault [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDataProtectionBackupVault [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get2
@@ -95,6 +96,29 @@ Adequate
 ```
 
 First command gets a specific vault by given vault name, then we fetch the secure score of the vault which shows Adequate.
+
+### Example 4: Get encryption settings of backup vault.
+```powershell
+$vault = Get-AzDataProtectionBackupVault -SubscriptionId "xxxx-xxx-xxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName"
+$vault.EncryptionSetting |fl
+$vault.EncryptionSetting.CmkIdentity |fl
+$vault.EncryptionSetting.CmkKeyVaultProperty |fl
+```
+
+```output
+CmkIdentity                 : Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.CmkKekIdentity
+CmkInfrastructureEncryption : Enabled
+CmkKeyVaultProperty         : Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.CmkKeyVaultProperties
+State                       : Enabled
+
+IdentityId   : /subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourcegroups/jeevan-wrk-vms/providers/Microsoft.ManagedIdentity/userAssignedIdentities
+               /userMSIpstest
+IdentityType : UserAssigned
+
+KeyUri : https://jeevantestkeyvaultcmk.vault.azure.net/keys/pstest/3cd5235ad6ac4c11b40a6f35444bcbe1
+```
+
+First command gets a specific vault by given vault name, subsequent three commands fetch the specity properites of encryption settings.
 
 ## PARAMETERS
 
@@ -186,30 +210,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupVaultResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupVaultResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDataProtectionIdentity>`: Identity Parameter
-  - `[BackupInstanceName <String>]`: The name of the backup instance.
-  - `[BackupPolicyName <String>]`: 
-  - `[Id <String>]`: Resource identity path
-  - `[JobId <String>]`: The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  - `[Location <String>]`: The location in which uniqueness will be verified.
-  - `[OperationId <String>]`: 
-  - `[RecoveryPointId <String>]`: 
-  - `[RequestName <String>]`: 
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ResourceGuardProxyName <String>]`: name of the resource guard proxy
-  - `[ResourceGuardsName <String>]`: The name of ResourceGuard
-  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
-  - `[VaultName <String>]`: The name of the backup vault.
 
 ## RELATED LINKS

@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Attestation service.
 
 ---
-## Status
-[![Az.Attestation](https://img.shields.io/powershellgallery/v/Az.Attestation.svg?style=flat-square&label=Az.Attestation "Az.Attestation")](https://www.powershellgallery.com/packages/Az.Attestation/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -30,7 +27,7 @@ For information on how to develop for `Az.Attestation`, see [how-to.md](how-to.m
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 49761e90136044aa164e59d3dc8da0a66644f239
+commit: 49761e90136044aa164e59d3dc8da0a66644f239
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -52,6 +49,10 @@ resourcegroup-append: true
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correctiEXon-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs

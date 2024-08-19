@@ -1,5 +1,5 @@
 function Get-AzFunctionAppSetting {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Gets app settings for a function app.')]
     [CmdletBinding(DefaultParameterSetName='ByName', SupportsShouldProcess=$true, ConfirmImpact='Medium')]
     param(
@@ -23,7 +23,7 @@ function Get-AzFunctionAppSetting {
         ${SubscriptionId},
 
         [Parameter(ParameterSetName='ByObjectInput', Mandatory=$true, ValueFromPipeline=$true)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite]
         [ValidateNotNull()]
         ${InputObject},
 
@@ -76,6 +76,8 @@ function Get-AzFunctionAppSetting {
     )
     
     process {
+
+        RegisterFunctionsTabCompleters
         
         if ($PsCmdlet.ParameterSetName -eq "ByObjectInput")
         {            

@@ -26,7 +26,8 @@ Please notice that this cmdlet will mark `ObjectType` as `Unknown` in output if 
 ```
 New-AzRoleAssignment -ObjectId <String> [-Scope <String>] -RoleDefinitionName <String> [-Description <String>]
  [-Condition <String>] [-ConditionVersion <String>] [-ObjectType <String>] [-AllowDelegation]
- [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ResourceGroupWithObjectIdParameterSet
@@ -34,7 +35,7 @@ New-AzRoleAssignment -ObjectId <String> [-Scope <String>] -RoleDefinitionName <S
 New-AzRoleAssignment -ObjectId <String> -ResourceGroupName <String> -RoleDefinitionName <String>
  [-Description <String>] [-Condition <String>] [-ConditionVersion <String>] [-ObjectType <String>]
  [-AllowDelegation] [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ResourceWithObjectIdParameterSet
@@ -42,14 +43,16 @@ New-AzRoleAssignment -ObjectId <String> -ResourceGroupName <String> -RoleDefinit
 New-AzRoleAssignment -ObjectId <String> -ResourceGroupName <String> -ResourceName <String>
  -ResourceType <String> [-ParentResource <String>] -RoleDefinitionName <String> [-Description <String>]
  [-Condition <String>] [-ConditionVersion <String>] [-ObjectType <String>] [-AllowDelegation]
- [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### RoleIdWithScopeAndObjectIdParameterSet
 ```
 New-AzRoleAssignment -ObjectId <String> -Scope <String> [-Description <String>] [-Condition <String>]
  [-ConditionVersion <String>] [-ObjectType <String>] -RoleDefinitionId <Guid> [-AllowDelegation]
- [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ResourceGroupWithSignInNameParameterSet
@@ -57,7 +60,7 @@ New-AzRoleAssignment -ObjectId <String> -Scope <String> [-Description <String>] 
 New-AzRoleAssignment -SignInName <String> -ResourceGroupName <String> -RoleDefinitionName <String>
  [-Description <String>] [-Condition <String>] [-ConditionVersion <String>] [-ObjectType <String>]
  [-AllowDelegation] [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ResourceWithSignInNameParameterSet
@@ -65,7 +68,8 @@ New-AzRoleAssignment -SignInName <String> -ResourceGroupName <String> -RoleDefin
 New-AzRoleAssignment -SignInName <String> -ResourceGroupName <String> -ResourceName <String>
  -ResourceType <String> [-ParentResource <String>] -RoleDefinitionName <String> [-Description <String>]
  [-Condition <String>] [-ConditionVersion <String>] [-ObjectType <String>] [-AllowDelegation]
- [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ScopeWithSignInNameParameterSet
@@ -73,7 +77,7 @@ New-AzRoleAssignment -SignInName <String> -ResourceGroupName <String> -ResourceN
 New-AzRoleAssignment -SignInName <String> [-Scope <String>] -RoleDefinitionName <String>
  [-Description <String>] [-Condition <String>] [-ConditionVersion <String>] [-ObjectType <String>]
  [-AllowDelegation] [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ResourceGroupWithSPNParameterSet
@@ -81,7 +85,7 @@ New-AzRoleAssignment -SignInName <String> [-Scope <String>] -RoleDefinitionName 
 New-AzRoleAssignment -ApplicationId <String> -ResourceGroupName <String> -RoleDefinitionName <String>
  [-Description <String>] [-Condition <String>] [-ConditionVersion <String>] [-ObjectType <String>]
  [-AllowDelegation] [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ResourceWithSPNParameterSet
@@ -89,7 +93,8 @@ New-AzRoleAssignment -ApplicationId <String> -ResourceGroupName <String> -RoleDe
 New-AzRoleAssignment -ApplicationId <String> -ResourceGroupName <String> -ResourceName <String>
  -ResourceType <String> [-ParentResource <String>] -RoleDefinitionName <String> [-Description <String>]
  [-Condition <String>] [-ConditionVersion <String>] [-ObjectType <String>] [-AllowDelegation]
- [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ScopeWithSPNParameterSet
@@ -97,13 +102,13 @@ New-AzRoleAssignment -ApplicationId <String> -ResourceGroupName <String> -Resour
 New-AzRoleAssignment -ApplicationId <String> [-Scope <String>] -RoleDefinitionName <String>
  [-Description <String>] [-Condition <String>] [-ConditionVersion <String>] [-ObjectType <String>]
  [-AllowDelegation] [-SkipClientSideScopeValidation] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### InputFileParameterSet
 ```
 New-AzRoleAssignment -InputFile <String> [-AllowDelegation] [-SkipClientSideScopeValidation]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -153,14 +158,14 @@ Grant access to a security group
 
 ### Example 3
 ```powershell
-New-AzRoleAssignment -SignInName john.doe@contoso.com -RoleDefinitionName Owner -Scope "/subscriptions/86f81fc3-b00f-48cd-8218-3879f51ff362/resourcegroups/rg1/providers/Microsoft.Web/sites/site1"
+New-AzRoleAssignment -SignInName john.doe@contoso.com -RoleDefinitionName Owner -Scope "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourcegroups/rg1/providers/Microsoft.Web/sites/site1"
 ```
 
 Grant access to a user at a resource (website)
 
 ### Example 4
 ```powershell
-New-AzRoleAssignment -ObjectId 5ac84765-1c8c-4994-94b2-629461bd191b -RoleDefinitionName "Virtual Machine Contributor" -ResourceName Devices-Engineering-ProjectRND -ResourceType Microsoft.Network/virtualNetworks/subnets -ParentResource virtualNetworks/VNET-EASTUS-01 -ResourceGroupName Network
+New-AzRoleAssignment -ObjectId 00001111-aaaa-2222-bbbb-3333cccc4444 -RoleDefinitionName "Virtual Machine Contributor" -ResourceName Devices-Engineering-ProjectRND -ResourceType Microsoft.Network/virtualNetworks/subnets -ParentResource virtualNetworks/VNET-EASTUS-01 -ResourceGroupName Network
 ```
 
 Grant access to a group at a nested resource (subnet)
@@ -323,6 +328,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

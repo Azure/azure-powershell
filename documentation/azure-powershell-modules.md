@@ -15,11 +15,13 @@
 | ADDomainServices               | `Az.ADDomainServices`           | [![ADDomainServices]][ADDomainServicesGallery]                     | [Changelog][ADDomainServicesChangeLog]           |
 | Advisor                        | `Az.Advisor`                    | [![Advisor]][AdvisorGallery]                                       | [Changelog][AdvisorChangeLog]                    |
 | Kubernetes Service             | `Az.Aks`                        | [![Aks]][AksGallery]                                               | [Changelog][AksChangeLog]                        |
+| Kubernetes Service enabled by Azure Arc   | `Az.AksArc`          | [![AksArc]][AksArcGallery]                                         | [Changelog][AksArcChangeLog]                        |
 | Alb                            | `Az.Alb`                        | [![Alb]][AlbGallery]                                               | [Changelog][AlbChangeLog]                        |
 | Alert Management               | `Az.AlertsManagement`           | [![AlertsManagement]][AlertsManagementGallery]                     | [Changelog][AlertsManagementChangeLog]           |
 | Analysis Services              | `Az.AnalysisServices`           | [![AnalysisServices]][AnalysisServicesGallery]                     | [Changelog][AnalysisServicesChangeLog]           |
 | API Management                 | `Az.ApiManagement`              | [![ApiManagement]][ApiManagementGallery]                           | [Changelog][ApiManagementChangeLog]              |
 | Container Apps                 | `Az.App`                        | [![App]][AppGallery]                                               | [Changelog][AppChangeLog]                        |
+| App Compliance Automation      | `Az.AppComplianceAutomation`    | [![AppComplianceAutomation]][AppComplianceAutomationGallery]       | [Changelog][AppComplianceAutomationChangeLog]    |
 | App Configuration              | `Az.AppConfiguration`           | [![AppConfiguration]][AppConfigurationGallery]                     | [Changelog][AppConfigurationChangeLog]           |
 | Application Insights           | `Az.ApplicationInsights`        | [![ApplicationInsights]][ApplicationInsightsGallery]               | [Changelog][ApplicationInsightsChangeLog]        |
 | Arc Resource Bridge            | `Az.ArcResourceBridge`          | [![ArcResourceBridge]][ArcResourceBridgeGallery]                   | [Changelog][ArcResourceBridgeChangeLog]          |
@@ -35,6 +37,7 @@
 | Content Delivery Network       | `Az.Cdn`                        | [![Cdn]][CdnGallery]                                               | [Changelog][CdnChangeLog]                        |
 | Change Analysis                | `Az.ChangeAnalysis`             | [![ChangeAnalysis]][ChangeAnalysisGallery]                         | [Changelog][ChangeAnalysisChangeLog]             |
 | Cloud Service                  | `Az.CloudService`               | [![CloudService]][CloudServiceGallery]                             | [Changelog][CloudServiceChangeLog]               |
+| CodeSigning                    | `Az.CodeSigning`                | [![CodeSigning]][CodeSigningGallery]                               | [Changelog][CodeSigningChangeLog]                |
 | Cognitive Services             | `Az.CognitiveServices`          | [![CognitiveServices]][CognitiveServicesGallery]                   | [Changelog][CognitiveServicesChangeLog]          |
 | Communication                  | `Az.Communication`              | [![Communication]][CommunicationGallery]                           | [Changelog][CommunicationChangeLog]              |
 | Compute                        | `Az.Compute`                    | [![Compute]][ComputeGallery]                                       | [Changelog][ComputeChangeLog]                    |
@@ -66,7 +69,6 @@
 | DevCenter                      | `Az.DevCenter`                  | [![DevCenter]][DevCenterGallery]                                   | [Changelog][DevCenterChangeLog]                  |
 | Device Provisioning Services   | `Az.DeviceProvisioningServices` | [![DeviceProvisioningServices]][DeviceProvisioningServicesGallery] | [Changelog][DeviceProvisioningServicesChangeLog] |
 | Device Update                  | `Az.DeviceUpdate`               | [![DeviceUpdate]][DeviceUpdateGallery]                             | [Changelog][DeviceUpdateChangeLog]               |
-| Dev Spaces                     | `Az.DevSpaces`                  | [![DevSpaces]][DevSpacesGallery]                                   | [Changelog][DevSpacesChangeLog]                  |
 | DevTest Labs                   | `Az.DevTestLabs`                | [![DevTestLabs]][DevTestLabsGallery]                               | [Changelog][DevTestLabsChangeLog]                |
 | Digital Twins                  | `Az.DigitalTwins`               | [![DigitalTwins]][DigitalTwinsGallery]                             | [Changelog][DigitalTwinsChangeLog]               |
 | Disk Pool                      | `Az.DiskPool`                   | [![DiskPool]][DiskPoolGallery]                                     | [Changelog][DiskPoolChangeLog]                   |
@@ -78,7 +80,8 @@
 | ElasticSan on Azure            | `Az.ElasticSan`                 | [![ElasticSan]][ElasticSanGallery]                                 | [Changelog][ElasticSanChangeLog]                 |
 | Event Grid                     | `Az.EventGrid`                  | [![EventGrid]][EventGridGallery]                                   | [Changelog][EventGridChangeLog]                  |
 | Event Hubs                     | `Az.EventHub`                   | [![EventHub]][EventHubGallery]                                     | [Changelog][EventHubChangeLog]                   |
-| Fleet                          | `Az.Fleet`                      | [![Fleet]][FleetGallery]                                           | [Changelog][FleetChangeLog]                   |
+| FirmwareAnalysis               | `FirmwareAnalysis`              | [![FirmwareAnalysis]][FirmwareAnalysisGallery]                     | [Changelog][FirmwareAnalysisChangeLog]           |
+| Fleet                          | `Az.Fleet`                      | [![Fleet]][FleetGallery]                                           | [Changelog][FleetChangeLog]                      |
 | Fluid Relay                    | `Az.FluidRelay`                 | [![FluidRelay]][FluidRelayGallery]                                 | [Changelog][FluidRelayChangeLog]                 |
 | Front Door                     | `Az.FrontDoor`                  | [![FrontDoor]][FrontDoorGallery]                                   | [Changelog][FrontDoorChangeLog]                  |
 | Functions                      | `Az.Functions`                  | [![Functions]][FunctionsGallery]                                   | [Changelog][FunctionsChangeLog]                  |
@@ -190,11 +193,13 @@
 [ADDomainServices]:           https://img.shields.io/powershellgallery/v/Az.ADDomainServices.svg?style=flat-square&label=Az.ADDomainServices
 [Advisor]:                    https://img.shields.io/powershellgallery/v/Az.Advisor.svg?style=flat-square&label=Az.Advisor
 [Aks]:                        https://img.shields.io/powershellgallery/v/Az.Aks.svg?style=flat-square&label=Az.Aks
+[AksArc]:                     https://img.shields.io/powershellgallery/v/Az.AksArc.svg?style=flat-square&label=Az.AksArc
 [Alb]:                        https://img.shields.io/powershellgallery/v/Az.Alb.svg?style=flat-square&label=Az.Alb
 [AlertsManagement]:           https://img.shields.io/powershellgallery/v/Az.AlertsManagement.svg?style=flat-square&label=Az.AlertsManagement
 [AnalysisServices]:           https://img.shields.io/powershellgallery/v/Az.AnalysisServices.svg?style=flat-square&label=Az.AnalysisServices
 [ApiManagement]:              https://img.shields.io/powershellgallery/v/Az.ApiManagement.svg?style=flat-square&label=Az.ApiManagement
 [App]:                        https://img.shields.io/powershellgallery/v/Az.App.svg?style=flat-square&label=Az.App
+[AppComplianceAutomation]:    https://img.shields.io/powershellgallery/v/Az.AppComplianceAutomation.svg?style=flat-square&label=Az.AppComplianceAutomation
 [AppConfiguration]:           https://img.shields.io/powershellgallery/v/Az.AppConfiguration.svg?style=flat-square&label=Az.AppConfiguration
 [ApplicationInsights]:        https://img.shields.io/powershellgallery/v/Az.ApplicationInsights.svg?style=flat-square&label=Az.ApplicationInsights
 [ArcResourceBridge]:          https://img.shields.io/powershellgallery/v/Az.ArcResourceBridge.svg?style=flat-square&label=Az.ArcResourceBridge
@@ -210,6 +215,7 @@
 [Cdn]:                        https://img.shields.io/powershellgallery/v/Az.Cdn.svg?style=flat-square&label=Az.Cdn
 [ChangeAnalysis]:             https://img.shields.io/powershellgallery/v/Az.ChangeAnalysis.svg?style=flat-square&label=Az.ChangeAnalysis
 [CloudService]:               https://img.shields.io/powershellgallery/v/Az.CloudService.svg?style=flat-square&label=Az.CloudService
+[CodeSigning]:                https://img.shields.io/powershellgallery/v/Az.CodeSigning.svg?style=flat-square&label=Az.CodeSigning
 [CognitiveServices]:          https://img.shields.io/powershellgallery/v/Az.CognitiveServices.svg?style=flat-square&label=Az.CognitiveServices
 [Communication]:              https://img.shields.io/powershellgallery/v/Az.Communication.svg?style=flat-square&label=Az.Communication
 [Compute]:                    https://img.shields.io/powershellgallery/v/Az.Compute.svg?style=flat-square&label=Az.Compute
@@ -241,7 +247,6 @@
 [DevCenter]:                  https://img.shields.io/powershellgallery/v/Az.DevCenter.svg?style=flat-square&label=Az.DevCenter
 [DeviceProvisioningServices]: https://img.shields.io/powershellgallery/v/Az.DeviceProvisioningServices.svg?style=flat-square&label=Az.DeviceProvisioningServices
 [DeviceUpdate]:               https://img.shields.io/powershellgallery/v/Az.DeviceUpdate.svg?style=flat-square&label=Az.DeviceUpdate
-[DevSpaces]:                  https://img.shields.io/powershellgallery/v/Az.DevSpaces.svg?style=flat-square&label=Az.DevSpaces
 [DevTestLabs]:                https://img.shields.io/powershellgallery/v/Az.DevTestLabs.svg?style=flat-square&label=Az.DevTestLabs
 [DigitalTwins]:               https://img.shields.io/powershellgallery/v/Az.DigitalTwins.svg?style=flat-square&label=Az.DigitalTwins
 [DiskPool]:                   https://img.shields.io/powershellgallery/v/Az.DiskPool.svg?style=flat-square&label=Az.DiskPool
@@ -253,6 +258,7 @@
 [ElasticSan]:                 https://img.shields.io/powershellgallery/v/Az.ElasticSan.svg?style=flat-square&label=Az.ElasticSan
 [EventGrid]:                  https://img.shields.io/powershellgallery/v/Az.EventGrid.svg?style=flat-square&label=Az.EventGrid
 [EventHub]:                   https://img.shields.io/powershellgallery/v/Az.EventHub.svg?style=flat-square&label=Az.EventHub
+[FirmwareAnalysis]:           https://img.shields.io/powershellgallery/v/Az.FirmwareAnalysis.svg?style=flat-square&label=Az.FirmwareAnalysis
 [Fleet]:                      https://img.shields.io/powershellgallery/v/Az.Fleet.svg?style=flat-square&label=Az.Fleet
 [FluidRelay]:                 https://img.shields.io/powershellgallery/v/Az.FluidRelay.svg?style=flat-square&label=Az.FluidRelay
 [FrontDoor]:                  https://img.shields.io/powershellgallery/v/Az.FrontDoor.svg?style=flat-square&label=Az.FrontDoor
@@ -361,11 +367,13 @@
 [ADDomainServicesGallery]:           https://www.powershellgallery.com/packages/Az.ADDomainServices/
 [AdvisorGallery]:                    https://www.powershellgallery.com/packages/Az.Advisor/
 [AksGallery]:                        https://www.powershellgallery.com/packages/Az.Aks/
+[AksArcGallery]:                     https://www.powershellgallery.com/packages/Az.AksArc/
 [AlbGallery]:                        https://www.powershellgallery.com/packages/Az.Alb/
 [AlertsManagementGallery]:           https://www.powershellgallery.com/packages/Az.AlertsManagement/
 [AnalysisServicesGallery]:           https://www.powershellgallery.com/packages/Az.AnalysisServices/
 [ApiManagementGallery]:              https://www.powershellgallery.com/packages/Az.ApiManagement/
 [AppGallery]:                        https://www.powershellgallery.com/packages/Az.App/
+[AppComplianceAutomationGallery]:    https://www.powershellgallery.com/packages/Az.AppComplianceAutomation/
 [AppConfigurationGallery]:           https://www.powershellgallery.com/packages/Az.AppConfiguration/
 [ApplicationInsightsGallery]:        https://www.powershellgallery.com/packages/Az.ApplicationInsights/
 [ArcResourceBridgeGallery]:          https://www.powershellgallery.com/packages/Az.ArcResourceBridge/
@@ -381,6 +389,7 @@
 [CdnGallery]:                        https://www.powershellgallery.com/packages/Az.Cdn/
 [ChangeAnalysisGallery]:             https://www.powershellgallery.com/packages/Az.ChangeAnalysis/
 [CloudServiceGallery]:               https://www.powershellgallery.com/packages/Az.CloudService/
+[CodeSigningGallery]:                https://www.powershellgallery.com/packages/Az.CodeSigning/
 [CognitiveServicesGallery]:          https://www.powershellgallery.com/packages/Az.CognitiveServices/
 [CommunicationGallery]:              https://www.powershellgallery.com/packages/Az.Communication/
 [ComputeGallery]:                    https://www.powershellgallery.com/packages/Az.Compute/
@@ -412,7 +421,6 @@
 [DevCenterGallery]:                  https://www.powershellgallery.com/packages/Az.DevCenter/
 [DeviceProvisioningServicesGallery]: https://www.powershellgallery.com/packages/Az.DeviceProvisioningServices/
 [DeviceUpdateGallery]:               https://www.powershellgallery.com/packages/Az.DeviceUpdate/
-[DevSpacesGallery]:                  https://www.powershellgallery.com/packages/Az.DevSpaces/
 [DevTestLabsGallery]:                https://www.powershellgallery.com/packages/Az.DevTestLabs/
 [DigitalTwinsGallery]:               https://www.powershellgallery.com/packages/Az.DigitalTwins/
 [DiskPoolGallery]:                   https://www.powershellgallery.com/packages/Az.DiskPool/
@@ -424,6 +432,7 @@
 [ElasticSanGallery]:                 https://www.powershellgallery.com/packages/Az.ElasticSan/
 [EventGridGallery]:                  https://www.powershellgallery.com/packages/Az.EventGrid/
 [EventHubGallery]:                   https://www.powershellgallery.com/packages/Az.EventHub/
+[FirmwareAnalysisGallery]:           https://www.powershellgallery.com/packages/Az.FirmwareAnalysis/
 [FleetGallery]:                      https://www.powershellgallery.com/packages/Az.Fleet/
 [FluidRelayGallery]:                 https://www.powershellgallery.com/packages/Az.FluidRelay/
 [FrontDoorGallery]:                  https://www.powershellgallery.com/packages/Az.FrontDoor/
@@ -530,11 +539,13 @@
 [ADDomainServicesChangeLog]:           ../src/ADDomainServices/ADDomainServices/ChangeLog.md
 [AdvisorChangeLog]:                    ../src/Advisor/Advisor/ChangeLog.md
 [AksChangeLog]:                        ../src/Aks/Aks/ChangeLog.md
+[AksArcChangeLog]:                     ../src/AksArc/AksArc/ChangeLog.md
 [AlbChangeLog]:                        ../src/Alb/Alb/ChangeLog.md
 [AlertsManagementChangeLog]:           ../src/AlertsManagement/AlertsManagement/ChangeLog.md
 [AnalysisServicesChangeLog]:           ../src/AnalysisServices/AnalysisServices/ChangeLog.md
 [ApiManagementChangeLog]:              ../src/ApiManagement/ApiManagement/ChangeLog.md
 [AppChangeLog]:                        ../src/App/App/ChangeLog.md
+[AppComplianceAutomationChangelog]:    ../src/AppComplianceAutomation/AppComplianceAutomation/ChangeLog.md
 [AppConfigurationChangeLog]:           ../src/AppConfiguration/AppConfiguration/ChangeLog.md
 [ApplicationInsightsChangeLog]:        ../src/ApplicationInsights/ApplicationInsights/ChangeLog.md
 [ArcResourceBridgeChangeLog]:          ../src/ArcResourceBridge/ArcResourceBridge/ChangeLog.md
@@ -550,6 +561,7 @@
 [CdnChangeLog]:                        ../src/Cdn/Cdn/ChangeLog.md
 [ChangeAnalysisChangeLog]:             ../src/ChangeAnalysis/ChangeAnalysis/ChangeLog.md
 [CloudServiceChangeLog]:               ../src/CloudService/CloudService/ChangeLog.md
+[CodeSigningChangeLog]:                ../src/CodeSigning/CodeSigning/ChangeLog.md
 [CognitiveServicesChangeLog]:          ../src/CognitiveServices/CognitiveServices/ChangeLog.md
 [CommunicationChangeLog]:              ../src/Communication/Communication/ChangeLog.md
 [ComputeChangeLog]:                    ../src/Compute/Compute/ChangeLog.md
@@ -581,7 +593,6 @@
 [DevCenterChangeLog]:                  ../src/DevCenter/DevCenter/ChangeLog.md
 [DeviceProvisioningServicesChangeLog]: ../src/DeviceProvisioningServices/DeviceProvisioningServices/ChangeLog.md
 [DeviceUpdateChangeLog]:               ../src/DeviceUpdate/DeviceUpdate/ChangeLog.md
-[DevSpacesChangeLog]:                  ../src/DevSpaces/DevSpaces/ChangeLog.md
 [DevTestLabsChangeLog]:                ../src/DevTestLabs/DevTestLabs/ChangeLog.md
 [DigitalTwinsChangeLog]:               ../src/DigitalTwins/DigitalTwins/ChangeLog.md
 [DiskPoolChangeLog]:                   ../src/DiskPool/DiskPool/ChangeLog.md
@@ -593,6 +604,7 @@
 [ElasticSanChangeLog]:                 ../src/ElasticSan/ElasticSan/ChangeLog.md
 [EventGridChangeLog]:                  ../src/EventGrid/EventGrid/ChangeLog.md
 [EventHubChangeLog]:                   ../src/EventHub/EventHub/ChangeLog.md
+[FirmwareAnalysisChangeLog]:           ../src/FirmwareAnalysis/FirmwareAnalysis/ChangeLog.md
 [FleetChangeLog]:                      ../src/Fleet/Fleet/ChangeLog.md
 [FluidRelayChangeLog]:                 ../src/FluidRelay/FluidRelay/ChangeLog.md
 [FrontDoorChangeLog]:                  ../src/FrontDoor/FrontDoor/ChangeLog.md

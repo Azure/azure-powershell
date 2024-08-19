@@ -14,11 +14,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
     {
 
         /// <summary>Backing field for <see cref="LicenseStatus" /> property.</summary>
-        private string _licenseStatus;
+        private int? _licenseStatus;
 
-        /// <summary>The current status of the license profile key.</summary>
+        /// <summary>
+        /// The current status of the license profile key. Represented by the same integer value that is presented on the machine
+        /// itself when querying the license key status.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
-        public string LicenseStatus { get => this._licenseStatus; set => this._licenseStatus = value; }
+        public int? LicenseStatus { get => this._licenseStatus; set => this._licenseStatus = value; }
 
         /// <summary>Backing field for <see cref="Sku" /> property.</summary>
         private string _sku;
@@ -37,17 +40,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
     public partial interface IEsuKey :
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IJsonSerializable
     {
-        /// <summary>The current status of the license profile key.</summary>
+        /// <summary>
+        /// The current status of the license profile key. Represented by the same integer value that is presented on the machine
+        /// itself when querying the license key status.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The current status of the license profile key.",
+        Description = @"The current status of the license profile key. Represented by the same integer value that is presented on the machine itself when querying the license key status.",
         SerializedName = @"licenseStatus",
-        PossibleTypes = new [] { typeof(string) })]
-        string LicenseStatus { get; set; }
+        PossibleTypes = new [] { typeof(int) })]
+        int? LicenseStatus { get; set; }
         /// <summary>SKU number.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -65,8 +71,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
     internal partial interface IEsuKeyInternal
 
     {
-        /// <summary>The current status of the license profile key.</summary>
-        string LicenseStatus { get; set; }
+        /// <summary>
+        /// The current status of the license profile key. Represented by the same integer value that is presented on the machine
+        /// itself when querying the license key status.
+        /// </summary>
+        int? LicenseStatus { get; set; }
         /// <summary>SKU number.</summary>
         string Sku { get; set; }
 

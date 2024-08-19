@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkFabricInternalNetwork
 
 ## SYNOPSIS
-Creates InternalNetwork PUT method.
+Create InternalNetwork PUT method.
 
 ## SYNTAX
 
@@ -62,7 +62,7 @@ New-AzNetworkFabricInternalNetwork -L3IsolationDomainName <String> -Name <String
 ```
 
 ## DESCRIPTION
-Creates InternalNetwork PUT method.
+Create InternalNetwork PUT method.
 
 ## EXAMPLES
 
@@ -147,7 +147,6 @@ Accept wildcard characters: False
 
 ### -BgpConfiguration
 BGP configuration properties.
-To construct, see NOTES section for BGPCONFIGURATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternalNetworkPropertiesBgpConfiguration
@@ -163,7 +162,6 @@ Accept wildcard characters: False
 
 ### -Body
 Defines the Internal Network resource.
-To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternalNetwork
@@ -179,7 +177,6 @@ Accept wildcard characters: False
 
 ### -ConnectedIPv4Subnet
 List of Connected IPv4 Subnets.
-To construct, see NOTES section for CONNECTEDIPV4SUBNET properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IConnectedSubnet[]
@@ -195,7 +192,6 @@ Accept wildcard characters: False
 
 ### -ConnectedIPv6Subnet
 List of connected IPv6 Subnets.
-To construct, see NOTES section for CONNECTEDIPV6SUBNET properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IConnectedSubnet[]
@@ -243,7 +239,6 @@ Accept wildcard characters: False
 
 ### -ExportRoutePolicy
 Export Route Policy either IPv4 or IPv6.
-To construct, see NOTES section for EXPORTROUTEPOLICY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExportRoutePolicy
@@ -291,7 +286,6 @@ Accept wildcard characters: False
 
 ### -ImportRoutePolicy
 Import Route Policy either IPv4 or IPv6.
-To construct, see NOTES section for IMPORTROUTEPOLICY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IImportRoutePolicy
@@ -384,7 +378,6 @@ Accept wildcard characters: False
 
 ### -L3IsolationDomainInputObject
 Identity Parameter
-To construct, see NOTES section for L3ISOLATIONDOMAININPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
@@ -477,7 +470,6 @@ Accept wildcard characters: False
 
 ### -StaticRouteConfigurationBfdConfiguration
 BFD configuration properties
-To construct, see NOTES section for STATICROUTECONFIGURATIONBFDCONFIGURATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration
@@ -509,7 +501,6 @@ Accept wildcard characters: False
 
 ### -StaticRouteConfigurationIpv4Route
 List of IPv4 Routes.
-To construct, see NOTES section for STATICROUTECONFIGURATIONIPV4ROUTE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties[]
@@ -525,7 +516,6 @@ Accept wildcard characters: False
 
 ### -StaticRouteConfigurationIpv6Route
 List of IPv6 Routes.
-To construct, see NOTES section for STATICROUTECONFIGURATIONIPV6ROUTE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties[]

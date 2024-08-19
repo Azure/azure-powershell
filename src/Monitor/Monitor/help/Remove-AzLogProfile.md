@@ -14,8 +14,8 @@ Removes a log profile.
 ## SYNTAX
 
 ```
-Remove-AzLogProfile -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzLogProfile -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,5 +130,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Add-AzLogProfile](./Add-AzLogProfile.md)
 
 [Get-AzLogProfile](./Get-AzLogProfile.md)
-
-

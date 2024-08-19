@@ -17,7 +17,8 @@ Creates a blob inventory policy rule object, which can be used in Set-AzStorageB
 New-AzStorageBlobInventoryPolicyRule [-Name] <String> [-Disabled] -Destination <String> -Format <String>
  -Schedule <String> -BlobSchemaField <String[]> -BlobType <String[]> [-PrefixMatch <String[]>]
  [-ExcludePrefix <String[]>] [-IncludeSnapshot] [-IncludeBlobVersion] [-IncludeDeleted]
- [-CreationTimeLastNDay <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-CreationTimeLastNDay <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ContainerRuleParameterSet

@@ -31,12 +31,19 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// <param name="identity">The identity of the resource.
         /// </param>
 
+        /// <param name="updateChannel">Optional: Specifies the update channel for the monthly Redis updates your
+        /// Redis Cache will receive. Caches using &#39;Preview&#39; update channel get latest
+        /// Redis updates at least 4 weeks ahead of &#39;Stable&#39; channel caches. Default
+        /// value is &#39;Stable&#39;.
+        /// Possible values include: &#39;Stable&#39;, &#39;Preview&#39;</param>
+
         /// <param name="sku">The SKU of the Redis cache to deploy.
         /// </param>
 
         /// <param name="redisConfiguration">All Redis Settings. Few possible keys:
-        /// rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
-        /// etc.
+        /// rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,
+        /// maxmemory-policy,notify-keyspace-events, aof-backup-enabled,
+        /// aof-storage-connection-string-0, aof-storage-connection-string-1 etc.
         /// </param>
 
         /// <param name="redisVersion">Redis version. This should be in the form &#39;major[.minor]&#39; (only &#39;major&#39; is
@@ -62,20 +69,23 @@ namespace Microsoft.Azure.Management.RedisCache.Models
 
         /// <param name="minimumTlsVersion">Optional: requires clients to use a specified TLS version (or higher) to
         /// connect (e,g, &#39;1.0&#39;, &#39;1.1&#39;, &#39;1.2&#39;)
-        /// Possible values include: '1.0', '1.1', '1.2'</param>
+        /// Possible values include: &#39;1.0&#39;, &#39;1.1&#39;, &#39;1.2&#39;</param>
 
         /// <param name="publicNetworkAccess">Whether or not public endpoint access is allowed for this cache.  Value is
-        /// optional, but if passed in, must be &#39;Enabled&#39; or &#39;Disabled&#39;. If &#39;Disabled&#39;,
+        /// optional but if passed in, must be &#39;Enabled&#39; or &#39;Disabled&#39;. If &#39;Disabled&#39;,
         /// private endpoints are the exclusive access method. Default value is
-        /// &#39;Enabled&#39;. Note: This setting is important for caches with private
-        /// endpoints. It has *no effect* on caches that are joined to, or injected
-        /// into, a virtual network subnet.
-        /// Possible values include: 'Enabled', 'Disabled'</param>
-        public RedisUpdateParameters(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), Sku sku = default(Sku), RedisCommonPropertiesRedisConfiguration redisConfiguration = default(RedisCommonPropertiesRedisConfiguration), string redisVersion = default(string), bool? enableNonSslPort = default(bool?), int? replicasPerMaster = default(int?), int? replicasPerPrimary = default(int?), System.Collections.Generic.IDictionary<string, string> tenantSettings = default(System.Collections.Generic.IDictionary<string, string>), int? shardCount = default(int?), string minimumTlsVersion = default(string), string publicNetworkAccess = default(string))
+        /// &#39;Enabled&#39;
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
+
+        /// <param name="disableAccessKeyAuthentication">Authentication to Redis through access keys is disabled when set as true.
+        /// Default value is false.
+        /// </param>
+        public RedisUpdateParameters(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string updateChannel = default(string), Sku sku = default(Sku), RedisCommonPropertiesRedisConfiguration redisConfiguration = default(RedisCommonPropertiesRedisConfiguration), string redisVersion = default(string), bool? enableNonSslPort = default(bool?), int? replicasPerMaster = default(int?), int? replicasPerPrimary = default(int?), System.Collections.Generic.IDictionary<string, string> tenantSettings = default(System.Collections.Generic.IDictionary<string, string>), int? shardCount = default(int?), string minimumTlsVersion = default(string), string publicNetworkAccess = default(string), bool? disableAccessKeyAuthentication = default(bool?))
 
         {
             this.Tags = tags;
             this.Identity = identity;
+            this.UpdateChannel = updateChannel;
             this.Sku = sku;
             this.RedisConfiguration = redisConfiguration;
             this.RedisVersion = redisVersion;
@@ -86,6 +96,7 @@ namespace Microsoft.Azure.Management.RedisCache.Models
             this.ShardCount = shardCount;
             this.MinimumTlsVersion = minimumTlsVersion;
             this.PublicNetworkAccess = publicNetworkAccess;
+            this.DisableAccessKeyAuthentication = disableAccessKeyAuthentication;
             CustomInit();
         }
 
@@ -108,6 +119,15 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         public ManagedServiceIdentity Identity {get; set; }
 
         /// <summary>
+        /// Gets or sets optional: Specifies the update channel for the monthly Redis
+        /// updates your Redis Cache will receive. Caches using &#39;Preview&#39; update
+        /// channel get latest Redis updates at least 4 weeks ahead of &#39;Stable&#39; channel
+        /// caches. Default value is &#39;Stable&#39;. Possible values include: &#39;Stable&#39;, &#39;Preview&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.updateChannel")]
+        public string UpdateChannel {get; set; }
+
+        /// <summary>
         /// Gets or sets the SKU of the Redis cache to deploy.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.sku")]
@@ -115,8 +135,9 @@ namespace Microsoft.Azure.Management.RedisCache.Models
 
         /// <summary>
         /// Gets or sets all Redis Settings. Few possible keys:
-        /// rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
-        /// etc.
+        /// rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,
+        /// maxmemory-policy,notify-keyspace-events, aof-backup-enabled,
+        /// aof-storage-connection-string-0, aof-storage-connection-string-1 etc.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.redisConfiguration")]
         public RedisCommonPropertiesRedisConfiguration RedisConfiguration {get; set; }
@@ -170,14 +191,19 @@ namespace Microsoft.Azure.Management.RedisCache.Models
 
         /// <summary>
         /// Gets or sets whether or not public endpoint access is allowed for this
-        /// cache.  Value is optional, but if passed in, must be &#39;Enabled&#39; or
+        /// cache.  Value is optional but if passed in, must be &#39;Enabled&#39; or
         /// &#39;Disabled&#39;. If &#39;Disabled&#39;, private endpoints are the exclusive access
-        /// method. Default value is &#39;Enabled&#39;. Note: This setting is important for
-        /// caches with private endpoints. It has *no effect* on caches that are joined
-        /// to, or injected into, a virtual network subnet. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// method. Default value is &#39;Enabled&#39; Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicNetworkAccess")]
         public string PublicNetworkAccess {get; set; }
+
+        /// <summary>
+        /// Gets or sets authentication to Redis through access keys is disabled when
+        /// set as true. Default value is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.disableAccessKeyAuthentication")]
+        public bool? DisableAccessKeyAuthentication {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -191,6 +217,7 @@ namespace Microsoft.Azure.Management.RedisCache.Models
             {
                 this.Identity.Validate();
             }
+
             if (this.Sku != null)
             {
                 this.Sku.Validate();

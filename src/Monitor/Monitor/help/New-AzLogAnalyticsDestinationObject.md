@@ -13,7 +13,8 @@ Create an in-memory object for LogAnalyticsDestination.
 ## SYNTAX
 
 ```
-New-AzLogAnalyticsDestinationObject [-Name <String>] [-WorkspaceResourceId <String>] [<CommonParameters>]
+New-AzLogAnalyticsDestinationObject [-Name <String>] [-WorkspaceResourceId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

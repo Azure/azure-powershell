@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.HdInsightOnAks-help.xml
 Module Name: Az.HdInsightOnAks
 online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/remove-azhdinsightonakscluster
 schema: 2.0.0
@@ -15,20 +15,21 @@ Deletes a cluster.
 ### Delete (Default)
 ```
 Remove-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentityClusterpool
+```
+Remove-AzHdInsightOnAksCluster -Name <String> -ClusterpoolInputObject <IHdInsightOnAksIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzHdInsightOnAksCluster -InputObject <IHdInsightOnAksIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentityClusterpool
-```
-Remove-AzHdInsightOnAksCluster -ClusterpoolInputObject <IHdInsightOnAksIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +37,7 @@ Deletes a cluster.
 
 ## EXAMPLES
 
-### Example 1: Remove an Azure HDInsight gen2 cluster
+### Example 1: Remove an Azure HDInsight cluster
 ```powershell
 $clusterResourceGroupName = "Group"
 $clusterpoolName = "your-clusterpool"
@@ -47,7 +48,7 @@ Remove-AzHdInsightOnAksCluster `
     -ResourceGroupName $clusterResourceGroupName `
 ```
 
-Remove an Azure HDInsight gen2 cluster.
+Remove an Azure HDInsight cluster.
 
 ## PARAMETERS
 
@@ -68,7 +69,6 @@ Accept wildcard characters: False
 
 ### -ClusterpoolInputObject
 Identity Parameter
-To construct, see NOTES section for CLUSTERPOOLINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
@@ -100,7 +100,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
@@ -251,4 +250,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

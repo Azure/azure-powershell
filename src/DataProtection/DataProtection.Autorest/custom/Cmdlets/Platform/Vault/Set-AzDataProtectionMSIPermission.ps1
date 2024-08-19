@@ -5,7 +5,7 @@
 
     param(
         [Parameter(ParameterSetName="SetPermissionsForBackup", Mandatory, HelpMessage='Backup instance request object which will be used to configure backup')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupInstanceResource]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource]
         ${BackupInstance},
         
         [Parameter(ParameterSetName="SetPermissionsForBackup", Mandatory=$false, HelpMessage='ID of the keyvault')]
@@ -13,7 +13,12 @@
         [System.String]
         ${KeyVaultId},
 
+        [Parameter(ParameterSetName="SetPermissionsForRestore", Mandatory=$false, HelpMessage='Subscription Id of the backup vault')]
+        [System.String]
+        ${SubscriptionId},
+
         [Parameter(Mandatory, HelpMessage='Resource group of the backup vault')]
+        [Alias('ResourceGroupName')]
         [System.String]
         ${VaultResourceGroup},
         
@@ -26,14 +31,22 @@
         [ValidateSet("Resource","ResourceGroup","Subscription")]
         ${PermissionsScope},
 
+        [Parameter(ParameterSetName="SetPermissionsForRestore", Mandatory=$false, HelpMessage='Datasource Type')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes]
+        ${DatasourceType},
+
         [Parameter(ParameterSetName="SetPermissionsForRestore", Mandatory, HelpMessage='Restore request object which will be used for restore')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IAzureBackupRestoreRequest]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRestoreRequest]
         ${RestoreRequest},
 
-        [Parameter(ParameterSetName="SetPermissionsForRestore", Mandatory, HelpMessage='Sanpshot Resource Group')]
+        [Parameter(ParameterSetName="SetPermissionsForRestore", Mandatory=$false, HelpMessage='Sanpshot Resource Group')]
         [System.String]
         [ValidatePattern("/subscriptions/([A-z0-9\-]+)/resourceGroups/(?<rg>.+)")]
-        ${SnapshotResourceGroupId}
+        ${SnapshotResourceGroupId},
+
+        [Parameter(ParameterSetName="SetPermissionsForRestore", Mandatory=$false, HelpMessage='Target storage account ARM Id. Use this parameter for DatasourceType AzureDatabaseForMySQL, AzureDatabaseForPGFlexServer.')]
+        [System.String]
+        ${StorageAccountARMId}
     )
 
     process {
@@ -45,34 +58,60 @@
           $MissingRolesInitially = $false
 
           if($PsCmdlet.ParameterSetName -eq "SetPermissionsForRestore"){
-              
-              $DatasourceId = $RestoreRequest.RestoreTargetInfo.DatasourceInfo.ResourceId  
-              $DatasourceType =  GetClientDatasourceType -ServiceDatasourceType $RestoreRequest.RestoreTargetInfo.DatasourceInfo.Type 
-              $manifest = LoadManifest -DatasourceType $DatasourceType.ToString()
-              
-              $ResourceArray = $DataSourceId.Split("/")
-              $ResourceRG = GetResourceGroupIdFromArmId -Id $DataSourceId
-              $SubscriptionName = GetSubscriptionNameFromArmId -Id $DataSourceId
-              $subscriptionId = $ResourceArray[2]
+                            
+              $DatasourceId = $RestoreRequest.RestoreTargetInfo.DatasourceInfo.ResourceId
 
-              $vault = Az.DataProtection\Get-AzDataProtectionBackupVault -VaultName $VaultName -ResourceGroupName $VaultResourceGroup -SubscriptionId $ResourceArray[2]
+              $DatasourceTypeInternal = ""
+              $subscriptionIdInternal = ""
+              if($DataSourceId -ne $null){
+                  $DatasourceTypeInternal =  GetClientDatasourceType -ServiceDatasourceType $RestoreRequest.RestoreTargetInfo.DatasourceInfo.Type
+                  
+                  $ResourceArray = $DataSourceId.Split("/")
+                  $ResourceRG = GetResourceGroupIdFromArmId -Id $DataSourceId
+                  $SubscriptionName = GetSubscriptionNameFromArmId -Id $DataSourceId
+                  $subscriptionIdInternal = $ResourceArray[2]
 
-              if($DatasourceType -ne "AzureKubernetesService"){
+                  if($DatasourceType -ne $null -and $DatasourceTypeInternal -ne $DatasourceType){
+                      throw "DatasourceType is not compatible with the RestoreRequest"
+                  }
+              }
+              elseif($DatasourceType -ne $null){
+                  $DatasourceTypeInternal = $DatasourceType
+
+                  if($SubscriptionId -eq ""){
+                      
+                      $err = "SubscriptionId can't be identified. Please provide the value for parameter SubscriptionId"
+                      throw $err
+                  }
+                  else{
+                      $subscriptionIdInternal = $SubscriptionId
+                  }
+              }
+              else{
+                  $err = "DatasourceType can't be identified since DataSourceInfo is null. Please provide the value for parameter DatasourceType"
+                  throw $err
+              }
+
+              $manifest = LoadManifest -DatasourceType $DatasourceTypeInternal.ToString()              
+              
+              $vault = Az.DataProtection\Get-AzDataProtectionBackupVault -VaultName $VaultName -ResourceGroupName $VaultResourceGroup -SubscriptionId $subscriptionIdInternal
+
+              if(-not $manifest.supportRestoreGrantPermission){
                   $err = "Set permissions for restore is currently not supported for given DataSourceType"
                   throw $err
               }
                             
-              if($SnapshotResourceGroupId -eq ""){
+              if(($manifest.dataSourceOverSnapshotRGPermissions.Length -gt 0 -or $manifest.snapshotRGPermissions.Length -gt 0) -and $SnapshotResourceGroupId -eq ""){
                   $warning = "SnapshotResourceGroupId parameter is required to assign permissions over snapshot resource group, skipping"
                   Write-Warning $warning
               }
               else{
                   foreach($Permission in $manifest.dataSourceOverSnapshotRGPermissions)
                   {
-                      if($DatasourceType -eq "AzureKubernetesService"){                  
+                      if($DatasourceTypeInternal -eq "AzureKubernetesService"){
                           CheckAksModuleDependency
                                     
-                          $aksCluster = Get-AzAksCluster -Id $RestoreRequest.RestoreTargetInfo.DataSourceInfo.ResourceId -SubscriptionId $subscriptionId
+                          $aksCluster = Get-AzAksCluster -Id $RestoreRequest.RestoreTargetInfo.DataSourceInfo.ResourceId -SubscriptionId $subscriptionIdInternal
 
                           $dataSourceMSI = ""
                           if($aksCluster.Identity.Type -match "UserAssigned"){
@@ -134,7 +173,7 @@
                   }
               }
 
-              foreach($Permission in $manifest.datasourcePermissions)
+              foreach($Permission in $manifest.datasourcePermissionsForRestore)
               {
                   # set context to the subscription where ObjectId is present
                   $AllRoles = Az.Resources\Get-AzRoleAssignment -ObjectId $vault.Identity.PrincipalId
@@ -153,6 +192,54 @@
                       AssignMissingRoles -ObjectId $vault.Identity.PrincipalId -Permission $Permission -PermissionsScope $PermissionsScope -Resource $DataSourceId -ResourceGroup $ResourceRG -Subscription $SubscriptionName
 
                       Write-Host "Assigned $($Permission) permission to the backup vault over DataSource with Id $($DataSourceId)"
+                  }
+              }
+
+              foreach($Permission in $manifest.storageAccountPermissionsForRestore)
+              {
+                  # set context to the subscription where ObjectId is present
+                  $AllRoles = Az.Resources\Get-AzRoleAssignment -ObjectId $vault.Identity.PrincipalId
+
+                  $targetResourceArmId = $restoreRequest.RestoreTargetInfo.TargetDetail.TargetResourceArmId
+
+                  if($targetResourceArmId -ne $null -and $targetResourceArmId -ne ""){
+                      if(-not $targetResourceArmId.Contains("/blobServices/")){
+                          $err = "restoreRequest.RestoreTargetInfo.TargetDetail.TargetResourceArmId is not in the correct format"
+                          throw $err
+                      }
+
+                      $storageAccId = ($targetResourceArmId -split "/blobServices/")[0]
+                      $storageAccResourceGroupId = ($targetResourceArmId -split "/providers/")[0]
+                      $storageAccountSubId = ($targetResourceArmId -split "/resourceGroups/")[0]
+                  }
+                  else{
+                      if($StorageAccountARMId -eq ""){
+                          $err = "Permissions can't be assigned to target storage account. Please input parameter StorageAccountARMId"
+                          throw $err
+                      }
+
+                      # storage Account subscription and resource group
+                      $storageAccountSubId = ($StorageAccountARMId -split "/resourceGroups/")[0]
+                      $storageAccResourceGroupId = ($StorageAccountARMId -split "/providers/")[0]
+
+                      # storage Account ID
+                      $storageAccId = $StorageAccountARMId                      
+                  }
+                                    
+                  $CheckPermission = $AllRoles | Where-Object { ($_.Scope -eq $storageAccId -or $_.Scope -eq $storageAccResourceGroupId -or  $_.Scope -eq $storageAccountSubId) -and $_.RoleDefinitionName -eq $Permission}
+
+                  if($CheckPermission -ne $null)
+                  {   
+                      Write-Host "Required permission $($Permission) is already assigned to backup vault over storage account with Id $($storageAccId)"
+                  }
+
+                  else
+                  {
+                      $MissingRolesInitially = $true
+                   
+                      AssignMissingRoles -ObjectId $vault.Identity.PrincipalId -Permission $Permission -PermissionsScope $PermissionsScope -Resource $storageAccId -ResourceGroup $storageAccResourceGroupId -Subscription $storageAccountSubId
+
+                      Write-Host "Assigned $($Permission) permission to the backup vault over  storage account with Id $($storageAccId)"
                   }
               }
           }
@@ -383,6 +470,32 @@
                       AssignMissingRoles -ObjectId $vault.Identity.PrincipalId -Permission $Permission -PermissionsScope $PermissionsScope -Resource $DataSourceId -ResourceGroup $ResourceRG -Subscription $SubscriptionName
 
                       Write-Host "Assigned $($Permission) permission to the backup vault over DataSource with Id $($DataSourceId)"
+                  }
+              }
+
+              foreach($Permission in $manifest.datasourceRGPermissions)
+              {
+                  $AllRoles = Az.Resources\Get-AzRoleAssignment -ObjectId $vault.Identity.PrincipalId
+                  $CheckPermission = $AllRoles | Where-Object { ($_.Scope -eq $ResourceRG -or  $_.Scope -eq $SubscriptionName) -and $_.RoleDefinitionName -eq $Permission}
+              
+                  if($CheckPermission -ne $null)
+                  {
+                      Write-Host "Required permission $($Permission) is already assigned to backup vault over DataSource resource group with name $($ResourceRG)"
+                  }
+
+                  else
+                  {
+                      $MissingRolesInitially = $true
+                      
+                      # "Resource","ResourceGroup","Subscription"
+                      $DatasourceRGScope = $PermissionsScope
+                      if($PermissionsScope -eq "Resource"){
+                          $DatasourceRGScope = "ResourceGroup"
+                      }
+
+                      AssignMissingRoles -ObjectId $vault.Identity.PrincipalId -Permission $Permission -PermissionsScope $DatasourceRGScope -Resource $DataSourceId -ResourceGroup $ResourceRG -Subscription $SubscriptionName
+
+                      Write-Host "Assigned $($Permission) permission to the backup vault over DataSource resource group with name $($ResourceRG)"
                   }
               }
           }

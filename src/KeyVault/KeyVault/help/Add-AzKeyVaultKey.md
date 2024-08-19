@@ -18,7 +18,8 @@ Creates a key in a key vault or imports a key into a key vault.
 Add-AzKeyVaultKey [-VaultName] <String> [-Name] <String> -Destination <String> [-Disable] [-KeyOps <String[]>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>] [-KeyType <String>]
  [-CurveName <String>] [-Exportable] [-Immutable] [-ReleasePolicyPath <String>] [-UseDefaultCVMPolicy]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InteractiveImport
@@ -26,7 +27,8 @@ Add-AzKeyVaultKey [-VaultName] <String> [-Name] <String> -Destination <String> [
 Add-AzKeyVaultKey [-VaultName] <String> [-Name] <String> -KeyFilePath <String>
  [-KeyFilePassword <SecureString>] [-Destination <String>] [-Disable] [-KeyOps <String[]>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-KeyType <String>] [-CurveName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### HsmInteractiveCreate
@@ -34,14 +36,16 @@ Add-AzKeyVaultKey [-VaultName] <String> [-Name] <String> -KeyFilePath <String>
 Add-AzKeyVaultKey -HsmName <String> [-Name] <String> [-Disable] [-KeyOps <String[]>] [-Expires <DateTime>]
  [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>] -KeyType <String> [-CurveName <String>]
  [-Exportable] [-Immutable] [-ReleasePolicyPath <String>] [-UseDefaultCVMPolicy]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### HsmInteractiveImport
 ```
 Add-AzKeyVaultKey -HsmName <String> [-Name] <String> -KeyFilePath <String> [-KeyFilePassword <SecureString>]
  [-Disable] [-KeyOps <String[]>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObjectCreate
@@ -49,7 +53,8 @@ Add-AzKeyVaultKey -HsmName <String> [-Name] <String> -KeyFilePath <String> [-Key
 Add-AzKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -Destination <String> [-Disable]
  [-KeyOps <String[]>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>]
  [-KeyType <String>] [-CurveName <String>] [-Exportable] [-Immutable] [-ReleasePolicyPath <String>]
- [-UseDefaultCVMPolicy] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UseDefaultCVMPolicy] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectImport
@@ -57,7 +62,8 @@ Add-AzKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -Destination <Str
 Add-AzKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -KeyFilePath <String>
  [-KeyFilePassword <SecureString>] [-Destination <String>] [-Disable] [-KeyOps <String[]>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-KeyType <String>] [-CurveName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### HsmInputObjectCreate
@@ -65,15 +71,16 @@ Add-AzKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -KeyFilePath <Str
 Add-AzKeyVaultKey [-HsmObject] <PSManagedHsm> [-Name] <String> [-Disable] [-KeyOps <String[]>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>] -KeyType <String>
  [-CurveName <String>] [-Exportable] [-Immutable] [-ReleasePolicyPath <String>] [-UseDefaultCVMPolicy]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### HsmInputObjectImport
 ```
 Add-AzKeyVaultKey [-HsmObject] <PSManagedHsm> [-Name] <String> -KeyFilePath <String>
  [-KeyFilePassword <SecureString>] [-Disable] [-KeyOps <String[]>] [-Expires <DateTime>]
- [-NotBefore <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-NotBefore <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdCreate
@@ -81,7 +88,8 @@ Add-AzKeyVaultKey [-HsmObject] <PSManagedHsm> [-Name] <String> -KeyFilePath <Str
 Add-AzKeyVaultKey [-ResourceId] <String> [-Name] <String> -Destination <String> [-Disable] [-KeyOps <String[]>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>] [-KeyType <String>]
  [-CurveName <String>] [-Exportable] [-Immutable] [-ReleasePolicyPath <String>] [-UseDefaultCVMPolicy]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdImport
@@ -89,7 +97,8 @@ Add-AzKeyVaultKey [-ResourceId] <String> [-Name] <String> -Destination <String> 
 Add-AzKeyVaultKey [-ResourceId] <String> [-Name] <String> -KeyFilePath <String>
  [-KeyFilePassword <SecureString>] [-Destination <String>] [-Disable] [-KeyOps <String[]>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-KeyType <String>] [-CurveName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### HsmResourceIdCreate
@@ -97,15 +106,16 @@ Add-AzKeyVaultKey [-ResourceId] <String> [-Name] <String> -KeyFilePath <String>
 Add-AzKeyVaultKey -HsmResourceId <String> [-Name] <String> [-Disable] [-KeyOps <String[]>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>] -KeyType <String>
  [-CurveName <String>] [-Exportable] [-Immutable] [-ReleasePolicyPath <String>] [-UseDefaultCVMPolicy]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### HsmResourceIdImport
 ```
 Add-AzKeyVaultKey -HsmResourceId <String> [-Name] <String> -KeyFilePath <String>
  [-KeyFilePassword <SecureString>] [-Disable] [-KeyOps <String[]>] [-Expires <DateTime>]
- [-NotBefore <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-NotBefore <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -268,7 +278,7 @@ For more information, see
 
 ### Example 6: Import a software-protected key
 ```powershell
-$Password = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
+$Password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITPfx' -KeyFilePath 'C:\Contoso\ITPfx.pfx' -KeyFilePassword $Password
 ```
 
@@ -294,7 +304,7 @@ location for the key and the password stored in $Password.
 
 ### Example 7: Import a key and assign attributes
 ```powershell
-$Password = ConvertTo-SecureString -String 'password' -AsPlainText -Force
+$Password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $Expires = (Get-Date).AddYears(2).ToUniversalTime()
 $Tags = @{ 'Severity' = 'high'; 'Accounting' = "true" }
 Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITPfxToHSM' -Destination 'HSM' -KeyFilePath 'C:\Contoso\ITPfx.pfx' -KeyFilePassword $Password -Expires $Expires -Tag $Tags
@@ -385,7 +395,7 @@ Create a secure key in managed hsm named testmhsm. Its name is test-key and type
 ### Example 10: Add a key for a Confidential VM to a key vault.
 ```powershell
 New-AzKeyVault -Name $keyVaultName -Location $location -ResourceGroupName $resourceGroupName -Sku Premium -EnablePurgeProtection -EnabledForDiskEncryption;
-$cvmAgent = Get-AzADServicePrincipal -ApplicationId 'bf7b6499-ff71-4aa2-97a4-f372087be7f0';
+$cvmAgent = Get-AzADServicePrincipal -ApplicationId '00001111-aaaa-2222-bbbb-3333cccc4444';
 Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ResourceGroupName $resourceGroupName -ObjectId $cvmAgent.id -PermissionsToKeys get,release;
 
 $keySize = 3072;

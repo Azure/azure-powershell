@@ -11,6 +11,12 @@ Locale: en-US
 Microsoft Azure PowerShell: DevCenter cmdlets
 
 ## Az.DevCenter Cmdlets
+### [Connect-AzDevCenterAdminCatalog](Connect-AzDevCenterAdminCatalog.md)
+Connects a catalog to enable syncing.
+
+### [Connect-AzDevCenterAdminProjectCatalog](Connect-AzDevCenterAdminProjectCatalog.md)
+Connects a project catalog to enable syncing.
+
 ### [Deploy-AzDevCenterUserEnvironment](Deploy-AzDevCenterUserEnvironment.md)
 Creates or updates an environment.
 
@@ -20,11 +26,26 @@ Gets an attached NetworkConnection.
 ### [Get-AzDevCenterAdminCatalog](Get-AzDevCenterAdminCatalog.md)
 Gets a catalog
 
+### [Get-AzDevCenterAdminCatalogSyncErrorDetail](Get-AzDevCenterAdminCatalogSyncErrorDetail.md)
+Gets catalog synchronization error details
+
+### [Get-AzDevCenterAdminCustomizationTask](Get-AzDevCenterAdminCustomizationTask.md)
+Gets a Task from the catalog
+
+### [Get-AzDevCenterAdminCustomizationTaskErrorDetail](Get-AzDevCenterAdminCustomizationTaskErrorDetail.md)
+Gets Customization Task error details
+
 ### [Get-AzDevCenterAdminDevBoxDefinition](Get-AzDevCenterAdminDevBoxDefinition.md)
 Gets a Dev Box definition
 
 ### [Get-AzDevCenterAdminDevCenter](Get-AzDevCenterAdminDevCenter.md)
 Gets a devcenter.
+
+### [Get-AzDevCenterAdminEnvironmentDefinition](Get-AzDevCenterAdminEnvironmentDefinition.md)
+Gets an environment definition from the catalog.
+
+### [Get-AzDevCenterAdminEnvironmentDefinitionErrorDetail](Get-AzDevCenterAdminEnvironmentDefinitionErrorDetail.md)
+Gets Environment Definition error details
 
 ### [Get-AzDevCenterAdminEnvironmentType](Get-AzDevCenterAdminEnvironmentType.md)
 Gets an environment type.
@@ -51,6 +72,12 @@ These FQDNs should be allowed for outbound access in order for the Dev Box servi
 ### [Get-AzDevCenterAdminOperationStatus](Get-AzDevCenterAdminOperationStatus.md)
 Gets the current status of an async operation.
 
+### [Get-AzDevCenterAdminPlan](Get-AzDevCenterAdminPlan.md)
+Gets a devcenter plan.
+
+### [Get-AzDevCenterAdminPlanMember](Get-AzDevCenterAdminPlanMember.md)
+Gets a devcenter plan member.
+
 ### [Get-AzDevCenterAdminPool](Get-AzDevCenterAdminPool.md)
 Gets a machine pool
 
@@ -60,8 +87,23 @@ Gets a specific project.
 ### [Get-AzDevCenterAdminProjectAllowedEnvironmentType](Get-AzDevCenterAdminProjectAllowedEnvironmentType.md)
 Gets an allowed environment type.
 
+### [Get-AzDevCenterAdminProjectCatalog](Get-AzDevCenterAdminProjectCatalog.md)
+Gets an associated project catalog.
+
+### [Get-AzDevCenterAdminProjectCatalogSyncErrorDetail](Get-AzDevCenterAdminProjectCatalogSyncErrorDetail.md)
+Gets project catalog synchronization error details
+
+### [Get-AzDevCenterAdminProjectEnvironmentDefinition](Get-AzDevCenterAdminProjectEnvironmentDefinition.md)
+Gets an environment definition from the catalog.
+
+### [Get-AzDevCenterAdminProjectEnvironmentDefinitionErrorDetail](Get-AzDevCenterAdminProjectEnvironmentDefinitionErrorDetail.md)
+Gets Environment Definition error details
+
 ### [Get-AzDevCenterAdminProjectEnvironmentType](Get-AzDevCenterAdminProjectEnvironmentType.md)
 Gets a project environment type.
+
+### [Get-AzDevCenterAdminProjectInheritedSetting](Get-AzDevCenterAdminProjectInheritedSetting.md)
+Gets applicable inherited settings for this project.
 
 ### [Get-AzDevCenterAdminSchedule](Get-AzDevCenterAdminSchedule.md)
 Gets a schedule resource.
@@ -81,14 +123,29 @@ Gets a Dev Box
 ### [Get-AzDevCenterUserDevBoxAction](Get-AzDevCenterUserDevBoxAction.md)
 Gets an action.
 
+### [Get-AzDevCenterUserDevBoxOperation](Get-AzDevCenterUserDevBoxOperation.md)
+Gets an operation on a Dev Box.
+
 ### [Get-AzDevCenterUserDevBoxRemoteConnection](Get-AzDevCenterUserDevBoxRemoteConnection.md)
 Gets RDP Connection info
 
 ### [Get-AzDevCenterUserEnvironment](Get-AzDevCenterUserEnvironment.md)
 Gets an environment
 
+### [Get-AzDevCenterUserEnvironmentAction](Get-AzDevCenterUserEnvironmentAction.md)
+Retrieve a specific environment action.
+
 ### [Get-AzDevCenterUserEnvironmentDefinition](Get-AzDevCenterUserEnvironmentDefinition.md)
 Get an environment definition from a catalog.
+
+### [Get-AzDevCenterUserEnvironmentLog](Get-AzDevCenterUserEnvironmentLog.md)
+Gets the logs for an operation on an environment.
+
+### [Get-AzDevCenterUserEnvironmentOperation](Get-AzDevCenterUserEnvironmentOperation.md)
+Gets an environment action result.
+
+### [Get-AzDevCenterUserEnvironmentOutput](Get-AzDevCenterUserEnvironmentOutput.md)
+Gets Outputs from the environment
 
 ### [Get-AzDevCenterUserEnvironmentType](Get-AzDevCenterUserEnvironmentType.md)
 Lists all environment types configured for a project.
@@ -105,7 +162,13 @@ Gets a schedule.
 ### [Invoke-AzDevCenterAdminExecuteCheckNameAvailability](Invoke-AzDevCenterAdminExecuteCheckNameAvailability.md)
 Check the availability of name for resource
 
+### [Invoke-AzDevCenterAdminExecuteCheckScopedNameAvailability](Invoke-AzDevCenterAdminExecuteCheckScopedNameAvailability.md)
+Check the availability of name for resource
+
 ### [Invoke-AzDevCenterUserDelayDevBoxAction](Invoke-AzDevCenterUserDelayDevBoxAction.md)
+Delays the occurrence of an action.
+
+### [Invoke-AzDevCenterUserDelayEnvironmentAction](Invoke-AzDevCenterUserDelayEnvironmentAction.md)
 Delays the occurrence of an action.
 
 ### [New-AzDevCenterAdminAttachedNetwork](New-AzDevCenterAdminAttachedNetwork.md)
@@ -129,11 +192,20 @@ Creates or updates a gallery.
 ### [New-AzDevCenterAdminNetworkConnection](New-AzDevCenterAdminNetworkConnection.md)
 Creates or updates a Network Connections resource
 
+### [New-AzDevCenterAdminPlan](New-AzDevCenterAdminPlan.md)
+Creates or updates a devcenter plan resource
+
+### [New-AzDevCenterAdminPlanMember](New-AzDevCenterAdminPlanMember.md)
+Creates or updates a devcenter plan member resource
+
 ### [New-AzDevCenterAdminPool](New-AzDevCenterAdminPool.md)
 Creates or updates a machine pool
 
 ### [New-AzDevCenterAdminProject](New-AzDevCenterAdminProject.md)
 Creates or updates a project.
+
+### [New-AzDevCenterAdminProjectCatalog](New-AzDevCenterAdminProjectCatalog.md)
+Creates or updates a project catalog.
 
 ### [New-AzDevCenterAdminProjectEnvironmentType](New-AzDevCenterAdminProjectEnvironmentType.md)
 Creates or updates a project environment type.
@@ -168,11 +240,20 @@ Deletes a gallery resource.
 ### [Remove-AzDevCenterAdminNetworkConnection](Remove-AzDevCenterAdminNetworkConnection.md)
 Deletes a Network Connections resource
 
+### [Remove-AzDevCenterAdminPlan](Remove-AzDevCenterAdminPlan.md)
+Deletes a devcenter plan
+
+### [Remove-AzDevCenterAdminPlanMember](Remove-AzDevCenterAdminPlanMember.md)
+Deletes a devcenter plan member
+
 ### [Remove-AzDevCenterAdminPool](Remove-AzDevCenterAdminPool.md)
 Deletes a machine pool
 
 ### [Remove-AzDevCenterAdminProject](Remove-AzDevCenterAdminProject.md)
 Deletes a project resource.
+
+### [Remove-AzDevCenterAdminProjectCatalog](Remove-AzDevCenterAdminProjectCatalog.md)
+Deletes a project catalog resource.
 
 ### [Remove-AzDevCenterAdminProjectEnvironmentType](Remove-AzDevCenterAdminProjectEnvironmentType.md)
 Deletes a project environment type.
@@ -186,15 +267,25 @@ Deletes a Dev Box.
 ### [Remove-AzDevCenterUserEnvironment](Remove-AzDevCenterUserEnvironment.md)
 Deletes an environment and all its associated resources
 
+### [Repair-AzDevCenterUserDevBox](Repair-AzDevCenterUserDevBox.md)
+Attempts automated repair steps to resolve common problems on a Dev Box.
+The Dev Box may restart during this operation.
+
 ### [Restart-AzDevCenterUserDevBox](Restart-AzDevCenterUserDevBox.md)
 Restarts a Dev Box
 
 ### [Skip-AzDevCenterUserDevBoxAction](Skip-AzDevCenterUserDevBoxAction.md)
 Skips an occurrence of an action.
 
+### [Skip-AzDevCenterUserEnvironmentAction](Skip-AzDevCenterUserEnvironmentAction.md)
+Skips an occurrence of an action.
+
 ### [Start-AzDevCenterAdminNetworkConnectionHealthCheck](Start-AzDevCenterAdminNetworkConnectionHealthCheck.md)
 Triggers a new health check run.
 The execution and health check result can be tracked via the network Connection health check details
+
+### [Start-AzDevCenterAdminPoolHealthCheck](Start-AzDevCenterAdminPoolHealthCheck.md)
+Triggers a refresh of the pool status.
 
 ### [Start-AzDevCenterUserDevBox](Start-AzDevCenterUserDevBox.md)
 Starts a Dev Box
@@ -203,6 +294,9 @@ Starts a Dev Box
 Stops a Dev Box
 
 ### [Sync-AzDevCenterAdminCatalog](Sync-AzDevCenterAdminCatalog.md)
+Syncs templates for a template source.
+
+### [Sync-AzDevCenterAdminProjectCatalog](Sync-AzDevCenterAdminProjectCatalog.md)
 Syncs templates for a template source.
 
 ### [Update-AzDevCenterAdminCatalog](Update-AzDevCenterAdminCatalog.md)
@@ -220,15 +314,27 @@ Partially updates an environment type.
 ### [Update-AzDevCenterAdminNetworkConnection](Update-AzDevCenterAdminNetworkConnection.md)
 Partially updates a Network Connection
 
+### [Update-AzDevCenterAdminPlan](Update-AzDevCenterAdminPlan.md)
+Partially updates a devcenter plan.
+
+### [Update-AzDevCenterAdminPlanMember](Update-AzDevCenterAdminPlanMember.md)
+Partially updates a devcenter plan.
+
 ### [Update-AzDevCenterAdminPool](Update-AzDevCenterAdminPool.md)
 Partially updates a machine pool
 
 ### [Update-AzDevCenterAdminProject](Update-AzDevCenterAdminProject.md)
 Partially updates a project.
 
+### [Update-AzDevCenterAdminProjectCatalog](Update-AzDevCenterAdminProjectCatalog.md)
+Partially updates a project catalog.
+
 ### [Update-AzDevCenterAdminProjectEnvironmentType](Update-AzDevCenterAdminProjectEnvironmentType.md)
 Partially updates a project environment type.
 
 ### [Update-AzDevCenterAdminSchedule](Update-AzDevCenterAdminSchedule.md)
 Partially updates a Scheduled.
+
+### [Update-AzDevCenterUserEnvironment](Update-AzDevCenterUserEnvironment.md)
+Partially updates an environment
 

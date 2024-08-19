@@ -62,6 +62,7 @@ FilterLocation[1]          : centraluseuap
 FilterOsType[0]            : Windows
 FilterOsType[1]            : Linux
 ```
+Register maintenance configuration for InGuest scope
 
 ## PARAMETERS
 

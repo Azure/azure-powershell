@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// List all the private endpoint connections associated with the redis cache.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.
@@ -78,12 +78,28 @@ namespace Microsoft.Azure.Management.RedisCache
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
             if (cacheName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "cacheName");
             }
-
+            if (cacheName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(cacheName, "^([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]|[a-zA-Z0-9])$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "cacheName", "^([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]|[a-zA-Z0-9])$");
+                }
+            }
             if (this.Client.ApiVersion == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -93,7 +109,13 @@ namespace Microsoft.Azure.Management.RedisCache
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-
+            if (this.Client.SubscriptionId != null)
+            {
+                if (this.Client.SubscriptionId.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
+            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -247,16 +269,18 @@ namespace Microsoft.Azure.Management.RedisCache
 
         }
         /// <summary>
-        /// Gets the specified private endpoint connection associated with the redis cache.
+        /// Gets the specified private endpoint connection associated with the redis
+        /// cache.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Azure resource
+        /// The name of the private endpoint connection associated with the Azure
+        /// resource
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -289,12 +313,28 @@ namespace Microsoft.Azure.Management.RedisCache
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
             if (cacheName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "cacheName");
             }
-
+            if (cacheName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(cacheName, "^([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]|[a-zA-Z0-9])$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "cacheName", "^([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]|[a-zA-Z0-9])$");
+                }
+            }
             if (privateEndpointConnectionName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "privateEndpointConnectionName");
@@ -309,7 +349,13 @@ namespace Microsoft.Azure.Management.RedisCache
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-
+            if (this.Client.SubscriptionId != null)
+            {
+                if (this.Client.SubscriptionId.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
+            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -465,22 +511,25 @@ namespace Microsoft.Azure.Management.RedisCache
 
         }
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the redis cache.
+        /// Update the state of specified private endpoint connection associated with
+        /// the redis cache.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Azure resource
+        /// The name of the private endpoint connection associated with the Azure
+        /// resource
         /// </param>
         /// <param name='privateEndpoint'>
         /// The resource of private end point.
         /// </param>
         /// <param name='privateLinkServiceConnectionState'>
-        /// A collection of information about the state of the connection between service consumer and provider.
+        /// A collection of information about the state of the connection between
+        /// service consumer and provider.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -496,16 +545,18 @@ namespace Microsoft.Azure.Management.RedisCache
         }
 
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the redis cache.
+        /// Deletes the specified private endpoint connection associated with the redis
+        /// cache.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Azure resource
+        /// The name of the private endpoint connection associated with the Azure
+        /// resource
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -535,12 +586,28 @@ namespace Microsoft.Azure.Management.RedisCache
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
             if (cacheName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "cacheName");
             }
-
+            if (cacheName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(cacheName, "^([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]|[a-zA-Z0-9])$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "cacheName", "^([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]|[a-zA-Z0-9])$");
+                }
+            }
             if (this.Client.ApiVersion == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -550,7 +617,13 @@ namespace Microsoft.Azure.Management.RedisCache
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-
+            if (this.Client.SubscriptionId != null)
+            {
+                if (this.Client.SubscriptionId.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
+            }
             if (privateEndpointConnectionName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "privateEndpointConnectionName");
@@ -693,22 +766,25 @@ namespace Microsoft.Azure.Management.RedisCache
 
         }
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the redis cache.
+        /// Update the state of specified private endpoint connection associated with
+        /// the redis cache.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Azure resource
+        /// The name of the private endpoint connection associated with the Azure
+        /// resource
         /// </param>
         /// <param name='privateEndpoint'>
         /// The resource of private end point.
         /// </param>
         /// <param name='privateLinkServiceConnectionState'>
-        /// A collection of information about the state of the connection between service consumer and provider.
+        /// A collection of information about the state of the connection between
+        /// service consumer and provider.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -741,12 +817,28 @@ namespace Microsoft.Azure.Management.RedisCache
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
             if (cacheName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "cacheName");
             }
-
+            if (cacheName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(cacheName, "^([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]|[a-zA-Z0-9])$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "cacheName", "^([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]|[a-zA-Z0-9])$");
+                }
+            }
             if (this.Client.ApiVersion == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -756,7 +848,13 @@ namespace Microsoft.Azure.Management.RedisCache
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-
+            if (this.Client.SubscriptionId != null)
+            {
+                if (this.Client.SubscriptionId.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
+            }
             if (privateEndpointConnectionName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "privateEndpointConnectionName");

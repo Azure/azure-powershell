@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.FluidRelay-help.xml
 Module Name: Az.FluidRelay
 online version: https://learn.microsoft.com/powershell/module/az.fluidrelay/remove-azfluidrelayserver
 schema: 2.0.0
@@ -15,13 +15,14 @@ Delete a Fluid Relay server.
 ### Delete (Default)
 ```
 Remove-AzFluidRelayServer -Name <String> -ResourceGroup <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzFluidRelayServer -InputObject <IFluidRelayIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +40,8 @@ Delete a Fluid Relay server.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -173,19 +175,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IFluidRelayIdentity>`: Identity Parameter
-  - `[FluidRelayContainerName <String>]`: The Fluid Relay container resource name.
-  - `[FluidRelayServerName <String>]`: The Fluid Relay server resource name.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroup <String>]`: The resource group containing the resource.
-  - `[SubscriptionId <String>]`: The subscription id (GUID) for this resource.
-
 ## RELATED LINKS
-

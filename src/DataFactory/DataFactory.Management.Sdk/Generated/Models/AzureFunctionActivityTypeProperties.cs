@@ -34,15 +34,15 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="headers">Represents the headers that will be sent to the request. For example, to
         /// set the language and type on a request: &#34;headers&#34; : { &#34;Accept-Language&#34;:
-        /// &#34;en-us&#34;, &#34;Content-Type&#34;: &#34;application/json&#34; }. Type: dictionary (or
-        /// Expression with resultType dictionary).
+        /// &#34;en-us&#34;, &#34;Content-Type&#34;: &#34;application/json&#34; }. Type: string (or Expression
+        /// with resultType string).
         /// </param>
 
         /// <param name="body">Represents the payload that will be sent to the endpoint. Required for
         /// POST/PUT method, not allowed for GET method Type: string (or Expression
         /// with resultType string).
         /// </param>
-        public AzureFunctionActivityTypeProperties(string method, object functionName, object headers = default(object), object body = default(object))
+        public AzureFunctionActivityTypeProperties(string method, object functionName, System.Collections.Generic.IDictionary<string, object> headers = default(System.Collections.Generic.IDictionary<string, object>), object body = default(object))
 
         {
             this.Method = method;
@@ -75,10 +75,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Gets or sets represents the headers that will be sent to the request. For
         /// example, to set the language and type on a request: &#34;headers&#34; : {
         /// &#34;Accept-Language&#34;: &#34;en-us&#34;, &#34;Content-Type&#34;: &#34;application/json&#34; }. Type:
-        /// dictionary (or Expression with resultType dictionary).
+        /// string (or Expression with resultType string).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "headers")]
-        public object Headers {get; set; }
+        public System.Collections.Generic.IDictionary<string, object> Headers {get; set; }
 
         /// <summary>
         /// Gets or sets represents the payload that will be sent to the endpoint.

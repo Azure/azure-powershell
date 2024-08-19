@@ -6936,20 +6936,24 @@
                 <PropertyName>EnableKerberos</PropertyName>
               </ListItem>
               <ListItem>
-                  <Label>Copy/Paste</Label>
-				  <PropertyName>DisableCopyPaste</PropertyName>
+                <Label>Copy/Paste</Label>
+                <PropertyName>DisableCopyPaste</PropertyName>
               </ListItem>
               <ListItem>
-				  <Label>Native Client</Label>
-				  <PropertyName>EnableTunneling</PropertyName>
+                <Label>Native Client</Label>
+                <PropertyName>EnableTunneling</PropertyName>
               </ListItem>
               <ListItem>
-				  <Label>IP Connect</Label>
-				  <PropertyName>EnableIpConnect</PropertyName>
+                <Label>IP Connect</Label>
+                <PropertyName>EnableIpConnect</PropertyName>
               </ListItem>
               <ListItem>
-				  <Label>Shareable Link</Label>
-				  <PropertyName>EnableShareableLink</PropertyName>
+                <Label>Shareable Link</Label>
+                <PropertyName>EnableShareableLink</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Session Recording</Label>
+                <PropertyName>EnableSessionRecording</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

@@ -15,7 +15,8 @@ Retrieve Activity Log events.
 ### GetBySubscription (Default)
 ```
 Get-AzActivityLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
- [-DetailedOutput] [-MaxRecord <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DetailedOutput] [-MaxRecord <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByCorrelationId
@@ -81,7 +82,7 @@ This command lists at most 1000 of the events associated with the user's subscri
 
 ### Example 5: Get an event log by correlation ID
 ```powershell
-Get-AzActivityLog -CorrelationId "60c694d0-e46f-4c12-bed1-9b7aef541c23"
+Get-AzActivityLog -CorrelationId "00001111-aaaa-2222-bbbb-3333cccc4444"
 ```
 
 This command lists at most 1000 events associated with the specified correlation ID that took place 7 days from the current date/time. 
@@ -89,7 +90,7 @@ This command lists at most 1000 events associated with the specified correlation
 
 ### Example 6: Get an event log by correlation ID with a maximum number of events
 ```powershell
-Get-AzActivityLog -CorrelationId "60c694d0-e46f-4c12-bed1-9b7aef541c23" -MaxRecord 100
+Get-AzActivityLog -CorrelationId "00001111-aaaa-2222-bbbb-3333cccc4444" -MaxRecord 100
 ```
 
 This command lists at most 100 events associated with the specified correlation ID that took place 7 days from the current date/time. 
@@ -97,7 +98,7 @@ This command lists at most 100 events associated with the specified correlation 
 
 ### Example 7: Get an event log by correlation ID and start time
 ```powershell
-Get-AzActivityLog -CorrelationId "60c694d0-e46f-4c12-bed1-9b7aef541c23" -StartTime 2017-05-22T04:30:00
+Get-AzActivityLog -CorrelationId "00001111-aaaa-2222-bbbb-3333cccc4444" -StartTime 2017-05-22T04:30:00
 ```
 
 This command lists at most 1000 events associated with the specified correlation ID that took place on or after 2017-05-22T04:30:00 local time if the start time is not older than 90 days from the current date/time.
@@ -105,7 +106,7 @@ This command lists at most 1000 events associated with the specified correlation
 
 ### Example 8: Get an event log by correlation ID with start time and end time
 ```powershell
-Get-AzActivityLog -CorrelationId "60c694d0-e46f-4c12-bed1-9b7aef541c23" -StartTime 2017-04-15T04:30:00 -EndTime 2017-04-25T12:30:00
+Get-AzActivityLog -CorrelationId "00001111-aaaa-2222-bbbb-3333cccc4444" -StartTime 2017-04-15T04:30:00 -EndTime 2017-04-25T12:30:00
 ```
 
 This command lists at most 1000 events associated with the specified correlation ID that took place on or after 2017-04-15T04:30 local time, but before 2017-04-25T12:30 local time if the whole date/time range is not older than 90 days from the current date/time, i.e.: the retention period.

@@ -1,6 +1,6 @@
 {
   "resourceType": "profiles/endpoints/customDomains",
-  "apiVersion": "2023-05-01",
+  "apiVersion": "2024-02-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.cdn"
   },
@@ -28,6 +28,54 @@
       "examples": [
         {
           "description": "Disable https delivery of the custom domain.",
+          "parameters": [
+            {
+              "name": "-CustomDomainName",
+              "value": "[Path.customDomainName]"
+            },
+            {
+              "name": "-EndpointName",
+              "value": "[Path.endpointName]"
+            },
+            {
+              "name": "-ProfileName",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Enable-AzCdnCustomDomainCustomHttps",
+      "description": "Enable https delivery of the custom domain.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}/enableCustomHttps",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cdn/enable-azcdncustomdomaincustomhttps"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CustomDomainName <String>",
+              "-EndpointName <String>",
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Enable https delivery of the custom domain.",
           "parameters": [
             {
               "name": "-CustomDomainName",

@@ -7,7 +7,7 @@ variables:
   LinuxAgentPoolVMImage: ''
   MacOSName: macOS
   MacOSAgentPoolName: 'Azure Pipelines'
-  MacOSAgentPoolVMImage: macOS-11
+  MacOSAgentPoolVMImage: macOS-latest
   TestFramework: net6.0
   TestTarget: Test
   Configuration: Debug
@@ -20,6 +20,7 @@ variables:
   EnableTestCoverage: true
   TestCoverageLocation: $(Build.SourcesDirectory)/artifacts
   PowerShellPlatform: PowerShell Core
+  AZURE_CLIENTS_SHOW_SECRETS_WARNING: true
 
 trigger: none
 

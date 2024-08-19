@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzMarketplacePrivateStoreCollection
 
 ## SYNOPSIS
-Create private store collection
+Update private store collection
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ Update-AzMarketplacePrivateStoreCollection -CollectionId <String>
 ```
 
 ## DESCRIPTION
-Create private store collection
+Update private store collection
 
 ## EXAMPLES
 
@@ -148,7 +148,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
@@ -164,7 +163,6 @@ Accept wildcard characters: False
 
 ### -Payload
 The Collection data structure.
-To construct, see NOTES section for PAYLOAD properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection
@@ -195,7 +193,6 @@ Accept wildcard characters: False
 
 ### -PrivateStoreInputObject
 Identity Parameter
-To construct, see NOTES section for PRIVATESTOREINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity

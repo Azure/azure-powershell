@@ -46,7 +46,8 @@ function setupEnv() {
     $env.msiClientId = '00000000-0000-0000-0000-000000000000'
     $env.msiObjectId = '00000000-0000-0000-0000-000000000000'
     $env.authorizationUserId = '00000000-0000-0000-0000-000000000000'
-    $env.identityProfileMsiResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/yuchenPSGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{your-msi}'
+    $env.identityProfileMsiResourceId ='/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PSGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/msi'
+  
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'

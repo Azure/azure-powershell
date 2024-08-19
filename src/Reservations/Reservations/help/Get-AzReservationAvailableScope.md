@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Reservations-help.xml
 Module Name: Az.Reservations
 online version: https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationavailablescope
 schema: 2.0.0
@@ -15,26 +15,29 @@ Check whether the scopes from request is valid for `Reservation`.\n
 ### AvailableExpanded (Default)
 ```
 Get-AzReservationAvailableScope -ReservationId <String> -ReservationOrderId <String> [-Scope <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Available
 ```
 Get-AzReservationAvailableScope -ReservationId <String> -ReservationOrderId <String>
- -Body <IAvailableScopeRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ -Body <IAvailableScopeRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AvailableViaIdentityExpanded
+```
+Get-AzReservationAvailableScope -InputObject <IReservationsIdentity> [-Scope <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### AvailableViaIdentity
 ```
 Get-AzReservationAvailableScope -InputObject <IReservationsIdentity> -Body <IAvailableScopeRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AvailableViaIdentityExpanded
-```
-Get-AzReservationAvailableScope -InputObject <IReservationsIdentity> [-Scope <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,7 +113,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
-Parameter Sets: AvailableViaIdentity, AvailableViaIdentityExpanded
+Parameter Sets: AvailableViaIdentityExpanded, AvailableViaIdentity
 Aliases:
 
 Required: True
@@ -140,7 +143,7 @@ Id of the reservation item
 
 ```yaml
 Type: System.String
-Parameter Sets: Available, AvailableExpanded
+Parameter Sets: AvailableExpanded, Available
 Aliases:
 
 Required: True
@@ -155,7 +158,7 @@ Order Id of the reservation
 
 ```yaml
 Type: System.String
-Parameter Sets: Available, AvailableExpanded
+Parameter Sets: AvailableExpanded, Available
 Aliases:
 
 Required: True
@@ -226,21 +229,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BODY <IAvailableScopeRequest>`: Available scope
-  - `[Scope <String[]>]`: 
-
-`INPUTOBJECT <IReservationsIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ReservationId <String>]`: Id of the reservation item
-  - `[ReservationOrderId <String>]`: Order Id of the reservation
-  - `[SubscriptionId <String>]`: Id of the subscription
-
 ## RELATED LINKS
-

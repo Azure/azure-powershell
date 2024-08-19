@@ -49,6 +49,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
         public string DetailType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicensePropertiesInternal)Property).LicenseDetailType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicensePropertiesInternal)Property).LicenseDetailType = value ?? null; }
 
+        /// <summary>A list of volume license details.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IVolumeLicenseDetails> DetailVolumeLicenseDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicensePropertiesInternal)Property).LicenseDetailVolumeLicenseDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicensePropertiesInternal)Property).LicenseDetailVolumeLicenseDetail = value ?? null /* arrayOf */; }
+
         /// <summary>
         /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </summary>
@@ -141,7 +145,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceInternal)__trackedResource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceInternal)__trackedResource).Tag = value ?? null /* model class */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceTags Tags { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceInternal)__trackedResource).Tags; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceInternal)__trackedResource).Tags = value ?? null /* model class */; }
 
         /// <summary>Describes the tenant id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
@@ -259,6 +263,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("pCore", "vCore")]
         string DetailType { get; set; }
+        /// <summary>A list of volume license details.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A list of volume license details.",
+        SerializedName = @"volumeLicenseDetails",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IVolumeLicenseDetails) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IVolumeLicenseDetails> DetailVolumeLicenseDetail { get; set; }
         /// <summary>The type of the license resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -322,6 +337,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>Describes the license core type (pCore or vCore).</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("pCore", "vCore")]
         string DetailType { get; set; }
+        /// <summary>A list of volume license details.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IVolumeLicenseDetails> DetailVolumeLicenseDetail { get; set; }
         /// <summary>The type of the license resource.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ESU")]
         string LicenseType { get; set; }

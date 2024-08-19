@@ -16,8 +16,8 @@ Creates a managed HSM.
 New-AzKeyVaultManagedHsm [-Name] <String> [-ResourceGroupName] <String> [-Location] <String>
  [-Administrator] <String[]> [-Sku <String>] -SoftDeleteRetentionInDays <Int32> [-PublicNetworkAccess <String>]
  [-EnablePurgeProtection] [-UserAssignedIdentity <String[]>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,7 +71,7 @@ Location                                : eastus2euap
 Resource ID                             : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/pro
                                           viders/Microsoft.KeyVault/managedHSMs/bezmhsm
 HSM Pool URI                            :
-Tenant ID                               : 54826b22-38d6-4fb2-bad9-b7b93a3e9c5a
+Tenant ID                               : 00001111-aaaa-2222-bbbb-3333cccc4444
 Initial Admin Object Ids                : {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
 SKU                                     : StandardB1
 Soft Delete Enabled?                    : True

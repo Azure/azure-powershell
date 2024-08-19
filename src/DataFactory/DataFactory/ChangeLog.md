@@ -18,6 +18,29 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported managed identity for Data Factory Azure File connector.
+* Supported ServicePrincipalCert Auth for Data Factory Rest connector.
+* Supported ServicePrincipalCert Auth for Data Factory SharePointOnlineList connector.
+
+## Version 1.18.6
+* Added security enhancement feature snowflake support storage integration.
+* Supported 'domain' Property In Dynamics Family.
+* Enabled UAMI auth for Data Factory Sql Server connector.
+* Supported managed identity for Data Factory Azure Table connector.
+
+## Version 1.18.5
+* Added UAMI in DynamicsCrm LinkedService
+
+## Version 1.18.4
+* Updated ADF encryption client SDK version to 5.29.8499.2
+
+## Version 1.18.3
+* Added ServiceNowV2, PostgreSqlV2, GoogleBigQuery in ADF
+* Fixed headers property schema deserialize issue
+* Fixed vulnerability https://github.com/advisories/GHSA-98g6-xh36-x2p7
+
+## Version 1.18.2
+* Supported Snowflake V2 in ADF
 
 ## Version 1.18.1
 * Added metadata Into StoreWriteSettings For Bug Fix
@@ -158,7 +181,7 @@
 * Add AutoUpdateETA, LatestVersion, PushedVersion, TaskQueueId and VersionStatus properties for Get-AzDataFactoryV2IntegrationRuntime cmd
 
 * Update ADF .Net SDK version to 4.6.0
-* Add parameter "PublicIPs" for "Set-AzureRmDataFactoryV2IntegrationRuntime" cmd 
+* Add parameter "PublicIPs" for "Set-AzureRmDataFactoryV2IntegrationRuntime" cmd
 to enable create Azure-SSIS IR with static public IP addresses.
 
 ## Version 1.5.1

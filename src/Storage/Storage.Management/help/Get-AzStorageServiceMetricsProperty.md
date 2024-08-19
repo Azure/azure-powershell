@@ -15,7 +15,8 @@ Gets metrics properties for the Azure Storage service.
 
 ```
 Get-AzStorageServiceMetricsProperty [-ServiceType] <StorageServiceType> [-MetricsType] <ServiceMetricsType>
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -122,5 +123,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzStorageContext](./New-AzStorageContext.md)
 
 [Set-AzStorageServiceMetricsProperty](./Set-AzStorageServiceMetricsProperty.md)
-
-

@@ -20,7 +20,7 @@ Regenerates the SASKey of a ServiceBus namespace, queue or topic.
 #>
 
 function New-AzServiceBusKey{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys])]
     [CmdletBinding(DefaultParameterSetName = 'NewExpandedNamespace', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'NewExpandedQueue', Mandatory, HelpMessage = "The name of the Authorization Rule")]
@@ -73,7 +73,7 @@ function New-AzServiceBusKey{
         [Parameter(Mandatory, HelpMessage = "The access key to regenerate.")]
         [Alias('RegenerateKey')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeyType]
+        [System.String]
         # The access key to regenerate.
         ${KeyType},
 
@@ -149,7 +149,7 @@ function New-AzServiceBusKey{
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $accessKeys = [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IRegenerateAccessKeyParameters]@{
+            $accessKeys = [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRegenerateAccessKeyParameters]@{
                 KeyType = $KeyType
             }
 

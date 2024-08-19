@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StreamAnalytics-help.xml
 Module Name: Az.StreamAnalytics
 online version: https://learn.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsfunction
 schema: 2.0.0
@@ -15,7 +15,8 @@ This can range from testing the connection to the underlying web service behind 
 
 ```
 Test-AzStreamAnalyticsFunction -JobName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,6 +29,7 @@ This can range from testing the connection to the underlying web service behind 
 ```powershell
 Test-AzStreamAnalyticsFunction -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name mlsfunction-01
 ```
+
 ```output
 Status
 ------
@@ -175,7 +177,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

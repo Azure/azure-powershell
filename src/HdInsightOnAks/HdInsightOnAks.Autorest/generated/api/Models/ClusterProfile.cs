@@ -65,6 +65,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
         public int? AutoscaleProfileGracefulDecommissionTimeout { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)AutoscaleProfile).GracefulDecommissionTimeout; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)AutoscaleProfile).GracefulDecommissionTimeout = value ?? default(int); }
 
+        /// <summary>Backing field for <see cref="ClusterAccessProfile" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAccessProfile _clusterAccessProfile;
+
+        /// <summary>Cluster access profile.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAccessProfile ClusterAccessProfile { get => (this._clusterAccessProfile = this._clusterAccessProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAccessProfile()); set => this._clusterAccessProfile = value; }
+
+        /// <summary>
+        /// Whether to create cluster using private IP instead of public IP. This property must be set at create time.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public bool? ClusterAccessProfileEnableInternalIngress { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAccessProfileInternal)ClusterAccessProfile).EnableInternalIngress; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAccessProfileInternal)ClusterAccessProfile).EnableInternalIngress = value ?? default(bool); }
+
+        /// <summary>
+        /// Private link service resource ID. Only when enableInternalIngress is true, this property will be returned.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string ClusterAccessProfilePrivateLinkServiceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAccessProfileInternal)ClusterAccessProfile).PrivateLinkServiceId; }
+
         /// <summary>Backing field for <see cref="ClusterVersion" /> property.</summary>
         private string _clusterVersion;
 
@@ -78,6 +97,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// <summary>Component list of this cluster type and version.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterComponentsItem> Component { get => this._component; }
+
+        /// <summary>bootstrap server connectivity endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string ConnectivityEndpointBootstrapServerEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).ConnectivityEndpointBootstrapServerEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).ConnectivityEndpointBootstrapServerEndpoint = value ?? null; }
+
+        /// <summary>Kafka broker endpoint list.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> ConnectivityEndpointBrokerEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).ConnectivityEndpointBrokerEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).ConnectivityEndpointBrokerEndpoint = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="ConnectivityProfile" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IConnectivityProfile _connectivityProfile;
@@ -109,12 +136,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
         public bool? CoordinatorHighAvailabilityEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).CoordinatorHighAvailabilityEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).CoordinatorHighAvailabilityEnabled = value ?? default(bool); }
 
+        /// <summary>The database URL</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string DatabaseHost { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).DatabaseHost; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).DatabaseHost = value ?? null; }
+
+        /// <summary>The database name</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string DatabaseName { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).DatabaseName; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).DatabaseName = value ?? null; }
+
+        /// <summary>Reference for the database password</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string DatabasePasswordSecretRef { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).DatabasePasswordSecretRef; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).DatabasePasswordSecretRef = value ?? null; }
+
+        /// <summary>The name of the database user</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string DatabaseUsername { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).DatabaseUsername; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).DatabaseUsername = value ?? null; }
+
+        /// <summary>
+        /// Managed Disk size in GB. The maximum supported disk size for Standard and Premium HDD/SSD is 32TB, except for Premium
+        /// SSD v2, which supports up to 64TB.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public int? DiskStorageDataDiskSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).DiskStorageDataDiskSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).DiskStorageDataDiskSize = value ?? default(int); }
+
+        /// <summary>Managed Disk Type.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string DiskStorageDataDiskType { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).DiskStorageDataDiskType; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).DiskStorageDataDiskType = value ?? null; }
+
         /// <summary>Backing field for <see cref="FlinkProfile" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfile _flinkProfile;
 
         /// <summary>The Flink cluster profile.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfile FlinkProfile { get => (this._flinkProfile = this._flinkProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkProfile()); set => this._flinkProfile = value; }
+
+        /// <summary>
+        /// A string property that indicates the deployment mode of Flink cluster. It can have one of the following enum values =>
+        /// Application, Session. Default value is Session
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string FlinkProfileDeploymentMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).DeploymentMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).DeploymentMode = value ?? null; }
 
         /// <summary>The number of task managers.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
@@ -127,6 +188,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// <summary>The required memory in MB, Container memory will be 110 percentile</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
         public long? HistoryServerMemory { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).HistoryServerMemory; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).HistoryServerMemory = value ?? default(long); }
+
+        /// <summary>
+        /// The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string HiveMetastoreDbConnectionAuthenticationMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).HiveMetastoreDbConnectionAuthenticationMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).HiveMetastoreDbConnectionAuthenticationMode = value ?? null; }
 
         /// <summary>
         /// Secret reference name from secretsProfile.secrets containing password for database connection.
@@ -145,21 +212,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// <summary>Backing field for <see cref="IdentityProfile" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfile _identityProfile;
 
-        /// <summary>Identity Profile with details of an MSI.</summary>
+        /// <summary>This is deprecated. Please use managed identity profile instead.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfile IdentityProfile { get => (this._identityProfile = this._identityProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IdentityProfile()); set => this._identityProfile = value; }
 
         /// <summary>ClientId of the MSI.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
-        public string IdentityProfileMsiClientId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfileInternal)IdentityProfile).MsiClientId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfileInternal)IdentityProfile).MsiClientId = value ; }
+        public string IdentityProfileMsiClientId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfileInternal)IdentityProfile).MsiClientId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfileInternal)IdentityProfile).MsiClientId = value ?? null; }
 
         /// <summary>ObjectId of the MSI.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
-        public string IdentityProfileMsiObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfileInternal)IdentityProfile).MsiObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfileInternal)IdentityProfile).MsiObjectId = value ; }
+        public string IdentityProfileMsiObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfileInternal)IdentityProfile).MsiObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfileInternal)IdentityProfile).MsiObjectId = value ?? null; }
 
         /// <summary>ResourceId of the MSI.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
-        public string IdentityProfileMsiResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfileInternal)IdentityProfile).MsiResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfileInternal)IdentityProfile).MsiResourceId = value ; }
+        public string IdentityProfileMsiResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfileInternal)IdentityProfile).MsiResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfileInternal)IdentityProfile).MsiResourceId = value ?? null; }
 
         /// <summary>The required CPU.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
@@ -169,12 +236,56 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
         public long? JobManagerMemory { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).JobManagerMemory; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).JobManagerMemory = value ?? default(long); }
 
-        /// <summary>Backing field for <see cref="KafkaProfile" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileKafkaProfile _kafkaProfile;
+        /// <summary>
+        /// A string property representing additional JVM arguments for the Flink job. It should be space separated value.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string JobSpecArg { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).JobSpecArg; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).JobSpecArg = value ?? null; }
 
-        /// <summary>Kafka cluster profile.</summary>
+        /// <summary>
+        /// A string property that specifies the entry class for the Flink job. If not specified, the entry point is auto-detected
+        /// from the flink job jar package.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string JobSpecEntryClass { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).JobSpecEntryClass; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).JobSpecEntryClass = value ?? null; }
+
+        /// <summary>A string property that represents the name of the job JAR.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string JobSpecJarName { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).JobSpecJarName; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).JobSpecJarName = value ?? null; }
+
+        /// <summary>A string property that specifies the directory where the job JAR is located.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string JobSpecJobJarDirectory { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).JobSpecJobJarDirectory; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).JobSpecJobJarDirectory = value ?? null; }
+
+        /// <summary>A string property that represents the name of the savepoint for the Flink job</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string JobSpecSavePointName { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).JobSpecSavePointName; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).JobSpecSavePointName = value ?? null; }
+
+        /// <summary>
+        /// A string property that indicates the upgrade mode to be performed on the Flink job. It can have one of the following enum
+        /// values => STATELESS_UPDATE, UPDATE, LAST_STATE_UPDATE.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string JobSpecUpgradeMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).JobSpecUpgradeMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).JobSpecUpgradeMode = value ?? null; }
+
+        /// <summary>Backing field for <see cref="KafkaProfile" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfile _kafkaProfile;
+
+        /// <summary>The Kafka cluster profile.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileKafkaProfile KafkaProfile { get => (this._kafkaProfile = this._kafkaProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterProfileKafkaProfile()); set => this._kafkaProfile = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfile KafkaProfile { get => (this._kafkaProfile = this._kafkaProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.KafkaProfile()); set => this._kafkaProfile = value; }
+
+        /// <summary>Expose Kafka cluster in KRaft mode.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public bool? KafkaProfileEnableKRaft { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).EnableKRaft; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).EnableKRaft = value ?? default(bool); }
+
+        /// <summary>Expose worker nodes as public endpoints.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public bool? KafkaProfileEnablePublicEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).EnablePublicEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).EnablePublicEndpoint = value ?? default(bool); }
+
+        /// <summary>Fully qualified path of Azure Storage container used for Tiered Storage.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string KafkaProfileRemoteStorageUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).RemoteStorageUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).RemoteStorageUri = value ?? null; }
 
         /// <summary>Backing field for <see cref="LlapProfile" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileLlapProfile _llapProfile;
@@ -231,6 +342,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLogAnalyticsProfile LogAnalyticsProfile { get => (this._logAnalyticsProfile = this._logAnalyticsProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterLogAnalyticsProfile()); set => this._logAnalyticsProfile = value; }
 
+        /// <summary>Backing field for <see cref="ManagedIdentityProfile" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentityProfile _managedIdentityProfile;
+
+        /// <summary>
+        /// This property is required by Trino, Spark and Flink cluster but is optional for Kafka cluster.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentityProfile ManagedIdentityProfile { get => (this._managedIdentityProfile = this._managedIdentityProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ManagedIdentityProfile()); set => this._managedIdentityProfile = value; }
+
+        /// <summary>The list of managed identity.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentitySpec> ManagedIdentityProfileIdentityList { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentityProfileInternal)ManagedIdentityProfile).IdentityList; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentityProfileInternal)ManagedIdentityProfile).IdentityList = value ?? null /* arrayOf */; }
+
+        /// <summary>
+        /// The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string MetastoreSpecDbConnectionAuthenticationMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkProfileInternal)SparkProfile).MetastoreSpecDbConnectionAuthenticationMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkProfileInternal)SparkProfile).MetastoreSpecDbConnectionAuthenticationMode = value ?? null; }
+
         /// <summary>The database name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
         public string MetastoreSpecDbName { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkProfileInternal)SparkProfile).MetastoreSpecDbName; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkProfileInternal)SparkProfile).MetastoreSpecDbName = value ?? null; }
@@ -267,6 +397,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// <summary>Internal Acessors for AutoscaleProfileScheduleBasedConfig</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScheduleBasedConfig Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.AutoscaleProfileScheduleBasedConfig { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)AutoscaleProfile).ScheduleBasedConfig; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)AutoscaleProfile).ScheduleBasedConfig = value; }
 
+        /// <summary>Internal Acessors for ClusterAccessProfile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAccessProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.ClusterAccessProfile { get => (this._clusterAccessProfile = this._clusterAccessProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAccessProfile()); set { {_clusterAccessProfile = value;} } }
+
+        /// <summary>Internal Acessors for ClusterAccessProfilePrivateLinkServiceId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.ClusterAccessProfilePrivateLinkServiceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAccessProfileInternal)ClusterAccessProfile).PrivateLinkServiceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAccessProfileInternal)ClusterAccessProfile).PrivateLinkServiceId = value; }
+
         /// <summary>Internal Acessors for Component</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterComponentsItem> Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.Component { get => this._component; set { {_component = value;} } }
 
@@ -294,6 +430,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// <summary>Internal Acessors for FlinkProfileJobManager</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IComputeResourceDefinition Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.FlinkProfileJobManager { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).JobManager; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).JobManager = value; }
 
+        /// <summary>Internal Acessors for FlinkProfileJobSpec</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.FlinkProfileJobSpec { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).JobSpec; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).JobSpec = value; }
+
         /// <summary>Internal Acessors for FlinkProfileStorage</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkStorageProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.FlinkProfileStorage { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).Storage; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)FlinkProfile).Storage = value; }
 
@@ -303,14 +442,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// <summary>Internal Acessors for IdentityProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.IdentityProfile { get => (this._identityProfile = this._identityProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IdentityProfile()); set { {_identityProfile = value;} } }
 
+        /// <summary>Internal Acessors for KafkaProfile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.KafkaProfile { get => (this._kafkaProfile = this._kafkaProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.KafkaProfile()); set { {_kafkaProfile = value;} } }
+
+        /// <summary>Internal Acessors for KafkaProfileConnectivityEndpoint</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaConnectivityEndpoints Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.KafkaProfileConnectivityEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).ConnectivityEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).ConnectivityEndpoint = value; }
+
+        /// <summary>Internal Acessors for KafkaProfileDiskStorage</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IDiskStorageProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.KafkaProfileDiskStorage { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).DiskStorage; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).DiskStorage = value; }
+
         /// <summary>Internal Acessors for LogAnalyticProfileApplicationLog</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLogAnalyticsApplicationLogs Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.LogAnalyticProfileApplicationLog { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLogAnalyticsProfileInternal)LogAnalyticsProfile).ApplicationLog; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLogAnalyticsProfileInternal)LogAnalyticsProfile).ApplicationLog = value; }
 
         /// <summary>Internal Acessors for LogAnalyticsProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLogAnalyticsProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.LogAnalyticsProfile { get => (this._logAnalyticsProfile = this._logAnalyticsProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterLogAnalyticsProfile()); set { {_logAnalyticsProfile = value;} } }
 
+        /// <summary>Internal Acessors for ManagedIdentityProfile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentityProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.ManagedIdentityProfile { get => (this._managedIdentityProfile = this._managedIdentityProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ManagedIdentityProfile()); set { {_managedIdentityProfile = value;} } }
+
         /// <summary>Internal Acessors for PrometheusProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPrometheusProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.PrometheusProfile { get => (this._prometheusProfile = this._prometheusProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPrometheusProfile()); set { {_prometheusProfile = value;} } }
+
+        /// <summary>Internal Acessors for RangerAdminDatabase</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAdminSpecDatabase Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.RangerAdminDatabase { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerAdminDatabase; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerAdminDatabase = value; }
+
+        /// <summary>Internal Acessors for RangerPluginProfile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterRangerPluginProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.RangerPluginProfile { get => (this._rangerPluginProfile = this._rangerPluginProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterRangerPluginProfile()); set { {_rangerPluginProfile = value;} } }
+
+        /// <summary>Internal Acessors for RangerProfile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.RangerProfile { get => (this._rangerProfile = this._rangerProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerProfile()); set { {_rangerProfile = value;} } }
+
+        /// <summary>Internal Acessors for RangerProfileRangerAdmin</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAdminSpec Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.RangerProfileRangerAdmin { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerAdmin; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerAdmin = value; }
+
+        /// <summary>Internal Acessors for RangerProfileRangerAudit</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAuditSpec Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.RangerProfileRangerAudit { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerAudit; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerAudit = value; }
+
+        /// <summary>Internal Acessors for RangerProfileRangerUsersync</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerUsersyncSpec Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.RangerProfileRangerUsersync { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersync; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersync = value; }
 
         /// <summary>Internal Acessors for SecretsProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretsProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.SecretsProfile { get => (this._secretsProfile = this._secretsProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SecretsProfile()); set { {_secretsProfile = value;} } }
@@ -371,6 +540,63 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// <summary>Cluster Prometheus profile.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPrometheusProfile PrometheusProfile { get => (this._prometheusProfile = this._prometheusProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPrometheusProfile()); set => this._prometheusProfile = value; }
+
+        /// <summary>
+        /// List of usernames that should be marked as ranger admins. These usernames should match the user principal name (UPN) of
+        /// the respective AAD users.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> RangerAdmin { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerAdminAdmins; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerAdminAdmins = value ?? null /* arrayOf */; }
+
+        /// <summary>
+        /// Azure storage location of the blobs. MSI should have read/write access to this Storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string RangerAuditStorageAccount { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerAuditStorageAccount; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerAuditStorageAccount = value ?? null; }
+
+        /// <summary>Backing field for <see cref="RangerPluginProfile" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterRangerPluginProfile _rangerPluginProfile;
+
+        /// <summary>Cluster Ranger plugin profile.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterRangerPluginProfile RangerPluginProfile { get => (this._rangerPluginProfile = this._rangerPluginProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterRangerPluginProfile()); set => this._rangerPluginProfile = value; }
+
+        /// <summary>Enable Ranger for cluster or not.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public bool? RangerPluginProfileEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterRangerPluginProfileInternal)RangerPluginProfile).Enabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterRangerPluginProfileInternal)RangerPluginProfile).Enabled = value ?? default(bool); }
+
+        /// <summary>Backing field for <see cref="RangerProfile" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfile _rangerProfile;
+
+        /// <summary>The ranger cluster profile.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfile RangerProfile { get => (this._rangerProfile = this._rangerProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerProfile()); set => this._rangerProfile = value; }
+
+        /// <summary>Denotes whether usersync service should be enabled</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public bool? RangerUsersyncEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersyncEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersyncEnabled = value ?? default(bool); }
+
+        /// <summary>
+        /// List of groups that should be synced. These group names should match the object id of the respective AAD groups.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> RangerUsersyncGroup { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersyncGroup; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersyncGroup = value ?? null /* arrayOf */; }
+
+        /// <summary>
+        /// User & groups can be synced automatically or via a static list that's refreshed.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string RangerUsersyncMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersyncMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersyncMode = value ?? null; }
+
+        /// <summary>
+        /// List of user names that should be synced. These usernames should match the User principal name of the respective AAD users.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> RangerUsersyncUser { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersyncUser; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersyncUser = value ?? null /* arrayOf */; }
+
+        /// <summary>Azure storage location of a mapping file that lists user & group associations.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string RangerUsersyncUserMappingLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersyncUserMappingLocation; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersyncUserMappingLocation = value ?? null; }
 
         /// <summary>
         /// Setting default node count of current schedule configuration. Default node count specifies the number of nodes which are
@@ -456,6 +682,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
         public string SshProfilePodPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshProfileInternal)SshProfile).PodPrefix; }
 
+        /// <summary>The virtual machine SKU.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string SshProfileVMSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshProfileInternal)SshProfile).VMSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshProfileInternal)SshProfile).VMSize = value ?? null; }
+
         /// <summary>
         /// Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.
         /// </summary>
@@ -520,6 +750,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// <summary>Web connectivity endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
         public string WebFqdn { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IConnectivityProfileInternal)ConnectivityProfile).WebFqdn; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IConnectivityProfileInternal)ConnectivityProfile).WebFqdn = value ?? null; }
+
+        /// <summary>
+        /// Private web connectivity endpoint. This property will only be returned when enableInternalIngress is true.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string WebPrivateFqdn { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IConnectivityProfileInternal)ConnectivityProfile).WebPrivateFqdn; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IConnectivityProfileInternal)ConnectivityProfile).WebPrivateFqdn = value ?? null; }
 
         /// <summary>The flag that if enable debug or not.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
@@ -627,6 +863,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"gracefulDecommissionTimeout",
         PossibleTypes = new [] { typeof(int) })]
         int? AutoscaleProfileGracefulDecommissionTimeout { get; set; }
+        /// <summary>
+        /// Whether to create cluster using private IP instead of public IP. This property must be set at create time.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"Whether to create cluster using private IP instead of public IP. This property must be set at create time.",
+        SerializedName = @"enableInternalIngress",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? ClusterAccessProfileEnableInternalIngress { get; set; }
+        /// <summary>
+        /// Private link service resource ID. Only when enableInternalIngress is true, this property will be returned.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Private link service resource ID. Only when enableInternalIngress is true, this property will be returned.",
+        SerializedName = @"privateLinkServiceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string ClusterAccessProfilePrivateLinkServiceId { get;  }
         /// <summary>Version with 3/4 part.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = true,
@@ -649,6 +911,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"components",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterComponentsItem) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterComponentsItem> Component { get;  }
+        /// <summary>bootstrap server connectivity endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"bootstrap server connectivity endpoint.",
+        SerializedName = @"bootstrapServerEndpoint",
+        PossibleTypes = new [] { typeof(string) })]
+        string ConnectivityEndpointBootstrapServerEndpoint { get;  }
+        /// <summary>Kafka broker endpoint list.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Kafka broker endpoint list.",
+        SerializedName = @"brokerEndpoints",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> ConnectivityEndpointBrokerEndpoint { get;  }
         /// <summary>List of SSH connectivity endpoints.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = false,
@@ -707,6 +991,91 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"highAvailabilityEnabled",
         PossibleTypes = new [] { typeof(bool) })]
         bool? CoordinatorHighAvailabilityEnabled { get; set; }
+        /// <summary>The database URL</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The database URL",
+        SerializedName = @"host",
+        PossibleTypes = new [] { typeof(string) })]
+        string DatabaseHost { get; set; }
+        /// <summary>The database name</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The database name",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        string DatabaseName { get; set; }
+        /// <summary>Reference for the database password</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Reference for the database password",
+        SerializedName = @"passwordSecretRef",
+        PossibleTypes = new [] { typeof(string) })]
+        string DatabasePasswordSecretRef { get; set; }
+        /// <summary>The name of the database user</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the database user",
+        SerializedName = @"username",
+        PossibleTypes = new [] { typeof(string) })]
+        string DatabaseUsername { get; set; }
+        /// <summary>
+        /// Managed Disk size in GB. The maximum supported disk size for Standard and Premium HDD/SSD is 32TB, except for Premium
+        /// SSD v2, which supports up to 64TB.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Managed Disk size in GB. The maximum supported disk size for Standard and Premium HDD/SSD is 32TB, except for Premium SSD v2, which supports up to 64TB.",
+        SerializedName = @"dataDiskSize",
+        PossibleTypes = new [] { typeof(int) })]
+        int? DiskStorageDataDiskSize { get; set; }
+        /// <summary>Managed Disk Type.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Managed Disk Type.",
+        SerializedName = @"dataDiskType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("Standard_HDD_LRS", "Standard_SSD_LRS", "Standard_SSD_ZRS", "Premium_SSD_LRS", "Premium_SSD_ZRS", "Premium_SSD_v2_LRS")]
+        string DiskStorageDataDiskType { get; set; }
+        /// <summary>
+        /// A string property that indicates the deployment mode of Flink cluster. It can have one of the following enum values =>
+        /// Application, Session. Default value is Session
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A string property that indicates the deployment mode of Flink cluster. It can have one of the following enum values => Application, Session. Default value is Session",
+        SerializedName = @"deploymentMode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("Application", "Session")]
+        string FlinkProfileDeploymentMode { get; set; }
         /// <summary>The number of task managers.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = false,
@@ -740,6 +1109,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"memory",
         PossibleTypes = new [] { typeof(long) })]
         long? HistoryServerMemory { get; set; }
+        /// <summary>
+        /// The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization",
+        SerializedName = @"metastoreDbConnectionAuthenticationMode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("SqlAuth", "IdentityAuth")]
+        string HiveMetastoreDbConnectionAuthenticationMode { get; set; }
         /// <summary>
         /// Secret reference name from secretsProfile.secrets containing password for database connection.
         /// </summary>
@@ -777,7 +1160,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         string HiveMetastoreDbConnectionUserName { get; set; }
         /// <summary>ClientId of the MSI.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -788,7 +1171,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         string IdentityProfileMsiClientId { get; set; }
         /// <summary>ObjectId of the MSI.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -799,7 +1182,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         string IdentityProfileMsiObjectId { get; set; }
         /// <summary>ResourceId of the MSI.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -830,17 +1213,114 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"memory",
         PossibleTypes = new [] { typeof(long) })]
         long? JobManagerMemory { get; set; }
-        /// <summary>Kafka cluster profile.</summary>
+        /// <summary>
+        /// A string property representing additional JVM arguments for the Flink job. It should be space separated value.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Kafka cluster profile.",
-        SerializedName = @"kafkaProfile",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileKafkaProfile) })]
-        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileKafkaProfile KafkaProfile { get; set; }
+        Description = @"A string property representing additional JVM arguments for the Flink job. It should be space separated value.",
+        SerializedName = @"args",
+        PossibleTypes = new [] { typeof(string) })]
+        string JobSpecArg { get; set; }
+        /// <summary>
+        /// A string property that specifies the entry class for the Flink job. If not specified, the entry point is auto-detected
+        /// from the flink job jar package.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A string property that specifies the entry class for the Flink job. If not specified, the entry point is auto-detected from the flink job jar package.",
+        SerializedName = @"entryClass",
+        PossibleTypes = new [] { typeof(string) })]
+        string JobSpecEntryClass { get; set; }
+        /// <summary>A string property that represents the name of the job JAR.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A string property that represents the name of the job JAR.",
+        SerializedName = @"jarName",
+        PossibleTypes = new [] { typeof(string) })]
+        string JobSpecJarName { get; set; }
+        /// <summary>A string property that specifies the directory where the job JAR is located.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A string property that specifies the directory where the job JAR is located.",
+        SerializedName = @"jobJarDirectory",
+        PossibleTypes = new [] { typeof(string) })]
+        string JobSpecJobJarDirectory { get; set; }
+        /// <summary>A string property that represents the name of the savepoint for the Flink job</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A string property that represents the name of the savepoint for the Flink job",
+        SerializedName = @"savePointName",
+        PossibleTypes = new [] { typeof(string) })]
+        string JobSpecSavePointName { get; set; }
+        /// <summary>
+        /// A string property that indicates the upgrade mode to be performed on the Flink job. It can have one of the following enum
+        /// values => STATELESS_UPDATE, UPDATE, LAST_STATE_UPDATE.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A string property that indicates the upgrade mode to be performed on the Flink job. It can have one of the following enum values => STATELESS_UPDATE, UPDATE, LAST_STATE_UPDATE.",
+        SerializedName = @"upgradeMode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("STATELESS_UPDATE", "UPDATE", "LAST_STATE_UPDATE")]
+        string JobSpecUpgradeMode { get; set; }
+        /// <summary>Expose Kafka cluster in KRaft mode.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Expose Kafka cluster in KRaft mode.",
+        SerializedName = @"enableKRaft",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? KafkaProfileEnableKRaft { get; set; }
+        /// <summary>Expose worker nodes as public endpoints.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Expose worker nodes as public endpoints.",
+        SerializedName = @"enablePublicEndpoints",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? KafkaProfileEnablePublicEndpoint { get; set; }
+        /// <summary>Fully qualified path of Azure Storage container used for Tiered Storage.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Fully qualified path of Azure Storage container used for Tiered Storage.",
+        SerializedName = @"remoteStorageUri",
+        PossibleTypes = new [] { typeof(string) })]
+        string KafkaProfileRemoteStorageUri { get; set; }
         /// <summary>LLAP cluster profile.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = false,
@@ -942,6 +1422,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"metricsEnabled",
         PossibleTypes = new [] { typeof(bool) })]
         bool? LogAnalyticProfileMetricsEnabled { get; set; }
+        /// <summary>The list of managed identity.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The list of managed identity.",
+        SerializedName = @"identityList",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentitySpec) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentitySpec> ManagedIdentityProfileIdentityList { get; set; }
+        /// <summary>
+        /// The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization",
+        SerializedName = @"dbConnectionAuthenticationMode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("SqlAuth", "IdentityAuth")]
+        string MetastoreSpecDbConnectionAuthenticationMode { get; set; }
         /// <summary>The database name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = false,
@@ -1030,6 +1535,106 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"enabled",
         PossibleTypes = new [] { typeof(bool) })]
         bool? PrometheuProfileEnabled { get; set; }
+        /// <summary>
+        /// List of usernames that should be marked as ranger admins. These usernames should match the user principal name (UPN) of
+        /// the respective AAD users.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of usernames that should be marked as ranger admins. These usernames should match the user principal name (UPN) of the respective AAD users.",
+        SerializedName = @"admins",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> RangerAdmin { get; set; }
+        /// <summary>
+        /// Azure storage location of the blobs. MSI should have read/write access to this Storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Azure storage location of the blobs. MSI should have read/write access to this Storage account.",
+        SerializedName = @"storageAccount",
+        PossibleTypes = new [] { typeof(string) })]
+        string RangerAuditStorageAccount { get; set; }
+        /// <summary>Enable Ranger for cluster or not.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Enable Ranger for cluster or not.",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? RangerPluginProfileEnabled { get; set; }
+        /// <summary>Denotes whether usersync service should be enabled</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Denotes whether usersync service should be enabled",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? RangerUsersyncEnabled { get; set; }
+        /// <summary>
+        /// List of groups that should be synced. These group names should match the object id of the respective AAD groups.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of groups that should be synced. These group names should match the object id of the respective AAD groups.",
+        SerializedName = @"groups",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> RangerUsersyncGroup { get; set; }
+        /// <summary>
+        /// User & groups can be synced automatically or via a static list that's refreshed.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"User & groups can be synced automatically or via a static list that's refreshed.",
+        SerializedName = @"mode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("static", "automatic")]
+        string RangerUsersyncMode { get; set; }
+        /// <summary>
+        /// List of user names that should be synced. These usernames should match the User principal name of the respective AAD users.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of user names that should be synced. These usernames should match the User principal name of the respective AAD users.",
+        SerializedName = @"users",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> RangerUsersyncUser { get; set; }
+        /// <summary>Azure storage location of a mapping file that lists user & group associations.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Azure storage location of a mapping file that lists user & group associations.",
+        SerializedName = @"userMappingLocation",
+        PossibleTypes = new [] { typeof(string) })]
+        string RangerUsersyncUserMappingLocation { get; set; }
         /// <summary>
         /// Setting default node count of current schedule configuration. Default node count specifies the number of nodes which are
         /// default when an specified scaling operation is executed (scale up/scale down)
@@ -1164,6 +1769,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"podPrefix",
         PossibleTypes = new [] { typeof(string) })]
         string SshProfilePodPrefix { get;  }
+        /// <summary>The virtual machine SKU.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The virtual machine SKU.",
+        SerializedName = @"vmSize",
+        PossibleTypes = new [] { typeof(string) })]
+        string SshProfileVMSize { get; set; }
         /// <summary>
         /// Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.
         /// </summary>
@@ -1303,6 +1919,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"fqdn",
         PossibleTypes = new [] { typeof(string) })]
         string WebFqdn { get;  }
+        /// <summary>
+        /// Private web connectivity endpoint. This property will only be returned when enableInternalIngress is true.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Private web connectivity endpoint. This property will only be returned when enableInternalIngress is true.",
+        SerializedName = @"privateFqdn",
+        PossibleTypes = new [] { typeof(string) })]
+        string WebPrivateFqdn { get;  }
         /// <summary>The flag that if enable debug or not.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = false,
@@ -1375,10 +2004,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ILoadBasedConfig AutoscaleProfileLoadBasedConfig { get; set; }
         /// <summary>Profiles of schedule based Autoscale.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScheduleBasedConfig AutoscaleProfileScheduleBasedConfig { get; set; }
+        /// <summary>Cluster access profile.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAccessProfile ClusterAccessProfile { get; set; }
+        /// <summary>
+        /// Whether to create cluster using private IP instead of public IP. This property must be set at create time.
+        /// </summary>
+        bool? ClusterAccessProfileEnableInternalIngress { get; set; }
+        /// <summary>
+        /// Private link service resource ID. Only when enableInternalIngress is true, this property will be returned.
+        /// </summary>
+        string ClusterAccessProfilePrivateLinkServiceId { get; set; }
         /// <summary>Version with 3/4 part.</summary>
         string ClusterVersion { get; set; }
         /// <summary>Component list of this cluster type and version.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterComponentsItem> Component { get; set; }
+        /// <summary>bootstrap server connectivity endpoint.</summary>
+        string ConnectivityEndpointBootstrapServerEndpoint { get; set; }
+        /// <summary>Kafka broker endpoint list.</summary>
+        System.Collections.Generic.List<string> ConnectivityEndpointBrokerEndpoint { get; set; }
         /// <summary>Cluster connectivity profile.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IConnectivityProfile ConnectivityProfile { get; set; }
         /// <summary>List of SSH connectivity endpoints.</summary>
@@ -1398,16 +2041,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// Default: true.
         /// </summary>
         bool? CoordinatorHighAvailabilityEnabled { get; set; }
+        /// <summary>The database URL</summary>
+        string DatabaseHost { get; set; }
+        /// <summary>The database name</summary>
+        string DatabaseName { get; set; }
+        /// <summary>Reference for the database password</summary>
+        string DatabasePasswordSecretRef { get; set; }
+        /// <summary>The name of the database user</summary>
+        string DatabaseUsername { get; set; }
+        /// <summary>
+        /// Managed Disk size in GB. The maximum supported disk size for Standard and Premium HDD/SSD is 32TB, except for Premium
+        /// SSD v2, which supports up to 64TB.
+        /// </summary>
+        int? DiskStorageDataDiskSize { get; set; }
+        /// <summary>Managed Disk Type.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("Standard_HDD_LRS", "Standard_SSD_LRS", "Standard_SSD_ZRS", "Premium_SSD_LRS", "Premium_SSD_ZRS", "Premium_SSD_v2_LRS")]
+        string DiskStorageDataDiskType { get; set; }
         /// <summary>The Flink cluster profile.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfile FlinkProfile { get; set; }
         /// <summary>Flink cluster catalog options.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkCatalogOptions FlinkProfileCatalogOption { get; set; }
         /// <summary>Hive Catalog Option for Flink cluster.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkHiveCatalogOption FlinkProfileCatalogOptionsHive { get; set; }
+        /// <summary>
+        /// A string property that indicates the deployment mode of Flink cluster. It can have one of the following enum values =>
+        /// Application, Session. Default value is Session
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("Application", "Session")]
+        string FlinkProfileDeploymentMode { get; set; }
         /// <summary>History Server container/ process CPU and memory requirements</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IComputeResourceDefinition FlinkProfileHistoryServer { get; set; }
         /// <summary>Job Manager container/ process CPU and memory requirements</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IComputeResourceDefinition FlinkProfileJobManager { get; set; }
+        /// <summary>
+        /// Job specifications for flink clusters in application deployment mode. The specification is immutable even if job properties
+        /// are changed by calling the RunJob API, please use the ListJob API to get the latest job information.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobProfile FlinkProfileJobSpec { get; set; }
         /// <summary>The number of task managers.</summary>
         int? FlinkProfileNumReplica { get; set; }
         /// <summary>The storage profile</summary>
@@ -1419,6 +2089,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// <summary>The required memory in MB, Container memory will be 110 percentile</summary>
         long? HistoryServerMemory { get; set; }
         /// <summary>
+        /// The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("SqlAuth", "IdentityAuth")]
+        string HiveMetastoreDbConnectionAuthenticationMode { get; set; }
+        /// <summary>
         /// Secret reference name from secretsProfile.secrets containing password for database connection.
         /// </summary>
         string HiveMetastoreDbConnectionPasswordSecret { get; set; }
@@ -1426,7 +2101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         string HiveMetastoreDbConnectionUrl { get; set; }
         /// <summary>User name for database connection.</summary>
         string HiveMetastoreDbConnectionUserName { get; set; }
-        /// <summary>Identity Profile with details of an MSI.</summary>
+        /// <summary>This is deprecated. Please use managed identity profile instead.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfile IdentityProfile { get; set; }
         /// <summary>ClientId of the MSI.</summary>
         string IdentityProfileMsiClientId { get; set; }
@@ -1438,8 +2113,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         float? JobManagerCpu { get; set; }
         /// <summary>The required memory in MB, Container memory will be 110 percentile</summary>
         long? JobManagerMemory { get; set; }
-        /// <summary>Kafka cluster profile.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileKafkaProfile KafkaProfile { get; set; }
+        /// <summary>
+        /// A string property representing additional JVM arguments for the Flink job. It should be space separated value.
+        /// </summary>
+        string JobSpecArg { get; set; }
+        /// <summary>
+        /// A string property that specifies the entry class for the Flink job. If not specified, the entry point is auto-detected
+        /// from the flink job jar package.
+        /// </summary>
+        string JobSpecEntryClass { get; set; }
+        /// <summary>A string property that represents the name of the job JAR.</summary>
+        string JobSpecJarName { get; set; }
+        /// <summary>A string property that specifies the directory where the job JAR is located.</summary>
+        string JobSpecJobJarDirectory { get; set; }
+        /// <summary>A string property that represents the name of the savepoint for the Flink job</summary>
+        string JobSpecSavePointName { get; set; }
+        /// <summary>
+        /// A string property that indicates the upgrade mode to be performed on the Flink job. It can have one of the following enum
+        /// values => STATELESS_UPDATE, UPDATE, LAST_STATE_UPDATE.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("STATELESS_UPDATE", "UPDATE", "LAST_STATE_UPDATE")]
+        string JobSpecUpgradeMode { get; set; }
+        /// <summary>The Kafka cluster profile.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfile KafkaProfile { get; set; }
+        /// <summary>Kafka bootstrap server and brokers related connectivity endpoints.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaConnectivityEndpoints KafkaProfileConnectivityEndpoint { get; set; }
+        /// <summary>Kafka disk storage profile.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IDiskStorageProfile KafkaProfileDiskStorage { get; set; }
+        /// <summary>Expose Kafka cluster in KRaft mode.</summary>
+        bool? KafkaProfileEnableKRaft { get; set; }
+        /// <summary>Expose worker nodes as public endpoints.</summary>
+        bool? KafkaProfileEnablePublicEndpoint { get; set; }
+        /// <summary>Fully qualified path of Azure Storage container used for Tiered Storage.</summary>
+        string KafkaProfileRemoteStorageUri { get; set; }
         /// <summary>LLAP cluster profile.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileLlapProfile LlapProfile { get; set; }
         /// <summary>
@@ -1473,6 +2179,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         bool? LogAnalyticProfileMetricsEnabled { get; set; }
         /// <summary>Cluster log analytics profile to enable or disable OMS agent for cluster.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLogAnalyticsProfile LogAnalyticsProfile { get; set; }
+        /// <summary>
+        /// This property is required by Trino, Spark and Flink cluster but is optional for Kafka cluster.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentityProfile ManagedIdentityProfile { get; set; }
+        /// <summary>The list of managed identity.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentitySpec> ManagedIdentityProfileIdentityList { get; set; }
+        /// <summary>
+        /// The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("SqlAuth", "IdentityAuth")]
+        string MetastoreSpecDbConnectionAuthenticationMode { get; set; }
         /// <summary>The database name.</summary>
         string MetastoreSpecDbName { get; set; }
         /// <summary>The secret name which contains the database user password.</summary>
@@ -1491,6 +2208,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         bool? PrometheuProfileEnabled { get; set; }
         /// <summary>Cluster Prometheus profile.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPrometheusProfile PrometheusProfile { get; set; }
+        /// <summary>
+        /// List of usernames that should be marked as ranger admins. These usernames should match the user principal name (UPN) of
+        /// the respective AAD users.
+        /// </summary>
+        System.Collections.Generic.List<string> RangerAdmin { get; set; }
+
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAdminSpecDatabase RangerAdminDatabase { get; set; }
+        /// <summary>
+        /// Azure storage location of the blobs. MSI should have read/write access to this Storage account.
+        /// </summary>
+        string RangerAuditStorageAccount { get; set; }
+        /// <summary>Cluster Ranger plugin profile.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterRangerPluginProfile RangerPluginProfile { get; set; }
+        /// <summary>Enable Ranger for cluster or not.</summary>
+        bool? RangerPluginProfileEnabled { get; set; }
+        /// <summary>The ranger cluster profile.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfile RangerProfile { get; set; }
+        /// <summary>Specification for the Ranger Admin service.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAdminSpec RangerProfileRangerAdmin { get; set; }
+        /// <summary>Properties required to describe audit log storage.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAuditSpec RangerProfileRangerAudit { get; set; }
+        /// <summary>Specification for the Ranger Usersync service</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerUsersyncSpec RangerProfileRangerUsersync { get; set; }
+        /// <summary>Denotes whether usersync service should be enabled</summary>
+        bool? RangerUsersyncEnabled { get; set; }
+        /// <summary>
+        /// List of groups that should be synced. These group names should match the object id of the respective AAD groups.
+        /// </summary>
+        System.Collections.Generic.List<string> RangerUsersyncGroup { get; set; }
+        /// <summary>
+        /// User & groups can be synced automatically or via a static list that's refreshed.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("static", "automatic")]
+        string RangerUsersyncMode { get; set; }
+        /// <summary>
+        /// List of user names that should be synced. These usernames should match the User principal name of the respective AAD users.
+        /// </summary>
+        System.Collections.Generic.List<string> RangerUsersyncUser { get; set; }
+        /// <summary>Azure storage location of a mapping file that lists user & group associations.</summary>
+        string RangerUsersyncUserMappingLocation { get; set; }
         /// <summary>
         /// Setting default node count of current schedule configuration. Default node count specifies the number of nodes which are
         /// default when an specified scaling operation is executed (scale up/scale down)
@@ -1536,6 +2293,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// <clusterFqdn>/<sshBasePath>/<prefix>-<number>
         /// </summary>
         string SshProfilePodPrefix { get; set; }
+        /// <summary>The virtual machine SKU.</summary>
+        string SshProfileVMSize { get; set; }
         /// <summary>
         /// Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.
         /// </summary>
@@ -1581,6 +2340,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoTelemetryConfig UserTelemetrySpecStorage { get; set; }
         /// <summary>Web connectivity endpoint.</summary>
         string WebFqdn { get; set; }
+        /// <summary>
+        /// Private web connectivity endpoint. This property will only be returned when enableInternalIngress is true.
+        /// </summary>
+        string WebPrivateFqdn { get; set; }
         /// <summary>Trino debug configuration.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoDebugConfig WorkerDebug { get; set; }
         /// <summary>The flag that if enable debug or not.</summary>

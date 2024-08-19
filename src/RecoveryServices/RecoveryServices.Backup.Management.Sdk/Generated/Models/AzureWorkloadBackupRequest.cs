@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="backupType">Type of backup, viz. Full, Differential, Log or CopyOnlyFull
-        /// Possible values include: 'Invalid', 'Full', 'Differential', 'Log',
-        /// 'CopyOnlyFull', 'Incremental', 'SnapshotFull', 'SnapshotCopyOnlyFull'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Full&#39;, &#39;Differential&#39;, &#39;Log&#39;,
+        /// &#39;CopyOnlyFull&#39;, &#39;Incremental&#39;, &#39;SnapshotFull&#39;, &#39;SnapshotCopyOnlyFull&#39;</param>
 
         /// <param name="enableCompression">Bool for Compression setting
         /// </param>

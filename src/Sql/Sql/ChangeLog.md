@@ -18,6 +18,29 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
+
+## Version 5.2.0
+* Added breaking change announcement for cmdlets: `New-AzSqlInstanceLink`, `Get-AzSqlInstanceLink`, `Remove-AzSqlInstanceLink`, `Update-AzSqlInstanceLink`.
+* Added `IsGeneralPurposeV2` and `StorageIOps` parameters to `New-AzSqlInstance`, `Set-AzSqlInstance` to enable the creation of GPv2 instances
+* Added IsGeneralPurposeV2 and StorageIOps fields to the model of the managed instance so that it displays information about GPv2 instances that are returned by `Get-AzSqlInstance`.
+* Added new cmdlet `Set-AzSqlDatabaseReplicationLink` for updating replication link type
+* Updated `Get-AzSqlDatabaseReplicationLink` to use the new sdk
+* Added new parameter AuthenticationMetadata to `New-AzSqlInstance` and `Set-AzSqlInstance`
+
+## Version 5.1.0
+* Added cross-subscription support for `Copy-AzSqlInstanceDatabase`, `Move-AzSqlInstanceDatabase`
+* Added new parameter SecondaryType to `Add-AzSqlDatabaseFromFailoverGroup`
+
+## Version 5.0.0
+* Added multi-secondary support for `Get-AzSqlDatabaseFailoverGroup`, `Remove-AzSqlDatabaseFromFailoverGroup` and `Add-AzSqlDatabaseFromFailoverGroup`
+* Changed default FailoverPolicy value for `New-AzSqlDatabaseFailoverGroup`, `Set-AzSqlDatabaseFailoverGroup` from `Automatic` to `Manual`
+* Added `ManualCutover` and `PerformCutover` parameters to `Set-AzSqlInstance` for Azure Sql Sterling database to Azure Sql Hyperscale database
+* Added `OperationPhaseDetails` parameter to `Get-AzSqlDatabaseActivity` and updated `DatabaseOperations` Api to version `2022-11-01-preview` for .Net Sdk
+
+## Version 4.14.1
+* Made 1.2 as default for MinimalTlsVersion when creating new Sql Server from Powershell
+* Fixed an existing issue with `Set-AzSqlInstanceActiveDirectoryAdministrator`
 
 ## Version 4.14.0
 * Added `DatabaseFormat` and `PricingModel` parameters to `New-AzSqlInstance`, `Set-AzSqlInstance`

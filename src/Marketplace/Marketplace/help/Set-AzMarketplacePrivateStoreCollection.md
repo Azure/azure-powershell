@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzMarketplacePrivateStoreCollection
 
 ## SYNOPSIS
-Create or update private store collection
+Update private store collection
 
 ## SYNTAX
 
@@ -16,23 +16,23 @@ Create or update private store collection
 ```
 Set-AzMarketplacePrivateStoreCollection -CollectionId <String> -PrivateStoreId <String> [-AllSubscription]
  [-Claim <String>] [-CollectionName <String>] [-Enabled] [-SubscriptionsList <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Set-AzMarketplacePrivateStoreCollection -CollectionId <String> -PrivateStoreId <String> -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Set-AzMarketplacePrivateStoreCollection -CollectionId <String> -PrivateStoreId <String> -JsonString <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update private store collection
+Update private store collection
 
 ## EXAMPLES
 
@@ -112,7 +112,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -186,21 +187,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionsList
 Gets or sets subscription ids list.
 Empty list indicates all subscriptions are selected, null indicates no update is done, explicit list indicates the explicit selected subscriptions.
@@ -256,10 +242,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollection
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

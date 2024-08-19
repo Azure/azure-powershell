@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.TimeSeriesInsights-help.xml
 Module Name: Az.TimeSeriesInsights
 online version: https://learn.microsoft.com/powershell/module/az.timeseriesinsights/update-aztimeseriesinsightseventsource
 schema: 2.0.0
@@ -15,14 +15,14 @@ Updates the event source with the specified name in the specified subscription, 
 ### UpdateExpanded (Default)
 ```
 Update-AzTimeSeriesInsightsEventSource -EnvironmentName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzTimeSeriesInsightsEventSource -InputObject <ITimeSeriesInsightsIdentity> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,6 +34,7 @@ Updates the event source with the specified name in the specified subscription, 
 ```powershell
 Update-AzTimeSeriesInsightsEventSource -EnvironmentName tsitest001 -Name iots001 -ResourceGroupName testgroup -Tag @{"tgk"="001"}
 ```
+
 ```output
 ConsumerGroupName     : testgroup2
 EventSourceResourceId : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup2/providers/Microsoft.Devices/IotHubs/iotname001
@@ -55,6 +56,7 @@ This command updates a specific event source.
 $es = Get-AzTimeSeriesInsightsEventSource -EnvironmentName tsitest001 -ResourceGroupName testgroup -Name iots001
 Update-AzTimeSeriesInsightsEventSource -InputObject $es -Tag @{"tgb"="002"}
 ```
+
 ```output
 ConsumerGroupName     : testgroup2
 EventSourceResourceId : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup2/providers/Microsoft.Devices/IotHubs/iotname001
@@ -74,7 +76,8 @@ This command updates a specific event source.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -223,21 +226,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<ITimeSeriesInsightsIdentity>`: Identity Parameter
-  - `[AccessPolicyName <String>]`: Name of the access policy.
-  - `[EnvironmentName <String>]`: Name of the environment
-  - `[EventSourceName <String>]`: The name of the Time Series Insights event source associated with the specified environment.
-  - `[Id <String>]`: Resource identity path
-  - `[ReferenceDataSetName <String>]`: Name of the reference data set.
-  - `[ResourceGroupName <String>]`: Name of an Azure Resource group.
-  - `[SubscriptionId <String>]`: Azure Subscription ID.
-
 ## RELATED LINKS
-

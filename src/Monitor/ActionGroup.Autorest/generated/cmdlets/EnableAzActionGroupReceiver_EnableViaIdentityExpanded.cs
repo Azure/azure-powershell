@@ -150,16 +150,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
         public string ReceiverName { get => _enableRequestBody.ReceiverName ?? null; set => _enableRequestBody.ReceiverName = value; }
 
         /// <summary>
-        /// <c>overrideOnConflict</c> will be called before the regular onConflict has been processed, allowing customization of what
-        /// happens on that response. Implement this method in a partial class to enable this behavior
-        /// </summary>
-        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="returnNow">/// Determines if the rest of the onConflict method should be processed, or if the method should
-        /// return immediately (set to true to skip further processing )</param>
-
-        partial void overrideOnConflict(global::System.Net.Http.HttpResponseMessage responseMessage, ref global::System.Threading.Tasks.Task<bool> returnNow);
-
-        /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
@@ -214,6 +204,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
             {
                 // Flush buffer
                 WriteObject(_firstResponse);
+            }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
             }
         }
 
@@ -358,7 +366,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.ActionGroupsEnableReceiverViaIdentity(InputObject.Id, _enableRequestBody, onOk, onConflict, onDefault, this, Pipeline);
+                        await this.Client.ActionGroupsEnableReceiverViaIdentity(InputObject.Id, _enableRequestBody, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -375,7 +383,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ActionGroupName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.ActionGroupsEnableReceiver(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ActionGroupName ?? null, _enableRequestBody, onOk, onConflict, onDefault, this, Pipeline);
+                        await this.Client.ActionGroupsEnableReceiver(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ActionGroupName ?? null, _enableRequestBody, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -400,28 +408,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
             base.StopProcessing();
         }
 
-        /// <summary>a delegate that is called when the remote service returns 409 (Conflict).</summary>
-        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
-        /// </returns>
-        private async global::System.Threading.Tasks.Task onConflict(global::System.Net.Http.HttpResponseMessage responseMessage)
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
         {
-            using( NoSynchronizationContext )
-            {
-                var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
-                overrideOnConflict(responseMessage, ref _returnNow);
-                // if overrideOnConflict has returned true, then return right away.
-                if ((null != _returnNow && await _returnNow))
-                {
-                    return ;
-                }
-                // onConflict - response for 409 /
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
-                {
-                    WriteObject(true);
-                }
-            }
+            Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

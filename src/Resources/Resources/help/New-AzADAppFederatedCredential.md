@@ -15,7 +15,7 @@ Create federatedIdentityCredential for applications.
 ```
 New-AzADAppFederatedCredential -ApplicationObjectId <String> -Audience <String[]> -Issuer <String>
  -Name <String> -Subject <String> [-AdditionalProperties <Hashtable>] [-Description <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 Lists the audiences that can appear in the external token.
 This field is mandatory, and defaults to 'api://AzureADTokenExchange'.
 It says what Microsoft identity platform should accept in the aud claim in the incoming token.
-This value represents Microsoft Entra ID in your external identity provider and has no fixed value across identity providers - you may need to create a new application registration in your identity provider to serve as the audience of this token.
+This value represents Azure AD in your external identity provider and has no fixed value across identity providers - you may need to create a new application registration in your identity provider to serve as the audience of this token.
 Required.
 
 ```yaml
@@ -148,11 +148,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Subject
 Required.
 The identifier of the external software workload within the external identity provider.
 Like the audience value, it has no fixed format, as each identity provider uses their own - sometimes a GUID, sometimes a colon delimited identifier, sometimes arbitrary strings.
-The value here must match the sub claim within the token presented to Microsoft Entra ID.
+The value here must match the sub claim within the token presented to Azure AD.
 The combination of issuer and subject must be unique on the app.
 Supports $filter (eq).
 

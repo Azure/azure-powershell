@@ -25,7 +25,7 @@ New-AzADUser -DisplayName <String> -MailNickname <String> -UserPrincipalName <St
  [-PreferredLanguage <String>] [-PreferredName <String>] [-Responsibility <String[]>] [-School <String[]>]
  [-ShowInAddressList] [-Skill <String[]>] [-State <String>] [-StreetAddress <String>] [-Surname <String>]
  [-UsageLocation <String>] [-UserType <String>] [-ForceChangePasswordNextLogin] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### WithPasswordProfile
@@ -41,7 +41,7 @@ New-AzADUser -DisplayName <String> -MailNickname <String> -UserPrincipalName <St
  [-PreferredLanguage <String>] [-PreferredName <String>] [-Responsibility <String[]>] [-School <String[]>]
  [-ShowInAddressList] [-Skill <String[]>] [-State <String>] [-StreetAddress <String>] [-Surname <String>]
  [-UsageLocation <String>] [-UserType <String>] -PasswordProfile <IMicrosoftGraphPasswordProfile>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,8 +60,7 @@ Create user with password profile
 
 ### Example 2: Create user with password
 ```powershell
-$password = "xxxxxxxxxx"
-$password = ConvertTo-SecureString -AsPlainText -Force $password
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzADUser -DisplayName $uname -Password $password -AccountEnabled $true -MailNickname $nickname -UserPrincipalName $upn
 ```
 
@@ -437,7 +436,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImmutableId
-This property is used to associate an on-premises Active Directory user account to their Microsoft Entra user object.
+This property is used to associate an on-premises Active Directory user account to their Azure AD user object.
 This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user's userPrincipalName (UPN) property.
 NOTE: The $ and _ characters cannot be used when specifying this property.
 Returned only on $select.
@@ -699,6 +698,21 @@ Returned only on $select.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

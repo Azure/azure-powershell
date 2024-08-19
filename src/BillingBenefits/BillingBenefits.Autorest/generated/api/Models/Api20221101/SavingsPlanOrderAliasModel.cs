@@ -11,8 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
     public partial class SavingsPlanOrderAliasModel :
         Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanOrderAliasModel,
         Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanOrderAliasModelInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.IValidates,
-        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.IHeaderSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.IValidates
     {
         /// <summary>
         /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api30.IResource"
@@ -51,13 +50,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.FormatTable(Index = 13)]
         public Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType? AppliedScopeType { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanOrderAliasPropertiesInternal)Property).AppliedScopeType; set => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanOrderAliasPropertiesInternal)Property).AppliedScopeType = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType)""); }
-
-        /// <summary>Backing field for <see cref="AzureAsyncOperation" /> property.</summary>
-        private string _azureAsyncOperation;
-
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Owned)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
-        public string AzureAsyncOperation { get => this._azureAsyncOperation; set => this._azureAsyncOperation = value; }
 
         /// <summary>
         /// Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
@@ -160,13 +152,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
 
-        /// <summary>Backing field for <see cref="RetryAfter" /> property.</summary>
-        private int? _retryAfter;
-
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Owned)]
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.DoNotFormat]
-        public int? RetryAfter { get => this._retryAfter; set => this._retryAfter = value; }
-
         /// <summary>Identifier of the savings plan created</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.FormatTable(Index = 8)]
@@ -233,19 +218,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Origin(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.FormatTable(Index = 3)]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api30.IResourceInternal)__resource).Type; }
-
-        /// <param name="headers"></param>
-        void Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.IHeaderSerializable.ReadHeaders(global::System.Net.Http.Headers.HttpResponseHeaders headers)
-        {
-            if (headers.TryGetValues("Azure-AsyncOperation", out var __azureAsyncOperationHeader0))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanOrderAliasModelInternal)this).AzureAsyncOperation = System.Linq.Enumerable.FirstOrDefault(__azureAsyncOperationHeader0) is string __headerAzureAsyncOperationHeader0 ? __headerAzureAsyncOperationHeader0 : (string)null;
-            }
-            if (headers.TryGetValues("Retry-After", out var __retryAfterHeader1))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanOrderAliasModelInternal)this).RetryAfter = System.Linq.Enumerable.FirstOrDefault(__retryAfterHeader1) is string __headerRetryAfterHeader1 ? int.TryParse( __headerRetryAfterHeader1, out int __headerRetryAfterHeader1Value ) ? __headerRetryAfterHeader1Value : default(int?) : default(int?);
-            }
-        }
 
         /// <summary>Creates an new <see cref="SavingsPlanOrderAliasModel" /> instance.</summary>
         public SavingsPlanOrderAliasModel()
@@ -320,14 +292,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         SerializedName = @"appliedScopeType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType) })]
         Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType? AppliedScopeType { get; set; }
-
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"",
-        SerializedName = @"Azure-AsyncOperation",
-        PossibleTypes = new [] { typeof(string) })]
-        string AzureAsyncOperation { get; set; }
         /// <summary>
         /// Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
         /// </summary>
@@ -396,14 +360,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.ProvisioningState) })]
         Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.ProvisioningState? ProvisioningState { get;  }
-
-        [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"",
-        SerializedName = @"Retry-After",
-        PossibleTypes = new [] { typeof(int) })]
-        int? RetryAfter { get; set; }
         /// <summary>Identifier of the savings plan created</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Info(
         Required = false,
@@ -450,8 +406,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         string AppliedScopePropertyTenantId { get; set; }
         /// <summary>Type of the Applied Scope.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType? AppliedScopeType { get; set; }
-
-        string AzureAsyncOperation { get; set; }
         /// <summary>
         /// Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
         /// </summary>
@@ -476,8 +430,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
         Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanOrderAliasProperties Property { get; set; }
         /// <summary>Provisioning state</summary>
         Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.ProvisioningState? ProvisioningState { get; set; }
-
-        int? RetryAfter { get; set; }
         /// <summary>Identifier of the savings plan created</summary>
         string SavingsPlanOrderId { get; set; }
         /// <summary>Savings plan SKU</summary>

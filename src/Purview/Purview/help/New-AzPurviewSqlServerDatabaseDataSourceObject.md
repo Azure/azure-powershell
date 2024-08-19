@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewSqlServerDatabaseDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewSqlServerDatabaseDataSourceObject
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Create an in-memory object for SqlServerDatabaseDataSource.
 ```
 New-AzPurviewSqlServerDatabaseDataSourceObject -Kind <DataSourceType> [-CollectionReferenceName <String>]
  [-CollectionType <String>] [-Location <String>] [-ResourceGroup <String>] [-ResourceName <String>]
- [-ServerEndpoint <String>] [-SubscriptionId <String>] [<CommonParameters>]
+ [-ServerEndpoint <String>] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -171,7 +172,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SqlServerDatabaseDataSource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

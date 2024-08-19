@@ -14,5 +14,6 @@ namespace Microsoft.Azure.Management.Storage.Models
     public static class ExpirationAction
     {
         public const string Log = "Log";
+        public const string Block = "Block";
     }
 }

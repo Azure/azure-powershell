@@ -15,7 +15,8 @@ Gets the Autoscale history.
 
 ```
 Get-AzAutoscaleHistory [-ResourceId <String>] [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>]
- [-Caller <String>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Caller <String>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +40,7 @@ Get-AzAutoscaleHistory -StartTime 2015-02-09T18:35:00 -EndTime 2015-02-09T18:40:
 Authorization        : 
 Caller               : Microsoft.Insights/autoscaleSettings
 Claims               :  http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn: Microsoft.Insights/autoscaleSettings
-CorrelationId        : ac5b03ca-05d4-4811-9c27-0314a145f785
+CorrelationId        : 00001111-aaaa-2222-bbbb-3333cccc4444
 Description          : The autoscale engine attempting to scale resource '/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deb
                        a10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm'
                        from 1 instances count to 2 instances count. 
@@ -52,7 +53,7 @@ Id                   : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resou
                        Microsoft.Insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS/events/c554f7ed-514c-4
                        49c-9338-13e15b4b56a3/ticks/635591326997519815
 Level                : Informational
-OperationId          : ac5b03ca-05d4-4811-9c27-0314a145f785
+OperationId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 OperationName        : ScaleUp
 Properties           : 
 Description    : The autoscale engine attempting to scale resource '/subscriptions/a93fb07c-6c93
@@ -308,5 +309,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzAutoscaleSetting](./Get-AzAutoscaleSetting.md)
 
 [Remove-AzAutoscaleSetting](./Remove-AzAutoscaleSetting.md)
-
-

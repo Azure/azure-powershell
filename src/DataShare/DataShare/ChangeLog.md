@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 1.0.2
+* Removed the outdated deps.json file.
+
 ## Version 1.0.1
 * Added breaking change warning message due to update API version.
 

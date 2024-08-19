@@ -101,7 +101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 return;
             }
-            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.VolumeUpdateProperties.FromJson(__jsonProperties) : Property;}
+            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.VolumeUpdateProperties.FromJson(__jsonProperties) : _property;}
             AfterFromJson(json);
         }
     }

@@ -16,14 +16,16 @@ Deploys an Azure Web App from a ZIP, JAR, or WAR file using zipdeploy.
 ```
 Publish-AzWebApp -ArchivePath <String> [-Type <String>] [-Clean] [-Async] [-Restart] [-TargetPath <String>]
  [-IgnoreStack] [-Reset] [-Force] [-AsJob] [-Timeout <Double>] [-WebApp] <PSSite>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### FromResourceName
 ```
 Publish-AzWebApp -ArchivePath <String> [-Type <String>] [-Clean] [-Async] [-Restart] [-TargetPath <String>]
  [-IgnoreStack] [-Reset] [-Force] [-AsJob] [-Timeout <Double>] [-ResourceGroupName] <String> [-Name] <String>
- [[-Slot] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-Slot] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

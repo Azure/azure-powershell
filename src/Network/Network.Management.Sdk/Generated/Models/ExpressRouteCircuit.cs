@@ -96,7 +96,10 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="authorizationStatus">The authorization status of the Circuit.
         /// </param>
-        public ExpressRouteCircuit(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExpressRouteCircuitSku sku = default(ExpressRouteCircuitSku), string etag = default(string), string provisioningState = default(string), bool? allowClassicOperations = default(bool?), string circuitProvisioningState = default(string), string serviceProviderProvisioningState = default(string), System.Collections.Generic.IList<ExpressRouteCircuitAuthorization> authorizations = default(System.Collections.Generic.IList<ExpressRouteCircuitAuthorization>), System.Collections.Generic.IList<ExpressRouteCircuitPeering> peerings = default(System.Collections.Generic.IList<ExpressRouteCircuitPeering>), string serviceKey = default(string), string serviceProviderNotes = default(string), ExpressRouteCircuitServiceProviderProperties serviceProviderProperties = default(ExpressRouteCircuitServiceProviderProperties), SubResource expressRoutePort = default(SubResource), double? bandwidthInGbps = default(double?), int? stag = default(int?), string gatewayManagerEtag = default(string), bool? globalReachEnabled = default(bool?), string authorizationKey = default(string), string authorizationStatus = default(string))
+
+        /// <param name="enableDirectPortRateLimit">Flag denoting rate-limiting status of the ExpressRoute direct-port circuit.
+        /// </param>
+        public ExpressRouteCircuit(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExpressRouteCircuitSku sku = default(ExpressRouteCircuitSku), string etag = default(string), string provisioningState = default(string), bool? allowClassicOperations = default(bool?), string circuitProvisioningState = default(string), string serviceProviderProvisioningState = default(string), System.Collections.Generic.IList<ExpressRouteCircuitAuthorization> authorizations = default(System.Collections.Generic.IList<ExpressRouteCircuitAuthorization>), System.Collections.Generic.IList<ExpressRouteCircuitPeering> peerings = default(System.Collections.Generic.IList<ExpressRouteCircuitPeering>), string serviceKey = default(string), string serviceProviderNotes = default(string), ExpressRouteCircuitServiceProviderProperties serviceProviderProperties = default(ExpressRouteCircuitServiceProviderProperties), SubResource expressRoutePort = default(SubResource), double? bandwidthInGbps = default(double?), int? stag = default(int?), string gatewayManagerEtag = default(string), bool? globalReachEnabled = default(bool?), string authorizationKey = default(string), string authorizationStatus = default(string), bool? enableDirectPortRateLimit = default(bool?))
 
         : base(id, name, type, location, tags)
         {
@@ -118,6 +121,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.GlobalReachEnabled = globalReachEnabled;
             this.AuthorizationKey = authorizationKey;
             this.AuthorizationStatus = authorizationStatus;
+            this.EnableDirectPortRateLimit = enableDirectPortRateLimit;
             CustomInit();
         }
 
@@ -238,5 +242,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.authorizationStatus")]
         public string AuthorizationStatus {get; private set; }
+
+        /// <summary>
+        /// Gets or sets flag denoting rate-limiting status of the ExpressRoute
+        /// direct-port circuit.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableDirectPortRateLimit")]
+        public bool? EnableDirectPortRateLimit {get; set; }
     }
 }

@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.RedisCache
 
 
         /// <summary>
-        /// Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+        /// The ID of the target subscription.
         /// </summary>
         string SubscriptionId { get; set;}
 
@@ -55,15 +55,15 @@ namespace Microsoft.Azure.Management.RedisCache
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         int? LongRunningOperationRetryTimeout { get; set;}
 
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         bool? GenerateClientRequestId { get; set;}
 
@@ -107,6 +107,16 @@ namespace Microsoft.Azure.Management.RedisCache
         /// Gets the IAsyncOperationStatusOperations
         /// </summary>
         IAsyncOperationStatusOperations AsyncOperationStatus { get; }
+
+        /// <summary>
+        /// Gets the IAccessPolicyOperations
+        /// </summary>
+        IAccessPolicyOperations AccessPolicy { get; }
+
+        /// <summary>
+        /// Gets the IAccessPolicyAssignmentOperations
+        /// </summary>
+        IAccessPolicyAssignmentOperations AccessPolicyAssignment { get; }
 
     }
 }

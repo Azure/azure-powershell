@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Creates a cluster.</summary>
+    /// <summary>Create a cluster.</summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}/clusters/{clusterName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzHdInsightOnAksCluster_CreateViaIdentityClusterpool", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Description(@"Creates a cluster.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Description(@"Create a cluster.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}/clusters/{clusterName}", ApiVersion = "2023-06-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}/clusters/{clusterName}", ApiVersion = "2024-05-01-preview")]
     public partial class NewAzHdInsightOnAksCluster_CreateViaIdentityClusterpool : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IContext
@@ -238,6 +238,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
             {
                 // Flush buffer
                 WriteObject(_firstResponse);
+            }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
             }
         }
 
@@ -477,6 +495,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

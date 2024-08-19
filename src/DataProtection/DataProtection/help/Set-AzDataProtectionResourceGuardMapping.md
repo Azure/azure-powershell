@@ -14,8 +14,8 @@ Creates or Updates a ResourceGuardProxy
 
 ```
 Set-AzDataProtectionResourceGuardMapping -ResourceGroupName <String> -VaultName <String>
- [-SubscriptionId <String>] [-ResourceGuardId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-ResourceGuardId <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,8 +37,8 @@ LastUpdatedTime              : 2023-08-29T07:23:05.1111730Z
 Name                         : DppResourceGuardProxy
 ResourceGuardId              : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/hiaga-rg/providers/Microsoft.DataProtection/resourceGuard
                                s/mua-pstest-resguard
-ResourceGuardOperationDetail : {Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.ResourceGuardOperationDetail,
-                               Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.ResourceGuardOperationDetail}
+ResourceGuardOperationDetail : {Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ResourceGuardOperationDetail,
+                               Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ResourceGuardOperationDetail}
 SystemData                   : Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api40.SystemData
 Type                         : Microsoft.DataProtection/vaults/backupResourceGuardProxies
 ```
@@ -164,19 +164,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IResourceGuardProxyBaseResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IResourceGuardProxyBaseResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`RESOURCEGUARDOPERATIONDETAIL <IResourceGuardOperationDetail[]>`: .
-  - `[DefaultResourceRequest <String>]`: 
-  - `[VaultCriticalOperation <String>]`: 
 
 ## RELATED LINKS

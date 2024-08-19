@@ -101,6 +101,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
+    /// Snapshot consistency type. possible values: "OnlyCrashConsistent"
+    /// </summary>
+    public enum SnapshotConsistencyType
+    {
+        Default = 1,
+        OnlyCrashConsistent
+    }
+
+    /// <summary>
     /// Tier mode for automatic tiering of Recovery points
     /// </summary>
     public enum TieringMode
@@ -388,7 +397,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// update the customer managed key
         /// </summary>
-        UpdateCustomerManagedKey
+        UpdateCustomerManagedKey,
+
+        /// <summary>
+        /// cross region restore
+        /// </summary>
+        CrossRegionRestore
     }
 
     /// <summary>

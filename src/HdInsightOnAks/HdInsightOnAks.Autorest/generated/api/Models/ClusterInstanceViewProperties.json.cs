@@ -65,8 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("status"), out var __jsonStatus) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterInstanceViewPropertiesStatus.FromJson(__jsonStatus) : Status;}
-            {_serviceStatuses = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray>("serviceStatuses"), out var __jsonServiceStatuses) ? If( __jsonServiceStatuses as Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IServiceStatus>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IServiceStatus) (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ServiceStatus.FromJson(__u) )) ))() : null : ServiceStatuses;}
+            {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("status"), out var __jsonStatus) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterInstanceViewPropertiesStatus.FromJson(__jsonStatus) : _status;}
+            {_serviceStatuses = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray>("serviceStatuses"), out var __jsonServiceStatuses) ? If( __jsonServiceStatuses as Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IServiceStatus>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IServiceStatus) (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ServiceStatus.FromJson(__u) )) ))() : null : _serviceStatuses;}
             AfterFromJson(json);
         }
 

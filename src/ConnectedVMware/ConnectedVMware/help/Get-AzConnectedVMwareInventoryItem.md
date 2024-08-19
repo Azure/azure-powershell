@@ -15,32 +15,25 @@ Implements InventoryItem GET method.
 ### List (Default)
 ```
 Get-AzConnectedVMwareInventoryItem -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -VcenterName <String> [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ -VcenterName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityVcenter
 ```
 Get-AzConnectedVMwareInventoryItem -Name <String> -VcenterInputObject <IConnectedVMwareIdentity>
- [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzConnectedVMwareInventoryItem -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -VcenterName <String> [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ -VcenterName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzConnectedVMwareInventoryItem -InputObject <IConnectedVMwareIdentity> [-DefaultProfile <PSObject>]
- [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,32 +41,62 @@ Implements InventoryItem GET method.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: List Inventory Items in a resource group of a vcenter
+```powershell
 Get-AzConnectedVMwareInventoryItem -ResourceGroupName "test-rg" -VcenterName "test-vc"
 ```
 
-### EXAMPLE 2
+```output
+Name                SystemDataCreatedAt   SystemDataCreatedBy                  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy             SystemDataLastModifiedByType Kind                   ResourceGroupName
+----                -------------------   -------------------                  ----------------------- ------------------------ ------------------------             ---------------------------- ----                   -----------------
+resgroup-713957     2/16/2023 3:54:14 PM  ac9dc5fe-b644-4832-9d03-d9f1ab70c5f7 Application             8/1/2023 5:27:42 AM      ac9dc5fe-b644-4832-9d03-d9f1ab70c5f7 Application                  ResourcePool           test-rg
+resgroup-754929     2/16/2023 3:54:14 PM  ac9dc5fe-b644-4832-9d03-d9f1ab70c5f7 Application             8/1/2023 5:27:44 AM      ac9dc5fe-b644-4832-9d03-d9f1ab70c5f7 Application                  ResourcePool           test-rg
+dvportgroup-1153526 2/16/2023 3:54:17 PM  ac9dc5fe-b644-4832-9d03-d9f1ab70c5f7 Application             8/1/2023 5:26:11 AM      ac9dc5fe-b644-4832-9d03-d9f1ab70c5f7 Application                  VirtualNetwork         test-rg
+host-713958         2/16/2023 3:54:17 PM  ac9dc5fe-b644-4832-9d03-d9f1ab70c5f7 Application             8/1/2023 5:26:32 AM      ac9dc5fe-b644-4832-9d03-d9f1ab70c5f7 Application                  Host                   test-rg
+vmtpl-vm-1085854    2/16/2023 3:54:17 PM  ac9dc5fe-b644-4832-9d03-d9f1ab70c5f7 Application             8/1/2023 5:29:46 AM      ac9dc5fe-b644-4832-9d03-d9f1ab70c5f7 Application                  VirtualMachineTemplate test-rg
+datastore-563660    2/16/2023 3:54:17 PM  ac9dc5fe-b644-4832-9d03-d9f1ab70c5f7 Application             10/5/2023 5:15:03 PM     ac9dc5fe-b644-4832-9d03-d9f1ab70c5f7 Application                  Datastore              test-rg
 ```
+
+This command list all the inventory items of vcenter `test-vc` in a resource group named `test-rg`.
+
+### Example 2: Get a specific Inventory Item
+```powershell
 Get-AzConnectedVMwareInventoryItem -Name "vm-1528708" -VcenterName "test-vc" -ResourceGroupName "test-rg"
 ```
 
-## PARAMETERS
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+```output
+Id                           : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/test-vc/InventoryItems/vm-1528708
+InventoryType                : VirtualMachine
+Kind                         : VirtualMachine
+ManagedResourceId            :
+MoName                       : ArcVMwareTest-VM-e976dc7c
+MoRefId                      : vm-1528708
+Name                         : vm-1528708
+Property                     : {
+                                 "inventoryType": "VirtualMachine",
+                                 "managedResourceId": "",
+                                 "moRefId": "vm-1528708",
+                                 "moName": "ArcVMwareTest-VM-e976dc7c",
+                                 "provisioningState": "Succeeded",
+                                 "osType": "Other",
+                                 "ipAddresses": [ ],
+                                 "folderPath": "ArcPrivateClouds-67",
+                                 "powerState": "poweredOff"
+                               }
+ProvisioningState            : Succeeded
+ResourceGroupName            : test-rg
+SystemDataCreatedAt          : 10/5/2023 7:16:13 PM
+SystemDataCreatedBy          : ac9dc5fe-b644-4832-9d03-d9f1ab70c5f7
+SystemDataCreatedByType      : Application
+SystemDataLastModifiedAt     : 10/5/2023 7:16:13 PM
+SystemDataLastModifiedBy     : ac9dc5fe-b644-4832-9d03-d9f1ab70c5f7
+SystemDataLastModifiedByType : Application
+Type                         : microsoft.connectedvmwarevsphere/vcenters/inventoryitems
 ```
+
+This command gets a Inventory Item named `vm-1528708` in a resource group named `test-rg`.
+
+## PARAMETERS
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -91,39 +114,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
@@ -148,51 +140,6 @@ Aliases: InventoryItemName
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -222,14 +169,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -VcenterInputObject
 Identity Parameter
-To construct, see NOTES section for VCENTERINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
@@ -264,44 +210,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItem
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IConnectedVMwareIdentity\>: Identity Parameter
-  \[ClusterName \<String\>\]: Name of the cluster.
-  \[DatastoreName \<String\>\]: Name of the datastore.
-  \[HostName \<String\>\]: Name of the host.
-  \[Id \<String\>\]: Resource identity path
-  \[InventoryItemName \<String\>\]: Name of the inventoryItem.
-  \[ResourceGroupName \<String\>\]: The Resource Group Name.
-  \[ResourcePoolName \<String\>\]: Name of the resourcePool.
-  \[ResourceUri \<String\>\]: The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
-  \[SubscriptionId \<String\>\]: The Subscription ID.
-  \[VcenterName \<String\>\]: Name of the vCenter.
-  \[VirtualMachineTemplateName \<String\>\]: Name of the virtual machine template resource.
-  \[VirtualNetworkName \<String\>\]: Name of the virtual network resource.
-
-VCENTERINPUTOBJECT \<IConnectedVMwareIdentity\>: Identity Parameter
-  \[ClusterName \<String\>\]: Name of the cluster.
-  \[DatastoreName \<String\>\]: Name of the datastore.
-  \[HostName \<String\>\]: Name of the host.
-  \[Id \<String\>\]: Resource identity path
-  \[InventoryItemName \<String\>\]: Name of the inventoryItem.
-  \[ResourceGroupName \<String\>\]: The Resource Group Name.
-  \[ResourcePoolName \<String\>\]: Name of the resourcePool.
-  \[ResourceUri \<String\>\]: The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
-  \[SubscriptionId \<String\>\]: The Subscription ID.
-  \[VcenterName \<String\>\]: Name of the vCenter.
-  \[VirtualMachineTemplateName \<String\>\]: Name of the virtual machine template resource.
-  \[VirtualNetworkName \<String\>\]: Name of the virtual network resource.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.connectedvmware/get-azconnectedvmwareinventoryitem](https://learn.microsoft.com/powershell/module/az.connectedvmware/get-azconnectedvmwareinventoryitem)
-

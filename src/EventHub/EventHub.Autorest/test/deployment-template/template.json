@@ -2,12 +2,28 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "location": {
+      "defaultValue": "[resourceGroup().location]",
+      "type": "string"
+    },
+    "secondaryLocation": {
+      "defaultValue": "southcentralus",
+      "type": "string"
+    },
     "namespace_name": {
       "defaultValue": "AutomatedPSTesting",
       "type": "String"
     },
     "system_assigned_namespace_name": {
       "defaultValue": "AutomatedPSTesting",
+      "type": "String"
+    },
+    "primary_namespace_name": {
+      "defaultValue": "AutomatedPSTesting",
+      "type": "String"
+    },
+    "secondary_namespace_name": {
+      "defaultValue": "testnamespace",
       "type": "String"
     },
     "namespace_auth_rule_name": {
@@ -34,6 +50,10 @@
       "defaultValue": "id",
       "type": "String"
     },
+    "subnet1Id": {
+      "defaultValue": "/",
+      "type": "string"
+    },
     "peName1": {
       "defaultValue": "pe1",
       "type": "String"
@@ -41,23 +61,21 @@
     "peName2": {
       "defaultValue": "pe2",
       "type": "String"
+    },
+    "useZoneRedundancy": {
+      "defaultValue": true,
+      "type": "bool"
     }
   },
   "variables": {
-    "appGroupResourceName": "[concat(parameters('namespace_name'), '/', parameters('appgroup_name'))]",
-    "eventHubResourceName": "[concat(parameters('namespace_name'), '/', parameters('eventhub_name'))]",
-    "authRuleResourceName": "[concat(parameters('namespace_name'), '/', parameters('namespace_auth_rule_name'))]",
-    "eventHubAuthRuleResourceName": "[concat(parameters('namespace_name'), '/', parameters('eventhub_name'), '/', parameters('eventhub_auth_rule_name'))]",
-    "schemaGroupResourceName": "[concat(parameters('namespace_name'), '/', parameters('schema_group_name'))]",
-    "rootAuthRuleResourceName": "[concat(parameters('namespace_name'), '/RootManageSharedAccessKey')]",
-    "consumerGroupResourceName": "[concat(parameters('namespace_name'), '/', parameters('eventhub_name'),'/$Default')]"
+    "deploySecondaryNamespace": "[not(empty(parameters('secondaryLocation')))]"
   },
   "resources": [
     {
       "type": "Microsoft.EventHub/namespaces",
       "apiVersion": "2022-01-01-preview",
       "name": "[parameters('namespace_name')]",
-      "location": "eastus",
+      "location": "[parameters('location')]",
       "sku": {
         "name": "Premium",
         "tier": "Premium",
@@ -67,7 +85,7 @@
         "minimumTlsVersion": "1.2",
         "publicNetworkAccess": "Enabled",
         "disableLocalAuth": false,
-        "zoneRedundant": true,
+        "zoneRedundant": "[parameters('useZoneRedundancy')]",
         "isAutoInflateEnabled": false,
         "maximumThroughputUnits": 0,
         "kafkaEnabled": true
@@ -77,7 +95,7 @@
       "type": "Microsoft.EventHub/namespaces",
       "apiVersion": "2022-01-01-preview",
       "name": "[parameters('system_assigned_namespace_name')]",
-      "location": "eastus",
+      "location": "[parameters('location')]",
       "sku": {
         "name": "Premium",
         "tier": "Premium",
@@ -90,7 +108,7 @@
         "minimumTlsVersion": "1.2",
         "publicNetworkAccess": "Enabled",
         "disableLocalAuth": false,
-        "zoneRedundant": true,
+        "zoneRedundant": "[parameters('useZoneRedundancy')]",
         "isAutoInflateEnabled": false,
         "maximumThroughputUnits": 0,
         "kafkaEnabled": true
@@ -99,8 +117,8 @@
     {
       "type": "Microsoft.EventHub/namespaces/applicationGroups",
       "apiVersion": "2022-01-01-preview",
-      "name": "[variables('appGroupResourceName')]",
-      "location": "eastus",
+      "name": "[concat(parameters('namespace_name'), '/', parameters('appgroup_name'))]",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
       ],
@@ -120,8 +138,8 @@
     {
       "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
       "apiVersion": "2022-01-01-preview",
-      "name": "[variables('authRuleResourceName')]",
-      "location": "eastus",
+      "name": "[concat(parameters('namespace_name'), '/', parameters('namespace_auth_rule_name'))]",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]",
         "[resourceId('Microsoft.EventHub/namespaces/AuthorizationRules', parameters('namespace_name'), 'RootManageSharedAccessKey')]"
@@ -137,8 +155,8 @@
     {
       "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
       "apiVersion": "2022-01-01-preview",
-      "name": "[variables('rootAuthRuleResourceName')]",
-      "location": "eastus",
+      "name": "[concat(parameters('namespace_name'), '/RootManageSharedAccessKey')]",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
       ],
@@ -153,15 +171,15 @@
     {
       "type": "Microsoft.EventHub/namespaces/eventhubs",
       "apiVersion": "2022-10-01-preview",
-      "name": "[variables('eventHubResourceName')]",
-      "location": "eastus",
+      "name": "[concat(parameters('namespace_name'), '/', parameters('eventhub_name'))]",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
       ],
       "properties": {
         "retentionDescription": {
           "cleanupPolicy": "Delete",
-          "retentionTimeInHours":  24
+          "retentionTimeInHours": 24
         },
         "partitionCount": 1,
         "status": "Active"
@@ -170,8 +188,8 @@
     {
       "type": "Microsoft.EventHub/namespaces/schemagroups",
       "apiVersion": "2022-01-01-preview",
-      "name": "[variables('schemaGroupResourceName')]",
-      "location": "eastus",
+      "name": "[concat(parameters('namespace_name'), '/', parameters('schema_group_name'))]",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
       ],
@@ -184,8 +202,8 @@
     {
       "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationrules",
       "apiVersion": "2022-01-01-preview",
-      "name": "[variables('eventHubAuthRuleResourceName')]",
-      "location": "eastus",
+      "name": "[concat(parameters('namespace_name'), '/', parameters('eventhub_name'), '/', parameters('eventhub_auth_rule_name'))]",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespace_name'), parameters('eventhub_name'))]",
         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
@@ -202,7 +220,7 @@
       "type": "Microsoft.Network/privateEndpoints",
       "apiVersion": "2020-11-01",
       "name": "[parameters('peName1')]",
-      "location": "eastus",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
       ],
@@ -224,7 +242,7 @@
           }
         ],
         "subnet": {
-          "id": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.Network/virtualNetworks/testpsvn/subnets/default"
+          "id": "[parameters('subnet1Id')]"
         }
       }
     },
@@ -232,7 +250,7 @@
       "type": "Microsoft.Network/privateEndpoints",
       "apiVersion": "2020-11-01",
       "name": "[parameters('peName2')]",
-      "location": "eastus",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
       ],
@@ -254,8 +272,82 @@
           }
         ],
         "subnet": {
-          "id": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.Network/virtualNetworks/testpsvn/subnets/default"
+          "id": "[parameters('subnet1Id')]"
         }
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[parameters('primary_namespace_name')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard",
+        "tier": "Standard",
+        "capacity": 1
+      },
+      "properties": {
+        "minimumTlsVersion": "1.2",
+        "publicNetworkAccess": "Enabled",
+        "disableLocalAuth": false,
+        "zoneRedundant": "[parameters('useZoneRedundancy')]",
+        "isAutoInflateEnabled": false,
+        "maximumThroughputUnits": 0,
+        "kafkaEnabled": true
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[concat(parameters('primary_namespace_name'), '/authRUle1')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('primary_namespace_name'))]",
+        "[resourceId('Microsoft.EventHub/namespaces/AuthorizationRules', parameters('primary_namespace_name'), 'RootManageSharedAccessKey')]"
+      ],
+      "properties": {
+        "rights": [
+          "Manage",
+          "Listen",
+          "Send"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[concat(parameters('primary_namespace_name'), '/RootManageSharedAccessKey')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('primary_namespace_name'))]"
+      ],
+      "properties": {
+        "rights": [
+          "Listen",
+          "Manage",
+          "Send"
+        ]
+      }
+    },
+    {
+      "condition": "[variables('deploySecondaryNamespace')]",
+      "type": "Microsoft.EventHub/namespaces",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[parameters('secondary_namespace_name')]",
+      "location": "[parameters('secondaryLocation')]",
+      "sku": {
+        "name": "Standard",
+        "tier": "Standard",
+        "capacity": 1
+      },
+      "properties": {
+        "minimumTlsVersion": "1.2",
+        "publicNetworkAccess": "Enabled",
+        "disableLocalAuth": false,
+        "zoneRedundant": "[parameters('useZoneRedundancy')]",
+        "isAutoInflateEnabled": false,
+        "maximumThroughputUnits": 0,
+        "kafkaEnabled": true
       }
     }
   ]

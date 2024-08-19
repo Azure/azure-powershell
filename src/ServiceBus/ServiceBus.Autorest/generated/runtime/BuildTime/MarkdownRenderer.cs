@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PowerShell
 {
     internal static class MarkdownRenderer
     {
-        public static void WriteMarkdowns(IEnumerable<VariantGroup> variantGroups, PsModuleHelpInfo moduleHelpInfo, string docsFolder, string examplesFolder)
+        public static void WriteMarkdowns(IEnumerable<VariantGroup> variantGroups, PsModuleHelpInfo moduleHelpInfo, string docsFolder, string examplesFolder, bool AddComplexInterfaceInfo = true)
         {
             Directory.CreateDirectory(docsFolder);
             var markdownInfos = variantGroups.Where(vg => !vg.IsInternal).Select(vg => new MarkdownHelpInfo(vg, examplesFolder)).OrderBy(mhi => mhi.CmdletName).ToArray();
@@ -69,24 +69,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PowerShell
                 }
 
                 sb.Append($"## NOTES{Environment.NewLine}{Environment.NewLine}");
-                sb.Append($"ALIASES{Environment.NewLine}{Environment.NewLine}");
+                if (markdownInfo.Aliases.Any())
+                {
+                    sb.Append($"ALIASES{Environment.NewLine}{Environment.NewLine}");
+                }
                 foreach (var alias in markdownInfo.Aliases)
                 {
                     sb.Append($"{alias}{Environment.NewLine}{Environment.NewLine}");
                 }
-                if (markdownInfo.ComplexInterfaceInfos.Any())
+
+                if (AddComplexInterfaceInfo)
                 {
-                    sb.Append($"{ComplexParameterHeader}{Environment.NewLine}");
-                }
-                foreach (var complexInterfaceInfo in markdownInfo.ComplexInterfaceInfos)
-                {
-                    sb.Append($"{complexInterfaceInfo.ToNoteOutput(includeDashes: true, includeBackticks: true)}{Environment.NewLine}{Environment.NewLine}");
+                    if (markdownInfo.ComplexInterfaceInfos.Any())
+                    {
+                        sb.Append($"{ComplexParameterHeader}{Environment.NewLine}");
+                    }
+                    foreach (var complexInterfaceInfo in markdownInfo.ComplexInterfaceInfos)
+                    {
+                        sb.Append($"{complexInterfaceInfo.ToNoteOutput(includeDashes: true, includeBackticks: true)}{Environment.NewLine}{Environment.NewLine}");
+                    }
+
                 }
 
                 sb.Append($"## RELATED LINKS{Environment.NewLine}{Environment.NewLine}");
                 foreach (var relatedLink in markdownInfo.RelatedLinks)
                 {
-                    sb.Append($"{relatedLink}{Environment.NewLine}{Environment.NewLine}");
+                    sb.Append($"[{relatedLink}]({relatedLink}){Environment.NewLine}{Environment.NewLine}");
                 }
 
                 File.WriteAllText(Path.Combine(docsFolder, $"{markdownInfo.CmdletName}.md"), sb.ToString());

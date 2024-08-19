@@ -8,21 +8,22 @@ schema: 2.0.0
 # New-AzVMwareCloudLink
 
 ## SYNOPSIS
-Create or update a cloud link in a private cloud
+Create a CloudLink
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzVMwareCloudLink -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-LinkedCloud <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-LinkedCloud <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityPrivateCloudExpanded
 ```
 New-AzVMwareCloudLink -Name <String> -PrivateCloudInputObject <IVMwareIdentity> [-LinkedCloud <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -32,7 +33,7 @@ New-AzVMwareCloudLink -InputObject <IVMwareIdentity> [-LinkedCloud <String>] [-D
 ```
 
 ## DESCRIPTION
-Create or update a cloud link in a private cloud
+Create a CloudLink
 
 ## EXAMPLES
 
@@ -67,7 +68,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -83,7 +85,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -113,7 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the cloud link resource
+Name of the cloud link.
 
 ```yaml
 Type: System.String
@@ -144,7 +145,6 @@ Accept wildcard characters: False
 
 ### -PrivateCloudInputObject
 Identity Parameter
-To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -159,7 +159,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateCloudName
-The name of the private cloud.
+Name of the private cloud
 
 ```yaml
 Type: System.String
@@ -191,6 +191,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -240,12 +241,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudLink
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLink
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

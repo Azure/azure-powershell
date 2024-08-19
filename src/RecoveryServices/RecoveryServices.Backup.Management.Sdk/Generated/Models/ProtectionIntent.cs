@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="backupManagementType">Type of backup management for the backed up item.
-        /// Possible values include: 'Invalid', 'AzureIaasVM', 'MAB', 'DPM',
-        /// 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
-        /// 'DefaultBackup'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;AzureIaasVM&#39;, &#39;MAB&#39;, &#39;DPM&#39;,
+        /// &#39;AzureBackupServer&#39;, &#39;AzureSql&#39;, &#39;AzureStorage&#39;, &#39;AzureWorkload&#39;,
+        /// &#39;DefaultBackup&#39;</param>
 
         /// <param name="sourceResourceId">ARM ID of the resource to be backed up.
         /// </param>
@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="protectionState">Backup state of this backup item.
-        /// Possible values include: 'Invalid', 'NotProtected', 'Protecting',
-        /// 'Protected', 'ProtectionFailed'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;NotProtected&#39;, &#39;Protecting&#39;,
+        /// &#39;Protected&#39;, &#39;ProtectionFailed&#39;</param>
         public ProtectionIntent(string backupManagementType = default(string), string sourceResourceId = default(string), string itemId = default(string), string policyId = default(string), string protectionState = default(string))
 
         {

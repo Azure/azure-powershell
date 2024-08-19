@@ -18,7 +18,8 @@ Register-AzStackHCI [-SubscriptionId] <String> [-Region] <String> [[-ResourceNam
  [[-AccountId] <String>] [[-EnvironmentName] <String>] [[-ComputerName] <String>]
  [[-CertificateThumbprint] <String>] [-RepairRegistration] [-UseDeviceAuthentication]
  [[-Credential] <PSCredential>] [-IsWAC] [[-ArcServerResourceGroupName] <String>]
- [[-ArcSpnCredential] <PSCredential>] [[-LogsDirectory] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-ArcSpnCredential] <PSCredential>] [[-LogsDirectory] <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +36,7 @@ Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -Regi
 Result: Success
 ResourceId: /subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCICluster1-rg/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster1
 PortalResourceURL: https://portal.azure.com/#@c31c0dbb-ce27-4c78-ad26-a5f717c14557/resource/subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCICluster1-rg/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster1/overview
-PortalAADAppPermissionsURL: https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/CallAnAPI/appId/980be58d-578c-4cff-b4cd-43e9c3a77826/isMSAApp/
+PortalAADAppPermissionsURL: https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/CallAnAPI/appId/00001111-aaaa-2222-bbbb-3333cccc4444/isMSAApp/
 ```
 
 Invoking on one of the cluster node.
@@ -49,7 +50,7 @@ Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -Comp
 Result: Success
 ResourceId: /subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCICluster2-rg/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster2
 PortalResourceURL: https://portal.azure.com/#@c31c0dbb-ce27-4c78-ad26-a5f717c14557/resource/subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCICluster2-rg/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster2/overview
-PortalAADAppPermissionsURL: https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/CallAnAPI/appId/950be58d-578c-4cff-b4cd-43e9c3a77866/isMSAApp/
+PortalAADAppPermissionsURL: https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/CallAnAPI/appId/00001111-aaaa-2222-bbbb-3333cccc4444/isMSAApp/
 ```
 
 Invoking from the management node.
@@ -63,7 +64,7 @@ Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmA
 Result: PendingForAdminConsent
 ResourceId: /subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCIRG/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster3
 PortalResourceURL: https://portal.azure.com/#@c31c0dbb-ce27-4c78-ad26-a5f717c14557/resource/subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCIRG/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster3/overview
-PortalAADAppPermissionsURL: https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/CallAnAPI/appId/980be58d-578c-4cff-b4cd-43e9c3a77866/isMSAApp/
+PortalAADAppPermissionsURL: https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/CallAnAPI/appId/00001111-aaaa-2222-bbbb-3333cccc4444/isMSAApp/
 ```
 
 Invoking from WAC.
@@ -77,7 +78,7 @@ Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -Regi
 Result: Success
 ResourceId: /subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/HciRG/providers/Microsoft.AzureStackHCI/clusters/HciCluster1
 PortalResourceURL: https://portal.azure.com/#@c31c0dbb-ce27-4c78-ad26-a5f717c14557/resource/subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/HciRG/providers/Microsoft.AzureStackHCI/clusters/HciCluster1/overview
-PortalAADAppPermissionsURL: https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/CallAnAPI/appId/990be58d-578c-4cff-b4cd-43e9c3a77866/isMSAApp/
+PortalAADAppPermissionsURL: https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/CallAnAPI/appId/00001111-aaaa-2222-bbbb-3333cccc4444/isMSAApp/
 ```
 
 Invoking with all the parameters.

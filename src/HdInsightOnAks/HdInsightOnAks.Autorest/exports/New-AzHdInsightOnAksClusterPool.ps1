@@ -66,10 +66,14 @@ CLUSTERPOOL <IClusterPool>: Cluster pool.
   Location <String>: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
+  [ComputeProfileAvailabilityZone <List<String>>]: The list of Availability zones to use for AKS VMSS nodes.
   [ComputeProfileVMSize <String>]: The virtual machine SKU.
   [LogAnalyticProfileEnabled <Boolean?>]: True if log analytics is enabled for cluster pool, otherwise false.
   [LogAnalyticProfileWorkspaceId <String>]: Log analytics workspace to associate with the OMS agent.
   [ManagedResourceGroupName <String>]: A resource group created by RP, to hold the resources created by RP on-behalf of customers. It will also be used to generate aksManagedResourceGroupName by pattern: MC_{managedResourceGroupName}_{clusterPoolName}_{region}. Please make sure it meets resource group name restriction.
+  [NetworkProfileApiServerAuthorizedIPRange <List<String>>]: IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property is not supported and please don't use it.
+  [NetworkProfileEnablePrivateApiServer <Boolean?>]: ClusterPool is based on AKS cluster. AKS cluster exposes the API server to public internet by default. If you set this property to true, a private AKS cluster will be created, and it will use private apiserver, which is not exposed to public internet.
+  [NetworkProfileOutboundType <String>]: This can only be set at cluster pool creation time and cannot be changed later. 
   [NetworkProfileSubnetId <String>]: Cluster pool subnet resource id.
   [ProfileClusterPoolVersion <String>]: Cluster pool version is a 2-part version.
 
@@ -123,7 +127,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
@@ -131,7 +134,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool]
     # Cluster pool.
-    # To construct, see NOTES section for CLUSTERPOOL properties and create a hash table.
     ${ClusterPool},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -147,6 +149,14 @@ param(
     [System.String]
     # Cluster pool version is a 2-part version.
     ${ClusterPoolVersion},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String[]]
+    # The list of Availability zones to use for AKS VMSS nodes.
+    ${ComputeProfileAvailabilityZone},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -170,6 +180,35 @@ param(
     # It will also be used to generate aksManagedResourceGroupName by pattern: MC_{managedResourceGroupName}_{clusterPoolName}_{region}.
     # Please make sure it meets resource group name restriction.
     ${ManagedResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String[]]
+    # IP ranges are specified in CIDR format, e.g.
+    # 137.117.106.88/29.
+    # This feature is not compatible with private AKS clusters.
+    # So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
+    # Currently, this property is not supported and please don't use it.
+    ${NetworkProfileApiServerAuthorizedIPRange},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # ClusterPool is based on AKS cluster.
+    # AKS cluster exposes the API server to public internet by default.
+    # If you set this property to true, a private AKS cluster will be created, and it will use private apiserver, which is not exposed to public internet.
+    ${NetworkProfileEnablePrivateApiServer},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("loadBalancer", "userDefinedRouting")]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # This can only be set at cluster pool creation time and cannot be changed later.
+    ${NetworkProfileOutboundType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -300,7 +339,13 @@ begin {
             CreateViaJsonString = 'Az.HdInsightOnAks.private\New-AzHdInsightOnAksClusterPool_CreateViaJsonString';
         }
         if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

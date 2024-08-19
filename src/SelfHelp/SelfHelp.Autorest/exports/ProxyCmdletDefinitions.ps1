@@ -25,7 +25,7 @@ Get the diagnostics using the 'diagnosticsResourceName' you chose while creating
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticResource
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiagnosticResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -34,14 +34,17 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ISelfHelpIdentity>: Identity Parameter
   [DiagnosticsResourceName <String>]: Unique resource name for insight resources
   [Id <String>]: Resource identity path
-  [Scope <String>]: This is an extension resource provider and only resource level extension is supported at the moment.
+  [Scope <String>]: scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read 
+  [SimplifiedSolutionsResourceName <String>]: Simplified Solutions Resource Name.
+  [SolutionId <String>]: SolutionId is a unique id to identify a solution. You can retrieve the solution id using the Discovery api - https://learn.microsoft.com/en-us/rest/api/help/discovery-solution/list?view=rest-help-2023-09-01-preview&tabs=HTTP
   [SolutionResourceName <String>]: Solution resource Name.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TroubleshooterName <String>]: Troubleshooter resource Name.
 .Link
 https://learn.microsoft.com/powershell/module/az.selfhelp/get-azselfhelpdiagnostic
 #>
 function Get-AzSelfHelpDiagnostic {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiagnosticResource])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -54,7 +57,7 @@ param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [System.String]
-    # This is an extension resource provider and only resource level extension is supported at the moment.
+    # scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
     ${Scope},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -195,34 +198,28 @@ end {
 <#
 .Synopsis
 Lists the relevant Azure diagnostics and solutions using [problemClassification API](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP)) AND  resourceUri or resourceType.<br/> Discovery Solutions is the initial entry point within Help API, which identifies relevant Azure diagnostics and solutions.
-We will do our best to return the most effective solutions based on the type of inputs, in the request URL  <br/><br/> Mandatory input :  problemClassificationId (Use the [problemClassification API](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP)) <br/>Optional input: resourceUri OR resource Type <br/><br/> <b>Note: </b>  ‘requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics and Solutions API.
+<br/><br/> Required Input :  problemClassificationId (Use the [problemClassification API](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP)) <br/>Optional input: resourceUri OR resource Type <br/><br/> <b>Note: </b>  ‘requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics and Solutions API.
 .Description
 Lists the relevant Azure diagnostics and solutions using [problemClassification API](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP)) AND  resourceUri or resourceType.<br/> Discovery Solutions is the initial entry point within Help API, which identifies relevant Azure diagnostics and solutions.
-We will do our best to return the most effective solutions based on the type of inputs, in the request URL  <br/><br/> Mandatory input :  problemClassificationId (Use the [problemClassification API](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP)) <br/>Optional input: resourceUri OR resource Type <br/><br/> <b>Note: </b>  ‘requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics and Solutions API.
+<br/><br/> Required Input :  problemClassificationId (Use the [problemClassification API](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP)) <br/>Optional input: resourceUri OR resource Type <br/><br/> <b>Note: </b>  ‘requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics and Solutions API.
 .Example
- Get-AzSelfHelpDiscoverySolution -Scope "subscriptions/6bded6d5-a6df-44e1-96d3-bf71f6f5f8ba/resourceGroups/test-rgName/providers/Microsoft.KeyVault/vaults/testKeyVault" -Filter "problemClassificationId eq '1ddda5b4-cf6c-4d4f-91ad-bc38ab0e811e'"
+Get-AzSelfHelpDiscoverySolution -Filter "ProblemClassificationId eq 'a5db90c3-f147-bce6-83b0-ab5e0aeca1f0'"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionMetadataResource
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionMetadataResource
 .Link
 https://learn.microsoft.com/powershell/module/az.selfhelp/get-azselfhelpdiscoverysolution
 #>
 function Get-AzSelfHelpDiscoverySolution {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionMetadataResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionMetadataResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
-    [System.String]
-    # This is an extension resource provider and only resource level extension is supported at the moment.
-    ${Scope},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Query')]
     [System.String]
-    # 'ProblemClassificationId' or 'Id' is a mandatory filter to get solutions ids.
+    # 'ProblemClassificationId' is a mandatory filter to get solutions ids.
     # It also supports optional 'ResourceType' and 'SolutionType' filters.
-    # The filter supports only 'and', 'or' and 'eq' operators.
+    # The [$filter](https://learn.microsoft.com/en-us/odata/webapi/first-odata-api#filter) supports only 'and', 'or' and 'eq' operators.
     # Example: $filter=ProblemClassificationId eq '1ddda5b4-cf6c-4d4f-91ad-bc38ab0e811e'
     ${Filter},
 
@@ -361,16 +358,18 @@ end {
 
 <#
 .Synopsis
-Get the solution using the applicable solutionResourceName while creating the solution.
+Get the simplified Solutions using the applicable solutionResourceName while creating the simplified Solutions.
 .Description
-Get the solution using the applicable solutionResourceName while creating the solution.
+Get the simplified Solutions using the applicable solutionResourceName while creating the simplified Solutions.
 .Example
-Get-AzSelfHelpSolution -ResourceName test-resource -Scope  /subscriptions/<subid>/resourceGroups/testRG/providers/Microsoft.KeyVault/testkv/testDB
+$resourceName = "sampleRName"
+            
+Get-AzSelfHelpSimplifiedSolution -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourceGroups/aits-data-inestion/providers/Microsoft.KeyVault/vaults/kv-akshayko519290291381" -SResourceName $resourceName
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISimplifiedSolutionsResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -379,14 +378,375 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ISelfHelpIdentity>: Identity Parameter
   [DiagnosticsResourceName <String>]: Unique resource name for insight resources
   [Id <String>]: Resource identity path
-  [Scope <String>]: This is an extension resource provider and only resource level extension is supported at the moment.
+  [Scope <String>]: scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read 
+  [SimplifiedSolutionsResourceName <String>]: Simplified Solutions Resource Name.
+  [SolutionId <String>]: SolutionId is a unique id to identify a solution. You can retrieve the solution id using the Discovery api - https://learn.microsoft.com/en-us/rest/api/help/discovery-solution/list?view=rest-help-2023-09-01-preview&tabs=HTTP
   [SolutionResourceName <String>]: Solution resource Name.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TroubleshooterName <String>]: Troubleshooter resource Name.
+.Link
+https://learn.microsoft.com/powershell/module/az.selfhelp/get-azselfhelpsimplifiedsolution
+#>
+function Get-AzSelfHelpSimplifiedSolution {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISimplifiedSolutionsResource])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Alias('SimplifiedSolutionsResourceName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
+    [System.String]
+    # Simplified Solutions Resource Name.
+    ${SResourceName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
+    [System.String]
+    # scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
+    ${Scope},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.SelfHelp.private\Get-AzSelfHelpSimplifiedSolution_Get';
+            GetViaIdentity = 'Az.SelfHelp.private\Get-AzSelfHelpSimplifiedSolution_GetViaIdentity';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Finds and Executes a Self Help Solution based on the Solution Id.
+These are static self help content to help users troubleshoot their issues.
+.Description
+Finds and Executes a Self Help Solution based on the Solution Id.
+These are static self help content to help users troubleshoot their issues.
+.Example
+Get-AzSelfHelpSolutionSelfHelp -SolutionId "apollo-48996ff7-002f-47c1-85b2-df138843d5d5"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResourceSelfHelp
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ISelfHelpIdentity>: Identity Parameter
+  [DiagnosticsResourceName <String>]: Unique resource name for insight resources
+  [Id <String>]: Resource identity path
+  [Scope <String>]: scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read 
+  [SimplifiedSolutionsResourceName <String>]: Simplified Solutions Resource Name.
+  [SolutionId <String>]: SolutionId is a unique id to identify a solution. You can retrieve the solution id using the Discovery api - https://learn.microsoft.com/en-us/rest/api/help/discovery-solution/list?view=rest-help-2023-09-01-preview&tabs=HTTP
+  [SolutionResourceName <String>]: Solution resource Name.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TroubleshooterName <String>]: Troubleshooter resource Name.
+.Link
+https://learn.microsoft.com/powershell/module/az.selfhelp/get-azselfhelpsolutionselfhelp
+#>
+function Get-AzSelfHelpSolutionSelfHelp {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResourceSelfHelp])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
+    [System.String]
+    # SolutionId is a unique id to identify a solution.
+    # You can retrieve the solution id using the Discovery api - https://learn.microsoft.com/en-us/rest/api/help/discovery-solution/list?view=rest-help-2023-09-01-preview&tabs=HTTP
+    ${SolutionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.SelfHelp.private\Get-AzSelfHelpSolutionSelfHelp_Get';
+            GetViaIdentity = 'Az.SelfHelp.private\Get-AzSelfHelpSolutionSelfHelp_GetViaIdentity';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get the solution using the applicable solutionResourceName while creating the solution.
+.Description
+Get the solution using the applicable solutionResourceName while creating the solution.
+.Example
+Get-AzSelfHelpSolution -ResourceName test-resource234 -Scope  /subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourceGroups/DiagnosticsRp-Ev2AssistId-Public-Dev/providers/Microsoft.KeyVault/vaults/DiagRp-Ev2PublicDev
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ISelfHelpIdentity>: Identity Parameter
+  [DiagnosticsResourceName <String>]: Unique resource name for insight resources
+  [Id <String>]: Resource identity path
+  [Scope <String>]: scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read 
+  [SimplifiedSolutionsResourceName <String>]: Simplified Solutions Resource Name.
+  [SolutionId <String>]: SolutionId is a unique id to identify a solution. You can retrieve the solution id using the Discovery api - https://learn.microsoft.com/en-us/rest/api/help/discovery-solution/list?view=rest-help-2023-09-01-preview&tabs=HTTP
+  [SolutionResourceName <String>]: Solution resource Name.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TroubleshooterName <String>]: Troubleshooter resource Name.
 .Link
 https://learn.microsoft.com/powershell/module/az.selfhelp/get-azselfhelpsolution
 #>
 function Get-AzSelfHelpSolution {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResource])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -399,7 +759,7 @@ param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [System.String]
-    # This is an extension resource provider and only resource level extension is supported at the moment.
+    # scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
     ${Scope},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -550,7 +910,7 @@ Get-AzSelfHelpTroubleshooter -Scope "/subscriptions/<subid>" -Name "02d59989-f8a
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResource
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITroubleshooterResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -559,14 +919,17 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ISelfHelpIdentity>: Identity Parameter
   [DiagnosticsResourceName <String>]: Unique resource name for insight resources
   [Id <String>]: Resource identity path
-  [Scope <String>]: This is an extension resource provider and only resource level extension is supported at the moment.
+  [Scope <String>]: scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read 
+  [SimplifiedSolutionsResourceName <String>]: Simplified Solutions Resource Name.
+  [SolutionId <String>]: SolutionId is a unique id to identify a solution. You can retrieve the solution id using the Discovery api - https://learn.microsoft.com/en-us/rest/api/help/discovery-solution/list?view=rest-help-2023-09-01-preview&tabs=HTTP
   [SolutionResourceName <String>]: Solution resource Name.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TroubleshooterName <String>]: Troubleshooter resource Name.
 .Link
 https://learn.microsoft.com/powershell/module/az.selfhelp/get-azselfhelptroubleshooter
 #>
 function Get-AzSelfHelpTroubleshooter {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITroubleshooterResource])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -579,7 +942,7 @@ param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [System.String]
-    # This is an extension resource provider and only resource level extension is supported at the moment.
+    # scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
     ${Scope},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -735,7 +1098,7 @@ Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ICheckNameAvailabilityR
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ICheckNameAvailabilityResponse
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ICheckNameAvailabilityResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -748,21 +1111,24 @@ CHECKNAMEAVAILABILITYREQUEST <ICheckNameAvailabilityRequest>: The check availabi
 INPUTOBJECT <ISelfHelpIdentity>: Identity Parameter
   [DiagnosticsResourceName <String>]: Unique resource name for insight resources
   [Id <String>]: Resource identity path
-  [Scope <String>]: This is an extension resource provider and only resource level extension is supported at the moment.
+  [Scope <String>]: scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read 
+  [SimplifiedSolutionsResourceName <String>]: Simplified Solutions Resource Name.
+  [SolutionId <String>]: SolutionId is a unique id to identify a solution. You can retrieve the solution id using the Discovery api - https://learn.microsoft.com/en-us/rest/api/help/discovery-solution/list?view=rest-help-2023-09-01-preview&tabs=HTTP
   [SolutionResourceName <String>]: Solution resource Name.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TroubleshooterName <String>]: Troubleshooter resource Name.
 .Link
 https://learn.microsoft.com/powershell/module/az.selfhelp/invoke-azselfhelpchecknameavailability
 #>
 function Invoke-AzSelfHelpCheckNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ICheckNameAvailabilityResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ICheckNameAvailabilityResponse])]
 [CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Post', Mandatory)]
     [Parameter(ParameterSetName='PostExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [System.String]
-    # This is an extension resource provider and only resource level extension is supported at the moment.
+    # scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
     ${Scope},
 
     [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
@@ -942,7 +1308,7 @@ $continueRequest = [ordered]@{
 Invoke-AzSelfHelpContinueTroubleshooter  -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba"  -TroubleshooterName  "02d59989-f8a9-4b69-9919-1ef51df4eff6" -ContinueRequestBody $continueRequest 
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IContinueRequestBody
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IContinueRequestBody
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
 .Outputs
@@ -955,20 +1321,23 @@ To create the parameters described below, construct a hash table containing the 
 CONTINUEREQUESTBODY <IContinueRequestBody>: Troubleshooter ContinueRequest body.
   [Response <ITroubleshooterResponse[]>]: 
     [QuestionId <String>]: id of the question.
-    [QuestionType <QuestionType?>]: Text Input. Will be a single line input.
+    [QuestionType <QuestionType?>]: Type of Question
     [Response <String>]: Response key for SingleInput. For Multi-line test/open ended question it is free form text
   [StepId <String>]: Unique id of the result.
 
 INPUTOBJECT <ISelfHelpIdentity>: Identity Parameter
   [DiagnosticsResourceName <String>]: Unique resource name for insight resources
   [Id <String>]: Resource identity path
-  [Scope <String>]: This is an extension resource provider and only resource level extension is supported at the moment.
+  [Scope <String>]: scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read 
+  [SimplifiedSolutionsResourceName <String>]: Simplified Solutions Resource Name.
+  [SolutionId <String>]: SolutionId is a unique id to identify a solution. You can retrieve the solution id using the Discovery api - https://learn.microsoft.com/en-us/rest/api/help/discovery-solution/list?view=rest-help-2023-09-01-preview&tabs=HTTP
   [SolutionResourceName <String>]: Solution resource Name.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TroubleshooterName <String>]: Troubleshooter resource Name.
 
 RESPONSE <ITroubleshooterResponse[]>: .
   [QuestionId <String>]: id of the question.
-  [QuestionType <QuestionType?>]: Text Input. Will be a single line input.
+  [QuestionType <QuestionType?>]: Type of Question
   [Response <String>]: Response key for SingleInput. For Multi-line test/open ended question it is free form text
 .Link
 https://learn.microsoft.com/powershell/module/az.selfhelp/invoke-azselfhelpcontinuetroubleshooter
@@ -981,7 +1350,7 @@ param(
     [Parameter(ParameterSetName='ContinueExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [System.String]
-    # This is an extension resource provider and only resource level extension is supported at the moment.
+    # scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
     ${Scope},
 
     [Parameter(ParameterSetName='Continue', Mandatory)]
@@ -1002,7 +1371,7 @@ param(
     [Parameter(ParameterSetName='Continue', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ContinueViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IContinueRequestBody]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IContinueRequestBody]
     # Troubleshooter ContinueRequest body.
     # To construct, see NOTES section for CONTINUEREQUESTBODY properties and create a hash table.
     ${ContinueRequestBody},
@@ -1011,7 +1380,7 @@ param(
     [Parameter(ParameterSetName='ContinueViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResponse[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITroubleshooterResponse[]]
     # .
     # To construct, see NOTES section for RESPONSE properties and create a hash table.
     ${Response},
@@ -1161,15 +1530,651 @@ end {
 
 <#
 .Synopsis
+Solution discovery using natural language processing.
+.Description
+Solution discovery using natural language processing.
+.Example
+Invoke-AzSelfHelpDiscoverySolutionNlpSubscriptionScope -SubscriptionId "6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba" -IssueSummary "Billing Issues"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiscoveryNlpRequest
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionNlpMetadataResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+DISCOVERSOLUTIONREQUEST <IDiscoveryNlpRequest>: Discover NLP request.
+  [AdditionalContext <String>]: Additional information in the form of a string.
+  [IssueSummary <String>]: Describe the issue with the affected resource.
+  [ResourceId <String>]: Provide resourceId of affected resource
+  [ServiceId <String>]: Service Classification id for the resource. You can find required serviceId from Services API: https://learn.microsoft.com/rest/api/support/services/list?tabs=HTTP Service Id is the GUID which can be found under name field in Services List response
+
+INPUTOBJECT <ISelfHelpIdentity>: Identity Parameter
+  [DiagnosticsResourceName <String>]: Unique resource name for insight resources
+  [Id <String>]: Resource identity path
+  [Scope <String>]: scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read 
+  [SimplifiedSolutionsResourceName <String>]: Simplified Solutions Resource Name.
+  [SolutionId <String>]: SolutionId is a unique id to identify a solution. You can retrieve the solution id using the Discovery api - https://learn.microsoft.com/en-us/rest/api/help/discovery-solution/list?view=rest-help-2023-09-01-preview&tabs=HTTP
+  [SolutionResourceName <String>]: Solution resource Name.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TroubleshooterName <String>]: Troubleshooter resource Name.
+.Link
+https://learn.microsoft.com/powershell/module/az.selfhelp/invoke-azselfhelpdiscoverysolutionnlpsubscriptionscope
+#>
+function Invoke-AzSelfHelpDiscoverySolutionNlpSubscriptionScope {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionNlpMetadataResource])]
+[CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Post')]
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Post', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiscoveryNlpRequest]
+    # Discover NLP request.
+    # To construct, see NOTES section for DISCOVERSOLUTIONREQUEST properties and create a hash table.
+    ${DiscoverSolutionRequest},
+
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
+    [System.String]
+    # Additional information in the form of a string.
+    ${AdditionalContext},
+
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
+    [System.String]
+    # Describe the issue with the affected resource.
+    ${IssueSummary},
+
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
+    [System.String]
+    # Provide resourceId of affected resource
+    ${ResourceId},
+
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
+    [System.String]
+    # Service Classification id for the resource.
+    # You can find required serviceId from Services API: https://learn.microsoft.com/rest/api/support/services/listtabs=HTTP Service Id is the GUID which can be found under name field in Services List response
+    ${ServiceId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Post = 'Az.SelfHelp.private\Invoke-AzSelfHelpDiscoverySolutionNlpSubscriptionScope_Post';
+            PostExpanded = 'Az.SelfHelp.private\Invoke-AzSelfHelpDiscoverySolutionNlpSubscriptionScope_PostExpanded';
+            PostViaIdentity = 'Az.SelfHelp.private\Invoke-AzSelfHelpDiscoverySolutionNlpSubscriptionScope_PostViaIdentity';
+            PostViaIdentityExpanded = 'Az.SelfHelp.private\Invoke-AzSelfHelpDiscoverySolutionNlpSubscriptionScope_PostViaIdentityExpanded';
+        }
+        if (('Post', 'PostExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Solution discovery using natural language processing.
+.Description
+Solution discovery using natural language processing.
+.Example
+Invoke-AzSelfHelpDiscoverySolutionNlpTenantScope -IssueSummary "Billing Issues"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiscoveryNlpRequest
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionNlpMetadataResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+DISCOVERSOLUTIONREQUEST <IDiscoveryNlpRequest>: Discover NLP request.
+  [AdditionalContext <String>]: Additional information in the form of a string.
+  [IssueSummary <String>]: Describe the issue with the affected resource.
+  [ResourceId <String>]: Provide resourceId of affected resource
+  [ServiceId <String>]: Service Classification id for the resource. You can find required serviceId from Services API: https://learn.microsoft.com/rest/api/support/services/list?tabs=HTTP Service Id is the GUID which can be found under name field in Services List response
+.Link
+https://learn.microsoft.com/powershell/module/az.selfhelp/invoke-azselfhelpdiscoverysolutionnlptenantscope
+#>
+function Invoke-AzSelfHelpDiscoverySolutionNlpTenantScope {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionNlpMetadataResource])]
+[CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Post', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiscoveryNlpRequest]
+    # Discover NLP request.
+    # To construct, see NOTES section for DISCOVERSOLUTIONREQUEST properties and create a hash table.
+    ${DiscoverSolutionRequest},
+
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
+    [System.String]
+    # Additional information in the form of a string.
+    ${AdditionalContext},
+
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
+    [System.String]
+    # Describe the issue with the affected resource.
+    ${IssueSummary},
+
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
+    [System.String]
+    # Provide resourceId of affected resource
+    ${ResourceId},
+
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
+    [System.String]
+    # Service Classification id for the resource.
+    # You can find required serviceId from Services API: https://learn.microsoft.com/rest/api/support/services/listtabs=HTTP Service Id is the GUID which can be found under name field in Services List response
+    ${ServiceId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Post = 'Az.SelfHelp.private\Invoke-AzSelfHelpDiscoverySolutionNlpTenantScope_Post';
+            PostExpanded = 'Az.SelfHelp.private\Invoke-AzSelfHelpDiscoverySolutionNlpTenantScope_PostExpanded';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Warm up the solution resource by preloading asynchronous diagnostics results into cache
+.Description
+Warm up the solution resource by preloading asynchronous diagnostics results into cache
+.Example
+$resourceName = "sampleRName"
+$parameters = [ordered]@{ 
+    "ProductId" = "13491"
+}
+Invoke-AzSelfHelpWarmSolutionUp -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourceGroups/aits-data-inestion/providers/Microsoft.KeyVault/vaults/kv-akshayko519290291381" -SolutionResourceName $resourceName -Parameter $parameters
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionWarmUpRequestBody
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ISelfHelpIdentity>: Identity Parameter
+  [DiagnosticsResourceName <String>]: Unique resource name for insight resources
+  [Id <String>]: Resource identity path
+  [Scope <String>]: scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read 
+  [SimplifiedSolutionsResourceName <String>]: Simplified Solutions Resource Name.
+  [SolutionId <String>]: SolutionId is a unique id to identify a solution. You can retrieve the solution id using the Discovery api - https://learn.microsoft.com/en-us/rest/api/help/discovery-solution/list?view=rest-help-2023-09-01-preview&tabs=HTTP
+  [SolutionResourceName <String>]: Solution resource Name.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TroubleshooterName <String>]: Troubleshooter resource Name.
+
+SOLUTIONWARMUPREQUESTBODY <ISolutionWarmUpRequestBody>: Solution WarmUpRequest body
+  [Parameter <ISolutionWarmUpRequestBodyParameters>]: Dictionary of <string>
+    [(Any) <String>]: This indicates any property can be added to this object.
+.Link
+https://learn.microsoft.com/powershell/module/az.selfhelp/invoke-azselfhelpwarmsolutionup
+#>
+function Invoke-AzSelfHelpWarmSolutionUp {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='WarmExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Warm', Mandatory)]
+    [Parameter(ParameterSetName='WarmExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
+    [System.String]
+    # scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
+    ${Scope},
+
+    [Parameter(ParameterSetName='Warm', Mandatory)]
+    [Parameter(ParameterSetName='WarmExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
+    [System.String]
+    # Solution resource Name.
+    ${SolutionResourceName},
+
+    [Parameter(ParameterSetName='WarmViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='WarmViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Warm', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='WarmViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionWarmUpRequestBody]
+    # Solution WarmUpRequest body
+    # To construct, see NOTES section for SOLUTIONWARMUPREQUESTBODY properties and create a hash table.
+    ${SolutionWarmUpRequestBody},
+
+    [Parameter(ParameterSetName='WarmExpanded')]
+    [Parameter(ParameterSetName='WarmViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionWarmUpRequestBodyParameters]))]
+    [System.Collections.Hashtable]
+    # Dictionary of <string>
+    ${Parameter},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Warm = 'Az.SelfHelp.private\Invoke-AzSelfHelpWarmSolutionUp_Warm';
+            WarmExpanded = 'Az.SelfHelp.private\Invoke-AzSelfHelpWarmSolutionUp_WarmExpanded';
+            WarmViaIdentity = 'Az.SelfHelp.private\Invoke-AzSelfHelpWarmSolutionUp_WarmViaIdentity';
+            WarmViaIdentityExpanded = 'Az.SelfHelp.private\Invoke-AzSelfHelpWarmSolutionUp_WarmViaIdentityExpanded';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Creates a diagnostic for the specific resource using solutionId and requiredInputs* from discovery solutions.
-<br/>Diagnostics tells you precisely the root cause of the issue and the steps to address it.
-You can get diagnostics once you discover the relevant solution for your Azure issue.
-<br/><br/> <b>Note: </b> requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics API.
+<br/>Diagnostics are powerful solutions that access product resources or other relevant data and provide the root cause of the issue and the steps to address the issue.<br/><br/> <b>Note: </b> ‘requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics API.
 .Description
 Creates a diagnostic for the specific resource using solutionId and requiredInputs* from discovery solutions.
-<br/>Diagnostics tells you precisely the root cause of the issue and the steps to address it.
-You can get diagnostics once you discover the relevant solution for your Azure issue.
-<br/><br/> <b>Note: </b> requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics API.
+<br/>Diagnostics are powerful solutions that access product resources or other relevant data and provide the root cause of the issue and the steps to address the issue.<br/><br/> <b>Note: </b> ‘requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics API.
 .Example
 $insightsToInvoke = [ordered]@{
                 "solutionId" = "Demo2InsightV2"
@@ -1177,7 +2182,7 @@ $insightsToInvoke = [ordered]@{
 New-AzSelfHelpDiagnostic -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourceGroups/aravind-test-resources/providers/Microsoft.KeyVault/vaults/ab-tests-kv-an" -SResourceName ab-test-973 -Insight $insightsToInvoke
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticResource
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiagnosticResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1191,7 +2196,7 @@ INSIGHT <IDiagnosticInvocation[]>: SolutionIds that are needed to be invoked.
 https://learn.microsoft.com/powershell/module/az.selfhelp/new-azselfhelpdiagnostic
 #>
 function New-AzSelfHelpDiagnostic {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiagnosticResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1204,20 +2209,20 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [System.String]
-    # This is an extension resource provider and only resource level extension is supported at the moment.
+    # scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
     ${Scope},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticResourcePropertiesGlobalParameters]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiagnosticResourcePropertiesGlobalParameters]))]
     [System.Collections.Hashtable]
-    # Global parameters that can be passed to all solutionIds.
+    # Global parameters is an optional map which can be used to add key and value to request body to improve the diagnostics results
     ${GlobalParameter},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticInvocation[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiagnosticInvocation[]]
     # SolutionIds that are needed to be invoked.
     # To construct, see NOTES section for INSIGHT properties and create a hash table.
     ${Insight},
@@ -1363,8 +2368,206 @@ end {
 
 <#
 .Synopsis
-Creates a solution for the specific Azure resource or subscription using the triggering criteria ‘solutionId and requiredInputs’ from discovery solutions.<br/> Solutions are a rich, insightful and a centralized self help experience that brings all the relevant content to troubleshoot an Azure issue into a unified experience.
-Solutions include the following components : Text, Diagnostics , Troubleshooters, Images , Video tutorials, Tables , custom charts, images , AzureKB, etc, with capabilities to support new solutions types in the future.
+Creates a simplified Solutions for the specific Azure resource or subscription using the inputs ‘solutionId and requiredInputs’ from discovery solutions.
+In the absence of the ‘Parameters’ it is likely that some of the simplified Solutions might fail execution, and you might see an empty response.
+<br/><br/> <b>Note:</b>  <br/>1.
+‘requiredInputs’ from Discovery solutions response must be passed via ‘parameters’ in the request body of simplified Solutions API.
+<br/>
+.Description
+Creates a simplified Solutions for the specific Azure resource or subscription using the inputs ‘solutionId and requiredInputs’ from discovery solutions.
+In the absence of the ‘Parameters’ it is likely that some of the simplified Solutions might fail execution, and you might see an empty response.
+<br/><br/> <b>Note:</b>  <br/>1.
+‘requiredInputs’ from Discovery solutions response must be passed via ‘parameters’ in the request body of simplified Solutions API.
+<br/>
+.Example
+$resourceName = "sampleRName"
+$solutionId = "9004345-7759"
+$parameters = [ordered]@{ 
+
+    "SearchText" = "Billing" 
+} 
+New-AzSelfHelpSimplifiedSolution -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourceGroups/aits-data-inestion/providers/Microsoft.KeyVault/vaults/kv-akshayko519290291381" -SResourceName $resourceName -SolutionId $solutionId -Parameter $parameters
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISimplifiedSolutionsResource
+.Link
+https://learn.microsoft.com/powershell/module/az.selfhelp/new-azselfhelpsimplifiedsolution
+#>
+function New-AzSelfHelpSimplifiedSolution {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISimplifiedSolutionsResource])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('SimplifiedSolutionsResourceName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
+    [System.String]
+    # Simplified Solutions Resource Name.
+    ${SResourceName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
+    [System.String]
+    # scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
+    ${Scope},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISimplifiedSolutionsResourcePropertiesParameters]))]
+    [System.Collections.Hashtable]
+    # Client input parameters to run Simplified Solutions
+    ${Parameter},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
+    [System.String]
+    # Solution Id to identify single Simplified Solution.
+    ${SolutionId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.SelfHelp.private\New-AzSelfHelpSimplifiedSolution_CreateExpanded';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Creates a solution for the specific Azure resource or subscription using the inputs ‘solutionId and requiredInputs’ from discovery solutions.
+<br/> Azure solutions comprise a comprehensive library of self-help resources that have been thoughtfully curated by Azure engineers to aid customers in resolving typical troubleshooting issues.
+These solutions encompass (1.) dynamic and context-aware diagnostics, guided troubleshooting wizards, and data visualizations, (2.) rich instructional video tutorials and illustrative diagrams and images, and (3.) thoughtfully assembled textual troubleshooting instructions.
+All these components are seamlessly converged into unified solutions tailored to address a specific support problem area.
 Each solution type may require one or more ‘requiredParameters’ that are required to execute the individual solution component.
 In the absence of the ‘requiredParameters’ it is likely that some of the solutions might fail execution, and you might see an empty response.
 <br/><br/> <b>Note:</b>  <br/>1.
@@ -1373,8 +2576,10 @@ In the absence of the ‘requiredParameters’ it is likely that some of the sol
 ‘requiredParameters’ from the Solutions response is the same as ‘ additionalParameters’ in the request for diagnostics <br/>3.
 ‘requiredParameters’ from the Solutions response is the same as ‘properties.parameters’ in the request for Troubleshooters
 .Description
-Creates a solution for the specific Azure resource or subscription using the triggering criteria ‘solutionId and requiredInputs’ from discovery solutions.<br/> Solutions are a rich, insightful and a centralized self help experience that brings all the relevant content to troubleshoot an Azure issue into a unified experience.
-Solutions include the following components : Text, Diagnostics , Troubleshooters, Images , Video tutorials, Tables , custom charts, images , AzureKB, etc, with capabilities to support new solutions types in the future.
+Creates a solution for the specific Azure resource or subscription using the inputs ‘solutionId and requiredInputs’ from discovery solutions.
+<br/> Azure solutions comprise a comprehensive library of self-help resources that have been thoughtfully curated by Azure engineers to aid customers in resolving typical troubleshooting issues.
+These solutions encompass (1.) dynamic and context-aware diagnostics, guided troubleshooting wizards, and data visualizations, (2.) rich instructional video tutorials and illustrative diagrams and images, and (3.) thoughtfully assembled textual troubleshooting instructions.
+All these components are seamlessly converged into unified solutions tailored to address a specific support problem area.
 Each solution type may require one or more ‘requiredParameters’ that are required to execute the individual solution component.
 In the absence of the ‘requiredParameters’ it is likely that some of the solutions might fail execution, and you might see an empty response.
 <br/><br/> <b>Note:</b>  <br/>1.
@@ -1383,122 +2588,23 @@ In the absence of the ‘requiredParameters’ it is likely that some of the sol
 ‘requiredParameters’ from the Solutions response is the same as ‘ additionalParameters’ in the request for diagnostics <br/>3.
 ‘requiredParameters’ from the Solutions response is the same as ‘properties.parameters’ in the request for Troubleshooters
 .Example
-$criteria = [ordered]@{
-    "name" ="SolutionId"
-    "value" = "keyvault-lostdeletedkeys-apollo-solution"
-}
-$parameters = [ordered]@{
-        "SearchText" = "Can not RDP"
-        "vault_name" = "DemoKeyvault"
-}
-New-AzSelfHelpSolution -ResourceName test-resource -Scope  /subscriptions/<subid>/resourceGroups/testRG/providers/Microsoft.KeyVault/kv/testDB -Parameter $parameters -TriggerCriterion $criteria
+$criteria = [ordered]@{ 
+    "name" ="SolutionId" 
+    "value" = "apollo-cognitve-search-custom-skill" 
+} 
+
+$parameters = [ordered]@{ 
+        "SearchText" = "Can not Search" 
+} 
+
+New-AzSelfHelpSolution -ResourceName test-resource234 -Scope  /subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourceGroups/DiagnosticsRp-Ev2AssistId-Public-Dev/providers/Microsoft.KeyVault/vaults/DiagRp-Ev2PublicDev -Parameter $parameters -TriggerCriterion $criteria 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-REPLACEMENTMAPDIAGNOSTIC <ISolutionsDiagnostic[]>: Solution diagnostics results.
-  [Insight <IInsight[]>]: Diagnostic insights
-    [Id <String>]: Article id.
-    [ImportanceLevel <ImportanceLevel?>]: Importance level of the insight.
-    [Result <String>]: Detailed result content.
-    [Title <String>]: This insight's title.
-  [ReplacementKey <String>]: Place holder used in HTML Content replace control with the content
-  [RequiredParameter <String[]>]: Required parameters of this item
-  [SolutionId <String>]: Solution Id to identify single Solutions Diagnostic
-  [Status <Status?>]: Denotes the status of the diagnostic resource.
-  [StatusDetail <String>]: Details of the status
-
-REPLACEMENTMAPMETRICSBASEDCHART <IMetricsBasedChart[]>: Solution metrics based charts
-  [AggregationType <AggregationType?>]: Allowed values are Sum, Avg, Count, Min, Max. Default is Sum
-  [FilterGroupFilter <IFilter[]>]: List of filters
-    [Name <String>]: Filter name
-    [Operator <String>]: Filter operator
-    [Value <String>]: Filter values
-  [Name <String>]: Chart name
-  [ReplacementKey <String>]: Place holder used in HTML Content replace control with the content
-  [TimeSpanDuration <String>]: Time span duration
-  [Title <String>]: Chart title
-
-REPLACEMENTMAPTROUBLESHOOTER <ISolutionsTroubleshooters[]>: Solutions Troubleshooters
-  [SolutionId <String>]: Solution Id to identify single Solutions Troubleshooter
-  [Summary <String>]: Troubleshooter summary
-  [Title <String>]: Troubleshooter title
-
-REPLACEMENTMAPVIDEO <IVideo[]>: Video solutions, which have the power to engage the customer by stimulating their senses
-  [Src <String>]: Link to the video
-  [Title <String>]: Title of the video
-  [ReplacementKey <String>]: Place holder used in HTML Content replace control with the insight content
-
-REPLACEMENTMAPVIDEOGROUP <IVideoGroup[]>: Group of Videos
-  [ReplacementKey <String>]: Place holder used in HTML Content replace control with the insight content
-  [Video <IVideoGroupVideo[]>]: List of videos will be shown to customers
-    [Src <String>]: Link to the video
-    [Title <String>]: Title of the video
-
-REPLACEMENTMAPWEBRESULT <IWebResult[]>: Solution AzureKB results
-  [ReplacementKey <String>]: Place holder used in HTML Content replace control with the content
-  [SearchResult <ISearchResult[]>]: AzureKB search results
-    [Confidence <Confidence?>]: Confidence of the search result.
-    [Content <String>]: Content of the search result.
-    [Link <String>]: Link to the document.
-    [Rank <Int32?>]: rank of the search result
-    [ResultType <ResultType?>]: Result type of the search result.
-    [SolutionId <String>]: Unique id of the result.
-    [Source <String>]: Source of the search result.
-    [Title <String>]: Title of the search result.
-
-SECTION <ISection[]>: List of section object.
-  [Content <String>]: Solution sections content.
-  [ReplacementMapDiagnostic <ISolutionsDiagnostic[]>]: Solution diagnostics results.
-    [Insight <IInsight[]>]: Diagnostic insights
-      [Id <String>]: Article id.
-      [ImportanceLevel <ImportanceLevel?>]: Importance level of the insight.
-      [Result <String>]: Detailed result content.
-      [Title <String>]: This insight's title.
-    [ReplacementKey <String>]: Place holder used in HTML Content replace control with the content
-    [RequiredParameter <String[]>]: Required parameters of this item
-    [SolutionId <String>]: Solution Id to identify single Solutions Diagnostic
-    [Status <Status?>]: Denotes the status of the diagnostic resource.
-    [StatusDetail <String>]: Details of the status
-  [ReplacementMapMetricsBasedChart <IMetricsBasedChart[]>]: Solution metrics based charts
-    [AggregationType <AggregationType?>]: Allowed values are Sum, Avg, Count, Min, Max. Default is Sum
-    [FilterGroupFilter <IFilter[]>]: List of filters
-      [Name <String>]: Filter name
-      [Operator <String>]: Filter operator
-      [Value <String>]: Filter values
-    [Name <String>]: Chart name
-    [ReplacementKey <String>]: Place holder used in HTML Content replace control with the content
-    [TimeSpanDuration <String>]: Time span duration
-    [Title <String>]: Chart title
-  [ReplacementMapTroubleshooter <ISolutionsTroubleshooters[]>]: Solutions Troubleshooters
-    [SolutionId <String>]: Solution Id to identify single Solutions Troubleshooter
-    [Summary <String>]: Troubleshooter summary
-    [Title <String>]: Troubleshooter title
-  [ReplacementMapVideo <IVideo[]>]: Video solutions, which have the power to engage the customer by stimulating their senses
-    [Src <String>]: Link to the video
-    [Title <String>]: Title of the video
-    [ReplacementKey <String>]: Place holder used in HTML Content replace control with the insight content
-  [ReplacementMapVideoGroup <IVideoGroup[]>]: Group of Videos
-    [ReplacementKey <String>]: Place holder used in HTML Content replace control with the insight content
-    [Video <IVideoGroupVideo[]>]: List of videos will be shown to customers
-      [Src <String>]: Link to the video
-      [Title <String>]: Title of the video
-  [ReplacementMapWebResult <IWebResult[]>]: Solution AzureKB results
-    [ReplacementKey <String>]: Place holder used in HTML Content replace control with the content
-    [SearchResult <ISearchResult[]>]: AzureKB search results
-      [Confidence <Confidence?>]: Confidence of the search result.
-      [Content <String>]: Content of the search result.
-      [Link <String>]: Link to the document.
-      [Rank <Int32?>]: rank of the search result
-      [ResultType <ResultType?>]: Result type of the search result.
-      [SolutionId <String>]: Unique id of the result.
-      [Source <String>]: Source of the search result.
-      [Title <String>]: Title of the search result.
-  [Title <String>]: Solution sections title.
 
 TRIGGERCRITERION <ITriggerCriterion[]>: Solution request trigger criteria
   [Name <Name?>]: Trigger criterion name.
@@ -1507,7 +2613,7 @@ TRIGGERCRITERION <ITriggerCriterion[]>: Solution request trigger criteria
 https://learn.microsoft.com/powershell/module/az.selfhelp/new-azselfhelpsolution
 #>
 function New-AzSelfHelpSolution {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1520,101 +2626,20 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [System.String]
-    # This is an extension resource provider and only resource level extension is supported at the moment.
+    # scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
     ${Scope},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [System.String]
-    # The HTML content that needs to be rendered and shown to customer.
-    ${Content},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResourcePropertiesParameters]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResourcePropertiesParameters]))]
     [System.Collections.Hashtable]
     # Client input parameters to run Solution
     ${Parameter},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.SolutionProvisioningState])]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.SolutionProvisioningState]
-    # Status of solution provisioning.
-    ${ProvisioningState},
-
-    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionsDiagnostic[]]
-    # Solution diagnostics results.
-    # To construct, see NOTES section for REPLACEMENTMAPDIAGNOSTIC properties and create a hash table.
-    ${ReplacementMapDiagnostic},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IMetricsBasedChart[]]
-    # Solution metrics based charts
-    # To construct, see NOTES section for REPLACEMENTMAPMETRICSBASEDCHART properties and create a hash table.
-    ${ReplacementMapMetricsBasedChart},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionsTroubleshooters[]]
-    # Solutions Troubleshooters
-    # To construct, see NOTES section for REPLACEMENTMAPTROUBLESHOOTER properties and create a hash table.
-    ${ReplacementMapTroubleshooter},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IVideo[]]
-    # Video solutions, which have the power to engage the customer by stimulating their senses
-    # To construct, see NOTES section for REPLACEMENTMAPVIDEO properties and create a hash table.
-    ${ReplacementMapVideo},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IVideoGroup[]]
-    # Group of Videos
-    # To construct, see NOTES section for REPLACEMENTMAPVIDEOGROUP properties and create a hash table.
-    ${ReplacementMapVideoGroup},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IWebResult[]]
-    # Solution AzureKB results
-    # To construct, see NOTES section for REPLACEMENTMAPWEBRESULT properties and create a hash table.
-    ${ReplacementMapWebResult},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISection[]]
-    # List of section object.
-    # To construct, see NOTES section for SECTION properties and create a hash table.
-    ${Section},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [System.String]
-    # Solution Id to identify single solution.
-    ${SolutionId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [System.String]
-    # The title.
-    ${Title},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITriggerCriterion[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITriggerCriterion[]]
     # Solution request trigger criteria
     # To construct, see NOTES section for TRIGGERCRITERION properties and create a hash table.
     ${TriggerCriterion},
@@ -1761,18 +2786,16 @@ end {
 <#
 .Synopsis
 Creates the specific troubleshooter action under a resource or subscription using the ‘solutionId’ and  ‘properties.parameters’ as the trigger.
-<br/> Troubleshooters are step-by-step interactive guidance that scope the problem by collecting additional inputs from you in each stage while troubleshooting an Azure issue.
-You will be guided down decision tree style workflow and the best possible solution will be presented at the end of the workflow.
-<br/> Create API creates the Troubleshooter API using ‘parameters’ and ‘solutionId’ <br/> After creating the Troubleshooter instance, the following APIs can be used:<br/> CONTINUE API: to move to the next step in the flow <br/>GET API: to identify the next step after executing the CONTINUE API.
- <br/><br/> <b>Note:</b> ‘requiredParameters’ from solutions response must be passed via ‘properties.
-parameters’ in the request body of Troubleshooters API.
+<br/> Azure Troubleshooters help with hard to classify issues, reducing the gap between customer observed problems and solutions by guiding the user effortlessly through the troubleshooting process.
+Each Troubleshooter flow represents a problem area within Azure and has a complex tree-like structure that addresses many root causes.
+These flows are prepared with the help of Subject Matter experts and customer support engineers by carefully considering previous support requests raised by customers.
+Troubleshooters terminate at a well curated solution based off of resource backend signals and customer manual selections.
 .Description
 Creates the specific troubleshooter action under a resource or subscription using the ‘solutionId’ and  ‘properties.parameters’ as the trigger.
-<br/> Troubleshooters are step-by-step interactive guidance that scope the problem by collecting additional inputs from you in each stage while troubleshooting an Azure issue.
-You will be guided down decision tree style workflow and the best possible solution will be presented at the end of the workflow.
-<br/> Create API creates the Troubleshooter API using ‘parameters’ and ‘solutionId’ <br/> After creating the Troubleshooter instance, the following APIs can be used:<br/> CONTINUE API: to move to the next step in the flow <br/>GET API: to identify the next step after executing the CONTINUE API.
- <br/><br/> <b>Note:</b> ‘requiredParameters’ from solutions response must be passed via ‘properties.
-parameters’ in the request body of Troubleshooters API.
+<br/> Azure Troubleshooters help with hard to classify issues, reducing the gap between customer observed problems and solutions by guiding the user effortlessly through the troubleshooting process.
+Each Troubleshooter flow represents a problem area within Azure and has a complex tree-like structure that addresses many root causes.
+These flows are prepared with the help of Subject Matter experts and customer support engineers by carefully considering previous support requests raised by customers.
+Troubleshooters terminate at a well curated solution based off of resource backend signals and customer manual selections.
 .Example
 $parameters = [ordered]@{
  "addParam1"= "/subscriptions/02d59989-f8a9-4b69-9919-1ef51df4eff6"
@@ -1782,12 +2805,12 @@ New-AzSelfHelpTroubleshooter -Scope "/subscriptions/6bded6d5-a
 6af-43e1-96d3-bf71f6f5f8ba" -Name "12d59989-f8a9-4b69-9919-1ef51df4eff6" -Parameter $parameters -SolutionId "e104dbdf-9e14-4c9f-bc78-21ac90382231"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResource
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITroubleshooterResource
 .Link
 https://learn.microsoft.com/powershell/module/az.selfhelp/new-azselfhelptroubleshooter
 #>
 function New-AzSelfHelpTroubleshooter {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITroubleshooterResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1800,12 +2823,12 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [System.String]
-    # This is an extension resource provider and only resource level extension is supported at the moment.
+    # scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
     ${Scope},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterInstancePropertiesParameters]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITroubleshooterInstancePropertiesParameters]))]
     [System.Collections.Hashtable]
     # Client input parameters to run Troubleshooter Resource
     ${Parameter},
@@ -1956,7 +2979,7 @@ Restart-AzSelfHelpTroubleshooter -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IRestartTroubleshooterResponse
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IRestartTroubleshooterResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1965,14 +2988,17 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ISelfHelpIdentity>: Identity Parameter
   [DiagnosticsResourceName <String>]: Unique resource name for insight resources
   [Id <String>]: Resource identity path
-  [Scope <String>]: This is an extension resource provider and only resource level extension is supported at the moment.
+  [Scope <String>]: scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read 
+  [SimplifiedSolutionsResourceName <String>]: Simplified Solutions Resource Name.
+  [SolutionId <String>]: SolutionId is a unique id to identify a solution. You can retrieve the solution id using the Discovery api - https://learn.microsoft.com/en-us/rest/api/help/discovery-solution/list?view=rest-help-2023-09-01-preview&tabs=HTTP
   [SolutionResourceName <String>]: Solution resource Name.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TroubleshooterName <String>]: Troubleshooter resource Name.
 .Link
 https://learn.microsoft.com/powershell/module/az.selfhelp/restart-azselfhelptroubleshooter
 #>
 function Restart-AzSelfHelpTroubleshooter {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IRestartTroubleshooterResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IRestartTroubleshooterResponse])]
 [CmdletBinding(DefaultParameterSetName='Restart', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Restart', Mandatory)]
@@ -1985,7 +3011,7 @@ param(
     [Parameter(ParameterSetName='Restart', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [System.String]
-    # This is an extension resource provider and only resource level extension is supported at the moment.
+    # scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
     ${Scope},
 
     [Parameter(ParameterSetName='RestartViaIdentity', Mandatory, ValueFromPipeline)]
@@ -2143,8 +3169,11 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ISelfHelpIdentity>: Identity Parameter
   [DiagnosticsResourceName <String>]: Unique resource name for insight resources
   [Id <String>]: Resource identity path
-  [Scope <String>]: This is an extension resource provider and only resource level extension is supported at the moment.
+  [Scope <String>]: scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read 
+  [SimplifiedSolutionsResourceName <String>]: Simplified Solutions Resource Name.
+  [SolutionId <String>]: SolutionId is a unique id to identify a solution. You can retrieve the solution id using the Discovery api - https://learn.microsoft.com/en-us/rest/api/help/discovery-solution/list?view=rest-help-2023-09-01-preview&tabs=HTTP
   [SolutionResourceName <String>]: Solution resource Name.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TroubleshooterName <String>]: Troubleshooter resource Name.
 .Link
 https://learn.microsoft.com/powershell/module/az.selfhelp/stop-azselfhelptroubleshooter
@@ -2163,7 +3192,7 @@ param(
     [Parameter(ParameterSetName='End', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [System.String]
-    # This is an extension resource provider and only resource level extension is supported at the moment.
+    # scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
     ${Scope},
 
     [Parameter(ParameterSetName='EndViaIdentity', Mandatory, ValueFromPipeline)]
@@ -2314,19 +3343,18 @@ Update the requiredInputs or additional information needed to execute the soluti
 Update the requiredInputs or additional information needed to execute the solution
 .Example
 $parameters = [ordered]@{ 
-        "SearchText" = "Can not RDP" 
-        "vault_name" = "DemoKeyvault" 
+        "SearchText" = "Can not Search" 
 } 
 $criteria = [ordered]@{ 
     "name" =" ReplacementKey" 
     "value" = "<!--85c7bc9e-4405-4e3a-82b0-8c4edc29a04d-->" 
 } 
-Update-AzSelfHelpSolution -ResourceName test-resource -Scope  /subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourceGroups/DiagnosticsRp-Ev2AssistId-Public-Dev/providers/Microsoft.KeyVault/vaults/DiagRp-Ev2PublicDev -Parameter $parameters -TriggerCriterion $criteria 
+Update-AzSelfHelpSolution -ResourceName test-resource234 -Scope  /subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourceGroups/DiagnosticsRp-Ev2AssistId-Public-Dev/providers/Microsoft.KeyVault/vaults/DiagRp-Ev2PublicDev -Parameter $parameters -TriggerCriterion $criteria 
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2335,109 +3363,12 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ISelfHelpIdentity>: Identity Parameter
   [DiagnosticsResourceName <String>]: Unique resource name for insight resources
   [Id <String>]: Resource identity path
-  [Scope <String>]: This is an extension resource provider and only resource level extension is supported at the moment.
+  [Scope <String>]: scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read 
+  [SimplifiedSolutionsResourceName <String>]: Simplified Solutions Resource Name.
+  [SolutionId <String>]: SolutionId is a unique id to identify a solution. You can retrieve the solution id using the Discovery api - https://learn.microsoft.com/en-us/rest/api/help/discovery-solution/list?view=rest-help-2023-09-01-preview&tabs=HTTP
   [SolutionResourceName <String>]: Solution resource Name.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TroubleshooterName <String>]: Troubleshooter resource Name.
-
-REPLACEMENTMAPDIAGNOSTIC <ISolutionsDiagnostic[]>: Solution diagnostics results.
-  [Insight <IInsight[]>]: Diagnostic insights
-    [Id <String>]: Article id.
-    [ImportanceLevel <ImportanceLevel?>]: Importance level of the insight.
-    [Result <String>]: Detailed result content.
-    [Title <String>]: This insight's title.
-  [ReplacementKey <String>]: Place holder used in HTML Content replace control with the content
-  [RequiredParameter <String[]>]: Required parameters of this item
-  [SolutionId <String>]: Solution Id to identify single Solutions Diagnostic
-  [Status <Status?>]: Denotes the status of the diagnostic resource.
-  [StatusDetail <String>]: Details of the status
-
-REPLACEMENTMAPMETRICSBASEDCHART <IMetricsBasedChart[]>: Solution metrics based charts
-  [AggregationType <AggregationType?>]: Allowed values are Sum, Avg, Count, Min, Max. Default is Sum
-  [FilterGroupFilter <IFilter[]>]: List of filters
-    [Name <String>]: Filter name
-    [Operator <String>]: Filter operator
-    [Value <String>]: Filter values
-  [Name <String>]: Chart name
-  [ReplacementKey <String>]: Place holder used in HTML Content replace control with the content
-  [TimeSpanDuration <String>]: Time span duration
-  [Title <String>]: Chart title
-
-REPLACEMENTMAPTROUBLESHOOTER <ISolutionsTroubleshooters[]>: Solutions Troubleshooters
-  [SolutionId <String>]: Solution Id to identify single Solutions Troubleshooter
-  [Summary <String>]: Troubleshooter summary
-  [Title <String>]: Troubleshooter title
-
-REPLACEMENTMAPVIDEO <IVideo[]>: Video solutions, which have the power to engage the customer by stimulating their senses
-  [Src <String>]: Link to the video
-  [Title <String>]: Title of the video
-  [ReplacementKey <String>]: Place holder used in HTML Content replace control with the insight content
-
-REPLACEMENTMAPVIDEOGROUP <IVideoGroup[]>: Group of Videos
-  [ReplacementKey <String>]: Place holder used in HTML Content replace control with the insight content
-  [Video <IVideoGroupVideo[]>]: List of videos will be shown to customers
-    [Src <String>]: Link to the video
-    [Title <String>]: Title of the video
-
-REPLACEMENTMAPWEBRESULT <IWebResult[]>: Solution AzureKB results
-  [ReplacementKey <String>]: Place holder used in HTML Content replace control with the content
-  [SearchResult <ISearchResult[]>]: AzureKB search results
-    [Confidence <Confidence?>]: Confidence of the search result.
-    [Content <String>]: Content of the search result.
-    [Link <String>]: Link to the document.
-    [Rank <Int32?>]: rank of the search result
-    [ResultType <ResultType?>]: Result type of the search result.
-    [SolutionId <String>]: Unique id of the result.
-    [Source <String>]: Source of the search result.
-    [Title <String>]: Title of the search result.
-
-SECTION <ISection[]>: List of section object.
-  [Content <String>]: Solution sections content.
-  [ReplacementMapDiagnostic <ISolutionsDiagnostic[]>]: Solution diagnostics results.
-    [Insight <IInsight[]>]: Diagnostic insights
-      [Id <String>]: Article id.
-      [ImportanceLevel <ImportanceLevel?>]: Importance level of the insight.
-      [Result <String>]: Detailed result content.
-      [Title <String>]: This insight's title.
-    [ReplacementKey <String>]: Place holder used in HTML Content replace control with the content
-    [RequiredParameter <String[]>]: Required parameters of this item
-    [SolutionId <String>]: Solution Id to identify single Solutions Diagnostic
-    [Status <Status?>]: Denotes the status of the diagnostic resource.
-    [StatusDetail <String>]: Details of the status
-  [ReplacementMapMetricsBasedChart <IMetricsBasedChart[]>]: Solution metrics based charts
-    [AggregationType <AggregationType?>]: Allowed values are Sum, Avg, Count, Min, Max. Default is Sum
-    [FilterGroupFilter <IFilter[]>]: List of filters
-      [Name <String>]: Filter name
-      [Operator <String>]: Filter operator
-      [Value <String>]: Filter values
-    [Name <String>]: Chart name
-    [ReplacementKey <String>]: Place holder used in HTML Content replace control with the content
-    [TimeSpanDuration <String>]: Time span duration
-    [Title <String>]: Chart title
-  [ReplacementMapTroubleshooter <ISolutionsTroubleshooters[]>]: Solutions Troubleshooters
-    [SolutionId <String>]: Solution Id to identify single Solutions Troubleshooter
-    [Summary <String>]: Troubleshooter summary
-    [Title <String>]: Troubleshooter title
-  [ReplacementMapVideo <IVideo[]>]: Video solutions, which have the power to engage the customer by stimulating their senses
-    [Src <String>]: Link to the video
-    [Title <String>]: Title of the video
-    [ReplacementKey <String>]: Place holder used in HTML Content replace control with the insight content
-  [ReplacementMapVideoGroup <IVideoGroup[]>]: Group of Videos
-    [ReplacementKey <String>]: Place holder used in HTML Content replace control with the insight content
-    [Video <IVideoGroupVideo[]>]: List of videos will be shown to customers
-      [Src <String>]: Link to the video
-      [Title <String>]: Title of the video
-  [ReplacementMapWebResult <IWebResult[]>]: Solution AzureKB results
-    [ReplacementKey <String>]: Place holder used in HTML Content replace control with the content
-    [SearchResult <ISearchResult[]>]: AzureKB search results
-      [Confidence <Confidence?>]: Confidence of the search result.
-      [Content <String>]: Content of the search result.
-      [Link <String>]: Link to the document.
-      [Rank <Int32?>]: rank of the search result
-      [ResultType <ResultType?>]: Result type of the search result.
-      [SolutionId <String>]: Unique id of the result.
-      [Source <String>]: Source of the search result.
-      [Title <String>]: Title of the search result.
-  [Title <String>]: Solution sections title.
 
 TRIGGERCRITERION <ITriggerCriterion[]>: Solution request trigger criteria
   [Name <Name?>]: Trigger criterion name.
@@ -2446,7 +3377,7 @@ TRIGGERCRITERION <ITriggerCriterion[]>: Solution request trigger criteria
 https://learn.microsoft.com/powershell/module/az.selfhelp/update-azselfhelpsolution
 #>
 function Update-AzSelfHelpSolution {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -2459,7 +3390,7 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [System.String]
-    # This is an extension resource provider and only resource level extension is supported at the moment.
+    # scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
     ${Scope},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -2471,96 +3402,15 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [System.String]
-    # The HTML content that needs to be rendered and shown to customer.
-    ${Content},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResourcePropertiesParameters]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResourcePropertiesParameters]))]
     [System.Collections.Hashtable]
     # Client input parameters to run Solution
     ${Parameter},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.SolutionProvisioningState])]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.SolutionProvisioningState]
-    # Status of solution provisioning.
-    ${ProvisioningState},
-
-    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionsDiagnostic[]]
-    # Solution diagnostics results.
-    # To construct, see NOTES section for REPLACEMENTMAPDIAGNOSTIC properties and create a hash table.
-    ${ReplacementMapDiagnostic},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IMetricsBasedChart[]]
-    # Solution metrics based charts
-    # To construct, see NOTES section for REPLACEMENTMAPMETRICSBASEDCHART properties and create a hash table.
-    ${ReplacementMapMetricsBasedChart},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionsTroubleshooters[]]
-    # Solutions Troubleshooters
-    # To construct, see NOTES section for REPLACEMENTMAPTROUBLESHOOTER properties and create a hash table.
-    ${ReplacementMapTroubleshooter},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IVideo[]]
-    # Video solutions, which have the power to engage the customer by stimulating their senses
-    # To construct, see NOTES section for REPLACEMENTMAPVIDEO properties and create a hash table.
-    ${ReplacementMapVideo},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IVideoGroup[]]
-    # Group of Videos
-    # To construct, see NOTES section for REPLACEMENTMAPVIDEOGROUP properties and create a hash table.
-    ${ReplacementMapVideoGroup},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IWebResult[]]
-    # Solution AzureKB results
-    # To construct, see NOTES section for REPLACEMENTMAPWEBRESULT properties and create a hash table.
-    ${ReplacementMapWebResult},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISection[]]
-    # List of section object.
-    # To construct, see NOTES section for SECTION properties and create a hash table.
-    ${Section},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [System.String]
-    # Solution Id to identify single solution.
-    ${SolutionId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [System.String]
-    # The title.
-    ${Title},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITriggerCriterion[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITriggerCriterion[]]
     # Solution request trigger criteria
     # To construct, see NOTES section for TRIGGERCRITERION properties and create a hash table.
     ${TriggerCriterion},

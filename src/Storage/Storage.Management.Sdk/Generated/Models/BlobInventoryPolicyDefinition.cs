@@ -28,15 +28,15 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </param>
 
         /// <param name="format">This is a required field, it specifies the format for the inventory files.
-        /// Possible values include: 'Csv', 'Parquet'</param>
+        /// Possible values include: &#39;Csv&#39;, &#39;Parquet&#39;</param>
 
         /// <param name="schedule">This is a required field. This field is used to schedule an inventory
         /// formation.
-        /// Possible values include: 'Daily', 'Weekly'</param>
+        /// Possible values include: &#39;Daily&#39;, &#39;Weekly&#39;</param>
 
         /// <param name="objectType">This is a required field. This field specifies the scope of the inventory
         /// created either at the blob or container level.
-        /// Possible values include: 'Blob', 'Container'</param>
+        /// Possible values include: &#39;Blob&#39;, &#39;Container&#39;</param>
 
         /// <param name="schemaFields">This is a required field. This field specifies the fields and properties of
         /// the object to be included in the inventory. The Schema field value &#39;Name&#39;

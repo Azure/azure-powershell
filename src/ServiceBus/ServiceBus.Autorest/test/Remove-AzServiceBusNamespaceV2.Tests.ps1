@@ -16,14 +16,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzServiceBusNamespaceV
 
 Describe 'Remove-AzServiceBusNamespaceV2' {
     It 'Delete' {
-        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV7 -SkuName Standard -Location eastus    
+        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV7 -SkuName Standard -Location $env.location    
         Remove-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV7
-        { Get-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV7  } | Should -Throw
+        { Get-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV7 -ErrorAction Stop } | Should -Throw
     }
 
     It 'DeleteViaIdentity' { 
-        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV8 -SkuName Standard -Location eastus
+        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV8 -SkuName Standard -Location $env.location
         Remove-AzServiceBusNamespaceV2 -InputObject $serviceBusNamespace
-        { Get-AzServiceBusNamespaceV2 -InputObject $serviceBusNamespace } | Should -Throw
+        { Get-AzServiceBusNamespaceV2 -InputObject $serviceBusNamespace -ErrorAction Stop } | Should -Throw
     }
 }

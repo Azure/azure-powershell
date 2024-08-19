@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/import-azcdnendpointcontent
 schema: 2.0.0
@@ -16,27 +16,28 @@ Available for Verizon Profiles.
 ### LoadExpanded (Default)
 ```
 Import-AzCdnEndpointContent -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- -ContentPath <String[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -ContentPath <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Load
 ```
 Import-AzCdnEndpointContent -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- -ContentFilePath <ILoadParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### LoadViaIdentity
-```
-Import-AzCdnEndpointContent -InputObject <ICdnIdentity> -ContentFilePath <ILoadParameters>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -ContentFilePath <ILoadParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### LoadViaIdentityExpanded
 ```
 Import-AzCdnEndpointContent -InputObject <ICdnIdentity> -ContentPath <String[]> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### LoadViaIdentity
+```
+Import-AzCdnEndpointContent -InputObject <ICdnIdentity> -ContentFilePath <ILoadParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,7 +48,7 @@ Available for Verizon Profiles.
 
 ### Example 1: Import content of an AzureCDN Endpoint under the AzureCDN profile
 ```powershell
-Import-AzCdnEndpointContent -ResourceGroupName testps-rg-verizon -ProfileName verzioncdn001 -EndpointName verzionendptest001 -ContentPath @("/movies/hello","/pictures/pic1.jpg") 
+Import-AzCdnEndpointContent -ResourceGroupName testps-rg-verizon -ProfileName verzioncdn001 -EndpointName verzionendptest001 -ContentPath @("/movies/hello","/pictures/pic1.jpg")
 ```
 
 Import content of an AzureCDN Endpoint under the AzureCDN profile, only some skus support this action
@@ -83,7 +84,7 @@ Parameters required for content load.
 To construct, see NOTES section for CONTENTFILEPATH properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ILoadParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ILoadParameters
 Parameter Sets: Load, LoadViaIdentity
 Aliases:
 
@@ -131,7 +132,7 @@ Name of the endpoint under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: Load, LoadExpanded
+Parameter Sets: LoadExpanded, Load
 Aliases:
 
 Required: True
@@ -147,7 +148,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: LoadViaIdentity, LoadViaIdentityExpanded
+Parameter Sets: LoadViaIdentityExpanded, LoadViaIdentity
 Aliases:
 
 Required: True
@@ -192,10 +193,25 @@ Name of the CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Load, LoadExpanded
+Parameter Sets: LoadExpanded, Load
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -207,7 +223,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Load, LoadExpanded
+Parameter Sets: LoadExpanded, Load
 Aliases:
 
 Required: True
@@ -222,7 +238,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Load, LoadExpanded
+Parameter Sets: LoadExpanded, Load
 Aliases:
 
 Required: False
@@ -268,7 +284,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ILoadParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ILoadParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 
@@ -278,30 +294,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`CONTENTFILEPATH <ILoadParameters>`: Parameters required for content load.
-  - `ContentPath <String[]>`: The path to the content to be loaded. Path should be a relative file URL of the origin.
-
-`INPUTOBJECT <ICdnIdentity>`: Identity Parameter
-  - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
-  - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
-  - `[Id <String>]`: Resource identity path
-  - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
-  - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
-  - `[RouteName <String>]`: Name of the routing rule.
-  - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.
-  - `[RuleSetName <String>]`: Name of the rule set under the profile which is unique globally.
-  - `[SecretName <String>]`: Name of the Secret under the profile.
-  - `[SecurityPolicyName <String>]`: Name of the security policy under the profile.
-  - `[SubscriptionId <String>]`: Azure Subscription ID.
-
 ## RELATED LINKS
-

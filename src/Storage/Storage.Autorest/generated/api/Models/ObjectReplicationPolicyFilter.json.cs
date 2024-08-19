@@ -80,8 +80,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_prefixMatch = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("prefixMatch"), out var __jsonPrefixMatch) ? If( __jsonPrefixMatch as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : PrefixMatch;}
-            {_minCreationTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("minCreationTime"), out var __jsonMinCreationTime) ? (string)__jsonMinCreationTime : (string)MinCreationTime;}
+            {_prefixMatch = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("prefixMatch"), out var __jsonPrefixMatch) ? If( __jsonPrefixMatch as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _prefixMatch;}
+            {_minCreationTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("minCreationTime"), out var __jsonMinCreationTime) ? (string)__jsonMinCreationTime : (string)_minCreationTime;}
             AfterFromJson(json);
         }
 

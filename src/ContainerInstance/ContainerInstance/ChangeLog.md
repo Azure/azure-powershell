@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
+
+## Version 4.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 4.0.0
 * [Breaking Change] Fixed the typo that output property starting with PreviousState was misspelled as PreviouState. [#22268]

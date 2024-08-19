@@ -15,29 +15,29 @@ Imports previously exported security domain data to a managed HSM.
 ### ByName (Default)
 ```
 Import-AzKeyVaultSecurityDomain -Name <String> -Keys <KeyPath[]> -SecurityDomainPath <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### ByRestoredBlob
 ```
 Import-AzKeyVaultSecurityDomain -Name <String> -SecurityDomainPath <String> [-ImportRestoredBlob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### GenerateExchangeKey
 ```
 Import-AzKeyVaultSecurityDomain -Name <String> -OutFile <String> [-Force] [-DownloadExchangeKey] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
 Import-AzKeyVaultSecurityDomain -InputObject <PSKeyVaultIdentityItem> -Keys <KeyPath[]>
- -SecurityDomainPath <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+ -SecurityDomainPath <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### DoRestoreBlob

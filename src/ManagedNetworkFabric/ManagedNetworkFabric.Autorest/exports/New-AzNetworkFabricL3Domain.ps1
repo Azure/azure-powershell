@@ -99,7 +99,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAggregateRouteConfiguration]
     # Aggregate route configurations.
-    # To construct, see NOTES section for AGGREGATEROUTECONFIGURATION properties and create a hash table.
     ${AggregateRouteConfiguration},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -112,7 +111,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IConnectedSubnetRoutePolicy]
     # Connected Subnet RoutePolicy
-    # To construct, see NOTES section for CONNECTEDSUBNETROUTEPOLICY properties and create a hash table.
     ${ConnectedSubnetRoutePolicy},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -242,7 +240,13 @@ begin {
             CreateViaJsonString = 'Az.ManagedNetworkFabric.private\New-AzNetworkFabricL3Domain_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

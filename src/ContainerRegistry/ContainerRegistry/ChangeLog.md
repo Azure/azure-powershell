@@ -19,6 +19,14 @@
 -->
 ## Upcoming Release
 
+## Version 4.2.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 4.2.0
+* Upgraded Azure.Core to 1.37.0.
+* Fixed vulnerability https://github.com/advisories/GHSA-8g9c-28fc-mcx2
+* Added exposeToken parameter for Connect-AzContainerRegistry to get token
+
 ## Version 4.1.3
 * Fixed bug in `Get-AzContainerRegistryManifest` returns only 100 results [#22922]
 
@@ -58,7 +66,7 @@
 * Fixed data plane operations (repository, tag, manifest) failed cross registry in single Powershell session [#14849]
 
 ## Version 2.2.2
-* Fixed bug in `Get-AzContainerRegistryManifest` showing incorrect image name 
+* Fixed bug in `Get-AzContainerRegistryManifest` showing incorrect image name
 
 ## Version 2.2.1
 * Fixed authentication for `Connect-AzContainerRegistry`

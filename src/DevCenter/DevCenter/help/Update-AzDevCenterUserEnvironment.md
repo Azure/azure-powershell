@@ -15,26 +15,29 @@ Partially updates an environment
 ### PatchExpanded (Default)
 ```
 Update-AzDevCenterUserEnvironment -Endpoint <String> -Name <String> -ProjectName <String> [-UserId <String>]
- [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### PatchViaIdentityExpanded
 ```
 Update-AzDevCenterUserEnvironment -Endpoint <String> -InputObject <IDevCenterdataIdentity>
- [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### PatchExpandedByDevCenter
 ```
 Update-AzDevCenterUserEnvironment -DevCenterName <String> -Name <String> -ProjectName <String>
- [-UserId <String>] [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UserId <String>] [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PatchViaIdentityExpandedByDevCenter
 ```
 Update-AzDevCenterUserEnvironment -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
- [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,40 +45,48 @@ Partially updates an environment
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Update an environment by endpoint
+```powershell
 $currentDate = Get-Date
 $dateIn8Months = $currentDate.AddMonths(8)
-```
 
 Update-AzDevCenterUserEnvironment -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -Name "envtest" -ProjectName DevProject -ExpirationDate $dateIn8Months
-
-### EXAMPLE 2
 ```
+
+This command updates an environment named "envtest" to the project "DevProject".
+
+### Example 2: Update an environment by dev center
+```powershell
 $currentDate = Get-Date
 $dateIn8Months = $currentDate.AddMonths(8)
-```
 
 Update-AzDevCenterUserEnvironment -DevCenterName Contoso -Name "envtest" -ProjectName DevProject -ExpirationDate $dateIn8Months
-
-### EXAMPLE 3
 ```
+
+This command updates an environment named "envtest" to the project "DevProject".
+
+### Example 3: Update an environment by endpoint and InputObject
+```powershell
 $envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" = "envtest" }
 $currentDate = Get-Date
 $dateIn8Months = $currentDate.AddMonths(8)
-```
 
 Update-AzDevCenterUserEnvironment -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $envInput -ExpirationDate $dateIn8Months
-
-### EXAMPLE 4
 ```
+
+This command updates an environment named "envtest" to the project "DevProject".
+
+### Example 4: Update an environment by dev center and InputObject
+```powershell
 $currentDate = Get-Date
 $dateIn8Months = $currentDate.AddMonths(8)
-```
 
 $envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" = "envtest" }
 
 Update-AzDevCenterUserEnvironment -DevCenterName Contoso -InputObject $envInput -ExpirationDate $dateIn8Months
+```
+
+This command updates an environment named "envtest" to the project "DevProject".
 
 ## PARAMETERS
 
@@ -84,7 +95,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -99,7 +110,7 @@ Accept wildcard characters: False
 The DevCenter upon which to execute operations.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PatchExpandedByDevCenter, PatchViaIdentityExpandedByDevCenter
 Aliases: DevCenter
 
@@ -114,7 +125,7 @@ Accept wildcard characters: False
 The DevCenter-specific URI to operate on.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
@@ -129,7 +140,7 @@ Accept wildcard characters: False
 The time the expiration date will be triggered (UTC), after which the environment and associated resources will be deleted.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -145,7 +156,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: IDevCenterdataIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 Parameter Sets: PatchViaIdentityExpanded, PatchViaIdentityExpandedByDevCenter
 Aliases:
 
@@ -160,7 +171,7 @@ Accept wildcard characters: False
 The name of the environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PatchExpanded, PatchExpandedByDevCenter
 Aliases: EnvironmentName
 
@@ -171,11 +182,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The DevCenter Project upon which to execute operations.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PatchExpanded, PatchExpandedByDevCenter
 Aliases:
 
@@ -191,13 +217,13 @@ The AAD object id of the user.
 If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PatchExpanded, PatchExpandedByDevCenter
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: "me"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -206,7 +232,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -222,7 +248,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -239,33 +265,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IDevCenterdataIdentity\>: Identity Parameter
-  \[ActionName \<String\>\]: The name of an action that will take place on a Dev Box.
-  \[CatalogName \<String\>\]: The name of the catalog
-  \[CustomizationGroupName \<String\>\]: A customization group name.
-  \[CustomizationTaskId \<String\>\]: A customization task ID.
-  \[DefinitionName \<String\>\]: The name of the environment definition
-  \[DevBoxName \<String\>\]: The name of a Dev Box.
-  \[EnvironmentName \<String\>\]: The name of the environment.
-  \[Id \<String\>\]: Resource identity path
-  \[OperationId \<String\>\]: The id of the operation on a Dev Box.
-  \[PoolName \<String\>\]: The name of a pool of Dev Boxes.
-  \[ProjectName \<String\>\]: The DevCenter Project upon which to execute operations.
-  \[ScheduleName \<String\>\]: The name of a schedule.
-  \[TaskName \<String\>\]: A customization task name.
-  \[UserId \<String\>\]: The AAD object id of the user.
-If value is 'me', the identity is taken from the authentication context.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteruserenvironment](https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteruserenvironment)
-

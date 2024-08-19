@@ -755,7 +755,7 @@ Please contact Microsoft for further assistance.</value>
     <value>ResourceGuardMapping not found</value>
   </data>
   <data name="DisableWithRetainBackupNotCrititcal" xml:space="preserve">
-    <value>Invalid parameter Token. Stop protection with retain backup data is not MUA protected</value>
+    <value>Invalid parameter Token. Stop protection with retain backup data as per policy is not MUA protected</value>
   </data>
   <data name="CRRNotSupportedWIthCSR" xml:space="preserve">
     <value>Cross region restore is not supported along with cross subscription restore, please try passing either RestoreToSecondaryRegion or TargetSubscriptionId parameter but not both</value>
@@ -846,5 +846,17 @@ Please contact Microsoft for further assistance.</value>
   </data>
   <data name="StdToEnhPolicyMigrationWarning" xml:space="preserve">
     <value>Upgrading to enhanced policy can incur additional charges. Once upgraded to the enhanced policy, it is not possible to revert back to the standard policy</value>
+  </data>
+  <data name="SnapshotConsistencyTypeCantBeSetForStandardPolicy" xml:space="preserve">
+    <value>SnapshotConsistencyType parameter can only be used for enhanced AzureVM policy</value>
+  </data>
+  <data name="InvalidParameterSnapshotConsistencyType" xml:space="preserve">
+    <value>SnapshotConsistencyType parameter can only be used for WorkloadType AzureVM</value>
+  </data>
+  <data name="AADPropertiesCouldNotBeFetchedException" xml:space="preserve">
+    <value>An error occured while fetching AAD properties, this property is needed to get CRR access token</value>
+  </data>
+  <data name="CRRAccessTokenCouldNotBeFetchedException" xml:space="preserve">
+    <value>Unable to fetch CRR access token. Please retry the operation or contact Microsoft support if issue persists</value>
   </data>
 </root>

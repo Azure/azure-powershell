@@ -14,13 +14,14 @@ Gets Management Group(s)
 
 ### ListOperation (Default)
 ```
-Get-AzManagementGroup [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzManagementGroup [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### GetOperation
 ```
 Get-AzManagementGroup [-GroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-Expand] [-Recurse]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,13 +38,13 @@ Get-AzManagementGroup
 Id          : /providers/Microsoft.Management/managementGroups/TestGroup
 Type        : /providers/Microsoft.Management/managementGroups
 Name        : TestGroup
-TenantId    : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+TenantId    : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName : TestGroupDisplayName
 
 Id          : /providers/Microsoft.Management/managementGroups/TestGroupChild
 Type        : /providers/Microsoft.Management/managementGroups
 Name        : TestGroupChild
-TenantId    : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+TenantId    : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName : TestGroupChildDisplayName
 ```
 
@@ -58,7 +59,7 @@ Get-AzManagementGroup -GroupName TestGroup
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
 Name              : TestGroup
-TenantId          : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName       : TestGroupDisplayName
 UpdatedTime       : 2/1/2018 11:16:12 AM
 UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
@@ -80,13 +81,13 @@ $response
 Id                : /providers/Microsoft.Management/managementGroups/TestGroupParent
 Type              : /providers/Microsoft.Management/managementGroups
 Name              : TestGroupParent
-TenantId          : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName       : TestGroupParent
 UpdatedTime       : 2/1/2018 11:15:46 AM
 UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
-ParentId          : /providers/Microsoft.Management/managementGroups/6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
-ParentName        : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
-ParentDisplayName : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+ParentId          : /providers/Microsoft.Management/managementGroups/00001111-aaaa-2222-bbbb-3333cccc4444
+ParentName        : 00001111-aaaa-2222-bbbb-3333cccc4444
+ParentDisplayName : 00001111-aaaa-2222-bbbb-3333cccc4444
 Children          : {TestGroup1DisplayName, TestGroup2DisplayName}
 
 $response.Children[0]
@@ -111,13 +112,13 @@ $response
 Id                : /providers/Microsoft.Management/managementGroups/TestGroupParent
 Type              : /providers/Microsoft.Management/managementGroups
 Name              : TestGroupParent
-TenantId          : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName       : TestGroupParent
 UpdatedTime       : 2/1/2018 11:15:46 AM
 UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
-ParentId          : /providers/Microsoft.Management/managementGroups/6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
-ParentName        : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
-ParentDisplayName : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+ParentId          : /providers/Microsoft.Management/managementGroups/00001111-aaaa-2222-bbbb-3333cccc4444
+ParentName        : 00001111-aaaa-2222-bbbb-3333cccc4444
+ParentDisplayName : 00001111-aaaa-2222-bbbb-3333cccc4444
 Children          : {TestGroup1DisplayName, TestGroup2DisplayName}
 
 $response.Children[0]
@@ -181,6 +182,21 @@ Aliases: GroupId
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

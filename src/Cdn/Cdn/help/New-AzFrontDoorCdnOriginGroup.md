@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnorigingroup
 schema: 2.0.0
@@ -17,7 +17,7 @@ New-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileName <String> -R
  [-SubscriptionId <String>] [-HealthProbeSetting <IHealthProbeParameters>]
  [-LoadBalancingSetting <ILoadBalancingSettingsParameters>] [-SessionAffinityState <EnabledState>]
  [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,7 +78,7 @@ Health probe settings to the origin that is used to determine the health of the 
 To construct, see NOTES section for HEALTHPROBESETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IHealthProbeParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IHealthProbeParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -94,7 +94,7 @@ Load balancing settings for a backend pool
 To construct, see NOTES section for LOADBALANCINGSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ILoadBalancingSettingsParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ILoadBalancingSettingsParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -144,6 +144,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -251,27 +266,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroup
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`HEALTHPROBESETTING <IHealthProbeParameters>`: Health probe settings to the origin that is used to determine the health of the origin.
-  - `[ProbeIntervalInSecond <Int32?>]`: The number of seconds between health probes.Default is 240sec.
-  - `[ProbePath <String>]`: The path relative to the origin that is used to determine the health of the origin.
-  - `[ProbeProtocol <ProbeProtocol?>]`: Protocol to use for health probe.
-  - `[ProbeRequestType <HealthProbeRequestType?>]`: The type of health probe request that is made.
-
-`LOADBALANCINGSETTING <ILoadBalancingSettingsParameters>`: Load balancing settings for a backend pool
-  - `[AdditionalLatencyInMillisecond <Int32?>]`: The additional latency in milliseconds for probes to fall into the lowest latency bucket
-  - `[SampleSize <Int32?>]`: The number of samples to consider for load balancing decisions
-  - `[SuccessfulSamplesRequired <Int32?>]`: The number of samples within the sample period that must succeed
-
 ## RELATED LINKS
-

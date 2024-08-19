@@ -39,15 +39,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         public RecoveryServicesBackupClient Client { get; private set; }
 
         /// <summary>
-        /// Fetches the status of an operation such as triggering a backup, restore. The status can be in progress, completed
-        /// or failed. You can refer to the OperationStatus enum for all the possible states of the operation. Some operations
-        /// create jobs. This method returns the list of jobs associated with the operation.
+        /// Fetches the status of an operation such as triggering a backup, restore.
+        /// The status can be in progress, completed or failed. You can refer to the
+        /// OperationStatus enum for all the possible states of the operation. Some
+        /// operations create jobs. This method returns the list of jobs associated
+        /// with the operation.
         /// </summary>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backup item.

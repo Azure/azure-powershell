@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
+
+## Version 1.3.1
+* Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 1.3.0
 * Added cmdlets to support data plane operation:

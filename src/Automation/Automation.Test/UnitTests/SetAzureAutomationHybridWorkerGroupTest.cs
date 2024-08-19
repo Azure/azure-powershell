@@ -18,13 +18,14 @@ using Microsoft.Azure.Management.Automation.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
     [TestClass]
-    public class SetAzureAutomationHybridWorkerGroupTest
+    public class SetAzureAutomationHybridWorkerGroupTest : RMTestBase
     {
         private Mock<IAutomationPSClient> mockAutomationClient;
 

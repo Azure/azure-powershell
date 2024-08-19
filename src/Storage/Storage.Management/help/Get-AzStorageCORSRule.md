@@ -16,7 +16,8 @@ Gets CORS rules for a Storage service type.
 ```
 Get-AzStorageCORSRule [-ServiceType] <StorageServiceType> [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -154,5 +155,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzStorageCORSRule](./Remove-AzStorageCORSRule.md)
 
 [Set-AzStorageCORSRule](./Set-AzStorageCORSRule.md)
-
-

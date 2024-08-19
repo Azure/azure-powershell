@@ -102,8 +102,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_debug = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("debug"), out var __jsonDebug) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrinoDebugConfig.FromJson(__jsonDebug) : Debug;}
-            {_highAvailabilityEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("highAvailabilityEnabled"), out var __jsonHighAvailabilityEnabled) ? (bool?)__jsonHighAvailabilityEnabled : HighAvailabilityEnabled;}
+            {_debug = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("debug"), out var __jsonDebug) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrinoDebugConfig.FromJson(__jsonDebug) : _debug;}
+            {_highAvailabilityEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("highAvailabilityEnabled"), out var __jsonHighAvailabilityEnabled) ? (bool?)__jsonHighAvailabilityEnabled : _highAvailabilityEnabled;}
             AfterFromJson(json);
         }
     }

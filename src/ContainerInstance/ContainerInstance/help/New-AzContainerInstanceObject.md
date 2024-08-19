@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ContainerInstance-help.xml
 Module Name: Az.ContainerInstance
 online version: https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceObject
 schema: 2.0.0
@@ -26,7 +26,8 @@ New-AzContainerInstanceObject -Image <String> -Name <String> [-Command <String[]
  [-ReadinessProbeHttpGetScheme <String>] [-ReadinessProbeInitialDelaySecond <Int32>]
  [-ReadinessProbePeriodSecond <Int32>] [-ReadinessProbeSuccessThreshold <Int32>]
  [-ReadinessProbeTimeoutSecond <Int32>] [-RequestCpu <Double>] [-RequestMemoryInGb <Double>]
- [-RequestsGpuCount <Int32>] [-RequestsGpuSku <String>] [-VolumeMount <IVolumeMount[]>] [<CommonParameters>]
+ [-RequestsGpuCount <Int32>] [-RequestsGpuSku <String>] [-VolumeMount <IVolumeMount[]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -602,34 +603,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`ENVIRONMENTVARIABLE <IEnvironmentVariable[]>`: The environment variables to set in the container instance.
-  - `Name <String>`: The name of the environment variable.
-  - `[SecureValue <String>]`: The value of the secure environment variable.
-  - `[Value <String>]`: The value of the environment variable.
-
-`LIVENESSPROBEHTTPGETHTTPHEADER <IHttpHeader[]>`: The HTTP headers for liveness probe.
-  - `[Name <String>]`: The header name.
-  - `[Value <String>]`: The header value.
-
-`PORT <IContainerPort[]>`: The exposed ports on the container instance.
-  - `Port <Int32>`: The port number exposed within the container group.
-  - `[Protocol <ContainerNetworkProtocol?>]`: The protocol associated with the port.
-
-`READINESSPROBEHTTPGETHTTPHEADER <IHttpHeader[]>`: The HTTP headers for readiness probe.
-  - `[Name <String>]`: The header name.
-  - `[Value <String>]`: The header value.
-
-`VOLUMEMOUNT <IVolumeMount[]>`: The volume mounts available to the container instance.
-  - `MountPath <String>`: The path within the container where the volume should be mounted. Must not contain colon (:).
-  - `Name <String>`: The name of the volume mount.
-  - `[ReadOnly <Boolean?>]`: The flag indicating whether the volume mount is read-only.
-
 ## RELATED LINKS
-

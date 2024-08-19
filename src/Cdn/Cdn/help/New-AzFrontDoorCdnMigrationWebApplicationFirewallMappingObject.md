@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject
 schema: 2.0.0
@@ -14,7 +14,7 @@ Create an in-memory object for MigrationWebApplicationFirewallMapping.
 
 ```
 New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject [-MigratedFromId <String>]
- [-MigratedToId <String>] [<CommonParameters>]
+ [-MigratedToId <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,6 +67,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -74,11 +89,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.MigrationWebApplicationFirewallMapping
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MigrationWebApplicationFirewallMapping
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

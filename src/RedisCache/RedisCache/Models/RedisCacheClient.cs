@@ -12,24 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-
 namespace Microsoft.Azure.Commands.RedisCache
 {
-    using Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.RedisCache.Properties;
     using Microsoft.Azure.Management.Insights;
     using Microsoft.Azure.Management.Insights.Models;
     using Microsoft.Azure.Management.Internal.Resources;
+    using Microsoft.Azure.Management.RedisCache;
+    using Microsoft.Azure.Management.RedisCache.Models;
     using Microsoft.Rest.Azure;
+    using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.ComponentModel;
-    using Models;
-    using System;
-    using Properties;
-    using Microsoft.Azure.Management.RedisCache;
-    using Microsoft.Azure.Management.RedisCache.Models;
 
     public class RedisCacheClient
     {
@@ -46,8 +43,8 @@ namespace Microsoft.Azure.Commands.RedisCache
         public RedisCacheClient() { }
 
         public RedisResource CreateCache(string resourceGroupName, string cacheName, string location, string skuFamily, int skuCapacity, string skuName,
-                Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string minimumTlsVersion, string subnetId,
-                string staticIP, Hashtable tags, IList<string> zones, string redisVersion, string identityType, string[] userAssignedIdentities)
+                Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string minimumTlsVersion, bool? disableAccessKeyAuthentication, string subnetId,
+                string staticIP, Hashtable tags, IList<string> zones, string redisVersion, string identityType, string[] userAssignedIdentities, string updateChannel)
         {
             try
             {
@@ -65,7 +62,8 @@ namespace Microsoft.Azure.Commands.RedisCache
                     Family = skuFamily,
                     Capacity = skuCapacity
                 },
-                RedisVersion = redisVersion
+                RedisVersion = redisVersion,
+                UpdateChannel = updateChannel
             };
 
             parameters.Identity = Utility.BuildManagedServiceIdentity(identityType, userAssignedIdentities);
@@ -112,9 +110,14 @@ namespace Microsoft.Azure.Commands.RedisCache
                 parameters.ShardCount = shardCount.Value;
             }
 
-            if(!string.IsNullOrEmpty(minimumTlsVersion))
+            if (!string.IsNullOrEmpty(minimumTlsVersion))
             {
                 parameters.MinimumTlsVersion = minimumTlsVersion;
+            }
+
+            if (disableAccessKeyAuthentication.HasValue)
+            {
+                parameters.DisableAccessKeyAuthentication = disableAccessKeyAuthentication.Value;
             }
 
             if (!string.IsNullOrWhiteSpace(subnetId))
@@ -132,8 +135,8 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
 
         public RedisResource UpdateCache(string resourceGroupName, string cacheName, string skuFamily, int skuCapacity, string skuName,
-                Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string MinimumTlsVersion,
-                string redisVersion, Hashtable tags, string identityType, string[] userAssignedIdentities)
+                Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string MinimumTlsVersion, bool? disableAccessKeyAuthentication,
+                string redisVersion, Hashtable tags, string identityType, string[] userAssignedIdentities, string updateChannel)
         {
             try
             {
@@ -173,7 +176,17 @@ namespace Microsoft.Azure.Commands.RedisCache
             parameters.Identity = Utility.BuildManagedServiceIdentity(identityType, userAssignedIdentities);
 
             parameters.EnableNonSslPort = enableNonSslPort;
-            parameters.RedisVersion = redisVersion;
+
+            if (!string.IsNullOrEmpty(updateChannel))
+            {
+                parameters.UpdateChannel = updateChannel;
+                parameters.RedisVersion = "latest";
+            }
+
+            if (!string.IsNullOrEmpty(redisVersion))
+            {
+                parameters.RedisVersion = redisVersion;
+            }
 
             if (tenantSettings != null)
             {
@@ -189,12 +202,17 @@ namespace Microsoft.Azure.Commands.RedisCache
                     parameters.TenantSettings.Add(key.ToString(), tenantSettings[key].ToString());
                 }
             }
-            
+
             parameters.ShardCount = shardCount;
 
-            if(!string.IsNullOrEmpty(MinimumTlsVersion))
+            if (!string.IsNullOrEmpty(MinimumTlsVersion))
             {
                 parameters.MinimumTlsVersion = MinimumTlsVersion;
+            }
+
+            if (disableAccessKeyAuthentication.HasValue)
+            {
+                parameters.DisableAccessKeyAuthentication = disableAccessKeyAuthentication.Value;
             }
 
             RedisResource response = _client.Redis.BeginUpdate(resourceGroupName: resourceGroupName, name: cacheName, parameters: parameters);
@@ -318,6 +336,11 @@ namespace Microsoft.Azure.Commands.RedisCache
             _client.Redis.ForceReboot(resourceGroupName: resourceGroupName, name: cacheName, parameters: parameters);
         }
 
+        public void FlushCache(string resourceGroupName, string cacheName)
+        {
+            _client.Redis.FlushCache(resourceGroupName: resourceGroupName, cacheName: cacheName);
+        }
+
         public IList<ScheduleEntry> SetPatchSchedules(string resourceGroupName, string cacheName, List<ScheduleEntry> schedules)
         {
             var response = _client.PatchSchedules.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, cacheName, schedules).Result;
@@ -364,7 +387,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             _client.FirewallRules.Delete(resourceGroupName, cacheName, ruleName);
         }
 
-        internal RedisLinkedServerWithProperties SetLinkedServer(string resourceGroupName, string cacheName, 
+        internal RedisLinkedServerWithProperties SetLinkedServer(string resourceGroupName, string cacheName,
             string linkedCacheName, string linkedCacheId, string linkedCacheLocation, ReplicationRole serverRole)
         {
             return _client.LinkedServer.BeginCreate(resourceGroupName, cacheName, linkedCacheName, new RedisLinkedServerCreateParameters
@@ -393,6 +416,62 @@ namespace Microsoft.Azure.Commands.RedisCache
         internal void RemoveLinkedServer(string resourceGroupName, string cacheName, string linkedCacheName)
         {
             _client.LinkedServer.BeginDelete(resourceGroupName, cacheName, linkedCacheName);
+        }
+
+        internal RedisCacheAccessPolicy SetAccessPolicy(string resourceGroupName, string cacheName, string accessPolicyName, string permissions)
+        {
+            return _client.AccessPolicy.CreateUpdate(resourceGroupName, cacheName, accessPolicyName, permissions);
+        }
+
+        internal RedisCacheAccessPolicy GetAccessPolicy(string resourceGroupName, string cacheName, string accessPolicyName)
+        {
+            return _client.AccessPolicy.Get(resourceGroupName, cacheName, accessPolicyName);
+        }
+
+        internal IPage<RedisCacheAccessPolicy> ListAccessPolicies(string resourceGroupName, string cacheName)
+        {
+            return _client.AccessPolicy.List(resourceGroupName, cacheName);
+        }
+
+        internal IPage<RedisCacheAccessPolicy> ListAccessPolicies(string nextLink)
+        {
+            return _client.AccessPolicy.ListNext(nextLink);
+        }
+
+        internal void RemoveAccessPolicy(string resourceGroupName, string cacheName, string accessPolicyName)
+        {
+            _client.AccessPolicy.Delete(resourceGroupName, cacheName, accessPolicyName);
+        }
+
+        internal RedisCacheAccessPolicyAssignment SetAccessPolicyAssignment(string resourceGroupName, string cacheName, string accessPolicyAssignmentName, string accessPolicyName, string objectId, string objectIdAlias)
+        {
+            RedisCacheAccessPolicyAssignment parameters = new RedisCacheAccessPolicyAssignment
+            {
+                AccessPolicyName = accessPolicyName,
+                ObjectId = objectId,
+                ObjectIdAlias = objectIdAlias
+            };
+            return _client.AccessPolicyAssignment.CreateUpdate(resourceGroupName, cacheName, accessPolicyAssignmentName, parameters);
+        }
+
+        internal RedisCacheAccessPolicyAssignment GetAccessPolicyAssignment(string resourceGroupName, string cacheName, string accessPolicyAssignmentName)
+        {
+            return _client.AccessPolicyAssignment.Get(resourceGroupName, cacheName, accessPolicyAssignmentName);
+        }
+
+        internal IPage<RedisCacheAccessPolicyAssignment> ListAccessPolicyAssignments(string resourceGroupName, string cacheName)
+        {
+            return _client.AccessPolicyAssignment.List(resourceGroupName, cacheName);
+        }
+
+        internal IPage<RedisCacheAccessPolicyAssignment> ListAccessPolicyAssignments(string nextLink)
+        {
+            return _client.AccessPolicyAssignment.ListNext(nextLink);
+        }
+
+        internal void RemoveAccessPolicyAssignment(string resourceGroupName, string cacheName, string accessPolicyAssignmentName)
+        {
+            _client.AccessPolicyAssignment.Delete(resourceGroupName, cacheName, accessPolicyAssignmentName);
         }
     }
 }

@@ -45,10 +45,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
-        /// <param name='parameters'>
-        /// resource validate operation request
+        /// <param name='id'>
+        /// Recovery point ID.
+        /// </param>
+        /// <param name='properties'>
+        /// ValidateOperationRequestResource properties
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -56,24 +60,30 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> TriggerWithHttpMessagesAsync(string vaultName, string resourceGroupName, ValidateOperationRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> TriggerWithHttpMessagesAsync(string vaultName, string resourceGroupName, string id, ValidateOperationRequest properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse _response = await BeginTriggerWithHttpMessagesAsync(vaultName, resourceGroupName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse _response = await BeginTriggerWithHttpMessagesAsync(vaultName, resourceGroupName, id, properties, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// Validate operation for specified backed up item in the form of an asynchronous operation. Returns tracking headers which can be tracked using GetValidateOperationResult API.
+        /// Validate operation for specified backed up item in the form of an
+        /// asynchronous operation. Returns tracking headers which can be tracked using
+        /// GetValidateOperationResult API.
         /// </summary>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
-        /// <param name='parameters'>
-        /// resource validate operation request
+        /// <param name='id'>
+        /// Recovery point ID.
+        /// </param>
+        /// <param name='properties'>
+        /// ValidateOperationRequestResource properties
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -93,17 +103,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginTriggerWithHttpMessagesAsync(string vaultName, string resourceGroupName, ValidateOperationRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginTriggerWithHttpMessagesAsync(string vaultName, string resourceGroupName, string id, ValidateOperationRequest properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
-            if (parameters == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
-            }
-
             if (this.Client.ApiVersion == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -124,6 +129,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
+            ValidateOperationRequestResource parameters = new ValidateOperationRequestResource();
+            if(id != null||properties != null)
+            {
+                parameters.Id = id;
+                parameters.Properties = properties;
+            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

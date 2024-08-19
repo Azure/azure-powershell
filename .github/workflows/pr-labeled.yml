@@ -14,10 +14,12 @@ jobs:
       pull-requests: write
       contents: read
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         sparse-checkout: |
           .github
     - name: process label
       shell: pwsh
-      run: .github/workflows/script/PrLabeled.ps1 -LabelName "${{ github.event.label.name }}" -PrUrl $env:PR
+      env:
+        LABEL: ${{ github.event.label.name }}
+      run: .github/workflows/script/PrLabeled.ps1 -LabelName $env:LABEL -PrUrl $env:PR

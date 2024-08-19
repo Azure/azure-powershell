@@ -111,7 +111,6 @@ Accept wildcard characters: False
 
 ### -Body
 The Network To Network Interconnect resource definition.
-To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkToNetworkInterconnect
@@ -159,7 +158,6 @@ Accept wildcard characters: False
 
 ### -ExportRoutePolicy
 Export Route Policy configuration.
-To construct, see NOTES section for EXPORTROUTEPOLICY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExportRoutePolicyInformation
@@ -175,7 +173,6 @@ Accept wildcard characters: False
 
 ### -ImportRoutePolicy
 Import Route Policy configuration.
-To construct, see NOTES section for IMPORTROUTEPOLICY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IImportRoutePolicyInformation
@@ -253,7 +250,6 @@ Accept wildcard characters: False
 
 ### -Layer2Configuration
 Common properties for Layer2 Configuration.
-To construct, see NOTES section for LAYER2CONFIGURATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer2Configuration
@@ -284,7 +280,6 @@ Accept wildcard characters: False
 
 ### -NetworkFabricInputObject
 Identity Parameter
-To construct, see NOTES section for NETWORKFABRICINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
@@ -346,7 +341,6 @@ Accept wildcard characters: False
 
 ### -NpbStaticRouteConfiguration
 NPB Static Route Configuration properties.
-To construct, see NOTES section for NPBSTATICROUTECONFIGURATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INpbStaticRouteConfiguration
@@ -362,7 +356,6 @@ Accept wildcard characters: False
 
 ### -OptionBLayer3Configuration
 Common properties for Layer3Configuration.
-To construct, see NOTES section for OPTIONBLAYER3CONFIGURATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration

@@ -23,7 +23,7 @@ Create an in-memory object for SapEccDataSource.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapEccDataSource
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewSapEccDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewSapEccDataSourceObject
 #>
 function New-AzPurviewSapEccDataSourceObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapEccDataSource')]

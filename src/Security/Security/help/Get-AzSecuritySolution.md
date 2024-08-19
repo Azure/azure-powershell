@@ -14,7 +14,20 @@ Get Security Solutions
 
 ### SubscriptionScope (Default)
 ```
-Get-AzSecuritySolution [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecuritySolution [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
+```
+
+### ResourceGroupLevelResource
+```
+Get-AzSecuritySolution -ResourceGroupName <String> -Name <String> -Location <String>
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### ResourceId
+```
+Get-AzSecuritySolution -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,6 +72,81 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Location.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceGroupLevelResource
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Resource name.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceGroupLevelResource
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Resource group name.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceGroupLevelResource
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+ID of the security resource that you want to invoke the command on.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

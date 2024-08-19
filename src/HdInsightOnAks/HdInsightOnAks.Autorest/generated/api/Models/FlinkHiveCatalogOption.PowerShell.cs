@@ -102,6 +102,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("MetastoreDbConnectionAuthenticationMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkHiveCatalogOptionInternal)this).MetastoreDbConnectionAuthenticationMode = (string) content.GetValueForProperty("MetastoreDbConnectionAuthenticationMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkHiveCatalogOptionInternal)this).MetastoreDbConnectionAuthenticationMode, global::System.Convert.ToString);
+            }
             if (content.Contains("MetastoreDbConnectionPasswordSecret"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkHiveCatalogOptionInternal)this).MetastoreDbConnectionPasswordSecret = (string) content.GetValueForProperty("MetastoreDbConnectionPasswordSecret",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkHiveCatalogOptionInternal)this).MetastoreDbConnectionPasswordSecret, global::System.Convert.ToString);
@@ -131,6 +135,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("MetastoreDbConnectionAuthenticationMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkHiveCatalogOptionInternal)this).MetastoreDbConnectionAuthenticationMode = (string) content.GetValueForProperty("MetastoreDbConnectionAuthenticationMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkHiveCatalogOptionInternal)this).MetastoreDbConnectionAuthenticationMode, global::System.Convert.ToString);
+            }
             if (content.Contains("MetastoreDbConnectionPasswordSecret"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkHiveCatalogOptionInternal)this).MetastoreDbConnectionPasswordSecret = (string) content.GetValueForProperty("MetastoreDbConnectionPasswordSecret",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkHiveCatalogOptionInternal)this).MetastoreDbConnectionPasswordSecret, global::System.Convert.ToString);

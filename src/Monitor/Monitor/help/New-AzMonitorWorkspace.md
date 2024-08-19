@@ -15,7 +15,8 @@ Create or update a workspace
 ### CreateExpanded (Default)
 ```
 New-AzMonitorWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded

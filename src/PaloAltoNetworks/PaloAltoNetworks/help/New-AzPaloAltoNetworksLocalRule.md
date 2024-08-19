@@ -22,7 +22,8 @@ New-AzPaloAltoNetworksLocalRule -LocalRulestackName <String> -Priority <String> 
  [-InboundInspectionCertificate <String>] [-NegateDestination <String>] [-NegateSource <String>]
  [-Protocol <String>] [-ProtocolPortList <String[]>] [-RuleState <String>] [-SourceCidr <String[]>]
  [-SourceCountry <String[]>] [-SourceFeed <String[]>] [-SourcePrefixList <String[]>] [-Tag <ITagInfo[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -529,7 +530,6 @@ Accept wildcard characters: False
 
 ### -Tag
 tag for rule
-To construct, see NOTES section for TAG properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ITagInfo[]
@@ -581,19 +581,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.ILocalRulesResource
+### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulesResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`TAG <ITagInfo[]>`: tag for rule
-  - `Key <String>`: tag name
-  - `Value <String>`: tag value
 
 ## RELATED LINKS

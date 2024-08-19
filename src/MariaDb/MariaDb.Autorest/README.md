@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the MariaDb service.
 
 ---
-## Status
-[![Az.MariaDb](https://img.shields.io/powershellgallery/v/Az.MariaDb.svg?style=flat-square&label=Az.MariaDb "Az.MariaDb")](https://www.powershellgallery.com/packages/Az.MariaDb/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

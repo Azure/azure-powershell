@@ -15,7 +15,8 @@ Creates new Lifecycle object
 ```
 New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore <DataStoreType>
  -SourceRetentionDurationType <DurationType> -SourceRetentionDurationCount <Int32>
- [-TargetDataStore <DataStoreType>] [-CopyOption <CopyOption>] [<CommonParameters>]
+ [-TargetDataStore <DataStoreType>] [-CopyOption <CopyOption>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -141,10 +142,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.ISourceLifeCycle
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ISourceLifeCycle
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

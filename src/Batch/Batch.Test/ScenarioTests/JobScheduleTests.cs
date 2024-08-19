@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -28,7 +29,32 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestJobScheduleCRUD()
         {
-            TestRunner.RunTestScript("Test-JobScheduleCRUD");
+            BatchAccountContext context = null;
+            string poolId1 = "testPool";
+            string poolId2 = "testPool2";
+
+            TestRunner.RunTestScript(
+                null,
+                mockContext =>
+                {
+                    context = new ScenarioTestContext();
+                    ScenarioTestHelpers.CreateTestPoolVirtualMachine(this, context, poolId1, targetDedicated: 2, targetLowPriority: 0);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(this, context, poolId1);
+
+                    ScenarioTestHelpers.CreateTestPoolVirtualMachine(this, context, poolId2, targetDedicated: 2, targetLowPriority: 0);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(this, context, poolId2);
+                },
+                () =>
+                {
+
+                    ScenarioTestHelpers.DeletePool(this, context, poolId1);
+                    ScenarioTestHelpers.DeletePool(this, context, poolId2);
+            },
+                $"Test-JobScheduleCRUD"
+            );
+
+
+           
         }
 
 

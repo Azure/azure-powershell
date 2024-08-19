@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Peering service.
 
 ---
-## Status
-[![Az.Peering](https://img.shields.io/powershellgallery/v/Az.Peering.svg?style=flat-square&label=Az.Peering "Az.Peering")](https://www.powershellgallery.com/packages/Az.Peering/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -31,10 +28,10 @@ For information on how to develop for `Az.Peering`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-branch: 5fc05d0f0b15cbf16de942cadce464b495c66a58
+commit: 5fc05d0f0b15cbf16de942cadce464b495c66a58
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
   - $(repo)/specification/peering/resource-manager/Microsoft.Peering/stable/2022-10-01/peering.json
@@ -52,6 +49,10 @@ subject-prefix: $(service-name)
 resourcegroup-append: true
 identity-correction-for-post: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs

@@ -13,10 +13,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzDevCenterAdminDevCenter_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevCenter))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenter))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Description(@"Partially updates a devcenter.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}", ApiVersion = "2023-10-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}", ApiVersion = "2024-05-01-preview")]
     public partial class UpdateAzDevCenterAdminDevCenter_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.IEventListener
     {
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
         /// <summary>
         /// The devcenter resource for partial updates. Properties not provided in the update request will not be changed.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevCenterUpdate _body = new Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.DevCenterUpdate();
+        private Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenterUpdate _body = new Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.DevCenterUpdate();
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
@@ -76,6 +76,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>
+        /// Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.",
+        SerializedName = @"installAzureMonitorAgentEnableStatus",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.InstallAzureMonitorAgentEnableStatus) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.InstallAzureMonitorAgentEnableStatus))]
+        public Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.InstallAzureMonitorAgentEnableStatus DevBoxProvisioningSettingInstallAzureMonitorAgentEnableStatus { get => _body.DevBoxProvisioningSettingInstallAzureMonitorAgentEnableStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.InstallAzureMonitorAgentEnableStatus)""); set => _body.DevBoxProvisioningSettingInstallAzureMonitorAgentEnableStatus = value; }
 
         /// <summary>The display name of the devcenter.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The display name of the devcenter.")]
@@ -207,6 +221,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>
+        /// Indicates whether pools in this Dev Center can use Microsoft Hosted Networks. Defaults to Enabled if not set.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Indicates whether pools in this Dev Center can use Microsoft Hosted Networks. Defaults to Enabled if not set.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Indicates whether pools in this Dev Center can use Microsoft Hosted Networks. Defaults to Enabled if not set.",
+        SerializedName = @"microsoftHostedNetworkEnableStatus",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.MicrosoftHostedNetworkEnableStatus) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.MicrosoftHostedNetworkEnableStatus))]
+        public Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.MicrosoftHostedNetworkEnableStatus NetworkSettingMicrosoftHostedNetworkEnableStatus { get => _body.NetworkSettingMicrosoftHostedNetworkEnableStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.MicrosoftHostedNetworkEnableStatus)""); set => _body.NetworkSettingMicrosoftHostedNetworkEnableStatus = value; }
+
+        /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
         /// asynchronously.
         /// </summary>
@@ -218,6 +246,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.HttpPipeline Pipeline { get; set; }
+
+        /// <summary>Resource Id of an associated Plan</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource Id of an associated Plan")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Resource Id of an associated Plan",
+        SerializedName = @"planId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string PlanId { get => _body.PlanId ?? null; set => _body.PlanId = value; }
+
+        /// <summary>
+        /// Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.",
+        SerializedName = @"catalogItemSyncEnableStatus",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogItemSyncEnableStatus) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogItemSyncEnableStatus))]
+        public Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogItemSyncEnableStatus ProjectCatalogSettingCatalogItemSyncEnableStatus { get => _body.ProjectCatalogSettingCatalogItemSyncEnableStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogItemSyncEnableStatus)""); set => _body.ProjectCatalogSettingCatalogItemSyncEnableStatus = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -244,32 +297,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ITags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ITags Tag { get => _body.Tag ?? null /* object */; set => _body.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ITags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ITags Tag { get => _body.Tag ?? null /* object */; set => _body.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevCenter">Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevCenter</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenter">Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenter</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevCenter> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenter> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -315,7 +368,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -514,16 +584,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
 
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -540,7 +625,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ICloudError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -558,12 +643,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevCenter">Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevCenter</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenter">Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenter</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevCenter> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenter> response)
         {
             using( NoSynchronizationContext )
             {
@@ -575,7 +660,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevCenter
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenter
                 WriteObject((await response));
             }
         }

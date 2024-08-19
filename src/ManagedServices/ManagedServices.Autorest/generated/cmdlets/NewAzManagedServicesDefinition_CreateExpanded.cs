@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Description(@"Creates or updates a registration definition.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.HttpPath(Path = "/{scope}/providers/Microsoft.ManagedServices/registrationDefinitions/{registrationDefinitionId}", ApiVersion = "2020-02-01-preview")]
     public partial class NewAzManagedServicesDefinition_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.IEventListener
     {
@@ -32,6 +33,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>The registration definition.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition _requestBody = new Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.RegistrationDefinition();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -51,7 +55,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
         Description = @"The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.",
         SerializedName = @"authorizations",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization[] Authorization { get => RequestBody.Authorization ?? null /* arrayOf */; set => RequestBody.Authorization = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization[] Authorization { get => _requestBody.Authorization ?? null /* arrayOf */; set => _requestBody.Authorization = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -62,9 +66,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.ManagedServices Client => Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.ParameterCategory.Azure)]
@@ -79,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
         Description = @"The description of the registration definition.",
         SerializedName = @"description",
         PossibleTypes = new [] { typeof(string) })]
-        public string Description { get => RequestBody.Description ?? null; set => RequestBody.Description = value; }
+        public string Description { get => _requestBody.Description ?? null; set => _requestBody.Description = value; }
 
         /// <summary>
         /// The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals
@@ -94,7 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
         Description = @"The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.",
         SerializedName = @"eligibleAuthorizations",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization[] EligibleAuthorization { get => RequestBody.EligibleAuthorization ?? null /* arrayOf */; set => RequestBody.EligibleAuthorization = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization[] EligibleAuthorization { get => _requestBody.EligibleAuthorization ?? null /* arrayOf */; set => _requestBody.EligibleAuthorization = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -120,14 +125,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
         Description = @"The identifier of the managedBy tenant.",
         SerializedName = @"managedByTenantId",
         PossibleTypes = new [] { typeof(string) })]
-        public string ManagedByTenantId { get => RequestBody.ManagedByTenantId ?? null; set => RequestBody.ManagedByTenantId = value; }
+        public string ManagedByTenantId { get => _requestBody.ManagedByTenantId ?? null; set => _requestBody.ManagedByTenantId = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -167,7 +172,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
         Description = @"Azure Marketplace plan name.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        public string PlanName { get => RequestBody.PlanName ?? null; set => RequestBody.PlanName = value; }
+        public string PlanName { get => _requestBody.PlanName ?? null; set => _requestBody.PlanName = value; }
 
         /// <summary>Azure Marketplace product code.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Azure Marketplace product code.")]
@@ -178,7 +183,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
         Description = @"Azure Marketplace product code.",
         SerializedName = @"product",
         PossibleTypes = new [] { typeof(string) })]
-        public string PlanProduct { get => RequestBody.PlanProduct ?? null; set => RequestBody.PlanProduct = value; }
+        public string PlanProduct { get => _requestBody.PlanProduct ?? null; set => _requestBody.PlanProduct = value; }
 
         /// <summary>Azure Marketplace publisher ID.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Azure Marketplace publisher ID.")]
@@ -189,7 +194,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
         Description = @"Azure Marketplace publisher ID.",
         SerializedName = @"publisher",
         PossibleTypes = new [] { typeof(string) })]
-        public string PlanPublisher { get => RequestBody.PlanPublisher ?? null; set => RequestBody.PlanPublisher = value; }
+        public string PlanPublisher { get => _requestBody.PlanPublisher ?? null; set => _requestBody.PlanPublisher = value; }
 
         /// <summary>Azure Marketplace plan's version.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Azure Marketplace plan's version.")]
@@ -200,7 +205,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
         Description = @"Azure Marketplace plan's version.",
         SerializedName = @"version",
         PossibleTypes = new [] { typeof(string) })]
-        public string PlanVersion { get => RequestBody.PlanVersion ?? null; set => RequestBody.PlanVersion = value; }
+        public string PlanVersion { get => _requestBody.PlanVersion ?? null; set => _requestBody.PlanVersion = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -227,13 +232,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
         Description = @"The name of the registration definition.",
         SerializedName = @"registrationDefinitionName",
         PossibleTypes = new [] { typeof(string) })]
-        public string RegistrationDefinitionName { get => RequestBody.RegistrationDefinitionName ?? null; set => RequestBody.RegistrationDefinitionName = value; }
-
-        /// <summary>Backing field for <see cref="RequestBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition _requestBody= new Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.RegistrationDefinition();
-
-        /// <summary>The registration definition.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition RequestBody { get => this._requestBody; set => this._requestBody = value; }
+        public string RegistrationDefinitionName { get => _requestBody.RegistrationDefinitionName ?? null; set => _requestBody.RegistrationDefinitionName = value; }
 
         /// <summary>Backing field for <see cref="Scope" /> property.</summary>
         private string _scope;
@@ -258,8 +257,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IErrorResponse</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -270,8 +269,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition">Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
@@ -282,6 +281,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -307,7 +311,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.RequestBody = this.RequestBody;
+            clone._requestBody = this._requestBody;
             clone.Name = this.Name;
             clone.Scope = this.Scope;
             return clone;
@@ -316,7 +320,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -457,7 +478,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -472,12 +492,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.RegistrationDefinitionsCreateOrUpdate(Name, Scope, RequestBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.RegistrationDefinitionsCreateOrUpdate(Name, Scope, _requestBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Name=Name,Scope=Scope,body=RequestBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Name=Name,Scope=Scope,body=_requestBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -496,12 +516,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
             base.StopProcessing();
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IErrorResponse</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
@@ -523,14 +558,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Name=Name, Scope=Scope, body=RequestBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Name=Name, Scope=Scope, body=_requestBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Name=Name, Scope=Scope, body=RequestBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Name=Name, Scope=Scope, body=_requestBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -540,8 +575,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition">Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>

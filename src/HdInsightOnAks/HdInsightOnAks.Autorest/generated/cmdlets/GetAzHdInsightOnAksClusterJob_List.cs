@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJob))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Description(@"Get jobs of HDInsight on AKS cluster.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}/clusters/{clusterName}/jobs", ApiVersion = "2023-06-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}/clusters/{clusterName}/jobs", ApiVersion = "2024-05-01-preview")]
     public partial class GetAzHdInsightOnAksClusterJob_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IContext
@@ -106,6 +106,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
+
+        /// <summary>Backing field for <see cref="Filter" /> property.</summary>
+        private string _filter;
+
+        /// <summary>
+        /// The system query option to filter job returned in the response. Allowed value is 'jobName eq {jobName}' or 'jarName eq
+        /// {jarName}'.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The system query option to filter job returned in the response. Allowed value is 'jobName eq {jobName}' or 'jarName eq {jarName}'.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The system query option to filter job returned in the response. Allowed value is 'jobName eq {jobName}' or 'jarName eq {jarName}'.",
+        SerializedName = @"$filter",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Query)]
+        public string Filter { get => this._filter; set => this._filter = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -233,6 +250,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
             {
                 // Flush buffer
                 WriteObject(_firstResponse);
+            }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
             }
         }
 
@@ -382,13 +417,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.ClusterJobsList(SubscriptionId, ResourceGroupName, ClusterPoolName, ClusterName, onOk, onDefault, this, Pipeline);
+                        await this.Client.ClusterJobsList(SubscriptionId, ResourceGroupName, ClusterPoolName, ClusterName, this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,ClusterPoolName=ClusterPoolName,ClusterName=ClusterName})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,ClusterPoolName=ClusterPoolName,ClusterName=ClusterName,Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -405,6 +440,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

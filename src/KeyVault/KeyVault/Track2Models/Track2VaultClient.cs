@@ -3,14 +3,12 @@ using Azure.Security.KeyVault.Keys;
 using Azure.Security.KeyVault.Keys.Cryptography;
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Security;
 
 namespace Microsoft.Azure.Commands.KeyVault.Track2Models
@@ -132,6 +130,69 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return new PSKeyVaultKey(client.GetKey(keyName, keyVersion).Value, _vaultUriHelper, false);
         }
 
+        internal IEnumerable<PSKeyVaultKeyIdentityItem> GetKeys(string vaultName)
+        {
+            var client = CreateKeyClient(vaultName);
+            return GetKeys(client);
+        }
+
+        private IEnumerable<PSKeyVaultKeyIdentityItem> GetKeys(KeyClient client)
+        {
+            var results = new List<PSKeyVaultKeyIdentityItem>();
+            var allKeys = client.GetPropertiesOfKeys();
+            foreach (var keyProperties in allKeys)
+            {
+                results.Add(new PSKeyVaultKeyIdentityItem(keyProperties, _vaultUriHelper, false));
+            }
+            return results;
+        }
+
+        internal IEnumerable<PSKeyVaultKeyIdentityItem> GetKeyVersions(string vaultName, string keyName)
+        {
+            var client = CreateKeyClient(vaultName);
+            return GetKeyVersions(client, keyName);
+        }
+
+        private IEnumerable<PSKeyVaultKeyIdentityItem> GetKeyVersions(KeyClient client, string keyName)
+        {
+            var results = new List<PSKeyVaultKeyIdentityItem>();
+            var allKeys = client.GetPropertiesOfKeyVersions(keyName);
+            foreach (var keyProperties in allKeys)
+            {
+                results.Add(new PSKeyVaultKeyIdentityItem(keyProperties, _vaultUriHelper, false));
+            }
+            return results;
+        }
+
+        internal PSDeletedKeyVaultKey GetDeletedKey(string vaultName, string keyName)
+        {
+            var client = CreateKeyClient(vaultName);
+            return GetDeletedKey(client, keyName);
+        }
+
+        private PSDeletedKeyVaultKey GetDeletedKey(KeyClient client, string keyName)
+        {
+            return new PSDeletedKeyVaultKey(client.GetDeletedKey(keyName).Value, _vaultUriHelper, false);
+        }
+
+        internal IEnumerable<PSDeletedKeyVaultKey> GetDeletedKeys(string vaultName)
+        {
+            var client = CreateKeyClient(vaultName);
+            return GetDeletedKeys(client);
+        }
+
+
+        private IEnumerable<PSDeletedKeyVaultKey> GetDeletedKeys(KeyClient client)
+        {
+            List<PSDeletedKeyVaultKey> results = new List<PSDeletedKeyVaultKey>();
+            var allDeletedKeys = client.GetDeletedKeys();
+            foreach (DeletedKey deletedKey in allDeletedKeys)
+            {
+                results.Add(new PSDeletedKeyVaultKey(deletedKey, _vaultUriHelper, false));
+            }
+            return results;
+        }
+
         internal PSKeyOperationResult UnwrapKey(string vaultName, string keyName, string keyVersion, string wrapAlgorithm, byte[] value)
         {
             var key = GetKey(vaultName, keyName, keyVersion);
@@ -213,6 +274,25 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         #endregion
 
         #region Certificate actions
+
+        internal PSKeyVaultCertificateOperation CreateCertificate(string vaultName, string certName, CertificatePolicy certPolicy, bool enabled, IDictionary<string, string> tags)
+        {
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException(nameof(vaultName));
+            if (string.IsNullOrEmpty(certName))
+                throw new ArgumentNullException(nameof(certName));
+
+            var certClient = CreateCertificateClient(vaultName);
+            return CreateCertificate(certClient, certName, certPolicy, enabled, tags);
+
+        }
+
+        private PSKeyVaultCertificateOperation CreateCertificate(CertificateClient certClient, string certName, CertificatePolicy certPolicy, bool enabled, IDictionary<string, string> tags)
+        {
+            var certOp = certClient.StartCreateCertificate(certName, certPolicy, enabled, tags);
+            return new PSKeyVaultCertificateOperation(certOp);
+        }
+
         internal PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, byte[] certificate, SecureString password, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType, PSKeyVaultCertificatePolicy certPolicy = null)
         {
             if (string.IsNullOrEmpty(vaultName))
@@ -244,10 +324,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return new PSKeyVaultCertificate(certClient.ImportCertificate(options));
         }
 
-        public PSKeyVaultCertificate MergeCertificate(string vaultName, string certName, byte[] certificate, IDictionary<string, string> tags)
+        public PSKeyVaultCertificate MergeCertificate(string vaultName, string certName, IEnumerable<byte[]> certificates, IDictionary<string, string> tags)
         {
             var certClient = CreateCertificateClient(vaultName);
-            var options = new MergeCertificateOptions(certName, new List<byte[]> { certificate });
+            var options = new MergeCertificateOptions(certName, certificates);
             tags?.ForEach((entry) => { options.Tags.Add(entry.Key.ToString(), entry.Value.ToString()); });
             var cert = certClient.MergeCertificate(options);
             return new PSKeyVaultCertificate(cert);

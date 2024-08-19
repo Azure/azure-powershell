@@ -57,6 +57,37 @@ Type                : Microsoft.Maintenance/maintenanceConfigurations
 
 Create a maintenance configuration with scope Host
 
+### Example 2
+```powershell
+New-AzMaintenanceConfiguration -ResourceGroupName sample-rg  -Name PatchSchedule -MaintenanceScope "InGuestPatch" -Location westeurope -Timezone "UTC" -StartDateTime "2025-10-09 12:30" -Duration "3:00" -RecurEvery "Day" -LinuxParameterClassificationToInclude @('Other') -LinuxParameterPackageNameMaskToInclude @('lib', 'kernel') -LinuxParameterPackageNameMaskToExclude @('curl', 'vim') -WindowParameterClassificationToInclude @('Critical', 'Security') -WindowParameterKbNumberToInclude @('5035849', '5035857') -WindowParameterKbNumberToExclude @('5034439')  -ExtensionProperty @{inGuestPatchMode="User"} -InstallPatchRebootSetting "IfRequired"  -Debug
+```
+
+```output
+Location                               : westeurope
+Tags                                   : {"resource":"test"}
+ExtensionProperties                    : {"inGuestPatchMode":"User"}
+MaintenanceScope                       : InGuestPatch
+Id                                     : 
+/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourcegroups/sample-rg/providers/Microsoft.Maintenance/maintenanceConfigurations/PatchSchedule
+Name                                   : PatchSchedule
+Type                                   : Microsoft.Maintenance/maintenanceConfigurations
+StartDateTime                          : 2025-10-09 12:30
+Duration                               : 03:00
+Timezone                               : UTC
+Visibility                             : Custom
+RecurEvery                             : Day
+LinuxParameterClassificationToInclude  : 
+LinuxParameterPackageNameMaskToExclude : 
+LinuxParameterPackageNameMaskToInclude : apt
+                                         httpd
+WindowParameterKbNumberToInclude       : 
+WindowParameterKbNumberToExclude       : 
+WindowParameterClassificationToInclude : 
+InstallPatchRebootSetting              : IfRequired
+```
+
+Create a maintenance configuration with scope InGuest
+
 ## PARAMETERS
 
 ### -AsJob

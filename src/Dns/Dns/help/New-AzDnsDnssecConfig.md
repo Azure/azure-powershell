@@ -15,14 +15,15 @@ Creates or updates the DNSSEC configuration on a DNS zone.
 ### Create (Default)
 ```
 New-AzDnsDnssecConfig -ResourceGroupName <String> [-SubscriptionId <String>] -ZoneName <String>
- [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzDnsDnssecConfig -InputObject <IDnsIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

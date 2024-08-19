@@ -32,10 +32,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="workLoadType">Type of workload for the backup management
-        /// Possible values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb',
-        /// 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
-        /// 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase',
-        /// 'SAPAseDatabase', 'SAPHanaDBInstance'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;VM&#39;, &#39;FileFolder&#39;, &#39;AzureSqlDb&#39;,
+        /// &#39;SQLDB&#39;, &#39;Exchange&#39;, &#39;Sharepoint&#39;, &#39;VMwareVM&#39;, &#39;SystemState&#39;, &#39;Client&#39;,
+        /// &#39;GenericDataSource&#39;, &#39;SQLDataBase&#39;, &#39;AzureFileShare&#39;, &#39;SAPHanaDatabase&#39;,
+        /// &#39;SAPAseDatabase&#39;, &#39;SAPHanaDBInstance&#39;</param>
 
         /// <param name="settings">Common settings for the backup management
         /// </param>

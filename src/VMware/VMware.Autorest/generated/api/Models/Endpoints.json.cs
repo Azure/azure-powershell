@@ -68,6 +68,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {_nsxtManager = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("nsxtManager"), out var __jsonNsxtManager) ? (string)__jsonNsxtManager : (string)_nsxtManager;}
             {_vcsa = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("vcsa"), out var __jsonVcsa) ? (string)__jsonVcsa : (string)_vcsa;}
             {_hcxCloudManager = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("hcxCloudManager"), out var __jsonHcxCloudManager) ? (string)__jsonHcxCloudManager : (string)_hcxCloudManager;}
+            {_nsxtManagerIP = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("nsxtManagerIp"), out var __jsonNsxtManagerIP) ? (string)__jsonNsxtManagerIP : (string)_nsxtManagerIP;}
+            {_vcenterIP = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("vcenterIp"), out var __jsonVcenterIP) ? (string)__jsonVcenterIP : (string)_vcenterIP;}
+            {_hcxCloudManagerIP = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("hcxCloudManagerIp"), out var __jsonHcxCloudManagerIP) ? (string)__jsonHcxCloudManagerIP : (string)_hcxCloudManagerIP;}
             AfterFromJson(json);
         }
 
@@ -111,6 +114,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._hcxCloudManager)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._hcxCloudManager.ToString()) : null, "hcxCloudManager" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._nsxtManagerIP)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._nsxtManagerIP.ToString()) : null, "nsxtManagerIp" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._vcenterIP)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._vcenterIP.ToString()) : null, "vcenterIp" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._hcxCloudManagerIP)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._hcxCloudManagerIP.ToString()) : null, "hcxCloudManagerIp" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

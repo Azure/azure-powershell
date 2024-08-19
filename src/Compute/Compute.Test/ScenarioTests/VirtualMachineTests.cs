@@ -633,5 +633,40 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VMTLWithGallerySourceImage");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestCapacityReservationSharingProfile()
+        {
+            TestRunner.RunTestScript("Test-CapacityReservationSharingProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestVMDefaultsToTrustedLaunchImgWhenStnd()
+        {
+            TestRunner.RunTestScript("Test-VMDefaultsToTrustedLaunchImgWhenStnd");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCapacityReservationGroupResourceIdsOnly()
+        {
+            TestRunner.RunTestScript("Test-CapacityReservationGroupResourceIdsOnly");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddVMDataDisk()
+        {
+            TestRunner.RunTestScript("Test-AddVMDataDisk");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMSetAzOSCredentialNullRef()
+        {
+            TestRunner.RunTestScript("Test-VMSetAzOSCredentialNullRef");
+        }
     }
 }

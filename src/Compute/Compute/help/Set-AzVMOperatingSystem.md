@@ -51,7 +51,8 @@ Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [[-ComputerName] <St
 ```
 Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Linux] [[-ComputerName] <String>]
  [[-Credential] <PSCredential>] [[-CustomData] <String>] [-PatchMode <String>] [-DisablePasswordAuthentication]
- [-AssessmentMode <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AssessmentMode <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +63,7 @@ You can specify logon credentials, computer name, and operating system type.
 
 ### Example 1: Set operating system properties for a new virtual machine
 ```powershell
-$SecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force
+$SecurePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $Credential = New-Object System.Management.Automation.PSCredential ("FullerP", $SecurePassword); 
 $AvailabilitySet = Get-AzAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03" 
 $VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1" -AvailabilitySetID $AvailabilitySet.Id
@@ -90,7 +91,7 @@ The command uses variables assigned in previous commands for some parameters.
 
 ### Example 2: Set operating system properties for a new virtual machine with hot patching enabled
 ```powershell
-$SecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force
+$SecurePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $Credential = New-Object System.Management.Automation.PSCredential ("FullerP", $SecurePassword); 
 $AvailabilitySet = Get-AzAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03" 
 $VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1" -AvailabilitySetID $AvailabilitySet.Id
@@ -119,7 +120,7 @@ The command enables Hotpatching on the virtual machine.
 
 ### Example 3: Set operating system properties for a new Linux virtual machine
 ```powershell
-$SecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force
+$SecurePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $Credential = New-Object System.Management.Automation.PSCredential ("FullerP", $SecurePassword); 
 $AvailabilitySet = Get-AzAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03" 
 $VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1" -AvailabilitySetID $AvailabilitySet.Id
@@ -141,6 +142,47 @@ The final command sets operating system properties for the virtual machine store
 The command uses the credentials stored in $Credential.
 The command uses variables assigned in previous commands for some parameters.
 The command sets the patch mode value on the virtual machine to "AutomaticByPlatform".
+
+### Example 4: Set operating system properties with a Credential parameter when the VM does not have an OSProfile.
+```powershell
+$rgname = <Resource Group Name>;
+$loc = <Azure Region>;
+New-AzResourceGroup -Name $rgname -Location $loc -Force;
+# create credential
+$password = <Password>;
+$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+$user = <Username>;
+$cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+# Setup parameters
+$domainNameLabel = "d2" + $rgname;
+$vmsize = 'Standard_D4s_v3';
+$vmname = 'v' + $rgname;
+$vnetname = "vn" + $rgname;
+$vnetAddress = "10.0.0.0/16";
+$subnetname = "slb" + $rgname;
+$subnetAddress = "10.0.2.0/24";
+$OSDiskName = $vmname + "d";
+$NICName = $vmname+ "n";
+$NSGName = $vmname + "nsg";
+
+# Creating a VM using Default parameterset
+$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
+
+$vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
+
+$nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgname -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP;
+$nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $rgname -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
+
+$vmConfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+$vmConfig = Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmname -Credential $cred;
+$vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
+
+# Verify a VM is created. 
+New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
+$vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+```
 
 ## PARAMETERS
 
@@ -453,5 +495,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVM](./Get-AzVM.md)
 
 [New-AzVMConfig](./New-AzVMConfig.md)
-
-

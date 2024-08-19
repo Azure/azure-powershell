@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<BackupsRestoreFilesHeaders>> RestoreFilesWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, string backupName, BackupRestoreFiles body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<BackupsRestoreFilesHeaders2023_07_01>> RestoreFilesWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, string backupName, BackupRestoreFiles body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create a backup for the volume
@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<BackupsRestoreFilesHeaders>> BeginRestoreFilesWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, string backupName, BackupRestoreFiles body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<BackupsRestoreFilesHeaders2023_07_01>> BeginRestoreFilesWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, string backupName, BackupRestoreFiles body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

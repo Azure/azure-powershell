@@ -15,14 +15,14 @@ Gets catalog synchronization error details
 ### Get (Default)
 ```
 Get-AzDevCenterAdminCatalogSyncErrorDetail -CatalogName <String> -DevCenterName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzDevCenterAdminCatalogSyncErrorDetail -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,16 +30,20 @@ Gets catalog synchronization error details
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Get the catalog sync error dteail
+```powershell
 Get-AzDevCenterAdminCatalogSyncErrorDetail -DevCenterName Contoso -CatalogName CentralCatalog -ResourceGroupName testRg
 ```
 
-### EXAMPLE 2
-```
+This command gets the sync error detail of the catalog named "CentralCatalog" in the dev center "Contoso" under the resource group "testRg".
+
+### Example 2: Get the catalog sync error detail using InputObject
+```powershell
 $catalog = @{"ResourceGroupName" = "testRg"; "DevCenterName" = "Contoso"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
 $catalogErrorDetail = Get-AzDevCenterAdminCatalogSyncErrorDetail -InputObject $catalog
 ```
+
+This command gets the sync error detail of the catalog named "CentralCatalog" in the dev center "Contoso" under the resource group "testRg".
 
 ## PARAMETERS
 
@@ -47,7 +51,7 @@ $catalogErrorDetail = Get-AzDevCenterAdminCatalogSyncErrorDetail -InputObject $c
 The name of the Catalog.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Get
 Aliases:
 
@@ -63,7 +67,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -78,7 +82,7 @@ Accept wildcard characters: False
 The name of the devcenter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Get
 Aliases:
 
@@ -94,7 +98,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: IDevCenterIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -105,12 +109,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Get
 Aliases:
 
@@ -125,13 +144,13 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: Get
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -140,7 +159,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -156,7 +175,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -173,38 +192,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ISyncErrorDetails
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ISyncErrorDetails
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IDevCenterIdentity\>: Identity Parameter
-  \[AttachedNetworkConnectionName \<String\>\]: The name of the attached NetworkConnection.
-  \[CatalogName \<String\>\]: The name of the Catalog.
-  \[DevBoxDefinitionName \<String\>\]: The name of the Dev Box definition.
-  \[DevCenterName \<String\>\]: The name of the devcenter.
-  \[EnvironmentDefinitionName \<String\>\]: The name of the Environment Definition.
-  \[EnvironmentTypeName \<String\>\]: The name of the environment type.
-  \[GalleryName \<String\>\]: The name of the gallery.
-  \[Id \<String\>\]: Resource identity path
-  \[ImageName \<String\>\]: The name of the image.
-  \[Location \<String\>\]: The Azure region
-  \[NetworkConnectionName \<String\>\]: Name of the Network Connection that can be applied to a Pool.
-  \[OperationId \<String\>\]: The ID of an ongoing async operation
-  \[PoolName \<String\>\]: Name of the pool.
-  \[ProjectName \<String\>\]: The name of the project.
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[ScheduleName \<String\>\]: The name of the schedule that uniquely identifies it.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-  \[TaskName \<String\>\]: The name of the Task.
-  \[VersionName \<String\>\]: The version of the image.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradmincatalogsyncerrordetail](https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradmincatalogsyncerrordetail)
-

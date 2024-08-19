@@ -39,8 +39,12 @@ EXTENSIONUPGRADEPARAMETER <IMachineExtensionUpgrade>: Describes the Machine Exte
     [(Any) <IExtensionTargetProperties>]: This indicates any property can be added to this object.
 
 INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
+  [BaseProvider <String>]: The name of the base Resource Provider.
+  [BaseResourceName <String>]: The name of the base resource.
+  [BaseResourceType <String>]: The name of the base Resource Type.
   [ExtensionName <String>]: The name of the machine extension.
   [ExtensionType <String>]: The extensionType of the Extension being received.
+  [GatewayName <String>]: The name of the Gateway.
   [GroupName <String>]: The name of the private link resource.
   [Id <String>]: Resource identity path
   [LicenseName <String>]: The name of the license.
@@ -58,6 +62,7 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
+  [SettingsResourceName <String>]: The name of the settings resource.
   [SubscriptionId <String>]: The ID of the target subscription.
   [Version <String>]: The version of the Extension being received.
 .Link
@@ -67,7 +72,6 @@ function Update-AzConnectedExtension {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='UpgradeExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Upgrade', Mandatory)]
     [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
     [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
@@ -76,7 +80,6 @@ param(
     # The name of the hybrid machine.
     ${MachineName},
 
-    [Parameter(ParameterSetName='Upgrade', Mandatory)]
     [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
     [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
@@ -87,7 +90,6 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Upgrade')]
     [Parameter(ParameterSetName='UpgradeExpanded')]
     [Parameter(ParameterSetName='UpgradeViaJsonFilePath')]
     [Parameter(ParameterSetName='UpgradeViaJsonString')]
@@ -102,16 +104,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter(ParameterSetName='Upgrade', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionUpgrade]
-    # Describes the Machine Extension Upgrade Properties.
-    # To construct, see NOTES section for EXTENSIONUPGRADEPARAMETER properties and create a hash table.
-    ${ExtensionUpgradeParameter},
 
     [Parameter(ParameterSetName='UpgradeExpanded')]
     [Parameter(ParameterSetName='UpgradeViaIdentityExpanded')]
@@ -120,6 +113,12 @@ param(
     [System.Collections.Hashtable]
     # Describes the Extension Target Properties.
     ${ExtensionTarget},
+
+    [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionUpgrade]
+    # Describes the Machine Extension Upgrade Properties.
+    ${ExtensionUpgradeParameter},
 
     [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
@@ -226,15 +225,20 @@ begin {
         }
 
         $mapping = @{
-            Upgrade = 'Az.ConnectedMachine.private\Update-AzConnectedExtension_Upgrade';
             UpgradeExpanded = 'Az.ConnectedMachine.private\Update-AzConnectedExtension_UpgradeExpanded';
             UpgradeViaIdentity = 'Az.ConnectedMachine.private\Update-AzConnectedExtension_UpgradeViaIdentity';
             UpgradeViaIdentityExpanded = 'Az.ConnectedMachine.private\Update-AzConnectedExtension_UpgradeViaIdentityExpanded';
             UpgradeViaJsonFilePath = 'Az.ConnectedMachine.private\Update-AzConnectedExtension_UpgradeViaJsonFilePath';
             UpgradeViaJsonString = 'Az.ConnectedMachine.private\Update-AzConnectedExtension_UpgradeViaJsonString';
         }
-        if (('Upgrade', 'UpgradeExpanded', 'UpgradeViaJsonFilePath', 'UpgradeViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('UpgradeExpanded', 'UpgradeViaJsonFilePath', 'UpgradeViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

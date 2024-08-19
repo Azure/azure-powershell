@@ -30,6 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.PowerShell
     internal class VariantGroup
     {
         public string ModuleName { get; }
+
+        public string RootModuleName {get => @"";}
         public string CmdletName { get; }
         public string CmdletVerb { get; }
         public string CmdletNoun { get; }
@@ -385,7 +387,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.PowerShell
                        helpInfo.OutputTypes.Where(it => it.Name.NullIfWhiteSpace() != null).Select(ot => ot.Name).ToArray())
                 .Where(o => o != "None").Distinct().OrderBy(o => o).ToArray();
 
-            OnlineVersion = helpInfo.OnlineVersion?.Uri.NullIfEmpty() ?? $@"{HelpLinkPrefix}{variantGroup.ModuleName.ToLowerInvariant()}/{variantGroup.CmdletName.ToLowerInvariant()}";
+            // Use root module name in the help link
+            var moduleName = variantGroup.RootModuleName == "" ? variantGroup.ModuleName.ToLowerInvariant() : variantGroup.RootModuleName.ToLowerInvariant();
+            OnlineVersion = helpInfo.OnlineVersion?.Uri.NullIfEmpty() ?? $@"{HelpLinkPrefix}{moduleName}/{variantGroup.CmdletName.ToLowerInvariant()}";
             RelatedLinks = helpInfo.RelatedLinks.Select(rl => rl.Text).ToArray();
         }
     }
@@ -468,12 +472,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.PowerShell
         {
             var parameters = variant.Metadata.Parameters.AsEnumerable();
             var parameterHelp = variant.HelpInfo.Parameters.AsEnumerable();
+
             if (variant.HasParameterSets)
             {
                 parameters = parameters.Where(p => p.Value.ParameterSets.Keys.Any(k => k == variant.VariantName || k == AllParameterSets));
-                parameterHelp = parameterHelp.Where(ph => !ph.ParameterSetNames.Any() || ph.ParameterSetNames.Any(psn => psn == variant.VariantName || psn == AllParameterSets));
+                parameterHelp = parameterHelp.Where(ph => (!ph.ParameterSetNames.Any() || ph.ParameterSetNames.Any(psn => psn == variant.VariantName || psn == AllParameterSets)) && ph.Name != "IncludeTotalCount");
             }
-            return parameters.Select(p => new Parameter(variant.VariantName, p.Key, p.Value, parameterHelp.FirstOrDefault(ph => ph.Name == p.Key))).ToArray();
+            var result = parameters.Select(p => new Parameter(variant.VariantName, p.Key, p.Value, parameterHelp.FirstOrDefault(ph => ph.Name == p.Key)));
+            if (variant.SupportsPaging) {
+                // If supportsPaging is set, we will need to add First and Skip parameters since they are treated as common parameters which as not contained on Metadata>parameters
+                variant.Info.Parameters["First"].Attributes.OfType<ParameterAttribute>().FirstOrDefault(pa => pa.ParameterSetName == variant.VariantName || pa.ParameterSetName == AllParameterSets).HelpMessage = "Gets only the first 'n' objects.";
+                variant.Info.Parameters["Skip"].Attributes.OfType<ParameterAttribute>().FirstOrDefault(pa => pa.ParameterSetName == variant.VariantName || pa.ParameterSetName == AllParameterSets).HelpMessage = "Ignores the first 'n' objects and then gets the remaining objects.";
+                result = result.Append(new Parameter(variant.VariantName, "First", variant.Info.Parameters["First"], parameterHelp.FirstOrDefault(ph => ph.Name == "First")));
+                result = result.Append(new Parameter(variant.VariantName, "Skip", variant.Info.Parameters["Skip"], parameterHelp.FirstOrDefault(ph => ph.Name == "Skip")));
+            }
+            return result.ToArray();
         }
 
         public static Attribute[] ToAttributes(this Variant variant) => variant.IsFunction

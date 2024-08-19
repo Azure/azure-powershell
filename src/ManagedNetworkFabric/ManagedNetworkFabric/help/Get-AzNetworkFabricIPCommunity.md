@@ -14,32 +14,26 @@ Implements an IP Community GET method.
 
 ### List1 (Default)
 ```
-Get-AzNetworkFabricIPCommunity [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+Get-AzNetworkFabricIPCommunity [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzNetworkFabricIPCommunity -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzNetworkFabricIPCommunity -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzNetworkFabricIPCommunity -InputObject <IManagedNetworkFabricIdentity> [-DefaultProfile <PSObject>]
- [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,37 +41,53 @@ Implements an IP Community GET method.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: List IpCommunities by Subscription
+```powershell
 Get-AzNetworkFabricIPCommunity -SubscriptionId $subscriptionId
 ```
 
-### EXAMPLE 2
+```output
+Location    Name                              SystemDataCreatedAt SystemDataCreatedBy            SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy
+--------    ----                              ------------------- -------------------            ----------------------- ------------------------ ------------------------
+eastus2euap ipcommunityName1                  09/21/2023 07:51:19 <identity>                     User                    09/21/2023 10:41:47      <identity>
+eastus2euap ipcommunityName2                  09/21/2023 07:52:49 <identity>                     User                    09/21/2023 10:41:49      <identity>
+eastus2euap ipcommunity-nni-v4-egress         09/21/2023 10:42:01 <identity>                     Application             09/21/2023 10:42:14      <identity>
+eastus2euap ipcommunity-nni-v6-egress         09/21/2023 10:42:43 <identity>                     Application             09/21/2023 10:43:01      <identity>
+eastus2euap ipcommunity-nni-v4-ingress        09/21/2023 10:43:24 <identity>                     Application             09/21/2023 10:43:42      <identity>
+eastus2euap ipcommunity-nni-v6-ingress        09/21/2023 10:44:06 <identity>                     Application             09/21/2023 10:44:24      <identity>
+eastus2euap ipcommunity-2601-staticsubnet     07/14/2023 14:01:06 <identity>                     Application             09/05/2023 11:17:37      <identity>
+eastus      ipcommunityName                   09/21/2023 13:39:13 <identity>                     User                    09/22/2023 07:32:58      <identity>
 ```
+
+This command lists all the IpCommunities under the given Subscription.
+
+### Example 2: List IpCommunities by Resource Group
+```powershell
 Get-AzNetworkFabricIPCommunity -ResourceGroupName $resourceGroupName
 ```
 
-### EXAMPLE 3
+```output
+AdministrativeState Annotation ConfigurationState Id
+------------------- ---------- ------------------ --
+Disabled                       Succeeded          /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabri…
 ```
+
+This command lists all the IpCommunities under the given Resource Group.
+
+### Example 3: Get IpCommunity
+```powershell
 Get-AzNetworkFabricIPCommunity -Name $name -ResourceGroupName $resourceGroupName
 ```
 
-## PARAMETERS
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+```output
+AdministrativeState Annotation ConfigurationState Id
+------------------- ---------- ------------------ --
+Disabled                       Succeeded          /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabri…
 ```
+
+This command gets details of the given IpCommunity.
+
+## PARAMETERS
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -95,39 +105,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
@@ -152,51 +131,6 @@ Aliases: IPCommunityName
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -228,7 +162,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -239,46 +173,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunity
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IManagedNetworkFabricIdentity\>: Identity Parameter
-  \[AccessControlListName \<String\>\]: Name of the Access Control List.
-  \[ExternalNetworkName \<String\>\]: Name of the External Network.
-  \[IPCommunityName \<String\>\]: Name of the IP Community.
-  \[IPExtendedCommunityName \<String\>\]: Name of the IP Extended Community.
-  \[IPPrefixName \<String\>\]: Name of the IP Prefix.
-  \[Id \<String\>\]: Resource identity path
-  \[InternalNetworkName \<String\>\]: Name of the Internal Network.
-  \[InternetGatewayName \<String\>\]: Name of the Internet Gateway.
-  \[InternetGatewayRuleName \<String\>\]: Name of the Internet Gateway rule.
-  \[L2IsolationDomainName \<String\>\]: Name of the L2 Isolation Domain.
-  \[L3IsolationDomainName \<String\>\]: Name of the L3 Isolation Domain.
-  \[NeighborGroupName \<String\>\]: Name of the Neighbor Group.
-  \[NetworkDeviceName \<String\>\]: Name of the Network Device.
-  \[NetworkDeviceSkuName \<String\>\]: Name of the Network Device SKU.
-  \[NetworkFabricControllerName \<String\>\]: Name of the Network Fabric Controller.
-  \[NetworkFabricName \<String\>\]: Name of the Network Fabric.
-  \[NetworkFabricSkuName \<String\>\]: Name of the Network Fabric SKU.
-  \[NetworkInterfaceName \<String\>\]: Name of the Network Interface.
-  \[NetworkPacketBrokerName \<String\>\]: Name of the Network Packet Broker.
-  \[NetworkRackName \<String\>\]: Name of the Network Rack.
-  \[NetworkTapName \<String\>\]: Name of the Network Tap.
-  \[NetworkTapRuleName \<String\>\]: Name of the Network Tap Rule.
-  \[NetworkToNetworkInterconnectName \<String\>\]: Name of the Network to Network Interconnect.
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[RoutePolicyName \<String\>\]: Name of the Route Policy.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-The value must be an UUID.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabricipcommunity](https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabricipcommunity)
-

@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Relay service.
 
 ---
-## Status
-[![Az.Relay](https://img.shields.io/powershellgallery/v/Az.Relay.svg?style=flat-square&label=Az.Relay "Az.Relay")](https://www.powershellgallery.com/packages/Az.Relay/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -30,9 +27,9 @@ For information on how to develop for `Az.Relay`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 591b17c5a50e7fc0ef09211197279e6d9f7ebc22
+commit: 591b17c5a50e7fc0ef09211197279e6d9f7ebc22
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/relay/resource-manager/readme.md
 
 title: Relay
@@ -41,6 +38,10 @@ identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
 inlining-threshold: 50
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Namespace Authorization Rule

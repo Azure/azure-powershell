@@ -34,7 +34,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
-    # Azure region
+    # The name of the Azure region.
     ${Location},
 
     [Parameter()]
@@ -42,13 +42,44 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.Int32]
+    # If the SKU supports scale out/in then the capacity integer should be included.
+    # If scale out/in is not possible for the resource this may be omitted.
+    ${Capacity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # If the service has different generations of hardware, for the same SKU, then that can be captured here.
+    ${Family},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
     [System.String]
     # The name of the SKU.
+    # E.g.
+    # P3.
+    # It is typically a letter+number code
     ${Name},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # The SKU size.
+    # When the name field is the combination of tier and some other value, this would be the standalone code.
+    ${Size},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Free", "Basic", "Standard", "Premium")]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+    ${Tier},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -128,7 +159,13 @@ begin {
             CheckExpanded = 'Az.VMware.private\Test-AzVMwareLocationTrialAvailability_CheckExpanded';
         }
         if (('CheckExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

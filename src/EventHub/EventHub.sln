@@ -5,47 +5,44 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Accounts", "Accounts", "{0097A527-1431-4BD5-B2F6-124E19C55E37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{E15418C9-62F3-488E-9AA4-19840253C462}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{E15418C9-62F3-488E-9AA4-19840253C462}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{3E386BDA-74E4-4EE0-99B9-8F3D79FA5746}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{3E386BDA-74E4-4EE0-99B9-8F3D79FA5746}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{473BB22C-C32B-4CCC-826C-2C591C900B9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{473BB22C-C32B-4CCC-826C-2C591C900B9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{8D5F7CDC-3F3E-4041-A2CE-47098263D3C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{8D5F7CDC-3F3E-4041-A2CE-47098263D3C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{8D16EB40-3477-418A-8110-203796B7893B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{8D16EB40-3477-418A-8110-203796B7893B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{0ED5C7C6-C608-4561-8EB6-3C39A9F95526}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{0ED5C7C6-C608-4561-8EB6-3C39A9F95526}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EventHub", "EventHub.Autorest\Az.EventHub.csproj", "{15898158-F87B-4634-88C9-C57C7FE598E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.EventHub", "EventHub.Autorest\Az.EventHub.csproj", "{15898158-F87B-4634-88C9-C57C7FE598E8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{D94225FA-0346-4CD2-B852-1E3F32C8858B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHub.Test", "EventHub.Test\EventHub.Test.csproj", "{001FB691-4379-4FBB-8580-A911D65AAB70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventHub.Test", "EventHub.Test\EventHub.Test.csproj", "{001FB691-4379-4FBB-8580-A911D65AAB70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHub", "EventHub\EventHub.csproj", "{038998E3-52FF-464B-8728-9D7C0AB4D526}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventHub", "EventHub\EventHub.csproj", "{038998E3-52FF-464B-8728-9D7C0AB4D526}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DependentModules", "DependentModules", "{D8DD988D-ECA2-4973-9852-06B1A207B2B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.KeyVault", "..\KeyVault\KeyVault.Autorest\Az.KeyVault.csproj", "{FB7BF684-A336-4377-AB0E-196FDF601F58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.KeyVault", "..\KeyVault\KeyVault.Autorest\Az.KeyVault.csproj", "{FB7BF684-A336-4377-AB0E-196FDF601F58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyVault.Sdk", "..\KeyVault\KeyVault.Sdk\KeyVault.Sdk.csproj", "{E7CE670F-CF35-4AC9-B73A-29AA1C4C32FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault", "..\KeyVault\KeyVault\KeyVault.csproj", "{73D19A0C-B112-4042-A96F-54A9044252B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyVault", "..\KeyVault\KeyVault\KeyVault.csproj", "{73D19A0C-B112-4042-A96F-54A9044252B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network.Management.Sdk", "..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj", "{69863E59-0C4B-48CE-BDCA-FD03E8FA0645}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network.Management.Sdk", "..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj", "{69863E59-0C4B-48CE-BDCA-FD03E8FA0645}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network", "..\Network\Network\Network.csproj", "{87625BDE-101C-4505-972F-B390084FAEE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network", "..\Network\Network\Network.csproj", "{87625BDE-101C-4505-972F-B390084FAEE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{69DCFD0E-0992-401F-AECD-80BBAECEDA11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{69DCFD0E-0992-401F-AECD-80BBAECEDA11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault.Management.Sdk", "..\KeyVault\KeyVault.Management.Sdk\KeyVault.Management.Sdk.csproj", "{6F9ECF94-AF8A-4C4E-8E68-A9A8BA93BBC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{E15418C9-62F3-488E-9AA4-19840253C462}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -88,10 +85,6 @@ Global
 		{FB7BF684-A336-4377-AB0E-196FDF601F58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB7BF684-A336-4377-AB0E-196FDF601F58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB7BF684-A336-4377-AB0E-196FDF601F58}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E7CE670F-CF35-4AC9-B73A-29AA1C4C32FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E7CE670F-CF35-4AC9-B73A-29AA1C4C32FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E7CE670F-CF35-4AC9-B73A-29AA1C4C32FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E7CE670F-CF35-4AC9-B73A-29AA1C4C32FB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{73D19A0C-B112-4042-A96F-54A9044252B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{73D19A0C-B112-4042-A96F-54A9044252B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73D19A0C-B112-4042-A96F-54A9044252B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -108,6 +101,13 @@ Global
 		{69DCFD0E-0992-401F-AECD-80BBAECEDA11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69DCFD0E-0992-401F-AECD-80BBAECEDA11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69DCFD0E-0992-401F-AECD-80BBAECEDA11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F9ECF94-AF8A-4C4E-8E68-A9A8BA93BBC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F9ECF94-AF8A-4C4E-8E68-A9A8BA93BBC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F9ECF94-AF8A-4C4E-8E68-A9A8BA93BBC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F9ECF94-AF8A-4C4E-8E68-A9A8BA93BBC6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E15418C9-62F3-488E-9AA4-19840253C462} = {0097A527-1431-4BD5-B2F6-124E19C55E37}
@@ -119,10 +119,10 @@ Global
 		{001FB691-4379-4FBB-8580-A911D65AAB70} = {D94225FA-0346-4CD2-B852-1E3F32C8858B}
 		{D8DD988D-ECA2-4973-9852-06B1A207B2B1} = {D94225FA-0346-4CD2-B852-1E3F32C8858B}
 		{FB7BF684-A336-4377-AB0E-196FDF601F58} = {D8DD988D-ECA2-4973-9852-06B1A207B2B1}
-		{E7CE670F-CF35-4AC9-B73A-29AA1C4C32FB} = {D8DD988D-ECA2-4973-9852-06B1A207B2B1}
 		{73D19A0C-B112-4042-A96F-54A9044252B7} = {D8DD988D-ECA2-4973-9852-06B1A207B2B1}
 		{69863E59-0C4B-48CE-BDCA-FD03E8FA0645} = {D8DD988D-ECA2-4973-9852-06B1A207B2B1}
 		{87625BDE-101C-4505-972F-B390084FAEE3} = {D8DD988D-ECA2-4973-9852-06B1A207B2B1}
 		{69DCFD0E-0992-401F-AECD-80BBAECEDA11} = {D94225FA-0346-4CD2-B852-1E3F32C8858B}
+		{6F9ECF94-AF8A-4C4E-8E68-A9A8BA93BBC6} = {D8DD988D-ECA2-4973-9852-06B1A207B2B1}
 	EndGlobalSection
 EndGlobal

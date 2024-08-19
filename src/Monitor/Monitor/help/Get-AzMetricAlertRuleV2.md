@@ -26,7 +26,8 @@ Get-AzMetricAlertRuleV2 -ResourceGroupName <String> -Name <String> [-DefaultProf
 
 ### ByRuleId
 ```
-Get-AzMetricAlertRuleV2 -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzMetricAlertRuleV2 -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

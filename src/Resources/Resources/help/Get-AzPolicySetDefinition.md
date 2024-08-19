@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/get-azpolicysetdefinition
 schema: 2.0.0
@@ -12,40 +12,52 @@ Gets policy set definitions.
 
 ## SYNTAX
 
-### NameParameterSet (Default)
+### Name (Default)
 ```
-Get-AzPolicySetDefinition [-Name <String>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ManagementGroupNameParameterSet
-```
-Get-AzPolicySetDefinition [-Name <String>] -ManagementGroupName <String> [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPolicySetDefinition [-Name <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
-### SubscriptionIdParameterSet
+### ManagementGroupName
 ```
-Get-AzPolicySetDefinition [-Name <String>] -SubscriptionId <Guid> [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### IdParameterSet
-```
-Get-AzPolicySetDefinition -Id <String> [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzPolicySetDefinition [-Name <String>] -ManagementGroupName <String> [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
-### BuiltinFilterParameterSet
+### SubscriptionId
 ```
-Get-AzPolicySetDefinition [-ManagementGroupName <String>] [-SubscriptionId <Guid>] [-Builtin]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPolicySetDefinition [-Name <String>] -SubscriptionId <String> [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
-### CustomFilterParameterSet
+### Version
 ```
-Get-AzPolicySetDefinition [-ManagementGroupName <String>] [-SubscriptionId <Guid>] [-Custom]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPolicySetDefinition [-Name <String>] [-Id <String>] [-BackwardCompatible] -Version <String>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### ListVersion
+```
+Get-AzPolicySetDefinition [-Name <String>] [-Id <String>] [-ListVersion] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### Id
+```
+Get-AzPolicySetDefinition -Id <String> [-BackwardCompatible] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### Builtin
+```
+Get-AzPolicySetDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Builtin]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### Custom
+```
+Get-AzPolicySetDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Custom]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,19 +95,25 @@ This command gets all custom policy set definitions from the management group na
 
 ### Example 5: Get policy set definitions from a given category
 ```powershell
-Get-AzPolicySetDefinition | Where-Object {$_.Properties.metadata.category -eq "Virtual Machine"}
+Get-AzPolicySetDefinition | Where-Object {$_.metadata.category -eq "Virtual Machine"}
+```
+
+This command gets all policy set definitions in category "Virtual Machine".
+
+### Example 6: [Backcompat] Get policy set definitions from a given category
+```powershell
+Get-AzPolicySetDefinition -BackwardCompatible | Where-Object {$_.Properties.metadata.category -eq "Virtual Machine"}
 ```
 
 This command gets all policy set definitions in category "Virtual Machine".
 
 ## PARAMETERS
 
-### -ApiVersion
-When set, indicates the version of the resource provider API to use.
-If not specified, the API version is automatically determined as the latest available.
+### -BackwardCompatible
+Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -107,42 +125,43 @@ Accept wildcard characters: False
 ```
 
 ### -Builtin
-Limits list of results to only built-in policy set definitions.
+Causes cmdlet to return only built-in policy definitions.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: BuiltinFilterParameterSet
+Parameter Sets: Builtin
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Custom
-Limits list of results to only custom policy set definitions.
+Causes cmdlet to return only custom policy definitions.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CustomFilterParameterSet
+Parameter Sets: Custom
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -152,13 +171,23 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-The fully qualified policy set definition Id, including the subscription.
-e.g.
-/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}
+The full Id of the policy definition to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: IdParameterSet
+Parameter Sets: Version, ListVersion
+Aliases: ResourceId
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: Id
 Aliases: ResourceId
 
 Required: True
@@ -168,12 +197,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ListVersion
+Causes cmdlet to return only custom policy definitions.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ListVersion
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ManagementGroupName
-The name of the management group of the policy set definition(s) to get.
+The name of the management group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupNameParameterSet
+Parameter Sets: ManagementGroupName
 Aliases:
 
 Required: True
@@ -185,7 +229,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: BuiltinFilterParameterSet, CustomFilterParameterSet
+Parameter Sets: Builtin, Custom
 Aliases:
 
 Required: False
@@ -196,12 +240,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The policy set definition name.
+The name of the policy definition to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet, ManagementGroupNameParameterSet, SubscriptionIdParameterSet
-Aliases:
+Parameter Sets: Name, ManagementGroupName, SubscriptionId, Version, ListVersion
+Aliases: PolicySetDefinitionName
 
 Required: False
 Position: Named
@@ -210,13 +254,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Pre
-When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
-Aliases:
+Aliases: proga
 
 Required: False
 Position: Named
@@ -226,11 +270,11 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The subscription ID of the policy set definition(s) to get.
+The ID of the target subscription.
 
 ```yaml
-Type: System.Nullable`1[System.Guid]
-Parameter Sets: SubscriptionIdParameterSet
+Type: System.String
+Parameter Sets: SubscriptionId
 Aliases:
 
 Required: True
@@ -241,11 +285,26 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.Nullable`1[System.Guid]
-Parameter Sets: BuiltinFilterParameterSet, CustomFilterParameterSet
+Type: System.String
+Parameter Sets: Builtin, Custom
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Version
+The policy definition version in #.#.# format.
+
+```yaml
+Type: System.String
+Parameter Sets: Version
+Aliases: PolicySetDefinitionVersion
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -257,13 +316,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### System.Management.Automation.SwitchParameter
 
-### System.Nullable`1[[System.Guid, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+### System.String
 
 ## OUTPUTS
 
-### System.Management.Automation.PSObject
+### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition
 
 ## NOTES
 

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
+external help file: Az.Resources-help.xml
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azpolicysetdefinition
 schema: 2.0.0
@@ -8,42 +8,45 @@ schema: 2.0.0
 # Remove-AzPolicySetDefinition
 
 ## SYNOPSIS
-Removes a policy set definition.
+This operation deletes the policy definition in the given subscription with the given name.
 
 ## SYNTAX
 
-### NameParameterSet (Default)
+### Name (Default)
 ```
-Remove-AzPolicySetDefinition -Name <String> [-Force] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ManagementGroupNameParameterSet
-```
-Remove-AzPolicySetDefinition [-Name <String>] [-Force] -ManagementGroupName <String> [-ApiVersion <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPolicySetDefinition -Name <String> [-Force] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+ [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SubscriptionIdParameterSet
+### ManagementGroupName
 ```
-Remove-AzPolicySetDefinition [-Name <String>] [-Force] -SubscriptionId <Guid> [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### IdParameterSet
-```
-Remove-AzPolicySetDefinition -Id <String> [-Force] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> [-Force] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### InputObjectParameterSet
+### SubscriptionId
 ```
-Remove-AzPolicySetDefinition [-Force] -InputObject <PsPolicySetDefinition> [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-Force] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### Id
+```
+Remove-AzPolicySetDefinition -Id <String> [-Force] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+ [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObject
+```
+Remove-AzPolicySetDefinition -InputObject <IPolicyIdentity> [-Force] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzPolicySetDefinition** cmdlet removes a policy definition.
+This operation deletes the policy definition in the given subscription with the given name.
 
 ## EXAMPLES
 
@@ -57,14 +60,24 @@ The first command gets a policy set definition by using the Get-AzPolicySetDefin
 The command stores it in the $PolicySetDefinition variable.
 The second command removes the policy set definition identified by the **ResourceId** property of $PolicySetDefinition.
 
+### Example 2: [Backcompat] Remove policy set definition by resource ID
+```powershell
+$PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
+Remove-AzPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Force -BackwardCompatible
+True
+```
+
+The first command gets a policy set definition by using the Get-AzPolicySetDefinition cmdlet.
+The command stores it in the $PolicySetDefinition variable.
+The second command removes the policy set definition identified by the **ResourceId** property of $PolicySetDefinition.
+
 ## PARAMETERS
 
-### -ApiVersion
-When set, indicates the version of the resource provider API to use.
-If not specified, the API version is automatically determined as the latest available.
+### -BackwardCompatible
+Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -76,12 +89,13 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -91,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Do not ask for confirmation.
+When $true, skip confirmation prompts
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -106,13 +120,11 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-The fully qualified policy set definition Id, including the subscription.
-e.g.
-/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}
+The full Id of the policy definition to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: IdParameterSet
+Parameter Sets: Id
 Aliases: ResourceId
 
 Required: True
@@ -123,11 +135,12 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The policy set definition object to remove that was output from another cmdlet.
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition
-Parameter Sets: InputObjectParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
+Parameter Sets: InputObject
 Aliases:
 
 Required: True
@@ -138,11 +151,11 @@ Accept wildcard characters: False
 ```
 
 ### -ManagementGroupName
-The name of the management group of the policy set definition to delete.
+The name of the management group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupNameParameterSet
+Parameter Sets: ManagementGroupName
 Aliases:
 
 Required: True
@@ -153,12 +166,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The policy set definition name.
+The name of the policy definition to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet
-Aliases:
+Parameter Sets: Name
+Aliases: PolicySetDefinitionName
 
 Required: True
 Position: Named
@@ -169,18 +182,18 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupNameParameterSet, SubscriptionIdParameterSet
-Aliases:
+Parameter Sets: ManagementGroupName, SubscriptionId
+Aliases: PolicySetDefinitionName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Pre
-When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -194,12 +207,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubscriptionId
-The subscription ID of the policy set definition to delete.
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.Nullable`1[System.Guid]
-Parameter Sets: SubscriptionIdParameterSet
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: SubscriptionId
 Aliases:
 
 Required: True
@@ -245,9 +273,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
 
-### System.Nullable`1[[System.Guid, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+### System.String
 
 ## OUTPUTS
 

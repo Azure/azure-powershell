@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// </summary>
 
         /// <param name="dayOfWeek">Day of the week when a cache can be patched.
-        /// Possible values include: 'Monday', 'Tuesday', 'Wednesday', 'Thursday',
-        /// 'Friday', 'Saturday', 'Sunday', 'Everyday', 'Weekend'</param>
+        /// Possible values include: &#39;Monday&#39;, &#39;Tuesday&#39;, &#39;Wednesday&#39;, &#39;Thursday&#39;,
+        /// &#39;Friday&#39;, &#39;Saturday&#39;, &#39;Sunday&#39;, &#39;Everyday&#39;, &#39;Weekend&#39;</param>
 
         /// <param name="startHourUtc">Start hour after which cache patching can start.
         /// </param>

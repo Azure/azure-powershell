@@ -16,57 +16,60 @@ Creates a Synapse Analytics role assignment.
 ### NewByWorkspaceNameAndNameParameterSet (Default)
 ```
 New-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionName <String> -SignInName <String>
- [-ItemType <WorkspaceItemType>] [-Item <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ItemType <WorkspaceItemType>] [-Item <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewByWorkspaceNameAndIdParameterSet
 ```
 New-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionName <String> -ObjectId <String>
- [-ItemType <WorkspaceItemType>] [-Item <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ItemType <WorkspaceItemType>] [-Item <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewByWorkspaceNameAndRoleDefinitionIdAndObjectIdParameterSet
 ```
 New-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionId <String> -ObjectId <String>
- [-ItemType <WorkspaceItemType>] [-Item <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ItemType <WorkspaceItemType>] [-Item <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewByWorkspaceNameAndServicePrincipalNameParameterSet
 ```
 New-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionName <String> -ServicePrincipalName <String>
- [-ItemType <WorkspaceItemType>] [-Item <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ItemType <WorkspaceItemType>] [-Item <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewByWorkspaceObjectAndNameParameterSet
 ```
 New-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleDefinitionName <String>
  -SignInName <String> [-ItemType <WorkspaceItemType>] [-Item <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### NewByWorkspaceObjectAndIdParameterSet
 ```
 New-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleDefinitionName <String>
  -ObjectId <String> [-ItemType <WorkspaceItemType>] [-Item <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### NewByWorkspaceObjectAndRoleDefinitionIdAndObjectIdParameterSet
 ```
 New-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleDefinitionId <String> -ObjectId <String>
- [-ItemType <WorkspaceItemType>] [-Item <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ItemType <WorkspaceItemType>] [-Item <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewByWorkspaceObjectAndServicePrincipalNameParameterSet
 ```
 New-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleDefinitionName <String>
  -ServicePrincipalName <String> [-ItemType <WorkspaceItemType>] [-Item <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +82,7 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 
 >[!Note]
 > To create a role assignment for a service principal, pass the object ID of the principal in the ObjectId parameter.
-> When you are a user with permission to manage Azure RBAC role assignment on the workspace but not a Synapse Administrator, please create Synapse Administrator role by **-RoleDefinitionId** and **-ObjectId** directly but not by **-RoleDefinitionName**, for Synapse Administrator, RoleDefinitionId is "6e4bf58a-b8e1-4cc3-bbf9-d73143322b78", please take below Example 5 as reference. The reason for this is , when you try to add a "Synapse Administrator" role, the cmdlet needs to get the role ID from the role name which requires workspace read permission, which the current user does not have.
+> When you are a user with permission to manage Azure RBAC role assignment on the workspace but not a Synapse Administrator, please create Synapse Administrator role by **-RoleDefinitionId** and **-ObjectId** directly but not by **-RoleDefinitionName**, for Synapse Administrator, RoleDefinitionId is "00001111-aaaa-2222-bbbb-3333cccc4444", please take below Example 5 as reference. The reason for this is , when you try to add a "Synapse Administrator" role, the cmdlet needs to get the role ID from the role name which requires workspace read permission, which the current user does not have.
 
 ## EXAMPLES
 
@@ -115,7 +118,7 @@ This command assigns ContosoRole to the user whose principal name is ContosoName
 ### Example 5
 ```powershell
 $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-$ws | New-AzSynapseRoleAssignment -RoleDefinitionId "6e4bf58a-b8e1-4cc3-bbf9-d73143322b78" -ObjectId ContosoObjectId
+$ws | New-AzSynapseRoleAssignment -RoleDefinitionId "00001111-aaaa-2222-bbbb-3333cccc4444" -ObjectId ContosoObjectId
 ```
 
 This command assigns Synapse Administrator role to the user whose object Id is ContosoObjectId through pipeline.

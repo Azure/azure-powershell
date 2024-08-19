@@ -77,11 +77,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 return;
             }
-            {_targetIqn = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("targetIqn"), out var __jsonTargetIqn) ? (string)__jsonTargetIqn : (string)TargetIqn;}
-            {_targetPortalHostname = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("targetPortalHostname"), out var __jsonTargetPortalHostname) ? (string)__jsonTargetPortalHostname : (string)TargetPortalHostname;}
-            {_targetPortalPort = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber>("targetPortalPort"), out var __jsonTargetPortalPort) ? (int?)__jsonTargetPortalPort : TargetPortalPort;}
-            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)ProvisioningState;}
-            {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)Status;}
+            {_targetIqn = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("targetIqn"), out var __jsonTargetIqn) ? (string)__jsonTargetIqn : (string)_targetIqn;}
+            {_targetPortalHostname = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("targetPortalHostname"), out var __jsonTargetPortalHostname) ? (string)__jsonTargetPortalHostname : (string)_targetPortalHostname;}
+            {_targetPortalPort = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber>("targetPortalPort"), out var __jsonTargetPortalPort) ? (int?)__jsonTargetPortalPort : _targetPortalPort;}
+            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
+            {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)_status;}
             AfterFromJson(json);
         }
 

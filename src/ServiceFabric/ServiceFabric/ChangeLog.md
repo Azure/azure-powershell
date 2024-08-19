@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
+
+## Version 3.3.3
+* Updated location of nodeType to use cluster location in stead of resource group location
 
 ## Version 3.3.2
 * Fixed Az.ServiceFabric cannot be imported in arm64 platform.

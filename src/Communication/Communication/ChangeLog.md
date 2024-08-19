@@ -19,6 +19,18 @@
 -->
 ## Upcoming Release
 
+## Version 0.4.0
+* Added dataplane cmdlets:
+    * `Get-AzEmailServicedataEmailSendResult`
+    * `Send-AzEmailServicedataEmail`
+* Upgraded API version to 2023-06-01-preview
+
+## Version 0.3.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 0.3.0
+* First preview release for module Az.EmailService
+
 ## Version 0.2.0
 * Added a new cmdlet `Test-AzCommunicationServiceNameAvailability`
 * Updated API version to 2020-08-20

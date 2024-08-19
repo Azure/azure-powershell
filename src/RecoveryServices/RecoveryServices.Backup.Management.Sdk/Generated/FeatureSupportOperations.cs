@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         public RecoveryServicesBackupClient Client { get; private set; }
 
         /// <summary>
-        /// It will validate if given feature with resource properties is supported in service
+        /// It will validate if given feature with resource properties is supported in
+        /// service
         /// </summary>
         /// <param name='azureRegion'>
         /// Azure region to hit Api

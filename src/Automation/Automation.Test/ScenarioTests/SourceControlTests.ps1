@@ -43,7 +43,7 @@ $testReposInfo = @{
         Branch = "preview"
         FolderPath = "Azure/MyRunbooks"
         SourceType = "VsoGit"
-        PersonalAccessToken = "3qdxa22lutnhezd4atpna74jn3m7wgo6o6kfbwezjfnvgbjhvoca"
+        PersonalAccessToken = "REDACTED"
     }
 
     VsoTfvc =  @{
@@ -51,7 +51,7 @@ $testReposInfo = @{
         RepoUrl = "https://francisco-gamino.visualstudio.com/VsoTfvc-SwaggerAndCmdletsTests/_versionControl"
         FolderPath = "/MyRunbooks"
         SourceType = "VsoTfvc"
-        PersonalAccessToken = "3qdxa22lutnhezd4atpna74jn3m7wgo6o6kfbwezjfnvgbjhvoca"
+        PersonalAccessToken = "REDACTED"
     }
 
     GitHub = @{
@@ -60,7 +60,7 @@ $testReposInfo = @{
         Branch = "ps"
         FolderPath = "/"
         SourceType = "GitHub"
-        PersonalAccessToken = "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"
+        PersonalAccessToken = "REDACTED"
     }
 }
 

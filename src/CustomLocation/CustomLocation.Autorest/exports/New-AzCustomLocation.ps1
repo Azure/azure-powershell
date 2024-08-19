@@ -23,9 +23,11 @@ Create a Custom Location in the specified Subscription and Resource Group
 $HostResourceId = (Get-AzConnectedKubernetes -ClusterName azps-connect -ResourceGroupName azps_test_cluster).Id
 $ClusterExtensionId = (Get-AzKubernetesExtension -ClusterName azps-connect -ClusterType ConnectedClusters -ResourceGroupName azps_test_cluster -Name azps-extension).Id
 New-AzCustomLocation -ResourceGroupName azps_test_cluster -Name azps-customlocation -Location eastus -ClusterExtensionId $ClusterExtensionId -HostResourceId $HostResourceId -Namespace azps-namespace
+.Example
+$HostResourceId = (Get-AzConnectedKubernetes -ClusterName azps-connect -ResourceGroupName group01).Id
+$ClusterExtensionId = (Get-AzKubernetesExtension -ClusterName azps-connect -ClusterType ConnectedClusters -ResourceGroupName group01 -Name azps-extension).Id
+New-AzCustomLocation -ResourceGroupName group01 -Name azps-customlocation -Location eastus -ClusterExtensionId $ClusterExtensionId -HostResourceId $HostResourceId -Namespace azps-namespace -EnableSystemAssignedIdentity
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocation
 .Link
@@ -56,12 +58,6 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
     [System.String[]]
@@ -74,6 +70,12 @@ param(
     # Connected Cluster or AKS Cluster.
     # The Custom Locations RP will perform a checkAccess API for listAdminCredentials permissions.
     ${HostResourceId},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
@@ -100,11 +102,10 @@ param(
     ${DisplayName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.PSArgumentCompleterAttribute("SystemAssigned", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
-    [System.String]
-    # The identity type.
-    ${IdentityType},
+    [System.Management.Automation.SwitchParameter]
+    # Decides if enable a system assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
@@ -212,12 +213,21 @@ begin {
         }
 
         $mapping = @{
-            CreateExpanded = 'Az.CustomLocation.custom\New-AzCustomLocation';
-            CreateViaJsonFilePath = 'Az.CustomLocation.custom\New-AzCustomLocation';
-            CreateViaJsonString = 'Az.CustomLocation.custom\New-AzCustomLocation';
+            CreateExpanded = 'Az.CustomLocation.private\New-AzCustomLocation_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.CustomLocation.private\New-AzCustomLocation_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.CustomLocation.private\New-AzCustomLocation_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('HostType') ) {
+            $PSBoundParameters['HostType'] = "Kubernetes"
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

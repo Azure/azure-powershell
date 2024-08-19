@@ -2,76 +2,133 @@
 
 ## Az.Accounts
 
-### `Clear-AzConfig`
+### `Get-AzAccessToken`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - Parameter `DisableErrorRecordsPersistence` will be deprecated, a new parameter `EnableErrorRecordsPersistence` will be added instead. Writing error records to file system will become opt-in instead of opt-out. This change will happen around May 2024
-  - This change is expected to take effect from Az.Accounts version: 2.X and Az version: 12.0.0
+  - The Token property of the output type will be changed from String to SecureString. Add the [-AsSecureString] switch to avoid the impact of this upcoming breaking change.
+  - This change is expected to take effect from Az.Accounts version: 4.0.0 and Az version: 13.0.0
 
-### `Get-AzConfig`
+## Az.NetAppFiles
 
-- Cmdlet breaking-change will happen to all parameter sets
-  - Parameter `DisableErrorRecordsPersistence` will be deprecated, a new parameter `EnableErrorRecordsPersistence` will be added instead. Writing error records to file system will become opt-in instead of opt-out. This change will happen around May 2024
-  - This change is expected to take effect from Az.Accounts version: 2.X and Az version: 12.0.0
-
-### `Update-AzConfig`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Parameter `DisableErrorRecordsPersistence` will be deprecated, a new parameter `EnableErrorRecordsPersistence` will be added instead. Writing error records to file system will become opt-in instead of opt-out. This change will happen around May 2024
-  - This change is expected to take effect from Az.Accounts version: 2.X and Az version: 12.0.0
-
-## Az.KeyVault
-
-### `Invoke-AzKeyVaultKeyOperation`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.KeyVault.Models.PSKeyOperationResult' is changing
-  - The following properties in the output type are being deprecated : 'Result'
-  - The following properties are being added to the output type : 'RawResult'
-  - This change is expected to take effect from Az.KeyVault version: 6.0.0 and Az version: 12.0.0
+### `Get-AzNetAppFilesBackup`
 
 - Parameter breaking-change will happen to all parameter sets
-  - `-Value`
-    - The parameter : 'Value' is being replaced by parameter : 'ByteArrayValue'.
-    - This change is expected to take effect from Az.KeyVault version: 6.0.0 and Az version: 12.0.0
+  - `-AccountBackupName`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-PoolName`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-VolumeName`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-VolumeObject`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
 
-## Az.RecoveryServices
+### `New-AzNetAppFilesBackup`
 
-### `Get-AzRecoveryServicesAsrVaultContext`
+- Parameter breaking-change will happen to all parameter sets
+  - `-Location`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-PoolName`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-VolumeName`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-VolumeObject`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
 
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVaultSettings' is changing
-  - The following properties in the output type are being deprecated : 'ResouceType'
-  - The following properties are being added to the output type : 'ResourceType'
-  - This change is expected to take effect from Az.RecoveryServices version: 7.0.0 and Az version: 12.0.0
+### `Remove-AzNetAppFilesBackup`
 
-### `Import-AzRecoveryServicesAsrVaultSettingsFile`
+- Parameter breaking-change will happen to all parameter sets
+  - `-AccountBackupName`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-PoolName`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-VolumeName`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-VolumeObject`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
 
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVaultSettings' is changing
-  - The following properties in the output type are being deprecated : 'ResouceType'
-  - The following properties are being added to the output type : 'ResourceType'
-  - This change is expected to take effect from Az.RecoveryServices version: 7.0.0 and Az version: 12.0.0
+### `Restore-AzNetAppFilesBackupFile`
 
-### `Set-AzRecoveryServicesAsrVaultContext`
+- Parameter breaking-change will happen to all parameter sets
+  - `-PoolName`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-VolumeName`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-VolumeObject`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
 
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVaultSettings' is changing
-  - The following properties in the output type are being deprecated : 'ResouceType'
-  - The following properties are being added to the output type : 'ResourceType'
-  - This change is expected to take effect from Az.RecoveryServices version: 7.0.0 and Az version: 12.0.0
+### `Update-AzNetAppFilesBackup`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-PoolName`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-VolumeName`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
+  - `-VolumeObject`
+    - Parameter is being deprecated without being replaced
+    - This change is expected to take effect from Az.NetAppFiles version: 0.16 and Az version: 12
 
 ## Az.Sql
 
-### `New-AzSqlDatabaseFailoverGroup`
+### `Get-AzSqlInstanceLink`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The default value of FailoverPolicy will change from Automatic to Manual
-  - This change is expected to take effect from Az.Sql version: 5.0.0 and Az version: 12.0.0
+  - The output type 'Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model.AzureSqlManagedInstanceLinkModel' is changing
+  - The following properties in the output type are being deprecated : 'TargetDatabase' 'PrimaryAvailabilityGroupName' 'SecondaryAvailabilityGroupName' 'SourceEndpoint' 'SourceReplicaId' 'TargetReplicaId' 'LinkState' 'LastHardenedLsn'
+  - The following properties are being added to the output type : 'Databases' 'DistributedAvailabilityGroupName ' 'InstanceAvailabilityGroupName' 'PartnerAvailabilityGroupName' 'InstanceLinkRole' 'PartnerLinkRole' 'FailoverMode' 'SeedingMode' 'PartnerEndpoint'
+  - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
 
-### `Set-AzSqlDatabaseFailoverGroup`
+### `New-AzSqlInstanceLink`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The default value of FailoverPolicy will change from Automatic to Manual
-  - This change is expected to take effect from Az.Sql version: 5.0.0 and Az version: 12.0.0
+  - The output type 'Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model.AzureSqlManagedInstanceLinkModel' is changing
+  - The following properties in the output type are being deprecated : 'TargetDatabase' 'PrimaryAvailabilityGroupName' 'SecondaryAvailabilityGroupName' 'SourceEndpoint' 'SourceReplicaId' 'TargetReplicaId' 'LinkState' 'LastHardenedLsn'
+  - The following properties are being added to the output type : 'Databases' 'DistributedAvailabilityGroupName ' 'InstanceAvailabilityGroupName' 'PartnerAvailabilityGroupName' 'InstanceLinkRole' 'PartnerLinkRole' 'FailoverMode' 'SeedingMode' 'PartnerEndpoint'
+  - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-PrimaryAvailabilityGroupName`
+    - The parameter : 'PrimaryAvailabilityGroupName' is being replaced by parameter : 'PartnerAvailabilityGroupName'.
+    - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
+  - `-SecondaryAvailabilityGroupName`
+    - The parameter : 'SecondaryAvailabilityGroupName' is being replaced by parameter : 'InstanceAvailabilityGroupName'.
+    - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
+  - `-SourceEndpoint`
+    - The parameter : 'SourceEndpoint' is being replaced by parameter : 'PartnerEndpoint'.
+    - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
+  - `-TargetDatabase`
+    - The parameter 'TargetDatabase' is being replaced by parameter 'Databases'. The type of new parameter is changing from 'String' to 'List<String>'
+    - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
+
+### `Remove-AzSqlInstanceLink`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model.AzureSqlManagedInstanceLinkModel' is changing
+  - The following properties in the output type are being deprecated : 'TargetDatabase' 'PrimaryAvailabilityGroupName' 'SecondaryAvailabilityGroupName' 'SourceEndpoint' 'SourceReplicaId' 'TargetReplicaId' 'LinkState' 'LastHardenedLsn'
+  - The following properties are being added to the output type : 'Databases' 'DistributedAvailabilityGroupName ' 'InstanceAvailabilityGroupName' 'PartnerAvailabilityGroupName' 'InstanceLinkRole' 'PartnerLinkRole' 'FailoverMode' 'SeedingMode' 'PartnerEndpoint'
+  - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
+
+### `Update-AzSqlInstanceLink`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model.AzureSqlManagedInstanceLinkModel' is changing
+  - The following properties in the output type are being deprecated : 'TargetDatabase' 'PrimaryAvailabilityGroupName' 'SecondaryAvailabilityGroupName' 'SourceEndpoint' 'SourceReplicaId' 'TargetReplicaId' 'LinkState' 'LastHardenedLsn'
+  - The following properties are being added to the output type : 'Databases' 'DistributedAvailabilityGroupName ' 'InstanceAvailabilityGroupName' 'PartnerAvailabilityGroupName' 'InstanceLinkRole' 'PartnerLinkRole' 'FailoverMode' 'SeedingMode' 'PartnerEndpoint'
+  - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
 

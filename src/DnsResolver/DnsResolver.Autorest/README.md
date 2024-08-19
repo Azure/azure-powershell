@@ -5,9 +5,6 @@ v
 This directory contains the PowerShell module for the DnsResolver service.
 
 ---
-## Status
-[![Az.DnsResolver](https://img.shields.io/powershellgallery/v/Az.DnsResolver.svg?style=flat-square&label=Az.DnsResolver "Az.DnsResolver")](https://www.powershellgallery.com/packages/Az.DnsResolver/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -70,9 +67,9 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 37072829f795ce840b8085035e8adf4721602f34
+commit: 37072829f795ce840b8085035e8adf4721602f34
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/dnsresolver/resource-manager/Microsoft.Network/stable/2022-07-01/dnsresolver.json
 
@@ -84,6 +81,10 @@ inlining-threshold: 50
 # If there are post APIs for some kinds of actions in the RP, you may need to
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:

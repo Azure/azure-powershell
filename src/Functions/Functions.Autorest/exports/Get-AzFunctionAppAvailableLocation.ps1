@@ -27,12 +27,12 @@ Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Linux
 Get-AzFunctionAppAvailableLocation -PlanType Consumption -OSType Windows
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IGeoRegion
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/get-azfunctionappavailablelocation
 #>
 function Get-AzFunctionAppAvailableLocation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IGeoRegion])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Position=0)]
@@ -128,7 +128,13 @@ begin {
             __AllParameterSets = 'Az.Functions.custom\Get-AzFunctionAppAvailableLocation';
         }
         if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             }           
 
             return BmsAdapter.Client.BackupResourceVaultConfigs.UpdateWithHttpMessagesAsync(
-                vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName(), param, customHeaders).Result.Body;
+                vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName(), param, null, customHeaders).Result.Body;
         }
 
         public BackupResourceVaultConfigResource GetVaultProperty(string vaultName, string resourceGroupName)

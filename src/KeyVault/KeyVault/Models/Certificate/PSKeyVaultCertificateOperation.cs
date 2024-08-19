@@ -13,7 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.KeyVault.Models;
+
 using System;
+
+using Track2Sdk = Azure.Security.KeyVault.Certificates;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -33,36 +36,59 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public string Name { get; set; }
         public string VaultName { get; set; }
 
-        internal static PSKeyVaultCertificateOperation FromCertificateOperation(CertificateOperation certificateOperation)
+        public PSKeyVaultCertificateOperation(){}
+
+        internal PSKeyVaultCertificateOperation(Track2Sdk.CertificateOperation certificateOperation)
         {
-            if (certificateOperation == null)
+            if (certificateOperation == null) return;
+
+            Id = certificateOperation.Id;
+            Status = certificateOperation.Properties?.Status;
+            StatusDetails = certificateOperation.Properties?.StatusDetails;
+            RequestId = certificateOperation.Properties.RequestId;
+            Target = certificateOperation.Properties?.Target;
+            Issuer = certificateOperation.Properties?.IssuerName;
+            CancellationRequested = certificateOperation.Properties?.CancellationRequested;
+
+            if (certificateOperation.Properties?.Csr != null && certificateOperation.Properties?.Csr?.Length != 0)
             {
-                return null;
+                CertificateSigningRequest = Convert.ToBase64String(certificateOperation.Properties?.Csr);
             }
 
-            var kvCertificateOperation = new PSKeyVaultCertificateOperation
+            if (certificateOperation.Properties?.Error != null)
             {
-                Id = certificateOperation.Id,
-                Status = certificateOperation.Status,
-                StatusDetails = certificateOperation.StatusDetails,
-                RequestId = certificateOperation.RequestId,
-                Target = certificateOperation.Target,
-                Issuer = certificateOperation.IssuerParameters.Name,
-                CancellationRequested = certificateOperation.CancellationRequested,
-            };
+                ErrorCode = certificateOperation.Properties?.Error.Code;
+                ErrorMessage = certificateOperation.Properties?.Error.Message;
+            }
+        }
+
+        internal PSKeyVaultCertificateOperation(CertificateOperation certificateOperation)
+        {
+            if (certificateOperation == null) return;
+
+            Id = certificateOperation.Id;
+            Status = certificateOperation.Status;
+            StatusDetails = certificateOperation.StatusDetails;
+            RequestId = certificateOperation.RequestId;
+            Target = certificateOperation.Target;
+            Issuer = certificateOperation.IssuerParameters.Name;
+            CancellationRequested = certificateOperation.CancellationRequested;
 
             if (certificateOperation.Csr != null && certificateOperation.Csr.Length != 0)
             {
-                kvCertificateOperation.CertificateSigningRequest = Convert.ToBase64String(certificateOperation.Csr);
+                CertificateSigningRequest = Convert.ToBase64String(certificateOperation.Csr);
             }
 
             if (certificateOperation.Error != null)
             {
-                kvCertificateOperation.ErrorCode = certificateOperation.Error.Code;
-                kvCertificateOperation.ErrorMessage = certificateOperation.Error.Message;
+                ErrorCode = certificateOperation.Error.Code;
+                ErrorMessage = certificateOperation.Error.Message;
             }
+        }
 
-            return kvCertificateOperation;
+        internal static PSKeyVaultCertificateOperation FromCertificateOperation(CertificateOperation certificateOperation)
+        {
+            return new PSKeyVaultCertificateOperation(certificateOperation);
         }
     }
 }

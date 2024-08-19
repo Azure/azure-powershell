@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
+
+## Version 0.2.1
+* Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 0.2.0
 * Changed the input method of certificate from base64 string to file path

@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the ManagedServiceIdentity service.
 
 ---
-## Status
-[![Az.ManagedServiceIdentity](https://img.shields.io/powershellgallery/v/Az.ManagedServiceIdentity.svg?style=flat-square&label=Az.ManagedServiceIdentity "Az.ManagedServiceIdentity")](https://www.powershellgallery.com/packages/Az.ManagedServiceIdentity/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

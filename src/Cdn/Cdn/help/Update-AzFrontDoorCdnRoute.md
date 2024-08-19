@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnroute
 schema: 2.0.0
@@ -22,7 +22,8 @@ Update-AzFrontDoorCdnRoute -EndpointName <String> -Name <String> -ProfileName <S
  [-ForwardingProtocol <ForwardingProtocol>] [-HttpsRedirect <HttpsRedirect>]
  [-LinkToDefaultDomain <LinkToDefaultDomain>] [-OriginGroupId <String>] [-OriginPath <String>]
  [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>] [-SupportedProtocol <AfdEndpointProtocols[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -34,7 +35,8 @@ Update-AzFrontDoorCdnRoute -InputObject <ICdnIdentity> [-CacheConfigurationQuery
  [-ForwardingProtocol <ForwardingProtocol>] [-HttpsRedirect <HttpsRedirect>]
  [-LinkToDefaultDomain <LinkToDefaultDomain>] [-OriginGroupId <String>] [-OriginPath <String>]
  [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>] [-SupportedProtocol <AfdEndpointProtocols[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -168,7 +170,7 @@ Domains referenced by this endpoint.
 To construct, see NOTES section for CUSTOMDOMAIN properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IActivatedResourceReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IActivatedResourceReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -379,6 +381,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Name of the Resource group within the Azure subscription.
 
@@ -399,7 +416,7 @@ rule sets referenced by this endpoint.
 To construct, see NOTES section for RULESET properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -480,37 +497,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRoute
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`CUSTOMDOMAIN <IActivatedResourceReference[]>`: Domains referenced by this endpoint.
-  - `[Id <String>]`: Resource ID.
-
-`INPUTOBJECT <ICdnIdentity>`: Identity Parameter
-  - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
-  - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
-  - `[Id <String>]`: Resource identity path
-  - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
-  - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
-  - `[RouteName <String>]`: Name of the routing rule.
-  - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.
-  - `[RuleSetName <String>]`: Name of the rule set under the profile which is unique globally.
-  - `[SecretName <String>]`: Name of the Secret under the profile.
-  - `[SecurityPolicyName <String>]`: Name of the security policy under the profile.
-  - `[SubscriptionId <String>]`: Azure Subscription ID.
-
-`RULESET <IResourceReference[]>`: rule sets referenced by this endpoint.
-  - `[Id <String>]`: Resource ID.
-
 ## RELATED LINKS
-

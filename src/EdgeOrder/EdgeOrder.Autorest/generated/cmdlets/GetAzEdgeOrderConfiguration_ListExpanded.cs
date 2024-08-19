@@ -18,6 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IConfiguration))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Description(@"This method provides the list of configurations for the given product family, product line and product under subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/listConfigurations", ApiVersion = "2021-12-01")]
     public partial class GetAzEdgeOrderConfiguration_ListExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener
     {
@@ -34,6 +35,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>Configuration request object.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IConfigurationsRequest _configurationsRequestBody = new Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ConfigurationsRequest();
 
         /// <summary>A flag to tell whether it is the first onOK call.</summary>
         private bool _isFirst = true;
@@ -59,13 +63,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         Description = @"Holds details about product hierarchy information and filterable property.",
         SerializedName = @"configurationFilters",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IConfigurationFilters) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IConfigurationFilters[] ConfigurationFilter { get => ConfigurationsRequestBody.ConfigurationFilter ?? null /* arrayOf */; set => ConfigurationsRequestBody.ConfigurationFilter = value; }
-
-        /// <summary>Backing field for <see cref="ConfigurationsRequestBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IConfigurationsRequest _configurationsRequestBody= new Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ConfigurationsRequest();
-
-        /// <summary>Configuration request object.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IConfigurationsRequest ConfigurationsRequestBody { get => this._configurationsRequestBody; set => this._configurationsRequestBody = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IConfigurationFilters[] ConfigurationFilter { get => _configurationsRequestBody.ConfigurationFilter ?? null /* arrayOf */; set => _configurationsRequestBody.ConfigurationFilter = value; }
 
         /// <summary>
         /// Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing
@@ -80,12 +78,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         SerializedName = @"customerSubscriptionDetails",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ICustomerSubscriptionDetails) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.DoNotExport]
-        public Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ICustomerSubscriptionDetails CustomerSubscriptionDetail { get => ConfigurationsRequestBody.CustomerSubscriptionDetail ?? null /* object */; set => ConfigurationsRequestBody.CustomerSubscriptionDetail = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ICustomerSubscriptionDetails CustomerSubscriptionDetail { get => _configurationsRequestBody.CustomerSubscriptionDetail ?? null /* object */; set => _configurationsRequestBody.CustomerSubscriptionDetail = value; }
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.ParameterCategory.Azure)]
@@ -107,11 +106,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>
@@ -175,8 +174,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.IErrorResponse</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -187,8 +186,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IConfigurations"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IConfigurations">Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IConfigurations</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
@@ -199,6 +198,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -210,7 +214,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -321,7 +342,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -338,13 +358,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.ListConfigurations(SubscriptionId, this.InvocationInformation.BoundParameters.ContainsKey("SkipToken") ? SkipToken : null, ConfigurationsRequestBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.ListConfigurations(SubscriptionId, this.InvocationInformation.BoundParameters.ContainsKey("SkipToken") ? SkipToken : null, _configurationsRequestBody, onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,SkipToken=this.InvocationInformation.BoundParameters.ContainsKey("SkipToken") ? SkipToken : null,body=ConfigurationsRequestBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,SkipToken=this.InvocationInformation.BoundParameters.ContainsKey("SkipToken") ? SkipToken : null,body=_configurationsRequestBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -363,12 +383,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
             base.StopProcessing();
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.IErrorResponse</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
@@ -390,14 +425,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, SkipToken=this.InvocationInformation.BoundParameters.ContainsKey("SkipToken") ? SkipToken : null, body=ConfigurationsRequestBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, SkipToken=this.InvocationInformation.BoundParameters.ContainsKey("SkipToken") ? SkipToken : null, body=_configurationsRequestBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, SkipToken=this.InvocationInformation.BoundParameters.ContainsKey("SkipToken") ? SkipToken : null, body=ConfigurationsRequestBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, SkipToken=this.InvocationInformation.BoundParameters.ContainsKey("SkipToken") ? SkipToken : null, body=_configurationsRequestBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -407,8 +442,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IConfigurations"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IConfigurations">Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IConfigurations</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>

@@ -42,12 +42,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Disk.</param>
         /// <param name="osProfile">Specifies information required for
         /// reimaging the non-ephemeral OS disk.</param>
+        /// <param name="forceUpdateOSDiskForEphemeral">Parameter to force
+        /// update ephemeral OS disk for a virtual machine scale set VM</param>
         /// <param name="instanceIds">The virtual machine scale set instance
         /// ids. Omitting the virtual machine scale set instance ids will
         /// result in the operation being performed on all virtual machines in
         /// the virtual machine scale set.</param>
-        public VirtualMachineScaleSetReimageParameters(bool? tempDisk = default(bool?), string exactVersion = default(string), OSProfileProvisioningData osProfile = default(OSProfileProvisioningData), IList<string> instanceIds = default(IList<string>))
-            : base(tempDisk, exactVersion, osProfile)
+        public VirtualMachineScaleSetReimageParameters(bool? tempDisk = default(bool?), string exactVersion = default(string), OSProfileProvisioningData osProfile = default(OSProfileProvisioningData), bool? forceUpdateOSDiskForEphemeral = default(bool?), IList<string> instanceIds = default(IList<string>))
+            : base(tempDisk, exactVersion, osProfile, forceUpdateOSDiskForEphemeral)
         {
             InstanceIds = instanceIds;
             CustomInit();

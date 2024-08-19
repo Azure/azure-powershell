@@ -18,19 +18,22 @@ Delete will fail if there are existing role assignments made to the custom role.
 ### RoleDefinitionIdParameterSet (Default)
 ```
 Remove-AzRoleDefinition -Id <Guid> [-Scope <String>] [-SkipClientSideScopeValidation] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RoleDefinitionNameParameterSet
 ```
 Remove-AzRoleDefinition [-Name] <String> [-Scope <String>] [-SkipClientSideScopeValidation] [-Force]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Remove-AzRoleDefinition -InputObject <PSRoleDefinition> [-SkipClientSideScopeValidation] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,7 +52,7 @@ Get-AzRoleDefinition -Name "Virtual Machine Operator" | Remove-AzRoleDefinition
 
 ### Example 2
 ```powershell
-Remove-AzRoleDefinition -Id "52a6cc13-ff92-47a8-a39b-2a8205c3087e"
+Remove-AzRoleDefinition -Id "00001111-aaaa-2222-bbbb-3333cccc4444"
 ```
 
 ## PARAMETERS
@@ -142,6 +145,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Scope
 Role definition scope.
 
@@ -225,4 +243,3 @@ Keywords: azure, azurerm, arm, resource, management, manager, resource, group, t
 [Get-AzRoleDefinition](./Get-AzRoleDefinition.md)
 
 [Set-AzRoleDefinition](./Set-AzRoleDefinition.md)
-

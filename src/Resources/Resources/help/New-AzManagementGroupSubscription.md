@@ -14,7 +14,8 @@ Adds a Subscription to a Management Group.
 
 ```
 New-AzManagementGroupSubscription [-GroupName] <String> [-SubscriptionId] <Guid> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +32,7 @@ New-AzManagementGroupSubscription -GroupName "TestGroup" -SubscriptionId 5602fbd
 Name              : 5602fbd9-fb0d-4fbb-98b3-10c8ea20b6de
 Type              : Microsoft.Management/managementGroups/subscriptions
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup/subscriptions/5602fbd9-fb0d-4fbb-98b3-10c8ea20b6de
-TenantId          : 14307de0-5e6f-46cf-b2ba-64a062964d30
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName       : Visual Studio Enterprise Subscription
 ParentId          : /providers/Microsoft.Management/managementGroups/TestGroup
 State             : Active
@@ -76,6 +77,21 @@ Return `true` on successful execution
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

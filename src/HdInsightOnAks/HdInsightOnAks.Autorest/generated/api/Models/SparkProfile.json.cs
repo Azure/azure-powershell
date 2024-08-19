@@ -77,9 +77,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_metastoreSpec = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("metastoreSpec"), out var __jsonMetastoreSpec) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SparkMetastoreSpec.FromJson(__jsonMetastoreSpec) : MetastoreSpec;}
-            {_userPluginsSpec = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("userPluginsSpec"), out var __jsonUserPluginsSpec) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SparkUserPlugins.FromJson(__jsonUserPluginsSpec) : UserPluginsSpec;}
-            {_defaultStorageUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("defaultStorageUrl"), out var __jsonDefaultStorageUrl) ? (string)__jsonDefaultStorageUrl : (string)DefaultStorageUrl;}
+            {_metastoreSpec = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("metastoreSpec"), out var __jsonMetastoreSpec) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SparkMetastoreSpec.FromJson(__jsonMetastoreSpec) : _metastoreSpec;}
+            {_userPluginsSpec = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("userPluginsSpec"), out var __jsonUserPluginsSpec) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SparkUserPlugins.FromJson(__jsonUserPluginsSpec) : _userPluginsSpec;}
+            {_defaultStorageUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("defaultStorageUrl"), out var __jsonDefaultStorageUrl) ? (string)__jsonDefaultStorageUrl : (string)_defaultStorageUrl;}
             AfterFromJson(json);
         }
 

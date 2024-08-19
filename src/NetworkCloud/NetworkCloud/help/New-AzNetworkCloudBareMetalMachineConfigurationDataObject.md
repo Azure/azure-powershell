@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
 online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudBareMetalMachineConfigurationDataObject
 schema: 2.0.0
@@ -15,7 +15,8 @@ Create an in-memory object for BareMetalMachineConfigurationData.
 ```
 New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword <SecureString>
  -BmcCredentialsUsername <String> -BmcMacAddress <String> -BootMacAddress <String> -RackSlot <Int64>
- -SerialNumber <String> [-MachineDetail <String>] [-MachineName <String>] [<CommonParameters>]
+ -SerialNumber <String> [-MachineDetail <String>] [-MachineName <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +26,7 @@ Create an in-memory object for BareMetalMachineConfigurationData.
 
 ### Example 1: Create an in-memory object for BareMetalMachineConfigurationData.
 ```powershell
-$password = ConvertTo-SecureString "1qaz@WSX" -AsPlainText
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 
 New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername username -BmcMacAddress "00:BB:CC:DD:EE:FF" -BootMacAddress "00:BB:CC:DD:EE:FF" -RackSlot 1 -SerialNumber serialNumber -MachineDetail machineDetail -MachineName machineName
 ```
@@ -175,7 +176,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

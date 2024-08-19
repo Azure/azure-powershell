@@ -23,7 +23,7 @@ Create an in-memory object for AzureMySqlDataSource.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureMySqlDataSource
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureMySqlDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureMySqlDataSourceObject
 #>
 function New-AzPurviewAzureMySqlDataSourceObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureMySqlDataSource')]

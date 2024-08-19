@@ -15,8 +15,8 @@ Create a FqdnListLocalRulestackResource
 ```
 New-AzPaloAltoNetworksFqdnListLocalRulestack -LocalRulestackName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -FqdnList <String[]> [-AuditComment <String>]
- [-Description <String>] [-Etag <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Description <String>] [-Etag <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -244,10 +244,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IFqdnListLocalRulestackResource
+### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFqdnListLocalRulestackResource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

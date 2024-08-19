@@ -19,6 +19,18 @@
 -->
 ## Upcoming Release
 
+## Version 1.10.0
+* Added support for Disabling Access Keys Authentication
+
+## Version 1.9.1
+* Fixed pattern for access policy resource names
+
+## Version 1.9.0
+* Upgraded API version to 2023-08-01
+* Added support for flush operation
+* Added support for update channels
+* Added support for Microsoft Entra Authentication
+
 ## Version 1.8.1
 * Fixed minor issues
 

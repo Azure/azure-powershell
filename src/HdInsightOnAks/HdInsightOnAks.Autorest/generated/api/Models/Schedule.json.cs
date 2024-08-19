@@ -77,10 +77,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_startTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("startTime"), out var __jsonStartTime) ? (string)__jsonStartTime : (string)StartTime;}
-            {_endTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("endTime"), out var __jsonEndTime) ? (string)__jsonEndTime : (string)EndTime;}
-            {_count = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("count"), out var __jsonCount) ? (int)__jsonCount : Count;}
-            {_day = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray>("days"), out var __jsonDays) ? If( __jsonDays as Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : Day;}
+            {_startTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("startTime"), out var __jsonStartTime) ? (string)__jsonStartTime : (string)_startTime;}
+            {_endTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("endTime"), out var __jsonEndTime) ? (string)__jsonEndTime : (string)_endTime;}
+            {_count = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("count"), out var __jsonCount) ? (int)__jsonCount : _count;}
+            {_day = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray>("days"), out var __jsonDays) ? If( __jsonDays as Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _day;}
             AfterFromJson(json);
         }
 

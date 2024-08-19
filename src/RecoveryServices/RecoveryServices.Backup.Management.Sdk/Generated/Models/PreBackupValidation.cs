@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="status">Status of protectable item, i.e. InProgress,Succeeded,Failed
-        /// Possible values include: 'Invalid', 'Success', 'Failed'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Success&#39;, &#39;Failed&#39;</param>
 
         /// <param name="code">Error code of protectable item
         /// </param>

@@ -41,7 +41,7 @@ New-AzRedisCacheFirewallRule -Name "mycache" -RuleName "ruleone" -StartIP "10.0.
 ```
 
 ```output
-        ResourceGroupName : myGroup
+ResourceGroupName : myGroup
         Name              : mycache
         FirewallRuleId    : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/mycache/firewallRules/ruleone
         RuleName          : ruleone

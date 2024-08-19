@@ -88,6 +88,13 @@ try {
     Write-Host "Preparing Autorest..."
     npx autorest --reset
     foreach ($_ in $ChangedSdks) {
+        # If it is Resources.Management.Sdk, flag and will use tag for sdk generation
+        $IsResources = $false;
+        if ($_ -match "Resources.Management.Sdk")
+        {
+            $IsResources = $true;
+        }
+
         # Extract Module Name
         $ModuleName = "Az." + ($_ -split "\/|\\")[1]
 
@@ -109,7 +116,22 @@ try {
             if ([regex]::Matches($readMeContent, '\s*powershell\s*:\s*true\s*') -and [regex]::Matches($readMeContent, '\s*isSdkGenerator\s*:\s*true\s*'))
             {
                 Write-Host "Using autorest powershell v4:`nRe-generating SDK under Generated folder for $ModuleName..."
-                npx autorest
+                if ($IsResources)
+                {
+                    Write-Host "Specific generation for Resources.Management.Sdk"
+                    rm -r Generated/*
+                    npx autorest --use:@autorest/powershell@4.x --tag=package-privatelinks-2020-05
+                    npx autorest --use:@autorest/powershell@4.x --tag=package-subscriptions-2021-01
+                    npx autorest --use:@autorest/powershell@4.x --tag=package-features-2021-07
+                    npx autorest --use:@autorest/powershell@4.x --tag=package-deploymentscripts-2020-10
+                    npx autorest --use:@autorest/powershell@4.x --tag=package-resources-2021-04
+                    npx autorest --use:@autorest/powershell@4.x --tag=package-deploymentstacks-2024-03
+                    npx autorest --use:@autorest/powershell@4.x --tag=package-templatespecs-2021-05
+                }
+                else
+                {
+                    npx autorest
+                }
             }
             elseif ([regex]::Matches($readMeContent, '\s*csharp\s*:\s*true\s*'))
             {
@@ -176,7 +198,7 @@ try {
             # Prevent EOL changes detected
             git config --global core.safecrlf false
             git config --global core.autocrlf true
-            $diff = git diff
+            $diff = git diff ".\Generated"
             if($diff -ne $null){
                 $changes = $changes.replace("  ", "`n")
                 $ExceptionList += [GeneratedSdkIssue]@{

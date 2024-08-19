@@ -111,4 +111,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzMetric](./Get-AzMetric.md)
 [Get-AzMetricDefinition](./Get-AzMetricDefinition.md)
-

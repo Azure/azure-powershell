@@ -20,13 +20,13 @@ Finally, save the role definition using this command.
 ### InputFileParameterSet
 ```
 Set-AzRoleDefinition -InputFile <String> [-SkipClientSideScopeValidation]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### RoleDefinitionParameterSet
 ```
 Set-AzRoleDefinition -Role <PSRoleDefinition> [-SkipClientSideScopeValidation]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -109,6 +109,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Role
 Role definition object to be updated
 
@@ -162,4 +177,3 @@ Keywords: azure, azurerm, arm, resource, management, manager, resource, group, t
 [New-AzRoleDefinition](./New-AzRoleDefinition.md)
 
 [Remove-AzRoleDefinition](./Remove-AzRoleDefinition.md)
-

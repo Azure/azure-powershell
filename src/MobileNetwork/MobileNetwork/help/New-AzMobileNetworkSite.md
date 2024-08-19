@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MobileNetwork-help.xml
 Module Name: Az.MobileNetwork
 online version: https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworksite
 schema: 2.0.0
@@ -15,18 +15,19 @@ Must be created in the same location as its parent mobile network.
 
 ```
 New-AzMobileNetworkSite -MobileNetworkName <String> -Name <String> -ResourceGroupName <String>
- -Location <String> [-DataNetworkName <String>] [-SubscriptionId <String>] [-AzureStackEdgeDeviceId <String>]
+ [-SubscriptionId <String>] [-DataNetworkName <String>] -Location <String> [-Tag <Hashtable>]
+ [-PlatformType <PlatformType>] [-ControlPlaneAccessInterfaceName <String>]
  [-ControlPlaneAccessInterfaceIpv4Address <String>] [-ControlPlaneAccessInterfaceIpv4Gateway <String>]
- [-ControlPlaneAccessInterfaceIpv4Subnet <String>] [-ControlPlaneAccessInterfaceName <String>]
- [-CoreNetworkTechnology <CoreNetworkType>] [-CustomLocationId <String>] [-DnsAddress <String[]>]
- [-LocalDiagnosticAccessAuthenticationType <AuthenticationType>] [-NaptConfigurationEnabled <NaptEnabled>]
- [-PlatformType <PlatformType>] [-Sku <BillingSku>] [-Tag <Hashtable>]
- [-UserEquipmentAddressPoolPrefix <String[]>] [-UserEquipmentStaticAddressPoolPrefix <String[]>]
- [-UserPlaneAccessInterfaceIpv4Address <String>] [-UserPlaneAccessInterfaceIpv4Gateway <String>]
- [-UserPlaneAccessInterfaceIpv4Subnet <String>] [-UserPlaneAccessInterfaceName <String>]
+ [-ControlPlaneAccessInterfaceIpv4Subnet <String>] [-CustomLocationId <String>]
+ [-AzureStackEdgeDeviceId <String>] [-LocalDiagnosticAccessAuthenticationType <AuthenticationType>]
+ [-CoreNetworkTechnology <CoreNetworkType>] [-Sku <BillingSku>] [-UserPlaneAccessInterfaceIpv4Address <String>]
+ [-UserPlaneAccessInterfaceIpv4Gateway <String>] [-UserPlaneAccessInterfaceIpv4Subnet <String>]
+ [-UserPlaneAccessInterfaceName <String>] [-DnsAddress <String[]>] [-NaptConfigurationEnabled <NaptEnabled>]
  [-UserPlaneDataInterfaceIpv4Address <String>] [-UserPlaneDataInterfaceIpv4Gateway <String>]
  [-UserPlaneDataInterfaceIpv4Subnet <String>] [-UserPlaneDataInterfaceName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-UserEquipmentAddressPoolPrefix <String[]>] [-UserEquipmentStaticAddressPoolPrefix <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -587,7 +588,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

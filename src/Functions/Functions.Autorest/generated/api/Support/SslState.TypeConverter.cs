@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>SSL type.</summary>
+    /// <summary>SSL type</summary>
     public partial class SslStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

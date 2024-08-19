@@ -14,7 +14,8 @@ Gets a solution in the migrate project.
 
 ```
 Get-AzMigrateSolution -MigrateProjectName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -123,7 +124,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolution
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

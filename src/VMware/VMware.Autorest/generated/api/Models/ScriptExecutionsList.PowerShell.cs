@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>Pageable list of script executions</summary>
+    /// <summary>The response of a ScriptExecution list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(ScriptExecutionsListTypeConverter))]
     public partial class ScriptExecutionsList
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             return ToJsonString();
         }
     }
-    /// Pageable list of script executions
+    /// The response of a ScriptExecution list operation.
     [System.ComponentModel.TypeConverter(typeof(ScriptExecutionsListTypeConverter))]
     public partial interface IScriptExecutionsList
 

@@ -20,9 +20,9 @@ Update-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -Accou
  [-ThroughputMibps <Double>] [-SnapshotPolicyId <String>] [-IsDefaultQuotaEnabled]
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-Tag <Hashtable>]
  [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>]
- [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>] [-SmbNonBrowsable <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>] [-ProtocolType <String[]>]
+ [-SmbNonBrowsable <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -32,9 +32,9 @@ Update-AzNetAppFilesVolume -Name <String> [-UsageThreshold <Int64>] [-ServiceLev
  [-ThroughputMibps <Double>] [-SnapshotPolicyId <String>] [-IsDefaultQuotaEnabled]
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-Tag <Hashtable>]
  [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>]
- [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>] [-SmbNonBrowsable <String>]
- -PoolObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>] [-ProtocolType <String[]>]
+ [-SmbNonBrowsable <String>] -PoolObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
@@ -44,9 +44,9 @@ Update-AzNetAppFilesVolume [-UsageThreshold <Int64>] [-ServiceLevel <String>]
  [-ThroughputMibps <Double>] [-SnapshotPolicyId <String>] [-IsDefaultQuotaEnabled]
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-Tag <Hashtable>]
  [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>]
- [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>] [-SmbNonBrowsable <String>]
- -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>] [-ProtocolType <String[]>]
+ [-SmbNonBrowsable <String>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
@@ -56,9 +56,9 @@ Update-AzNetAppFilesVolume [-UsageThreshold <Int64>] [-ServiceLevel <String>]
  [-ThroughputMibps <Double>] [-SnapshotPolicyId <String>] [-IsDefaultQuotaEnabled]
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-Tag <Hashtable>]
  [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>]
- [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>] [-SmbNonBrowsable <String>]
- -InputObject <PSNetAppFilesVolume> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>] [-ProtocolType <String[]>]
+ [-SmbNonBrowsable <String>] -InputObject <PSNetAppFilesVolume> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -317,13 +317,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -ProtocolType
+A hashtable array which represents the protocol types. You need to create Active Directory connections before creating an SMB/CIFS volume
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
+Type: System.String[]
 Parameter Sets: (All)
-Aliases: proga
+Aliases:
 
 Required: False
 Position: Named

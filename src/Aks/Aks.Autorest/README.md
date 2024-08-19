@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Aks service.
 
 ---
-## Status
-[![Az.Aks](https://img.shields.io/powershellgallery/v/Az.Aks.svg?style=flat-square&label=Az.Aks "Az.Aks")](https://www.powershellgallery.com/packages/Az.Aks/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

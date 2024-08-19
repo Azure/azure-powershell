@@ -16,17 +16,15 @@
 
 <#
 .Synopsis
-Create a component config.
+Create an in-memory object for ClusterServiceConfig.
 .Description
-Create a component config.
+Create an in-memory object for ClusterServiceConfig.
 .Example
 $coreSiteConfigFile=New-AzHdInsightOnAksClusterConfigFileObject -FileName "core-site.xml" -Value @{"fs.defaultFS"="abfs://testcontainer@$teststorage.dfs.core.windows.net"}
-$yarnComponentConfig= New-AzHdInsightOnAksClusterServiceConfigObject -ComponentName "yarn-config" -File $coreSiteConfigFile
+New-AzHdInsightOnAksClusterServiceConfigObject -ComponentName "yarn-config" -File $coreSiteConfigFile
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterConfigFile[]
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfig
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterServiceConfig
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,14 +38,13 @@ FILE <IClusterConfigFile[]>: List of Config Files.
   [Value <IClusterConfigFileValues>]: List of key value pairs         where key represents a valid service configuration name and value represents the value of the config.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksClusterServiceConfigObject
+https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksclusterserviceconfigobject
 #>
 function New-AzHdInsightOnAksClusterServiceConfigObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfig])]
-[CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterServiceConfig])]
+[CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
-    [Alias('Name')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
     # Name of the component the config files should apply to.
@@ -57,7 +54,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterConfigFile[]]
     # List of Config Files.
-    # To construct, see NOTES section for FILE properties and create a hash table.
     ${File}
 )
 
@@ -87,7 +83,7 @@ begin {
         }
 
         $mapping = @{
-            Create = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksClusterServiceConfigObject';
+            __AllParameterSets = 'Az.HdInsightOnAks.custom\New-AzHdInsightOnAksClusterServiceConfigObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

@@ -65,11 +65,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_storageAccountResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("storageAccountResourceId"), out var __jsonStorageAccountResourceId) ? (string)__jsonStorageAccountResourceId : (string)StorageAccountResourceId;}
-            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)Location;}
-            {_restoreReference = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("restoreReference"), out var __jsonRestoreReference) ? (string)__jsonRestoreReference : (string)RestoreReference;}
-            {_creationTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("creationTime"), out var __jsonCreationTime) ? (string)__jsonCreationTime : (string)CreationTime;}
-            {_deletionTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("deletionTime"), out var __jsonDeletionTime) ? (string)__jsonDeletionTime : (string)DeletionTime;}
+            {_storageAccountResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("storageAccountResourceId"), out var __jsonStorageAccountResourceId) ? (string)__jsonStorageAccountResourceId : (string)_storageAccountResourceId;}
+            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
+            {_restoreReference = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("restoreReference"), out var __jsonRestoreReference) ? (string)__jsonRestoreReference : (string)_restoreReference;}
+            {_creationTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("creationTime"), out var __jsonCreationTime) ? (string)__jsonCreationTime : (string)_creationTime;}
+            {_deletionTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("deletionTime"), out var __jsonDeletionTime) ? (string)__jsonDeletionTime : (string)_deletionTime;}
             AfterFromJson(json);
         }
 

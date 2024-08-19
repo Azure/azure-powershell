@@ -93,14 +93,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityClusterpool', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CLUSTERPOOLINPUTOBJECT properties and create a hash table.
     ${ClusterpoolInputObject},
 
     [Parameter()]
@@ -201,7 +199,13 @@ begin {
             DeleteViaIdentityClusterpool = 'Az.HdInsightOnAks.private\Remove-AzHdInsightOnAksCluster_DeleteViaIdentityClusterpool';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

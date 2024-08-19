@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 0.2.0
 * Enabled data plan cmdlets for Scanning service
 

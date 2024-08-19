@@ -30,7 +30,7 @@ The **New-AzVirtualNetworkGatewayIpConfig** cmdlet creates a configuration assig
 
 ## EXAMPLES
 
-### 1: Create an IP Configuration for a Virtual Network Gateway
+### Example 1: Create an IP Configuration for a Virtual Network Gateway
 ```powershell
 $gwIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name myGWIpConfig -SubnetId $myGWsubnet.Id -PublicIpAddressId $myGWpip.Id
 ```

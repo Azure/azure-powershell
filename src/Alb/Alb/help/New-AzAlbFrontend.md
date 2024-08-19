@@ -14,8 +14,8 @@ Create a Frontend
 
 ```
 New-AzAlbFrontend -AlbName <String> -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -Location <String> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -213,10 +213,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontend
+### Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

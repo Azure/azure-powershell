@@ -18,6 +18,20 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
+
+## Version 3.6.2
+* Fixed a bug where `New-AzBatchApplicationPackage` wouldn't work if the application `AllowUpdates` parameter was set to `$false`.
+
+## Version 3.6.1
+* Removed the out-of-date breaking change message for `Get-AzBatchCertificate` and `New-AzBatchCertificate`.
+
+## Version 3.6.0
+* Added new properties `ResourceTags`  and `UpgradePolicy` to `PSCloudPool` and `PSPoolSpecification`.
+* Added new property `UpgradingOS` to `PSNodeCounts`.
+* Added new properties `Caching`, `DiskSizeGB`, `ManagedDisk` and `WriteAcceleratorEnabled` to `PSOSDisk`.
+* Added new properties `SecurityProfile` and `ServiceArtifactReference` to `PSVirtualMachineConfigurations`.
+* Added new property `ScaleSetVmResourceId` to `PSVirtualMachineInfo`.
 
 ## Version 3.5.0
 * Removed cmdlets: `Get-AzBatchPoolStatistic` and `Get-AzBatchJobStatistic`
@@ -101,7 +115,7 @@
 * Removed `TargetOSVersion` from `PSCloudServiceConfiguration`.
 * Renamed `CurrentOSVersion` to `OSVersion` on `PSCloudServiceConfiguration`.
 * Removed `DataEgressGiB` and `DataIngressGiB` from `PSPoolUsageMetrics`.
-* Removed **Get-AzBatchNodeAgentSku** and replaced it with  **Get-AzBatchSupportedImage**. 
+* Removed **Get-AzBatchNodeAgentSku** and replaced it with  **Get-AzBatchSupportedImage**.
   - **Get-AzBatchSupportedImage** returns the same data as **Get-AzBatchNodeAgentSku** but in a more friendly format.
   - New non-verified images are also now returned. Additional information about `Capabilities` and `BatchSupportEndOfLife` for each image is also included.
 * Added ability to mount remote file-systems on each node of a pool via the new `MountConfiguration` parameter of **New-AzBatchPool**.

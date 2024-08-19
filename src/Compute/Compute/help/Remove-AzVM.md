@@ -16,13 +16,15 @@ Removes a virtual machine from Azure.
 ### ResourceGroupNameParameterSetName (Default)
 ```
 Remove-AzVM [-Name] <String> [-ForceDeletion <Boolean>] [-Force] [-NoWait] [-ResourceGroupName] <String>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### IdParameterSetName
 ```
 Remove-AzVM [-ForceDeletion <Boolean>] [-Force] [-NoWait] [-Id] <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -233,5 +235,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Stop-AzVM](./Stop-AzVM.md)
 
 [Update-AzVM](./Update-AzVM.md)
-
-

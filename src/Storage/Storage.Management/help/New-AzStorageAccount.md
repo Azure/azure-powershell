@@ -29,7 +29,8 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-EdgeZone <String>]
  [-PublicNetworkAccess <String>] [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>]
  [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>] [-DnsEndpointType <String>]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
+ [<CommonParameters>]
 ```
 
 ### AzureActiveDirectoryKerberosForFile
@@ -82,7 +83,7 @@ The **New-AzStorageAccount** cmdlet creates an Azure Storage account.
 
 ### Example 1: Create a Storage account
 ```powershell
-New-AzStorageAccount -ResourceGroupName MyResourceGroup -Name mystorageaccount -Location westus -SkuName Standard_GRS
+New-AzStorageAccount -ResourceGroupName MyResourceGroup -Name mystorageaccount -Location westus -SkuName Standard_GRS -MinimumTlsVersion TLS1_2
 ```
 
 This command creates a Storage account for the resource group name MyResourceGroup.
@@ -176,10 +177,10 @@ Then get the Storage account properties, and view the encryption keytype of Queu
 
 
 ```
-$account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2 -MinimumTlsVersion TLS1_1 -AllowBlobPublicAccess $false -AllowSharedKeyAccess $false
+$account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2 -MinimumTlsVersion TLS1_2 -AllowBlobPublicAccess $false -AllowSharedKeyAccess $false
 
 $account.MinimumTlsVersion
-TLS1_1
+TLS1_2
 
 $account.AllowBlobPublicAccess
 False
@@ -318,7 +319,7 @@ Disabled
 
 The command creates account with disable PublicNetworkAccess of the account.
 
-### Example 15: Create account with account level  mmutability policy
+### Example 15: Create account with account level Immutability policy
 <!-- Skip: Output cannot be splitted from code -->
 
 

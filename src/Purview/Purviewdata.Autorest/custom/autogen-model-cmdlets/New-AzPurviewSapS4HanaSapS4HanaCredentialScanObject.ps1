@@ -23,7 +23,7 @@ Create an in-memory object for SapS4HanaSapS4HanaCredentialScan.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapS4HanaSapS4HanaCredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewSapS4HanaSapS4HanaCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewSapS4HanaSapS4HanaCredentialScanObject
 #>
 function New-AzPurviewSapS4HanaSapS4HanaCredentialScanObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapS4HanaSapS4HanaCredentialScan')]

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonS3DataSourceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAmazonS3DataSourceObject
 schema: 2.0.0
 ---
 
@@ -26,7 +26,6 @@ Create an in-memory object for AmazonS3DataSource.
 ```powershell
 New-AzPurviewAmazonS3DataSourceObject -Kind 'AmazonS3' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ServiceUrl s3://multicloud-e2e-2
 New-AzPurviewDataSource -Endpoint 'https://parv-brs-2.purview.azure.com/' -Name 'DS4' -Body $obj
-
 ```
 
 ```output
@@ -132,8 +131,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3DataSource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

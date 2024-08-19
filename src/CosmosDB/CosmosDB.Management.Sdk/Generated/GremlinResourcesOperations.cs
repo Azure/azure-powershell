@@ -873,7 +873,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB Gremlin database from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB Gremlin database from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -898,7 +899,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB Gremlin database from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB Gremlin database from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1794,7 +1796,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB Gremlin graph from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB Gremlin graph from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1822,7 +1825,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB Gremlin graph from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB Gremlin graph from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

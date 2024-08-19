@@ -65,9 +65,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_aksClusterAgentPoolIdentityProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("aksClusterAgentPoolIdentityProfile"), out var __jsonAksClusterAgentPoolIdentityProfile) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.AksClusterProfileAksClusterAgentPoolIdentityProfile.FromJson(__jsonAksClusterAgentPoolIdentityProfile) : AksClusterAgentPoolIdentityProfile;}
-            {_aksClusterResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("aksClusterResourceId"), out var __jsonAksClusterResourceId) ? (string)__jsonAksClusterResourceId : (string)AksClusterResourceId;}
-            {_aksVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("aksVersion"), out var __jsonAksVersion) ? (string)__jsonAksVersion : (string)AksVersion;}
+            {_aksClusterAgentPoolIdentityProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("aksClusterAgentPoolIdentityProfile"), out var __jsonAksClusterAgentPoolIdentityProfile) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.AksClusterProfileAksClusterAgentPoolIdentityProfile.FromJson(__jsonAksClusterAgentPoolIdentityProfile) : _aksClusterAgentPoolIdentityProfile;}
+            {_aksClusterResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("aksClusterResourceId"), out var __jsonAksClusterResourceId) ? (string)__jsonAksClusterResourceId : (string)_aksClusterResourceId;}
+            {_aksVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("aksVersion"), out var __jsonAksVersion) ? (string)__jsonAksVersion : (string)_aksVersion;}
             AfterFromJson(json);
         }
 

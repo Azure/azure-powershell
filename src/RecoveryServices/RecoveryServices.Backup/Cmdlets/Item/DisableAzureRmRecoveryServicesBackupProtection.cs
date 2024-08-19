@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         string vaultName = resourceIdentifier.ResourceName;
                         string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
-                        if (Token != "" && Token != null && !this.DeleteBackupData)
+                        if (Token != "" && Token != null && !this.DeleteBackupData && RetainRecoveryPointsAsPerPolicy.IsPresent)
                         {
                             throw new ArgumentException(String.Format(Resources.DisableWithRetainBackupNotCrititcal));
                         }
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         IPsBackupProvider psBackupProvider =
                             providerManager.GetProviderInstance(Item.WorkloadType,
                             Item.BackupManagementType);
-
+                         
                         if(DeleteBackupData)
                         {
                             #region Archived RPs 

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create GuestAgent.
+Update GuestAgent.
 .Description
-Create GuestAgent.
+Update GuestAgent.
 .Example
 {{ Add code here }}
 .Example

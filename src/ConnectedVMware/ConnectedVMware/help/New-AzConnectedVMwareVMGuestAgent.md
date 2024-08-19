@@ -16,25 +16,20 @@ Create GuestAgent.
 ```
 New-AzConnectedVMwareVMGuestAgent -MachineId <String> [-CredentialsPassword <SecureString>]
  [-CredentialsUsername <String>] [-HttpProxyConfigHttpsProxy <String>] [-PrivateLinkScopeResourceId <String>]
- [-ProvisioningAction <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProvisioningAction <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzConnectedVMwareVMGuestAgent -MachineId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait]
- [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzConnectedVMwareVMGuestAgent -MachineId <String> -JsonString <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait]
- [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,10 +37,43 @@ Create GuestAgent.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Enable Guest Agent on VM Instances
+```powershell
 New-AzConnectedVMwareVMGuestAgent -MachineId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine" -CredentialsUsername "test-user" -CredentialsPassword "test-pw" -ProvisioningAction "install"
 ```
+
+```output
+CredentialsPassword          :
+CredentialsUsername          : abc
+CustomResourceName           : d04a3534-2dfa-42c8-8959-83796a1bcac1
+HttpProxyConfigHttpsProxy    :
+Id                           : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/guestAgents/default
+Name                         : default
+PrivateLinkScopeResourceId   :
+ProvisioningAction           : install
+ProvisioningState            : Succeeded
+ResourceGroupName            : test-rg
+Status                       : Enabled
+Statuses                     : {{
+                                 "type": "Ready",
+                                 "status": "True",
+                                 "lastUpdatedAt": "2023-10-06T14:47:02.1828535Z"
+                               }, {
+                                 "type": "Idle",
+                                 "status": "True",
+                                 "lastUpdatedAt": "2023-10-06T14:47:02.1828535Z"
+                               }}
+SystemDataCreatedAt          : 10/6/2023 2:45:33 PM
+SystemDataCreatedBy          : xyz
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 10/6/2023 2:45:33 PM
+SystemDataLastModifiedBy     : xyz
+SystemDataLastModifiedByType : User
+Type                         : microsoft.connectedvmwarevsphere/virtualmachineinstances/guestagents
+Uuid                         : 6a37a700-e02c-476d-a19f-258761575c40
+```
+
+This command Enable Guest Agent of a VM Instances of machine named `test-machine`.
 
 ## PARAMETERS
 
@@ -59,22 +87,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -117,36 +130,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -225,7 +208,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -256,51 +239,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -344,9 +282,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IGuestAgent
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.connectedvmware/new-azconnectedvmwarevmguestagent](https://learn.microsoft.com/powershell/module/az.connectedvmware/new-azconnectedvmwarevmguestagent)
-

@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-07-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-07-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -537,7 +537,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-07-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -722,7 +722,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-07-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -923,7 +923,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-07-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1088,6 +1088,17 @@ namespace Microsoft.Azure.Management.Compute
         /// response. Possible values include: 'virtualMachineScaleSetVMs/$ref',
         /// 'virtualMachines/$ref'
         /// </param>
+        /// <param name='resourceIdsOnly'>
+        /// The query option to fetch Capacity Reservation Group Resource Ids.
+        /// &lt;br&gt; 'CreatedInSubscription' enables fetching Resource Ids for all
+        /// capacity reservation group resources created in the subscription.
+        /// &lt;br&gt; 'SharedWithSubscription' enables fetching Resource Ids for all
+        /// capacity reservation group resources shared with the subscription.
+        /// &lt;br&gt; 'All' enables fetching Resource Ids for all capacity reservation
+        /// group resources shared with the subscription and created in the
+        /// subscription. Possible values include: 'CreatedInSubscription',
+        /// 'SharedWithSubscription', 'All'
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -1109,13 +1120,13 @@ namespace Microsoft.Azure.Management.Compute
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<CapacityReservationGroup>>> ListBySubscriptionWithHttpMessagesAsync(string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<CapacityReservationGroup>>> ListBySubscriptionWithHttpMessagesAsync(string expand = default(string), string resourceIdsOnly = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2023-09-01";
+            string apiVersion = "2024-07-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1125,6 +1136,7 @@ namespace Microsoft.Azure.Management.Compute
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("expand", expand);
+                tracingParameters.Add("resourceIdsOnly", resourceIdsOnly);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ListBySubscription", tracingParameters);
             }
@@ -1140,6 +1152,10 @@ namespace Microsoft.Azure.Management.Compute
             if (expand != null)
             {
                 _queryParameters.Add(string.Format("$expand={0}", System.Uri.EscapeDataString(expand)));
+            }
+            if (resourceIdsOnly != null)
+            {
+                _queryParameters.Add(string.Format("resourceIdsOnly={0}", System.Uri.EscapeDataString(resourceIdsOnly)));
             }
             if (_queryParameters.Count > 0)
             {

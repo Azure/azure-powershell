@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-The operation to Create a gallery image.
+The operation to create or update a gallery image.
 Please note some properties can be set only during gallery image creation.
 .Description
-The operation to Create a gallery image.
+The operation to create or update a gallery image.
 Please note some properties can be set only during gallery image creation.
 .Example
 {{ Add code here }}
@@ -219,7 +219,13 @@ begin {
             CreateViaJsonString = 'Az.StackHCIVM.private\New-AzStackHCIVMGalleryImage_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('ExtendedLocationType') ) {
             $PSBoundParameters['ExtendedLocationType'] = "CustomLocation"

@@ -1,23 +1,24 @@
 ---
-external help file:
+external help file: Az.Logz-help.xml
 Module Name: Az.Logz
-online version: https://learn.microsoft.com/powershell/module/az.Logz/new-AzLogzVMResourcesObject
+online version: https://learn.microsoft.com/powershell/module/Az.Logz/new-AzLogzVMResourcesObject
 schema: 2.0.0
 ---
 
 # New-AzLogzVMResourcesObject
 
 ## SYNOPSIS
-Create a in-memory object for VMResources
+Create an in-memory object for VMResources.
 
 ## SYNTAX
 
 ```
-New-AzLogzVMResourcesObject [-AgentVersion <String>] [-Id <String>] [<CommonParameters>]
+New-AzLogzVMResourcesObject [-AgentVersion <String>] [-Id <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for VMResources
+Create an in-memory object for VMResources.
 
 ## EXAMPLES
 
@@ -78,7 +79,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

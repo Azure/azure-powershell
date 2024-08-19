@@ -20,8 +20,8 @@ Get-AzWebPubSubKey -ResourceGroupName <String> -ResourceName <String> [-Subscrip
 
 ### ListViaIdentity
 ```
-Get-AzWebPubSubKey -InputObject <IWebPubSubIdentity> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzWebPubSubKey -InputObject <IWebPubSubIdentity> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -182,24 +182,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubKeys
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IWebPubSubIdentity>`: Identity Parameter
-  - `[CertificateName <String>]`: Custom certificate name
-  - `[HubName <String>]`: The hub name.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: the region
-  - `[Name <String>]`: Custom domain name.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection
-  - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  - `[ResourceName <String>]`: The name of the resource.
-  - `[SharedPrivateLinkResourceName <String>]`: The name of the shared private link resource
-  - `[SubscriptionId <String>]`: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS

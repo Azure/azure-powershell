@@ -15,19 +15,21 @@ Lists SSH authorized keys and shared key of a specified local user.
 ### AccountName (Default)
 ```
 Get-AzStorageLocalUserKey [-ResourceGroupName] <String> [-StorageAccountName] <String> -UserName <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Get-AzStorageLocalUserKey -StorageAccount <PSStorageAccount> -UserName <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UserObject
 ```
-Get-AzStorageLocalUserKey [-InputObject] <PSLocalUser> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Get-AzStorageLocalUserKey [-InputObject] <PSLocalUser> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

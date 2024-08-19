@@ -1,8 +1,8 @@
 {
     "Entries":  [
                     {
-                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHM/YXBpLXZlcnNpb249MjAyMy0wMi0wMQ==",
+                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults?api-version=2024-04-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHM/YXBpLXZlcnNpb249MjAyNC0wNC0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -55,7 +55,7 @@
                                                                       "no-cache"
                                                                   ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ],
                                                 "Server":  [
                                                                "Microsoft-IIS/8.0"
@@ -131,7 +131,7 @@
                                                                                 "CENTRALINDIA:20170918T142302Z:9c42a210-4a90-4224-a324-503e61d60f43"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -204,7 +204,7 @@
                                                                                 "CENTRALINDIA:20170918T142302Z:a2680fff-c745-4294-909f-38fd56258c1e"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -277,7 +277,7 @@
                                                                                 "CENTRALINDIA:20170918T142303Z:a88f5865-9023-4b72-98f8-4c5c26e7a3b6"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -350,7 +350,7 @@
                                                                                 "CENTRALINDIA:20170918T142303Z:76574d44-91e4-450f-8ebe-f0d08360d175"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -423,7 +423,7 @@
                                                                                 "CENTRALINDIA:20170918T142303Z:a0906747-4937-4b00-890a-ebe99f434fd7"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -496,7 +496,7 @@
                                                                                 "CENTRALINDIA:20170918T142304Z:7a1c35bf-6c7c-46e3-994e-7c5c7f788891"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -569,7 +569,7 @@
                                                                                 "CENTRALINDIA:20170918T143014Z:90be8398-9d79-4770-93ec-26970a586c0d"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -642,7 +642,7 @@
                                                                                 "CENTRALINDIA:20170918T142305Z:22581154-9207-4280-8479-8acde5c2518d"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -715,7 +715,7 @@
                                                                                 "CENTRALINDIA:20170918T143015Z:2151724b-26f6-48a8-a8fa-8f5bcc40058e"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -788,7 +788,7 @@
                                                                                 "CENTRALINDIA:20170918T143148Z:cd180775-96a5-4276-b852-4e905b2d03e4"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -861,7 +861,7 @@
                                                                       "no-cache"
                                                                   ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ],
                                                 "Location":  [
                                                                  "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/a98e3833a83e5a803a77d8c9b73d03b34769cddf26a9c36ff4dbb50a86a5bcd4/replicationProtectionContainers/b2b708f7-5500-472d-9b4e-34a88340b067/replicationProtectedItems/672ac946-913b-4297-8c35-1aae8c388f63/operationresults/c69201c3-d56e-4cbf-864a-c04ee73ab181?api-version=2018-07-10"
@@ -940,7 +940,7 @@
                                                                                 "CENTRALINDIA:20170918T142307Z:8ac00321-09e2-43a6-b4e0-08415abbb7b3"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1013,7 +1013,7 @@
                                                                                 "CENTRALINDIA:20170918T142307Z:5619c81f-cbdc-4adb-b661-0f8125cd7493"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1086,7 +1086,7 @@
                                                                                 "CENTRALINDIA:20170918T142337Z:3a688d7d-b166-458e-99bf-0880b4fd3e75"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1159,7 +1159,7 @@
                                                                                 "CENTRALINDIA:20170918T142408Z:a1a4b030-0f8a-497b-9972-a1ec61f11658"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1232,7 +1232,7 @@
                                                                                 "CENTRALINDIA:20170918T142438Z:53ec921e-87b1-498f-8d2d-a4e15f02b469"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1305,7 +1305,7 @@
                                                                                 "CENTRALINDIA:20170918T142508Z:8bb1a896-114e-44bd-b6ec-08195efacccc"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1378,7 +1378,7 @@
                                                                                 "CENTRALINDIA:20170918T142539Z:79c051af-e559-4629-9179-9b357f6dcab1"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1451,7 +1451,7 @@
                                                                                 "CENTRALINDIA:20170918T142609Z:621e0cc2-96f8-425f-8756-91ab1598691b"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1524,7 +1524,7 @@
                                                                                 "CENTRALINDIA:20170918T142640Z:4fd552cd-489f-49ea-8414-e634a32c8bc0"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1597,7 +1597,7 @@
                                                                                 "CENTRALINDIA:20170918T142711Z:b692639a-a81d-418a-8872-0cf1a42af060"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1670,7 +1670,7 @@
                                                                                 "CENTRALINDIA:20170918T142742Z:ce80cd12-f83d-47ee-9903-2281de5837c0"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1743,7 +1743,7 @@
                                                                                 "CENTRALINDIA:20170918T142812Z:298d4099-bbd6-4c24-9036-c8e1a65d8dfd"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1816,7 +1816,7 @@
                                                                                 "CENTRALINDIA:20170918T142842Z:1a459c57-d439-4725-8c1c-88d84eec7362"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1889,7 +1889,7 @@
                                                                                 "CENTRALINDIA:20170918T142913Z:3b393cbe-03cb-426c-b267-2bf11d53262e"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1962,7 +1962,7 @@
                                                                                 "CENTRALINDIA:20170918T142943Z:bae3b762-ff56-4870-a91d-a5128e70cd57"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -2035,7 +2035,7 @@
                                                                                 "CENTRALINDIA:20170918T143014Z:9c56ea0c-fab7-4891-be4a-4fed4695e2c3"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -2102,7 +2102,7 @@
                                                                       "no-cache"
                                                                   ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ],
                                                 "Location":  [
                                                                  "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/a98e3833a83e5a803a77d8c9b73d03b34769cddf26a9c36ff4dbb50a86a5bcd4/replicationProtectionContainers/b2b708f7-5500-472d-9b4e-34a88340b067/replicationProtectedItems/672ac946-913b-4297-8c35-1aae8c388f63/operationresults/2f885cd7-2bec-48dd-a9fa-3490916851e4?api-version=2018-07-10"
@@ -2181,7 +2181,7 @@
                                                                                 "CENTRALINDIA:20170918T143016Z:29600eda-e99a-4628-87f6-0fc742a499ea"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -2254,7 +2254,7 @@
                                                                                 "CENTRALINDIA:20170918T143017Z:0704ca60-9593-4309-854f-5fbb3bc1706f"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -2327,7 +2327,7 @@
                                                                                 "CENTRALINDIA:20170918T143047Z:9736b762-7a29-4224-bfd0-9e5ccbc0db0d"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -2400,7 +2400,7 @@
                                                                                 "CENTRALINDIA:20170918T143117Z:3403b7f7-18b0-4cf1-b927-922cfd700e31"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -2473,7 +2473,7 @@
                                                                                 "CENTRALINDIA:20170918T143148Z:c7475bcb-b178-4014-b892-c84dc25e4a85"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -2546,7 +2546,7 @@
                                                                                 "CENTRALINDIA:20170918T143149Z:36dbcb84-3032-4a72-a2c8-67234dbb6f8d"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -2619,7 +2619,7 @@
                                                                       "no-cache"
                                                                   ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ],
                                                 "Location":  [
                                                                  "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/a98e3833a83e5a803a77d8c9b73d03b34769cddf26a9c36ff4dbb50a86a5bcd4/replicationProtectionContainers/b2b708f7-5500-472d-9b4e-34a88340b067/replicationProtectedItems/672ac946-913b-4297-8c35-1aae8c388f63/operationresults/149ca74e-282d-422b-8f2c-4352cfcba650?api-version=2018-07-10"
@@ -2698,7 +2698,7 @@
                                                                                 "CENTRALINDIA:20170918T143150Z:49a4e47f-b1a8-4860-a752-c6c11571ab9c"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -2771,7 +2771,7 @@
                                                                                 "CENTRALINDIA:20170918T143151Z:a642e2f0-88d1-4c76-83c4-5551de154ac5"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -2844,7 +2844,7 @@
                                                                                 "CENTRALINDIA:20170918T143221Z:b8d936ed-7873-44ae-afa0-cfd7ded8dd17"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -2917,7 +2917,7 @@
                                                                                 "CENTRALINDIA:20170918T143252Z:19c2f9de-7b1b-4875-8d38-bebcd44b42e9"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -2990,7 +2990,7 @@
                                                                                 "CENTRALINDIA:20170918T143322Z:467f3180-b088-455d-9626-e54dbbc3b289"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -3063,7 +3063,7 @@
                                                                                 "CENTRALINDIA:20170918T143352Z:e2a1faad-e457-4240-9732-be0333c515ff"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -3136,7 +3136,7 @@
                                                                                 "CENTRALINDIA:20170918T143423Z:6653934e-fc36-4d5d-a4c8-c6941e8a0a86"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:43:48 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:03 GMT"
                                                          ]
                                             },
                         "StatusCode":  200

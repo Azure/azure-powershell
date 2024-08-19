@@ -59,6 +59,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 AuthorityHost = new Uri(authority),
                 TokenCachePersistenceOptions = tokenCacheProvider.GetTokenCachePersistenceOptions()
             };
+            credentialOptions.DisableInstanceDiscovery = upParameters.DisableInstanceDiscovery ?? credentialOptions.DisableInstanceDiscovery;
             if (upParameters.Password != null)
             {
                 passwordCredential = new UsernamePasswordCredential(upParameters.UserId, upParameters.Password.ConvertToString(), tenantId, clientId, credentialOptions);

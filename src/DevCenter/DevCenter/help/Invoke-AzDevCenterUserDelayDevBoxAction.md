@@ -15,29 +15,29 @@ Delays the occurrence of an action.
 ### Delay1 (Default)
 ```
 Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint <String> -DevBoxName <String> -ProjectName <String>
- [-UserId <String>] -DelayTime <TimeSpan> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UserId <String>] -DelayTime <TimeSpan> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Delay
 ```
 Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint <String> -DevBoxName <String> -ProjectName <String>
- [-UserId <String>] -Name <String> -DelayTime <TimeSpan> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UserId <String>] -Name <String> -DelayTime <TimeSpan> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Delay1ByDevCenter
 ```
 Invoke-AzDevCenterUserDelayDevBoxAction -DevCenterName <String> -DevBoxName <String> -ProjectName <String>
- [-UserId <String>] -DelayTime <TimeSpan> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UserId <String>] -DelayTime <TimeSpan> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DelayByDevCenter
 ```
 Invoke-AzDevCenterUserDelayDevBoxAction -DevCenterName <String> -DevBoxName <String> -ProjectName <String>
- [-UserId <String>] -Name <String> -DelayTime <TimeSpan> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UserId <String>] -Name <String> -DelayTime <TimeSpan> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,21 +54,21 @@ This command delays all actions on the dev box "myDevBox" to the time 1 hour and
 
 ### Example 2: Delay all actions on the dev box by dev center
 ```powershell
-Invoke-AzDevCenterUserDelayDevBoxAction -DevCenter Contoso -DevBoxName myDevBox -ProjectName DevProject -DelayTime "02:00"
+Invoke-AzDevCenterUserDelayDevBoxAction -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject -DelayTime "02:00"
 ```
 
 This command delays all actions on the dev box "myDevBox" to the time 2 hours from the earliest scheduled action.
 
 ### Example 3: Delay an action on the dev box by endpoint
 ```powershell
-Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -ProjectName DevProject -ActionName "schedule-default" -DelayTime "00:30"
+Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -ProjectName DevProject -Name "schedule-default" -DelayTime "00:30"
 ```
 
 This command delays the action "schedule-default" for the dev box "myDevBox" for 30 minutes.
 
 ### Example 4: Delay an action on the dev box by dev center
 ```powershell
-Invoke-AzDevCenterUserDelayDevBoxAction -DevCenter Contoso -DevBoxName myDevBox -UserId "me" -ProjectName DevProject -ActionName "schedule-default" -DelayTime "05:15"
+Invoke-AzDevCenterUserDelayDevBoxAction -DevCenterName Contoso -DevBoxName myDevBox -UserId "me" -ProjectName DevProject -Name "schedule-default" -DelayTime "05:15"
 ```
 
 This command delays the action "schedule-default" for the dev box "myDevBox" for 5 hours and 15 minutes.
@@ -167,6 +167,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The DevCenter Project upon which to execute operations.
 
@@ -238,12 +253,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxAction
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxAction
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxActionDelayResult
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxActionDelayResult
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

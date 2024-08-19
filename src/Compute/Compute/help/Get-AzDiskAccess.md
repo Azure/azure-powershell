@@ -19,7 +19,8 @@ Get-AzDiskAccess [[-ResourceGroupName] <String>] [[-Name] <String>] [-DefaultPro
 
 ### ResourceIDParameterSet
 ```
-Get-AzDiskAccess [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDiskAccess [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

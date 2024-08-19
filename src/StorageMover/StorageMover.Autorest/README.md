@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the StorageMover service.
 
 ---
-## Status
-[![Az.StorageMover](https://img.shields.io/powershellgallery/v/Az.StorageMover.svg?style=flat-square&label=Az.StorageMover "Az.StorageMover")](https://www.powershellgallery.com/packages/Az.StorageMover/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -31,15 +28,15 @@ For information on how to develop for `Az.StorageMover`, see [how-to.md](how-to.
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-commit: 74948e5fb9b1e1f8b9d58fb65fc81d5cba6b6ced
+commit: 1cb8cb0a95c20513c5d767614888f415be99245d
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/storagemover/resource-manager/Microsoft.StorageMover/stable/2023-10-01/storagemover.json
+  - $(repo)/specification/storagemover/resource-manager/Microsoft.StorageMover/stable/2024-07-01/storagemover.json
 
 # For new RP, the version is 0.1.0
-module-version: 1.1.0
+module-version: 1.2.0
 # Normally, title is the service name
 title: StorageMover
 subject-prefix: $(service-name)
@@ -51,6 +48,19 @@ use-extension:
   "@autorest/powershell": "3.x"
 
 directive:
+  - from: swagger-document 
+    where: $.definitions.Time.properties.minute
+    transform: >-
+      return {
+          "description": "The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [
+            0,
+            30
+          ],
+          "default": 0
+        }
   - where:
       verb: Set
     remove: true

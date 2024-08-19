@@ -22,13 +22,15 @@ Restore-AzKeyVaultSecret [-VaultName] <String> [-InputFile] <String> [-DefaultPr
 ### ByInputObject
 ```
 Restore-AzKeyVaultSecret [-InputObject] <PSKeyVault> [-InputFile] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Restore-AzKeyVaultSecret [-ResourceId] <String> [-InputFile] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -195,4 +197,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzKeyVaultSecret](./Get-AzKeyVaultSecret.md)
 
 [Remove-AzKeyVaultSecret](./Remove-AzKeyVaultSecret.md)
-

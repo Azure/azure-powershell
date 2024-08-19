@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Creates a cluster.</summary>
+    /// <summary>Create a cluster.</summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}/clusters/{clusterName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzHdInsightOnAksCluster_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Description(@"Creates a cluster.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Description(@"Create a cluster.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}/clusters/{clusterName}", ApiVersion = "2023-06-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}/clusters/{clusterName}", ApiVersion = "2024-05-01-preview")]
     public partial class NewAzHdInsightOnAksCluster_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IContext
@@ -187,6 +187,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.HdInsightOnAks Client => Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Module.Instance.ClientAPI;
 
+        /// <summary>
+        /// Whether to create cluster using private IP instead of public IP. This property must be set at create time.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether to create cluster using private IP instead of public IP. This property must be set at create time.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Whether to create cluster using private IP instead of public IP. This property must be set at create time.",
+        SerializedName = @"enableInternalIngress",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter ClusterAccessProfileEnableInternalIngress { get => _hdInsightClusterBody.AccessProfileEnableInternalIngress ?? default(global::System.Management.Automation.SwitchParameter); set => _hdInsightClusterBody.AccessProfileEnableInternalIngress = value; }
+
         /// <summary>The type of cluster.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of cluster.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
@@ -208,6 +221,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
         SerializedName = @"clusterVersion",
         PossibleTypes = new [] { typeof(string) })]
         public string ClusterVersion { get => _hdInsightClusterBody.ProfileClusterVersion ?? null; set => _hdInsightClusterBody.ProfileClusterVersion = value; }
+
+        /// <summary>The list of Availability zones to use for AKS VMSS nodes.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of Availability zones to use for AKS VMSS nodes.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The list of Availability zones to use for AKS VMSS nodes.",
+        SerializedName = @"availabilityZones",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] ComputeProfileAvailabilityZone { get => _hdInsightClusterBody.ComputeProfileAvailabilityZone?.ToArray() ?? null /* fixedArrayOf */; set => _hdInsightClusterBody.ComputeProfileAvailabilityZone = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>The nodes definitions.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -268,6 +293,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter CoordinatorHighAvailabilityEnabled { get => _hdInsightClusterBody.CoordinatorHighAvailabilityEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _hdInsightClusterBody.CoordinatorHighAvailabilityEnabled = value; }
 
+        /// <summary>The database URL</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The database URL")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The database URL",
+        SerializedName = @"host",
+        PossibleTypes = new [] { typeof(string) })]
+        public string DatabaseHost { get => _hdInsightClusterBody.DatabaseHost ?? null; set => _hdInsightClusterBody.DatabaseHost = value; }
+
+        /// <summary>The database name</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The database name")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The database name",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        public string DatabaseName { get => _hdInsightClusterBody.DatabaseName ?? null; set => _hdInsightClusterBody.DatabaseName = value; }
+
+        /// <summary>Reference for the database password</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Reference for the database password")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Reference for the database password",
+        SerializedName = @"passwordSecretRef",
+        PossibleTypes = new [] { typeof(string) })]
+        public string DatabasePasswordSecretRef { get => _hdInsightClusterBody.DatabasePasswordSecretRef ?? null; set => _hdInsightClusterBody.DatabasePasswordSecretRef = value; }
+
+        /// <summary>The name of the database user</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the database user")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the database user",
+        SerializedName = @"username",
+        PossibleTypes = new [] { typeof(string) })]
+        public string DatabaseUsername { get => _hdInsightClusterBody.DatabaseUsername ?? null; set => _hdInsightClusterBody.DatabaseUsername = value; }
+
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
         /// against a different subscription
@@ -277,6 +346,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>
+        /// Managed Disk size in GB. The maximum supported disk size for Standard and Premium HDD/SSD is 32TB, except for Premium
+        /// SSD v2, which supports up to 64TB.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Managed Disk size in GB. The maximum supported disk size for Standard and Premium HDD/SSD is 32TB, except for Premium SSD v2, which supports up to 64TB.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Managed Disk size in GB. The maximum supported disk size for Standard and Premium HDD/SSD is 32TB, except for Premium SSD v2, which supports up to 64TB.",
+        SerializedName = @"dataDiskSize",
+        PossibleTypes = new [] { typeof(int) })]
+        public int DiskStorageDataDiskSize { get => _hdInsightClusterBody.DiskStorageDataDiskSize ?? default(int); set => _hdInsightClusterBody.DiskStorageDataDiskSize = value; }
+
+        /// <summary>Managed Disk Type.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Managed Disk Type.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Managed Disk Type.",
+        SerializedName = @"dataDiskType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("Standard_HDD_LRS", "Standard_SSD_LRS", "Standard_SSD_ZRS", "Premium_SSD_LRS", "Premium_SSD_ZRS", "Premium_SSD_v2_LRS")]
+        public string DiskStorageDataDiskType { get => _hdInsightClusterBody.DiskStorageDataDiskType ?? null; set => _hdInsightClusterBody.DiskStorageDataDiskType = value; }
 
         /// <summary>True if log analytics is enabled for the cluster, otherwise false.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "True if log analytics is enabled for the cluster, otherwise false.")]
@@ -327,6 +422,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string FlinkHiveCatalogDbUserName { get => _hdInsightClusterBody.HiveMetastoreDbConnectionUserName ?? null; set => _hdInsightClusterBody.HiveMetastoreDbConnectionUserName = value; }
 
+        /// <summary>
+        /// A string property that indicates the deployment mode of Flink cluster. It can have one of the following enum values =>
+        /// Application, Session. Default value is Session
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A string property that indicates the deployment mode of Flink cluster. It can have one of the following enum values => Application, Session. Default value is Session")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A string property that indicates the deployment mode of Flink cluster. It can have one of the following enum values => Application, Session. Default value is Session",
+        SerializedName = @"deploymentMode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("Application", "Session")]
+        public string FlinkProfileDeploymentMode { get => _hdInsightClusterBody.FlinkProfileDeploymentMode ?? null; set => _hdInsightClusterBody.FlinkProfileDeploymentMode = value; }
+
         /// <summary>Storage account uri which is used for savepoint and checkpoint state.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Storage account uri which is used for savepoint and checkpoint state.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
@@ -371,6 +481,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
         PossibleTypes = new [] { typeof(long) })]
         public long HistoryServerMemory { get => _hdInsightClusterBody.HistoryServerMemory ?? default(long); set => _hdInsightClusterBody.HistoryServerMemory = value; }
 
+        /// <summary>
+        /// The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manageview=azuresql#authentication-and-authorization
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manageview=azuresql#authentication-and-authorization")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manageview=azuresql#authentication-and-authorization",
+        SerializedName = @"metastoreDbConnectionAuthenticationMode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("SqlAuth", "IdentityAuth")]
+        public string HiveMetastoreDbConnectionAuthenticationMode { get => _hdInsightClusterBody.HiveMetastoreDbConnectionAuthenticationMode ?? null; set => _hdInsightClusterBody.HiveMetastoreDbConnectionAuthenticationMode = value; }
+
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
         [global::System.Management.Automation.ValidateNotNull]
@@ -408,17 +532,113 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
         PossibleTypes = new [] { typeof(long) })]
         public long JobManagerMemory { get => _hdInsightClusterBody.JobManagerMemory ?? default(long); set => _hdInsightClusterBody.JobManagerMemory = value; }
 
-        /// <summary>Kafka cluster profile.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Kafka cluster profile.")]
+        /// <summary>
+        /// A string property representing additional JVM arguments for the Flink job. It should be space separated value.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A string property representing additional JVM arguments for the Flink job. It should be space separated value.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Kafka cluster profile.",
-        SerializedName = @"kafkaProfile",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileKafkaProfile) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileKafkaProfile KafkaProfile { get => _hdInsightClusterBody.ProfileKafkaProfile ?? null /* object */; set => _hdInsightClusterBody.ProfileKafkaProfile = value; }
+        Description = @"A string property representing additional JVM arguments for the Flink job. It should be space separated value.",
+        SerializedName = @"args",
+        PossibleTypes = new [] { typeof(string) })]
+        public string JobSpecArg { get => _hdInsightClusterBody.JobSpecArg ?? null; set => _hdInsightClusterBody.JobSpecArg = value; }
+
+        /// <summary>
+        /// A string property that specifies the entry class for the Flink job. If not specified, the entry point is auto-detected
+        /// from the flink job jar package.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A string property that specifies the entry class for the Flink job. If not specified, the entry point is auto-detected from the flink job jar package.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A string property that specifies the entry class for the Flink job. If not specified, the entry point is auto-detected from the flink job jar package.",
+        SerializedName = @"entryClass",
+        PossibleTypes = new [] { typeof(string) })]
+        public string JobSpecEntryClass { get => _hdInsightClusterBody.JobSpecEntryClass ?? null; set => _hdInsightClusterBody.JobSpecEntryClass = value; }
+
+        /// <summary>A string property that represents the name of the job JAR.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A string property that represents the name of the job JAR.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A string property that represents the name of the job JAR.",
+        SerializedName = @"jarName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string JobSpecJarName { get => _hdInsightClusterBody.JobSpecJarName ?? null; set => _hdInsightClusterBody.JobSpecJarName = value; }
+
+        /// <summary>A string property that specifies the directory where the job JAR is located.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A string property that specifies the directory where the job JAR is located.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A string property that specifies the directory where the job JAR is located.",
+        SerializedName = @"jobJarDirectory",
+        PossibleTypes = new [] { typeof(string) })]
+        public string JobSpecJobJarDirectory { get => _hdInsightClusterBody.JobSpecJobJarDirectory ?? null; set => _hdInsightClusterBody.JobSpecJobJarDirectory = value; }
+
+        /// <summary>A string property that represents the name of the savepoint for the Flink job</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A string property that represents the name of the savepoint for the Flink job")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A string property that represents the name of the savepoint for the Flink job",
+        SerializedName = @"savePointName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string JobSpecSavePointName { get => _hdInsightClusterBody.JobSpecSavePointName ?? null; set => _hdInsightClusterBody.JobSpecSavePointName = value; }
+
+        /// <summary>
+        /// A string property that indicates the upgrade mode to be performed on the Flink job. It can have one of the following enum
+        /// values => STATELESS_UPDATE, UPDATE, LAST_STATE_UPDATE.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A string property that indicates the upgrade mode to be performed on the Flink job. It can have one of the following enum values => STATELESS_UPDATE, UPDATE, LAST_STATE_UPDATE.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A string property that indicates the upgrade mode to be performed on the Flink job. It can have one of the following enum values => STATELESS_UPDATE, UPDATE, LAST_STATE_UPDATE.",
+        SerializedName = @"upgradeMode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("STATELESS_UPDATE", "UPDATE", "LAST_STATE_UPDATE")]
+        public string JobSpecUpgradeMode { get => _hdInsightClusterBody.JobSpecUpgradeMode ?? null; set => _hdInsightClusterBody.JobSpecUpgradeMode = value; }
+
+        /// <summary>Expose Kafka cluster in KRaft mode.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Expose Kafka cluster in KRaft mode.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Expose Kafka cluster in KRaft mode.",
+        SerializedName = @"enableKRaft",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter KafkaProfileEnableKRaft { get => _hdInsightClusterBody.KafkaProfileEnableKRaft ?? default(global::System.Management.Automation.SwitchParameter); set => _hdInsightClusterBody.KafkaProfileEnableKRaft = value; }
+
+        /// <summary>Expose worker nodes as public endpoints.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Expose worker nodes as public endpoints.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Expose worker nodes as public endpoints.",
+        SerializedName = @"enablePublicEndpoints",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter KafkaProfileEnablePublicEndpoint { get => _hdInsightClusterBody.KafkaProfileEnablePublicEndpoint ?? default(global::System.Management.Automation.SwitchParameter); set => _hdInsightClusterBody.KafkaProfileEnablePublicEndpoint = value; }
+
+        /// <summary>Fully qualified path of Azure Storage container used for Tiered Storage.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Fully qualified path of Azure Storage container used for Tiered Storage.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Fully qualified path of Azure Storage container used for Tiered Storage.",
+        SerializedName = @"remoteStorageUri",
+        PossibleTypes = new [] { typeof(string) })]
+        public string KafkaProfileRemoteStorageUri { get => _hdInsightClusterBody.KafkaProfileRemoteStorageUri ?? null; set => _hdInsightClusterBody.KafkaProfileRemoteStorageUri = value; }
 
         /// <summary>
         /// Name of the user Key Vault where all the cluster specific user secrets are stored.
@@ -536,6 +756,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter LogAnalyticProfileMetricsEnabled { get => _hdInsightClusterBody.LogAnalyticProfileMetricsEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _hdInsightClusterBody.LogAnalyticProfileMetricsEnabled = value; }
 
+        /// <summary>The list of managed identity.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of managed identity.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The list of managed identity.",
+        SerializedName = @"identityList",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentitySpec) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentitySpec[] ManagedIdentityProfileIdentityList { get => _hdInsightClusterBody.ManagedIdentityProfileIdentityList?.ToArray() ?? null /* fixedArrayOf */; set => _hdInsightClusterBody.ManagedIdentityProfileIdentityList = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentitySpec>(value) : null); }
+
+        /// <summary>
+        /// The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manageview=azuresql#authentication-and-authorization
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manageview=azuresql#authentication-and-authorization")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manageview=azuresql#authentication-and-authorization",
+        SerializedName = @"dbConnectionAuthenticationMode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("SqlAuth", "IdentityAuth")]
+        public string MetastoreSpecDbConnectionAuthenticationMode { get => _hdInsightClusterBody.MetastoreSpecDbConnectionAuthenticationMode ?? null; set => _hdInsightClusterBody.MetastoreSpecDbConnectionAuthenticationMode = value; }
+
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
@@ -624,6 +870,109 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Use the default credentials for the proxy")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
+
+        /// <summary>
+        /// List of usernames that should be marked as ranger admins. These usernames should match the user principal name (UPN) of
+        /// the respective AAD users.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of usernames that should be marked as ranger admins. These usernames should match the user principal name (UPN) of the respective AAD users.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List of usernames that should be marked as ranger admins. These usernames should match the user principal name (UPN) of the respective AAD users.",
+        SerializedName = @"admins",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] RangerAdmin { get => _hdInsightClusterBody.RangerAdmin?.ToArray() ?? null /* fixedArrayOf */; set => _hdInsightClusterBody.RangerAdmin = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
+
+        /// <summary>
+        /// Azure storage location of the blobs. MSI should have read/write access to this Storage account.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Azure storage location of the blobs. MSI should have read/write access to this Storage account.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Azure storage location of the blobs. MSI should have read/write access to this Storage account.",
+        SerializedName = @"storageAccount",
+        PossibleTypes = new [] { typeof(string) })]
+        public string RangerAuditStorageAccount { get => _hdInsightClusterBody.RangerAuditStorageAccount ?? null; set => _hdInsightClusterBody.RangerAuditStorageAccount = value; }
+
+        /// <summary>Enable Ranger for cluster or not.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Enable Ranger for cluster or not.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Enable Ranger for cluster or not.",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter RangerPluginProfileEnabled { get => _hdInsightClusterBody.RangerPluginProfileEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _hdInsightClusterBody.RangerPluginProfileEnabled = value; }
+
+        /// <summary>Denotes whether usersync service should be enabled</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Denotes whether usersync service should be enabled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Denotes whether usersync service should be enabled",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter RangerUsersyncEnabled { get => _hdInsightClusterBody.RangerUsersyncEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _hdInsightClusterBody.RangerUsersyncEnabled = value; }
+
+        /// <summary>
+        /// List of groups that should be synced. These group names should match the object id of the respective AAD groups.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of groups that should be synced. These group names should match the object id of the respective AAD groups.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List of groups that should be synced. These group names should match the object id of the respective AAD groups.",
+        SerializedName = @"groups",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] RangerUsersyncGroup { get => _hdInsightClusterBody.RangerUsersyncGroup?.ToArray() ?? null /* fixedArrayOf */; set => _hdInsightClusterBody.RangerUsersyncGroup = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
+
+        /// <summary>
+        /// User & groups can be synced automatically or via a static list that's refreshed.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "User & groups can be synced automatically or via a static list that's refreshed.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"User & groups can be synced automatically or via a static list that's refreshed.",
+        SerializedName = @"mode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("static", "automatic")]
+        public string RangerUsersyncMode { get => _hdInsightClusterBody.RangerUsersyncMode ?? null; set => _hdInsightClusterBody.RangerUsersyncMode = value; }
+
+        /// <summary>
+        /// List of user names that should be synced. These usernames should match the User principal name of the respective AAD users.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of user names that should be synced. These usernames should match the User principal name of the respective AAD users.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List of user names that should be synced. These usernames should match the User principal name of the respective AAD users.",
+        SerializedName = @"users",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] RangerUsersyncUser { get => _hdInsightClusterBody.RangerUsersyncUser?.ToArray() ?? null /* fixedArrayOf */; set => _hdInsightClusterBody.RangerUsersyncUser = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
+
+        /// <summary>Azure storage location of a mapping file that lists user & group associations.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Azure storage location of a mapping file that lists user & group associations.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Azure storage location of a mapping file that lists user & group associations.",
+        SerializedName = @"userMappingLocation",
+        PossibleTypes = new [] { typeof(string) })]
+        public string RangerUsersyncUserMappingLocation { get => _hdInsightClusterBody.RangerUsersyncUserMappingLocation ?? null; set => _hdInsightClusterBody.RangerUsersyncUserMappingLocation = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -817,6 +1166,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
         SerializedName = @"count",
         PossibleTypes = new [] { typeof(int) })]
         public int SshProfileCount { get => _hdInsightClusterBody.SshProfileCount ?? default(int); set => _hdInsightClusterBody.SshProfileCount = value; }
+
+        /// <summary>The virtual machine SKU.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The virtual machine SKU.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The virtual machine SKU.",
+        SerializedName = @"vmSize",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SshProfileVMSize { get => _hdInsightClusterBody.SshProfileVMSize ?? null; set => _hdInsightClusterBody.SshProfileVMSize = value; }
 
         /// <summary>
         /// Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.
@@ -1078,6 +1438,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
                 // Flush buffer
                 WriteObject(_firstResponse);
             }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -1303,6 +1681,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

@@ -94,9 +94,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public PSTaskSchedulingPolicy TaskSchedulingPolicy { get; set; }
 
         /// <summary>
+        /// The upgrade policy for the pool.
+        /// </summary>
+        public PSUpgradePolicy UpgradePolicy { get; set; }
+
+        /// <summary>
         /// Metadata to add to the new pool.
         /// </summary>
         public IDictionary Metadata { get; set; }
+
+        /// <summary>
+        /// The user-specified tags associated with the pool.
+        /// </summary>
+        public IDictionary ResourceTags { get; set; }
 
         /// <summary>
         /// Specifies whether the pool permits direct communication between compute nodes.

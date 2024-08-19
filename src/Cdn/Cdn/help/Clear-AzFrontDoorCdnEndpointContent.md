@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/clear-azfrontdoorcdnendpointcontent
 schema: 2.0.0
@@ -15,27 +15,29 @@ Removes a content from AzureFrontDoor.
 ### PurgeExpanded (Default)
 ```
 Clear-AzFrontDoorCdnEndpointContent -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- -ContentPath <String[]> [-SubscriptionId <String>] [-Domain <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -ContentPath <String[]> [-Domain <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Purge
 ```
 Clear-AzFrontDoorCdnEndpointContent -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- -Content <IAfdPurgeParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PurgeViaIdentity
-```
-Clear-AzFrontDoorCdnEndpointContent -InputObject <ICdnIdentity> -Content <IAfdPurgeParameters>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -Content <IAfdPurgeParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PurgeViaIdentityExpanded
 ```
 Clear-AzFrontDoorCdnEndpointContent -InputObject <ICdnIdentity> -ContentPath <String[]> [-Domain <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### PurgeViaIdentity
+```
+Clear-AzFrontDoorCdnEndpointContent -InputObject <ICdnIdentity> -Content <IAfdPurgeParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,7 +83,7 @@ Parameters required for content purge.
 To construct, see NOTES section for CONTENT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdPurgeParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdPurgeParameters
 Parameter Sets: Purge, PurgeViaIdentity
 Aliases:
 
@@ -144,7 +146,7 @@ Name of the endpoint under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: Purge, PurgeExpanded
+Parameter Sets: PurgeExpanded, Purge
 Aliases:
 
 Required: True
@@ -160,7 +162,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: PurgeViaIdentity, PurgeViaIdentityExpanded
+Parameter Sets: PurgeViaIdentityExpanded, PurgeViaIdentity
 Aliases:
 
 Required: True
@@ -205,10 +207,25 @@ Name of the Azure Front Door Standard or Azure Front Door Premium profile which 
 
 ```yaml
 Type: System.String
-Parameter Sets: Purge, PurgeExpanded
+Parameter Sets: PurgeExpanded, Purge
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -220,7 +237,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Purge, PurgeExpanded
+Parameter Sets: PurgeExpanded, Purge
 Aliases:
 
 Required: True
@@ -235,7 +252,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Purge, PurgeExpanded
+Parameter Sets: PurgeExpanded, Purge
 Aliases:
 
 Required: False
@@ -281,7 +298,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdPurgeParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdPurgeParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 
@@ -291,31 +308,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`CONTENT <IAfdPurgeParameters>`: Parameters required for content purge.
-  - `ContentPath <String[]>`: The path to the content to be purged. Can describe a file path or a wild card directory.
-  - `[Domain <String[]>]`: List of domains.
-
-`INPUTOBJECT <ICdnIdentity>`: Identity Parameter
-  - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
-  - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
-  - `[Id <String>]`: Resource identity path
-  - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
-  - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
-  - `[RouteName <String>]`: Name of the routing rule.
-  - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.
-  - `[RuleSetName <String>]`: Name of the rule set under the profile which is unique globally.
-  - `[SecretName <String>]`: Name of the Secret under the profile.
-  - `[SecurityPolicyName <String>]`: Name of the security policy under the profile.
-  - `[SubscriptionId <String>]`: Azure Subscription ID.
-
 ## RELATED LINKS
-

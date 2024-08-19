@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Functions-help.xml
 Module Name: Az.Functions
 online version: https://learn.microsoft.com/powershell/module/az.functions/new-azfunctionapp
 schema: 2.0.0
@@ -14,31 +14,44 @@ Creates a function app.
 
 ### Consumption (Default)
 ```
-New-AzFunctionApp -Location <String> -Name <String> -ResourceGroupName <String> -Runtime <String>
- -StorageAccountName <String> [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
- [-AppSetting <Hashtable>] [-DisableApplicationInsights] [-FunctionsVersion <String>] [-IdentityID <String[]>]
- [-IdentityType <ManagedServiceIdentityType>] [-OSType <String>] [-PassThru] [-RuntimeVersion <String>]
- [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName <String> -Location <String>
+ -Runtime <String> [-SubscriptionId <String>] [-ApplicationInsightsName <String>]
+ [-ApplicationInsightsKey <String>] [-OSType <String>] [-RuntimeVersion <String>] [-FunctionsVersion <String>]
+ [-DisableApplicationInsights] [-PassThru] [-Tag <Hashtable>] [-AppSetting <Hashtable>]
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityID <String[]>] [-DefaultProfile <PSObject>] [-NoWait]
+ [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByAppServicePlan
 ```
-New-AzFunctionApp -Name <String> -PlanName <String> -ResourceGroupName <String> -Runtime <String>
- -StorageAccountName <String> [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
- [-AppSetting <Hashtable>] [-DisableApplicationInsights] [-FunctionsVersion <String>] [-IdentityID <String[]>]
- [-IdentityType <ManagedServiceIdentityType>] [-OSType <String>] [-PassThru] [-RuntimeVersion <String>]
- [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName <String> -Runtime <String>
+ [-SubscriptionId <String>] [-ApplicationInsightsName <String>] [-ApplicationInsightsKey <String>]
+ [-OSType <String>] [-RuntimeVersion <String>] [-FunctionsVersion <String>] [-DisableApplicationInsights]
+ [-PassThru] [-Tag <Hashtable>] [-AppSetting <Hashtable>] [-IdentityType <ManagedServiceIdentityType>]
+ [-IdentityID <String[]>] -PlanName <String> [-DefaultProfile <PSObject>] [-NoWait] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### EnvironmentForContainerApp
+```
+New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName <String>
+ [-SubscriptionId <String>] [-ApplicationInsightsName <String>] [-ApplicationInsightsKey <String>]
+ [-DisableApplicationInsights] [-PassThru] [-Tag <Hashtable>] [-AppSetting <Hashtable>]
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityID <String[]>] -Environment <String> [-Image <String>]
+ [-RegistryCredential <PSCredential>] [-WorkloadProfileName <String>] [-ResourceCpu <Double>]
+ [-ResourceMemory <String>] [-ScaleMaxReplica <Int32>] [-ScaleMinReplica <Int32>] [-RegistryServer <String>]
+ [-DefaultProfile <PSObject>] [-NoWait] [-AsJob] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CustomDockerImage
 ```
-New-AzFunctionApp -DockerImageName <String> -Name <String> -PlanName <String> -ResourceGroupName <String>
- -StorageAccountName <String> [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
- [-AppSetting <Hashtable>] [-DisableApplicationInsights] [-DockerRegistryCredential <PSCredential>]
- [-IdentityID <String[]>] [-IdentityType <ManagedServiceIdentityType>] [-PassThru] [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName <String>
+ [-SubscriptionId <String>] [-ApplicationInsightsName <String>] [-ApplicationInsightsKey <String>]
+ [-DisableApplicationInsights] [-PassThru] [-Tag <Hashtable>] [-AppSetting <Hashtable>]
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityID <String[]>] -Image <String>
+ [-RegistryCredential <PSCredential>] -PlanName <String> [-DefaultProfile <PSObject>] [-NoWait] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,6 +91,17 @@ New-AzFunctionApp -Name MyUniqueFunctionAppName `
 ```
 
 This command creates a function app using a using a private ACR image.
+
+### Example 4: Create a function app on container app.
+```powershell
+New-AzFunctionApp -Name MyUniqueFunctionAppName `
+                  -ResourceGroupName MyResourceGroupName `
+                  -StorageAccountName MyStorageAccountName `
+                  -Environment MyEnvironment `
+                  -WorkloadProfileName MyWorkloadProfileName
+```
+
+This command create a function app on container app using the default .Net image.
 
 ## PARAMETERS
 
@@ -143,7 +167,6 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 
-
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
@@ -172,33 +195,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DockerImageName
-Linux only.
-Container image name from Docker Registry, e.g.
-publisher/image-name:tag.
+### -Environment
+Name of the container app environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: CustomDockerImage
+Parameter Sets: EnvironmentForContainerApp
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DockerRegistryCredential
-The container registry user name and password.
-Required for private registries.
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: CustomDockerImage
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -210,7 +215,7 @@ The Functions version.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByAppServicePlan, Consumption
+Parameter Sets: Consumption, ByAppServicePlan
 Aliases:
 
 Required: False
@@ -249,6 +254,33 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Image
+Container image name, e.g., publisher/image-name:tag.
+
+```yaml
+Type: System.String
+Parameter Sets: EnvironmentForContainerApp
+Aliases: DockerImageName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: CustomDockerImage
+Aliases: DockerImageName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -306,7 +338,7 @@ The OS to host the function app.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByAppServicePlan, Consumption
+Parameter Sets: Consumption, ByAppServicePlan
 Aliases:
 
 Required: False
@@ -346,6 +378,54 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RegistryCredential
+The container registry username and password.
+Required for private registries.
+
+```yaml
+Type: System.Management.Automation.PSCredential
+Parameter Sets: EnvironmentForContainerApp, CustomDockerImage
+Aliases: DockerRegistryCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RegistryServer
+The container registry server hostname, e.g.
+myregistry.azurecr.io.
+
+```yaml
+Type: System.String
+Parameter Sets: EnvironmentForContainerApp
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceCpu
+The CPU in cores of the container app.
+e.g., 0.75.
+
+```yaml
+Type: System.Double
+Parameter Sets: EnvironmentForContainerApp
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -361,12 +441,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceMemory
+The memory size of the container app.
+e.g., 1.0Gi.
+
+```yaml
+Type: System.String
+Parameter Sets: EnvironmentForContainerApp
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Runtime
 The function runtime.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByAppServicePlan, Consumption
+Parameter Sets: Consumption, ByAppServicePlan
 Aliases:
 
 Required: True
@@ -381,7 +477,37 @@ The function runtime.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByAppServicePlan, Consumption
+Parameter Sets: Consumption, ByAppServicePlan
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScaleMaxReplica
+The maximum number of replicas when creating a function app on container app.
+
+```yaml
+Type: System.Int32
+Parameter Sets: EnvironmentForContainerApp
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScaleMinReplica
+The minimum number of replicas when create function app on container app.
+
+```yaml
+Type: System.Int32
+Parameter Sets: EnvironmentForContainerApp
 Aliases:
 
 Required: False
@@ -436,6 +562,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WorkloadProfileName
+The workload profile name to run the container app on.
+
+```yaml
+Type: System.String
+Parameter Sets: EnvironmentForContainerApp
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -474,9 +615,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
 
 ## NOTES
 
 ## RELATED LINKS
-

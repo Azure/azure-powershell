@@ -410,6 +410,10 @@
                 <PropertyName>SourceImage</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>SourceResource</Label>
+                <PropertyName>SourceResource</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>VirtualHardDisk</Label>
                 <ScriptBlock>
                   if ($_.VirtualHardDisk -ne $null)

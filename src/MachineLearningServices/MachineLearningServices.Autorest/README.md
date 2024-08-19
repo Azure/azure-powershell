@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the MachineLearningServices service.
 
 ---
-## Status
-[![Az.MachineLearningServices](https://img.shields.io/powershellgallery/v/Az.MachineLearningServices.svg?style=flat-square&label=Az.MachineLearningServices "Az.MachineLearningServices")](https://www.powershellgallery.com/packages/Az.MachineLearningServices/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -30,13 +27,15 @@ For information on how to develop for `Az.MachineLearningServices`, see [how-to.
 > see https://aka.ms/autorest
 
 ``` yaml
-# branch: 476564a1aa6ddb38ec681c9f89d42f00c1becd25
+commit: d4782cf23e78d441b42d06defad8116fc85d8459
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
-input-file:
-  - https://github.com/erjms/azure-rest-api-specs/blob/dev-machinelearning-Microsoft.MachineLearning-2022-05-01/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-05-01/machineLearningServices.json
-  - https://github.com/erjms/azure-rest-api-specs/blob/dev-machinelearning-Microsoft.MachineLearning-2022-05-01/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-05-01/mfe.json
-  - https://github.com/erjms/azure-rest-api-specs/blob/dev-machinelearning-Microsoft.MachineLearning-2022-05-01/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-05-01/workspaceFeatures.json
+  - $(this-folder)/../../readme.azure.noprofile.md
+  - $(repo)/specification/machinelearningservices/resource-manager/readme.md
+# input-file:
+#   - $(repo)/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2024-04-01/machineLearningServices.json
+#   - $(repo)/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2024-04-01/mfe.json
+#   - $(repo)/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2024-04-01/workspaceFeatures.json
+#   - $(repo)/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2024-04-01/registries.json
 
 subject-prefix: MLWorkspace
 title: MachineLearningServices
@@ -45,7 +44,37 @@ resourcegroup-append: true
 nested-object-to-string: true
 identity-correction-for-post: true
 
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
+  # Fix URL type in autorest v3
+  - from: swagger-document
+    where: $.definitions.WorkspaceConnectionOAuth2.properties.authUrl
+    transform: >-
+      return {
+          "description": "Required by Concur connection category",
+          "type": "string"
+      }
+  # Add Workspace type enum
+  - from: swagger-document
+    where: $.definitions.Workspace.properties.kind
+    transform: >-
+      return {
+        "type": "string",
+        "description": "Type of workspace. Possible values: Default, Hub, Project, FeatureStore.",
+        "enum": [
+            "Default",
+            "Hub",
+            "Project",
+            "FeatureStore"
+          ],
+        "x-ms-enum": {
+          "name": "WorkspaceType",
+          "modelAsString": true
+        }
+      }
   - from: swagger-document
     where: $.definitions.ComponentVersion.properties.componentSpec
     transform: >-
@@ -54,7 +83,18 @@ directive:
           "additionalProperties": true,
           "description": "Defines Component definition details.\r\n<see href=\"https://learn.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command\" />"
       }
-
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections/{connectionName}"].put
+    transform: >-
+      $["description"] = "Creating or updating a new workspace connection"
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections/{connectionName}"].get
+    transform: >-
+      $["description"] = "Get a new workspace connection"
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections/{connectionName}"].delete
+    transform: >-
+      $["description"] = "Remove a new workspace connection"
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/start"].post.responses
     transform: >-
@@ -118,16 +158,6 @@ directive:
 
   # All root resources except workspace will use AzMLService as noun prefix.
   - where:
-      subject-prefix: MlWorkspace
-    set:
-      subject-prefix: MLWorkspace
-      
-  - where:
-      subject-prefix: Ml
-    set:
-      subject-prefix: ML
-
-  - where:
       subject: Usage
     set:
       subject-prefix: MLService
@@ -142,6 +172,26 @@ directive:
     set:
       subject-prefix: MLService
       subject: VMSize
+  - where:
+      subject-prefix: MlWorkspace
+    set:
+      subject-prefix: MLWorkspace
+  - where:
+      subject-prefix: Ml
+    set:
+      subject-prefix: ML
+  # Fix double name for name of Feature
+  - where:
+      parameter-name: FeatureName
+    set:
+      parameter-name: Name
+    # Fix double name for feature of cmdlet "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{featuresetName}/versions/{featuresetVersion}/features"
+  - where:
+      verb: Get
+      subject: Feature
+    # set:
+    #   subject: FeatureWithVersion
+    remove: true
 
   - where:
       verb: Invoke
@@ -160,84 +210,83 @@ directive:
     set:
       subject: Notebook
 
+  # Following are common directives which are normally required in all the RPs
+  # 1. Remove the unexpanded parameter set
+  # 2. For New-* cmdlets, ViaIdentity is not required
+  - where:
+      # variant: ^(Create|Update)(?!.*?Expanded)
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+    remove: true
+
+  # Custom workspace connect
+  - where:
+      subject: WorkspaceConnection
+      verb: New
+    hide: true
+
   # Remove private cmdlets. it been supported in the Az.Network.
   - where:
       subject: PrivateEndpointConnection|PrivateLinkResource
     remove: true
-
+  # Remove Set cmdlets
   - where:
       verb: Set
     remove: true
 
-  # Rmove unnecessary variant of the environment
+  # Remove unnecessary variant of the environment
   - where:
       verb: Get
       subject: OnlineDeploymentLog
       variant: ^Get$|^GetViaIdentity$|^GetViaIdentityExpanded$
     remove: true
-    
-  - where:
-      verb: Update
-      variant: ^Update$|^UpdateViaIdentity$
-    remove: true
-  # Unsupport Get and New operations.
-  - where:
-      subject: ^CodeContainer$
-    remove: true
-  #  InternalServerError
-  - where:
-      verb: New
-      subject: ^EnvironmentContainer$
-    remove: true
-
-  # List unsupport
-  - where:
-      verb: Get
-      subject: CodeVersion
-      variant: ^List$
-    remove: true
-  # ListKeys is not supported
-  - where:
-      subject: BatchEndpointKey
-    remove: true
-
+  # Remove unexpanded variant of Diagnose
   - where:
       verb: Invoke
       subject: Diagnose
       variant: ^Diagnose$|^DiagnoseViaIdentity$
     remove: true
-
-  # Create Datastore
-  - where:
-      verb: New
-      subject: Datastore
-      variant: ^CreateViaIdentity$|^Create$|^CreateViaIdentityExpanded$
-    remove: true
-
-  # Costom compute cmdlet 
-  - where:
-      verb: New
-      subject: Compute
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
-    remove: true
-
-  # Costom job cmdlet 
-  - where:
-      verb: New
-      subject: Job
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
-    remove: true
-
-  - where:
-      verb: New
-      subject: Workspace|BatchDeployment|BatchEndpoint|CodeContainer|CodeVersion|ComponentContainer|ComponentVersion|Connection|Container|DatasetVersion|EnvironmentVersion|ModelContainer|ModelVersion|OnlineDeployment|OnlineEndpoint|OnlineEndpointKey|DataVersion
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
-    remove: true
+  # Remove unexpanded variant of online endpoint key
   - where:
       verb: New
       subject: OnlineEndpointKey
       variant: ^Regenerate$|^RegenerateViaIdentity$|^RegenerateViaIdentityExpanded$
     remove: true
+  # Unsupported Get and New operations.
+  - where:
+      subject: ^CodeContainer$
+    hide: true
+  #  InternalServerError
+  - where:
+      verb: New
+      subject: ^EnvironmentContainer$
+    hide: true
+
+  # List unsupported
+  - where:
+      verb: Get
+      subject: CodeVersion
+      variant: ^List$
+    hide: true
+  # ListKeys is not supported
+  - where:
+      subject: BatchEndpointKey
+    hide: true
+
+  # Hide unnecessary cmdlet
+  - where:
+      subject: ConnectionSecret|CodeVersionStartPendingUpload|Featureset(.*)|Featurestore(.*)|Registry(.*)
+    hide: true
+  - where:
+      subject: Schedule|ServerlessEndpoint|ServerlessEndpointKey|ManagedNetworkSettingsRule|MarketplaceSubscription
+    hide: true
+  - where:
+      subject: ManagedNetworkProvisionManagedNetwork|ManagedNetworkSettingRule
+      verb: New
+    hide: true
+  - where:
+      subject: CodeVersion|ComponentVersion|DataVersion|EnvironmentVersion|ModelVersion
+      verb: Publish
+    hide: true
   # rename parameters
   - where:
       subject: BatchEndpoint
@@ -319,53 +368,49 @@ directive:
 
   - where:
       verb: New|Update
-      subject: ""
+      subject: Workspace
       parameter-name: KeyVault
     set:
       parameter-name: KeyVaultId
 
   - where:
       verb: New|Update
-      subject: ""
+      subject: Workspace
       parameter-name: KeyVaultPropertyIdentityClientId
     set:
       parameter-name: KeyVaultIdentityClientId
-
   - where:
       verb: New|Update
-      subject: ""
+      subject: Workspace
       parameter-name: KeyVaultPropertyKeyIdentifier
     set:
       parameter-name: KeyVaultKeyIdentifier
-
   - where:
       verb: New|Update
-      subject: ""
+      subject: Workspace
       parameter-name: KeyVaultPropertyKeyVaultArmId
     set:
       parameter-name: KeyVaultArmId
 
   - where:
       verb: New|Update
-      subject: ""
+      subject: Workspace
       parameter-name: PropertiesEncryptionIdentityUserAssignedIdentity
     set:
       parameter-name: EncryptionUserAssignedIdentity
 
   - where:
       verb: New|Update
-      subject: ""
       parameter-name: IdentityUserAssignedIdentity
     set:
       parameter-name: IdentityUserAssigned
 
   - where:
       verb: New|Update
-      subject: ""
       parameter-name: StorageAccount
     set:
       parameter-name: StorageAccountId
-#   # --------------------------
+
   - where:
       subject: ComputeKey|ComputeNode
       parameter-name: ComputeName
@@ -475,10 +520,10 @@ directive:
       parameter-name: Others
     set:
       parameter-name: Other
-  # Bug: https://github.com/Azure/autorest.powershell/issues/952
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/\(await response\)\.SecretsType/g, '\(await response\)')
+#   # Bug: https://github.com/Azure/autorest.powershell/issues/952
+#   - from: source-file-csharp
+#     where: $
+#     transform: $ = $.replace(/\(await response\)\.SecretsType/g, '\(await response\)')
 
   - no-inline:
 # Datastore
@@ -492,53 +537,67 @@ directive:
 # Compute
     - Compute
 # Job
-    - JobBase    
+    - JobBase
+# Model
+    - AssetReferenceBase
+# Connection
+    - WorkspaceConnectionPropertiesV2
+    - WorkspaceConnectionPropertiesV2BasicResource
   - model-cmdlet:
 # Compute type: 'AKS', 'Kubernetes', 'AmlCompute', 'ComputeInstance','DataFactory', 'VirtualMachine', 'HDInsight', 'Databricks', 'DataLakeAnalytics', 'SynapseSpark'
-    # - AmlCompute 
-    # # --> New-AzMLWorkspaceAmlComputeObject
-    # - ComputeInstance 
-    # #--> New-AzMLWorkspaceComputeInstanceObject
+    # New-AzMLWorkspaceAmlComputeObject
+    # - AmlCompute
+    # - ComputeInstance
+    # cmdlet-name: New-AzMLWorkspaceComputeInstanceObject
     # - Aks 
-    ##--> New-AzMLWorkspaceAksObject
-    # - Kubernetes 
-    # #--> New-AzMLWorkspaceKubernetesObject
-    # - VirtualMachine 
-    # #--> New-AzMLWorkspaceVirtualMachineObject
+    # cmdlet-name: New-AzMLWorkspaceAksObject
+    # - Kubernetes
+    #cmdlet-name: New-AzMLWorkspaceKubernetesObject
+    # - VirtualMachine
+    # cmdlet-name: New-AzMLWorkspaceVirtualMachineObject
     # - HDInsight 
-    # #--> New-AzMLWorkspaceHDInsightObject
-    # - DataFactory 
-    # #--> New-AzMLWorkspaceDataFactoryObject
-    # - Databricks 
-    # # --> New-AzMLWorkspaceDatabricksObject
-    # - DataLakeAnalytics 
-    # # --> New-AzMLWorkspaceDataLakeAnalyticsObject
-    # - SynapseSpark 
-    # # --> New-AzMLWorkspaceSynapseSparkObject
+    # cmdlet-name: New-AzMLWorkspaceHDInsightObject
+    # - DataFactory
+    # cmdlet-name: New-AzMLWorkspaceDataFactoryObject
+    # - Databricks
+    # cmdlet-name: New-AzMLWorkspaceDatabricksObject
+    # - DataLakeAnalytics
+    # cmdlet-name: New-AzMLWorkspaceDataLakeAnalyticsObject
+    # - SynapseSpark
+    # cmdlet-name: New-AzMLWorkspaceSynapseSparkObject
     - ComputeStartStopSchedule
 # Datastore
-    ## Datastore Type
-    # - AzureBlobDatastore --> New-AzMLWorkspaceDatastoreBlobObject
-    # - AzureDataLakeGen1Datastore --> New-AzMLWorkspaceDatastoreDataLakeGen1Object
-    # - AzureDataLakeGen2Datastore --> New-AzMLWorkspaceDatastoreDataLakeGen2Object
-    # - AzureFileDatastore --> New-AzMLWorkspaceDatastoreFileObject
-    ## Credentials Type: 'AccountKey', 'Certificate', 'None', 'Sas', 'ServicePrincipal'
-    # - AccountKeyDatastoreCredentials --> New-AzMLWorkspaceDatastoreKeyCredentialObject
-    # - CertificateDatastoreCredentials --> New-AzMLWorkspaceDatastoreCredentialsObject
-    # - NoneDatastoreCredentials --> New-AzMLWorkspaceDatastoreNoneCredentialsObject
-    # - SasDatastoreCredentials --> New-AzMLWorkspaceDatastoreSasCredentialsObject
-    # - ServicePrincipalDatastoreCredentials --> New-AzMLWorkspaceDatastoreServicePrincipalCredentialsObject
-# Job type
+    # Datastore Type
+    # - AzureBlobDatastore 
+    # cmdlet-name: New-AzMLWorkspaceDatastoreBlobObject
+    # - AzureDataLakeGen1Datastore 
+    # cmdlet-name: New-AzMLWorkspaceDatastoreDataLakeGen1Object
+    # - AzureDataLakeGen2Datastore 
+    # cmdlet-name: New-AzMLWorkspaceDatastoreDataLakeGen2Object
+    # - AzureFileDatastore 
+    # cmdlet-name: New-AzMLWorkspaceDatastoreFileObject
+    # Credentials Type: 'AccountKey', 'Certificate', 'None', 'Sas', 'ServicePrincipal'
+    # - AccountKeyDatastoreCredentials 
+    # cmdlet-name: New-AzMLWorkspaceDatastoreKeyCredentialObject
+    # - CertificateDatastoreCredentials
+    # cmdlet-name: New-AzMLWorkspaceDatastoreCredentialsObject
+    # - NoneDatastoreCredentials
+    # cmdlet-name: New-AzMLWorkspaceDatastoreNoneCredentialsObject
+    # - SasDatastoreCredentials
+    # cmdlet-name: New-AzMLWorkspaceDatastoreSasCredentialsObject
+    # - ServicePrincipalDatastoreCredentials
+    # cmdlet-name: New-AzMLWorkspaceDatastoreServicePrincipalCredentialsObject
+  # Job type
     # - CommandJob
     # -> New-AzMLWorkspaceCommandJobObject
     # - PipelineJob
-    # # --> New-AzMLWorkspacePipelineJobObject
-    # - SweepJob 
-    ## --> New-AzMLWorkspaceSweepJobObject
-# Job input and output
+    # cmdlet-name: New-AzMLWorkspacePipelineJobObject
+    # - SweepJob
+    # cmdlet-name: New-AzMLWorkspaceSweepJobObject
+  # Job input and output
     - CustomModelJobInput
     - CustomModelJobOutput
-    - LiteralJobInput   
+    - LiteralJobInput
     - MLFlowModelJobInput
     - MLFlowModelJobOutput
     - MLTableJobInput
@@ -549,9 +608,26 @@ directive:
     - UriFileJobOutput
     - UriFolderJobInput
     - UriFolderJobOutput
-
     - JobService
     - SharedPrivateLinkResource
-    # - QuotaBaseProperties --> New-AzMLWorkspaceQuotaPropertiesObject
-
+    # - QuotaBaseProperties
+    # cmdlet-name: New-AzMLWorkspaceQuotaPropertiesObject
+  # Model
+    # - DataPathAssetReference
+    # - IdAssetReference
+    # - OutputPathAssetReference
+  # Connection
+    # - WorkspaceConnectionPropertiesV2Metadata #additionalProperties
+    # - AadAuthTypeWorkspaceConnectionProperties
+    # - AccessKeyAuthTypeWorkspaceConnectionProperties
+    # - AccountKeyAuthTypeWorkspaceConnectionProperties
+    # - ApiKeyAuthWorkspaceConnectionProperties
+    # - CustomKeysWorkspaceConnectionProperties
+    # - ManagedIdentityAuthTypeWorkspaceConnectionProperties
+    # - NoneAuthTypeWorkspaceConnectionProperties
+    # - OAuth2AuthTypeWorkspaceConnectionProperties
+    # - PatAuthTypeWorkspaceConnectionProperties
+    # - SasAuthTypeWorkspaceConnectionProperties
+    # - ServicePrincipalAuthTypeWorkspaceConnectionProperties
+    # - UsernamePasswordAuthTypeWorkspaceConnectionProperties
 ```

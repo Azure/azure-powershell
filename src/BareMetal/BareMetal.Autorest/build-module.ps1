@@ -123,6 +123,10 @@ $null = New-Item -ItemType Directory -Force -Path $examplesFolder
 
 Write-Host -ForegroundColor Green 'Creating cmdlets for specified models...'
 $modelCmdlets = @()
+$modelCmdletFolder = Join-Path (Join-Path $PSScriptRoot './custom') 'autogen-model-cmdlets'
+if (Test-Path $modelCmdletFolder) {
+  $null = Remove-Item -Force -Recurse -Path $modelCmdletFolder
+}
 if ($modelCmdlets.Count -gt 0) {
   . (Join-Path $PSScriptRoot 'create-model-cmdlets.ps1')
   CreateModelCmdlet($modelCmdlets)
@@ -139,7 +143,8 @@ if($NoDocs) {
     $null = Get-ChildItem -Path $docsFolder -Recurse -Exclude 'README.md' | Remove-Item -Recurse -ErrorAction SilentlyContinue
   }
   $null = New-Item -ItemType Directory -Force -Path $docsFolder
-  Export-ProxyCmdlet -ModuleName $moduleName -ModulePath $modulePaths -ExportsFolder $exportsFolder -InternalFolder $internalFolder -ModuleDescription $moduleDescription -DocsFolder $docsFolder -ExamplesFolder $examplesFolder -ModuleGuid $guid
+  $addComplexInterfaceInfo = ![System.Convert]::ToBoolean('true')
+  Export-ProxyCmdlet -ModuleName $moduleName -ModulePath $modulePaths -ExportsFolder $exportsFolder -InternalFolder $internalFolder -ModuleDescription $moduleDescription -DocsFolder $docsFolder -ExamplesFolder $examplesFolder -ModuleGuid $guid -AddComplexInterfaceInfo:$addComplexInterfaceInfo
 }
 
 Write-Host -ForegroundColor Green 'Creating format.ps1xml...'
@@ -157,5 +162,11 @@ Export-TestStub -ModuleName $moduleName -ExportsFolder $exportsFolder -OutputFol
 
 Write-Host -ForegroundColor Green 'Creating example stubs...'
 Export-ExampleStub -ExportsFolder $exportsFolder -OutputFolder $examplesFolder
+
+if (Test-Path (Join-Path $PSScriptRoot 'generate-portal-ux.ps1'))
+{
+  Write-Host -ForegroundColor Green 'Creating ux metadata...'
+  . (Join-Path $PSScriptRoot 'generate-portal-ux.ps1')
+}
 
 Write-Host -ForegroundColor Green '-------------Done-------------'

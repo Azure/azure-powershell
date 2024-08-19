@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StreamAnalytics-help.xml
 Module Name: Az.StreamAnalytics
 online version: https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsdefaultfunctiondefinition
 schema: 2.0.0
@@ -13,9 +13,9 @@ Retrieves the default definition of a function based on the parameters specified
 ## SYNTAX
 
 ```
-Get-AzStreamAnalyticsDefaultFunctionDefinition -BindingType <String> -Endpoint <String> -JobName <String>
- -Name <String> -ResourceGroupName <String> -UdfType <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzStreamAnalyticsDefaultFunctionDefinition -Name <String> -JobName <String> -ResourceGroupName <String>
+ -BindingType <String> -Endpoint <String> -UdfType <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,6 +27,7 @@ Retrieves the default definition of a function based on the parameters specified
 ```powershell
 Get-AzStreamAnalyticsDefaultFunctionDefinition -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name mlsfunction-01 -BindingType Microsoft.MachineLearningServices -Endpoint "http://875da830-4d5f-44f1-b221-718a5f26a21d.eastus.azurecontainer.io/score"-UdfType Scalar
 ```
+
 ```output
 Name           Type ETag
 ----           ---- ----
@@ -207,7 +208,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -15,7 +15,8 @@ The operation returns properties of each egress endpoint.
 
 ```
 Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -115,7 +116,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOutboundEnvironmentEndpoint
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

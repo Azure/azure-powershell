@@ -32,18 +32,21 @@ function Search-AzDataProtectionBackupVaultInAzGraph {
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
+    [Alias('SubscriptionId')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String[]]
     # Subscription of Vault
     ${Subscription},
 
     [Parameter()]
+    [Alias('ResourceGroupName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String[]]
     # Resource Group of Vault
     ${ResourceGroup},
 
     [Parameter()]
+    [Alias('VaultName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String[]]
     # Name of the vault

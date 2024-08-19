@@ -22,7 +22,8 @@ Set-AzEventHubConsumerGroup -Name <String> -NamespaceName <String> -EventHubName
 ### SetViaIdentityExpanded
 ```
 Set-AzEventHubConsumerGroup -InputObject <IEventHubIdentity> -UserMetadata <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -263,7 +264,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IConsumerGroup
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConsumerGroup
 
 ## NOTES
 

@@ -12,6 +12,48 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+function Test-AzureVaultSoftDelete
+{	
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiagaSecurityVault"
+	$location = "eastus2euap"
+	$tag= @{"MABUsed"="Yes";"Owner"="hiaga";"Purpose"="Testing";"DeleteBy"="01-2099"}
+	
+	try
+	{			
+		# new vault
+		$vault = New-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $location -Tag $tag
+		$vault = Get-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName
+		Assert-True {  $vault -ne $null }
+		
+		# Disable soft delete 
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState Disable
+		$vaultProperty = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+		Assert-True { $vaultProperty.SoftDeleteFeatureState -eq "Disabled" }
+
+		# Enable soft delete 
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState Enable
+		$vaultProperty = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+		Assert-True { $vaultProperty.SoftDeleteFeatureState -eq "Enabled" }
+
+		# Enable disable hybrid security setting 
+		Set-AzRecoveryServicesVaultProperty   -VaultId  $vault.ID -DisableHybridBackupSecurityFeature $false
+		$vaultProperty = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+		Assert-True { $vaultProperty.EnhancedSecurityState -eq "Enabled" }
+
+		# Disable hybrid security setting
+		Set-AzRecoveryServicesVaultProperty   -VaultId  $vault.ID -DisableHybridBackupSecurityFeature $true
+		$vaultProperty = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+		Assert-True { $vaultProperty.EnhancedSecurityState -eq "Disabled" }		
+	}
+	finally
+	{
+		# remove vault
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName		
+		Remove-AzRecoveryServicesVault -Vault $vault
+	}
+}
+
 function Test-AzureVaultPublicNetworkAccess
 {	
 	$resourceGroupName = "hiagaCZR-rg"
@@ -42,7 +84,7 @@ function Test-AzureVaultPublicNetworkAccess
 function Test-AzureVaultImmutability
 {	
 	$resourceGroupName = "hiagaCZR-rg"
-	$vaultName = "hiagaImmutableVault"
+	$vaultName = "hiagaImmutableVault3"
 	$location = "eastus2euap"
 	$tag= @{"MABUsed"="Yes";"Owner"="hiaga";"Purpose"="Testing";"DeleteBy"="01-2099"}
 
@@ -138,8 +180,8 @@ function Test-AzureCrossZonalRestore
 	$targetVNetName = "hiagaNZPVNet"
 	$targetVNetRG = "hiagarg"
 	$targetSubnetName = "custom"
-	$recoveryPointId = "172325782667650" # latest vaultStandard recovery point
-	$snapshotRecoveryPointId = "169019845618646" # latest Snapshot (older than 4 hrs) recovery point
+	$recoveryPointId = "175504659649163" # latest vaultStandard recovery point
+	$snapshotRecoveryPointId = "171196026959443" # latest Snapshot (older than 4 hrs) recovery point
 	try
 	{	
 		# Setup
@@ -170,9 +212,9 @@ function Test-AzureCrossZonalRestore
 function Test-AzureMonitorAlerts
 {
 	$location = "centraluseuap"
-	$resourceGroupName = "hiagarg"
-	$vaultName1 = "alerts-pstest-vault1"
-	$vaultName2 = "alerts-pstest-vault2"
+	$resourceGroupName = "hiagarg" # "vijami-alertrg"  
+	$vaultName1 = "Backupalerts-pstest-vault1"
+	$vaultName2 = "Backupalerts-pstest-vault2"
 
 	try
 	{	
@@ -184,14 +226,17 @@ function Test-AzureMonitorAlerts
 
 		# create a vault with Alert settings 
 		$vault2 = New-AzRecoveryServicesVault -Name $vaultName2 -ResourceGroupName $resourceGroupName -Location "centraluseuap" `
-			-Tag $tag -DisableAzureMonitorAlertsForJobFailure $false `
-			-DisableClassicAlerts $true			
+			-DisableAzureMonitorAlertsForJobFailure $false `
+            -DisableAzureMonitorAlertsForAllReplicationIssue $false `
+            -DisableAzureMonitorAlertsForAllFailoverIssue $true `
+            -DisableEmailNotificationsForSiteRecovery $false `
+			-DisableClassicAlerts $true
 		
 		Assert-True { $vault2.Properties.AlertSettings -ne $null }
 		Assert-True { $vault2.Properties.AlertSettings.AzureMonitorAlertsForAllJobFailure -eq "Enabled" }
 		Assert-True { $vault2.Properties.AlertSettings.ClassicAlertsForCriticalOperations -eq "Disabled" }
 
-		$vault = Update-AzRecoveryServicesVault -ResourceGroupName "hiagarg"  -Name "hiagaVault" -DisableClassicAlerts $false
+		$vault = Update-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName  -Name $vaultName1 -DisableClassicAlerts $false
 
 		# update alert settings 
 		$vault1 = Update-AzRecoveryServicesVault -Name $vaultName1 -ResourceGroupName $resourceGroupName `
@@ -369,7 +414,7 @@ function Test-AzureVMRestoreWithMSI
 	$location = "centraluseuap"
 	$resourceGroupName = "hiagarg"
 	$vaultName = "hiagaVault"
-	$vmName = "VM;iaasvmcontainerv2;hiagarg;hiagavm"
+	$vmName = "VM;iaasvmcontainerv2;hiagarg;hiaganewvm2"
 	$saName = "hiagasa"
 
 	try
@@ -930,9 +975,9 @@ function Test-AzureVMBackup
 	$resourceGroupName = "hiagarg"
 	$vaultName = "hiaga-adhoc-vault"
 	$vmName1 = "VM;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm"
-	$vmName2 = "VM;iaasvmcontainerv2;hiagarg;hiaganewvm3"	
+	$vmName2 = "VM;iaasvmcontainerv2;hiagarg;hiaganevm4"
 	$vmFriendlyName1 = "hiaga-adhoc-vm"
-	$vmFriendlyName2 = "hiaganewvm3"
+	$vmFriendlyName2 = "hiaganevm4"
 	
 	try
 	{

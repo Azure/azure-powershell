@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Extensions;
+    using System;
 
     /// <summary>
     /// Creates a SAP monitor for the specified subscription, resource group, and resource name.
@@ -17,6 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Description(@"Creates a SAP monitor for the specified subscription, resource group, and resource name.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HanaOnAzure/sapMonitors/{sapMonitorName}", ApiVersion = "2020-02-07-preview")]
     public partial class NewAzSapMonitor_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener
     {
@@ -34,6 +36,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>SAP monitor info on Azure (ARM properties and SAP monitor properties)</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor _sapMonitorParameterBody = new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.SapMonitor();
+
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.ParameterCategory.Runtime)]
@@ -48,9 +53,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.HanaOnAzure Client => Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.ParameterCategory.Azure)]
@@ -65,7 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
         Description = @"The value indicating whether to send analytics to Microsoft",
         SerializedName = @"enableCustomerAnalytics",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter EnableCustomerAnalytic { get => SapMonitorParameterBody.EnableCustomerAnalytic ?? default(global::System.Management.Automation.SwitchParameter); set => SapMonitorParameterBody.EnableCustomerAnalytic = value; }
+        public global::System.Management.Automation.SwitchParameter EnableCustomerAnalytic { get => _sapMonitorParameterBody.EnableCustomerAnalytic ?? default(global::System.Management.Automation.SwitchParameter); set => _sapMonitorParameterBody.EnableCustomerAnalytic = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -91,7 +97,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
         Description = @"The geo-location where the resource lives",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => SapMonitorParameterBody.Location ?? null; set => SapMonitorParameterBody.Location = value; }
+        public string Location { get => _sapMonitorParameterBody.Location ?? null; set => _sapMonitorParameterBody.Location = value; }
 
         /// <summary>The workspace ID of the log analytics workspace to be used for monitoring</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The workspace ID of the log analytics workspace to be used for monitoring")]
@@ -102,7 +108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
         Description = @"The workspace ID of the log analytics workspace to be used for monitoring",
         SerializedName = @"logAnalyticsWorkspaceId",
         PossibleTypes = new [] { typeof(string) })]
-        public string LogAnalyticsWorkspaceId { get => SapMonitorParameterBody.LogAnalyticsWorkspaceId ?? null; set => SapMonitorParameterBody.LogAnalyticsWorkspaceId = value; }
+        public string LogAnalyticsWorkspaceId { get => _sapMonitorParameterBody.LogAnalyticsWorkspaceId ?? null; set => _sapMonitorParameterBody.LogAnalyticsWorkspaceId = value; }
 
         /// <summary>The ARM ID of the Log Analytics Workspace that is used for monitoring</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The ARM ID of the Log Analytics Workspace that is used for monitoring")]
@@ -113,7 +119,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
         Description = @"The ARM ID of the Log Analytics Workspace that is used for monitoring",
         SerializedName = @"logAnalyticsWorkspaceArmId",
         PossibleTypes = new [] { typeof(string) })]
-        public string LogAnalyticsWorkspaceResourceId { get => SapMonitorParameterBody.LogAnalyticsWorkspaceArmId ?? null; set => SapMonitorParameterBody.LogAnalyticsWorkspaceArmId = value; }
+        public string LogAnalyticsWorkspaceResourceId { get => _sapMonitorParameterBody.LogAnalyticsWorkspaceArmId ?? null; set => _sapMonitorParameterBody.LogAnalyticsWorkspaceArmId = value; }
 
         /// <summary>The shared key of the log analytics workspace that is used for monitoring</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The shared key of the log analytics workspace that is used for monitoring")]
@@ -124,14 +130,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
         Description = @"The shared key of the log analytics workspace that is used for monitoring",
         SerializedName = @"logAnalyticsWorkspaceSharedKey",
         PossibleTypes = new [] { typeof(string) })]
-        public string LogAnalyticsWorkspaceSharedKey { get => SapMonitorParameterBody.LogAnalyticsWorkspaceSharedKey ?? null; set => SapMonitorParameterBody.LogAnalyticsWorkspaceSharedKey = value; }
+        public string LogAnalyticsWorkspaceSharedKey { get => _sapMonitorParameterBody.LogAnalyticsWorkspaceSharedKey ?? null; set => _sapMonitorParameterBody.LogAnalyticsWorkspaceSharedKey = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>
@@ -145,7 +151,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
         Description = @"The subnet which the SAP monitor will be deployed in. It should be the same subnet of HANA database.",
         SerializedName = @"monitorSubnet",
         PossibleTypes = new [] { typeof(string) })]
-        public string MonitorSubnetResourceId { get => SapMonitorParameterBody.MonitorSubnet ?? null; set => SapMonitorParameterBody.MonitorSubnet = value; }
+        public string MonitorSubnetResourceId { get => _sapMonitorParameterBody.MonitorSubnet ?? null; set => _sapMonitorParameterBody.MonitorSubnet = value; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
@@ -205,12 +211,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
-        /// <summary>Backing field for <see cref="SapMonitorParameterBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor _sapMonitorParameterBody= new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.SapMonitor();
-
-        /// <summary>SAP monitor info on Azure (ARM properties and SAP monitor properties)</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor SapMonitorParameterBody { get => this._sapMonitorParameterBody; set => this._sapMonitorParameterBody = value; }
-
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
@@ -242,15 +242,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
         Description = @"Resource tags.",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api10.ITrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api10.ITrackedResourceTags Tag { get => SapMonitorParameterBody.Tag ?? null /* object */; set => SapMonitorParameterBody.Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api10.ITrackedResourceTags Tag { get => _sapMonitorParameterBody.Tag ?? null /* object */; set => _sapMonitorParameterBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IErrorResponse</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -261,8 +261,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor">Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
@@ -273,6 +273,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -298,7 +303,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.SapMonitorParameterBody = this.SapMonitorParameterBody;
+            clone._sapMonitorParameterBody = this._sapMonitorParameterBody;
             clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.Name = this.Name;
@@ -308,7 +313,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -449,7 +471,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -464,12 +485,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.SapMonitorsCreate(SubscriptionId, ResourceGroupName, Name, SapMonitorParameterBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.SapMonitorsCreate(SubscriptionId, ResourceGroupName, Name, _sapMonitorParameterBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=SapMonitorParameterBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=_sapMonitorParameterBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -488,12 +509,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
             base.StopProcessing();
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IErrorResponse</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
@@ -515,14 +551,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=SapMonitorParameterBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_sapMonitorParameterBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=SapMonitorParameterBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_sapMonitorParameterBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -532,8 +568,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor">Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>

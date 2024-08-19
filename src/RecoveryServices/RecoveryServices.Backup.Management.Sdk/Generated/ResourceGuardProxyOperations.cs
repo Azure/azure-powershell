@@ -39,13 +39,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         public RecoveryServicesBackupClient Client { get; private set; }
 
         /// <summary>
-        /// Returns ResourceGuardProxy under vault and with the name referenced in request
+        /// Returns ResourceGuardProxy under vault and with the name referenced in
+        /// request
         /// </summary>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
@@ -262,14 +264,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         }
         /// <summary>
-        /// Add or Update ResourceGuardProxy under vault
-        /// Secures vault critical operations
+        /// Add or Update ResourceGuardProxy under vault Secures vault critical
+        /// operations
         /// </summary>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
@@ -308,7 +311,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
             }
-
+            if (parameters != null)
+            {
+                parameters.Validate();
+            }
             if (this.Client.ApiVersion == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -507,7 +513,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
@@ -709,7 +716,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 

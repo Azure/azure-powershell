@@ -15,28 +15,31 @@ Creates or updates a notebook in a workspace.
 ### SetByName (Default)
 ```
 Set-AzSynapseNotebook -WorkspaceName <String> [-Name <String>] [-FolderPath <String>] -DefinitionFile <String>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByNameAndSparkPool
 ```
 Set-AzSynapseNotebook -WorkspaceName <String> [-Name <String>] [-FolderPath <String>] -SparkPoolName <String>
  [-ExecutorSize <String>] -ExecutorCount <Int32> -DefinitionFile <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByObject
 ```
 Set-AzSynapseNotebook -WorkspaceObject <PSSynapseWorkspace> [-Name <String>] [-FolderPath <String>]
- -DefinitionFile <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -DefinitionFile <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByObjectAndSparkPool
 ```
 Set-AzSynapseNotebook -WorkspaceObject <PSSynapseWorkspace> [-Name <String>] [-FolderPath <String>]
  -SparkPoolName <String> [-ExecutorSize <String>] -ExecutorCount <Int32> -DefinitionFile <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

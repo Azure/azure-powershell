@@ -17,6 +17,7 @@ using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -26,7 +27,7 @@ using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 {
-    public class GetBatchTaskSlotCountCommandTests
+    public class GetBatchTaskSlotCountCommandTests : RMTestBase
     {
         private readonly GetBatchTaskSlotCountCommand cmdlet;
         private readonly Mock<BatchClient> batchClientMock;

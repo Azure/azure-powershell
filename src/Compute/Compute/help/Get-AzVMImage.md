@@ -16,13 +16,15 @@ Gets all the versions of a VMImage.
 ### ListVMImage
 ```
 Get-AzVMImage -Location <String> [-EdgeZone <String>] -PublisherName <String> -Offer <String> -Skus <String>
- [-Top <Int32>] [-OrderBy <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Top <Int32>] [-OrderBy <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetVMImageDetail
 ```
 Get-AzVMImage -Location <String> [-EdgeZone <String>] -PublisherName <String> -Offer <String> -Skus <String>
- -Version <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -Version <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -258,5 +260,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVMImageSku](./Get-AzVMImageSku.md)
 
 [Save-AzVMImage](./Save-AzVMImage.md)
-
-

@@ -15,27 +15,23 @@ Create virtual machine template.
 ### CreateExpanded (Default)
 ```
 New-AzConnectedVMwareVMTemplate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
- [-InventoryItemId <String>] [-Kind <String>] [-MoRefId <String>] [-Tag <Hashtable>] [-VCenterId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-InventoryItemId <String>] [-Kind <String>]
+ [-Location <String>] [-MoRefId <String>] [-Tag <Hashtable>] [-VCenterId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzConnectedVMwareVMTemplate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzConnectedVMwareVMTemplate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,10 +39,80 @@ Create virtual machine template.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Create VM Template
+```powershell
 New-AzConnectedVMwareVMTemplate -Name "test-vmtmpl" -ResourceGroupName "test-rg" -Location "eastus" -ExtendedLocationName "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl" -ExtendedLocationType "CustomLocation" -InventoryItemId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/test-vc/InventoryItems/vmtpl-vm-651858" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
 ```
+
+```output
+CustomResourceName           : b0d6ffc9-26a0-4099-b117-b7d8241c6243
+Disk                         : {{
+                                 "name": "disk_1",
+                                 "label": "Hard disk 1",
+                                 "diskObjectId": "1-2000",
+                                 "diskSizeGB": 10,
+                                 "deviceKey": 2000,
+                                 "diskMode": "persistent",
+                                 "controllerKey": 1000,
+                                 "unitNumber": 0,
+                                 "diskType": "flat"
+                               }}
+ExtendedLocationName         : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl
+ExtendedLocationType         : CustomLocation
+FirmwareType                 :
+FolderPath                   : ArcPrivateClouds-67/Templates
+Id                           : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/test-vmtmpl
+InventoryItemId              : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/test-vc/InventoryItems/vmtpl-vm-651858
+Kind                         :
+Location                     : eastus
+MemorySizeMb                 : 1024
+MoName                       : azurevmwarecloudtestubuntu
+MoRefId                      : vm-651858
+Name                         : test-vmtmpl
+NetworkInterface             : {{
+                                 "ipSettings": {
+                                   "allocationMethod": "unset"
+                                 },
+                                 "name": "nic_1",
+                                 "label": "Network adapter 1",
+                                 "macAddress": "00:50:56:95:c7:08",
+                                 "nicType": "vmxnet3",
+                                 "powerOnBoot": "enabled",
+                                 "networkMoRefId": "network-563661",
+                                 "networkMoName": "VM Network",
+                                 "deviceKey": 4000
+                               }}
+NumCoresPerSocket            : 1
+NumCpUs                      : 1
+OSName                       : Ubuntu Linux (64-bit)
+OSType                       : Linux
+ProvisioningState            : Succeeded
+ResourceGroupName            : test-rg
+Statuses                     : {{
+                                 "type": "Ready",
+                                 "status": "True",
+                                 "lastUpdatedAt": "2023-10-06T11:02:11.5393195Z"
+                               }, {
+                                 "type": "Idle",
+                                 "status": "True",
+                                 "lastUpdatedAt": "2023-10-06T11:02:11.5393195Z"
+                               }}
+SystemDataCreatedAt          : 10/6/2023 11:01:59 AM
+SystemDataCreatedBy          : xyz
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 10/6/2023 11:01:59 AM
+SystemDataLastModifiedBy     : xyz
+SystemDataLastModifiedByType : User
+Tag                          : {
+                               }
+ToolsVersion                 : 10304
+ToolsVersionStatus           : guestToolsSupportedOld
+Type                         : microsoft.connectedvmwarevsphere/virtualmachinetemplates
+Uuid                         : b0d6ffc9-26a0-4099-b117-b7d8241c6243
+VCenterId                    : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/test-vc
+```
+
+This command create a VM Template named `test-vmtmpl` in a resource group named `test-rg`.
 
 ## PARAMETERS
 
@@ -60,22 +126,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -117,36 +168,6 @@ The extended location type.
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -226,7 +247,7 @@ Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -273,52 +294,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -348,7 +324,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -422,9 +398,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualMachineTemplate
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.connectedvmware/new-azconnectedvmwarevmtemplate](https://learn.microsoft.com/powershell/module/az.connectedvmware/new-azconnectedvmwarevmtemplate)
-

@@ -36,9 +36,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.CommunicationServiceDeleteAcceptedResponseHeaders</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.CommunicationServicesDeleteAcceptedResponseHeaders</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.CommunicationServiceDeleteAcceptedResponseHeaders</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.CommunicationServicesDeleteAcceptedResponseHeaders</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -58,9 +58,121 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.ErrorDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api50.ManagedServiceIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.ErrorDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api50.ManagedServiceIdentity</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PrincipalId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TenantId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PrincipalId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TenantId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api50.UserAssignedIdentity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api50.UserAssignedIdentity</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ClientId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PrincipalId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ClientId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PrincipalId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.CheckNameAvailabilityRequest</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.CheckNameAvailabilityRequest</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.CheckNameAvailabilityResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.CheckNameAvailabilityResponse</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NameAvailable</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Reason</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NameAvailable</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Reason</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.ErrorDetail</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.ErrorDetail</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -92,9 +204,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.Operation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.Operation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.Operation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.Operation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -132,9 +244,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.OperationDisplay</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -172,9 +284,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.OperationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.OperationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.OperationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.OperationListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -194,9 +306,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.Resource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -216,9 +328,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.SystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.SystemData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.SystemData</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -268,9 +380,95 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.CommunicationServiceKeys</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.TrackedResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.CommunicationServiceKeys</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.TrackedResource</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.TrackedResourceTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.TrackedResourceTags</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.CommunicationServiceKeys</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.CommunicationServiceKeys</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -308,9 +506,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.CommunicationServiceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.CommunicationServiceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.CommunicationServiceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.CommunicationServiceProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -322,6 +520,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ImmutableResourceId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LinkedDomain</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>NotificationHubId</Label>
@@ -346,6 +547,9 @@
                 <PropertyName>ImmutableResourceId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>LinkedDomain</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>NotificationHubId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -360,9 +564,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.CommunicationServiceResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.CommunicationServiceResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.CommunicationServiceResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.CommunicationServiceResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -373,7 +577,22 @@
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>AzureAsyncOperation</Label>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -386,7 +605,22 @@
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>AzureAsyncOperation</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -394,9 +628,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.CommunicationServiceResourceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.CommunicationServiceResourceList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.CommunicationServiceResourceList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.CommunicationServiceResourceList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -416,9 +650,31 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.LinkedNotificationHub</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.CommunicationServiceUpdateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.LinkedNotificationHub</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.CommunicationServiceUpdateProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>LinkedDomain</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>LinkedDomain</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.LinkedNotificationHub</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.LinkedNotificationHub</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -438,9 +694,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.LinkNotificationHubParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.LinkNotificationHubParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.LinkNotificationHubParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.LinkNotificationHubParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -466,65 +722,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.LocationResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.NameAvailabilityParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.LocationResource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.NameAvailability</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.NameAvailability</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>NameAvailable</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Reason</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>NameAvailable</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Reason</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.NameAvailabilityParameters</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.NameAvailabilityParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.NameAvailabilityParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -544,9 +744,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.RegenerateKeyParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.RegenerateKeyParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.RegenerateKeyParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.RegenerateKeyParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -566,9 +766,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.TaggedResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.TaggedResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.TaggedResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.TaggedResourceTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

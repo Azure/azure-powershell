@@ -31,17 +31,17 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-IDENTITYSOURCE <IIdentitySource[]>: vCenter Single Sign On Identity Sources
+IDENTITYSOURCE <IIdentitySource[]>: vCenter Single Sign On Identity Sources To construct, see NOTES section for IDENTITYSOURCE properties and create a hash table.
   [Alias <String>]: The domain's NetBIOS name
   [BaseGroupDn <String>]: The base distinguished name for groups
   [BaseUserDn <String>]: The base distinguished name for users
   [Domain <String>]: The domain's dns name
   [Name <String>]: The name of the identity source
-  [Password <String>]: The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups.
+  [Password <SecureString>]: The password of the Active Directory user with a minimum of read-only access to         Base DN for users and groups.
   [PrimaryServer <String>]: Primary server URL
   [SecondaryServer <String>]: Secondary server URL
   [Ssl <String>]: Protect LDAP communication using SSL certificate (LDAPS)
-  [Username <String>]: The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
+  [Username <String>]: The ID of an Active Directory user with a minimum of read-only access to Base         DN for users and group
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareprivatecloud
 #>
@@ -187,7 +187,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(PossibleTypes=([System.String]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
@@ -294,7 +294,13 @@ begin {
             CreateExpanded = 'Az.VMware.custom\New-AzVMwarePrivateCloud';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

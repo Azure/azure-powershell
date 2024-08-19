@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Kusto-help.xml
 Module Name: Az.Kusto
 online version: https://learn.microsoft.com/powershell/module/az.kusto/invoke-azkustoclustermigration
 schema: 2.0.0
@@ -14,28 +14,30 @@ Migrate data from a Kusto cluster to another cluster.
 
 ### MigrateExpanded (Default)
 ```
-Invoke-AzKustoClusterMigration -Name <String> -ResourceGroupName <String> -ClusterResourceId <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Invoke-AzKustoClusterMigration -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -ClusterResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Migrate
 ```
-Invoke-AzKustoClusterMigration -Name <String> -ResourceGroupName <String>
- -ClusterMigrateRequest <IClusterMigrateRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### MigrateViaIdentity
-```
-Invoke-AzKustoClusterMigration -InputObject <IKustoIdentity> -ClusterMigrateRequest <IClusterMigrateRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzKustoClusterMigration -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -ClusterMigrateRequest <IClusterMigrateRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MigrateViaIdentityExpanded
 ```
 Invoke-AzKustoClusterMigration -InputObject <IKustoIdentity> -ClusterResourceId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### MigrateViaIdentity
+```
+Invoke-AzKustoClusterMigration -InputObject <IKustoIdentity> -ClusterMigrateRequest <IClusterMigrateRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,7 +122,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
-Parameter Sets: MigrateViaIdentity, MigrateViaIdentityExpanded
+Parameter Sets: MigrateViaIdentityExpanded, MigrateViaIdentity
 Aliases:
 
 Required: True
@@ -135,7 +137,7 @@ The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Migrate, MigrateExpanded
+Parameter Sets: MigrateExpanded, Migrate
 Aliases: ClusterName
 
 Required: True
@@ -181,7 +183,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Migrate, MigrateExpanded
+Parameter Sets: MigrateExpanded, Migrate
 Aliases:
 
 Required: True
@@ -196,7 +198,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Migrate, MigrateExpanded
+Parameter Sets: MigrateExpanded, Migrate
 Aliases:
 
 Required: False
@@ -253,4 +255,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

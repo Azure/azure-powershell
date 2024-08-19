@@ -46,14 +46,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set;}
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set;}
 
@@ -253,6 +253,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// Gets the IResourceGuardProxyOperations
         /// </summary>
         public virtual IResourceGuardProxyOperations ResourceGuardProxy { get; private set; }
+        /// <summary>
+        /// Gets the IFetchTieringCostOperations
+        /// </summary>
+        public virtual IFetchTieringCostOperations FetchTieringCost { get; private set; }
+        /// <summary>
+        /// Gets the IGetTieringCostOperationResultOperations
+        /// </summary>
+        public virtual IGetTieringCostOperationResultOperations GetTieringCostOperationResult { get; private set; }
+        /// <summary>
+        /// Gets the ITieringCostOperationStatusOperations
+        /// </summary>
+        public virtual ITieringCostOperationStatusOperations TieringCostOperationStatus { get; private set; }
         /// <summary>
         /// Initializes a new instance of the RecoveryServicesBackupClient class.
         /// </summary>
@@ -537,8 +549,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             this.RecoveryPointsRecommendedForMove = new RecoveryPointsRecommendedForMoveOperations(this);
             this.ResourceGuardProxies = new ResourceGuardProxiesOperations(this);
             this.ResourceGuardProxy = new ResourceGuardProxyOperations(this);
+            this.FetchTieringCost = new FetchTieringCostOperations(this);
+            this.GetTieringCostOperationResult = new GetTieringCostOperationResultOperations(this);
+            this.TieringCostOperationStatus = new TieringCostOperationStatusOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2023-04-01";
+            this.ApiVersion = "2024-04-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;
@@ -603,6 +618,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ILRRequest>("objectType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<WorkloadProtectableItem>("protectableItemType"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<WorkloadProtectableItem>("protectableItemType"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<FetchTieringCostInfoRequest>("objectType"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<FetchTieringCostInfoRequest>("objectType"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<TieringCostInfo>("objectType"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<TieringCostInfo>("objectType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<SchedulePolicy>("schedulePolicyType"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<SchedulePolicy>("schedulePolicyType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<RetentionPolicy>("retentionPolicyType"));
@@ -657,7 +676,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='operationId'>
         /// 
@@ -875,7 +895,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='parameters'>
         /// Prepare data move request
@@ -900,7 +921,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='parameters'>
         /// Trigger data move request
@@ -925,7 +947,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// 
@@ -962,7 +985,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='parameters'>
         /// Prepare data move request
@@ -1167,7 +1191,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='parameters'>
         /// Trigger data move request
@@ -1372,7 +1397,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// 

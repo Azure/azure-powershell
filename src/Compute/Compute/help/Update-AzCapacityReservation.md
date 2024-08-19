@@ -15,26 +15,29 @@ Update the Capacity Reservation.
 ### DefaultParameter (Default)
 ```
 Update-AzCapacityReservation [-CapacityToReserve <Int32>] [-AsJob] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DefaultParameterSet
 ```
 Update-AzCapacityReservation -ResourceGroupName <String> -ReservationGroupName <String> -Name <String>
- [-CapacityToReserve <Int32>] [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-CapacityToReserve <Int32>] [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Update-AzCapacityReservation -CapacityReservation <PSCapacityReservation> [-CapacityToReserve <Int32>] [-AsJob]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIDParameterSet
 ```
 Update-AzCapacityReservation -ResourceId <String> [-CapacityToReserve <Int32>] [-AsJob] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

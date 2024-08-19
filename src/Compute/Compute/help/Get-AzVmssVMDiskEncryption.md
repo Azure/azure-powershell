@@ -14,7 +14,8 @@ Shows the disk encryption status of VMs in a VM scale set.
 
 ```
 Get-AzVmssVMDiskEncryption [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String>]
- [-ExtensionName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ExtensionName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -138,7 +138,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INetworkInterface[]]
     # Gets or sets the list of network interfaces associated with the virtual machine.
-    # To construct, see NOTES section for NETWORKPROFILENETWORKINTERFACE properties and create a hash table.
     ${NetworkProfileNetworkInterface},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -201,7 +200,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualDisk[]]
     # Gets or sets the list of virtual disks associated with the virtual machine.
-    # To construct, see NOTES section for STORAGEPROFILEDISK properties and create a hash table.
     ${StorageProfileDisk},
 
     [Parameter(ParameterSetName='CreateExpanded')]

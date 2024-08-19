@@ -16,7 +16,8 @@ Create an in-memory object for AutoscaleProfile.
 New-AzAutoscaleProfileObject -CapacityDefault <String> -CapacityMaximum <String> -CapacityMinimum <String>
  -Name <String> -Rule <IScaleRule[]> [-FixedDateEnd <DateTime>] [-FixedDateStart <DateTime>]
  [-FixedDateTimeZone <String>] [-RecurrenceFrequency <RecurrenceFrequency>] [-ScheduleDay <String[]>]
- [-ScheduleHour <Int32[]>] [-ScheduleMinute <Int32[]>] [-ScheduleTimeZone <String>] [<CommonParameters>]
+ [-ScheduleHour <Int32[]>] [-ScheduleMinute <Int32[]>] [-ScheduleTimeZone <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

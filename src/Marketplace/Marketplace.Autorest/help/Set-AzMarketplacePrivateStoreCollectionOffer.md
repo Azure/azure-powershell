@@ -160,7 +160,6 @@ Accept wildcard characters: False
 
 ### -Plan
 Offer plans
-To construct, see NOTES section for PLAN properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IPlan[]
