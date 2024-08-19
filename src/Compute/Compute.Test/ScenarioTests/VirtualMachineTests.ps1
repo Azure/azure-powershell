@@ -5296,7 +5296,7 @@ function Test-VirtualMachineEnableAutoUpdate
 
         # VM Credential
         $user = "usertest";
-        $password = "Testing1234567";
+        $password = "*****";
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
@@ -6255,7 +6255,7 @@ function Test-ManualConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
         $secureEncryptGuestState = 'DiskWithVMGuestState';
         $vmSecurityType = "ConfidentialVM";
         $user = "admin01";
-        $password = "Testing1234567";
+        $password;
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
@@ -6445,7 +6445,7 @@ function Test-ConfVMSetAzDiskSecurityProfile
         $KeySize = 3072;
 
         # Creating a VM using simple parameterset
-        $securePassword = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force;
+        $securePassword = "*****" | ConvertTo-SecureString -AsPlainText -Force;
         $user = "admin01";
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
@@ -6583,7 +6583,7 @@ function Test-ConfVMSetAzDiskEncryptionSetConfig
         $desName= "des" + $rgname;
 
         # Creating a VM using simple parameterset
-        $securePassword = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force;
+        $securePassword | ConvertTo-SecureString -AsPlainText -Force;
         $user = "admin01";
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
@@ -7448,7 +7448,7 @@ Testing Capacity Reservation Sharing profile parameter
 Setting Sharing profile with multiple subs
 Then unsharing using empty string as value
 #>
-function Test-CapacityReservationSharingProfile
+function Test-CapacityReservationGroupResourceIdsOnly
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
@@ -7460,26 +7460,16 @@ function Test-CapacityReservationSharingProfile
 
         # create a CRG
         $CRGName = 'CRG' + $rgname
-        New-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -Location $loc -SharingProfile "/subscriptions/88fd8cb2-8248-499e-9a2d-4929a4b0133c"
+        New-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -Location $loc
 
-        # try Get-CRG with InstanceView
-        $CRG = Get-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -InstanceView
-        Assert-AreEqual "/subscriptions/88fd8cb2-8248-499e-9a2d-4929a4b0133c" $crg.SharingProfile.SubscriptionIds.Id
 
-        # Update CRG with new subscription
-        Update-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -SharingProfile "/subscriptions/88fd8cb2-8248-499e-9a2d-4929a4b0133c", "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e"
-        $CRG = Get-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -InstanceView
-        Assert-AreEqual 2 $crg.SharingProfile.SubscriptionIds.Count
+        # try Get-CRG with ResourceIdsOnly All
+        $CRG = Get-AzCapacityReservationGroup -ResourceIdsOnly All
+        Assert-AreEqual "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/$rgname/providers/Microsoft.Compute/capacityReservationGroups/$CRGName" $CRG.Id
 
-        # Clear Sharing Profile for CapacityReservationGroup
-        Update-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -SharingProfile ""
-        $CRG = Get-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -InstanceView
-        Assert-AreEqual $null $crg.SharingProfile
-
-         # remove CRG
-        Remove-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName
-        $CRG = Get-AzCapacityReservationGroup -ResourceGroupName $rgname
-        Assert-AreEqual $null $CRG.count
+        # try Get-CRG with ResourceIdsOnly CreatedInSubscription
+        $CRG = Get-AzCapacityReservationGroup -ResourceIdsOnly CreatedInSubscription
+        Assert-AreEqual "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/$rgname/providers/Microsoft.Compute/capacityReservationGroups/$CRGName" $CRG.Id
 
     }
     finally
