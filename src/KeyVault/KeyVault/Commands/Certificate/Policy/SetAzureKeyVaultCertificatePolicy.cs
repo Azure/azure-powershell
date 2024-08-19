@@ -81,7 +81,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ParameterSetName = ExpandedRenewNumberParameterSet,
             HelpMessage = "Specifies the number of days before expiration when automatic renewal should start.")]
-        [ValidateRange(1, int.MaxValue)]
         public int? RenewAtNumberOfDaysBeforeExpiry { get; set; }
 
         /// <summary>
@@ -90,7 +89,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = ExpandedRenewPercentageParameterSet,
             HelpMessage = "Specifies the percentage of the lifetime after which the automatic process for the certificate renewal begins.")]
-        [ValidateRange(0, 99)]
         public int? RenewAtPercentageLifetime { get; set; }
 
         /// <summary>
@@ -231,7 +229,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Key size
         /// </summary>
         [Parameter(Mandatory = false,
-                   ValueFromPipelineByPropertyName = true,
+                   ValueFromPipelineByPropertyName = false,
                    HelpMessage = "Specifies the key size of the certificate. Default is 2048.")]
         [ValidateSet("2048", "3072", "4096", "256", "384", "521")]
         public int KeySize { get; set; }
@@ -247,6 +245,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Specifies whether the key is not exportable.")]
         public SwitchParameter KeyNotExportable { get; set; }
 
+        /// <summary>
+        /// CertificateTransparency
+        /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = false,
             HelpMessage = "Indicates whether certificate transparency is enabled for this certificate/issuer; if not specified, the default is 'true'")]
         public bool? CertificateTransparency { get; set; }
@@ -261,7 +262,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Elliptic Curve Name of the key
         /// </summary>
         [Parameter(Mandatory = false,
-                   ValueFromPipelineByPropertyName = true,
+                   ValueFromPipelineByPropertyName = false,
                    HelpMessage = "Specifies the elliptic curve name of the key of the ECC certificate.")]
         [ValidateSet(Constants.P256, Constants.P384, Constants.P521, Constants.P256K, Constants.SECP256K1)]
         public string Curve { get; set; }
@@ -271,6 +272,19 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             if (ShouldProcess(Name, Properties.Resources.SetCertificatePolicy))
             {
+
+                // Manually Validate `RenewAtNumberOfDaysBeforeExpiry` and `RenewAtPercentageLifetime`
+                if (RenewAtNumberOfDaysBeforeExpiry.HasValue && (RenewAtNumberOfDaysBeforeExpiry < 1 || RenewAtNumberOfDaysBeforeExpiry > int.MaxValue))
+                {
+                    throw new ArgumentOutOfRangeException(nameof(RenewAtNumberOfDaysBeforeExpiry), "Value must be between 1 and int.MaxValue.");
+                }
+
+                if (RenewAtPercentageLifetime.HasValue && (RenewAtPercentageLifetime < 0 || RenewAtPercentageLifetime > 99))
+                {
+                    throw new ArgumentOutOfRangeException(nameof(RenewAtPercentageLifetime), "Value must be between 0 and 99.");
+                }
+
+
                 PSKeyVaultCertificatePolicy policy = new PSKeyVaultCertificatePolicy();
 
                 switch (ParameterSetName)
