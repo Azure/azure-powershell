@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.SapVirtualInstance
-online version: https://learn.microsoft.com/powershell/module/az.sapvirtualinstance/update-azworkloadssapapplicationinstance
+Module Name: Az.Workloads
+online version: https://learn.microsoft.com/powershell/module/az.workloads/update-azworkloadssapapplicationinstance
 schema: 2.0.0
 ---
 
@@ -22,7 +22,7 @@ Update-AzWorkloadsSapApplicationInstance -Name <String> -ResourceGroupName <Stri
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWorkloadsSapApplicationInstance -InputObject <ISapVirtualInstanceIdentity> [-Tag <Hashtable>]
+Update-AzWorkloadsSapApplicationInstance -InputObject <IWorkloadsIdentity> [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,27 +32,33 @@ This can be used to update tags on the resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Add tags for an existing app server instance resource
 ```powershell
-{{ Add code here }}
+Update-AzWorkloadsSapApplicationInstance  -Name app0 -ResourceGroupName db0-vis-rg -SapVirtualInstanceName DB0 -Tag @{ Test = "PS"; k2 = "v2"}
 ```
 
 ```output
-{{ Add output here }}
+Name ResourceGroupName Health  ProvisioningState Status  Hostname Location
+---- ----------------- ------  ----------------- ------  -------- --------
+app0 db0-vis-rg        Healthy Succeeded         Running db0vm    centraluseuap
 ```
 
-{{ Add description here }}
+This cmdlet adds new tag name, value pairs to the existing app server instance resource app0.
+VIS name and Resource group name are the other input parameters.
 
-### Example 2: {{ Add title here }}
+### Example 2: Add tags for an existing app server instance resource
 ```powershell
-{{ Add code here }}
+Update-AzWorkloadsSapApplicationInstance  -InputObject /subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/db0-vis-rg/providers/Microsoft.Workloads/sapVirtualInstances/DB0/applicationInstances/app0 -Tag @{ Test = "PS"; k2 = "v2"}
 ```
 
 ```output
-{{ Add output here }}
+Name ResourceGroupName Health  ProvisioningState Status  Hostname Location
+---- ----------------- ------  ----------------- ------  -------- --------
+app0 db0-vis-rg        Healthy Succeeded         Running db0vm    centraluseuap
 ```
 
-{{ Add description here }}
+This cmdlet adds new tag name, value pairs to the existing app server instance resource app0.
+Here app instance Azure resource ID is used as the input parameter.
 
 ## PARAMETERS
 
@@ -77,7 +83,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -200,17 +206,32 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapApplicationServerInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapApplicationServerInstance
 
 ## NOTES
 
 ALIASES
 
-Update-AzVISApplicationInstance
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <IWorkloadsIdentity>`: Identity Parameter
+  - `[ApplicationInstanceName <String>]`: The name of SAP Application Server instance resource.
+  - `[CentralInstanceName <String>]`: Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
+  - `[DatabaseInstanceName <String>]`: Database resource name string modeled as parameter for auto generation to work correctly.
+  - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: The name of Azure region.
+  - `[MonitorName <String>]`: Name of the SAP monitor resource.
+  - `[ProviderInstanceName <String>]`: Name of the provider instance.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[SapVirtualInstanceName <String>]`: The name of the Virtual Instances for SAP solutions resource
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

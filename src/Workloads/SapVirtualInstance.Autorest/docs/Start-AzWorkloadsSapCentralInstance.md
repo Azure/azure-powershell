@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.SapVirtualInstance
-online version: https://learn.microsoft.com/powershell/module/az.sapvirtualinstance/start-azworkloadssapcentralinstance
+Module Name: Az.Workloads
+online version: https://learn.microsoft.com/powershell/module/az.workloads/start-azworkloadssapcentralinstance
 schema: 2.0.0
 ---
 
@@ -28,14 +28,14 @@ Start-AzWorkloadsSapCentralInstance -Name <String> -ResourceGroupName <String>
 
 ### StartViaIdentity
 ```
-Start-AzWorkloadsSapCentralInstance -InputObject <ISapVirtualInstanceIdentity> -Body <IStartRequest>
+Start-AzWorkloadsSapCentralInstance -InputObject <IWorkloadsIdentity> -Body <IStartRequest>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### StartViaIdentityExpanded
 ```
-Start-AzWorkloadsSapCentralInstance -InputObject <ISapVirtualInstanceIdentity> [-StartVM]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzWorkloadsSapCentralInstance -InputObject <IWorkloadsIdentity> [-StartVM] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,27 +43,83 @@ Starts the SAP Central Services Instance.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Start Central services instance of the SAP system
 ```powershell
-{{ Add code here }}
+Start-AzWorkloadsSapCentralInstance -Name cs0 -ResourceGroupName db0-vis-rg -SapVirtualInstanceName DB0
 ```
 
 ```output
-{{ Add output here }}
+AdditionalInfo    :
+Code              :
+Detail            :
+EndTime           : 15-03-2023 09:11:00
+Id                : /subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/CENTRALUSEUAP/operationStatuses/651c6f1b-db7
+                    b-46b2-ba9a-fb5ee67ec372*D9A8F8EF15D6E75CE64E8F442A39F1D7AF307793D262CE855530D335419055E3
+Message           :
+Name              : 651c6f1b-db7b-46b2-ba9a-fb5ee67ec372*D9A8F8EF15D6E75CE64E8F442A39F1D7AF307793D262CE855530D335419055E3
+Operation         :
+PercentComplete   :
+ResourceGroupName :
+StartTime         : 15-03-2023 09:08:45
+Status            : Succeeded
+Target            :
 ```
 
-{{ Add description here }}
+Start-AzWorkloadsSapCentralInstance cmdlet starts the Central services instance of the SAP system represented by the VIS.
+Currently, start action is supported for ABAP central services stack.
+In this example, you can see that instance can be started by passing the Central services instance resource name, Resource Group name and VIS name as inputs.
 
-### Example 2: {{ Add title here }}
+### Example 2: Start Central services instance of the SAP system
 ```powershell
-{{ Add code here }}
+Start-AzWorkloadsSapCentralInstance -InputObject /subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/db0-vis-rg/providers/Microsoft.Workloads/sapVirtualInstances/DB0/centralInstances/cs0
 ```
 
 ```output
-{{ Add output here }}
+AdditionalInfo    :
+Code              :
+Detail            :
+EndTime           : 15-03-2023 09:11:00
+Id                : /subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/CENTRALUSEUAP/operationStatuses/651c6f1b-db7
+                    b-46b2-ba9a-fb5ee67ec372*D9A8F8EF15D6E75CE64E8F442A39F1D7AF307793D262CE855530D335419055E3
+Message           :
+Name              : 651c6f1b-db7b-46b2-ba9a-fb5ee67ec372*D9A8F8EF15D6E75CE64E8F442A39F1D7AF307793D262CE855530D335419055E3
+Operation         :
+PercentComplete   :
+ResourceGroupName :
+StartTime         : 15-03-2023 09:08:45
+Status            : Succeeded
+Target            :
 ```
 
-{{ Add description here }}
+Start-AzWorkloadsSapCentralInstance cmdlet starts the Central services instance of the SAP system represented by the VIS.
+Currently, start action is supported for ABAP central services stack.
+In this example, you can see that instance can be started by passing the Central services instance Azure resource ID as InputObject to the cmdlet.
+
+### Example 3: Start Central services instance of the SAP system and its underlying Virtual Machine
+```powershell
+Start-AzWorkloadsSapCentralInstance -Name cs0 -ResourceGroupName db0-vis-rg -SapVirtualInstanceName DB0 -StartVM
+```
+
+```output
+AdditionalInfo    :
+Code              :
+Detail            :
+EndTime           : 15-03-2023 09:11:00
+Id                : /subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/CENTRALUSEUAP/operationStatuses/651c6f1b-db7
+                    b-46b2-ba9a-fb5ee67ec372*D9A8F8EF15D6E75CE64E8F442A39F1D7AF307793D262CE855530D335419055E3
+Message           :
+Name              : 651c6f1b-db7b-46b2-ba9a-fb5ee67ec372*D9A8F8EF15D6E75CE64E8F442A39F1D7AF307793D262CE855530D335419055E3
+Operation         :
+PercentComplete   :
+ResourceGroupName :
+StartTime         : 15-03-2023 09:08:45
+Status            : Succeeded
+Target            :
+```
+
+Start-AzWorkloadsSapCentralInstance cmdlet starts the Central services instance of the SAP system and its underlying Virtual Machines represented by the VIS.
+Currently, start action is supported for ABAP central services stack.
+In this example, you can see that instance can be started by passing the Central services instance resource name, Resource Group name, VIS name and VM Operation flag as inputs.
 
 ## PARAMETERS
 
@@ -87,7 +143,7 @@ Start SAP instance(s) request body.
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.IStartRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.IStartRequest
 Parameter Sets: Start, StartViaIdentity
 Aliases:
 
@@ -119,7 +175,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
 Parameter Sets: StartViaIdentity, StartViaIdentityExpanded
 Aliases:
 
@@ -257,19 +313,34 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.IStartRequest
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.IStartRequest
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api30.IOperationStatusResult
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.IOperationStatusResult
 
 ## NOTES
 
 ALIASES
 
-Start-AzVISCentralInstance
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <IWorkloadsIdentity>`: Identity Parameter
+  - `[ApplicationInstanceName <String>]`: The name of SAP Application Server instance resource.
+  - `[CentralInstanceName <String>]`: Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
+  - `[DatabaseInstanceName <String>]`: Database resource name string modeled as parameter for auto generation to work correctly.
+  - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: The name of Azure region.
+  - `[MonitorName <String>]`: Name of the SAP monitor resource.
+  - `[ProviderInstanceName <String>]`: Name of the provider instance.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[SapVirtualInstanceName <String>]`: The name of the Virtual Instances for SAP solutions resource
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

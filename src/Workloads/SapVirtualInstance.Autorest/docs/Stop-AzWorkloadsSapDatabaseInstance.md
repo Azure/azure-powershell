@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.SapVirtualInstance
-online version: https://learn.microsoft.com/powershell/module/az.sapvirtualinstance/stop-azworkloadssapdatabaseinstance
+Module Name: Az.Workloads
+online version: https://learn.microsoft.com/powershell/module/az.workloads/stop-azworkloadssapdatabaseinstance
 schema: 2.0.0
 ---
 
@@ -21,7 +21,7 @@ Stop-AzWorkloadsSapDatabaseInstance -Name <String> -ResourceGroupName <String>
 
 ### StopViaIdentityExpanded
 ```
-Stop-AzWorkloadsSapDatabaseInstance -InputObject <ISapVirtualInstanceIdentity> [-DeallocateVM]
+Stop-AzWorkloadsSapDatabaseInstance -InputObject <IWorkloadsIdentity> [-DeallocateVM]
  [-SoftStopTimeoutSecond <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -31,27 +31,109 @@ Stops the database instance of the SAP system.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Stop Database instance of the SAP system
 ```powershell
-{{ Add code here }}
+Stop-AzWorkloadsSapDatabaseInstance -Name db0 -ResourceGroupName db0-vis-rg -SapVirtualInstanceName DB0
 ```
 
 ```output
-{{ Add output here }}
+AdditionalInfo    :
+Code              :
+Detail            :
+EndTime           : 15-03-2023 08:45:40
+Id                : /subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/CENTRALUSEUAP/operationStatuses/881d4ff9-1d38-4596-b215-28e
+                    77dbfe176*DF20ACAC495F17B1D0D9182C3A4C44BC6EDFF718387348FAE17F19BCB5DE687C
+Message           :
+Name              : 881d4ff9-1d38-4596-b215-28e77dbfe176*DF20ACAC495F17B1D0D9182C3A4C44BC6EDFF718387348FAE17F19BCB5DE687C
+Operation         :
+PercentComplete   :
+ResourceGroupName :
+StartTime         : 15-03-2023 08:43:32
+Status            : Succeeded
+Target            :
 ```
 
-{{ Add description here }}
+Stop-AzWorkloadsSapDatabaseInstance cmdlet stops the Database instance of the SAP system represented by the VIS.
+Currently stop action is supported for SAP HANA Database only.
+In this example, you can see that database can be stopped by passing the DB instance resource name, ResourceGroupName and VIS name as inputs.
 
-### Example 2: {{ Add title here }}
+### Example 2: Stop Database instance of the SAP system
 ```powershell
-{{ Add code here }}
+Stop-AzWorkloadsSapDatabaseInstance -InputObject /subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/db0-vis-rg/providers/Microsoft.Workloads/sapVirtualInstances/DB0/databaseInstances/db0
 ```
 
 ```output
-{{ Add output here }}
+AdditionalInfo    :
+Code              :
+Detail            :
+EndTime           : 15-03-2023 08:45:40
+Id                : /subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/CENTRALUSEUAP/operationStatuses/881d4ff9-1d38-4596-b215-28e
+                    77dbfe176*DF20ACAC495F17B1D0D9182C3A4C44BC6EDFF718387348FAE17F19BCB5DE687C
+Message           :
+Name              : 881d4ff9-1d38-4596-b215-28e77dbfe176*DF20ACAC495F17B1D0D9182C3A4C44BC6EDFF718387348FAE17F19BCB5DE687C
+Operation         :
+PercentComplete   :
+ResourceGroupName :
+StartTime         : 15-03-2023 08:43:32
+Status            : Succeeded
+Target            :
 ```
 
-{{ Add description here }}
+Stop-AzWorkloadsSapDatabaseInstance cmdlet stops the Database instance of the SAP system represented by the VIS.
+Currently stop action is supported for SAP HANA Database only.
+In this example, you can see that database can be stopped by providing the DB instance Azure resource ID as InputObject to the cmdlet.
+
+### Example 3: Stop Database instance of the SAP system and its underlying Virtual Machine
+```powershell
+Stop-AzWorkloadsSapDatabaseInstance -Name db0 -ResourceGroupName db0-vis-rg -SapVirtualInstanceName DB0 -DeallocateVM
+```
+
+```output
+AdditionalInfo    :
+Code              :
+Detail            :
+EndTime           : 15-03-2023 08:45:40
+Id                : /subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/CENTRALUSEUAP/operationStatuses/881d4ff9-1d38-4596-b215-28e
+                    77dbfe176*DF20ACAC495F17B1D0D9182C3A4C44BC6EDFF718387348FAE17F19BCB5DE687C
+Message           :
+Name              : 881d4ff9-1d38-4596-b215-28e77dbfe176*DF20ACAC495F17B1D0D9182C3A4C44BC6EDFF718387348FAE17F19BCB5DE687C
+Operation         :
+PercentComplete   :
+ResourceGroupName :
+StartTime         : 15-03-2023 08:43:32
+Status            : Succeeded
+Target            :
+```
+
+Stop-AzWorkloadsSapDatabaseInstance cmdlet stops the Database instance of the SAP system and its underlying Virtual Machine represented by the VIS.
+Currently stop action is supported for SAP HANA Database only.
+In this example, you can see that database can be stopped by passing the DB instance resource name, ResourceGroupName, VIS name and VM Operation as inputs.
+
+### Example 1: Soft Stop Database instance of the SAP system
+```powershell
+Stop-AzWorkloadsSapDatabaseInstance -Name db0 -ResourceGroupName db0-vis-rg -SapVirtualInstanceName DB0 -SoftStopTimeoutSecond 300
+```
+
+```output
+AdditionalInfo    :
+Code              :
+Detail            :
+EndTime           : 15-03-2023 08:45:40
+Id                : /subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/CENTRALUSEUAP/operationStatuses/881d4ff9-1d38-4596-b215-28e
+                    77dbfe176*DF20ACAC495F17B1D0D9182C3A4C44BC6EDFF718387348FAE17F19BCB5DE687C
+Message           :
+Name              : 881d4ff9-1d38-4596-b215-28e77dbfe176*DF20ACAC495F17B1D0D9182C3A4C44BC6EDFF718387348FAE17F19BCB5DE687C
+Operation         :
+PercentComplete   :
+ResourceGroupName :
+StartTime         : 15-03-2023 08:43:32
+Status            : Succeeded
+Target            :
+```
+
+Stop-AzWorkloadsSapDatabaseInstance cmdlet Soft stops the Database instance of the SAP system represented by the VIS.
+Currently stop action is supported for SAP HANA Database only.
+In this example, you can see that database can be soft stopped by passing the DB instance resource name, ResourceGroupName, VIS name and soft stop timeout seconds as inputs.
 
 ## PARAMETERS
 
@@ -106,7 +188,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
 Parameter Sets: StopViaIdentityExpanded
 Aliases:
 
@@ -246,17 +328,32 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api30.IOperationStatusResult
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.IOperationStatusResult
 
 ## NOTES
 
 ALIASES
 
-Stop-AzVISDatabaseInstance
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <IWorkloadsIdentity>`: Identity Parameter
+  - `[ApplicationInstanceName <String>]`: The name of SAP Application Server instance resource.
+  - `[CentralInstanceName <String>]`: Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
+  - `[DatabaseInstanceName <String>]`: Database resource name string modeled as parameter for auto generation to work correctly.
+  - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: The name of Azure region.
+  - `[MonitorName <String>]`: Name of the SAP monitor resource.
+  - `[ProviderInstanceName <String>]`: Name of the provider instance.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[SapVirtualInstanceName <String>]`: The name of the Virtual Instances for SAP solutions resource
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

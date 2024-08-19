@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.SapVirtualInstance
-online version: https://learn.microsoft.com/powershell/module/az.sapvirtualinstance/get-azworkloadssapdatabaseinstance
+Module Name: Az.Workloads
+online version: https://learn.microsoft.com/powershell/module/az.workloads/get-azworkloadssapdatabaseinstance
 schema: 2.0.0
 ---
 
@@ -26,7 +26,7 @@ Get-AzWorkloadsSapDatabaseInstance -Name <String> -ResourceGroupName <String> -S
 
 ### GetViaIdentity
 ```
-Get-AzWorkloadsSapDatabaseInstance -InputObject <ISapVirtualInstanceIdentity> [-DefaultProfile <PSObject>]
+Get-AzWorkloadsSapDatabaseInstance -InputObject <IWorkloadsIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -35,27 +35,31 @@ Gets the SAP Database Instance resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1:  Get an overview of the Database Instance(s)
 ```powershell
-{{ Add code here }}
+Get-AzWorkloadsSapDatabaseInstance -ResourceGroupName DemoRGVIS -SapVirtualInstanceName DRT
 ```
 
 ```output
-{{ Add output here }}
+Name ResourceGroupName ProvisioningState Location    Status  IPAddress DatabaseSid
+---- ----------------- ----------------- --------    ------  --------- -----------
+db0  DemoRGVIS         Succeeded         eastus2euap Running 10.0.0.6  XRT
 ```
 
-{{ Add description here }}
+This command will help you get an overview, including health and status of a Database instance in the Virtual instance for SAP solutions
 
-### Example 2: {{ Add title here }}
+### Example 2: Get an overview of the Database Instance(s)
 ```powershell
-{{ Add code here }}
+Get-AzWorkloadsSapDatabaseInstance -InputObject /subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/DemoRGVIS/providers/Microsoft.Workloads/sapVirtualInstances/DRT/databaseInstances/db0
 ```
 
 ```output
-{{ Add output here }}
+Name ResourceGroupName ProvisioningState Location    Status  IPAddress DatabaseSid
+---- ----------------- ----------------- --------    ------  --------- -----------
+db0  DemoRGVIS         Succeeded         eastus2euap Running 10.0.0.6  XRT
 ```
 
-{{ Add description here }}
+This command will help you get an overview, including health and status of a Database instance in the Virtual instance for SAP solutions by using the Azure resource ID of the Database instance
 
 ## PARAMETERS
 
@@ -80,7 +84,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -157,17 +161,32 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapDatabaseInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDatabaseInstance
 
 ## NOTES
 
 ALIASES
 
-Get-AzVISDatabaseInstance
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <IWorkloadsIdentity>`: Identity Parameter
+  - `[ApplicationInstanceName <String>]`: The name of SAP Application Server instance resource.
+  - `[CentralInstanceName <String>]`: Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
+  - `[DatabaseInstanceName <String>]`: Database resource name string modeled as parameter for auto generation to work correctly.
+  - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: The name of Azure region.
+  - `[MonitorName <String>]`: Name of the SAP monitor resource.
+  - `[ProviderInstanceName <String>]`: Name of the provider instance.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[SapVirtualInstanceName <String>]`: The name of the Virtual Instances for SAP solutions resource
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

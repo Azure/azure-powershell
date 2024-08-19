@@ -68,8 +68,6 @@ This can be used to update tags on the resource.
 
 ### [Update-AzWorkloadsSapCentralInstance](Update-AzWorkloadsSapCentralInstance.md)
 Updates the SAP Central Services Instance resource.
-
-
 This can be used to update tags on the resource.
 
 ### [Update-AzWorkloadsSapDatabaseInstance](Update-AzWorkloadsSapDatabaseInstance.md)

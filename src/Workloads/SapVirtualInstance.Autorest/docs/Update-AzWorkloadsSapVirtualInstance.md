@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.SapVirtualInstance
-online version: https://learn.microsoft.com/powershell/module/az.sapvirtualinstance/update-azworkloadssapvirtualinstance
+Module Name: Az.Workloads
+online version: https://learn.microsoft.com/powershell/module/az.workloads/update-azworkloadssapvirtualinstance
 schema: 2.0.0
 ---
 
@@ -23,7 +23,7 @@ Update-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> 
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWorkloadsSapVirtualInstance -InputObject <ISapVirtualInstanceIdentity>
+Update-AzWorkloadsSapVirtualInstance -InputObject <IWorkloadsIdentity>
  [-IdentityType <ManagedServiceIdentityType>]
  [-ManagedResourcesNetworkAccessType <ManagedResourcesNetworkAccessType>] [-Tag <Hashtable>]
  [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
@@ -35,27 +35,33 @@ Updates a Virtual Instance for SAP solutions resource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Add tags for an existing VIS resource
 ```powershell
-{{ Add code here }}
+Update-AzWorkloadsSapVirtualInstance  -Name DB0 -ResourceGroupName db0-vis-rg -Tag @{ Test = "PS"; k2 = "v2"}
 ```
 
 ```output
-{{ Add output here }}
+Name ResourceGroupName Health  Environment ProvisioningState SapProduct State                Status  Location
+---- ----------------- ------  ----------- ----------------- ---------- -----                ------  --------
+DB0  db0-vis-rg        Healthy NonProd     Succeeded         S4HANA     RegistrationComplete Running centraluseuap
 ```
 
-{{ Add description here }}
+This cmdlet adds new tag name, value pairs to the existing VIS resource DB0.
+VIS name and Resource group name are the other input parameters.
 
-### Example 2: {{ Add title here }}
+### Example 2: Add tags for an existing VIS resource
 ```powershell
-{{ Add code here }}
+Update-AzWorkloadsSapVirtualInstance  -InputObject /subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/db0-vis-rg/providers/Microsoft.Workloads/sapVirtualInstances/DB0 -Tag @{ Test = "PS"; k2 = "v2"}
 ```
 
 ```output
-{{ Add output here }}
+Name ResourceGroupName Health  Environment ProvisioningState SapProduct State                Status  Location
+---- ----------------- ------  ----------- ----------------- ---------- -----                ------  --------
+DB0  db0-vis-rg        Healthy NonProd     Succeeded         S4HANA     RegistrationComplete Running centraluseuap
 ```
 
-{{ Add description here }}
+This cmdlet adds new tag name, value pairs to the existing VIS resource DB0.
+Here VIS Azure resource ID is used as the input parameter.
 
 ## PARAMETERS
 
@@ -94,7 +100,7 @@ Accept wildcard characters: False
 Type of manage identity
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ManagedServiceIdentityType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.ManagedServiceIdentityType
 Parameter Sets: (All)
 Aliases:
 
@@ -110,7 +116,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -130,7 +136,7 @@ This setting is currently applicable only to Storage Account.
 Learn more here https://go.microsoft.com/fwlink/linkid=2247228
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ManagedResourcesNetworkAccessType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.ManagedResourcesNetworkAccessType
 Parameter Sets: (All)
 Aliases:
 
@@ -268,17 +274,32 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapVirtualInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapVirtualInstance
 
 ## NOTES
 
 ALIASES
 
-Update-AzVIS
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <IWorkloadsIdentity>`: Identity Parameter
+  - `[ApplicationInstanceName <String>]`: The name of SAP Application Server instance resource.
+  - `[CentralInstanceName <String>]`: Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
+  - `[DatabaseInstanceName <String>]`: Database resource name string modeled as parameter for auto generation to work correctly.
+  - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: The name of Azure region.
+  - `[MonitorName <String>]`: Name of the SAP monitor resource.
+  - `[ProviderInstanceName <String>]`: Name of the provider instance.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[SapVirtualInstanceName <String>]`: The name of the Virtual Instances for SAP solutions resource
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

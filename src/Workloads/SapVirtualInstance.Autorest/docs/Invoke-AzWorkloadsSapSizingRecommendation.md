@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.SapVirtualInstance
-online version: https://learn.microsoft.com/powershell/module/az.sapvirtualinstance/invoke-azworkloadssapsizingrecommendation
+Module Name: Az.Workloads
+online version: https://learn.microsoft.com/powershell/module/az.workloads/invoke-azworkloadssapsizingrecommendation
 schema: 2.0.0
 ---
 
@@ -23,7 +23,7 @@ Invoke-AzWorkloadsSapSizingRecommendation -Location <String> -AppLocation <Strin
 
 ### SapViaIdentityExpanded
 ```
-Invoke-AzWorkloadsSapSizingRecommendation -InputObject <ISapVirtualInstanceIdentity> -AppLocation <String>
+Invoke-AzWorkloadsSapSizingRecommendation -InputObject <IWorkloadsIdentity> -AppLocation <String>
  -DatabaseType <SapDatabaseType> -DbMemory <Int64> -DeploymentType <SapDeploymentType>
  -Environment <SapEnvironmentType> -Sap <Int64> -SapProduct <SapProductType>
  [-DbScaleMethod <SapDatabaseScaleMethod>] [-HighAvailabilityType <SapHighAvailabilityType>]
@@ -35,27 +35,18 @@ Get SAP sizing recommendations by providing input SAPS for application tier and 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get SAP sizing recommendations by providing SAPS for application tier and memory required for database tier
 ```powershell
-{{ Add code here }}
+Invoke-AzWorkloadsSapSizingRecommendation -Location eastus -AppLocation eastus -DatabaseType HANA -DbMemory 256 -DeploymentType SingleServer -Environment NonProd -SapProduct S4HANA -Sap 10000 -DbScaleMethod ScaleUp
 ```
 
 ```output
-{{ Add output here }}
+DeploymentType VMSku
+-------------- -----
+SingleServer   Standard_E32ds_v4
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+The command will take input of the Deployment type, region, SAPS number and Database memory size requirement for the SAP system and help you understand the right size and count of Azure SKUs that you should use for the App server instance, Central service instance and Database instance while deploying your SAP system with Azure Center for SAP solutions.
 
 ## PARAMETERS
 
@@ -78,7 +69,7 @@ Accept wildcard characters: False
 The database type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDatabaseType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapDatabaseType
 Parameter Sets: (All)
 Aliases:
 
@@ -108,7 +99,7 @@ Accept wildcard characters: False
 The DB scale method.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDatabaseScaleMethod
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapDatabaseScaleMethod
 Parameter Sets: (All)
 Aliases:
 
@@ -140,7 +131,7 @@ The deployment type.
 Eg: SingleServer/ThreeTier
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDeploymentType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapDeploymentType
 Parameter Sets: (All)
 Aliases:
 
@@ -155,7 +146,7 @@ Accept wildcard characters: False
 Defines the environment type - Production/Non Production.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapEnvironmentType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapEnvironmentType
 Parameter Sets: (All)
 Aliases:
 
@@ -170,7 +161,7 @@ Accept wildcard characters: False
 The high availability type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapHighAvailabilityType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapHighAvailabilityType
 Parameter Sets: (All)
 Aliases:
 
@@ -186,7 +177,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
 Parameter Sets: SapViaIdentityExpanded
 Aliases:
 
@@ -231,7 +222,7 @@ Accept wildcard characters: False
 Defines the SAP Product type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapProductType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapProductType
 Parameter Sets: (All)
 Aliases:
 
@@ -293,17 +284,32 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDeploymentType
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapDeploymentType
 
 ## NOTES
 
 ALIASES
 
-Invoke-AzVISSizingRecommendation
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <IWorkloadsIdentity>`: Identity Parameter
+  - `[ApplicationInstanceName <String>]`: The name of SAP Application Server instance resource.
+  - `[CentralInstanceName <String>]`: Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
+  - `[DatabaseInstanceName <String>]`: Database resource name string modeled as parameter for auto generation to work correctly.
+  - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: The name of Azure region.
+  - `[MonitorName <String>]`: Name of the SAP monitor resource.
+  - `[ProviderInstanceName <String>]`: Name of the provider instance.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[SapVirtualInstanceName <String>]`: The name of the Virtual Instances for SAP solutions resource
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

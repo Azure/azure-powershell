@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.SapVirtualInstance
-online version: https://learn.microsoft.com/powershell/module/az.sapvirtualinstance/invoke-azworkloadssapdiskconfiguration
+Module Name: Az.Workloads
+online version: https://learn.microsoft.com/powershell/module/az.workloads/invoke-azworkloadssapdiskconfiguration
 schema: 2.0.0
 ---
 
@@ -22,7 +22,7 @@ Invoke-AzWorkloadsSapDiskConfiguration -Location <String> -AppLocation <String>
 
 ### SapViaIdentityExpanded
 ```
-Invoke-AzWorkloadsSapDiskConfiguration -InputObject <ISapVirtualInstanceIdentity> -AppLocation <String>
+Invoke-AzWorkloadsSapDiskConfiguration -InputObject <IWorkloadsIdentity> -AppLocation <String>
  -DatabaseType <SapDatabaseType> -DbVMSku <String> -DeploymentType <SapDeploymentType>
  -Environment <SapEnvironmentType> -SapProduct <SapProductType> [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -33,27 +33,39 @@ Get the SAP Disk Configuration Layout prod/non-prod SAP System.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the SAP Disk Configuration Layout for prod/non-prod SAP System
 ```powershell
-{{ Add code here }}
+Invoke-AzWorkloadsSapDiskConfiguration -Location eastus -AppLocation eastus -DatabaseType HANA -DbVMSku Standard_M32ts -DeploymentType SingleServer -Environment NonProd -SapProduct S4HANA
 ```
 
 ```output
-{{ Add output here }}
+Keys                 : {hana/data, hana/log, hana/shared, usr/sap...}
+Values               : {{
+                         "recommendedConfiguration": {
+                           "sku": {
+                             "name": "Premium_LRS"
+                           },
+                           "count": 4,
+                           "sizeGB": 128
+                         },
+                         "supportedConfigurations": [
+                           {
+                             "sku": {
+                               "name": "Premium_LRS"
+                             },
+                             "sizeGB": 128,
+                             "minimumSupportedDiskCount": 4,
+                             "maximumSupportedDiskCount": 5,
+                             "iopsReadWrite": 500,
+                             "mbpsReadWrite": 100,
+                             "diskTier": "P10"
+                           }
+                         ]
+                       }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command will help you understand the default disk configuration that will b deployed for the SAP system for a selected deployment type.
+You can customize this when you are deploying your SAP system from Azure Center for SAP solutions
 
 ## PARAMETERS
 
@@ -77,7 +89,7 @@ The database type.
 Eg: HANA, DB2, etc
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDatabaseType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapDatabaseType
 Parameter Sets: (All)
 Aliases:
 
@@ -124,7 +136,7 @@ The deployment type.
 Eg: SingleServer/ThreeTier
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDeploymentType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapDeploymentType
 Parameter Sets: (All)
 Aliases:
 
@@ -139,7 +151,7 @@ Accept wildcard characters: False
 Defines the environment type - Production/Non Production.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapEnvironmentType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapEnvironmentType
 Parameter Sets: (All)
 Aliases:
 
@@ -155,7 +167,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
 Parameter Sets: SapViaIdentityExpanded
 Aliases:
 
@@ -185,7 +197,7 @@ Accept wildcard characters: False
 Defines the SAP Product type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapProductType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapProductType
 Parameter Sets: (All)
 Aliases:
 
@@ -247,17 +259,32 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapDiskConfigurationsResultVolumeConfigurations
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDiskConfigurationsResultVolumeConfigurations
 
 ## NOTES
 
 ALIASES
 
-Invoke-AzVISDiskConfiguration
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <IWorkloadsIdentity>`: Identity Parameter
+  - `[ApplicationInstanceName <String>]`: The name of SAP Application Server instance resource.
+  - `[CentralInstanceName <String>]`: Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
+  - `[DatabaseInstanceName <String>]`: Database resource name string modeled as parameter for auto generation to work correctly.
+  - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: The name of Azure region.
+  - `[MonitorName <String>]`: Name of the SAP monitor resource.
+  - `[ProviderInstanceName <String>]`: Name of the provider instance.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[SapVirtualInstanceName <String>]`: The name of the Virtual Instances for SAP solutions resource
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 
