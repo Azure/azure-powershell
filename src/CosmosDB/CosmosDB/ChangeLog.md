@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
 
 ## Version 1.14.4
 * Fixed the issue that Azure.Core.AccessToken is used before assigned.
