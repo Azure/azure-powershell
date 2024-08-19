@@ -44,7 +44,7 @@ $resourceGroupName="ContosoGroup02";
 $apiManagementName="contosoapi";
 $containerName="apimbackupcontainer";
 $backupName="test-sdk-backup-1";
-$msiClientId="a6270d0c-7d86-478b-8cbe-dc9047ba54f7"
+$msiClientId="00001111-aaaa-2222-bbbb-3333cccc4444"
 Restore-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -StorageContext $storageContext -SourceContainerName $containerName -SourceBlobName $backupName -AccessType "UserAssignedManagedIdentity" -IdentityClientId $msiClientId -PassThru
 ```
 
