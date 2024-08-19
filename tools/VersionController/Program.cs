@@ -54,7 +54,7 @@ namespace VersionController
             Initialize(args);
             ConsolidateExceptionFiles(_exceptionsDirectory);
             ValidateManifest();
-            if (_generateSyntaxChangelog) {
+            if (_generateSyntaxChangelog && _releaseType == ReleaseType.STS) {
                GenerateSyntaxChangelog(_rootDirectory);
             }
             BumpVersions();
