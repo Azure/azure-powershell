@@ -663,8 +663,23 @@ function Set-AzConnectedKubernetes {
         # This call does the "pure ARM" update of the ARM objects.
         Write-Debug "Writing Connected Kubernetes ARM objects."
 
+        # XW TODO If we cannot generate internal Set command, use New
         # Re-put here
-        $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
+        #Region Re-put with new
+        # $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
+        #EndRegion
+
+        #Region Set with inputObject
+        if ('Set' -contains $parameterSet){
+            $connectedCluster = $InputObject
+        }
+
+        if ('UpdateExpanded' -contains $parameterSet) {
+            $connectedCluster = $ExistConnectedKubernetes
+        }
+ 
+        $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes ---InputObject $connectedCluster @PSBoundParameters
+        #Enendregion
 
         # Retrieving Helm chart OCI (Open Container Initiative) Artifact location
         Write-Debug "Retrieving Helm chart OCI (Open Container Initiative) Artifact location."

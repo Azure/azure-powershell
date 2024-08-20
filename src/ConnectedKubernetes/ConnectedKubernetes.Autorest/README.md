@@ -85,5 +85,4 @@ directive:
       verb: New|Update|Remove
       subject-prefix: ConnectedKubernetes
     hide: true
-
 ```
