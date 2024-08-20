@@ -229,6 +229,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Key size
         /// </summary>
         [Parameter(Mandatory = false,
+                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the key size of the certificate. Default is 2048.")]
         [ValidateSet("2048", "3072", "4096", "256", "384", "521")]
         public int KeySize { get; set; }
@@ -247,7 +248,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// CertificateTransparency
         /// </summary>
-        [Parameter(HelpMessage = "Indicates whether certificate transparency is enabled for this certificate/issuer; if not specified, the default is 'true'")]
+        [Parameter(ValueFromPipelineByPropertyName = false,
+            HelpMessage = "Indicates whether certificate transparency is enabled for this certificate/issuer; if not specified, the default is 'true'")]
         public bool? CertificateTransparency { get; set; }
 
         /// <summary>
@@ -260,6 +262,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Elliptic Curve Name of the key
         /// </summary>
         [Parameter(Mandatory = false,
+                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the elliptic curve name of the key of the ECC certificate.")]
         [ValidateSet(Constants.P256, Constants.P384, Constants.P521, Constants.P256K, Constants.SECP256K1)]
         public string Curve { get; set; }
@@ -314,7 +317,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
         }
 
-        
+
         private void ValidateArguments(int? RenewAtNumberOfDaysBeforeExpiry, int? RenewAtPercentageLifetime)
         {
             // Manually Validate `RenewAtNumberOfDaysBeforeExpiry` and `RenewAtPercentageLifetime`
