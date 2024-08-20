@@ -44,7 +44,6 @@ function GetConfigDPEndpoint {
     return @{ ConfigDpEndpoint = $ConfigDpEndpoint; ReleaseTrain = $ReleaseTrain }
 }
 
-# !!PDS: What? Looks like there is a function to do this?  Perhaps because we did not hide it?
 function GetConfigDpDefaultEndpoint {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
     param (

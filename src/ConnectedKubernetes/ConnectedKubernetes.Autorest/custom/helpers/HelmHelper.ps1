@@ -264,24 +264,6 @@ function GetHelmChart {
     }
 }
 
-# !!PDS: no dogfood so no need for this?
-function GetHelmValuesFile {
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
-    $valuesFile = $env:HELMVALUESPATH
-    if ($null -ne $valuesFile -and (Test-Path $valuesFile)) {
-        Write-Warning "Values file detected. Reading additional helm parameters from same."
-        # Trimming required for Windows OS
-        if ($valuesFile.StartsWith("'") -or $valuesFile.StartsWith('"')) {
-            $valuesFile = $valuesFile.Substring(1)
-        }
-        if ($valuesFile.EndsWith("'") -or $valuesFile.EndsWith('"')) {
-            $valuesFile = $valuesFile.Substring(0, $valuesFile.Length - 1)
-        }
-        return $valuesFile
-    }
-    return $null
-}
-
 # This method exists to allow us to effectively Mock the call operator (&).
 # We cannnot do that directly so instead we have this wrapper, which we can mock!
 function InvokeExternalCommand {
