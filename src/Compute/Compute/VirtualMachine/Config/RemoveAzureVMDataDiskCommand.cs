@@ -42,6 +42,13 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string[] DataDiskNames { get; set; }
 
+        [Parameter(
+            Mandatory = false
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "Sets provided disks' detachOption property to ForceDetach. Only applicable for managed data disks.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter ForceDetach { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.ShouldProcess("DataDisk", VerbsCommon.Remove))
@@ -66,8 +73,14 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                     storageProfile.DataDisks = disks;
                 }
-
                 this.VM.StorageProfile = storageProfile;
+
+                if (this.ForceDetach == true) {
+                    foreach (var disk in storageProfile.DataDisks)
+                    {
+                        disk.DetachOption = "ForceDetach";
+                    }
+                }
 
                 WriteObject(this.VM);
             }
