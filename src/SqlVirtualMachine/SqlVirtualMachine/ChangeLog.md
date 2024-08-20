@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
+
+## Version 2.3.0
 * Enabled Microsoft entra id on SQL VM.
 
 ## Version 2.2.1

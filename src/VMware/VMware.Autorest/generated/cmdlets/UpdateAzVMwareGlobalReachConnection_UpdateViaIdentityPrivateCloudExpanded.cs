@@ -57,6 +57,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
 
+        /// <summary>
+        /// Authorization key from the peer express route used for the global reachconnection
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Authorization key from the peer express route used for the global reachconnection")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Authorization key from the peer express route used for the global reachconnection",
+        SerializedName = @"authorizationKey",
+        PossibleTypes = new [] { typeof(string) })]
+        public string AuthorizationKey { get => _globalReachConnectionBody.AuthorizationKey ?? null; set => _globalReachConnectionBody.AuthorizationKey = value; }
+
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Runtime)]
@@ -77,6 +90,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>
+        /// The ID of the Private Cloud's ExpressRoute Circuit that is participating in theglobal reach connection
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The ID of the Private Cloud's ExpressRoute Circuit that is participating in theglobal reach connection")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The ID of the Private Cloud's ExpressRoute Circuit that is participating in theglobal reach connection",
+        SerializedName = @"expressRouteId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ExpressRouteId { get => _globalReachConnectionBody.ExpressRouteId ?? null; set => _globalReachConnectionBody.ExpressRouteId = value; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
@@ -126,6 +152,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command asynchronously")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
+
+        /// <summary>
+        /// Identifier of the ExpressRoute Circuit to peer with in the global reachconnection
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Identifier of the ExpressRoute Circuit to peer with in the global reachconnection")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Identifier of the ExpressRoute Circuit to peer with in the global reachconnection",
+        SerializedName = @"peerExpressRouteCircuit",
+        PossibleTypes = new [] { typeof(string) })]
+        public string PeerExpressRouteCircuit { get => _globalReachConnectionBody.PeerExpressRouteCircuit ?? null; set => _globalReachConnectionBody.PeerExpressRouteCircuit = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.HttpPipeline" /> that the remote call will use.
@@ -495,7 +534,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
 
         private void Update_globalReachConnectionBody()
         {
-
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AuthorizationKey")))
+            {
+                this.AuthorizationKey = (string)(this.MyInvocation?.BoundParameters["AuthorizationKey"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("PeerExpressRouteCircuit")))
+            {
+                this.PeerExpressRouteCircuit = (string)(this.MyInvocation?.BoundParameters["PeerExpressRouteCircuit"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ExpressRouteId")))
+            {
+                this.ExpressRouteId = (string)(this.MyInvocation?.BoundParameters["ExpressRouteId"]);
+            }
         }
 
         /// <param name="sendToPipeline"></param>

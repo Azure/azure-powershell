@@ -5,14 +5,14 @@ function GenerateDefinitionFile {
     )
 
     $definition = [PSCustomObject]@{
-        name = "DataFlow"
+        name       = "DataFlow"
         properties = [PSCustomObject]@{
-            type = "MappingDataFlow"
+            type           = "MappingDataFlow"
             typeProperties = [PSCustomObject]@{
-                sources = @()
-                sinks = @()
+                sources         = @()
+                sinks           = @()
                 transformations = @()
-                scriptLines = @("")
+                scriptLines     = @("")
             }
         }
     }
@@ -20,7 +20,7 @@ function GenerateDefinitionFile {
     ConvertTo-Json $definition -Compress -Depth 3 | Out-File -FilePath $File -Encoding utf8 -NoNewline -Force
 }
 
-Invoke-LiveTestScenario -Name "Create synapse data flow" -Description "Test creating a synapse data flow" -ScenarioScript `
+Invoke-LiveTestScenario -Name "Create synapse data flow" -Description "Test creating a synapse data flow" -PowerShellVersion "5.1", "Latest" -ScenarioScript `
 {
     param ($rg)
 
@@ -50,7 +50,7 @@ Invoke-LiveTestScenario -Name "Create synapse data flow" -Description "Test crea
     Assert-AreEqual $flowName $actual.Name
 }
 
-Invoke-LiveTestScenario -Name "Remove synapse data flow" -Description "Test removing a synapse data flow" -ScenarioScript `
+Invoke-LiveTestScenario -Name "Remove synapse data flow" -Description "Test removing a synapse data flow" -PowerShellVersion "5.1", "Latest" -ScenarioScript `
 {
     param ($rg)
 

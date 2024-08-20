@@ -124,6 +124,7 @@ param(
     [Parameter(ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [ValidateSet('Default', 'DoNotEnforce')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute('Default', 'DoNotEnforce')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The policy assignment enforcement mode.
@@ -132,6 +133,7 @@ param(
 
     [Parameter()]
     [ValidateSet('None', 'SystemAssigned', 'UserAssigned')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute('None', 'SystemAssigned', 'UserAssigned')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The identity type.
@@ -319,13 +321,8 @@ process {
         }
     }
 
-    if (!$NotScope) {
-        if ($_.NotScope) {
-            $calledParameters.NotScope = $_.NotScope
-        }
-        elseif ($existing.NotScope) {
-            $calledParameters.NotScope = $existing.NotScope
-        }
+    if (!$NotScope -and !($NotScope -is [array])) {
+        $calledParameters.NotScope = $existing.NotScope
     }
 
     if (!$Location) {
@@ -335,6 +332,22 @@ process {
         elseif ($existing.Location) {
             $calledParameters.Location = $existing.Location
         }
+    }
+
+    if (!$calledParameters.DisplayName) {
+        $calledParameters.DisplayName = $existing.DisplayName
+    }
+
+    if (!$calledParameters.Description) {
+        $calledParameters.Description = $existing.Description
+    }
+
+    if (!$calledParameters.Metadata) {
+        $calledParameters.Metadata = $existing.Metadata
+    }
+
+    if (!$calledParameters.EnforcementMode -and $calledParameters.EnforcementMode) {
+        $calledParameters.EnforcementMode = $existing.EnforcementMode
     }
 
     if ($BackwardCompatible) {

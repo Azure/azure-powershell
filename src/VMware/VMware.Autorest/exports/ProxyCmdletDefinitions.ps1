@@ -7765,6 +7765,12 @@ param(
     ${PrivateCloudInputObject},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # The ID of the ExpressRoute Circuit
+    ${ExpressRouteId},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
@@ -8031,6 +8037,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
     # Identity Parameter
     ${PrivateCloudInputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Identifier of the other private cloud participating in the link.
+    ${LinkedCloud},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -8661,6 +8673,37 @@ param(
     ${PrivateCloudInputObject},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Name of the LUN to be used for datastore
+    ${DiskPoolVolumeLunName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("MOUNT", "ATTACH")]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Mode that describes whether the LUN has to be mounted as a datastore orattached as a LUN
+    ${DiskPoolVolumeMountOption},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Azure resource ID of the iSCSI target
+    ${DiskPoolVolumeTargetId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Azure resource ID of the Elastic SAN Volume
+    ${ElasticSanVolumeTargetId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Azure resource ID of the NetApp volume
+    ${NetAppVolumeId},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
@@ -8928,6 +8971,24 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
     # Identity Parameter
     ${PrivateCloudInputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Authorization key from the peer express route used for the global reachconnection
+    ${AuthorizationKey},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # The ID of the Private Cloud's ExpressRoute Circuit that is participating in theglobal reach connection
+    ${ExpressRouteId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Identifier of the ExpressRoute Circuit to peer with in the global reachconnection
+    ${PeerExpressRouteCircuit},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -9671,6 +9732,18 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+IDENTITYSOURCE <IIdentitySource[]>: vCenter Single Sign On Identity Sources
+  [Alias <String>]: The domain's NetBIOS name
+  [BaseGroupDn <String>]: The base distinguished name for groups
+  [BaseUserDn <String>]: The base distinguished name for users
+  [Domain <String>]: The domain's dns name
+  [Name <String>]: The name of the identity source
+  [Password <SecureString>]: The password of the Active Directory user with a minimum of read-only access to         Base DN for users and groups.
+  [PrimaryServer <String>]: Primary server URL
+  [SecondaryServer <String>]: Secondary server URL
+  [Ssl <String>]: Protect LDAP communication using SSL certificate (LDAPS)
+  [Username <String>]: The ID of an Active Directory user with a minimum of read-only access to Base         DN for users and group
+
 INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [AddonName <String>]: Name of the addon.
   [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization
@@ -9733,10 +9806,97 @@ param(
     ${InputObject},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Public", "Private")]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # The type of DNS zone to use.
+    ${DnsZoneType},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
     [System.Nullable[System.Boolean]]
     # Decides if enable a system assigned identity for the resource.
     ${EnableSystemAssignedIdentity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Status of customer managed encryption key
+    ${EncryptionStatus},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String[]]
+    # Array of additional networks noncontiguous with networkBlock.
+    # Networks must beunique and non-overlapping across VNet in your subscription, on-premise, andthis privateCloud networkBlock attribute.
+    # Make sure the CIDR format conforms to(A.B.C.D/X).
+    ${ExtendedNetworkBlock},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource[]]
+    # vCenter Single Sign On Identity Sources
+    ${IdentitySource},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Connectivity to internet is enabled or disabled
+    ${Internet},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # The name of the key.
+    ${KeyVaultPropertyKeyName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # The URL of the vault.
+    ${KeyVaultPropertyKeyVaultUrl},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # The version of the key.
+    ${KeyVaultPropertyKeyVersion},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String[]]
+    # The hosts
+    ${ManagementClusterHost},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.Int32]
+    # The cluster size
+    ${ManagementClusterSize},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Name of the vsan datastore associated with the cluster
+    ${ManagementClusterVsanDatastoreName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # The block of addresses should be unique across VNet in your subscription aswell as on-premise.
+    # Make sure the CIDR format is conformed to (A.B.C.D/X) whereA,B,C,D are between 0 and 255, and X is between 0 and 22
+    ${NetworkBlock},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.Security.SecureString]
+    # Optionally, set the NSX-T Manager password when the private cloud is created
+    ${NsxtPassword},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
@@ -9780,6 +9940,12 @@ param(
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.Security.SecureString]
+    # Optionally, set the vCenter admin password when the private cloud is created
+    ${VcenterPassword},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

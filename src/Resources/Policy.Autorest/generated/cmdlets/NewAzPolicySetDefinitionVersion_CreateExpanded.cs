@@ -119,6 +119,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         /// <summary>
         /// The policy set definition metadata. Metadata is an open ended object and is typically a collection of key value pairs.
         /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.ExportAs(typeof(global::System.Collections.Hashtable))]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The policy set definition metadata. Metadata is an open ended object and is typically a collection of key value pairs.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Policy.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
@@ -126,9 +127,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         ReadOnly = false,
         Description = @"The policy set definition metadata. Metadata is an open ended object and is typically a collection of key value pairs.",
         SerializedName = @"metadata",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny) })]
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionPropertiesMetadata) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExport]
-        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny MetadataTable { get => _parametersBody.Metadata ?? null /* object */; set => _parametersBody.Metadata = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionPropertiesMetadata MetadataTable { get => _parametersBody.Metadata ?? null /* object */; set => _parametersBody.Metadata = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -507,7 +508,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
                 // get the client instance
                 if (true == this.MyInvocation?.BoundParameters?.ContainsKey("MetadataTable"))
                 {
-                    MetadataTable = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny)this.MyInvocation.BoundParameters["MetadataTable"];
+                    MetadataTable = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionPropertiesMetadata)this.MyInvocation.BoundParameters["MetadataTable"];
                 }
                 if (true == this.MyInvocation?.BoundParameters?.ContainsKey("ParameterTable"))
                 {

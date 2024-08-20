@@ -174,6 +174,37 @@ param(
     ${PrivateCloudInputObject},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Name of the LUN to be used for datastore
+    ${DiskPoolVolumeLunName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("MOUNT", "ATTACH")]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Mode that describes whether the LUN has to be mounted as a datastore orattached as a LUN
+    ${DiskPoolVolumeMountOption},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Azure resource ID of the iSCSI target
+    ${DiskPoolVolumeTargetId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Azure resource ID of the Elastic SAN Volume
+    ${ElasticSanVolumeTargetId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Azure resource ID of the NetApp volume
+    ${NetAppVolumeId},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]

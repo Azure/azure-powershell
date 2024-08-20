@@ -18,7 +18,7 @@ New-AzMySqlServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <S
  [-SslEnforcement <SslEnforcementEnum>] [-MinimalTlsVersion <MinimalTlsVersionEnum>]
  [-BackupRetentionDay <Int32>] [-GeoRedundantBackup <GeoRedundantBackup>] [-StorageAutogrow <StorageAutogrow>]
  [-StorageInMb <Int32>] [-Tag <Hashtable>] [-Version <ServerVersion>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +28,7 @@ Creates a new server.
 
 ### Example 1: Create a new MySql server
 ```powershell
-$password = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzMySqlServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Location eastus -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku GP_Gen5_4
 ```
 
@@ -189,21 +189,6 @@ Run the command asynchronously.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

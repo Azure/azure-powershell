@@ -175,7 +175,7 @@ function setupEnv() {
             OSType = "Windows"
             Runtime = "DotNet"
             RuntimeVersion = 6
-            Name = "Functions-DoNet-6-" + (RandomString -len 6)
+            Name = "Functions-DotNet-6-" + (RandomString -len 6)
             FunctionsVersion = 4
         },
         @{

@@ -22,7 +22,7 @@ Use '.unassigned' or '.default' for the device group and product names to claim 
 Create a Device.
 Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog only.
 .Example
-New-AzSphereDevice -CatalogName "anotherNewOne" -GroupName ".default" -Name "45ffd2afe82d77b2b70f1daed2054abc64853a27395c6112d9adaf01047bae5a0caa72219f93db02e1a93f2c159ba2090a783077138e7fa542459621e6091e4c" -ProductName ".default" -ResourceGroupName "goyedokun"
+New-AzSphereDevice -CatalogName "anotherNewOne" -GroupName ".default" -Name "45ffd2afe82d77b2b70f1daed2054abc64853a27395c6112d9adaf01047bae5a0caa72219f93db02e1a93f2c159ba2090a783077138e7fa542459621e6091e4c" -ProductName ".default" -ResourceGroupName "testgroup"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IDevice

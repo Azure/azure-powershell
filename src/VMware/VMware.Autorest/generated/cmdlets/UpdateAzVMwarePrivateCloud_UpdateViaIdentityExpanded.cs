@@ -78,9 +78,48 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>The type of DNS zone to use.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of DNS zone to use.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of DNS zone to use.",
+        SerializedName = @"dnsZoneType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Public", "Private")]
+        public string DnsZoneType { get => _privateCloudBody.DnsZoneType ?? null; set => _privateCloudBody.DnsZoneType = value; }
+
         /// <summary>Decides if enable a system assigned identity for the resource.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Decides if enable a system assigned identity for the resource.")]
         public System.Boolean? EnableSystemAssignedIdentity { get; set; }
+
+        /// <summary>Status of customer managed encryption key</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Status of customer managed encryption key")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Status of customer managed encryption key",
+        SerializedName = @"status",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string EncryptionStatus { get => _privateCloudBody.EncryptionStatus ?? null; set => _privateCloudBody.EncryptionStatus = value; }
+
+        /// <summary>
+        /// Array of additional networks noncontiguous with networkBlock. Networks must beunique and non-overlapping across VNet in
+        /// your subscription, on-premise, andthis privateCloud networkBlock attribute. Make sure the CIDR format conforms to(A.B.C.D/X).
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Array of additional networks noncontiguous with networkBlock. Networks must beunique and non-overlapping across VNet in your subscription, on-premise, andthis privateCloud networkBlock attribute. Make sure the CIDR format conforms to(A.B.C.D/X).")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Array of additional networks noncontiguous with networkBlock. Networks must beunique and non-overlapping across VNet in your subscription, on-premise, andthis privateCloud networkBlock attribute. Make sure the CIDR format conforms to(A.B.C.D/X).",
+        SerializedName = @"extendedNetworkBlocks",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] ExtendedNetworkBlock { get => _privateCloudBody.ExtendedNetworkBlock?.ToArray() ?? null /* fixedArrayOf */; set => _privateCloudBody.ExtendedNetworkBlock = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
@@ -97,6 +136,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
+        /// <summary>vCenter Single Sign On Identity Sources</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "vCenter Single Sign On Identity Sources")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"vCenter Single Sign On Identity Sources",
+        SerializedName = @"identitySources",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource[] IdentitySource { get => _privateCloudBody.IdentitySource?.ToArray() ?? null /* fixedArrayOf */; set => _privateCloudBody.IdentitySource = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource>(value) : null); }
+
         /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity _inputObject;
 
@@ -105,8 +156,87 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Path)]
         public Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity InputObject { get => this._inputObject; set => this._inputObject = value; }
 
+        /// <summary>Connectivity to internet is enabled or disabled</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Connectivity to internet is enabled or disabled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Connectivity to internet is enabled or disabled",
+        SerializedName = @"internet",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string Internet { get => _privateCloudBody.Internet ?? null; set => _privateCloudBody.Internet = value; }
+
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
+
+        /// <summary>The name of the key.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the key.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the key.",
+        SerializedName = @"keyName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string KeyVaultPropertyKeyName { get => _privateCloudBody.KeyVaultPropertyKeyName ?? null; set => _privateCloudBody.KeyVaultPropertyKeyName = value; }
+
+        /// <summary>The URL of the vault.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The URL of the vault.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The URL of the vault.",
+        SerializedName = @"keyVaultUrl",
+        PossibleTypes = new [] { typeof(string) })]
+        public string KeyVaultPropertyKeyVaultUrl { get => _privateCloudBody.KeyVaultPropertyKeyVaultUrl ?? null; set => _privateCloudBody.KeyVaultPropertyKeyVaultUrl = value; }
+
+        /// <summary>The version of the key.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The version of the key.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The version of the key.",
+        SerializedName = @"keyVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        public string KeyVaultPropertyKeyVersion { get => _privateCloudBody.KeyVaultPropertyKeyVersion ?? null; set => _privateCloudBody.KeyVaultPropertyKeyVersion = value; }
+
+        /// <summary>The hosts</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The hosts")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The hosts",
+        SerializedName = @"hosts",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] ManagementClusterHost { get => _privateCloudBody.ManagementClusterHost?.ToArray() ?? null /* fixedArrayOf */; set => _privateCloudBody.ManagementClusterHost = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
+
+        /// <summary>The cluster size</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The cluster size")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The cluster size",
+        SerializedName = @"clusterSize",
+        PossibleTypes = new [] { typeof(int) })]
+        public int ManagementClusterSize { get => _privateCloudBody.ManagementClusterSize ?? default(int); set => _privateCloudBody.ManagementClusterSize = value; }
+
+        /// <summary>Name of the vsan datastore associated with the cluster</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of the vsan datastore associated with the cluster")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the vsan datastore associated with the cluster",
+        SerializedName = @"vsanDatastoreName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ManagementClusterVsanDatastoreName { get => _privateCloudBody.ManagementClusterVsanDatastoreName ?? null; set => _privateCloudBody.ManagementClusterVsanDatastoreName = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -117,12 +247,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>
+        /// The block of addresses should be unique across VNet in your subscription aswell as on-premise. Make sure the CIDR format
+        /// is conformed to (A.B.C.D/X) whereA,B,C,D are between 0 and 255, and X is between 0 and 22
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The block of addresses should be unique across VNet in your subscription aswell as on-premise. Make sure the CIDR format is conformed to (A.B.C.D/X) whereA,B,C,D are between 0 and 255, and X is between 0 and 22")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The block of addresses should be unique across VNet in your subscription aswell as on-premise. Make sure the CIDR format is conformed to (A.B.C.D/X) whereA,B,C,D are between 0 and 255, and X is between 0 and 22",
+        SerializedName = @"networkBlock",
+        PossibleTypes = new [] { typeof(string) })]
+        public string NetworkBlock { get => _privateCloudBody.NetworkBlock ?? null; set => _privateCloudBody.NetworkBlock = value; }
+
+        /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
         /// asynchronously.
         /// </summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command asynchronously")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
+
+        /// <summary>Optionally, set the NSX-T Manager password when the private cloud is created</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Optionally, set the NSX-T Manager password when the private cloud is created")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Optionally, set the NSX-T Manager password when the private cloud is created",
+        SerializedName = @"nsxtPassword",
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString NsxtPassword { get => _privateCloudBody.NsxtPassword ?? null; set => _privateCloudBody.NsxtPassword = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.HttpPipeline" /> that the remote call will use.
@@ -222,6 +377,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceTags) })]
         public Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceTags Tag { get => _privateCloudBody.Tag ?? null /* object */; set => _privateCloudBody.Tag = value; }
+
+        /// <summary>Optionally, set the vCenter admin password when the private cloud is created</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Optionally, set the vCenter admin password when the private cloud is created")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Optionally, set the vCenter admin password when the private cloud is created",
+        SerializedName = @"vcenterPassword",
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString VcenterPassword { get => _privateCloudBody.VcenterPassword ?? null; set => _privateCloudBody.VcenterPassword = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -605,6 +771,62 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("SkuCapacity")))
             {
                 this.SkuCapacity = (int)(this.MyInvocation?.BoundParameters["SkuCapacity"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Internet")))
+            {
+                this.Internet = (string)(this.MyInvocation?.BoundParameters["Internet"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("IdentitySource")))
+            {
+                this.IdentitySource = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource[])(this.MyInvocation?.BoundParameters["IdentitySource"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ExtendedNetworkBlock")))
+            {
+                this.ExtendedNetworkBlock = (string[])(this.MyInvocation?.BoundParameters["ExtendedNetworkBlock"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("NetworkBlock")))
+            {
+                this.NetworkBlock = (string)(this.MyInvocation?.BoundParameters["NetworkBlock"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("VcenterPassword")))
+            {
+                this.VcenterPassword = (System.Security.SecureString)(this.MyInvocation?.BoundParameters["VcenterPassword"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("NsxtPassword")))
+            {
+                this.NsxtPassword = (System.Security.SecureString)(this.MyInvocation?.BoundParameters["NsxtPassword"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DnsZoneType")))
+            {
+                this.DnsZoneType = (string)(this.MyInvocation?.BoundParameters["DnsZoneType"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ManagementClusterHost")))
+            {
+                this.ManagementClusterHost = (string[])(this.MyInvocation?.BoundParameters["ManagementClusterHost"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ManagementClusterSize")))
+            {
+                this.ManagementClusterSize = (int)(this.MyInvocation?.BoundParameters["ManagementClusterSize"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ManagementClusterVsanDatastoreName")))
+            {
+                this.ManagementClusterVsanDatastoreName = (string)(this.MyInvocation?.BoundParameters["ManagementClusterVsanDatastoreName"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("EncryptionStatus")))
+            {
+                this.EncryptionStatus = (string)(this.MyInvocation?.BoundParameters["EncryptionStatus"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("KeyVaultPropertyKeyName")))
+            {
+                this.KeyVaultPropertyKeyName = (string)(this.MyInvocation?.BoundParameters["KeyVaultPropertyKeyName"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("KeyVaultPropertyKeyVersion")))
+            {
+                this.KeyVaultPropertyKeyVersion = (string)(this.MyInvocation?.BoundParameters["KeyVaultPropertyKeyVersion"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("KeyVaultPropertyKeyVaultUrl")))
+            {
+                this.KeyVaultPropertyKeyVaultUrl = (string)(this.MyInvocation?.BoundParameters["KeyVaultPropertyKeyVaultUrl"]);
             }
         }
 

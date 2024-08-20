@@ -38,7 +38,7 @@ Retrieves cert chain.
 
 ### Example 1: Get a certificate cert chain
 ```powershell
-Get-AzSphereCertificateCertChain -CatalogName test2024 -ResourceGroupName joyer-test -SerialNumber 'serial number'
+Get-AzSphereCertificateCertChain -CatalogName test2024 -ResourceGroupName group-test -SerialNumber 'serial number'
 ```
 
 ```output

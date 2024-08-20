@@ -899,5 +899,17 @@
   {
     "module": "AppComplianceAutomation",
     "alias": "AppComplianceAutomation"
+  },
+  {
+    "module": "Informatica",
+    "alias": "Informatica"
+  },
+  {
+    "module": "Oracle",
+    "alias": "Oracle"
+  },
+  {
+    "alias": "Astro",
+    "module": "Astro"
   }
 ]

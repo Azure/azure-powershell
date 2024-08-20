@@ -31,13 +31,13 @@ Get-AzManagementGroupEntity
 Id          : /providers/Microsoft.Management/managementGroups/TestGroup
 Type        : Microsoft.Management/managementGroups
 Name        : TestGroup
-TenantId    : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+TenantId    : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName : TestGroupDisplayName
 
 Id          : /providers/Microsoft.Management/managementGroups/TestGroupChild
 Type        : /providers/Microsoft.Management/managementGroups
 Name        : TestGroupChild
-TenantId    : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+TenantId    : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName : TestGroupChildDisplayName
 ```
 

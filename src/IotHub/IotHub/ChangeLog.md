@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed secrets exposure in example documentation.
 
 ## Version 2.7.6
 * Removed the outdated deps.json file.

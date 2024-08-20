@@ -31,11 +31,11 @@ New-AzNotificationHubsNamespaceKey -ResourceGroup "ContosoNotificationsGroup" -N
 
 ```Output
 PrimaryConnectionString   : Endpoint=sb://contosonamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAc
-                            cessKey;SharedAccessKey=VUhKcGJXRnllVU52Ym01bFkzUnBiMjVUZEhKcGJtYz0=
+                            cessKey;SharedAccessKey=V******z0=
 SecondaryConnectionString : Endpoint=sb://contosonamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAc
-                            cessKey;SharedAccessKey=VTJWamIyNWtZWEo1UTI5dWJtVmpkR2x2YmxOMGNtbHV=
-PrimaryKey                : VUhKcGJXRnllVU52Ym01bFkzUnBiMjVUZEhKcGJtYz0=
-SecondaryKey              : VTJWamIyNWtZWEo1UTI5dWJtVmpkR2x2YmxOMGNtbHV=
+                            cessKey;SharedAccessKey=V******HV=
+PrimaryKey                : V******z0=
+SecondaryKey              : V******HV=
 KeyName                   : RootManageSharedAccessKey
 ```
 

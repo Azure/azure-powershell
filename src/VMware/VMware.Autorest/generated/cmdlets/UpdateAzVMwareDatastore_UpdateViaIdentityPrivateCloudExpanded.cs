@@ -92,6 +92,53 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>Name of the LUN to be used for datastore</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of the LUN to be used for datastore")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the LUN to be used for datastore",
+        SerializedName = @"lunName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string DiskPoolVolumeLunName { get => _datastoreBody.DiskPoolVolumeLunName ?? null; set => _datastoreBody.DiskPoolVolumeLunName = value; }
+
+        /// <summary>
+        /// Mode that describes whether the LUN has to be mounted as a datastore orattached as a LUN
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Mode that describes whether the LUN has to be mounted as a datastore orattached as a LUN")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Mode that describes whether the LUN has to be mounted as a datastore orattached as a LUN",
+        SerializedName = @"mountOption",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("MOUNT", "ATTACH")]
+        public string DiskPoolVolumeMountOption { get => _datastoreBody.DiskPoolVolumeMountOption ?? null; set => _datastoreBody.DiskPoolVolumeMountOption = value; }
+
+        /// <summary>Azure resource ID of the iSCSI target</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Azure resource ID of the iSCSI target")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Azure resource ID of the iSCSI target",
+        SerializedName = @"targetId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string DiskPoolVolumeTargetId { get => _datastoreBody.DiskPoolVolumeTargetId ?? null; set => _datastoreBody.DiskPoolVolumeTargetId = value; }
+
+        /// <summary>Azure resource ID of the Elastic SAN Volume</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Azure resource ID of the Elastic SAN Volume")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Azure resource ID of the Elastic SAN Volume",
+        SerializedName = @"targetId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ElasticSanVolumeTargetId { get => _datastoreBody.ElasticSanVolumeTargetId ?? null; set => _datastoreBody.ElasticSanVolumeTargetId = value; }
+
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
@@ -132,6 +179,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         [global::System.Management.Automation.Alias("DatastoreName")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Path)]
         public string Name { get => this._name; set => this._name = value; }
+
+        /// <summary>Azure resource ID of the NetApp volume</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Azure resource ID of the NetApp volume")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Azure resource ID of the NetApp volume",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        public string NetAppVolumeId { get => _datastoreBody.NetAppVolumeId ?? null; set => _datastoreBody.NetAppVolumeId = value; }
 
         /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
@@ -510,7 +568,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
 
         private void Update_datastoreBody()
         {
-
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("NetAppVolumeId")))
+            {
+                this.NetAppVolumeId = (string)(this.MyInvocation?.BoundParameters["NetAppVolumeId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DiskPoolVolumeTargetId")))
+            {
+                this.DiskPoolVolumeTargetId = (string)(this.MyInvocation?.BoundParameters["DiskPoolVolumeTargetId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DiskPoolVolumeLunName")))
+            {
+                this.DiskPoolVolumeLunName = (string)(this.MyInvocation?.BoundParameters["DiskPoolVolumeLunName"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ElasticSanVolumeTargetId")))
+            {
+                this.ElasticSanVolumeTargetId = (string)(this.MyInvocation?.BoundParameters["ElasticSanVolumeTargetId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DiskPoolVolumeMountOption")))
+            {
+                this.DiskPoolVolumeMountOption = (string)(this.MyInvocation?.BoundParameters["DiskPoolVolumeMountOption"]);
+            }
         }
 
         /// <param name="sendToPipeline"></param>

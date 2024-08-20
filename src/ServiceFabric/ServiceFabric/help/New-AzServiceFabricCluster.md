@@ -59,7 +59,7 @@ The four options are detailed below. Scroll down for explanations of each of the
 ### Example 1: Specify only the cluster size, the cert subject name, and the OS to deploy a cluster
 
 ```powershell
-$password = "Password#1234" | ConvertTo-SecureString -AsPlainText -Force
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $resourceGroupName = "quickstart-sf-group"
 $azureRegion = "southcentralus"
 $clusterDnsName = "{0}.{1}.cloudapp.azure.com" -f $resourceGroupName, $azureRegion
@@ -88,7 +88,7 @@ This command specifies an existing Certificate resource in a key vault and a cus
 ### Example 3: Create a new cluster using a custom template. Specify a different resource group name for the key vault and have the system upload a new certificate to it
 
 ```powershell
-$password = "Password#1234" | ConvertTo-SecureString -AsPlainText -Force
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $resourceGroupName = "quickstart-sf-group"
 $keyVaultResourceGroupName = " quickstart-kv-group"
 $keyVaultName = "quickstart-kv"
@@ -106,7 +106,7 @@ This command creates a new cluster using a custom template. Specify a different 
 ### Example 4: Bring your own Certificate and custom template and create a new cluster
 
 ```powershell
-$password = "Password#1234" | ConvertTo-SecureString -AsPlainText -Force
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $resourceGroupName = "test20"
 $keyVaultResourceGroupName = "test20kvrg"
 $keyVaultName = "test20kv"

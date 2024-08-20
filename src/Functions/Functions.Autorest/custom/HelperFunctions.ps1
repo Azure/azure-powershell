@@ -40,6 +40,7 @@ $constants["ReservedFunctionAppSettingNames"] = @(
 )
 $constants["SetDefaultValueParameterWarningMessage"] = "This default value is subject to change over time. Please set this value explicitly to ensure the behavior is not accidentally impacted by future changes."
 $constants["DEBUG_PREFIX"] = '[Stacks API] - '
+$constants["DefaultCentauriImage"] = 'mcr.microsoft.com/azure-functions/dotnet8-quickstart-demo:1.0'
 
 foreach ($variableName in $constants.Keys)
 {
@@ -53,6 +54,7 @@ foreach ($variableName in $constants.Keys)
 $RuntimeToVersionLinux = @{}
 $RuntimeToVersionWindows = @{}
 $AllRuntimeVersions = @{}
+$global:StacksAndTabCompletersInitialized = $false
 $AllFunctionsExtensionVersions = New-Object System.Collections.Generic.List[[String]]
 
 function GetConnectionString
@@ -183,7 +185,7 @@ function NewAppSetting
         $Value
     )
 
-    $setting = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.NameValuePair
+    $setting = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.NameValuePair
     $setting.Name = $Name
     $setting.Value = $Value
 
@@ -429,7 +431,11 @@ function GetRuntime
         [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
         [Object]
-        $Settings
+        $Settings,
+
+        [Parameter(Mandatory=$false)]
+        [String]
+        $AppKind
     )
 
     $appSettings = ConvertWebAppApplicationSettingToHashtable -ApplicationSetting $Settings -ShowAllAppSettings
@@ -442,7 +448,14 @@ function GetRuntime
     }
     elseif ($appSettings.ContainsKey("DOCKER_CUSTOM_IMAGE_NAME"))
     {
-        $runtime = "Custom Image"
+        if ($AppKind -match "azurecontainerapps")
+        {
+            $runtime = "Container App"
+        }
+        else
+        {
+            $runtime = "Custom Image"
+        }
     }
 
     return $runtime
@@ -468,8 +481,19 @@ function AddFunctionAppSettings
         $PSBoundParameters.Remove("App") | Out-Null
     }
 
-    $App.AppServicePlan = ($App.ServerFarmId -split "/")[-1]
-    $App.OSType = if ($App.kind.ToLower().Contains("linux")){ "Linux" } else { "Windows" }
+    if ($App.kind.ToString() -match "azurecontainerapps")
+    {
+        if ($App.ManagedEnvironmentId)
+        {
+            $App.AppServicePlan = ($App.ManagedEnvironmentId -split "/")[-1]
+        }
+    }
+    else
+    {
+        $App.AppServicePlan = ($App.ServerFarmId -split "/")[-1]
+    }
+
+    $App.OSType = if ($App.kind.ToString() -match "linux"){ "Linux" } else { "Windows" }
 
     if ($App.Type -eq "Microsoft.Web/sites/slots")
     {
@@ -517,7 +541,7 @@ function AddFunctionAppSettings
 
     # Add application settings and runtime
     $App.ApplicationSettings = ConvertWebAppApplicationSettingToHashtable -ApplicationSetting $settings -RedactAppSettings
-    $App.Runtime = GetRuntime -Settings $settings
+    $App.Runtime = GetRuntime -Settings $settings -AppKind $App.kind
 
     # Get the app site config
     $config = GetAzWebAppConfig -Name $App.Name -ResourceGroupName $App.ResourceGroup @PSBoundParameters
@@ -581,7 +605,7 @@ function GetFunctionApps
         $status = "Complete: $($index + 1)/$($Apps.Count) function apps processed."
         Write-Progress -Activity "Getting function apps" -Status $status -PercentComplete $percentageCompleted
         
-        if ($app.kind.ToLower().Contains("functionapp"))
+        if ($app.kind -match "functionapp")
         {
             if ($Location)
             {
@@ -1291,7 +1315,7 @@ function NewResourceTag
         $Tag
     )
 
-    $resourceTag = [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ResourceTags]::new()
+    $resourceTag = [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ResourceTags]::new()
 
     foreach ($tagName in $Tag.Keys)
     {
@@ -1411,14 +1435,14 @@ function NewAppSettingObject
     )
 
     # Create StringDictionaryProperties (hash table) with the app settings
-    $properties = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.StringDictionaryProperties
+    $properties = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.StringDictionaryProperties
 
     foreach ($keyName in $currentAppSettings.Keys)
     {
         $properties.Add($keyName, $currentAppSettings[$keyName])
     }
 
-    $appSettings = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.StringDictionary
+    $appSettings = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.StringDictionary
     $appSettings.Property = $properties
 
     return $appSettings
@@ -1585,12 +1609,12 @@ function NewIdentityUserAssignedIdentity
     )
 
     # If creating user assigned identities, only alphanumeric characters (0-9, a-z, A-Z), the underscore (_) and the hyphen (-) are supported.
-    $msiUserAssignedIdentities = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ManagedServiceIdentityUserAssignedIdentities
+    $msiUserAssignedIdentities = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ManagedServiceIdentityUserAssignedIdentities
 
     foreach ($id in $IdentityID)
     {
-        $functionAppUserAssignedIdentitiesValue = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.Components1Jq1T4ISchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties
-        $msiUserAssignedIdentities.Add($IdentityID, $functionAppUserAssignedIdentitiesValue)
+        $functionAppUserAssignedIdentitiesValue = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ManagedServiceIdentityUserAssignedIdentities
+        $msiUserAssignedIdentities.Add($id, $functionAppUserAssignedIdentitiesValue)
     }
 
     return $msiUserAssignedIdentities
@@ -2183,52 +2207,182 @@ function RegisterFunctionsTabCompleters
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param ()
 
-    if ($env:FunctionsTabCompletersRegistered)
+    if (-not $global:StacksAndTabCompletersInitialized)
+    {
+        SetLinuxandWindowsSupportedRuntimes
+
+        # New-AzFunction app ArgumentCompleter for the RuntimeVersion parameter
+        # The values of RuntimeVersion depend on the selection of the Runtime parameter
+        $GetRuntimeVersionCompleter = {
+
+            param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
+
+            if ($fakeBoundParameters.ContainsKey('Runtime'))
+            {
+                # RuntimeVersions is defined in SetLinuxandWindowsSupportedRuntimes
+                $AllRuntimeVersions[$fakeBoundParameters.Runtime] | Where-Object {
+                    $_ -like "$wordToComplete*"
+                } | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }
+            }
+        }
+
+        # New-AzFunction app ArgumentCompleter for the Runtime parameter
+        $GetAllRuntimesCompleter = {
+
+            param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
+
+            $runtimeValues = $AllRuntimeVersions.Keys | Sort-Object | ForEach-Object { $_ }
+
+            $runtimeValues | Where-Object { $_ -like "$wordToComplete*" }
+        }
+
+        # New-AzFunction app ArgumentCompleter for the Runtime parameter
+        $GetAllFunctionsVersionsCompleter = {
+
+            param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
+
+            $functionsVersions = $AllFunctionsExtensionVersions | Sort-Object | ForEach-Object { $_ }
+
+            $functionsVersions | Where-Object { $_ -like "$wordToComplete*" }
+        }
+
+        # Register tab completers
+        Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName FunctionsVersion -ScriptBlock $GetAllFunctionsVersionsCompleter
+        Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName Runtime -ScriptBlock $GetAllRuntimesCompleter
+        Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName RuntimeVersion -ScriptBlock $GetRuntimeVersionCompleter
+
+        $global:StacksAndTabCompletersInitialized = $true
+    }
+}
+
+function ValidateCpuAndMemory
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Parameter(Mandatory=$false)]
+        [Double]
+        $ResourceCpu,
+
+        [Parameter(Mandatory=$false)]
+        [System.String]
+        $ResourceMemory
+    )
+
+    if (-not $ResourceCpu -and -not $ResourceMemory)
     {
         return
     }
 
-    SetLinuxandWindowsSupportedRuntimes
+    if ($ResourceCpu -and -not $ResourceMemory)
+    {
+        $errorMessage = "ResourceMemory must be specified when ResourceCpu is specified."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "ResourceMemoryNotSpecified" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
 
-    # New-AzFunction app ArgumentCompleter for the RuntimeVersion parameter
-    # The values of RuntimeVersion depend on the selection of the Runtime parameter
-    $GetRuntimeVersionCompleter = {
+    if ($ResourceMemory -and -not $ResourceCpu)
+    {
+        $errorMessage = "ResourceCpu must be specified when ResourceMemory is specified."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "ResourceCpuNotSpecified" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
 
-        param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
-
-        if ($fakeBoundParameters.ContainsKey('Runtime'))
+    try
+    {
+        if (-not $ResourceMemory.ToLower().EndsWith("gi"))
         {
-            # RuntimeVersions is defined in SetLinuxandWindowsSupportedRuntimes
-            $AllRuntimeVersions[$fakeBoundParameters.Runtime] | Where-Object {
-                $_ -like "$wordToComplete*"
-            } | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }
+            throw
         }
+
+        # Attempt to parse the numerical part of ResourceMemory to ensure it's a valid format.
+        [double]::Parse($ResourceMemory.Substring(0, $ResourceMemory.Length - 2)) | Out-Null
+    }
+    catch
+    {
+        $errorMessage = "ResourceMemory must be specified in Gi. Please provide a correct value. e.g., 4.0Gi."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "InvalidResourceMemory" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+}
+
+function FormatFxVersion
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Image
+    )
+
+    $fxVersion = $Image
+
+    # Normalize case and remove HTTP(s) prefixes if present.
+    $normalizedImage = $Image -replace '^(https?://)', '' -replace ' ', ''
+
+    # Prepend "DOCKER|" if not already prefixed with "docker|" (case-insensitive).
+    if (-not $normalizedImage.StartsWith('docker|', [StringComparison]::OrdinalIgnoreCase))
+    {
+        $fxVersion = "DOCKER|$Image"
     }
 
-    # New-AzFunction app ArgumentCompleter for the Runtime parameter
-    $GetAllRuntimesCompleter = {
+    return $fxVersion
+}
 
-        param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
+function GetManagedEnvironment
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [String]
+        $Environment,
 
-        $runtimeValues = $AllRuntimeVersions.Keys | Sort-Object | ForEach-Object { $_ }
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [String]
+        $ResourceGroupName
+    )
 
-        $runtimeValues | Where-Object { $_ -like "$wordToComplete*" }
+    $azAppModuleName = "Az.App"
+    if (-not (Get-Module -ListAvailable -Name $azAppModuleName))
+    {
+        $errorMessage = "The '$azAppModuleName' module is required when creating Function Apps ACA. Please install the module and try again."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "RequiredModuleNotAvailable" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
     }
 
-    # New-AzFunction app ArgumentCompleter for the Runtime parameter
-    $GetAllFunctionsVersionsCompleter = {
+    Import-Module -Name $azAppModuleName -Force -ErrorAction Stop
 
-        param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
+    $managedEnv = Get-AzContainerAppManagedEnv -Name $Environment `
+                                               -ResourceGroupName $ResourceGroupName `
+                                               -ErrorAction SilentlyContinue
 
-        $functionsVersions = $AllFunctionsExtensionVersions | Sort-Object | ForEach-Object { $_ }
-
-        $functionsVersions | Where-Object { $_ -like "$wordToComplete*" }
+    if (-not $managedEnv)
+    {
+        $errorMessage = "Failed to get the managed environment '$Environment' in resource group name '$ResourceGroupName'."
+        $errorMessage += " Please make sure the managed environment is valid."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "FailedToGetEnvironment" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
     }
 
-    # Register tab completers
-    Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName FunctionsVersion -ScriptBlock $GetAllFunctionsVersionsCompleter
-    Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName Runtime -ScriptBlock $GetAllRuntimesCompleter
-    Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName RuntimeVersion -ScriptBlock $GetRuntimeVersionCompleter
-
-    $env:FunctionsTabCompletersRegistered = $true
+    return $managedEnv
 }

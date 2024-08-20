@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV1.dll-Help.xml
 Module Name: Az.DataFactory
 ms.assetid: C102232A-C9C8-4CEE-8535-7C7A70057B06
 online version: https://learn.microsoft.com/powershell/module/az.datafactory/get-azdatafactoryslice

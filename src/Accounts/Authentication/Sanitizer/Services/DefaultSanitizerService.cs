@@ -20,9 +20,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services
 {
     internal class DefaultSanitizerService : ISanitizerService
     {
-        private SecretMasker _secretMasker = new SecretMasker(WellKnownRegexPatterns.HighConfidenceMicrosoftSecurityModels, true);
-
-        public Dictionary<string, IEnumerable<string>> IgnoredProperties => new Dictionary<string, IEnumerable<string>>()
+        public IReadOnlyDictionary<string, IEnumerable<string>> IgnoredProperties => new Dictionary<string, IEnumerable<string>>()
         {
             /*
              * This dictionary is used to store the properties that should be ignored during sanitization.
@@ -38,12 +36,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services
             { "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageFileShare", new[] { "ShareProperties" } },
             { "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageFileDirectory", new[] { "ShareDirectoryProperties" } },
 
-            // Skip infinite recursion properties that cause performance concern
+            // Skip large properties
+            { "Microsoft.Azure.Storage.Blob.CloudBlob", new[] { "ICloudBlob" } },
+            { "Microsoft.Azure.Storage.File.CloudFile", new[] { "CloudFile" } },
 
-            // Storage
+            // Skip infinite recursion properties
             { "Microsoft.Azure.Storage.Blob.CloudBlobDirectory", new[] { "Parent" } },
             { "Microsoft.Azure.Storage.File.CloudFileDirectory", new[] { "Parent" } },
         };
+
+        private SecretMasker _secretMaster = new SecretMasker(WellKnownRegexPatterns.HighConfidenceMicrosoftSecurityModels, generateCorrelatingIds: true);
 
         public bool TrySanitizeData(string data, out string sanitizedData)
         {
@@ -51,7 +53,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services
 
             if (!string.IsNullOrWhiteSpace(data))
             {
-                var detections = _secretMasker.DetectSecrets(data);
+                var detections = _secretMaster.DetectSecrets(data);
                 return detections.Any();
             }
 

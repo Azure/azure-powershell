@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 1.8.1
+* Fixed Access Connector Resource update for `Update-AzDatabricksWorkspace`
+
+## Version 1.8.0
+* Updated the Az Databricks cmdlets to 2024-05-01 api version.
+
 ## Version 1.7.2
 * Introduced secrets detection feature to safeguard sensitive data.
 

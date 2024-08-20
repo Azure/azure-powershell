@@ -135,6 +135,62 @@ function Test-NewResourceGroupDeploymentStack
 
 <#
 .SYNOPSIS
+Tests Test (validate) operation on deployment stacks at the RG scope.
+#>
+function Test-TestResourceGroupDeploymentStack
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = "West US 2"
+
+	try 
+	{
+		# TODO Testing: URI parameter types for templates and template parameters, bad template content, more with parameter object validation...
+
+		# Prepare
+		New-AzResourceGroup -Name $rgname -Location $rglocation
+		
+		# --- ParameterlessTemplateFileParameterSetName ---
+
+		# Test - Success
+		Assert-True { Test-AzResourceGroupDeploymentStack -Name $rname -Description "A Stack" -ResourceGroup $rgname -TemplateFile blankTemplate.json -DenySettingsMode None -ActionOnUnmanage DetachAll -Force -PassThru }
+
+		# Test - Failure - template file not found
+		$missingFile = "missingFile142.json"
+		$exceptionMessage = "$missingFile' because it does not exist."
+		Assert-ThrowsContains { Test-AzResourceGroupDeploymentStack -Name $rname -Description "A Stack" -ResourceGroup $rgname -TemplateFile $missingFile -DenySettingsMode None -ActionOnUnmanage DetachAll -Force } $exceptionMessage
+
+		# Test - Failure - RG does not exist
+		$badRGname = "badRG114172"
+		$exceptionMessage = "Error: Code=ResourceGroupNotFound; Message=Resource group '$badRGname' could not be found"
+		Assert-ThrowsContains { Test-AzResourceGroupDeploymentStack -Name $rname -Description "A Stack" -ResourceGroup $badRGname -TemplateFile blankTemplate.json -DenySettingsMode None -ActionOnUnmanage DetachAll -Force } $exceptionMessage
+
+		# --- ParameterFileTemplateFileParameterSetName ---
+
+		# Test - Success
+		Assert-True { Test-AzResourceGroupDeploymentStack -Name $rname -Description "A Stack" -ResourceGroup $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -DenySettingsMode None -ActionOnUnmanage DetachAll -Force -PassThru }
+
+		# Test - Failure - template parameter file not found
+		$missingFile = "missingFile145.json"
+		$exceptionMessage = "$missingFile' because it does not exist."
+		Assert-ThrowsContains { Test-AzResourceGroupDeploymentStack -Name $rname -Description "A Stack" -ResourceGroup $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile $missingFile -DenySettingsMode None -Force } $exceptionMessage
+
+		# --- ParameterObjectTemplateFileParameterSetName ---
+
+		# Test - Success (with BypassStackOutOfSyncError)
+		Assert-True { Test-AzResourceGroupDeploymentStack -Name $rname -Description "A Stack" -ResourceGroup $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterObject @{templateSpecName = "StacksScenarioTestSpec"} -DenySettingsMode None -ActionOnUnmanage DetachAll -BypassStackOutOfSyncError -Force -PassThru }
+	}
+
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests New operation on deployment stacks at the RG scope.
 #>
 function Test-NewAndSetResourceGroupDeploymentStackWithTags
@@ -718,6 +774,56 @@ function Test-NewSubscriptionDeploymentStack
 
 <#
 .SYNOPSIS
+Tests Test (validate) operation on deployment stacks at the SUB scope.
+#>
+function Test-TestSubscriptionDeploymentStack
+{
+	# Setup
+	$rname = Get-ResourceName
+	$location = "West US 2"
+
+	try 
+	{
+		# TODO Testing: URI parameter types for templates and template parameters, bad template content, more with parameter object validation...
+		
+		# --- ParameterlessTemplateFileParameterSetName ---
+
+		# Test - Success
+		Assert-True { Test-AzSubscriptionDeploymentStack -Name $rname -Description "A Stack" -TemplateFile blankTemplate.json -Location $location -DenySettingsMode None -ActionOnUnmanage DetachAll -Force -PassThru }
+
+		# Test - Failure - template file not found
+		$missingFile = "missingFile142.json"
+		$exceptionMessage = "$missingFile' because it does not exist."
+		Assert-ThrowsContains { Test-AzSubscriptionDeploymentStack -Name $rname -Description "A Stack" -TemplateFile $missingFile  -Location $location -DenySettingsMode None -ActionOnUnmanage DetachAll -Force } $exceptionMessage
+
+		# --- ParameterFileTemplateFileParameterSetName ---
+
+		# Test - Success
+		Assert-True { Test-AzSubscriptionDeploymentStack -Name $rname -Description "A Stack" -TemplateFile StacksSubTemplate.json -TemplateParameterFile StacksSubTemplateParams.json -Location $location -DenySettingsMode None -ActionOnUnmanage DetachAll -Force -PassThru }
+
+
+		# Test - Failure - template parameter file not found
+		$missingFile = "missingFile145.json"
+		$exceptionMessage = "$missingFile' because it does not exist."
+		Assert-ThrowsContains { Test-AzSubscriptionDeploymentStack -Name $rname -Description "A Stack" -TemplateFile StacksSubTemplate.json -TemplateParameterFile $missingFile -Location $location -DenySettingsMode None -ActionOnUnmanage DetachAll -Force } $exceptionMessage
+
+		$exceptionMessage = "The provided resource group name 'test23!!!' has these invalid characters"
+		Assert-ThrowsContains { Test-AzSubscriptionDeploymentStack -Name $rname -Description "A Stack" -Location $location -TemplateFile StacksSubBadRGName.bicep -TemplateParameterFile StacksSubBadRGName.bicepparam -DenySettingsMode None -ActionOnUnmanage DetachAll -Force } $exceptionMessage
+
+		# --- ParameterObjectTemplateFileParameterSetName (with BypassStackOutOfSyncError) ---
+
+		# Test - Success
+		Assert-True { Test-AzSubscriptionDeploymentStack -Name $rname -Description "A Stack" -TemplateFile StacksSubTemplate.json -TemplateParameterObject @{policyDefinitionName = "PSCmdletTestPolicy4762"} -Location $location -DenySettingsMode None -ActionOnUnmanage DetachAll -BypassStackOutOfSyncError -Force -PassThru }
+	}
+
+	finally
+    {
+        # No Cleanup Required.
+    }
+}
+
+<#
+.SYNOPSIS
 Tests NEW operation on deployment stacks at the SUB scope.
 #>
 function Test-NewAndSetSubscriptionDeploymentStackWithTags
@@ -1195,7 +1301,7 @@ function Test-SaveAndRemoveSubscriptionDeploymentStackWithPipeOperator
 
 <#
 .SYNOPSIS
-Tests New operation on deployment stacks at the RG scope.
+Tests New operation on deployment stacks at the MG scope.
 #>
 function Test-NewManagementGroupDeploymentStack
 {
@@ -1240,6 +1346,53 @@ function Test-NewManagementGroupDeploymentStack
     {
 		# Cleanup
 		Remove-AzManagementGroupDeploymentStack $mgid $rname -ActionOnUnmanage DeleteAll -Force
+        
+    }
+}
+
+<#
+.SYNOPSIS
+Tests Test (validate) operation on deployment stacks at the MG scope.
+#>
+function Test-TestManagementGroupDeploymentStack
+{
+	# Setup
+	$mgid = "AzBlueprintAssignTest"
+	$rname = Get-ResourceName
+	$subId = (Get-AzContext).Subscription.SubscriptionId
+	$location = "West US 2"
+
+	try 
+	{
+		# TODO Testing: URI parameter types for templates and template parameters, bad template content, more with parameter object validation...
+		
+		# --- ParameterlessTemplateFileParameterSetName ---
+
+		# Test - Success - blank template
+		Assert-True { Test-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroupId $mgid -DeploymentSubscriptionId $subId -TemplateFile blankTemplate.json -Location $location -DenySettingsMode None -ActionOnUnmanage DetachAll -Force -PassThru }
+
+		# Test - Success - MG scoped deployment
+		Assert-True { Test-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroupId $mgid -TemplateFile StacksMGTemplateMGDeployment.json -Location $location -DenySettingsMode None -ActionOnUnmanage DetachAll -Force -PassThru }
+
+		# Test - Failure - template file not found
+		$missingFile = "missingFile142.json"
+		$exceptionMessage = "$missingFile' because it does not exist."
+		Assert-ThrowsContains { Test-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroupId $mgid  -DeploymentSubscriptionId $subId -TemplateFile $missingFile -Location $location -DenySettingsMode None -ActionOnUnmanage DetachAll -Force } $exceptionMessage
+
+		# --- ParameterFileTemplateFileParameterSetName ---
+
+		# Test - Success (with BypassStackOutOfSyncError)
+		Assert-True { Test-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroupId $mgid  -DeploymentSubscriptionId $subId -TemplateFile StacksMGTemplate.json -TemplateParameterFile StacksMGTemplateParams.json -Location $location -DenySettingsMode None -BypassStackOutOfSyncError -ActionOnUnmanage DetachAll -Force -PassThru }
+
+		# Test - Failure - template parameter file not found
+		$missingFile = "missingFile145.json"
+		$exceptionMessage = "$missingFile' because it does not exist."
+		Assert-ThrowsContains { Test-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroupId $mgid  -DeploymentSubscriptionId $subId -TemplateFile StacksMGTemplate.json -TemplateParameterFile $missingFile -Location $location -DenySettingsMode None -ActionOnUnmanage DetachAll -Force } $exceptionMessage
+	}
+
+	finally
+    {
+		# No Cleanup Required.
         
     }
 }

@@ -22,14 +22,14 @@ The **Get-AzFirewallFqdnTag** cmdlet gets the list of FQDN Tags which can be use
 
 ## EXAMPLES
 
-### 1:  Retrieve all available FQDN Tags
+### Example 1:  Retrieve all available FQDN Tags
 ```powershell
 Get-AzFirewallFqdnTag
 ```
 
 This example retrieves all available FQDN Tags.
 
-### 2:  Use first available FQDN Tag in an Application Rule
+### Example 2:  Use first available FQDN Tag in an Application Rule
 ```powershell
 $fqdnTags = Get-AzFirewallFqdnTag
 New-AzFirewallApplicationRule -Name AR -SourceAddress * -FqdnTag $fqdnTags[0].FqdnTagName

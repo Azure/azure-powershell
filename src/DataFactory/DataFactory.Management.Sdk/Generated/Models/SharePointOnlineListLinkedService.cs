@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// be used to connect with related store or compute resource.
         /// </param>
 
+        /// <param name="version">Version of the linked service.
+        /// </param>
+
         /// <param name="connectVia">The integration runtime reference.
         /// </param>
 
@@ -61,17 +64,36 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Type: string (or Expression with resultType string).
         /// </param>
 
+        /// <param name="servicePrincipalCredentialType">The service principal credential type to use in Server-To-Server
+        /// authentication. &#39;ServicePrincipalKey&#39; for key/secret,
+        /// &#39;ServicePrincipalCert&#39; for certificate. Type: string (or Expression with
+        /// resultType string).
+        /// </param>
+
+        /// <param name="servicePrincipalEmbeddedCert">Specify the base64 encoded certificate of your application registered in
+        /// Azure Active Directory. Type: string (or Expression with resultType
+        /// string).
+        /// </param>
+
+        /// <param name="servicePrincipalEmbeddedCertPassword">Specify the password of your certificate if your certificate has a password
+        /// and you are using AadServicePrincipal authentication. Type: string (or
+        /// Expression with resultType string).
+        /// </param>
+
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public SharePointOnlineListLinkedService(object siteUrl, object tenantId, object servicePrincipalId, SecretBase servicePrincipalKey, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), string encryptedCredential = default(string))
+        public SharePointOnlineListLinkedService(object siteUrl, object tenantId, object servicePrincipalId, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), SecretBase servicePrincipalKey = default(SecretBase), object servicePrincipalCredentialType = default(object), SecretBase servicePrincipalEmbeddedCert = default(SecretBase), SecretBase servicePrincipalEmbeddedCertPassword = default(SecretBase), string encryptedCredential = default(string))
 
-        : base(additionalProperties, connectVia, description, parameters, annotations)
+        : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
             this.SiteUrl = siteUrl;
             this.TenantId = tenantId;
             this.ServicePrincipalId = servicePrincipalId;
             this.ServicePrincipalKey = servicePrincipalKey;
+            this.ServicePrincipalCredentialType = servicePrincipalCredentialType;
+            this.ServicePrincipalEmbeddedCert = servicePrincipalEmbeddedCert;
+            this.ServicePrincipalEmbeddedCertPassword = servicePrincipalEmbeddedCertPassword;
             this.EncryptedCredential = encryptedCredential;
             CustomInit();
         }
@@ -114,6 +136,31 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public SecretBase ServicePrincipalKey {get; set; }
 
         /// <summary>
+        /// Gets or sets the service principal credential type to use in
+        /// Server-To-Server authentication. &#39;ServicePrincipalKey&#39; for key/secret,
+        /// &#39;ServicePrincipalCert&#39; for certificate. Type: string (or Expression with
+        /// resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.servicePrincipalCredentialType")]
+        public object ServicePrincipalCredentialType {get; set; }
+
+        /// <summary>
+        /// Gets or sets specify the base64 encoded certificate of your application
+        /// registered in Azure Active Directory. Type: string (or Expression with
+        /// resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.servicePrincipalEmbeddedCert")]
+        public SecretBase ServicePrincipalEmbeddedCert {get; set; }
+
+        /// <summary>
+        /// Gets or sets specify the password of your certificate if your certificate
+        /// has a password and you are using AadServicePrincipal authentication. Type:
+        /// string (or Expression with resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.servicePrincipalEmbeddedCertPassword")]
+        public SecretBase ServicePrincipalEmbeddedCertPassword {get; set; }
+
+        /// <summary>
         /// Gets or sets the encrypted credential used for authentication. Credentials
         /// are encrypted using the integration runtime credential manager. Type:
         /// string.
@@ -141,10 +188,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ServicePrincipalId");
             }
-            if (this.ServicePrincipalKey == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ServicePrincipalKey");
-            }
+
+
+
 
 
 
