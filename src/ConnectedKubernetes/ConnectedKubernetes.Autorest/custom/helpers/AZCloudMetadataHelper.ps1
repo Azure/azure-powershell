@@ -1,10 +1,11 @@
 [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '',
-    Justification='MetaData is a recognised term', Scope='Function', Target='Get-AzCloudMetaData')]
+    Justification = 'MetaData is a recognised term', Scope = 'Function', Target = 'Get-AzCloudMetaData')]
 param()
 
 function Get-AZCloudMetadataResourceId {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
     param (
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [PSCustomObject]$cloudMetadata
     )
 
@@ -22,8 +23,7 @@ Function Get-AzCloudMetadata {
     try {
         $context = Get-AzContext
     }
-    catch
-    {
+    catch {
         throw "Failed to get the current Azure context. Error: $_"
     }
     $cloudName = $context.Environment.Name

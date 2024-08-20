@@ -106,6 +106,7 @@ function IsAmd64 {
 }
 
 function GetHelmValues {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
     param (
         [Parameter(Mandatory=$true)]
         $ConfigDpEndpoint,
