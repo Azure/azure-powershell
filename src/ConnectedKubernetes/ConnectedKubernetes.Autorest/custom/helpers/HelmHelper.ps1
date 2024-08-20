@@ -162,6 +162,7 @@ function GetHelmValues {
 }
 
 function GetHelmChartPath {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
     param (
         [Parameter(Mandatory)]
         [string]$RegistryPath,
@@ -203,6 +204,7 @@ function GetHelmChartPath {
 }
 
 function GetHelmChart {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
     param (
         [Parameter(Mandatory)]
         [string]$RegistryPath,
@@ -263,6 +265,7 @@ function GetHelmChart {
 
 # !!PDS: no dogfood so no need for this?
 function GetHelmValuesFile {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
     $valuesFile = $env:HELMVALUESPATH
     if ($null -ne $valuesFile -and (Test-Path $valuesFile)) {
         Write-Warning "Values file detected. Reading additional helm parameters from same."
@@ -281,6 +284,7 @@ function GetHelmValuesFile {
 # This method exists to allow us to effectively Mock the call operator (&).
 # We cannnot do that directly so instead we have this wrapper, which we can mock!
 function InvokeExternalCommand {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
     param (
         [Parameter(Mandatory=$true)]
         [string]$Command,

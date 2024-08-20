@@ -28,6 +28,7 @@ function InvokeConfigDPHealthCheck {
 
 
 function GetConfigDPEndpoint {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
     param (
         [Parameter(Mandatory = $true)]
         [string]$Location,
@@ -49,6 +50,7 @@ function GetConfigDPEndpoint {
 
 # !!PDS: What? Looks like there is a function to do this?  Perhaps because we did not hide it?
 function GetConfigDpDefaultEndpoint {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
     param (
         [Parameter(Mandatory = $true)]
         [string]$location,
