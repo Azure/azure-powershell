@@ -17,31 +17,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Set-Cookie": [ "ARRAffinity=39d91f16fdd59b39d7a07780844d80b88a73a7f54a8a5e7eeddb8cc0cb631057;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=39d91f16fdd59b39d7a07780844d80b88a73a7f54a8a5e7eeddb8cc0cb631057;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
+        "Set-Cookie": [ "ARRAffinity=bcbcd66544f5ddaf4cbead41410626b9ca9d605ee7d3a04c141d9e19b964fb41;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=bcbcd66544f5ddaf4cbead41410626b9ca9d605ee7d3a04c141d9e19b964fb41;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
         "X-Rate-Limit-Limit": [ "0" ],
         "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
         "X-Rate-Limit-Reset": [ "0" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JocHVIUC9zZXNzaW9uSG9zdE1hbmFnZW1lbnRzL2RlZmF1bHQ=" ],
-        "x-ms-lamport-ts": [ "175396551" ],
-        "x-ms-correlation-id": [ "74827896-1b61-43d3-b296-f89648242524" ],
-        "x-ms-request-id": [ "a6af95a4-c9da-4ba7-b447-085aa1ed7028" ],
+        "x-ms-lamport-ts": [ "175518264" ],
+        "x-ms-correlation-id": [ "b07163b5-1d86-4e24-ada8-a52ce6135815" ],
+        "x-ms-request-id": [ "85991939-303d-4aec-9333-64da15b6f77d" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-correlation-request-id": [ "98b0508e-867e-47e5-9502-5b963a5113f5" ],
-        "x-ms-routing-request-id": [ "WESTUS:20240819T230045Z:98b0508e-867e-47e5-9502-5b963a5113f5" ],
+        "x-ms-correlation-request-id": [ "b502da17-2af9-4b39-b9ce-0129220d95a0" ],
+        "x-ms-routing-request-id": [ "WESTUS:20240820T201833Z:b502da17-2af9-4b39-b9ce-0129220d95a0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: FA479FDBE60B4AE2879BA8AFE5CD7E32 Ref B: SJC211051201035 Ref C: 2024-08-19T23:00:44Z" ],
-        "Date": [ "Mon, 19 Aug 2024 23:00:44 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 2FFDAFF3987E4D989F2D2E639680D650 Ref B: SJC211051201029 Ref C: 2024-08-20T20:18:33Z" ],
+        "Date": [ "Tue, 20 Aug 2024 20:18:33 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "206" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"BadRequest\",\"message\":\"ActivityId: 74827896-1b61-43d3-b296-f89648242524 Error: {\\\"error\\\":{\\\"code\\\":\\\"ParameterNull\\\",\\\"message\\\":\\\"Parameter \u0027Update.DeleteOriginalVm\u0027 not specified\\\"}}\"}}",
+      "Content": "{\"error\":{\"code\":\"BadRequest\",\"message\":\"ActivityId: b07163b5-1d86-4e24-ada8-a52ce6135815 Error: {\\\"error\\\":{\\\"code\\\":\\\"ParameterNull\\\",\\\"message\\\":\\\"Parameter \u0027Update.DeleteOriginalVm\u0027 not specified\\\"}}\"}}",
       "isContentBase64": false
     }
   }

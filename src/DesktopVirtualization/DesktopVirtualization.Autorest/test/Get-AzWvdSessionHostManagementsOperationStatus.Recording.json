@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "159" ],
-        "x-ms-client-request-id": [ "9db5350f-f5b0-4d83-ad46-e81c8bc610e9" ],
+        "x-ms-unique-id": [ "160" ],
+        "x-ms-client-request-id": [ "ecf113c6-213b-4538-82e3-72004492314b" ],
         "CommandName": [ "Get-AzWvdSessionHostManagementsOperationStatus" ],
         "FullCommandName": [ "Get-AzWvdSessionHostManagementsOperationStatus_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,31 +23,31 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "Set-Cookie": [ "ARRAffinity=bcbcd66544f5ddaf4cbead41410626b9ca9d605ee7d3a04c141d9e19b964fb41;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=bcbcd66544f5ddaf4cbead41410626b9ca9d605ee7d3a04c141d9e19b964fb41;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
+        "Set-Cookie": [ "ARRAffinity=39d91f16fdd59b39d7a07780844d80b88a73a7f54a8a5e7eeddb8cc0cb631057;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=39d91f16fdd59b39d7a07780844d80b88a73a7f54a8a5e7eeddb8cc0cb631057;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "X-Rate-Limit-Limit": [ "0" ],
         "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
         "X-Rate-Limit-Reset": [ "0" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JocHVIUC9zZXNzaW9uSG9zdE1hbmFnZW1lbnRzL2RlZmF1bHQ=" ],
-        "x-ms-lamport-ts": [ "175396200" ],
-        "x-ms-correlation-id": [ "b9aeb09b-b691-4fa5-aa14-a2fa917a1f8b" ],
-        "x-ms-request-id": [ "9db5350f-f5b0-4d83-ad46-e81c8bc610e9" ],
+        "x-ms-lamport-ts": [ "175517872" ],
+        "x-ms-correlation-id": [ "ca0ef585-508b-458b-8ad4-7778a4d60a4d" ],
+        "x-ms-request-id": [ "ecf113c6-213b-4538-82e3-72004492314b" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-correlation-request-id": [ "6c837e1a-7c31-47be-9d7b-7eafef36edb9" ],
-        "x-ms-routing-request-id": [ "WESTUS:20240819T225640Z:6c837e1a-7c31-47be-9d7b-7eafef36edb9" ],
+        "x-ms-correlation-request-id": [ "37b9b28f-2ea4-4b8a-a42b-bd6f4e12fa95" ],
+        "x-ms-routing-request-id": [ "WESTUS:20240820T201424Z:37b9b28f-2ea4-4b8a-a42b-bd6f4e12fa95" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D69B3164C67D49B0B9F901C0EFFB8929 Ref B: SJC211051201035 Ref C: 2024-08-19T22:56:40Z" ],
-        "Date": [ "Mon, 19 Aug 2024 22:56:39 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 04B100A03DB44CC3A5A995B8076C0F1D Ref B: SJC211051201029 Ref C: 2024-08-20T20:14:23Z" ],
+        "Date": [ "Tue, 20 Aug 2024 20:14:24 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "12" ],
+        "Content-Length": [ "8149" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/a2dd58fc-1656-4520-b012-250778dc4dc6\",\"name\":\"a2dd58fc-1656-4520-b012-250778dc4dc6\",\"status\":\"Failed\",\"startTime\":\"2024-08-19T21:04:31Z\",\"endTime\":\"2024-08-19T21:04:39Z\",\"percentComplete\":100.0,\"error\":{\"code\":\"UpdateFailure\",\"message\":\"[{\\\"faultCode\\\":\\\"MarketplaceImageNotFound_1024\\\",\\\"faultText\\\":\\\"Unable to locate marketplace image of Publisher ≤microsoftwindowsdesktop≥, Offer ≤office-365≥, Sku ≤win11-23h2-avd-m365≥, Version ≤22631.3007.240109≥\\\",\\\"faultContext\\\":\\\"ImagesValidAndCompatibleRule\\\",\\\"faultType\\\":0}]\"},\"operations\":[],\"properties\":{\"correlationId\":\"1aa02306-4790-4693-b4f5-dfb1239cb481\",\"type\":\"initiateSessionHostUpdate\",\"action\":null,\"progress\":{\"totalSessionHosts\":1,\"sessionHostsRollbackFailed\":0,\"executionStartTime\":\"2024-08-19T21:04:31.8240063\",\"sessionHostsInProgress\":0,\"sessionHostsCompleted\":0},\"scheduledDateTime\":null,\"sessionHostManagement\":{\"properties\":{\"scheduledDateTimeZone\":\"Pacific Standard Time\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":0,\"logOffMessage\":\"Updating Session Hosts. Will Log off\"}}},\"parentId\":null}},{\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/65ce2c94-4c93-4d56-81ec-7174d954721f\",\"name\":\"65ce2c94-4c93-4d56-81ec-7174d954721f\",\"status\":\"Succeeded\",\"startTime\":\"2024-08-20T04:04:11Z\",\"endTime\":\"2024-08-20T04:04:12Z\",\"percentComplete\":100.0,\"error\":null,\"operations\":[],\"properties\":{\"correlationId\":\"bd1e6be1-9155-4b7e-a1bc-585bcb81995b\",\"type\":\"initiateSessionHostProvisioning\",\"action\":\"Cancel\",\"progress\":null,\"scheduledDateTime\":null,\"sessionHostManagement\":null,\"parentId\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/79f55c69-2378-4894-a689-55e5abc09b21\"}},{\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/79f55c69-2378-4894-a689-55e5abc09b21\",\"name\":\"79f55c69-2378-4894-a689-55e5abc09b21\",\"status\":\"Canceled\",\"startTime\":\"2024-08-19T21:04:08Z\",\"endTime\":\"2024-08-19T21:04:12Z\",\"percentComplete\":100.0,\"error\":null,\"operations\":[{\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/65ce2c94-4c93-4d56-81ec-7174d954721f\",\"name\":\"65ce2c94-4c93-4d56-81ec-7174d954721f\",\"status\":\"Succeeded\",\"startTime\":\"2024-08-20T04:04:11Z\",\"endTime\":\"2024-08-20T04:04:12Z\",\"percentComplete\":100.0,\"error\":null,\"operations\":[],\"properties\":{\"correlationId\":\"bd1e6be1-9155-4b7e-a1bc-585bcb81995b\",\"type\":\"initiateSessionHostProvisioning\",\"action\":\"Cancel\",\"progress\":null,\"scheduledDateTime\":null,\"sessionHostManagement\":null,\"parentId\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/79f55c69-2378-4894-a689-55e5abc09b21\"}}],\"properties\":{\"correlationId\":\"bf81189b-e49c-4cf9-a2b6-bd5b4caaf621\",\"type\":\"initiateSessionHostUpdate\",\"action\":null,\"progress\":{\"totalSessionHosts\":0,\"sessionHostsRollbackFailed\":0,\"executionStartTime\":\"2024-08-19T21:04:09.8823536\",\"sessionHostsInProgress\":0,\"sessionHostsCompleted\":0},\"scheduledDateTime\":null,\"sessionHostManagement\":{\"properties\":{\"scheduledDateTimeZone\":\"Pacific Standard Time\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":0,\"logOffMessage\":\"Updating Session Hosts. Will Log off\"}}},\"parentId\":null}},{\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/7cc2e1c8-efff-4264-95d8-68b76872288b\",\"name\":\"7cc2e1c8-efff-4264-95d8-68b76872288b\",\"status\":\"Failed\",\"startTime\":\"2024-08-19T15:57:35Z\",\"endTime\":\"2024-08-19T15:57:42Z\",\"percentComplete\":100.0,\"error\":{\"code\":\"UpdateFailure\",\"message\":\"[{\\\"faultCode\\\":\\\"MarketplaceImageNotFound_1024\\\",\\\"faultText\\\":\\\"Unable to locate marketplace image of Publisher ≤microsoftwindowsdesktop≥, Offer ≤office-365≥, Sku ≤win11-23h2-avd-m365≥, Version ≤22631.3007.240109≥\\\",\\\"faultContext\\\":\\\"ImagesValidAndCompatibleRule\\\",\\\"faultType\\\":0}]\"},\"operations\":[],\"properties\":{\"correlationId\":\"da0293c2-77e0-4505-b103-85a0bf816927\",\"type\":\"initiateSessionHostUpdate\",\"action\":null,\"progress\":{\"totalSessionHosts\":1,\"sessionHostsRollbackFailed\":0,\"executionStartTime\":\"2024-08-19T15:57:36.9155854\",\"sessionHostsInProgress\":0,\"sessionHostsCompleted\":0},\"scheduledDateTime\":null,\"sessionHostManagement\":{\"properties\":{\"scheduledDateTimeZone\":\"Pacific Standard Time\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":0,\"logOffMessage\":\"Updating Session Hosts. Will Log off\"}}},\"parentId\":null}},{\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/9fefa758-f853-43a7-91e3-356d911d179d\",\"name\":\"9fefa758-f853-43a7-91e3-356d911d179d\",\"status\":\"Succeeded\",\"startTime\":\"2024-08-19T22:57:18Z\",\"endTime\":\"2024-08-19T22:57:23Z\",\"percentComplete\":100.0,\"error\":null,\"operations\":[],\"properties\":{\"correlationId\":\"9a45970e-094e-4c42-ad48-e024e4744465\",\"type\":\"initiateSessionHostProvisioning\",\"action\":\"Cancel\",\"progress\":null,\"scheduledDateTime\":null,\"sessionHostManagement\":null,\"parentId\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/73692785-422e-40f6-bdd3-5ec7480a28c3\"}},{\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/73692785-422e-40f6-bdd3-5ec7480a28c3\",\"name\":\"73692785-422e-40f6-bdd3-5ec7480a28c3\",\"status\":\"Canceled\",\"startTime\":\"2024-08-19T15:57:17Z\",\"endTime\":\"2024-08-19T15:57:23Z\",\"percentComplete\":100.0,\"error\":null,\"operations\":[{\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/9fefa758-f853-43a7-91e3-356d911d179d\",\"name\":\"9fefa758-f853-43a7-91e3-356d911d179d\",\"status\":\"Succeeded\",\"startTime\":\"2024-08-19T22:57:18Z\",\"endTime\":\"2024-08-19T22:57:23Z\",\"percentComplete\":100.0,\"error\":null,\"operations\":[],\"properties\":{\"correlationId\":\"9a45970e-094e-4c42-ad48-e024e4744465\",\"type\":\"initiateSessionHostProvisioning\",\"action\":\"Cancel\",\"progress\":null,\"scheduledDateTime\":null,\"sessionHostManagement\":null,\"parentId\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/73692785-422e-40f6-bdd3-5ec7480a28c3\"}}],\"properties\":{\"correlationId\":\"c2f92283-6b58-42c5-bfbd-acec216c9803\",\"type\":\"initiateSessionHostUpdate\",\"action\":null,\"progress\":{\"totalSessionHosts\":0,\"sessionHostsRollbackFailed\":0,\"executionStartTime\":\"2024-08-19T15:57:18.1371189\",\"sessionHostsInProgress\":0,\"sessionHostsCompleted\":0},\"scheduledDateTime\":null,\"sessionHostManagement\":{\"properties\":{\"scheduledDateTimeZone\":\"Pacific Standard Time\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":0,\"logOffMessage\":\"Updating Session Hosts. Will Log off\"}}},\"parentId\":null}}]}",
       "isContentBase64": false
     }
   },
@@ -58,8 +58,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "160" ],
-        "x-ms-client-request-id": [ "fed153a5-5760-4ab2-ad67-62c135cdd0d0" ],
+        "x-ms-unique-id": [ "161" ],
+        "x-ms-client-request-id": [ "88a61592-5290-4e81-80c5-92a39b033fba" ],
         "CommandName": [ "Get-AzWvdSessionHostManagementsOperationStatus" ],
         "FullCommandName": [ "Get-AzWvdSessionHostManagementsOperationStatus_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -76,30 +76,82 @@
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
         "Set-Cookie": [ "ARRAffinity=bcbcd66544f5ddaf4cbead41410626b9ca9d605ee7d3a04c141d9e19b964fb41;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=bcbcd66544f5ddaf4cbead41410626b9ca9d605ee7d3a04c141d9e19b964fb41;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
         "X-Rate-Limit-Limit": [ "0" ],
         "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
         "X-Rate-Limit-Reset": [ "0" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JocHVIUC9zZXNzaW9uSG9zdE1hbmFnZW1lbnRzL2RlZmF1bHQ=" ],
-        "x-ms-lamport-ts": [ "175396206" ],
-        "x-ms-correlation-id": [ "644883ce-f98a-4bf4-bff7-fca352eba2ba" ],
-        "x-ms-request-id": [ "fed153a5-5760-4ab2-ad67-62c135cdd0d0" ],
+        "x-ms-lamport-ts": [ "175517910" ],
+        "x-ms-correlation-id": [ "c07c28b5-33db-4472-bf7e-f38388a84b4d" ],
+        "x-ms-request-id": [ "88a61592-5290-4e81-80c5-92a39b033fba" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-correlation-request-id": [ "92bec30d-e940-47dd-8b68-806d81a487b0" ],
-        "x-ms-routing-request-id": [ "WESTUS:20240819T225640Z:92bec30d-e940-47dd-8b68-806d81a487b0" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3748" ],
+        "x-ms-correlation-request-id": [ "49d714d9-a25c-4db6-94e1-bd7143e7ca79" ],
+        "x-ms-routing-request-id": [ "WESTUS:20240820T201425Z:49d714d9-a25c-4db6-94e1-bd7143e7ca79" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4E721455C0BC494EB505B61BA748904E Ref B: SJC211051201035 Ref C: 2024-08-19T22:56:40Z" ],
-        "Date": [ "Mon, 19 Aug 2024 22:56:40 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 5FA70A7418A04F9A89361FDF6A86F910 Ref B: SJC211051201029 Ref C: 2024-08-20T20:14:24Z" ],
+        "Date": [ "Tue, 20 Aug 2024 20:14:25 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "12" ],
+        "Content-Length": [ "8149" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/a2dd58fc-1656-4520-b012-250778dc4dc6\",\"name\":\"a2dd58fc-1656-4520-b012-250778dc4dc6\",\"status\":\"Failed\",\"startTime\":\"2024-08-19T21:04:31Z\",\"endTime\":\"2024-08-19T21:04:39Z\",\"percentComplete\":100.0,\"error\":{\"code\":\"UpdateFailure\",\"message\":\"[{\\\"faultCode\\\":\\\"MarketplaceImageNotFound_1024\\\",\\\"faultText\\\":\\\"Unable to locate marketplace image of Publisher ≤microsoftwindowsdesktop≥, Offer ≤office-365≥, Sku ≤win11-23h2-avd-m365≥, Version ≤22631.3007.240109≥\\\",\\\"faultContext\\\":\\\"ImagesValidAndCompatibleRule\\\",\\\"faultType\\\":0}]\"},\"operations\":[],\"properties\":{\"correlationId\":\"1aa02306-4790-4693-b4f5-dfb1239cb481\",\"type\":\"initiateSessionHostUpdate\",\"action\":null,\"progress\":{\"totalSessionHosts\":1,\"sessionHostsRollbackFailed\":0,\"executionStartTime\":\"2024-08-19T21:04:31.8240063\",\"sessionHostsInProgress\":0,\"sessionHostsCompleted\":0},\"scheduledDateTime\":null,\"sessionHostManagement\":{\"properties\":{\"scheduledDateTimeZone\":\"Pacific Standard Time\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":0,\"logOffMessage\":\"Updating Session Hosts. Will Log off\"}}},\"parentId\":null}},{\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/65ce2c94-4c93-4d56-81ec-7174d954721f\",\"name\":\"65ce2c94-4c93-4d56-81ec-7174d954721f\",\"status\":\"Succeeded\",\"startTime\":\"2024-08-20T04:04:11Z\",\"endTime\":\"2024-08-20T04:04:12Z\",\"percentComplete\":100.0,\"error\":null,\"operations\":[],\"properties\":{\"correlationId\":\"bd1e6be1-9155-4b7e-a1bc-585bcb81995b\",\"type\":\"initiateSessionHostProvisioning\",\"action\":\"Cancel\",\"progress\":null,\"scheduledDateTime\":null,\"sessionHostManagement\":null,\"parentId\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/79f55c69-2378-4894-a689-55e5abc09b21\"}},{\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/79f55c69-2378-4894-a689-55e5abc09b21\",\"name\":\"79f55c69-2378-4894-a689-55e5abc09b21\",\"status\":\"Canceled\",\"startTime\":\"2024-08-19T21:04:08Z\",\"endTime\":\"2024-08-19T21:04:12Z\",\"percentComplete\":100.0,\"error\":null,\"operations\":[{\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/65ce2c94-4c93-4d56-81ec-7174d954721f\",\"name\":\"65ce2c94-4c93-4d56-81ec-7174d954721f\",\"status\":\"Succeeded\",\"startTime\":\"2024-08-20T04:04:11Z\",\"endTime\":\"2024-08-20T04:04:12Z\",\"percentComplete\":100.0,\"error\":null,\"operations\":[],\"properties\":{\"correlationId\":\"bd1e6be1-9155-4b7e-a1bc-585bcb81995b\",\"type\":\"initiateSessionHostProvisioning\",\"action\":\"Cancel\",\"progress\":null,\"scheduledDateTime\":null,\"sessionHostManagement\":null,\"parentId\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/79f55c69-2378-4894-a689-55e5abc09b21\"}}],\"properties\":{\"correlationId\":\"bf81189b-e49c-4cf9-a2b6-bd5b4caaf621\",\"type\":\"initiateSessionHostUpdate\",\"action\":null,\"progress\":{\"totalSessionHosts\":0,\"sessionHostsRollbackFailed\":0,\"executionStartTime\":\"2024-08-19T21:04:09.8823536\",\"sessionHostsInProgress\":0,\"sessionHostsCompleted\":0},\"scheduledDateTime\":null,\"sessionHostManagement\":{\"properties\":{\"scheduledDateTimeZone\":\"Pacific Standard Time\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":0,\"logOffMessage\":\"Updating Session Hosts. Will Log off\"}}},\"parentId\":null}},{\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/7cc2e1c8-efff-4264-95d8-68b76872288b\",\"name\":\"7cc2e1c8-efff-4264-95d8-68b76872288b\",\"status\":\"Failed\",\"startTime\":\"2024-08-19T15:57:35Z\",\"endTime\":\"2024-08-19T15:57:42Z\",\"percentComplete\":100.0,\"error\":{\"code\":\"UpdateFailure\",\"message\":\"[{\\\"faultCode\\\":\\\"MarketplaceImageNotFound_1024\\\",\\\"faultText\\\":\\\"Unable to locate marketplace image of Publisher ≤microsoftwindowsdesktop≥, Offer ≤office-365≥, Sku ≤win11-23h2-avd-m365≥, Version ≤22631.3007.240109≥\\\",\\\"faultContext\\\":\\\"ImagesValidAndCompatibleRule\\\",\\\"faultType\\\":0}]\"},\"operations\":[],\"properties\":{\"correlationId\":\"da0293c2-77e0-4505-b103-85a0bf816927\",\"type\":\"initiateSessionHostUpdate\",\"action\":null,\"progress\":{\"totalSessionHosts\":1,\"sessionHostsRollbackFailed\":0,\"executionStartTime\":\"2024-08-19T15:57:36.9155854\",\"sessionHostsInProgress\":0,\"sessionHostsCompleted\":0},\"scheduledDateTime\":null,\"sessionHostManagement\":{\"properties\":{\"scheduledDateTimeZone\":\"Pacific Standard Time\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":0,\"logOffMessage\":\"Updating Session Hosts. Will Log off\"}}},\"parentId\":null}},{\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/9fefa758-f853-43a7-91e3-356d911d179d\",\"name\":\"9fefa758-f853-43a7-91e3-356d911d179d\",\"status\":\"Succeeded\",\"startTime\":\"2024-08-19T22:57:18Z\",\"endTime\":\"2024-08-19T22:57:23Z\",\"percentComplete\":100.0,\"error\":null,\"operations\":[],\"properties\":{\"correlationId\":\"9a45970e-094e-4c42-ad48-e024e4744465\",\"type\":\"initiateSessionHostProvisioning\",\"action\":\"Cancel\",\"progress\":null,\"scheduledDateTime\":null,\"sessionHostManagement\":null,\"parentId\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/73692785-422e-40f6-bdd3-5ec7480a28c3\"}},{\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/73692785-422e-40f6-bdd3-5ec7480a28c3\",\"name\":\"73692785-422e-40f6-bdd3-5ec7480a28c3\",\"status\":\"Canceled\",\"startTime\":\"2024-08-19T15:57:17Z\",\"endTime\":\"2024-08-19T15:57:23Z\",\"percentComplete\":100.0,\"error\":null,\"operations\":[{\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/9fefa758-f853-43a7-91e3-356d911d179d\",\"name\":\"9fefa758-f853-43a7-91e3-356d911d179d\",\"status\":\"Succeeded\",\"startTime\":\"2024-08-19T22:57:18Z\",\"endTime\":\"2024-08-19T22:57:23Z\",\"percentComplete\":100.0,\"error\":null,\"operations\":[],\"properties\":{\"correlationId\":\"9a45970e-094e-4c42-ad48-e024e4744465\",\"type\":\"initiateSessionHostProvisioning\",\"action\":\"Cancel\",\"progress\":null,\"scheduledDateTime\":null,\"sessionHostManagement\":null,\"parentId\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/73692785-422e-40f6-bdd3-5ec7480a28c3\"}}],\"properties\":{\"correlationId\":\"c2f92283-6b58-42c5-bfbd-acec216c9803\",\"type\":\"initiateSessionHostUpdate\",\"action\":null,\"progress\":{\"totalSessionHosts\":0,\"sessionHostsRollbackFailed\":0,\"executionStartTime\":\"2024-08-19T15:57:18.1371189\",\"sessionHostsInProgress\":0,\"sessionHostsCompleted\":0},\"scheduledDateTime\":null,\"sessionHostManagement\":{\"properties\":{\"scheduledDateTimeZone\":\"Pacific Standard Time\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":0,\"logOffMessage\":\"Updating Session Hosts. Will Log off\"}}},\"parentId\":null}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzWvdSessionHostManagementsOperationStatus+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/a2dd58fc-1656-4520-b012-250778dc4dc6?api-version=2024-03-06-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/a2dd58fc-1656-4520-b012-250778dc4dc6?api-version=2024-03-06-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "162" ],
+        "x-ms-client-request-id": [ "37ac58b6-7e66-4d32-8cc6-f9bf4f76394d" ],
+        "CommandName": [ "Get-AzWvdSessionHostManagementsOperationStatus" ],
+        "FullCommandName": [ "Get-AzWvdSessionHostManagementsOperationStatus_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.2.0", "PSVersion/v7.2.19", "Az.DesktopVirtualization/2.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=bcbcd66544f5ddaf4cbead41410626b9ca9d605ee7d3a04c141d9e19b964fb41;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=bcbcd66544f5ddaf4cbead41410626b9ca9d605ee7d3a04c141d9e19b964fb41;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
+        "X-Rate-Limit-Limit": [ "0" ],
+        "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
+        "X-Rate-Limit-Reset": [ "0" ],
+        "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JocHVIUC9zZXNzaW9uSG9zdE1hbmFnZW1lbnRzL2RlZmF1bHQvb3BlcmF0aW9uU3RhdHVzZXMvYTJkZDU4ZmMtMTY1Ni00NTIwLWIwMTItMjUwNzc4ZGM0ZGM2" ],
+        "x-ms-lamport-ts": [ "175517913" ],
+        "x-ms-correlation-id": [ "a7ae51e8-13b4-407e-b55d-3c9541f46ec4" ],
+        "x-ms-request-id": [ "37ac58b6-7e66-4d32-8cc6-f9bf4f76394d" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3748" ],
+        "x-ms-correlation-request-id": [ "b8ad1141-e016-45d6-93b6-b3dda5e28273" ],
+        "x-ms-routing-request-id": [ "WESTUS:20240820T201426Z:b8ad1141-e016-45d6-93b6-b3dda5e28273" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: BFB9EF2AFEAD4309BFB1CA5B02DD70CA Ref B: SJC211051201029 Ref C: 2024-08-20T20:14:25Z" ],
+        "Date": [ "Tue, 20 Aug 2024 20:14:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1315" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default/operationStatuses/a2dd58fc-1656-4520-b012-250778dc4dc6\",\"name\":\"a2dd58fc-1656-4520-b012-250778dc4dc6\",\"status\":\"Failed\",\"startTime\":\"2024-08-19T21:04:31Z\",\"endTime\":\"2024-08-19T21:04:39Z\",\"percentComplete\":100.0,\"error\":{\"code\":\"UpdateFailure\",\"message\":\"[{\\\"faultCode\\\":\\\"MarketplaceImageNotFound_1024\\\",\\\"faultText\\\":\\\"Unable to locate marketplace image of Publisher ≤microsoftwindowsdesktop≥, Offer ≤office-365≥, Sku ≤win11-23h2-avd-m365≥, Version ≤22631.3007.240109≥\\\",\\\"faultContext\\\":\\\"ImagesValidAndCompatibleRule\\\",\\\"faultType\\\":0}]\"},\"operations\":[],\"properties\":{\"correlationId\":\"1aa02306-4790-4693-b4f5-dfb1239cb481\",\"type\":\"initiateSessionHostUpdate\",\"action\":null,\"progress\":{\"totalSessionHosts\":1,\"sessionHostsRollbackFailed\":0,\"executionStartTime\":\"2024-08-19T21:04:31.8240063\",\"sessionHostsInProgress\":0,\"sessionHostsCompleted\":0},\"scheduledDateTime\":null,\"sessionHostManagement\":{\"properties\":{\"scheduledDateTimeZone\":\"Pacific Standard Time\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":0,\"logOffMessage\":\"Updating Session Hosts. Will Log off\"}}},\"parentId\":null}}",
       "isContentBase64": false
     }
   }

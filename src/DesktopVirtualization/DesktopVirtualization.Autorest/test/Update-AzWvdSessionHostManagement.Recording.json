@@ -17,31 +17,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Set-Cookie": [ "ARRAffinity=bcbcd66544f5ddaf4cbead41410626b9ca9d605ee7d3a04c141d9e19b964fb41;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=bcbcd66544f5ddaf4cbead41410626b9ca9d605ee7d3a04c141d9e19b964fb41;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
+        "Set-Cookie": [ "ARRAffinity=39d91f16fdd59b39d7a07780844d80b88a73a7f54a8a5e7eeddb8cc0cb631057;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=39d91f16fdd59b39d7a07780844d80b88a73a7f54a8a5e7eeddb8cc0cb631057;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
         "X-Rate-Limit-Limit": [ "0" ],
         "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
         "X-Rate-Limit-Reset": [ "0" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JocHVIUC9zZXNzaW9uSG9zdE1hbmFnZW1lbnRzL2RlZmF1bHQ=" ],
-        "x-ms-lamport-ts": [ "175397328" ],
-        "x-ms-correlation-id": [ "9c9a180c-4950-428b-af45-424375af4948" ],
-        "x-ms-request-id": [ "c7ddbac3-655c-4699-a30d-b7de7e319581" ],
+        "x-ms-lamport-ts": [ "175518721" ],
+        "x-ms-correlation-id": [ "b405f766-936e-4534-b1b2-c90b2e20ffe7" ],
+        "x-ms-request-id": [ "c4d77ddf-ee18-40f1-9f18-b38c94716d80" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-correlation-request-id": [ "9dc65a75-6880-46a0-b12e-ffa93fb61085" ],
-        "x-ms-routing-request-id": [ "WESTUS:20240819T230716Z:9dc65a75-6880-46a0-b12e-ffa93fb61085" ],
+        "x-ms-correlation-request-id": [ "dae2e90f-f485-4cce-a4d4-628db7c91a59" ],
+        "x-ms-routing-request-id": [ "WESTUS:20240820T202525Z:dae2e90f-f485-4cce-a4d4-628db7c91a59" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8A51CCC59E8D41F58E036D20A42AD619 Ref B: SJC211051201035 Ref C: 2024-08-19T23:07:12Z" ],
-        "Date": [ "Mon, 19 Aug 2024 23:07:15 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: A8CAF43C1E2D4AE093F24187B293F0F7 Ref B: SJC211051201029 Ref C: 2024-08-20T20:25:19Z" ],
+        "Date": [ "Tue, 20 Aug 2024 20:25:24 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "261" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"BadRequest\",\"message\":\"ActivityId: 9c9a180c-4950-428b-af45-424375af4948 Error: {\\\"error\\\":{\\\"code\\\":\\\"InvalidSessionHostManagementRequest\\\",\\\"message\\\":\\\"Cannot modify the session host management properties while RDVmManager is running.\\\"}}\"}}",
+      "Content": "{\"error\":{\"code\":\"BadRequest\",\"message\":\"ActivityId: b405f766-936e-4534-b1b2-c90b2e20ffe7 Error: {\\\"error\\\":{\\\"code\\\":\\\"InvalidSessionHostManagementRequest\\\",\\\"message\\\":\\\"Cannot modify the session host management properties while RDVmManager is running.\\\"}}\"}}",
       "isContentBase64": false
     }
   }
