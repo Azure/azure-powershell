@@ -53,6 +53,7 @@ https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruseren
 #>
 function Get-AzDevCenterUserEnvironmentAction {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentAction])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.OutputBreakingChangeAttribute("EnvironmentAction", "13.0.0", "2.0.0", "2024/11/19", ReplacementCmdletOutputType = "EnvironmentAction", DeprecatedOutputProperties = ("NextScheduledTime"), NewOutputProperties = ("NextScheduledTime"))]
     [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'Get', Mandatory)]

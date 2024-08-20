@@ -335,4 +335,17 @@ directive:
           - DisplayName
           - Id
           - OdataType
+
+  # Characters '×'，'’'，'–' existed in swagger with larger character code than 127. They are blocking signing process, hence replace them with '*',''','-'
+  - from: openapi-document
+    where: $
+    transform: $ = $.replace(/×/g, '\*');
+
+  - from: openapi-document
+    where: $
+    transform: $ = $.replace(/’/g, '\'');
+
+  - from: openapi-document
+    where: $
+    transform: $ = $.replace(/–/g, '\-');
 ```
