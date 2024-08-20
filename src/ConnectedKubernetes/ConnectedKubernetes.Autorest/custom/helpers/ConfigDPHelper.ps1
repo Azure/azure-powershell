@@ -1,5 +1,5 @@
 [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '',
-    Justification='Uses multiple parameters', Scope='Function', Target='Invoke-RestMethodWithUriParameters')]
+    Justification = 'Uses multiple parameters', Scope = 'Function', Target = 'Invoke-RestMethodWithUriParameters')]
 param()
 
 function Invoke-ConfigDPHealthCheck {
@@ -16,7 +16,7 @@ function Invoke-ConfigDPHealthCheck {
     $headers = @{}
     # Check if key AZURE_ACCESS_TOKEN exists in environment variables
     if ($env:AZURE_ACCESS_TOKEN) {
-        $headers = @{"Authorization"="Bearer $($env['AZURE_ACCESS_TOKEN'])"}
+        $headers = @{"Authorization" = "Bearer $($env['AZURE_ACCESS_TOKEN'])" }
     }
 
     # Sending request with retries
@@ -29,39 +29,17 @@ function Invoke-ConfigDPHealthCheck {
 
 function Get-ConfigDPEndpoint {
     param (
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string]$Location,
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [PSCustomObject]$cloudMetadata
     )
     . "$PSScriptRoot\AZCloudMetadataHelper.ps1"
 
     $ReleaseTrain = $null
-    $ConfigDpEndpoint = $null
-
-    # !!PDS: No dogfood!
-    # # Read and validate the helm values file for Dogfood.
-    # if ($Cmd.cli_ctx.cloud.endpoints.resource_manager -eq $consts.Dogfood_RMEndpoint) {
-    #     # !!PDS Need to write this.
-    #     $result = Validate-EnvFileDogfood -ValuesFile $ValuesFile
-    #     $ConfigDpEndpoint = $result.ConfigDpEndpoint
-    #     $ReleaseTrain = $result.ReleaseTrain
-    # }
-
-    # It is currently not clear what information might appear here in the future
-    # so the check of "arcConfigEndpoint" is left is a best guess!".
-    # Get the values or endpoints required for retrieving the Helm registry URL.
-    if ($null -ne $cloudMetadata.ArcConfigEndpoint) {
-        $ConfigDpEndpoint = $cloudMetadata.ArcConfigEndpoint
-    }
-    else {
-        Write-Debug "'ArcConfigEndpoint' doesn't exist in the ARM cloud metadata."
-    }
-
-    # Get the default config dataplane endpoint.
-    if ($null -eq $ConfigDpEndpoint) {
-        $ConfigDpEndpoint = Get-ConfigDpDefaultEndpoint -Location $Location -CloudMetadata $cloudMetadata
-    }
+    # Get the default config dataplane endpoint.  Note that there may be code
+    $ConfigDpEndpoint = Get-ConfigDpDefaultEndpoint -Location $Location -CloudMetadata $cloudMetadata
+    
     # !!PDS: This appears to be unused.
     # $ADResourceId = Get-AZCloudMetadataResourceId -CloudMetadata $cloudMetadata
     $ADResourceId = $null
@@ -72,9 +50,9 @@ function Get-ConfigDPEndpoint {
 # !!PDS: What? Looks like there is a function to do this?  Perhaps because we did not hide it?
 function Get-ConfigDpDefaultEndpoint {
     param (
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string]$location,
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [PSCustomObject]$cloudMetadata
     )
 
