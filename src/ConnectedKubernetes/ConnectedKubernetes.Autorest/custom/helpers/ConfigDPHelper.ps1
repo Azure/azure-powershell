@@ -41,11 +41,7 @@ function GetConfigDPEndpoint {
     # Get the default config dataplane endpoint.  Note that there may be code
     $ConfigDpEndpoint = Get-ConfigDpDefaultEndpoint -Location $Location -CloudMetadata $cloudMetadata
     
-    # !!PDS: This appears to be unused.
-    # $ADResourceId = Get-AZCloudMetadataResourceId -CloudMetadata $cloudMetadata
-    $ADResourceId = $null
-
-    return @{ ConfigDpEndpoint = $ConfigDpEndpoint; ReleaseTrain = $ReleaseTrain; ADResourceId = $ADResourceId }
+    return @{ ConfigDpEndpoint = $ConfigDpEndpoint; ReleaseTrain = $ReleaseTrain }
 }
 
 # !!PDS: What? Looks like there is a function to do this?  Perhaps because we did not hide it?

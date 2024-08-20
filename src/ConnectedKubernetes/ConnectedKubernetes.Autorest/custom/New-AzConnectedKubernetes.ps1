@@ -692,11 +692,10 @@ function New-AzConnectedKubernetes {
 
         $configDpinfo = Get-ConfigDPEndpoint -location $Location -Cloud $cloudMetadata
         $configDPEndpoint = $configDpInfo.configDPEndpoint
-        $adResourceId = $configDpInfo.adResourceId
 
         # If the health check fails (not 200 response), an exception is thrown
         # so we can ignore the output.
-        $null = Invoke-ConfigDPHealthCheck -configDPEndpoint $configDPEndpoint -Resource $adResourceId
+        $null = Invoke-ConfigDPHealthCheck -configDPEndpoint $configDPEndpoint
 
         # This call does the "pure ARM" update of the ARM objects.
         Write-Debug "Writing Connected Kubernetes ARM objects."
