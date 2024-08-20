@@ -1,4 +1,5 @@
- //
+```csharp
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -80,7 +81,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     if (this.IsParameterBound(c => c.Redeploy))
                     {
-                        parameters.Redeploy = this.Redeploy;
+                        parameters.Redeploy = this.Redeploy; // This line is causing the error
                     }
 
                     var result = DedicatedHostsClient.Update(resourceGroupName, hostGroupName, Name, parameters);
@@ -140,3 +141,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
     }
 }
+```
