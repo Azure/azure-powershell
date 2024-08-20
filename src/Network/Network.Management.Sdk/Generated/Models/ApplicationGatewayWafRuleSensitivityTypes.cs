@@ -7,15 +7,15 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for ConfigurationType.
+    /// Defines values for ApplicationGatewayWafRuleSensitivityTypes.
     /// </summary>
 
 
-    public static class ConfigurationType
+    public static class ApplicationGatewayWafRuleSensitivityTypes
     {
-        public const string SecurityAdmin = "SecurityAdmin";
-        public const string Connectivity = "Connectivity";
-        public const string SecurityUser = "SecurityUser";
-        public const string Routing = "Routing";
+        public const string None = "None";
+        public const string Low = "Low";
+        public const string Medium = "Medium";
+        public const string High = "High";
     }
 }

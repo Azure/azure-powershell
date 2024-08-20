@@ -7,15 +7,13 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for ConfigurationType.
+    /// Defines values for GroupMemberType.
     /// </summary>
 
 
-    public static class ConfigurationType
+    public static class GroupMemberType
     {
-        public const string SecurityAdmin = "SecurityAdmin";
-        public const string Connectivity = "Connectivity";
-        public const string SecurityUser = "SecurityUser";
-        public const string Routing = "Routing";
+        public const string VirtualNetwork = "VirtualNetwork";
+        public const string Subnet = "Subnet";
     }
 }
