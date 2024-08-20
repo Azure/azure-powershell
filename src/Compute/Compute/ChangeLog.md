@@ -24,6 +24,13 @@
 * References are updated to use 2024-07-01 ComputeRP and 2024-03-02 DiskRP REST API calls.
 * Added information on how to find VM Images when using `New-AzVM` with `-Image` parameter.
 * Added `TimeCreated` read-only field to `PSVirtualMachineScaleSetVMProfile` object.
+* Added parameter `-ResourceIdsOnly` to `Get-AzCapacityReservationGroup` cmdlet.
+* Changed the `Set-AzVMOperatingSystem` cmdlet when the `-VM` parameter is used without an OSProfile. Now it will not throw a null reference exception when `-Credential` is not provided.
+* Introduced `EnableResilientVMCreate` and `EnableResilientVMDelete` parameters to `Update-AzVmss` and `New-AzVmssConfig` cmdlets for enhanced VM resilience options.
+* Fixed secrets exposure in example documentation.
+* References are updated to use 2024-07-01 ComputeRP and 2024-03-02 DiskRP REST API calls.
+* Added information on how to find VM Images when using `New-AzVM` with `-Image` parameter.
+* Added `TimeCreated` read-only field to `PSVirtualMachineScaleSetVMProfile` object.
 * Added  parameter `-ResourceIdsOnly` to `Get-AzCapacityReservationGroup` cmdlet.
 * Changed the `Set-AzVMOperatingSystem` cmdlet when the `-VM` parameter is used without an OSProfile. Now it will not throw a null reference exception when `-Credential` is not provided.
 
