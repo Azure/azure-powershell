@@ -269,6 +269,8 @@ function Set-AzConnectedKubernetes {
         . "$PSScriptRoot/helpers/HelmHelper.ps1"
         . "$PSScriptRoot/helpers/ConfigDPHelper.ps1"
         . "$PSScriptRoot/helpers/AZCloudMetadataHelper.ps1"
+        $parameterSet = $PSCmdlet.ParameterSetName
+
         if($AzureHybridBenefit){
             if(!$AcceptEULA){
                 $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
@@ -308,6 +310,10 @@ function Set-AzConnectedKubernetes {
 
         # XW TODO: unit test this?
         # If EnableGateway is provided then set the gateway as enabled.
+        if ($EnableGateway -and $DisableGateway) {
+            Write-Error "You cannot enable and disable gateway at the same time."
+            return
+        }
         if ($EnableGateway) {
             if ($null -eq $GatewayResourceId) {
                 Write-Error "GatewayResourceId is required when EnableGateway is set."
@@ -319,9 +325,9 @@ function Set-AzConnectedKubernetes {
         # If DisableGateway is provided then set the gateway as disabled and remove gateway resourceId from parameters
         if ($DisableGateway) {
             $Null = $PSBoundParameters.Remove('DisableGateway')
-            $Null = $PSBoundParameters.Remove('GatewayResourceId')
             $PSBoundParameters.Add('GatewayEnabled', $false)
         }
+        
         
         $CommonPSBoundParameters = @{}
         if ($PSBoundParameters:HttpPipelineAppend) {
@@ -498,12 +504,28 @@ function Set-AzConnectedKubernetes {
         #     $ChartPath = $HelmChartPath
         # }
 
+        # XW TODO: can be extracted as common function
         #Region helm options
         # !!PDS: The az cli also sets the "proxy" fields in the settings and
         #        passes these to Azure.  Do we need to do this as well?
 
         $options = ""
         $proxyEnableState = $false
+
+        if ($null -eq $ConfigurationSetting) { 
+            $ConfigurationSetting = @{}
+        }
+        if ($null -eq $ConfigurationProtectedSetting) {
+            $ConfigurationProtectedSetting = @{}
+        }
+
+        # XW: Read settings out from InputObject
+        if ("Set" -contains $parameterSet) {
+            foreach ($arcAgentConfig in $InputObject.Properties.ArcAgentryConfigurations) {
+                $ConfigurationSetting[$arcAgentConfig.feature] = $arcAgentConfig.settings
+                $ConfigurationProtectedSetting[$arcAgentConfig.feature] = $arcAgentConfig.protectedSettings
+            }
+        }
         
         if (![string]::IsNullOrEmpty($HttpProxy) -or ![string]::IsNullOrEmpty($HttpsProxy) -or ![string]::IsNullOrEmpty($NoProxy) -or ![string]::IsNullOrEmpty($HttpProxy) ) {
             if (-not $ConfigurationSetting.ContainsKey("proxy")) {
@@ -558,6 +580,10 @@ function Set-AzConnectedKubernetes {
         } catch {
             throw "Unable to find ProxyCert from file path"
         }
+
+        # XW: deal with inputObject
+
+
         if ($DisableAutoUpgrade) {
             $options += " --set systemDefaultValues.azureArcAgents.autoUpdate=false"
             $Null = $PSBoundParameters.Remove('DisableAutoUpgrade')
@@ -608,6 +634,8 @@ function Set-AzConnectedKubernetes {
         #          This DOES mean that code changes are required both in the
         #          Config DP annd this Powershell script if a new Kubernetes 
         #          feature is added.
+        
+        # XW TODO: this can ve extracted as common function to be used by both Set and New
         $arcAgentryConfigs = @(
         )
 
@@ -642,7 +670,7 @@ function Set-AzConnectedKubernetes {
         }
 
         $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
-
+        
         # A lot of what follows relies on knowing the cloud we are using and the
         # various endpoints so get that information now.
         $cloudMetadata = Get-AzCloudMetadata
@@ -652,7 +680,7 @@ function Set-AzConnectedKubernetes {
         # !!PDS: There is no dogfood so not required?
         # $valuesFile = Get-HelmValuesFile
 
-        $configDpinfo = Get-ConfigDPEndpoint -location $Location -Cloud $cloudMetadata
+        $configDpinfo = Get-ConfigDPEndpoint -location ("Set" -contains $parameterSet ? $InputObject.Location : $Location) -Cloud $cloudMetadata
         $configDPEndpoint = $configDpInfo.configDPEndpoint
         $adResourceId = $configDpInfo.adResourceId
 
@@ -674,7 +702,7 @@ function Set-AzConnectedKubernetes {
             $connectedCluster = $InputObject
         }
 
-        if ('UpdateExpanded' -contains $parameterSet) {
+        if ('SetExpanded' -contains $parameterSet) {
             $connectedCluster = $ExistConnectedKubernetes
         }
  
@@ -724,7 +752,6 @@ function Set-AzConnectedKubernetes {
             $ChartPath = Get-ChildItem -Path Env:HELMCHART
         }
 
-        $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
         try {
             helm upgrade `
             --debug `
@@ -733,7 +760,7 @@ function Set-AzConnectedKubernetes {
             --namespace $ReleaseInstallNamespace `
             --wait (-split $options)
         } catch {
-            throw "Unable to install helm release at $ChartPath"
+            throw "Unable to install helm release"
         }
         Return $Response
     }
