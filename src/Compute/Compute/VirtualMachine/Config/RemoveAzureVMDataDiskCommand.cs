@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = false,
-            HelpMessage = "Sets provided disks' detachOption property to ForceDetach. Only applicable for managed data disks.")]
+            HelpMessage = "Sets detachOption property to ForceDetach for the provided disk(s). Only applicable for managed data disks.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter ForceDetach { get; set; }
 
