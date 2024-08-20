@@ -35,6 +35,9 @@ Gets cluster user credentials of the connected cluster with a specified resource
 ### [Remove-AzConnectedKubernetes](Remove-AzConnectedKubernetes.md)
 Delete a connected cluster, removing the tracked resource in Azure Resource Manager (ARM).
 
+### [Set-AzConnectedKubernetes](Set-AzConnectedKubernetes.md)
+
+
 ### [Update-AzConnectedKubernetes](Update-AzConnectedKubernetes.md)
 API to update certain properties of the connected cluster resource
 
