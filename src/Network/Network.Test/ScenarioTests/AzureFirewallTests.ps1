@@ -2164,7 +2164,8 @@ function Test-InvokeAzureFirewallPacketCapture {
         $Params =  New-AzFirewallPacketCaptureParameter  -DurationInSeconds 300 -NumberOfPackets 5000 -SASUrl "ValidSasUrl" -Filename "AzFwPacketCapture" -Flag "Syn","Ack" -Protocol "Any" -Filter $Filter1, $Filter2
 
         # Invoke a firewall packet capture
-        Invoke-AzFirewallPacketCapture -AzureFirewall $azureFirewall -Parameter $Params
+        $response = Invoke-AzFirewallPacketCapture -AzureFirewall $azureFirewall -Parameter $Params
+        Assert-Null $response
     }
     finally {
         # Cleanup
