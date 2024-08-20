@@ -1,7 +1,6 @@
 # Custom
 This directory contains custom implementation for non-generated cmdlets for the `Az.ConnectedKubernetes` module. Both scripts (`.ps1`) and C# files (`.cs`) can be implemented here. They will be used during the build process in `build-module.ps1`, and create cmdlets into the `..\exports` folder. The only generated file into this folder is the `Az.ConnectedKubernetes.custom.psm1`. This file should not be modified.
 
-
 ## Info
 - Modifiable: yes
 - Generated: partial

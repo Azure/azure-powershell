@@ -87,13 +87,6 @@ function Set-AzConnectedKubernetes {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
-        [ValidateRange(0,3600)]
-        [Int]
-        # The time required (in seconds) for the arc-agent pods to be installed on the kubernetes cluster.
-        ${OnboardingTimeout} = 600,
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
         [System.Management.Automation.SwitchParameter]
         # Flag to disable auto upgrade of arc agents.
         ${DisableAutoUpgrade},
@@ -219,12 +212,6 @@ function Set-AzConnectedKubernetes {
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
 
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command asynchronously
-        ${NoWait},
-
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Runtime')]
         [System.Uri]
@@ -257,7 +244,17 @@ function Set-AzConnectedKubernetes {
         ${ConfigurationProtectedSetting},
 
         [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('body')]
+        [System.Management.Automation.SwitchParameter]
+        ${EnableGateway},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('body')]
+        [System.Management.Automation.SwitchParameter]
+        ${DisableGateway},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('body')]
         [System.String]
         # Arc Gateway resource Id
         ${GatewayResourceId},
@@ -268,8 +265,6 @@ function Set-AzConnectedKubernetes {
         ${InputObject}
     )
 
-    # XW: Set is a copy of new, except that it tries to get existing connected cluster first, 
-    # and only proceeds to set (with PUT request) if it exists.
     process {
         . "$PSScriptRoot/helpers/HelmHelper.ps1"
         . "$PSScriptRoot/helpers/ConfigDPHelper.ps1"
@@ -311,9 +306,23 @@ function Set-AzConnectedKubernetes {
             $KubeContext = kubectl config current-context
         }
 
-        # If GatewayResourceId is provided then set the gateway as enabled.
-        $PSBoundParameters.Add('GatewayEnabled', $null -ne $GatewayResourceId)
-
+        # XW TODO: unit test this?
+        # If EnableGateway is provided then set the gateway as enabled.
+        if ($EnableGateway) {
+            if ($null -eq $GatewayResourceId) {
+                Write-Error "GatewayResourceId is required when EnableGateway is set."
+                return
+            }
+            $Null = $PSBoundParameters.Remove('EnableGateway')
+            $PSBoundParameters.Add('GatewayEnabled', $true)
+        }
+        # If DisableGateway is provided then set the gateway as disabled and remove gateway resourceId from parameters
+        if ($DisableGateway) {
+            $Null = $PSBoundParameters.Remove('DisableGateway')
+            $Null = $PSBoundParameters.Remove('GatewayResourceId')
+            $PSBoundParameters.Add('GatewayEnabled', $false)
+        }
+        
         $CommonPSBoundParameters = @{}
         if ($PSBoundParameters:HttpPipelineAppend) {
             $CommonPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
@@ -356,6 +365,7 @@ function Set-AzConnectedKubernetes {
         }
         #Endregion
 
+        # XW TODO: helm install can be extracted as common function to be used by both Set and New
         #Region check helm install
         try {
             Set-HelmClientLocation
@@ -371,50 +381,64 @@ function Set-AzConnectedKubernetes {
             $HelmVersion = $HelmVersion.Substring(1)
             $HelmVersion = $HelmVersion.Split('+')[0]
             $helmV380 = [System.Version]::Parse("3.8.0")
-            $helmThisVersion= [System.Version]::Parse($HelmVersion)
+            $helmThisVersion = [System.Version]::Parse($HelmVersion)
             if ($helmThisVersion -lt $helmV380) {
                 Write-Error "Helm version of at least 3.8 is required for latest OCI handling."
                 Return
             }
-        } catch {
+        }
+        catch {
             throw "Failed to install Helm version 3+ ($_). Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
         }
         #EndRegion
         $helmClientLocation = 'helm'
 
+        # XW TODO: can be extracted as common function to be used by both Set and New
         #Region get release namespace
         $ReleaseInstallNamespace = Get-ReleaseInstallNamespace
         $ReleaseNamespace = $null
         try {
             # !!PDS: Seems like this showing "Error: Release: Not found" is not an error but a warning that implies there just is not a release.  Can we quench this?
             $ReleaseNamespace = (helm status azure-arc -o json --kubeconfig $KubeConfig --kube-context $KubeContext -n $ReleaseInstallNamespace 2> $null | ConvertFrom-Json).namespace
-        } catch {
+        }
+        catch {
             Write-Error "Fail to find the namespace for azure-arc."
         }
         #Endregion
 
+        # XW: different with New command
+        #Region validate release namespace
         if ($null -ne $ReleaseNamespace) {
-            # !!PDS: Is this a bug?  "--namespace $ReleaseNamespace" surely?
             $Configmap = kubectl get configmap --namespace azure-arc azure-clusterconfig -o json --kubeconfig $KubeConfig | ConvertFrom-Json
             $ConfigmapRgName = $Configmap.data.AZURE_RESOURCE_GROUP
             $ConfigmapClusterName = $Configmap.data.AZURE_RESOURCE_NAME
             try {
-                $ExistConnectedKubernetes = Get-AzConnectedKubernetes -ResourceGroupName $ConfigmapRgName -ClusterName $ConfigmapClusterName @CommonPSBoundParameters
+                $ExistConnectedKubernetes = Get-AzConnectedKubernetes `
+                    -ResourceGroupName $ConfigmapRgName `
+                    -ClusterName $ConfigmapClusterName `
+                    @CommonPSBoundParameters `
+                    -ErrorAction 'silentlycontinue'
+                $PSBoundParameters.Add('AgentPublicKeyCertificate', $ExistConnectedKubernetes.AgentPublicKeyCertificate)
 
-                if ($ExistConnectedKubernetes) {
-                    if (!($ResourceGroupName -eq $ConfigmapRgName) -or !($ClusterName -eq $ConfigmapClusterName)) {                        
-                        Write-Error "The provided cluster name and resource group name do not correspond to the kubernetes cluster you are operating on."
-                        return
-                    }
-                } else {
-                    Write-Error "There exist no ConnectedCluster resource corresponding to this kubernetes Cluster."
+                if (($ResourceGroupName.ToLower() -ne $ConfigmapRgName.ToLower()) -or ($ClusterName.ToLower() -ne $ConfigmapClusterName.ToLower())) {
+                    Write-Error "The provided cluster name and rg correspond to different cluster"
                     return
-                }                
-            } catch {
-                Write-Error "Failed to check if connected cluster resource already exists."
+                }
             }
+            catch {
+                # This is attempting to delete Azure Arc resources that are orphaned.
+                # We are catching and ignoring any messages here.
+                Write-Error "The corresponding connected cluster resource does not exist"
+                return
+            }
+        } else {
+            Write-Error "The azure-arc release namespace couldn't be retrieved, which implies that the kubernetes cluster has not been onboarded to azure-arc."
+            return
         }
+        #Endregion
 
+        # TODO XW: can be extracted as common function to be used by both Set and New
+        # Adding Helm repo
         if ((Test-Path Env:HELMREPONAME) -and (Test-Path Env:HELMREPOURL)) {
             $HelmRepoName = Get-ChildItem -Path Env:HELMREPONAME
             $HelmRepoUrl = Get-ChildItem -Path Env:HELMREPOURL
@@ -466,23 +490,6 @@ function Set-AzConnectedKubernetes {
             }
         }
         Set-Item -Path Env:HELM_EXPERIMENTAL_OCI -Value 1
-
-        # Region create RSA keys
-        $RSA = [System.Security.Cryptography.RSA]::Create(4096)
-        if ($PSVersionTable.PSVersion.Major -eq 5) {
-            try {
-                . "$PSScriptRoot/helpers/RSAHelper.ps1"
-                $AgentPublicKey = ExportRSAPublicKeyBase64($RSA)
-                $AgentPrivateKey = ExportRSAPrivateKeyBase64($RSA)
-                $AgentPrivateKey = "-----BEGIN RSA PRIVATE KEY-----`n" + $AgentPrivateKey + "`n-----END RSA PRIVATE KEY-----"
-            } catch {
-                throw "Unable to generate RSA keys"
-            }
-        } else {
-            $AgentPublicKey = [System.Convert]::ToBase64String($RSA.ExportRSAPublicKey())
-            $AgentPrivateKey = "-----BEGIN RSA PRIVATE KEY-----`n" + [System.Convert]::ToBase64String($RSA.ExportRSAPrivateKey()) + "`n-----END RSA PRIVATE KEY-----"
-        }
-        #Endregion
 
         # $HelmChartPath = Join-Path -Path $ChartExportPath -ChildPath 'azure-arc-k8sagents'
         # if (Test-Path Env:HELMCHART) {
@@ -569,14 +576,7 @@ function Set-AzConnectedKubernetes {
             $options += " --set systemDefaultValues.customLocations.oid=$CustomLocationsOid"
             $options += " --set systemDefaultValues.customLocations.enabled=true"
         }
-        if (!$NoWait) {
-            $options += " --wait --timeout $OnboardingTimeout"
-            $options += "s"
-        }
 
-        if ($PSBoundParameters.ContainsKey('OnboardingTimeout')) {
-            $PSBoundParameters.Remove('OnboardingTimeout')
-        }
         if ((-not ([string]::IsNullOrEmpty($Proxy))) -and (-not $PSBoundParameters.ContainsKey('ProxyCredential'))) {
             if (-not ([string]::IsNullOrEmpty($Proxy.UserInfo))) {
                 try{
@@ -655,16 +655,29 @@ function Set-AzConnectedKubernetes {
         $configDpinfo = Get-ConfigDPEndpoint -location $Location -Cloud $cloudMetadata
         $configDPEndpoint = $configDpInfo.configDPEndpoint
         $adResourceId = $configDpInfo.adResourceId
-        Invoke-ConfigDPHealthCheck -configDPEndpoint $configDPEndpoint -Resource $adResourceId
+
+        # If the health check fails (not 200 response), an exception is thrown
+        # so we can ignore the output.
+        $null = Invoke-ConfigDPHealthCheck -configDPEndpoint $configDPEndpoint -Resource $adResourceId
 
         # This call does the "pure ARM" update of the ARM objects.
         Write-Debug "Writing Connected Kubernetes ARM objects."
-        $PSBoundParameters.Add('AgentPublicKeyCertificate', $AgentPublicKey)
+
+        # Re-put here
         $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
 
         # Retrieving Helm chart OCI (Open Container Initiative) Artifact location
         Write-Debug "Retrieving Helm chart OCI (Open Container Initiative) Artifact location."
-        $helmValuesDp = Get-HelmValues -configDPEndpoint $configDPEndpoint -releaseTrain $ReleaseTrain -requestBody $Response
+        Write-Debug "PUT response: $Response"
+        $ResponseStr = "$Response"
+        $helmValuesDp = Get-HelmValues `
+            -configDPEndpoint $configDPEndpoint `
+            -releaseTrain $ReleaseTrain `
+            -requestBody $ResponseStr `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+
+        Write-Debug "helmValuesDp: $helmValuesDp"
         Write-Debug "OCI Artifact location: ${helmValuesDp.repositoryPath}."
 
         # Allow a custom OCI registry to be set via environment variables.
@@ -680,54 +693,32 @@ function Set-AzConnectedKubernetes {
         $registryPath = if ($env:HELMREGISTRY) { $env:HELMREGISTRY } else { $helmValuesDp.repositoryPath }
         Write-Debug "RegistryPath: ${registryPath}."
 
-        $helmContentValues = $helmValuesDp["helmValuesContent"]
-        Write-Debug "Helm values: ${helmContentValues}."
+        $helmValuesContent = $helmValuesDp.helmValuesContent
+        Write-Debug "Helm values: ${helmValuesContent}."
 
-        foreach ($key in $helmContentValues.Keys) {
-            if ($key -in @("global.httpsProxy", "global.httpProxy", "global.noProxy", "global.proxyCert")) {
+        foreach ($field in $helmValuesContent.PSObject.Properties) {
+            if ($field.Name -in @("global.httpsProxy", "global.httpProxy", "global.noProxy", "global.proxyCert")) {
                 continue
             }
-            $options += " --set $Key=$($helmContentValues[$Key])"
+            $options += " --set $($field.Name)=$($field.Value)"
         }
         
-        # !!PDS: Is there any telemetry in Powershell cmdlets?
-        # # Get azure-arc agent version for telemetry
-        # azure_arc_agent_version = registry_path.split(":")[1]
-        # telemetry.add_extension_event(
-        #     "connectedk8s",
-        #     {"Context.Default.AzureCLI.AgentVersion": azure_arc_agent_version},
-        # )
-
         # Get helm chart path (within the OCI registry).
         $chartPath = Get-HelmChartPath -registryPath $registryPath -kubeConfig $KubeConfig -kubeContext $KubeContext -helmClientLocation $HelmClientLocation
         if (Test-Path Env:HELMCHART) {
             $ChartPath = Get-ChildItem -Path Env:HELMCHART
         }
 
-        # !!PDS Aren't we supposed to read the helm config from the Cluster Config DP?
-        # !!PDS: I think we might have done above, but why are we setting many options?
         $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
         try {
             helm upgrade `
             --debug `
-            --install azure-arc `
+            azure-arc `
             $ChartPath `
             --namespace $ReleaseInstallNamespace `
-            --create-namespace `
-            --set global.subscriptionId=$SubscriptionId `
-            --set global.resourceGroupName=$ResourceGroupName `
-            --set global.resourceName=$ClusterName `
-            --set global.tenantId=$TenantId `
-            --set global.location=$Location `
-            --set global.onboardingPrivateKey=$AgentPrivateKey `
-            --set systemDefaultValues.spnOnboarding=false `
-            --set global.azureEnvironment=AZUREPUBLICCLOUD `
-            --set systemDefaultValues.clusterconnect-agent.enabled=true `
-            --set global.kubernetesDistro=$Distribution `
-            --set global.kubernetesInfra=$Infrastructure (-split $options)
-
+            --wait (-split $options)
         } catch {
-            throw "Unable to install helm chart at $ChartPath"
+            throw "Unable to install helm release at $ChartPath"
         }
         Return $Response
     }

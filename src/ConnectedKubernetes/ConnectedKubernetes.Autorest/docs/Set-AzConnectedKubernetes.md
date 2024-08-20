@@ -16,26 +16,26 @@ schema: 2.0.0
 ```
 Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -Location <String>
  [-ContainerLogPath <String>] [-DisableAutoUpgrade] [-HttpProxy <Uri>] [-HttpsProxy <Uri>] [-NoProxy <String>]
- [-OnboardingTimeout <Int32>] [-ProxyCert <String>] [-SubscriptionId <String>] [-AcceptEULA]
- [-AzureHybridBenefit <AzureHybridBenefit>] [-ConfigurationProtectedSetting <Hashtable>]
- [-ConfigurationSetting <Hashtable>] [-CustomLocationsOid <String>] [-Distribution <String>]
- [-DistributionVersion <String>] [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>]
- [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
- [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-GatewayResourceId <String>] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProxyCert <String>] [-SubscriptionId <String>] [-AcceptEULA] [-AzureHybridBenefit <AzureHybridBenefit>]
+ [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
+ [-CustomLocationsOid <String>] [-DisableGateway] [-Distribution <String>] [-DistributionVersion <String>]
+ [-EnableGateway] [-GatewayResourceId <String>] [-Infrastructure <String>] [-KubeConfig <String>]
+ [-KubeContext <String>] [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
+ [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Set
 ```
 Set-AzConnectedKubernetes -InputObject <IConnectedCluster> -Location <String> [-ContainerLogPath <String>]
- [-DisableAutoUpgrade] [-HttpProxy <Uri>] [-HttpsProxy <Uri>] [-NoProxy <String>] [-OnboardingTimeout <Int32>]
- [-ProxyCert <String>] [-SubscriptionId <String>] [-AcceptEULA] [-AzureHybridBenefit <AzureHybridBenefit>]
+ [-DisableAutoUpgrade] [-HttpProxy <Uri>] [-HttpsProxy <Uri>] [-NoProxy <String>] [-ProxyCert <String>]
+ [-SubscriptionId <String>] [-AcceptEULA] [-AzureHybridBenefit <AzureHybridBenefit>]
  [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
- [-CustomLocationsOid <String>] [-Distribution <String>] [-DistributionVersion <String>]
- [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>]
- [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
- [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-GatewayResourceId <String>] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-CustomLocationsOid <String>] [-DisableGateway] [-Distribution <String>] [-DistributionVersion <String>]
+ [-EnableGateway] [-GatewayResourceId <String>] [-Infrastructure <String>] [-KubeConfig <String>]
+ [-KubeContext <String>] [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
+ [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -217,6 +217,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableGateway
+
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Distribution
 
 
@@ -237,6 +252,21 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableGateway
+
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -372,36 +402,6 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OnboardingTimeout
-
-
-```yaml
-Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 

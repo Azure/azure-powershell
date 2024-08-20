@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ConnectedKubernetes
-online version: https://learn.microsoft.com/powershell/module/az.connectedkubernetes/get-helmvalues
+online version: https://learn.microsoft.com/powershell/module/az.connectedkubernetes/invoke-externalcommand
 schema: 2.0.0
 ---
 
-# Get-HelmValues
+# Invoke-ExternalCommand
 
 ## SYNOPSIS
 
@@ -13,8 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Get-HelmValues [-ConfigDpEndpoint] <Object> [-RequestBody] <String> [[-ReleaseTrainCustom] <String>]
- [<CommonParameters>]
+Invoke-ExternalCommand [-Command] <String> [[-Arguments] <Array>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,26 +45,11 @@ Get-HelmValues [-ConfigDpEndpoint] <Object> [-RequestBody] <String> [[-ReleaseTr
 
 ## PARAMETERS
 
-### -ConfigDpEndpoint
+### -Arguments
 
 
 ```yaml
-Type: System.Object
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReleaseTrainCustom
-
-
-```yaml
-Type: System.String
+Type: System.Array
 Parameter Sets: (All)
 Aliases:
 
@@ -76,7 +60,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RequestBody
+### -Command
 
 
 ```yaml
@@ -85,7 +69,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

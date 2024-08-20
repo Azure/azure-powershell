@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ConnectedKubernetes
-online version: https://learn.microsoft.com/powershell/module/az.connectedkubernetes/get-helmvalues
+online version: https://learn.microsoft.com/powershell/module/az.connectedkubernetes/get-helmchartpath
 schema: 2.0.0
 ---
 
-# Get-HelmValues
+# Get-HelmChartPath
 
 ## SYNOPSIS
 
@@ -13,7 +13,8 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Get-HelmValues [-ConfigDpEndpoint] <Object> [-RequestBody] <String> [[-ReleaseTrainCustom] <String>]
+Get-HelmChartPath [-RegistryPath] <String> [-HelmClientLocation] <String> [[-KubeConfig] <String>]
+ [[-KubeContext] <String>] [[-ChartFolderName] <String>] [[-ChartName] <String>] [[-NewPath] <Boolean>]
  [<CommonParameters>]
 ```
 
@@ -46,22 +47,7 @@ Get-HelmValues [-ConfigDpEndpoint] <Object> [-RequestBody] <String> [[-ReleaseTr
 
 ## PARAMETERS
 
-### -ConfigDpEndpoint
-
-
-```yaml
-Type: System.Object
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReleaseTrainCustom
+### -ChartFolderName
 
 
 ```yaml
@@ -70,13 +56,28 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RequestBody
+### -ChartName
+
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HelmClientLocation
 
 
 ```yaml
@@ -85,7 +86,67 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KubeConfig
+
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KubeContext
+
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NewPath
+
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RegistryPath
+
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

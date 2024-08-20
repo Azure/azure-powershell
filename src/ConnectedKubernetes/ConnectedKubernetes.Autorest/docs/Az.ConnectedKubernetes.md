@@ -26,7 +26,16 @@ Gets cluster user credentials of the connected cluster with a specified resource
 ### [Get-ConfigDPEndpoint](Get-ConfigDPEndpoint.md)
 
 
+### [Get-HelmChart](Get-HelmChart.md)
+
+
+### [Get-HelmChartPath](Get-HelmChartPath.md)
+
+
 ### [Get-HelmValues](Get-HelmValues.md)
+
+
+### [Invoke-ExternalCommand](Invoke-ExternalCommand.md)
 
 
 ### [New-AzConnectedKubernetes](New-AzConnectedKubernetes.md)
