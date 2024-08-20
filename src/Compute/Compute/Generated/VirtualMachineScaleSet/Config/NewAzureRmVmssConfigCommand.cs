@@ -1,4 +1,4 @@
-//
+ //
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -346,6 +346,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
         public bool? EnableSecureBoot { get; set; } = null;
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
+        public PSSkuProfileVmSize[] VmSizes { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("LowestPrice", "CapacityOptimized")]
+        public string SkuProfileAllocationStrategy { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -969,6 +980,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Identity = vIdentity,
                 OrchestrationMode = this.IsParameterBound(c => c.OrchestrationMode) ? this.OrchestrationMode : null,
                 SpotRestorePolicy = this.IsParameterBound(c => c.EnableSpotRestore) ? new SpotRestorePolicy(true, this.SpotRestoreTimeout) : null,
+                PriorityMixPolicy = vPriorityMixPolicy,
+                VmSizes = this.VmSizes,
+                SkuProfileAllocationStrategy = this.SkuProfileAllocationStrategy
                 PriorityMixPolicy = vPriorityMixPolicy,
                 ResiliencyPolicy = vResiliencyPolicy
             };

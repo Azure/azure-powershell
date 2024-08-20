@@ -1,4 +1,4 @@
-//
+ //
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -418,6 +418,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             HelpMessage = "Used to make a request conditional for the GET and HEAD methods. The server will only return the requested resources if none of the listed ETag values match the current entity. Used to make a request conditional for the GET and HEAD methods. The server will only return the requested resources if none of the listed ETag values match the current entity. Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will result in error from server as they are not supported.")]
         public string IfNoneMatch { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Array of VM sizes for the scale set.")]
+        public PSSkuProfileVmSize[] VmSizes { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Allocation strategy for the SKU profile.")]
+        [ValidateSet("LowestPrice", "CapacityOptimized")]
+        public string SkuProfileAllocationStrategy { get; set; }
     }
 }
-

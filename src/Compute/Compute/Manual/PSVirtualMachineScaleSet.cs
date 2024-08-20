@@ -26,5 +26,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         // Gets or sets the FQDN.
         public string FullyQualifiedDomainName { get; set; }
 
+        public PSSkuProfileVmSize[] VmSizes { get; set; }
+
+        public SkuProfileAllocationStrategy? SkuProfileAllocationStrategy { get; set; }
+    }
+
+    public class PSSkuProfileVmSize
+    {
+        // Properties for PSSkuProfileVmSize can be defined here
+    }
+
+    public enum SkuProfileAllocationStrategy
+    {
+        LowestPrice,
+        CapacityOptimized
     }
 }

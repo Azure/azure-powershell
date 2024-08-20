@@ -422,6 +422,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string IfNoneMatch { get; set; }
 
         [Parameter(
+            Mandatory = true,
+            HelpMessage = "Array of VM sizes for the scale set.")]
+        public PSSkuProfileVmSize[] VmSizes { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Allocation strategy for the SKU profile.")]
+        [ValidateSet("LowestPrice", "CapacityOptimized")]
+        public string SkuProfileAllocationStrategy { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Specifies whether resilient VM creation should be enabled on the virtual machine scale set. The default value is false.")]
         public bool EnableResilientVMCreate { get; set; }
@@ -916,7 +927,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk == null)
                 {
-                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk = new VirtualMachineScaleSetUpdateOSDisk();
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk = new VirtualMachineScaleSetUpdateOSDisk();
                 }
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk.Caching = this.OsDiskCaching;
             }
@@ -933,7 +944,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile == null)
                 {
-                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile = new VirtualMachineScaleSetUpdateStorageProfile();
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile = new VirtualMachineScaleSetUpdateStorageProfile();
                 }
                 if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk == null)
                 {
@@ -1414,6 +1425,34 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
             }
+
+            // New-AzVmss and Update-AzVmss parameters
+            if (this.IsParameterBound(c => c.VmSizes))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.Sku == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.Sku = new Sku();
+                }
+                this.VirtualMachineScaleSetUpdate.Sku.VmSizes = this.VmSizes;
+            }
+
+            if (this.IsParameterBound(c => c.SkuProfileAllocationStrategy))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.Sku == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.Sku = new Sku();
+                }
+                this.VirtualMachineScaleSetUpdate.Sku.AllocationStrategy = this.SkuProfileAllocationStrategy;
+            }
+
 
             // New Feature Implementation
             if (this.IsParameterBound(c => c.EnableResilientVMCreate))
@@ -2223,6 +2262,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.ResiliencyPolicy.ResilientVMCreationPolicy = new ResilientVMCreationPolicy(this.EnableResilientVMCreate);
             }
 
+            if (this.IsParameterBound(c => c.VmSizes))
+            {
+                if (this.VirtualMachineScaleSet.Sku == null)
+                {
+                    this.VirtualMachineScaleSet.Sku = new Sku();
+                }
+                this.VirtualMachineScaleSet.Sku.VmSizes = this.VmSizes;
+            }
+
+            if (this.IsParameterBound(c => c.SkuProfileAllocationStrategy))
+            {
+                if (this.VirtualMachineScaleSet.Sku == null)
+                {
+                    this.VirtualMachineScaleSet.Sku = new Sku();
+                }
+                this.VirtualMachineScaleSet.Sku.AllocationStrategy = this.SkuProfileAllocationStrategy;
+            }
             if (this.IsParameterBound(c => c.EnableResilientVMDelete))
             {
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
