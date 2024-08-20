@@ -17,21 +17,22 @@ Rotates the disk encryption key of the specified HDInsight cluster.
 ```
 Set-AzHDInsightClusterDiskEncryptionKey [-ResourceGroupName] <String> [-Name] <String>
  -EncryptionKeyName <String> -EncryptionKeyVersion <String> -EncryptionVaultUri <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
 Set-AzHDInsightClusterDiskEncryptionKey [-ResourceId] <String> -EncryptionKeyName <String>
  -EncryptionKeyVersion <String> -EncryptionVaultUri <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
 Set-AzHDInsightClusterDiskEncryptionKey [-InputObject] <AzureHDInsightCluster> -EncryptionKeyName <String>
  -EncryptionKeyVersion <String> -EncryptionVaultUri <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +42,7 @@ Rotate the disk encryption key of the specified HDInsight cluster. For this oper
 
 ### Example 1
 ```powershell
-        # Cluster configuration info
+# Cluster configuration info
         $clusterResourceGroupName = "Group"
         $clusterName = "your-cmk-cluster"
 
@@ -55,7 +56,7 @@ Set-AzHDInsightClusterDiskEncryptionKey `
 
 ### Example 2
 ```powershell
-        # Cluster configuration info
+# Cluster configuration info
         $clusterName = "your-cmk-cluster"
 
 $cluster= Get-AzHDInsightCluster -ClusterName $clusterName 
@@ -152,6 +153,21 @@ Aliases: ClusterName
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

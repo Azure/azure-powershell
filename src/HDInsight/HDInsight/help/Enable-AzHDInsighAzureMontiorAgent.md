@@ -1,39 +1,40 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
-online version: https://learn.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightazuremonitor
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/enable-azhdinsightazuremonitoragent
 schema: 2.0.0
 ---
 
-# Disable-AzHDInsightAzureMonitor
+# Enable-AzHDInsightAzureMonitorAgent
 
 ## SYNOPSIS
-Disables Azure Monitor in a specified HDInsight cluster.
+Enables Azure Monitor Agent in a specified HDInsight cluster.
 
 ## SYNTAX
 
-### DisableByNameParameterSet (Default)
+### EnableByNameParameterSet (Default)
 ```
-Disable-AzHDInsightAzureMonitor [[-ResourceGroupName] <String>] [-ClusterName] <String>
+Enable-AzHDInsightAzureMonitorAgent [[-ResourceGroupName] <String>] [-ClusterName] <String> [-WorkspaceId] <String>
+ [-PrimaryKey] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### EnableByResourceIdParameterSet
+```
+Enable-AzHDInsightAzureMonitorAgent [-ResourceId] <String> [-WorkspaceId] <String> [-PrimaryKey] <String>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### DisableByResourceIdParameterSet
+### EnableByInputObjectParameterSet
 ```
-Disable-AzHDInsightAzureMonitor [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DisableByInputObjectParameterSet
-```
-Disable-AzHDInsightAzureMonitor [-InputObject] <AzureHDInsightCluster>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Enable-AzHDInsightAzureMonitorAgent [-InputObject] <AzureHDInsightCluster> [-WorkspaceId] <String>
+ [-PrimaryKey] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This cmdlet **Disable-AzHDInsightAzureMonitor** disables Azure Monitor in a specified HDInsight cluster.
+This cmdlet **Enable-AzHDInsightAzureMonitorAgent** enables Azure Monitor Agent in a specified HDInsight cluster.
 
 ## EXAMPLES
 
@@ -42,20 +43,24 @@ This cmdlet **Disable-AzHDInsightAzureMonitor** disables Azure Monitor in a spec
 # Cluster info
 $clusterName = "your-hadoop-001"
 $resourceGroupName = "Group"
-Disable-AzHDInsightAzureMonitor -ClusterName $clusterName -ResourceGroupName $resourceGroupName
+$workspaceId = "your-workspace-id"
+$primaryKey = "your-primary-key"
+Enable-AzHDInsightAzureMonitorAgent -ClusterName $clusterName -ResourceGroupName $resourceGroupName -WorkspaceId $workspaceId -PrimaryKey $primaryKey
 ```
 
-This cmdlet disables the azure monitor in a specified HDInsight cluster.
+This cmdlet enables the azure monitor in a specified HDInsight cluster.
 
 ### Example 2
 ```powershell
 # Cluster info
 $clusterName = "your-hadoop-001"
 $cluster=Get-AzHDInsightCluster -ClusterName $clusterName
-$cluster | Disable-AzHDInsightAzureMonitor
+$workspaceId = "your-workspace-id"
+$primaryKey = "your-primary-key"
+$cluster | Enable-AzHDInsightAzureMonitorAgent -WorkspaceId $workspaceId -PrimaryKey $primaryKey
 ```
 
-This cmdlet disables the azure monitor in a specified HDInsight cluster with pipeline.
+This cmdlet enables the azure monitor agent in a specified HDInsight cluster with pipeline.
 
 ## PARAMETERS
 
@@ -64,7 +69,7 @@ Gets or sets the name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: DisableByNameParameterSet
+Parameter Sets: EnableByNameParameterSet
 Aliases:
 
 Required: True
@@ -94,13 +99,28 @@ Gets or sets the input object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster
-Parameter Sets: DisableByInputObjectParameterSet
+Parameter Sets: EnableByInputObjectParameterSet
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PrimaryKey
+Gets to sets the primary key of the Log Analytics workspace.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -124,7 +144,7 @@ Gets or sets the name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: DisableByNameParameterSet
+Parameter Sets: EnableByNameParameterSet
 Aliases:
 
 Required: False
@@ -139,13 +159,28 @@ Gets or sets the resource id.
 
 ```yaml
 Type: System.String
-Parameter Sets: DisableByResourceIdParameterSet
+Parameter Sets: EnableByResourceIdParameterSet
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -WorkspaceId
+Gets or sets the ID of the Log Analytics workspace.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -197,5 +232,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Enable-AzHDInsightAzureMonitor](./Enable-AzHDInsightAzureMonitor.md)
-[Get-AzHDInsightAzureMonitor](./Get-AzHDInsightAzureMonitor.md)
+[Disable-AzHDInsightAzureMonitorAgent](./Disable-AzHDInsightAzureMonitorAgent.md)
+[Get-AzHDInsightAzureMonitorAgent](./Get-AzHDInsightAzureMonitorAgent.md)

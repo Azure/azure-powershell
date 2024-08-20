@@ -1,39 +1,39 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
-online version: https://learn.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightazuremonitor
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightazuremonitoragent
 schema: 2.0.0
 ---
 
-# Disable-AzHDInsightAzureMonitor
+# Disable-AzHDInsightAzureMonitorAgent
 
 ## SYNOPSIS
-Disables Azure Monitor in a specified HDInsight cluster.
+Disables Azure Monitor Agent in a specified HDInsight cluster.
 
 ## SYNTAX
 
 ### DisableByNameParameterSet (Default)
 ```
-Disable-AzHDInsightAzureMonitor [[-ResourceGroupName] <String>] [-ClusterName] <String>
+Disable-AzHDInsightAzureMonitorAgent [[-ResourceGroupName] <String>] [-ClusterName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### DisableByResourceIdParameterSet
 ```
-Disable-AzHDInsightAzureMonitor [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Disable-AzHDInsightAzureMonitorAgent [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisableByInputObjectParameterSet
 ```
-Disable-AzHDInsightAzureMonitor [-InputObject] <AzureHDInsightCluster>
+Disable-AzHDInsightAzureMonitorAgent [-InputObject] <AzureHDInsightCluster>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This cmdlet **Disable-AzHDInsightAzureMonitor** disables Azure Monitor in a specified HDInsight cluster.
+This cmdlet **Disable-AzHDInsightAzureMonitorAgent** disables Azure Monitor in a specified HDInsight cluster.
 
 ## EXAMPLES
 
@@ -42,20 +42,20 @@ This cmdlet **Disable-AzHDInsightAzureMonitor** disables Azure Monitor in a spec
 # Cluster info
 $clusterName = "your-hadoop-001"
 $resourceGroupName = "Group"
-Disable-AzHDInsightAzureMonitor -ClusterName $clusterName -ResourceGroupName $resourceGroupName
+Disable-AzHDInsightAzureMonitorAgent -ClusterName $clusterName -ResourceGroupName $resourceGroupName
 ```
 
-This cmdlet disables the azure monitor in a specified HDInsight cluster.
+This cmdlet disables the azure monitor agent in a specified HDInsight cluster.
 
 ### Example 2
 ```powershell
 # Cluster info
 $clusterName = "your-hadoop-001"
 $cluster=Get-AzHDInsightCluster -ClusterName $clusterName
-$cluster | Disable-AzHDInsightAzureMonitor
+$cluster | Disable-AzHDInsightAzureMonitorAgent
 ```
 
-This cmdlet disables the azure monitor in a specified HDInsight cluster with pipeline.
+This cmdlet disables the azure monitor agent in a specified HDInsight cluster with pipeline.
 
 ## PARAMETERS
 
@@ -197,5 +197,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Enable-AzHDInsightAzureMonitor](./Enable-AzHDInsightAzureMonitor.md)
-[Get-AzHDInsightAzureMonitor](./Get-AzHDInsightAzureMonitor.md)
+[Enable-AzHDInsightAzureMonitorAgent](./Enable-AzHDInsightAzureMonitorAgent.md)
+[Get-AzHDInsightAzureMonitorAgent](./Get-AzHDInsightAzureMonitorAgent.md)

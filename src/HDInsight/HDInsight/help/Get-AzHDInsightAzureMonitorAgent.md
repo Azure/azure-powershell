@@ -1,49 +1,59 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
-ms.assetid: 8CD55A33-5964-409A-BDA5-EDAE9A21E0C1
-online version: https://learn.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightclusterautoscaleconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightazuremonitoragent
 schema: 2.0.0
 ---
 
-# Get-AzHDInsightClusterAutoscaleConfiguration
+# Get-AzHDInsightAzureMonitorAgent
 
 ## SYNOPSIS
-Gets the autoscale configuration of HDInsight cluster.
+Gets the azure monitor agent status of a specified HDInsight cluster.
 
 ## SYNTAX
 
 ### GetByNameParameterSet (Default)
 ```
-Get-AzHDInsightClusterAutoscaleConfiguration [[-ResourceGroupName] <String>] [-ClusterName] <String>
+Get-AzHDInsightAzureMonitorAgent [[-ResourceGroupName] <String>] [-ClusterName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByResourceIdParameterSet
 ```
-Get-AzHDInsightClusterAutoscaleConfiguration [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzHDInsightAzureMonitorAgent [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByInputObjectParameterSet
 ```
-Get-AzHDInsightClusterAutoscaleConfiguration [-InputObject] <AzureHDInsightCluster>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-AzHDInsightAzureMonitorAgent [-InputObject] <AzureHDInsightCluster> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzHDInsightClusterAutoscaleConfiguration** cmdlet gets the autoscale configuration of HDInsight cluster.
+The **Get-AzHDInsightAzureMonitorAgent** cmdlet gets the azure monitor agent status of a specified HDInsight cluster.
 
 ## EXAMPLES
 
-### Example 1: Get the autoscale configuration of HDInsight cluster.
+### Example 1
 ```powershell
-$clusterResourceGroup="group"
-$clusterName="MyCluster"
-Get-AzHDInsightClusterAutoscaleConfiguration -ResourceGroupName $clusterResourceGroup -ClusterName $clusterName
+# Cluster info
+$clusterName = "your-hadoop-001"
+$resourceGroupName = "Group"
+Get-AzHDInsightAzureMonitorAgent -ClusterName $clusterName -ResourceGroupName $resourceGroupName
 ```
 
-This command gets the autoscale configuration of HDInsight cluster.
+This cmdlet gets the azure monitor agent status of a specified HDInsight cluster.
+
+### Example 2
+```powershell
+# Cluster info
+$clusterName = "your-hadoop-001"
+$cluster=Get-AzHDInsightCluster -ClusterName $clusterName
+$cluster | Get-AzHDInsightAzureMonitorAgent
+```
+
+This cmdlet gets the azure monitor with pipeline.
 
 ## PARAMETERS
 
@@ -148,12 +158,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightAutoscale
+### Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightMonitoring
 
 ## NOTES
 
 ## RELATED LINKS
 
-[New-AzHDInsightClusterAutoscaleConfiguration](./New-AzHDInsightClusterAutoscaleConfiguration.md)
-[Set-AzHDInsightClusterAutoscaleConfiguration](./Set-AzHDInsightClusterAutoscaleConfiguration.md)
-[Remove-AzHDInsightClusterAutoscaleConfiguration](./Remove-AzHDInsightClusterAutoscaleConfiguration.md)
+[Enable-AzHDInsightAzureMonitorAgent](./Enable-AzHDInsightAzureMonitorAgent.md)
+[Disable-AzHDInsightAzureMonitorAgent](./Disable-AzHDInsightAzureMonitorAgent.md)
