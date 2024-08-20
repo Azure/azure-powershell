@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Compute
         public string[] DataDiskNames { get; set; }
 
         [Parameter(
-            Mandatory = false
+            Mandatory = false,
             ValueFromPipelineByPropertyName = false,
             HelpMessage = "Sets provided disks' detachOption property to ForceDetach. Only applicable for managed data disks.")]
         [ValidateNotNullOrEmpty]
