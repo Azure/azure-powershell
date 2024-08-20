@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* Added new feature: Enable adding public IP tags to clusters. 
+* Added commands for manage Azure Montior Agent
+    - Command `Get-AzHDInsightAzureMonitorAgent` to get the Azure Monitor Agent status of HDInsight cluster.
+    - Command `Enable-AzHDInsightAzureMonitorAgent` to enable the Azure Monitor Agent in HDInsight cluster.
+    - Command `Disable-AzHDInsightAzureMonitorAgent` to disable the Azure Monitor Agent in HDInsight cluster.
 
 ## Version 6.1.0
 * Added new feature: Enable secure channels while creating a new cluster.
