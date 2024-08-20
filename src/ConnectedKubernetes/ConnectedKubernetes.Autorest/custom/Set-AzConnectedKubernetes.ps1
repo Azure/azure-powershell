@@ -426,14 +426,17 @@ function Set-AzConnectedKubernetes {
                     -ErrorAction 'silentlycontinue'
                 $PSBoundParameters.Add('AgentPublicKeyCertificate', $ExistConnectedKubernetes.AgentPublicKeyCertificate)
 
+                if ("Set" -contains $parameterSet) {
+                    $ResourceGroupName = $InputObject.ResourceGroupName
+                    $ClusterName = $InputObject.Name
+                }
+
                 if (($ResourceGroupName.ToLower() -ne $ConfigmapRgName.ToLower()) -or ($ClusterName.ToLower() -ne $ConfigmapClusterName.ToLower())) {
                     Write-Error "The provided cluster name and rg correspond to different cluster"
                     return
                 }
             }
             catch {
-                # This is attempting to delete Azure Arc resources that are orphaned.
-                # We are catching and ignoring any messages here.
                 Write-Error "The corresponding connected cluster resource does not exist"
                 return
             }
@@ -538,8 +541,8 @@ function Set-AzConnectedKubernetes {
 
         if (-not ([string]::IsNullOrEmpty($HttpProxy))) {
             $HttpProxyStr = $HttpProxy.ToString()
-            $HttpProxyStr = $HttpProxyStr -replace ',','\,'
-            $HttpProxyStr = $HttpProxyStr -replace '/','\/'
+            $HttpProxyStr = $HttpProxyStr -replace ',', '\,'
+            $HttpProxyStr = $HttpProxyStr -replace '/', '\/'
             $options += " --set global.httpProxy=$HttpProxyStr"
             $proxyEnableState = $true
             $ConfigurationSetting["proxy"]["http_proxy"] = $HttpProxyStr
@@ -550,8 +553,8 @@ function Set-AzConnectedKubernetes {
         }
         if (-not ([string]::IsNullOrEmpty($HttpsProxy))) {
             $HttpsProxyStr = $HttpsProxy.ToString()
-            $HttpsProxyStr = $HttpsProxyStr -replace ',','\,'
-            $HttpsProxyStr = $HttpsProxyStr -replace '/','\/'
+            $HttpsProxyStr = $HttpsProxyStr -replace ',', '\,'
+            $HttpsProxyStr = $HttpsProxyStr -replace '/', '\/'
             $options += " --set global.httpsProxy=$HttpsProxyStr"
             $proxyEnableState = $true
             $ConfigurationSetting["proxy"]["https_proxy"] = $HttpsProxyStr
@@ -559,12 +562,12 @@ function Set-AzConnectedKubernetes {
             $Null = $PSBoundParameters.Remove('HttpsProxy')
         }
         if (-not ([string]::IsNullOrEmpty($NoProxy))) {
-            $NoProxy = $NoProxy -replace ',','\,'
-            $NoProxy = $NoProxy -replace '/','\/'
+            $NoProxy = $NoProxy -replace ',', '\,'
+            $NoProxy = $NoProxy -replace '/', '\/'
             $options += " --set global.noProxy=$NoProxy"
             $proxyEnableState = $true
             $ConfigurationSetting["proxy"]["no_proxy"] = $NoProxy
-            $ConfigurationProtectedSetting["proxy"]["no_proxy"] = $NoProxy 
+            $ConfigurationProtectedSetting["proxy"]["no_proxy"] = $NoProxy
             $Null = $PSBoundParameters.Remove('NoProxy')
         }
         if ($proxyEnableState) {
@@ -575,15 +578,12 @@ function Set-AzConnectedKubernetes {
                 $options += " --set-file global.proxyCert=$ProxyCert"
                 $options += " --set global.isCustomCert=true"
                 $ConfigurationSetting["proxy"]["proxy_cert"] = $ProxyCert
-                $ConfigurationProtectedSetting["proxy"]["proxy_cert"] = $ProxyCert 
+                $ConfigurationProtectedSetting["proxy"]["proxy_cert"] = $ProxyCert
             }
-        } catch {
+        }
+        catch {
             throw "Unable to find ProxyCert from file path"
         }
-
-        # XW: deal with inputObject
-
-
         if ($DisableAutoUpgrade) {
             $options += " --set systemDefaultValues.azureArcAgents.autoUpdate=false"
             $Null = $PSBoundParameters.Remove('DisableAutoUpgrade')
@@ -605,15 +605,17 @@ function Set-AzConnectedKubernetes {
 
         if ((-not ([string]::IsNullOrEmpty($Proxy))) -and (-not $PSBoundParameters.ContainsKey('ProxyCredential'))) {
             if (-not ([string]::IsNullOrEmpty($Proxy.UserInfo))) {
-                try{
+                try {
                     $userInfo = $Proxy.UserInfo -Split ':'
                     $pass = ConvertTo-SecureString $userInfo[1] -AsPlainText -Force
                     $ProxyCredential = New-Object System.Management.Automation.PSCredential ($userInfo[0] , $pass)
                     $PSBoundParameters.Add('ProxyCredential', $ProxyCredential)
-                } catch {
+                }
+                catch {
                     throw "Please set ProxyCredential or provide username and password in the Proxy parameter"
                 }
-            } else {
+            }
+            else {
                 Write-Warning "If the proxy is a private proxy, pass ProxyCredential parameter or provide username and password in the Proxy parameter"
             }
         }
