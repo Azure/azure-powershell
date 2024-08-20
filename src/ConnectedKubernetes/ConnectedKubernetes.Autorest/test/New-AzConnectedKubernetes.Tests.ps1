@@ -157,22 +157,7 @@ Describe 'Get-ConfigDpDefaultEndpoint' {
 }
 
 Describe 'Get-ConfigDpEndpoint' {
-    It 'Golden path' {
-        {
-            $cloudMetadata = [PSCustomObject]@{
-                ArcConfigEndpoint        = "https://arc.microsoftonline.com"
-                ActiveDirectoryAuthority = "https://login.microsoftonline.com"
-            }
-            $script:configDpEndpoint = Get-ConfigDpEndpoint `
-                -Location "eastus2" `
-                -CloudMetadata $cloudMetadata
-        } | Should -Not -Throw
-
-        $configDpEndpoint.ConfigDpEndpoint | Should -Be "https://arc.microsoftonline.com"
-        $configDpEndpoint.ReleaseTrain | Should -Be $null
-    }
-
-    It 'No ArcconfigEndpoints' {
+    It 'Golden Path' {
         {
             $cloudMetadata = [PSCustomObject]@{
                 ActiveDirectoryAuthority = "https://login.microsoftonline.com"

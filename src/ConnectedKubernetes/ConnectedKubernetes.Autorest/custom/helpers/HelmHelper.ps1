@@ -1,9 +1,9 @@
 [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '',
-    Justification='Helm values is a recognised term', Scope='Function', Target='Get-HelmValues')]
+    Justification = 'Helm values is a recognised term', Scope = 'Function', Target = 'Get-HelmValues')]
 [CmdletBinding()]
 param()    
 
-function SetHelmClientLocation {
+function Set-HelmClientLocation {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(
     )
@@ -19,7 +19,7 @@ function SetHelmClientLocation {
     }
 }
 
-function GetHelmClientLocation {
+function Get-HelmClientLocation {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(
     )
@@ -28,13 +28,14 @@ function GetHelmClientLocation {
             if (Test-Path Env:HELM_CLIENT_PATH) {
                 $CustomPath = (Get-Item Env:HELM_CLIENT_PATH).Value
                 if ($CustomPath.EndsWith("helm.exe") -and (!((Get-Item $CustomPath) -is [System.IO.DirectoryInfo]))) {
-                    $CustomPath = $CustomPath.Replace("helm.exe","")
+                    $CustomPath = $CustomPath.Replace("helm.exe", "")
                 }
                 return $CustomPath
             }
             if (Test-Path Env:Home) {
                 $HomePath = (Get-Item Env:HOME).Value
-            } else {
+            }
+            else {
                 $HomePath = $Home
             }
             # $Version = "v3.6.3"
@@ -53,17 +54,19 @@ function GetHelmClientLocation {
                     Expand-Archive $ZipLocation $RootFolder
                     Write-Verbose "Downloaded helm: $HelmLocation"
                 }
-            } catch {
+            }
+            catch {
                 throw "Failed to download helm ($_)"
             }
-        } else {
+        }
+        else {
             Write-Warning "Helm version 3.6.3 is required. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
         }
         return $InstallLocation
     }
 }
 
-function GetReleaseInstallNamespace {
+function Get-ReleaseInstallNamespace {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(
     )
@@ -88,7 +91,8 @@ function GetOSName {
     process {
         if ($PSVersionTable.PSEdition.Contains("Core")) {
             $OSPlatform = $PSVersionTable.OS
-        } else {
+        }
+        else {
             $OSPlatform = $env:OS
         }
         return $OSPlatform
@@ -105,13 +109,13 @@ function IsAmd64 {
     }
 }
 
-function GetHelmValues {
+function Get-HelmValues {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
     param (
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         $ConfigDpEndpoint,
         [string]$ReleaseTrainCustom,
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string]$RequestBody
     )
 
@@ -125,7 +129,7 @@ function GetHelmValues {
     }
     $uriParameters = [ordered]@{
         "api-version" = $apiVersion
-        releaseTrain = $releaseTrain
+        releaseTrain  = $releaseTrain
     }
     $headers = @{
         "Content-Type" = "application/json"
@@ -162,7 +166,7 @@ function GetHelmValues {
     throw "No content was found in helm registry path response, StatusCode: ${StatusCode}."
 }
 
-function GetHelmChartPath {
+function Get-HelmChartPath {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
     param (
         [Parameter(Mandatory)]
@@ -204,7 +208,7 @@ function GetHelmChartPath {
     return $ChartPath
 }
 
-function GetHelmChart {
+function Get-HelmChart {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
     param (
         [Parameter(Mandatory)]
@@ -234,7 +238,7 @@ function GetHelmChart {
 
         # We do not use Split-Path here because it results in "\" characters in
         # the results.
-        $basePath, $imageName = if ($chartUrl -match "(^.*?)/([^/]+$)") {$matches[1], $matches[2]}
+        $basePath, $imageName = if ($chartUrl -match "(^.*?)/([^/]+$)") { $matches[1], $matches[2] }
         $chartUrl = "$basePath/v2/$imageName"
         # Write-Error "Chart URL: $chartUrl"
     }
@@ -266,10 +270,10 @@ function GetHelmChart {
 
 # This method exists to allow us to effectively Mock the call operator (&).
 # We cannnot do that directly so instead we have this wrapper, which we can mock!
-function InvokeExternalCommand {
+function Invoke-ExternalCommand {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
     param (
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string]$Command,
         [array]$Arguments
     )

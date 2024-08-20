@@ -2,7 +2,7 @@
     Justification = 'Uses multiple parameters', Scope = 'Function', Target = 'Invoke-RestMethodWithUriParameters')]
 param()
 
-function InvokeConfigDPHealthCheck {
+function Invoke-ConfigDPHealthCheck {
     param (
         [string]$configDPEndpoint
     )
@@ -27,7 +27,7 @@ function InvokeConfigDPHealthCheck {
 }
 
 
-function GetConfigDPEndpoint {
+function Get-ConfigDPEndpoint {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
     param (
         [Parameter(Mandatory = $true)]
@@ -44,7 +44,7 @@ function GetConfigDPEndpoint {
     return @{ ConfigDpEndpoint = $ConfigDpEndpoint; ReleaseTrain = $ReleaseTrain }
 }
 
-function GetConfigDpDefaultEndpoint {
+function Get-ConfigDpDefaultEndpoint {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
     param (
         [Parameter(Mandatory = $true)]
@@ -64,7 +64,7 @@ function GetConfigDpDefaultEndpoint {
     return $configDpEndpoint
 }
 
-function InvokeRestMethodWithUriParameters {
+function Invoke-RestMethodWithUriParameters {
     param (
         [String]$method,
         [String]$uri,
@@ -91,7 +91,7 @@ function InvokeRestMethodWithUriParameters {
     #     $uriParametersArray = $uriParameters.GetEnumerator() | ForEach-Object { "$($_.Key)=$($_.Value)" } | ForEach-Object { $_ -join '=' } | ForEach-Object { $_ -join '&' }
     # }
     Write-Debug "Issue REST request to ${uri} with method ${method} and headers ${headers} and body ${requestBody}"
-    $rsp = InvokeRestMethod `
+    $rsp = Invoke-RestMethod `
         -Method $method `
         -Uri $uri `
         -Headers $headers `
