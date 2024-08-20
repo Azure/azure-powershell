@@ -15,7 +15,7 @@ Create an in-memory object for TransferConfiguration.
 ```
 New-AzDataBoxTransferConfigurationObject -Type <TransferConfigurationType>
  [-TransferAllDetail <ITransferConfigurationTransferAllDetails>]
- [-TransferFilterDetail <ITransferConfigurationTransferFilterDetails>] [-ProgressAction <ActionPreference>]
+ [-TransferFilterDetail <ITransferConfigurationTransferFilterDetails>]
  [<CommonParameters>]
 ```
 
@@ -32,21 +32,6 @@ New-AzDataBoxTransferConfigurationObject -Type "TransferAll" -TransferAllDetail 
 Create a in-memory object for export jobs TransferConfiguration
 
 ## PARAMETERS
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -TransferAllDetail
 Map of filter type and the details to transfer all data.

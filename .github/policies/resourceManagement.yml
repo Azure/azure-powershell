@@ -1209,6 +1209,22 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
+              label: ConnectedMachine
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: ConnectedMachine
+        then:
+        - mentionUsers:
+            mentionees:
+            - raghushantha
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
               label: Consumption
         - hasLabel:
             label: Service Attention
@@ -1565,6 +1581,8 @@ configuration:
         - mentionUsers:
             mentionees:
             - edwinc
+            - mvvsubbu
+            - v-vyedavelly
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -2647,22 +2665,6 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
-              label: Mobile Engagement
-        - hasLabel:
-            label: Service Attention
-        - hasLabel:
-            label: Mobile Engagement
-        then:
-        - mentionUsers:
-            mentionees:
-            - kpiteira
-            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
-            assignMentionees: False
-      - if:
-        - or:
-          - labelAdded:
-              label: Service Attention
-          - labelAdded:
               label: Monitor
         - hasLabel:
             label: Service Attention
@@ -3223,6 +3225,25 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
+              label: Oracle
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Oracle
+        then:
+        - mentionUsers:
+            mentionees:
+            - v-rvilathurs
+            - v-jamcheung
+            - v-eelhomsi
+            - v-adhenry
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
               label: Policy
         - hasLabel:
             label: Service Attention
@@ -3265,8 +3286,8 @@ configuration:
         - mentionUsers:
             mentionees:
             - gbowerman
-            - sr-msft
-            - niklarin
+            - jasomaning
+            - nachoalonsoportillo
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -3282,8 +3303,9 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - daeunyim
-            - rajsell
+            - gbowerman
+            - jasomaning
+            - nachoalonsoportillo
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:

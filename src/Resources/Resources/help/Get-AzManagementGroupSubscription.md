@@ -32,7 +32,7 @@ Get-AzManagementGroupSubscription -GroupName "TestGroup" -SubscriptionId 5602fbd
 Name              : 5602fbd9-fb0d-4fbb-98b3-10c8ea20b6de
 Type              : Microsoft.Management/managementGroups/subscriptions
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup/subscriptions/5602fbd9-fb0d-4fbb-98b3-10c8ea20b6de
-TenantId          : 14307de0-5e6f-46cf-b2ba-64a062964d30
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName       : Visual Studio Enterprise Subscription
 ParentId          : /providers/Microsoft.Management/managementGroups/TestGroup
 State             : Active
@@ -47,7 +47,7 @@ Get-AzManagementGroupSubscription -GroupName "TestGroup"
 Name              : 5602fbd9-fb0d-4fbb-98b3-10c8ea20b6de
 Type              : Microsoft.Management/managementGroups/subscriptions
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup/subscriptions/5602fbd9-fb0d-4fbb-98b3-10c8ea20b6de
-TenantId          : 14307de0-5e6f-46cf-b2ba-64a062964d30
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName       : Visual Studio Enterprise Subscription
 ParentId          : /providers/Microsoft.Management/managementGroups/TestGroup
 State             : Active
@@ -55,7 +55,7 @@ State             : Active
 Name              : 2120692d-35c3-44c8-81f5-631fa7351726
 Type              : Microsoft.Management/managementGroups/subscriptions
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup/subscriptions/2120692d-35c3-44c8-81f5-631fa7351726
-TenantId          : 14307de0-5e6f-46cf-b2ba-64a062964d30
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName       : Test Subscription
 ParentId          : /providers/Microsoft.Management/managementGroups/TestGroup
 State             : Active

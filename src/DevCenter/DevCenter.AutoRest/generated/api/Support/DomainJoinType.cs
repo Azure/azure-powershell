@@ -14,6 +14,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.DomainJoinType HybridAzureAdJoin = @"HybridAzureADJoin";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.DomainJoinType None = @"None";
+
         /// <summary>the value for an instance of the <see cref="DomainJoinType" /> Enum.</summary>
         private string _value { get; set; }
 

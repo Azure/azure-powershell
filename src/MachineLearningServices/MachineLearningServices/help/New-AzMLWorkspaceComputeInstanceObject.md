@@ -23,7 +23,7 @@ New-AzMLWorkspaceComputeInstanceObject [-Description <String>] [-DisableLocalAut
  [-SshSettingAdminPublicKey <String>] [-SshSettingSshPublicAccess <SshPublicAccess>]
  [-StartupScriptArgument <String>] [-StartupScriptData <String>] [-StartupScriptSource <String>]
  [-StartupScriptTimeout <String>] [-SubnetId <String>] [-VMSize <String>] [-VersionRuntime <String>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -262,21 +262,6 @@ Trigger of operation.
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationTrigger
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

@@ -51,6 +51,7 @@ https://learn.microsoft.com/powershell/module/az.devcenter/invoke-azdevcenteruse
 #>
 function Invoke-AzDevCenterUserDelayDevBoxAction {
   [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxAction], [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxActionDelayResult])]
+  [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.OutputBreakingChangeAttribute("DevBoxActionDelayResult", "13.0.0", "2.0.0", "2024/11/19", ReplacementCmdletOutputType = "DevBoxActionDelayResult", DeprecatedOutputProperties = ("Detail"), NewOutputProperties = ("Detail"))]
   [CmdletBinding(DefaultParameterSetName = 'Delay1', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
   param(
     [Parameter(ParameterSetName = 'Delay', Mandatory)]

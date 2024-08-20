@@ -15,15 +15,15 @@ Removes a resource group.
 
 ### RemoveByResourceGroupName (Default)
 ```
-Remove-AzResourceGroup [-Name] <String> [-Force] [-AsJob] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+Remove-AzResourceGroup [-Name] <String> [-ForceDeletionType <String>] [-Force] [-AsJob] [-ApiVersion <String>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### RemoveByResourceGroupId
 ```
-Remove-AzResourceGroup -Id <String> [-Force] [-AsJob] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+Remove-AzResourceGroup -Id <String> [-ForceDeletionType <String>] [-Force] [-AsJob] [-ApiVersion <String>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -54,6 +54,14 @@ Get-AzResourceGroup | Remove-AzResourceGroup
 ```
 
 This command uses the **Get-AzResourceGroup** cmdlet to get all resource groups, and then passes them to **Remove-AzResourceGroup** by using the pipeline operator.
+
+### Example 4: Remove a resource groups use ForceDeletionType
+```powershell
+Remove-AzResourceGroup -Name "ContosoRG01" -ForceDeletionType "Microsoft.Compute/virtualMachineScaleSets,Microsoft.Compute/virtualMachines,Microsoft.Databricks/workspaces"
+```
+
+This command removes the ContosoRG01 resource group use the ForceDeletionType.
+The cmdlet prompts you for confirmation and returns no output.
 
 ## PARAMETERS
 
@@ -108,6 +116,21 @@ Forces the command to run without asking for user confirmation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ForceDeletionType
+The resource types you want to force delete.Currently, only the following is supported: forceDeletionTypes=Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachineScaleSets
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

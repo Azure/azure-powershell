@@ -18,6 +18,31 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported account tier Cold
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Updated list share output display format 
+    - `Get-AzStorageShare`
+* Added warnings for upcoming breaking changes in File cmdlets for removing references to "Microsoft.Azure.Storage.File"
+    - `Close-AzStorageFileHandle`
+    - `Get-AzStorageFile`
+    - `Get-AzStorageFileContent`
+    - `Get-AzStorageFileCopyState`
+    - `Get-AzStorageFileHandle`
+    - `Get-AzStorageShare`
+    - `New-AzStorageDirectory`
+    - `New-AzStorageFileSASToken`
+    - `New-AzStorageShare`
+    - `New-AzStorageShareSASToken`
+    - `Remove-AzStorageDirectory`
+    - `Remove-AzStorageFile`
+    - `Remove-AzStorageShare`
+    - `Set-AzStorageFileContent`
+    - `Set-AzStorageShareQuota`
+    - `Start-AzStorageFileCopy`
+    - `Stop-AzStorageFileCopy`
+
+## Version 7.2.0
 * Upgraded Microsoft.Azure.Storage.DataMovement to 2.0.5
 
 ## Version 7.1.0
