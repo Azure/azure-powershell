@@ -11,30 +11,11 @@ function Get-AZCloudMetadataResourceId {
     # Search the $armMetadata hash for the entry where the "name" parameter matches
     # $cloud and then find the login endpoint, from which we can discern the
     # appropriate "cloud based domain ending".
-    return $cloudMetadata.authentication.audiences[0]
+    Write-Debug -Message "cloudMetaData in: $($cloudMetaData | ConvertTo-Json -Depth 10)."
+    return $cloudMetadata.ResourceManagerUrl
 }
 
 Function Get-AzCloudMetadata {
-    param (
-        [string]$ApiVersion = "2022-09-01"
-    )
-
-    # This is a known endpoint.
-    $MetadataEndpoint = "https://management.azure.com/metadata/endpoints?api-version=$ApiVersion"
-
-    try {
-        $Response = Invoke-RestMethod -Uri $MetadataEndpoint -Method Get -StatusCodeVariable StatusCode
-
-        if ($StatusCode -ne 200) {
-            $Msg = "ARM metadata endpoint '$MetadataEndpoint' returned status code $($StatusCode)."
-            throw $Msg
-        }
-    }
-    catch {
-        $Msg = "Failed to request ARM metadata $MetadataEndpoint."
-        Write-Error "$Msg Please ensure you have network connection. Error: $_"
-    }
-
     # The current cloud in use is set by the user so query it and then we can use
     # it to index into the ARM Metadata.
     $context = $null
@@ -47,9 +28,14 @@ Function Get-AzCloudMetadata {
     }
     $cloudName = $context.Environment.Name
 
-    # Search the $armMetadata hash for the entry where the "name" parameter matches
-    # $cloud and then find the login endpoint, from which we can discern the
-    # appropriate "cloud based domain ending".
-    $cloud = $Response | Where-Object { $_.name -eq $cloudName }
+    try {
+        # $Response = Invoke-RestMethod -Uri $MetadataEndpoint -Method Get -StatusCodeVariable StatusCode
+        $cloud = Get-AzureEnvironment -Name $cloudName
+    }
+    catch {
+        Write-Error "Failed to request ARM metadata. Error: $_"
+    }
+    Write-Debug -Message "cloudMetaData out: $($cloud | ConvertTo-Json -Depth 10)."
+
     return $cloud
 }

@@ -1,5 +1,6 @@
 [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '',
     Justification='Helm values is a recognised term', Scope='Function', Target='Get-HelmValues')]
+[CmdletBinding()]
 param()    
 
 function Set-HelmClientLocation {
@@ -109,18 +110,22 @@ function Get-HelmValues {
         [Parameter(Mandatory=$true)]
         $ConfigDpEndpoint,
         [string]$ReleaseTrainCustom,
-        $RequestBody
+        [Parameter(Mandatory=$true)]
+        [string]$RequestBody
     )
 
     # Setting uri
     $apiVersion = "2024-07-01-preview"
-    $chartLocationUrlSegment = "azure-arc-k8sagents/GetHelmSettings?api-version=$apiVersion"
+    $chartLocationUrlSegment = "azure-arc-k8sagents/GetHelmSettings"
     $releaseTrain = if ($env:RELEASETRAIN) { $env:RELEASETRAIN } else { "stable" }
     $chartLocationUrl = "$ConfigDpEndpoint/$chartLocationUrlSegment"
     if ($ReleaseTrainCustom) {
         $releaseTrain = $ReleaseTrainCustom
     }
-    $uriParameters = @{releaseTrain=$releaseTrain}
+    $uriParameters = [ordered]@{
+        "api-version" = $apiVersion
+        releaseTrain = $releaseTrain
+    }
     $headers = @{
         "Content-Type" = "application/json"
     }
@@ -128,30 +133,23 @@ function Get-HelmValues {
         $headers["Authorization"] = "Bearer $($env:AZURE_ACCESS_TOKEN)"
     }
 
-    $dpRequestIdentity = $RequestBody.identity
-    $id = $RequestBody.id
-    # $request_body = $request_body.serialize()
-    $RequestBody = $RequestBody | ConvertTo-Json | ConvertFrom-Json -AsHashtable
-    $RequestBody["Identity"] = @{
-        tenantId = $dpRequestIdentity.tenantId
-        principalId = $dpRequestIdentity.principalId
-    }
-    $RequestBody["Id"] = $id
-
-    # Convert $request_body to JSON
-    $jsonBody = $RequestBody | ConvertTo-Json
-    Write-Error "Request body: $jsonBody"
-
     # Sending request with retries
     try {
-        $r = Invoke-RestMethodWithUriParameters -Method 'post' -Uri $chartLocationUrl -Headers $headers -UriParameters $uriParameters -RequestBody $JsonBody -MaximumRetryCount 5 -RetryIntervalSec 3 -StatusCodeVariable statusCodeVariable
+        $r = Invoke-RestMethodWithUriParameters `
+            -Method 'post' `
+            -Uri $chartLocationUrl `
+            -Headers $headers `
+            -UriParameters $uriParameters `
+            -RequestBody $RequestBody `
+            -MaximumRetryCount 5 `
+            -RetryIntervalSec 3 `
+            -StatusCodeVariable StatusCode `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
 
         # Response is a Hashtable of JSON values.
-        if ($statusCode -eq 200 -and $r) {
+        if ($StatusCode -eq 200 -and $r) {
             return $r
-        }
-        else {
-            throw "No content was found in helm registry path response, StatusCode: ${statusCode}."
         }
     }
     catch {
@@ -159,18 +157,25 @@ function Get-HelmValues {
         Write-Error $errorMessage
         throw $errorMessage
     }
+    # Reach here and we received either a non-200 status code or no response.
+    throw "No content was found in helm registry path response, StatusCode: ${StatusCode}."
 }
 
 function Get-HelmChartPath {
     param (
+        [Parameter(Mandatory)]
         [string]$RegistryPath,
+        [Parameter(Mandatory)]
+        [string]$HelmClientLocation,
         [string]$KubeConfig,
         [string]$KubeContext,
-        [string]$HelmClientLocation,
         [string]$ChartFolderName = 'AzureArcCharts',
         [string]$ChartName = 'azure-arc-k8sagents',
         [bool]$NewPath = $true
     )
+
+    # Special path!
+    $PreOnboardingHelmChartsFolderName = 'PreOnboardingChecksCharts'
 
     # Exporting Helm chart
     $ChartExportPath = Join-Path $env:USERPROFILE ('.azure', $ChartFolderName -join '\')
@@ -180,14 +185,14 @@ function Get-HelmChartPath {
         }
     }
     catch {
-        Write-Warning "Unable to cleanup the $ChartFolderName already present on the machine. In case of failure, please cleanup the directory '$ChartExportPath' and try again."
+        Write-Warning -Message "Unable to cleanup the $ChartFolderName already present on the machine. In case of failure, please cleanup the directory '$ChartExportPath' and try again."
     }
 
     Get-HelmChart -RegistryPath $RegistryPath -ChartExportPath $ChartExportPath -KubeConfig $KubeConfig -KubeContext $KubeContext -HelmClientLocation $HelmClientLocation -NewPath $NewPath -ChartName $ChartName
 
     # Returning helm chart path
     $HelmChartPath = Join-Path $ChartExportPath $ChartName
-    if ($ChartFolderName -eq $consts.Pre_Onboarding_Helm_Charts_Folder_Name) {
+    if ($ChartFolderName -eq $PreOnboardingHelmChartsFolderName) {
         $ChartPath = $HelmChartPath
     }
     else {
@@ -199,10 +204,13 @@ function Get-HelmChartPath {
 
 function Get-HelmChart {
     param (
+        [Parameter(Mandatory)]
         [string]$RegistryPath,
+        [Parameter(Mandatory)]
         [string]$ChartExportPath,
         [string]$KubeConfig,
         [string]$KubeContext,
+        [Parameter(Mandatory)]
         [string]$HelmClientLocation,
         [bool]$NewPath,
         [string]$ChartName = 'azure-arc-k8sagents',
@@ -225,6 +233,7 @@ function Get-HelmChart {
         # the results.
         $basePath, $imageName = if ($chartUrl -match "(^.*?)/([^/]+$)") {$matches[1], $matches[2]}
         $chartUrl = "$basePath/v2/$imageName"
+        # Write-Error "Chart URL: $chartUrl"
     }
 
     $cmdHelmChartPull = @($HelmClientLocation, "pull", "oci://$chartUrl", "--untar", "--untardir", $ChartExportPath, "--version", $chartVersion)
@@ -238,16 +247,17 @@ function Get-HelmChart {
     Write-Debug "Pull helm chart: $cmdHelmChartPull[0] $cmdHelmChartPull[1..($cmdHelmChartPull.Count - 1)]"
     for ($i = 0; $i -lt $RetryCount; $i++) {
         try {
-            & $cmdHelmChartPull[0] $cmdHelmChartPull[1..($cmdHelmChartPull.Count - 1)]
+            Invoke-ExternalCommand $cmdHelmChartPull[0] $cmdHelmChartPull[1..($cmdHelmChartPull.Count - 1)]
             break
         }
         catch {
-            if ($i -eq $RetryCount - 1) {
-                # Assuming telemetry.set_exception and consts.Pull_HelmChart_Fault_Type are handled elsewhere
-                throw "Unable to pull $ChartName helm chart from the registry '$RegistryPath': $_"
-            }
             Start-Sleep -Seconds $RetryDelay
         }
+    }
+
+    if ($i -eq $RetryCount) {
+        # Assuming telemetry.set_exception and consts.Pull_HelmChart_Fault_Type are handled elsewhere
+        throw "Unable to pull '$ChartName' helm chart from the registry '$RegistryPath'."
     }
 }
 
@@ -266,4 +276,15 @@ function Get-HelmValuesFile {
         return $valuesFile
     }
     return $null
+}
+
+# This method exists to allow us to effectively Mock the call operator (&).
+# We cannnot do that directly so instead we have this wrapper, which we can mock!
+function Invoke-ExternalCommand {
+    param (
+        [Parameter(Mandatory=$true)]
+        [string]$Command,
+        [array]$Arguments
+    )
+    & $Command $Arguments
 }
