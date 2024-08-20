@@ -2,7 +2,7 @@
     Justification = 'Uses multiple parameters', Scope = 'Function', Target = 'Invoke-RestMethodWithUriParameters')]
 param()
 
-function Invoke-ConfigDPHealthCheck {
+function InvokeConfigDPHealthCheck {
     param (
         [string]$configDPEndpoint
     )
@@ -27,7 +27,7 @@ function Invoke-ConfigDPHealthCheck {
 }
 
 
-function Get-ConfigDPEndpoint {
+function GetConfigDPEndpoint {
     param (
         [Parameter(Mandatory = $true)]
         [string]$Location,
@@ -48,7 +48,7 @@ function Get-ConfigDPEndpoint {
 }
 
 # !!PDS: What? Looks like there is a function to do this?  Perhaps because we did not hide it?
-function Get-ConfigDpDefaultEndpoint {
+function GetConfigDpDefaultEndpoint {
     param (
         [Parameter(Mandatory = $true)]
         [string]$location,
@@ -67,7 +67,7 @@ function Get-ConfigDpDefaultEndpoint {
     return $configDpEndpoint
 }
 
-function Invoke-RestMethodWithUriParameters {
+function InvokeRestMethodWithUriParameters {
     param (
         [String]$method,
         [String]$uri,
@@ -94,7 +94,7 @@ function Invoke-RestMethodWithUriParameters {
     #     $uriParametersArray = $uriParameters.GetEnumerator() | ForEach-Object { "$($_.Key)=$($_.Value)" } | ForEach-Object { $_ -join '=' } | ForEach-Object { $_ -join '&' }
     # }
     Write-Debug "Issue REST request to ${uri} with method ${method} and headers ${headers} and body ${requestBody}"
-    $rsp = Invoke-RestMethod `
+    $rsp = InvokeRestMethod `
         -Method $method `
         -Uri $uri `
         -Headers $headers `

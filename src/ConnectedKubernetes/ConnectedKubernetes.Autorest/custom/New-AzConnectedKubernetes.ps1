@@ -419,7 +419,7 @@ function New-AzConnectedKubernetes {
             $ConfigmapRgName = $Configmap.data.AZURE_RESOURCE_GROUP
             $ConfigmapClusterName = $Configmap.data.AZURE_RESOURCE_NAME
             try {
-                $ExistConnectedKubernetes = Get-AzConnectedKubernetes `
+                $ExistConnectedKubernetes = GetAzConnectedKubernetes `
                     -ResourceGroupName $ConfigmapRgName `
                     -ClusterName $ConfigmapClusterName `
                     @CommonPSBoundParameters `
@@ -715,7 +715,7 @@ function New-AzConnectedKubernetes {
         Write-Debug "Retrieving Helm chart OCI (Open Container Initiative) Artifact location."
         Write-Debug "PUT response: $Response"
         $ResponseStr = "$Response"
-        $helmValuesDp = Get-HelmValues `
+        $helmValuesDp = GetHelmValues `
             -configDPEndpoint $configDPEndpoint `
             -releaseTrain $ReleaseTrain `
             -requestBody $ResponseStr `
@@ -758,7 +758,7 @@ function New-AzConnectedKubernetes {
         # )
 
         # Get helm chart path (within the OCI registry).
-        $chartPath = Get-HelmChartPath -registryPath $registryPath -kubeConfig $KubeConfig -kubeContext $KubeContext -helmClientLocation $HelmClientLocation
+        $chartPath = GetHelmChartPath -registryPath $registryPath -kubeConfig $KubeConfig -kubeContext $KubeContext -helmClientLocation $HelmClientLocation
         if (Test-Path Env:HELMCHART) {
             $ChartPath = Get-ChildItem -Path Env:HELMCHART
         }

@@ -3,7 +3,7 @@
 [CmdletBinding()]
 param()    
 
-function Set-HelmClientLocation {
+function SetHelmClientLocation {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(
     )
@@ -19,7 +19,7 @@ function Set-HelmClientLocation {
     }
 }
 
-function Get-HelmClientLocation {
+function GetHelmClientLocation {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(
     )
@@ -63,7 +63,7 @@ function Get-HelmClientLocation {
     }
 }
 
-function Get-ReleaseInstallNamespace {
+function GetReleaseInstallNamespace {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(
     )
@@ -81,7 +81,7 @@ function IsWindows {
     }
 }
 
-function Get-OSName {
+function GetOSName {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(
     )
@@ -105,7 +105,7 @@ function IsAmd64 {
     }
 }
 
-function Get-HelmValues {
+function GetHelmValues {
     param (
         [Parameter(Mandatory=$true)]
         $ConfigDpEndpoint,
@@ -161,7 +161,7 @@ function Get-HelmValues {
     throw "No content was found in helm registry path response, StatusCode: ${StatusCode}."
 }
 
-function Get-HelmChartPath {
+function GetHelmChartPath {
     param (
         [Parameter(Mandatory)]
         [string]$RegistryPath,
@@ -202,7 +202,7 @@ function Get-HelmChartPath {
     return $ChartPath
 }
 
-function Get-HelmChart {
+function GetHelmChart {
     param (
         [Parameter(Mandatory)]
         [string]$RegistryPath,
@@ -262,7 +262,7 @@ function Get-HelmChart {
 }
 
 # !!PDS: no dogfood so no need for this?
-function Get-HelmValuesFile {
+function GetHelmValuesFile {
     $valuesFile = $env:HELMVALUESPATH
     if ($null -ne $valuesFile -and (Test-Path $valuesFile)) {
         Write-Warning "Values file detected. Reading additional helm parameters from same."
@@ -280,7 +280,7 @@ function Get-HelmValuesFile {
 
 # This method exists to allow us to effectively Mock the call operator (&).
 # We cannnot do that directly so instead we have this wrapper, which we can mock!
-function Invoke-ExternalCommand {
+function InvokeExternalCommand {
     param (
         [Parameter(Mandatory=$true)]
         [string]$Command,
