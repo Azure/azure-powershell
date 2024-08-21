@@ -80,10 +80,7 @@ namespace Microsoft.Azure.Commands.Profile.Common
                     result = currentProfile;
                     break;
                 case ContextModificationScope.CurrentUser:
-                    result = new AzureRmAutosaveProfile(currentProfile, ProtectedFileProvider.CreateFileProvider(Path.Combine(AzureSession.Instance.ARMProfileDirectory, AzureSession.Instance.ARMProfileFile), FileProtection.ExclusiveWrite))
-                    {
-                        CmdletContext = _cmdletContext
-                    };
+                    result = new AzureRmAutosaveProfile(currentProfile, ProtectedFileProvider.CreateFileProvider(Path.Combine(AzureSession.Instance.ARMProfileDirectory, AzureSession.Instance.ARMProfileFile), FileProtection.ExclusiveWrite));
                     break;
             }
 
