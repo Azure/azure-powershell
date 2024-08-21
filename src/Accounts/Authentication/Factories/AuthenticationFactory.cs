@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Azure.Core;
-
 using Hyak.Common;
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -28,7 +26,6 @@ using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
 
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security;
@@ -102,7 +99,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         /// <param name="promptBehavior"></param>
         /// <param name="promptAction"></param>
         /// <param name="tokenCache"></param>
-        /// <param name="cmdletContext"></param>
         /// <param name="resourceId"></param>
         /// <returns></returns>
         public IAccessToken Authenticate(
@@ -113,13 +109,61 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             string promptBehavior,
             Action<string> promptAction,
             IAzureTokenCache tokenCache,
-            ICmdletContext cmdletContext,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
-
-            if (!AzureSession.Instance.TryGetComponent(nameof(AuthenticationTelemetry), out AuthenticationTelemetry authenticationTelemetry))
+            var optionalParameters = new Dictionary<string, object>()
             {
-                throw new NullReferenceException("AuthenticationTelemetry not registered");
+                { TokenCacheParameterName, tokenCache },
+                { ResourceIdParameterName, resourceId }
+            };
+            return Authenticate(account, environment, tenant, password, promptBehavior, promptAction, optionalParameters);
+        }
+
+        public const string TokenCacheParameterName = "tokenCache";
+        public const string ResourceIdParameterName = "resourceId";
+        public const string CmdletContextParameterName = "cmdletContext";
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="environment"></param>
+        /// <param name="tenant"></param>
+        /// <param name="password"></param>
+        /// <param name="promptBehavior"></param>
+        /// <param name="promptAction"></param>
+        /// <param name="optionalParameters"></param>
+        /// <returns></returns>
+        public IAccessToken Authenticate(
+            IAzureAccount account,
+            IAzureEnvironment environment,
+            string tenant,
+            SecureString password,
+            string promptBehavior,
+            Action<string> promptAction,
+            IDictionary<string, object> optionalParameters)
+        {
+            var resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId;
+            IAzureTokenCache tokenCache = null;
+            ICmdletContext cmdletContext = null;
+            AuthenticationTelemetry authenticationTelemetry = null;
+            if (optionalParameters != null)
+            {
+                if (optionalParameters.ContainsKey(ResourceIdParameterName))
+                {
+                    resourceId = optionalParameters[ResourceIdParameterName] as string;
+                }
+                if (optionalParameters.ContainsKey(TokenCacheParameterName))
+                {
+                    tokenCache = optionalParameters[TokenCacheParameterName] as IAzureTokenCache;
+                }
+                if (AzureSession.Instance.TryGetComponent(nameof(AuthenticationTelemetry), out authenticationTelemetry))
+                {
+                    if (optionalParameters.ContainsKey(CmdletContextParameterName))
+                    {
+                        cmdletContext = optionalParameters[CmdletContextParameterName] as ICmdletContext;
+                    }
+                }
             }
 
             PowerShellTokenCacheProvider tokenCacheProvider;
@@ -149,7 +193,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                             {
                                 account.SetProperty(AzureAccount.Property.HomeAccountId, token.HomeAccountId);
                             }
-                            authenticationTelemetry.PushTelemetryRecord(cmdletContext, new AuthTelemetryRecord(Builder.Authenticator.GetDataForTelemetry(), true));
+                            if (cmdletContext!= null)
+                            {
+                                authenticationTelemetry.PushTelemetryRecord(cmdletContext, new AuthTelemetryRecord(Builder.Authenticator.GetDataForTelemetry(), true));
+                            }
+
                             break;
                         }
 
@@ -160,7 +208,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 {
                     if (!IsTransientException(e) || retries == 0)
                     {
-                        authenticationTelemetry.PushTelemetryRecord(cmdletContext, new AuthTelemetryRecord(Builder.Authenticator.GetDataForTelemetry(), false));
+                        if (cmdletContext != null)
+                        {
+                            authenticationTelemetry.PushTelemetryRecord(cmdletContext, new AuthTelemetryRecord(Builder.Authenticator.GetDataForTelemetry(), false));
+                        }
                         var mfaException = AnalyzeMsalException(e, environment, tenant, resourceId);
                         if (mfaException != null)
                         {
@@ -236,7 +287,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             SecureString password,
             string promptBehavior,
             Action<string> promptAction,
-            ICmdletContext cmdletContext,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
             return Authenticate(
@@ -246,7 +296,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 promptBehavior,
                 promptAction,
                 null,
-                cmdletContext,
                 resourceId);
         }
 
@@ -318,7 +367,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                                 null,
                                 ShowDialog.Never,
                                 null,
-                                AzureCmdletContext.CmdletNone,
                                 context.Environment.GetTokenAudience(targetEndpoint));
 
                 TracingAdapter.Information(
@@ -400,7 +448,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     case AzureAccount.AccountType.User:
                     case AzureAccount.AccountType.ServicePrincipal:
                     case "ClientAssertion":
-                        token = Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, cmdletContext, resourceId);
+                        var optionalParameters = new Dictionary<string, object>()
+                        {
+                            {ResourceIdParameterName, resourceId },
+                            {CmdletContextParameterName, cmdletContext }
+                        };
+                        token = Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, optionalParameters);
                         break;
                     default:
                         throw new NotSupportedException(context.Account.Type.ToString());
@@ -636,6 +689,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return new SilentParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId);
         }
 
-        private ConcurrentDictionary<string, IList<AuthTelemetryRecord>> telemetryDataAccquirer = new ConcurrentDictionary<string, IList<AuthTelemetryRecord>>();
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
+        {
+            return GetServiceClientCredentials(context, AzureCmdletContext.CmdletNone);
+        }
+
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
+        {
+            return GetServiceClientCredentials(context, targetEndpoint, AzureCmdletContext.CmdletNone);
+        }
     }
 }

@@ -16,6 +16,7 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -410,8 +411,11 @@ namespace Common.Authentication.Test.Cmdlets
                 password,
                 promptBehavior,
                 promptAction,
-                _cache,
-                _cmdletContext);
+                new Dictionary<string, object>()
+                {
+                    {AuthenticationFactory.TokenCacheParameterName, _cache},
+                    {AuthenticationFactory.CmdletContextParameterName,  _cmdletContext}
+                });
         }
 
         private IEnumerable<IAzureSubscription> ListSubscriptions(string tenantIdOrDomain = "")
