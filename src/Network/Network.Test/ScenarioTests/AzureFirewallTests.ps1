@@ -2167,12 +2167,25 @@ function Test-InvokeAzureFirewallPacketCapture {
 
         # Get AzureFirewall
         $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
+
+        # Create Storage Account and Container
+        $storetype = 'Standard_GRS'
+        $containerName = "testcontainer"
+        $storeName = 'sto' + $rgname;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $storeName -Location $location -Type $storetype
+        $key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storeName
+        $context = New-AzStorageContext -StorageAccountName $storeName -StorageAccountKey $key[0].Value
+        New-AzStorageContainer -Name $containerName -Context $context
+        $container = Get-AzStorageContainer -Name $containerName -Context $context
+        $now=get-date
+        $sasurl = New-AzureStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
+
         # Create a filter rules
         $filter1 = New-AzFirewallPacketCaptureRule -Source "10.0.0.2","192.123.12.1" -Destination "172.32.1.2" -DestinationPort "80","443"
         $filter2 = New-AzFirewallPacketCaptureRule -Source "10.0.0.5" -Destination "172.20.10.2" -DestinationPort "80","443"
     
         # Create the firewall packet capture parameters
-        $Params =  New-AzFirewallPacketCaptureParameter  -DurationInSeconds 30 -NumberOfPackets 500 -SASUrl "https://poojaghatge.blob.core.windows.net/packetcapturefix?sp=w&st=2024-08-21T16:39:04Z&se=2024-08-22T00:39:04Z&spr=https&sv=2022-11-02&sr=c&sig=sfcwHj3Tk5%2FdfAkACqyXP%2FILf790QXJvtwfEiv6V4UY%3D" -Filename "AzFwPowershellPacketCapture" -Flag "Syn","Ack" -Protocol "Any" -Filter $Filter1, $Filter2
+        $Params =  New-AzFirewallPacketCaptureParameter  -DurationInSeconds 30 -NumberOfPackets 500 -SASUrl $sasurl -Filename "AzFwPowershellPacketCapture" -Flag "Syn","Ack" -Protocol "Any" -Filter $Filter1, $Filter2
 
         # Invoke a firewall packet capture
         $response = Invoke-AzFirewallPacketCapture -AzureFirewall $azureFirewall -Parameter $Params
