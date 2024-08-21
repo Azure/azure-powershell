@@ -22,7 +22,6 @@ using Xunit;
 using Xunit.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
-using System.Security;
 using Microsoft.Azure.Commands.Profile.Context;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -57,7 +56,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         void ResetState()
         {
-
             TestExecutionHelpers.SetUpSessionAndProfile();
             ResourceManagerProfileProvider.InitializeResourceManagerProfile(true);
             // prevent token acquisition
@@ -69,6 +67,10 @@ namespace Microsoft.Azure.Commands.Profile.Test
             PowerShellTokenCacheProvider tokenProvider = new InMemoryTokenCacheProvider();
             AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => tokenProvider, true);
             AzureSession.Instance.RegisterComponent(AzKeyStore.Name, () => keyStore, true);
+            if (!AzureSession.Instance.TryGetComponent(nameof(AuthenticationTelemetry), out AuthenticationTelemetry authenticationTelemetry))
+            {
+                AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(nameof(AuthenticationTelemetry), () => new AuthenticationTelemetry());
+            }
         }
 
         [Fact]

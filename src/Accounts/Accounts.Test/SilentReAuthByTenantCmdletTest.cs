@@ -36,8 +36,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.Azure.Commands.Common.Authentication.Factories;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 {
@@ -326,6 +324,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 DefaultContext = defaultContext
             };
             cmdlet.profileClient = new RMProfileClient(profile);
+
+            if (!AzureSession.Instance.TryGetComponent(nameof(AuthenticationTelemetry), out AuthenticationTelemetry authenticationTelemetry))
+            {
+                AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(nameof(AuthenticationTelemetry), () => new AuthenticationTelemetry());
+            }
         }
 
         ~SilentReAuthByTenantCmdletTest()
