@@ -58,3 +58,32 @@ We are recommended to use string array as the type of UserAssignedIdentity with 
 - No syntax changes if service supports one more user assigned identity in future;
 - Service will provide correct error response if customer reaches the count limitation of `UserAssignedIdentity` ideally, which means no harm.
 
+### What should I do to mitigate one patch operation which is reported to unable to be replaced by Get+Put operation.
+Our autorest.powershell is unable to replace patch operation by get+put sometimes automatically for several reasons. To mitigate this issue,
+- add `suppress-replace-patch-by-getput-error: true` in README.md
+- hide the corresponding Update cmdlet in directive by
+```
+ -  where:
+      verb: Update
+      subject: {Subject-Name}
+    hide: true
+```
+- run `autorest` and `./build-module.ps1`
+- copy internal/Update-Az{ModuleName}{Subject-Name}.ps1 to custom folder
+- manually change IdentityType to EnableSystemAssignedIdentity<bool> and UserAssignedIdentity<hashtable> to UserAssignedIdentity<string[]> like
+```
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Body')]
+    [System.Nullable[System.Boolean]]
+    # Decides if enable a system assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+```
+- calculate the value of IdentityType and UserAssignedIdentity as swagger defined in process block, see example [here](https://github.com/Azure/azure-powershell/blob/2d37985acc5ca72f8838df884bd6b2b3abff3ae7/src/Fleet/Fleet.Autorest/generated/cmdlets/UpdateAzFleet_UpdateExpanded.cs#L445).
