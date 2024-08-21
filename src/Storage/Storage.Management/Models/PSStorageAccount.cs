@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             var result = new PSStorageAccount(storageAccount);
 
-            // If now allow Shared key, will get Oauth context
+            // If not allow Shared key, will get Oauth context
             if (storageAccount.AllowSharedKeyAccess.HasValue && !storageAccount.AllowSharedKeyAccess.Value)
             {
                 result.Context = new LazyAzureStorageContext((s) =>
@@ -195,18 +195,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 {
                     return new AzureSessionCredential(DefaultContext, null);
                 }) as AzureStorageContext;
-
-                // Leave the code since we might don't need make Oauth token credential object lazy.
-                //TokenCredential tokenCredential = OAuthUtil.getTokenCredential(DefaultContext, logWriter);
-                //StorageCredentials credential = new StorageCredentials(tokenCredential);
-                //CloudStorageAccount track1Account = new CloudStorageAccount(credential,
-                //    string.IsNullOrEmpty(storageAccount.PrimaryEndpoints.Blob) ? null : new Uri(storageAccount.PrimaryEndpoints.Blob),
-                //    string.IsNullOrEmpty(storageAccount.PrimaryEndpoints.Queue) ? null : new Uri(storageAccount.PrimaryEndpoints.Queue),
-                //    string.IsNullOrEmpty(storageAccount.PrimaryEndpoints.Table) ? null : new Uri(storageAccount.PrimaryEndpoints.Table),
-                //    string.IsNullOrEmpty(storageAccount.PrimaryEndpoints.File) ? null : new Uri(storageAccount.PrimaryEndpoints.File));
-
-                //result.Context = new AzureStorageContext(track1Account, storageAccount.Name, DefaultContext);
-
             }
             // get sharedkey context
             else
