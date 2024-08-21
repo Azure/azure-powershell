@@ -162,8 +162,6 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
         /// <returns></returns>
         protected ManagedInstanceAdministrator GetActiveDirectoryInformation(string displayName, Guid objectId)
         {
-            System.Diagnostics.Debugger.Launch();
-
             // Gets the default Tenant id for the subscriptions
             Guid tenantId = GetTenantId();
 
