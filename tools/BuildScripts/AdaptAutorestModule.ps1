@@ -194,12 +194,11 @@ $job = start-job {
 
     if (-Not (Test-Path $helpPath)) {
         New-Item -Type Directory $helpPath -Force
-        CopyItem -Path (Join-Path $subModuleHelpPath "Az.$SubModuleNameTrimmed.md") -Destination $helpPath
     }
     Get-ChildItem $subModuleHelpPath -Filter *-*.md | Copy-Item -Destination (Join-Path $helpPath $_.Name) -Force
     Write-Host "Refreshing help markdown files under: $helpPath ..."
     Update-MarkdownHelpModule -Path $helpPath -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
-    foreach ($helpFile in (Get-Item $helpPath)) {
+    foreach ($helpFile in (Get-ChildItem $helpPath -Recurse)) {
         $cmdeltName = $helpFile.Name.Replace(".md", "")
         if ($exportedCommands -notcontains $cmdeltName)
         {
