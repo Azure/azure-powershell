@@ -273,7 +273,9 @@ function New-AzConnectedKubernetes {
 
     # Write-Debug "Outside of process"
 
+
     process {
+        Write-Verbose "Checking if Azure Hybrid Benefit is opted in and processing the EULA."
         . "$PSScriptRoot/helpers/HelmHelper.ps1"
         . "$PSScriptRoot/helpers/ConfigDPHelper.ps1"
         . "$PSScriptRoot/helpers/AZCloudMetadataHelper.ps1"
@@ -294,7 +296,9 @@ function New-AzConnectedKubernetes {
                 }
             }
         }
+        Write-Verbose "Removed the AcceptEULA parameter after processing."
         $null = $PSBoundParameters.Remove('AcceptEULA')
+        Write-Verbose "Determining the kube config file path."
 
 
         if ($PSBoundParameters:KubeConfig) {
@@ -313,12 +317,14 @@ function New-AzConnectedKubernetes {
             Write-Error 'Cannot find the kube-config. Please make sure that you have the kube-config on your machine.'
             return
         }
+        Write-Verbose "Setting the kube context."
         if ($PSBoundParameters:KubeContext) {
             $Null = $PSBoundParameters.Remove('KubeContext')
         }
         if (($null -eq $KubeContext) -or ($KubeContext -eq '')) {
             $KubeContext = kubectl config current-context
         }
+        Write-Verbose "Validating ConnectionType and GatewayResourceId parameters."
 
         if ($PSBoundParameters:ConnectionType) {
             if ($ConnectionType.Equals("direct")) {
@@ -328,6 +334,7 @@ function New-AzConnectedKubernetes {
                 }
             }
         }
+        Write-Verbose "Processing Arc Agentry settings and protected settings."
 
         # If GatewayResourceId is provided then set the gateway as enabled.
         $PSBoundParameters.Add('GatewayEnabled', $null -ne $GatewayResourceId)
@@ -375,6 +382,7 @@ function New-AzConnectedKubernetes {
         #Endregion
 
         #Region check helm install
+        Write-Verbose "Setting up Helm client location and validating Helm version."
         try {
             Set-HelmClientLocation
             $HelmVersion = helm version --template='{{.Version}}' --kubeconfig $KubeConfig
@@ -402,6 +410,7 @@ function New-AzConnectedKubernetes {
         $helmClientLocation = 'helm'
 
         #Region get release namespace
+        Write-Verbose "Getting release namespace."
         $ReleaseInstallNamespace = Get-ReleaseInstallNamespace
         $ReleaseNamespace = $null
         try {
@@ -444,6 +453,7 @@ function New-AzConnectedKubernetes {
             }
         }
 
+        Write-Verbose "Setting Helm repository and checking for required modules."
         if ((Test-Path Env:HELMREPONAME) -and (Test-Path Env:HELMREPOURL)) {
             $HelmRepoName = Get-ChildItem -Path Env:HELMREPONAME
             $HelmRepoUrl = Get-ChildItem -Path Env:HELMREPOURL
@@ -501,6 +511,7 @@ function New-AzConnectedKubernetes {
         Set-Item -Path Env:HELM_EXPERIMENTAL_OCI -Value 1
 
         # Region create RSA keys
+        Write-Verbose "Generating RSA keys for secure communication."
         $RSA = [System.Security.Cryptography.RSA]::Create(4096)
         if ($PSVersionTable.PSVersion.Major -eq 5) {
             try {
@@ -527,6 +538,7 @@ function New-AzConnectedKubernetes {
         # }
 
         #Region helm options
+        Write-Verbose "Processing Helm chart installation options."
         # !!PDS: The az cli also sets the "proxy" fields in the settings and
         #        passes these to Azure.  Do we need to do this as well?
 

@@ -1,21 +1,24 @@
 [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '',
-    Justification='Helm values is a recognised term', Scope='Function', Target='Get-HelmValues')]
+    Justification = 'Helm values is a recognised term', Scope = 'Function', Target = 'Get-HelmValues')]
 [CmdletBinding()]
-param()    
+param()
 
 function Set-HelmClientLocation {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(
     )
     process {
+        Write-Verbose "Setting Helm client location."
         $HelmLocation = Get-HelmClientLocation
         if ($null -eq $HelmLocation) {
+            Write-Verbose "Helm location not found."
             return
         }
         if (!($env:Path.contains($HelmLocation)) -and (Test-Path $HelmLocation)) {
+            Write-Verbose "Updating PATH environment variable with Helm location."
             $PathStr = $HelmLocation + ";$env:Path"
             Set-Item -Path Env:Path -Value $PathStr
-        }        
+        }
     }
 }
 
@@ -23,18 +26,22 @@ function Get-HelmClientLocation {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(
     )
-    process {        
+    process {
+        Write-Verbose "Getting Helm client location."
         if (IsWindows -and IsAmd64) {
+            Write-Verbose "Detected Windows AMD64 architecture."
             if (Test-Path Env:HELM_CLIENT_PATH) {
                 $CustomPath = (Get-Item Env:HELM_CLIENT_PATH).Value
+                Write-Verbose "Custom Helm path detected: $CustomPath"
                 if ($CustomPath.EndsWith("helm.exe") -and (!((Get-Item $CustomPath) -is [System.IO.DirectoryInfo]))) {
-                    $CustomPath = $CustomPath.Replace("helm.exe","")
+                    $CustomPath = $CustomPath.Replace("helm.exe", "")
                 }
                 return $CustomPath
             }
             if (Test-Path Env:Home) {
                 $HomePath = (Get-Item Env:HOME).Value
-            } else {
+            }
+            else {
                 $HomePath = $Home
             }
             # $Version = "v3.6.3"
@@ -46,17 +53,22 @@ function Get-HelmClientLocation {
             $HelmLocation = Join-Path -Path $InstallLocation -ChildPath "helm.exe"
             try {
                 if (!(Test-Path $RootFolder)) {
+                    Write-Verbose "Creating Helm root folder: $RootFolder"
                     $null = New-Item $RootFolder -ItemType Directory
                 }
                 if ((!(Test-Path $HelmLocation))) {
+                    Write-Verbose "Downloading Helm zip to: $ZipLocation"
                     Invoke-WebRequest -Uri "https://k8connecthelm.azureedge.net/helmsigned/$ZipName" -OutFile $ZipLocation -UseBasicParsing
+                    Write-Verbose "Extracting Helm zip to: $RootFolder"
                     Expand-Archive $ZipLocation $RootFolder
                     Write-Verbose "Downloaded helm: $HelmLocation"
                 }
-            } catch {
+            }
+            catch {
                 throw "Failed to download helm ($_)"
             }
-        } else {
+        }
+        else {
             Write-Warning "Helm version 3.6.3 is required. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
         }
         return $InstallLocation
@@ -68,6 +80,7 @@ function Get-ReleaseInstallNamespace {
     param(
     )
     process {
+        Write-Verbose "Getting Helm release install namespace."
         return "azure-arc-release"
     }
 }
@@ -77,6 +90,7 @@ function IsWindows {
     param(
     )
     process {
+        Write-Verbose "Determining if the system is Windows."
         return (Get-OSName).contains("Windows")
     }
 }
@@ -86,9 +100,11 @@ function Get-OSName {
     param(
     )
     process {
+        Write-Verbose "Getting the operating system name."
         if ($PSVersionTable.PSEdition.Contains("Core")) {
             $OSPlatform = $PSVersionTable.OS
-        } else {
+        }
+        else {
             $OSPlatform = $env:OS
         }
         return $OSPlatform
@@ -100,6 +116,7 @@ function IsAmd64 {
     param(
     )
     process {
+        Write-Verbose "Checking if the architecture is AMD64."
         $isSupport = [Environment]::Is64BitOperatingSystem -and ($env:PROCESSOR_ARCHITECTURE -eq "AMD64")
         return $isSupport
     }
@@ -107,14 +124,15 @@ function IsAmd64 {
 
 function Get-HelmValues {
     param (
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         $ConfigDpEndpoint,
         [string]$ReleaseTrainCustom,
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string]$RequestBody
     )
 
     # Setting uri
+    Write-Verbose "Preparing to retrieve Helm values from the API."
     $apiVersion = "2024-07-01-preview"
     $chartLocationUrlSegment = "azure-arc-k8sagents/GetHelmSettings"
     $releaseTrain = if ($env:RELEASETRAIN) { $env:RELEASETRAIN } else { "stable" }
@@ -124,7 +142,7 @@ function Get-HelmValues {
     }
     $uriParameters = [ordered]@{
         "api-version" = $apiVersion
-        releaseTrain = $releaseTrain
+        releaseTrain  = $releaseTrain
     }
     $headers = @{
         "Content-Type" = "application/json"
@@ -132,6 +150,7 @@ function Get-HelmValues {
     if ($env:AZURE_ACCESS_TOKEN) {
         $headers["Authorization"] = "Bearer $($env:AZURE_ACCESS_TOKEN)"
     }
+    Write-Verbose "Sending request to retrieve Helm values."
 
     # Sending request with retries
     try {
@@ -149,6 +168,7 @@ function Get-HelmValues {
 
         # Response is a Hashtable of JSON values.
         if ($StatusCode -eq 200 -and $r) {
+            Write-Verbose "Successfully retrieved Helm values."
             return $r
         }
     }
@@ -173,6 +193,7 @@ function Get-HelmChartPath {
         [string]$ChartName = 'azure-arc-k8sagents',
         [bool]$NewPath = $true
     )
+    Write-Verbose "Preparing to export Helm chart to a specific path."
 
     # Special path!
     $PreOnboardingHelmChartsFolderName = 'PreOnboardingChecksCharts'
@@ -181,13 +202,14 @@ function Get-HelmChartPath {
     $ChartExportPath = Join-Path $env:USERPROFILE ('.azure', $ChartFolderName -join '\')
     try {
         if (Test-Path $ChartExportPath) {
+            Write-Verbose "Cleaning up existing Helm chart folder at: $ChartExportPath"
             Remove-Item $ChartExportPath -Recurse -Force
         }
     }
     catch {
         Write-Warning -Message "Unable to cleanup the $ChartFolderName already present on the machine. In case of failure, please cleanup the directory '$ChartExportPath' and try again."
     }
-
+    Write-Verbose "Starting Helm chart export to path: $ChartExportPath"
     Get-HelmChart -RegistryPath $RegistryPath -ChartExportPath $ChartExportPath -KubeConfig $KubeConfig -KubeContext $KubeContext -HelmClientLocation $HelmClientLocation -NewPath $NewPath -ChartName $ChartName
 
     # Returning helm chart path
@@ -198,7 +220,7 @@ function Get-HelmChartPath {
     else {
         $ChartPath = if ($env:HELMCHART) { $env:HELMCHART } else { $HelmChartPath }
     }
-
+    Write-Verbose "Helm chart path is: $ChartPath"
     return $ChartPath
 }
 
@@ -231,7 +253,7 @@ function Get-HelmChart {
 
         # We do not use Split-Path here because it results in "\" characters in
         # the results.
-        $basePath, $imageName = if ($chartUrl -match "(^.*?)/([^/]+$)") {$matches[1], $matches[2]}
+        $basePath, $imageName = if ($chartUrl -match "(^.*?)/([^/]+$)") { $matches[1], $matches[2] }
         $chartUrl = "$basePath/v2/$imageName"
         # Write-Error "Chart URL: $chartUrl"
     }
@@ -282,7 +304,7 @@ function Get-HelmValuesFile {
 # We cannnot do that directly so instead we have this wrapper, which we can mock!
 function Invoke-ExternalCommand {
     param (
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string]$Command,
         [array]$Arguments
     )
