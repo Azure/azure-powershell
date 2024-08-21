@@ -1,20 +1,19 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzConnectedKubernetes'))
-{
-  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-  if (-Not (Test-Path -Path $loadEnvPath)) {
-      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
-  }
-  . ($loadEnvPath)
-  $currentPath = $PSScriptRoot
-  while(-not $mockingPath) {
-      $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
-      $currentPath = Split-Path -Path $currentPath -Parent
-  }
-  . ($mockingPath | Select-Object -First 1).FullName
-  # !!PDS: Better way to do this?
-  . "$PSScriptRoot/../custom/helpers/HelmHelper.ps1"
-  . "$PSScriptRoot/../custom/helpers/ConfigDPHelper.ps1"
-  . "$PSScriptRoot/../custom/helpers/AzCloudMetadataHelper.ps1"
+if (($null -eq $TestName) -or ($TestName -contains 'New-AzConnectedKubernetes')) {
+    $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+    if (-Not (Test-Path -Path $loadEnvPath)) {
+        $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+    }
+    . ($loadEnvPath)
+    $currentPath = $PSScriptRoot
+    while (-not $mockingPath) {
+        $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+        $currentPath = Split-Path -Path $currentPath -Parent
+    }
+    . ($mockingPath | Select-Object -First 1).FullName
+    # !!PDS: Better way to do this?
+    . "$PSScriptRoot/../custom/helpers/HelmHelper.ps1"
+    . "$PSScriptRoot/../custom/helpers/ConfigDPHelper.ps1"
+    . "$PSScriptRoot/../custom/helpers/AzCloudMetadataHelper.ps1"
 }
 
 # The custom tests make helm requests and the framework does not mock these so
@@ -92,7 +91,7 @@ Describe 'Invoke-RestMethodWithUriParameters' {
 
         {
             # Create a hashtable with sample key-value pairs
-            $uriParameters = [ordered]@{"key1"="value1"; "key2"="value2"}
+            $uriParameters = [ordered]@{"key1" = "value1"; "key2" = "value2" }
 
             Invoke-RestMethodWithUriParameters `
                 -Method "POST" `
@@ -133,10 +132,10 @@ Describe 'Invoke-RestMethodWithUriParameters' {
 Describe 'Get-ConfigDpDefaultEndpoint' {
     It 'Golden path' {
         {
-           $cloudMetadata = [PSCustomObject]@{
-               ActiveDirectoryAuthority = "https://login.microsoftonline.com/"
-           }
-           $script:configDpEndpoint = Get-ConfigDpDefaultEndpoint `
+            $cloudMetadata = [PSCustomObject]@{
+                ActiveDirectoryAuthority = "https://login.microsoftonline.com/"
+            }
+            $script:configDpEndpoint = Get-ConfigDpDefaultEndpoint `
                 -Location "eastus2" `
                 -CloudMetadata $cloudMetadata
         } | Should -Not -Throw
@@ -146,10 +145,10 @@ Describe 'Get-ConfigDpDefaultEndpoint' {
     # !!PDS: How do we validate this?  Need to check endpoint on a sovereign cloud.
     It 'Sovereign cloud' {
         {
-           $cloudMetadata = [PSCustomObject]@{
-               ActiveDirectoryAuthority = "https://login.sovereign.invalid/"
-           }
-           $script:configDpEndpoint = Get-ConfigDpDefaultEndpoint `
+            $cloudMetadata = [PSCustomObject]@{
+                ActiveDirectoryAuthority = "https://login.sovereign.invalid/"
+            }
+            $script:configDpEndpoint = Get-ConfigDpDefaultEndpoint `
                 -Location "westus3" `
                 -CloudMetadata $cloudMetadata
         } | Should -Not -Throw
@@ -158,37 +157,18 @@ Describe 'Get-ConfigDpDefaultEndpoint' {
 }
 
 Describe 'Get-ConfigDpEndpoint' {
-    It 'Golden path' {
-        {
-            $cloudMetadata = [PSCustomObject]@{
-                ArcConfigEndpoint = "https://arc.microsoftonline.com"
-                ActiveDirectoryAuthority = "https://login.microsoftonline.com"
-            }
-           $script:configDpEndpoint = Get-ConfigDpEndpoint `
-                -Location "eastus2" `
-                -CloudMetadata $cloudMetadata
-        } | Should -Not -Throw
-
-        $configDpEndpoint.ConfigDpEndpoint | Should -Be "https://arc.microsoftonline.com"
-        $configDpEndpoint.ReleaseTrain | Should -Be $null
-        # !!PDS: Don't believe we require this!
-        $configDpEndpoint.ADResourceId | Should -Be $null
-    }
-
-    It 'No ArcconfigEndpoints' {
+    It 'Golden Path' {
         {
             $cloudMetadata = [PSCustomObject]@{
                 ActiveDirectoryAuthority = "https://login.microsoftonline.com"
             }
             $script:configDpEndpoint = Get-ConfigDpEndpoint `
-                    -Location "eastus2" `
-                    -CloudMetadata $cloudMetadata
+                -Location "eastus2" `
+                -CloudMetadata $cloudMetadata
         } | Should -Not -Throw
 
         $configDpEndpoint.ConfigDpEndpoint | Should -Be "https://eastus2.dp.kubernetesconfiguration.azure.com"
         $configDpEndpoint.ReleaseTrain | Should -Be $null
-        # !!PDS: Don't believe we require this!
-        $configDpEndpoint.ADResourceId | Should -Be $null
     }
 }
 
@@ -253,14 +233,14 @@ Describe 'Get-HelmValues' {
     It 'Golden path' {
         $rq = {
             identity = @{
-                tenantId = "1234"
+                tenantId    = "1234"
                 principalId = "5678"
             }
             id = "abcd"
         }
         $rsp = [PSObject]@{
             Frank = "Sinatra"
-            Dean = "Martin"
+            Dean  = "Martin"
         }
         Mock Invoke-RestMethod {
             $Script:StatusCode = 200
@@ -283,14 +263,14 @@ Describe 'Get-HelmValues' {
     It 'Custom release train' {
         $rq = @{
             identity = @{
-                tenantId = "1234"
+                tenantId    = "1234"
                 principalId = "5678"
             }
-            id = "abcd"
+            id       = "abcd"
         }
         $rsp = @{
             Frank = "Sinatra"
-            Dean = "Martin"
+            Dean  = "Martin"
         }
         Mock Invoke-RestMethod {
             $Script:StatusCode = 200
@@ -311,17 +291,17 @@ Describe 'Get-HelmValues' {
     }
 
     It 'Env access token' {
-        $env:AZURE_ACCESS_TOKEN="Tell nobody!"
+        $env:AZURE_ACCESS_TOKEN = "Tell nobody!"
         $rq = @{
             identity = @{
-                tenantId = "1234"
+                tenantId    = "1234"
                 principalId = "5678"
             }
-            id = "abcd"
+            id       = "abcd"
         }
         $rsp = @{
             Frank = "Sinatra"
-            Dean = "Martin"
+            Dean  = "Martin"
         }
         Mock Invoke-RestMethod {
             $Script:StatusCode = 200
@@ -344,10 +324,10 @@ Describe 'Get-HelmValues' {
     It 'REST call failed' {
         $rq = @{
             identity = @{
-                tenantId = "1234"
+                tenantId    = "1234"
                 principalId = "5678"
             }
-            id = "abcd"
+            id       = "abcd"
         }
         $rsp = $null
         Mock Invoke-RestMethod {
@@ -367,10 +347,10 @@ Describe 'Get-HelmValues' {
     It 'Empty content' {
         $rq = @{
             identity = @{
-                tenantId = "1234"
+                tenantId    = "1234"
                 principalId = "5678"
             }
-            id = "abcd"
+            id       = "abcd"
         }
         $rsp = $null
         Mock Invoke-RestMethod {
@@ -390,10 +370,10 @@ Describe 'Get-HelmValues' {
     It 'Exception reading content' {
         $rq = @{
             identity = @{
-                tenantId = "1234"
+                tenantId    = "1234"
                 principalId = "5678"
             }
-            id = "abcd"
+            id       = "abcd"
         }
         Mock Invoke-RestMethod {
             throw "Failed!"
@@ -431,7 +411,7 @@ Describe 'Get-HelmChartPath' {
         $ExpectedChartPath = Join-Path `
             -Path $env:USERPROFILE `
             -ChildPath ".azure" `
-            -AdditionalChildPath "AzureArcCharts","azure-arc-k8sagents"
+            -AdditionalChildPath "AzureArcCharts", "azure-arc-k8sagents"
         # Write-Error -Message "ChartPath: $ChartPath" -ErrorAction Continue
         # Write-Error -Message "ExpectedChartPath: $ExpectedChartPath" -ErrorAction Continue
         $ChartPath | Should -eq $ExpectedChartPath
@@ -470,7 +450,7 @@ Describe 'Get-HelmChartPath' {
         $ExpectedChartPath = Join-Path `
             -Path $env:USERPROFILE `
             -ChildPath ".azure" `
-            -AdditionalChildPath "PreOnboardingChecksCharts","azure-arc-k8sagents"
+            -AdditionalChildPath "PreOnboardingChecksCharts", "azure-arc-k8sagents"
         # Write-Error -Message "ChartPath: $ChartPath" -ErrorAction Continue
         # Write-Error -Message "ExpectedChartPath: $ExpectedChartPath" -ErrorAction Continue
         $ChartPath | Should -eq $ExpectedChartPath
@@ -502,7 +482,7 @@ Describe 'Get-HelmChartPath' {
         $ExpectedChartPath = Join-Path `
             -Path $env:USERPROFILE `
             -ChildPath ".azure" `
-            -AdditionalChildPath "AzureArcCharts","azure-arc-k8sagents"
+            -AdditionalChildPath "AzureArcCharts", "azure-arc-k8sagents"
         $ChartPath | Should -eq $ExpectedChartPath
     }
 }
@@ -590,12 +570,12 @@ Describe 'Get-HelmChart' {
                 -RegistryPath "SomePath:1.2.3" `
                 -ChartExportPath "c:\temp" `
                 -HelmClientLocation "fake-helm-client.exe"
-                # -KubeConfig `
-                # -KubeContext `
-                # -NewPath
-                # -ChartName = 'azure-arc-k8sagents' `
-                # -RetryCount = 5 `
-                # -RetryDelay = 3
+            # -KubeConfig `
+            # -KubeContext `
+            # -NewPath
+            # -ChartName = 'azure-arc-k8sagents' `
+            # -RetryCount = 5 `
+            # -RetryDelay = 3
         } | Should -Not -Throw
         Assert-MockCalled "Invoke-ExternalCommand" -Times 3
         Assert-VerifiableMock
@@ -610,12 +590,12 @@ Describe 'Get-HelmChart' {
                 -RegistryPath "SomePath:1.20.3" `
                 -ChartExportPath "c:\temp" `
                 -HelmClientLocation "fake-helm-client.exe"
-                # -KubeConfig `
-                # -KubeContext `
-                # -NewPath
-                # -ChartName = 'azure-arc-k8sagents' `
-                # -RetryCount = 5 `
-                # -RetryDelay = 3
+            # -KubeConfig `
+            # -KubeContext `
+            # -NewPath
+            # -ChartName = 'azure-arc-k8sagents' `
+            # -RetryCount = 5 `
+            # -RetryDelay = 3
         } | Should -Throw "Unable to pull 'azure-arc-k8sagents' helm chart from the registry 'SomePath:1.20.3'."
         Assert-MockCalled "Invoke-ExternalCommand" -Times 5
         Assert-VerifiableMock

@@ -95,7 +95,7 @@ function IsWindows {
     }
 }
 
-function Get-OSName {
+function GetOSName {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(
     )
@@ -123,6 +123,7 @@ function IsAmd64 {
 }
 
 function Get-HelmValues {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
     param (
         [Parameter(Mandatory = $true)]
         $ConfigDpEndpoint,
@@ -182,6 +183,7 @@ function Get-HelmValues {
 }
 
 function Get-HelmChartPath {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
     param (
         [Parameter(Mandatory)]
         [string]$RegistryPath,
@@ -225,6 +227,7 @@ function Get-HelmChartPath {
 }
 
 function Get-HelmChart {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
     param (
         [Parameter(Mandatory)]
         [string]$RegistryPath,
@@ -283,26 +286,10 @@ function Get-HelmChart {
     }
 }
 
-# !!PDS: no dogfood so no need for this?
-function Get-HelmValuesFile {
-    $valuesFile = $env:HELMVALUESPATH
-    if ($null -ne $valuesFile -and (Test-Path $valuesFile)) {
-        Write-Warning "Values file detected. Reading additional helm parameters from same."
-        # Trimming required for Windows OS
-        if ($valuesFile.StartsWith("'") -or $valuesFile.StartsWith('"')) {
-            $valuesFile = $valuesFile.Substring(1)
-        }
-        if ($valuesFile.EndsWith("'") -or $valuesFile.EndsWith('"')) {
-            $valuesFile = $valuesFile.Substring(0, $valuesFile.Length - 1)
-        }
-        return $valuesFile
-    }
-    return $null
-}
-
 # This method exists to allow us to effectively Mock the call operator (&).
 # We cannnot do that directly so instead we have this wrapper, which we can mock!
 function Invoke-ExternalCommand {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
     param (
         [Parameter(Mandatory = $true)]
         [string]$Command,
