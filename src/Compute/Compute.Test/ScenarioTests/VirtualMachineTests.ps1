@@ -7527,9 +7527,9 @@ function Test-VMDefaultsToTrustedLaunchImgWhenStnd
 
 <#
 .SYNOPSIS
-Test Add-AzVMDataDisk
+Test Add-AzVMDataDisk and Remove-AzVMDataDisk
 #>
-function Test-AddVMDataDisk
+function Test-AddRemoveVMDataDisk
 {
     # To have a test recording 
     Get-AzVm 
@@ -7538,10 +7538,24 @@ function Test-AddVMDataDisk
     $vmname = 'vm' + $name;
     $vmConfig = New-AzVmConfig -VMName $vmname -VMSize 'testVMSize'
 
-    $vmConfig = Add-AzVMDataDisk -VM $vmConfig -Name datadisk0 -VhdUri "testVhdUri" -SourceResourceId "testSourceResourceId" -CreateOption Copy -Lun 1
+    $vmConfig = Add-AzVMDataDisk -VM $vmConfig -Name 'datadisk0' -VhdUri "testVhdUri" -SourceResourceId "testSourceResourceId" -CreateOption Copy -Lun 1
+    $vmConfig = Add-AzVMDataDisk -VM $vmConfig -Name 'datadisk1' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -CreateOption Empty;
+    $vmConfig = Add-AzVMDataDisk -VM $vmConfig -Name 'datadisk2' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -CreateOption Empty;
 
     # Validate
     Assert-AreEqual $vmConfig.StorageProfile.DataDisks[0].SourceResource.id "testSourceResourceId"
+
+    # test Remove-AzVMDataDisk
+    $vmConfig = Remove-AzVMDataDisk -VM $vmConfig -DataDiskNames 'datadisk1' -ForceDetach
+
+    # Validate 
+    Assert-NotNullOrEmpty $vmConfig.StorageProfile.DataDisks
+    Assert-AreEqual $vmConfig.StorageProfile.DataDisks.Count 3
+    Assert-True $vmConfig.StraogeProfile.DataDisks[1].ToBeDetached $true
+    Assert-AreEqual $vmConfig.StraogeProfile.DataDisks[1].DetachOption "ForceDetach"
+    Assert-False $vmConfig.StraogeProfile.DataDisks[2].ToBeDetached $true
+    Assert-AreNotEqual $vmConfig.StraogeProfile.DataDisks[2].DetachOption "ForceDetach"
+
 }
 
 <#
