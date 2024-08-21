@@ -20,7 +20,6 @@ using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Commands.TestFx.Mocks;
 using Microsoft.Azure.ServiceManagement.Common.Models;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
@@ -55,7 +54,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         {
             TestExecutionHelpers.SetUpSessionAndProfile();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-
+            if (!AzureSession.Instance.TryGetComponent(nameof(AuthenticationTelemetry), out AuthenticationTelemetry authenticationTelemetry))
+            {
+                AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(nameof(AuthenticationTelemetry), () => new AuthenticationTelemetry());
+            }
             AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
             ((MockTokenAuthenticationFactory)AzureSession.Instance.AuthenticationFactory).TokenProvider = (account, environment, tenant) =>
             new MockAccessToken
