@@ -165,7 +165,8 @@ $job = start-job {
         [string]$RepoRoot,
         [string]$ModuleRootName,
         [string]$ParentModuleName,
-        [string]$SubModuleName
+        [string]$SubModuleName,
+        [string]$SubModuleNameTrimmed
     )
 
     $resolveScriptPath = Join-Path $RepoRoot 'tools' 'ResolveTools' 'Resolve-Psd1.ps1'
@@ -187,13 +188,18 @@ $job = start-job {
     $helpPath = Join-Path $parentModulePath 'help'
     $subModuleHelpPath = Join-Path $RepoRoot 'src' $ModuleRootName $SubModuleName 'docs'
 
-    Get-ChildItem $subModuleHelpPath -Filter *-*.md | Copy-Item -Destination $helpPath -Force
     # Clean up the help folder and remove the help files which are not exported by the module.
     $moduleMetadata = Get-Module "Az.$ModuleRootName"
     $exportedCommands = $moduleMetadata.ExportedCommands.Values | Where-Object {$_.CommandType -ne 'Alias'} | ForEach-Object { $_.Name}
+
+    if (-Not (Test-Path $helpPath)) {
+        New-Item -Type Directory $helpPath -Force
+        CopyItem -Path (Join-Path $subModuleHelpPath "Az.$SubModuleNameTrimmed.md") -Destination $helpPath
+    }
+    Get-ChildItem $subModuleHelpPath -Filter *-*.md | Copy-Item -Destination (Join-Path $helpPath $_.Name) -Force
     Write-Host "Refreshing help markdown files under: $helpPath ..."
     Update-MarkdownHelpModule -Path $helpPath -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
-    foreach ($helpFile in (Get-ChildItem $helpPath -Recurse)) {
+    foreach ($helpFile in (Get-Item $helpPath)) {
         $cmdeltName = $helpFile.Name.Replace(".md", "")
         if ($exportedCommands -notcontains $cmdeltName)
         {
@@ -202,7 +208,7 @@ $job = start-job {
         }
     }
     & $resolveScriptPath -ModuleName $ModuleRootName -ArtifactFolder $artifacts -Psd1Folder $parentModulePath
-} -ArgumentList $RepoRoot, $ModuleRootName, $parentModuleName, $SubModuleName
+} -ArgumentList $RepoRoot, $ModuleRootName, $parentModuleName, $SubModuleName, $subModuleNameTrimmed
 $job | Wait-Job | Receive-Job
 $job | Remove-Job
 
