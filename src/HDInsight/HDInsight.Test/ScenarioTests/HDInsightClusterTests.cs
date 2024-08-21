@@ -81,7 +81,7 @@ namespace Commands.HDInsight.Test.ScenarioTests
             TestRunner.RunTestScript("Test-CreateClusterWithKafkaRestProxy");
         }
 
-        [Fact(Skip = "Sikp this")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithRelayOutoundAndPrivateLink()
         {
@@ -109,7 +109,7 @@ namespace Commands.HDInsight.Test.ScenarioTests
             TestRunner.RunTestScript("Test-CreateClusterWithAvailabilityZones");
         }
 
-        [Fact]
+        [Fact(Skip = "need to create resource manually")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithPrivateLinkConfiguration()
         {

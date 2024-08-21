@@ -114,7 +114,7 @@ function Prepare-ClusterCreateParameter{
       [string] $resourceGroupName="group-ps-test",
 	  [string] $storageAccountName="storagepstest",
       [string] $clusterType="Spark",
-      [string] $virtualNetworkId="/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0",
+      [string] $virtualNetworkId="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/yuchen-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn-0",
       [string] $subnet="default"
     )
 
