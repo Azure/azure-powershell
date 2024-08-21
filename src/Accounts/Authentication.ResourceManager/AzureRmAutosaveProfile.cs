@@ -17,13 +17,11 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System.Threading;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
 {
     public class AzureRmAutosaveProfile : IProfileOperations, IDisposable
     {
-        public ICmdletContext CmdletContext { get; set; }
         AzureRmProfile _current, _default;
         IFileProvider _provider;
 
