@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Fixed a bug in cmdlet `Invoke-AzFirewallPacketCapture` which caused the packet capture request to be stuck in a waiting for activation state. 
 * Updated cmdlet to add the property of `Sensitivity`, and updated corresponding cmdlets.
     - `New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`
 * Added support for `DefaultOutboundAccess` property in `Set-AzVirtualNetworkSubnetConfig` command
