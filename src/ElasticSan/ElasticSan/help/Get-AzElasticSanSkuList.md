@@ -14,7 +14,7 @@ List all the available Skus in the region and information related to them
 
 ```
 Get-AzElasticSanSkuList [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,6 +61,21 @@ Specify $filter='location eq \<location\>' to filter on location.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
