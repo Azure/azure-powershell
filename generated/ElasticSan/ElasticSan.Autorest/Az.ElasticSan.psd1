@@ -1,5 +1,5 @@
 @{
-  GUID = 'ed90c36c-f150-4ad2-96ae-57e0ebb0a376'
+  GUID = '5911237d-5827-4ade-a65d-a075d85ce652'
   RootModule = './Az.ElasticSan.psm1'
   ModuleVersion = '0.3.0'
   CompatiblePSEditions = 'Core', 'Desktop'
