@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-API to register a new Kubernetes cluster and create a tracked resource in Azure Resource Manager (ARM).
+API to set properties of the connected cluster resource
 .Description
-API to register a new Kubernetes cluster and create a tracked resource in Azure Resource Manager (ARM).
+API to set properties of the connected cluster resource
 .Example
 Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus
 .Example
@@ -315,10 +315,6 @@ function Set-AzConnectedKubernetes {
             return
         }
         if ($EnableGateway) {
-            if ($null -eq $GatewayResourceId) {
-                Write-Error "GatewayResourceId is required when EnableGateway is set."
-                return
-            }
             $Null = $PSBoundParameters.Remove('EnableGateway')
             $PSBoundParameters.Add('GatewayEnabled', $true)
         }
@@ -524,7 +520,7 @@ function Set-AzConnectedKubernetes {
 
         # XW: Read settings out from InputObject
         if ("Set" -contains $parameterSet) {
-            foreach ($arcAgentConfig in $InputObject.Properties.ArcAgentryConfigurations) {
+            foreach ($arcAgentConfig in $InputObject.ArcAgentryConfiguration) {
                 $ConfigurationSetting[$arcAgentConfig.feature] = $arcAgentConfig.settings
                 $ConfigurationProtectedSetting[$arcAgentConfig.feature] = $arcAgentConfig.protectedSettings
             }
@@ -695,20 +691,19 @@ function Set-AzConnectedKubernetes {
 
         # XW TODO If we cannot generate internal Set command, use New
         # Re-put here
-        #Region Re-put with new
-        # $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
-        #EndRegion
+        $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
 
+        # XW TODO: remove this block if we cannot use internal Set command
         #Region Set with inputObject
-        if ('Set' -contains $parameterSet){
-            $connectedCluster = $InputObject
-        }
+        # if ('Set' -contains $parameterSet){
+        #     $connectedCluster = $InputObject
+        # }
 
-        if ('SetExpanded' -contains $parameterSet) {
-            $connectedCluster = $ExistConnectedKubernetes
-        }
+        # if ('SetExpanded' -contains $parameterSet) {
+        #     $connectedCluster = $ExistConnectedKubernetes
+        # }
  
-        $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes ---InputObject $connectedCluster @PSBoundParameters
+        # $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes ---InputObject $connectedCluster @PSBoundParameters
         #Enendregion
 
         # Retrieving Helm chart OCI (Open Container Initiative) Artifact location
