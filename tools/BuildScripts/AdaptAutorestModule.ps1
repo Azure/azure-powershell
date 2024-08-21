@@ -73,9 +73,9 @@ if (-not (Test-Path $parentModulePath)) {
     <#
         create csproj for parent module if not existed
     #>
-    $parentModuleCsprojPath = Join-Path $parentModulePath "Az.$parentModuleName.csproj"
+    $parentModuleCsprojPath = Join-Path $parentModulePath "$parentModuleName.csproj"
     Write-Host "Creating $parentModuleCsprojPath ..." -ForegroundColor DarkGreen
-    New-GeneratedFileFromTemplate -TemplateName 'HandcraftedModule.csproj' -GeneratedFileName "Az.$parentModuleName.csproj" -GeneratedDirectory $parentModulePath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
+    New-GeneratedFileFromTemplate -TemplateName 'HandcraftedModule.csproj' -GeneratedFileName "$parentModuleName.csproj" -GeneratedDirectory $parentModulePath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
     dotnet sln $slnPath add $parentModuleCsprojPath
     <#
         create AsemblyInfo.cs for parent module if not existed
