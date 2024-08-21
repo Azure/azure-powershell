@@ -54,6 +54,17 @@ $slnPath = Join-Path $moduleRootPath "$ModuleRootName.sln"
 Write-Host "Adapting $SubModuleName to $ModuleRootName ..." -ForegroundColor DarkGreen
 
 <#
+    create module root sln for new module
+#>
+if (-not (Test-Path $slnPath)) {
+    Write-Host "Creating $slnPath ..." -ForegroundColor DarkGreen
+    dotnet new sln -n $ModuleRootName -o $moduleRootPath
+    Join-Path $SourceDirectory 'Accounts' | Get-ChildItem -Filter "*.csproj" -File -Recurse | Where-Object { $_.FullName -notmatch '^*.test.csproj$' } | Foreach-Object {
+        dotnet sln $slnPath add $_.FullName --solution-folder 'Accounts'
+    }
+}
+
+<#
     create parent module for new module
 #>
 if (-not (Test-Path $parentModulePath)) {
@@ -62,8 +73,10 @@ if (-not (Test-Path $parentModulePath)) {
     <#
         create csproj for parent module if not existed
     #>
-    Write-Host "Creating $parentModulePath/Az.$parentModuleName.csproj ..." -ForegroundColor DarkGreen
+    $parentModuleCsprojPath = Join-Path $parentModulePath "Az.$parentModuleName.csproj"
+    Write-Host "Creating $parentModuleCsprojPath ..." -ForegroundColor DarkGreen
     New-GeneratedFileFromTemplate -TemplateName 'HandcraftedModule.csproj' -GeneratedFileName "Az.$parentModuleName.csproj" -GeneratedDirectory $parentModulePath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
+    dotnet sln $slnPath add $parentModuleCsprojPath
     <#
         create AsemblyInfo.cs for parent module if not existed
     #>
@@ -113,16 +126,6 @@ $parentModuleMetadata.AliasesToExport = $parentModuleMetadata.AliasesToExport | 
 
 New-ModuleManifest -Path $parentModulePsd1Path @parentModuleMetadata
 
-<#
-    create module root sln for new module
-#>
-if (-not (Test-Path $slnPath)) {
-    Write-Host "Creating $slnPath ..." -ForegroundColor DarkGreen
-    dotnet new sln -n $ModuleRootName -o $moduleRootPath
-    Join-Path $SourceDirectory 'Accounts' | Get-ChildItem -Filter "*.csproj" -File -Recurse | Where-Object { $_.FullName -notmatch '^*.test.csproj$' } | Foreach-Object {
-        dotnet sln $slnPath add $_.FullName --solution-folder 'Accounts'
-    }
-}
 <#
     merge temporary sub module csproj to parent module sln (for platyPS help markdown generation)
         1. delete submodule csproj
