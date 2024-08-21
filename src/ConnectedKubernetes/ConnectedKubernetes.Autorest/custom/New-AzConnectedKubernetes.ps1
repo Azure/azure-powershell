@@ -414,7 +414,6 @@ function New-AzConnectedKubernetes {
         $ReleaseInstallNamespace = Get-ReleaseInstallNamespace
         $ReleaseNamespace = $null
         try {
-            # !!PDS: Seems like this showing "Error: Release: Not found" is not an error but a warning that implies there just is not a release.  Can we quench this?
             $ReleaseNamespace = (helm status azure-arc -o json --kubeconfig $KubeConfig --kube-context $KubeContext -n $ReleaseInstallNamespace 2> $null | ConvertFrom-Json).namespace
         }
         catch {
@@ -423,12 +422,11 @@ function New-AzConnectedKubernetes {
         #Endregion
 
         if ($null -ne $ReleaseNamespace) {
-            # !!PDS: Is this a bug?  "--namespace $ReleaseNamespace" surely?
             $Configmap = kubectl get configmap --namespace azure-arc azure-clusterconfig -o json --kubeconfig $KubeConfig | ConvertFrom-Json
             $ConfigmapRgName = $Configmap.data.AZURE_RESOURCE_GROUP
             $ConfigmapClusterName = $Configmap.data.AZURE_RESOURCE_NAME
             try {
-                $ExistConnectedKubernetes = Get-AzConnectedKubernetes `
+                $ExistConnectedKubernetes = GetAzConnectedKubernetes `
                     -ResourceGroupName $ConfigmapRgName `
                     -ClusterName $ConfigmapClusterName `
                     @CommonPSBoundParameters `
@@ -529,18 +527,6 @@ function New-AzConnectedKubernetes {
             $AgentPrivateKey = "-----BEGIN RSA PRIVATE KEY-----`n" + [System.Convert]::ToBase64String($RSA.ExportRSAPrivateKey()) + "`n-----END RSA PRIVATE KEY-----"
         }
         #Endregion
-
-        # $HelmChartPath = Join-Path -Path $ChartExportPath -ChildPath 'azure-arc-k8sagents'
-        # if (Test-Path Env:HELMCHART) {
-        #     $ChartPath = Get-ChildItem -Path Env:HELMCHART
-        # } else {
-        #     $ChartPath = $HelmChartPath
-        # }
-
-        #Region helm options
-        Write-Verbose "Processing Helm chart installation options."
-        # !!PDS: The az cli also sets the "proxy" fields in the settings and
-        #        passes these to Azure.  Do we need to do this as well?
 
         $options = ""
         $proxyEnableState = $false
@@ -661,7 +647,6 @@ function New-AzConnectedKubernetes {
         $arcAgentryConfigs = @(
         )
 
-        # !!PDS: The name "Setting" below is SINGULAR but in the Swagger it is PLURAL - why is this?
         if ($ConfigurationSetting) {
             foreach ($key in $ConfigurationSetting.Keys) {
                 $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240701Preview.ArcAgentryConfigurations]@{
@@ -698,17 +683,12 @@ function New-AzConnectedKubernetes {
         $cloudMetadata = Get-AzCloudMetadata
 
         # Perform DP health check
-
-        # !!PDS: There is no dogfood so not required?
-        # $valuesFile = Get-HelmValuesFile
-
         $configDpinfo = Get-ConfigDPEndpoint -location $Location -Cloud $cloudMetadata
         $configDPEndpoint = $configDpInfo.configDPEndpoint
-        $adResourceId = $configDpInfo.adResourceId
 
         # If the health check fails (not 200 response), an exception is thrown
         # so we can ignore the output.
-        $null = Invoke-ConfigDPHealthCheck -configDPEndpoint $configDPEndpoint -Resource $adResourceId
+        $null = Invoke-ConfigDPHealthCheck -configDPEndpoint $configDPEndpoint
 
         # This call does the "pure ARM" update of the ARM objects.
         Write-Debug "Writing Connected Kubernetes ARM objects."
@@ -737,18 +717,7 @@ function New-AzConnectedKubernetes {
         Write-Debug "helmValuesDp: $helmValuesDp"
         Write-Debug "OCI Artifact location: ${helmValuesDp.repositoryPath}."
 
-        # Allow a custom OCI registry to be set via environment variables.
-        # !!PDS: Where are these variables documented?  Should they be?
-        #
-        # AZURE_ACCESS_TOKEN
-        # HELMCHART
-        # HELMREGISTRY
-        # HELMVALUESPATH
-        # RELEASETRAIN
-        # USERPROFILE
-        #
         $registryPath = if ($env:HELMREGISTRY) { $env:HELMREGISTRY } else { $helmValuesDp.repositoryPath }
-        # !!PDS: Why do these not get logged?
         Write-Debug "RegistryPath: ${registryPath}."
 
         $helmValuesContent = $helmValuesDp.helmValuesContent
@@ -761,22 +730,12 @@ function New-AzConnectedKubernetes {
             $options += " --set $($field.Name)=$($field.Value)"
         }
 
-        # !!PDS: Is there any telemetry in Powershell cmdlets?
-        # # Get azure-arc agent version for telemetry
-        # azure_arc_agent_version = registry_path.split(":")[1]
-        # telemetry.add_extension_event(
-        #     "connectedk8s",
-        #     {"Context.Default.AzureCLI.AgentVersion": azure_arc_agent_version},
-        # )
-
         # Get helm chart path (within the OCI registry).
         $chartPath = Get-HelmChartPath -registryPath $registryPath -kubeConfig $KubeConfig -kubeContext $KubeContext -helmClientLocation $HelmClientLocation
         if (Test-Path Env:HELMCHART) {
             $ChartPath = Get-ChildItem -Path Env:HELMCHART
         }
 
-        # !!PDS Aren't we supposed to read the helm config from the Cluster Config DP?
-        # !!PDS: I think we might have done above, but why are we setting many options?
         $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
         Write-Debug $options -ErrorAction Continue
         try {
