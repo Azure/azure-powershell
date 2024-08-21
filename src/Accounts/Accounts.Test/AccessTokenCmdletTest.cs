@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Models;
@@ -99,7 +98,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 It.IsAny<string>(),
                 It.IsAny<Action<string>>(),
                 It.IsAny<IAzureTokenCache>(),
-                It.IsAny<ICmdletContext>(),
                 It.IsAny<string>())).Returns(new MockAccessToken
                 {
                     UserId = expected.UserId,
@@ -149,7 +147,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 It.IsAny<string>(),
                 It.IsAny<Action<string>>(),
                 It.IsAny<IAzureTokenCache>(),
-                It.IsAny<ICmdletContext>(),
                 It.IsAny<string>())).Returns(new MockAccessToken
                 {
                     UserId = expected.UserId,

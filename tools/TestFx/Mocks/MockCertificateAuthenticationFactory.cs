@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
             string promptBehavior,
             Action<string> promptAction,
             IAzureTokenCache tokenCache,
-            ICmdletContext cmdletContext,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
             if (account.Id == null)
@@ -71,10 +70,9 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
             SecureString password,
             string promptBehavior,
             Action<string> promptAction,
-            ICmdletContext cmdletContext,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
-            return Authenticate(account, environment, tenant, password, promptBehavior, promptAction, AzureSession.Instance.TokenCache, cmdletContext, resourceId);
+            return Authenticate(account, environment, tenant, password, promptBehavior, promptAction, AzureSession.Instance.TokenCache, resourceId);
         }
 
         public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(IAzureContext context)
@@ -108,6 +106,21 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
         }
 
         public AuthenticationTelemetryData GetDataForTelemetry(string requestId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
+        {
+            return GetServiceClientCredentials(context, AzureCmdletContext.CmdletNone);
+        }
+
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
+        {
+            return GetServiceClientCredentials(context, targetEndpoint, AzureCmdletContext.CmdletNone); ;
+        }
+
+        public IAccessToken Authenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Action<string> promptAction, IDictionary<string, object> optionalParameters)
         {
             throw new NotImplementedException();
         }

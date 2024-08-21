@@ -56,6 +56,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             _handlersLock = new ReaderWriterLockSlim();
         }
 
+        public virtual TClient CreateArmClient<TClient>(IAzureContext context, string endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
+        {
+            return CreateArmClient<TClient>(context, endpoint, AzureCmdletContext.CmdletNone);
+        }
+
         public virtual TClient CreateArmClient<TClient>(IAzureContext context, string endpoint, ICmdletContext cmdletContext) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
             if (context == null)

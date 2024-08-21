@@ -21,6 +21,7 @@ using Azure.Identity;
 using Hyak.Common;
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Extensions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 using Microsoft.Azure.Commands.Common.Authentication.Utilities;
 using Microsoft.Azure.Commands.Shared.Config;
@@ -103,7 +104,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 Type = AzureAccount.AccountType.User
             };
 
-            var commonToken = AzureSession.Instance.AuthenticationFactory.Authenticate(azureAccount, environment, organizationTenant, null, null, promptAction, cmdletContext);
+            var commonToken = AzureSession.Instance.AuthenticationFactory.Authenticate(azureAccount, environment, organizationTenant, null, null, promptAction, cmdletContext.ToExtensibleParameters());
             IEnumerable<string> tenants = Enumerable.Empty<string>();
             using (SubscriptionClient subscriptionClient = GetSubscriptionClient(commonToken, environment))
             {
@@ -114,7 +115,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             {
                 try
                 {
-                    var token = AzureSession.Instance.AuthenticationFactory.Authenticate(azureAccount, environment, tenant, null, null, promptAction, cmdletContext);
+                    var token = AzureSession.Instance.AuthenticationFactory.Authenticate(azureAccount, environment, tenant, null, null, promptAction, cmdletContext.ToExtensibleParameters());
                     if (token != null)
                     {
                         result.Add(token);

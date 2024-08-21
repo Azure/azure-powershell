@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Profile
             var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>())
             {
                 WarningLog = (s) => WriteWarning(s),
-           
+                CmdletContext = _cmdletContext
             };
             profileClient.WarningLog = (message) => _tasks.Enqueue(new Task(() => this.WriteWarning(message)));
 

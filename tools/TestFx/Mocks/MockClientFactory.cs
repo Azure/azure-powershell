@@ -74,6 +74,11 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
             UniqueUserAgents.RemoveWhere(p => string.Equals(p.Product.Name, name, StringComparison.OrdinalIgnoreCase));
         }
 
+        public TClient CreateArmClient<TClient>(IAzureContext context, string endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
+        {
+            return CreateArmClient<TClient>(context, endpoint, AzureCmdletContext.CmdletNone);
+        }
+
         public TClient CreateArmClient<TClient>(IAzureContext context, string endpoint, ICmdletContext cmdletContext) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
             return CreateCustomArmClient<TClient>();
