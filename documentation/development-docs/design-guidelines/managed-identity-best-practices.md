@@ -58,6 +58,9 @@ We are recommended to use string array as the type of UserAssignedIdentity with 
 - No syntax changes if service supports one more user assigned identity in future;
 - Service will provide correct error response if customer reaches the count limitation of `UserAssignedIdentity` ideally, which means no harm.
 
+### How to disable transforming IdentityType and UserAssignedIdentity to avoid breaking changes when migrate from autorest.powershell v3 to v4.
+See details at [here](https://github.com/Azure/autorest.powershell/blob/main/docs/migration-from-v3-to-v4.md#how-to-mitigate-the-breaking-changes-of-managed-identity-best-practice-alignment).
+
 ### What should I do to mitigate one patch operation which is reported to unable to be replaced by Get+Put operation.
 Our autorest.powershell is unable to replace patch operation by get+put sometimes automatically for several reasons. To mitigate this issue,
 - add `suppress-replace-patch-by-getput-error: true` in README.md
