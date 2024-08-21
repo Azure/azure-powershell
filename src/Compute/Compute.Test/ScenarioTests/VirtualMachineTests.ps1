@@ -7546,15 +7546,16 @@ function Test-AddRemoveVMDataDisk
     Assert-AreEqual $vmConfig.StorageProfile.DataDisks[0].SourceResource.id "testSourceResourceId"
 
     # test Remove-AzVMDataDisk
-    $vmConfig = Remove-AzVMDataDisk -VM $vmConfig -DataDiskNames 'datadisk1' -ForceDetach
+    $vmConfig = Remove-AzVMDataDisk -VM $vmConfig -DataDiskNames @('datadisk1') -ForceDetach
 
-    # Validate 
-    Assert-NotNullOrEmpty $vmConfig.StorageProfile.DataDisks
-    Assert-AreEqual $vmConfig.StorageProfile.DataDisks.Count 3
-    Assert-True $vmConfig.StraogeProfile.DataDisks[1].ToBeDetached $true
-    Assert-AreEqual $vmConfig.StraogeProfile.DataDisks[1].DetachOption "ForceDetach"
-    Assert-False $vmConfig.StraogeProfile.DataDisks[2].ToBeDetached $true
-    Assert-AreNotEqual $vmConfig.StraogeProfile.DataDisks[2].DetachOption "ForceDetach"
+    # Validate
+    $dataDisks = $vmConfig.StorageProfile.DataDisks
+    Assert-NotNullOrEmpty $dataDisks
+    Assert-AreEqual $dataDisks.Count 3
+    Assert-AreEqual $dataDisks[1].ToBeDetached $true
+    Assert-AreEqual $dataDisks[1].DetachOption "ForceDetach"
+    Assert-AreNotEqual $dataDisks[2].ToBeDetached $true
+    Assert-AreNotEqual $dataDisks[2].DetachOption "ForceDetach"
 
 }
 

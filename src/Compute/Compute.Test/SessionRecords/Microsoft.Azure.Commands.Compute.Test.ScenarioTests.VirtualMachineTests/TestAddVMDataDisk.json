@@ -6,7 +6,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "77c9858a-f6e6-490e-8043-c3f3416f56ac"
+          "461bf550-06ac-4623-b914-e43c7b187c00"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,20 +27,20 @@
           "no-cache"
         ],
         "x-ms-original-request-ids": [
-          "7110b18c-df79-4fdc-9e00-39789d0299c6",
-          "86c22e58-6532-4312-a03b-c29c3c7f46f0"
+          "409ac347-0357-4649-955a-0bf8149376bf",
+          "150e096d-65b3-4b37-b4a6-bdcde13600fe"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
         "x-ms-request-id": [
-          "0ec99633-15d5-49fa-9967-f4d6f16a7cce"
+          "2258b175-ca77-400d-91ec-4a0a27f4c868"
         ],
         "x-ms-correlation-request-id": [
-          "0ec99633-15d5-49fa-9967-f4d6f16a7cce"
+          "2258b175-ca77-400d-91ec-4a0a27f4c868"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20240821T191714Z:0ec99633-15d5-49fa-9967-f4d6f16a7cce"
+          "EASTUS2:20240821T195109Z:2258b175-ca77-400d-91ec-4a0a27f4c868"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -52,10 +52,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: BED5CB6AC86D41BF9505103FFD4B878F Ref B: BL2AA2010204039 Ref C: 2024-08-21T19:17:14Z"
+          "Ref A: 6D4BA5021D0846C0BCE04D797D0A6B3E Ref B: MNZ221060608023 Ref C: 2024-08-21T19:51:08Z"
         ],
         "Date": [
-          "Wed, 21 Aug 2024 19:17:14 GMT"
+          "Wed, 21 Aug 2024 19:51:08 GMT"
         ],
         "Content-Length": [
           "40789"
@@ -73,7 +73,7 @@
   ],
   "Names": {
     "Test-AddRemoveVMDataDisk": [
-      "crptestps5670"
+      "crptestps7187"
     ]
   },
   "Variables": {
