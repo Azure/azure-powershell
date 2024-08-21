@@ -426,7 +426,7 @@ function New-AzConnectedKubernetes {
             $ConfigmapRgName = $Configmap.data.AZURE_RESOURCE_GROUP
             $ConfigmapClusterName = $Configmap.data.AZURE_RESOURCE_NAME
             try {
-                $ExistConnectedKubernetes = GetAzConnectedKubernetes `
+                $ExistConnectedKubernetes = Get-AzConnectedKubernetes `
                     -ResourceGroupName $ConfigmapRgName `
                     -ClusterName $ConfigmapClusterName `
                     @CommonPSBoundParameters `
