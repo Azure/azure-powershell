@@ -95,7 +95,7 @@ function IsWindows {
     }
 }
 
-function GetOSName {
+function Get-OSName {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(
     )
