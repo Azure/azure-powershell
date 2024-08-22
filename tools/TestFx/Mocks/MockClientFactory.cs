@@ -30,6 +30,8 @@ using System.Threading.Tasks;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
+
 
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
@@ -74,8 +76,13 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
 
         public TClient CreateArmClient<TClient>(IAzureContext context, string endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
+            return CreateArmClient<TClient>(context, endpoint, AzureCmdletContext.CmdletNone);
+        }
+
+        public TClient CreateArmClient<TClient>(IAzureContext context, string endpoint, ICmdletContext cmdletContext) where TClient : Microsoft.Rest.ServiceClient<TClient>
+        {
             Debug.Assert(context != null);
-            var credentials = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, endpoint);
+            var credentials = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, endpoint, cmdletContext);
             return CreateCustomArmClient<TClient>(context.Environment.GetEndpointAsUri(endpoint), credentials);
         }
 

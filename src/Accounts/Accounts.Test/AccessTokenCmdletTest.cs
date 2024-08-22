@@ -28,6 +28,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security;
 
@@ -49,6 +50,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         {
             TestExecutionHelpers.SetUpSessionAndProfile();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            if (!AzureSession.Instance.TryGetComponent(nameof(AuthenticationTelemetry), out AuthenticationTelemetry authenticationTelemetry))
+            {
+                AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(nameof(AuthenticationTelemetry), () => new AuthenticationTelemetry());
+            }
 
             var defaultContext = new AzureContext(
                 new AzureSubscription()
@@ -97,8 +102,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 It.IsAny<SecureString>(),
                 It.IsAny<string>(),
                 It.IsAny<Action<string>>(),
-                It.IsAny<IAzureTokenCache>(),
-                It.IsAny<string>())).Returns(new MockAccessToken
+                It.IsAny<IDictionary<string, object>>())).Returns(new MockAccessToken
                 {
                     UserId = expected.UserId,
                     LoginType = LoginType.OrgId,
@@ -146,8 +150,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 It.IsAny<SecureString>(),
                 It.IsAny<string>(),
                 It.IsAny<Action<string>>(),
-                It.IsAny<IAzureTokenCache>(),
-                It.IsAny<string>())).Returns(new MockAccessToken
+                It.IsAny<IDictionary<string, object>>())).Returns(new MockAccessToken
                 {
                     UserId = expected.UserId,
                     LoginType = LoginType.OrgId,
