@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the SpringCloud service.
 
 ---
-## Status
-[![Az.SpringCloud](https://img.shields.io/powershellgallery/v/Az.SpringCloud.svg?style=flat-square&label=Az.SpringCloud "Az.SpringCloud")](https://www.powershellgallery.com/packages/Az.SpringCloud/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -58,7 +55,8 @@ module-version: 0.1.0
 resourcegroup-append: true
 nested-object-to-string: true
 identity-correction-for-post: true
-
+disable-transform-identity-type-for-operation:
+  - Apps_Update
 directive:
   - where:
       variant: ^CreateViaIdentity(?!.*?Expanded)
