@@ -300,8 +300,7 @@ function New-AzConnectedKubernetes {
         $null = $PSBoundParameters.Remove('AcceptEULA')
         Write-Verbose "Determining the kube config file path."
 
-
-        if ($PSBoundParameters:KubeConfig) {
+        if ($PSBoundParameters.ContainsKey("KubeConfig")) {
             $Null = $PSBoundParameters.Remove('KubeConfig')
         }
         elseif (Test-Path Env:KUBECONFIG) {
@@ -318,42 +317,32 @@ function New-AzConnectedKubernetes {
             return
         }
         Write-Verbose "Setting the kube context."
-        if ($PSBoundParameters:KubeContext) {
+        if ($PSBoundParameters.ContainsKey('KubeContext')) {
             $Null = $PSBoundParameters.Remove('KubeContext')
         }
         if (($null -eq $KubeContext) -or ($KubeContext -eq '')) {
             $KubeContext = kubectl config current-context
         }
-        Write-Verbose "Validating ConnectionType and GatewayResourceId parameters."
-
-        if ($PSBoundParameters:ConnectionType) {
-            if ($ConnectionType.Equals("direct")) {
-                if ($PSBoundParameters:GatewayResourceId) {
-                    Write-Error 'GatewayResourceId should not be provided when ConnectionType is "direct".'
-                    return
-                }
-            }
-        }
         Write-Verbose "Processing Arc Agentry settings and protected settings."
 
         # If GatewayResourceId is provided then set the gateway as enabled.
-        $PSBoundParameters.Add('GatewayEnabled', $null -ne $GatewayResourceId)
+        $PSBoundParameters.Add('GatewayEnabled', -not [String]::IsNullOrEmpty($GatewayResourceId))
 
         $CommonPSBoundParameters = @{}
-        if ($PSBoundParameters:HttpPipelineAppend) {
+        if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
             $CommonPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
         }
-        if ($PSBoundParameters:HttpPipelinePrepend) {
+        if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) {
             $CommonPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
         }
-        if ($PSBoundParameters:SubscriptionId) {
+        if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
             $CommonPSBoundParameters['SubscriptionId'] = $SubscriptionId
         }
-        if ($PSBoundParametersPrivateLinkState -and ($null -ne $CustomLocationsOid) -and ($CustomLocationsOid -ne '')) {
+        if ($PSBoundParameters.ContainsKey('PrivateLinkState') -and ($null -ne $CustomLocationsOid) -and ($CustomLocationsOid -ne '')) {
             Write-Warning "The features 'cluster-connect' and 'custom-locations' cannot be enabled for a private link enabled connected cluster."
             $CustomLocationsOid = $null
         }
-        if ($PSBoundParametersCustomLocationsOid) {
+        if ($PSBoundParameters.ContainsKey('CustomLocationsOid')) {
             $Null = $PSBoundParameters.Remove('CustomLocationsOid')
         }
         $IdentityType = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ResourceIdentityType]::SystemAssigned

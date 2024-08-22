@@ -288,7 +288,7 @@ function Set-AzConnectedKubernetes {
         }
         $null = $PSBoundParameters.Remove('AcceptEULA')
 
-        if ($PSBoundParameters:KubeConfig) {
+        if ($PSBoundParameters.ContainsKey("KubeConfig")) {
             $Null = $PSBoundParameters.Remove('KubeConfig')
         } elseif (Test-Path Env:KUBECONFIG) {
             $KubeConfig = Get-ChildItem -Path Env:KUBECONFIG
@@ -301,7 +301,7 @@ function Set-AzConnectedKubernetes {
             Write-Error 'Cannot find the kube-config. Please make sure that you have the kube-config on your machine.'
             return
         }
-        if ($PSBoundParameters:KubeContext) {
+        if ($PSBoundParameters.ContainsKey('KubeContext')) {
             $Null = $PSBoundParameters.Remove('KubeContext')
         }
         if (($null -eq $KubeContext) -or ($KubeContext -eq '')) {
@@ -326,20 +326,20 @@ function Set-AzConnectedKubernetes {
         
         
         $CommonPSBoundParameters = @{}
-        if ($PSBoundParameters:HttpPipelineAppend) {
+        if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
             $CommonPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
         }
-        if ($PSBoundParameters:HttpPipelinePrepend) {
+        if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) {
             $CommonPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
         }
-        if ($PSBoundParameters:SubscriptionId) {
+        if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
             $CommonPSBoundParameters['SubscriptionId'] = $SubscriptionId
         }
-        if ($PSBoundParametersPrivateLinkState -and ($null -ne $CustomLocationsOid) -and ($CustomLocationsOid -ne '')) {
+        if ($PSBoundParameters.ContainsKey('PrivateLinkState') -and ($null -ne $CustomLocationsOid) -and ($CustomLocationsOid -ne '')) {
             Write-Warning "The features 'cluster-connect' and 'custom-locations' cannot be enabled for a private link enabled connected cluster."
             $CustomLocationsOid = $null
         }
-        if ($PSBoundParametersCustomLocationsOid) {
+        if ($PSBoundParameters.ContainsKey('CustomLocationsOid')) {
             $Null = $PSBoundParameters.Remove('CustomLocationsOid')
         }
         $IdentityType = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ResourceIdentityType]::SystemAssigned
