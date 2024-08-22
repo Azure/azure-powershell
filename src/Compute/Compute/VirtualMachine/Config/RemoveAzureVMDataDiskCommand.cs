@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Compute
                     var disks = storageProfile.DataDisks.ToList();
                     var comp = StringComparison.OrdinalIgnoreCase;
 
-                    if (ForceDetach != true) {
+                    if (this.ForceDetach != true) {
                         if (DataDiskNames == null){
                             disks.Clear();
                         }
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Compute
                         }
                     }
                     else{
-                        if (DataDiskNames == null){
+                        if (this.DataDiskNames == null){
                             foreach (var disk in disks){
                                 disk.DetachOption = "ForceDetach";
                                 disk.ToBeDetached = true;
