@@ -36,7 +36,7 @@ function Test-ScriptActionRelatedCommands{
 		$nodeTypes = ("Worker")
 		
 		#test Submit-AzHDInsightScriptAction
-		$script = Submit-AzHDInsightScriptAction -ClusterName $cluster.Name -Name $scriptActionName -Uri $uri -NodeTypes $nodeTypes
+		$script = Submit-AzHDInsightScriptAction -ResourceGroupName $params.resourceGroupName -ClusterName $cluster.Name -Name $scriptActionName -Uri $uri -NodeTypes $nodeTypes
 		
 		#test Get-AzHDInsightScriptActionHistory
 		$getScript = Get-AzHDInsightScriptActionHistory -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup `
@@ -66,7 +66,6 @@ function Test-ScriptActionRelatedCommands{
 	finally
 	{
 		# Delete cluster and resource group
-		Remove-AzHDInsightCluster -ClusterName $cluster.Name
 		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
 	}
 }

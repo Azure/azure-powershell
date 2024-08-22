@@ -21,9 +21,9 @@ function Test-MonitoringRelatedCommands{
 	# Create some resources that will be used throughout test 
 	try
 	{
-		$location = "West US 2"
+		$location = "EastUS"
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location $location
+		$params= Prepare-ClusterCreateParameter
 
 		# test create cluster
 		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
