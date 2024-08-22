@@ -202,7 +202,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-GetAzureFirewallLearnedIpPrefixes");
         }
 
-        [Fact]
+        [Fact(Skip = "Skipped due to storage access security issues in cloud test runner")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
         public void TestInvokeAzureFirewallPacketCapture()
