@@ -942,8 +942,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Identity = vIdentity,
                 OrchestrationMode = this.IsParameterBound(c => c.OrchestrationMode) ? this.OrchestrationMode : null,
                 SpotRestorePolicy = this.IsParameterBound(c => c.EnableSpotRestore) ? new SpotRestorePolicy(true, this.SpotRestoreTimeout) : null,
-                PriorityMixPolicy = vPriorityMixPolicy,
-                EnableResilientVMCreate = this.EnableResilientVMCreate.IsPresent
+                PriorityMixPolicy = vPriorityMixPolicy
             };
 
             WriteObject(vVirtualMachineScaleSet);

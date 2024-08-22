@@ -424,15 +424,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             HelpMessage = "Enable or disable resilient VM creation.")]
-        public bool EnableResilientVMCreate { get; set; }
+        public SwitchParameter EnableResilientVMCreate { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Enable or disable resilient VM deletion.")]
         public bool EnableResilientVMDelete { get; set; }
 
-        .
-private void BuildPatchObject()
+        
+        private void BuildPatchObject()
         {
             if (this.IsParameterBound(c => c.AutomaticOSUpgrade))
             {
@@ -820,7 +820,7 @@ private void BuildPatchObject()
                 }
                 if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile == null)
                 {
-                    this.VirtualMachineScaleSetUpdate.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile = new VirtualMachineScaleSetUpdateStorageProfile();
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile = new VirtualMachineScaleSetUpdateStorageProfile();
                 }
                 if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk == null)
                 {
@@ -862,7 +862,7 @@ private void BuildPatchObject()
                 }
                 if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.BillingProfile == null)
                 {
-                    this.VirtualMachineScaleSetUpdate.VirtualMachineScaleSetUpdate.VirtualMachineProfile.BillingProfile = new BillingProfile();
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.BillingProfile = new BillingProfile();
                 }
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.BillingProfile.MaxPrice = this.MaxPrice;
             }
@@ -1252,7 +1252,7 @@ private void BuildPatchObject()
                 }
                 if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk == null)
                 {
-                    this.VirtualMachineScaleSetUpdate.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk = new VirtualMachineScaleSetUpdateOSDisk();
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk = new VirtualMachineScaleSetUpdateOSDisk();
                 }
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk.VhdContainers = this.VhdContainer;
             }
@@ -1329,7 +1329,7 @@ private void BuildPatchObject()
                 }
                 if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile == null)
                 {
-                    this.VirtualMachineScaleSetUpdate.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile = new ScheduledEventsProfile();
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile = new ScheduledEventsProfile();
                 }
                 if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile == null)
                 {
@@ -1347,7 +1347,7 @@ private void BuildPatchObject()
                 }
                 if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile == null)
                 {
-                    this.VirtualMachineScaleSetUpdate.VirtualMachineScaleSetUpdate.VirtualMachineProfile = new VirtualMachineScaleSetUpdateVMProfile();
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile = new VirtualMachineScaleSetUpdateVMProfile();
                 }
                 if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile == null)
                 {
@@ -1423,7 +1423,11 @@ private void BuildPatchObject()
                 {
                     this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
                 }
-                this.VirtualMachineScaleSetUpdate.EnableResilientVMCreate = this.EnableResilientVMCreate;
+                if (this.VirtualMachineScaleSetUpdate.ResiliencyPolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.ResiliencyPolicy = new ResiliencyPolicy();
+                }
+                this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.ResilientVMCreationPolicy.Enabled = this.EnableResilientVMCreate.IsPresent;
             }
 
             if (this.IsParameterBound(c => c.EnableResilientVMDelete))
@@ -1432,22 +1436,15 @@ private void BuildPatchObject()
                 {
                     this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
                 }
-                this.VirtualMachineScaleSetUpdate.EnableResilientVMDelete = this.EnableResilientVMDelete;
+                if (this.VirtualMachineScaleSetUpdate.ResiliencyPolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.ResiliencyPolicy = new ResiliencyPolicy();
+                }
+                this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.ResilientVMDeletionPolicy = new ResilientVMDeletionPolicy(this.EnableResilientVMDelete);
             }
         }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipeline = true,
-            HelpMessage = "Enable resilient VM creation")]
-        public bool EnableResilientVMCreate { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipeline = true,
-            HelpMessage = "Enable resilient VM deletion")]
-        public bool EnableResilientVMDelete { get; set; }
-private void BuildPutObject()
+        
+        private void BuildPutObject()
         {
             if (this.IsParameterBound(c => c.AutomaticOSUpgrade))
             {
@@ -2220,11 +2217,11 @@ private void BuildPutObject()
                 {
                     this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
                 }
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile.ResilientVMCreatePolicy == null)
+                if (this.VirtualMachineScaleSet.ResiliencyPolicy == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.ResilientVMCreatePolicy = new ResilientVMCreatePolicy();
+                    this.VirtualMachineScaleSet.ResiliencyPolicy = new ResiliencyPolicy();
                 }
-                this.VirtualMachineScaleSet.VirtualMachineProfile.ResilientVMCreatePolicy.Enabled = this.EnableResilientVMCreate;
+                this.VirtualMachineScaleSet.ResiliencyPolicy.ResilientVMCreationPolicy.Enabled = this.EnableResilientVMCreate.IsPresent;
             }
 
             if (this.IsParameterBound(c => c.EnableResilientVMDelete))
@@ -2233,11 +2230,11 @@ private void BuildPutObject()
                 {
                     this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
                 }
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile.ResilientVMDeletePolicy == null)
+                if (this.VirtualMachineScaleSet.ResiliencyPolicy == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.ResilientVMDeletePolicy = new ResilientVMDeletePolicy();
+                    this.VirtualMachineScaleSet.ResiliencyPolicy = new ResiliencyPolicy();
                 }
-                this.VirtualMachineScaleSet.VirtualMachineProfile.ResilientVMDeletePolicy.Enabled = this.EnableResilientVMDelete;
+                this.VirtualMachineScaleSet.ResiliencyPolicy.ResilientVMDeletionPolicy.Enabled = this.EnableResilientVMDelete;
             }
         }
     }
