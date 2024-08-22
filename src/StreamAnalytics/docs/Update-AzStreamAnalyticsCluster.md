@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzStreamAnalyticsCluster
 
 ## SYNOPSIS
-Updates an existing cluster.
+Update an existing cluster.
 This can be used to partially update (ie.
 update one or two properties) a cluster without affecting the rest of the cluster definition.
 
@@ -17,19 +17,33 @@ update one or two properties) a cluster without affecting the rest of the cluste
 ### UpdateExpanded (Default)
 ```
 Update-AzStreamAnalyticsCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IfMatch <String>] [-Location <String>] [-SkuCapacity <Int32>] [-SkuName <ClusterSkuName>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IfMatch <String>] [-SkuCapacity <Int32>] [-SkuName <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzStreamAnalyticsCluster -InputObject <IStreamAnalyticsIdentity> [-IfMatch <String>]
- [-Location <String>] [-SkuCapacity <Int32>] [-SkuName <ClusterSkuName>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SkuCapacity <Int32>] [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzStreamAnalyticsCluster -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzStreamAnalyticsCluster -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates an existing cluster.
+Update an existing cluster.
 This can be used to partially update (ie.
 update one or two properties) a cluster without affecting the rest of the cluster definition.
 
@@ -39,6 +53,7 @@ update one or two properties) a cluster without affecting the rest of the cluste
 ```powershell
 Update-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test -Name sac-m-test01 -Tag @{'key4'=4}
 ```
+
 ```output
 Location        Name         Type                               Etag
 --------        ----         ----                               ----
@@ -52,6 +67,7 @@ This command updates a stream analytics cluster by name.
 $sac = Get-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test -Name sac-m-test01
 Update-AzStreamAnalyticsCluster -InputObject $sac -Tag @{'key2'=2;'key3'=3}
 ```
+
 ```output
 Location        Name         Type                               Etag
 --------        ----         ----                               ----
@@ -78,7 +94,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -111,7 +128,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
@@ -125,15 +141,30 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Location
-The geo-location where the resource lives
+### -JsonFilePath
+Path of Json file supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateViaJsonFilePath
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -145,7 +176,7 @@ The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: ClusterName
 
 Required: True
@@ -176,7 +207,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -193,7 +224,7 @@ Required on PUT (CreateOrUpdate) requests.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -208,8 +239,8 @@ Specifies the SKU name of the cluster.
 Required on PUT (CreateOrUpdate) requests.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.ClusterSkuName
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -224,7 +255,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -239,7 +270,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -292,25 +323,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.ICluster
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
-  - `[ClusterName <String>]`: The name of the cluster.
-  - `[FunctionName <String>]`: The name of the function.
-  - `[Id <String>]`: Resource identity path
-  - `[InputName <String>]`: The name of the input.
-  - `[JobName <String>]`: The name of the streaming job.
-  - `[Location <String>]`: The region in which to retrieve the subscription's quota information. You can find out which regions Azure Stream Analytics is supported in here: https://azure.microsoft.com/en-us/regions/
-  - `[OutputName <String>]`: The name of the output.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[TransformationName <String>]`: The name of the transformation.
 
 ## RELATED LINKS
 

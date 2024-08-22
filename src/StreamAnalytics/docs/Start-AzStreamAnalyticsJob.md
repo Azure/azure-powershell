@@ -16,15 +16,29 @@ Once a job is started it will start processing input events and produce output.
 ### StartExpanded (Default)
 ```
 Start-AzStreamAnalyticsJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-OutputStartMode <OutputStartMode>] [-OutputStartTime <DateTime>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-OutputStartMode <String>] [-OutputStartTime <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### StartViaIdentityExpanded
 ```
-Start-AzStreamAnalyticsJob -InputObject <IStreamAnalyticsIdentity> [-OutputStartMode <OutputStartMode>]
+Start-AzStreamAnalyticsJob -InputObject <IStreamAnalyticsIdentity> [-OutputStartMode <String>]
  [-OutputStartTime <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### StartViaJsonFilePath
+```
+Start-AzStreamAnalyticsJob -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### StartViaJsonString
+```
+Start-AzStreamAnalyticsJob -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +81,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -83,7 +98,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
@@ -97,12 +111,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Start operation
+
+```yaml
+Type: System.String
+Parameter Sets: StartViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Start operation
+
+```yaml
+Type: System.String
+Parameter Sets: StartViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the streaming job.
 
 ```yaml
 Type: System.String
-Parameter Sets: StartExpanded
+Parameter Sets: StartExpanded, StartViaJsonFilePath, StartViaJsonString
 Aliases:
 
 Required: True
@@ -131,8 +175,8 @@ Accept wildcard characters: False
 Value may be JobStartTime, CustomTime, or LastOutputEventTime to indicate whether the starting point of the output event stream should start whenever the job is started, start at a custom user time stamp specified via the outputStartTime property, or start from the last event output time.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.OutputStartMode
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: StartExpanded, StartViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -148,7 +192,7 @@ This property must have a value if outputStartMode is set to CustomTime.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: StartExpanded, StartViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -179,7 +223,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: StartExpanded
+Parameter Sets: StartExpanded, StartViaJsonFilePath, StartViaJsonString
 Aliases:
 
 Required: True
@@ -194,7 +238,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: StartExpanded
+Parameter Sets: StartExpanded, StartViaJsonFilePath, StartViaJsonString
 Aliases:
 
 Required: False
@@ -247,25 +291,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
-  - `[ClusterName <String>]`: The name of the cluster.
-  - `[FunctionName <String>]`: The name of the function.
-  - `[Id <String>]`: Resource identity path
-  - `[InputName <String>]`: The name of the input.
-  - `[JobName <String>]`: The name of the streaming job.
-  - `[Location <String>]`: The region in which to retrieve the subscription's quota information. You can find out which regions Azure Stream Analytics is supported in here: https://azure.microsoft.com/en-us/regions/
-  - `[OutputName <String>]`: The name of the output.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[TransformationName <String>]`: The name of the transformation.
 
 ## RELATED LINKS
 

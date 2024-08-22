@@ -26,6 +26,7 @@ Retrieves the subscription's current quota information in a particular region.
 ```powershell
 Get-AzStreamAnalyticsQuota -Location 'WestCentralUS'
 ```
+
 ```output
 Name              Type
 ----              ----
@@ -38,7 +39,8 @@ This command returns information about Streaming Unit quota and usage in the Wes
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -90,11 +92,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.ISubscriptionQuota
+### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.ISubscriptionQuotasListResult
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

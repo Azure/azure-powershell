@@ -8,18 +8,47 @@ schema: 2.0.0
 # New-AzStreamAnalyticsTransformation
 
 ## SYNOPSIS
-Creates a transformation or replaces an already existing transformation under an existing streaming job.
+Create a transformation or replaces an already existing transformation under an existing streaming job.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzStreamAnalyticsTransformation -JobName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-Query <String>]
  [-StreamingUnit <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityStreamingjob
+```
+New-AzStreamAnalyticsTransformation -Name <String> -StreamingjobInputObject <IStreamAnalyticsIdentity>
+ -Transformation <ITransformation> [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityStreamingjobExpanded
+```
+New-AzStreamAnalyticsTransformation -Name <String> -StreamingjobInputObject <IStreamAnalyticsIdentity>
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-Query <String>] [-StreamingUnit <Int32>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzStreamAnalyticsTransformation -JobName <String> -Name <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzStreamAnalyticsTransformation -JobName <String> -Name <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates a transformation or replaces an already existing transformation under an existing streaming job.
+Create a transformation or replaces an already existing transformation under an existing streaming job.
 
 ## EXAMPLES
 
@@ -27,6 +56,7 @@ Creates a transformation or replaces an already existing transformation under an
 ```powershell
 New-AzStreamAnalyticsTransformation -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name tranf-01 -StreamingUnit 6 -Query "Select Id, Name from input-01"
 ```
+
 ```output
 Name     Type                                                    ETag
 ----     ----                                                    ----
@@ -38,7 +68,8 @@ This command creates a transformation in the stream analytics job called.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -90,7 +121,37 @@ The name of the streaming job.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -122,7 +183,7 @@ Required on PUT (CreateOrReplace) requests.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityStreamingjobExpanded
 Aliases:
 
 Required: False
@@ -138,7 +199,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -148,12 +209,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -StreamingjobInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
+Parameter Sets: CreateViaIdentityStreamingjob, CreateViaIdentityStreamingjobExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -StreamingUnit
 Specifies the number of streaming units that the streaming job uses.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityStreamingjobExpanded
 Aliases:
 
 Required: False
@@ -168,13 +244,29 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Transformation
+A transformation object, containing all information associated with the named transformation.
+All transformations are contained under a streaming job.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.ITransformation
+Parameter Sets: CreateViaIdentityStreamingjob
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -214,13 +306,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.ITransformation
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.ITransformation
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

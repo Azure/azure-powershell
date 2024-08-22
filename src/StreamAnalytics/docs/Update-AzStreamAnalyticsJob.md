@@ -17,8 +17,8 @@ Creates a streaming job or replaces an already existing streaming job.
 Update-AzStreamAnalyticsJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-IfMatch <String>] [-IfNoneMatch <String>] [-ClusterId <String>] [-DataLocale <String>]
  [-EventsLateArrivalMaxDelayInSecond <Int32>] [-EventsOutOfOrderMaxDelayInSecond <Int32>]
- [-EventsOutOfOrderPolicy <EventsOutOfOrderPolicy>] [-OutputErrorPolicy <OutputErrorPolicy>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EventsOutOfOrderPolicy <String>] [-OutputErrorPolicy <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -26,8 +26,8 @@ Update-AzStreamAnalyticsJob -Name <String> -ResourceGroupName <String> [-Subscri
 Update-AzStreamAnalyticsJob -InputObject <IStreamAnalyticsIdentity> [-IfMatch <String>]
  [-IfNoneMatch <String>] [-ClusterId <String>] [-DataLocale <String>]
  [-EventsLateArrivalMaxDelayInSecond <Int32>] [-EventsOutOfOrderMaxDelayInSecond <Int32>]
- [-EventsOutOfOrderPolicy <EventsOutOfOrderPolicy>] [-OutputErrorPolicy <OutputErrorPolicy>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EventsOutOfOrderPolicy <String>] [-OutputErrorPolicy <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,6 +39,7 @@ Creates a streaming job or replaces an already existing streaming job.
 ```powershell
 Update-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-01-pwsh -EventsLateArrivalMaxDelayInSecond 13 -EventsOutOfOrderMaxDelayInSecond 21
 ```
+
 ```output
 Location        Name          Type                                    ETag
 --------        ----          ----                                    ----
@@ -51,6 +52,7 @@ This command updates a stream analytics job.
 ```powershell
 Get-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-01-pwsh | Update-AzStreamAnalyticsJob -EventsLateArrivalMaxDelayInSecond 13 -EventsOutOfOrderMaxDelayInSecond 21
 ```
+
 ```output
 Location        Name          Type                                    ETag
 --------        ----          ----                                    ----
@@ -159,7 +161,7 @@ Accept wildcard characters: False
 Indicates the policy to apply to events that arrive out of order in the input event stream.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.EventsOutOfOrderPolicy
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -253,7 +255,7 @@ Accept wildcard characters: False
 Indicates the policy to apply to events that arrive at the output and cannot be written to the external storage due to being malformed (missing column values, column values of wrong type or size).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.OutputErrorPolicy
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -353,25 +355,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamingJob
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
-  - `[ClusterName <String>]`: The name of the cluster.
-  - `[FunctionName <String>]`: The name of the function.
-  - `[Id <String>]`: Resource identity path
-  - `[InputName <String>]`: The name of the input.
-  - `[JobName <String>]`: The name of the streaming job.
-  - `[Location <String>]`: The region in which to retrieve the subscription's quota information. You can find out which regions Azure Stream Analytics is supported in here: https://azure.microsoft.com/en-us/regions/
-  - `[OutputName <String>]`: The name of the output.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[TransformationName <String>]`: The name of the transformation.
 
 ## RELATED LINKS
 

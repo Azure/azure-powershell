@@ -8,19 +8,33 @@ schema: 2.0.0
 # New-AzStreamAnalyticsCluster
 
 ## SYNOPSIS
-Creates a Stream Analytics Cluster or replaces an already existing cluster.
+Create a Stream Analytics Cluster or replaces an already existing cluster.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzStreamAnalyticsCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IfMatch <String>] [-IfNoneMatch <String>] [-Location <String>] [-SkuCapacity <Int32>]
- [-SkuName <ClusterSkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-Location <String>] [-SkuCapacity <Int32>] [-SkuName <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzStreamAnalyticsCluster -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzStreamAnalyticsCluster -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a Stream Analytics Cluster or replaces an already existing cluster.
+Create a Stream Analytics Cluster or replaces an already existing cluster.
 
 ## EXAMPLES
 
@@ -28,6 +42,7 @@ Creates a Stream Analytics Cluster or replaces an already existing cluster.
 ```powershell
 New-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test -Name sac-ps-test01 -Location "West Central US" -SkuName "Default" -SkuCapacity 36
 ```
+
 ```output
 Location        Name          Type                               Etag
 --------        ----          ----                               ----
@@ -54,7 +69,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -101,12 +117,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -169,7 +215,7 @@ Required on PUT (CreateOrUpdate) requests.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -184,8 +230,8 @@ Specifies the SKU name of the cluster.
 Required on PUT (CreateOrUpdate) requests.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.ClusterSkuName
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -215,7 +261,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -266,8 +312,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.ICluster
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
