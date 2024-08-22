@@ -15,13 +15,13 @@
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Storage;
 using Microsoft.Azure.Storage.Auth;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
-using System.Linq;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.Linq;
 using System.Text;
 
-namespace Microsoft.WindowsAzure.Commands.Storage.Adapters
+namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
     public static class AzureContextAdapterExtensions
     {
