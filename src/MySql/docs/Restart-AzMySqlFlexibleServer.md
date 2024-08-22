@@ -39,6 +39,20 @@ Restart-AzMySqlFlexibleServer -InputObject <IMySqlIdentity> [-MaxFailoverSecond 
  [-WhatIf] [<CommonParameters>]
 ```
 
+### RestartViaJsonFilePath
+```
+Restart-AzMySqlFlexibleServer -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### RestartViaJsonString
+```
+Restart-AzMySqlFlexibleServer -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Restarts a server.
 
@@ -84,7 +98,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -100,7 +115,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
@@ -111,6 +125,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Restart operation
+
+```yaml
+Type: System.String
+Parameter Sets: RestartViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Restart operation
+
+```yaml
+Type: System.String
+Parameter Sets: RestartViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -134,7 +178,7 @@ The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart, RestartExpanded
+Parameter Sets: Restart, RestartExpanded, RestartViaJsonFilePath, RestartViaJsonString
 Aliases: ServerName
 
 Required: True
@@ -161,7 +205,6 @@ Accept wildcard characters: False
 
 ### -Parameter
 Server restart parameters.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IServerRestartParameter
@@ -196,7 +239,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart, RestartExpanded
+Parameter Sets: Restart, RestartExpanded, RestartViaJsonFilePath, RestartViaJsonString
 Aliases:
 
 Required: True
@@ -226,7 +269,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart, RestartExpanded
+Parameter Sets: Restart, RestartExpanded, RestartViaJsonFilePath, RestartViaJsonString
 Aliases:
 
 Required: False
@@ -281,30 +324,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IMySqlIdentity>: Identity Parameter
-  - `[BackupName <String>]`: The name of the backup.
-  - `[ConfigurationName <String>]`: The name of the server configuration.
-  - `[DatabaseName <String>]`: The name of the database.
-  - `[FirewallRuleName <String>]`: The name of the server firewall rule.
-  - `[Id <String>]`: Resource identity path
-  - `[LocationName <String>]`: The name of the location.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SecurityAlertPolicyName <String>]`: The name of the security alert policy.
-  - `[ServerName <String>]`: The name of the server.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
-
-PARAMETER <IServerRestartParameter>: Server restart parameters.
-  - `[MaxFailoverSecond <Int32?>]`: The maximum allowed failover time in seconds.
-  - `[RestartWithFailover <String>]`: Whether or not failover to standby server when restarting a server with high availability enabled.
 
 ## RELATED LINKS
 

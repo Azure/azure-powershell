@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMySqlVirtualNetworkRule
 
 ## SYNOPSIS
-Creates or updates an existing virtual network rule.
+Create an existing virtual network rule.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzMySqlVirtualNetworkRule -Name <String> -ResourceGroupName <String> -Server
 ```
 
 ## DESCRIPTION
-Creates or updates an existing virtual network rule.
+Create an existing virtual network rule.
 
 ## EXAMPLES
 
@@ -55,7 +55,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -231,8 +232,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IVirtualNetworkRule
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

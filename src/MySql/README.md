@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the MySql service.
 
 ---
-## Status
-[![Az.MySql](https://img.shields.io/powershellgallery/v/Az.MySql.svg?style=flat-square&label=Az.MySql "Az.MySql")](https://www.powershellgallery.com/packages/Az.MySql/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -59,7 +56,8 @@ title: MySQL
 subject-prefix: 'MySQL'
 identity-correction-for-post: true
 disable-getput: true
-
+disable-transform-identity-type-for-operation:
+  - Servers_Update 
 directive:
   - from: swagger-document
     where: $.paths..operationId

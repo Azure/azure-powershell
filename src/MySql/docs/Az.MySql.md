@@ -57,7 +57,7 @@ Creates a new firewall rule or updates an existing firewall rule.
 Creates a new MySQL flexible server.
 
 ### [New-AzMySqlFlexibleServerDatabase](New-AzMySqlFlexibleServerDatabase.md)
-Creates a new database or updates an existing database.
+Create a new database or updates an existing database.
 
 ### [New-AzMySqlFlexibleServerFirewallRule](New-AzMySqlFlexibleServerFirewallRule.md)
 Creates a new firewall rule for MySQL flexible server
@@ -72,7 +72,7 @@ Creates a new replica from an existing database.
 Creates a new server.
 
 ### [New-AzMySqlVirtualNetworkRule](New-AzMySqlVirtualNetworkRule.md)
-Creates or updates an existing virtual network rule.
+Create an existing virtual network rule.
 
 ### [Remove-AzMySqlFirewallRule](Remove-AzMySqlFirewallRule.md)
 Deletes a server firewall rule.
@@ -140,5 +140,5 @@ Use Update-AzMySqlConfiguration instead if you want update server parameters suc
 Update a list of configurations in a given server.
 
 ### [Update-AzMySqlVirtualNetworkRule](Update-AzMySqlVirtualNetworkRule.md)
-Creates or updates an existing virtual network rule.
+Update an existing virtual network rule.
 
