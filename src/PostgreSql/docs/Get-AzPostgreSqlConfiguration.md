@@ -30,6 +30,12 @@ Get-AzPostgreSqlConfiguration -InputObject <IPostgreSqlIdentity> [-DefaultProfil
  [<CommonParameters>]
 ```
 
+### GetViaIdentityServer
+```
+Get-AzPostgreSqlConfiguration -Name <String> -ServerInputObject <IPostgreSqlIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets information about a configuration of server.
 
@@ -74,7 +80,8 @@ This cmdlet gets specified PostgreSql configuration by name.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -90,7 +97,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
@@ -109,7 +115,7 @@ The name of the server configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityServer
 Aliases: ConfigurationName
 
 Required: True
@@ -132,6 +138,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServerInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
+Parameter Sets: GetViaIdentityServer
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -177,25 +198,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IConfiguration
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
-  - `[ConfigurationName <String>]`: The name of the server configuration.
-  - `[DatabaseName <String>]`: The name of the database.
-  - `[FirewallRuleName <String>]`: The name of the server firewall rule.
-  - `[Id <String>]`: Resource identity path
-  - `[LocationName <String>]`: The name of the location.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SecurityAlertPolicyName <SecurityAlertPolicyName?>]`: The name of the security alert policy.
-  - `[ServerName <String>]`: The name of the server.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
 
 ## RELATED LINKS
 

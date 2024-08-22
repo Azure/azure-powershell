@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the PostgreSql service.
 
 ---
-## Status
-[![Az.PostgreSql](https://img.shields.io/powershellgallery/v/Az.PostgreSql.svg?style=flat-square&label=Az.PostgreSql "Az.PostgreSql")](https://www.powershellgallery.com/packages/Az.PostgreSql/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -59,7 +56,8 @@ module-version: 0.1.0
 title: PostgreSQL 
 subject-prefix: 'PostgreSQL'
 disable-getput: true
-
+disable-transform-identity-type-for-operation:
+  - Servers_Update
 directive:
   - from: swagger-document
     where: $.paths..operationId

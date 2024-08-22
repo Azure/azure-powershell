@@ -29,6 +29,9 @@ Gets information about a configuration of server.
 ### [Get-AzPostgreSqlFlexibleServerConnectionString](Get-AzPostgreSqlFlexibleServerConnectionString.md)
 Get the connection string according to client connection provider.
 
+### [Get-AzPostgreSqlFlexibleServerDatabase](Get-AzPostgreSqlFlexibleServerDatabase.md)
+Gets information about a database.
+
 ### [Get-AzPostgreSqlFlexibleServerFirewallRule](Get-AzPostgreSqlFlexibleServerFirewallRule.md)
 List all the firewall rules in a given server.
 
@@ -50,6 +53,9 @@ Creates a new firewall rule or updates an existing firewall rule.
 ### [New-AzPostgreSqlFlexibleServer](New-AzPostgreSqlFlexibleServer.md)
 Creates a new server.
 
+### [New-AzPostgreSqlFlexibleServerDatabase](New-AzPostgreSqlFlexibleServerDatabase.md)
+Create a new database or updates an existing database.
+
 ### [New-AzPostgreSqlFlexibleServerFirewallRule](New-AzPostgreSqlFlexibleServerFirewallRule.md)
 Creates a new firewall rule or updates an existing firewall rule.
 
@@ -60,13 +66,16 @@ Creates a new replica from an existing database.
 Creates a new server.
 
 ### [New-AzPostgreSqlVirtualNetworkRule](New-AzPostgreSqlVirtualNetworkRule.md)
-Creates or updates an existing virtual network rule.
+Create an existing virtual network rule.
 
 ### [Remove-AzPostgreSqlFirewallRule](Remove-AzPostgreSqlFirewallRule.md)
 Deletes a server firewall rule.
 
 ### [Remove-AzPostgreSqlFlexibleServer](Remove-AzPostgreSqlFlexibleServer.md)
 Deletes a server.
+
+### [Remove-AzPostgreSqlFlexibleServerDatabase](Remove-AzPostgreSqlFlexibleServerDatabase.md)
+Deletes a database.
 
 ### [Remove-AzPostgreSqlFlexibleServerFirewallRule](Remove-AzPostgreSqlFlexibleServerFirewallRule.md)
 Deletes a PostgreSQL server firewall rule.
@@ -108,7 +117,7 @@ Creates a new firewall rule or updates an existing firewall rule.
 ### [Update-AzPostgreSqlFlexibleServer](Update-AzPostgreSqlFlexibleServer.md)
 Updates an existing server.
 The request body can contain one to many of the properties present in the normal server definition.
-Use Update-AzPostgreSqlFlexibleServerConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
+Use Update-AzPostSqlFlexibleServerConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 
 ### [Update-AzPostgreSqlFlexibleServerConfiguration](Update-AzPostgreSqlFlexibleServerConfiguration.md)
 Updates a configuration of a server.
@@ -123,5 +132,5 @@ The request body can contain one to many of the properties present in the normal
 Use Update-AzPostSqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 
 ### [Update-AzPostgreSqlVirtualNetworkRule](Update-AzPostgreSqlVirtualNetworkRule.md)
-Creates or updates an existing virtual network rule.
+Update an existing virtual network rule.
 

@@ -12,16 +12,45 @@ Restarts a server.
 
 ## SYNTAX
 
-### Restart (Default)
+### RestartExpanded (Default)
 ```
 Restart-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-FailoverMode <String>] [-RestartWithFailover] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Restart
+```
+Restart-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> -Parameter <IRestartParameter>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### RestartViaIdentity
 ```
-Restart-AzPostgreSqlFlexibleServer -InputObject <IPostgreSqlIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restart-AzPostgreSqlFlexibleServer -InputObject <IPostgreSqlIdentity> -Parameter <IRestartParameter>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RestartViaIdentityExpanded
+```
+Restart-AzPostgreSqlFlexibleServer -InputObject <IPostgreSqlIdentity> [-FailoverMode <String>]
+ [-RestartWithFailover] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### RestartViaJsonFilePath
+```
+Restart-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### RestartViaJsonString
+```
+Restart-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,6 +73,20 @@ Restart-AzPostgreSqlFlexibleServer -InputObject $ID
 
 Restart the server by identity
 
+### Example 3: Restart the server with planned failover
+```powershell
+Restart-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -RestartWithFailover -FailoverMode PlannedFailover
+```
+
+Restart the server by name with planned failover
+
+### Example 4: Restart the server with forced failover
+```powershell
+Restart-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -RestartWithFailover -FailoverMode ForcedFailover
+```
+
+Restart the server by name with forced failover
+
 ## PARAMETERS
 
 ### -AsJob
@@ -62,7 +105,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -76,13 +120,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FailoverMode
+Failover mode.
+
+```yaml
+Type: System.String
+Parameter Sets: RestartExpanded, RestartViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
-Parameter Sets: RestartViaIdentity
+Parameter Sets: RestartViaIdentity, RestartViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -92,12 +150,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Restart operation
+
+```yaml
+Type: System.String
+Parameter Sets: RestartViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Restart operation
+
+```yaml
+Type: System.String
+Parameter Sets: RestartViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart
+Parameter Sets: Restart, RestartExpanded, RestartViaJsonFilePath, RestartViaJsonString
 Aliases: ServerName
 
 Required: True
@@ -122,6 +210,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Parameter
+Represents server restart parameters.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IRestartParameter
+Parameter Sets: Restart, RestartViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Returns true when the command succeeds
 
@@ -143,10 +246,25 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart
+Parameter Sets: Restart, RestartExpanded, RestartViaJsonFilePath, RestartViaJsonString
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestartWithFailover
+Indicates whether to restart the server with failover.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: RestartExpanded, RestartViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -158,7 +276,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart
+Parameter Sets: Restart, RestartExpanded, RestartViaJsonFilePath, RestartViaJsonString
 Aliases:
 
 Required: False
@@ -206,30 +324,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
 
+### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IRestartParameter
+
 ## OUTPUTS
 
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
-  - `[ConfigurationName <String>]`: The name of the server configuration.
-  - `[DatabaseName <String>]`: The name of the database.
-  - `[FirewallRuleName <String>]`: The name of the server firewall rule.
-  - `[Id <String>]`: Resource identity path
-  - `[LocationName <String>]`: The name of the location.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SecurityAlertPolicyName <SecurityAlertPolicyName?>]`: The name of the security alert policy.
-  - `[ServerName <String>]`: The name of the server.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
 
 ## RELATED LINKS
 
