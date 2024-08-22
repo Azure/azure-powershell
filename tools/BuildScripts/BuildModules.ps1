@@ -121,7 +121,6 @@ switch ($PSCmdlet.ParameterSetName) {
 $TargetModule = $TargetModule | Select-Object -Unique
 $testModule = $testModule | Select-Object -Unique
 
-$buildCsprojFiles = Get-CsprojFromModule -BuildModuleList $TargetModule -RepoRoot $RepoRoot -Configuration $Configuration
 # Prepare autorest based modules
 $prepareScriptPath = Join-Path $toolDirectory 'BuildScripts' 'PrepareAutorestModule.ps1'
 
@@ -133,6 +132,8 @@ foreach ($moduleRootName in $TargetModule) {
     Write-Host "Preparing $moduleRootName ..." -ForegroundColor DarkGreen
     . $prepareScriptPath -ModuleRootName $moduleRootName -RepoRoot $RepoRoot -ForceRegenerate:$ForceRegenerate -InvokedByPipeline:$isInvokedByPipeline
 }
+
+$buildCsprojFiles = Get-CsprojFromModule -BuildModuleList $TargetModule -RepoRoot $RepoRoot -Configuration $Configuration
 
 Set-Location $RepoRoot
 $buildSln = Join-Path $RepoArtifacts "Azure.PowerShell.sln"
