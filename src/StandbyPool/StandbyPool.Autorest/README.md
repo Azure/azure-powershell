@@ -28,7 +28,7 @@ For information on how to develop for `Az.StandbyPool`, see [how-to.md](how-to.m
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 5cbd7c23897da22f52da4f02534b2819abe9f761
+commit: 508e46868618ea226265c3ff8ffcda3a341cfa96
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -40,7 +40,7 @@ try-require:
   - $(repo)/specification/standbypool/resource-manager/readme.powershell.md
 
 # For new RP, the version is 0.1.0
-module-version: 0.1.0
+module-version: 0.2.0
 # Normally, title is the service name
 title: StandbyPool
 subject-prefix: Standby
@@ -63,14 +63,21 @@ directive:
       subject: StandbyVirtualMachinePool
     set:
       subject: StandbyVMPool
-  
-  # Rename StandbyVirtualMachine to StandbyVM
+
+  # Rename Get-AzStandbyVirtualMachinePoolRuntimeView to Get-AzStandbyVMPoolStatus
   - where:
       verb: Get
-      subject: StandbyVirtualMachine
+      subject: StandbyVirtualMachinePoolRuntimeView
     set:
-      subject: StandbyVMPoolVM
+      subject: StandbyVMPoolStatus
 
+  # Rename Get-AzStandbyContainerGroupPoolRuntimeView to Get-AzStandbyContainerGroupPoolStatus
+  - where:
+      verb: Get
+      subject: StandbyContainerGroupPoolRuntimeView
+    set:
+      subject: StandbyContainerGroupPoolStatus
+  
   # Rename standby container group pool parameters
   - where:
       verb: New|Update
@@ -99,13 +106,27 @@ directive:
       parameter-name: ElasticityProfileRefillPolicy
     set:
       parameter-name: RefillPolicy
-  
+
   - where:
       verb: New|Update
       subject: StandbyContainerGroupPool
       parameter-name: ContainerGroupPropertySubnetId
     set:
       parameter-name: SubnetId
+  
+  - where:
+      verb: Get
+      subject: StandbyContainerGroupPoolStatus
+      parameter-name: StandbyContainerGroupPoolName
+    set:
+      parameter-name: Name
+
+  - where:
+      verb: Get
+      subject: StandbyContainerGroupPoolStatus
+      parameter-name: RuntimeView
+    set:
+      parameter-name: Version
 
   # Rename standby virtual machine pool parameters
   - where:
@@ -125,24 +146,69 @@ directive:
   - where:
       verb: New|Update
       subject: StandbyVMPool
+      parameter-name: ElasticityProfileMinReadyCapacity
+    set:
+      parameter-name: MinReadyCapacity
+
+  - where:
+      verb: New|Update
+      subject: StandbyVMPool
       parameter-name: VirtualMachineState
     set:
       parameter-name: VMState
 
-# Rename standby virtual machine parameters
   - where:
       verb: Get
       subject: StandbyVMPoolVM
       parameter-name: Name
     set:
       parameter-name: VMName
-      
+
   - where:
       verb: Get
       subject: StandbyVMPoolVM
       parameter-name: PoolName
     set:
       parameter-name: Name
+
+  - where:
+      verb: Get
+      subject: StandbyVMPoolStatus
+      parameter-name: StandbyVirtualMachinePoolName
+    set:
+      parameter-name: Name
+
+  - where:
+      verb: Get
+      subject: StandbyVMPoolStatus
+      parameter-name: RuntimeView
+    set:
+      parameter-name: Version
+
+  # Hide parameters from cmdlets
+  - where:
+      verb: Get
+      subject: StandbyVMPoolStatus
+      parameter-name: Version
+    hide: true
+    set:
+      default:
+        script: "'latest'"
+
+  - where:
+      verb: Get
+      subject: StandbyContainerGroupPoolStatus
+      parameter-name: Version
+    hide: true
+    set:
+      default:
+        script: "'latest'"
+
+  # Rename Get-StandbyVirtualMachine to StandbyVM
+  - where:
+      verb: Get
+      subject: StandbyVirtualMachine
+    remove: true
 
   # Remove the set-* cmdlet
   - where:
