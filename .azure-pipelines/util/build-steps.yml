@@ -213,7 +213,7 @@ steps:
       $tmpBranchName = "$(TmpBranchName)"
       $baseBranchName = "$(BaseBranchName)"
       $generatedPath = Join-Path "$(Build.SourcesDirectory)" 'generated'
-      $diff = (git diff --numstat $generatedPath)
+      $diff = ( git status --short --untracked-files $generatedPath)
       if ((-not $diff) -or ($null -eq $diff) -or (0 -eq $diff.Count)) {
         return
       }
