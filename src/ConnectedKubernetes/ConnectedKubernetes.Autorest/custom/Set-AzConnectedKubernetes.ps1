@@ -743,10 +743,29 @@ function Set-AzConnectedKubernetes {
             $options += " --set $($field.Name)=$($field.Value)"
         }
         
+        # Set agent version in registry path
+        if ($ExistConnectedKubernetes.AgentVersion) {
+            $repositoryPath = $repositoryPath -replace "(?<=:).*", $ExistConnectedKubernetes.AgentVersion
+        }
+
         # Get helm chart path (within the OCI registry).
         $chartPath = Get-HelmChartPath -registryPath $registryPath -kubeConfig $KubeConfig -kubeContext $KubeContext -helmClientLocation $HelmClientLocation
         if (Test-Path Env:HELMCHART) {
             $ChartPath = Get-ChildItem -Path Env:HELMCHART
+        }
+
+        # Get curren helm values
+        try {
+            $userValuesLocation = Join-Path $env:USERPROFILE ".azure\userValues.txt"
+
+            helm get values azure-arc `
+            --debug `
+            --namespace $ReleaseInstallNamespace `
+            --kubeconfig $KubeConfig `
+            --kube-context $KubeContext > $userValuesLocation
+
+        } catch {
+            throw "Unable to get helm values"
         }
 
         try {
@@ -755,6 +774,7 @@ function Set-AzConnectedKubernetes {
             azure-arc `
             $ChartPath `
             --namespace $ReleaseInstallNamespace `
+            -f $userValuesLocation `
             --wait (-split $options)
         } catch {
             throw "Unable to install helm release"
