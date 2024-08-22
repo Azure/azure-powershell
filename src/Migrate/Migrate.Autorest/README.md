@@ -115,8 +115,8 @@ directive:
     - HyperVToAzStackHCIProtectedItemModelCustomProperties
     - VMwareToAzStackHCIProtectedItemModelCustomProperties
     - PlannedFailoverModelProperties
-    - WorkflowModelProperties
-    - WorkflowModelCustomProperties
+    - JobModelProperties
+    - JobModelCustomProperties
     - TaskModel
     - TaskModelCustomProperties
   # Remove variants not in scope
@@ -240,7 +240,7 @@ directive:
     remove: true
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
     where:
-      subject: ^Job|^VMwareOperationsStatus
+      subject: ^VMwareOperationsStatus
     remove: true
   - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
     where:
@@ -331,7 +331,11 @@ directive:
   - from: E:\azure-rest-api-specs-pr\specification\recoveryservicesdatareplication\resource-manager\Microsoft.DataReplication\stable\2024-09-01\recoveryservicesdatareplication.json
     where:
       verb: Test|Invoke
-      subject: NameAvailability$|DeploymentPreflight
+      subject: NameAvailabilityOperation$|DeploymentPreflightOperation
+    remove: true
+  - from: E:\azure-rest-api-specs-pr\specification\recoveryservicesdatareplication\resource-manager\Microsoft.DataReplication\stable\2024-09-01\recoveryservicesdatareplication.json
+    where:
+      subject: OperationResultsOperation
     remove: true
   - from: E:\azure-rest-api-specs-pr\specification\recoveryservicesdatareplication\resource-manager\Microsoft.DataReplication\stable\2024-09-01\recoveryservicesdatareplication.json
     where:
@@ -367,9 +371,15 @@ directive:
   - from: E:\azure-rest-api-specs-pr\specification\recoveryservicesdatareplication\resource-manager\Microsoft.DataReplication\stable\2024-09-01\recoveryservicesdatareplication.json
     where:
       verb: Get
-      subject: ^Fabric$
+      subject: ^FabricModel$
     set:
       subject: HCIReplicationFabric
+  - from: E:\azure-rest-api-specs-pr\specification\recoveryservicesdatareplication\resource-manager\Microsoft.DataReplication\stable\2024-09-01\recoveryservicesdatareplication.json
+    where:
+      verb: Get
+      subject: ^JobModel$
+    set:
+      subject: HCIReplicationJob
   # Hide cmldets used by custom
   - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
     where:

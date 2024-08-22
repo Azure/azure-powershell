@@ -263,7 +263,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
 
         # Get Source and Target Dras from Fabrics
         $sourceDras = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate.Internal\Get-AzMigrateDra" `
+            -CommandName "Az.Migrate.Internal\Get-AzMigrateFabricAgent" `
             -Parameters @{"FabricName" = $sourceFabric.Name; "ResourceGroupName" = $ResourceGroupName} `
             -ErrorMessage "No source Fabric Agent (DRA) found. Please verify your appliance setup."
 
@@ -271,7 +271,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         Write-Host "*Selected Source Dra: '$($sourceDra.Name)'"
 
         $targetDras = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate.Internal\Get-AzMigrateDra" `
+            -CommandName "Az.Migrate.Internal\Get-AzMigrateFabricAgent" `
             -Parameters @{"FabricName" = $targetFabric.Name; "ResourceGroupName" = $ResourceGroupName} `
             -ErrorMessage "No target Fabric Agent (DRA) found. Please verify your appliance setup."
 

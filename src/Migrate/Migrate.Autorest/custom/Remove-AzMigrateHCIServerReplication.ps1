@@ -146,7 +146,7 @@ function Remove-AzMigrateHCIServerReplication {
             $null = $PSBoundParameters.Remove('ForceDelete')
 
             $null = $PSBoundParameters.Add('JobName', $jobName)
-            return Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters
+            return Az.Migrate.Internal\Get-AzMigrateHCIReplicationJob @PSBoundParameters
         }
     }
 }

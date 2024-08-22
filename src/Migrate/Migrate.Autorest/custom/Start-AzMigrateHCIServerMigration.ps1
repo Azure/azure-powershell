@@ -173,7 +173,7 @@ function Start-AzMigrateHCIServerMigration {
             $null = $PSBoundParameters.Remove('Property')
 
             $null = $PSBoundParameters.Add('JobName', $jobName)
-            return Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters
+            return Az.Migrate.Internal\Get-AzMigrateHCIReplicationJob @PSBoundParameters
         }
     }
 }

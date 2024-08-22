@@ -282,14 +282,14 @@ function New-AzMigrateHCIServerReplication {
 
         # Get Source and Target Dras
         $sourceDras = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName 'Az.Migrate.Internal\Get-AzMigrateDra' `
+            -CommandName 'Az.Migrate.Internal\Get-AzMigrateFabricAgent' `
             -Parameters @{ FabricName = $sourceFabric.Name; ResourceGroupName = $ResourceGroupName } `
             -ErrorMessage "No connected source appliances are found. Kindly deploy an appliance by completing the Discover step of the migration jounery on the source cluster."
 
         $sourceDra = $sourceDras[0]
 
         $targetDras = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName 'Az.Migrate.Internal\Get-AzMigrateDra' `
+            -CommandName 'Az.Migrate.Internal\Get-AzMigrateFabricAgent' `
             -Parameters @{ FabricName = $targetFabric.Name; ResourceGroupName = $ResourceGroupName } `
             -ErrorMessage "No connected target appliances are found. Deploy and configure a new appliance for the target cluster, or select a different cluster."
 
@@ -375,16 +375,26 @@ function New-AzMigrateHCIServerReplication {
         $customProperties.CustomLocationRegion = $targetCluster.CustomLocationRegion
         $customProperties.FabricDiscoveryMachineId = $machine.Id
         $customProperties.RunAsAccountId = $runAsAccount.Id
-        $customProperties.SourceDraName = $sourceDra.Name
+        $customProperties.SourceFabricAgentName = $sourceDra.Name
         $customProperties.StorageContainerId = $TargetStoragePathId
         $customProperties.TargetArcClusterCustomLocationId = $targetCluster.CustomLocation
-        $customProperties.TargetDraName = $targetDra.Name
+        $customProperties.TargetFabricAgentName = $targetDra.Name
         $customProperties.TargetHciClusterId = $targetClusterId
         $customProperties.TargetResourceGroupId = $TargetResourceGroupId
         $customProperties.TargetVMName = $TargetVMName
         $customProperties.HyperVGeneration = if ($SiteType -eq $SiteTypes.HyperVSites) { $machine.Generation } else { "1" }
         $customProperties.TargetCpuCore = if ($HasTargetVMCPUCore) { $TargetVMCPUCore } else { $machine.NumberOfProcessorCore }
         $customProperties.IsDynamicRam = if ($HasIsDynamicMemoryEnabled) { $isDynamicRamEnabled } else {  $isSourceDynamicMemoryEnabled }
+
+        if ($SiteType -eq $SiteTypes.HyperVSites) {
+            # Hyper-V source
+            $customProperties.HyperVGeneration = $machine.Generation
+        }
+        else
+        {
+            #Vmware source, non-BOIS VMs will be migrated to Gen2
+            $customProperties.HyperVGeneration = if ($machine.Firmware -ieq "BIOS") { "1" } else { "2" }
+        }
     
         # Validate TargetVMRam
         if ($HasTargetVMRam) {
@@ -556,7 +566,7 @@ function New-AzMigrateHCIServerReplication {
             $null = $PSBoundParameters.Remove('NoWait')
 
             $null = $PSBoundParameters.Add('JobName', $jobName)
-            return Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters
+            return Az.Migrate.Internal\Get-AzMigrateHCIReplicationJob @PSBoundParameters
         }
     }
 }
