@@ -19,9 +19,9 @@ New-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -Loc
  [-AzureHybridBenefit <AzureHybridBenefit>] [-CustomLocationsOid <String>] [-Distribution <String>]
  [-DistributionVersion <String>] [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>]
  [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
- [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>] [-ConnectionType <String>]
- [-GatewayResourceId <String>] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-ArcAgentryProtectedSettings <Hashtable>] [-ArcAgentrySettings <Hashtable>] [-AsJob]
+ [-ConnectionType <String>] [-GatewayResourceId <String>] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -155,6 +155,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ArcAgentryProtectedSettings
+
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ArcAgentrySettings
+
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 
 
@@ -194,36 +224,6 @@ Parameter Sets: (All)
 Aliases: Name
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConfigurationProtectedSetting
-
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConfigurationSetting
-
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
