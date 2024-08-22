@@ -8,21 +8,34 @@ schema: 2.0.0
 # New-AzDataBoxJob
 
 ## SYNOPSIS
-Creates a new job with the specified parameters.
+Create a new job with the specified parameters.
 Existing job cannot be updated with this API and should instead be updated with the Update job API.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzDataBoxJob -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <SkuName>
- -TransferType <TransferType> [-SubscriptionId <String>] [-DeliveryInfoScheduledDateTime <DateTime>]
- [-DeliveryType <JobDeliveryType>] [-Detail <IJobDetails>] [-IdentityType <String>] [-SkuDisplayName <String>]
- [-SkuFamily <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>]
+New-AzDataBoxJob -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <String>
+ -TransferType <String> [-SubscriptionId <String>] [-DeliveryInfoScheduledDateTime <DateTime>]
+ [-DeliveryType <String>] [-Detail <IJobDetails>] [-EnableSystemAssignedIdentity] [-SkuDisplayName <String>]
+ [-SkuFamily <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzDataBoxJob -Name <String> -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzDataBoxJob -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates a new job with the specified parameters.
+Create a new job with the specified parameters.
 Existing job cannot be updated with this API and should instead be updated with the Update job API.
 
 ## EXAMPLES
@@ -228,7 +241,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -247,7 +261,7 @@ Scheduled date time.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -261,8 +275,8 @@ Accept wildcard characters: False
 Delivery type of Job.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.JobDeliveryType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -275,11 +289,10 @@ Accept wildcard characters: False
 ### -Detail
 Details of a job run.
 This field will only be sent for expand details filter.
-To construct, see NOTES section for DETAIL properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IJobDetails
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -289,15 +302,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Identity type
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -312,7 +355,7 @@ The region of a resource cannot be changed once it is created, but if an identic
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -373,7 +416,7 @@ The display name of the sku.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -388,7 +431,7 @@ The sku family.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -402,8 +445,8 @@ Accept wildcard characters: False
 The sku name.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.SkuName
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -434,7 +477,7 @@ These tags can be used in viewing and grouping this resource (across resource gr
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -448,8 +491,8 @@ Accept wildcard characters: False
 Type of the data transfer.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -460,11 +503,12 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-User Assigned Identities
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -515,72 +559,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IJobResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-DETAIL <IJobDetails>: Details of a job run. This field will only be sent for expand details filter.
-  - `ContactDetail <IContactDetails>`: Contact details for notification and shipping.
-    - `ContactName <String>`: Contact name of the person.
-    - `EmailList <String[]>`: List of Email-ids to be notified about job progress.
-    - `Phone <String>`: Phone number of the contact person.
-    - `[Mobile <String>]`: Mobile number of the contact person.
-    - `[NotificationPreference <INotificationPreference[]>]`: Notification preference for a job stage.
-      - `SendNotification <Boolean>`: Notification is required or not.
-      - `StageName <NotificationStageName>`: Name of the stage.
-    - `[PhoneExtension <String>]`: Phone extension number of the contact person.
-  - `Type <ClassDiscriminator>`: Indicates the type of job details.
-  - `[DataExportDetail <IDataExportDetails[]>]`: Details of the data to be exported from azure.
-    - `AccountDetailDataAccountType <DataAccountType>`: Account Type of the data to be transferred.
-    - `TransferConfiguration <ITransferConfiguration>`: Configuration for the data transfer.
-      - `Type <TransferConfigurationType>`: Type of the configuration for transfer.
-      - `[TransferAllDetail <ITransferConfigurationTransferAllDetails>]`: Map of filter type and the details to transfer all data. This field is required only if the TransferConfigurationType is given as TransferAll
-        - `[IncludeDataAccountType <DataAccountType?>]`: Type of the account of data
-        - `[IncludeTransferAllBlob <Boolean?>]`: To indicate if all Azure blobs have to be transferred
-        - `[IncludeTransferAllFile <Boolean?>]`: To indicate if all Azure Files have to be transferred
-      - `[TransferFilterDetail <ITransferConfigurationTransferFilterDetails>]`: Map of filter type and the details to filter. This field is required only if the TransferConfigurationType is given as TransferUsingFilter.
-        - `[AzureFileFilterDetailFilePathList <String[]>]`: List of full path of the files to be transferred.
-        - `[AzureFileFilterDetailFilePrefixList <String[]>]`: Prefix list of the Azure files to be transferred.
-        - `[AzureFileFilterDetailFileShareList <String[]>]`: List of file shares to be transferred.
-        - `[BlobFilterDetailBlobPathList <String[]>]`: List of full path of the blobs to be transferred.
-        - `[BlobFilterDetailBlobPrefixList <String[]>]`: Prefix list of the Azure blobs to be transferred.
-        - `[BlobFilterDetailContainerList <String[]>]`: List of blob containers to be transferred.
-        - `[IncludeDataAccountType <DataAccountType?>]`: Type of the account of data.
-        - `[IncludeFilterFileDetail <IFilterFileDetails[]>]`: Details of the filter files to be used for data transfer.
-          - `FilterFilePath <String>`: Path of the file that contains the details of all items to transfer.
-          - `FilterFileType <FilterFileType>`: Type of the filter file.
-    - `[AccountDetailSharePassword <String>]`: Password for all the shares to be created on the device. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have at least one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\-$%^!+=;:_()]+
-    - `[LogCollectionLevel <LogCollectionLevel?>]`: Level of the logs to be collected.
-  - `[DataImportDetail <IDataImportDetails[]>]`: Details of the data to be imported into azure.
-    - `AccountDetailDataAccountType <DataAccountType>`: Account Type of the data to be transferred.
-    - `[AccountDetailSharePassword <String>]`: Password for all the shares to be created on the device. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have at least one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\-$%^!+=;:_()]+
-  - `[ExpectedDataSizeInTeraByte <Int32?>]`: The expected size of the data, which needs to be transferred in this job, in terabytes.
-  - `[KeyEncryptionKey <IKeyEncryptionKey>]`: Details about which key encryption type is being used.
-    - `KekType <KekType>`: Type of encryption key used for key encryption.
-    - `[IdentityProperty <IIdentityProperties>]`: Managed identity properties used for key encryption.
-      - `[Type <String>]`: Managed service identity type.
-      - `[UserAssignedResourceId <String>]`: Arm resource id for user assigned identity to be used to fetch MSI token.
-    - `[KekUrl <String>]`: Key encryption key. It is required in case of Customer managed KekType.
-    - `[KekVaultResourceId <String>]`: Kek vault resource id. It is required in case of Customer managed KekType.
-  - `[Preference <IPreferences>]`: Preferences for the order.
-    - `[EncryptionPreferenceDoubleEncryption <DoubleEncryption?>]`: Defines secondary layer of software-based encryption enablement.
-    - `[PreferredDataCenterRegion <String[]>]`: Preferred data center region.
-    - `[TransportPreferencePreferredShipmentType <TransportShipmentTypes?>]`: Indicates Shipment Logistics type that the customer preferred.
-  - `[ShippingAddress <IShippingAddress>]`: Shipping address of the customer.
-    - `Country <String>`: Name of the Country.
-    - `StreetAddress1 <String>`: Street Address line 1.
-    - `[AddressType <AddressType?>]`: Type of address.
-    - `[City <String>]`: Name of the City.
-    - `[CompanyName <String>]`: Name of the company.
-    - `[PostalCode <String>]`: Postal code.
-    - `[StateOrProvince <String>]`: Name of the State or Province.
-    - `[StreetAddress2 <String>]`: Street Address line 2.
-    - `[StreetAddress3 <String>]`: Street Address line 3.
-    - `[ZipExtendedCode <String>]`: Extended Zip Code.
 
 ## RELATED LINKS
 

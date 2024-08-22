@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataBox
-online version: https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxKeyEncryptionKeyObject
+online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-azdataboxkeyencryptionkeyobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Create an in-memory object for KeyEncryptionKey.
 ## SYNTAX
 
 ```
-New-AzDataBoxKeyEncryptionKeyObject -KekType <KekType> [-IdentityProperty <IIdentityProperties>]
+New-AzDataBoxKeyEncryptionKeyObject -KekType <String> [-IdentityProperty <IIdentityProperties>]
  [-KekUrl <String>] [-KekVaultResourceId <String>] [<CommonParameters>]
 ```
 
@@ -39,7 +39,6 @@ Create a in-memory object for KeyEncryptionKey
 
 ### -IdentityProperty
 Managed identity properties used for key encryption.
-To construct, see NOTES section for IDENTITYPROPERTY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IIdentityProperties
@@ -57,7 +56,7 @@ Accept wildcard characters: False
 Type of encryption key used for key encryption.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.KekType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -110,17 +109,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.KeyEncryptionKey
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-IDENTITYPROPERTY <IIdentityProperties>: Managed identity properties used for key encryption.
-  - `[Type <String>]`: Managed service identity type.
-  - `[UserAssignedResourceId <String>]`: Arm resource id for user assigned identity to be used to fetch MSI token.
 
 ## RELATED LINKS
 

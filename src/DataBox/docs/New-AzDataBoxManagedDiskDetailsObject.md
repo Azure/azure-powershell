@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataBox
-online version: https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxManagedDiskDetailsObject
+online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-azdataboxmanageddiskdetailsobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for ManagedDiskDetails.
 ## SYNTAX
 
 ```
-New-AzDataBoxManagedDiskDetailsObject -DataAccountType <DataAccountType> -ResourceGroupId <String>
- -StagingStorageAccountId <String> [-SharePassword <String>] [<CommonParameters>]
+New-AzDataBoxManagedDiskDetailsObject -ResourceGroupId <String> -StagingStorageAccountId <String>
+ [-SharePassword <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,24 +32,10 @@ DataAccountType SharePassword ResourceGroupId                                   
 --------------- ------------- ---------------                                                -----------------------                                                                                                      
 ManagedDisk                   /subscriptions/SubscriptionId/resourceGroups/resourceGroupName /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/stagingAccountName
 ```
+
 Creates a in-memory managed disk object
 
 ## PARAMETERS
-
-### -DataAccountType
-Account Type of the data to be transferred.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ResourceGroupId
 Resource Group Id of the compute disks.
@@ -112,8 +98,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.ManagedDiskDetails
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

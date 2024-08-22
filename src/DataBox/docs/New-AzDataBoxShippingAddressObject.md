@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataBox
-online version: https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxShippingAddressObject
+online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-azdataboxshippingaddressobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Create an in-memory object for ShippingAddress.
 ## SYNTAX
 
 ```
-New-AzDataBoxShippingAddressObject -Country <String> -StreetAddress1 <String> [-AddressType <AddressType>]
+New-AzDataBoxShippingAddressObject -Country <String> -StreetAddress1 <String> [-AddressType <String>]
  [-City <String>] [-CompanyName <String>] [-PostalCode <String>] [-StateOrProvince <String>]
  [-StreetAddress2 <String>] [-StreetAddress3 <String>] [-ZipExtendedCode <String>] [<CommonParameters>]
 ```
@@ -42,7 +42,7 @@ Creates a in-memory shipping address object
 Type of address.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AddressType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -198,8 +198,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.ShippingAddress
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

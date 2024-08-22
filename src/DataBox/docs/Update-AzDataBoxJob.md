@@ -8,19 +8,33 @@ schema: 2.0.0
 # Update-AzDataBoxJob
 
 ## SYNOPSIS
-Updates the properties of an existing job.
+Update the properties of an existing job.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
 Update-AzDataBoxJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
  [-ContactDetail <IContactDetails>] [-IdentityType <String>] [-KeyEncryptionKey <IKeyEncryptionKey>]
- [-ShippingAddress <IShippingAddress>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
+ [-ShippingAddress <IShippingAddress>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaJsonFilePath
+```
+Update-AzDataBoxJob -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzDataBoxJob -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
+ [-IfMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Updates the properties of an existing job.
+Update the properties of an existing job.
 
 ## EXAMPLES
 
@@ -44,7 +58,7 @@ $DebugPreference = "Continue"
 #     ],
 #     "Target": null
 #   }
-# }
+# } 
 Update-AzDataBoxJob -Name "powershell10" -ResourceGroupName "resourceGroupName" -KeyEncryptionKey $keyEncryptionDetails -ContactDetail $contactDetail -ShippingAddress $ShippingDetails  -IdentityType "UserAssigned" -UserAssignedIdentity @{"/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName" = @{}}
 
 Name         Location Status        TransferType  SkuName IdentityType DeliveryType Detail
@@ -114,11 +128,10 @@ Accept wildcard characters: False
 
 ### -ContactDetail
 Contact details for notification and shipping.
-To construct, see NOTES section for CONTACTDETAIL properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IContactDetails
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -129,7 +142,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -148,7 +162,7 @@ Identity type
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -174,13 +188,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KeyEncryptionKey
 Key encryption key for the job.
-To construct, see NOTES section for KEYENCRYPTIONKEY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IKeyEncryptionKey
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -238,11 +281,10 @@ Accept wildcard characters: False
 
 ### -ShippingAddress
 Shipping address of the customer.
-To construct, see NOTES section for SHIPPINGADDRESS properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IShippingAddress
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -273,7 +315,7 @@ These tags can be used in viewing and grouping this resource (across resource gr
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -284,11 +326,12 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-User Assigned Identities
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -339,43 +382,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IJobResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-CONTACTDETAIL <IContactDetails>: Contact details for notification and shipping.
-  - `ContactName <String>`: Contact name of the person.
-  - `EmailList <String[]>`: List of Email-ids to be notified about job progress.
-  - `Phone <String>`: Phone number of the contact person.
-  - `[Mobile <String>]`: Mobile number of the contact person.
-  - `[NotificationPreference <INotificationPreference[]>]`: Notification preference for a job stage.
-    - `SendNotification <Boolean>`: Notification is required or not.
-    - `StageName <NotificationStageName>`: Name of the stage.
-  - `[PhoneExtension <String>]`: Phone extension number of the contact person.
-
-KEYENCRYPTIONKEY <IKeyEncryptionKey>: Key encryption key for the job.
-  - `KekType <KekType>`: Type of encryption key used for key encryption.
-  - `[IdentityProperty <IIdentityProperties>]`: Managed identity properties used for key encryption.
-    - `[Type <String>]`: Managed service identity type.
-    - `[UserAssignedResourceId <String>]`: Arm resource id for user assigned identity to be used to fetch MSI token.
-  - `[KekUrl <String>]`: Key encryption key. It is required in case of Customer managed KekType.
-  - `[KekVaultResourceId <String>]`: Kek vault resource id. It is required in case of Customer managed KekType.
-
-SHIPPINGADDRESS <IShippingAddress>: Shipping address of the customer.
-  - `Country <String>`: Name of the Country.
-  - `StreetAddress1 <String>`: Street Address line 1.
-  - `[AddressType <AddressType?>]`: Type of address.
-  - `[City <String>]`: Name of the City.
-  - `[CompanyName <String>]`: Name of the company.
-  - `[PostalCode <String>]`: Postal code.
-  - `[StateOrProvince <String>]`: Name of the State or Province.
-  - `[StreetAddress2 <String>]`: Street Address line 2.
-  - `[StreetAddress3 <String>]`: Street Address line 3.
-  - `[ZipExtendedCode <String>]`: Extended Zip Code.
 
 ## RELATED LINKS
 

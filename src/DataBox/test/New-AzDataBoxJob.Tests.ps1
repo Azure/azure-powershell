@@ -70,7 +70,7 @@ Describe 'New-AzDataBoxJob' {
         
         $details = New-AzDataBoxJobDetailsObject  -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -KeyEncryptionKey $keyEncryptionDetails
 
-        $resource = New-AzDataBoxJob -Name $env.JobNameUAI -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroup -TransferType "ImportToAzure" -Detail $details -Location "WestUS" -SkuName "DataBox" -IdentityType "UserAssigned" -UserAssignedIdentity @{$env.UserAssignedResourceId = @{}} 
+        $resource = New-AzDataBoxJob -Name $env.JobNameUAI -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroup -TransferType "ImportToAzure" -Detail $details -Location "WestUS" -SkuName "DataBox" -UserAssignedIdentity @($env.UserAssignedResourceId) 
 
         $resource.Status | Should -Be 'DeviceOrdered'
     }

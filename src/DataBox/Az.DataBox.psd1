@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.DataBox.private.dll'
   FormatsToProcess = './Az.DataBox.format.ps1xml'
-  FunctionsToExport = 'Get-AzDataBoxJob', 'Get-AzDataBoxJobCredential', 'New-AzDataBoxContactDetailsObject', 'New-AzDataBoxDiskJobDetailsObject', 'New-AzDataBoxHeavyJobDetailsObject', 'New-AzDataBoxJob', 'New-AzDataBoxJobDetailsObject', 'New-AzDataBoxKeyEncryptionKeyObject', 'New-AzDataBoxManagedDiskDetailsObject', 'New-AzDataBoxShippingAddressObject', 'New-AzDataBoxStorageAccountDetailsObject', 'New-AzDataBoxTransferConfigurationObject', 'Remove-AzDataBoxJob', 'Stop-AzDataBoxJob', 'Update-AzDataBoxJob', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzDataBoxJob', 'Get-AzDataBoxJobCredential', 'New-AzDataBoxContactDetailsObject', 'New-AzDataBoxDiskJobDetailsObject', 'New-AzDataBoxHeavyJobDetailsObject', 'New-AzDataBoxJob', 'New-AzDataBoxJobDetailsObject', 'New-AzDataBoxKeyEncryptionKeyObject', 'New-AzDataBoxManagedDiskDetailsObject', 'New-AzDataBoxShippingAddressObject', 'New-AzDataBoxStorageAccountDetailsObject', 'New-AzDataBoxTransferConfigurationObject', 'Remove-AzDataBoxJob', 'Stop-AzDataBoxJob', 'Update-AzDataBoxJob'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'DataBox'

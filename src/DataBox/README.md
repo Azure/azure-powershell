@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the DataBox service.
 
 ---
-## Status
-[![Az.DataBox](https://img.shields.io/powershellgallery/v/Az.DataBox.svg?style=flat-square&label=Az.DataBox "Az.DataBox")](https://www.powershellgallery.com/packages/Az.DataBox/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -17,7 +14,7 @@ This directory contains the PowerShell module for the DataBox service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -45,7 +42,8 @@ module-version: 0.1.0
 title: DataBox
 subject-prefix: $(service-name)
 inlining-threshold: 50
-
+disable-transform-identity-type-for-operation:
+  - Jobs_Update 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true

@@ -27,7 +27,7 @@ Create an in-memory object for DataBoxDiskJobDetails.
 Create an in-memory object for DataBoxHeavyJobDetails.
 
 ### [New-AzDataBoxJob](New-AzDataBoxJob.md)
-Creates a new job with the specified parameters.
+Create a new job with the specified parameters.
 Existing job cannot be updated with this API and should instead be updated with the Update job API.
 
 ### [New-AzDataBoxJobDetailsObject](New-AzDataBoxJobDetailsObject.md)
@@ -55,5 +55,5 @@ Deletes a job.
 CancelJob.
 
 ### [Update-AzDataBoxJob](Update-AzDataBoxJob.md)
-Updates the properties of an existing job.
+Update the properties of an existing job.
 
