@@ -323,16 +323,7 @@ function New-AzConnectedKubernetes {
         if (($null -eq $KubeContext) -or ($KubeContext -eq '')) {
             $KubeContext = kubectl config current-context
         }
-        Write-Debug "Validating ConnectionType and GatewayResourceId parameters."
-
-        if ($PSBoundParameters:ConnectionType) {
-            if ($ConnectionType.Equals("direct")) {
-                if ($PSBoundParameters:GatewayResourceId) {
-                    Write-Error 'GatewayResourceId should not be provided when ConnectionType is "direct".'
-                    return
-                }
-            }
-        }
+ 
         Write-Debug "Processing Arc Agentry settings and protected settings."
 
         # If GatewayResourceId is provided then set the gateway as enabled.
