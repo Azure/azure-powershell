@@ -1427,7 +1427,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSetUpdate.ResiliencyPolicy = new ResiliencyPolicy();
                 }
-                this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.ResilientVMCreationPolicy.Enabled = this.EnableResilientVMCreate.IsPresent;
+                this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.ResilientVMCreationPolicy = new ResilientVMCreationPolicy(this.EnableResilientVMCreate.IsPresent);
             }
 
             if (this.IsParameterBound(c => c.EnableResilientVMDelete))
@@ -2221,7 +2221,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSet.ResiliencyPolicy = new ResiliencyPolicy();
                 }
-                this.VirtualMachineScaleSet.ResiliencyPolicy.ResilientVMCreationPolicy.Enabled = this.EnableResilientVMCreate.IsPresent;
+                this.VirtualMachineScaleSet.ResiliencyPolicy.ResilientVMCreationPolicy = new ResilientVMCreationPolicy(this.EnableResilientVMCreate.IsPresent);
             }
 
             if (this.IsParameterBound(c => c.EnableResilientVMDelete))
@@ -2234,7 +2234,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSet.ResiliencyPolicy = new ResiliencyPolicy();
                 }
-                this.VirtualMachineScaleSet.ResiliencyPolicy.ResilientVMDeletionPolicy.Enabled = this.EnableResilientVMDelete;
+                this.VirtualMachineScaleSet.ResiliencyPolicy.ResilientVMDeletionPolicy = new ResilientVMDeletionPolicy(this.EnableResilientVMDelete);
             }
         }
     }

@@ -352,6 +352,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Enable resilient VM creation.")]
         public SwitchParameter EnableResilientVMCreate { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable or disable resilient VM deletion.")]
+        public bool EnableResilientVMDelete { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -395,6 +400,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // PriorityMix
             PriorityMixPolicy vPriorityMixPolicy = null;
 
+            //ResiliencyPolicy
+            ResiliencyPolicy vResiliencyPolicy = null;
+
             if (this.IsParameterBound(c => c.SkuName))
             {
                 if (vSku == null)
@@ -402,6 +410,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vSku = new Sku();
                 }
                 vSku.Name = this.SkuName;
+            }
+
+            if (this.IsParameterBound(c => c.EnableResilientVMCreate))
+            {
+                if (vResiliencyPolicy == null)
+                {
+                    vResiliencyPolicy = new ResiliencyPolicy();
+                }
+                vResiliencyPolicy.ResilientVMCreationPolicy = new ResilientVMCreationPolicy(this.EnableResilientVMCreate.IsPresent);
+            }
+
+            if (this.IsParameterBound(c=> c.EnableResilientVMDelete))
+            {
+                if (vResiliencyPolicy == null)
+                {
+                    vResiliencyPolicy = new ResiliencyPolicy();
+                }
+                vResiliencyPolicy.ResilientVMDeletionPolicy = new ResilientVMDeletionPolicy(this.EnableResilientVMDelete);
             }
 
             if (this.IsParameterBound(c => c.SkuTier))
@@ -920,6 +946,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.NotBeforeTimeout = this.OSImageScheduledEventNotBeforeTimeoutInMinutes;
             }
 
+
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
             {
                 Overprovision = this.IsParameterBound(c => c.Overprovision) ? this.Overprovision : (bool?)null,
@@ -942,7 +969,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Identity = vIdentity,
                 OrchestrationMode = this.IsParameterBound(c => c.OrchestrationMode) ? this.OrchestrationMode : null,
                 SpotRestorePolicy = this.IsParameterBound(c => c.EnableSpotRestore) ? new SpotRestorePolicy(true, this.SpotRestoreTimeout) : null,
-                PriorityMixPolicy = vPriorityMixPolicy
+                PriorityMixPolicy = vPriorityMixPolicy,
+                ResiliencyPolicy = vResiliencyPolicy
             };
 
             WriteObject(vVirtualMachineScaleSet);
