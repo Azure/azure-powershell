@@ -51,95 +51,13 @@ use-extension:
   "@autorest/powershell": "3.x"
 
 directive:
-  - from: databricks.json
+  - from: swagger-document
     where: $.definitions.EncryptionV2
-    transform: >-
-      return {
-        "properties": {
-          "keySource": {
-            "type": "string",
-            "description": "The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault",
-            "enum": [
-              "Microsoft.Keyvault"
-            ],
-            "x-ms-enum": {
-              "name": "EncryptionKeySource",
-              "modelAsString": true
-            }
-          },
-          "keyVaultProperties": {
-            "properties": {
-              "keyVaultUri": {
-                "type": "string",
-                "description": "The Uri of KeyVault."
-              },
-              "keyName": {
-                "type": "string",
-                "description": "The name of KeyVault key."
-              },
-              "keyVersion": {
-                "type": "string",
-                "description": "The version of KeyVault key."
-              }
-            },
-            "required": [
-              "keyVaultUri",
-              "keyName",
-              "keyVersion"
-            ],
-            "description": "Key Vault input properties for encryption."
-          }
-        },
-        "description": "The object that contains details of encryption used on the workspace."
-      }
+    transform: delete $.required
 
-  - from: databricks.json
+  - from: swagger-document
     where: $.definitions.ManagedDiskEncryption
-    transform: >-
-      return {
-        "type": "object",
-        "properties": {
-          "keySource": {
-            "type": "string",
-            "description": "The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault",
-            "enum": [
-              "Microsoft.Keyvault"
-            ],
-            "x-ms-enum": {
-              "name": "EncryptionKeySource",
-              "modelAsString": true
-            }
-          },
-          "keyVaultProperties": {
-            "type": "object",
-            "properties": {
-              "keyVaultUri": {
-                "type": "string",
-                "description": "The URI of KeyVault."
-              },
-              "keyName": {
-                "type": "string",
-                "description": "The name of KeyVault key."
-              },
-              "keyVersion": {
-                "type": "string",
-                "description": "The version of KeyVault key."
-              }
-            },
-            "required": [
-              "keyVaultUri",
-              "keyName",
-              "keyVersion"
-            ],
-            "description": "Key Vault input properties for encryption."
-          },
-          "rotationToLatestKeyVersionEnabled": {
-            "type": "boolean",
-            "description": "Indicate whether the latest key version should be automatically used for Managed Disk Encryption."
-          }
-        },
-        "description": "The object that contains details of encryption used on the workspace."
-      }
+    transform: delete $.required
 
 # Worked around this issue: https://github.com/Azure/autorest.powershell/issues/1258
   - from: EncryptionEntitiesDefinition.json.cs
