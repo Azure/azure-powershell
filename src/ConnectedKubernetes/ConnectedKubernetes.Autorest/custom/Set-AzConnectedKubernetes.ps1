@@ -375,7 +375,6 @@ function Set-AzConnectedKubernetes {
         }
         #Endregion
 
-        # XW TODO: helm install can be extracted as common function to be used by both Set and New
         #Region check helm install
         Write-Debug "Setting up Helm client location and validating Helm version."
         try {
@@ -404,7 +403,6 @@ function Set-AzConnectedKubernetes {
         #EndRegion
         $helmClientLocation = 'helm'
 
-        # XW TODO: can be extracted as common function to be used by both Set and New
         #Region get release namespace
         Write-Debug "Getting release namespace."
         $ReleaseInstallNamespace = Get-ReleaseInstallNamespace
@@ -505,7 +503,6 @@ function Set-AzConnectedKubernetes {
         Set-Item -Path Env:HELM_EXPERIMENTAL_OCI -Value 1
 
         #Endregion
-        # XW TODO: can be extracted as common function
         Write-Debug "Processing Helm chart installation options."
 
         $options = ""
@@ -631,8 +628,6 @@ function Set-AzConnectedKubernetes {
         #          This DOES mean that code changes are required both in the
         #          Config DP annd this Powershell script if a new Kubernetes
         #          feature is added.
-
-        # XW TODO: this can ve extracted as common function to be used by both Set and New
 
         $arcAgentryConfigs = @(
         )
