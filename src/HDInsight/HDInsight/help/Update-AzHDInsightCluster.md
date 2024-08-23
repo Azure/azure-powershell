@@ -30,7 +30,7 @@ $tags = New-Object 'System.Collections.Generic.Dictionary[System.String,System.S
 $tags.Add('Tag1', 'Value1')
 $tags.Add('Tag2', 'Value2')
 
-Update-AzHDInsightCluster -ClusterName $clusterName -Tags $tags
+Update-AzHDInsightCluster -ClusterName $clusterName -Tag $tags
 ```
 
 Update tags for the cluster.
@@ -138,7 +138,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 The resource tags.
 
 ```yaml
