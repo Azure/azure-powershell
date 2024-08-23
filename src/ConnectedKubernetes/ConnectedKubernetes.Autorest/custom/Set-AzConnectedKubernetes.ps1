@@ -679,19 +679,6 @@ function Set-AzConnectedKubernetes {
         Write-Debug "Updating Connected Kubernetes ARM objects."
         $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes @PSBoundParameters
 
-        # # XW TODO: remove this block if we cannot use internal Set command
-        # #Region Set with inputObject
-        # if ('Set' -contains $parameterSet){
-        #     $connectedCluster = $InputObject
-        # }
-
-        # if ('SetExpanded' -contains $parameterSet) {
-        #     $connectedCluster = $ExistConnectedKubernetes
-        # }
-
-        # $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes ---InputObject $connectedCluster @PSBoundParameters
-        # #Enendregion
-
         # Retrieving Helm chart OCI (Open Container Initiative) Artifact location
         Write-Debug "Retrieving Helm chart OCI (Open Container Initiative) Artifact location."
         Write-Debug "PUT response: $Response"
