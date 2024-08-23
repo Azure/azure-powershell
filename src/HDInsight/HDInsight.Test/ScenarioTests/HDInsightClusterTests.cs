@@ -115,5 +115,12 @@ namespace Commands.HDInsight.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-CreateClusterWithPrivateLinkConfiguration");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateCluster()
+        {
+            TestRunner.RunTestScript("Test-UpdateClusterTagsAndIdentity");
+        }
     }
 }

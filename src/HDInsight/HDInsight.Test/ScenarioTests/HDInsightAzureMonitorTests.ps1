@@ -44,30 +44,6 @@ function Test-AzureMonitorRelatedCommands{
 		$keys = Get-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName $resourceGroupName -Name $workspace.Name
 		Assert-NotNull $keys
 
-		
-		#test Get-HDInsightAzureMonitorAgent
-		$result = Get-HDInsightAzureMonitorAgent -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup
-		Assert-Null $result.WorkspaceId
-
-		#test Enable-HDInsightAzureMonitorAgent
-		$workspaceId = $workspace.CustomerId
-		$primaryKey = $keys.PrimarySharedKey
-
-		Assert-NotNull $workspaceId
-		Assert-NotNull $primaryKey
-		Enable-HDInsightAzureMonitorAgent -ClusterName $cluster.Name -ResourceGroup $cluster.ResourceGroup -WorkspaceId $workspaceId -Primary  $primaryKey
-		
-		$result = Get-HDInsightAzureMonitorAgent -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup
-		Assert-True {$result.ClusterMonitoringEnabled}
-		Assert-AreEqual $result.WorkspaceId $workspaceId
-		
-		#test Disable-HDInsightAzureMonitorAgent
-		Disable-HDInsightAzureMonitorAgent -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup
-		$result = Get-HDInsightAzureMonitorAgent -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup
-		Assert-False {$result.ClusterMonitoringEnabled}
-		Assert-Null $result.WorkspaceId
-
-
 		#test Get-AzHDInsightAzureMonitor
 		$result = Get-AzHDInsightAzureMonitor -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup
 		Assert-Null $result.WorkspaceId
@@ -119,9 +95,6 @@ function Test-AzureMonitorAgentRelatedCommands{
 		#get workspace's primaryKey
 		$keys = Get-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName $resourceGroupName -Name $workspace.Name
 		Assert-NotNull $keys
-
-		
-
 
 		#test Enable-HDInsightAzureMonitorAgent
 		$workspaceId = $workspace.CustomerId

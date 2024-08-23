@@ -531,3 +531,35 @@ function Test-CreateClusterWithPrivateLinkConfiguration{
 		Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
 	}
 }
+
+<#
+.SYNOPSIS
+Test Update clusterIdentity
+#>
+
+function Test-UpdateClusterTagsAndIdentity{
+
+	# Create some resources that will be used throughout test
+	try
+	{
+		$location = "East US"
+
+		# create cluster that will be used throughout test
+		$cluster = Get-AzHDInsightCluster -ResourceGroupName yuchen-ps-test -ClusterName spark51
+		Assert-NotNull $cluster
+
+		# Update cluster tags
+		#$tags = @{"tag1"="value1";"tag2"="value2"} 
+		#Update-AzHDInsightCluster -ResourceGroupName yuchen-ps-test -ClusterName spark51 -Tags @{"Tag1"="Value1"; "Tag2"="Value2"}
+
+		# Update cluster identity
+		# Update-AzHDInsightCluster -ResourceGroupName yuchen-ps-test -ClusterName spark51 -IdentityType SystemAssigned
+
+		# Update cluster identity
+		Update-AzHDInsightCluster -ResourceGroupName yuchen-ps-test -ClusterName spark51 -IdentityType UserAssigned -IdentityId "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-ps-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdi-msi"
+
+ 	}
+	finally
+	{
+	}
+}
