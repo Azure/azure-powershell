@@ -26,8 +26,8 @@ Get-AzHDInsightAzureMonitorAgent [-ResourceId] <String> [-DefaultProfile <IAzure
 
 ### GetByInputObjectParameterSet
 ```
-Get-AzHDInsightAzureMonitorAgent [-InputObject] <AzureHDInsightCluster> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-AzHDInsightAzureMonitorAgent [-InputObject] <AzureHDInsightCluster>
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

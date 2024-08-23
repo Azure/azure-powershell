@@ -14,9 +14,9 @@ Enables Azure Monitor Agent in a specified HDInsight cluster.
 
 ### EnableByNameParameterSet (Default)
 ```
-Enable-AzHDInsightAzureMonitorAgent [[-ResourceGroupName] <String>] [-ClusterName] <String> [-WorkspaceId] <String>
- [-PrimaryKey] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Enable-AzHDInsightAzureMonitorAgent [[-ResourceGroupName] <String>] [-ClusterName] <String>
+ [-WorkspaceId] <String> [-PrimaryKey] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### EnableByResourceIdParameterSet
