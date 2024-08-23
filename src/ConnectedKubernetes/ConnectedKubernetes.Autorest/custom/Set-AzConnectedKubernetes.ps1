@@ -25,7 +25,7 @@ Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps
 Set-AzConnectedKubernetes -ClusterName azps_test_cluster1 -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240701Preview.IConnectedCluster
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster
 .Link
 https://learn.microsoft.com/powershell/module/az.connectedkubernetes/new-azconnectedkubernetes
 #>
@@ -35,7 +35,7 @@ https://learn.microsoft.com/powershell/module/az.connectedkubernetes/new-azconne
 param()
 
 function Set-AzConnectedKubernetes {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240701Preview.IConnectedCluster])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster])]
     [CmdletBinding(DefaultParameterSetName='SetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingConvertToSecureStringWithPlainText', '',
         Justification='Code published before this issue was identified')]
@@ -261,7 +261,7 @@ function Set-AzConnectedKubernetes {
         
         [Parameter(ParameterSetName='Set', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240701Preview.IConnectedCluster]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster]
         ${InputObject}
     )
 
@@ -287,6 +287,7 @@ function Set-AzConnectedKubernetes {
             }
         }
         $null = $PSBoundParameters.Remove('AcceptEULA')
+        $null = $PSBoundParameters.Remove('InputObject')
 
         if ($PSBoundParameters.ContainsKey("KubeConfig")) {
             $Null = $PSBoundParameters.Remove('KubeConfig')
@@ -640,7 +641,7 @@ function Set-AzConnectedKubernetes {
         # !!PDS: The name "Setting" below is SINGULAR but in the Swagger it is PLURAL - why is this?
         if ($ConfigurationSetting) {
             foreach ($key in $ConfigurationSetting.Keys) {
-                $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240701Preview.ArcAgentryConfigurations]@{
+                $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
                     Feature = $key
                     Setting = $ConfigurationSetting[$key]
                 }
@@ -658,7 +659,7 @@ function Set-AzConnectedKubernetes {
         # Add the remaining (protected only) settings.
         if ($ConfigurationProtectedSetting) {
             foreach ($key in $ConfigurationProtectedSetting.Keys) {
-                $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240701Preview.ArcAgentryConfigurations]@{
+                $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
                     Feature = $key
                     ProtectedSetting = $ArcAgentryprotectedSettings[$key]
                 }
@@ -691,10 +692,10 @@ function Set-AzConnectedKubernetes {
 
         # XW TODO If we cannot generate internal Set command, use New
         # Re-put here
-        $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
+        $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes @PSBoundParameters
 
-        # XW TODO: remove this block if we cannot use internal Set command
-        #Region Set with inputObject
+        # # XW TODO: remove this block if we cannot use internal Set command
+        # #Region Set with inputObject
         # if ('Set' -contains $parameterSet){
         #     $connectedCluster = $InputObject
         # }
@@ -704,7 +705,7 @@ function Set-AzConnectedKubernetes {
         # }
  
         # $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes ---InputObject $connectedCluster @PSBoundParameters
-        #Enendregion
+        # #Enendregion
 
         # Retrieving Helm chart OCI (Open Container Initiative) Artifact location
         Write-Debug "Retrieving Helm chart OCI (Open Container Initiative) Artifact location."
