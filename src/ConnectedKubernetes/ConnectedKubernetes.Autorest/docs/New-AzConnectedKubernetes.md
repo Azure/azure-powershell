@@ -20,7 +20,7 @@ New-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -Loc
  [-DistributionVersion <String>] [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>]
  [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
  [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>] [-ConnectionType <String>]
+ [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
  [-GatewayResourceId <String>] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -220,21 +220,6 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectionType
-
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
