@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -550,7 +550,7 @@ function Test-UpdateClusterTagsAndIdentity{
 
 		# Update cluster tags
 		#$tags = @{"tag1"="value1";"tag2"="value2"} 
-		#Update-AzHDInsightCluster -ResourceGroupName yuchen-ps-test -ClusterName spark51 -Tags @{"Tag1"="Value1"; "Tag2"="Value2"}
+		#Update-AzHDInsightCluster -ResourceGroupName yuchen-ps-test -ClusterName spark51 -Tag @{"Tag1"="Value1"; "Tag2"="Value2"}
 
 		# Update cluster identity
 		# Update-AzHDInsightCluster -ResourceGroupName yuchen-ps-test -ClusterName spark51 -IdentityType SystemAssigned

@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightCluster"),OutputType(typeof(AzureHDInsightCluster))]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightCluster"),OutputType(typeof(AzureHDInsightCluster), SupportsShouldProcess = true)]
     public class UpdateAzureHDInsightClusterCommand : HDInsightCmdletBase
     {
         private ClusterIdentity clusterIdentity;
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(
             HelpMessage = "The resource tags.")]
-        public Dictionary<string, string> Tags { get; set; }
+        public Dictionary<string, string> Tag { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the name of the resource group.")]
         [ResourceGroupCompleter]
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 clusterIdentity.UserAssignedIdentities[IdentityId] = new UserAssignedIdentity();
             }
 
-            HDInsightManagementClient.UpdateCluster(ResourceGroupName, ClusterName, Tags, clusterIdentity);
+            HDInsightManagementClient.UpdateCluster(ResourceGroupName, ClusterName, Tag, clusterIdentity);
 
             var cluster = HDInsightManagementClient.GetCluster(ResourceGroupName, ClusterName);
             if (cluster != null)

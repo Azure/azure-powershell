@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
-online version:https://learn.microsoft.com/powershell/module/az.hdinsight/update-azhdinsightcluster
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/update-azhdinsightcluster
 schema: 2.0.0
 ---
 
