@@ -246,13 +246,6 @@ function New-AzConnectedKubernetes {
         ${ProxyUseDefaultCredentials},
 
         [Parameter()]
-        [ValidateSet("gateway", "direct")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Runtime')]
-        [System.String]
-        # Azure connections are either direct or via an Arc Gateway
-        ${ConnectionType},
-
-        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Runtime')]
         [System.Collections.Hashtable]
         # Arc Agentry System Configuration
