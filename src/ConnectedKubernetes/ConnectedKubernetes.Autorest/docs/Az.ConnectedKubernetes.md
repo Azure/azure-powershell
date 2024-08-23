@@ -11,29 +11,20 @@ Locale: en-US
 Microsoft Azure PowerShell: ConnectedKubernetes cmdlets
 
 ## Az.ConnectedKubernetes Cmdlets
-### [Get-AZCloudMetadataResourceId](Get-AZCloudMetadataResourceId.md)
-
-
 ### [Get-AzConnectedKubernetes](Get-AzConnectedKubernetes.md)
 Returns the properties of the specified connected cluster, including name, identity, properties, and additional cluster details.
 
 ### [Get-AzConnectedKubernetesUserCredential](Get-AzConnectedKubernetesUserCredential.md)
 Gets cluster user credentials of the connected cluster with a specified resource group and name.
 
-### [Get-ConfigDpDefaultEndpoint](Get-ConfigDpDefaultEndpoint.md)
-
-
-### [Get-ConfigDPEndpoint](Get-ConfigDPEndpoint.md)
-
-
-### [Get-HelmValues](Get-HelmValues.md)
-
-
 ### [New-AzConnectedKubernetes](New-AzConnectedKubernetes.md)
 
 
 ### [Remove-AzConnectedKubernetes](Remove-AzConnectedKubernetes.md)
 Delete a connected cluster, removing the tracked resource in Azure Resource Manager (ARM).
+
+### [Set-AzConnectedKubernetes](Set-AzConnectedKubernetes.md)
+
 
 ### [Update-AzConnectedKubernetes](Update-AzConnectedKubernetes.md)
 API to update certain properties of the connected cluster resource

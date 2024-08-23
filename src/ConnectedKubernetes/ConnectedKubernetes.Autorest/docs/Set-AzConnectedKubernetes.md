@@ -1,27 +1,41 @@
 ---
 external help file:
 Module Name: Az.ConnectedKubernetes
-online version: https://learn.microsoft.com/powershell/module/az.connectedkubernetes/new-azconnectedkubernetes
+online version: https://learn.microsoft.com/powershell/module/az.connectedkubernetes/set-azconnectedkubernetes
 schema: 2.0.0
 ---
 
-# New-AzConnectedKubernetes
+# Set-AzConnectedKubernetes
 
 ## SYNOPSIS
 
 
 ## SYNTAX
 
+### SetExpanded (Default)
 ```
-New-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -Location <String>
+Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -Location <String>
  [-ContainerLogPath <String>] [-DisableAutoUpgrade] [-HttpProxy <Uri>] [-HttpsProxy <Uri>] [-NoProxy <String>]
- [-OnboardingTimeout <Int32>] [-ProxyCert <String>] [-SubscriptionId <String>] [-AcceptEULA]
- [-AzureHybridBenefit <AzureHybridBenefit>] [-CustomLocationsOid <String>] [-Distribution <String>]
- [-DistributionVersion <String>] [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>]
- [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
- [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-ProxyCert <String>] [-SubscriptionId <String>] [-AcceptEULA] [-AzureHybridBenefit <AzureHybridBenefit>]
  [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
- [-GatewayResourceId <String>] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-CustomLocationsOid <String>] [-DisableGateway] [-Distribution <String>] [-DistributionVersion <String>]
+ [-EnableGateway] [-GatewayResourceId <String>] [-Infrastructure <String>] [-KubeConfig <String>]
+ [-KubeContext <String>] [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
+ [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### Set
+```
+Set-AzConnectedKubernetes -InputObject <IConnectedCluster> -Location <String> [-ContainerLogPath <String>]
+ [-DisableAutoUpgrade] [-HttpProxy <Uri>] [-HttpsProxy <Uri>] [-NoProxy <String>] [-ProxyCert <String>]
+ [-SubscriptionId <String>] [-AcceptEULA] [-AzureHybridBenefit <AzureHybridBenefit>]
+ [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
+ [-CustomLocationsOid <String>] [-DisableGateway] [-Distribution <String>] [-DistributionVersion <String>]
+ [-EnableGateway] [-GatewayResourceId <String>] [-Infrastructure <String>] [-KubeConfig <String>]
+ [-KubeContext <String>] [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
+ [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,114 +43,27 @@ New-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -Loc
 
 ## EXAMPLES
 
-### Example 1: Create a connected kubernetes.
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus
+{{ Add code here }}
 ```
 
 ```output
-Location Name              ResourceGroupName
--------- ----              -----------------
-eastus   azps_test_cluster azps_test_group
+{{ Add output here }}
 ```
 
-This command creates a connected kubernetes.
+{{ Add description here }}
 
-### Example 2: Create a connected kubernetes with parameters kubeConfig and kubeContext.
+### Example 2: {{ Add title here }}
 ```powershell
-New-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01
+{{ Add code here }}
 ```
 
 ```output
-Location Name              ResourceGroupName
--------- ----              -----------------
-eastus   azps_test_cluster azps_test_group
+{{ Add output here }}
 ```
 
-This command creates a connected kubernetes with parameters kubeConfig and kubeContext.
-
-### Example 3: Create a ConnectedKubernetes's AzureHybridBenefit.
-```powershell
-New-AzConnectedKubernetes -ClusterName azps_test_cluster_ahb -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01 -PrivateLinkState 'Enabled' -Distribution "AKS_Management" -DistributionVersion "1.0" -PrivateLinkScopeResourceId "/subscriptions/{subscriptionId}/resourceGroups/azps_test_group/providers/Microsoft.HybridCompute/privateLinkScopes/azps-privatelinkscope" -infrastructure "azure_stack_hci" -ProvisioningState 'Succeeded' -AzureHybridBenefit 'True'
-```
-
-```output
-I confirm I have an eligible Windows Server license with Azure Hybrid Benefit to apply this benefit to AKS on Azure Stack HCI or Windows Server. Visit https://aka.ms/ahb-aks for details.
-[Y] Yes  [N] No  (default is "N"): Y
-
-Location Name                  ResourceGroupName
--------- ----                  -----------------
-eastus   azps_test_cluster_ahb azps_test_group
-```
-
-Create a ConnectedKubernetes's AzureHybridBenefit.
-
-### Example 4: Using [-AcceptEULA] will default to your acceptance of the terms of our legal agreement and create a connected kubernetes.
-```powershell
-New-AzConnectedKubernetes -ClusterName azps_test_cluster_ahb -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01 -PrivateLinkState 'Enabled' -Distribution "AKS_Management" -DistributionVersion "1.0" -PrivateLinkScopeResourceId "/subscriptions/{subscriptionId}/resourceGroups/azps_test_group/providers/Microsoft.HybridCompute/privateLinkScopes/azps-privatelinkscope" -infrastructure "azure_stack_hci" -ProvisioningState 'Succeeded' -AzureHybridBenefit 'True' -AcceptEULA
-```
-
-```output
-Location Name                  ResourceGroupName
--------- ----                  -----------------
-eastus   azps_test_cluster_ahb azps_test_group
-```
-
-Using [-AcceptEULA] will default to your acceptance of the terms of our legal agreement and create a connected kubernetes.
-
-### Example 5: Create a connected kubernetes with parameters HttpProxy, HttpsProxy, NoProxy and Proxy.
-```powershell
-New-AzConnectedKubernetes -ClusterName azps_test_cluster_ahb -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01 -HttpProxy "http://proxy-user:proxy-password@proxy-ip:port" -HttpsProxy "http://proxy-user:proxy-password@proxy-ip:port" -NoProxy "localhost,127.0.0.0/8,192.168.0.0/16,172.17.0.0/16,10.96.0.0/12,10.244.0.0/16,10.43.0.0/24,.svc" -Proxy "http://proxy-user:proxy-password@proxy-ip:port" 
-```
-
-```output
-Location Name                  ResourceGroupName
--------- ----                  -----------------
-eastus   azps_test_cluster_ahb azps_test_group
-```
-
-This command creates a connected kubernetes with parameters HttpProxy, HttpsProxy, NoProxy and Proxy.
-
-### Example 6: Create a connected kubernetes with parameters HttpProxy, HttpsProxy, NoProxy, Proxy and ProxyCredential.
-```powershell
-$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
-$cred = New-Object System.Management.Automation.PSCredential ("proxy-user", $pwd)
-New-AzConnectedKubernetes -ClusterName azps_test_cluster_ahb -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01 -HttpProxy "http://proxy-user:proxy-password@proxy-ip:port" -HttpsProxy "http://proxy-user:proxy-password@proxy-ip:port" -NoProxy "localhost,127.0.0.0/8,192.168.0.0/16,172.17.0.0/16,10.96.0.0/12,10.244.0.0/16,10.43.0.0/24,.svc" -Proxy "http://proxy-ip:port" -ProxyCredential $cred
-```
-
-```output
-Location Name                  ResourceGroupName
--------- ----                  -----------------
-eastus   azps_test_cluster_ahb azps_test_group
-```
-
-This command creates a connected kubernetes with parameters HttpProxy, HttpsProxy, NoProxy, Proxy and ProxyCredential.
-
-### Example 7: Create a connected kubernetes and disable auto upgrade of arc agents.
-```powershell
-New-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -DisableAutoUpgrade
-```
-
-```output
-Location Name              ResourceGroupName
--------- ----              -----------------
-eastus   azps_test_cluster azps_test_group
-```
-
-This command creates a connected kubernetes and disable auto upgrade of arc agents.
-
-### Example 8: Create a connected kubernetes with custom onboarding timeout.
-```powershell
-New-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -OnboardingTimeout 600
-```
-
-```output
-Location Name              ResourceGroupName
--------- ----              -----------------
-eastus   azps_test_cluster azps_test_group
-```
-
-This command creates a connected kubernetes with custom onboarding timeout.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -190,7 +117,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases: Name
 
 Required: True
@@ -290,6 +217,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableGateway
+
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Distribution
 
 
@@ -310,6 +252,21 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableGateway
+
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -380,6 +337,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster
+Parameter Sets: Set
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KubeConfig
 Path to the kube config file
 
@@ -430,36 +402,6 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OnboardingTimeout
-
-
-```yaml
-Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -535,7 +477,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
