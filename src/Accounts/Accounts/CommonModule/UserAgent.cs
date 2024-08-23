@@ -53,12 +53,12 @@ namespace Microsoft.Azure.Commands.Common
                 string hostEnv = Environment.GetEnvironmentVariable("AZUREPS_HOST_ENVIRONMENT");
                 if (!String.IsNullOrWhiteSpace(hostEnv))
                 {
-                    hostEnv = hostEnv.Trim();
+                    hostEnv = hostEnv.Trim().Replace("@", "_").Replace("/", "_");
                     list.Add(new ProductInfoHeaderValue(hostEnv, ""));
                 }
             }
             catch (Exception ) 
-            { 
+            {
                 // ignore it
             }
                 
