@@ -16,14 +16,14 @@ Delays the occurrence of an action.
 ```
 Invoke-AzDevCenterUserDelayEnvironmentAction -Endpoint <String> -Name <String> -EnvironmentName <String>
  -ProjectName <String> [-UserId <String>] -DelayTime <TimeSpan> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DelayByDevCenter
 ```
 Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenterName <String> -Name <String> -EnvironmentName <String>
  -ProjectName <String> [-UserId <String>] -DelayTime <TimeSpan> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,6 +133,21 @@ Parameter Sets: (All)
 Aliases: ActionName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

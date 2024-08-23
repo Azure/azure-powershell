@@ -1,0 +1,91 @@
+{
+  "Get-AzDevCenterAdminProjectEnvironmentDefinition+[NoContext]+List+$GET+https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/proj-catalog-testing/environmentDefinitions?api-version=2024-05-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/proj-catalog-testing/environmentDefinitions?api-version=2024-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "0901d6e7-42f7-47ba-acd9-d6402b3996ee" ],
+        "CommandName": [ "Get-AzDevCenterAdminProjectEnvironmentDefinition" ],
+        "FullCommandName": [ "Get-AzDevCenterAdminProjectEnvironmentDefinition_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.19", "Az.DevCenter/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "045ba367-8f0a-44ee-96c1-b309c4537ff4" ],
+        "x-ms-correlation-request-id": [ "1e1c3fbe-9565-4627-a647-980eda273cdf" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240801T225630Z:1e1c3fbe-9565-4627-a647-980eda273cdf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AEB4160E549B4261AE8410445BB468B0 Ref B: CO6AA3150218035 Ref C: 2024-08-01T22:56:30Z" ],
+        "Date": [ "Thu, 01 Aug 2024 22:56:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3779" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/proj-catalog-testing/environmentDefinitions/Sandbox\",\"name\":\"Sandbox\",\"type\":\"microsoft.devcenter/projects/catalogs/environmentdefinitions\",\"systemData\":{\"createdBy\":\"2dc3760b-4713-48b1-a383-1dfe3e449ec2\",\"createdByType\":\"Application\",\"createdAt\":\"2024-06-18T20:02:14.5476872Z\",\"lastModifiedBy\":\"2dc3760b-4713-48b1-a383-1dfe3e449ec2\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-06-18T20:02:14.5476872Z\"},\"properties\":{\"description\":\"Deploys an empty sandbox environment\",\"parameters\":[],\"templatePath\":\"Environments/Sandbox/azuredeploy.json\",\"validationStatus\":\"Succeeded\"}},{\"id\":\"/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/proj-catalog-testing/environmentDefinitions/BrokenWebApp\",\"name\":\"BrokenWebApp\",\"type\":\"microsoft.devcenter/projects/catalogs/environmentdefinitions\",\"systemData\":{\"createdBy\":\"2dc3760b-4713-48b1-a383-1dfe3e449ec2\",\"createdByType\":\"Application\",\"createdAt\":\"2024-06-18T20:02:14.48448Z\",\"lastModifiedBy\":\"2dc3760b-4713-48b1-a383-1dfe3e449ec2\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-06-18T20:02:14.48448Z\"},\"properties\":{\"description\":\"Deploys an Azure Web App without a data store\",\"parameters\":[{\"id\":\"name\",\"name\":\"Name\",\"description\":\"Name of the Web App.\",\"type\":\"string\",\"readOnly\":false,\"required\":true}],\"templatePath\":\"Environments/BrokenWebApp/azuredeploy.json\",\"validationStatus\":\"Succeeded\"}},{\"id\":\"/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/proj-catalog-testing/environmentDefinitions/WebApp\",\"name\":\"WebApp\",\"type\":\"microsoft.devcenter/projects/catalogs/environmentdefinitions\",\"systemData\":{\"createdBy\":\"2dc3760b-4713-48b1-a383-1dfe3e449ec2\",\"createdByType\":\"Application\",\"createdAt\":\"2024-06-18T20:02:14.4925888Z\",\"lastModifiedBy\":\"2dc3760b-4713-48b1-a383-1dfe3e449ec2\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-06-18T20:02:14.4925888Z\"},\"properties\":{\"description\":\"Deploys an Azure Web App without a data store\",\"parameters\":[{\"id\":\"name\",\"name\":\"Name\",\"description\":\"Name of the Web App.\",\"type\":\"string\",\"readOnly\":false,\"required\":true}],\"templatePath\":\"Environments/WebApp/azuredeploy.json\",\"validationStatus\":\"Succeeded\"}},{\"id\":\"/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/proj-catalog-testing/environmentDefinitions/FunctionApp\",\"name\":\"FunctionApp\",\"type\":\"microsoft.devcenter/projects/catalogs/environmentdefinitions\",\"systemData\":{\"createdBy\":\"2dc3760b-4713-48b1-a383-1dfe3e449ec2\",\"createdByType\":\"Application\",\"createdAt\":\"2024-06-18T20:02:14.5095644Z\",\"lastModifiedBy\":\"2dc3760b-4713-48b1-a383-1dfe3e449ec2\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-06-18T20:02:14.5095644Z\"},\"properties\":{\"description\":\"Deploys an Azure Function App, Storage Account, and Application Insights\",\"parameters\":[{\"id\":\"name\",\"name\":\"Name\",\"description\":\"Name of the Function App.\",\"type\":\"string\",\"readOnly\":false,\"required\":true},{\"id\":\"supportsHttpsTrafficOnly\",\"name\":\"Supports Https Traffic Only\",\"description\":\"Allows https traffic only to Storage Account and Functions App if set to true.\",\"type\":\"boolean\",\"readOnly\":false,\"required\":false},{\"id\":\"runtime\",\"name\":\"Runtime\",\"description\":\"The language worker runtime to load in the function app.\",\"type\":\"string\",\"readOnly\":false,\"required\":false}],\"templatePath\":\"Environments/FunctionApp/azuredeploy.json\",\"validationStatus\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDevCenterAdminProjectEnvironmentDefinition+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/proj-catalog-testing/environmentDefinitions/Sandbox?api-version=2024-05-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/proj-catalog-testing/environmentDefinitions/Sandbox?api-version=2024-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "26a9c153-e3d3-4576-8168-02b93b736bd4" ],
+        "CommandName": [ "Get-AzDevCenterAdminProjectEnvironmentDefinition" ],
+        "FullCommandName": [ "Get-AzDevCenterAdminProjectEnvironmentDefinition_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.19", "Az.DevCenter/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00000400-0000-3400-0000-6671e7c70000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "45d08f0a-bbcd-46ff-a72b-00ac5951bd7f" ],
+        "x-ms-correlation-request-id": [ "b733a30d-3fd6-4e5b-8c18-e94cf47da861" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240801T225631Z:b733a30d-3fd6-4e5b-8c18-e94cf47da861" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 06BF8992349A402B9CB15F42B979C652 Ref B: CO6AA3150218035 Ref C: 2024-08-01T22:56:30Z" ],
+        "Date": [ "Thu, 01 Aug 2024 22:56:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "743" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/catalogs/proj-catalog-testing/environmentDefinitions/Sandbox\",\"name\":\"Sandbox\",\"type\":\"microsoft.devcenter/projects/catalogs/environmentdefinitions\",\"systemData\":{\"createdBy\":\"2dc3760b-4713-48b1-a383-1dfe3e449ec2\",\"createdByType\":\"Application\",\"createdAt\":\"2024-06-18T20:02:14.5476872Z\",\"lastModifiedBy\":\"2dc3760b-4713-48b1-a383-1dfe3e449ec2\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-06-18T20:02:14.5476872Z\"},\"properties\":{\"description\":\"Deploys an empty sandbox environment\",\"parameters\":[],\"templatePath\":\"Environments/Sandbox/azuredeploy.json\",\"validationStatus\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}
