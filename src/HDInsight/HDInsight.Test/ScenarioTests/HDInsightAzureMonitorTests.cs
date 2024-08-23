@@ -32,7 +32,7 @@ namespace Commands.HDInsight.Test.ScenarioTests
             TestRunner.RunTestScript("Test-AzureMonitorRelatedCommands");
         }
 
-        [Fact(Skip = "Sikp this")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureMonitorAgentRelatedCommands()
         {

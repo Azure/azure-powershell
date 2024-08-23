@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
-online version:
+online version:https://learn.microsoft.com/powershell/module/az.hdinsight/update-azhdinsightcluster
 schema: 2.0.0
 ---
 
@@ -110,7 +110,6 @@ Accept wildcard characters: False
 ```
 
 ### -ProgressAction
-{{ Fill ProgressAction Description }}
 
 ```yaml
 Type: System.Management.Automation.ActionPreference
