@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Databricks service.
 
 ---
-## Status
-[![Az.Databricks](https://img.shields.io/powershellgallery/v/Az.Databricks.svg?style=flat-square&label=Az.Databricks "Az.Databricks")](https://www.powershellgallery.com/packages/Az.Databricks/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -54,6 +51,14 @@ use-extension:
   "@autorest/powershell": "3.x"
 
 directive:
+  - from: swagger-document
+    where: $.definitions.EncryptionV2
+    transform: delete $.required
+
+  - from: swagger-document
+    where: $.definitions.ManagedDiskEncryption
+    transform: delete $.required
+
 # Worked around this issue: https://github.com/Azure/autorest.powershell/issues/1258
   - from: EncryptionEntitiesDefinition.json.cs
     where: $
