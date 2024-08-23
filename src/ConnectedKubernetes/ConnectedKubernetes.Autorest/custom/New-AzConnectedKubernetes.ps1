@@ -404,7 +404,7 @@ function New-AzConnectedKubernetes {
         }
         #Endregion
 
-        if ($null -ne $ReleaseNamespace) {
+        if (-not ([string]::IsNullOrEmpty($ReleaseNamespace))) {
             $Configmap = kubectl get configmap --namespace azure-arc azure-clusterconfig -o json --kubeconfig $KubeConfig | ConvertFrom-Json
             $ConfigmapRgName = $Configmap.data.AZURE_RESOURCE_GROUP
             $ConfigmapClusterName = $Configmap.data.AZURE_RESOURCE_NAME

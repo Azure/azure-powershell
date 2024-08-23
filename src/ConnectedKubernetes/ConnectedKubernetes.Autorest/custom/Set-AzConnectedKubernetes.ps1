@@ -20,9 +20,9 @@ API to set properties of the connected cluster resource
 .Description
 API to set properties of the connected cluster resource
 .Example
-Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus
+Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -EnableGateway -GatewayResourceId $gatewayResourceId
 .Example
-Set-AzConnectedKubernetes -ClusterName azps_test_cluster1 -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01
+Set-AzConnectedKubernetes -ClusterName azps_test_cluster1 -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01 -DisableGateway
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster
@@ -309,7 +309,6 @@ function Set-AzConnectedKubernetes {
             $KubeContext = kubectl config current-context
         }
 
-        # XW TODO: unit test this?
         # If EnableGateway is provided then set the gateway as enabled.
         if ($EnableGateway -and $DisableGateway) {
             Write-Error "You cannot enable and disable gateway at the same time."
@@ -352,15 +351,15 @@ function Set-AzConnectedKubernetes {
         # themselves.  Add a check here to see if there are any that we currently
         # do not suport.
         $supportedFeatures = @("proxy")
-        if ($arcAgentrySettings) {
-            foreach ($key in $arcAgentrySettings.Keys) {
+        if ($ConfigurationSetting) {
+            foreach ($key in $ConfigurationSetting.Keys) {
                 if (-not $supportedFeatures.Contains($key.ToLower())) {
                     Write-Warning "Arc Agentry feature '${key}' is not supported for Connected Kubernetes"
                 }
             }
         }
-        if ($arcAgentryProtectedSettings) {
-            foreach ($key in $arcAgentryProtectedSettings.Keys) {
+        if ($ConfigurationProtectedSetting) {
+            foreach ($key in $ConfigurationProtectedSetting.Keys) {
                 if (-not $supportedFeatures.Contains($key.ToLower())) {
                     Write-Warning "ArcAgentry feature '${key}' is not supported for Connected Kubernetes"
                 }
@@ -370,6 +369,7 @@ function Set-AzConnectedKubernetes {
 
         # XW TODO: helm install can be extracted as common function to be used by both Set and New
         #Region check helm install
+        Write-Debug "Setting up Helm client location and validating Helm version."
         try {
             Set-HelmClientLocation
             $HelmVersion = helm version --template='{{.Version}}' --kubeconfig $KubeConfig
@@ -398,10 +398,10 @@ function Set-AzConnectedKubernetes {
 
         # XW TODO: can be extracted as common function to be used by both Set and New
         #Region get release namespace
+        Write-Debug "Getting release namespace."
         $ReleaseInstallNamespace = Get-ReleaseInstallNamespace
         $ReleaseNamespace = $null
         try {
-            # !!PDS: Seems like this showing "Error: Release: Not found" is not an error but a warning that implies there just is not a release.  Can we quench this?
             $ReleaseNamespace = (helm status azure-arc -o json --kubeconfig $KubeConfig --kube-context $KubeContext -n $ReleaseInstallNamespace 2> $null | ConvertFrom-Json).namespace
         }
         catch {
@@ -409,9 +409,8 @@ function Set-AzConnectedKubernetes {
         }
         #Endregion
 
-        # XW: different with New command
         #Region validate release namespace
-        if ($null -ne $ReleaseNamespace) {
+        if (-not ([string]::IsNullOrEmpty($ReleaseNamespace))) {
             $Configmap = kubectl get configmap --namespace azure-arc azure-clusterconfig -o json --kubeconfig $KubeConfig | ConvertFrom-Json
             $ConfigmapRgName = $Configmap.data.AZURE_RESOURCE_GROUP
             $ConfigmapClusterName = $Configmap.data.AZURE_RESOURCE_NAME
@@ -497,17 +496,9 @@ function Set-AzConnectedKubernetes {
         }
         Set-Item -Path Env:HELM_EXPERIMENTAL_OCI -Value 1
 
-        # $HelmChartPath = Join-Path -Path $ChartExportPath -ChildPath 'azure-arc-k8sagents'
-        # if (Test-Path Env:HELMCHART) {
-        #     $ChartPath = Get-ChildItem -Path Env:HELMCHART
-        # } else {
-        #     $ChartPath = $HelmChartPath
-        # }
-
         # XW TODO: can be extracted as common function
-        #Region helm options
-        # !!PDS: The az cli also sets the "proxy" fields in the settings and
-        #        passes these to Azure.  Do we need to do this as well?
+        #Endregion
+        Write-Debug "Processing Helm chart installation options."
 
         $options = ""
         $proxyEnableState = $false
@@ -519,7 +510,6 @@ function Set-AzConnectedKubernetes {
             $ConfigurationProtectedSetting = @{}
         }
 
-        # XW: Read settings out from InputObject
         if ("Set" -contains $parameterSet) {
             foreach ($arcAgentConfig in $InputObject.ArcAgentryConfiguration) {
                 $ConfigurationSetting[$arcAgentConfig.feature] = $arcAgentConfig.settings
@@ -638,7 +628,6 @@ function Set-AzConnectedKubernetes {
         $arcAgentryConfigs = @(
         )
 
-        # !!PDS: The name "Setting" below is SINGULAR but in the Swagger it is PLURAL - why is this?
         if ($ConfigurationSetting) {
             foreach ($key in $ConfigurationSetting.Keys) {
                 $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
@@ -660,8 +649,8 @@ function Set-AzConnectedKubernetes {
         if ($ConfigurationProtectedSetting) {
             foreach ($key in $ConfigurationProtectedSetting.Keys) {
                 $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
-                    Feature = $key
-                    ProtectedSetting = $ArcAgentryprotectedSettings[$key]
+                    Feature          = $key
+                    ProtectedSetting = $ConfigurationProtectedSetting[$key]
                 }
                 $argAgentryConfigs += $ArcAgentryConfiguration
             }
@@ -675,37 +664,16 @@ function Set-AzConnectedKubernetes {
         $cloudMetadata = Get-AzCloudMetadata
 
         # Perform DP health check
-
-        # !!PDS: There is no dogfood so not required?
-        # $valuesFile = Get-HelmValuesFile
-
-        $configDpinfo = Get-ConfigDPEndpoint -location ("Set" -contains $parameterSet ? $InputObject.Location : $Location) -Cloud $cloudMetadata
+        $configDpinfo = Get-ConfigDPEndpoint -location $Location -Cloud $cloudMetadata
         $configDPEndpoint = $configDpInfo.configDPEndpoint
-        $adResourceId = $configDpInfo.adResourceId
 
         # If the health check fails (not 200 response), an exception is thrown
         # so we can ignore the output.
-        $null = Invoke-ConfigDPHealthCheck -configDPEndpoint $configDPEndpoint -Resource $adResourceId
+        $null = Invoke-ConfigDPHealthCheck -configDPEndpoint $configDPEndpoint
 
         # This call does the "pure ARM" update of the ARM objects.
-        Write-Debug "Writing Connected Kubernetes ARM objects."
-
-        # XW TODO If we cannot generate internal Set command, use New
-        # Re-put here
+        Write-Debug "Updating Connected Kubernetes ARM objects."
         $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes @PSBoundParameters
-
-        # # XW TODO: remove this block if we cannot use internal Set command
-        # #Region Set with inputObject
-        # if ('Set' -contains $parameterSet){
-        #     $connectedCluster = $InputObject
-        # }
-
-        # if ('SetExpanded' -contains $parameterSet) {
-        #     $connectedCluster = $ExistConnectedKubernetes
-        # }
- 
-        # $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes ---InputObject $connectedCluster @PSBoundParameters
-        # #Enendregion
 
         # Retrieving Helm chart OCI (Open Container Initiative) Artifact location
         Write-Debug "Retrieving Helm chart OCI (Open Container Initiative) Artifact location."
@@ -721,16 +689,6 @@ function Set-AzConnectedKubernetes {
         Write-Debug "helmValuesDp: $helmValuesDp"
         Write-Debug "OCI Artifact location: ${helmValuesDp.repositoryPath}."
 
-        # Allow a custom OCI registry to be set via environment variables.
-        # !!PDS: Where are these variables documented?  Should they be?
-        #
-        # AZURE_ACCESS_TOKEN
-        # HELMCHART
-        # HELMREGISTRY
-        # HELMVALUESPATH
-        # RELEASETRAIN
-        # USERPROFILE
-        #
         $registryPath = if ($env:HELMREGISTRY) { $env:HELMREGISTRY } else { $helmValuesDp.repositoryPath }
         Write-Debug "RegistryPath: ${registryPath}."
 
