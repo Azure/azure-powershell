@@ -99,6 +99,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             return HdInsightManagementClient.Clusters.Get(resourceGroupName, clusterName);
         }
 
+        public virtual void UpdateCluster(string resourceGroupName, string clusterName, Dictionary<string,string> tags, ClusterIdentity identity)
+        {
+            HdInsightManagementClient.Clusters.Update(resourceGroupName, clusterName, tags, identity);
+        }
+
         public virtual void ResizeCluster(string resourceGroupName, string clusterName, ClusterResizeParameters resizeParams)
         {
             HdInsightManagementClient.Clusters.Resize(resourceGroupName, clusterName, resizeParams?.TargetInstanceCount);
