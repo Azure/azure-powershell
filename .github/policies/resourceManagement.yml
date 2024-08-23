@@ -488,6 +488,24 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
+              label: ASTRO
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: ASTRO
+        then:
+        - mentionUsers:
+            mentionees:
+            - Reshmi-Sriram
+            - banggaurav
+            - charanjeet2008
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
               label: Attestation
         - hasLabel:
             label: Service Attention
@@ -1917,6 +1935,22 @@ configuration:
         - mentionUsers:
             mentionees:
             - arpit-gagneja
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: ElasticSan
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: ElasticSan
+        then:
+        - mentionUsers:
+            mentionees:
+            - blueww
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
