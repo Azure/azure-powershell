@@ -275,7 +275,7 @@ function New-AzConnectedKubernetes {
 
 
     process {
-        Write-Verbose "Checking if Azure Hybrid Benefit is opted in and processing the EULA."
+        Write-Debug "Checking if Azure Hybrid Benefit is opted in and processing the EULA."
         . "$PSScriptRoot/helpers/HelmHelper.ps1"
         . "$PSScriptRoot/helpers/ConfigDPHelper.ps1"
         . "$PSScriptRoot/helpers/AZCloudMetadataHelper.ps1"
@@ -296,9 +296,9 @@ function New-AzConnectedKubernetes {
                 }
             }
         }
-        Write-Verbose "Removed the AcceptEULA parameter after processing."
+        Write-Debug "Removed the AcceptEULA parameter after processing."
         $null = $PSBoundParameters.Remove('AcceptEULA')
-        Write-Verbose "Determining the kube config file path."
+        Write-Debug "Determining the kube config file path."
 
         if ($PSBoundParameters.ContainsKey("KubeConfig")) {
             $Null = $PSBoundParameters.Remove('KubeConfig')
@@ -316,14 +316,24 @@ function New-AzConnectedKubernetes {
             Write-Error 'Cannot find the kube-config. Please make sure that you have the kube-config on your machine.'
             return
         }
-        Write-Verbose "Setting the kube context."
-        if ($PSBoundParameters.ContainsKey('KubeContext')) {
+        Write-Debug "Setting the kube context."
+        if ($PSBoundParameters:KubeContext) {
             $Null = $PSBoundParameters.Remove('KubeContext')
         }
         if (($null -eq $KubeContext) -or ($KubeContext -eq '')) {
             $KubeContext = kubectl config current-context
         }
-        Write-Verbose "Processing Arc Agentry settings and protected settings."
+        Write-Debug "Validating ConnectionType and GatewayResourceId parameters."
+
+        if ($PSBoundParameters:ConnectionType) {
+            if ($ConnectionType.Equals("direct")) {
+                if ($PSBoundParameters:GatewayResourceId) {
+                    Write-Error 'GatewayResourceId should not be provided when ConnectionType is "direct".'
+                    return
+                }
+            }
+        }
+        Write-Debug "Processing Arc Agentry settings and protected settings."
 
         # If GatewayResourceId is provided then set the gateway as enabled.
         $PSBoundParameters.Add('GatewayEnabled', -not [String]::IsNullOrEmpty($GatewayResourceId))
@@ -371,7 +381,7 @@ function New-AzConnectedKubernetes {
         #Endregion
 
         #Region check helm install
-        Write-Verbose "Setting up Helm client location and validating Helm version."
+        Write-Debug "Setting up Helm client location and validating Helm version."
         try {
             Set-HelmClientLocation
             $HelmVersion = helm version --template='{{.Version}}' --kubeconfig $KubeConfig
@@ -399,7 +409,7 @@ function New-AzConnectedKubernetes {
         $helmClientLocation = 'helm'
 
         #Region get release namespace
-        Write-Verbose "Getting release namespace."
+        Write-Debug "Getting release namespace."
         $ReleaseInstallNamespace = Get-ReleaseInstallNamespace
         $ReleaseNamespace = $null
         try {
@@ -440,7 +450,7 @@ function New-AzConnectedKubernetes {
             }
         }
 
-        Write-Verbose "Setting Helm repository and checking for required modules."
+        Write-Debug "Setting Helm repository and checking for required modules."
         if ((Test-Path Env:HELMREPONAME) -and (Test-Path Env:HELMREPOURL)) {
             $HelmRepoName = Get-ChildItem -Path Env:HELMREPONAME
             $HelmRepoUrl = Get-ChildItem -Path Env:HELMREPOURL
@@ -498,7 +508,7 @@ function New-AzConnectedKubernetes {
         Set-Item -Path Env:HELM_EXPERIMENTAL_OCI -Value 1
 
         # Region create RSA keys
-        Write-Verbose "Generating RSA keys for secure communication."
+        Write-Debug "Generating RSA keys for secure communication."
         $RSA = [System.Security.Cryptography.RSA]::Create(4096)
         if ($PSVersionTable.PSVersion.Major -eq 5) {
             try {
@@ -516,6 +526,7 @@ function New-AzConnectedKubernetes {
             $AgentPrivateKey = "-----BEGIN RSA PRIVATE KEY-----`n" + [System.Convert]::ToBase64String($RSA.ExportRSAPrivateKey()) + "`n-----END RSA PRIVATE KEY-----"
         }
         #Endregion
+        Write-Debug "Processing Helm chart installation options."
 
         $options = ""
         $proxyEnableState = $false
@@ -690,6 +701,7 @@ function New-AzConnectedKubernetes {
         else {
             $PSBoundParameters.Add('AgentPublicKeyCertificate', $AgentPublicKey)
         }
+        Write-Verbose "Creating 'Kubernetes - Azure Arc' object in Azure"
         $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
 
         # Retrieving Helm chart OCI (Open Container Initiative) Artifact location
