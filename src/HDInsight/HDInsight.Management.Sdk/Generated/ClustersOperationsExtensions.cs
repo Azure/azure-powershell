@@ -63,9 +63,9 @@ namespace Microsoft.Azure.Management.HDInsight
         /// <param name='clusterName'>
         /// The name of the cluster.
         /// </param>
-        public static Cluster Update(this IClustersOperations operations, string resourceGroupName, string clusterName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
+        public static Cluster Update(this IClustersOperations operations, string resourceGroupName, string clusterName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ClusterIdentity identity = default(ClusterIdentity))
         {
-                return ((IClustersOperations)operations).UpdateAsync(resourceGroupName, clusterName, tags).GetAwaiter().GetResult();
+                return ((IClustersOperations)operations).UpdateAsync(resourceGroupName, clusterName, tags, identity).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -83,9 +83,9 @@ namespace Microsoft.Azure.Management.HDInsight
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Cluster> UpdateAsync(this IClustersOperations operations, string resourceGroupName, string clusterName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Cluster> UpdateAsync(this IClustersOperations operations, string resourceGroupName, string clusterName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ClusterIdentity identity = default(ClusterIdentity), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, clusterName, tags, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, clusterName, tags, identity, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
