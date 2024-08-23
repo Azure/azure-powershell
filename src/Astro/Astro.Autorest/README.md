@@ -66,4 +66,10 @@ directive:
   - where:
       verb: Set
     remove: true
+  - where:
+      verb: New
+    hide: true
+  - where:
+      verb: Update
+    hide: true
 ```

@@ -15,7 +15,7 @@ Update a OrganizationResource
 ### UpdateExpanded (Default)
 ```
 Update-AzAstroOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IdentityType <String>] [-PartnerOrganizationPropertyOrganizationId <String>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-PartnerOrganizationPropertyOrganizationId <String>]
  [-PartnerOrganizationPropertyOrganizationName <String>] [-PartnerOrganizationPropertyWorkspaceId <String>]
  [-PartnerOrganizationPropertyWorkspaceName <String>] [-SingleSignOnPropertyAadDomain <String[]>]
  [-SingleSignOnPropertyEnterpriseAppId <String>] [-SingleSignOnPropertySingleSignOnState <String>]
@@ -26,7 +26,7 @@ Update-AzAstroOrganization -Name <String> -ResourceGroupName <String> [-Subscrip
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzAstroOrganization -InputObject <IAstroIdentity> [-IdentityType <String>]
+Update-AzAstroOrganization -InputObject <IAstroIdentity> [-EnableSystemAssignedIdentity <Boolean?>]
  [-PartnerOrganizationPropertyOrganizationId <String>] [-PartnerOrganizationPropertyOrganizationName <String>]
  [-PartnerOrganizationPropertyWorkspaceId <String>] [-PartnerOrganizationPropertyWorkspaceName <String>]
  [-SingleSignOnPropertyAadDomain <String[]>] [-SingleSignOnPropertyEnterpriseAppId <String>]
@@ -39,15 +39,15 @@ Update-AzAstroOrganization -InputObject <IAstroIdentity> [-IdentityType <String>
 ### UpdateViaJsonFilePath
 ```
 Update-AzAstroOrganization -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzAstroOrganization -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -139,12 +139,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+### -EnableSystemAssignedIdentity
+[Parameter(ParameterSetName='UpdateExpanded')]
+[Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+[Microsoft.Azure.PowerShell.Cmdlets.Astro.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned")]
+[Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+[System.String]
+# Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+${IdentityType},
+Decides if enable a system assigned identity for the resource.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
