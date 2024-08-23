@@ -14,21 +14,21 @@ Enables Azure Monitor Agent in a specified HDInsight cluster.
 
 ### EnableByNameParameterSet (Default)
 ```
-Enable-AzHDInsightAzureMonitorAgent [[-ResourceGroupName] <String>] [-ClusterName] <String>
+Enable-AzHDInsightAzureMonitorAgent [-PassThru] [[-ResourceGroupName] <String>] [-ClusterName] <String>
  [-WorkspaceId] <String> [-PrimaryKey] <String> [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### EnableByResourceIdParameterSet
 ```
-Enable-AzHDInsightAzureMonitorAgent [-ResourceId] <String> [-WorkspaceId] <String> [-PrimaryKey] <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Enable-AzHDInsightAzureMonitorAgent [-PassThru] [-ResourceId] <String> [-WorkspaceId] <String>
+ [-PrimaryKey] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### EnableByInputObjectParameterSet
 ```
-Enable-AzHDInsightAzureMonitorAgent [-InputObject] <AzureHDInsightCluster> [-WorkspaceId] <String>
+Enable-AzHDInsightAzureMonitorAgent [-PassThru] [-InputObject] <AzureHDInsightCluster> [-WorkspaceId] <String>
  [-PrimaryKey] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -106,6 +106,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Return the result of the operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -14,20 +14,21 @@ Disables Azure Monitor Agent in a specified HDInsight cluster.
 
 ### DisableByNameParameterSet (Default)
 ```
-Disable-AzHDInsightAzureMonitorAgent [[-ResourceGroupName] <String>] [-ClusterName] <String>
+Disable-AzHDInsightAzureMonitorAgent [-PassThru] [[-ResourceGroupName] <String>] [-ClusterName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### DisableByResourceIdParameterSet
 ```
-Disable-AzHDInsightAzureMonitorAgent [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Disable-AzHDInsightAzureMonitorAgent [-PassThru] [-ResourceId] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DisableByInputObjectParameterSet
 ```
-Disable-AzHDInsightAzureMonitorAgent [-InputObject] <AzureHDInsightCluster>
+Disable-AzHDInsightAzureMonitorAgent [-PassThru] [-InputObject] <AzureHDInsightCluster>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -101,6 +102,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Return the result of the operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
