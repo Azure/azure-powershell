@@ -258,7 +258,7 @@ function Set-AzConnectedKubernetes {
         [System.String]
         # Arc Gateway resource Id
         ${GatewayResourceId},
-        
+
         [Parameter(ParameterSetName='Set', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster]
@@ -266,6 +266,7 @@ function Set-AzConnectedKubernetes {
     )
 
     process {
+        Write-Debug "Checking if Azure Hybrid Benefit is opted in and processing the EULA."
         . "$PSScriptRoot/helpers/HelmHelper.ps1"
         . "$PSScriptRoot/helpers/ConfigDPHelper.ps1"
         . "$PSScriptRoot/helpers/AZCloudMetadataHelper.ps1"
@@ -286,9 +287,11 @@ function Set-AzConnectedKubernetes {
                 }
             }
         }
+        Write-Debug "Removed the AcceptEULA and InputObject parameters after processing."
         $null = $PSBoundParameters.Remove('AcceptEULA')
         $null = $PSBoundParameters.Remove('InputObject')
 
+        Write-Debug "Determining the kube config file path."
         if ($PSBoundParameters.ContainsKey("KubeConfig")) {
             $Null = $PSBoundParameters.Remove('KubeConfig')
         } elseif (Test-Path Env:KUBECONFIG) {
@@ -298,6 +301,7 @@ function Set-AzConnectedKubernetes {
         } else {
             $KubeConfig = Join-Path -Path $Home -ChildPath '.kube' | Join-Path -ChildPath 'config'
         }
+        Write-Debug "Setting the kube context."
         if (-not (Test-Path $KubeConfig)) {
             Write-Error 'Cannot find the kube-config. Please make sure that you have the kube-config on your machine.'
             return
@@ -310,22 +314,26 @@ function Set-AzConnectedKubernetes {
         }
 
         # XW TODO: unit test this?
+
+
         # If EnableGateway is provided then set the gateway as enabled.
         if ($EnableGateway -and $DisableGateway) {
             Write-Error "You cannot enable and disable gateway at the same time."
             return
         }
         if ($EnableGateway) {
+            Write-Debug "Gateway enabled"
             $Null = $PSBoundParameters.Remove('EnableGateway')
             $PSBoundParameters.Add('GatewayEnabled', $true)
         }
         # If DisableGateway is provided then set the gateway as disabled and remove gateway resourceId from parameters
         if ($DisableGateway) {
+            Write-Debug "Gateway disabled"
             $Null = $PSBoundParameters.Remove('DisableGateway')
             $PSBoundParameters.Add('GatewayEnabled', $false)
         }
-        
-        
+
+
         $CommonPSBoundParameters = @{}
         if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
             $CommonPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
@@ -345,12 +353,14 @@ function Set-AzConnectedKubernetes {
         }
         $IdentityType = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ResourceIdentityType]::SystemAssigned
         $PSBoundParameters.Add('IdentityType', $IdentityType)
-        
+
         # Region Deal with settings and protected settings
         # If a new Kubernetes feature is added then code may need to be added here
         # to suport protected settings as the Config DP is unable to process these
         # themselves.  Add a check here to see if there are any that we currently
         # do not suport.
+        Write-Debug "Processing Arc Agentry settings and protected settings."
+
         $supportedFeatures = @("proxy")
         if ($arcAgentrySettings) {
             foreach ($key in $arcAgentrySettings.Keys) {
@@ -370,6 +380,7 @@ function Set-AzConnectedKubernetes {
 
         # XW TODO: helm install can be extracted as common function to be used by both Set and New
         #Region check helm install
+        Write-Debug "Setting up Helm client location and validating Helm version."
         try {
             Set-HelmClientLocation
             $HelmVersion = helm version --template='{{.Version}}' --kubeconfig $KubeConfig
@@ -398,6 +409,7 @@ function Set-AzConnectedKubernetes {
 
         # XW TODO: can be extracted as common function to be used by both Set and New
         #Region get release namespace
+        Write-Debug "Getting release namespace."
         $ReleaseInstallNamespace = Get-ReleaseInstallNamespace
         $ReleaseNamespace = $null
         try {
@@ -445,6 +457,7 @@ function Set-AzConnectedKubernetes {
 
         # TODO XW: can be extracted as common function to be used by both Set and New
         # Adding Helm repo
+        Write-Debug "Setting Helm repository and checking for required modules."
         if ((Test-Path Env:HELMREPONAME) -and (Test-Path Env:HELMREPOURL)) {
             $HelmRepoName = Get-ChildItem -Path Env:HELMREPONAME
             $HelmRepoUrl = Get-ChildItem -Path Env:HELMREPOURL
@@ -509,10 +522,12 @@ function Set-AzConnectedKubernetes {
         # !!PDS: The az cli also sets the "proxy" fields in the settings and
         #        passes these to Azure.  Do we need to do this as well?
 
+        Write-Debug "Processing Helm chart installation options."
+
         $options = ""
         $proxyEnableState = $false
 
-        if ($null -eq $ConfigurationSetting) { 
+        if ($null -eq $ConfigurationSetting) {
             $ConfigurationSetting = @{}
         }
         if ($null -eq $ConfigurationProtectedSetting) {
@@ -526,7 +541,7 @@ function Set-AzConnectedKubernetes {
                 $ConfigurationProtectedSetting[$arcAgentConfig.feature] = $arcAgentConfig.protectedSettings
             }
         }
-        
+
         if (![string]::IsNullOrEmpty($HttpProxy) -or ![string]::IsNullOrEmpty($HttpsProxy) -or ![string]::IsNullOrEmpty($NoProxy) -or ![string]::IsNullOrEmpty($HttpProxy) ) {
             if (-not $ConfigurationSetting.ContainsKey("proxy")) {
                 $ConfigurationSetting["proxy"] = @{}
@@ -631,9 +646,9 @@ function Set-AzConnectedKubernetes {
         #             protected settings.
         #
         #          This DOES mean that code changes are required both in the
-        #          Config DP annd this Powershell script if a new Kubernetes 
+        #          Config DP annd this Powershell script if a new Kubernetes
         #          feature is added.
-        
+
         # XW TODO: this can ve extracted as common function to be used by both Set and New
         $arcAgentryConfigs = @(
         )
@@ -669,7 +684,7 @@ function Set-AzConnectedKubernetes {
         }
 
         $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
-        
+
         # A lot of what follows relies on knowing the cloud we are using and the
         # various endpoints so get that information now.
         $cloudMetadata = Get-AzCloudMetadata
@@ -692,6 +707,7 @@ function Set-AzConnectedKubernetes {
 
         # XW TODO If we cannot generate internal Set command, use New
         # Re-put here
+        Write-Verbose "Updating 'Kubernetes - Azure Arc' object in Azure"
         $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes @PSBoundParameters
 
         # # XW TODO: remove this block if we cannot use internal Set command
@@ -703,7 +719,7 @@ function Set-AzConnectedKubernetes {
         # if ('SetExpanded' -contains $parameterSet) {
         #     $connectedCluster = $ExistConnectedKubernetes
         # }
- 
+
         # $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes ---InputObject $connectedCluster @PSBoundParameters
         # #Enendregion
 
@@ -743,7 +759,7 @@ function Set-AzConnectedKubernetes {
             }
             $options += " --set $($field.Name)=$($field.Value)"
         }
-        
+
         # Set agent version in registry path
         if ($ExistConnectedKubernetes.AgentVersion) {
             $repositoryPath = $repositoryPath -replace "(?<=:).*", $ExistConnectedKubernetes.AgentVersion
@@ -783,4 +799,3 @@ function Set-AzConnectedKubernetes {
         Return $Response
     }
 }
-

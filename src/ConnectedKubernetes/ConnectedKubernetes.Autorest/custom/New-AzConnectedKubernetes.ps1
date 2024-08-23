@@ -316,9 +316,7 @@ function New-AzConnectedKubernetes {
         if (($null -eq $KubeContext) -or ($KubeContext -eq '')) {
             $KubeContext = kubectl config current-context
         }
-        Write-Debug "GatewayResourceId parameters."
-
-        Write-Debug "Processing Arc Agentry settings and protected settings."
+        Write-Debug "Checking whether Gateway is enabled"
 
         # If GatewayResourceId is provided then set the gateway as enabled.
         $PSBoundParameters.Add('GatewayEnabled', -not [String]::IsNullOrEmpty($GatewayResourceId))
@@ -348,6 +346,8 @@ function New-AzConnectedKubernetes {
         # to suport protected settings as the Config DP is unable to process these
         # themselves.  Add a check here to see if there are any that we currently
         # do not suport.
+        Write-Debug "Processing Arc Agentry settings and protected settings."
+
         $supportedFeatures = @("proxy")
         if ($ConfigurationSetting) {
             foreach ($key in $ConfigurationSetting.Keys) {
