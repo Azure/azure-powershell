@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightCluster"),OutputType(typeof(AzureHDInsightCluster), SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightCluster", SupportsShouldProcess = true),OutputType(typeof(AzureHDInsightCluster))]
     public class UpdateAzureHDInsightClusterCommand : HDInsightCmdletBase
     {
         private ClusterIdentity clusterIdentity;
