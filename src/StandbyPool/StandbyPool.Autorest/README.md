@@ -28,7 +28,7 @@ For information on how to develop for `Az.StandbyPool`, see [how-to.md](how-to.m
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 508e46868618ea226265c3ff8ffcda3a341cfa96
+commit: 1866fc3609f55fad6a5e74a9b206ae4ca144c03a
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
