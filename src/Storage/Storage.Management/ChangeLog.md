@@ -41,6 +41,8 @@
     - `Remove-AzStorageDirectory`
     - `Remove-AzStorageFile`
     - `Remove-AzStorageShare`
+    - `Rename-AzStorageDirectory`
+    - `Rename-AzStorageFile`
     - `Set-AzStorageFileContent`
     - `Set-AzStorageShareQuota`
     - `Start-AzStorageFileCopy`
