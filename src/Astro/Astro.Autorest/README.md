@@ -45,7 +45,9 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: Astro
 subject-prefix: $(service-name)
-#this resource cannot be updated by Get-Put operation, so revoke the MSI type upgrade
+# Disable transform IdentityType as GET+PUT can not replace patch
+# 1. Organizations_CreateOrUpdate can not update resources
+# 2. the input schemas of PUT and PATCH are different
 disable-transform-identity-type: true
 
 directive:

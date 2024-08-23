@@ -100,15 +100,14 @@ function New-AzAstroOrganization {
         # Last name of the user
         ${UserLastName},
 
-        # [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateExpanded')]
         # [Microsoft.Azure.PowerShell.Cmdlets.Astro.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned")]
         # [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
         # [System.String]
         # # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
         # ${IdentityType},
-        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-        [System.Nullable[System.Boolean]]
+        [System.Management.Automation.SwitchParameter]
         # Decides if enable a system assigned identity for the resource.
         ${EnableSystemAssignedIdentity},
 
@@ -288,29 +287,30 @@ function New-AzAstroOrganization {
     )
 
     process {
-        try {
-            $hasUserAssignedIdentity = $PSBoundParameters.ContainsKey("UserAssignedIdentity")
+        if($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity') -or $PSBoundParameters.ContainsKey('UserAssignedIdentity') ){
+            $supportsSystemAssignedIdentity = $PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')
+            $supportsUserAssignedIdentity = $PSBoundParameters.ContainsKey("UserAssignedIdentity") -and $UserAssignedIdentity.Length -gt 0
 
-            # Set managed identity parameter
-            if (($hasUserAssignedIdentity -and $EnableSystemAssignedIdentity)) {
+            # calculate IdentityType
+            if (($supportsSystemAssignedIdentity -and $supportsUserAssignedIdentity)) {
                 $PSBoundParameters.Add("IdentityType", "SystemAssigned,UserAssigned")
             }
-            elseif (($hasUserAssignedIdentity -and !$EnableSystemAssignedIdentity)) {
+            elseif ($supportsUserAssignedIdentity -and (-not $supportsSystemAssignedIdentity)) {
                 $PSBoundParameters.Add("IdentityType", "UserAssigned")
             }
-            elseif ((!$hasUserAssignedIdentity -and $EnableSystemAssignedIdentity)) {
+            elseif ((-not $supportsUserAssignedIdentity) -and $supportsSystemAssignedIdentity) {
                 $PSBoundParameters.Add("IdentityType", "SystemAssigned")
             }
             else {
                 $PSBoundParameters.Add("IdentityType", "None")
             }
             
-            Az.Astro.internal\New-AzAstroOrganization @PSBoundParameters
+            # remove EnableSystemAssignedIdentity
+            if($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')) {
+                $null = $PSBoundParameters.Remove("EnableSystemAssignedIdentity")
+            }
         }
-        catch {
-            throw
-        }
-
+        Az.Astro.internal\New-AzAstroOrganization @PSBoundParameters
     }
 
 }

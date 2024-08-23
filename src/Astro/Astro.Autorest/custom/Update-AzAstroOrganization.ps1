@@ -76,14 +76,13 @@ param(
     # Identity Parameter
     ${InputObject},
 
-    # [Parameter(ParameterSetName='UpdateExpanded')]
-    # [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     # [Microsoft.Azure.PowerShell.Cmdlets.Astro.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned")]
     # [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
     # [System.String]
     # # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
     # ${IdentityType},
-    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
     [System.Nullable[System.Boolean]]
     # Decides if enable a system assigned identity for the resource.
@@ -273,129 +272,39 @@ param(
 )
 
 process {
-    try {
-        $hasEnableSystemAssignedIdentity = $PSBoundParameters.Remove("EnableSystemAssignedIdentity")
-        $hasUserAssignedIdentity = $PSBoundParameters.Remove("UserAssignedIdentity")
-        $hasPartnerOrganizationPropertyOrganizationId = $PSBoundParameters.Remove("PartnerOrganizationPropertyOrganizationId")
-        $hasPartnerOrganizationPropertyOrganizationName = $PSBoundParameters.Remove("PartnerOrganizationPropertyOrganizationName")
-        $hasPartnerOrganizationPropertyWorkspaceId = $PSBoundParameters.Remove("PartnerOrganizationPropertyWorkspaceId")
-        $hasPartnerOrganizationPropertyWorkspaceName = $PSBoundParameters.Remove("PartnerOrganizationPropertyWorkspaceName")
-        $hasSingleSignOnPropertyAadDomain = $PSBoundParameters.Remove("SingleSignOnPropertyAadDomain")
-        $hasSingleSignOnPropertyEnterpriseAppId = $PSBoundParameters.Remove("SingleSignOnPropertyEnterpriseAppId")
-        $hasSingleSignOnPropertySingleSignOnState = $PSBoundParameters.Remove("SingleSignOnPropertySingleSignOnState")
-        $hasSingleSignOnPropertySingleSignOnUrl = $PSBoundParameters.Remove("SingleSignOnPropertySingleSignOnUrl")
-        $hasUserEmailAddress = $PSBoundParameters.Remove("UserEmailAddress")
-        $hasUserFirstName = $PSBoundParameters.Remove("UserFirstName")
-        $hasUserLastName = $PSBoundParameters.Remove("UserLastName")
-        $hasUserPhoneNumber = $PSBoundParameters.Remove("UserPhoneNumber")
-        $hasUserUpn = $PSBoundParameters.Remove("UserUpn")
-        $hasTag = $PSBoundParameters.Remove("Tag")
-
-        $hasJsonFilePath = $PSBoundParameters.Remove("JsonFilePath")
-        $hasJsonString = $PSBoundParameters.Remove("JsonString")
-
-        $hasAsJob = $PSBoundParameters.Remove('AsJob')
-        $null = $PSBoundParameters.Remove('WhatIf')
-        $null = $PSBoundParameters.Remove('Confirm')
-        
-        $organization = Get-AzAstroOrganization @PSBoundParameters
-        
-        if ($hasJsonString -or $hasJsonFilePath){
-            # set Json file path or string
-            if ($hasJsonFilePath) {
-                $PSBoundParameters.Add('JsonFilePath', $JsonFilePath)
-            }
-            if ($hasJsonString) {
-                $PSBoundParameters.Add('JsonString', $JsonString)
-            }
-            if ($hasAsJob) {
-                $PSBoundParameters.Add('AsJob', $true)
-            }
-    
-            if ($PSCmdlet.ShouldProcess(" Astro Organization $($organization.Name)", "Update")) {
-                Az.Astro.internal\Update-AzAstroOrganization -Name $organization.Name -ResourceGroupName $organization.ResourceGroupName @PSBoundParameters
-            }
+    if($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity') -or $PSBoundParameters.ContainsKey('UserAssignedIdentity') ){
+        # get existing organization
+        if(('UpdateExpanded') -contains $parameterSet){
+            $organization = Az.Astro.exports\Get-AzAstroOrganization -Name $Name -ResourceGroupName $ResourceGroupName
+        }elseif(('UpdateViaIdentityExpanded') -contains $parameterSet)
+        {
+            $organization = Az.Astro.exports\Get-AzAstroOrganization -InputObject $InputObject
+        }
+        if($null -eq $organization)
+        {
+            throw "$Name doesn't exist"
+        }
+        # calculate IdentityType
+        $supportsSystemAssignedIdentity = $EnableSystemAssignedIdentity -or (($null -eq $EnableSystemAssignedIdentity) -and ($organization.IdentityType -Contains "SystemAssigned"))
+        $supportsUserAssignedIdentity = ($PSBoundParameters.ContainsKey('UserAssignedIdentity') -and $UserAssignedIdentity.Length -gt 0) -or ((-not $PSBoundParameters.ContainsKey('UserAssignedIdentity')) -and ($organization.IdentityType -Contains "UserAssigned"));
+        if (($supportsSystemAssignedIdentity -and $supportsUserAssignedIdentity)) {
+            $PSBoundParameters.Add("IdentityType", "SystemAssigned,UserAssigned")
+        }
+        elseif ($supportsUserAssignedIdentity -and (-not $supportsSystemAssignedIdentity)) {
+            $PSBoundParameters.Add("IdentityType", "UserAssigned")
+        }
+        elseif ((-not $supportsUserAssignedIdentity) -and $supportsSystemAssignedIdentity) {
+            $PSBoundParameters.Add("IdentityType", "SystemAssigned")
         }
         else {
-            # set parameter properties
-            $supportsSystemAssignedIdentity = $organization.EnableSystemAssignedIdentity -or $hasEnableSystemAssignedIdentity
-            $supportsUserAssignedIdentity = $organization.UserAssignedIdentity -or $hasUserAssignedIdentity
-            if (($supportsUserAssignedIdentity -and $supportsSystemAssignedIdentity))
-            {
-                $organization.IdentityType = "SystemAssigned,UserAssigned";
-            }
-            elseif (($supportsUserAssignedIdentity -and !$supportsSystemAssignedIdentity))
-            {
-                $organization.IdentityType = "UserAssigned";
-            }
-            elseif ((!$supportsUserAssignedIdentity -and $supportsSystemAssignedIdentity))
-            {
-                $organization.IdentityType = "SystemAssigned";
-            }
-            else
-            {
-                $organization.IdentityType = "None";
-            }
-            $null = $PSBoundParameters.Remove("Name")
-            $null = $PSBoundParameters.Remove("ResourceGroupName")
-            $null = $PSBoundParameters.Remove("SubscriptionId")
-            $null = $PSBoundParameters.Remove('InputObject')
-    
-            if ($hasPartnerOrganizationPropertyOrganizationId) {
-                $organization.PartnerOrganizationPropertyOrganizationId = $PartnerOrganizationPropertyOrganizationId
-            }
-            if ($hasPartnerOrganizationPropertyOrganizationName) {
-                $organization.PartnerOrganizationPropertyOrganizationName = $PartnerOrganizationPropertyOrganizationName
-            }
-            if ($hasPartnerOrganizationPropertyWorkspaceId) {
-                $organization.PartnerOrganizationPropertyWorkspaceId = $PartnerOrganizationPropertyWorkspaceId
-            }
-            if ($hasPartnerOrganizationPropertyWorkspaceName ) {
-                $organization.PartnerOrganizationPropertyWorkspaceName = $PartnerOrganizationPropertyWorkspaceName
-            }
-            if ($hasSingleSignOnPropertyAadDomain) {
-                $organization.SingleSignOnPropertyAadDomain = $SingleSignOnPropertyAadDomain
-            }
-            if ($hasSingleSignOnPropertyEnterpriseAppId) {
-                $organization.SingleSignOnPropertyEnterpriseAppId = $SingleSignOnPropertyEnterpriseAppId
-            }
-            if ($hasSingleSignOnPropertySingleSignOnState) {
-                $organization.SingleSignOnPropertySingleSignOnState = $SingleSignOnPropertySingleSignOnState
-            }
-            if ($hasSingleSignOnPropertySingleSignOnUrl) {
-                $organization.SingleSignOnPropertySingleSignOnUrl = $SingleSignOnPropertySingleSignOnUrl
-            }
-            if ($hasUserEmailAddress) {
-                $organization.UserEmailAddress = $UserEmailAddress
-            }
-            if ($hasUserFirstName) {
-                $organization.UserFirstName = $UserFirstName
-            }
-            if ($hasUserLastName) {
-                $organization.UserLastName = $UserLastName
-            }
-            if ($hasUserPhoneNumber) {
-                $organization.UserPhoneNumber = $UserPhoneNumber
-            }
-            if ($hasUserUpn) {
-                $organization.UserUpn = $UserUpn
-            }
-            if ($hasTag) {
-                $organization.Tag = $Tag
-            }
-
-            if ($hasAsJob) {
-                $PSBoundParameters.Add('AsJob', $true)
-            }
-    
-            if ($PSCmdlet.ShouldProcess(" Astro Organization $($organization.Name)", "Update")) {
-                Az.Astro.internal\Update-AzAstroOrganization -Name $organization.Name -ResourceGroupName $organization.ResourceGroupName -Parameter $organization @PSBoundParameters
-            }
+            $PSBoundParameters.Add("IdentityType", "None")
+        }
+        # remove EnableSystemAssignedIdentity
+        if($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')) {
+            $null = $PSBoundParameters.Remove("EnableSystemAssignedIdentity")
         }
     }
-    catch {
-        throw
-    }
+    Az.Astro.internal\Update-AzAstroOrganization @PSBoundParameters
 
 }
 }

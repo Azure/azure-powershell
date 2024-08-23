@@ -39,15 +39,15 @@ Update-AzAstroOrganization -InputObject <IAstroIdentity> [-EnableSystemAssignedI
 ### UpdateViaJsonFilePath
 ```
 Update-AzAstroOrganization -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzAstroOrganization -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -140,8 +140,6 @@ Accept wildcard characters: False
 ```
 
 ### -EnableSystemAssignedIdentity
-[Parameter(ParameterSetName='UpdateExpanded')]
-[Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
 [Microsoft.Azure.PowerShell.Cmdlets.Astro.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned")]
 [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
 [System.String]
@@ -151,7 +149,7 @@ Decides if enable a system assigned identity for the resource.
 
 ```yaml
 Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

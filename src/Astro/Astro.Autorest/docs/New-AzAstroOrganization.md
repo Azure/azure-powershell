@@ -17,29 +17,28 @@ Create a OrganizationResource
 New-AzAstroOrganization -Name <String> -ResourceGroupName <String> -Location <String>
  -MarketplaceSubscriptionId <String> -OfferDetailOfferId <String> -OfferDetailPlanId <String>
  -OfferDetailPublisherId <String> -UserEmailAddress <String> -UserFirstName <String> -UserLastName <String>
- [-SubscriptionId <String>] [-EnableSystemAssignedIdentity <Boolean?>]
- [-MarketplaceSubscriptionStatus <String>] [-OfferDetailPlanName <String>] [-OfferDetailTermId <String>]
- [-OfferDetailTermUnit <String>] [-PartnerOrganizationPropertyOrganizationId <String>]
- [-PartnerOrganizationPropertyOrganizationName <String>] [-PartnerOrganizationPropertyWorkspaceId <String>]
- [-PartnerOrganizationPropertyWorkspaceName <String>] [-SingleSignOnPropertyAadDomain <String[]>]
- [-SingleSignOnPropertyEnterpriseAppId <String>] [-SingleSignOnPropertySingleSignOnState <String>]
- [-SingleSignOnPropertySingleSignOnUrl <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-UserPhoneNumber <String>] [-UserUpn <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-EnableSystemAssignedIdentity] [-MarketplaceSubscriptionStatus <String>]
+ [-OfferDetailPlanName <String>] [-OfferDetailTermId <String>] [-OfferDetailTermUnit <String>]
+ [-PartnerOrganizationPropertyOrganizationId <String>] [-PartnerOrganizationPropertyOrganizationName <String>]
+ [-PartnerOrganizationPropertyWorkspaceId <String>] [-PartnerOrganizationPropertyWorkspaceName <String>]
+ [-SingleSignOnPropertyAadDomain <String[]>] [-SingleSignOnPropertyEnterpriseAppId <String>]
+ [-SingleSignOnPropertySingleSignOnState <String>] [-SingleSignOnPropertySingleSignOnUrl <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-UserPhoneNumber <String>] [-UserUpn <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzAstroOrganization -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzAstroOrganization -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,7 +131,6 @@ Accept wildcard characters: False
 ```
 
 ### -EnableSystemAssignedIdentity
-[Parameter(ParameterSetName='CreateExpanded')]
 [Microsoft.Azure.PowerShell.Cmdlets.Astro.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned")]
 [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
 [System.String]
@@ -141,8 +139,8 @@ ${IdentityType},
 Decides if enable a system assigned identity for the resource.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
