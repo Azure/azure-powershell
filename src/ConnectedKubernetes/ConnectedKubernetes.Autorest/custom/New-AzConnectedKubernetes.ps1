@@ -246,13 +246,6 @@ function New-AzConnectedKubernetes {
         ${ProxyUseDefaultCredentials},
 
         [Parameter()]
-        [ValidateSet("gateway", "direct")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Runtime')]
-        [System.String]
-        # Azure connections are either direct or via an Arc Gateway
-        ${ConnectionType},
-
-        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Runtime')]
         [System.Collections.Hashtable]
         # Arc Agentry System Configuration
@@ -323,16 +316,8 @@ function New-AzConnectedKubernetes {
         if (($null -eq $KubeContext) -or ($KubeContext -eq '')) {
             $KubeContext = kubectl config current-context
         }
-        Write-Debug "Validating ConnectionType and GatewayResourceId parameters."
+        Write-Debug "GatewayResourceId parameters."
 
-        if ($PSBoundParameters:ConnectionType) {
-            if ($ConnectionType.Equals("direct")) {
-                if ($PSBoundParameters:GatewayResourceId) {
-                    Write-Error 'GatewayResourceId should not be provided when ConnectionType is "direct".'
-                    return
-                }
-            }
-        }
         Write-Debug "Processing Arc Agentry settings and protected settings."
 
         # If GatewayResourceId is provided then set the gateway as enabled.
