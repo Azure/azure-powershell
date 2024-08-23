@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.HDInsight
         private const string DisableByResourceIdParameterSet = "DisableByResourceIdParameterSet";
         private const string DisableByInputObjectParameterSet = "DisableByInputObjectParameterSet";
 
+        [Parameter(Mandatory = false, HelpMessage = "Return the result of the operation.")]
+        public SwitchParameter PassThru { get; set; }
+
         [Parameter(
             Position = 0,
             Mandatory = false,
@@ -91,7 +94,10 @@ namespace Microsoft.Azure.Commands.HDInsight
             if (ShouldProcess("Disable Azure Monitor Agent"))
             {
                 HDInsightManagementClient.DisableAzureMonitorAgent(ResourceGroupName, ClusterName);
-                WriteObject(true);
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(true);
+                }
             }
         }
     }

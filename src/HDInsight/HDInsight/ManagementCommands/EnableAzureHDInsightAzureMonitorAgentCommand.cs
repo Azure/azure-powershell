@@ -33,6 +33,10 @@ namespace Microsoft.Azure.Commands.HDInsight
         private const string EnableByResourceIdParameterSet = "EnableByResourceIdParameterSet";
         private const string EnableByInputObjectParameterSet = "EnableByInputObjectParameterSet";
 
+        [Parameter(Mandatory = false, HelpMessage = "Return the result of the operation.")]
+        public SwitchParameter PassThru { get; set; }
+
+
         [Parameter(
             Position = 0,
             Mandatory = false,
@@ -133,7 +137,10 @@ namespace Microsoft.Azure.Commands.HDInsight
             if (ShouldProcess("Enable Azure Monitor Agent"))
             {
                 HDInsightManagementClient.EnableAzureMonitorAgent(ResourceGroupName, ClusterName, azureMonitorParams);
-                WriteObject(true);
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(true);
+                }
             }
         }
     }
