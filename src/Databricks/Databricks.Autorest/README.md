@@ -51,7 +51,7 @@ use-extension:
   "@autorest/powershell": "3.x"
 
 directive:
-  - from: swagger-document
+  - from: databricks.json
     where: $.definitions.EncryptionV2
     transform: >-
       return {
@@ -93,7 +93,7 @@ directive:
         "description": "The object that contains details of encryption used on the workspace."
       }
 
-  - from: swagger-document
+  - from: databricks.json
     where: $.definitions.ManagedDiskEncryption
     transform: >-
       return {
