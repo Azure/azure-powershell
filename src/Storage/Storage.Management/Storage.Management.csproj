@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Storage.common\Storage.common.csproj" />
     <ProjectReference Include="..\Storage.Management.Sdk\Storage.Management.Sdk.csproj" />
   </ItemGroup>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />

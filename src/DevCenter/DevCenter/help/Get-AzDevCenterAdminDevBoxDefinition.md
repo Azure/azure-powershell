@@ -15,33 +15,33 @@ Gets a Dev Box definition
 ### List (Default)
 ```
 Get-AzDevCenterAdminDevBoxDefinition -DevCenterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDevCenterAdminDevBoxDefinition -DevCenterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### Get1
 ```
 Get-AzDevCenterAdminDevBoxDefinition -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -ProjectName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ProjectName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzDevCenterAdminDevBoxDefinition -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -ProjectName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ProjectName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzDevCenterAdminDevBoxDefinition -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -141,6 +141,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The name of the project.
 
@@ -196,7 +211,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevBoxDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevBoxDefinition
 
 ## NOTES
 

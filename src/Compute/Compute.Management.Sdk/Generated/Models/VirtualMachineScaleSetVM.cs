@@ -98,11 +98,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="protectionPolicy">Specifies the protection policy of
         /// the virtual machine.</param>
         /// <param name="userData">UserData for the VM, which must be base-64
-        /// encoded. Customer should not pass any secrets in here.
-        /// &lt;br&gt;&lt;br&gt;Minimum api-version: 2021-03-01</param>
+        /// encoded. Customer should not pass any secrets in here. Minimum
+        /// api-version: 2021-03-01</param>
         /// <param name="timeCreated">Specifies the time at which the Virtual
-        /// Machine resource was created.&lt;br&gt;&lt;br&gt;Minimum
-        /// api-version: 2021-11-01.</param>
+        /// Machine resource was created. Minimum api-version:
+        /// 2021-11-01.</param>
         /// <param name="plan">Specifies information about the marketplace
         /// image used to create the virtual machine. This element is only used
         /// for marketplace images. Before you can use a marketplace image from
@@ -303,16 +303,15 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <summary>
         /// Gets or sets userData for the VM, which must be base-64 encoded.
-        /// Customer should not pass any secrets in here.
-        /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Minimum api-version: 2021-03-01
+        /// Customer should not pass any secrets in here. Minimum api-version:
+        /// 2021-03-01
         /// </summary>
         [JsonProperty(PropertyName = "properties.userData")]
         public string UserData { get; set; }
 
         /// <summary>
         /// Gets specifies the time at which the Virtual Machine resource was
-        /// created.&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;Minimum api-version:
-        /// 2021-11-01.
+        /// created. Minimum api-version: 2021-11-01.
         /// </summary>
         [JsonProperty(PropertyName = "properties.timeCreated")]
         public System.DateTime? TimeCreated { get; private set; }

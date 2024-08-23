@@ -18,7 +18,7 @@ Update-AzDevCenterAdminDevBoxDefinition -DevCenterName <String> -Name <String> -
  [-SubscriptionId <String>] [-HibernateSupport <HibernateSupport>] [-ImageReferenceId <String>]
  [-OSStorageType <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>]
  [-SkuTier <SkuTier>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -26,7 +26,7 @@ Update-AzDevCenterAdminDevBoxDefinition -DevCenterName <String> -Name <String> -
 Update-AzDevCenterAdminDevBoxDefinition -InputObject <IDevCenterIdentity>
  [-HibernateSupport <HibernateSupport>] [-ImageReferenceId <String>] [-OSStorageType <String>]
  [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -200,6 +200,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -249,7 +264,8 @@ Accept wildcard characters: False
 
 ### -SkuName
 The name of the SKU.
-Ex - P3.
+E.g.
+P3.
 It is typically a letter+number code
 
 ```yaml
@@ -365,7 +381,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevBoxDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevBoxDefinition
 
 ## NOTES
 

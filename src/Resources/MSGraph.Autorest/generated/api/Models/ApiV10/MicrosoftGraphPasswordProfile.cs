@@ -41,7 +41,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
 
         /// <summary>
         /// The password for the user. This property is required when a user is created. It can be updated, but the user will be required
-        /// to change the password on the next login. The password must satisfy minimum requirements as specified by the user’s passwordPolicies
+        /// to change the password on the next login. The password must satisfy minimum requirements as specified by the user's passwordPolicies
         /// property. By default, a strong password is required.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         bool? ForceChangePasswordNextSignInWithMfa { get; set; }
         /// <summary>
         /// The password for the user. This property is required when a user is created. It can be updated, but the user will be required
-        /// to change the password on the next login. The password must satisfy minimum requirements as specified by the user’s passwordPolicies
+        /// to change the password on the next login. The password must satisfy minimum requirements as specified by the user's passwordPolicies
         /// property. By default, a strong password is required.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The password for the user. This property is required when a user is created. It can be updated, but the user will be required to change the password on the next login. The password must satisfy minimum requirements as specified by the user’s passwordPolicies property. By default, a strong password is required.",
+        Description = @"The password for the user. This property is required when a user is created. It can be updated, but the user will be required to change the password on the next login. The password must satisfy minimum requirements as specified by the user's passwordPolicies property. By default, a strong password is required.",
         SerializedName = @"password",
         PossibleTypes = new [] { typeof(string) })]
         string Password { get; set; }
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         bool? ForceChangePasswordNextSignInWithMfa { get; set; }
         /// <summary>
         /// The password for the user. This property is required when a user is created. It can be updated, but the user will be required
-        /// to change the password on the next login. The password must satisfy minimum requirements as specified by the user’s passwordPolicies
+        /// to change the password on the next login. The password must satisfy minimum requirements as specified by the user's passwordPolicies
         /// property. By default, a strong password is required.
         /// </summary>
         string Password { get; set; }

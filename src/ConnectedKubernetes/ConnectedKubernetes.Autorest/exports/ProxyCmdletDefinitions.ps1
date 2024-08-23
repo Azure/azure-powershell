@@ -25,9 +25,9 @@ Get-AzConnectedKubernetesUserCredential -ClusterName azps_test_cluster -Resource
 Get-AzConnectedKubernetesUserCredential -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -AuthenticationMethod Token -ClientProxy:$false
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240701Preview.IListClusterUserCredentialProperties
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IListClusterUserCredentialProperties
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240701Preview.ICredentialResults
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.ICredentialResults
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,7 +40,7 @@ PROPERTY <IListClusterUserCredentialProperties>: .
 https://learn.microsoft.com/powershell/module/az.connectedkubernetes/get-azconnectedkubernetesusercredential
 #>
 function Get-AzConnectedKubernetesUserCredential {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240701Preview.ICredentialResults])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.ICredentialResults])]
 [CmdletBinding(DefaultParameterSetName='ListExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -66,7 +66,7 @@ param(
 
     [Parameter(ParameterSetName='List', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240701Preview.IListClusterUserCredentialProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IListClusterUserCredentialProperties]
     # .
     # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},
@@ -239,7 +239,7 @@ Get-AzConnectedKubernetes -InputObject $conAks
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedKubernetesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240701Preview.IConnectedCluster
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -254,7 +254,7 @@ INPUTOBJECT <IConnectedKubernetesIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.connectedkubernetes/get-azconnectedkubernetes
 #>
 function Get-AzConnectedKubernetes {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240701Preview.IConnectedCluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -443,7 +443,7 @@ New-AzConnectedKubernetes -ClusterName azps_test_cluster_ahb -ResourceGroupName 
 .Example
 New-AzConnectedKubernetes -ClusterName azps_test_cluster_ahb -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01 -HttpProxy "http://proxy-user:proxy-password@proxy-ip:port" -HttpsProxy "http://proxy-user:proxy-password@proxy-ip:port" -NoProxy "localhost,127.0.0.0/8,192.168.0.0/16,172.17.0.0/16,10.96.0.0/12,10.244.0.0/16,10.43.0.0/24,.svc" -Proxy "http://proxy-user:proxy-password@proxy-ip:port" 
 .Example
-$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$pwd = ConvertTo-SecureString "proxy-password" -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential ("proxy-user", $pwd)
 New-AzConnectedKubernetes -ClusterName azps_test_cluster_ahb -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01 -HttpProxy "http://proxy-user:proxy-password@proxy-ip:port" -HttpsProxy "http://proxy-user:proxy-password@proxy-ip:port" -NoProxy "localhost,127.0.0.0/8,192.168.0.0/16,172.17.0.0/16,10.96.0.0/12,10.244.0.0/16,10.43.0.0/24,.svc" -Proxy "http://proxy-ip:port" -ProxyCredential $cred
 .Example
@@ -452,12 +452,12 @@ New-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps
 New-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -OnboardingTimeout 600
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240701Preview.IConnectedCluster
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster
 .Link
 https://learn.microsoft.com/powershell/module/az.connectedkubernetes/new-azconnectedkubernetes
 #>
 function New-AzConnectedKubernetes {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240701Preview.IConnectedCluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -598,24 +598,6 @@ param(
     [System.String]
     # OID of 'custom-locations' app.
     ${CustomLocationsOid},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Whether to enable oidc issuer for workload identity integration.
-    ${OidcIssuerProfileEnabled},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [System.String]
-    # The issuer url for public cloud clusters - AKS, EKS, GKE - used for the workload identity feature.
-    ${OidcIssuerProfileSelfHostedIssuerUrl},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Whether to enable or disable the workload identity Webhook
-    ${WorkloadIdentityEnabled},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
@@ -1012,7 +994,7 @@ Update-AzConnectedKubernetes -ClusterName azps_test_cluster_ahb -ResourceGroupNa
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedKubernetesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240701Preview.IConnectedCluster
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1027,7 +1009,7 @@ INPUTOBJECT <IConnectedKubernetesIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.connectedkubernetes/update-azconnectedkubernetes
 #>
 function Update-AzConnectedKubernetes {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240701Preview.IConnectedCluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -1085,7 +1067,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240701Preview.IConnectedClusterPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedClusterPatchTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
