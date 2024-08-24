@@ -59,18 +59,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             SoftDeleteFeatureState = vaultConfig.SoftDeleteFeatureState;
 
             // Initialize encryption properties
-            encryptionProperties = new EncryptionConfig();
-            encryptionProperties.EncryptionAtRestType = vaultEncryptionSetting.Properties.EncryptionAtRestType;
-            encryptionProperties.KeyUri = vaultEncryptionSetting.Properties.KeyUri;
-            encryptionProperties.SubscriptionId = vaultEncryptionSetting.Properties.SubscriptionId;
-            encryptionProperties.LastUpdateStatus = vaultEncryptionSetting.Properties.LastUpdateStatus;
-            encryptionProperties.InfrastructureEncryptionState = vaultEncryptionSetting.Properties.InfrastructureEncryptionState;
-            encryptionProperties.Id = vaultEncryptionSetting.Id;
-            encryptionProperties.Name = vaultEncryptionSetting.Name;
-            encryptionProperties.Type = vaultEncryptionSetting.Type;
-            encryptionProperties.Location = vaultEncryptionSetting.Location;
-            encryptionProperties.UseSystemAssignedIdentity = vaultEncryptionSetting.Properties.UseSystemAssignedIdentity;
-            encryptionProperties.UserAssignedIdentity = vaultEncryptionSetting.Properties.UserAssignedIdentity;
+            encryptionProperties = new EncryptionConfig();            
+            encryptionProperties.KeyUri = vaultEncryptionSetting.Properties?.KeyUri;
+            encryptionProperties.InfrastructureEncryptionState = vaultEncryptionSetting.Properties?.InfrastructureEncryptionState;
+            encryptionProperties.UseSystemAssignedIdentity = vaultEncryptionSetting.Properties?.UseSystemAssignedIdentity;
+            encryptionProperties.UserAssignedIdentity = vaultEncryptionSetting.Properties?.UserAssignedIdentity;
         }
     }
 
