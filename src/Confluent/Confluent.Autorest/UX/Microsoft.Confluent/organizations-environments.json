@@ -1,0 +1,52 @@
+{
+  "resourceType": "organizations/environments",
+  "apiVersion": "2024-02-13",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.confluent"
+  },
+  "commands": [
+    {
+      "name": "Get-AzConfluentOrganizationEnvironment",
+      "description": "Get Environment details by environment Id",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.confluent/get-azconfluentorganizationenvironment"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EnvironmentId <String>",
+              "-OrganizationName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get Environment details by environment Id",
+          "parameters": [
+            {
+              "name": "-EnvironmentId",
+              "value": "[Path.environmentId]"
+            },
+            {
+              "name": "-OrganizationName",
+              "value": "[Path.organizationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
