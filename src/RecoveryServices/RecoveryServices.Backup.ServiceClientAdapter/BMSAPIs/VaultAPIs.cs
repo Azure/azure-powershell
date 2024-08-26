@@ -162,7 +162,47 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <returns>Azure Recovery Services Vault.</returns> 
         public Vault UpdateRSVault(string resouceGroupName, string vaultName, PatchVault patchVault)
         {
-            var response = RSAdapter.Client.Vaults.UpdateWithHttpMessagesAsync(resouceGroupName, vaultName, patchVault).Result;
+            Dictionary<string, List<string>> customHeaders = new Dictionary<string, List<string>>();
+            if (isMUAProtected)
+            {
+                List<ResourceGuardProxyBaseResource> resourceGuardMapping = ListResourceGuardMapping(vaultName, resourceGroupName);
+                string operationRequest = null;
+
+                if (resourceGuardMapping != null && resourceGuardMapping.Count != 0)
+                {
+                    // todo: CMK_MUA - check the op value correctly
+                    string criticalOp = "Microsoft.RecoveryServices/vaults/write#modifyEncryptionSettings";
+
+                    foreach (ResourceGuardOperationDetail operationDetail in resourceGuardMapping[0].Properties.ResourceGuardOperationDetails)
+                    {
+                        if (operationDetail.VaultCriticalOperation == criticalOp)
+                        {
+                            operationRequest = operationDetail.DefaultResourceRequest;
+                        }
+                    }
+
+                    if (operationRequest != null)
+                    {
+                        patchVault.Properties.ResourceGuardOperationRequests = new List<string>();
+                        patchVault.Properties.ResourceGuardOperationRequests.Add(operationRequest);
+                    }
+                }
+
+                if (auxiliaryAccessToken != null && auxiliaryAccessToken != "")
+                {
+                    if (operationRequest != null)
+                    {
+                        customHeaders.Add("x-ms-authorization-auxiliary", new List<string> { "Bearer " + auxiliaryAccessToken });
+                    }
+                    else
+                    {
+                        // resx
+                        throw new ArgumentException(String.Format(Resources.UnexpectedParameterToken, "modify encryption settings for recovery services vault"));
+                    }
+                }
+            }
+
+            var response = RSAdapter.Client.Vaults.UpdateWithHttpMessagesAsync(resourceGroupName, vaultName, patchVault, default(string), customHeaders).Result;
             return response.Body;
         }
 
