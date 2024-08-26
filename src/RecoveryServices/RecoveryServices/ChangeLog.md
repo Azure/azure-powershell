@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added MUA support for CMK Encryption properties of Recovery Services Vault. Updated the  VaultProperty command to use underlying Vault APIs.
+* Added additional properties to the output of Get-AzRecoveryServicesVault cmdlet - MoveDetails, MoveState, RedundancySettings, SecureScore, BcdrSecurityLevel, EncryptionProperty.
 
 ## Version 7.0.0
 * [Breaking Change] Renamed the property `ResouceType` of `ASRVaultSettings` to `ResourceType`. 
