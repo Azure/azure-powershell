@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Identity;
+
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication;
@@ -25,6 +27,8 @@ using Microsoft.Identity.Client;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Security;
@@ -485,7 +489,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return account.GetProperty(tokenKey);
         }
 
-        private void RemoveFromTokenCache(IAzureAccount account)
+        private void RemoveFromTokenCache(IAzureAccount account, string authority = null)
         {
             PowerShellTokenCacheProvider tokenCacheProvider;
             if (!AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out tokenCacheProvider))
@@ -493,14 +497,27 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 throw new NullReferenceException(Resources.AuthenticationClientFactoryNotRegistered);
             }
 
-            var publicClient = tokenCacheProvider.CreatePublicClient();
-            var accounts = publicClient.GetAccountsAsync()
-                            .ConfigureAwait(false).GetAwaiter().GetResult();
-            var tokenAccounts = accounts.Where(a => MatchCacheItem(account, a));
-            foreach (var tokenAccount in tokenAccounts)
-                {
-                publicClient.RemoveAsync(tokenAccount)
+            IList<string> authoritryList = null;
+            if (authority != null)
+            {
+                authoritryList = new List<string>() { authority };
+            }
+            else
+            {
+                authoritryList = new List<string>() { AzureAuthorityHosts.AzurePublicCloud.OriginalString, AzureAuthorityHosts.AzureChina.OriginalString, AzureAuthorityHosts.AzureGovernment.OriginalString };
+            }
+
+            foreach(var authorityEndpont in authoritryList)
+            {
+                var publicClient = tokenCacheProvider.CreatePublicClient(authority);
+                var accounts = publicClient.GetAccountsAsync()
                                 .ConfigureAwait(false).GetAwaiter().GetResult();
+                var tokenAccounts = accounts.Where(a => MatchCacheItem(account, a));
+                foreach (var tokenAccount in tokenAccounts)
+                {
+                    publicClient.RemoveAsync(tokenAccount)
+                                    .ConfigureAwait(false).GetAwaiter().GetResult();
+                }
             }
         }
 
