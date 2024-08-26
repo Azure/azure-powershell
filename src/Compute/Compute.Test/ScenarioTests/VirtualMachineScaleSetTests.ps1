@@ -5339,21 +5339,23 @@ function Test-ResiliencyPolicyVMSS
         $securePassword = ConvertTo-SecureString $adminPassword -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $securePassword);
 
-        $vmssConfig = new-azvmssconfig -Location $loc  -EnableResilientVMCreate -EnableResilientVMDelete $false        
+        $vmssConfig = new-azvmssconfig -Location $loc  -EnableResilientVMCreate -EnableResilientVMDelete; 
         $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmssConfig;
         
         # Asserts 
         # check ResilientVMCreationPolicy
-        Assert-AreEqual $vmss.ResiliencyPolicyVMSS.ResilientVMCreationPolicy.Enable $true;
+        Assert-True { $vmssConfig.ResiliencyPolicy.ResilientVMCreationPolicy.Enabled };
         # check ResilientVMDeletionPolicy
-        Assert-AreEqual $vmss.ResiliencyPolicyVMSS.ResilientVMDeletionPolicy $false;
+        Assert-True { $vmssConfig.ResiliencyPolicy.ResilientVMCreationPolicy.Enabled };
 
-        $updatedVmss = Update-azvmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -EnableResilientVMDelete $true -EnableResilientVMCreate $false
+        Update-azvmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -EnableResilientVMDelete $false -EnableResilientVMCreate $false
+        $updatedVmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+
         # Asserts 
         # check ResilientVMCreationPolicy
-        Assert-AreEqual $updatedVmss.ResiliencyPolicyVMSS.ResilientVMCreationPolicy.Enable $false;
+        Assert-False { $updatedVmss.ResiliencyPolicy.ResilientVMCreationPolicy.Enabled };
         # check ResilientVMDeletionPolicy
-        Assert-AreEqual $updatedVmss.ResiliencyPolicyVMSS.ResilientVMDeletionPolicy.Enable $true;
+        Assert-False { $updatedVmss.ResiliencyPolicy.ResilientVMDeletionPolicy.Enabled };
 
 
     }

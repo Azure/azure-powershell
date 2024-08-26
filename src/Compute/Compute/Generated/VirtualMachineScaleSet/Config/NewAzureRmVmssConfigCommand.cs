@@ -349,13 +349,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Enable resilient VM creation.")]
+            HelpMessage = "Specifies whether resilient VM creation should be enabled on the virtual machine scale set. The default value is false.")]
         public SwitchParameter EnableResilientVMCreate { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Enable or disable resilient VM deletion.")]
-        public bool EnableResilientVMDelete { get; set; }
+            HelpMessage = "Specifies whether resilient VM deletion should be enabled on the virtual machine scale set. The default value is false.")]
+        public SwitchParameter EnableResilientVMDelete { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     vResiliencyPolicy = new ResiliencyPolicy();
                 }
-                vResiliencyPolicy.ResilientVMCreationPolicy = new ResilientVMCreationPolicy(this.EnableResilientVMCreate.IsPresent);
+                vResiliencyPolicy.ResilientVMCreationPolicy = new ResilientVMCreationPolicy(this.EnableResilientVMCreate.ToBool());
             }
 
             if (this.IsParameterBound(c=> c.EnableResilientVMDelete))
@@ -427,7 +427,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     vResiliencyPolicy = new ResiliencyPolicy();
                 }
-                vResiliencyPolicy.ResilientVMDeletionPolicy = new ResilientVMDeletionPolicy(this.EnableResilientVMDelete);
+                vResiliencyPolicy.ResilientVMDeletionPolicy = new ResilientVMDeletionPolicy(this.EnableResilientVMDelete.ToBool());
             }
 
             if (this.IsParameterBound(c => c.SkuTier))

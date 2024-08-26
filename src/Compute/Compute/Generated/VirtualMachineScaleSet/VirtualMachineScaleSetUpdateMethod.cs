@@ -423,15 +423,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Enable or disable resilient VM creation.")]
-        public SwitchParameter EnableResilientVMCreate { get; set; }
+            HelpMessage = "Specifies whether resilient VM creation should be enabled on the virtual machine scale set. The default value is false.")]
+        public bool EnableResilientVMCreate { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Enable or disable resilient VM deletion.")]
+            HelpMessage = "Specifies whether resilient VM deletion should be enabled on the virtual machine scale set. The default value is false.")]
         public bool EnableResilientVMDelete { get; set; }
 
-        
         private void BuildPatchObject()
         {
             if (this.IsParameterBound(c => c.AutomaticOSUpgrade))
@@ -1427,7 +1426,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSetUpdate.ResiliencyPolicy = new ResiliencyPolicy();
                 }
-                this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.ResilientVMCreationPolicy = new ResilientVMCreationPolicy(this.EnableResilientVMCreate.IsPresent);
+                this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.ResilientVMCreationPolicy = new ResilientVMCreationPolicy(this.EnableResilientVMCreate);
             }
 
             if (this.IsParameterBound(c => c.EnableResilientVMDelete))
@@ -2221,7 +2220,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSet.ResiliencyPolicy = new ResiliencyPolicy();
                 }
-                this.VirtualMachineScaleSet.ResiliencyPolicy.ResilientVMCreationPolicy = new ResilientVMCreationPolicy(this.EnableResilientVMCreate.IsPresent);
+                this.VirtualMachineScaleSet.ResiliencyPolicy.ResilientVMCreationPolicy = new ResilientVMCreationPolicy(this.EnableResilientVMCreate);
             }
 
             if (this.IsParameterBound(c => c.EnableResilientVMDelete))
