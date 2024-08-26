@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 if (resourceGuardMapping != null && resourceGuardMapping.Count != 0)
                 {
                     // todo: CMK_MUA - check the op value correctly
-                    string criticalOp = "Microsoft.RecoveryServices/vaults/write#reduceImmutabilityState";
+                    string criticalOp = "Microsoft.RecoveryServices/vaults/write#modifyEncryptionSettings";
 
                     foreach (ResourceGuardOperationDetail operationDetail in resourceGuardMapping[0].Properties.ResourceGuardOperationDetails)
                     {
