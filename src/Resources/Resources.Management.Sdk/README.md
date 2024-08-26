@@ -31,7 +31,7 @@ license-header: MICROSOFT_MIT_NO_VERSION
 ## Configuration
 
 ```yaml
-commit: 88cc082d66e2b481ed99a17d44edffaeb6254eec
+commit: a6074b7654c388dec49c9969d0136cfeb03575c9
 ```
 
 ### Tag: package-deploymentscripts-2023-08
@@ -110,4 +110,13 @@ directive:
   - from: deploymentStacks.json
     where: $
     transform: $ = $.replace(/common-types\/resource-management\/v5\/types.json#\/parameters\/SubscriptionIdParameter/g, 'common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter');
+```
+
+### Tag: package-databoundaries-2024-08
+
+These settings apply only when `--tag=package-databoundaries-2024-08` is specified on the command line.
+
+``` yaml $(tag) == 'package-databoundaries-2024-08'
+input-file:
+- https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Resources/stable/2024-08-01/dataBoundaries.json
 ```
