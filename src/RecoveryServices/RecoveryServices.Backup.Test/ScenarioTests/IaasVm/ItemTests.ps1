@@ -381,6 +381,7 @@ function Test-AzureRSVaultCMK
 	$vaultName = "cmk-pstest-vault"
 	$keyVault = "cmk-pstest-keyvault"
 	$encryptionKeyId = "https://cmk-pstest-keyvault.vault.azure.net/keys/cmk-pstest-key/5569d5a163ee474cad2da4ac334af9d7"
+	$encryptionKeyId2 = "https://oss-pstest-keyvault.vault.azure.net/keys/cmk-pstest-key2"
 
 	try
 	{	
@@ -388,13 +389,17 @@ function Test-AzureRSVaultCMK
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 
 		# error scenario
-		Assert-ThrowsContains { Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $encryptionKeyId -VaultId $vault.ID -InfrastructureEncryption -UseSystemAssignedIdentity $false } `
+		Assert-ThrowsContains { Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $encryptionKeyId2 -VaultId $vault.ID -InfrastructureEncryption -UseSystemAssignedIdentity $false } `
 		"Please input a valid UserAssignedIdentity";	
 
 		# set and verify - CMK encryption property to UAI 
-		Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $encryptionKeyId -VaultId $vault.ID -InfrastructureEncryption -UseSystemAssignedIdentity $false  -UserAssignedIdentity $vault.Identity.UserAssignedIdentities.Keys[0]
+		Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $encryptionKeyId2 -VaultId $vault.ID -InfrastructureEncryption -UseSystemAssignedIdentity $false  -UserAssignedIdentity $vault.Identity.UserAssignedIdentities.Keys[0]
 		$prop = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
 		Assert-True { $prop.encryptionProperties.UserAssignedIdentity -eq $vault.Identity.UserAssignedIdentities.Keys[0] }
+
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		Assert-True { $vault.Properties.EncryptionProperty.KekIdentity.UserAssignedIdentity -eq $vault.Identity.UserAssignedIdentities.Keys[0] }
+		Assert-True { $vault.Properties.EncryptionProperty.KeyVaultProperties.KeyUri -eq $encryptionKeyId2 }
 
 		Start-TestSleep -Seconds 10
 
