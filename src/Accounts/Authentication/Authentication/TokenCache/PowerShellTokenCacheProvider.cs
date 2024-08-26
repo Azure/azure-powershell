@@ -54,10 +54,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
         }
 
-        public bool TryRemoveAccount(string accountId)
+        public virtual void ClearCache(string authority)
+        {
+        }
+
+        public bool TryRemoveAccount(string accountId, string authority = null)
         {
             TracingAdapter.Information(string.Format("[AuthenticationClientFactory] Calling GetAccountsAsync"));
-            var client = CreatePublicClient();
+            var client = CreatePublicClient(authority);
             var account = client.GetAccountsAsync()
                             .ConfigureAwait(false).GetAwaiter().GetResult()
                             .FirstOrDefault(a => string.Equals(a.Username, accountId, StringComparison.OrdinalIgnoreCase));

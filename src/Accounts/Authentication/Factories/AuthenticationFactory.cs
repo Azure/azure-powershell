@@ -485,7 +485,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return account.GetProperty(tokenKey);
         }
 
-        private void RemoveFromTokenCache(IAzureAccount account)
+        private void RemoveFromTokenCache(IAzureAccount account, string authority = null)
         {
             PowerShellTokenCacheProvider tokenCacheProvider;
             if (!AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out tokenCacheProvider))
@@ -493,7 +493,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 throw new NullReferenceException(Resources.AuthenticationClientFactoryNotRegistered);
             }
 
-            var publicClient = tokenCacheProvider.CreatePublicClient();
+            var publicClient = tokenCacheProvider.CreatePublicClient(authority);
             var accounts = publicClient.GetAccountsAsync()
                             .ConfigureAwait(false).GetAwaiter().GetResult();
             var tokenAccounts = accounts.Where(a => MatchCacheItem(account, a));

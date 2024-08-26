@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
                 }
                 else
                 {
-                    tokenCacheProvider.ClearCache();
+                    tokenCacheProvider.ClearCache(profile.DefaultContext.Environment.ActiveDirectoryServiceEndpointResourceId);
                     var defaultContext = new AzureContext();
                     profile.TrySetDefaultContext(defaultContext);
                     result = true;
