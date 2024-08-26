@@ -131,11 +131,6 @@ Accept wildcard characters: False
 ```
 
 ### -EnableSystemAssignedIdentity
-[Microsoft.Azure.PowerShell.Cmdlets.Astro.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned")]
-[Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-[System.String]
-# Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-${IdentityType},
 Decides if enable a system assigned identity for the resource.
 
 ```yaml
