@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.1.0
 * Added customized UserAgent for ARM telemetry.
 * Fixed secrets exposure in example documentation.
 * Updated `Connect-AzAccount` to fix a display issue in PowerShell ISE [#24556].
