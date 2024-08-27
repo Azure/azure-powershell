@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Passed Microsoft EntraID authority to CreatePublicClient to fix Az.Ssh issue when WAM enabled.
 * Added customized UserAgent for ARM telemetry.
 * Fixed secrets exposure in example documentation.
 * Updated `Connect-AzAccount` to fix a display issue in PowerShell ISE [#24556].
