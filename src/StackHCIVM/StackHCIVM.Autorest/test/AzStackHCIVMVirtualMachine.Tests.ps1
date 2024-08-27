@@ -54,6 +54,7 @@ Describe 'AzStackHCIVMVirtualMachine' {
 
     It 'Create Network Interface  '  {
         New-AzStackHciVMNetworkInterface  -Name "testNic1" -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -SubnetId "/subscriptions/37908b1f-2848-4c85-b8bf-a2cab2c3b0ba/resourceGroups/vpclus0724-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/lnet_aug"  | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
+        New-AzStackHciVMNetworkInterface  -Name "testNic2" -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -SubnetId "/subscriptions/37908b1f-2848-4c85-b8bf-a2cab2c3b0ba/resourceGroups/vpclus0724-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/lnet_aug"  | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
     }
 
 
@@ -65,24 +66,13 @@ Describe 'AzStackHCIVMVirtualMachine' {
         } 
     }
 
-    
-    It 'Create osdisk'  {
-        New-AzStackHCIVMVirtualHardDisk -Name "testOsDisk" -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -SizeGb $env.sizeGb | Select-Object -Property ProvisioningState  | Should -BeExactly "@{ProvisioningState=Succeeded}"
-    }
-    
 
     It 'Create VHD'  {
         New-AzStackHCIVMVirtualHardDisk -Name "testVhdDisk1" -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -SizeGb $env.sizeGb | Select-Object -Property ProvisioningState  | Should -BeExactly "@{ProvisioningState=Succeeded}"
-    }
-    
-    It 'Create VHD'  {
         New-AzStackHCIVMVirtualHardDisk -Name "testVhdDisk2" -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -SizeGb $env.sizeGb | Select-Object -Property ProvisioningState  | Should -BeExactly "@{ProvisioningState=Succeeded}"
+        New-AzStackHCIVMVirtualHardDisk -Name "testOsDisk" -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -SizeGb $env.sizeGb | Select-Object -Property ProvisioningState  | Should -BeExactly "@{ProvisioningState=Succeeded}"
     }
 
-    It 'Create Network Interface  '  {
-        New-AzStackHciVMNetworkInterface  -Name "testNic2" -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -SubnetId "/subscriptions/37908b1f-2848-4c85-b8bf-a2cab2c3b0ba/resourceGroups/vpclus0724-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/lnet_aug"  | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
-    }
-    
     It 'Create vm with osdisk  '  {
         New-AzStackHciVMVirtualMachine -DataDiskName "testVhdDisk1"  -Name "testvm3" -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName  -NicName testNic2 -CustomLocationId  $env.customLocationId -Location "eastus"  -OsType "Windows" -OsDiskName "testOsDisk" | Select-Object -Property ProvisioningState  | Should -BeExactly "@{ProvisioningState=Succeeded}"
     }
@@ -102,14 +92,17 @@ Describe 'AzStackHCIVMVirtualMachine' {
             $config = Get-AzStackHCIVMVirtualMachine -Name manualvmtest2 -ResourceGroupName $env.resourceGroupName 
             $config | Should -Be $null
          } | Should -Throw
-    }
-    
-   It 'Delete disk vm' {
-    {
+
+         {
    
-       Remove-AzStackHCIVMVirtualMachine -Name  testvm3 -ResourceGroupName $env.resourceGroupName -Force
-       $config = Get-AzStackHCIVMVirtualMachine -Name manualvmtest2 -ResourceGroupName $env.resourceGroupName 
-       $config | Should -Be $null
-    } | Should -Throw
-}
+            Remove-AzStackHCIVMVirtualMachine -Name  testvm3 -ResourceGroupName $env.resourceGroupName -Force
+            $config = Get-AzStackHCIVMVirtualMachine -Name manualvmtest2 -ResourceGroupName $env.resourceGroupName 
+            $config | Should -Be $null
+         } | Should -Throw
+
+        Remove-AzStackHCIVMVirtualHardDisk -Name "testVhdDisk1" -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.resourceGroupName 
+        Remove-AzStackHCIVMVirtualHardDisk -Name "testVhdDisk2" -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.resourceGroupName 
+        Remove-AzStackHCIVMVirtualHardDisk -Name "testOsDisk" -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.resourceGroupName 
+        Remove-AzStackHciVMNetworkInterface  -Name "testNic2" -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName 
+    }
 }

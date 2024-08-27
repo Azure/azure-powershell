@@ -23,7 +23,7 @@
   "lnetName": "testLnetPowershell0226",
   "vmSwitchName": "testswitch",
   "nicName": "testnicPowershell0226",
-  "storagePathName": "teststoragepath0226",
+  "storagePathName": "teststoragepath1",
   "storageContainerPath": "C:\\ClusterStorage\\Volume1\\testPath0226",
   "vmImageName": "bugbashimage",
   "vmVhdName": "testVhdDisk1106",
