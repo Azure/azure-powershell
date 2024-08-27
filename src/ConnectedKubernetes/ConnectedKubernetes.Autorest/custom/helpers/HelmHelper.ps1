@@ -385,7 +385,8 @@ function Get-HelmReleaseNamespaces {
     catch {
         Write-Error "Fail to find the namespace for azure-arc."
     }
-    return , @($ReleaseNamespace, $ReleaseInstallNamespace)
+    #  return @{"site" = $($site); "app" = $($app)}
+    return , @{"ReleaseNamespace" = $($ReleaseNamespace); "ReleaseInstallNamespace"= $($ReleaseInstallNamespace)}
 }
 
 function Validate-HelmVersion {

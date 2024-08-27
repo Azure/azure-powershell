@@ -330,10 +330,10 @@ function Set-AzConnectedKubernetes {
             $ResourceGroupName = $InputObject.ResourceGroupName
             $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
 
-            if ((-not $PSBoundParameters.ContainsKey('EnableGateway') -and $InputObject.GatewayEnabled) -or $PSBoundParameters.ContainsKey('DisableGateway')) {
+            if ((-not $PSBoundParameters.ContainsKey('EnableGateway')) -and $InputObject.GatewayEnabled) {
                 $EnableGateway = $InputObject.GatewayEnabled
             }
-            if ((-not $PSBoundParameters.ContainsKey('DisableGateway') -and -not $InputObject.GatewayEnabled) -or $PSBoundParameters.ContainsKey('EnableGateway')) {
+            if ((-not $PSBoundParameters.ContainsKey('DisableGateway')) -and (-not $InputObject.GatewayEnabled)) {
                 $DisableGateway = $InputObject.GatewayEnabled
             }
             if ((-not $PSBoundParameters.ContainsKey('GatewayResourceId')) -and (-not [String]::IsNullOrEmpty($InputObject.GatewayResourceId))) {
@@ -411,8 +411,9 @@ function Set-AzConnectedKubernetes {
 
         #Region get release namespace
         $ReleaseNamespaces = Get-HelmReleaseNamespaces -KubeConfig $KubeConfig -KubeContext $KubeContext
-        $ReleaseNamespace = $ReleaseNamespaces[0]
-        $ReleaseInstallNamespace = $ReleaseNamespaces[1]
+        $ReleaseNamespace = $ReleaseNamespaces['ReleaseNamespace']
+        $ReleaseInstallNamespace = $ReleaseNamespaces['ReleaseInstallNamespace']
+
 
         #Endregion
 

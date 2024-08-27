@@ -373,8 +373,8 @@ function New-AzConnectedKubernetes {
 
         #Region get release namespace
         $ReleaseNamespaces = Get-HelmReleaseNamespaces -KubeConfig $KubeConfig -KubeContext $KubeContext
-        $ReleaseNamespace = $ReleaseNamespaces[0]
-        $ReleaseInstallNamespace = $ReleaseNamespaces[1]
+        $ReleaseNamespace = $ReleaseNamespaces['ReleaseNamespace']
+        $ReleaseInstallNamespace = $ReleaseNamespaces['ReleaseInstallNamespace']
 
         #Endregion
 
