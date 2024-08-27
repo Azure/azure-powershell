@@ -1,133 +1,114 @@
 ### Example 1: List Skus For Capacity
 ```powershell
-Get-AzFabricCapacitySku -ResourceGroupName "testrg" -CapacityName "azsdktest"
+Get-AzFabricCapacitySku -ResourceGroupName "testrg" -CapacityName "azsdktest" | fl
 ```
 
 ```output
-{
-  "value": [
-    {
-      "resourceType": "Microsoft.Fabric/capacities",
-      "sku": {
-        "name": "F16",
-        "tier": "Fabric"
-      }
-    },
-    {
-      "resourceType": "Microsoft.Fabric/capacities",
-      "sku": {
-        "name": "F8",
-        "tier": "Fabric"
-      }
-    },
-    {
-      "resourceType": "Microsoft.Fabric/capacities",
-      "sku": {
-        "name": "F64",
-        "tier": "Fabric"
-      }
-    },
-    {
-      "resourceType": "Microsoft.Fabric/capacities",
-      "sku": {
-        "name": "F1024",
-        "tier": "Fabric"
-      }
-    },
-    {
-      "resourceType": "Microsoft.Fabric/capacities",
-      "sku": {
-        "name": "F128",
-        "tier": "Fabric"
-      }
-    },
-    {
-      "resourceType": "Microsoft.Fabric/capacities",
-      "sku": {
-        "name": "F2",
-        "tier": "Fabric"
-      }
-    },
-    {
-      "resourceType": "Microsoft.Fabric/capacities",
-      "sku": {
-        "name": "F256",
-        "tier": "Fabric"
-      }
-    },
-    {
-      "resourceType": "Microsoft.Fabric/capacities",
-      "sku": {
-        "name": "F32",
-        "tier": "Fabric"
-      }
-    },
-    {
-      "resourceType": "Microsoft.Fabric/capacities",
-      "sku": {
-        "name": "F4",
-        "tier": "Fabric"
-      }
-    },
-    {
-      "resourceType": "Microsoft.Fabric/capacities",
-      "sku": {
-        "name": "F512",
-        "tier": "Fabric"
-      }
-    },
-    {
-      "resourceType": "Microsoft.Fabric/capacities",
-      "sku": {
-        "name": "F2048",
-        "tier": "Fabric"
-      }
-    }
-  ]
-}
-```
+ResourceType : Microsoft.Fabric/capacities
+SkuName      : F16
+SkuTier      : Fabric
 
-{{ Add description here }}
+ResourceType : Microsoft.Fabric/capacities
+SkuName      : F8
+SkuTier      : Fabric
+
+ResourceType : Microsoft.Fabric/capacities
+SkuName      : F64
+SkuTier      : Fabric
+
+ResourceType : Microsoft.Fabric/capacities
+SkuName      : F1024
+SkuTier      : Fabric
+
+ResourceType : Microsoft.Fabric/capacities
+SkuName      : F128
+SkuTier      : Fabric
+
+ResourceType : Microsoft.Fabric/capacities
+SkuName      : F2
+SkuTier      : Fabric
+
+ResourceType : Microsoft.Fabric/capacities
+SkuName      : F256
+SkuTier      : Fabric
+
+ResourceType : Microsoft.Fabric/capacities
+SkuName      : F32
+SkuTier      : Fabric
+
+ResourceType : Microsoft.Fabric/capacities
+SkuName      : F4
+SkuTier      : Fabric
+
+ResourceType : Microsoft.Fabric/capacities
+SkuName      : F512
+SkuTier      : Fabric
+
+ResourceType : Microsoft.Fabric/capacities
+SkuName      : F2048
+SkuTier      : Fabric
+```
 
 ### Example 2: List Skus
 ```powershell
-Get-AzFabricCapacitySku
+Get-AzFabricCapacitySku | fl
 ```
 
 ```output
-{
-  "value": [
-    {
-      "name": "F8",
-      "locations": [
-        "West Europe"
-      ],
-      "resourceType": "Capacities"
-    },
-    {
-      "name": "F64",
-      "locations": [
-        "West Europe"
-      ],
-      "resourceType": "Capacities"
-    },
-    {
-      "name": "F128",
-      "locations": [
-        "West Europe"
-      ],
-      "resourceType": "Capacities"
-    },
-    {
-      "name": "F512",
-      "locations": [
-        "West Europe"
-      ],
-      "resourceType": "Capacities"
-    }
-  ]
-}
-```
+Name  ResourceType
+----  ------------
+Location     : {West US}
+Name         : F2
+ResourceType : Capacities
 
-{{ Add description here }}
+Location     : {West US}
+Name         : F4
+ResourceType : Capacities
+
+Location     : {West US}
+Name         : F8
+ResourceType : Capacities
+
+Location     : {West US}
+Name         : F16
+ResourceType : Capacities
+
+Location     : {West US}
+Name         : F32
+ResourceType : Capacities
+
+Location     : {West US}
+Name         : F64
+ResourceType : Capacities
+
+Location     : {West US}
+Name         : F128
+ResourceType : Capacities
+
+Location     : {West US}
+Name         : F256
+ResourceType : Capacities
+
+Location     : {West US}
+Name         : F512
+ResourceType : Capacities
+
+Location     : {West US}
+Name         : F1024
+ResourceType : Capacities
+
+Location     : {West US}
+Name         : F2048
+ResourceType : Capacities
+
+Location     : {West India}
+Name         : F2
+ResourceType : Capacities
+
+Location     : {West India}
+Name         : F4
+ResourceType : Capacities
+
+...
+```
 
