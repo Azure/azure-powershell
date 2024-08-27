@@ -5334,7 +5334,7 @@ function Test-ResiliencyPolicyVMSS
         # New VMSS Parameters
         $vmssName = 'vmssResiliencyPolicy' + $rgname;
 
-        $adminUsername = 'Foo12';
+        $adminUsername = Get-ComputeTestResourceName;
         $adminPassword = $PLACEHOLDER;
         $securePassword = ConvertTo-SecureString $adminPassword -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $securePassword);
@@ -5346,7 +5346,7 @@ function Test-ResiliencyPolicyVMSS
         # check ResilientVMCreationPolicy
         Assert-True { $vmssConfig.ResiliencyPolicy.ResilientVMCreationPolicy.Enabled };
         # check ResilientVMDeletionPolicy
-        Assert-True { $vmssConfig.ResiliencyPolicy.ResilientVMCreationPolicy.Enabled };
+        Assert-True { $vmssConfig.ResiliencyPolicy.ResilientVMDeletionPolicy.Enabled };
 
         Update-azvmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -EnableResilientVMDelete $false -EnableResilientVMCreate $false
         $updatedVmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
