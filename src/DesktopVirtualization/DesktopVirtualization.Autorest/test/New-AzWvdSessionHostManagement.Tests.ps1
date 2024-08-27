@@ -18,11 +18,12 @@ Describe 'New-AzWvdSessionHostManagement' {
     It 'CreateExpanded' {
         $management = New-AzWvdSessionHostManagement -SubscriptionId $env.SubscriptionId `
             -ResourceGroupName $env.ResourceGroupPersistent `
-            -HostPoolName $env.AutomatedHostpoolPersistent `
+            -HostPoolName $env.AutomatedHostPoolPersistent `
             -ScheduledDateTimeZone "UTC" `
             -UpdateLogOffDelayMinute 1 `
             -UpdateMaxVmsRemoved 1 `
-            -UpdateLogoffMessage "HostpoolUpdate is great!"
+            -UpdateLogoffMessage "HostpoolUpdate is great!" `
+            -UpdateDeleteOriginalVm
 
         $management = Get-AzWvdSessionHostManagement -SubscriptionId $env.SubscriptionId `
             -ResourceGroupName $env.ResourceGroupPersistent `

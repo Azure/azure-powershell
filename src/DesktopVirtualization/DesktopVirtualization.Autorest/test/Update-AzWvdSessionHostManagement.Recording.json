@@ -13,35 +13,36 @@
       }
     },
     "Response": {
-      "StatusCode": 400,
+      "StatusCode": 200,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
         "Set-Cookie": [ "ARRAffinity=39d91f16fdd59b39d7a07780844d80b88a73a7f54a8a5e7eeddb8cc0cb631057;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=39d91f16fdd59b39d7a07780844d80b88a73a7f54a8a5e7eeddb8cc0cb631057;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "X-Rate-Limit-Limit": [ "0" ],
         "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
         "X-Rate-Limit-Reset": [ "0" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JocHVIUC9zZXNzaW9uSG9zdE1hbmFnZW1lbnRzL2RlZmF1bHQ=" ],
-        "x-ms-lamport-ts": [ "175518721" ],
-        "x-ms-correlation-id": [ "b405f766-936e-4534-b1b2-c90b2e20ffe7" ],
-        "x-ms-request-id": [ "c4d77ddf-ee18-40f1-9f18-b38c94716d80" ],
+        "x-ms-lamport-ts": [ "176355436" ],
+        "x-ms-correlation-id": [ "cea95eeb-9248-41ea-a53d-206a32c9b326" ],
+        "x-ms-request-id": [ "d465d59d-4ebb-416b-8d03-4d97c0fb53a5" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-correlation-request-id": [ "dae2e90f-f485-4cce-a4d4-628db7c91a59" ],
-        "x-ms-routing-request-id": [ "WESTUS:20240820T202525Z:dae2e90f-f485-4cce-a4d4-628db7c91a59" ],
+        "x-ms-correlation-request-id": [ "554ee7a6-5c33-4e28-bf75-a63be9d3ba57" ],
+        "x-ms-routing-request-id": [ "WESTUS:20240827T193709Z:554ee7a6-5c33-4e28-bf75-a63be9d3ba57" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A8CAF43C1E2D4AE093F24187B293F0F7 Ref B: SJC211051201029 Ref C: 2024-08-20T20:25:19Z" ],
-        "Date": [ "Tue, 20 Aug 2024 20:25:24 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 7E5F64D6F4CE45D7AAE2F0FA64B9C5E7 Ref B: SJC211051204045 Ref C: 2024-08-27T19:37:03Z" ],
+        "Date": [ "Tue, 27 Aug 2024 19:37:09 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "261" ],
+        "Content-Length": [ "455" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"BadRequest\",\"message\":\"ActivityId: b405f766-936e-4534-b1b2-c90b2e20ffe7 Error: {\\\"error\\\":{\\\"code\\\":\\\"InvalidSessionHostManagementRequest\\\",\\\"message\\\":\\\"Cannot modify the session host management properties while RDVmManager is running.\\\"}}\"}}",
+      "Content": "{\"name\":\"default\",\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default\",\"type\":\"Microsoft.DesktopVirtualization/hostPools/sessionHostManagements\",\"properties\":{\"scheduledDateTimeZone\":\"UTC\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":1,\"logOffMessage\":\"Updating HostpoolUpdate is great!\"}}}",
       "isContentBase64": false
     }
   }

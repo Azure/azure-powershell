@@ -7,11 +7,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "186" ],
-        "x-ms-client-request-id": [ "2a010644-c4cc-4311-ac60-9a04b1b6acd4" ],
+        "x-ms-client-request-id": [ "e7cb580e-9a95-411f-b85a-cfae75338167" ],
         "CommandName": [ "Invoke-AzWvdRetrySessionHostProvisioning" ],
         "FullCommandName": [ "Invoke-AzWvdRetrySessionHostProvisioning_Retry" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.2.0", "PSVersion/v7.2.19", "Az.DesktopVirtualization/2.1.0" ],
+        "User-Agent": [ "AzurePowershell/v12.2.0", "PSVersion/v7.2.23", "Az.DesktopVirtualization/2.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -27,19 +27,19 @@
         "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
         "X-Rate-Limit-Reset": [ "0" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JocHVIUC9zZXNzaW9uSG9zdHMvdXBkYXRlVGVzdC0w" ],
-        "x-ms-lamport-ts": [ "175518070" ],
-        "x-ms-correlation-id": [ "f3ec5485-5acf-449a-9a1c-7f4fd8523b47" ],
-        "x-ms-request-id": [ "2a010644-c4cc-4311-ac60-9a04b1b6acd4" ],
+        "x-ms-lamport-ts": [ "176354832" ],
+        "x-ms-correlation-id": [ "256c1c1a-b2c2-49b3-a90f-9fa77564d0b5" ],
+        "x-ms-request-id": [ "e7cb580e-9a95-411f-b85a-cfae75338167" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-correlation-request-id": [ "5fbf6aad-0dbf-4e62-ad77-b46708e6363c" ],
-        "x-ms-routing-request-id": [ "WESTUS:20240820T201528Z:5fbf6aad-0dbf-4e62-ad77-b46708e6363c" ],
+        "x-ms-correlation-request-id": [ "4f15ad1b-99f9-45dd-b433-528256f34cbc" ],
+        "x-ms-routing-request-id": [ "WESTUS:20240827T192703Z:4f15ad1b-99f9-45dd-b433-528256f34cbc" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 2FE40809862B455F8F177867BAF14DB9 Ref B: SJC211051201029 Ref C: 2024-08-20T20:15:28Z" ],
-        "Date": [ "Tue, 20 Aug 2024 20:15:28 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6ABD6ABF3A7E431CB119AED7F397E48F Ref B: SJC211051204045 Ref C: 2024-08-27T19:27:03Z" ],
+        "Date": [ "Tue, 27 Aug 2024 19:27:03 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
