@@ -38,4 +38,15 @@ Describe 'Test-AzFabricCapacityNameAvailability' {
     It 'Check' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
+<<<<<<< HEAD
+=======
+
+    It 'CheckViaIdentityExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'CheckViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+>>>>>>> 4ad88641e3d17effff8ed003b8f9d3532053ae5c
 }

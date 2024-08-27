@@ -17,6 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Resume-AzFabricCapacity'))
 }
 
 Describe 'Resume-AzFabricCapacity' {
+<<<<<<< HEAD
     It 'Resume' {
         Suspend-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CAPACITY_NAME
         $result = Get-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CAPACITY_NAME
@@ -25,5 +26,19 @@ Describe 'Resume-AzFabricCapacity' {
         Resume-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CAPACITY_NAME
         $result = Get-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CAPACITY_NAME
         Validate_Capacity $result $env.CAPACITY_NAME $env.CAPACITY_ID $env.LOCATION "Active" "Succeeded" $env.SKU_NAME
+=======
+    It 'Resume' -skip {
+        Suspend-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CAPACITY_NAME
+        $result = Get-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CAPACITY_NAME
+        Validate_Capacity $result $newCapacityName $newCapacityId $env.LOCATION "Suspended" "Succeeded" $env.SKU_NAME
+
+        Resume-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CAPACITY_NAME
+        $result = Get-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CAPACITY_NAME
+        Validate_Capacity $result $newCapacityName $newCapacityId $env.LOCATION "Active" "Succeeded" $env.SKU_NAME
+    }
+
+    It 'ResumeViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+>>>>>>> 4ad88641e3d17effff8ed003b8f9d3532053ae5c
     }
 }

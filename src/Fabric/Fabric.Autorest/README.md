@@ -28,7 +28,11 @@ For information on how to develop for `Az.Fabric`, see [how-to.md](how-to.md).
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
+<<<<<<< HEAD
 commit: fa6609332acece21de44c0bf885cbcb3d87bd01f
+=======
+commit: 5f81e1bdb315630a90262e752946b534236e32c8
+>>>>>>> 4ad88641e3d17effff8ed003b8f9d3532053ae5c
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md

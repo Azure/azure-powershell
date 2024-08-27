@@ -1,5 +1,9 @@
 @{
+<<<<<<< HEAD
   GUID = 'ae259966-6ec6-4d5c-a308-5c01a210c8a7'
+=======
+  GUID = 'b6ee04ec-f700-4717-a078-d87504d70ce0'
+>>>>>>> 4ad88641e3d17effff8ed003b8f9d3532053ae5c
   RootModule = './Az.Fabric.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'

@@ -15,13 +15,21 @@ Suspend operation of the specified Fabric capacity instance.
 ### Suspend (Default)
 ```
 Suspend-AzFabricCapacity -CapacityName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+<<<<<<< HEAD
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+=======
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+>>>>>>> 4ad88641e3d17effff8ed003b8f9d3532053ae5c
 ```
 
 ### SuspendViaIdentity
 ```
 Suspend-AzFabricCapacity -InputObject <IFabricIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+<<<<<<< HEAD
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+=======
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+>>>>>>> 4ad88641e3d17effff8ed003b8f9d3532053ae5c
 ```
 
 ## DESCRIPTION
@@ -130,6 +138,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -PassThru
 Returns true when the command succeeds
 
@@ -145,6 +154,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+=======
+>>>>>>> 4ad88641e3d17effff8ed003b8f9d3532053ae5c
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
