@@ -37,13 +37,13 @@ Please note some properties can be set only during image creation.
 
 ### Example 1: Update an Image.
 ```powershell
-Update-AzStackHCIVMImage  -Name "testImage" -ResourceGroupName "test-rg" -Tag @{"tagname" = "tagvalue"}
+Update-AzStackHCIVMImage  -Name "abc" -ResourceGroupName "test-rg" -Tag @{"tagname" = "tagvalue"}
 ```
 
 ```output
 Name            ResourceGroupName
 ----            -----------------
-testImage      test-rg
+abc      test-rg
 ```
 
 This command updates an exisiting image in the specified resource group.

@@ -77,7 +77,7 @@ Please note some properties can be set only during virtual machine creation.
 
 ### Example 1: Create a Virtual Machine with an Image. 
 ```powershell
-New-AzStackHCIVMVirtualMachine -Name "testVm" -OsType "Linux"  -ImageName "testImage" -VmSize "Standard_K8S_v1"  -AdminUsername "localadmin" -ComputerName "testVm"  -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus"
+New-AzStackHCIVMVirtualMachine -Name "testVm" -OsType "Linux"  -ImageName "abc" -VmSize "Standard_K8S_v1"  -AdminUsername "localadmin" -ComputerName "testVm"  -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus"
 ```
 
 ```output
