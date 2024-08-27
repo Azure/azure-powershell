@@ -35,8 +35,6 @@ https://learn.microsoft.com/powershell/module/az.connectedkubernetes/new-azconne
 [CmdletBinding()]
 param()
 
-. "$PSScriptRoot/helpers/CommonFunctions.ps1"
-
 function New-AzConnectedKubernetes {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
@@ -312,7 +310,7 @@ function New-AzConnectedKubernetes {
             return
         }
         Write-Debug "Setting the kube context."
-        if ($PSBoundParameters:KubeContext) {
+        if ($PSBoundParameters.ContainsKey("KubeContext")) {
             $Null = $PSBoundParameters.Remove('KubeContext')
         }
         if (($null -eq $KubeContext) -or ($KubeContext -eq '')) {
@@ -410,7 +408,7 @@ function New-AzConnectedKubernetes {
             }
         }
 
-        Set-HelmRepositoryAndModules -KubeConfig $KubeConfig -KubeContext $KubeContext -Location $Location -ReleaseTrain $ReleaseTrain -Account $Account -TenantId $TenantId -ProxyCert $ProxyCert -DisableAutoUpgrade $DisableAutoUpgrade -ContainerLogPath $ContainerLogPath -CustomLocationsOid $CustomLocationsOid
+        $RegistryPath = Set-HelmRepositoryAndModules -KubeConfig $KubeConfig -KubeContext $KubeContext -Location $Location -ProxyCert $ProxyCert -DisableAutoUpgrade $DisableAutoUpgrade -ContainerLogPath $ContainerLogPath -CustomLocationsOid $CustomLocationsOid
 
         # Region create RSA keys
         Write-Debug "Generating RSA keys for secure communication."
@@ -436,7 +434,78 @@ function New-AzConnectedKubernetes {
         $options = ""
         $proxyEnableState = $false
 
-        Configure-ProxySettings -HttpProxy $HttpProxy -HttpsProxy $HttpsProxy -NoProxy $NoProxy -ProxyCert $ProxyCert -DisableAutoUpgrade $DisableAutoUpgrade -ProxyEnableState $proxyEnableState -ContainerLogPath $ContainerLogPath -KubeConfig $KubeConfig -KubeContext $KubeContext -CustomLocationsOid $CustomLocationsOid -ConfigurationSetting $ConfigurationSetting -ConfigurationProtectedSetting $ConfigurationProtectedSetting -PSBoundParameters $PSBoundParameters
+        if (![string]::IsNullOrEmpty($HttpProxy) -or ![string]::IsNullOrEmpty($HttpsProxy) -or ![string]::IsNullOrEmpty($NoProxy) -or ![string]::IsNullOrEmpty($HttpProxy) ) {
+            if (-not $ConfigurationSetting.ContainsKey("proxy")) {
+                $ConfigurationSetting["proxy"] = @{}
+            }
+            if (-not $ConfigurationProtectedSetting.ContainsKey("proxy")) {
+                $ConfigurationProtectedSetting["proxy"] = @{}
+            }
+        }
+
+        if (-not ([string]::IsNullOrEmpty($HttpProxy))) {
+            $HttpProxyStr = $HttpProxy.ToString()
+            $HttpProxyStr = $HttpProxyStr -replace ',', '\,'
+            $HttpProxyStr = $HttpProxyStr -replace '/', '\/'
+            $options += " --set global.httpProxy=$HttpProxyStr"
+            $proxyEnableState = $true
+            $ConfigurationSetting["proxy"]["http_proxy"] = $HttpProxyStr
+            $ConfigurationProtectedSetting["proxy"]["http_proxy"] = $HttpProxyStr
+            # Note how we are removing k8s parameters from the list of parameters
+            # to pass to the internal (creates ARM object) command.
+            $Null = $PSBoundParameters.Remove('HttpProxy')
+        }
+        if (-not ([string]::IsNullOrEmpty($HttpsProxy))) {
+            $HttpsProxyStr = $HttpsProxy.ToString()
+            $HttpsProxyStr = $HttpsProxyStr -replace ',', '\,'
+            $HttpsProxyStr = $HttpsProxyStr -replace '/', '\/'
+            $options += " --set global.httpsProxy=$HttpsProxyStr"
+            $proxyEnableState = $true
+            $ConfigurationSetting["proxy"]["https_proxy"] = $HttpsProxyStr
+            $ConfigurationProtectedSetting["proxy"]["https_proxy"] = $HttpsProxyStr
+            $Null = $PSBoundParameters.Remove('HttpsProxy')
+        }
+        if (-not ([string]::IsNullOrEmpty($NoProxy))) {
+            $NoProxy = $NoProxy -replace ',', '\,'
+            $NoProxy = $NoProxy -replace '/', '\/'
+            $options += " --set global.noProxy=$NoProxy"
+            $proxyEnableState = $true
+            $ConfigurationSetting["proxy"]["no_proxy"] = $NoProxy
+            $ConfigurationProtectedSetting["proxy"]["no_proxy"] = $NoProxy
+            $Null = $PSBoundParameters.Remove('NoProxy')
+        }
+        if ($proxyEnableState) {
+            $options += " --set global.isProxyEnabled=true"
+        }
+        try {
+            if ((-not ([string]::IsNullOrEmpty($ProxyCert))) -and (Test-Path $ProxyCert)) {
+                $options += " --set-file global.proxyCert=$ProxyCert"
+                $options += " --set global.isCustomCert=true"
+                $ConfigurationSetting["proxy"]["proxy_cert"] = $ProxyCert
+                $ConfigurationProtectedSetting["proxy"]["proxy_cert"] = $ProxyCert
+            }
+        }
+        catch {
+            throw "Unable to find ProxyCert from file path"
+        }
+        if ($DisableAutoUpgrade) {
+            $options += " --set systemDefaultValues.azureArcAgents.autoUpdate=false"
+            $Null = $PSBoundParameters.Remove('DisableAutoUpgrade')
+        }
+        if (-not ([string]::IsNullOrEmpty($ContainerLogPath))) {
+            $options += " --set systemDefaultValues.fluent-bit.containerLogPath=$ContainerLogPath"
+            $Null = $PSBoundParameters.Remove('ContainerLogPath')
+        }
+        if (-not ([string]::IsNullOrEmpty($KubeConfig))) {
+            $options += " --kubeconfig $KubeConfig"
+        }
+        if (-not ([string]::IsNullOrEmpty($KubeContext))) {
+            $options += " --kube-context $KubeContext"
+        }
+        if (-not ([string]::IsNullOrEmpty($CustomLocationsOid))) {
+            $options += " --set systemDefaultValues.customLocations.oid=$CustomLocationsOid"
+            $options += " --set systemDefaultValues.customLocations.enabled=true"
+        }
 
         if (!$NoWait) {
             $options += " --wait --timeout $OnboardingTimeout"
@@ -446,8 +515,23 @@ function New-AzConnectedKubernetes {
         if ($PSBoundParameters.ContainsKey('OnboardingTimeout')) {
             $PSBoundParameters.Remove('OnboardingTimeout')
         }
-        Configure-ProxyCredential -Proxy $Proxy -ProxyCredential $ProxyCredential -PSBoundParameters $PSBoundParameters
-
+        
+        if ((-not ([string]::IsNullOrEmpty($Proxy))) -and (-not $PSBoundParameters.ContainsKey('ProxyCredential'))) {
+            if (-not ([string]::IsNullOrEmpty($Proxy.UserInfo))) {
+                try {
+                    $userInfo = $Proxy.UserInfo -Split ':'
+                    $pass = ConvertTo-SecureString $userInfo[1] -AsPlainText -Force
+                    $ProxyCredential = New-Object System.Management.Automation.PSCredential ($userInfo[0] , $pass)
+                    $PSBoundParameters.Add('ProxyCredential', $ProxyCredential)
+                }
+                catch {
+                    throw "Please set ProxyCredential or provide username and password in the Proxy parameter"
+                }
+            }
+            else {
+                Write-Warning "If the proxy is a private proxy, pass ProxyCredential parameter or provide username and password in the Proxy parameter"
+            }
+        }
         #Endregion
 
         # Process the Arc agentry settings and protected settings
@@ -465,8 +549,52 @@ function New-AzConnectedKubernetes {
         #          This DOES mean that code changes are required both in the
         #          Config DP annd this Powershell script if a new Kubernetes
         #          feature is added.
-        $configDpEndpoint = Configure-ArcAgentry -ConfigurationSetting $ConfigurationSetting -ConfigurationProtectedSetting $ConfigurationProtectedSetting -PSBoundParameters $PSBoundParameters -Location $Location
+        $arcAgentryConfigs = @(
+        )
 
+        if ($ConfigurationSetting) {
+            foreach ($key in $ConfigurationSetting.Keys) {
+                $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
+                    Feature = $key
+                    Setting = $ConfigurationSetting[$key]
+                }
+                if ($ConfigurationProtectedSetting -and $ConfigurationProtectedSetting[$key]) {
+                    $ArcAgentryConfiguration.ProtectedSetting = $ConfigurationProtectedSetting[$key]
+
+                    # Remove this key from ConfigurationProtectedSetting.
+                    $Null = $ConfigurationProtectedSetting.Remove($key)
+                }
+                $arcAgentryConfigs += $ArcAgentryConfiguration
+            }
+            $PSBoundParameters.Remove('ConfigurationSetting')
+        }
+
+        # Add the remaining (protected only) settings.
+        if ($ConfigurationProtectedSetting) {
+            foreach ($key in $ConfigurationProtectedSetting.Keys) {
+                $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
+                    Feature          = $key
+                    ProtectedSetting = $ConfigurationProtectedSetting[$key]
+                }
+                $argAgentryConfigs += $ArcAgentryConfiguration
+            }
+            $PSBoundParameters.Remove('ConfigurationProtectedSetting')
+        }
+
+        $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
+
+        # A lot of what follows relies on knowing the cloud we are using and the
+        # various endpoints so get that information now.
+        $cloudMetadata = Get-AzCloudMetadata
+
+        # Perform DP health check
+        $configDpinfo = Get-ConfigDPEndpoint -location $Location -Cloud $cloudMetadata
+        $configDPEndpoint = $configDpInfo.configDPEndpoint
+
+        # If the health check fails (not 200 response), an exception is thrown
+        # so we can ignore the output.
+        $null = Invoke-ConfigDPHealthCheck -configDPEndpoint $configDPEndpoint
+        
         # This call does the "pure ARM" update of the ARM objects.
         Write-Debug "Writing Connected Kubernetes ARM objects."
 

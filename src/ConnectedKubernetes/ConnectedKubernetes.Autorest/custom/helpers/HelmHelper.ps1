@@ -299,3 +299,121 @@ function Invoke-ExternalCommand {
     )
     & $Command $Arguments
 }
+
+
+function Set-HelmRepositoryAndModules {
+    param (
+        [string]$KubeConfig,
+        [string]$KubeContext,
+        [string]$Location,
+        [string]$ProxyCert,
+        [bool]$DisableAutoUpgrade,
+        [string]$ContainerLogPath,
+        [string]$CustomLocationsOid
+    )
+    Write-Debug "Setting Helm repository and checking for required modules."
+    if ((Test-Path Env:HELMREPONAME) -and (Test-Path Env:HELMREPOURL)) {
+        $HelmRepoName = Get-ChildItem -Path Env:HELMREPONAME
+        $HelmRepoUrl = Get-ChildItem -Path Env:HELMREPOURL
+        helm repo add $HelmRepoName $HelmRepoUrl --kubeconfig $KubeConfig --kube-context $KubeContext
+    }
+
+    $resources = Get-Module Az.Resources -ListAvailable
+    if ($null -eq $resources) {
+        Write-Error "Missing required module(s): Az.Resources. Please run 'Install-Module Az.Resources -Repository PSGallery' to install Az.Resources."
+        return
+    }
+
+    if (Test-Path Env:HELMREGISTRY) {
+        $RegistryPath = Get-ChildItem -Path Env:HELMREGISTRY
+    }
+    else {
+        $ReleaseTrain = ''
+        if ((Test-Path Env:RELEASETRAIN) -and (Test-Path Env:RELEASETRAIN)) {
+            $ReleaseTrain = Get-ChildItem -Path Env:RELEASETRAIN
+        }
+        else {
+            $ReleaseTrain = 'stable'
+        }
+        $AzLocation = Get-AzLocation | Where-Object { ($_.DisplayName -ieq $Location) -or ($_.Location -ieq $Location) }
+        $Region = $AzLocation.Location
+        if ($null -eq $Region) {
+            Write-Error "Invalid location: $Location"
+            return
+        }
+        else {
+            $Location = $Region
+        }
+        $ChartLocationUrl = "https://${Location}.dp.kubernetesconfiguration.azure.com/azure-arc-k8sagents/GetLatestHelmPackagePath?api-version=2019-11-01-preview&releaseTrain=${ReleaseTrain}"
+
+        $Uri = [System.Uri]::New($ChartLocationUrl)
+        $Account = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Account
+        $Env = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment]::PublicEnvironments[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.EnvironmentName]::AzureCloud]
+        $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
+        $PromptBehavior = [Microsoft.Azure.Commands.Common.Authentication.ShowDialog]::Never
+        $Token = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($account, $env, $tenantId, $null, $promptBehavior, $null)
+        $AccessToken = $Token.AccessToken
+
+        $HeaderParameter = @{
+            "Authorization" = "Bearer $AccessToken"
+        }
+
+        $Response = Invoke-WebRequest -Uri $Uri -Headers $HeaderParameter -Method Post -UseBasicParsing
+        if ($Response.StatusCode -eq 200) {
+            $RegistryPath = ($Response.Content | ConvertFrom-Json).repositoryPath
+        }
+        else {
+            Write-Error "Error while fetching helm chart registry path: ${$Response.RawContent}"
+            return
+        }
+    }
+    Set-Item -Path Env:HELM_EXPERIMENTAL_OCI -Value 1
+    return $RegistryPath
+}
+
+function Get-HelmReleaseNamespaces {
+    param (
+        [string]$KubeConfig,
+        [string]$KubeContext
+    )
+    Write-Debug "Getting release namespace."
+    $ReleaseInstallNamespace = Get-ReleaseInstallNamespace
+    $ReleaseNamespace = $null
+    try {
+        $ReleaseNamespace = (helm status azure-arc -o json --kubeconfig $KubeConfig --kube-context $KubeContext -n $ReleaseInstallNamespace 2> $null | ConvertFrom-Json).namespace
+    }
+    catch {
+        Write-Error "Fail to find the namespace for azure-arc."
+    }
+    return , @($ReleaseNamespace, $ReleaseInstallNamespace)
+}
+
+function Validate-HelmVersion {
+    param (
+        [string]$KubeConfig
+    )
+    Write-Debug "Setting up Helm client location and validating Helm version."
+    try {
+        Set-HelmClientLocation
+        $HelmVersion = helm version --template='{{.Version}}' --kubeconfig $KubeConfig
+        if ($HelmVersion.Contains("v2")) {
+            Write-Error "Helm version 3+ is required (not ${HelmVersion}). Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
+            return
+        }
+        $HelmVersion = helm version --short --kubeconfig $KubeConfig
+
+        # Compare the helm version to 3.8 in a symantic versioning valid way
+        # Strip the leading "v" from the helm version and discard any metadata
+        $HelmVersion = $HelmVersion.Substring(1)
+        $HelmVersion = $HelmVersion.Split('+')[0]
+        $helmV380 = [System.Version]::Parse("3.8.0")
+        $helmThisVersion = [System.Version]::Parse($HelmVersion)
+        if ($helmThisVersion -lt $helmV380) {
+            Write-Error "Helm version of at least 3.8 is required for latest OCI handling."
+            return
+        }
+    }
+    catch {
+        throw "Failed to install Helm version 3+ ($_). Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
+    }
+}
