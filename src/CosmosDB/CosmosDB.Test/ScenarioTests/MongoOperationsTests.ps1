@@ -148,7 +148,7 @@ Try {
 
 function Test-MongoInAccountRestoreOperationsSharedRUResourcesCmdlets
 {
-  $AccountName = "mongo-db00045"
+  $AccountName = "mongo-db000455"
   $rgName = "CosmosDBResourceGroup46"
   $DatabaseName = "dbName"
   $CollectionName = "collection"
