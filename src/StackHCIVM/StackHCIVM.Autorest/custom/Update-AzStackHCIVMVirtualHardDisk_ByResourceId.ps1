@@ -20,13 +20,13 @@ The operation to update a virtual hard disk.
 The operation to update a virtual hard disk.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisk
 
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmvirtualharddisks
 #>
 function Update-AzStackHCIVMVirtualHardDisk_ByResourceId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisk])]
 [CmdletBinding(PositionalBinding=$false)]
 
 param(

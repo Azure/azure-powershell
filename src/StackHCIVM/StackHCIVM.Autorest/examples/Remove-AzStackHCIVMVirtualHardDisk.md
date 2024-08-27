@@ -1,9 +1,22 @@
-### Example 1: Remove a Virtual Hard Disk
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzStackHCIVMVirtualHardDisk  -Name "testVhd" -ResourceGroupName "test-rg"
-
+{{ Add code here }}
 ```
-This command removes the virtual hard disk from the specified resource group. 
 
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
 
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 

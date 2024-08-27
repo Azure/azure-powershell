@@ -22,7 +22,7 @@ The operation to create or update a network interface.
 Please note some properties can be set only during network interface creation.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterface
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -36,7 +36,7 @@ IPCONFIGURATION <IIPConfiguration[]>: IPConfigurations - A list of IPConfigurati
 https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmnetworkinterface
 #>
 function New-AzStackHCIVMNetworkInterface {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterface])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

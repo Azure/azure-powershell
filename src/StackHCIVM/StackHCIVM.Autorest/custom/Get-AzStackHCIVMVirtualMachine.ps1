@@ -26,7 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance
 https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmvirtualmachine
 #>
 function Get-AzStackHCIVMVirtualMachine {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Machine],ParameterSetName='ByResourceGroup' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance],ParameterSetName='ByResourceGroup' )]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance],ParameterSetName='ByName' )]
     [CmdletBinding( PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(

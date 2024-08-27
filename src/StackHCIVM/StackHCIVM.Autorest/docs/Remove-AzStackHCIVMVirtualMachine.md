@@ -31,13 +31,27 @@ The operation to delete a virtual machine.
 
 ## EXAMPLES
 
-### Example 1: Remove a Virtual Machine 
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
-
+{{ Add code here }}
 ```
 
-This command removes the virtual machine from the specified resource group.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

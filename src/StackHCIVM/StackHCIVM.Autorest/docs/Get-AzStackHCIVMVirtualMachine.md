@@ -200,8 +200,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Machine
-
 ## NOTES
 
 ## RELATED LINKS

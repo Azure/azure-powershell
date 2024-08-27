@@ -48,18 +48,27 @@ The operation to update a storage container.
 
 ## EXAMPLES
 
-### Example 1: Update a Storage Path.
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzStackHCIVMStoragePath  -Name "testVhd" -ResourceGroupName "test-rg" -Tag @{"tagname" = "tagvalue"}
+{{ Add code here }}
 ```
 
 ```output
-Name            ResourceGroupName
-----            -----------------
-testStoragePath       test-rg
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command updates an exisiting storage path in the specified resource group.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -96,7 +105,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity
@@ -203,6 +211,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -217,7 +226,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -271,7 +280,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainer
 
 ## NOTES
 

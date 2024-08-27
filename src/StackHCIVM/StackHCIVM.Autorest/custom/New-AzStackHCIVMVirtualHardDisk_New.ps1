@@ -23,12 +23,12 @@ The operation to create or update a virtual hard disk.
 Please note some properties can be set only during virtual hard disk creation.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisk
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmvirtualharddisk
 #>
 function New-AzStackHCIVMVirtualHardDisk {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisk])]
 [CmdletBinding(PositionalBinding=$false,SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -251,6 +251,5 @@ param(
                 Write-Error $e.Exception.Message -ErrorAction Stop
             }
         }
-    
 }
 

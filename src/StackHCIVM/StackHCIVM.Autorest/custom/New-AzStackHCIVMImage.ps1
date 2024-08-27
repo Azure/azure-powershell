@@ -31,8 +31,8 @@ PS C:\> {{ Add code here }}
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImage
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImage
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,9 +40,9 @@ COMPLEX PARAMETER PROPERTIES
 https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmimage
 #>
 function New-AzStackHCIVMImage{
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages],ParameterSetName='Marketplace' )]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages],ParameterSetName='MarketplaceURN' )]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages],ParameterSetName='GalleryImage' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImage],ParameterSetName='Marketplace' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImage],ParameterSetName='MarketplaceURN' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImage],ParameterSetName='GalleryImage' )]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
 
@@ -103,6 +103,7 @@ function New-AzStackHCIVMImage{
     [Parameter(ParameterSetName='GalleryImage', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.String]
+
     # Local path of image that the image should be created from. 
     # This parameter is required for non marketplace images. 
     ${ImagePath},
@@ -416,6 +417,9 @@ function New-AzStackHCIVMImage{
         if ($PSCmdlet.ParameterSetName -eq "GalleryImage")
         {
             try{
+                $null = $PSBoundParameters.Remove("ImagePath")
+                $SecureImagePath = ConvertTo-SecureString -String $ImagePath -AsPlainText -Force
+                $PSBoundParameters.Add('ImagePath', $SecureImagePath)
                 Az.StackHCIVM.internal\New-AzStackHCIVMGalleryImage -ErrorAction Stop @PSBoundParameters 
             } catch {
                 $e = $_
