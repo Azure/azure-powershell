@@ -5316,9 +5316,9 @@ function Test-VirtualMachineScaleSetDefaultImgWhenStandard
 
 <#
 .SYNOPSIS
-    Create a VMSS 
-    Test ResilientVMCreationPolicy
-    Test ResilientVMDeletionPolicy
+    Create a VMSS using New-Azvmssconfig
+    Update the Resiliency policies of VMSS using Update-Azvmss
+    Test ResilientVMCreationPolicy and ResilientVMDeletionPolicy
 #>
 function Test-ResiliencyPolicyVMSS
 {

@@ -308,7 +308,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableResilientVMCreate
-Enable or disable resilient VM creation.
+Specifies whether resilient VM creation should be enabled on the virtual machine scale set. The default value is false.
 
 ```yaml
 Type: System.Boolean
@@ -323,7 +323,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableResilientVMDelete
-Enable or disable resilient VM deletion.
+Specifies whether resilient VM deletion should be enabled on the virtual machine scale set. The default value is false.
 
 ```yaml
 Type: System.Boolean
