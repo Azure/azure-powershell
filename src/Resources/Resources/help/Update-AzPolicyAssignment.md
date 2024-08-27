@@ -19,7 +19,7 @@ For example, when you assign a policy at resource group scope, that policy appli
 Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>]
  [-IdentityType <String>] [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NameParameterObject
@@ -27,7 +27,7 @@ Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>
 Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>]
  [-IdentityType <String>] [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-BackwardCompatible]
- -PolicyParameterObject <PSObject> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ -PolicyParameterObject <PSObject> [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>
 Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>]
  [-IdentityType <String>] [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-BackwardCompatible]
- -PolicyParameter <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ -PolicyParameter <String> [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -45,7 +45,7 @@ Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>
 Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <String>] [-Description <String>]
  [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>] [-IdentityType <String>]
  [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterObject
@@ -53,7 +53,7 @@ Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <Str
 Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <String>] [-Description <String>]
  [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>] [-IdentityType <String>]
  [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-BackwardCompatible]
- -PolicyParameterObject <PSObject> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ -PolicyParameterObject <PSObject> [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -62,7 +62,7 @@ Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <Str
 Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <String>] [-Description <String>]
  [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>] [-IdentityType <String>]
  [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-BackwardCompatible] -PolicyParameter <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
@@ -70,7 +70,7 @@ Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <Str
 Update-AzPolicyAssignment [-NotScope <String[]>] [-DisplayName <String>] [-Description <String>]
  [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>] [-IdentityType <String>]
  [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-BackwardCompatible]
- -InputObject <IPolicyAssignment> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ -InputObject <IPolicyAssignment> [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -428,21 +428,6 @@ Parameter Sets: NameParameterObject, IdParameterObject
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
