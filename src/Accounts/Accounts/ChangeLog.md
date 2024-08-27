@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Passed Microsoft EntraID authority to CreatePublicClient to fix Az.Ssh issue when WAM enabled.
 
 ## Version 3.0.4
 * Added customized UserAgent for ARM telemetry.
