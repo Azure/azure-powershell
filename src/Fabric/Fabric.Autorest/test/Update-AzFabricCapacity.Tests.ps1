@@ -19,10 +19,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFabricCapacity'))
 Describe 'Update-AzFabricCapacity' {
     It 'UpdateExpanded' {
         $newSkuName = "F4"
-        $result = Update-AzFabricCapacity -CapacityName $env.CAPACITY_NAME -ResourceGroupName $env.ResourceGroupName -SkuName $newSkuName
+        Update-AzFabricCapacity -CapacityName $env.CAPACITY_NAME -ResourceGroupName $env.ResourceGroupName -SkuName $newSkuName
+        $result = Get-AzFabricCapacity -CapacityName $env.CAPACITY_NAME -ResourceGroupName $env.ResourceGroupName
         Validate_Capacity $result $env.CAPACITY_NAME $env.CAPACITY_ID $env.LOCATION "Active" "Succeeded" $newSkuName
 
-        $result = Update-AzFabricCapacity -CapacityName $env.CAPACITY_NAME -ResourceGroupName $env.ResourceGroupName -SkuName $env.SKU_NAME
+        Update-AzFabricCapacity -CapacityName $env.CAPACITY_NAME -ResourceGroupName $env.ResourceGroupName -SkuName $env.SKU_NAME
+        $result = Get-AzFabricCapacity -CapacityName $env.CAPACITY_NAME -ResourceGroupName $env.ResourceGroupName
         Validate_Capacity $result $env.CAPACITY_NAME $env.CAPACITY_ID $env.LOCATION "Active" "Succeeded" $env.SKU_NAME
     }
 
