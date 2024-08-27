@@ -15,7 +15,7 @@ Creates the IP configuration of private link configuration.
 ```
 New-AzHDInsightIPConfiguration [-Name <String>] [-Primary] [-PrivateIPAddress <String>]
  [-PrivateIPAllocationMethod <String>] [-SubnetId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,7 +105,21 @@ Gets or sets the private ip allocation method.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: dynamic, static
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

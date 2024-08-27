@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed an issue that `Update-AzDatabricksWorkspace` doesn't work.[#25743]
 
 ## Version 1.8.1
 * Fixed Access Connector Resource update for `Update-AzDatabricksWorkspace`

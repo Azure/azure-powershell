@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
             Action writeProgressAction = () => this.WriteDeploymentProgress(parameters, deployment, deploymentOperationError);
 
-            var deploymentExtended =  this.WaitDeploymentStatus(
+            var deploymentExtended = this.WaitDeploymentStatus(
                 getDeploymentFunc,
                 writeProgressAction,
                 ProvisioningState.Canceled,
@@ -217,8 +217,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
             if (deploymentOperationError.ErrorMessages.Count > 0)
             {
-                WriteError(GetDeploymentErrorMessagesWithOperationId(deploymentOperationError, 
-                    parameters.DeploymentName, 
+                WriteError(GetDeploymentErrorMessagesWithOperationId(deploymentOperationError,
+                    parameters.DeploymentName,
                     deploymentExtended?.Properties?.CorrelationId));
             }
 
@@ -260,11 +260,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
                 else
                 {
-                    deploymentOperationError.ProcessError(operation);                   
+                    deploymentOperationError.ProcessError(operation);
                 }
             }
         }
-        
+
         private DeploymentExtended WaitDeploymentStatus(
             Func<Task<AzureOperationResponse<DeploymentExtended>>> getDeployment,
             Action listDeploymentOperations,
@@ -680,7 +680,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         {
             if (auxTenants == null) return null;
 
-            var headers = new Dictionary<string, List<string>> ();
+            var headers = new Dictionary<string, List<string>>();
             foreach (KeyValuePair<string, IList<string>> entry in auxTenants)
             {
                 headers[entry.Key] = entry.Value.ToList();
@@ -947,6 +947,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             else
             {
                 ResourceManagementClient.ResourceGroups.Delete(name);
+            }
+        }
+
+        /// <summary>
+        /// Deletes a given resource group
+        /// </summary>
+        /// <param name="name">The resource group name</param>
+        /// <param name="forceDeletionTypes">
+        /// The resource types you want to force delete. Currently, only the following
+        /// is supported:
+        /// forceDeletionTypes=Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachineScaleSets
+        /// </param>
+        public virtual void DeleteResourceGroup(string name, string forceDeletionTypes)
+        {
+            if (!ResourceManagementClient.ResourceGroups.CheckExistence(name))
+            {
+                WriteError(ProjectResources.ResourceGroupDoesntExists);
+            }
+            else
+            {
+                ResourceManagementClient.ResourceGroups.Delete(name, forceDeletionTypes);
             }
         }
 
@@ -1691,7 +1712,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// <returns>The validation errors if there's any, or empty list otherwise.</returns>
         public virtual List<PSResourceManagerError> ValidateDeployment(PSDeploymentCmdletParameters parameters)
         {
-            if (parameters.DeploymentName == null){
+            if (parameters.DeploymentName == null)
+            {
                 parameters.DeploymentName = GenerateDeploymentName(parameters);
             }
             Deployment deployment = CreateBasicDeployment(parameters, parameters.DeploymentMode, null);
@@ -1729,7 +1751,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     .AppendLine());
 
             // Add correlationId
-             sb.AppendLine().AppendFormat(ProjectResources.DeploymentCorrelationId, correlationId);
+            sb.AppendLine().AppendFormat(ProjectResources.DeploymentCorrelationId, correlationId);
 
             return sb.ToString();
         }

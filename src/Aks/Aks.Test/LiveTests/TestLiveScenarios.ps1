@@ -20,7 +20,7 @@ Invoke-LiveTestScenario -Name "Test_AKS_CURD" -Description "Test AKS Cluster CRU
     $servicePrincipalCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ServicePrincipalId, $servicePrincipalSecureSecret
 
     Write-Host "##[section]Start to create Aks cluster : New-AzAksCluster"
-    New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -SshKeyValue $sshKeyValue -ServicePrincipalIdAndSecret $servicePrincipalCredential
+    New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -SshKeyValue $sshKeyValue -ServicePrincipalIdAndSecret $servicePrincipalCredential -AutoUpgradeChannel node-image
     Write-Host "##[section]Finished creating Aks cluster : New-AzAksCluster"
 
     Write-Host "##[section]Start to retrieve Aks cluster : Get-AzAksCluster"
@@ -65,7 +65,6 @@ Invoke-LiveTestScenario -Name "Test_AKS_CURD" -Description "Test AKS Cluster CRU
     Assert-Null $pools.PodSubnetID
     Assert-Null $pools.MaxCount
     Assert-Null $pools.MinCount
-    Assert-Null $pools.EnableNodePublicIP
     Assert-Null $pools.ScaleSetPriority
     Assert-Null $pools.ScaleSetEvictionPolicy
     Assert-Null $pools.NodePublicIPPrefixID

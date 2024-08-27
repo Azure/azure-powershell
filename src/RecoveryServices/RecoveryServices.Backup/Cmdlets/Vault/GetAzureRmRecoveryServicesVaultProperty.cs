@@ -35,6 +35,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string vaultName = resourceIdentifier.ResourceName;
                 string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
+                // resx
+                WriteWarning("The following CMK Encryption properties are deprecated: EncryptionAtRestType, SubscriptionId, LastUpdateStatus, Id, Name, Type, Location. Please avoid using these properties.");
+
                 BackupResourceEncryptionConfigExtendedResource vaultEncryptionSetting = ServiceClientAdapter.GetVaultEncryptionConfig(resourceGroupName, vaultName);
                 BackupResourceVaultConfigResource vaultConfigResource = ServiceClientAdapter.GetVaultProperty(vaultName, resourceGroupName);
                 
