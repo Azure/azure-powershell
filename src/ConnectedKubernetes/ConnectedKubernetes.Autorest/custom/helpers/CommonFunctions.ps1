@@ -26,7 +26,7 @@ function Validate-HelmVersion {
     }
 }
 
-function Get-HelmReleaseNamespace {
+function Get-HelmReleaseNamespaces {
     param (
         [string]$KubeConfig,
         [string]$KubeContext
@@ -40,7 +40,7 @@ function Get-HelmReleaseNamespace {
     catch {
         Write-Error "Fail to find the namespace for azure-arc."
     }
-    return $ReleaseNamespace
+    return , @($ReleaseNamespace, $ReleaseInstallNamespace)
 }
 
 function Set-HelmRepositoryAndModules {
@@ -233,48 +233,50 @@ function Configure-ArcAgentry {
         [string]$Location
     )
     $arcAgentryConfigs = @(
-        )
+    )
 
-        if ($ConfigurationSetting) {
-            foreach ($key in $ConfigurationSetting.Keys) {
-                $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
-                    Feature = $key
-                    Setting = $ConfigurationSetting[$key]
-                }
-                if ($ConfigurationProtectedSetting -and $ConfigurationProtectedSetting[$key]) {
-                    $ArcAgentryConfiguration.ProtectedSetting = $ConfigurationProtectedSetting[$key]
-
-                    # Remove this key from ConfigurationProtectedSetting.
-                    $Null = $ConfigurationProtectedSetting.Remove($key)
-                }
-                $arcAgentryConfigs += $ArcAgentryConfiguration
+    if ($ConfigurationSetting) {
+        foreach ($key in $ConfigurationSetting.Keys) {
+            $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
+                Feature = $key
+                Setting = $ConfigurationSetting[$key]
             }
-            $PSBoundParameters.Remove('ConfigurationSetting')
-        }
+            if ($ConfigurationProtectedSetting -and $ConfigurationProtectedSetting[$key]) {
+                $ArcAgentryConfiguration.ProtectedSetting = $ConfigurationProtectedSetting[$key]
 
-        # Add the remaining (protected only) settings.
-        if ($ConfigurationProtectedSetting) {
-            foreach ($key in $ConfigurationProtectedSetting.Keys) {
-                $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
-                    Feature          = $key
-                    ProtectedSetting = $ConfigurationProtectedSetting[$key]
-                }
-                $argAgentryConfigs += $ArcAgentryConfiguration
+                # Remove this key from ConfigurationProtectedSetting.
+                $Null = $ConfigurationProtectedSetting.Remove($key)
             }
-            $PSBoundParameters.Remove('ConfigurationProtectedSetting')
+            $arcAgentryConfigs += $ArcAgentryConfiguration
         }
+        $PSBoundParameters.Remove('ConfigurationSetting')
+    }
 
-        $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
+    # Add the remaining (protected only) settings.
+    if ($ConfigurationProtectedSetting) {
+        foreach ($key in $ConfigurationProtectedSetting.Keys) {
+            $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
+                Feature          = $key
+                ProtectedSetting = $ConfigurationProtectedSetting[$key]
+            }
+            $argAgentryConfigs += $ArcAgentryConfiguration
+        }
+        $PSBoundParameters.Remove('ConfigurationProtectedSetting')
+    }
 
-        # A lot of what follows relies on knowing the cloud we are using and the
-        # various endpoints so get that information now.
-        $cloudMetadata = Get-AzCloudMetadata
+    $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
 
-        # Perform DP health check
-        $configDpinfo = Get-ConfigDPEndpoint -location $Location -Cloud $cloudMetadata
-        $configDPEndpoint = $configDpInfo.configDPEndpoint
+    # A lot of what follows relies on knowing the cloud we are using and the
+    # various endpoints so get that information now.
+    $cloudMetadata = Get-AzCloudMetadata
 
-        # If the health check fails (not 200 response), an exception is thrown
-        # so we can ignore the output.
-        $null = Invoke-ConfigDPHealthCheck -configDPEndpoint $configDPEndpoint
+    # Perform DP health check
+    $configDpinfo = Get-ConfigDPEndpoint -location $Location -Cloud $cloudMetadata
+    $configDPEndpoint = $configDpInfo.configDPEndpoint
+
+    # If the health check fails (not 200 response), an exception is thrown
+    # so we can ignore the output.
+    $null = Invoke-ConfigDPHealthCheck -configDPEndpoint $configDPEndpoint
+
+    return $configDPEndpoint
 }

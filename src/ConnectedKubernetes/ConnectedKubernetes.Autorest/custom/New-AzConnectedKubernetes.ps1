@@ -374,7 +374,9 @@ function New-AzConnectedKubernetes {
         $helmClientLocation = 'helm'
 
         #Region get release namespace
-        $ReleaseNamespace = Get-HelmReleaseNamespace -KubeConfig $KubeConfig -KubeContext $KubeContext
+        $ReleaseNamespaces = Get-HelmReleaseNamespaces -KubeConfig $KubeConfig -KubeContext $KubeContext
+        $ReleaseNamespace = $ReleaseNamespaces[0]
+        $ReleaseInstallNamespace = $ReleaseNamespaces[1]
 
         #Endregion
 
@@ -463,7 +465,7 @@ function New-AzConnectedKubernetes {
         #          This DOES mean that code changes are required both in the
         #          Config DP annd this Powershell script if a new Kubernetes
         #          feature is added.
-        Configure-ArcAgentry -ConfigurationSetting $ConfigurationSetting -ConfigurationProtectedSetting $ConfigurationProtectedSetting -PSBoundParameters $PSBoundParameters -Location $Location
+        $configDpEndpoint = Configure-ArcAgentry -ConfigurationSetting $ConfigurationSetting -ConfigurationProtectedSetting $ConfigurationProtectedSetting -PSBoundParameters $PSBoundParameters -Location $Location
 
         # This call does the "pure ARM" update of the ARM objects.
         Write-Debug "Writing Connected Kubernetes ARM objects."
@@ -514,8 +516,10 @@ function New-AzConnectedKubernetes {
 
         $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
         Write-Debug $options -ErrorAction Continue
+        # !!PDS: Remove --debug from helm, or add as part of "Debug" enable?
         try {
             helm upgrade `
+                --debug `
                 --install azure-arc `
                 $ChartPath `
                 --namespace $ReleaseInstallNamespace `

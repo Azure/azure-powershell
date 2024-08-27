@@ -384,7 +384,8 @@ function Set-AzConnectedKubernetes {
         $helmClientLocation = 'helm'
 
         #Region get release namespace
-        $ReleaseNamespace = Get-HelmReleaseNamespace -KubeConfig $KubeConfig -KubeContext $KubeContext
+        $ReleaseNamespaces = Get-HelmReleaseNamespaces -KubeConfig $KubeConfig -KubeContext $KubeContext
+        $ReleaseNamespace = $ReleaseNamespaces[0]
 
         #Endregion
 
