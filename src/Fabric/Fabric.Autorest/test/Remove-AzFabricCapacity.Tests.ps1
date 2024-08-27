@@ -34,11 +34,4 @@ Describe 'Remove-AzFabricCapacity' {
 
         { Get-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $newCapacityName } | Should -Throw
     }
-<<<<<<< HEAD
-=======
-
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
->>>>>>> 4ad88641e3d17effff8ed003b8f9d3532053ae5c
 }

@@ -1,10 +1,7 @@
 if(($null -eq $TestName) -or ($TestName -contains 'Suspend-AzFabricCapacity'))
 {
-<<<<<<< HEAD
   $fabricCommonPath = Join-Path $PSScriptRoot 'common.ps1'
     . ($fabricCommonPath)
-=======
->>>>>>> 4ad88641e3d17effff8ed003b8f9d3532053ae5c
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
@@ -19,7 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Suspend-AzFabricCapacity'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-<<<<<<< HEAD
 Describe 'Suspend-AzFabricCapacity' {
     It 'Suspend' {
         Suspend-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CAPACITY_NAME
@@ -29,20 +25,5 @@ Describe 'Suspend-AzFabricCapacity' {
         Resume-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CAPACITY_NAME
         $result = Get-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CAPACITY_NAME
         Validate_Capacity $result $env.CAPACITY_NAME $env.CAPACITY_ID $env.LOCATION "Active" "Succeeded" $env.SKU_NAME
-=======
-Describe 'Suspend-AzFabricCapacity' -skip {
-    It 'Suspend' -skip {
-        Suspend-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CAPACITY_NAME
-        $result = Get-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CAPACITY_NAME
-        Validate_Capacity $result $newCapacityName $newCapacityId $env.LOCATION "Suspended" "Succeeded" $env.SKU_NAME
-
-        Resume-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CAPACITY_NAME
-        $result = Get-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CAPACITY_NAME
-        Validate_Capacity $result $newCapacityName $newCapacityId $env.LOCATION "Active" "Succeeded" $env.SKU_NAME
-    }
-
-    It 'SuspendViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
->>>>>>> 4ad88641e3d17effff8ed003b8f9d3532053ae5c
     }
 }
