@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// <summary>
         /// Creates a public client app with tenantId.
         /// </summary>
-        public virtual IPublicClientApplication CreatePublicClient(string authority, string tenantId = null)
+        public virtual IPublicClientApplication CreatePublicClient(string authority, string tenantId)
         {
             var builder = PublicClientApplicationBuilder.Create(Constants.PowerShellClientId);
             if (AzConfigReader.IsWamEnabled(authority))
@@ -188,7 +188,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// </summary>
         public virtual IPublicClientApplication CreatePublicClient(string authority = null)
         {
-            return CreatePublicClient(authority);
+            var builder = PublicClientApplicationBuilder.Create(Constants.PowerShellClientId);
+            if (AzConfigReader.IsWamEnabled(authority))
+            {
+                builder = builder.WithBroker(new BrokerOptions(BrokerOptions.OperatingSystems.Windows));
+            }
+            if (!string.IsNullOrEmpty(authority))
+            {
+                builder.WithAuthority(authority);
+            }
+            var client = builder.Build();
+            RegisterCache(client);
+            return client;
         }
 
         public abstract TokenCachePersistenceOptions GetTokenCachePersistenceOptions();
