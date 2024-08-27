@@ -1,0 +1,13 @@
+{
+  "LOCATION": "West US",
+  "SKU_NAME": "F2",
+  "SKU_TIER": "Fabric",
+  "ADMINISTRATION_MEMBERS": [
+    "VsavTest@pbiotest.onmicrosoft.com"
+  ],
+  "CAPACITY_ID": "/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-badeamarjiehfabric/providers/Microsoft.Fabric/capacities/fusjrdtzxghk",
+  "Tenant": "2a1a1dbc-9c4b-4957-a875-268358aec692",
+  "SubscriptionId": "066c6e9e-c9ae-453d-bd2c-dacb1194fc0d",
+  "CAPACITY_NAME": "fusjrdtzxghk",
+  "ResourceGroupName": "rg-badeamarjiehfabric"
+}
