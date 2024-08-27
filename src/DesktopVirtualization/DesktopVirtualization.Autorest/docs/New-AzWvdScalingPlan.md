@@ -188,7 +188,7 @@ List of ScalingHostPoolReference definitions.
 To construct, see NOTES section for HOSTPOOLREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240306Preview.IScalingHostPoolReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240403.IScalingHostPoolReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -394,7 +394,7 @@ List of ScalingPlanPooledSchedule definitions.
 To construct, see NOTES section for SCHEDULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240306Preview.IScalingSchedule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240403.IScalingSchedule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -567,7 +567,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240306Preview.IScalingPlan
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240403.IScalingPlan
 
 ## NOTES
 

@@ -3,13 +3,13 @@
 
 using System.Net.Http;
 using System.Threading.Tasks;
-using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240306Preview;
+using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240403;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
 {
     public partial class InvokeAzWvdControlSessionHostUpdate_PostViaIdentity
     {
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api40.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow)
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api50.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow)
         {
             if(responseMessage.StatusCode == System.Net.HttpStatusCode.NoContent)
             {

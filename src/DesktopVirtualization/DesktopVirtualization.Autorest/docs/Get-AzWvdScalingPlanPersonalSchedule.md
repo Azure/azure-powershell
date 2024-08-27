@@ -200,7 +200,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240306Preview.IScalingPlanPersonalSchedule
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240403.IScalingPlanPersonalSchedule
 
 ## NOTES
 

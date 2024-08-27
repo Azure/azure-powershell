@@ -80,7 +80,7 @@ Maintenance windows are 2 hours long.
 To construct, see NOTES section for AGENTUPDATEMAINTENANCEWINDOW properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240306Preview.IMaintenanceWindowPatchProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240403.IMaintenanceWindowPatchProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -604,7 +604,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240306Preview.IHostPool
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240403.IHostPool
 
 ## NOTES
 
