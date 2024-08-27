@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Passed Microsoft EntraID authority and tenant Id to `CreatePublicClient` to fix Az.Ssh issue when WAM enabled.
 * Added breaking change preannouncement for the removal of alias `Resolve-Error`. #26189
 * Integrated new detection library to expand the scope of secrets.
 * Upgraded Azure.Core to 1.44.1.
