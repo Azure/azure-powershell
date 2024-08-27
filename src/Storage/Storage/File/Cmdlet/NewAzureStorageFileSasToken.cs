@@ -78,6 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("File", "13.0.0", "8.0.0", ChangeDescription = "The parameter File (alias CloudFile) will be deprecated, and a new mandatory parameter ShareFileClient will be added.")]
         [Parameter(Mandatory = true,
             HelpMessage = "CloudFile instance to represent the file to get SAS token against.",
             ValueFromPipeline = true,
@@ -113,6 +114,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Permission { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("Protocol", "13.0.0", "8.0.0", ChangeDescription = "The type of parameter Protocol will be changed from SharedAccessProtocol to string.")]
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
         [ValidateNotNull]
         public SharedAccessProtocol? Protocol { get; set; }

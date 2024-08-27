@@ -15,8 +15,8 @@ Adds a version for a service running in a cluster to a cluster configuration obj
 
 ```
 Add-AzHDInsightComponentVersion [-Config] <AzureHDInsightConfig> [-ComponentName] <String>
- [-ComponentVersion] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ComponentVersion] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +26,7 @@ The Add-AzHDInsightComponentVersion cmdlet adds a version for a service running 
 
 ### Example 1: Add a version for Spark to the cluster configuration object.
 ```powershell
-        # Primary storage account info
+# Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountName = "yourstorageacct001"
         $storageAccountResourceId = "yourstorageaccountresourceid"
@@ -115,6 +115,21 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

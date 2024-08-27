@@ -912,7 +912,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             var storageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
 
-            this.WriteStorageAccount(storageAccount);
+            this.WriteStorageAccount(storageAccount, DefaultContext);
         }
     }
 }

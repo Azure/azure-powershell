@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Fixed secrets exposure in example documentation.
+* Fixed issues regarding Active Directory Administrator in `Set-AzSqlInstanceActiveDirectoryAdministrator` and `Set-AzSqlInstance` cmdlets.
+* Added new parameter AuthenticationMetadata to `New-AzSqlInstance` and `Set-AzSqlInstance`
 
 ## Version 5.2.0
 * Added breaking change announcement for cmdlets: `New-AzSqlInstanceLink`, `Get-AzSqlInstanceLink`, `Remove-AzSqlInstanceLink`, `Update-AzSqlInstanceLink`.
@@ -26,7 +28,6 @@
 * Added IsGeneralPurposeV2 and StorageIOps fields to the model of the managed instance so that it displays information about GPv2 instances that are returned by `Get-AzSqlInstance`.
 * Added new cmdlet `Set-AzSqlDatabaseReplicationLink` for updating replication link type
 * Updated `Get-AzSqlDatabaseReplicationLink` to use the new sdk
-* Added new parameter AuthenticationMetadata to `New-AzSqlInstance` and `Set-AzSqlInstance`
 
 ## Version 5.1.0
 * Added cross-subscription support for `Copy-AzSqlInstanceDatabase`, `Move-AzSqlInstanceDatabase`

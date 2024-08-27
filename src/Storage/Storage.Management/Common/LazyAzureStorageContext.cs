@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Storage;
+using Microsoft.WindowsAzure.Commands.Storage.Common;
+using System;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Storage
 {
@@ -21,9 +23,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
     {
         Func<string, CloudStorageAccount> _factory;
         CloudStorageAccount _account = null;
-        public LazyAzureStorageContext(Func<string, CloudStorageAccount> accountFactory, string accountName)
+        Func<AzureSessionCredential> _track2OAuthTokenFactory;
+        private AzureSessionCredential _track2OauthToken = null;
+        public LazyAzureStorageContext(Func<string, CloudStorageAccount> accountFactory, string accountName, Func<AzureSessionCredential> track2OAuthTokenFactory = null)
         {
             _factory = accountFactory;
+            _track2OAuthTokenFactory = track2OAuthTokenFactory;
             Name = accountName;
             Context = this;
             StorageAccountName = accountName;
@@ -70,6 +75,18 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
                 }
 
                 return _account;
+            }
+        }
+
+        public override AzureSessionCredential Track2OauthToken { 
+            get
+            {
+                if (_track2OauthToken == null)
+                {
+                   _track2OauthToken = _track2OAuthTokenFactory();
+                    return _track2OauthToken;
+                }
+                return _track2OauthToken;
             }
         }
     }

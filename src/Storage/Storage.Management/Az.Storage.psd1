@@ -70,7 +70,8 @@ RequiredAssemblies = 'Azure.Data.Tables.dll', 'Azure.Storage.Blobs.dll',
                'Microsoft.Azure.Storage.Queue.dll', 'Microsoft.OData.Core.dll', 
                'Microsoft.OData.Edm.dll', 'Microsoft.Spatial.dll', 
                'Storage.Autorest/bin/Az.Storage.private.dll', 
-               'System.IO.Hashing.dll'
+               'System.IO.Hashing.dll',
+               'Microsoft.Azure.PowerShell.Storage.Common.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
