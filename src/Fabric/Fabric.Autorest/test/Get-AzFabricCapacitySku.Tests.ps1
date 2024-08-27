@@ -23,7 +23,7 @@ Describe 'Get-AzFabricCapacitySku' {
     }
 
     It 'List1' {
-        $result = Get-AzFabricCapacitySku -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CAPACITY_NAME
+        $result = Get-AzFabricCapacitySku -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CapacityName
         Validate_Capacity_Skus $result
     }
 }

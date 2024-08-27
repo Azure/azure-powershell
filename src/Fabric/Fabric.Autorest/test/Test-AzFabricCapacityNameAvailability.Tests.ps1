@@ -19,10 +19,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzFabricCapacityNameAvai
 Describe 'Test-AzFabricCapacityNameAvailability' {
     It 'CheckExpanded' {
         $newCapacityName = RandomString -allChars $true -len 12
-        $result = Test-AzFabricCapacityNameAvailability -Location $env.LOCATION -Name $newCapacityName -Type "Microsoft.Fabric/capacities"
+        $result = Test-AzFabricCapacityNameAvailability -Location $env.Location -Name $newCapacityName -Type "Microsoft.Fabric/capacities"
         $result.NameAvailable | Should -Be $true
 
-        $result = Test-AzFabricCapacityNameAvailability -Location $env.LOCATION -Name $env.CAPACITY_NAME -Type "Microsoft.Fabric/capacities"
+        $result = Test-AzFabricCapacityNameAvailability -Location $env.Location -Name $env.CapacityName -Type "Microsoft.Fabric/capacities"
         $result.NameAvailable | Should -Be $false 
         $result.Reason | Should -Be "AlreadyExists"
     }

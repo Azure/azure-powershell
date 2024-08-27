@@ -26,9 +26,9 @@ Describe 'New-AzFabricCapacity' {
             -ResourceGroupName $env.ResourceGroupName `
             -CapacityName $newCapacityName `
             -Location $env.Location `
-            -AdministrationMember $env.ADMINISTRATION_MEMBERS `
-            -SkuName $env.SKU_NAME
-        Validate_Capacity $result $newCapacityName $newCapacityId $env.LOCATION "Active" "Succeeded" $env.SKU_NAME
+            -AdministrationMember $env.AdministrationMembers `
+            -SkuName $env.SkuName
+        Validate_Capacity $result $newCapacityName $newCapacityId $env.Location "Active" "Succeeded" $env.SkuName
 
         Remove-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $newCapacityName 
     }

@@ -24,8 +24,8 @@ Describe 'Get-AzFabricCapacity' {
     }
 
     It 'Get' {
-        $result = Get-AzFabricCapacity -CapacityName $env.CAPACITY_NAME -ResourceGroupName $env.ResourceGroupName
-        Validate_Capacity $result $env.CAPACITY_NAME $env.CAPACITY_ID $env.LOCATION "Active" "Succeeded" $env.SKU_NAME
+        $result = Get-AzFabricCapacity -CapacityName $env.CapacityName -ResourceGroupName $env.ResourceGroupName
+        Validate_Capacity $result $env.CapacityName $env.CapacityId $env.Location "Active" "Succeeded" $env.SkuName
     }
 
     It 'List1' {

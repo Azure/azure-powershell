@@ -18,12 +18,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Suspend-AzFabricCapacity'))
 
 Describe 'Suspend-AzFabricCapacity' {
     It 'Suspend' {
-        Suspend-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CAPACITY_NAME
-        $result = Get-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CAPACITY_NAME
-        Validate_Capacity $result $env.CAPACITY_NAME $env.CAPACITY_ID $env.LOCATION "Paused" "Succeeded" $env.SKU_NAME
+        Suspend-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CapacityName
+        $result = Get-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CapacityName
+        Validate_Capacity $result $env.CapacityName $env.CapacityId $env.Location "Paused" "Succeeded" $env.SkuName
 
-        Resume-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CAPACITY_NAME
-        $result = Get-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CAPACITY_NAME
-        Validate_Capacity $result $env.CAPACITY_NAME $env.CAPACITY_ID $env.LOCATION "Active" "Succeeded" $env.SKU_NAME
+        Resume-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CapacityName
+        $result = Get-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $env.CapacityName
+        Validate_Capacity $result $env.CapacityName $env.CapacityId $env.Location "Active" "Succeeded" $env.SkuName
     }
 }

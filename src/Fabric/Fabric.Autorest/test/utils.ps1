@@ -44,18 +44,22 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.ResourceGroupName = "rg-badeamarjiehfabric"
+    $env.Location = "West US"
 
-    # Set the bicep parameter values
-    $env.CAPACITY_NAME = RandomString -allChars $true -len 12
-    Write-Output "CAPACITY_NAME is "$env.CAPACITY_NAME""
-    $env.LOCATION = "West US"
-    $env.SKU_NAME = "F2"
-    $env.SKU_TIER = "Fabric"
-    $env.ADMINISTRATION_MEMBERS = @("VsavTest@pbiotest.onmicrosoft.com")
-    $env.CAPACITY_ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.Fabric/capacities/$($env.CAPACITY_NAME)"
+    # Create test resource group
+    Write-Host -ForegroundColor Green "Creating test resource group..."
+    $env.ResourceGroupName = "rg-AzPowerShell-Tests-Fabric-" + (RandomString -allChars $true -len 10)
+    Write-Host $ResourceGroupName
+    New-AzResourceGroup -Name $ResourceGroupName -Location $env.Location
 
-    # Set bicep file path
+    # Set the parameter values
+    $env.CapacityName = RandomString -allChars $true -len 12
+    $env.SkuName = "F2"
+    $env.SkuTier = "Fabric"
+    $env.AdministrationMembers = @("VsavTest@pbiotest.onmicrosoft.com")
+    $env.CapacityId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.Fabric/capacities/$($env.CapacityName)"
+
+    # Set deployment templates files path
     $templateFilePath = "test/deployment-templates/test-resources.json"
     $templateParametersFilePath = "test/deployment-templates/test-resources.parameters.json"
 
@@ -63,11 +67,11 @@ function setupEnv() {
     $params = Get-Content $templateParametersFilePath | ConvertFrom-Json
 
     # Update the properties
-    $params.parameters.capacityName.value = $env.CAPACITY_NAME
-    $params.parameters.location.value = $env.LOCATION
-    $params.parameters.skuName.value = $env.SKU_NAME
-    $params.parameters.skuTier.value = $env.SKU_TIER
-    $params.parameters.administrationMembers.value = $env.ADMINISTRATION_MEMBERS
+    $params.parameters.capacityName.value = $env.CapacityName
+    $params.parameters.location.value = $env.Location
+    $params.parameters.skuName.value = $env.SkuName
+    $params.parameters.skuTier.value = $env.SkuTier
+    $params.parameters.administrationMembers.value = $env.AdministrationMembers
 
     # Convert the updated content back to JSON
     $updatedParams = $params | ConvertTo-Json -Depth 10
@@ -88,5 +92,5 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    Remove-AzFabricCapacity -SubscriptionId $env.SubscriptionId -CapacityName $env.CAPACITY_NAME -ResourceGroupName $env.ResourceGroupName
+    Remove-AzFabricCapacity -SubscriptionId $env.SubscriptionId -CapacityName $env.CapacityName -ResourceGroupName $env.ResourceGroupName
 }

@@ -31,16 +31,16 @@ function Validate_Capacity{
 	$Capacity.ProvisioningState | Should -Be  $ProvisioningState
 	$Capacity.Type | Should -Be "Microsoft.Fabric/capacities"
     $Capacity.SkuName | Should -Be $SkuName
-    $Capacity.SkuTier | Should -Be "Fabric"
+    $Capacity.SkuTier | Should -Be $env.SkuTier
 }
 
 function Validate_Capacity_Exists_In_Array{
     Param ([Object]$CapacitiesList)
     $found = $false
     foreach ($capacity in $CapacitiesList) {
-        if ($capacity.Name -eq $env.CAPACITY_NAME) {
+        if ($capacity.Name -eq $env.CapacityName) {
             $found = $true
-            Validate_Capacity $capacity $env.CAPACITY_NAME $env.CAPACITY_ID $env.LOCATION "Active" "Succeeded" $env.SKU_NAME
+            Validate_Capacity $capacity $env.CapacityName $env.CapacityId $env.Location "Active" "Succeeded" $env.SkuName
             break
         }
     }
@@ -51,7 +51,7 @@ function Validate_Capacity_Skus{
 	Param ([Object]$CapacitySkus)
     foreach ($capacitySku in $CapacitiySkus) {
         $capacitySku.ResourceType | Should -Be "Microsoft.Fabric/capacities"
-        $capacitySku.SkuTier | Should -Be "Fabric"
+        $capacitySku.SkuTier | Should -Be $env.SkuTier
         @("F2", "F4", "F8", "F16", "F32", "F64", "F128", "F256", "F512", "F1024", "F2048") | Should -Contain $capacitySku.SkuName
     }
 }
