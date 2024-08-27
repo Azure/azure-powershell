@@ -5316,6 +5316,50 @@ function Test-VirtualMachineScaleSetDefaultImgWhenStandard
 
 <#
 .SYNOPSIS
+Test Virtual Machine Scale Set with SkuProfile
+#>
+function Test-VirtualMachineScaleSetSkuProfile
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # New VMSS Parameters
+        $vmssName = 'vmssSkuProfile' + $rgname;
+        $vmName = 'vm' + $rgname;
+
+        $adminUsername = 'Foo12';
+        $adminPassword = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $adminPassword -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $securePassword);
+        $vmSize1 = New-Object Microsoft.Azure.Management.Compute.Models.SkuProfileVMSize ("Standard_A1");
+
+        $VmssFlex = New-AzVmss `
+          -ResourceGroupName $rgname `
+          -Name $vmssName `
+          -OrchestrationMode 'Flexible' `
+          -Location 'eastus' `
+          -Credential $cred `
+          -DomainNameLabel "scaleset-70f699" `
+          -SecurityType "Standard" `
+          -VMSize "Mix"
+          -VMSizes @($vmSize1)
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+}
+
+<#
+.SYNOPSIS
     Create a VMSS using New-Azvmssconfig
     Update the Resiliency policies of VMSS using Update-Azvmss
     Test ResilientVMCreationPolicy and ResilientVMDeletionPolicy

@@ -348,12 +348,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public bool? EnableSecureBoot { get; set; } = null;
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public PSSkuProfileVmSize[] VmSizes { get; set; }
+        public SkuProfileVMSize[] VmSizes { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         [PSArgumentCompleter("LowestPrice", "CapacityOptimized")]
         public string SkuProfileAllocationStrategy { get; set; }
@@ -410,6 +410,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // PriorityMix
             PriorityMixPolicy vPriorityMixPolicy = null;
+
+            SkuProfile vSkuProfile = null;
 
             //ResiliencyPolicy
             ResiliencyPolicy vResiliencyPolicy = null;
@@ -885,6 +887,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vPriorityMixPolicy.RegularPriorityPercentageAboveBase = this.RegularPriorityPercentage;
             }
 
+            if (this.IsParameterBound(c => c.VmSizes))
+            {
+                if (vSkuProfile == null)
+                {
+                    vSkuProfile = new SkuProfile();
+                }
+                vSkuProfile.VmSizes = this.VmSizes;
+
+                if (this.IsParameterBound(c => c.SkuProfileAllocationStrategy))
+                {
+                    vSkuProfile.AllocationStrategy = this.SkuProfileAllocationStrategy;
+                }
+                else
+                {
+                    vSkuProfile.AllocationStrategy = "LowestPrice";
+                }
+            }
+
             if (this.IsParameterBound(c => c.ImageReferenceId))
             {
                 if (vVirtualMachineProfile == null)
@@ -985,6 +1005,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 SkuProfileAllocationStrategy = this.SkuProfileAllocationStrategy
                 PriorityMixPolicy = vPriorityMixPolicy,
                 ResiliencyPolicy = vResiliencyPolicy
+                SkuProfile = vSkuProfile,
             };
 
             WriteObject(vVirtualMachineScaleSet);

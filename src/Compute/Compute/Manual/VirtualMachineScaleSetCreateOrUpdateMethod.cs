@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 {
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
     {
-        private const string flexibleOrchestrationMode = "Flexible", uniformOrchestrationMode = "Uniform";
+        private const string flexibleOrchestrationMode = "Flexible", uniformOrchestrationMode = "Uniform", vmSizeMix = "Mix";
         // SimpleParameterSet
         [Parameter(
             ParameterSetName = SimpleParameterSet, 
@@ -256,6 +256,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            Mandatory = false)]
         public bool? EnableSecureBoot { get; set; } = null;
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Array of VM sizes for the scale set.")]
+        public SkuProfileVMSize[] VmSizes { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Allocation strategy for the SKU profile.")]
+        [PSArgumentCompleter("LowestPrice", "CapacityOptimized")]
+        public string SkuProfileAllocationStrategy { get; set; }
+
         const int FirstPortRangeStart = 50000;
 
         sealed class Parameters : IParameters<VirtualMachineScaleSet>
@@ -465,6 +478,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     enableVtpm: _cmdlet.EnableVtpm,
                     enableSecureBoot: _cmdlet.EnableSecureBoot,
                     enableAutomaticOSUpgradePolicy:  _cmdlet.EnableAutomaticOSUpgrade == true ? true : (bool?)null,
+                    vmSizes: _cmdlet.VmSizes,
+                    skuProfileAllocationStrategy: _cmdlet.SkuProfileAllocationStrategy,
                     ifMatch: _cmdlet.IfMatch,
                     ifNoneMatch: _cmdlet.IfNoneMatch
                     );
@@ -617,6 +632,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     enableVtpm: _cmdlet.EnableVtpm,
                     enableSecureBoot: _cmdlet.EnableSecureBoot,
                     enableAutomaticOSUpgradePolicy: _cmdlet.EnableAutomaticOSUpgrade == true ? true : (bool?)null,
+                    vmSizes: _cmdlet.VmSizes,
+                    skuProfileAllocationStrategy: _cmdlet.SkuProfileAllocationStrategy,
                     auxAuthHeader: auxAuthHeader,
                     ifMatch: _cmdlet.IfMatch,
                     ifNoneMatch: _cmdlet.IfNoneMatch

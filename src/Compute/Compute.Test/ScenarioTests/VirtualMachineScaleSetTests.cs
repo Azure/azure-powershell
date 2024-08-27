@@ -426,6 +426,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSkuProfile()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSkuProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResiliencyPolicyVMSS()
         {
             TestRunner.RunTestScript("Test-ResiliencyPolicyVMSS");
