@@ -21,21 +21,20 @@ Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -Loc
  [-CustomLocationsOid <String>] [-DisableGateway] [-Distribution <String>] [-DistributionVersion <String>]
  [-EnableGateway] [-GatewayResourceId <String>] [-Infrastructure <String>] [-KubeConfig <String>]
  [-KubeContext <String>] [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
- [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Set
 ```
-Set-AzConnectedKubernetes -InputObject <IConnectedCluster> -Location <String> [-ContainerLogPath <String>]
- [-DisableAutoUpgrade] [-HttpProxy <Uri>] [-HttpsProxy <Uri>] [-NoProxy <String>] [-ProxyCert <String>]
- [-SubscriptionId <String>] [-AcceptEULA] [-AzureHybridBenefit <AzureHybridBenefit>]
- [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
- [-CustomLocationsOid <String>] [-DisableGateway] [-Distribution <String>] [-DistributionVersion <String>]
- [-EnableGateway] [-GatewayResourceId <String>] [-Infrastructure <String>] [-KubeConfig <String>]
- [-KubeContext <String>] [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
- [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Set-AzConnectedKubernetes -InputObject <IConnectedCluster> [-ContainerLogPath <String>] [-DisableAutoUpgrade]
+ [-HttpProxy <Uri>] [-HttpsProxy <Uri>] [-NoProxy <String>] [-ProxyCert <String>] [-SubscriptionId <String>]
+ [-AcceptEULA] [-AzureHybridBenefit <AzureHybridBenefit>] [-ConfigurationProtectedSetting <Hashtable>]
+ [-ConfigurationSetting <Hashtable>] [-CustomLocationsOid <String>] [-DisableGateway] [-Distribution <String>]
+ [-DistributionVersion <String>] [-EnableGateway] [-GatewayResourceId <String>] [-Infrastructure <String>]
+ [-KubeConfig <String>] [-KubeContext <String>] [-PrivateLinkScopeResourceId <String>]
+ [-PrivateLinkState <PrivateLinkState>] [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -387,7 +386,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
@@ -402,6 +401,21 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
