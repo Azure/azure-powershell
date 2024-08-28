@@ -335,7 +335,7 @@ function Set-AzConnectedKubernetes {
                     $EnableGateway = $InputObject.GatewayEnabled
                 }
                 if (-not $InputObject.GatewayEnabled) {
-                    $DisableGateway = $InputObject.GatewayEnabled
+                    $DisableGateway = -not $InputObject.GatewayEnabled
                 }
             }
             if ((-not $PSBoundParameters.ContainsKey('GatewayResourceId')) -and (-not [String]::IsNullOrEmpty($InputObject.GatewayResourceId))) {
