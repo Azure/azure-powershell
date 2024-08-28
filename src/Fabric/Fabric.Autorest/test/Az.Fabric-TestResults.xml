@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="11" errors="0" failures="0" not-run="0" inconclusive="0" ignored="7" skipped="0" invalid="0" date="2024-08-28" time="07:51:52">
+  <environment machine-name="9370daf54ea2" user-domain="" cwd="/src/Fabric/Fabric.Autorest" clr-version="Unknown" nunit-version="2.5.8.0" user="root" os-version="5.15.153.1-microsoft-standard-WSL2" platform="Linux" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Ignored" success="True" time="427.5583" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="/src/Fabric/Fabric.Autorest/test/Get-AzFabricCapacity.Tests.ps1" executed="True" result="Success" success="True" time="11.8322" asserts="0" description="/src/Fabric/Fabric.Autorest/test/Get-AzFabricCapacity.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzFabricCapacity" executed="True" result="Success" success="True" time="2.5265" asserts="0" description="Get-AzFabricCapacity">
+            <results>
+              <test-case description="List" name="Get-AzFabricCapacity.List" time="0.9119" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzFabricCapacity.Get" time="0.7588" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List1" name="Get-AzFabricCapacity.List1" time="0.7107" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/Fabric/Fabric.Autorest/test/Get-AzFabricCapacitySku.Tests.ps1" executed="True" result="Success" success="True" time="11.6687" asserts="0" description="/src/Fabric/Fabric.Autorest/test/Get-AzFabricCapacitySku.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzFabricCapacitySku" executed="True" result="Success" success="True" time="2.4234" asserts="0" description="Get-AzFabricCapacitySku">
+            <results>
+              <test-case description="List" name="Get-AzFabricCapacitySku.List" time="1.6542" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List1" name="Get-AzFabricCapacitySku.List1" time="0.7484" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/Fabric/Fabric.Autorest/test/New-AzFabricCapacity.Tests.ps1" executed="True" result="Ignored" success="True" time="80.2582" asserts="0" description="/src/Fabric/Fabric.Autorest/test/New-AzFabricCapacity.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzFabricCapacity" executed="True" result="Ignored" success="True" time="71.0152" asserts="0" description="New-AzFabricCapacity">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzFabricCapacity.CreateExpanded" time="70.9846" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="CreateViaJsonFilePath" name="New-AzFabricCapacity.CreateViaJsonFilePath" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/Fabric/Fabric.Autorest/test/Remove-AzFabricCapacity.Tests.ps1" executed="True" result="Success" success="True" time="79.8073" asserts="0" description="/src/Fabric/Fabric.Autorest/test/Remove-AzFabricCapacity.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzFabricCapacity" executed="True" result="Success" success="True" time="70.4065" asserts="0" description="Remove-AzFabricCapacity">
+            <results>
+              <test-case description="Delete" name="Remove-AzFabricCapacity.Delete" time="70.3884" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/Fabric/Fabric.Autorest/test/Resume-AzFabricCapacity.Tests.ps1" executed="True" result="Success" success="True" time="78.65" asserts="0" description="/src/Fabric/Fabric.Autorest/test/Resume-AzFabricCapacity.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Resume-AzFabricCapacity" executed="True" result="Success" success="True" time="68.3737" asserts="0" description="Resume-AzFabricCapacity">
+            <results>
+              <test-case description="Resume" name="Resume-AzFabricCapacity.Resume" time="68.3526" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/Fabric/Fabric.Autorest/test/Suspend-AzFabricCapacity.Tests.ps1" executed="True" result="Success" success="True" time="75.4449" asserts="0" description="/src/Fabric/Fabric.Autorest/test/Suspend-AzFabricCapacity.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Suspend-AzFabricCapacity" executed="True" result="Success" success="True" time="65.8102" asserts="0" description="Suspend-AzFabricCapacity">
+            <results>
+              <test-case description="Suspend" name="Suspend-AzFabricCapacity.Suspend" time="65.7898" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/Fabric/Fabric.Autorest/test/Test-AzFabricCapacityNameAvailability.Tests.ps1" executed="True" result="Ignored" success="True" time="10.2754" asserts="0" description="/src/Fabric/Fabric.Autorest/test/Test-AzFabricCapacityNameAvailability.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test-AzFabricCapacityNameAvailability" executed="True" result="Ignored" success="True" time="0.8408" asserts="0" description="Test-AzFabricCapacityNameAvailability">
+            <results>
+              <test-case description="CheckExpanded" name="Test-AzFabricCapacityNameAvailability.CheckExpanded" time="0.8167" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="CheckViaJsonString" name="Test-AzFabricCapacityNameAvailability.CheckViaJsonString" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="CheckViaJsonFilePath" name="Test-AzFabricCapacityNameAvailability.CheckViaJsonFilePath" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Check" name="Test-AzFabricCapacityNameAvailability.Check" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/src/Fabric/Fabric.Autorest/test/Update-AzFabricCapacity.Tests.ps1" executed="True" result="Ignored" success="True" time="79.6215" asserts="0" description="/src/Fabric/Fabric.Autorest/test/Update-AzFabricCapacity.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzFabricCapacity" executed="True" result="Ignored" success="True" time="70.3629" asserts="0" description="Update-AzFabricCapacity">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzFabricCapacity.UpdateExpanded" time="70.3361" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaJsonString" name="Update-AzFabricCapacity.UpdateViaJsonString" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaJsonFilePath" name="Update-AzFabricCapacity.UpdateViaJsonFilePath" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzFabricCapacity.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
