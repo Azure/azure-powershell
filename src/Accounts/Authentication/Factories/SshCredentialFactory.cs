@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 throw new NullReferenceException(Resources.AuthenticationClientFactoryNotRegistered);
             }
 
-            var publicClient = tokenCacheProvider.CreatePublicClient();
+            var publicClient = tokenCacheProvider.CreatePublicClient(context.Environment.ActiveDirectoryAuthority);
             string cloudName = context.Environment.Name.ToLower();
             string scope = CloudToScope.GetValueOrDefault(cloudName, null);
             if (scope == null)
