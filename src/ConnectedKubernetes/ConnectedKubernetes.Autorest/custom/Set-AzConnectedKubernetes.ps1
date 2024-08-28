@@ -58,6 +58,21 @@ function Set-AzConnectedKubernetes {
         # The name is case insensitive.
         ${ResourceGroupName},
 
+        [Parameter(ParameterSetName='SetExpanded', Mandatory)]
+        [Parameter(ParameterSetName='SetExpandedEnableGateway', Mandatory)]
+        [Parameter(ParameterSetName='SetExpandedDisableGateway', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+        [System.String]
+        # The geo-location where the resource lives
+        ${Location},
+
+        [Parameter(ParameterSetName='Set', Mandatory)]
+        [Parameter(ParameterSetName='SetGatewayEnabled', Mandatory)]
+        [Parameter(ParameterSetName='SetDisableGateway', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster]
+        ${InputObject},
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
@@ -112,14 +127,6 @@ function Set-AzConnectedKubernetes {
         [System.String]
         # Kubconfig context from current machine
         ${KubeContext},
-
-        [Parameter(ParameterSetName='SetExpanded', Mandatory)]
-        [Parameter(ParameterSetName='SetExpandedEnableGateway', Mandatory)]
-        [Parameter(ParameterSetName='SetExpandedDisableGateway', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-        [System.String]
-        # The geo-location where the resource lives
-        ${Location},
 
         [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AzureHybridBenefit])]
@@ -271,14 +278,7 @@ function Set-AzConnectedKubernetes {
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('body')]
         [System.String]
         # Arc Gateway resource Id
-        ${GatewayResourceId},
-
-        [Parameter(ParameterSetName='Set', Mandatory)]
-        [Parameter(ParameterSetName='SetGatewayEnabled', Mandatory)]
-        [Parameter(ParameterSetName='SetDisableGateway', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster]
-        ${InputObject}
+        ${GatewayResourceId}
     )
 
     process {
