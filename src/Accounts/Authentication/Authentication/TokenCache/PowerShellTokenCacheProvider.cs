@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 Id = account.Username,
                 Type = AzureAccount.AccountType.User
             };
-            var commonToken = AzureSession.Instance.AuthenticationFactory.Authenticate(azureAccount, environment, OrganizationTenant, null, null, promptAction);
+            var commonToken = AzureSession.Instance.AuthenticationFactory.Authenticate(azureAccount, environment, organizationTenant, null, null, promptAction);
             IEnumerable<string> tenants = Enumerable.Empty<string>();
             using (SubscriptionClient subscriptionClient = GetSubscriptionClient(commonToken, environment))
             {
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
             if (!string.IsNullOrEmpty(authority))
             {
-                builder.WithAuthority(authority, tenantId ?? OrganizationTenant);
+                builder.WithAuthority(authority, tenantId ?? organizationTenant);
             }
             var client = builder.Build();
             RegisterCache(client);
