@@ -187,11 +187,6 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                         }
                     }
 
-                    if(candidateServersLookup.Count == 0)
-                    {
-                        throw new PSArgumentException("No server found which can be configured to use a managed identity.");
-                    }
-
                     StorageSyncClientWrapper.VerboseLogger.Invoke($"Found {candidateServersLookup.Count} servers out of {registeredServers.Count(s => s.ServerRole != ServerRoleType.ClusterName.ToString())} total servers to migrate");
 
                     // 2. Set System Assigned managed identity to Storage Sync service
