@@ -33,7 +33,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     {
         public const string PowerShellTokenCacheProviderKey = "PowerShellTokenCacheProviderKey";
         //Refer to https://learn.microsoft.com/en-us/dotnet/api/microsoft.identity.client.abstractapplicationbuilder-1.withauthority?view=msal-dotnet-latest#microsoft-identity-client-abstractapplicationbuilder-1-withauthority(system-string-system-boolean
-        //However, neither "commons" nor "organizations" works for MSA account
         private static readonly string OrganizationTenant = "organizations";
 
         protected byte[] _tokenCacheDataToFlush;
