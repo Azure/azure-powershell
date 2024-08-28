@@ -16,46 +16,46 @@ Lists entities from service principals or get entity from service principals by 
 ```
 Get-AzADServicePrincipal [-Select <String[]>] [-Count] [-Filter <String>] [-Orderby <String[]>]
  [-Search <String>] [-ConsistencyLevel <String>] [-First <UInt64>] [-Skip <UInt64>] [-AppendSelected]
- [-DefaultProfile <PSObject>] [-CountVariable <String>] [-ProgressAction <ActionPreference>]
+ [-DefaultProfile <PSObject>] [-CountVariable <String>]
  [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
 ```
 Get-AzADServicePrincipal -ObjectId <String> [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>]
- [-AppendSelected] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### SearchStringParameterSet
 ```
 Get-AzADServicePrincipal [-Select <String[]>] -DisplayNameBeginsWith <String> [-First <UInt64>]
- [-Skip <UInt64>] [-AppendSelected] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-Skip <UInt64>] [-AppendSelected] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
 Get-AzADServicePrincipal [-Select <String[]>] -DisplayName <String> [-First <UInt64>] [-Skip <UInt64>]
- [-AppendSelected] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ApplicationIdParameterSet
 ```
 Get-AzADServicePrincipal [-Select <String[]>] -ApplicationId <Guid> [-First <UInt64>] [-Skip <UInt64>]
- [-AppendSelected] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ApplicationObjectParameterSet
 ```
 Get-AzADServicePrincipal [-Select <String[]>] -ApplicationObject <IMicrosoftGraphApplication> [-First <UInt64>]
- [-Skip <UInt64>] [-AppendSelected] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-Skip <UInt64>] [-AppendSelected] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### SPNParameterSet
 ```
 Get-AzADServicePrincipal [-Select <String[]>] -ServicePrincipalName <String> [-First <UInt64>] [-Skip <UInt64>]
- [-AppendSelected] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -290,21 +290,6 @@ Order items by property values
 Type: System.String[]
 Parameter Sets: EmptyParameterSet
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

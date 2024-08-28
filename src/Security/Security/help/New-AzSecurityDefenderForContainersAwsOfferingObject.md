@@ -21,7 +21,7 @@ New-AzSecurityDefenderForContainersAwsOfferingObject [-AutoProvisioning <Boolean
  [-KuberneteServiceCloudRoleArn <String>] [-MdcContainerAgentlessDiscoveryK8SCloudRoleArn <String>]
  [-MdcContainerAgentlessDiscoveryK8SEnabled <Boolean>] [-MdcContainerImageAssessmentCloudRoleArn <String>]
  [-MdcContainerImageAssessmentEnabled <Boolean>] [-ScubaExternalId <String>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -249,21 +249,6 @@ Is Microsoft Defender container image assessment enabled.
 Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

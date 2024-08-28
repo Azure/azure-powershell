@@ -25,14 +25,14 @@ Please notice that this cmdlet will mark `ObjectType` as `Unknown` in output if 
 ### RoleAssignmentParameterSet (Default)
 ```
 Set-AzRoleAssignment -InputObject <PSRoleAssignment> [-SkipClientSideScopeValidation] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### InputFileParameterSet
 ```
 Set-AzRoleAssignment -InputFile <String> [-SkipClientSideScopeValidation] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -155,21 +155,6 @@ If specified, displays the updated role assignment
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

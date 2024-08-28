@@ -15,20 +15,20 @@ Creates new security automation action object
 ### SecurityAutomationActionLogicApp (Default)
 ```
 New-AzSecurityAutomationActionObject -LogicAppResourceId <String> -Uri <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SecurityAutomationActionEventHub
 ```
 New-AzSecurityAutomationActionObject -EventHubResourceId <String> -ConnectionString <String>
- [-SasPolicyName <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-SasPolicyName <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### SecurityAutomationActionWorkspace
 ```
 New-AzSecurityAutomationActionObject -WorkspaceResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -114,21 +114,6 @@ Parameter Sets: SecurityAutomationActionLogicApp
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

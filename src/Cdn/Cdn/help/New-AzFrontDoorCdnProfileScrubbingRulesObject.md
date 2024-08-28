@@ -14,7 +14,7 @@ Create an in-memory object for ProfileScrubbingRules.
 
 ```
 New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable <ScrubbingRuleEntryMatchVariable>
- [-Selector <String>] [-State <ScrubbingRuleEntryState>] [-ProgressAction <ActionPreference>]
+ [-Selector <String>] [-State <ScrubbingRuleEntryState>]
  [<CommonParameters>]
 ```
 
@@ -60,21 +60,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
