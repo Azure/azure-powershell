@@ -41,6 +41,8 @@ function Set-AzConnectedKubernetes {
         Justification='Code published before this issue was identified')]
     param(
         [Parameter(ParameterSetName='SetExpanded', Mandatory)]
+        [Parameter(ParameterSetName='SetExpandedEnableGateway', Mandatory)]
+        [Parameter(ParameterSetName='SetExpandedDisableGateway', Mandatory)]
         [Alias('Name')]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
         [System.String]
@@ -48,6 +50,8 @@ function Set-AzConnectedKubernetes {
         ${ClusterName},
 
         [Parameter(ParameterSetName='SetExpanded', Mandatory)]
+        [Parameter(ParameterSetName='SetExpandedEnableGateway', Mandatory)]
+        [Parameter(ParameterSetName='SetExpandedDisableGateway', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
         [System.String]
         # The name of the resource group.
@@ -110,6 +114,8 @@ function Set-AzConnectedKubernetes {
         ${KubeContext},
 
         [Parameter(ParameterSetName='SetExpanded', Mandatory)]
+        [Parameter(ParameterSetName='SetExpandedEnableGateway', Mandatory)]
+        [Parameter(ParameterSetName='SetExpandedDisableGateway', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [System.String]
         # The geo-location where the resource lives
@@ -249,12 +255,14 @@ function Set-AzConnectedKubernetes {
         # Arc Agentry System Protected Configuration
         ${ConfigurationProtectedSetting},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='SetEnableGateway', Mandatory)]
+        [Parameter(ParameterSetName='SetExpandedEnableGateway', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('body')]
         [System.Management.Automation.SwitchParameter]
         ${EnableGateway},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='SetDisableGateway', Mandatory)]
+        [Parameter(ParameterSetName='SetExpandedDisableGateway', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('body')]
         [System.Management.Automation.SwitchParameter]
         ${DisableGateway},
@@ -266,6 +274,8 @@ function Set-AzConnectedKubernetes {
         ${GatewayResourceId},
 
         [Parameter(ParameterSetName='Set', Mandatory)]
+        [Parameter(ParameterSetName='SetGatewayEnabled', Mandatory)]
+        [Parameter(ParameterSetName='SetDisableGateway', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster]
         ${InputObject}
@@ -320,7 +330,7 @@ function Set-AzConnectedKubernetes {
         }
 
         # Parse value from inputObject
-        if ("Set" -contains $parameterSet) {
+        if ($null -ne $InputObject) {
             $Location = $InputObject.Location 
             $PSBoundParameters.Add('Location', $Location)
 
@@ -344,11 +354,6 @@ function Set-AzConnectedKubernetes {
             }
         }
 
-        # If EnableGateway is provided then set the gateway as enabled.
-        if ($EnableGateway -and $DisableGateway) {
-            Write-Error "You cannot enable and disable gateway at the same time."
-            return
-        }
         if ($EnableGateway) {
             Write-Debug "Gateway enabled"
             $Null = $PSBoundParameters.Remove('EnableGateway')
@@ -463,7 +468,7 @@ function Set-AzConnectedKubernetes {
             $ConfigurationProtectedSetting = @{}
         }
 
-        if ("Set" -contains $parameterSet) {
+        if ($null -ne $InputObject) {
             foreach ($arcAgentConfig in $InputObject.ArcAgentryConfiguration) {
                 $ConfigurationSetting[$arcAgentConfig.feature] = $arcAgentConfig.settings
                 $ConfigurationProtectedSetting[$arcAgentConfig.feature] = $arcAgentConfig.protectedSettings
