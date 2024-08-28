@@ -188,7 +188,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the private endpoint connection associated with the Azure resource
+The name of the private endpoint connection associated with the Azure resource.
 
 ```yaml
 Type: System.String
@@ -235,6 +235,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
@@ -272,7 +273,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IPrivateEndpointConnectionWithSystemData
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240403.IPrivateEndpointConnectionWithSystemData
 
 ## NOTES
 

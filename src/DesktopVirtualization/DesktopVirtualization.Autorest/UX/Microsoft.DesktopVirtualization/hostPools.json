@@ -1,6 +1,6 @@
 {
   "resourceType": "hostPools",
-  "apiVersion": "2023-09-05",
+  "apiVersion": "2024-04-03",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization"
   },
@@ -45,7 +45,7 @@
     },
     {
       "name": "Get-AzWvdHostPoolRegistrationToken",
-      "description": "Registration token of the host pool.",
+      "description": "Operation to list the RegistrationTokens associated with the HostPool",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/retrieveRegistrationToken",
       "help": {
         "learnMore": {
@@ -105,6 +105,44 @@
           "parameters": [
             {
               "name": "-Name",
+              "value": "[Path.hostPoolName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Import-AzWvdAppAttachPackageInfo",
+      "description": "Gets information from a package given the path to the package.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/importAppAttachPackageInfo",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/import-azwvdappattachpackageinfo"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HostPoolName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets information from a package given the path to the package.",
+          "parameters": [
+            {
+              "name": "-HostPoolName",
               "value": "[Path.hostPoolName]"
             },
             {
