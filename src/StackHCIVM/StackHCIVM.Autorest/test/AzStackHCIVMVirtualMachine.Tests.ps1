@@ -96,6 +96,8 @@ Describe 'AzStackHCIVMVirtualMachine' {
             $config = Get-AzStackHCIVMVirtualMachine -Name "testvm4" -ResourceGroupName $env.resourceGroupName 
             $config | Should -Be $null
         } | Should -Throw
+
+        Start-Sleep -Seconds 60 
     }
 
     It 'Delete resources' {
