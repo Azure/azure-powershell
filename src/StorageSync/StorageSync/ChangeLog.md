@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the bug in server registration
+* Improved the error message for Set-AzStorageSyncServiceIdentity cmdlet
 
 ## Version 2.3.0
 * Fixed the Register-AzStorageSyncServer with Azure FileSync Agent v17
