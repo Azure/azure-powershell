@@ -16,19 +16,19 @@ Creates or updates a project environment type.
 ```
 New-AzDevCenterAdminProjectEnvironmentType -EnvironmentTypeName <String> -ProjectName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -DeploymentTargetId <String>
- -Status <EnvironmentTypeEnableStatus> [-CreatorRoleAssignmentRole <Hashtable>]
+ -Status <EnvironmentTypeEnableStatus> [-CreatorRoleAssignmentRole <Hashtable>] [-DisplayName <String>]
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>]
  [-Tag <Hashtable>] [-UserRoleAssignment <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzDevCenterAdminProjectEnvironmentType -InputObject <IDevCenterIdentity> -DeploymentTargetId <String>
- -Status <EnvironmentTypeEnableStatus> [-CreatorRoleAssignmentRole <Hashtable>]
+ -Status <EnvironmentTypeEnableStatus> [-CreatorRoleAssignmentRole <Hashtable>] [-DisplayName <String>]
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>]
  [-Tag <Hashtable>] [-UserRoleAssignment <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -122,6 +122,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisplayName
+The display name of the project environment type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnvironmentTypeName
 The name of the environment type.
 
@@ -192,6 +207,21 @@ The geo-location for the environment type
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -332,7 +362,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IProjectEnvironmentType
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProjectEnvironmentType
 
 ## NOTES
 

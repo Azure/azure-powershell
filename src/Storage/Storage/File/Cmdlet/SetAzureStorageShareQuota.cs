@@ -24,6 +24,7 @@ using Azure.Storage.Files.Shares.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    [CmdletOutputBreakingChangeWithVersion(typeof(AzureStorageFileShare), "13.0.0", "8.0.0", ChangeDescription = "The child property CloudFileShare from deprecated v11 SDK will be removed. Use child property ShareClient instead.")]
     [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShareQuota", DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(AzureStorageFileShare))]
     public class SetAzureStorageShareQuota : AzureStorageFileCmdletBase
     {
@@ -36,6 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string ShareName { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("Share", "13.0.0", "8.0.0", ChangeDescription = "The parameter Share (alias CloudFileShare) will be deprecated, and a new mandatory parameter ShareClient will be added.")]
         [Parameter(
             Position = 0,
             Mandatory = true,

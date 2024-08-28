@@ -15,25 +15,25 @@ Gets RDP Connection info
 ### Get (Default)
 ```
 Get-AzDevCenterUserDevBoxRemoteConnection -Endpoint <String> -DevBoxName <String> -ProjectName <String>
- [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-UserId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzDevCenterUserDevBoxRemoteConnection -Endpoint <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityByDevCenter
 ```
 Get-AzDevCenterUserDevBoxRemoteConnection -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
 Get-AzDevCenterUserDevBoxRemoteConnection -DevCenterName <String> -DevBoxName <String> -ProjectName <String>
- [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-UserId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -147,6 +147,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

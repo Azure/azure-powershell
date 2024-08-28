@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// generally can be shared across subscriptions belonging to a single
         /// azure AAD tenant or cross AAD tenant if there is a trust
         /// relationship established between the AAD tenants. **Note:** Minimum
-        /// api-version: 2024-03-01. Please refer to
+        /// api-version: 2023-09-01. Please refer to
         /// https://aka.ms/computereservationsharing for more details.</param>
         /// <param name="zones">Availability Zones to use for this capacity
         /// reservation group. The zones can be assigned only during creation.
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// be shared across subscriptions belonging to a single azure AAD
         /// tenant or cross AAD tenant if there is a trust relationship
         /// established between the AAD tenants. **Note:** Minimum api-version:
-        /// 2024-03-01. Please refer to
+        /// 2023-09-01. Please refer to
         /// https://aka.ms/computereservationsharing for more details.
         /// </summary>
         [JsonProperty(PropertyName = "properties.sharingProfile")]

@@ -1512,7 +1512,13 @@ function Test-NewSetAzureStorageAccountAllowSharedKeyAccess
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
         Assert-AreEqual $kind $sto.Kind;
         Assert-AreEqual $false $sto.AllowSharedKeyAccess
+
+        # validate the storage account Context is Oauth based
+        Assert-AreEqual $false $sto.Context.StorageAccount.Credentials.IsSharedKey
+        Assert-AreEqual $true $sto.Context.StorageAccount.Credentials.IsToken
+        Assert-AreNotEqual $null $sto.Context.Track2OauthToken 
         
+        #Update account
         Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -AllowSharedKeyAccess $true -EnableHttpsTrafficOnly $true 
         
         Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }

@@ -15,7 +15,7 @@ Delays the occurrence of an action.
 ### Delay1 (Default)
 ```
 Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint <String> -DevBoxName <String> -ProjectName <String>
- [-UserId <String>] -DelayTime <TimeSpan> [-DefaultProfile <PSObject>]
+ [-UserId <String>] -DelayTime <TimeSpan> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,13 +23,13 @@ Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint <String> -DevBoxName <String> 
 ```
 Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint <String> -DevBoxName <String> -ProjectName <String>
  [-UserId <String>] -Name <String> -DelayTime <TimeSpan> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Delay1ByDevCenter
 ```
 Invoke-AzDevCenterUserDelayDevBoxAction -DevCenterName <String> -DevBoxName <String> -ProjectName <String>
- [-UserId <String>] -DelayTime <TimeSpan> [-DefaultProfile <PSObject>]
+ [-UserId <String>] -DelayTime <TimeSpan> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Invoke-AzDevCenterUserDelayDevBoxAction -DevCenterName <String> -DevBoxName <Str
 ```
 Invoke-AzDevCenterUserDelayDevBoxAction -DevCenterName <String> -DevBoxName <String> -ProjectName <String>
  [-UserId <String>] -Name <String> -DelayTime <TimeSpan> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -161,6 +161,21 @@ Parameter Sets: Delay, DelayByDevCenter
 Aliases: ActionName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
