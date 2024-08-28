@@ -119,7 +119,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the private endpoint connection associated with the Azure resource
+The name of the private endpoint connection associated with the Azure resource.
 
 ```yaml
 Type: System.String
@@ -166,6 +166,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
