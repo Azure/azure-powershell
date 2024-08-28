@@ -67,7 +67,7 @@ function Set-AzConnectedKubernetes {
         ${Location},
 
         [Parameter(ParameterSetName='Set', Mandatory)]
-        [Parameter(ParameterSetName='SetGatewayEnabled', Mandatory)]
+        [Parameter(ParameterSetName='SetEnableGateway', Mandatory)]
         [Parameter(ParameterSetName='SetDisableGateway', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster]
