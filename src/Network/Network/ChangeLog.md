@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 7.8.1
 * Fixed secrets exposure in example documentation.
 * Onboarded `Microsoft.App/managedEnvironments` to private link cmdlets
 
