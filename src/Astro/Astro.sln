@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Astro", "Astro\Astro.csproj", "{10E2E2D2-BE24-48A8-A101-F45ABEDD412E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Astro", "..\..\generated\Astro.Autorest\Az.Astro.csproj", "{F77A6A0E-F77D-4952-B810-5099C1444302}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Astro", "..\..\generated\Astro.Autorest\Az.Astro.csproj", "{99A4A34B-B2BC-4CA9-86E7-CC17696F4EC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{10E2E2D2-BE24-48A8-A101-F45ABEDD412E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10E2E2D2-BE24-48A8-A101-F45ABEDD412E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10E2E2D2-BE24-48A8-A101-F45ABEDD412E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F77A6A0E-F77D-4952-B810-5099C1444302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F77A6A0E-F77D-4952-B810-5099C1444302}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F77A6A0E-F77D-4952-B810-5099C1444302}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F77A6A0E-F77D-4952-B810-5099C1444302}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99A4A34B-B2BC-4CA9-86E7-CC17696F4EC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99A4A34B-B2BC-4CA9-86E7-CC17696F4EC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99A4A34B-B2BC-4CA9-86E7-CC17696F4EC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99A4A34B-B2BC-4CA9-86E7-CC17696F4EC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D3554691-F056-4D9E-B39A-A85BEBFD23CB} = {F6539BE9-6121-4F02-A810-058FBA33E1C6}
