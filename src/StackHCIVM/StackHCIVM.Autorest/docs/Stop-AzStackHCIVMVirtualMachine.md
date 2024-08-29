@@ -29,13 +29,27 @@ The operation to stop a virtual machine instance.
 
 ## EXAMPLES
 
-### Example 1: Stop Virtual Machine 
+### Example 1: {{ Add title here }}
 ```powershell
-Stop-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
-
+{{ Add code here }}
 ```
 
-This command stops the virtual machine in the specified resource group.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

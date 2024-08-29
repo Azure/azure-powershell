@@ -1,6 +1,22 @@
-### Example 1: Remove a logical network.
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzStackHCIVMLogicalNetwork -Name  "testLnet" -ResourceGroupName "test-rg"
+{{ Add code here }}
 ```
-This command removes the logical network from the specified resource group. 
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 

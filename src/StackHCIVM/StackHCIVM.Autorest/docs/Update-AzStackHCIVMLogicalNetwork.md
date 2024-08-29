@@ -48,18 +48,27 @@ The operation to update a logical network.
 
 ## EXAMPLES
 
-### Example 1: Update a Logical Network.
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzStackHCIVMLogicalNetwork  -Name "testLnet" -ResourceGroupName "test-rg" -Tag  @{"tagname" = "tagvalue"}
+{{ Add code here }}
 ```
 
 ```output
-Name            ResourceGroupName
-----            -----------------
-testLnet      test-rg
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command updates an exisiting logical network in the specified resource group.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -96,7 +105,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity
@@ -203,6 +211,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -271,7 +280,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetwork
 
 ## NOTES
 
