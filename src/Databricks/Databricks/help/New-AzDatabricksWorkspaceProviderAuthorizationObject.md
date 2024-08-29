@@ -14,7 +14,7 @@ Create an in-memory object for WorkspaceProviderAuthorization.
 
 ```
 New-AzDatabricksWorkspaceProviderAuthorizationObject -PrincipalId <String> -RoleDefinitionId <String>
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,13 +24,13 @@ Create an in-memory object for WorkspaceProviderAuthorization.
 
 ### Example 1: Create an in-memory object for WorkspaceProviderAuthorization.
 ```powershell
-New-AzDatabricksWorkspaceProviderAuthorizationObject -PrincipalId 00001111-aaaa-2222-bbbb-3333cccc4444 -RoleDefinitionId 2124844c-7e23-48cc-bc52-a3af25f7a4ae
+New-AzDatabricksWorkspaceProviderAuthorizationObject -PrincipalId 024d7367-0890-4ad3-8140-e37374722820 -RoleDefinitionId 2124844c-7e23-48cc-bc52-a3af25f7a4ae
 ```
 
 ```output
 PrincipalId                          RoleDefinitionId
 -----------                          ----------------
-00001111-aaaa-2222-bbbb-3333cccc4444 2124844c-7e23-48cc-bc52-a3af25f7a4ae
+024d7367-0890-4ad3-8140-e37374722820 2124844c-7e23-48cc-bc52-a3af25f7a4ae
 ```
 
 Create an in-memory object for WorkspaceProviderAuthorization.
@@ -47,6 +47,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
