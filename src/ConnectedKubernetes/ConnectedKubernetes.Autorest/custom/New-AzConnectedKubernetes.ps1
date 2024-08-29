@@ -37,7 +37,7 @@ param()
 
 function New-AzConnectedKubernetes {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster])]
-    [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, ConfirmImpact = 'Medium')]
     [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingConvertToSecureStringWithPlainText', '',
         Justification = 'Code published before this issue was identified')]
     param(
@@ -264,10 +264,16 @@ function New-AzConnectedKubernetes {
         ${GatewayResourceId}
     )
 
-    # Write-Debug "Outside of process"
-
-
     process {
+        # This is the special value used as a placeholder for protected settings.
+        $ProtectedSettingPlaceholderValue = "ClientKnown"
+
+        # Configuration is structured as a hashtable of hashtables where the final
+        # values must be strings.  Check this!
+        Test-ConfigurationSyntax -name 'ConfigurationSetting'
+        Test-ConfigurationSyntax -configuration 'ConfigurationProtectedSetting'
+
+
         Write-Debug "Checking if Azure Hybrid Benefit is opted in and processing the EULA."
         . "$PSScriptRoot/helpers/HelmHelper.ps1"
         . "$PSScriptRoot/helpers/ConfigDPHelper.ps1"
@@ -321,6 +327,9 @@ function New-AzConnectedKubernetes {
         # If GatewayResourceId is provided then set the gateway as enabled.
         $PSBoundParameters.Add('GatewayEnabled', -not [String]::IsNullOrEmpty($GatewayResourceId))
 
+        # !!PDS: Why are we only adding specific parameter here?  Isn't it better
+        #        to add all parameters and then remove the ones that we know
+        #        should not be passed on?
         $CommonPSBoundParameters = @{}
         if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
             $CommonPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
@@ -434,67 +443,6 @@ function New-AzConnectedKubernetes {
         $options = ""
         $proxyEnableState = $false
 
-        # Generalize the code here.
-
-
-
-
-
-
-        if (![string]::IsNullOrEmpty($HttpProxy) -or ![string]::IsNullOrEmpty($HttpsProxy) -or ![string]::IsNullOrEmpty($NoProxy) -or ![string]::IsNullOrEmpty($HttpProxy) ) {
-            if (-not $ConfigurationSetting.ContainsKey("proxy")) {
-                $ConfigurationSetting["proxy"] = @{}
-            }
-            if (-not $ConfigurationProtectedSetting.ContainsKey("proxy")) {
-                $ConfigurationProtectedSetting["proxy"] = @{}
-            }
-        }
-
-        if (-not ([string]::IsNullOrEmpty($HttpProxy))) {
-            $HttpProxyStr = $HttpProxy.ToString()
-            $HttpProxyStr = $HttpProxyStr -replace ',', '\,'
-            $HttpProxyStr = $HttpProxyStr -replace '/', '\/'
-            $options += " --set global.httpProxy=$HttpProxyStr"
-            $proxyEnableState = $true
-            $ConfigurationSetting["proxy"]["http_proxy"] = $HttpProxyStr
-            $ConfigurationProtectedSetting["proxy"]["http_proxy"] = $HttpProxyStr
-            # Note how we are removing k8s parameters from the list of parameters
-            # to pass to the internal (creates ARM object) command.
-            $Null = $PSBoundParameters.Remove('HttpProxy')
-        }
-        if (-not ([string]::IsNullOrEmpty($HttpsProxy))) {
-            $HttpsProxyStr = $HttpsProxy.ToString()
-            $HttpsProxyStr = $HttpsProxyStr -replace ',', '\,'
-            $HttpsProxyStr = $HttpsProxyStr -replace '/', '\/'
-            $options += " --set global.httpsProxy=$HttpsProxyStr"
-            $proxyEnableState = $true
-            $ConfigurationSetting["proxy"]["https_proxy"] = $HttpsProxyStr
-            $ConfigurationProtectedSetting["proxy"]["https_proxy"] = $HttpsProxyStr
-            $Null = $PSBoundParameters.Remove('HttpsProxy')
-        }
-        if (-not ([string]::IsNullOrEmpty($NoProxy))) {
-            $NoProxy = $NoProxy -replace ',', '\,'
-            $NoProxy = $NoProxy -replace '/', '\/'
-            $options += " --set global.noProxy=$NoProxy"
-            $proxyEnableState = $true
-            $ConfigurationSetting["proxy"]["no_proxy"] = $NoProxy
-            $ConfigurationProtectedSetting["proxy"]["no_proxy"] = $NoProxy
-            $Null = $PSBoundParameters.Remove('NoProxy')
-        }
-        if ($proxyEnableState) {
-            $options += " --set global.isProxyEnabled=true"
-        }
-        try {
-            if ((-not ([string]::IsNullOrEmpty($ProxyCert))) -and (Test-Path $ProxyCert)) {
-                $options += " --set-file global.proxyCert=$ProxyCert"
-                $options += " --set global.isCustomCert=true"
-                $ConfigurationSetting["proxy"]["proxy_cert"] = $ProxyCert
-                $ConfigurationProtectedSetting["proxy"]["proxy_cert"] = $ProxyCert
-            }
-        }
-        catch {
-            throw "Unable to find ProxyCert from file path"
-        }
         if ($DisableAutoUpgrade) {
             $options += " --set systemDefaultValues.azureArcAgents.autoUpdate=false"
             $Null = $PSBoundParameters.Remove('DisableAutoUpgrade')
@@ -522,7 +470,7 @@ function New-AzConnectedKubernetes {
         if ($PSBoundParameters.ContainsKey('OnboardingTimeout')) {
             $PSBoundParameters.Remove('OnboardingTimeout')
         }
-        
+
         if ((-not ([string]::IsNullOrEmpty($Proxy))) -and (-not $PSBoundParameters.ContainsKey('ProxyCredential'))) {
             if (-not ([string]::IsNullOrEmpty($Proxy.UserInfo))) {
                 try {
@@ -541,6 +489,30 @@ function New-AzConnectedKubernetes {
         }
         #Endregion
 
+        # A lot of what follows relies on knowing the cloud we are using and the
+        # various endpoints so get that information now.
+        $cloudMetadata = Get-AzCloudMetadata
+
+        # Perform DP health check
+        $configDpinfo = Get-ConfigDPEndpoint -location $Location -Cloud $cloudMetadata
+        $configDPEndpoint = $configDpInfo.configDPEndpoint
+
+        # If the health check fails (not 200 response), an exception is thrown
+        # so we can ignore the output.
+        $null = Invoke-ConfigDPHealthCheck -configDPEndpoint $configDPEndpoint
+
+        # This call does the "pure ARM" update of the ARM objects.
+        Write-Debug "Writing Connected Kubernetes ARM objects."
+
+        # We sometimes see the AgentPublicKeyCertificate present with value $null.
+        # If this is the case, update rather than adding.
+        if ($PSBoundParameters.ContainsKey('AgentPublicKeyCertificate')) {
+            $PSBoundParameters['AgentPublicKeyCertificate'] = $AgentPublicKey
+        }
+        else {
+            $PSBoundParameters.Add('AgentPublicKeyCertificate', $AgentPublicKey)
+        }
+
         # Process the Arc agentry settings and protected settings
         # Create any empty array of IArcAgentryConfigurations.
         # shortened name to avoid class with type name.
@@ -556,8 +528,8 @@ function New-AzConnectedKubernetes {
         #          This DOES mean that code changes are required both in the
         #          Config DP annd this Powershell script if a new Kubernetes
         #          feature is added.
-        $arcAgentryConfigs = @(
-        )
+        # !!PDS: This may be wrong - should this be a hash of hashes?  no, it;s a list of hashes amnd hashes!
+        $arcAgentryConfigs = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]
 
         if ($ConfigurationSetting) {
             foreach ($key in $ConfigurationSetting.Keys) {
@@ -565,15 +537,8 @@ function New-AzConnectedKubernetes {
                     Feature = $key
                     Setting = $ConfigurationSetting[$key]
                 }
-                if ($ConfigurationProtectedSetting -and $ConfigurationProtectedSetting[$key]) {
-                    $ArcAgentryConfiguration.ProtectedSetting = $ConfigurationProtectedSetting[$key]
-
-                    # Remove this key from ConfigurationProtectedSetting.
-                    $Null = $ConfigurationProtectedSetting.Remove($key)
-                }
-                $arcAgentryConfigs += $ArcAgentryConfiguration
+                $arcAgentryConfigs.Add($ArcAgentryConfiguration)
             }
-            $PSBoundParameters.Remove('ConfigurationSetting')
         }
 
         # Add the remaining (protected only) settings.
@@ -583,43 +548,145 @@ function New-AzConnectedKubernetes {
                     Feature          = $key
                     ProtectedSetting = $ConfigurationProtectedSetting[$key]
                 }
-                $argAgentryConfigs += $ArcAgentryConfiguration
+                $arcAgentryConfigs.Add($ArcAgentryConfiguration)
             }
+        }
+        # It is possible to set an empty value for these parameters and then
+        # the code above gets skipped but we still need to remove the empty
+        # values from $PSBoundParameters.
+        if ($PSBoundParameters.ContainsKey('ConfigurationSetting')) {
+            $PSBoundParameters.Remove('ConfigurationSetting')
+        }
+        if ($PSBoundParameters.ContainsKey('ConfigurationProtectedSetting')) {
             $PSBoundParameters.Remove('ConfigurationProtectedSetting')
         }
 
         $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
 
-        # A lot of what follows relies on knowing the cloud we are using and the
-        # various endpoints so get that information now.
-        $cloudMetadata = Get-AzCloudMetadata
-
-        # Perform DP health check
-        $configDpinfo = Get-ConfigDPEndpoint -location $Location -Cloud $cloudMetadata
-        $configDPEndpoint = $configDpInfo.configDPEndpoint
-
-        # If the health check fails (not 200 response), an exception is thrown
-        # so we can ignore the output.
-        $null = Invoke-ConfigDPHealthCheck -configDPEndpoint $configDPEndpoint
-        
-        # This call does the "pure ARM" update of the ARM objects.
-        Write-Debug "Writing Connected Kubernetes ARM objects."
-
-        # We sometimes see the AgentPublicKeyCertificate present with value $null.
-        # If this is the case, update rather than adding.
-        if ($PSBoundParameters.ContainsKey('AgentPublicKeyCertificate')) {
-            $PSBoundParameters['AgentPublicKeyCertificate'] = $AgentPublicKey
-        }
-        else {
-            $PSBoundParameters.Add('AgentPublicKeyCertificate', $AgentPublicKey)
-        }
         Write-Verbose "Creating 'Kubernetes - Azure Arc' object in Azure"
         $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
+
+        # !!PDS: Must handle settings before here!!!
+        # !!PDS: Do we only want to do thisd with the ARM response?
+        # In order to allow protected settings to be calculated by the Config DP
+        # and passed to `helm`, the following strategy is used.
+        #
+        # - See below for some special cases
+        # - "Protected setttings" must be defined using "name=value" syntax
+        #   and the "name" string must match the "helm" syntax and hierarchy
+        # - Placeholders for the "protected settings" are added to the "settings"
+        #   data that is passed to ARM BUT with the "value" replaced by a placeholder.
+        # - A hashtable is created for protected settings, indexed on the "name"
+        #   of the protected setting with the values in the hashtable being the
+        #   true values of the protected settings
+        # - After asking the Config DP for helm values, the helm values are
+        #   searched for the placeholder value and the true value is then
+        #   used to replace the placeholder value.
+        #
+        # Special cases:
+        # - The "proxy" settings have to be spoecial cased as they existed before
+        #   the settings and protected settings were added.
+
+        # We add all protected settings to the settings data, adding in placeholder
+        # values instead of the true values.
+        # !!PDS: Curerntly using Bavneet's mapping.
+        # Now add the special case values and also add them into the protected settings
+        # hashtable.
+        if (-not $ConfigurationSetting) {
+            $ConfigurationSetting = @{}
+        }
+        if (-not $ConfigurationSetting.ContainsKey('proxy')) {
+            $ConfigurationSetting['proxy'] = @{}
+        }
+        $proxyEnableState = $false
+        if (-not ([string]::IsNullOrEmpty($HttpProxy))) {
+            $HttpProxyStr = $HttpProxy.ToString()
+            $HttpProxyStr = $HttpProxyStr -replace ',', '\,'
+            $HttpProxyStr = $HttpProxyStr -replace '/', '\/'
+            $ConfigurationProtectedSetting["proxy"]["http_proxy"] = $HttpProxyStr
+            $Null = $PSBoundParameters.Remove('HttpProxy')
+            $proxyEnableState = $true
+        }
+        if (-not ([string]::IsNullOrEmpty($HttpsProxy))) {
+            $HttpsProxyStr = $HttpsProxy.ToString()
+            $HttpsProxyStr = $HttpsProxyStr -replace ',', '\,'
+            $HttpsProxyStr = $HttpsProxyStr -replace '/', '\/'
+            $ConfigurationProtectedSetting["proxy"]["https_proxy"] = $HttpsProxyStr
+            $Null = $PSBoundParameters.Remove('HttpsProxy')
+            $proxyEnableState = $true
+        }
+        if (-not ([string]::IsNullOrEmpty($NoProxy))) {
+            $NoProxy = $NoProxy -replace ',', '\,'
+            $NoProxy = $NoProxy -replace '/', '\/'
+            $ConfigurationProtectedSetting["proxy"]["no_proxy"] = $NoProxy
+            $Null = $PSBoundParameters.Remove('NoProxy')
+            $proxyEnableState = $true
+        }
+        # !!PDS: What has happened to this?
+        # if ($proxyEnableState) {
+        #     $ConfigurationProtectedSetting["global.isProxyEnabled"] = "true"
+        #     $ConfigurationSetting["global.isProxyEnabled"] = $ProtectedSettingPlaceholderValue
+        # }
+        try {
+            if ((-not ([string]::IsNullOrEmpty($ProxyCert))) -and (Test-Path $ProxyCert)) {
+                $ConfigurationProtectedSetting["proxy.proxy_cert"] = $ProxyCert
+            }
+        }
+        catch {
+            throw "Unable to find ProxyCert from file path"
+        }
+
+        # Duplicate the protected settings into the settings.
+        foreach ($feature in $ConfigurationProtectedSetting.Keys) {
+            if (-not $ConfigurationSetting.ContainsKey($feature)) {
+                $ConfigurationSetting[$feature] = @{}
+            }
+            foreach ($option in $ConfigurationProtectedSetting[$feature].Keys) {
+                $ConfigurationSetting[$feature][$option] = "$feature.$option.$ProtectedSettingPlaceholderValue"
+            }
+        }
+
+        # !!PDS: Using this twice so need a function.
+        $arcAgentryConfigs = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]
+
+        if ($ConfigurationSetting) {
+            foreach ($feature in $ConfigurationSetting.Keys) {
+                $ArcAgentryConfiguration = @{
+                    "Feature" = $feature
+                    "Setting" = $ConfigurationSetting[$feature]
+                }
+                $arcAgentryConfigs.Add($ArcAgentryConfiguration)
+            }
+        }
+
+        # !!PDS: Do not want to pass the protected settings the ConfigDP - but why not?
+        # # Add the remaining (protected only) settings.
+        # if ($ConfigurationProtectedSetting) {
+        #     foreach ($key in $ConfigurationProtectedSetting.Keys) {
+        #         $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
+        #             Feature          = $key
+        #             ProtectedSetting = $ConfigurationProtectedSetting[$key]
+        #         }
+        #         $arcAgentryConfigs.Add($ArcAgentryConfiguration)
+        #     }
+        # }
+
+        # Convert the $Response object into a nested hashtable.
+        $Response = ConvertFrom-Json "$Response" -AsHashTable -Depth 10
+        $Response['properties']['arcAgentryConfigurations'] = $arcAgentryConfigs
+
+
+
+
+
+
+        # !!PDS: This is a config DP function and not a helm function so I would
+        # rather it was in the Config DP helpers.
 
         # Retrieving Helm chart OCI (Open Container Initiative) Artifact location
         Write-Debug "Retrieving Helm chart OCI (Open Container Initiative) Artifact location."
         Write-Debug "PUT response: $Response"
-        $ResponseStr = "$Response"
+        $ResponseStr = $Response | ConvertTo-Json -Depth 10
         $helmValuesDp = Get-HelmValues `
             -configDPEndpoint $configDPEndpoint `
             -releaseTrain $ReleaseTrain `
@@ -636,9 +703,20 @@ function New-AzConnectedKubernetes {
         $helmValuesContent = $helmValuesDp.helmValuesContent
         Write-Debug "Helm values: ${helmValuesContent}."
 
+        # We now need to process the helm values, add all the settings and
+        # protected settings to the helm options and replace any placeholders
+        # with the values that we have stored in the protected settings
+        # hashtable.
         foreach ($field in $helmValuesContent.PSObject.Properties) {
-            if ($field.Name -in @("global.httpsProxy", "global.httpProxy", "global.noProxy", "global.proxyCert")) {
-                continue
+            # if ($field.Name -in @("global.httpsProxy", "global.httpProxy", "global.noProxy", "global.proxyCert")) {
+            #     continue
+            # }
+            if ($ProtectedSettingsPlaceholderValue -in $field.Value) {
+                $parsedValue = $field.Value.Split(".")
+                $field.Value = $ConfigurationProtectedSetting[$parsedValue[0]][$parsedValue[1]]
+            }
+            if ($field.Name -eq "global.proxyCert") {
+                $options += " --set-file $($field.Name)=$($field.Value)"
             }
             $options += " --set $($field.Name)=$($field.Value)"
         }
@@ -676,5 +754,23 @@ function New-AzConnectedKubernetes {
             throw "Unable to install helm chart at $ChartPath"
         }
         Return $Response
+    }
+}
+
+function Test-ConfigurationSyntax {
+    param(
+        [string]$name
+    )
+    $configuration = $PSBoundParameters[$name]
+
+    foreach ($key in $configuration.Keys) {
+        if ('Hashtable' -ne $configuration[$key].GetType().Name) {
+            Write-Error "$name[$key] is not a hashtable"
+        }
+        foreach ($subkey in $configuration[$key].Keys) {
+            if ('String' -ne $configuration[$key][$subkey].GetType().Name) {
+                Write-Error "$name[$key][$subkey] is not a string"
+            }
+        }
     }
 }
