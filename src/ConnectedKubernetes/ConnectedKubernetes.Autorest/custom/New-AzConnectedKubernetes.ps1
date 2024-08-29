@@ -434,6 +434,13 @@ function New-AzConnectedKubernetes {
         $options = ""
         $proxyEnableState = $false
 
+        # Generalize the code here.
+
+
+
+
+
+
         if (![string]::IsNullOrEmpty($HttpProxy) -or ![string]::IsNullOrEmpty($HttpsProxy) -or ![string]::IsNullOrEmpty($NoProxy) -or ![string]::IsNullOrEmpty($HttpProxy) ) {
             if (-not $ConfigurationSetting.ContainsKey("proxy")) {
                 $ConfigurationSetting["proxy"] = @{}
