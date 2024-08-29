@@ -21,7 +21,6 @@ using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.Rest.Azure.OData;
 using RestAzureNS = Microsoft.Rest.Azure;
 using System;
-using Newtonsoft.Json;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
@@ -106,8 +105,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <returns>Azure Resource Encryption response object.</returns>  
         public BackupResourceEncryptionConfigExtendedResource GetVaultEncryptionConfig(string resouceGroupName, string vaultName)
         {
-            return BmsAdapter.Client.BackupResourceEncryptionConfigs.GetWithHttpMessagesAsync(
-                vaultName, resouceGroupName).Result.Body;
+            ARSVault vault = GetVault(resouceGroupName, vaultName);
+
+            var vaultEncryptionProperty = vault.Properties.EncryptionProperty;
+            BackupResourceEncryptionConfigExtendedResource encryptionConfig = new BackupResourceEncryptionConfigExtendedResource();
+
+            if (vaultEncryptionProperty != null)
+            {
+                encryptionConfig.Properties = new BackupResourceEncryptionConfigExtended
+                {
+                    KeyUri = vaultEncryptionProperty.KeyVaultProperties?.KeyUri,
+                    InfrastructureEncryptionState = vaultEncryptionProperty.InfrastructureEncryption,
+                    UseSystemAssignedIdentity = vaultEncryptionProperty.KekIdentity?.UseSystemAssignedIdentity,
+                    UserAssignedIdentity = vaultEncryptionProperty.KekIdentity?.UserAssignedIdentity
+                };
+            }
+
+            return encryptionConfig;
         }
 
         /// <summary>  
@@ -156,11 +170,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <summary>  
         /// Method to create or update Recovery Services Vault.
         /// </summary>  
-        /// <param name="resouceGroupName">Name of the resouce group</param>  
+        /// <param name="resourceGroupName">Name of the resouce group</param>  
         /// <param name="vaultName">Name of the vault</param>  
         /// <param name="patchVault">patch vault object to patch the recovery services Vault</param>
+        /// <param name="auxiliaryAccessToken">Auxiliary access token for authorization</param>  
+        /// <param name="isMUAProtected">Flag indicating if the operation is MUA protected</param>  
         /// <returns>Azure Recovery Services Vault.</returns> 
-        public Vault UpdateRSVault(string resouceGroupName, string vaultName, PatchVault patchVault)
+        public Vault UpdateRSVault(string resourceGroupName, string vaultName, PatchVault patchVault, string auxiliaryAccessToken = null, bool isMUAProtected = false)
         {
             Dictionary<string, List<string>> customHeaders = new Dictionary<string, List<string>>();
             if (isMUAProtected)
