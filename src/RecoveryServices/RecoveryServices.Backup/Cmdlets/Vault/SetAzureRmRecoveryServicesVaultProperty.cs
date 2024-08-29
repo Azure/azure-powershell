@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public string SoftDeleteFeatureState { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = AzureRSVaultSoftDelteParameterSet, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken)]
+        [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = AzureRSVaultCMKParameterSet, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken)]
         [ValidateNotNullOrEmpty]
         public string Token;
 
@@ -122,7 +123,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                         patchVault.Properties.Encryption = vaultEncryption;                                               
                         
-                        ServiceClientAdapter.UpdateRSVault(resourceGroupName, vaultName, patchVault);
+                        // defining this flag in case we want to add logic later 
+                        bool isMUAProtected = true;
+                        ServiceClientAdapter.UpdateRSVault(resourceGroupName, vaultName, patchVault, Token, isMUAProtected);
                     }
                 }
                 catch (Exception exception)

@@ -36,7 +36,7 @@ namespace Commands.StorageSync.Interop.Clients
     /// <seealso cref="Commands.StorageSync.Interop.Interfaces.ISyncServerRegistration" />
     public abstract class MockSyncServerRegistrationClientBase : ISyncServerRegistration
     {
-        public bool EnableMIChecking { get; protected set; } = false; // enable it in v19 azure file sync agent
+        public bool EnableMIChecking { get; protected set; } = false; // enable it in v20 azure file sync agent
 
         /// <summary>
         /// The m is disposed

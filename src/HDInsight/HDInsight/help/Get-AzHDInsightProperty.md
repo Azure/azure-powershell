@@ -14,7 +14,8 @@ Gets properties about the HDInsight service, such as available locations and cap
 ## SYNTAX
 
 ```
-Get-AzHDInsightProperty [-Location] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzHDInsightProperty [-Location] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

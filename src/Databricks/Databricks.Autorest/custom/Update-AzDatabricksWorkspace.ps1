@@ -155,6 +155,22 @@ function Update-AzDatabricksWorkspace {
         ${Authorization},
 
         [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.InitialType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.InitialType]
+        # Defines the initial type of the default catalog.
+        # Possible values (case-insensitive): HiveMetastore, UnityCatalog
+        ${DefaultCatalogInitialType},
+
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource]
+        # The encryption keySource (provider).
+        # Possible values (case-insensitive): Microsoft.Keyvault
+        ${ManagedDiskKeySource},
+
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
         # The name of KeyVault key.
@@ -177,6 +193,14 @@ function Update-AzDatabricksWorkspace {
         [System.Management.Automation.SwitchParameter]
         # Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
         ${ManagedDiskRotationToLatestKeyVersionEnabled},
+
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource]
+        # The encryption keySource (provider).
+        # Possible values (case-insensitive): Microsoft.Keyvault
+        ${ManagedServiceKeySource},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
@@ -363,11 +387,14 @@ function Update-AzDatabricksWorkspace {
             $hasAmlWorkspaceId = $PSBoundParameters.Remove('AmlWorkspaceId')
             $hasSkuTier = $PSBoundParameters.Remove('SkuTier')
             $hasAuthorization = $PSBoundParameters.Remove('Authorization')
+            $hasDefaultCatalogInitialType = $PSBoundParameters.Remove('DefaultCatalogInitialType')
+            $hasManagedDiskKeySource = $PSBoundParameters.Remove('ManagedDiskKeySource')
             $hasManagedDiskKeyVaultPropertiesKeyName = $PSBoundParameters.Remove('ManagedDiskKeyVaultPropertiesKeyName')
             $hasManagedDiskKeyVaultPropertiesKeyVaultUri = $PSBoundParameters.Remove('ManagedDiskKeyVaultPropertiesKeyVaultUri')
             $hasManagedDiskKeyVaultPropertiesKeyVersion = $PSBoundParameters.Remove('ManagedDiskKeyVaultPropertiesKeyVersion')
             $hasManagedDiskRotationToLatestKeyVersionEnabled = $PSBoundParameters.Remove('ManagedDiskRotationToLatestKeyVersionEnabled')
             $hasManagedServicesKeyVaultPropertiesKeyName = $PSBoundParameters.Remove('ManagedServicesKeyVaultPropertiesKeyName')
+            $hasManagedServiceKeySource = $PSBoundParameters.Remove('ManagedServiceKeySource')
             $hasManagedServicesKeyVaultPropertiesKeyVaultUri = $PSBoundParameters.Remove('ManagedServicesKeyVaultPropertiesKeyVaultUri')
             $hasManagedServicesKeyVaultPropertiesKeyVersion = $PSBoundParameters.Remove('ManagedServicesKeyVaultPropertiesKeyVersion')
             $hasUiDefinitionUri = $PSBoundParameters.Remove('UiDefinitionUri')
@@ -436,6 +463,12 @@ function Update-AzDatabricksWorkspace {
             if ($hasAuthorization) {
                 $workspace.Authorization = $Authorization
             }
+            if ($hasDefaultCatalogInitialType) {
+                $workspace.DefaultCatalogInitialType = $DefaultCatalogInitialType
+            }
+            if ($hasManagedDiskKeySource) {
+                $workspace.ManagedDiskKeySource = $ManagedDiskKeySource
+            }
             if ($hasManagedDiskKeyVaultPropertiesKeyName) {
                 $workspace.ManagedDiskKeyVaultPropertiesKeyName = $ManagedDiskKeyVaultPropertiesKeyName
             }
@@ -450,6 +483,9 @@ function Update-AzDatabricksWorkspace {
             }
             if ($hasManagedServicesKeyVaultPropertiesKeyName) {
                 $workspace.ManagedServicesKeyVaultPropertiesKeyName = $ManagedServicesKeyVaultPropertiesKeyName
+            }
+            if ($hasManagedServiceKeySource) {
+                $workspace.ManagedServiceKeySource = $ManagedServiceKeySource
             }
             if ($hasManagedServicesKeyVaultPropertiesKeyVaultUri) {
                 $workspace.ManagedServicesKeyVaultPropertiesKeyVaultUri = $ManagedServicesKeyVaultPropertiesKeyVaultUri
