@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 7.3.0
 * Supported account tier Cold
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`

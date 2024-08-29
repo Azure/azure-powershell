@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.2.0
 * Added new feature: Enable adding public IP tags to clusters. 
 * Added commands for manage Azure Monitor Agent
     - Command `Get-AzHDInsightAzureMonitorAgent` to get the Azure Monitor Agent status of HDInsight cluster.
