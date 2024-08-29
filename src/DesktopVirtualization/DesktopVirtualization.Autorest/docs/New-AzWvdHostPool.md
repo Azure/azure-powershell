@@ -31,7 +31,7 @@ New-AzWvdHostPool -HostPoolType <HostPoolType> -LoadBalancerType <LoadBalancerTy
  [-VMTemplate <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### FullSenerioCreate
+### FullScenarioCreate
 ```
 New-AzWvdHostPool -HostPoolType <HostPoolType> -LoadBalancerType <LoadBalancerType> -Location <String>
  -Name <String> -PreferredAppGroupType <PreferredAppGroupType> -ResourceGroupName <String>
@@ -220,7 +220,7 @@ Desktop App Group Name
 
 ```yaml
 Type: System.String
-Parameter Sets: FullSenerioCreate
+Parameter Sets: FullScenarioCreate
 Aliases:
 
 Required: False
@@ -792,7 +792,7 @@ Workspace Name
 
 ```yaml
 Type: System.String
-Parameter Sets: FullSenerioCreate
+Parameter Sets: FullScenarioCreate
 Aliases:
 
 Required: False

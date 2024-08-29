@@ -1,4 +1,4 @@
-function New-AzWvdHostPool_FullSenerioCreate {
+function New-AzWvdHostPool_FullScenarioCreate {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240403.IHostPool')]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
