@@ -216,363 +216,6 @@ end {
 
 <#
 .Synopsis
-Create a OrganizationResource
-.Description
-Create a OrganizationResource
-.Example
-New-AzAstroOrganization -Name UT.7.test -ResourceGroupName astro-user -Location eastus -MarketplaceSubscriptionId 11111111-2222-3333-4444-123456789101 -OfferDetailOfferId astro -OfferDetailPlanId astro-paygo -OfferDetailPublisherId astronomer1 -OfferDetailPlanName 'Monthly Pay-As-You-Go' -OfferDetailTermId abcdefghijkl -OfferDetailTermUnit Monthly -UserEmailAddress example@microsoft.com -UserFirstName user -UserLastName test -UserUpn example@microsoft.com -PartnerOrganizationPropertyWorkspaceName aaa -PartnerOrganizationPropertyOrganizationName bbb -SingleSignOnPropertyAadDomain MicrosoftCustomerLed.onmicrosoft.com
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.IOrganizationResource
-.Link
-https://learn.microsoft.com/powershell/module/az.astro/new-azastroorganization
-#>
-function New-AzAstroOrganization {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.IOrganizationResource])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Alias('OrganizationName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Path')]
-    [System.String]
-    # Name of the Organizations resource
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # Azure subscription id for the the marketplace offer is purchased from
-    ${MarketplaceSubscriptionId},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # Offer Id for the marketplace offer
-    ${OfferDetailOfferId},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # Plan Id for the marketplace offer
-    ${OfferDetailPlanId},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # Publisher Id for the marketplace offer
-    ${OfferDetailPublisherId},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # Email address of the user
-    ${UserEmailAddress},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # First name of the user
-    ${UserFirstName},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # Last name of the user
-    ${UserLastName},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.PSArgumentCompleterAttribute("PendingFulfillmentStart", "Subscribed", "Suspended", "Unsubscribed")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # Marketplace subscription status
-    ${MarketplaceSubscriptionStatus},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # Plan Name for the marketplace offer
-    ${OfferDetailPlanName},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # Plan Display Name for the marketplace offer
-    ${OfferDetailTermId},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # Plan Display Name for the marketplace offer
-    ${OfferDetailTermUnit},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # Organization Id in partner's system
-    ${PartnerOrganizationPropertyOrganizationId},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # Organization name in partner's system
-    ${PartnerOrganizationPropertyOrganizationName},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # Workspace Id in partner's system
-    ${PartnerOrganizationPropertyWorkspaceId},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # Workspace name in partner's system
-    ${PartnerOrganizationPropertyWorkspaceName},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String[]]
-    # List of AAD domains fetched from Microsoft Graph for user.
-    ${SingleSignOnPropertyAadDomain},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # AAD enterprise application Id used to setup SSO
-    ${SingleSignOnPropertyEnterpriseAppId},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.PSArgumentCompleterAttribute("Initial", "Enable", "Disable")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # State of the Single Sign On for the organization
-    ${SingleSignOnPropertySingleSignOnState},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # URL for SSO to be used by the partner to redirect the user to their system
-    ${SingleSignOnPropertySingleSignOnUrl},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.ITrackedResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String[]]
-    # The array of user assigned identities associated with the resource.
-    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
-    ${UserAssignedIdentity},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # User's phone number
-    ${UserPhoneNumber},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # User's principal name
-    ${UserUpn},
-
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # Path of Json file supplied to the Create operation
-    ${JsonFilePath},
-
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # Json string supplied to the Create operation
-    ${JsonString},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Astro.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            CreateExpanded = 'Az.Astro.private\New-AzAstroOrganization_CreateExpanded';
-            CreateViaJsonFilePath = 'Az.Astro.private\New-AzAstroOrganization_CreateViaJsonFilePath';
-            CreateViaJsonString = 'Az.Astro.private\New-AzAstroOrganization_CreateViaJsonString';
-        }
-        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Astro.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
 Delete a OrganizationResource
 .Description
 Delete a OrganizationResource
@@ -784,6 +427,362 @@ end {
 
 <#
 .Synopsis
+Create a OrganizationResource
+.Description
+Create a OrganizationResource
+.Example
+New-AzAstroOrganization -Name UT.7.test -ResourceGroupName astro-user -Location eastus -MarketplaceSubscriptionId 11111111-2222-3333-4444-123456789101 -OfferDetailOfferId astro -OfferDetailPlanId astro-paygo -OfferDetailPublisherId astronomer1 -OfferDetailPlanName 'Monthly Pay-As-You-Go' -OfferDetailTermId abcdefghijkl -OfferDetailTermUnit Monthly -UserEmailAddress example@microsoft.com -UserFirstName user -UserLastName test -UserUpn example@microsoft.com -PartnerOrganizationPropertyWorkspaceName aaa -PartnerOrganizationPropertyOrganizationName bbb -SingleSignOnPropertyAadDomain MicrosoftCustomerLed.onmicrosoft.com
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.IOrganizationResource
+.Link
+https://learn.microsoft.com/powershell/module/az.astro/new-azastroorganization
+#>
+function New-AzAstroOrganization {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.IOrganizationResource])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('OrganizationName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Path')]
+    [System.String]
+    # Name of the Organizations resource
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # Azure subscription id for the the marketplace offer is purchased from
+    ${MarketplaceSubscriptionId},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # Offer Id for the marketplace offer
+    ${OfferDetailOfferId},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # Plan Id for the marketplace offer
+    ${OfferDetailPlanId},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # Publisher Id for the marketplace offer
+    ${OfferDetailPublisherId},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # Email address of the user
+    ${UserEmailAddress},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # First name of the user
+    ${UserFirstName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # Last name of the user
+    ${UserLastName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Decides if enable a system assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.PSArgumentCompleterAttribute("PendingFulfillmentStart", "Subscribed", "Suspended", "Unsubscribed")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # Marketplace subscription status
+    ${MarketplaceSubscriptionStatus},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # Plan Name for the marketplace offer
+    ${OfferDetailPlanName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # Plan Display Name for the marketplace offer
+    ${OfferDetailTermId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # Plan Display Name for the marketplace offer
+    ${OfferDetailTermUnit},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # Organization Id in partner's system
+    ${PartnerOrganizationPropertyOrganizationId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # Organization name in partner's system
+    ${PartnerOrganizationPropertyOrganizationName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # Workspace Id in partner's system
+    ${PartnerOrganizationPropertyWorkspaceId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # Workspace name in partner's system
+    ${PartnerOrganizationPropertyWorkspaceName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String[]]
+    # List of AAD domains fetched from Microsoft Graph for user.
+    ${SingleSignOnPropertyAadDomain},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # AAD enterprise application Id used to setup SSO
+    ${SingleSignOnPropertyEnterpriseAppId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.PSArgumentCompleterAttribute("Initial", "Enable", "Disable")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # State of the Single Sign On for the organization
+    ${SingleSignOnPropertySingleSignOnState},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # URL for SSO to be used by the partner to redirect the user to their system
+    ${SingleSignOnPropertySingleSignOnUrl},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # User's phone number
+    ${UserPhoneNumber},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # User's principal name
+    ${UserUpn},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Astro.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.Astro.custom\New-AzAstroOrganization';
+            CreateViaJsonFilePath = 'Az.Astro.custom\New-AzAstroOrganization';
+            CreateViaJsonString = 'Az.Astro.custom\New-AzAstroOrganization';
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Astro.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Update a OrganizationResource
 .Description
 Update a OrganizationResource
@@ -812,8 +811,8 @@ function Update-AzAstroOrganization {
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Alias('OrganizationName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Path')]
     [System.String]
@@ -821,8 +820,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -830,8 +829,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
     [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -846,11 +845,10 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
+    [System.Nullable[System.Boolean]]
+    # Decides if enable a system assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -962,17 +960,17 @@ param(
     # User's principal name
     ${UserUpn},
 
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # Path of Json file supplied to the Update operation
-    ${JsonFilePath},
-
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
     [System.String]
     # Json string supplied to the Update operation
     ${JsonString},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1061,12 +1059,12 @@ begin {
         }
 
         $mapping = @{
-            UpdateExpanded = 'Az.Astro.private\Update-AzAstroOrganization_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.Astro.private\Update-AzAstroOrganization_UpdateViaIdentityExpanded';
-            UpdateViaJsonFilePath = 'Az.Astro.private\Update-AzAstroOrganization_UpdateViaJsonFilePath';
-            UpdateViaJsonString = 'Az.Astro.private\Update-AzAstroOrganization_UpdateViaJsonString';
+            UpdateExpanded = 'Az.Astro.custom\Update-AzAstroOrganization';
+            UpdateViaJsonString = 'Az.Astro.custom\Update-AzAstroOrganization';
+            UpdateViaJsonFilePath = 'Az.Astro.custom\Update-AzAstroOrganization';
+            UpdateViaIdentityExpanded = 'Az.Astro.custom\Update-AzAstroOrganization';
         }
-        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('UpdateExpanded', 'UpdateViaJsonString', 'UpdateViaJsonFilePath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {

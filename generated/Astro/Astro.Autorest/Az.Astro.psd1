@@ -1,5 +1,5 @@
 @{
-  GUID = 'f1fb5c84-9232-478e-85f9-f1355cc0774d'
+  GUID = '3f6b5c37-9063-4953-a374-e1499f570ec4'
   RootModule = './Az.Astro.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
