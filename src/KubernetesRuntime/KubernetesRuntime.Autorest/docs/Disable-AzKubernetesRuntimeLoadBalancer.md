@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.KubernetesRuntime
-online version: https://learn.microsoft.com/powershell/module/az.kubernetesruntime/new-azkubernetesruntimeservice
+online version: https://learn.microsoft.com/powershell/module/az.kubernetesruntime/disable-azkubernetesruntimeloadbalancer
 schema: 2.0.0
 ---
 
 # Disable-AzKubernetesRuntimeLoadBalancer
 
 ## SYNOPSIS
-Disable Arc storage class service in a connected cluster.
+Disable Arc load balancer service in a connected cluster.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Disable-AzKubernetesRuntimeLoadBalancer -ResourceUri <String> [-DefaultProfile <
 ```
 
 ## DESCRIPTION
-Disable Arc storage class service in a connected cluster.
+Disable Arc load balancer service in a connected cluster.
 
 ## EXAMPLES
 

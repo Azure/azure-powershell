@@ -12,13 +12,13 @@ Microsoft Azure PowerShell: KubernetesRuntime cmdlets
 
 ## Az.KubernetesRuntime Cmdlets
 ### [Disable-AzKubernetesRuntimeLoadBalancer](Disable-AzKubernetesRuntimeLoadBalancer.md)
-Disable Arc storage class service in a connected cluster.
+Disable Arc load balancer service in a connected cluster.
 
 ### [Disable-AzKubernetesRuntimeStorageClass](Disable-AzKubernetesRuntimeStorageClass.md)
 Disable Arc storage class service in a connected cluster.
 
 ### [Enable-AzKubernetesRuntimeLoadBalancer](Enable-AzKubernetesRuntimeLoadBalancer.md)
-Enable Arc storage class service in a connected cluster.
+Enable Arc load balancer service in a connected cluster.
 
 ### [Enable-AzKubernetesRuntimeStorageClass](Enable-AzKubernetesRuntimeStorageClass.md)
 Enable Arc storage class service in a connected cluster.
@@ -34,9 +34,6 @@ Get a ServiceResource
 
 ### [Get-AzKubernetesRuntimeStorageClass](Get-AzKubernetesRuntimeStorageClass.md)
 Get a StorageClassResource
-
-### [New-AzKubernetesRuntimeAksArcDiskStorageClassTypePropertiesObject](New-AzKubernetesRuntimeAksArcDiskStorageClassTypePropertiesObject.md)
-Create an in-memory object for AksArcDiskStorageClassTypeProperties.
 
 ### [New-AzKubernetesRuntimeBgpPeer](New-AzKubernetesRuntimeBgpPeer.md)
 Create a BgpPeer

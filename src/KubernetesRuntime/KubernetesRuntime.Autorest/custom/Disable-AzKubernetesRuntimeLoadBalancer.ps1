@@ -16,18 +16,14 @@
 
 <#
 .Synopsis
-Disable Arc storage class service in a connected cluster.
+Disable Arc load balancer service in a connected cluster.
 .Description
-Disable Arc storage class service in a connected cluster.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Disable Arc load balancer service in a connected cluster.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IServiceResource
+System.String
 .Link
-https://learn.microsoft.com/powershell/module/az.kubernetesruntime/new-azkubernetesruntimeservice
+https://learn.microsoft.com/powershell/module/az.kubernetesruntime/disable-azkubernetesruntimeloadbalancer
 #>
 
 function Disable-AzKubernetesRuntimeLoadBalancer {

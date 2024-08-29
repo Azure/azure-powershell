@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.KubernetesRuntime
-online version: https://learn.microsoft.com/powershell/module/az.kubernetesruntime/new-azkubernetesruntimeservice
+online version: https://learn.microsoft.com/powershell/module/az.kubernetesruntime/enable-azkubernetesruntimeloadbalancer
 schema: 2.0.0
 ---
 
 # Enable-AzKubernetesRuntimeLoadBalancer
 
 ## SYNOPSIS
-Enable Arc storage class service in a connected cluster.
+Enable Arc load balancer service in a connected cluster.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Enable-AzKubernetesRuntimeLoadBalancer -ResourceUri <String> [-ReleaseTrain <Str
 ```
 
 ## DESCRIPTION
-Enable Arc storage class service in a connected cluster.
+Enable Arc load balancer service in a connected cluster.
 
 ## EXAMPLES
 

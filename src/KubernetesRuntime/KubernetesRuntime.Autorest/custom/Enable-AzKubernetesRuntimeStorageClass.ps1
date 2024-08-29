@@ -19,15 +19,11 @@
 Enable Arc storage class service in a connected cluster.
 .Description
 Enable Arc storage class service in a connected cluster.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IServiceResource
+System.String
 .Link
-https://learn.microsoft.com/powershell/module/az.kubernetesruntime/new-azkubernetesruntimeservice
+https://learn.microsoft.com/powershell/module/az.kubernetesruntime/disable-azkubernetesruntimestorageclass
 #>
 
 function Enable-AzKubernetesRuntimeStorageClass {

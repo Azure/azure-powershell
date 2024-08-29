@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.KubernetesRuntime
-online version: https://learn.microsoft.com/powershell/module/az.kubernetesruntime/new-azkubernetesruntimeservice
+online version: https://learn.microsoft.com/powershell/module/az.kubernetesruntime/disable-azkubernetesruntimestorageclass
 schema: 2.0.0
 ---
 

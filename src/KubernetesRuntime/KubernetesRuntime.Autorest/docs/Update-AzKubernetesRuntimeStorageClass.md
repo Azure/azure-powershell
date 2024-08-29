@@ -18,12 +18,11 @@ Update-AzKubernetesRuntimeStorageClass -Name <String> -ResourceUri <String> [-Ac
  [-AllowVolumeExpansion <String>] [-DataResilience <String>] [-FailoverSpeed <String>]
  [-Limitation <String[]>] [-MountOption <String[]>] [-Performance <String>] [-Priority <Int64>]
  [-TypePropertyAzureStorageAccountKey <SecureString>] [-TypePropertyAzureStorageAccountName <String>]
- [-TypePropertyBackingStorageClassName <String>] [-TypePropertyDomain <String>] [-TypePropertyFsType <String>]
+ [-TypePropertyBackingStorageClassName <String>] [-TypePropertyDomain <String>]
  [-TypePropertyMountPermission <String>] [-TypePropertyOnDelete <String>]
  [-TypePropertyPassword <SecureString>] [-TypePropertyServer <String>] [-TypePropertyShare <String>]
- [-TypePropertySource <String>] [-TypePropertyStoragePathId <String>] [-TypePropertySubDir <String>]
- [-TypePropertyUsername <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-TypePropertySource <String>] [-TypePropertySubDir <String>] [-TypePropertyUsername <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -32,12 +31,11 @@ Update-AzKubernetesRuntimeStorageClass -InputObject <IKubernetesRuntimeIdentity>
  [-AllowVolumeExpansion <String>] [-DataResilience <String>] [-FailoverSpeed <String>]
  [-Limitation <String[]>] [-MountOption <String[]>] [-Performance <String>] [-Priority <Int64>]
  [-TypePropertyAzureStorageAccountKey <SecureString>] [-TypePropertyAzureStorageAccountName <String>]
- [-TypePropertyBackingStorageClassName <String>] [-TypePropertyDomain <String>] [-TypePropertyFsType <String>]
+ [-TypePropertyBackingStorageClassName <String>] [-TypePropertyDomain <String>]
  [-TypePropertyMountPermission <String>] [-TypePropertyOnDelete <String>]
  [-TypePropertyPassword <SecureString>] [-TypePropertyServer <String>] [-TypePropertyShare <String>]
- [-TypePropertySource <String>] [-TypePropertyStoragePathId <String>] [-TypePropertySubDir <String>]
- [-TypePropertyUsername <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-TypePropertySource <String>] [-TypePropertySubDir <String>] [-TypePropertyUsername <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -381,21 +379,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TypePropertyFsType
-fsType parameter for the storage class.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -TypePropertyMountPermission
 Mounted folder permissions.
 Default is 0.
@@ -476,21 +459,6 @@ Accept wildcard characters: False
 
 ### -TypePropertySource
 SMB Source
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TypePropertyStoragePathId
-The id of the storage path
 
 ```yaml
 Type: System.String
