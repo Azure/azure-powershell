@@ -76,10 +76,15 @@ jobs:
       custom: msbuild
       arguments: 'build.proj /t:Build /p:Configuration=Release;TurnOnTestCoverage=true;ModifiedModuleBuild=true'
 
-  - task: EsrpCodeSigning@4
-    displayName: "Sign Dll [Authenticode + Strong Name]"
+  - task: EsrpCodeSigning@5
+    displayName: "Test Sign Dll [Authenticode + Strong Name]"
     inputs:
-      ConnectedServiceName: '$(signServiceConnection)'
+      ConnectedServiceName: '$(ESRPServiceConnectionName)' 
+      AppRegistrationClientId: '$(ESRPAppClientId)' 
+      AppRegistrationTenantId: '$(ESRPAppTenantId)' 
+      AuthAKVName: '$(ESRPKVName)' 
+      AuthCertName: '$(ESRPAuthCertName)' 
+      AuthSignCertName: '$(ESRPSignCertName)'
       FolderPath: 'artifacts'
       Pattern: |
         Release/**/Microsoft*Azure*PowerShell*.dll
