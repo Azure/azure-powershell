@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.18.7
 * Supported managed identity for Data Factory Azure File connector.
 * Supported ServicePrincipalCert Auth for Data Factory Rest connector.
 * Supported ServicePrincipalCert Auth for Data Factory SharePointOnlineList connector.
