@@ -16,7 +16,7 @@ $toolsFolderPath = Join-Path $RepoRoot 'tools'
 # create $RepoRoot/generated
 New-Item -Path $generatedFolderPath -ItemType Directory -Force
 
-#find directories ends with .autorest 
+# find directories ends with .autorest 
 Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse | foreach-Object {
     $moduleRootName = $_.Parent.Name
     $subModuleName = $_.Name
@@ -30,7 +30,6 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
     $sourceModuleRootPath = Join-Path $sourceFolderPath $moduleRootName
     $sourceSubModulePath = Join-Path $sourceModuleRootPath $subModuleName
     
-    #Write-Warning "$generatedModuleRootPath, $generatedSubModulePath, $sourceModuleRootPath, $sourceSubModulePath"
 
     if (-not (Test-Path $generatedModuleRootPath)) {
         New-Item -Path $generatedModuleRootPath -ItemType Directory -Force
@@ -50,7 +49,7 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
         if (-not (Test-Path $generatedSubModulePath)) {
             New-Item -Path $generatedSubModulePath -ItemType Directory -Force
         }
-        #update content of sln
+        # update content of sln
         if ("Az.$subModuleNameTrimmed.csproj" -eq $_) {
             $slnPath = (Join-Path $sourceModuleRootPath "$moduleRootName.sln")
             dotnet sln $slnPath remove $fromPath
@@ -68,6 +67,11 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
             dotnet sln $slnPath add $toPath
         }
     }
+
+    # Rename x.autorest/help -> x.autorest/docs
+    $helpFolderPath = Join-Path $sourceSubModulePath "help"
+    $docsFolderPath = Join-Path $sourceSubModulePath "docs"
+    Move-Item $helpFolderPath $docsFolderPath
 }
 
 # have to do it in another loop because csproj need to be all moved to /generated before add into sln
