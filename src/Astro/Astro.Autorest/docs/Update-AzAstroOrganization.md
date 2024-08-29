@@ -15,7 +15,7 @@ Update a OrganizationResource
 ### UpdateExpanded (Default)
 ```
 Update-AzAstroOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IdentityType <String>] [-PartnerOrganizationPropertyOrganizationId <String>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-PartnerOrganizationPropertyOrganizationId <String>]
  [-PartnerOrganizationPropertyOrganizationName <String>] [-PartnerOrganizationPropertyWorkspaceId <String>]
  [-PartnerOrganizationPropertyWorkspaceName <String>] [-SingleSignOnPropertyAadDomain <String[]>]
  [-SingleSignOnPropertyEnterpriseAppId <String>] [-SingleSignOnPropertySingleSignOnState <String>]
@@ -26,7 +26,7 @@ Update-AzAstroOrganization -Name <String> -ResourceGroupName <String> [-Subscrip
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzAstroOrganization -InputObject <IAstroIdentity> [-IdentityType <String>]
+Update-AzAstroOrganization -InputObject <IAstroIdentity> [-EnableSystemAssignedIdentity <Boolean?>]
  [-PartnerOrganizationPropertyOrganizationId <String>] [-PartnerOrganizationPropertyOrganizationName <String>]
  [-PartnerOrganizationPropertyWorkspaceId <String>] [-PartnerOrganizationPropertyWorkspaceName <String>]
  [-SingleSignOnPropertyAadDomain <String[]>] [-SingleSignOnPropertyEnterpriseAppId <String>]
@@ -139,11 +139,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
 
 ```yaml
-Type: System.String
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
