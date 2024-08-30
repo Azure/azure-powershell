@@ -5471,7 +5471,6 @@ function Test-VirtualMachineScaleSetSkuProfile
         Clean-ResourceGroup $rgname
     }
 }
-}
 
 <#
 .SYNOPSIS

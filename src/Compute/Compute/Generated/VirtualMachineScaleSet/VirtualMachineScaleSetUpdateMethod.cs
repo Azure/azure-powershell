@@ -40,10 +40,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     public partial class UpdateAzureRmVmss : ComputeAutomationBaseCmdlet
     {
         protected const string ExplicitIdentityParameterSet = "ExplicitIdentityParameterSet";
-    
+
         public override void ExecuteCmdlet()
         {
-            
+
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false)]
         public bool EncryptionAtHost { get; set; }
-        
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "UserData for the Vmss, which will be Base64 encoded. Customer should not pass any secrets in here.",
@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string SharedGalleryImageId { get; set; }
 
         [Parameter(
-            Mandatory = false, 
+            Mandatory = false,
             HelpMessage = "Specifies whether the OS Image Scheduled event is enabled or disabled.")]
         public SwitchParameter OSImageScheduledEventEnabled { get; set; }
 
@@ -422,13 +422,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string IfNoneMatch { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            HelpMessage = "Array of VM sizes for the scale set.")]
-        public PSSkuProfileVmSize[] VmSizes { get; set; }
+            Mandatory = false,
+            HelpMessage = "Array of VM sizes for the scale set.",
+            ValueFromPipelineByPropertyName = true)]
+        public SkuProfileVMSize[] VmSizes { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            HelpMessage = "Allocation strategy for the SKU profile.")]
+            Mandatory = false,
+            HelpMessage = "Allocation strategy for the SKU profile.",
+            ValueFromPipelineByPropertyName = true)]
         [ValidateSet("LowestPrice", "CapacityOptimized")]
         public string SkuProfileAllocationStrategy { get; set; }
 
@@ -927,7 +929,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk == null)
                 {
-                    this.VirtualMachineScaleSetUpdate.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk = new VirtualMachineScaleSetUpdateOSDisk();
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk = new VirtualMachineScaleSetUpdateOSDisk();
                 }
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk.Caching = this.OsDiskCaching;
             }
@@ -944,7 +946,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile == null)
                 {
-                    this.VirtualMachineScaleSetUpdate.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile = new VirtualMachineScaleSetUpdateStorageProfile();
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile = new VirtualMachineScaleSetUpdateStorageProfile();
                 }
                 if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk == null)
                 {
@@ -1290,7 +1292,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 this.VirtualMachineScaleSetUpdate.ProximityPlacementGroup.Id = null;
             }
-            
+
             if (this.IsParameterBound(c => c.UserData))
             {
                 if (!ValidateBase64EncodedString.ValidateStringIsBase64Encoded(this.UserData))
@@ -1323,7 +1325,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile == null)
                 {
                     this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile = new OSImageNotificationProfile();
-                }                
+                }
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.Enable = this.OSImageScheduledEventEnabled;
             }
 
@@ -1426,34 +1428,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
             }
 
-            // New-AzVmss and Update-AzVmss parameters
-            if (this.IsParameterBound(c => c.VmSizes))
-            {
-                if (this.VirtualMachineScaleSetUpdate == null)
-                {
-                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
-                }
-                if (this.VirtualMachineScaleSetUpdate.Sku == null)
-                {
-                    this.VirtualMachineScaleSetUpdate.Sku = new Sku();
-                }
-                this.VirtualMachineScaleSetUpdate.Sku.VmSizes = this.VmSizes;
-            }
-
-            if (this.IsParameterBound(c => c.SkuProfileAllocationStrategy))
-            {
-                if (this.VirtualMachineScaleSetUpdate == null)
-                {
-                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
-                }
-                if (this.VirtualMachineScaleSetUpdate.Sku == null)
-                {
-                    this.VirtualMachineScaleSetUpdate.Sku = new Sku();
-                }
-                this.VirtualMachineScaleSetUpdate.Sku.AllocationStrategy = this.SkuProfileAllocationStrategy;
-            }
-
-
             // New Feature Implementation
             if (this.IsParameterBound(c => c.EnableResilientVMCreate))
             {
@@ -1481,7 +1455,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.ResilientVMDeletionPolicy = new ResilientVMDeletionPolicy(this.EnableResilientVMDelete);
             }
         }
-        
+
         private void BuildPutObject()
         {
             if (this.IsParameterBound(c => c.AutomaticOSUpgrade))
@@ -2150,7 +2124,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 this.VirtualMachineScaleSet.ProximityPlacementGroup.Id = null;
             }
-            
+
             if (this.IsParameterBound(c => c.UserData))
             {
                 if (!ValidateBase64EncodedString.ValidateStringIsBase64Encoded(this.UserData))
@@ -2182,6 +2156,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.PriorityMixPolicy = new PriorityMixPolicy();
                 }
                 this.VirtualMachineScaleSet.PriorityMixPolicy.RegularPriorityPercentageAboveBase = this.RegularPriorityPercentage;
+            }
+
+            if (this.IsParameterBound(c => c.VmSizes))
+            {
+                if (this.VirtualMachineScaleSet.SkuProfile == null)
+                {
+                    this.VirtualMachineScaleSet.SkuProfile = new SkuProfile();
+                }
+                this.VirtualMachineScaleSet.SkuProfile.VmSizes = this.VmSizes;
+
+                if (this.IsParameterBound(c => c.SkuProfileAllocationStrategy))
+                {
+                    this.VirtualMachineScaleSet.SkuProfile.AllocationStrategy = this.SkuProfileAllocationStrategy;
+                }
+                else if (this.VirtualMachineScaleSet.SkuProfile.AllocationStrategy == null)
+                {
+                    this.VirtualMachineScaleSet.SkuProfile.AllocationStrategy = "LowestPrice";
+                }
             }
 
             if (this.IsParameterBound(c => c.SecurityType))
@@ -2262,66 +2254,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.ResiliencyPolicy.ResilientVMCreationPolicy = new ResilientVMCreationPolicy(this.EnableResilientVMCreate);
             }
 
-            if (this.IsParameterBound(c => c.SecurityType))
+            if (this.IsParameterBound(c => c.EnableResilientVMDelete))
             {
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
                     this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
                 }
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile == null)
+                if (this.VirtualMachineScaleSet.ResiliencyPolicy == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile = new SecurityProfile();
+                    this.VirtualMachineScaleSet.ResiliencyPolicy = new ResiliencyPolicy();
                 }
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings == null)
-                {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
-                }
-                this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.SecurityType = this.SecurityType;
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
-                {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
-                }
+                this.VirtualMachineScaleSet.ResiliencyPolicy.ResilientVMDeletionPolicy = new ResilientVMDeletionPolicy(this.EnableResilientVMDelete);
             }
-            // Only used for SecurityType == TrustedLaunch
-            if (this.IsParameterBound(c => c.EnableVtpm))
-            {
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
-                {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
-                }
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile == null)
-                {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile = new SecurityProfile();
-                }
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings == null)
-                {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
-                }
-                this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = this.EnableVtpm;
-            }
-            // Only used for SecurityType == TrustedLaunch
-            if (this.IsParameterBound(c => c.EnableSecureBoot))
-            {
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
-                {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
-                }
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile == null)
-                {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile = new SecurityProfile();
-                }
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings == null)
-                {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
-                }
-                this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = this.EnableSecureBoot;
-            }
-
-        public override void ExecuteCmdlet()
-        {
-            // Implementation of the method...
         }
     }
-} // Closing brace for namespace
-```
+}
