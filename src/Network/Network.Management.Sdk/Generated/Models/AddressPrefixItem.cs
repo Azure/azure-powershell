@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="addressPrefixType">Address prefix type.
-        /// Possible values include: &#39;IPPrefix&#39;, &#39;ServiceTag&#39;</param>
+        /// Possible values include: &#39;IPPrefix&#39;, &#39;ServiceTag&#39;, &#39;NetworkGroup&#39;</param>
         public AddressPrefixItem(string addressPrefix = default(string), string addressPrefixType = default(string))
 
         {
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string AddressPrefix {get; set; }
 
         /// <summary>
-        /// Gets or sets address prefix type. Possible values include: &#39;IPPrefix&#39;, &#39;ServiceTag&#39;
+        /// Gets or sets address prefix type. Possible values include: &#39;IPPrefix&#39;, &#39;ServiceTag&#39;, &#39;NetworkGroup&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "addressPrefixType")]
         public string AddressPrefixType {get; set; }

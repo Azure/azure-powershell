@@ -71,7 +71,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the custom IP prefix resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
         public CustomIpPrefixPropertiesFormat(string asn = default(string), string cidr = default(string), string signedMessage = default(string), string authorizationMessage = default(string), SubResource customIPPrefixParent = default(SubResource), System.Collections.Generic.IList<SubResource> childCustomIPPrefixes = default(System.Collections.Generic.IList<SubResource>), string commissionedState = default(string), bool? expressRouteAdvertise = default(bool?), string geo = default(string), bool? noInternetAdvertise = default(bool?), string prefixType = default(string), System.Collections.Generic.IList<SubResource> publicIPPrefixes = default(System.Collections.Generic.IList<SubResource>), string resourceGuid = default(string), string failedReason = default(string), string provisioningState = default(string))
 
         {
@@ -186,7 +187,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string FailedReason {get; private set; }
 
         /// <summary>
-        /// Gets the provisioning state of the custom IP prefix resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the custom IP prefix resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }

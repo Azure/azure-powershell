@@ -124,7 +124,13 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "networkManagerName");
             }
-
+            if (networkManagerName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[a-zA-Z0-9-]*$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[a-zA-Z0-9-]*$");
+                }
+            }
             string apiVersion = "2024-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
