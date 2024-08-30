@@ -8,36 +8,21 @@ namespace Microsoft.Azure.Management.Blueprint.Models
     using System.Linq;
 
     /// <summary>
-    /// Represents an Azure resource group in a blueprint definition.
+    /// User-friendly properties for this parameter.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ResourceGroupDefinition
+    public partial class ParameterDefinitionMetadata
     {
         /// <summary>
-        /// Initializes a new instance of the ResourceGroupDefinition class.
+        /// Initializes a new instance of the ParameterDefinitionMetadata class.
         /// </summary>
-        public ResourceGroupDefinition()
+        public ParameterDefinitionMetadata()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ResourceGroupDefinition class.
+        /// Initializes a new instance of the ParameterDefinitionMetadata class.
         /// </summary>
-
-        /// <param name="name">Name of this resourceGroup. Leave empty if the resource group name will be
-        /// specified during the blueprint assignment.
-        /// </param>
-
-        /// <param name="location">Location of this resourceGroup. Leave empty if the resource group location
-        /// will be specified during the blueprint assignment.
-        /// </param>
-
-        /// <param name="dependsOn">Artifacts which need to be deployed before this resource group.
-        /// </param>
-
-        /// <param name="tags">Tags to be assigned to this resource group.
-        /// </param>
 
         /// <param name="displayName">DisplayName of this parameter/resourceGroup.
         /// </param>
@@ -48,13 +33,9 @@ namespace Microsoft.Azure.Management.Blueprint.Models
         /// <param name="strongType">StrongType for UI to render rich experience during blueprint assignment.
         /// Supported strong types are resourceType, principalId and location.
         /// </param>
-        public ResourceGroupDefinition(string name = default(string), string location = default(string), System.Collections.Generic.IList<string> dependsOn = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string displayName = default(string), string description = default(string), string strongType = default(string))
+        public ParameterDefinitionMetadata(string displayName = default(string), string description = default(string), string strongType = default(string))
 
         {
-            this.Name = name;
-            this.Location = location;
-            this.DependsOn = dependsOn;
-            this.Tags = tags;
             this.DisplayName = displayName;
             this.Description = description;
             this.StrongType = strongType;
@@ -68,42 +49,15 @@ namespace Microsoft.Azure.Management.Blueprint.Models
 
 
         /// <summary>
-        /// Gets or sets name of this resourceGroup. Leave empty if the resource group
-        /// name will be specified during the blueprint assignment.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
-        /// Gets or sets location of this resourceGroup. Leave empty if the resource
-        /// group location will be specified during the blueprint assignment.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
-        public string Location {get; set; }
-
-        /// <summary>
-        /// Gets or sets artifacts which need to be deployed before this resource
-        /// group.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "dependsOn")]
-        public System.Collections.Generic.IList<string> DependsOn {get; set; }
-
-        /// <summary>
-        /// Gets or sets tags to be assigned to this resource group.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
-        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
-
-        /// <summary>
         /// Gets or sets displayName of this parameter/resourceGroup.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "metadata.displayName")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "displayName")]
         public string DisplayName {get; set; }
 
         /// <summary>
         /// Gets or sets description of this parameter/resourceGroup.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "metadata.description")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "description")]
         public string Description {get; set; }
 
         /// <summary>
@@ -111,7 +65,7 @@ namespace Microsoft.Azure.Management.Blueprint.Models
         /// assignment. Supported strong types are resourceType, principalId and
         /// location.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "metadata.strongType")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "strongType")]
         public string StrongType {get; set; }
         /// <summary>
         /// Validate the object.
@@ -121,10 +75,6 @@ namespace Microsoft.Azure.Management.Blueprint.Models
         /// </exception>
         public virtual void Validate()
         {
-
-
-
-
             if (this.DisplayName != null)
             {
                 if (this.DisplayName.Length > 256)

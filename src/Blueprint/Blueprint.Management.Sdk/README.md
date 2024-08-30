@@ -11,9 +11,9 @@ autorest --use:@autorest/powershell@4.x
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-# isSdkGenerator: true
-# powershell: true
-csharp: true
+isSdkGenerator: true
+powershell: true
+# csharp: true
 title: BlueprintManagementClient
 reflect-api-versions: true
 openapi-type: arm
@@ -86,8 +86,12 @@ directive:
             "description": "When deleteBehavior=all, the resources that were created by the blueprint assignment will be deleted."
           }
         ]
-  # - where:
-  #     model-name: Blueprint
-  #   set:
-  #     model-name: BlueprintModel
+  - from: blueprintAssignment.json
+    where: $.definitions.BlueprintResourcePropertiesBase.x-ms-external
+    transform: >-
+      return false
+  - where:
+      model-name: Blueprint
+    set:
+      model-name: BlueprintModel
 ```

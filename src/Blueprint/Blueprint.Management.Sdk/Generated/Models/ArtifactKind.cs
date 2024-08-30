@@ -7,14 +7,14 @@ namespace Microsoft.Azure.Management.Blueprint.Models
 {
 
     /// <summary>
-    /// Defines values for ManagedServiceIdentityType.
+    /// Defines values for ArtifactKind.
     /// </summary>
 
 
-    public static class ManagedServiceIdentityType
+    public static class ArtifactKind
     {
-        public const string None = "None";
-        public const string SystemAssigned = "SystemAssigned";
-        public const string UserAssigned = "UserAssigned";
+        public const string Template = "template";
+        public const string RoleAssignment = "roleAssignment";
+        public const string PolicyAssignment = "policyAssignment";
     }
 }

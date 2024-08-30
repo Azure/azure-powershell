@@ -8,32 +8,21 @@ namespace Microsoft.Azure.Management.Blueprint.Models
     using System.Linq;
 
     /// <summary>
-    /// Blueprint artifact that applies a Role assignment.
+    /// Properties of a Role assignment blueprint artifact.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("roleAssignment")]
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class RoleAssignmentArtifact : Artifact
+    public partial class RoleAssignmentArtifactProperties
     {
         /// <summary>
-        /// Initializes a new instance of the RoleAssignmentArtifact class.
+        /// Initializes a new instance of the RoleAssignmentArtifactProperties class.
         /// </summary>
-        public RoleAssignmentArtifact()
+        public RoleAssignmentArtifactProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the RoleAssignmentArtifact class.
+        /// Initializes a new instance of the RoleAssignmentArtifactProperties class.
         /// </summary>
-
-        /// <param name="id">String Id used to locate any resource on Azure.
-        /// </param>
-
-        /// <param name="type">Type of this resource.
-        /// </param>
-
-        /// <param name="name">Name of this resource.
-        /// </param>
 
         /// <param name="displayName">One-liner string explain this resource.
         /// </param>
@@ -54,9 +43,8 @@ namespace Microsoft.Azure.Management.Blueprint.Models
         /// <param name="resourceGroup">RoleAssignment will be scope to this resourceGroup. If empty, it scopes to
         /// the subscription.
         /// </param>
-        public RoleAssignmentArtifact(string roleDefinitionId, object principalIds, string id = default(string), string type = default(string), string name = default(string), string displayName = default(string), string description = default(string), System.Collections.Generic.IList<string> dependsOn = default(System.Collections.Generic.IList<string>), string resourceGroup = default(string))
+        public RoleAssignmentArtifactProperties(string roleDefinitionId, object principalIds, string displayName = default(string), string description = default(string), System.Collections.Generic.IList<string> dependsOn = default(System.Collections.Generic.IList<string>), string resourceGroup = default(string))
 
-        : base(id, type, name)
         {
             this.DisplayName = displayName;
             this.Description = description;
@@ -76,40 +64,40 @@ namespace Microsoft.Azure.Management.Blueprint.Models
         /// <summary>
         /// Gets or sets one-liner string explain this resource.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.displayName")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "displayName")]
         public string DisplayName {get; set; }
 
         /// <summary>
         /// Gets or sets multi-line explain this resource.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.description")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "description")]
         public string Description {get; set; }
 
         /// <summary>
         /// Gets or sets artifacts which need to be deployed before the specified
         /// artifact.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.dependsOn")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "dependsOn")]
         public System.Collections.Generic.IList<string> DependsOn {get; set; }
 
         /// <summary>
         /// Gets or sets azure resource ID of the RoleDefinition.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.roleDefinitionId")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "roleDefinitionId")]
         public string RoleDefinitionId {get; set; }
 
         /// <summary>
         /// Gets or sets array of user or group identities in Azure Active Directory.
         /// The roleDefinition will apply to each identity.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.principalIds")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "principalIds")]
         public object PrincipalIds {get; set; }
 
         /// <summary>
         /// Gets or sets roleAssignment will be scope to this resourceGroup. If empty,
         /// it scopes to the subscription.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resourceGroup")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "resourceGroup")]
         public string ResourceGroup {get; set; }
         /// <summary>
         /// Validate the object.

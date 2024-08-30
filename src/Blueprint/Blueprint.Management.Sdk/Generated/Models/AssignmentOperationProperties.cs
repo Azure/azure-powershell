@@ -8,32 +8,21 @@ namespace Microsoft.Azure.Management.Blueprint.Models
     using System.Linq;
 
     /// <summary>
-    /// Represents underlying deployment detail for each update to the blueprint
-    /// assignment.
+    /// Properties of AssignmentOperation.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class AssignmentOperation : AzureResourceBase
+    public partial class AssignmentOperationProperties
     {
         /// <summary>
-        /// Initializes a new instance of the AssignmentOperation class.
+        /// Initializes a new instance of the AssignmentOperationProperties class.
         /// </summary>
-        public AssignmentOperation()
+        public AssignmentOperationProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the AssignmentOperation class.
+        /// Initializes a new instance of the AssignmentOperationProperties class.
         /// </summary>
-
-        /// <param name="id">String Id used to locate any resource on Azure.
-        /// </param>
-
-        /// <param name="type">Type of this resource.
-        /// </param>
-
-        /// <param name="name">Name of this resource.
-        /// </param>
 
         /// <param name="blueprintVersion">The published version of the blueprint definition used for the blueprint
         /// assignment operation.
@@ -53,9 +42,8 @@ namespace Microsoft.Azure.Management.Blueprint.Models
 
         /// <param name="deployments">List of jobs in this blueprint assignment operation.
         /// </param>
-        public AssignmentOperation(string id = default(string), string type = default(string), string name = default(string), string blueprintVersion = default(string), string assignmentState = default(string), string timeCreated = default(string), string timeStarted = default(string), string timeFinished = default(string), System.Collections.Generic.IList<AssignmentDeploymentJob> deployments = default(System.Collections.Generic.IList<AssignmentDeploymentJob>))
+        public AssignmentOperationProperties(string blueprintVersion = default(string), string assignmentState = default(string), string timeCreated = default(string), string timeStarted = default(string), string timeFinished = default(string), System.Collections.Generic.IList<AssignmentDeploymentJob> deployments = default(System.Collections.Generic.IList<AssignmentDeploymentJob>))
 
-        : base(id, type, name)
         {
             this.BlueprintVersion = blueprintVersion;
             this.AssignmentState = assignmentState;
@@ -76,37 +64,37 @@ namespace Microsoft.Azure.Management.Blueprint.Models
         /// Gets or sets the published version of the blueprint definition used for the
         /// blueprint assignment operation.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.blueprintVersion")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "blueprintVersion")]
         public string BlueprintVersion {get; set; }
 
         /// <summary>
         /// Gets or sets state of this blueprint assignment operation.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.assignmentState")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "assignmentState")]
         public string AssignmentState {get; set; }
 
         /// <summary>
         /// Gets or sets create time of this blueprint assignment operation.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.timeCreated")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "timeCreated")]
         public string TimeCreated {get; set; }
 
         /// <summary>
         /// Gets or sets start time of the underlying deployment.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.timeStarted")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "timeStarted")]
         public string TimeStarted {get; set; }
 
         /// <summary>
         /// Gets or sets finish time of the overall underlying deployments.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.timeFinished")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "timeFinished")]
         public string TimeFinished {get; set; }
 
         /// <summary>
         /// Gets or sets list of jobs in this blueprint assignment operation.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.deployments")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "deployments")]
         public System.Collections.Generic.IList<AssignmentDeploymentJob> Deployments {get; set; }
     }
 }

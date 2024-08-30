@@ -8,32 +8,21 @@ namespace Microsoft.Azure.Management.Blueprint.Models
     using System.Linq;
 
     /// <summary>
-    /// Blueprint artifact that deploys a Resource Manager template.
+    /// Properties of a Policy assignment blueprint artifact.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("template")]
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class TemplateArtifact : Artifact
+    public partial class PolicyAssignmentArtifactProperties
     {
         /// <summary>
-        /// Initializes a new instance of the TemplateArtifact class.
+        /// Initializes a new instance of the PolicyAssignmentArtifactProperties class.
         /// </summary>
-        public TemplateArtifact()
+        public PolicyAssignmentArtifactProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the TemplateArtifact class.
+        /// Initializes a new instance of the PolicyAssignmentArtifactProperties class.
         /// </summary>
-
-        /// <param name="id">String Id used to locate any resource on Azure.
-        /// </param>
-
-        /// <param name="type">Type of this resource.
-        /// </param>
-
-        /// <param name="name">Name of this resource.
-        /// </param>
 
         /// <param name="displayName">One-liner string explain this resource.
         /// </param>
@@ -44,25 +33,24 @@ namespace Microsoft.Azure.Management.Blueprint.Models
         /// <param name="dependsOn">Artifacts which need to be deployed before the specified artifact.
         /// </param>
 
-        /// <param name="template">The Resource Manager template blueprint artifact body.
+        /// <param name="policyDefinitionId">Azure resource ID of the policy definition.
         /// </param>
 
-        /// <param name="resourceGroup">If applicable, the name of the resource group placeholder to which the
-        /// Resource Manager template blueprint artifact will be deployed.
+        /// <param name="parameters">Parameter values for the policy definition.
         /// </param>
 
-        /// <param name="parameters">Resource Manager template blueprint artifact parameter values.
+        /// <param name="resourceGroup">Name of the resource group placeholder to which the policy will be
+        /// assigned.
         /// </param>
-        public TemplateArtifact(object template, System.Collections.Generic.IDictionary<string, ParameterValue> parameters, string id = default(string), string type = default(string), string name = default(string), string displayName = default(string), string description = default(string), System.Collections.Generic.IList<string> dependsOn = default(System.Collections.Generic.IList<string>), string resourceGroup = default(string))
+        public PolicyAssignmentArtifactProperties(string policyDefinitionId, System.Collections.Generic.IDictionary<string, ParameterValue> parameters, string displayName = default(string), string description = default(string), System.Collections.Generic.IList<string> dependsOn = default(System.Collections.Generic.IList<string>), string resourceGroup = default(string))
 
-        : base(id, type, name)
         {
             this.DisplayName = displayName;
             this.Description = description;
             this.DependsOn = dependsOn;
-            this.Template = template;
-            this.ResourceGroup = resourceGroup;
+            this.PolicyDefinitionId = policyDefinitionId;
             this.Parameters = parameters;
+            this.ResourceGroup = resourceGroup;
             CustomInit();
         }
 
@@ -75,40 +63,40 @@ namespace Microsoft.Azure.Management.Blueprint.Models
         /// <summary>
         /// Gets or sets one-liner string explain this resource.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.displayName")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "displayName")]
         public string DisplayName {get; set; }
 
         /// <summary>
         /// Gets or sets multi-line explain this resource.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.description")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "description")]
         public string Description {get; set; }
 
         /// <summary>
         /// Gets or sets artifacts which need to be deployed before the specified
         /// artifact.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.dependsOn")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "dependsOn")]
         public System.Collections.Generic.IList<string> DependsOn {get; set; }
 
         /// <summary>
-        /// Gets or sets the Resource Manager template blueprint artifact body.
+        /// Gets or sets azure resource ID of the policy definition.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.template")]
-        public object Template {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "policyDefinitionId")]
+        public string PolicyDefinitionId {get; set; }
 
         /// <summary>
-        /// Gets or sets if applicable, the name of the resource group placeholder to
-        /// which the Resource Manager template blueprint artifact will be deployed.
+        /// Gets or sets parameter values for the policy definition.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resourceGroup")]
-        public string ResourceGroup {get; set; }
-
-        /// <summary>
-        /// Gets or sets resource Manager template blueprint artifact parameter values.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.parameters")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "parameters")]
         public System.Collections.Generic.IDictionary<string, ParameterValue> Parameters {get; set; }
+
+        /// <summary>
+        /// Gets or sets name of the resource group placeholder to which the policy
+        /// will be assigned.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "resourceGroup")]
+        public string ResourceGroup {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -117,9 +105,9 @@ namespace Microsoft.Azure.Management.Blueprint.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (this.Template == null)
+            if (this.PolicyDefinitionId == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Template");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "PolicyDefinitionId");
             }
             if (this.Parameters == null)
             {
@@ -141,7 +129,6 @@ namespace Microsoft.Azure.Management.Blueprint.Models
             }
 
 
-
             if (this.Parameters != null)
             {
                 foreach (var valueElement in this.Parameters.Values)
@@ -152,6 +139,7 @@ namespace Microsoft.Azure.Management.Blueprint.Models
                     }
                 }
             }
+
         }
     }
 }
