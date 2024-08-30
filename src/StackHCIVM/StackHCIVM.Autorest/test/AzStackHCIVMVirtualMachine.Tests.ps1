@@ -53,14 +53,14 @@ Describe 'AzStackHCIVMVirtualMachine' {
     }
 
     It 'Create Network Interface  '  {
-        New-AzStackHciVMNetworkInterface  -Name "testNic1" -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -SubnetId "/subscriptions/37908b1f-2848-4c85-b8bf-a2cab2c3b0ba/resourceGroups/vpclus0724-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/lnet_aug"  | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
-        New-AzStackHciVMNetworkInterface  -Name "testNic2" -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -SubnetId "/subscriptions/37908b1f-2848-4c85-b8bf-a2cab2c3b0ba/resourceGroups/vpclus0724-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/lnet_aug"  | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
+        New-AzStackHciVMNetworkInterface  -Name "testNic11" -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -SubnetId "/subscriptions/37908b1f-2848-4c85-b8bf-a2cab2c3b0ba/resourceGroups/vpclus0724-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/lnet_aug"  | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
+        New-AzStackHciVMNetworkInterface  -Name "testNic12" -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -SubnetId "/subscriptions/37908b1f-2848-4c85-b8bf-a2cab2c3b0ba/resourceGroups/vpclus0724-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/lnet_aug"  | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
     }
 
 
     It 'Add NIC'  {
         {
-            Add-AzStackHCIVMVirtualMachineNetworkInterface -Name manualvmtest3 -ResourceGroupName $env.resourceGroupName -NicName "testNic1"
+            Add-AzStackHCIVMVirtualMachineNetworkInterface -Name manualvmtest3 -ResourceGroupName $env.resourceGroupName -NicName "testNic11"
             $config = Get-AzStackHCIVMVirtualMachine -Name manualvmtest3 -ResourceGroupName $env.resourceGroupName 
             $config.StatusPowerState| Should -BeExactly "Running"
         } 
@@ -74,7 +74,7 @@ Describe 'AzStackHCIVMVirtualMachine' {
     }
 
     It 'Create vm with osdisk  '  {
-        New-AzStackHciVMVirtualMachine -DataDiskName "testVhdDisk11"  -Name "testvm4" -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName  -NicName testNic2 -CustomLocationId  $env.customLocationId -Location "eastus"  -OsType "Windows" -OsDiskName "testOsDisk1" | Select-Object -Property ProvisioningState  | Should -BeExactly "@{ProvisioningState=Succeeded}"
+        New-AzStackHciVMVirtualMachine -DataDiskName "testVhdDisk11"  -Name "testvm4" -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName  -NicName testNic12 -CustomLocationId  $env.customLocationId -Location "eastus"  -OsType "Windows" -OsDiskName "testOsDisk1" | Select-Object -Property ProvisioningState  | Should -BeExactly "@{ProvisioningState=Succeeded}"
     }
 
     It 'Add Data Disk'  {
@@ -113,8 +113,8 @@ Describe 'AzStackHCIVMVirtualMachine' {
           $config | Should -Be $null
       
           # Delete network interface
-          Remove-AzStackHciVMNetworkInterface -Name "testNic2" -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.resourceGroupName -Force
-          $config = Get-AzStackHciVMNetworkInterface -Name "testNic2" -ResourceGroupName $env.resourceGroupName 
+          Remove-AzStackHciVMNetworkInterface -Name "testNic12" -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.resourceGroupName -Force
+          $config = Get-AzStackHciVMNetworkInterface -Name "testNic12" -ResourceGroupName $env.resourceGroupName 
           $config | Should -Be $null
     }
 }
