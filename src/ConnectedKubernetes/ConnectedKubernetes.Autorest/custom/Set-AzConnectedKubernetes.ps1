@@ -455,7 +455,6 @@ function Set-AzConnectedKubernetes {
         # Adding Helm repo
         $RegistryPath = Set-HelmRepositoryAndModules -KubeConfig $KubeConfig -KubeContext $KubeContext -Location $Location -ProxyCert $ProxyCert -DisableAutoUpgrade $DisableAutoUpgrade -ContainerLogPath $ContainerLogPath -CustomLocationsOid $CustomLocationsOid
 
-        #Endregion
         Write-Debug "Processing Helm chart installation options."
 
         $options = ""
