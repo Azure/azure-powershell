@@ -259,12 +259,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ParameterSetName = SimpleParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Array of VM sizes for the scale set.")]
         public SkuProfileVMSize[] VmSizes { get; set; }
 
         [Parameter(
             Mandatory = false,
             ParameterSetName = SimpleParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Allocation strategy for the SKU profile.")]
         [PSArgumentCompleter("LowestPrice", "CapacityOptimized")]
         public string SkuProfileAllocationStrategy { get; set; }
@@ -609,7 +611,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     imageAndOsType: ImageAndOsType,
                     adminUsername: _cmdlet.Credential.UserName,
                     adminPassword: new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
-                    vmSize: _cmdlet.VmSize,
+                    vmSize: _cmdlet.IsParameterBound(c => c.VmSizes) && !_cmdlet.IsParameterBound(c => c.VmSize) ? vmSizeMix : _cmdlet.VmSize,
                     instanceCount: _cmdlet.InstanceCount,
                     dataDisks: _cmdlet.DataDiskSizeInGb,
                     zones: _cmdlet.Zone,

@@ -41,7 +41,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
     
         private const string ExplicitIdentityParameterSet = "ExplicitIdentityParameterSet",
-                             DefaultParameterSetName = "DefaultParameterSet";
+                             DefaultParameterSetName = "DefaultParameterSet",
+                             VmSizeMix = "Mix";
         [Parameter(
             Mandatory = false,
             Position = 0,
@@ -421,7 +422,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 if (vSku == null)
                 {
                     vSku = new Sku();
-                }
+                }             
                 vSku.Name = this.SkuName;
             }
 
@@ -902,6 +903,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 else
                 {
                     vSkuProfile.AllocationStrategy = "LowestPrice";
+                }
+
+                if (!this.IsParameterBound(c => c.SkuName))
+                {
+                    vSku.Name = VmSizeMix;
                 }
             }
 
