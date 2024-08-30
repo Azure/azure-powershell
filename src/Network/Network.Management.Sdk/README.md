@@ -27,7 +27,7 @@ use-extension:
 
 ###
 ``` yaml
-commit: 1558ccf6bb3b25ca0575015dcf58b320a8d4e91a
+commit: 3d6e80ed299ddd6d10f4af07a7ea25489a007f74
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/applicationGateway.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/applicationGatewayWafDynamicManifests.json
@@ -105,7 +105,4 @@ directive:
       model-name: Components1Jq1T4ISchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties
     set:
       model-name: ManagedServiceIdentityUserAssignedIdentitiesValue
-  - from: swagger-document
-    where: $
-    transform: return $.replace(/"NoHealthyBackendsBehavior"/g, "noHealthyBackendsBehavior")
 ```
