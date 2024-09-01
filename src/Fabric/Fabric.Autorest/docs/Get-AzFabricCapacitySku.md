@@ -30,7 +30,7 @@ List eligible SKUs for Microsoft Fabric resource provider
 
 ### Example 1: List Skus For Capacity
 ```powershell
-Get-AzFabricCapacitySku -ResourceGroupName "testrg" -CapacityName "azsdktest" | fl
+Get-AzFabricCapacitySku -ResourceGroupName "testrg" -CapacityName "azsdktest" | Format-List
 ```
 
 ```output
@@ -79,11 +79,11 @@ SkuName      : F2048
 SkuTier      : Fabric
 ```
 
-{{ The above command lists all eligible SKUs for the Fabric capacity named 'azsdktest' within the resource group 'testrg' }}
+The above command lists all eligible SKUs for the Fabric capacity named 'azsdktest' within the resource group 'testrg'
 
 ### Example 2: List Skus
 ```powershell
-Get-AzFabricCapacitySku | fl
+Get-AzFabricCapacitySku | Format-List
 ```
 
 ```output
@@ -141,10 +141,12 @@ Location     : {West India}
 Name         : F4
 ResourceType : Capacities
 
-...
+.
+.
+.
 ```
 
-{{ The above command lists all eligible SKUs for Fabric resource provider}}
+The above command lists all eligible SKUs for Fabric resource provider
 
 ## PARAMETERS
 

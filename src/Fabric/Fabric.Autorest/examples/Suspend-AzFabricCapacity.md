@@ -3,4 +3,4 @@
 Suspend-AzFabricCapacity -ResourceGroupName "testrg" -CapacityName "azsdktest"
 ```
 
-{{ The above command suspends the Fabric capacity named 'azsdktest' within the resource group 'testrg' }}
+The above command suspends the Fabric capacity named 'azsdktest' within the resource group 'testrg'

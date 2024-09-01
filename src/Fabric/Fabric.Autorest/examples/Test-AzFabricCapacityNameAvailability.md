@@ -9,4 +9,4 @@ Message NameAvailable Reason
                  True
 ```
 
-{{ The above command checks if the Fabric capacity name 'azsdktest' is available within the resource group 'testrg' in the location 'westus' }}
+The above command checks if the Fabric capacity name 'azsdktest' is available within the resource group 'testrg' in the location 'westus'
