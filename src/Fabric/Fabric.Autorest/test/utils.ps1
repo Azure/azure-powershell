@@ -54,7 +54,7 @@ function setupEnv() {
 
     # Set the parameter values
     $env.CapacityName = RandomString -allChars $true -len 12
-    Write-Host "CapacityName is /$($env.CapacityName)"
+    Write-Host "CapacityName is $($env.CapacityName)"
     $env.SkuName = "F2"
     $env.SkuTier = "Fabric"
     $env.AdministrationMembers = @("VsavTest@pbiotest.onmicrosoft.com")

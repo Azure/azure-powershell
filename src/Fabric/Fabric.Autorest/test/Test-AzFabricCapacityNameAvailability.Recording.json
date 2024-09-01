@@ -1,0 +1,86 @@
+{
+  "Test-AzFabricCapacityNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/providers/Microsoft.Fabric/locations/West US/checkNameAvailability?api-version=2023-11-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/providers/Microsoft.Fabric/locations/West%20US/checkNameAvailability?api-version=2023-11-01",
+      "Content": "{\n  \"name\": \"fkpryhadsgcx\",\n  \"type\": \"Microsoft.Fabric/capacities\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "69" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "2fdb146b-4f87-4d99-bd1f-9f9249ca9fb1" ],
+        "x-ms-current-utc-date": [ "9/1/2024 1:12:32 PM" ],
+        "X-Frame-Options": [ "DENY" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "Content-Security-Policy": [ "script-src \u0027self\u0027" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "399" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "5999" ],
+        "x-ms-correlation-request-id": [ "b4baa2e7-251f-4bf3-b35b-002a7641d76c" ],
+        "x-ms-routing-request-id": [ "UKWEST:20240901T131233Z:b4baa2e7-251f-4bf3-b35b-002a7641d76c" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C2BF32141582405F9F904921250736C4 Ref B: AMS231020614051 Ref C: 2024-09-01T13:12:32Z" ],
+        "Date": [ "Sun, 01 Sep 2024 13:12:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzFabricCapacityNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/providers/Microsoft.Fabric/locations/West US/checkNameAvailability?api-version=2023-11-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/providers/Microsoft.Fabric/locations/West%20US/checkNameAvailability?api-version=2023-11-01",
+      "Content": "{\n  \"name\": \"lkwhyfmoqsjt\",\n  \"type\": \"Microsoft.Fabric/capacities\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "69" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "1c24c07b-cb5e-4a77-8aee-c1c7799e26e5" ],
+        "x-ms-current-utc-date": [ "9/1/2024 1:12:33 PM" ],
+        "X-Frame-Options": [ "DENY" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "Content-Security-Policy": [ "script-src \u0027self\u0027" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "399" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "5999" ],
+        "x-ms-correlation-request-id": [ "031346e5-36db-4a63-bc6a-f7be8edc2bdc" ],
+        "x-ms-routing-request-id": [ "UKWEST:20240901T131233Z:031346e5-36db-4a63-bc6a-f7be8edc2bdc" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 56647D303887484D998AE0B324101081 Ref B: AMS231020614051 Ref C: 2024-09-01T13:12:33Z" ],
+        "Date": [ "Sun, 01 Sep 2024 13:12:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "110" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"Fabric Capacity with same name is already present\"}",
+      "isContentBase64": false
+    }
+  }
+}

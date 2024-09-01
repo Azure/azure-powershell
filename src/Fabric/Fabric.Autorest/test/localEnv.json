@@ -1,13 +1,13 @@
 {
-  "CapacityId": "/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-AzPowerShell-Tests-Fabric-pvbnslfrjz/providers/Microsoft.Fabric/capacities/xpjhkwzsabgu",
   "SkuTier": "Fabric",
-  "SkuName": "F2",
-  "Location": "West US",
   "AdministrationMembers": [
     "VsavTest@pbiotest.onmicrosoft.com"
   ],
-  "Tenant": "2a1a1dbc-9c4b-4957-a875-268358aec692",
-  "CapacityName": "xpjhkwzsabgu",
+  "CapacityName": "pjsdizqehmfc",
   "SubscriptionId": "066c6e9e-c9ae-453d-bd2c-dacb1194fc0d",
-  "ResourceGroupName": "rg-AzPowerShell-Tests-Fabric-pvbnslfrjz"
+  "Tenant": "2a1a1dbc-9c4b-4957-a875-268358aec692",
+  "CapacityId": "/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-AzPowerShell-Tests-Fabric-cwezoknimr/providers/Microsoft.Fabric/capacities/pjsdizqehmfc",
+  "Location": "West US",
+  "ResourceGroupName": "rg-AzPowerShell-Tests-Fabric-cwezoknimr",
+  "SkuName": "F2"
 }
