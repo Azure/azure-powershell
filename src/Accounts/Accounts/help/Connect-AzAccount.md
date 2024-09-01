@@ -149,6 +149,13 @@ Account                SubscriptionName TenantId                Environment
 azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
+> [!CAUTION]
+> Azure PowerShell will enforce mandatory multi-factor authentication (MFA) for all users starting in early 2025.
+> 
+> The -Credential option will no longer be available once enforcement begins.
+> 
+> For more details, check the [Planning for mandatory multifactor authentication for Azure and other administration portals](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-mandatory-multifactor-authentication) documentation.
+
 ### Example 3: Connect to Azure using a service principal account
 
 This command stores the service principal credentials in the `$Credential` variable. Then, it
