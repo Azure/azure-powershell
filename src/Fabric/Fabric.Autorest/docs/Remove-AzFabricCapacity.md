@@ -29,27 +29,12 @@ Delete a FabricCapacity
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove Capacity
 ```powershell
-{{ Add code here }}
+Remove-AzFabricCapacity -ResourceGroupName "testrg" -CapacityName "azsdktest" 
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+{{ The above command removes the Fabric capacity named 'azsdktest' within the resource group 'testrg' }}
 
 ## PARAMETERS
 

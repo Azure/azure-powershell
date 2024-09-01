@@ -53,27 +53,18 @@ Implements local CheckNameAvailability operations
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Check if Capacity Name is Available
 ```powershell
-{{ Add code here }}
+Test-AzFabricCapacityNameAvailability -Location "westus" -Name "newcapacity" -Type "Microsoft.Fabric/capacities"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Message NameAvailable Reason
+------- ------------- ------
+                 True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+{{ The above command checks if the Fabric capacity name 'azsdktest' is available within the resource group 'testrg' in the location 'westus' }}
 
 ## PARAMETERS
 

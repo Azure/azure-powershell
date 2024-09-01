@@ -49,6 +49,8 @@ SkuName      : F2048
 SkuTier      : Fabric
 ```
 
+{{ The above command lists all eligible SKUs for the Fabric capacity named 'azsdktest' within the resource group 'testrg' }}
+
 ### Example 2: List Skus
 ```powershell
 Get-AzFabricCapacitySku | fl
@@ -112,3 +114,4 @@ ResourceType : Capacities
 ...
 ```
 
+{{ The above command lists all eligible SKUs for Fabric resource provider}}

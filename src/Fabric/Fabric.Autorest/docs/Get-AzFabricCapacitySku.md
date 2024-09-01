@@ -28,27 +28,123 @@ List eligible SKUs for Microsoft Fabric resource provider
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List Skus For Capacity
 ```powershell
-{{ Add code here }}
+Get-AzFabricCapacitySku -ResourceGroupName "testrg" -CapacityName "azsdktest" | fl
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ResourceType : Microsoft.Fabric/capacities
+SkuName      : F16
+SkuTier      : Fabric
+
+ResourceType : Microsoft.Fabric/capacities
+SkuName      : F8
+SkuTier      : Fabric
+
+ResourceType : Microsoft.Fabric/capacities
+SkuName      : F64
+SkuTier      : Fabric
+
+ResourceType : Microsoft.Fabric/capacities
+SkuName      : F1024
+SkuTier      : Fabric
+
+ResourceType : Microsoft.Fabric/capacities
+SkuName      : F128
+SkuTier      : Fabric
+
+ResourceType : Microsoft.Fabric/capacities
+SkuName      : F2
+SkuTier      : Fabric
+
+ResourceType : Microsoft.Fabric/capacities
+SkuName      : F256
+SkuTier      : Fabric
+
+ResourceType : Microsoft.Fabric/capacities
+SkuName      : F32
+SkuTier      : Fabric
+
+ResourceType : Microsoft.Fabric/capacities
+SkuName      : F4
+SkuTier      : Fabric
+
+ResourceType : Microsoft.Fabric/capacities
+SkuName      : F512
+SkuTier      : Fabric
+
+ResourceType : Microsoft.Fabric/capacities
+SkuName      : F2048
+SkuTier      : Fabric
 ```
 
-{{ Add description here }}
+{{ The above command lists all eligible SKUs for the Fabric capacity named 'azsdktest' within the resource group 'testrg' }}
 
-### Example 2: {{ Add title here }}
+### Example 2: List Skus
 ```powershell
-{{ Add code here }}
+Get-AzFabricCapacitySku | fl
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name  ResourceType
+----  ------------
+Location     : {West US}
+Name         : F2
+ResourceType : Capacities
+
+Location     : {West US}
+Name         : F4
+ResourceType : Capacities
+
+Location     : {West US}
+Name         : F8
+ResourceType : Capacities
+
+Location     : {West US}
+Name         : F16
+ResourceType : Capacities
+
+Location     : {West US}
+Name         : F32
+ResourceType : Capacities
+
+Location     : {West US}
+Name         : F64
+ResourceType : Capacities
+
+Location     : {West US}
+Name         : F128
+ResourceType : Capacities
+
+Location     : {West US}
+Name         : F256
+ResourceType : Capacities
+
+Location     : {West US}
+Name         : F512
+ResourceType : Capacities
+
+Location     : {West US}
+Name         : F1024
+ResourceType : Capacities
+
+Location     : {West US}
+Name         : F2048
+ResourceType : Capacities
+
+Location     : {West India}
+Name         : F2
+ResourceType : Capacities
+
+Location     : {West India}
+Name         : F4
+ResourceType : Capacities
+
+...
 ```
 
-{{ Add description here }}
+{{ The above command lists all eligible SKUs for Fabric resource provider}}
 
 ## PARAMETERS
 

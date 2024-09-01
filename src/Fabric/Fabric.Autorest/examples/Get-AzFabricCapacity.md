@@ -10,7 +10,7 @@ West Central US  azsdktest                                                      
 West Central US  azsdktest2                                                                                                                                                      testrg
 ```
 
-{{ Add description here }}
+{{ The above command lists all Fabric capacities within the resource group 'testrg' in the subscription '548B7FB7-3B2A-4F46-BB02-66473F1FC22C' }}
 
 ### Example 2: List Capacities by Subscription
 ```powershell
@@ -25,7 +25,7 @@ West Central US  azsdktest2                                                     
 West Europe      azsdktest3                                                                                                                                                      testrg3
 ```
 
-{{ Add description here }}
+{{ The above command lists all Fabric capacities in the subscription '548B7FB7-3B2A-4F46-BB02-66473F1FC22C'. }}
 
 
 ### Example 3: Get Capacity
@@ -54,4 +54,4 @@ Tag                          : {
 Type                         : Microsoft.Fabric/capacities
 ```
 
-{{ Add description here }}
+{{ The above command retrieves the Fabric capacity named 'azsdktest' within the resource group 'testrg' in the subscription '548B7FB7-3B2A-4F46-BB02-66473F1FC22C'. }}

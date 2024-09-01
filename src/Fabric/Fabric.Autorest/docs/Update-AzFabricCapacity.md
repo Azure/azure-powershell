@@ -44,27 +44,12 @@ Update a FabricCapacity
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update Capacity Sku
 ```powershell
-{{ Add code here }}
+Update-AzFabricCapacity -CapacityName "azsdktest" -ResourceGroup "testrg" -SkuName "F4"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+{{ The above command updates the Fabric capacity named 'azsdktest' within the resource group 'testrg' }}
 
 ## PARAMETERS
 

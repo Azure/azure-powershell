@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create Capacity
 ```powershell
 New-AzFabricCapacity `
             -SubscriptionId "548B7FB7-3B2A-4F46-BB02-66473F1FC22C" `
@@ -30,5 +30,5 @@ Tag                          : {
 Type                         : Microsoft.Fabric/capacities
 ```
 
-{{ Add description here }}
+{{ The above command creates a new Fabric capacity named 'azsdktest' within the resource group 'testrg' in the subscription '548B7FB7-3B2A-4F46-BB02-66473F1FC22C' }}
 
