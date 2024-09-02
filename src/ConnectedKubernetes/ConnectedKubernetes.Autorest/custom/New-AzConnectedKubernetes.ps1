@@ -441,6 +441,7 @@ function New-AzConnectedKubernetes {
         Write-Debug "Processing Helm chart installation options."
 
         $options = ""
+        # XW: Guess we don't need this anymore?
         $proxyEnableState = $false
 
         if ($DisableAutoUpgrade) {
@@ -530,7 +531,6 @@ function New-AzConnectedKubernetes {
         # }
         try {
             if ((-not ([string]::IsNullOrEmpty($ProxyCert))) -and (Test-Path $ProxyCert)) {
-                $ConfigurationSetting["proxy"]["proxy_cert"] = $ProxyCert
                 $ConfigurationProtectedSetting["proxy"]["proxy_cert"] = $ProxyCert
             }
         }
@@ -623,11 +623,11 @@ function New-AzConnectedKubernetes {
         $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
 
         # !!PDS: Using this twice so need a function.
-        # $arcAgentryConfigs = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]
         $arcAgentryConfigs = New-Object System.Collections.ArrayList
 
         # Adding the redacted protected settings to the Arc agent configuration.
         $combinedKeys = $ConfigurationSetting.Keys + $RedactedProtectedConfiguration.Keys
+        $combinedKeys = $combinedKeys | Get-Unique 
         foreach ($feature in $combinedKeys) {
             $ArcAgentryConfiguration = @{
                 "Feature"          = $feature
@@ -648,7 +648,6 @@ function New-AzConnectedKubernetes {
         # Retrieving Helm chart OCI (Open Container Initiative) Artifact location
         Write-Debug "Retrieving Helm chart OCI (Open Container Initiative) Artifact location."
         Write-Debug "PUT response: $Response"
-        Write-Debug ($Response | Format-Table | Out-String)
         $ResponseStr = $Response | ConvertTo-Json -Depth 10
         Write-Debug "PUT response: $ResponseStr"
         $helmValuesDp = Get-HelmValues `

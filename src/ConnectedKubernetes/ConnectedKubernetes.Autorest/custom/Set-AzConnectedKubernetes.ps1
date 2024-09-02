@@ -286,7 +286,8 @@ function Set-AzConnectedKubernetes {
         . "$PSScriptRoot/helpers/HelmHelper.ps1"
         . "$PSScriptRoot/helpers/ConfigDPHelper.ps1"
         . "$PSScriptRoot/helpers/AZCloudMetadataHelper.ps1"
-        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $ProtectedSettingsPlaceholderValue = "redacted"
 
         if($AzureHybridBenefit){
             if(!$AcceptEULA){
@@ -458,76 +459,9 @@ function Set-AzConnectedKubernetes {
         Write-Debug "Processing Helm chart installation options."
 
         $options = ""
+        # XW: Guess we don't need this anymore?
         $proxyEnableState = $false
 
-        if ($null -eq $ConfigurationSetting) {
-            $ConfigurationSetting = @{}
-        }
-        if ($null -eq $ConfigurationProtectedSetting) {
-            $ConfigurationProtectedSetting = @{}
-        }
-
-        if ($null -ne $InputObject) {
-            foreach ($arcAgentConfig in $InputObject.ArcAgentryConfiguration) {
-                $ConfigurationSetting[$arcAgentConfig.feature] = $arcAgentConfig.settings
-                $ConfigurationProtectedSetting[$arcAgentConfig.feature] = $arcAgentConfig.protectedSettings
-            }
-        }
-
-        if (![string]::IsNullOrEmpty($HttpProxy) -or ![string]::IsNullOrEmpty($HttpsProxy) -or ![string]::IsNullOrEmpty($NoProxy) -or ![string]::IsNullOrEmpty($HttpProxy) ) {
-            if (-not $ConfigurationSetting.ContainsKey("proxy")) {
-                $ConfigurationSetting["proxy"] = @{}
-            }
-            if (-not $ConfigurationProtectedSetting.ContainsKey("proxy")) {
-                $ConfigurationProtectedSetting["proxy"] = @{}
-            }
-        }
-
-        if (-not ([string]::IsNullOrEmpty($HttpProxy))) {
-            $HttpProxyStr = $HttpProxy.ToString()
-            $HttpProxyStr = $HttpProxyStr -replace ',', '\,'
-            $HttpProxyStr = $HttpProxyStr -replace '/', '\/'
-            $options += " --set global.httpProxy=$HttpProxyStr"
-            $proxyEnableState = $true
-            $ConfigurationSetting["proxy"]["http_proxy"] = $HttpProxyStr
-            $ConfigurationProtectedSetting["proxy"]["http_proxy"] = $HttpProxyStr
-            # Note how we are removing k8s parameters from the list of parameters
-            # to pass to the internal (creates ARM object) command.
-            $Null = $PSBoundParameters.Remove('HttpProxy')
-        }
-        if (-not ([string]::IsNullOrEmpty($HttpsProxy))) {
-            $HttpsProxyStr = $HttpsProxy.ToString()
-            $HttpsProxyStr = $HttpsProxyStr -replace ',', '\,'
-            $HttpsProxyStr = $HttpsProxyStr -replace '/', '\/'
-            $options += " --set global.httpsProxy=$HttpsProxyStr"
-            $proxyEnableState = $true
-            $ConfigurationSetting["proxy"]["https_proxy"] = $HttpsProxyStr
-            $ConfigurationProtectedSetting["proxy"]["https_proxy"] = $HttpsProxyStr
-            $Null = $PSBoundParameters.Remove('HttpsProxy')
-        }
-        if (-not ([string]::IsNullOrEmpty($NoProxy))) {
-            $NoProxy = $NoProxy -replace ',', '\,'
-            $NoProxy = $NoProxy -replace '/', '\/'
-            $options += " --set global.noProxy=$NoProxy"
-            $proxyEnableState = $true
-            $ConfigurationSetting["proxy"]["no_proxy"] = $NoProxy
-            $ConfigurationProtectedSetting["proxy"]["no_proxy"] = $NoProxy
-            $Null = $PSBoundParameters.Remove('NoProxy')
-        }
-        if ($proxyEnableState) {
-            $options += " --set global.isProxyEnabled=true"
-        }
-        try {
-            if ((-not ([string]::IsNullOrEmpty($ProxyCert))) -and (Test-Path $ProxyCert)) {
-                $options += " --set-file global.proxyCert=$ProxyCert"
-                $options += " --set global.isCustomCert=true"
-                $ConfigurationSetting["proxy"]["proxy_cert"] = $ProxyCert
-                $ConfigurationProtectedSetting["proxy"]["proxy_cert"] = $ProxyCert
-            }
-        }
-        catch {
-            throw "Unable to find ProxyCert from file path"
-        }
         if ($DisableAutoUpgrade) {
             $options += " --set systemDefaultValues.azureArcAgents.autoUpdate=false"
             $Null = $PSBoundParameters.Remove('DisableAutoUpgrade')
@@ -563,9 +497,96 @@ function Set-AzConnectedKubernetes {
                 Write-Warning "If the proxy is a private proxy, pass ProxyCredential parameter or provide username and password in the Proxy parameter"
             }
         }
-
         #Endregion
 
+        #Region Deal with configuration settings and protected settings
+        if ($null -eq $ConfigurationSetting) {
+            $ConfigurationSetting = @{}
+        }
+        if ($null -eq $ConfigurationProtectedSetting) {
+            $ConfigurationProtectedSetting = @{}
+        }
+
+        if ($null -ne $InputObject) {
+            foreach ($arcAgentConfig in $InputObject.ArcAgentryConfiguration) {
+                $ConfigurationSetting[$arcAgentConfig.feature] = $arcAgentConfig.settings
+                $ConfigurationProtectedSetting[$arcAgentConfig.feature] = $arcAgentConfig.protectedSettings
+            }
+        }
+
+        if (-not $ConfigurationProtectedSetting.ContainsKey("proxy")) {
+            $ConfigurationProtectedSetting["proxy"] = @{}
+        }
+
+        if (-not ([string]::IsNullOrEmpty($HttpProxy))) {
+            $HttpProxyStr = $HttpProxy.ToString()
+            $HttpProxyStr = $HttpProxyStr -replace ',', '\,'
+            $HttpProxyStr = $HttpProxyStr -replace '/', '\/'
+            # $options += " --set global.httpProxy=$HttpProxyStr"
+            $ConfigurationProtectedSetting["proxy"]["http_proxy"] = $HttpProxyStr
+            # Note how we are removing k8s parameters from the list of parameters
+            # to pass to the internal (creates ARM object) command.
+            $Null = $PSBoundParameters.Remove('HttpProxy')
+            $proxyEnableState = $true
+        }
+        if (-not ([string]::IsNullOrEmpty($HttpsProxy))) {
+            $HttpsProxyStr = $HttpsProxy.ToString()
+            $HttpsProxyStr = $HttpsProxyStr -replace ',', '\,'
+            $HttpsProxyStr = $HttpsProxyStr -replace '/', '\/'
+            # $options += " --set global.httpsProxy=$HttpsProxyStr"
+            $ConfigurationProtectedSetting["proxy"]["https_proxy"] = $HttpsProxyStr
+            $Null = $PSBoundParameters.Remove('HttpsProxy')
+            $proxyEnableState = $true
+        }
+        if (-not ([string]::IsNullOrEmpty($NoProxy))) {
+            $NoProxy = $NoProxy -replace ',', '\,'
+            $NoProxy = $NoProxy -replace '/', '\/'
+            # $options += " --set global.noProxy=$NoProxy"
+            $ConfigurationProtectedSetting["proxy"]["no_proxy"] = $NoProxy
+            $Null = $PSBoundParameters.Remove('NoProxy')
+            $proxyEnableState = $true
+        }
+        # if ($proxyEnableState) {
+        #     $options += " --set global.isProxyEnabled=true"
+        # }
+        try {
+            if ((-not ([string]::IsNullOrEmpty($ProxyCert))) -and (Test-Path $ProxyCert)) {
+                # $options += " --set-file global.proxyCert=$ProxyCert"
+                # $options += " --set global.isCustomCert=true"
+                $ConfigurationProtectedSetting["proxy"]["proxy_cert"] = $ProxyCert
+            }
+        }
+        catch {
+            throw "Unable to find ProxyCert from file path"
+        }
+
+        $RedactedProtectedConfiguration = @{}
+        # Duplicate the protected settings into the settings.
+        foreach ($feature in $ConfigurationProtectedSetting.Keys) {
+            if (-not $RedactedProtectedConfiguration.ContainsKey($feature)) {
+                $RedactedProtectedConfiguration[$feature] = @{}
+            }
+            foreach ($setting in $ConfigurationProtectedSetting[$feature].Keys) {
+                $RedactedProtectedConfiguration[$feature][$setting] = "$ProtectedSettingsPlaceholderValue-$feature-$setting"
+            }
+        }
+        #Endregion
+
+        # A lot of what follows relies on knowing the cloud we are using and the
+        # various endpoints so get that information now.
+        $cloudMetadata = Get-AzCloudMetadata
+
+        # Perform DP health check
+        $configDpinfo = Get-ConfigDPEndpoint -location $Location -Cloud $cloudMetadata
+        $configDPEndpoint = $configDpInfo.configDPEndpoint
+
+        # If the health check fails (not 200 response), an exception is thrown
+        # so we can ignore the output.
+        $null = Invoke-ConfigDPHealthCheck -configDPEndpoint $configDPEndpoint
+
+        # This call does the "pure ARM" update of the ARM objects.
+        Write-Debug "Updating Connected Kubernetes ARM objects."
+        
         # Process the Arc agentry settings and protected settings
         # Create any empty array of IArcAgentryConfigurations.
         # shortened name to avoid class with type name.
@@ -582,60 +603,54 @@ function Set-AzConnectedKubernetes {
         #          Config DP annd this Powershell script if a new Kubernetes
         #          feature is added.
 
-        $arcAgentryConfigs = @(
-        )
+        $arcAgentryConfigs = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]
 
-        if ($ConfigurationSetting) {
-            foreach ($key in $ConfigurationSetting.Keys) {
-                $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
-                    Feature = $key
-                    Setting = $ConfigurationSetting[$key]
-                }
-                if ($ConfigurationProtectedSetting -and $ConfigurationProtectedSetting[$key]) {
-                    $ArcAgentryConfiguration.ProtectedSetting = $ConfigurationProtectedSetting[$key]
-
-                    # Remove this key from ConfigurationProtectedSetting.
-                    $Null = $ConfigurationProtectedSetting.Remove($key)
-                }
-                $arcAgentryConfigs += $ArcAgentryConfiguration
+        # Do not send protected settings to CCRP
+        foreach ($feature in $ConfigurationSetting.Keys) {
+            $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
+                Feature = $feature
+                Setting = $ConfigurationSetting[$feature]
             }
-            $PSBoundParameters.Remove('ConfigurationSetting')
+            $arcAgentryConfigs.Add($ArcAgentryConfiguration)
         }
 
-        # Add the remaining (protected only) settings.
-        if ($ConfigurationProtectedSetting) {
-            foreach ($key in $ConfigurationProtectedSetting.Keys) {
-                $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
-                    Feature          = $key
-                    ProtectedSetting = $ConfigurationProtectedSetting[$key]
-                }
-                $argAgentryConfigs += $ArcAgentryConfiguration
-            }
+        # It is possible to set an empty value for these parameters and then
+        # the code above gets skipped but we still need to remove the empty
+        # values from $PSBoundParameters.
+        if ($PSBoundParameters.ContainsKey('ConfigurationSetting')) {
+            $PSBoundParameters.Remove('ConfigurationSetting')
+        }
+        if ($PSBoundParameters.ContainsKey('ConfigurationProtectedSetting')) {
             $PSBoundParameters.Remove('ConfigurationProtectedSetting')
         }
 
         $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
-
-        # A lot of what follows relies on knowing the cloud we are using and the
-        # various endpoints so get that information now.
-        $cloudMetadata = Get-AzCloudMetadata
-
-        # Perform DP health check
-        $configDpinfo = Get-ConfigDPEndpoint -location $Location -Cloud $cloudMetadata
-        $configDPEndpoint = $configDpInfo.configDPEndpoint
-
-        # If the health check fails (not 200 response), an exception is thrown
-        # so we can ignore the output.
-        $null = Invoke-ConfigDPHealthCheck -configDPEndpoint $configDPEndpoint
-
-        # This call does the "pure ARM" update of the ARM objects.
-        Write-Debug "Updating Connected Kubernetes ARM objects."
+        
         $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes @PSBoundParameters
+
+        # !!PDS: Using this twice so need a function.
+        $arcAgentryConfigs = New-Object System.Collections.ArrayList
+        # Adding the redacted protected settings to the Arc agent configuration.
+        $combinedKeys = $ConfigurationSetting.Keys + $RedactedProtectedConfiguration.Keys
+        $combinedKeys = $combinedKeys | Get-Unique 
+        foreach ($feature in $combinedKeys) {
+            $ArcAgentryConfiguration = @{
+                "Feature"          = $feature
+                "Setting"          = ($ConfigurationSetting.ContainsKey($feature) ? $ConfigurationSetting[$feature] : @{})
+                "ProtectedSetting" = ($RedactedProtectedConfiguration.ContainsKey($feature) ? $RedactedProtectedConfiguration[$feature] : @{})
+            }
+            $arcAgentryConfigs.Add($ArcAgentryConfiguration)
+        }
+
+        # Convert the $Response object into a nested hashtable.
+        Write-Debug "PUT response: $Response"
+        $Response = ConvertFrom-Json "$Response" -AsHashTable -Depth 10
+        $Response['properties']['arcAgentryConfigurations'] = $arcAgentryConfigs
 
         # Retrieving Helm chart OCI (Open Container Initiative) Artifact location
         Write-Debug "Retrieving Helm chart OCI (Open Container Initiative) Artifact location."
-        Write-Debug "PUT response: $Response"
-        $ResponseStr = "$Response"
+        $ResponseStr = $Response | ConvertTo-Json -Depth 10
+        Write-Debug "PUT response: $ResponseStr"
         $helmValuesDp = Get-HelmValues `
             -configDPEndpoint $configDPEndpoint `
             -releaseTrain $ReleaseTrain `
@@ -653,8 +668,13 @@ function Set-AzConnectedKubernetes {
         Write-Debug "Helm values: ${helmValuesContent}."
 
         foreach ($field in $helmValuesContent.PSObject.Properties) {
-            if ($field.Name -in @("global.httpsProxy", "global.httpProxy", "global.noProxy", "global.proxyCert")) {
-                continue
+            if ($ProtectedSettingsPlaceholderValue -in $field.Value) {
+                $parsedValue = $field.Value.Split("-")
+                # "$ProtectedSettingsPlaceholderValue-$feature-$setting"
+                $field.Value = $ConfigurationProtectedSetting[$parsedValue[1]][$parsedValue[2]]
+            }
+            if ($field.Name -eq "global.proxyCert") {
+                $options += " --set-file $($field.Name)=$($field.Value)"
             }
             $options += " --set $($field.Name)=$($field.Value)"
         }
