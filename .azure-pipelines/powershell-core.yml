@@ -2,7 +2,7 @@ parameters:
 - name: TargetModule
   displayName: 'List of target modules, all modules if not provided'
   type: string
-  default: ''
+  default: 'all'
 - name: ForceRegenerate
   displayName: 'Force regenerate autorest generated modules when pipeline triggered manually'
   type: boolean

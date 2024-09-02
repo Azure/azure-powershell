@@ -10,16 +10,7 @@ steps:
   persistCredentials: true
 - template: get-github-token-steps.yml
 - task: PowerShell@2
-  displayName: 'Check Ignored File'
-  inputs:
-    filePath: tools/CheckIgnoredFile.ps1
-- task: UseDotNet@2
-  displayName: 'Use .NET Core sdk 6.0.x'
-  inputs:
-    packageType: sdk
-    version: 6.0.x
-- task: PowerShell@2
-  displayName: 'Set files changed trigger'
+  displayName: 'Set trigger'
   inputs:
     targetType: inline
     pwsh: true
@@ -44,7 +35,7 @@ steps:
         }
         { $reason -in @('Manual', 'Schedule') } {
           $targetModule = "${{ parameters.TargetModule }}"
-          if ('' -eq $targetModule) {
+          if ('all' -eq $targetModule) {
             $notModules = @('lib', 'shared')
             $src = Join-Path "$(Build.SourcesDirectory)" 'src'
             $trigger = Get-Childitem -Path $src -Directory | ForEach-Object {
