@@ -32,6 +32,7 @@ using System.Diagnostics;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    [CmdletOutputBreakingChangeWithVersion(typeof(AzureStorageFile), "13.0.0", "8.0.0", ChangeDescription = "The child property CloudFile from deprecated v11 SDK will be removed. Use child property ShareFileClient instead.")]
     [Cmdlet("Start", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileCopy", SupportsShouldProcess = true), OutputType(typeof(AzureStorageFile))]
     public class StartAzureStorageFileCopyCommand : StorageFileDataManagementCmdletBase
     {
@@ -55,10 +56,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string SrcContainerName { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("SrcContainer", "13.0.0", "8.0.0", ChangeDescription = "The type of parameter SrcContainer will be changed from CloudBlobContainer to BlobContainerClient.")]
         [Parameter(HelpMessage = "Source container instance", Mandatory = true, ParameterSetName = ContainerParameterSet)]
         [ValidateNotNull]
         public CloudBlobContainer SrcContainer { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("SrcBlob", "13.0.0", "8.0.0", ChangeDescription = "The type of parameter SrcBlob will be changed from CloudBlob to BlobBaseClient. The alias ICloudBlob will be deprecated.")]
         [Alias("ICloudBlob")]
         [Parameter(HelpMessage = "Source blob instance", Mandatory = true,
            ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobFilePathParameterSet)]
@@ -76,11 +79,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string SrcShareName { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("SrcShare", "13.0.0", "8.0.0", ChangeDescription = "The type of parameter SrcShare will be changed from CloudFileShare to ShareClient. The alias CloudFileShare will be deprecated.")]
         [Parameter(HelpMessage = "Source share instance", Mandatory = true, ParameterSetName = ShareParameterSet)]
         [ValidateNotNull]
         [Alias("CloudFileShare")]
         public CloudFileShare SrcShare { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("SrcFile", "13.0.0", "8.0.0", ChangeDescription = "The type of parameter SrcFile will be changed from CloudFile to ShareFileClient. The alias CloudFile will be deprecated.")]
         [Parameter(HelpMessage = "Source file instance", 
             Mandatory = true,
             ValueFromPipeline = true,
@@ -120,6 +125,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string DestFilePath { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("DestFile", "13.0.0", "8.0.0", ChangeDescription = "The parameter DestFile will be deprecated. To input a dest file instance, use DestShareFileClient instead.")]
         [Parameter(HelpMessage = "Dest file instance", Mandatory = false, ParameterSetName = BlobFileParameterSet)]
         [Parameter(HelpMessage = "Dest file instance", Mandatory = false, ParameterSetName = FileFileParameterSet)]
         [Parameter(HelpMessage = "Dest file instance", Mandatory = false, ParameterSetName = UriFileParameterSet)]

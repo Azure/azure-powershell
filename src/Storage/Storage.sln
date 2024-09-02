@@ -5,41 +5,40 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Accounts", "Accounts", "{26B20B8A-01AC-43FB-889C-B5FC825AB4AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{3450FC23-927D-44E3-8BF9-877BFE8C92C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{3450FC23-927D-44E3-8BF9-877BFE8C92C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{2808A6AE-316D-4591-BC92-9510AD0FD080}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{2808A6AE-316D-4591-BC92-9510AD0FD080}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{59A9A3D1-89CA-4EF5-843D-7D3F7957E027}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{59A9A3D1-89CA-4EF5-843D-7D3F7957E027}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{D4A4EB6D-2E41-41CD-BB9D-8CBDA4295EBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{D4A4EB6D-2E41-41CD-BB9D-8CBDA4295EBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{1947794E-27B9-47B3-8F97-E723A7C93932}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{1947794E-27B9-47B3-8F97-E723A7C93932}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{777850CD-5613-4807-A116-0433724CAD3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{777850CD-5613-4807-A116-0433724CAD3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Storage", "Storage.Autorest\Az.Storage.csproj", "{4B2EEF7C-ADFB-41F3-AB10-625FD1FB1ED5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Storage", "Storage.Autorest\Az.Storage.csproj", "{4B2EEF7C-ADFB-41F3-AB10-625FD1FB1ED5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.Management.Sdk", "Storage.Management.Sdk\Storage.Management.Sdk.csproj", "{911DB0F6-79C8-471F-9F59-4A5BEF6F910D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.Management.Sdk", "Storage.Management.Sdk\Storage.Management.Sdk.csproj", "{911DB0F6-79C8-471F-9F59-4A5BEF6F910D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{9ADC2E4A-DFC5-4CDC-9AB7-DC5E61E10C4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.Management.Test", "Storage.Management.Test\Storage.Management.Test.csproj", "{DED0C473-64A1-4615-9CD1-776D2EB11619}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.Management.Test", "Storage.Management.Test\Storage.Management.Test.csproj", "{DED0C473-64A1-4615-9CD1-776D2EB11619}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.Management", "Storage.Management\Storage.Management.csproj", "{873C876E-219E-4F4B-93CD-901FE34F7271}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.Management", "Storage.Management\Storage.Management.csproj", "{873C876E-219E-4F4B-93CD-901FE34F7271}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.Test", "Storage.Test\Storage.Test.csproj", "{81B2C882-F205-411B-9EEC-A387E1D7B23C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.Test", "Storage.Test\Storage.Test.csproj", "{81B2C882-F205-411B-9EEC-A387E1D7B23C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage", "Storage\Storage.csproj", "{498E0062-283F-41AD-B0E0-1ED055974217}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage", "Storage\Storage.csproj", "{498E0062-283F-41AD-B0E0-1ED055974217}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{DDCE5245-E4F2-4F1B-B669-D81A920AAD21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{DDCE5245-E4F2-4F1B-B669-D81A920AAD21}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.common", "Storage.common\Storage.common.csproj", "{612125D7-36AF-4889-AB38-9B4D0D37CF0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{3450FC23-927D-44E3-8BF9-877BFE8C92C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -94,6 +93,13 @@ Global
 		{DDCE5245-E4F2-4F1B-B669-D81A920AAD21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDCE5245-E4F2-4F1B-B669-D81A920AAD21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDCE5245-E4F2-4F1B-B669-D81A920AAD21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{612125D7-36AF-4889-AB38-9B4D0D37CF0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{612125D7-36AF-4889-AB38-9B4D0D37CF0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{612125D7-36AF-4889-AB38-9B4D0D37CF0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{612125D7-36AF-4889-AB38-9B4D0D37CF0F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3450FC23-927D-44E3-8BF9-877BFE8C92C6} = {26B20B8A-01AC-43FB-889C-B5FC825AB4AC}
