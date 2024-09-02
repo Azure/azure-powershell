@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Storage account cmdlet output context based on OAuth token 
+
+## Version 7.3.0
 * Supported account tier Cold
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
