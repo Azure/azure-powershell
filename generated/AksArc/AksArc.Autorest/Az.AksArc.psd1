@@ -1,5 +1,5 @@
 @{
-  GUID = '0e2f96c9-10b2-4c68-b181-d29e3bdfdeed'
+  GUID = '47b9592f-d677-46eb-9355-8f75a91e9cd2'
   RootModule = './Az.AksArc.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
