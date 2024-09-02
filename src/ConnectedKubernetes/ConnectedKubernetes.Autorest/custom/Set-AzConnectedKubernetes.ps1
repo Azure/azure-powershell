@@ -597,84 +597,88 @@ function Set-AzConnectedKubernetes {
 
         $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
 
-        $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes @PSBoundParameters
+        if ($PSCmdlet.ShouldProcess($ExistConnectedKubernetes, "Updating existing connected cluster")) {
+            $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes @PSBoundParameters
+            $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration $RedactedProtectedConfiguration -CCRP $false
 
-        $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration $RedactedProtectedConfiguration -CCRP $false
+            # Convert the $Response object into a nested hashtable.
+            Write-Debug "PUT response: $Response"
+            $Response = ConvertFrom-Json "$Response" -AsHashTable -Depth 10
+            $Response['properties']['arcAgentryConfigurations'] = $arcAgentryConfigs
 
-        # Convert the $Response object into a nested hashtable.
-        Write-Debug "PUT response: $Response"
-        $Response = ConvertFrom-Json "$Response" -AsHashTable -Depth 10
-        $Response['properties']['arcAgentryConfigurations'] = $arcAgentryConfigs
+            # Retrieving Helm chart OCI (Open Container Initiative) Artifact location
+            Write-Debug "Retrieving Helm chart OCI (Open Container Initiative) Artifact location."
+            $ResponseStr = $Response | ConvertTo-Json -Depth 10
+            Write-Debug "PUT response: $ResponseStr"
+            
+            $helmValuesDp = Get-HelmValues `
+                -configDPEndpoint $configDPEndpoint `
+                -releaseTrain $ReleaseTrain `
+                -requestBody $ResponseStr `
+                -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+                -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
 
-        # Retrieving Helm chart OCI (Open Container Initiative) Artifact location
-        Write-Debug "Retrieving Helm chart OCI (Open Container Initiative) Artifact location."
-        $ResponseStr = $Response | ConvertTo-Json -Depth 10
-        Write-Debug "PUT response: $ResponseStr"
-        $helmValuesDp = Get-HelmValues `
-            -configDPEndpoint $configDPEndpoint `
-            -releaseTrain $ReleaseTrain `
-            -requestBody $ResponseStr `
-            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
-            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+            Write-Debug "helmValuesDp: $helmValuesDp"
+            Write-Debug "OCI Artifact location: ${helmValuesDp.repositoryPath}."
 
-        Write-Debug "helmValuesDp: $helmValuesDp"
-        Write-Debug "OCI Artifact location: ${helmValuesDp.repositoryPath}."
+            $registryPath = if ($env:HELMREGISTRY) { $env:HELMREGISTRY } else { $helmValuesDp.repositoryPath }
+            Write-Debug "RegistryPath: ${registryPath}."
 
-        $registryPath = if ($env:HELMREGISTRY) { $env:HELMREGISTRY } else { $helmValuesDp.repositoryPath }
-        Write-Debug "RegistryPath: ${registryPath}."
+            $helmValuesContent = $helmValuesDp.helmValuesContent
+            Write-Debug "Helm values: ${helmValuesContent}."
 
-        $helmValuesContent = $helmValuesDp.helmValuesContent
-        Write-Debug "Helm values: ${helmValuesContent}."
-
-        foreach ($field in $helmValuesContent.PSObject.Properties) {
-            if ($ProtectedSettingsPlaceholderValue -in $field.Value) {
-                $parsedValue = $field.Value.Split("-")
-                # "$ProtectedSettingsPlaceholderValue-$feature-$setting"
-                $field.Value = $ConfigurationProtectedSetting[$parsedValue[1]][$parsedValue[2]]
+            foreach ($field in $helmValuesContent.PSObject.Properties) {
+                if ($ProtectedSettingsPlaceholderValue -in $field.Value) {
+                    $parsedValue = $field.Value.Split("-")
+                    # "$ProtectedSettingsPlaceholderValue-$feature-$setting"
+                    $field.Value = $ConfigurationProtectedSetting[$parsedValue[1]][$parsedValue[2]]
+                }
+                if ($field.Name -eq "global.proxyCert") {
+                    $options += " --set-file $($field.Name)=$($field.Value)"
+                }
+                $options += " --set $($field.Name)=$($field.Value)"
             }
-            if ($field.Name -eq "global.proxyCert") {
-                $options += " --set-file $($field.Name)=$($field.Value)"
+
+            # Set agent version in registry path
+            if ($ExistConnectedKubernetes.AgentVersion) {
+                $repositoryPath = $repositoryPath -replace "(?<=:).*", $ExistConnectedKubernetes.AgentVersion
             }
-            $options += " --set $($field.Name)=$($field.Value)"
-        }
 
-        # Set agent version in registry path
-        if ($ExistConnectedKubernetes.AgentVersion) {
-            $repositoryPath = $repositoryPath -replace "(?<=:).*", $ExistConnectedKubernetes.AgentVersion
-        }
+            # Get helm chart path (within the OCI registry).
+            $chartPath = Get-HelmChartPath -registryPath $registryPath -kubeConfig $KubeConfig -kubeContext $KubeContext -helmClientLocation $HelmClientLocation
+            if (Test-Path Env:HELMCHART) {
+                $ChartPath = Get-ChildItem -Path Env:HELMCHART
+            }
 
-        # Get helm chart path (within the OCI registry).
-        $chartPath = Get-HelmChartPath -registryPath $registryPath -kubeConfig $KubeConfig -kubeContext $KubeContext -helmClientLocation $HelmClientLocation
-        if (Test-Path Env:HELMCHART) {
-            $ChartPath = Get-ChildItem -Path Env:HELMCHART
-        }
+            # Get curren helm values
+            try {
+                $userValuesLocation = Join-Path $env:USERPROFILE ".azure\userValues.txt"
 
-        # Get curren helm values
-        try {
-            $userValuesLocation = Join-Path $env:USERPROFILE ".azure\userValues.txt"
+                helm get values azure-arc `
+                    --debug `
+                    --namespace $ReleaseInstallNamespace `
+                    --kubeconfig $KubeConfig `
+                    --kube-context $KubeContext > $userValuesLocation
+            }
+            catch {
+                throw "Unable to get helm values"
+            }
 
-            helm get values azure-arc `
-                --debug `
-                --namespace $ReleaseInstallNamespace `
-                --kubeconfig $KubeConfig `
-                --kube-context $KubeContext > $userValuesLocation
+            try {
+                helm upgrade `
+                    --debug `
+                    azure-arc `
+                    $ChartPath `
+                    --namespace $ReleaseInstallNamespace `
+                    -f $userValuesLocation `
+                    --wait (-split $options)
+            }
+            catch {
+                throw "Unable to install helm release"
+            }
+            Return $Response
+        } else {
+            Return
         }
-        catch {
-            throw "Unable to get helm values"
-        }
-
-        try {
-            helm upgrade `
-                --debug `
-                azure-arc `
-                $ChartPath `
-                --namespace $ReleaseInstallNamespace `
-                -f $userValuesLocation `
-                --wait (-split $options)
-        }
-        catch {
-            throw "Unable to install helm release"
-        }
-        Return $Response
     }
 }
