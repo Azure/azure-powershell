@@ -602,9 +602,7 @@ function New-AzConnectedKubernetes {
         $arcAgentryConfigs = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]
 
         # Do not send protected settings to CCRP
-        $combinedKeys = $ConfigurationSetting.Keys + $RedactedProtectedConfiguration.Keys
-        $combinedKeys = $combinedKeys | Get-Unique
-        foreach ($feature in $combinedKeys) {
+        foreach ($feature in $ConfigurationSetting.Keys) {
             $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
                 Feature = $feature
                 Setting = $ConfigurationSetting[$feature]
@@ -630,10 +628,11 @@ function New-AzConnectedKubernetes {
         # !!PDS: Using this twice so need a function.
         # $arcAgentryConfigs = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]
         $arcAgentryConfigs = New-Object System.Collections.ArrayList
-        foreach ($feature in $combinedKeys) {
+
+        # Adding the redacted protected settings to the Arc agent configuration.
+        foreach ($feature in $RedactedProtectedConfiguration.Keys) {
             $ArcAgentryConfiguration = @{
                 "Feature"          = $feature
-                "Setting"          = $ConfigurationSetting[$feature]
                 "ProtectedSetting" = $RedactedProtectedConfiguration[$feature]
             }
             $arcAgentryConfigs.Add($ArcAgentryConfiguration)
