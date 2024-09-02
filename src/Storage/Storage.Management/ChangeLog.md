@@ -25,6 +25,8 @@
 * Supported EnableExtendedGroup when creating and updating a storage account 
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
+    
+## Version 7.3.0
 * Supported account tier Cold
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`

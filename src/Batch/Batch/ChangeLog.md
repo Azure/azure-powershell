@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.6.3
 * Fixed secrets exposure in example documentation.
 
 ## Version 3.6.2
