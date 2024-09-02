@@ -21,7 +21,7 @@ New-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -Loc
  [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
  [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
  [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
- [-GatewayResourceId <String>] [-NoWait] [<CommonParameters>]
+ [-GatewayResourceId <String>] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -567,6 +567,37 @@ Accept wildcard characters: False
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

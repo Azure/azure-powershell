@@ -68,11 +68,8 @@ function ConvertTo-ArcAgentryConfiguration {
                 "ProtectedSetting" = ($RedactedProtectedConfiguration.ContainsKey($feature) ? $RedactedProtectedConfiguration[$feature] : @{})
             }
         }
-        $arcAgentryConfigs.Add($ArcAgentryConfiguration)
+        $null = $arcAgentryConfigs.Add($ArcAgentryConfiguration)
     }
-
-    $arcAgentryConfigsStr = $arcAgentryConfigs | ConvertTo-Json -Depth 10
-    Write-Debug "ArcAgentryConfigs: $arcAgentryConfigsStr"
 
     return $arcAgentryConfigs
 }
@@ -98,7 +95,7 @@ function Convert-ProxySetting {
     }
     catch {
         # The variable does not exist so nothing to be done.
-        Write-Warning "Variable $name does not exist" -ErrorAction SilentlyContinue
+        Write-Error "Variable $name does not exist" -ErrorAction SilentlyContinue
     }
     return $ConfigurationProtectedSetting
 }
