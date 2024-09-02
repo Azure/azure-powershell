@@ -493,10 +493,6 @@ function New-AzConnectedKubernetes {
         if (-not $ConfigurationSetting) {
             $ConfigurationSetting = @{}
         }
-        if (-not $ConfigurationSetting.ContainsKey('proxy')) {
-            $ConfigurationSetting['proxy'] = @{}
-        }
-
         if (-not $ConfigurationProtectedSetting) {
             $ConfigurationProtectedSetting = @{}
         }
@@ -534,6 +530,7 @@ function New-AzConnectedKubernetes {
         # }
         try {
             if ((-not ([string]::IsNullOrEmpty($ProxyCert))) -and (Test-Path $ProxyCert)) {
+                $ConfigurationSetting["proxy"]["proxy_cert"] = $ProxyCert
                 $ConfigurationProtectedSetting["proxy"]["proxy_cert"] = $ProxyCert
             }
         }
@@ -630,10 +627,12 @@ function New-AzConnectedKubernetes {
         $arcAgentryConfigs = New-Object System.Collections.ArrayList
 
         # Adding the redacted protected settings to the Arc agent configuration.
-        foreach ($feature in $RedactedProtectedConfiguration.Keys) {
+        $combinedKeys = $ConfigurationSetting.Keys + $RedactedProtectedConfiguration.Keys
+        foreach ($feature in $combinedKeys) {
             $ArcAgentryConfiguration = @{
                 "Feature"          = $feature
-                "ProtectedSetting" = $RedactedProtectedConfiguration[$feature]
+                "Setting"          = ($ConfigurationSetting.ContainsKey($feature) ? $ConfigurationSetting[$feature] : @{})
+                "ProtectedSetting" = ($RedactedProtectedConfiguration.ContainsKey($feature) ? $RedactedProtectedConfiguration[$feature] : @{})
             }
             $arcAgentryConfigs.Add($ArcAgentryConfiguration)
         }
