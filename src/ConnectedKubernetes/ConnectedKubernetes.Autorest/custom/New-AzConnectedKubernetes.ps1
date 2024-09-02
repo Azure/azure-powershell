@@ -37,7 +37,7 @@ param()
 
 function New-AzConnectedKubernetes {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster])]
-    [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, ConfirmImpact = 'Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', SupportsShouldProcess, PositionalBinding = $false, ConfirmImpact = 'Medium')]
     [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingConvertToSecureStringWithPlainText', '',
         Justification = 'Code published before this issue was identified')]
     param(
@@ -401,8 +401,15 @@ function New-AzConnectedKubernetes {
                 if (($ResourceGroupName -eq $ConfigmapRgName) -and ($ClusterName -eq $ConfigmapClusterName)) {
                     # This performs a re-PUT of an existing connected cluster which should really be done using
                     # a Set-AzConnectedKubernetes cmdlet!
-                    $PSBoundParameters.Add('AgentPublicKeyCertificate', $ExistConnectedKubernetes.AgentPublicKeyCertificate)
-                    return Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
+
+                    if ($PSCmdlet.ShouldProcess($ClusterName, "Updating existing ConnectedKubernets cluster")) {
+                        $PSBoundParameters.Add('AgentPublicKeyCertificate', $ExistConnectedKubernetes.AgentPublicKeyCertificate)
+                        return Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
+                    }
+                    else {
+                        # We are done here if doing a What-if.
+                        return
+                    }
                 }
                 else {
                     # We have a cluster with the same Kubernetes settings but already associated via a different RG - error!
@@ -677,28 +684,30 @@ function New-AzConnectedKubernetes {
         $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
         Write-Debug $options -ErrorAction Continue
         # !!PDS: Remove --debug from helm, or add as part of "Debug" enable?
-        try {
-            helm upgrade `
-                --debug `
-                --install azure-arc `
-                $ChartPath `
-                --namespace $ReleaseInstallNamespace `
-                --create-namespace `
-                --set global.subscriptionId=$SubscriptionId `
-                --set global.resourceGroupName=$ResourceGroupName `
-                --set global.resourceName=$ClusterName `
-                --set global.tenantId=$TenantId `
-                --set global.location=$Location `
-                --set global.onboardingPrivateKey=$AgentPrivateKey `
-                --set systemDefaultValues.spnOnboarding=false `
-                --set global.azureEnvironment=AZUREPUBLICCLOUD `
-                --set systemDefaultValues.clusterconnect-agent.enabled=true `
-                --set global.kubernetesDistro=$Distribution `
-                --set global.kubernetesInfra=$Infrastructure (-split $options)
+        if ($PSCmdlet.ShouldProcess($ClusterName, "Update Kubernetes cluster with Azure Arc")) {
+            try {
+                helm upgrade `
+                    --debug `
+                    --install azure-arc `
+                    $ChartPath `
+                    --namespace $ReleaseInstallNamespace `
+                    --create-namespace `
+                    --set global.subscriptionId=$SubscriptionId `
+                    --set global.resourceGroupName=$ResourceGroupName `
+                    --set global.resourceName=$ClusterName `
+                    --set global.tenantId=$TenantId `
+                    --set global.location=$Location `
+                    --set global.onboardingPrivateKey=$AgentPrivateKey `
+                    --set systemDefaultValues.spnOnboarding=false `
+                    --set global.azureEnvironment=AZUREPUBLICCLOUD `
+                    --set systemDefaultValues.clusterconnect-agent.enabled=true `
+                    --set global.kubernetesDistro=$Distribution `
+                    --set global.kubernetesInfra=$Infrastructure (-split $options)
 
-        }
-        catch {
-            throw "Unable to install helm chart at $ChartPath"
+            }
+            catch {
+                throw "Unable to install helm chart at $ChartPath"
+            }
         }
         Return $Response
     }
