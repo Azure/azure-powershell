@@ -470,8 +470,6 @@ function Set-AzConnectedKubernetes {
         Write-Debug "Processing Helm chart installation options."
 
         $options = ""
-        # XW: Guess we don't need this anymore?
-        # $proxyEnableState = $false
 
         if ($DisableAutoUpgrade) {
             $options += " --set systemDefaultValues.azureArcAgents.autoUpdate=false"
@@ -533,13 +531,8 @@ function Set-AzConnectedKubernetes {
         Convert-ProxySetting -Name 'HttpsProxy' -ConfigurationProtectedSetting ([ref]$ConfigurationProtectedSetting)
         Convert-ProxySetting -Name 'NoProxy' -ConfigurationProtectedSetting ([ref]$ConfigurationProtectedSetting)
 
-        # if ($proxyEnableState) {
-        #     $options += " --set global.isProxyEnabled=true"
-        # }
         try {
             if ((-not ([string]::IsNullOrEmpty($ProxyCert))) -and (Test-Path $ProxyCert)) {
-                # $options += " --set-file global.proxyCert=$ProxyCert"
-                # $options += " --set global.isCustomCert=true"
                 $ConfigurationProtectedSetting["proxy"]["proxy_cert"] = $ProxyCert
             }
         }
@@ -618,7 +611,7 @@ function Set-AzConnectedKubernetes {
         $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes @PSBoundParameters
 
         # !!PDS: Using this twice so need a function.
-        $arcAgentryConfigs = ConvertTo-ArcAgentryConfigs -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration $RedactedProtectedConfiguration -CCRP $false
+        $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration $RedactedProtectedConfiguration -CCRP $false
 
         # $arcAgentryConfigs = New-Object System.Collections.ArrayList
         # # Adding the redacted protected settings to the Arc agent configuration.
@@ -690,7 +683,6 @@ function Set-AzConnectedKubernetes {
                 --namespace $ReleaseInstallNamespace `
                 --kubeconfig $KubeConfig `
                 --kube-context $KubeContext > $userValuesLocation
-
         }
         catch {
             throw "Unable to get helm values"

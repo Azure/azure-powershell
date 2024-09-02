@@ -613,7 +613,7 @@ function New-AzConnectedKubernetes {
         Write-Verbose "Creating 'Kubernetes - Azure Arc' object in Azure"
         $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
 
-        $arcAgentryConfigs = ConvertTo-ArcAgentryConfigs -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration $RedactedProtectedConfiguration -CCRP $false
+        $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration $RedactedProtectedConfiguration -CCRP $false
 
         # # !!PDS: Using this twice so need a function.
         # $arcAgentryConfigs = New-Object System.Collections.ArrayList
@@ -631,6 +631,9 @@ function New-AzConnectedKubernetes {
         # }
 
         # Convert the $Response object into a nested hashtable.
+        $arcConfigStr = $arcAgentryConfigs | ConvertTo-Json -Depth 10
+        Write-Debug "arc Config: $arcConfigStr"
+
         Write-Debug "PUT response: $Response"
         $Response = ConvertFrom-Json "$Response" -AsHashTable -Depth 10
         $Response['properties']['arcAgentryConfigurations'] = $arcAgentryConfigs
