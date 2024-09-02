@@ -721,6 +721,22 @@ function New-AzConnectedKubernetes {
     }
 }
 
+# The syntax of the configuration settings and protected settings is a hashtable
+# of hashtables where the final values must be strings.  So it might look like
+# this:
+#
+# {
+#   "feature1": {
+#     "setting1": "value1",
+#     "setting2": "value2",
+#     ...
+#   },
+#   "feature2": {
+#     ...
+#   }
+# }
+#
+# This function confirms that format.
 function Test-ConfigurationSyntax {
     param(
         [string]$name
