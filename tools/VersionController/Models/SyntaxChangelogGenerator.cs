@@ -16,13 +16,7 @@ namespace VersionController.Netcore.Models
         public AnalysisLogger Logger { get; set; }
         public string Name { get; set; }
         public string CmdletDiffIssueReportLoggerName { get; set; }
-        private List<string> _ignoreParameters = new List<string>
-        {
-            "AzureRMContext", "Break", "Debug", "DefaultProfile", "EnableTestCoverage",
-            "ErrorAction", "ErrorVariable", "HttpPipelineAppend", "HttpPipelinePrepend", "InformationAction",
-            "InformationVariable", "OutBuffer", "OutVariable", "PipelineVariable", "Proxy",
-            "ProxyCredential", "ProxyUseDefaultCredentials", "Verbose", "WarningAction", "WarningVariable"
-        };
+        private List<string> _ignoreParameters = CommonInfo.ExcludedParameters;
         private List<CmdletDiffInformation> diffInfo = new List<CmdletDiffInformation>();
         public void Analyze(String rootDirectory)
         {

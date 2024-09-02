@@ -99,6 +99,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             HelpMessage = "Storage Account Access Tier.")]
         [ValidateSet(AccountAccessTier.Hot,
             AccountAccessTier.Cool,
+            AccountAccessTier.Cold,
             IgnoreCase = true)]
         public string AccessTier { get; set; }
 
@@ -919,7 +920,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
                     var storageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
 
-                    WriteStorageAccount(storageAccount);
+                    WriteStorageAccount(storageAccount, DefaultContext);
                 }
             }
         }

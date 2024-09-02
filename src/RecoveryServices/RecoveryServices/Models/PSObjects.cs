@@ -86,7 +86,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             this.Properties.PrivateEndpointStateForSiteRecovery = vault.Properties.PrivateEndpointStateForSiteRecovery;
             this.Properties.PublicNetworkAccess = vault.Properties.PublicNetworkAccess;
             this.Properties.RestoreSettings = vault.Properties.RestoreSettings;
-                           
+            this.Properties.MoveDetails = vault.Properties.MoveDetails;
+            this.Properties.MoveState = vault.Properties.MoveState;
+            this.Properties.RedundancySettings = vault.Properties.RedundancySettings;
+            this.Properties.SecureScore = vault.Properties.SecureScore;
+            this.Properties.BcdrSecurityLevel = vault.Properties.BcdrSecurityLevel;
+
             if (vault.Properties.PrivateEndpointConnections != null)
             {
                 this.Properties.PrivateEndpointConnections = new List<PrivateEndpointConnection>();
@@ -158,6 +163,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             this.Identity = vault.Identity;
+
+            if (vault.Properties.Encryption != null)
+            {
+                var encryption = vault.Properties.Encryption;
+                this.Properties.EncryptionProperty = new VaultPropertiesEncryption
+                {
+                    KeyVaultProperties = new CmkKeyVaultProperties
+                    {
+                        KeyUri = encryption.KeyVaultProperties?.KeyUri
+                    },
+                    KekIdentity = new CmkKekIdentity
+                    {
+                        UseSystemAssignedIdentity = encryption.KekIdentity?.UseSystemAssignedIdentity,
+                        UserAssignedIdentity = encryption.KekIdentity?.UserAssignedIdentity
+                    },
+                    InfrastructureEncryption = encryption.InfrastructureEncryption
+                };
+            }
+
+            if (vault.Properties.SecuritySettings != null)
+            {
+                this.Properties.SoftDeleteSettings = vault.Properties.SecuritySettings.SoftDeleteSettings;
+                this.Properties.MultiUserAuthorization = vault.Properties.SecuritySettings.MultiUserAuthorization;
+            }
         }
 
         #endregion
@@ -246,6 +275,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public AlertSettings AlertSettings { get; set; }
 
         public List<PrivateEndpointConnection> PrivateEndpointConnections { get; set; }
+
+        public VaultPropertiesEncryption EncryptionProperty { get; set; }
+
+        public VaultPropertiesMoveDetails MoveDetails { get; set; }
+        public string MoveState { get; set; }
+
+        public VaultPropertiesRedundancySettings RedundancySettings { get; set; }
+        public SoftDeleteSettings SoftDeleteSettings {get; set; }
+        public string MultiUserAuthorization { get; set; }
+
+        public string SecureScore { get; set; }
+        public string BcdrSecurityLevel { get; set; }
 
         #endregion
     }

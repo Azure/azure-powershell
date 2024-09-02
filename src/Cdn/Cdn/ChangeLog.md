@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 3.2.2
+* Added support to enable ManagedIdentity when no BYOC in the classic front door during migration
+
 ## Version 3.2.1
 * Bypassed object id validation for KeyVault access policy during `Start-AzFrontDoorCdnProfilePrepareMigration`
 

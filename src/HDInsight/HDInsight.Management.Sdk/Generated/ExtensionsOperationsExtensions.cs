@@ -237,6 +237,117 @@ namespace Microsoft.Azure.Management.HDInsight
             (await operations.DisableAzureMonitorWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
+        /// Enables the Azure Monitor Agent on the HDInsight cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster.
+        /// </param>
+        public static void EnableAzureMonitorAgent(this IExtensionsOperations operations, string resourceGroupName, string clusterName, AzureMonitorRequest parameters)
+        {
+                ((IExtensionsOperations)operations).EnableAzureMonitorAgentAsync(resourceGroupName, clusterName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Enables the Azure Monitor Agent on the HDInsight cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task EnableAzureMonitorAgentAsync(this IExtensionsOperations operations, string resourceGroupName, string clusterName, AzureMonitorRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.EnableAzureMonitorAgentWithHttpMessagesAsync(resourceGroupName, clusterName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Gets the status of Azure Monitor Agent on the HDInsight cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster.
+        /// </param>
+        public static AzureMonitorResponse GetAzureMonitorAgentStatus(this IExtensionsOperations operations, string resourceGroupName, string clusterName)
+        {
+                return ((IExtensionsOperations)operations).GetAzureMonitorAgentStatusAsync(resourceGroupName, clusterName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the status of Azure Monitor Agent on the HDInsight cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<AzureMonitorResponse> GetAzureMonitorAgentStatusAsync(this IExtensionsOperations operations, string resourceGroupName, string clusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetAzureMonitorAgentStatusWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Disables the Azure Monitor Agent on the HDInsight cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster.
+        /// </param>
+        public static void DisableAzureMonitorAgent(this IExtensionsOperations operations, string resourceGroupName, string clusterName)
+        {
+                ((IExtensionsOperations)operations).DisableAzureMonitorAgentAsync(resourceGroupName, clusterName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Disables the Azure Monitor Agent on the HDInsight cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DisableAzureMonitorAgentAsync(this IExtensionsOperations operations, string resourceGroupName, string clusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DisableAzureMonitorAgentWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
         /// Creates an HDInsight cluster extension.
         /// </summary>
         /// <param name='operations'>
@@ -561,6 +672,78 @@ namespace Microsoft.Azure.Management.HDInsight
         public static async System.Threading.Tasks.Task BeginDisableAzureMonitorAsync(this IExtensionsOperations operations, string resourceGroupName, string clusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.BeginDisableAzureMonitorWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Enables the Azure Monitor Agent on the HDInsight cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster.
+        /// </param>
+        public static void BeginEnableAzureMonitorAgent(this IExtensionsOperations operations, string resourceGroupName, string clusterName, AzureMonitorRequest parameters)
+        {
+                ((IExtensionsOperations)operations).BeginEnableAzureMonitorAgentAsync(resourceGroupName, clusterName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Enables the Azure Monitor Agent on the HDInsight cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task BeginEnableAzureMonitorAgentAsync(this IExtensionsOperations operations, string resourceGroupName, string clusterName, AzureMonitorRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.BeginEnableAzureMonitorAgentWithHttpMessagesAsync(resourceGroupName, clusterName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Disables the Azure Monitor Agent on the HDInsight cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster.
+        /// </param>
+        public static void BeginDisableAzureMonitorAgent(this IExtensionsOperations operations, string resourceGroupName, string clusterName)
+        {
+                ((IExtensionsOperations)operations).BeginDisableAzureMonitorAgentAsync(resourceGroupName, clusterName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Disables the Azure Monitor Agent on the HDInsight cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task BeginDisableAzureMonitorAgentAsync(this IExtensionsOperations operations, string resourceGroupName, string clusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.BeginDisableAzureMonitorAgentWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates an HDInsight cluster extension.

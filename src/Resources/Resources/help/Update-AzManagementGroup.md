@@ -54,13 +54,13 @@ Update-AzManagementGroup -GroupName "TestGroup" -DisplayName "New Display Name"
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
 Name              : TestGroup
-TenantId          : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName       : New Display Name
 UpdatedTime       : 2/1/2018 12:03:37 PM
 UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
-ParentId          : /providers/Microsoft.Management/managementGroups/6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
-ParentName        : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
-ParentDisplayName : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+ParentId          : /providers/Microsoft.Management/managementGroups/00001111-aaaa-2222-bbbb-3333cccc4444
+ParentName        : 00001111-aaaa-2222-bbbb-3333cccc4444
+ParentDisplayName : 00001111-aaaa-2222-bbbb-3333cccc4444
 ```
 
 ### Example 2: Update a Management Group's Parent
@@ -72,7 +72,7 @@ Update-AzManagementGroup -GroupName "TestGroup" -ParentId "/providers/Microsoft.
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
 Name              : TestGroup
-TenantId          : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName       : TestGroup
 UpdatedTime       : 2/1/2018 12:03:37 PM
 UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
@@ -90,7 +90,7 @@ Get-AzManagementGroup -GroupName "TestGroup" | Update-AzManagementGroup -Display
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
 Name              : TestGroup
-TenantId          : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName       : TestDisplayName
 UpdatedTime       : 2/1/2018 12:03:37 PM
 UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
@@ -109,10 +109,10 @@ Update-AzManagementGroup -GroupName "TestGroup" -ParentObject $parentObject
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
 Name              : TestGroup
-TenantId          : 14307de0-5e6f-46cf-b2ba-64a062964d30
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName       : TestGroupDisplayName
 UpdatedTime       : 2/1/2018 11:16:12 AM
-UpdatedBy         : 14307de0-5e6f-46cf-b2ba-64a062964d30
+UpdatedBy         : 00001111-aaaa-2222-bbbb-3333cccc4444
 ParentId          : /providers/Microsoft.Management/managementGroups/TestGroupParent
 ParentName        : TestGroupParent
 ParentDisplayName : TestGroupParent

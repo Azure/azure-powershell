@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Azure.Core;
+using Azure.Identity;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.PowerShell.Authenticators.Factories;
@@ -20,7 +21,6 @@ using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.PowerShell.Authenticators.Identity;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
