@@ -5313,3 +5313,55 @@ function Test-VirtualMachineScaleSetDefaultImgWhenStandard
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+    Create a VMSS using New-Azvmssconfig
+    Update the Resiliency policies of VMSS using Update-Azvmss
+    Test ResilientVMCreationPolicy and ResilientVMDeletionPolicy
+#>
+function Test-ResiliencyPolicyVMSS
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # New VMSS Parameters
+        $vmssName = 'vmssResiliencyPolicy' + $rgname;
+
+        $adminUsername = Get-ComputeTestResourceName;
+        $adminPassword = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $adminPassword -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $securePassword);
+
+        $vmssConfig = new-azvmssconfig -Location $loc  -EnableResilientVMCreate -EnableResilientVMDelete; 
+        $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmssConfig;
+        
+        # Asserts 
+        # check ResilientVMCreationPolicy
+        Assert-True { $vmssConfig.ResiliencyPolicy.ResilientVMCreationPolicy.Enabled };
+        # check ResilientVMDeletionPolicy
+        Assert-True { $vmssConfig.ResiliencyPolicy.ResilientVMDeletionPolicy.Enabled };
+
+        Update-azvmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -EnableResilientVMDelete $false -EnableResilientVMCreate $false
+        $updatedVmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+
+        # Asserts 
+        # check ResilientVMCreationPolicy
+        Assert-False { $updatedVmss.ResiliencyPolicy.ResilientVMCreationPolicy.Enabled };
+        # check ResilientVMDeletionPolicy
+        Assert-False { $updatedVmss.ResiliencyPolicy.ResilientVMDeletionPolicy.Enabled };
+
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
