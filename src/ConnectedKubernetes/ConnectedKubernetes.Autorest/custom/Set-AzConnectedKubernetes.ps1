@@ -286,6 +286,12 @@ function Set-AzConnectedKubernetes {
         . "$PSScriptRoot/helpers/HelmHelper.ps1"
         . "$PSScriptRoot/helpers/ConfigDPHelper.ps1"
         . "$PSScriptRoot/helpers/AZCloudMetadataHelper.ps1"
+        . "$PSScriptRoot/helpers/UtilsHelper.ps1"
+
+        # Configuration is structured as a hashtable of hashtables where the final
+        # values must be strings.  Check this!
+        Test-ConfigurationSyntax -name 'ConfigurationSetting'
+        Test-ConfigurationSyntax -configuration 'ConfigurationProtectedSetting'
 
         $ProtectedSettingsPlaceholderValue = "redacted"
 
@@ -332,7 +338,7 @@ function Set-AzConnectedKubernetes {
 
         # Parse value from inputObject
         if ($null -ne $InputObject) {
-            $Location = $InputObject.Location 
+            $Location = $InputObject.Location
             $PSBoundParameters.Add('Location', $Location)
 
             $ClusterName = $InputObject.Name
@@ -460,7 +466,7 @@ function Set-AzConnectedKubernetes {
 
         $options = ""
         # XW: Guess we don't need this anymore?
-        $proxyEnableState = $false
+        # $proxyEnableState = $false
 
         if ($DisableAutoUpgrade) {
             $options += " --set systemDefaultValues.azureArcAgents.autoUpdate=false"
@@ -527,7 +533,7 @@ function Set-AzConnectedKubernetes {
             # Note how we are removing k8s parameters from the list of parameters
             # to pass to the internal (creates ARM object) command.
             $Null = $PSBoundParameters.Remove('HttpProxy')
-            $proxyEnableState = $true
+            # $proxyEnableState = $true
         }
         if (-not ([string]::IsNullOrEmpty($HttpsProxy))) {
             $HttpsProxyStr = $HttpsProxy.ToString()
@@ -536,7 +542,7 @@ function Set-AzConnectedKubernetes {
             # $options += " --set global.httpsProxy=$HttpsProxyStr"
             $ConfigurationProtectedSetting["proxy"]["https_proxy"] = $HttpsProxyStr
             $Null = $PSBoundParameters.Remove('HttpsProxy')
-            $proxyEnableState = $true
+            # $proxyEnableState = $true
         }
         if (-not ([string]::IsNullOrEmpty($NoProxy))) {
             $NoProxy = $NoProxy -replace ',', '\,'
@@ -544,7 +550,7 @@ function Set-AzConnectedKubernetes {
             # $options += " --set global.noProxy=$NoProxy"
             $ConfigurationProtectedSetting["proxy"]["no_proxy"] = $NoProxy
             $Null = $PSBoundParameters.Remove('NoProxy')
-            $proxyEnableState = $true
+            # $proxyEnableState = $true
         }
         # if ($proxyEnableState) {
         #     $options += " --set global.isProxyEnabled=true"
@@ -586,7 +592,7 @@ function Set-AzConnectedKubernetes {
 
         # This call does the "pure ARM" update of the ARM objects.
         Write-Debug "Updating Connected Kubernetes ARM objects."
-        
+
         # Process the Arc agentry settings and protected settings
         # Create any empty array of IArcAgentryConfigurations.
         # shortened name to avoid class with type name.
@@ -602,17 +608,19 @@ function Set-AzConnectedKubernetes {
         #          This DOES mean that code changes are required both in the
         #          Config DP annd this Powershell script if a new Kubernetes
         #          feature is added.
-
-        $arcAgentryConfigs = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]
-
         # Do not send protected settings to CCRP
-        foreach ($feature in $ConfigurationSetting.Keys) {
-            $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
-                Feature = $feature
-                Setting = $ConfigurationSetting[$feature]
-            }
-            $arcAgentryConfigs.Add($ArcAgentryConfiguration)
-        }
+        $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -ConfigurationProtectedSetting @{} -CCRP $true
+
+        # $arcAgentryConfigs = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]
+        #
+        # # Do not send protected settings to CCRP
+        # foreach ($feature in $ConfigurationSetting.Keys) {
+        #     $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
+        #         Feature = $feature
+        #         Setting = $ConfigurationSetting[$feature]
+        #     }
+        #     $arcAgentryConfigs.Add($ArcAgentryConfiguration)
+        # }
 
         # It is possible to set an empty value for these parameters and then
         # the code above gets skipped but we still need to remove the empty
@@ -625,22 +633,24 @@ function Set-AzConnectedKubernetes {
         }
 
         $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
-        
+
         $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes @PSBoundParameters
 
         # !!PDS: Using this twice so need a function.
-        $arcAgentryConfigs = New-Object System.Collections.ArrayList
-        # Adding the redacted protected settings to the Arc agent configuration.
-        $combinedKeys = $ConfigurationSetting.Keys + $RedactedProtectedConfiguration.Keys
-        $combinedKeys = $combinedKeys | Get-Unique 
-        foreach ($feature in $combinedKeys) {
-            $ArcAgentryConfiguration = @{
-                "Feature"          = $feature
-                "Setting"          = ($ConfigurationSetting.ContainsKey($feature) ? $ConfigurationSetting[$feature] : @{})
-                "ProtectedSetting" = ($RedactedProtectedConfiguration.ContainsKey($feature) ? $RedactedProtectedConfiguration[$feature] : @{})
-            }
-            $arcAgentryConfigs.Add($ArcAgentryConfiguration)
-        }
+        $arcAgentryConfigs = ConvertTo-ArcAgentryConfigs -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration $RedactedProtectedConfiguration -CCRP $false
+
+        # $arcAgentryConfigs = New-Object System.Collections.ArrayList
+        # # Adding the redacted protected settings to the Arc agent configuration.
+        # $combinedKeys = $ConfigurationSetting.Keys + $RedactedProtectedConfiguration.Keys
+        # $combinedKeys = $combinedKeys | Get-Unique
+        # foreach ($feature in $combinedKeys) {
+        #     $ArcAgentryConfiguration = @{
+        #         "Feature"          = $feature
+        #         "Setting"          = ($ConfigurationSetting.ContainsKey($feature) ? $ConfigurationSetting[$feature] : @{})
+        #         "ProtectedSetting" = ($RedactedProtectedConfiguration.ContainsKey($feature) ? $RedactedProtectedConfiguration[$feature] : @{})
+        #     }
+        #     $arcAgentryConfigs.Add($ArcAgentryConfiguration)
+        # }
 
         # Convert the $Response object into a nested hashtable.
         Write-Debug "PUT response: $Response"

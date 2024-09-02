@@ -268,17 +268,17 @@ function New-AzConnectedKubernetes {
         # This is the special value used as a placeholder for protected settings.
         $ProtectedSettingsPlaceholderValue = "redacted"
 
+        Write-Debug "Checking if Azure Hybrid Benefit is opted in and processing the EULA."
+        . "$PSScriptRoot/helpers/HelmHelper.ps1"
+        . "$PSScriptRoot/helpers/ConfigDPHelper.ps1"
+        . "$PSScriptRoot/helpers/AZCloudMetadataHelper.ps1"
+        . "$PSScriptRoot/helpers/UtilsHelper.ps1"
+
         # Configuration is structured as a hashtable of hashtables where the final
         # values must be strings.  Check this!
         Test-ConfigurationSyntax -name 'ConfigurationSetting'
         Test-ConfigurationSyntax -configuration 'ConfigurationProtectedSetting'
 
-
-        Write-Debug "Checking if Azure Hybrid Benefit is opted in and processing the EULA."
-        . "$PSScriptRoot/helpers/HelmHelper.ps1"
-        . "$PSScriptRoot/helpers/ConfigDPHelper.ps1"
-        . "$PSScriptRoot/helpers/AZCloudMetadataHelper.ps1"
-        Write-Debug "Debug: Inside of process"
         if ($AzureHybridBenefit) {
             if (!$AcceptEULA) {
                 $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
@@ -442,7 +442,7 @@ function New-AzConnectedKubernetes {
 
         $options = ""
         # XW: Guess we don't need this anymore?
-        $proxyEnableState = $false
+        # $proxyEnableState = $false
 
         if ($DisableAutoUpgrade) {
             $options += " --set systemDefaultValues.azureArcAgents.autoUpdate=false"
@@ -507,7 +507,7 @@ function New-AzConnectedKubernetes {
             $HttpProxyStr = $HttpProxyStr -replace '/', '\/'
             $ConfigurationProtectedSetting["proxy"]["http_proxy"] = $HttpProxyStr
             $Null = $PSBoundParameters.Remove('HttpProxy')
-            $proxyEnableState = $true
+            #$proxyEnableState = $true
         }
         if (-not ([string]::IsNullOrEmpty($HttpsProxy))) {
             $HttpsProxyStr = $HttpsProxy.ToString()
@@ -515,14 +515,14 @@ function New-AzConnectedKubernetes {
             $HttpsProxyStr = $HttpsProxyStr -replace '/', '\/'
             $ConfigurationProtectedSetting["proxy"]["https_proxy"] = $HttpsProxyStr
             $Null = $PSBoundParameters.Remove('HttpsProxy')
-            $proxyEnableState = $true
+            #$proxyEnableState = $true
         }
         if (-not ([string]::IsNullOrEmpty($NoProxy))) {
             $NoProxy = $NoProxy -replace ',', '\,'
             $NoProxy = $NoProxy -replace '/', '\/'
             $ConfigurationProtectedSetting["proxy"]["no_proxy"] = $NoProxy
             $Null = $PSBoundParameters.Remove('NoProxy')
-            $proxyEnableState = $true
+            #$proxyEnableState = $true
         }
         # !!PDS: What has happened to this?
         # if ($proxyEnableState) {
@@ -581,7 +581,7 @@ function New-AzConnectedKubernetes {
         #
         # Arc Configuration "Name" Mapping
         # ================================
-        # The Swagger naming of Arc configuration does NOT match the names that 
+        # The Swagger naming of Arc configuration does NOT match the names that
         # will be used in the final helm values file.  Instead there needs to be
         # an explicit mapping which is done by the ConfigDP.
         #
@@ -590,22 +590,25 @@ function New-AzConnectedKubernetes {
         # in a local hashtable and pass the hash-tabe indexing to the ConfigDP
         # as the Arc configuration protected setting value.
         #
-        # One return, the ConfigDP gives us the correct "helm" name for the 
+        # One return, the ConfigDP gives us the correct "helm" name for the
         # setting, with the indexing value, and we then replace this index value
         # with the real value.
         #
         # This ensures that when a new feature is implemented, only the ConfigDP
         # needs to change and not the Powershell script (or az CLI).
-        $arcAgentryConfigs = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]
-
+        #
         # Do not send protected settings to CCRP
-        foreach ($feature in $ConfigurationSetting.Keys) {
-            $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
-                Feature = $feature
-                Setting = $ConfigurationSetting[$feature]
-            }
-            $arcAgentryConfigs.Add($ArcAgentryConfiguration)
-        }
+        $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -ConfigurationProtectedSetting @{} -CCRP $true
+
+        #$arcAgentryConfigs = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]
+        #
+        #foreach ($feature in $ConfigurationSetting.Keys) {
+        #    $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
+        #        Feature = $feature
+        #        Setting = $ConfigurationSetting[$feature]
+        #    }
+        #    $arcAgentryConfigs.Add($ArcAgentryConfiguration)
+        #}
 
         # It is possible to set an empty value for these parameters and then
         # the code above gets skipped but we still need to remove the empty
@@ -622,20 +625,22 @@ function New-AzConnectedKubernetes {
         Write-Verbose "Creating 'Kubernetes - Azure Arc' object in Azure"
         $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
 
-        # !!PDS: Using this twice so need a function.
-        $arcAgentryConfigs = New-Object System.Collections.ArrayList
+        $arcAgentryConfigs = ConvertTo-ArcAgentryConfigs -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration $RedactedProtectedConfiguration -CCRP $false
 
-        # Adding the redacted protected settings to the Arc agent configuration.
-        $combinedKeys = $ConfigurationSetting.Keys + $RedactedProtectedConfiguration.Keys
-        $combinedKeys = $combinedKeys | Get-Unique 
-        foreach ($feature in $combinedKeys) {
-            $ArcAgentryConfiguration = @{
-                "Feature"          = $feature
-                "Setting"          = ($ConfigurationSetting.ContainsKey($feature) ? $ConfigurationSetting[$feature] : @{})
-                "ProtectedSetting" = ($RedactedProtectedConfiguration.ContainsKey($feature) ? $RedactedProtectedConfiguration[$feature] : @{})
-            }
-            $arcAgentryConfigs.Add($ArcAgentryConfiguration)
-        }
+        # # !!PDS: Using this twice so need a function.
+        # $arcAgentryConfigs = New-Object System.Collections.ArrayList
+        #
+        # # Adding the redacted protected settings to the Arc agent configuration.
+        # $combinedKeys = $ConfigurationSetting.Keys + $RedactedProtectedConfiguration.Keys
+        # $combinedKeys = $combinedKeys | Get-Unique
+        # foreach ($feature in $combinedKeys) {
+        #     $ArcAgentryConfiguration = @{
+        #         "Feature"          = $feature
+        #         "Setting"          = ($ConfigurationSetting.ContainsKey($feature) ? $ConfigurationSetting[$feature] : @{})
+        #         "ProtectedSetting" = ($RedactedProtectedConfiguration.ContainsKey($feature) ? $RedactedProtectedConfiguration[$feature] : @{})
+        #     }
+        #     $arcAgentryConfigs.Add($ArcAgentryConfiguration)
+        # }
 
         # Convert the $Response object into a nested hashtable.
         Write-Debug "PUT response: $Response"
@@ -715,39 +720,5 @@ function New-AzConnectedKubernetes {
             throw "Unable to install helm chart at $ChartPath"
         }
         Return $Response
-    }
-}
-
-# The syntax of the configuration settings and protected settings is a hashtable
-# of hashtables where the final values must be strings.  So it might look like
-# this:
-#
-# {
-#   "feature1": {
-#     "setting1": "value1",
-#     "setting2": "value2",
-#     ...
-#   },
-#   "feature2": {
-#     ...
-#   }
-# }
-#
-# This function confirms that format.
-function Test-ConfigurationSyntax {
-    param(
-        [string]$name
-    )
-    $configuration = $PSBoundParameters[$name]
-
-    foreach ($key in $configuration.Keys) {
-        if ('Hashtable' -ne $configuration[$key].GetType().Name) {
-            Write-Error "$name[$key] is not a hashtable"
-        }
-        foreach ($subkey in $configuration[$key].Keys) {
-            if ('String' -ne $configuration[$key][$subkey].GetType().Name) {
-                Write-Error "$name[$key][$subkey] is not a string"
-            }
-        }
     }
 }
