@@ -1,22 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a Kubernetes Runtime service object
 ```powershell
-{{ Add code here }}
+Remove-AzKubernetesRuntimeService -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Remove a Kubernetes Runtime service object.
 

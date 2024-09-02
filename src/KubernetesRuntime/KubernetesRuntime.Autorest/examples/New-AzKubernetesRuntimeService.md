@@ -1,22 +1,21 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a Kubernetes Runtime service for storage class service
 ```powershell
-{{ Add code here }}
+New-AzKubernetesRuntimeService -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Name storageclass
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id                           : /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1/providers/Microsoft.KubernetesRuntime/services/storageclass
+Name                         : storageclass
+ProvisioningState            : Succeeded
+ResourceGroupName            : example
+RpObjectId                   : 00000000-1111-2222-3333-444444444444
+SystemDataCreatedAt          : 3/1/2024 0:00:00 AM
+SystemDataCreatedBy          : user@user.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 3/1/2024 0:00:00 AM
+SystemDataLastModifiedBy     : user@user.com
+SystemDataLastModifiedByType : User
+Type                         : microsoft.kubernetesruntime/services
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create a Kubernetes Runtime service object for storage class service.
