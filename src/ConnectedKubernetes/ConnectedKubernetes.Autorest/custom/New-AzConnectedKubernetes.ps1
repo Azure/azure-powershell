@@ -548,7 +548,7 @@ function New-AzConnectedKubernetes {
                 $RedactedProtectedConfiguration[$feature] = @{}
             }
             foreach ($setting in $ConfigurationProtectedSetting[$feature].Keys) {
-                $RedactedProtectedConfiguration[$feature][$setting]="$ProtectedSettingsPlaceholderValue-$feature-$setting"
+                $RedactedProtectedConfiguration[$feature][$setting] = "$ProtectedSettingsPlaceholderValue-$feature-$setting"
             }
         }
 
@@ -580,20 +580,25 @@ function New-AzConnectedKubernetes {
 
         # Process the Arc agentry settings and protected settings
         # Create any empty array of IArcAgentryConfigurations.
-        # shortened name to avoid class with type name.
+        # Shortened name to avoid class with type name.
         #
-        # **NOTE** The Swagger naming does NOT match the names that will be used
-        #          in the final helm values file.  Instead there needs to be an
-        #          explicit mapping which is done in TWO places:
-        #          1. The ConfigDP is able to map the (unprotected) settings but
-        #             does not have access to the protected settings so...
-        #          2. This Powershell script has to perform the mapping for
-        #             protected settings.
+        # Arc Configuration "Name" Mapping
+        # ================================
+        # The Swagger naming of Arc configuration does NOT match the names that 
+        # will be used in the final helm values file.  Instead there needs to be
+        # an explicit mapping which is done by the ConfigDP.
         #
-        #          This DOES mean that code changes are required both in the
-        #          Config DP annd this Powershell script if a new Kubernetes
-        #          feature is added.
-        # !!PDS: This may be wrong - should this be a hash of hashes?  no, it;s a list of hashes amnd hashes!
+        # We do not trust the ConfigDP's security though so we do not pass
+        # protected configuration values to the ConfigDP.  Instead we hold them
+        # in a local hashtable and pass the hash-tabe indexing to the ConfigDP
+        # as the Arc configuration protected setting value.
+        #
+        # One return, the ConfigDP gives us the correct "helm" name for the 
+        # setting, with the indexing value, and we then replace this index value
+        # with the real value.
+        #
+        # This ensures that when a new feature is implemented, only the ConfigDP
+        # needs to change and not the Powershell script (or az CLI).
         $arcAgentryConfigs = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]
 
         # Do not send protected settings to CCRP
@@ -627,9 +632,9 @@ function New-AzConnectedKubernetes {
         $arcAgentryConfigs = New-Object System.Collections.ArrayList
         foreach ($feature in $combinedKeys) {
             $ArcAgentryConfiguration = @{
-                "Feature" = $feature
-                "Setting" = $ConfigurationSetting[$feature]
-                "ProtectedSetting"=$RedactedProtectedConfiguration[$feature]
+                "Feature"          = $feature
+                "Setting"          = $ConfigurationSetting[$feature]
+                "ProtectedSetting" = $RedactedProtectedConfiguration[$feature]
             }
             $arcAgentryConfigs.Add($ArcAgentryConfiguration)
         }
