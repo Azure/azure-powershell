@@ -43,6 +43,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
         private AzureSqlManagedInstanceCommunicator Communicator { get; set; }
 
         /// <summary>
+        /// The Sql client default type for the active directory admin
+        /// </summary>
+        private static readonly string ActiveDirectoryAdministratorDefaultType = "ActiveDirectory";
+
+        /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
         public IAzureContext Context { get; set; }
@@ -414,7 +419,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                     Sid = new Guid(app.AppId),
                     TenantId = tenantId,
                     PrincipalType = "Application",
-                    AzureAdOnlyAuthentication = adOnlyAuth
+                    AzureAdOnlyAuthentication = adOnlyAuth,
+                    AdministratorType = ActiveDirectoryAdministratorDefaultType
                 };
             }
 
@@ -426,7 +432,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                     Sid = new Guid(group.Id),
                     TenantId = tenantId,
                     PrincipalType = "Group",
-                    AzureAdOnlyAuthentication = adOnlyAuth
+                    AzureAdOnlyAuthentication = adOnlyAuth,
+                    AdministratorType = ActiveDirectoryAdministratorDefaultType
                 };
             }
 
@@ -486,11 +493,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
 
                 return new ManagedInstanceExternalAdministrator()
                 {
-                    Login = displayName,
+                    Login = obj.Mail,
                     Sid = new Guid(obj.Id),
                     TenantId = tenantId,
                     PrincipalType = "User",
-                    AzureAdOnlyAuthentication = adOnlyAuth
+                    AzureAdOnlyAuthentication = adOnlyAuth,
+                    AdministratorType = ActiveDirectoryAdministratorDefaultType
                 };
             }
         }

@@ -18,9 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Storage account cmdlet output context based on OAuth token 
+
+## Version 7.3.0
 * Supported account tier Cold
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
+* Updated Storage account cmdlet output properties Context to be based on OAuth token when the storage account has AllowSharedKeyAccess as false 
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+    - `Get-AzStorageAccount`
 * Updated list share output display format 
     - `Get-AzStorageShare`
 * Added warnings for upcoming breaking changes in File cmdlets for removing references to "Microsoft.Azure.Storage.File"
@@ -37,6 +44,8 @@
     - `Remove-AzStorageDirectory`
     - `Remove-AzStorageFile`
     - `Remove-AzStorageShare`
+    - `Rename-AzStorageDirectory`
+    - `Rename-AzStorageFile`
     - `Set-AzStorageFileContent`
     - `Set-AzStorageShareQuota`
     - `Start-AzStorageFileCopy`

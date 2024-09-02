@@ -119,6 +119,7 @@ function New-AzElasticSanVolumeGroup {
         ${EncryptionUserAssignedIdentity},
     
         [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ParameterBreakingChange("IdentityType", "13.0.0", "2.0.0", "2024/11/19", ChangeDescription="IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned")]
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
         [System.String]

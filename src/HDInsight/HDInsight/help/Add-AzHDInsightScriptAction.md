@@ -15,7 +15,8 @@ Adds a script action to a cluster configuration object.
 
 ```
 Add-AzHDInsightScriptAction [-Config] <AzureHDInsightConfig> [-NodeType] <ClusterNodeType> [-Uri] <Uri>
- [-Name] <String> [[-Parameters] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Name] <String> [[-Parameters] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -193,5 +194,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [New-AzHDInsightClusterConfig](./New-AzHDInsightClusterConfig.md)
-
-
