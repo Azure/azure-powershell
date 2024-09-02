@@ -248,13 +248,13 @@ function New-AzConnectedKubernetes {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Runtime')]
         [System.Collections.Hashtable]
-        # Arc Agentry System Configuration
+        # Arc Agentry System Configuration (hash table of hash tables).
         ${ConfigurationSetting},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Runtime')]
         [System.Collections.Hashtable]
-        # Arc Agentry System Protected Configuration
+        # Arc Agentry System Protected Configuration (hash table of hash tables).
         ${ConfigurationProtectedSetting},
 
         [Parameter()]
