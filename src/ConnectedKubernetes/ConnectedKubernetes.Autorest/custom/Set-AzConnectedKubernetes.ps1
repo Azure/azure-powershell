@@ -31,51 +31,51 @@ https://learn.microsoft.com/powershell/module/az.connectedkubernetes/new-azconne
 #>
 
 [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '',
-    Justification='Kubernetes is a recognised term', Scope='Function', Target='New-AzConnectedKubernetes')]
+    Justification = 'Kubernetes is a recognised term', Scope = 'Function', Target = 'Set-AzConnectedKubernetes')]
 param()
 
 function Set-AzConnectedKubernetes {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster])]
-    [CmdletBinding(DefaultParameterSetName='SetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingConvertToSecureStringWithPlainText', '',
-        Justification='Code published before this issue was identified')]
+        Justification = 'Code published before this issue was identified')]
     param(
-        [Parameter(ParameterSetName='SetExpanded', Mandatory)]
-        [Parameter(ParameterSetName='SetExpandedEnableGateway', Mandatory)]
-        [Parameter(ParameterSetName='SetExpandedDisableGateway', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpanded', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpandedEnableGateway', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpandedDisableGateway', Mandatory)]
         [Alias('Name')]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
         [System.String]
         # The name of the Kubernetes cluster on which get is called.
         ${ClusterName},
 
-        [Parameter(ParameterSetName='SetExpanded', Mandatory)]
-        [Parameter(ParameterSetName='SetExpandedEnableGateway', Mandatory)]
-        [Parameter(ParameterSetName='SetExpandedDisableGateway', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpanded', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpandedEnableGateway', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpandedDisableGateway', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName='SetExpanded', Mandatory)]
-        [Parameter(ParameterSetName='SetExpandedEnableGateway', Mandatory)]
-        [Parameter(ParameterSetName='SetExpandedDisableGateway', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpanded', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpandedEnableGateway', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpandedDisableGateway', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [System.String]
         # The geo-location where the resource lives
         ${Location},
 
-        [Parameter(ParameterSetName='Set', Mandatory)]
-        [Parameter(ParameterSetName='SetEnableGateway', Mandatory)]
-        [Parameter(ParameterSetName='SetDisableGateway', Mandatory)]
+        [Parameter(ParameterSetName = 'Set', Mandatory)]
+        [Parameter(ParameterSetName = 'SetEnableGateway', Mandatory)]
+        [Parameter(ParameterSetName = 'SetDisableGateway', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster]
         ${InputObject},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
@@ -116,13 +116,13 @@ function Set-AzConnectedKubernetes {
         # Override the default container log path to enable fluent-bit logging.
         ${ContainerLogPath},
 
-        [Parameter(HelpMessage="Path to the kube config file")]
+        [Parameter(HelpMessage = "Path to the kube config file")]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [System.String]
         # Path to the kube config file
         ${KubeConfig},
 
-        [Parameter(HelpMessage="Kubconfig context from current machine")]
+        [Parameter(HelpMessage = "Kubconfig context from current machine")]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [System.String]
         # Kubconfig context from current machine
@@ -175,7 +175,7 @@ function Set-AzConnectedKubernetes {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.ITrackedResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.ITrackedResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},
@@ -262,14 +262,14 @@ function Set-AzConnectedKubernetes {
         # Arc Agentry System Protected Configuration
         ${ConfigurationProtectedSetting},
 
-        [Parameter(ParameterSetName='SetEnableGateway', Mandatory)]
-        [Parameter(ParameterSetName='SetExpandedEnableGateway', Mandatory)]
+        [Parameter(ParameterSetName = 'SetEnableGateway', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpandedEnableGateway', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('body')]
         [System.Management.Automation.SwitchParameter]
         ${EnableGateway},
 
-        [Parameter(ParameterSetName='SetDisableGateway', Mandatory)]
-        [Parameter(ParameterSetName='SetExpandedDisableGateway', Mandatory)]
+        [Parameter(ParameterSetName = 'SetDisableGateway', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpandedDisableGateway', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('body')]
         [System.Management.Automation.SwitchParameter]
         ${DisableGateway},
@@ -295,17 +295,18 @@ function Set-AzConnectedKubernetes {
 
         $ProtectedSettingsPlaceholderValue = "redacted"
 
-        if($AzureHybridBenefit){
-            if(!$AcceptEULA){
+        if ($AzureHybridBenefit) {
+            if (!$AcceptEULA) {
                 $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
                 try {
                     $legalTerm = (Get-Content -Path $legalTermPath) -join "`r`n"
-                } catch {
+                }
+                catch {
                     Write-Error "Get legal term failed."
                     throw
                 }
                 $confirmation = Read-Host $legalTerm"`n[Y] Yes  [N] No  (default is `"N`")"
-                if($confirmation -ine "Y"){
+                if ($confirmation -ine "Y") {
                     Return
                 }
             }
@@ -317,11 +318,14 @@ function Set-AzConnectedKubernetes {
         Write-Debug "Determining the kube config file path."
         if ($PSBoundParameters.ContainsKey("KubeConfig")) {
             $Null = $PSBoundParameters.Remove('KubeConfig')
-        } elseif (Test-Path Env:KUBECONFIG) {
+        }
+        elseif (Test-Path Env:KUBECONFIG) {
             $KubeConfig = Get-ChildItem -Path Env:KUBECONFIG
-        } elseif (Test-Path Env:Home) {
+        }
+        elseif (Test-Path Env:Home) {
             $KubeConfig = Join-Path -Path $Env:Home -ChildPath '.kube' | Join-Path -ChildPath 'config'
-        } else {
+        }
+        else {
             $KubeConfig = Join-Path -Path $Home -ChildPath '.kube' | Join-Path -ChildPath 'config'
         }
         Write-Debug "Setting the kube context."
@@ -453,7 +457,8 @@ function Set-AzConnectedKubernetes {
                 Write-Error "The corresponding connected cluster resource does not exist"
                 return
             }
-        } else {
+        }
+        else {
             Write-Error "The azure-arc release namespace couldn't be retrieved, which implies that the kubernetes cluster has not been onboarded to azure-arc."
             return
         }
@@ -524,34 +529,10 @@ function Set-AzConnectedKubernetes {
             $ConfigurationProtectedSetting["proxy"] = @{}
         }
 
-        if (-not ([string]::IsNullOrEmpty($HttpProxy))) {
-            $HttpProxyStr = $HttpProxy.ToString()
-            $HttpProxyStr = $HttpProxyStr -replace ',', '\,'
-            $HttpProxyStr = $HttpProxyStr -replace '/', '\/'
-            # $options += " --set global.httpProxy=$HttpProxyStr"
-            $ConfigurationProtectedSetting["proxy"]["http_proxy"] = $HttpProxyStr
-            # Note how we are removing k8s parameters from the list of parameters
-            # to pass to the internal (creates ARM object) command.
-            $Null = $PSBoundParameters.Remove('HttpProxy')
-            # $proxyEnableState = $true
-        }
-        if (-not ([string]::IsNullOrEmpty($HttpsProxy))) {
-            $HttpsProxyStr = $HttpsProxy.ToString()
-            $HttpsProxyStr = $HttpsProxyStr -replace ',', '\,'
-            $HttpsProxyStr = $HttpsProxyStr -replace '/', '\/'
-            # $options += " --set global.httpsProxy=$HttpsProxyStr"
-            $ConfigurationProtectedSetting["proxy"]["https_proxy"] = $HttpsProxyStr
-            $Null = $PSBoundParameters.Remove('HttpsProxy')
-            # $proxyEnableState = $true
-        }
-        if (-not ([string]::IsNullOrEmpty($NoProxy))) {
-            $NoProxy = $NoProxy -replace ',', '\,'
-            $NoProxy = $NoProxy -replace '/', '\/'
-            # $options += " --set global.noProxy=$NoProxy"
-            $ConfigurationProtectedSetting["proxy"]["no_proxy"] = $NoProxy
-            $Null = $PSBoundParameters.Remove('NoProxy')
-            # $proxyEnableState = $true
-        }
+        Convert-ProxySetting -Name 'HttpProxy' -ConfigurationProtectedSetting ([ref]$ConfigurationProtectedSetting)
+        Convert-ProxySetting -Name 'HttpsProxy' -ConfigurationProtectedSetting ([ref]$ConfigurationProtectedSetting)
+        Convert-ProxySetting -Name 'NoProxy' -ConfigurationProtectedSetting ([ref]$ConfigurationProtectedSetting)
+
         # if ($proxyEnableState) {
         #     $options += " --set global.isProxyEnabled=true"
         # }
@@ -609,7 +590,7 @@ function Set-AzConnectedKubernetes {
         #          Config DP annd this Powershell script if a new Kubernetes
         #          feature is added.
         # Do not send protected settings to CCRP
-        $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -ConfigurationProtectedSetting @{} -CCRP $true
+        $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration @{} -CCRP $true
 
         # $arcAgentryConfigs = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]
         #
@@ -705,24 +686,26 @@ function Set-AzConnectedKubernetes {
             $userValuesLocation = Join-Path $env:USERPROFILE ".azure\userValues.txt"
 
             helm get values azure-arc `
-            --debug `
-            --namespace $ReleaseInstallNamespace `
-            --kubeconfig $KubeConfig `
-            --kube-context $KubeContext > $userValuesLocation
+                --debug `
+                --namespace $ReleaseInstallNamespace `
+                --kubeconfig $KubeConfig `
+                --kube-context $KubeContext > $userValuesLocation
 
-        } catch {
+        }
+        catch {
             throw "Unable to get helm values"
         }
 
         try {
             helm upgrade `
-            --debug `
-            azure-arc `
-            $ChartPath `
-            --namespace $ReleaseInstallNamespace `
-            -f $userValuesLocation `
-            --wait (-split $options)
-        } catch {
+                --debug `
+                azure-arc `
+                $ChartPath `
+                --namespace $ReleaseInstallNamespace `
+                -f $userValuesLocation `
+                --wait (-split $options)
+        }
+        catch {
             throw "Unable to install helm release"
         }
         Return $Response

@@ -501,29 +501,10 @@ function New-AzConnectedKubernetes {
             $ConfigurationProtectedSetting['proxy'] = @{}
         }
 
-        if (-not ([string]::IsNullOrEmpty($HttpProxy))) {
-            $HttpProxyStr = $HttpProxy.ToString()
-            $HttpProxyStr = $HttpProxyStr -replace ',', '\,'
-            $HttpProxyStr = $HttpProxyStr -replace '/', '\/'
-            $ConfigurationProtectedSetting["proxy"]["http_proxy"] = $HttpProxyStr
-            $Null = $PSBoundParameters.Remove('HttpProxy')
-            #$proxyEnableState = $true
-        }
-        if (-not ([string]::IsNullOrEmpty($HttpsProxy))) {
-            $HttpsProxyStr = $HttpsProxy.ToString()
-            $HttpsProxyStr = $HttpsProxyStr -replace ',', '\,'
-            $HttpsProxyStr = $HttpsProxyStr -replace '/', '\/'
-            $ConfigurationProtectedSetting["proxy"]["https_proxy"] = $HttpsProxyStr
-            $Null = $PSBoundParameters.Remove('HttpsProxy')
-            #$proxyEnableState = $true
-        }
-        if (-not ([string]::IsNullOrEmpty($NoProxy))) {
-            $NoProxy = $NoProxy -replace ',', '\,'
-            $NoProxy = $NoProxy -replace '/', '\/'
-            $ConfigurationProtectedSetting["proxy"]["no_proxy"] = $NoProxy
-            $Null = $PSBoundParameters.Remove('NoProxy')
-            #$proxyEnableState = $true
-        }
+        Convert-ProxySetting -Name 'HttpProxy' -ConfigurationProtectedSetting ([ref]$ConfigurationProtectedSetting)
+        Convert-ProxySetting -Name 'HttpsProxy' -ConfigurationProtectedSetting ([ref]$ConfigurationProtectedSetting)
+        Convert-ProxySetting -Name 'NoProxy' -ConfigurationProtectedSetting ([ref]$ConfigurationProtectedSetting)
+
         # !!PDS: What has happened to this?
         # if ($proxyEnableState) {
         #     $ConfigurationProtectedSetting["global.isProxyEnabled"] = "true"
@@ -598,7 +579,7 @@ function New-AzConnectedKubernetes {
         # needs to change and not the Powershell script (or az CLI).
         #
         # Do not send protected settings to CCRP
-        $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -ConfigurationProtectedSetting @{} -CCRP $true
+        $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration @{} -CCRP $true
 
         #$arcAgentryConfigs = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]
         #

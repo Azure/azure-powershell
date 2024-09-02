@@ -36,7 +36,7 @@ function ConvertTo-ArcAgentryConfiguration {
 
     param(
         [hashtable]$ConfigurationSetting,
-        [hashtable]$ConfigurationProtectedSetting,
+        [hashtable]$RedactedProtectedConfiguration,
         [boolean]$CCRP
     )
 
@@ -51,7 +51,7 @@ function ConvertTo-ArcAgentryConfiguration {
 
     # Do not send protected settings to CCRP
     $combinedKeys = $ConfigurationSetting.Keys + $RedactedProtectedConfiguration.Keys
-    $combinedKeys = $combinedKeys | Get-Unique 
+    $combinedKeys = $combinedKeys | Get-Unique
     foreach ($feature in $combinedKeys) {
         $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
             Feature            = $feature
@@ -62,4 +62,30 @@ function ConvertTo-ArcAgentryConfiguration {
     }
 
     return $arcAgentryConfigs
+}
+
+# Note that this method edits the script variable PSBoundParameters.
+function Convert-ProxySetting {
+    param(
+        [string]$name,
+        [ref]$ConfigurationProtectedSetting
+    )
+
+    try {
+        $value = Get-Variable "Script:$name" -ValueOnly
+
+        $valueStr = $value.ToString()
+        $valueStr = $valueStr -replace ',', '\,'
+        $valueStr = $valueStr -replace '/', '\/'
+        $ConfigurationProtectedSetting["proxy"][$name] = $valueStr
+
+        # Note how we are removing k8s parameters from the list of parameters
+        # to pass to the internal (creates ARM object) command.
+        $Null = ${Script:PSBoundParameters}.Remove($name)
+    }
+    catch {
+        # The variable does not exist so nothing to be done.
+        Write-Error "Variable $name does not exist" -ErrorAction SilentlyContinue
+    }
+    return $ConfigurationProtectedSetting
 }
