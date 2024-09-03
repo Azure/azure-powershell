@@ -60,6 +60,12 @@ title: DesktopVirtualizationClient
 
 directive:
   - where:
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity.*$
+    remove: true
+  - where:
       verb: New
       subject: HostPool
       parameter-name: RegistrationInfoRegistrationTokenOperation
