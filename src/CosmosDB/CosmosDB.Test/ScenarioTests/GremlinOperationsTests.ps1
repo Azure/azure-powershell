@@ -148,6 +148,259 @@ function Test-GremlinOperationsCmdlets
 
 <#
 .SYNOPSIS
+Test Gremlin InAccount Restore cmdlets using Name paramter set
+#>
+function Test-GremlinInAccountRestoreOperationsCmdlets
+{
+  $AccountName = "gremlin-db1051-2"
+  $rgName = "CosmosDBResourceGroup51-2"
+  $DatabaseName = "dbName"
+  $graphName = "graph1"
+  $location = "East US"
+  $PartitionKeyPathValue = "/foo"
+  $PartitionKeyKindValue = "Hash"
+  $apiKind = "Gremlin"
+  $consistencyLevel = "Session"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
+
+  Try{
+      # create a new database
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
+      
+      $NewDatabase =  New-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      Assert-AreEqual $NewDatabase.Name $DatabaseName
+
+      # create an existing database
+      Try {
+          $NewDuplicateDatabase = New-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName 
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $DatabaseName + " already exists.")
+      }
+
+      # create a new graph
+      $Newgraph = New-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $graphName  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
+      Assert-AreEqual $Newgraph.Name $graphName
+
+      # create an existing graph
+      Try {
+            $NewDuplicategraph = New-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $graphName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $graphName + " already exists.")
+      }
+
+      # Get the database
+      $Database = Get-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      Assert-AreEqual $NewDatabase.Id $Database.Id
+      Assert-AreEqual $NewDatabase.Name $Database.Name
+
+      # Get the graph
+      $graph = Get-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $graphName
+      Assert-AreEqual $Newgraph.Id $graph.Id
+      Assert-AreEqual $Newgraph.Name $graph.Name
+
+      $restoreTimestampInUtc = [DateTime]::UtcNow.ToString('u')
+
+      # list graphs
+      $Listgraphs = Get-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
+      Assert-NotNull($Listgraphs)
+
+      # list databases
+      $ListDatabases = Get-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-NotNull($ListDatabases)
+
+      Start-Sleep -s 50
+
+      # Delete the graph
+      $IsGraphRemoved = Remove-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $graphName -PassThru
+      Assert-AreEqual $IsGraphRemoved true
+
+      Start-Sleep -s 50
+
+      Restore-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $graphName -RestoreTimestampInUtc $restoreTimestampInUtc
+
+      Start-Sleep -s 100
+
+      # list graphs
+      $Listgraphs = Get-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
+      Assert-NotNull($Listgraphs)
+
+      # Delete the database
+      $IsDatabaseRemoved = Remove-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -PassThru
+      Assert-AreEqual $IsDatabaseRemoved true
+
+      Start-Sleep -s 100
+
+      Try {
+          Restore-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $graphName -RestoreTimestampInUtc $restoreTimestampInUtc
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message.Contains("Could not find the database") true
+      }
+
+      $invalidRestoreTimestampInUtc = [DateTime]::UtcNow.ToString('u')
+      # Restore database with invalid timestamp
+      Try {
+          Restore-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -RestoreTimestampInUtc $invalidRestoreTimestampInUtc
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message.Contains("No databases or collections found in the source account at the restore timestamp provided") true
+      }
+
+      # Restore the deleted database
+      Restore-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -RestoreTimestampInUtc $restoreTimestampInUtc
+
+      Start-Sleep -s 100
+
+      # Restore the deleted graph
+      Restore-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $graphName -RestoreTimestampInUtc $restoreTimestampInUtc
+
+      Start-Sleep -s 50
+
+      # List graphs
+      $Listgraphs = Get-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
+      Assert-NotNull($Listgraphs)
+
+      # List databases
+      $ListDatabases = Get-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-NotNull($ListDatabases)
+
+      # Delete the graph
+      $IsGraphRemoved = Remove-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $graphName -PassThru
+      Assert-AreEqual $IsGraphRemoved true
+
+      # Delete the database
+      $IsDatabaseRemoved = Remove-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -PassThru
+      Assert-AreEqual $IsDatabaseRemoved true
+  }
+  Finally
+  {
+    Remove-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $GraphName  
+    Remove-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}
+
+<#
+.SYNOPSIS
+Test Gremlin InAccount Restore cmdlets using Name paramter set
+#>
+function Test-GremlinInAccountRestoreOperationsSharedRUResourcesCmdlets
+{
+  $AccountName = "gremlin-db1051-3"
+  $rgName = "CosmosDBResourceGroup51-3"
+  $DatabaseName = "dbName"
+  $graphName = "graph1"
+  $location = "East US"
+  $PartitionKeyPathValue = "/foo"
+  $PartitionKeyKindValue = "Hash"
+  $apiKind = "Gremlin"
+  $consistencyLevel = "Session"
+  $ThroughputValue = 500
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
+
+  Try{
+      # create a new database
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
+      
+      $NewDatabase =  New-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue
+      Assert-AreEqual $NewDatabase.Name $DatabaseName
+
+      # create an existing database
+      Try {
+          $NewDuplicateDatabase = New-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $DatabaseName + " already exists.")
+      }
+
+      # create a new graph
+      $Newgraph = New-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $graphName  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
+      Assert-AreEqual $Newgraph.Name $graphName
+
+      # create an existing graph
+      Try {
+            $NewDuplicategraph = New-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $graphName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $graphName + " already exists.")
+      }
+
+      # Get the database
+      $Database = Get-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      Assert-AreEqual $NewDatabase.Id $Database.Id
+      Assert-AreEqual $NewDatabase.Name $Database.Name
+
+      # Get the graph
+      $graph = Get-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $graphName
+      Assert-AreEqual $Newgraph.Id $graph.Id
+      Assert-AreEqual $Newgraph.Name $graph.Name
+
+      $restoreTimestampInUtc = [DateTime]::UtcNow.ToString('u')
+
+      # list graphs
+      $Listgraphs = Get-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
+      Assert-NotNull($Listgraphs)
+
+      # list databases
+      $ListDatabases = Get-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-NotNull($ListDatabases)
+
+      Start-Sleep -s 50
+
+      # Delete the graph
+      $IsGraphRemoved = Remove-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $graphName -PassThru
+      Assert-AreEqual $IsGraphRemoved true
+
+      Start-Sleep -s 50
+
+      Try {
+          Restore-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $graphName -RestoreTimestampInUtc $restoreTimestampInUtc
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message.Contains("InAccount restore of individual shared database collections is not supported. Please restore shared database to restore its collections that shared the throughput") true
+      }
+
+      # Delete the database
+      $IsDatabaseRemoved = Remove-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -PassThru
+      Assert-AreEqual $IsDatabaseRemoved true
+
+      Start-Sleep -s 100
+
+      # Restore the deleted database
+      Restore-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -RestoreTimestampInUtc $restoreTimestampInUtc
+
+      Start-Sleep -s 100
+
+      # List graphs
+      $Listgraphs = Get-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
+      Assert-NotNull($Listgraphs)
+
+      # List databases
+      $ListDatabases = Get-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-NotNull($ListDatabases)
+
+      # Delete the graph
+      $IsGraphRemoved = Remove-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $graphName -PassThru
+      Assert-AreEqual $IsGraphRemoved true
+
+      # Delete the database
+      $IsDatabaseRemoved = Remove-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -PassThru
+      Assert-AreEqual $IsDatabaseRemoved true
+  }
+  Finally
+  {
+    Remove-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $GraphName  
+    Remove-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}
+
+<#
+.SYNOPSIS
 Test Gremlin CRUD cmdlets using Parent Object and InputObject paramter set
 #>
 function Test-GremlinOperationsCmdletsUsingInputObject

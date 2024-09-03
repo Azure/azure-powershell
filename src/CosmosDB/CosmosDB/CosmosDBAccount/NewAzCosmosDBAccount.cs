@@ -168,10 +168,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
             databaseAccountCreateUpdateParameters.PublicNetworkAccess = PublicNetworkAccess;
             databaseAccountCreateUpdateParameters.EnableFreeTier = EnableFreeTier;
             databaseAccountCreateUpdateParameters.EnableAnalyticalStorage = EnableAnalyticalStorage;
+            databaseAccountCreateUpdateParameters.EnableBurstCapacity = EnableBurstCapacity;
+            databaseAccountCreateUpdateParameters.EnableMaterializedViews = EnableMaterializedViews;
             Collection<string> networkAclBypassResourceId = NetworkAclBypassResourceId != null ? new Collection<string>(NetworkAclBypassResourceId) : new Collection<string>();
             databaseAccountCreateUpdateParameters.NetworkAclBypassResourceIds = networkAclBypassResourceId;
-            databaseAccountCreateUpdateParameters.EnableBurstCapacity = EnableBurstCapacity;
             databaseAccountCreateUpdateParameters.MinimalTlsVersion = MinimalTlsVersion;
+            databaseAccountCreateUpdateParameters.EnablePriorityBasedExecution = EnablePriorityBasedExecution;
+            databaseAccountCreateUpdateParameters.DefaultPriorityLevel = DefaultPriorityLevel;
+            databaseAccountCreateUpdateParameters.EnablePerRegionPerPartitionAutoscale = EnablePerRegionPerPartitionAutoscale;
 
             if (IpRule != null && IpRule.Length > 0)
             {
