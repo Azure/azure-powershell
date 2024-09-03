@@ -66,6 +66,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.PublicNetworkAccessHelpMessage)]
         [PSArgumentCompleter(SDKModel.PublicNetworkAccess.Disabled, SDKModel.PublicNetworkAccess.Enabled)]
         public string PublicNetworkAccess { get; set; }
+        
+        [Parameter(Mandatory = false, HelpMessage = Constants.DisableTtlHelpMessage)]
+        public bool? DisableTtl { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -215,7 +218,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 RestoreTimestampInUtc = utcRestoreDateTime,
                 DatabasesToRestore = DatabasesToRestore,
                 TablesToRestore = TablesToRestore,
-                GremlinDatabasesToRestore = GremlinDatabasesToRestore
+                GremlinDatabasesToRestore = GremlinDatabasesToRestore,
+                DisableTtl = DisableTtl
             };
 
             Collection<Location> LocationCollection = new Collection<Location>();
