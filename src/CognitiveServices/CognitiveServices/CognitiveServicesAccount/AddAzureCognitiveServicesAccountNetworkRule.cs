@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -116,46 +117,28 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         {
                             accountACL.VirtualNetworkRules = new List<VirtualNetworkRule>();
                         }
-
-                        foreach (string s in VirtualNetworkResourceId)
-                        {
-                            VirtualNetworkRule rule = new VirtualNetworkRule(s, null, true);
-                            accountACL.VirtualNetworkRules.Add(rule);
-                        }
+                        accountACL.VirtualNetworkRules = MergeVirtualNetworkRules(accountACL.VirtualNetworkRules, VirtualNetworkResourceId);
                         break;
                     case IpRuleStringParameterSet:
                         if (accountACL.IPRules == null)
                         {
                             accountACL.IPRules = new List<IpRule>();
                         }
-
-                        foreach (string s in IpAddressOrRange)
-                        {
-                            IpRule rule = new IpRule(s);
-                            accountACL.IPRules.Add(rule);
-                        }
+                        accountACL.IPRules = MergeIpRules(accountACL.IPRules, IpAddressOrRange);
                         break;
                     case NetworkRuleObjectParameterSet:
                         if (accountACL.VirtualNetworkRules == null)
                         {
                             accountACL.VirtualNetworkRules = new List<VirtualNetworkRule>();
                         }
-
-                        foreach (PSVirtualNetworkRule rule in VirtualNetworkRule)
-                        {
-                            accountACL.VirtualNetworkRules.Add(rule.ToVirtualNetworkRule());
-                        }
+                        accountACL.VirtualNetworkRules = MergeVirtualNetworkRules(accountACL.VirtualNetworkRules, VirtualNetworkRule);
                         break;
                     case IpRuleObjectParameterSet:
                         if (accountACL.IPRules == null)
                         {
                             accountACL.IPRules = new List<IpRule>();
                         }
-
-                        foreach (PSIpRule rule in IpRule)
-                        {
-                            accountACL.IPRules.Add(rule.ToIpRule());
-                        }
+                        accountACL.IPRules = MergeIpRules(accountACL.IPRules, IpRule);
                         break;
                 }
 
@@ -184,6 +167,58 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         break;
                 }
             }
+        }
+
+        private List<VirtualNetworkRule> MergeVirtualNetworkRules(IList<VirtualNetworkRule> existingRules, string[] newRuleIds)
+        {
+            var updatedRules = new List<VirtualNetworkRule>(existingRules);
+            foreach (var id in newRuleIds)
+            {
+                if (!updatedRules.Exists(r => string.Equals(r.Id, id, StringComparison.OrdinalIgnoreCase)))
+                {
+                    updatedRules.Add(new VirtualNetworkRule(id, null, true));
+                }
+            }
+            return updatedRules;
+        }
+
+        private List<VirtualNetworkRule> MergeVirtualNetworkRules(IList<VirtualNetworkRule> existingRules, PSVirtualNetworkRule[] newRules)
+        {
+            var updatedRules = new List<VirtualNetworkRule>(existingRules);
+            foreach (var rule in newRules)
+            {
+                if (!updatedRules.Exists(r => string.Equals(r.Id, rule.VirtualNetworkResourceId, StringComparison.OrdinalIgnoreCase)))
+                {
+                    updatedRules.Add(rule.ToVirtualNetworkRule());
+                }
+            }
+            return updatedRules;
+        }
+
+        private List<IpRule> MergeIpRules(IList<IpRule> existingRules, string[] newRules)
+        {
+            var updatedRules = new List<IpRule>(existingRules);
+            foreach (var rule in newRules)
+            {
+                if (!updatedRules.Exists(r => string.Equals(r.Value, rule, StringComparison.OrdinalIgnoreCase)))
+                {
+                    updatedRules.Add(new IpRule(rule));
+                }
+            }
+            return updatedRules;
+        }
+
+        private List<IpRule> MergeIpRules(IList<IpRule> existingRules, PSIpRule[] newRules)
+        {
+            var updatedRules = new List<IpRule>(existingRules);
+            foreach (var rule in newRules)
+            {
+                if (!updatedRules.Exists(r => string.Equals(r.Value, rule.IpAddressOrRange, StringComparison.OrdinalIgnoreCase)))
+                {
+                    updatedRules.Add(rule.ToIpRule());
+                }
+            }
+            return updatedRules;
         }
     }
 }
