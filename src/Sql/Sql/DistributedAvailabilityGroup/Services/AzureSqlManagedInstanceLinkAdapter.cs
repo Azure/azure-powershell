@@ -109,6 +109,27 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
             }
             catch (ErrorResponseException ex)
             {
+                if (ex.Response.Content.Contains("seedingMode") &&
+                    ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest &&
+                    (!model.SeedingMode.Equals("Manual") && !model.SeedingMode.Equals("Automatic")))
+                {
+                    throw new ErrorResponseException("Allowed values for seeding mode are 'Manual' or 'Automatic'.");
+                }
+
+                if (ex.Response.Content.Contains("failoverMode") &&
+                    ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest &&
+                    (!model.FailoverMode.Equals("Manual") && !model.FailoverMode.Equals("None")))
+                {
+                    throw new ErrorResponseException("Allowed values for failover mode are 'Manual' or 'None'.");
+                }
+
+                if (ex.Response.Content.Contains("instanceLinkRole") &&
+                   ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest &&
+                   (!model.FailoverMode.Equals("Primary") && !model.FailoverMode.Equals("Secondary")))
+                {
+                    throw new ErrorResponseException("Allowed values for instance link role are 'Primary' or 'Secondary'.");
+                }
+
                 throw CreateExceptionWithDescriptiveErrorMessage(ex);
             }
         }
@@ -171,8 +192,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
             }
             catch (ErrorResponseException ex)
             {
-                if (ex.Message.Contains("failoverType") &&
-                    ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest &&
+                if (ex.Response.Content.Contains("failoverType") &&
+                    ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest && 
                     (!model.FailoverMode.Equals("Planned") || !model.FailoverMode.Equals("ForcedAllowDataLoss")))
                 {
                     throw new ErrorResponseException("Allowed values for failover type are 'Planned' or 'ForcedAllowDataLoss'.");
