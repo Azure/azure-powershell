@@ -608,16 +608,6 @@ function New-AzConnectedKubernetes {
         # Do not send protected settings to CCRP
         $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration @{} -CCRP $true
 
-        #$arcAgentryConfigs = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]
-        #
-        #foreach ($feature in $ConfigurationSetting.Keys) {
-        #    $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
-        #        Feature = $feature
-        #        Setting = $ConfigurationSetting[$feature]
-        #    }
-        #    $arcAgentryConfigs.Add($ArcAgentryConfiguration)
-        #}
-
         # It is possible to set an empty value for these parameters and then
         # the code above gets skipped but we still need to remove the empty
         # values from $PSBoundParameters.
@@ -635,22 +625,8 @@ function New-AzConnectedKubernetes {
 
         $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration $RedactedProtectedConfiguration -CCRP $false
 
-        # # !!PDS: Using this twice so need a function.
-        # $arcAgentryConfigs = New-Object System.Collections.ArrayList
-        #
-        # # Adding the redacted protected settings to the Arc agent configuration.
-        # $combinedKeys = $ConfigurationSetting.Keys + $RedactedProtectedConfiguration.Keys
-        # $combinedKeys = $combinedKeys | Get-Unique
-        # foreach ($feature in $combinedKeys) {
-        #     $ArcAgentryConfiguration = @{
-        #         "Feature"          = $feature
-        #         "Setting"          = ($ConfigurationSetting.ContainsKey($feature) ? $ConfigurationSetting[$feature] : @{})
-        #         "ProtectedSetting" = ($RedactedProtectedConfiguration.ContainsKey($feature) ? $RedactedProtectedConfiguration[$feature] : @{})
-        #     }
-        #     $arcAgentryConfigs.Add($ArcAgentryConfiguration)
-        # }
-
         # Convert the $Response object into a nested hashtable.
+
         Write-Debug "PUT response: $Response"
         $Response = ConvertFrom-Json "$Response" -AsHashTable -Depth 10
         $Response['properties']['arcAgentryConfigurations'] = $arcAgentryConfigs

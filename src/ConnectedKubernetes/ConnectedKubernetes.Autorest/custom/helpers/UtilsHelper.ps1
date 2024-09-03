@@ -44,21 +44,31 @@ function ConvertTo-ArcAgentryConfiguration {
         # This ensures that when a new feature is implemented, only the ConfigDP
         # needs to change and not the Powershell script (or az CLI).
         $arcAgentryConfigs = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]
+        $combinedKeys = $ConfigurationSetting.Keys 
     }
     else {
         $arcAgentryConfigs = New-Object System.Collections.ArrayList
+        $combinedKeys = $ConfigurationSetting.Keys + $RedactedProtectedConfiguration.Keys
+        $combinedKeys = $combinedKeys | Get-Unique
     }
 
+    Write-Debug "Combined keys: $combinedKeys"
+
     # Do not send protected settings to CCRP
-    $combinedKeys = $ConfigurationSetting.Keys + $RedactedProtectedConfiguration.Keys
-    $combinedKeys = $combinedKeys | Get-Unique
     foreach ($feature in $combinedKeys) {
-        $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
-            Feature            = $feature
-            "Setting"          = ($ConfigurationSetting.ContainsKey($feature) ? $ConfigurationSetting[$feature] : @{})
-            "ProtectedSetting" = ($RedactedProtectedConfiguration.ContainsKey($feature) ? $RedactedProtectedConfiguration[$feature] : @{})
+        if ($CCRP) {
+            $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
+                Feature = $feature
+                Setting = $ConfigurationSetting[$feature]
+            }
+        } else {
+            $ArcAgentryConfiguration = @{
+                "Feature"          = $feature
+                "Setting"          = ($ConfigurationSetting.ContainsKey($feature) ? $ConfigurationSetting[$feature] : @{})
+                "ProtectedSetting" = ($RedactedProtectedConfiguration.ContainsKey($feature) ? $RedactedProtectedConfiguration[$feature] : @{})
+            }
         }
-        $arcAgentryConfigs.Add($ArcAgentryConfiguration)
+        $null = $arcAgentryConfigs.Add($ArcAgentryConfiguration)
     }
 
     return $arcAgentryConfigs
