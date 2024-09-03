@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Database names in the distributed availability group.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Database names in the distributed availability group.")]
         [ValidateNotNullOrEmpty]
-        public string[] Databases { get; set; }
+        public List<string> Databases { get; set; }
 
         /// <summary>
         /// Gets or sets the source endpoint
