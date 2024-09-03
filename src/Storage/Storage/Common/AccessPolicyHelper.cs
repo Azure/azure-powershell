@@ -116,10 +116,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 {
                     ((SharedAccessTablePolicy)(Object)policy).Permissions = SharedAccessTablePermissions.None;
                 }
-                //else if (typeof(T) == typeof(SharedAccessFilePolicy))
-                //{
-                //    ((SharedAccessFilePolicy)(Object)policy).Permissions = SharedAccessFilePermissions.None;
-                //}
                 else if (typeof(T) == typeof(SharedAccessBlobPolicy))
                 {
                     ((SharedAccessBlobPolicy)(Object)policy).Permissions = SharedAccessBlobPermissions.None;
@@ -139,10 +135,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     string convertedPermission = permission.Replace('q', 'r');
                     ((SharedAccessTablePolicy)(Object)policy).Permissions = SharedAccessTablePolicy.PermissionsFromString(convertedPermission);
                 }
-                //else if (typeof(T) == typeof(SharedAccessFilePolicy))
-                //{
-                //    ((SharedAccessFilePolicy)(Object)policy).Permissions = SharedAccessFilePolicy.PermissionsFromString(permission);
-                //}
                 else if (typeof(T) == typeof(SharedAccessBlobPolicy))
                 {
                     ((SharedAccessBlobPolicy)(Object)policy).Permissions = SharedAccessBlobPolicy.PermissionsFromString(permission);

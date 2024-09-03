@@ -17,7 +17,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.Azure.Storage;
     using Microsoft.Azure.Storage.Blob;
-    //using Microsoft.Azure.Storage.File;
     using XTable = Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;
@@ -69,52 +68,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
             return !sharedAccessPolicy.SharedAccessExpiryTime.HasValue;
         }
-
-        ///// <summary>
-        ///// Validate the file share access policy
-        ///// </summary>
-        ///// <param name="channel">IStorageFileManagement channel object</param>
-        ///// <param name="shareName">A string containing the name of the share.</param>
-        ///// <param name="policyIdentifier">The policy identifier which need to be checked.</param>
-        ///// <param name="shouldNoPermission"></param>
-        ///// <param name="shouldNoStartTime"></param>
-        ///// <param name="shouldNoExpiryTime"></param>
-        //public static bool ValidateShareAccessPolicy(IStorageFileManagement channel, string shareName,
-        //     string policyIdentifier, bool shouldNoPermission, bool shouldNoStartTime, bool shouldNoExpiryTime)
-        //{
-        //    if (string.IsNullOrEmpty(policyIdentifier)) return true;
-        //    CloudFileShare fileShare = channel.GetShareReference(shareName);
-        //    FileSharePermissions permission;
-
-        //    try
-        //    {
-        //        permission = fileShare.GetPermissionsAsync().Result;
-        //    }
-        //    catch (AggregateException e) when (e.InnerException is StorageException)
-        //    {
-        //        throw e.InnerException;
-        //    }
-
-        //    SharedAccessFilePolicy sharedAccessPolicy =
-        //        GetExistingPolicy<SharedAccessFilePolicy>(permission.SharedAccessPolicies, policyIdentifier);
-
-        //    if (shouldNoPermission && sharedAccessPolicy.Permissions != SharedAccessFilePermissions.None)
-        //    {
-        //        throw new InvalidOperationException(Resources.SignedPermissionsMustBeOmitted);
-        //    }
-
-        //    if (shouldNoStartTime && sharedAccessPolicy.SharedAccessStartTime.HasValue)
-        //    {
-        //        throw new InvalidOperationException(Resources.SignedStartTimeMustBeOmitted);
-        //    }
-
-        //    if (shouldNoExpiryTime && sharedAccessPolicy.SharedAccessExpiryTime.HasValue)
-        //    {
-        //        throw new InvalidOperationException(Resources.SignedExpiryTimeMustBeOmitted);
-        //    }
-
-        //    return !sharedAccessPolicy.SharedAccessExpiryTime.HasValue;
-        //}
 
         /// <summary>
         /// Validate the table access policy
@@ -534,17 +487,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     sasBuilder.Protocol = SasProtocol.Https;
                 }
             }
-            //if (Protocol != null)
-            //{
-            //    if (Protocol.Value == SharedAccessProtocol.HttpsOrHttp)
-            //    {
-            //        sasBuilder.Protocol = SasProtocol.HttpsAndHttp;
-            //    }
-            //    else //HttpsOnly
-            //    {
-            //        sasBuilder.Protocol = SasProtocol.Https;
-            //    }
-            //}
             return sasBuilder;
         }
 
