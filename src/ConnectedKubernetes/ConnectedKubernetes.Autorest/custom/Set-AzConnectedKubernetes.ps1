@@ -422,7 +422,7 @@ function Set-AzConnectedKubernetes {
         #Endregion
 
         #Region check helm install
-        Validate-HelmVersion -KubeConfig $KubeConfig
+        Confirm-HelmVersion -KubeConfig $KubeConfig
 
         #EndRegion
         $helmClientLocation = 'helm'

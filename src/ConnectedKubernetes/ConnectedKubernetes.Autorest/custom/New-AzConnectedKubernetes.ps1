@@ -375,7 +375,7 @@ function New-AzConnectedKubernetes {
         #Endregion
 
         #Region check helm install
-        Validate-HelmVersion -KubeConfig $KubeConfig
+        Confirm-HelmVersion -KubeConfig $KubeConfig
 
         #EndRegion
         $helmClientLocation = 'helm'
@@ -629,6 +629,15 @@ function New-AzConnectedKubernetes {
 
         Write-Debug "PUT response: $Response"
         $Response = ConvertFrom-Json "$Response" -AsHashTable -Depth 10
+
+        # What-If processing does not create a full response so we might have
+        # to create a minimal one.
+        if (-not $Response) {
+            $Response = @{}
+        }
+        if (-not $Response.ContainsKey('properties')) {
+            $Response['properties'] = @{}
+        }
         $Response['properties']['arcAgentryConfigurations'] = $arcAgentryConfigs
 
         # !!PDS: This is a config DP function and not a helm function so I would
@@ -639,42 +648,47 @@ function New-AzConnectedKubernetes {
         Write-Debug "PUT response: $Response"
         $ResponseStr = $Response | ConvertTo-Json -Depth 10
         Write-Debug "PUT response: $ResponseStr"
-        $helmValuesDp = Get-HelmValues `
-            -configDPEndpoint $configDPEndpoint `
-            -releaseTrain $ReleaseTrain `
-            -requestBody $ResponseStr `
-            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
-            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+        
+        if ($PSCmdlet.ShouldProcess("configDP", "request Helm values")) {
+            $helmValuesDp = Get-HelmValues `
+                -configDPEndpoint $configDPEndpoint `
+                -releaseTrain $ReleaseTrain `
+                -requestBody $ResponseStr `
+                -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+                -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
 
-        Write-Debug "helmValuesDp: $helmValuesDp"
-        Write-Debug "OCI Artifact location: ${helmValuesDp.repositoryPath}."
+            Write-Debug "helmValuesDp: $helmValuesDp"
+            Write-Debug "OCI Artifact location: ${helmValuesDp.repositoryPath}."
 
-        $registryPath = if ($env:HELMREGISTRY) { $env:HELMREGISTRY } else { $helmValuesDp.repositoryPath }
-        Write-Debug "RegistryPath: ${registryPath}."
+            $registryPath = if ($env:HELMREGISTRY) { $env:HELMREGISTRY } else { $helmValuesDp.repositoryPath }
+            Write-Debug "RegistryPath: ${registryPath}."
 
-        $helmValuesContent = $helmValuesDp.helmValuesContent
-        Write-Debug "Helm values: ${helmValuesContent}."
+            $helmValuesContent = $helmValuesDp.helmValuesContent
+            Write-Debug "Helm values: ${helmValuesContent}."
 
-        # We now need to process the helm values, add all the settings and
-        # protected settings to the helm options and replace any placeholders
-        # with the values that we have stored in the protected settings
-        # hashtable.
-        foreach ($field in $helmValuesContent.PSObject.Properties) {
-            if ($ProtectedSettingsPlaceholderValue -in $field.Value) {
-                $parsedValue = $field.Value.Split("-")
-                # "$ProtectedSettingsPlaceholderValue-$feature-$setting"
-                $field.Value = $ConfigurationProtectedSetting[$parsedValue[1]][$parsedValue[2]]
+            # We now need to process the helm values, add all the settings and
+            # protected settings to the helm options and replace any placeholders
+            # with the values that we have stored in the protected settings
+            # hashtable.
+            foreach ($field in $helmValuesContent.PSObject.Properties) {
+                if ($ProtectedSettingsPlaceholderValue -in $field.Value) {
+                    $parsedValue = $field.Value.Split("-")
+                    # "$ProtectedSettingsPlaceholderValue-$feature-$setting"
+                    $field.Value = $ConfigurationProtectedSetting[$parsedValue[1]][$parsedValue[2]]
+                }
+                if ($field.Name -eq "global.proxyCert") {
+                    $options += " --set-file $($field.Name)=$($field.Value)"
+                }
+                $options += " --set $($field.Name)=$($field.Value)"
             }
-            if ($field.Name -eq "global.proxyCert") {
-                $options += " --set-file $($field.Name)=$($field.Value)"
-            }
-            $options += " --set $($field.Name)=$($field.Value)"
         }
 
         # Get helm chart path (within the OCI registry).
-        $chartPath = Get-HelmChartPath -registryPath $registryPath -kubeConfig $KubeConfig -kubeContext $KubeContext -helmClientLocation $HelmClientLocation
-        if (Test-Path Env:HELMCHART) {
-            $ChartPath = Get-ChildItem -Path Env:HELMCHART
+        if ($PSCmdlet.ShouldProcess("configDP", "request Helm chart")) {
+            $chartPath = Get-HelmChartPath -registryPath $registryPath -kubeConfig $KubeConfig -kubeContext $KubeContext -helmClientLocation $HelmClientLocation
+            if (Test-Path Env:HELMCHART) {
+                $ChartPath = Get-ChildItem -Path Env:HELMCHART
+            }
         }
 
         $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id

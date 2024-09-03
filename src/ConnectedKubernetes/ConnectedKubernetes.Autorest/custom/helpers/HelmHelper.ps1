@@ -386,10 +386,10 @@ function Get-HelmReleaseNamespaces {
         Write-Error "Fail to find the namespace for azure-arc."
     }
     #  return @{"site" = $($site); "app" = $($app)}
-    return , @{"ReleaseNamespace" = $($ReleaseNamespace); "ReleaseInstallNamespace"= $($ReleaseInstallNamespace)}
+    return , @{"ReleaseNamespace" = $($ReleaseNamespace); "ReleaseInstallNamespace" = $($ReleaseInstallNamespace) }
 }
 
-function Validate-HelmVersion {
+function Confirm-HelmVersion {
     param (
         [string]$KubeConfig
     )
