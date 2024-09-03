@@ -48,7 +48,7 @@ Get-AzStackHCIVMImage -Name "testimage" -ResourceGroupName "test-rg"
 ```output
 Name            ResourceGroupName
 ----            -----------------
-abc       test-rg
+testImage       test-rg
 ```
 
 This command gets a specific image in the specified resource group.
@@ -61,7 +61,7 @@ Get-AzStackHCIVMImage -ResourceGroupName 'test-rg'
 ```output
 Name            ResourceGroupName
 ----            -----------------
-abc       test-rg
+testImage       test-rg
 ```
 
 This command lists all images in the specified resource group.

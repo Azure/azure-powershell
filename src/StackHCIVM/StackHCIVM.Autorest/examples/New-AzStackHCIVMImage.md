@@ -1,11 +1,11 @@
 ### Example 1: Create a  Gallery Image 
 ```powershell
-New-AzStackHCIVMImage -Name "abc" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -ImagePath "C:\ClusterStorage\Volume1\Ubunut.vhdx" -OSType "Linux" -Location "eastus" 
+New-AzStackHCIVMImage -Name "testImage" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -ImagePath "C:\ClusterStorage\Volume1\Ubunut.vhdx" -OSType "Linux" -Location "eastus" 
 ```
 ```output
 Name            ResourceGroupName
 ----            -----------------
-abc       test-rg
+testImage       test-rg
 ```
 This command creates a gallery image from a local path. 
 
