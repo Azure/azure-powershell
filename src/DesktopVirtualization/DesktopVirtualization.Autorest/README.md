@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the DesktopVirtualization service.
 
 ---
-## Status
-[![Az.DesktopVirtualization](https://img.shields.io/powershellgallery/v/Az.DesktopVirtualization.svg?style=flat-square&label=Az.DesktopVirtualization "Az.DesktopVirtualization")](https://www.powershellgallery.com/packages/Az.DesktopVirtualization/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -55,11 +52,11 @@ subject-prefix: 'Wvd'
 input-file:
 - $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/stable/2024-04-03/desktopvirtualization.json
 
-module-version: 2.1.0
+module-version: 6.0.0
 title: DesktopVirtualizationClient
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+# use-extension:
+#  "@autorest/powershell": "3.x"
 
 directive:
   - where:
