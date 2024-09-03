@@ -531,29 +531,23 @@ function Set-AzConnectedKubernetes {
             $HttpProxyStr = $HttpProxy.ToString()
             $HttpProxyStr = $HttpProxyStr -replace ',', '\,'
             $HttpProxyStr = $HttpProxyStr -replace '/', '\/'
-            # $options += " --set global.httpProxy=$HttpProxyStr"
             $ConfigurationProtectedSetting["proxy"]["http_proxy"] = $HttpProxyStr
             # Note how we are removing k8s parameters from the list of parameters
             # to pass to the internal (creates ARM object) command.
             $Null = $PSBoundParameters.Remove('HttpProxy')
-            # $proxyEnableState = $true
         }
         if (-not ([string]::IsNullOrEmpty($HttpsProxy))) {
             $HttpsProxyStr = $HttpsProxy.ToString()
             $HttpsProxyStr = $HttpsProxyStr -replace ',', '\,'
             $HttpsProxyStr = $HttpsProxyStr -replace '/', '\/'
-            # $options += " --set global.httpsProxy=$HttpsProxyStr"
             $ConfigurationProtectedSetting["proxy"]["https_proxy"] = $HttpsProxyStr
             $Null = $PSBoundParameters.Remove('HttpsProxy')
-            # $proxyEnableState = $true
         }
         if (-not ([string]::IsNullOrEmpty($NoProxy))) {
             $NoProxy = $NoProxy -replace ',', '\,'
             $NoProxy = $NoProxy -replace '/', '\/'
-            # $options += " --set global.noProxy=$NoProxy"
             $ConfigurationProtectedSetting["proxy"]["no_proxy"] = $NoProxy
             $Null = $PSBoundParameters.Remove('NoProxy')
-            # $proxyEnableState = $true
         }        
 
         try {
