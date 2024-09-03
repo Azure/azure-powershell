@@ -15,15 +15,16 @@ Creates a new instance link.
 ### CreateByNameParameterSet (Default)
 ```
 New-AzSqlInstanceLink [-ResourceGroupName] <String> [-InstanceName] <String> [-Name] <String>
- -PrimaryAvailabilityGroupName <String> -SecondaryAvailabilityGroupName <String> -TargetDatabase <String>
- -SourceEndpoint <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -PartnerAvailabilityGroupName <String> -InstanceAvailabilityGroupName <String> -Databases <String[]>
+ -PartnerEndpoint <String> [-FailoverMode <String>] [-InstanceLinkRole <String>] [-SeedingMode <String>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByParentObjectParameterSet
 ```
-New-AzSqlInstanceLink [-Name] <String> -PrimaryAvailabilityGroupName <String>
- -SecondaryAvailabilityGroupName <String> -TargetDatabase <String> -SourceEndpoint <String>
+New-AzSqlInstanceLink [-Name] <String> -PartnerAvailabilityGroupName <String>
+ -InstanceAvailabilityGroupName <String> -Databases <String[]> -PartnerEndpoint <String>
+ [-FailoverMode <String>] [-InstanceLinkRole <String>] [-SeedingMode <String>]
  [-InstanceObject] <AzureSqlManagedInstanceModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -127,6 +128,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Databases
+Database names in the distributed availability group.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -134,6 +150,51 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FailoverMode
+Link failover mode.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InstanceAvailabilityGroupName
+Name of the managed instance availability group.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InstanceLinkRole
+Managed instance side link role.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -187,8 +248,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PrimaryAvailabilityGroupName
-Name of the primary availability group.
+### -PartnerAvailabilityGroupName
+Name of the partner availability group.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PartnerEndpoint
+SQL server side endpoint - IP or DNS resolvable name
 
 ```yaml
 Type: System.String
@@ -217,45 +293,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SecondaryAvailabilityGroupName
-Name of the secondary availability group.
+### -SeedingMode
+Database seeding mode.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourceEndpoint
-IP adress of the source endpoint.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TargetDatabase
-Name of the target database.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
