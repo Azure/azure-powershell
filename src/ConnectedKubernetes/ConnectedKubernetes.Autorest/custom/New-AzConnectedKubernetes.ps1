@@ -327,9 +327,6 @@ function New-AzConnectedKubernetes {
         # If GatewayResourceId is provided then set the gateway as enabled.
         $PSBoundParameters.Add('GatewayEnabled', -not [String]::IsNullOrEmpty($GatewayResourceId))
 
-        # !!PDS: Why are we only adding specific parameter here?  Isn't it better
-        #        to add all parameters and then remove the ones that we know
-        #        should not be passed on?
         $CommonPSBoundParameters = @{}
         if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
             $CommonPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
@@ -448,8 +445,6 @@ function New-AzConnectedKubernetes {
         Write-Debug "Processing Helm chart installation options."
 
         $options = ""
-        # XW: Guess we don't need this anymore?
-        # $proxyEnableState = $false
 
         if ($DisableAutoUpgrade) {
             $options += " --set systemDefaultValues.azureArcAgents.autoUpdate=false"
@@ -514,7 +509,6 @@ function New-AzConnectedKubernetes {
             $HttpProxyStr = $HttpProxyStr -replace '/', '\/'
             $ConfigurationProtectedSetting["proxy"]["http_proxy"] = $HttpProxyStr
             $Null = $PSBoundParameters.Remove('HttpProxy')
-            #$proxyEnableState = $true
         }
         if (-not ([string]::IsNullOrEmpty($HttpsProxy))) {
             $HttpsProxyStr = $HttpsProxy.ToString()
@@ -522,22 +516,14 @@ function New-AzConnectedKubernetes {
             $HttpsProxyStr = $HttpsProxyStr -replace '/', '\/'
             $ConfigurationProtectedSetting["proxy"]["https_proxy"] = $HttpsProxyStr
             $Null = $PSBoundParameters.Remove('HttpsProxy')
-            #$proxyEnableState = $true
         }
         if (-not ([string]::IsNullOrEmpty($NoProxy))) {
             $NoProxy = $NoProxy -replace ',', '\,'
             $NoProxy = $NoProxy -replace '/', '\/'
             $ConfigurationProtectedSetting["proxy"]["no_proxy"] = $NoProxy
             $Null = $PSBoundParameters.Remove('NoProxy')
-            #$proxyEnableState = $true
         }
 
-        # !!PDS: What has happened to this?  It appears to have vanished from
-        #        the az CLI create/update code.
-        # if ($proxyEnableState) {
-        #     $ConfigurationProtectedSetting["global.isProxyEnabled"] = "true"
-        #     $ConfigurationSetting["global.isProxyEnabled"] = $ProtectedSettingPlaceholderValue
-        # }
         try {
             if ((-not ([string]::IsNullOrEmpty($ProxyCert))) -and (Test-Path $ProxyCert)) {
                 $ConfigurationProtectedSetting["proxy"]["proxy_cert"] = $ProxyCert
@@ -640,9 +626,6 @@ function New-AzConnectedKubernetes {
             $Response['properties'] = @{}
         }
         $Response['properties']['arcAgentryConfigurations'] = $arcAgentryConfigs
-
-        # !!PDS: This is a config DP function and not a helm function so I would
-        # rather it was in the Config DP helpers.
 
         # Retrieving Helm chart OCI (Open Container Initiative) Artifact location
         Write-Debug "Retrieving Helm chart OCI (Open Container Initiative) Artifact location."
