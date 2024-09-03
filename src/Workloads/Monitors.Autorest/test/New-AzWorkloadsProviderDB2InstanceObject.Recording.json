@@ -3,7 +3,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances/suha-db2-1?api-version=2023-04-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"providerSettings\": {\r\n      \"providerType\": \"Db2\",\r\n      \"hostname\": \"10.1.21.4\",\r\n      \"dbName\": \"Sample\",\r\n      \"dbPort\": \"25000\",\r\n      \"dbUsername\": \"db2admin\",\r\n      \"dbPassword\": \"Password@123\",\r\n      \"sapSid\": \"OPA\",\r\n      \"sslPreference\": \"Disabled\"\r\n    }\r\n  }\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"providerSettings\": {\r\n      \"providerType\": \"Db2\",\r\n      \"hostname\": \"10.1.21.4\",\r\n      \"dbName\": \"Sample\",\r\n      \"dbPort\": \"25000\",\r\n      \"dbUsername\": \"db2admin\",\r\n      \"dbPassword\": \"*****\",\r\n      \"sapSid\": \"OPA\",\r\n      \"sslPreference\": \"Disabled\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
