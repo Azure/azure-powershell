@@ -402,7 +402,7 @@ function New-AzConnectedKubernetes {
                     # This performs a re-PUT of an existing connected cluster which should really be done using
                     # a Set-AzConnectedKubernetes cmdlet!
 
-                    if ($PSCmdlet.ShouldProcess($ClusterName, "Updating existing ConnectedKubernets cluster")) {
+                    if ($PSCmdlet.ShouldProcess($ClusterName, "Updating existing ConnectedKubernetes cluster")) {
                         $PSBoundParameters.Add('AgentPublicKeyCertificate', $ExistConnectedKubernetes.AgentPublicKeyCertificate)
                         return Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
                     }
@@ -508,9 +508,29 @@ function New-AzConnectedKubernetes {
             $ConfigurationProtectedSetting['proxy'] = @{}
         }
 
-        Convert-ProxySetting -Name 'HttpProxy' -ConfigurationProtectedSetting ([ref]$ConfigurationProtectedSetting)
-        Convert-ProxySetting -Name 'HttpsProxy' -ConfigurationProtectedSetting ([ref]$ConfigurationProtectedSetting)
-        Convert-ProxySetting -Name 'NoProxy' -ConfigurationProtectedSetting ([ref]$ConfigurationProtectedSetting)
+        if (-not ([string]::IsNullOrEmpty($HttpProxy))) {
+            $HttpProxyStr = $HttpProxy.ToString()
+            $HttpProxyStr = $HttpProxyStr -replace ',', '\,'
+            $HttpProxyStr = $HttpProxyStr -replace '/', '\/'
+            $ConfigurationProtectedSetting["proxy"]["http_proxy"] = $HttpProxyStr
+            $Null = $PSBoundParameters.Remove('HttpProxy')
+            #$proxyEnableState = $true
+        }
+        if (-not ([string]::IsNullOrEmpty($HttpsProxy))) {
+            $HttpsProxyStr = $HttpsProxy.ToString()
+            $HttpsProxyStr = $HttpsProxyStr -replace ',', '\,'
+            $HttpsProxyStr = $HttpsProxyStr -replace '/', '\/'
+            $ConfigurationProtectedSetting["proxy"]["https_proxy"] = $HttpsProxyStr
+            $Null = $PSBoundParameters.Remove('HttpsProxy')
+            #$proxyEnableState = $true
+        }
+        if (-not ([string]::IsNullOrEmpty($NoProxy))) {
+            $NoProxy = $NoProxy -replace ',', '\,'
+            $NoProxy = $NoProxy -replace '/', '\/'
+            $ConfigurationProtectedSetting["proxy"]["no_proxy"] = $NoProxy
+            $Null = $PSBoundParameters.Remove('NoProxy')
+            #$proxyEnableState = $true
+        }
 
         # !!PDS: What has happened to this?
         # if ($proxyEnableState) {
@@ -613,7 +633,7 @@ function New-AzConnectedKubernetes {
         Write-Verbose "Creating 'Kubernetes - Azure Arc' object in Azure"
         $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
 
-        $arcAgentryConfigs = ConvertTo-ArcAgentryConfigs -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration $RedactedProtectedConfiguration -CCRP $false
+        $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration $RedactedProtectedConfiguration -CCRP $false
 
         # # !!PDS: Using this twice so need a function.
         # $arcAgentryConfigs = New-Object System.Collections.ArrayList

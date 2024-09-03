@@ -529,9 +529,34 @@ function Set-AzConnectedKubernetes {
             $ConfigurationProtectedSetting["proxy"] = @{}
         }
 
-        Convert-ProxySetting -Name 'HttpProxy' -ConfigurationProtectedSetting ([ref]$ConfigurationProtectedSetting)
-        Convert-ProxySetting -Name 'HttpsProxy' -ConfigurationProtectedSetting ([ref]$ConfigurationProtectedSetting)
-        Convert-ProxySetting -Name 'NoProxy' -ConfigurationProtectedSetting ([ref]$ConfigurationProtectedSetting)
+        if (-not ([string]::IsNullOrEmpty($HttpProxy))) {
+            $HttpProxyStr = $HttpProxy.ToString()
+            $HttpProxyStr = $HttpProxyStr -replace ',', '\,'
+            $HttpProxyStr = $HttpProxyStr -replace '/', '\/'
+            # $options += " --set global.httpProxy=$HttpProxyStr"
+            $ConfigurationProtectedSetting["proxy"]["http_proxy"] = $HttpProxyStr
+            # Note how we are removing k8s parameters from the list of parameters
+            # to pass to the internal (creates ARM object) command.
+            $Null = $PSBoundParameters.Remove('HttpProxy')
+            # $proxyEnableState = $true
+        }
+        if (-not ([string]::IsNullOrEmpty($HttpsProxy))) {
+            $HttpsProxyStr = $HttpsProxy.ToString()
+            $HttpsProxyStr = $HttpsProxyStr -replace ',', '\,'
+            $HttpsProxyStr = $HttpsProxyStr -replace '/', '\/'
+            # $options += " --set global.httpsProxy=$HttpsProxyStr"
+            $ConfigurationProtectedSetting["proxy"]["https_proxy"] = $HttpsProxyStr
+            $Null = $PSBoundParameters.Remove('HttpsProxy')
+            # $proxyEnableState = $true
+        }
+        if (-not ([string]::IsNullOrEmpty($NoProxy))) {
+            $NoProxy = $NoProxy -replace ',', '\,'
+            $NoProxy = $NoProxy -replace '/', '\/'
+            # $options += " --set global.noProxy=$NoProxy"
+            $ConfigurationProtectedSetting["proxy"]["no_proxy"] = $NoProxy
+            $Null = $PSBoundParameters.Remove('NoProxy')
+            # $proxyEnableState = $true
+        }        
 
         # if ($proxyEnableState) {
         #     $options += " --set global.isProxyEnabled=true"
@@ -618,7 +643,7 @@ function Set-AzConnectedKubernetes {
         $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes @PSBoundParameters
 
         # !!PDS: Using this twice so need a function.
-        $arcAgentryConfigs = ConvertTo-ArcAgentryConfigs -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration $RedactedProtectedConfiguration -CCRP $false
+        $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration $RedactedProtectedConfiguration -CCRP $false
 
         # $arcAgentryConfigs = New-Object System.Collections.ArrayList
         # # Adding the redacted protected settings to the Arc agent configuration.
