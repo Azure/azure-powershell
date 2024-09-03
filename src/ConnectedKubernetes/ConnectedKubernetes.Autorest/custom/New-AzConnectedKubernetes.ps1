@@ -651,7 +651,7 @@ function New-AzConnectedKubernetes {
         Write-Debug "PUT response: $ResponseStr"
         
         if ($PSCmdlet.ShouldProcess("configDP", "request Helm values")) {
-            $helmValuesDp = Get-HelmValues `
+            $helmValuesDp = Get-HelmValuesFromConfigDP `
                 -configDPEndpoint $configDPEndpoint `
                 -releaseTrain $ReleaseTrain `
                 -requestBody $ResponseStr `
@@ -694,7 +694,6 @@ function New-AzConnectedKubernetes {
 
         $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
         Write-Debug $options -ErrorAction Continue
-        # !!PDS: Remove --debug from helm, or add as part of "Debug" enable?
         $helmDebug = ""
         if ($DebugPreference -eq "Continue") {
             $helmDebug = "--debug"

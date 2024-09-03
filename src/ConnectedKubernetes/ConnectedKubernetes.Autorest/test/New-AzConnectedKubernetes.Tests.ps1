@@ -229,7 +229,7 @@ Describe 'Get-AzCloudMetadata' {
     }
 }
 
-Describe 'Get-HelmValues' {
+Describe 'Get-HelmValuesFromConfigDP' {
     It 'Golden path' {
         $rq = {
             identity = @{
@@ -247,7 +247,7 @@ Describe 'Get-HelmValues' {
             return $rsp
         }
         {
-            $Script:helmValues = Get-HelmValues `
+            $Script:helmValues = Get-HelmValuesFromConfigDP `
                 -ConfigDpEndpoint "https://helm.azure.com" `
                 -ReleaseTrainCustom $null `
                 -RequestBody $rq
@@ -277,7 +277,7 @@ Describe 'Get-HelmValues' {
             return $rsp
         }
         {
-            $Script:helmValues = Get-HelmValues `
+            $Script:helmValues = Get-HelmValuesFromConfigDP `
                 -ConfigDpEndpoint "https://helm.azure.com" `
                 -ReleaseTrainCustom "all-aboard"`
                 -RequestBody $rq
@@ -308,7 +308,7 @@ Describe 'Get-HelmValues' {
             return $rsp
         }
         {
-            $Script:helmValues = Get-HelmValues `
+            $Script:helmValues = Get-HelmValuesFromConfigDP `
                 -ConfigDpEndpoint "https://helm.azure.com" `
                 -ReleaseTrainCustom $null `
                 -RequestBody $rq
@@ -335,7 +335,7 @@ Describe 'Get-HelmValues' {
             return $rsp
         }
         {
-            $Script:helmValues = Get-HelmValues `
+            $Script:helmValues = Get-HelmValuesFromConfigDP `
                 -ConfigDpEndpoint "https://helm.azure.com" `
                 -ReleaseTrainCustom $null `
                 -RequestBody $rq
@@ -358,7 +358,7 @@ Describe 'Get-HelmValues' {
             return $rsp
         }
         {
-            $Script:helmValues = Get-HelmValues `
+            $Script:helmValues = Get-HelmValuesFromConfigDP `
                 -ConfigDpEndpoint "https://helm.azure.com" `
                 -ReleaseTrainCustom $null `
                 -RequestBody $rq
@@ -379,7 +379,7 @@ Describe 'Get-HelmValues' {
             throw "Failed!"
         }
         {
-            $Script:helmValues = Get-HelmValues `
+            $Script:helmValues = Get-HelmValuesFromConfigDP `
                 -ConfigDpEndpoint "https://helm.azure.com" `
                 -ReleaseTrainCustom $null `
                 -RequestBody $rq

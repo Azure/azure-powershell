@@ -636,7 +636,7 @@ function Set-AzConnectedKubernetes {
             $ResponseStr = $Response | ConvertTo-Json -Depth 10
             Write-Debug "PUT response: $ResponseStr"
             
-            $helmValuesDp = Get-HelmValues `
+            $helmValuesDp = Get-HelmValuesFromConfigDP `
                 -configDPEndpoint $configDPEndpoint `
                 -releaseTrain $ReleaseTrain `
                 -requestBody $ResponseStr `
