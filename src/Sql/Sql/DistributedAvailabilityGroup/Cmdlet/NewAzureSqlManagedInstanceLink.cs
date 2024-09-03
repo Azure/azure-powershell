@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 using Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model;
 using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -29,11 +28,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Managed Instance Link
     /// </summary>
-    [CmdletOutputBreakingChangeWithVersion(typeof(AzureSqlManagedInstanceLinkModel), "13.0.0", "6.0.0",
-        DeprecatedOutputProperties = new String[] { "TargetDatabase", "PrimaryAvailabilityGroupName", "SecondaryAvailabilityGroupName",
-            "SourceEndpoint", "SourceReplicaId", "TargetReplicaId", "LinkState", "LastHardenedLsn" },
-        NewOutputProperties = new String[] { "Databases", "DistributedAvailabilityGroupName ", "InstanceAvailabilityGroupName", "PartnerAvailabilityGroupName",
-            "InstanceLinkRole", "PartnerLinkRole", "FailoverMode", "SeedingMode", "PartnerEndpoint" })]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceLink",
         DefaultParameterSetName = CreateByNameParameterSet,
         SupportsShouldProcess = true),
@@ -71,7 +65,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the primary availability group name
         /// </summary>
-        [CmdletParameterBreakingChangeWithVersion("PrimaryAvailabilityGroupName", "13.0.0", "6.0.0", ReplaceMentCmdletParameterName = "PartnerAvailabilityGroupName")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Name of the partner availability group.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Name of the partner availability group.")]
         [ValidateNotNullOrEmpty]
@@ -80,7 +73,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the secondary availability group name
         /// </summary>
-        [CmdletParameterBreakingChangeWithVersion("SecondaryAvailabilityGroupName", "13.0.0", "6.0.0", ReplaceMentCmdletParameterName = "InstanceAvailabilityGroupName")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Name of the managed instance availability group.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Name of the managed instance availability group.")]
         [ValidateNotNullOrEmpty]
@@ -89,7 +81,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the target database
         /// </summary>
-        [CmdletParameterBreakingChangeWithVersion("TargetDatabase", "13.0.0", "6.0.0", ChangeDescription = "The parameter 'TargetDatabase' is being replaced by parameter 'Databases'. The type of new parameter is changing from 'String' to 'List<String>'")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Database names in the distributed availability group.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Database names in the distributed availability group.")]
         [ValidateNotNullOrEmpty]
@@ -98,7 +89,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the source endpoint
         /// </summary>
-        [CmdletParameterBreakingChangeWithVersion("SourceEndpoint", "13.0.0", "6.0.0", ReplaceMentCmdletParameterName = "PartnerEndpoint")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "SQL server side endpoint - IP or DNS resolvable name")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "SQL server side endpoint - IP or DNS resolvable name")]
         [ValidateNotNullOrEmpty]
