@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "4f1f79a5-5a8a-4a3a-835f-e1bf2e451967" ],
+        "x-ms-client-request-id": [ "4f221258-f53d-4b26-8287-4c236050d3ed" ],
         "CommandName": [ "Get-AzFabricCapacitySku" ],
         "FullCommandName": [ "Get-AzFabricCapacitySku_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -24,14 +24,14 @@
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "499" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "7499" ],
-        "x-ms-request-id": [ "51e4dd8a-51db-40d6-8427-adfca984cced" ],
-        "x-ms-correlation-request-id": [ "51e4dd8a-51db-40d6-8427-adfca984cced" ],
-        "x-ms-routing-request-id": [ "UKSOUTH:20240901T130636Z:51e4dd8a-51db-40d6-8427-adfca984cced" ],
+        "x-ms-request-id": [ "b3d336c0-a0f2-4749-84af-d9c06e6f7eaf" ],
+        "x-ms-correlation-request-id": [ "b3d336c0-a0f2-4749-84af-d9c06e6f7eaf" ],
+        "x-ms-routing-request-id": [ "UKWEST:20240903T082943Z:b3d336c0-a0f2-4749-84af-d9c06e6f7eaf" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 52592CB3EE7B43B5B953F9CD74588763 Ref B: AMS231020614051 Ref C: 2024-09-01T13:06:36Z" ],
-        "Date": [ "Sun, 01 Sep 2024 13:06:35 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: B63C8620DC764C93A98E983D4CB17E0D Ref B: DB3EDGE1714 Ref C: 2024-09-03T08:29:43Z" ],
+        "Date": [ "Tue, 03 Sep 2024 08:29:43 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "91094" ],
@@ -42,15 +42,15 @@
       "isContentBase64": false
     }
   },
-  "Get-AzFabricCapacitySku+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-AzPowerShell-Tests-Fabric-agusodiexz/providers/Microsoft.Fabric/capacities/lkwhyfmoqsjt/skus?api-version=2023-11-01+1": {
+  "Get-AzFabricCapacitySku+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-AzPowerShell-Tests-Fabric-bscyzitawq/providers/Microsoft.Fabric/capacities/inkvosrwymjb/skus?api-version=2023-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-AzPowerShell-Tests-Fabric-agusodiexz/providers/Microsoft.Fabric/capacities/lkwhyfmoqsjt/skus?api-version=2023-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-AzPowerShell-Tests-Fabric-bscyzitawq/providers/Microsoft.Fabric/capacities/inkvosrwymjb/skus?api-version=2023-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "9" ],
-        "x-ms-client-request-id": [ "ab8805d3-93b2-4de4-b2a5-622ea8fed2dd" ],
+        "x-ms-client-request-id": [ "4a7ed42b-6521-4768-8581-b93a401e251d" ],
         "CommandName": [ "Get-AzFabricCapacitySku" ],
         "FullCommandName": [ "Get-AzFabricCapacitySku_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -70,15 +70,15 @@
         "X-Content-Type-Options": [ "nosniff" ],
         "X-XSS-Protection": [ "1; mode=block" ],
         "Content-Security-Policy": [ "script-src \u0027self\u0027" ],
-        "x-ms-request-id": [ "f25e506c-59b1-4a86-a347-96d92d3407b2" ],
-        "x-ms-current-utc-date": [ "9/1/2024 1:06:38 PM" ],
+        "x-ms-request-id": [ "14a2897c-9606-44d5-9d45-a9a15c2df03c" ],
+        "x-ms-current-utc-date": [ "9/3/2024 8:29:45 AM" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "499" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "7499" ],
-        "x-ms-correlation-request-id": [ "727bb98e-577e-4e33-92a7-8c5fd721e59c" ],
-        "x-ms-routing-request-id": [ "UKSOUTH:20240901T130638Z:727bb98e-577e-4e33-92a7-8c5fd721e59c" ],
+        "x-ms-correlation-request-id": [ "5dd06639-66dc-4aa4-a3d5-c632f2a432ff" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20240903T082945Z:5dd06639-66dc-4aa4-a3d5-c632f2a432ff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 088AF22F3E694AF283B9637928832B48 Ref B: AMS231020614051 Ref C: 2024-09-01T13:06:38Z" ],
-        "Date": [ "Sun, 01 Sep 2024 13:06:38 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D6789C34797947DB9F73395F2F0B2FD5 Ref B: DB3EDGE1714 Ref C: 2024-09-03T08:29:44Z" ],
+        "Date": [ "Tue, 03 Sep 2024 08:29:45 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "939" ],

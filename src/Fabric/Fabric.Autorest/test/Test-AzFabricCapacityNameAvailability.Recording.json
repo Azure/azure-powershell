@@ -3,7 +3,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/providers/Microsoft.Fabric/locations/West%20US/checkNameAvailability?api-version=2023-11-01",
-      "Content": "{\n  \"name\": \"fkpryhadsgcx\",\n  \"type\": \"Microsoft.Fabric/capacities\"\n}",
+      "Content": "{\n  \"name\": \"wqrmhcjgxyab\",\n  \"type\": \"Microsoft.Fabric/capacities\"\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -18,19 +18,19 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "2fdb146b-4f87-4d99-bd1f-9f9249ca9fb1" ],
-        "x-ms-current-utc-date": [ "9/1/2024 1:12:32 PM" ],
+        "x-ms-request-id": [ "ef29b3ce-2081-4f10-ab17-da2e3ee703fc" ],
+        "x-ms-current-utc-date": [ "9/3/2024 8:35:05 AM" ],
         "X-Frame-Options": [ "DENY" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-XSS-Protection": [ "1; mode=block" ],
         "Content-Security-Policy": [ "script-src \u0027self\u0027" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "399" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "5999" ],
-        "x-ms-correlation-request-id": [ "b4baa2e7-251f-4bf3-b35b-002a7641d76c" ],
-        "x-ms-routing-request-id": [ "UKWEST:20240901T131233Z:b4baa2e7-251f-4bf3-b35b-002a7641d76c" ],
+        "x-ms-correlation-request-id": [ "4c3c27e9-ce99-4631-b289-4b7aeb7188fd" ],
+        "x-ms-routing-request-id": [ "UKWEST:20240903T083505Z:4c3c27e9-ce99-4631-b289-4b7aeb7188fd" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C2BF32141582405F9F904921250736C4 Ref B: AMS231020614051 Ref C: 2024-09-01T13:12:32Z" ],
-        "Date": [ "Sun, 01 Sep 2024 13:12:32 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3F2B76BB704A4860AE0A33EEB89AB9D3 Ref B: DB3EDGE1714 Ref C: 2024-09-03T08:35:05Z" ],
+        "Date": [ "Tue, 03 Sep 2024 08:35:05 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "22" ],
@@ -45,7 +45,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/providers/Microsoft.Fabric/locations/West%20US/checkNameAvailability?api-version=2023-11-01",
-      "Content": "{\n  \"name\": \"lkwhyfmoqsjt\",\n  \"type\": \"Microsoft.Fabric/capacities\"\n}",
+      "Content": "{\n  \"name\": \"inkvosrwymjb\",\n  \"type\": \"Microsoft.Fabric/capacities\"\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -60,19 +60,19 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "1c24c07b-cb5e-4a77-8aee-c1c7799e26e5" ],
-        "x-ms-current-utc-date": [ "9/1/2024 1:12:33 PM" ],
+        "x-ms-request-id": [ "d54c1cda-715f-4279-a8d0-86cd5da4d9b3" ],
+        "x-ms-current-utc-date": [ "9/3/2024 8:35:05 AM" ],
         "X-Frame-Options": [ "DENY" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-XSS-Protection": [ "1; mode=block" ],
         "Content-Security-Policy": [ "script-src \u0027self\u0027" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "399" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "5999" ],
-        "x-ms-correlation-request-id": [ "031346e5-36db-4a63-bc6a-f7be8edc2bdc" ],
-        "x-ms-routing-request-id": [ "UKWEST:20240901T131233Z:031346e5-36db-4a63-bc6a-f7be8edc2bdc" ],
+        "x-ms-correlation-request-id": [ "23d4a4b3-802d-4284-895c-b9bd0a4c9644" ],
+        "x-ms-routing-request-id": [ "UKWEST:20240903T083506Z:23d4a4b3-802d-4284-895c-b9bd0a4c9644" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 56647D303887484D998AE0B324101081 Ref B: AMS231020614051 Ref C: 2024-09-01T13:12:33Z" ],
-        "Date": [ "Sun, 01 Sep 2024 13:12:33 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 1A05C0762F0943CDA10D11D72F09E1A2 Ref B: DB3EDGE1714 Ref C: 2024-09-03T08:35:05Z" ],
+        "Date": [ "Tue, 03 Sep 2024 08:35:05 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "110" ],

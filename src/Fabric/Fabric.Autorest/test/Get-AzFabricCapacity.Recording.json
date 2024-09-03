@@ -1,13 +1,13 @@
 {
-  "Get-AzFabricCapacity+[NoContext]+List+$GET+https://management.azure.com/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-AzPowerShell-Tests-Fabric-agusodiexz/providers/Microsoft.Fabric/capacities?api-version=2023-11-01+1": {
+  "Get-AzFabricCapacity+[NoContext]+List+$GET+https://management.azure.com/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-AzPowerShell-Tests-Fabric-bscyzitawq/providers/Microsoft.Fabric/capacities?api-version=2023-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-AzPowerShell-Tests-Fabric-agusodiexz/providers/Microsoft.Fabric/capacities?api-version=2023-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-AzPowerShell-Tests-Fabric-bscyzitawq/providers/Microsoft.Fabric/capacities?api-version=2023-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "c1e1a5d6-ecc4-4ccb-9634-0797a8c30e2c" ],
+        "x-ms-client-request-id": [ "1844cf11-6dda-4160-9a91-c61512deec91" ],
         "CommandName": [ "Get-AzFabricCapacity" ],
         "FullCommandName": [ "Get-AzFabricCapacity_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,38 +23,38 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "06e6443a-4a58-44d3-9fb5-4f41887304c5" ],
-        "x-ms-current-utc-date": [ "9/1/2024 1:06:25 PM" ],
+        "x-ms-request-id": [ "f4e7df0c-7435-4d5d-87f1-37ea0ebf5dbb" ],
+        "x-ms-current-utc-date": [ "9/3/2024 8:29:32 AM" ],
         "X-Frame-Options": [ "DENY" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-XSS-Protection": [ "1; mode=block" ],
         "Content-Security-Policy": [ "script-src \u0027self\u0027" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "499" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "7499" ],
-        "x-ms-correlation-request-id": [ "4a357dbd-8905-4e72-bd52-9f6803249908" ],
-        "x-ms-routing-request-id": [ "UKSOUTH:20240901T130625Z:4a357dbd-8905-4e72-bd52-9f6803249908" ],
+        "x-ms-correlation-request-id": [ "dc261cc2-4e31-408b-86d6-db108366d5f9" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20240903T082932Z:dc261cc2-4e31-408b-86d6-db108366d5f9" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: AD51EFE1998146DD935E3EE90D404918 Ref B: AMS231020614051 Ref C: 2024-09-01T13:06:24Z" ],
-        "Date": [ "Sun, 01 Sep 2024 13:06:24 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 953EEA5B72D54858880108BBB94C9BF0 Ref B: DB3EDGE1714 Ref C: 2024-09-03T08:29:31Z" ],
+        "Date": [ "Tue, 03 Sep 2024 08:29:32 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "466" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"administration\":{\"members\":[\"VsavTest@pbiotest.onmicrosoft.com\"]}},\"id\":\"/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-AzPowerShell-Tests-Fabric-agusodiexz/providers/Microsoft.Fabric/capacities/lkwhyfmoqsjt\",\"name\":\"lkwhyfmoqsjt\",\"type\":\"Microsoft.Fabric/capacities\",\"location\":\"West US\",\"sku\":{\"name\":\"F2\",\"tier\":\"Fabric\"},\"tags\":{\"tag2\":\"value2\",\"tag1\":\"value1\"}}]}",
+      "Content": "{\"value\":[{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"administration\":{\"members\":[\"VsavTest@pbiotest.onmicrosoft.com\"]}},\"id\":\"/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-AzPowerShell-Tests-Fabric-bscyzitawq/providers/Microsoft.Fabric/capacities/inkvosrwymjb\",\"name\":\"inkvosrwymjb\",\"type\":\"Microsoft.Fabric/capacities\",\"location\":\"West US\",\"sku\":{\"name\":\"F2\",\"tier\":\"Fabric\"},\"tags\":{\"tag2\":\"value2\",\"tag1\":\"value1\"}}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzFabricCapacity+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-AzPowerShell-Tests-Fabric-agusodiexz/providers/Microsoft.Fabric/capacities/lkwhyfmoqsjt?api-version=2023-11-01+1": {
+  "Get-AzFabricCapacity+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-AzPowerShell-Tests-Fabric-bscyzitawq/providers/Microsoft.Fabric/capacities/inkvosrwymjb?api-version=2023-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-AzPowerShell-Tests-Fabric-agusodiexz/providers/Microsoft.Fabric/capacities/lkwhyfmoqsjt?api-version=2023-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-AzPowerShell-Tests-Fabric-bscyzitawq/providers/Microsoft.Fabric/capacities/inkvosrwymjb?api-version=2023-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "43bc442e-9e32-4a88-836c-0ba85f94ef0a" ],
+        "x-ms-client-request-id": [ "adf38303-7250-418f-8369-46be09512786" ],
         "CommandName": [ "Get-AzFabricCapacity" ],
         "FullCommandName": [ "Get-AzFabricCapacity_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -70,38 +70,38 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "e8fbd89b-b386-455d-8b2c-1791633840c0" ],
-        "x-ms-current-utc-date": [ "9/1/2024 1:06:25 PM" ],
+        "x-ms-request-id": [ "cfbb835f-6a1c-44f0-b083-9c9b462a78fb" ],
+        "x-ms-current-utc-date": [ "9/3/2024 8:29:32 AM" ],
         "X-Frame-Options": [ "DENY" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-XSS-Protection": [ "1; mode=block" ],
         "Content-Security-Policy": [ "script-src \u0027self\u0027" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "499" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "7499" ],
-        "x-ms-correlation-request-id": [ "498376c2-0e66-4b25-ab51-c7217de056a2" ],
-        "x-ms-routing-request-id": [ "UKWEST:20240901T130626Z:498376c2-0e66-4b25-ab51-c7217de056a2" ],
+        "x-ms-correlation-request-id": [ "779ac7dd-8646-4727-be0d-c836539ba11a" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20240903T082932Z:779ac7dd-8646-4727-be0d-c836539ba11a" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0CE81CB234D7466BA5BDEF64E9F23981 Ref B: AMS231020614051 Ref C: 2024-09-01T13:06:25Z" ],
-        "Date": [ "Sun, 01 Sep 2024 13:06:25 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 8D9D8AF274224BBABE4C3F81772AFE0F Ref B: DB3EDGE1714 Ref C: 2024-09-03T08:29:32Z" ],
+        "Date": [ "Tue, 03 Sep 2024 08:29:32 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "454" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"administration\":{\"members\":[\"VsavTest@pbiotest.onmicrosoft.com\"]}},\"id\":\"/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-AzPowerShell-Tests-Fabric-agusodiexz/providers/Microsoft.Fabric/capacities/lkwhyfmoqsjt\",\"name\":\"lkwhyfmoqsjt\",\"type\":\"Microsoft.Fabric/capacities\",\"location\":\"West US\",\"sku\":{\"name\":\"F2\",\"tier\":\"Fabric\"},\"tags\":{\"tag2\":\"value2\",\"tag1\":\"value1\"}}",
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"administration\":{\"members\":[\"VsavTest@pbiotest.onmicrosoft.com\"]}},\"id\":\"/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-AzPowerShell-Tests-Fabric-bscyzitawq/providers/Microsoft.Fabric/capacities/inkvosrwymjb\",\"name\":\"inkvosrwymjb\",\"type\":\"Microsoft.Fabric/capacities\",\"location\":\"West US\",\"sku\":{\"name\":\"F2\",\"tier\":\"Fabric\"},\"tags\":{\"tag2\":\"value2\",\"tag1\":\"value1\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzFabricCapacity+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-AzPowerShell-Tests-Fabric-agusodiexz/providers/Microsoft.Fabric/capacities?api-version=2023-11-01+1": {
+  "Get-AzFabricCapacity+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-AzPowerShell-Tests-Fabric-bscyzitawq/providers/Microsoft.Fabric/capacities?api-version=2023-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-AzPowerShell-Tests-Fabric-agusodiexz/providers/Microsoft.Fabric/capacities?api-version=2023-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-AzPowerShell-Tests-Fabric-bscyzitawq/providers/Microsoft.Fabric/capacities?api-version=2023-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "f732a05a-1217-4e0b-95e8-2a504ab2cbe1" ],
+        "x-ms-client-request-id": [ "5ad7a831-e6c5-4277-be5d-3e7f4e3eee6d" ],
         "CommandName": [ "Get-AzFabricCapacity" ],
         "FullCommandName": [ "Get-AzFabricCapacity_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -117,26 +117,26 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "11a78aa3-3fd1-45b2-88a1-96c0ce5c359d" ],
-        "x-ms-current-utc-date": [ "9/1/2024 1:06:26 PM" ],
+        "x-ms-request-id": [ "bbef424a-edfe-4551-8265-3fa6af1fc775" ],
+        "x-ms-current-utc-date": [ "9/3/2024 8:29:33 AM" ],
         "X-Frame-Options": [ "DENY" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-XSS-Protection": [ "1; mode=block" ],
         "Content-Security-Policy": [ "script-src \u0027self\u0027" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "499" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "7499" ],
-        "x-ms-correlation-request-id": [ "179e7eb1-2836-4c9d-80eb-df2e8b65ca76" ],
-        "x-ms-routing-request-id": [ "UKSOUTH:20240901T130626Z:179e7eb1-2836-4c9d-80eb-df2e8b65ca76" ],
+        "x-ms-correlation-request-id": [ "62d25ad8-c7ec-411a-8afc-ac378ee748e3" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20240903T082933Z:62d25ad8-c7ec-411a-8afc-ac378ee748e3" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F5096B22466C44358AD55045A733BC80 Ref B: AMS231020614051 Ref C: 2024-09-01T13:06:26Z" ],
-        "Date": [ "Sun, 01 Sep 2024 13:06:25 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: B81299F6C30B4CECAB227C44ED0FE74B Ref B: DB3EDGE1714 Ref C: 2024-09-03T08:29:32Z" ],
+        "Date": [ "Tue, 03 Sep 2024 08:29:33 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "466" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"administration\":{\"members\":[\"VsavTest@pbiotest.onmicrosoft.com\"]}},\"id\":\"/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-AzPowerShell-Tests-Fabric-agusodiexz/providers/Microsoft.Fabric/capacities/lkwhyfmoqsjt\",\"name\":\"lkwhyfmoqsjt\",\"type\":\"Microsoft.Fabric/capacities\",\"location\":\"West US\",\"sku\":{\"name\":\"F2\",\"tier\":\"Fabric\"},\"tags\":{\"tag2\":\"value2\",\"tag1\":\"value1\"}}]}",
+      "Content": "{\"value\":[{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Active\",\"administration\":{\"members\":[\"VsavTest@pbiotest.onmicrosoft.com\"]}},\"id\":\"/subscriptions/066c6e9e-c9ae-453d-bd2c-dacb1194fc0d/resourceGroups/rg-AzPowerShell-Tests-Fabric-bscyzitawq/providers/Microsoft.Fabric/capacities/inkvosrwymjb\",\"name\":\"inkvosrwymjb\",\"type\":\"Microsoft.Fabric/capacities\",\"location\":\"West US\",\"sku\":{\"name\":\"F2\",\"tier\":\"Fabric\"},\"tags\":{\"tag2\":\"value2\",\"tag1\":\"value1\"}}]}",
       "isContentBase64": false
     }
   }
