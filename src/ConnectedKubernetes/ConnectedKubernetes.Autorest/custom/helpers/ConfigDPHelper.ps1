@@ -19,7 +19,9 @@ function Invoke-ConfigDPHealthCheck {
         $headers = @{"Authorization" = "Bearer $($env['AZURE_ACCESS_TOKEN'])" }
     }
 
-    # Sending request with retries
+    # Sending request with retries; initialize status code because WhatIf does
+    # not set it.
+    $statusCode = 200
     Invoke-RestMethodWithUriParameters -Method 'post' -Uri $chartLocationUrl -Headers $headers -UriParameters $uriParameters -MaximumRetryCount 5 -RetryIntervalSec 3 -StatusCodeVariable statusCode
     if ($statusCode -ne 200) {
         throw "Error while performing DP health check, StatusCode: ${statusCode}"
