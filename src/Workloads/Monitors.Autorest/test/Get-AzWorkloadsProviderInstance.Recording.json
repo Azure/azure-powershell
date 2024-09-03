@@ -1,0 +1,127 @@
+{
+  "Get-AzWorkloadsProviderInstance+[NoContext]+List+$GET+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "f45bf8c8-7895-4416-a594-947d593bb9f2" ],
+        "CommandName": [ "Get-AzWorkloadsProviderInstance" ],
+        "FullCommandName": [ "Get-AzWorkloadsProviderInstance_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Workloads/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "78561c6d-7aaf-45c6-8c93-843b6755acb2" ],
+        "x-ms-correlation-request-id": [ "bc7e031c-a7cc-4956-8241-01c3dad61126" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230317T100841Z:bc7e031c-a7cc-4956-8241-01c3dad61126" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Mar 2023 10:08:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2300" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances/suha-hana-1\",\"name\":\"suha-hana-1\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"sshrivastava@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-16T10:36:26.5508586Z\",\"lastModifiedBy\":\"sshrivastava@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-16T10:36:26.5508586Z\"},\"properties\":{\"providerSettings\":{\"hostname\":\"10.0.81.4\",\"dbName\":\"SYSTEMDB\",\"dbUsername\":\"SYSTEM\",\"instanceNumber\":\"00\",\"sslPreference\":\"Disabled\",\"sapSid\":\"X00\",\"providerType\":\"SapHana\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances/suha-nw-1\",\"name\":\"suha-nw-1\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"sshrivastava@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-16T11:29:38.9017137Z\",\"lastModifiedBy\":\"sshrivastava@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-16T11:29:38.9017137Z\"},\"properties\":{\"providerSettings\":{\"sapSid\":\"L13\",\"sapHostname\":\"10.0.82.4\",\"sapInstanceNr\":\"00\",\"sapHostFileEntries\":[\"10.0.82.4 l13appvm0.ams.azure.com l13appvm0\",\"10.0.82.5 l13ascsvm.ams.azure.com l13ascsvm\"],\"sapUsername\":\"AMSUSER\",\"sapClientId\":\"000\",\"sapPortNumber\":\"8000\",\"sslPreference\":\"Disabled\",\"providerType\":\"SapNetWeaver\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances/suha-db2-1\",\"name\":\"suha-db2-1\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"sshrivastava@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-16T11:32:04.3401874Z\",\"lastModifiedBy\":\"sshrivastava@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-16T11:32:04.3401874Z\"},\"properties\":{\"providerSettings\":{\"hostname\":\"10.1.21.4\",\"dbName\":\"Sample\",\"dbPort\":\"25000\",\"dbUsername\":\"db2admin\",\"sslPreference\":\"Disabled\",\"sapSid\":\"OPA\",\"providerType\":\"Db2\"},\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzWorkloadsProviderInstance+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances/suha-nw-1?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances/suha-nw-1?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "b0ef49f2-40d3-4dff-8ee5-73616291d158" ],
+        "CommandName": [ "Get-AzWorkloadsProviderInstance" ],
+        "FullCommandName": [ "Get-AzWorkloadsProviderInstance_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Workloads/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000231e-0000-3400-0000-6412fe480000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "1e146780-7e2a-408c-a46c-b0775630580d" ],
+        "x-ms-correlation-request-id": [ "b8d6d176-74c3-437f-972f-98ddedc226fc" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230317T100843Z:b8d6d176-74c3-437f-972f-98ddedc226fc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Mar 2023 10:08:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "861" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances/suha-nw-1\",\"name\":\"suha-nw-1\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"sshrivastava@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-16T11:29:38.9017137Z\",\"lastModifiedBy\":\"sshrivastava@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-16T11:29:38.9017137Z\"},\"properties\":{\"providerSettings\":{\"sapSid\":\"L13\",\"sapHostname\":\"10.0.82.4\",\"sapInstanceNr\":\"00\",\"sapHostFileEntries\":[\"10.0.82.4 l13appvm0.ams.azure.com l13appvm0\",\"10.0.82.5 l13ascsvm.ams.azure.com l13ascsvm\"],\"sapUsername\":\"AMSUSER\",\"sapClientId\":\"000\",\"sapPortNumber\":\"8000\",\"sslPreference\":\"Disabled\",\"providerType\":\"SapNetWeaver\"},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzWorkloadsProviderInstance+[NoContext]+GetViaId+$GET+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances/suha-nw-1?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances/suha-nw-1?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "32c0b7b9-08e1-4d7c-acf5-8f10b7439eb7" ],
+        "CommandName": [ "Get-AzWorkloadsProviderInstance" ],
+        "FullCommandName": [ "Get-AzWorkloadsProviderInstance_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Workloads/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000231e-0000-3400-0000-6412fe480000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "ee859521-ad9e-4810-b47e-eede7e51332a" ],
+        "x-ms-correlation-request-id": [ "ba59b53b-a99f-45e5-8991-54fb88464c88" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230317T100844Z:ba59b53b-a99f-45e5-8991-54fb88464c88" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Mar 2023 10:08:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "861" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances/suha-nw-1\",\"name\":\"suha-nw-1\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"sshrivastava@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-16T11:29:38.9017137Z\",\"lastModifiedBy\":\"sshrivastava@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-16T11:29:38.9017137Z\"},\"properties\":{\"providerSettings\":{\"sapSid\":\"L13\",\"sapHostname\":\"10.0.82.4\",\"sapInstanceNr\":\"00\",\"sapHostFileEntries\":[\"10.0.82.4 l13appvm0.ams.azure.com l13appvm0\",\"10.0.82.5 l13ascsvm.ams.azure.com l13ascsvm\"],\"sapUsername\":\"AMSUSER\",\"sapClientId\":\"000\",\"sapPortNumber\":\"8000\",\"sslPreference\":\"Disabled\",\"providerType\":\"SapNetWeaver\"},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

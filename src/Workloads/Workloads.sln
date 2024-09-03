@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Workloads", "Workloads.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workloads", "Workloads\Workloads.csproj", "{F27ABA7E-B3ED-4B35-8409-43B3D92FFBFE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Monitors", "Monitors.Autorest\Az.Monitors.csproj", "{EDC05260-200A-4DE0-9D56-F13D0738FD92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.SapVirtualInstance", "SapVirtualInstance.Autorest\Az.SapVirtualInstance.csproj", "{8A7A69FF-D28E-44FA-AC62-2D6DB8D53C2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +66,14 @@ Global
 		{F27ABA7E-B3ED-4B35-8409-43B3D92FFBFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F27ABA7E-B3ED-4B35-8409-43B3D92FFBFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F27ABA7E-B3ED-4B35-8409-43B3D92FFBFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDC05260-200A-4DE0-9D56-F13D0738FD92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDC05260-200A-4DE0-9D56-F13D0738FD92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDC05260-200A-4DE0-9D56-F13D0738FD92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDC05260-200A-4DE0-9D56-F13D0738FD92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A7A69FF-D28E-44FA-AC62-2D6DB8D53C2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A7A69FF-D28E-44FA-AC62-2D6DB8D53C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A7A69FF-D28E-44FA-AC62-2D6DB8D53C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A7A69FF-D28E-44FA-AC62-2D6DB8D53C2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FAEF600D-0073-487E-B125-669EB7D06E3D} = {CDFD4C75-7CF6-4B30-9A7E-D8B5D25EB75A}
