@@ -40,7 +40,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         internal static void SetupAccessPolicy<T>(T policy, DateTime? startTime, DateTime? expiryTime, string permission, bool noStartTime = false, bool noExpiryTime = false)
         {
             if (!(typeof(T) == typeof(SharedAccessTablePolicy) ||
-                //typeof(T) == typeof(SharedAccessFilePolicy) ||
                 typeof(T) == typeof(SharedAccessBlobPolicy)))
             {
                 throw new ArgumentException(Resources.InvalidAccessPolicyType);
