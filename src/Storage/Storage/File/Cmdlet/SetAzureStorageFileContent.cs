@@ -321,6 +321,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             switch (this.ParameterSetName)
             {
                 case LocalConstants.DirectoryParameterSetName:
+                    if (this.Context == null)
+                    {
+                        throw new InvalidOperationException("Could not get the storage context. Please pass in a storage context with \"-Context\" parameter (can be created with New-AzStorageContext cmdlet), " +
+                            "or set the current storage context with Set-AzCurrentStorageAccount cmdlet.");
+                    }
                     baseDirectory = AzureStorageFileDirectory.GetTrack1FileDirClient(this.ShareDirectoryClient, ((AzureStorageContext)this.Context).StorageAccount.Credentials, ClientOptions);
                     break;
 
@@ -330,6 +335,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     break;
 
                 case LocalConstants.ShareParameterSetName:
+                    if (this.Context == null)
+                    {
+                        throw new InvalidOperationException("Could not get the storage context. Please pass in a storage context with \"-Context\" parameter (can be created with New-AzStorageContext cmdlet), " +
+                            "or set the current storage context with Set-AzCurrentStorageAccount cmdlet.");
+                    }
                     baseDirectory = AzureStorageFileDirectory.GetTrack1FileDirClient(this.ShareClient.GetRootDirectoryClient(), ((AzureStorageContext)this.Context).StorageAccount.Credentials, ClientOptions);
                     break;
 
