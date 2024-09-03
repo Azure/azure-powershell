@@ -62,7 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = LocalConstants.DirectoryParameterSetName,
-            HelpMessage = "CloudFileDirectory object indicated the cloud directory where the file would be uploaded.")]
+            HelpMessage = "ShareDirectoryClient object indicated the directory where the file would be uploaded.")]
         [ValidateNotNull]
         public ShareDirectoryClient ShareDirectoryClient { get; set; }
 

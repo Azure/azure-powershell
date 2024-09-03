@@ -51,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = LocalConstants.ShareParameterSetName,
-            HelpMessage = "CloudFileShare object indicated the share where the file would be downloaded.")]
+            HelpMessage = "ShareClient object indicated the share where the file would be downloaded.")]
         [ValidateNotNull]
         public ShareClient ShareClient { get; set; }
 

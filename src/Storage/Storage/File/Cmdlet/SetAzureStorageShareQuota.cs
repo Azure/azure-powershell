@@ -42,7 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.ShareParameterSetName,
-            HelpMessage = "CloudFileShare object indicated the share whose quota to set.")]
+            HelpMessage = "ShareClient object indicated the share whose quota to set.")]
         [ValidateNotNull]
         public ShareClient ShareClient { get; set; }
 
