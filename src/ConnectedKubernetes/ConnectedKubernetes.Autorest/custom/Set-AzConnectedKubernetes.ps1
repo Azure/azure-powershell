@@ -622,20 +622,29 @@ function Set-AzConnectedKubernetes {
 
         $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
 
-        if ($PSCmdlet.ShouldProcess($ExistConnectedKubernetes, "Updating existing connected cluster")) {
-            $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes @PSBoundParameters
-            $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration $RedactedProtectedConfiguration -CCRP $false
+        $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes @PSBoundParameters
+        $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration $RedactedProtectedConfiguration -CCRP $false
 
-            # Convert the $Response object into a nested hashtable.
-            Write-Debug "PUT response: $Response"
-            $Response = ConvertFrom-Json "$Response" -AsHashTable -Depth 10
-            $Response['properties']['arcAgentryConfigurations'] = $arcAgentryConfigs
+        # Convert the $Response object into a nested hashtable.
+        Write-Debug "PUT response: $Response"
+        $Response = ConvertFrom-Json "$Response" -AsHashTable -Depth 10
+        
+        # Whatif may return empty response
+        if(-not $Response) {
+            $Response = @{}
+        }
+        if (-not $Response.ContainsKey('properties')) {
+            $Response['properties'] = @{}
+        }
 
-            # Retrieving Helm chart OCI (Open Container Initiative) Artifact location
-            Write-Debug "Retrieving Helm chart OCI (Open Container Initiative) Artifact location."
-            $ResponseStr = $Response | ConvertTo-Json -Depth 10
-            Write-Debug "PUT response: $ResponseStr"
-            
+        $Response['properties']['arcAgentryConfigurations'] = $arcAgentryConfigs
+
+        # Retrieving Helm chart OCI (Open Container Initiative) Artifact location
+        Write-Debug "Retrieving Helm chart OCI (Open Container Initiative) Artifact location."
+        $ResponseStr = $Response | ConvertTo-Json -Depth 10
+        Write-Debug "PUT response: $ResponseStr"
+        
+        if ($PSCmdlet.ShouldProcess('configDP', 'get helm values from config DP')) {
             $helmValuesDp = Get-HelmValuesFromConfigDP `
                 -configDPEndpoint $configDPEndpoint `
                 -releaseTrain $ReleaseTrain `
@@ -668,14 +677,19 @@ function Set-AzConnectedKubernetes {
             if ($ExistConnectedKubernetes.AgentVersion) {
                 $repositoryPath = $repositoryPath -replace "(?<=:).*", $ExistConnectedKubernetes.AgentVersion
             }
+        }   
 
+        if ($PSCmdlet.ShouldProcess('configDP', 'get helm chart path')) {
             # Get helm chart path (within the OCI registry).
             $chartPath = Get-HelmChartPath -registryPath $registryPath -kubeConfig $KubeConfig -kubeContext $KubeContext -helmClientLocation $HelmClientLocation
             if (Test-Path Env:HELMCHART) {
                 $ChartPath = Get-ChildItem -Path Env:HELMCHART
             }
+        }
 
-            # Get curren helm values
+        # Get current helm values
+        if ($PSCmdlet.ShouldProcess($ClusterName, "Get current helm values")) {
+
             try {
                 $userValuesLocation = Join-Path $env:USERPROFILE ".azure\userValues.txt"
 
@@ -688,7 +702,9 @@ function Set-AzConnectedKubernetes {
             catch {
                 throw "Unable to get helm values"
             }
+        }
 
+        if ($PSCmdlet.ShouldProcess($ClusterName, "Update Kubernetes cluster with Azure Arc")) {
             try {
                 helm upgrade `
                     --debug `
@@ -702,9 +718,6 @@ function Set-AzConnectedKubernetes {
                 throw "Unable to install helm release"
             }
             Return $Response
-        }
-        else {
-            Return
         }
     }
 }
