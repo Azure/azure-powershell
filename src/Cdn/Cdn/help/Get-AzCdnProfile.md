@@ -14,25 +14,25 @@ Gets an CDN profile with the specified profile name under the specified subscrip
 
 ### List (Default)
 ```
-Get-AzCdnProfile [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+Get-AzCdnProfile [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzCdnProfile [-SubscriptionId <String[]>] -ResourceGroupName <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzCdnProfile [-SubscriptionId <String[]>] -Name <String> -ResourceGroupName <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzCdnProfile -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+Get-AzCdnProfile -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -138,21 +138,6 @@ Parameter Sets: Get
 Aliases: ProfileName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
