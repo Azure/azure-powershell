@@ -171,6 +171,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
             }
             catch (ErrorResponseException ex)
             {
+                if (ex.Message.Contains("failoverType") &&
+                    ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest &&
+                    (!model.FailoverMode.Equals("Planned") || !model.FailoverMode.Equals("ForcedAllowDataLoss")))
+                {
+                    throw new ErrorResponseException("Allowed values for failover type are 'Planned' or 'ForcedAllowDataLoss'.");
+                }
+
                 throw CreateExceptionWithDescriptiveErrorMessage(ex);
             }
         }
