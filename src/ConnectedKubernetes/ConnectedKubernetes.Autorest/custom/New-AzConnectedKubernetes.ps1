@@ -532,7 +532,8 @@ function New-AzConnectedKubernetes {
             #$proxyEnableState = $true
         }
 
-        # !!PDS: What has happened to this?
+        # !!PDS: What has happened to this?  It appears to have vanished from
+        #        the az CLI create/update code.
         # if ($proxyEnableState) {
         #     $ConfigurationProtectedSetting["global.isProxyEnabled"] = "true"
         #     $ConfigurationSetting["global.isProxyEnabled"] = $ProtectedSettingPlaceholderValue
@@ -694,10 +695,14 @@ function New-AzConnectedKubernetes {
         $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
         Write-Debug $options -ErrorAction Continue
         # !!PDS: Remove --debug from helm, or add as part of "Debug" enable?
+        $helmDebug = ""
+        if ($DebugPreference -eq "Continue") {
+            $helmDebug = "--debug"
+        }
         if ($PSCmdlet.ShouldProcess($ClusterName, "Update Kubernetes cluster with Azure Arc")) {
             try {
                 helm upgrade `
-                    --debug `
+                    $helmDebug `
                     --install azure-arc `
                     $ChartPath `
                     --namespace $ReleaseInstallNamespace `
