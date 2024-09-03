@@ -61,32 +61,29 @@ We are recommended to use string array as the type of UserAssignedIdentity with 
 ### How to disable transforming IdentityType and UserAssignedIdentity to avoid breaking changes when migrate from autorest.powershell v3 to v4.
 See details at [here](https://github.com/Azure/autorest.powershell/blob/main/docs/migration-from-v3-to-v4.md#how-to-mitigate-the-breaking-changes-of-managed-identity-best-practice-alignment).
 
-### What should I do to mitigate one patch operation which is reported to unable to be replaced by Get+Put operation.
-Our autorest.powershell is unable to replace patch operation by get+put sometimes automatically for several reasons. To mitigate this issue,
-- add `suppress-replace-patch-by-getput-error: true` in README.md
-- hide the corresponding Update cmdlet in directive by
-```
- -  where:
-      verb: Update
-      subject: {Subject-Name}
-    hide: true
-```
-- run `autorest` and `./build-module.ps1`
-- copy internal/Update-Az{ModuleName}{Subject-Name}.ps1 to custom folder
-- manually change IdentityType to EnableSystemAssignedIdentity<bool> and UserAssignedIdentity<hashtable> to UserAssignedIdentity<string[]> like
-```
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Body')]
-    [System.Nullable[System.Boolean]]
-    # Decides if enable a system assigned identity for the resource.
-    ${EnableSystemAssignedIdentity},
+### What should I do to mitigate one patch operation which is reported to parameter IdentityType can not be transformed as the best practice design?
 
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Body')]
-    [System.String[]]
-    # The array of user assigned identities associated with the resource.
-    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
-    ${UserAssignedIdentity},
-```
-- calculate the value of IdentityType and UserAssignedIdentity as swagger defined in process block, see example [here](https://github.com/Azure/azure-powershell/blob/2d37985acc5ca72f8838df884bd6b2b3abff3ae7/src/Fleet/Fleet.Autorest/generated/cmdlets/UpdateAzFleet_UpdateExpanded.cs#L445).
+autorest.powershell is unable to transform IdentityType as the best practice design for certain reasons. To mitigate this issue,
+- Include a customization script to transform the parameter IdentityType to EnableSystemAssignedIdentity by `get` + `patch` update for this type of operation. The following are the detailed steps on how to accomplish this.
+  - disable transformation for the operation which reported error in README.md by
+  ```
+  disable-transform-identity-type-for-operation
+    - Operation_id
+  ```
+  - hide the corresponding Update cmdlet in directive by
+  ```
+   -  where:
+        verb: Update
+        subject: {Subject-Name}
+      hide: true
+  ```
+  - run `autorest` and `./build-module.ps1`
+  - manually change IdentityType to EnableSystemAssignedIdentity<bool> in `Update-Az{ModuleName}{Subject-Name}` like
+  ```
+      [Parameter()]
+      [Microsoft.Azure.PowerShell.Cmdlets.{ModuleName}.Category('Body')]
+      [System.Nullable[System.Boolean]]
+      # Decides if enable a system assigned identity for the resource.
+      ${EnableSystemAssignedIdentity},
+  ```
+  - calculate the value of IdentityType as swagger defined in process block, see [instance](https://github.com/Azure/azure-powershell/blob/827001c79c4416e0b74f5857c2ad72b7932b1f9a/src/Astro/Astro.Autorest/custom/Update-AzAstroOrganization.ps1#L269) for Update-Az{ModuleName}{Subject-Name}.
