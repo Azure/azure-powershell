@@ -1,5 +1,5 @@
 function New-AzWvdAppAttachPackage_ImageObject {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240403.IAppAttachPackage])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackage])]
     [CmdletBinding(PositionalBinding=$false, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -38,14 +38,14 @@ function New-AzWvdAppAttachPackage_ImageObject {
 
         [Parameter(Mandatory, Position = 0, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240403.AppAttachPackage]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.AppAttachPackage]
         # App Attach Package object that can be the output of import-azwvdappattachpackageinfo
         ${AppAttachPackage},
 
         [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.FailHealthCheckOnStagingFailure])]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.FailHealthCheckOnStagingFailure]
+        [System.String]
         # Parameter indicating how the health check should behave if this package fails staging
         ${FailHealthCheckOnStagingFailure},
 

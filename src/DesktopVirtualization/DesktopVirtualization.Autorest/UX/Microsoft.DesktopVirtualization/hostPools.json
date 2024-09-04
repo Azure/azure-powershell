@@ -6,44 +6,6 @@
   },
   "commands": [
     {
-      "name": "Expand-AzWvdMsixImage",
-      "description": "Expands and Lists MSIX packages in an Image, given the Image Path.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/expandMsixImage",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/expand-azwvdmsiximage"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-HostPoolName <String>",
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Expands and Lists MSIX packages in an Image, given the Image Path.",
-          "parameters": [
-            {
-              "name": "-HostPoolName",
-              "value": "[Path.hostPoolName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Get-AzWvdHostPoolRegistrationToken",
       "description": "Operation to list the RegistrationTokens associated with the HostPool",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/retrieveRegistrationToken",
@@ -105,44 +67,6 @@
           "parameters": [
             {
               "name": "-Name",
-              "value": "[Path.hostPoolName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Import-AzWvdAppAttachPackageInfo",
-      "description": "Gets information from a package given the path to the package.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/importAppAttachPackageInfo",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/import-azwvdappattachpackageinfo"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-HostPoolName <String>",
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Gets information from a package given the path to the package.",
-          "parameters": [
-            {
-              "name": "-HostPoolName",
               "value": "[Path.hostPoolName]"
             },
             {

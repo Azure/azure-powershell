@@ -1,26 +1,22 @@
-### Example 1: Get Existing Registration Info from Hostpool
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzWvdRegistrationInfo -ResourceGroupName rgName -HostPoolName hpName
+{{ Add code here }}
 ```
 
 ```output
-ExpirationTime        RegistrationTokenOperation Token
---------------        -------------------------- -----
-5/10/2023 12:00:00 PM None                       <base64 encoded string>
-
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Retrieves Registration Info for the chosen hostpool.
+{{ Add description here }}
 
-### Example 2: Get Empty Registration Info from HostPool 
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzWvdRegistrationInfo -ResourceGroupName rgName -HostPoolname hpName
+{{ Add code here }}
 ```
 
 ```output
-ExpirationTime RegistrationTokenOperation Token
--------------- -------------------------- -----
-               None
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Returns an empty Registration Info for the chosen Hostpool if the Hostpool doesn't have any Registration Info.
+{{ Add description here }}
+
