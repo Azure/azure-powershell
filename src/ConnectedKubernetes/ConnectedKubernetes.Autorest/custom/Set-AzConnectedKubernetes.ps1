@@ -398,30 +398,6 @@ function Set-AzConnectedKubernetes {
         $IdentityType = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ResourceIdentityType]::SystemAssigned
         $PSBoundParameters.Add('IdentityType', $IdentityType)
 
-        # Region Deal with settings and protected settings
-        # If a new Kubernetes feature is added then code may need to be added here
-        # to suport protected settings as the Config DP is unable to process these
-        # themselves.  Add a check here to see if there are any that we currently
-        # do not suport.
-        Write-Debug "Processing Arc Agentry settings and protected settings."
-
-        $supportedFeatures = @("proxy")
-        if ($ConfigurationSetting) {
-            foreach ($key in $ConfigurationSetting.Keys) {
-                if (-not $supportedFeatures.Contains($key.ToLower())) {
-                    Write-Warning "Arc Agentry feature '${key}' is not supported for Connected Kubernetes"
-                }
-            }
-        }
-        if ($ConfigurationProtectedSetting) {
-            foreach ($key in $ConfigurationProtectedSetting.Keys) {
-                if (-not $supportedFeatures.Contains($key.ToLower())) {
-                    Write-Warning "ArcAgentry feature '${key}' is not supported for Connected Kubernetes"
-                }
-            }
-        }
-        #Endregion
-
         #Region check helm install
         Confirm-HelmVersion -KubeConfig $KubeConfig
 
@@ -702,6 +678,10 @@ function Set-AzConnectedKubernetes {
             }
         }
 
+        Write-Debug $options -ErrorAction Continue
+        if ($DebugPreference -eq "Continue") {
+            $options += " --debug"
+        }
         if ($PSCmdlet.ShouldProcess($ClusterName, "Update Kubernetes cluster with Azure Arc")) {
             try {
                 helm upgrade `
