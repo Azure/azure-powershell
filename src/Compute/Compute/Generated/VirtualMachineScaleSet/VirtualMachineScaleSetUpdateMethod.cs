@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             HelpMessage = "Array of VM sizes for the scale set.",
             ValueFromPipelineByPropertyName = true)]
-        public SkuProfileVMSize[] VmSizes { get; set; }
+        public string[] SkuProfileVmSize { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -2158,13 +2158,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.PriorityMixPolicy.RegularPriorityPercentageAboveBase = this.RegularPriorityPercentage;
             }
 
-            if (this.IsParameterBound(c => c.VmSizes))
+            if (this.IsParameterBound(c => c.SkuProfileVmSize))
             {
                 if (this.VirtualMachineScaleSet.SkuProfile == null)
                 {
                     this.VirtualMachineScaleSet.SkuProfile = new SkuProfile();
+                    this.VirtualMachineScaleSet.SkuProfile.VmSizes = new List<SkuProfileVMSize>();
                 }
-                this.VirtualMachineScaleSet.SkuProfile.VmSizes = this.VmSizes;
+                foreach (string vmSize in this.SkuProfileVmSize)
+                {
+                    this.VirtualMachineScaleSet.SkuProfile.VmSizes.Add(new SkuProfileVMSize()
+                    {
+                        Name = vmSize,
+                    });
+                }
 
                 if (this.IsParameterBound(c => c.SkuProfileAllocationStrategy))
                 {

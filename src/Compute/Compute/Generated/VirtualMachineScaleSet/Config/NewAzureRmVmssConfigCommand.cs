@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public SkuProfileVMSize[] VmSizes { get; set; }
+        public string[] SkuProfileVmSize { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -889,13 +889,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vPriorityMixPolicy.RegularPriorityPercentageAboveBase = this.RegularPriorityPercentage;
             }
 
-            if (this.IsParameterBound(c => c.VmSizes))
+            if (this.IsParameterBound(c => c.SkuProfileVmSize))
             {
                 if (vSkuProfile == null)
                 {
                     vSkuProfile = new SkuProfile();
+                    vSkuProfile.VmSizes = new List<SkuProfileVMSize>();
                 }
-                vSkuProfile.VmSizes = this.VmSizes;
+                foreach (string vmSize in this.SkuProfileVmSize)
+                {
+                    vSkuProfile.VmSizes.Add(new SkuProfileVMSize()
+                    {
+                        Name = vmSize,
+                    });
+                }
 
                 if (this.IsParameterBound(c => c.SkuProfileAllocationStrategy))
                 {

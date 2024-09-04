@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             bool? enableVtpm = null,
             bool? enableSecureBoot = null,
             bool? enableAutomaticOSUpgradePolicy = null,
-            SkuProfileVMSize[] vmSizes = null,
+            SkuProfileVMSize[] skuProfileVmSize = null,
             string skuProfileAllocationStrategy = null,
             string ifMatch = null,
             string ifNoneMatch = null
@@ -186,9 +186,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         {
                             Rules = scaleInPolicy
                         },
-                        SkuProfile = (vmSizes == null) ? null : new SkuProfile
+                        SkuProfile = (skuProfileVmSize == null) ? null : new SkuProfile
                         {
-                            VmSizes = vmSizes,
+                            VmSizes = skuProfileVmSize,
                             AllocationStrategy = skuProfileAllocationStrategy
                         },
                         DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null,
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             bool? enableSecureBoot = null,
             string securityType = null,
             bool? enableAutomaticOSUpgradePolicy = null,
-            SkuProfileVMSize[] vmSizes = null,
+            SkuProfileVMSize[] skuProfileVmSize = null,
             string skuProfileAllocationStrategy = null,
             string ifMatch = null,
             string ifNoneMatch = null
@@ -329,9 +329,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         {
                             Rules = scaleInPolicy
                         },
-                        SkuProfile = (vmSizes == null) ? null : new SkuProfile
+                        SkuProfile = (skuProfileVmSize == null) ? null : new SkuProfile
                         {
-                            VmSizes = vmSizes,
+                            VmSizes = skuProfileVmSize,
                             AllocationStrategy = skuProfileAllocationStrategy
                         },
                         DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null,

@@ -20,7 +20,7 @@
 
 -->
 ## Upcoming Release
-* Introduced new parameters `VmSizes` and `SkuProfileAllocationStrategy` for `New-AzVmss`, `New-AzVmssConfig`, and `Update-AzVmss` cmdlets for VMSS Instance Mix operations.
+* Introduced new parameters `SkuProfileVmSize` and `SkuProfileAllocationStrategy` for `New-AzVmss`, `New-AzVmssConfig`, and `Update-AzVmss` cmdlets for VMSS Instance Mix operations.
 * Added `EnableResilientVMCreate` and `EnableResilientVMDelete` parameters to `Update-AzVmss` and `New-AzVmssConfig` cmdlets for enhanced VM resilience options.
 
 ## Version 8.3.0

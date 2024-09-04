@@ -5338,11 +5338,9 @@ function Test-VirtualMachineScaleSetSkuProfile
         $password = Get-PasswordForVM;
         $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
-        $vmSize1 = New-Object Microsoft.Azure.Management.Compute.Models.SkuProfileVMSize ("Standard_D4s_v3");
-        $vmSize2 = New-Object Microsoft.Azure.Management.Compute.Models.SkuProfileVMSize ("Standard_D4s_v4");
 
         $vmss = New-AzVmss -ResourceGroupName $rgname -Credential $cred -VMScaleSetName $vmssName -DomainNameLabel $domainNameLabel1 `
-            -VMSize "Mix" -VMSizes @($vmSize1, $vmSize2);
+            -VMSize "Mix" -SkuProfileVmSize @("Standard_D4s_v3", "Standard_D4s_v4");
         
         Assert-AreEqual $vmss.OrchestrationMode "Flexible";
         Assert-AreEqual $vmss.Sku.Name "Mix";
@@ -5370,11 +5368,9 @@ function Test-VirtualMachineScaleSetSkuProfile
         $password = Get-PasswordForVM;
         $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
-        $vmSize1 = New-Object Microsoft.Azure.Management.Compute.Models.SkuProfileVMSize ("Standard_D4s_v3");
-        $vmSize2 = New-Object Microsoft.Azure.Management.Compute.Models.SkuProfileVMSize ("Standard_D4s_v4");
 
         $vmss = New-AzVmss -ResourceGroupName $rgname -Credential $cred -VMScaleSetName $vmssName -DomainNameLabel $domainNameLabel1 `
-            -VMSizes @($vmSize1, $vmSize2) -SkuProfileAllocationStrategy "CapacityOptimized";
+            -SkuProfileVmSize @("Standard_D4s_v3", "Standard_D4s_v4") -SkuProfileAllocationStrategy "CapacityOptimized";
         
         Assert-AreEqual $vmss.OrchestrationMode "Flexible";
         Assert-AreEqual $vmss.Sku.Name "Mix";
@@ -5402,17 +5398,15 @@ function Test-VirtualMachineScaleSetSkuProfile
         $password = Get-PasswordForVM;
         $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
-        $vmSize1 = New-Object Microsoft.Azure.Management.Compute.Models.SkuProfileVMSize ("Standard_D4s_v3");
-        $vmSize2 = New-Object Microsoft.Azure.Management.Compute.Models.SkuProfileVMSize ("Standard_D4s_v4");
 
-        $vmss = New-AzVmssConfig -Location $loc -Zone "1" -SkuCapacity 2 -SkuName 'Mix' -VMSizes @($vmSize1, $vmSize2);
+        $vmss = New-AzVmssConfig -Location $loc -Zone "1" -SkuCapacity 2 -SkuName 'Mix' -SkuProfileVmSize @("Standard_D4s_v3", "Standard_D4s_v4");
         
         Assert-AreEqual $vmss.Sku.Name "Mix";
         Assert-AreEqual $vmss.SkuProfile.AllocationStrategy "LowestPrice";
         Assert-AreEqual $vmss.SkuProfile.VMSizes[0].Name "Standard_D4s_v3";
         Assert-AreEqual $vmss.SkuProfile.VMSizes[1].Name "Standard_D4s_v4";
 
-        $vmss = New-AzVmssConfig -Location $loc -Zone "1" -SkuCapacity 2 -VMSizes @($vmSize1, $vmSize2) -SkuProfileAllocationStrategy "CapacityOptimized";
+        $vmss = New-AzVmssConfig -Location $loc -Zone "1" -SkuCapacity 2 -SkuProfileVmSize @("Standard_D4s_v3", "Standard_D4s_v4") -SkuProfileAllocationStrategy "CapacityOptimized";
         
         Assert-AreEqual $vmss.Sku.Name "Mix";
         Assert-AreEqual $vmss.SkuProfile.AllocationStrategy "CapacityOptimized";
@@ -5440,7 +5434,7 @@ function Test-VirtualMachineScaleSetSkuProfile
         $imgRef = Get-DefaultCRPImage -loc $loc -New $True;
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId -PublicIPAddressConfigurationName $ipName -PublicIPAddressConfigurationIdleTimeoutInMinutes 10 -DnsSetting "testvmssdnscom" -PublicIPAddressVersion "IPv4";
 
-        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -UpgradePolicyMode 'Manual' -EncryptionAtHost -SecurityType $stnd -VMSizes @($vmSize1, $vmSize2) -SkuProfileAllocationStrategy "CapacityOptimized"`
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -UpgradePolicyMode 'Manual' -EncryptionAtHost -SecurityType $stnd -SkuProfileVmSize @("Standard_D4s_v3", "Standard_D4s_v4") -SkuProfileAllocationStrategy "CapacityOptimized"`
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
@@ -5456,7 +5450,7 @@ function Test-VirtualMachineScaleSetSkuProfile
         Assert-AreEqual $vmssResult.SkuProfile.VMSizes[1].Name "Standard_D4s_v4";
 
         # update vmss
-        $vmssUpdate = Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -SkuCapacity 3 -VMSizes @($vmSize1, $vmSize2) -SkuProfileAllocationStrategy "CapacityOptimized";
+        $vmssUpdate = Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -SkuCapacity 3 -SkuProfileVmSize @($vmSize1, $vmSize2) -SkuProfileAllocationStrategy "CapacityOptimized";
 
         $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
 

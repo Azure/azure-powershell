@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = SimpleParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Array of VM sizes for the scale set.")]
-        public SkuProfileVMSize[] VmSizes { get; set; }
+        public string[] SkuProfileVmSize { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -421,6 +421,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                 }
 
+                SkuProfileVMSize[] skuProfileVmSizes = null;
+                if (_cmdlet.IsParameterBound(c => c.SkuProfileVmSize))
+                {
+                    List<SkuProfileVMSize> skuProfileVMSizeList = new List<SkuProfileVMSize>();
+                    foreach (string vmSize in _cmdlet.SkuProfileVmSize)
+                    {
+                        skuProfileVMSizeList.Add(new SkuProfileVMSize()
+                        {
+                            Name = vmSize,
+                        });
+                    }
+                    skuProfileVmSizes = skuProfileVMSizeList.ToArray();
+                }
+
                 Dictionary<string, List<string>> auxAuthHeader = null;
                 if (!string.IsNullOrEmpty(_cmdlet.ImageReferenceId))
                 {
@@ -480,7 +494,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     enableVtpm: _cmdlet.EnableVtpm,
                     enableSecureBoot: _cmdlet.EnableSecureBoot,
                     enableAutomaticOSUpgradePolicy: _cmdlet.EnableAutomaticOSUpgrade == true ? true : (bool?)null,
-                    vmSizes: _cmdlet.VmSizes,
+                    skuProfileVmSize: skuProfileVmSizes,
                     skuProfileAllocationStrategy: _cmdlet.SkuProfileAllocationStrategy,
                     ifMatch: _cmdlet.IfMatch,
                     ifNoneMatch: _cmdlet.IfNoneMatch
@@ -584,6 +598,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 var hostGroup = resourceGroup.CreateDedicatedHostGroupSubResourceFunc(_cmdlet.HostGroupId);
 
+                SkuProfileVMSize[] skuProfileVmSizes = null;
+                if (_cmdlet.IsParameterBound(c => c.SkuProfileVmSize))
+                {
+                    List<SkuProfileVMSize> skuProfileVMSizeList = new List<SkuProfileVMSize>();
+                    foreach (string vmSize in _cmdlet.SkuProfileVmSize)
+                    {
+                        skuProfileVMSizeList.Add(new SkuProfileVMSize()
+                        {
+                            Name = vmSize,
+                        });
+                    }
+                    skuProfileVmSizes = skuProfileVMSizeList.ToArray();
+                }
+
                 Dictionary<string, List<string>> auxAuthHeader = null;
                 if (!string.IsNullOrEmpty(_cmdlet.ImageReferenceId))
                 {
@@ -611,7 +639,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     imageAndOsType: ImageAndOsType,
                     adminUsername: _cmdlet.Credential.UserName,
                     adminPassword: new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
-                    vmSize: _cmdlet.IsParameterBound(c => c.VmSizes) && !_cmdlet.IsParameterBound(c => c.VmSize) ? vmSizeMix : _cmdlet.VmSize,
+                    vmSize: _cmdlet.IsParameterBound(c => c.SkuProfileVmSize) && !_cmdlet.IsParameterBound(c => c.VmSize) ? vmSizeMix : _cmdlet.VmSize,
                     instanceCount: _cmdlet.InstanceCount,
                     dataDisks: _cmdlet.DataDiskSizeInGb,
                     zones: _cmdlet.Zone,
@@ -634,7 +662,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     enableVtpm: _cmdlet.EnableVtpm,
                     enableSecureBoot: _cmdlet.EnableSecureBoot,
                     enableAutomaticOSUpgradePolicy: _cmdlet.EnableAutomaticOSUpgrade == true ? true : (bool?)null,
-                    vmSizes: _cmdlet.VmSizes,
+                    skuProfileVmSize: skuProfileVmSizes,
                     skuProfileAllocationStrategy: _cmdlet.SkuProfileAllocationStrategy,
                     auxAuthHeader: auxAuthHeader,
                     ifMatch: _cmdlet.IfMatch,
