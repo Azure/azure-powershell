@@ -34,14 +34,18 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="description">A description of the network group.
         /// </param>
 
+        /// <param name="memberType">The type of the group member.
+        /// Possible values include: &#39;VirtualNetwork&#39;, &#39;Subnet&#39;</param>
+
         /// <param name="resourceGuid">Unique identifier for this resource.
         /// </param>
-        public ConfigurationGroup(string id = default(string), string provisioningState = default(string), string description = default(string), string resourceGuid = default(string))
+        public ConfigurationGroup(string id = default(string), string provisioningState = default(string), string description = default(string), string memberType = default(string), string resourceGuid = default(string))
 
         {
             this.Id = id;
             this.ProvisioningState = provisioningState;
             this.Description = description;
+            this.MemberType = memberType;
             this.ResourceGuid = resourceGuid;
             CustomInit();
         }
@@ -69,6 +73,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.description")]
         public string Description {get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of the group member. Possible values include: &#39;VirtualNetwork&#39;, &#39;Subnet&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.memberType")]
+        public string MemberType {get; set; }
 
         /// <summary>
         /// Gets unique identifier for this resource.

@@ -7,15 +7,14 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for ConfigurationType.
+    /// Defines values for ExceptionEntryMatchVariable.
     /// </summary>
 
 
-    public static class ConfigurationType
+    public static class ExceptionEntryMatchVariable
     {
-        public const string SecurityAdmin = "SecurityAdmin";
-        public const string Connectivity = "Connectivity";
-        public const string SecurityUser = "SecurityUser";
-        public const string Routing = "Routing";
+        public const string RequestURI = "RequestURI";
+        public const string RemoteAddr = "RemoteAddr";
+        public const string RequestHeader = "RequestHeader";
     }
 }
