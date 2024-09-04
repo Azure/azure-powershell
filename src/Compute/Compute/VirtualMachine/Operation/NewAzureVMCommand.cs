@@ -458,7 +458,7 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = SimpleParameterSet,
             HelpMessage = "Specify the type of SSH key to generate. Allowed values are 'Ed25519' and 'RSA'.")]
         [ValidateSet("Ed25519", "RSA")]
-        public string GenerateSshKeyType { get; set; }
+        public string SshKeyType { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -1620,7 +1620,7 @@ namespace Microsoft.Azure.Commands.Compute
                     SshPublicKeyResource sshkey = new SshPublicKeyResource();
                     sshkey.Location = this.Location != null ? this.Location : "eastus";
                     SshPublicKey = this.ComputeClient.ComputeManagementClient.SshPublicKeys.Create(this.ResourceGroupName, this.SshKeyName, sshkey);
-                    SshPublicKeyGenerateKeyPairResult keypair = this.ComputeClient.ComputeManagementClient.SshPublicKeys.GenerateKeyPair(this.ResourceGroupName, this.SshKeyName, this.GenerateSshKeyType);
+                    SshPublicKeyGenerateKeyPairResult keypair = this.ComputeClient.ComputeManagementClient.SshPublicKeys.GenerateKeyPair(this.ResourceGroupName, this.SshKeyName, this.SshKeyType);
 
                     string sshFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh");
                     if (!Directory.Exists(sshFolder))
