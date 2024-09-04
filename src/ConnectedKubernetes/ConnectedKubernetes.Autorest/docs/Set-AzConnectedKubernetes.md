@@ -52,14 +52,15 @@ Set-AzConnectedKubernetes -DisableGateway -InputObject <IConnectedCluster> [-Con
 
 ### SetEnableGateway
 ```
-Set-AzConnectedKubernetes -EnableGateway [-ContainerLogPath <String>] [-DisableAutoUpgrade] [-HttpProxy <Uri>]
- [-HttpsProxy <Uri>] [-NoProxy <String>] [-ProxyCert <String>] [-SubscriptionId <String>] [-AcceptEULA]
- [-AzureHybridBenefit <AzureHybridBenefit>] [-ConfigurationProtectedSetting <Hashtable>]
- [-ConfigurationSetting <Hashtable>] [-CustomLocationsOid <String>] [-Distribution <String>]
- [-DistributionVersion <String>] [-GatewayResourceId <String>] [-Infrastructure <String>]
- [-KubeConfig <String>] [-KubeContext <String>] [-PrivateLinkScopeResourceId <String>]
- [-PrivateLinkState <PrivateLinkState>] [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzConnectedKubernetes -EnableGateway -InputObject <IConnectedCluster> [-ContainerLogPath <String>]
+ [-DisableAutoUpgrade] [-HttpProxy <Uri>] [-HttpsProxy <Uri>] [-NoProxy <String>] [-ProxyCert <String>]
+ [-SubscriptionId <String>] [-AcceptEULA] [-AzureHybridBenefit <AzureHybridBenefit>]
+ [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
+ [-CustomLocationsOid <String>] [-Distribution <String>] [-DistributionVersion <String>]
+ [-GatewayResourceId <String>] [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>]
+ [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
+ [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetExpandedDisableGateway
@@ -86,18 +87,6 @@ Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -Ena
  [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
  [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### SetGatewayEnabled
-```
-Set-AzConnectedKubernetes -InputObject <IConnectedCluster> [-ContainerLogPath <String>] [-DisableAutoUpgrade]
- [-HttpProxy <Uri>] [-HttpsProxy <Uri>] [-NoProxy <String>] [-ProxyCert <String>] [-SubscriptionId <String>]
- [-AcceptEULA] [-AzureHybridBenefit <AzureHybridBenefit>] [-ConfigurationProtectedSetting <Hashtable>]
- [-ConfigurationSetting <Hashtable>] [-CustomLocationsOid <String>] [-Distribution <String>]
- [-DistributionVersion <String>] [-GatewayResourceId <String>] [-Infrastructure <String>]
- [-KubeConfig <String>] [-KubeContext <String>] [-PrivateLinkScopeResourceId <String>]
- [-PrivateLinkState <PrivateLinkState>] [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -404,7 +393,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster
-Parameter Sets: Set, SetDisableGateway, SetGatewayEnabled
+Parameter Sets: Set, SetDisableGateway, SetEnableGateway
 Aliases:
 
 Required: True

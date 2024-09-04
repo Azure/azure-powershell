@@ -1,5 +1,3 @@
-[System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '',
-    Justification = 'Helm values is a recognised term', Scope = 'Function', Target = 'Get-HelmValues')]
 [CmdletBinding()]
 param()
 
@@ -120,67 +118,6 @@ function IsAmd64 {
         $isSupport = [Environment]::Is64BitOperatingSystem -and ($env:PROCESSOR_ARCHITECTURE -eq "AMD64")
         return $isSupport
     }
-}
-
-function Get-HelmValues {
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
-    param (
-        [Parameter(Mandatory = $true)]
-        $ConfigDpEndpoint,
-        [string]$ReleaseTrainCustom,
-        [Parameter(Mandatory = $true)]
-        [string]$RequestBody
-    )
-
-    # Setting uri
-    Write-Debug "Preparing to retrieve Helm values from the API."
-    $apiVersion = "2024-07-01-preview"
-    $chartLocationUrlSegment = "azure-arc-k8sagents/GetHelmSettings"
-    $releaseTrain = if ($env:RELEASETRAIN) { $env:RELEASETRAIN } else { "stable" }
-    $chartLocationUrl = "$ConfigDpEndpoint/$chartLocationUrlSegment"
-    if ($ReleaseTrainCustom) {
-        $releaseTrain = $ReleaseTrainCustom
-    }
-    $uriParameters = [ordered]@{
-        "api-version" = $apiVersion
-        releaseTrain  = $releaseTrain
-    }
-    $headers = @{
-        "Content-Type" = "application/json"
-    }
-    if ($env:AZURE_ACCESS_TOKEN) {
-        $headers["Authorization"] = "Bearer $($env:AZURE_ACCESS_TOKEN)"
-    }
-    Write-Debug "Sending request to retrieve Helm values."
-
-    # Sending request with retries
-    try {
-        Write-Verbose "Calculating Azure Arc resources required by Kubernetes cluster"
-        $r = Invoke-RestMethodWithUriParameters `
-            -Method 'post' `
-            -Uri $chartLocationUrl `
-            -Headers $headers `
-            -UriParameters $uriParameters `
-            -RequestBody $RequestBody `
-            -MaximumRetryCount 5 `
-            -RetryIntervalSec 3 `
-            -StatusCodeVariable StatusCode `
-            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
-            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
-
-        # Response is a Hashtable of JSON values.
-        if ($StatusCode -eq 200 -and $r) {
-            Write-Debug "Successfully retrieved Helm values."
-            return $r
-        }
-    }
-    catch {
-        $errorMessage = "Error while fetching helm values from DP from JSON response: $_"
-        Write-Error $errorMessage
-        throw $errorMessage
-    }
-    # Reach here and we received either a non-200 status code or no response.
-    throw "No content was found in helm registry path response, StatusCode: ${StatusCode}."
 }
 
 function Get-HelmChartPath {
@@ -386,10 +323,10 @@ function Get-HelmReleaseNamespaces {
         Write-Error "Fail to find the namespace for azure-arc."
     }
     #  return @{"site" = $($site); "app" = $($app)}
-    return , @{"ReleaseNamespace" = $($ReleaseNamespace); "ReleaseInstallNamespace"= $($ReleaseInstallNamespace)}
+    return , @{"ReleaseNamespace" = $($ReleaseNamespace); "ReleaseInstallNamespace" = $($ReleaseInstallNamespace) }
 }
 
-function Validate-HelmVersion {
+function Confirm-HelmVersion {
     param (
         [string]$KubeConfig
     )
