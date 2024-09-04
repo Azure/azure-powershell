@@ -20,6 +20,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
@@ -271,7 +272,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (ShouldProcess(Name, Properties.Resources.SetCertificatePolicy))
             {
 
-                ValidateArguments(RenewAtNumberOfDaysBeforeExpiry, RenewAtPercentageLifetime);
+                ValidateArguments();
                 PSKeyVaultCertificatePolicy policy = new PSKeyVaultCertificatePolicy();
 
                 switch (ParameterSetName)
@@ -316,17 +317,17 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
 
 
-        private void ValidateArguments(int? RenewAtNumberOfDaysBeforeExpiry, int? RenewAtPercentageLifetime)
+        private void ValidateArguments()
         {
             // Manually Validate `RenewAtNumberOfDaysBeforeExpiry` and `RenewAtPercentageLifetime`
             if (RenewAtNumberOfDaysBeforeExpiry.HasValue && (RenewAtNumberOfDaysBeforeExpiry < 1 || RenewAtNumberOfDaysBeforeExpiry > int.MaxValue))
             {
-                throw new Common.Exceptions.AzPSArgumentOutOfRangeException("Value must be between 1 and int.MaxValue.", nameof(RenewAtNumberOfDaysBeforeExpiry));
+                throw new AzPSArgumentOutOfRangeException(Properties.Resources.InvalidRangeDaysBeforeExpiry, nameof(RenewAtNumberOfDaysBeforeExpiry));
             }
 
             if (RenewAtPercentageLifetime.HasValue && (RenewAtPercentageLifetime < 0 || RenewAtPercentageLifetime > 99))
             {
-                throw new Common.Exceptions.AzPSArgumentOutOfRangeException("Value must be between 0 and 99.", nameof(RenewAtPercentageLifetime));
+                throw new AzPSArgumentOutOfRangeException(Properties.Resources.InvalidRangePercentageLifetime, nameof(RenewAtPercentageLifetime));
             }
         }
     }
