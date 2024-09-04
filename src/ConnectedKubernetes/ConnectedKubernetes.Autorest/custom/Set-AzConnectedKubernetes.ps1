@@ -293,7 +293,8 @@ function Set-AzConnectedKubernetes {
         Test-ConfigurationSyntax -name 'ConfigurationSetting'
         Test-ConfigurationSyntax -configuration 'ConfigurationProtectedSetting'
 
-        $ProtectedSettingsPlaceholderValue = "redacted"
+        # $ProtectedSettingsPlaceholderValue = "redacted"
+        $ProtectedSettingsPlaceholderValue = "ClientKnown"
 
         if ($AzureHybridBenefit) {
             if (!$AcceptEULA) {
@@ -566,7 +567,8 @@ function Set-AzConnectedKubernetes {
                 $RedactedProtectedConfiguration[$feature] = @{}
             }
             foreach ($setting in $ConfigurationProtectedSetting[$feature].Keys) {
-                $RedactedProtectedConfiguration[$feature][$setting] = "$ProtectedSettingsPlaceholderValue-$feature-$setting"
+                # $RedactedProtectedConfiguration[$feature][$setting] = "$ProtectedSettingsPlaceholderValue-$feature-$setting"
+                $RedactedProtectedConfiguration[$feature][$setting] = "$feature.$setting.$ProtectedSettingsPlaceholderValue"
             }
         }
         #Endregion
@@ -624,7 +626,7 @@ function Set-AzConnectedKubernetes {
         $Response = ConvertFrom-Json "$Response" -AsHashTable -Depth 10
         
         # Whatif may return empty response
-        if(-not $Response) {
+        if (-not $Response) {
             $Response = @{}
         }
         if (-not $Response.ContainsKey('properties')) {
@@ -658,8 +660,10 @@ function Set-AzConnectedKubernetes {
             foreach ($field in $helmValuesContent.PSObject.Properties) {
                 if ($ProtectedSettingsPlaceholderValue -in $field.Value) {
                     $parsedValue = $field.Value.Split("-")
-                    # "$ProtectedSettingsPlaceholderValue-$feature-$setting"
-                    $field.Value = $ConfigurationProtectedSetting[$parsedValue[1]][$parsedValue[2]]
+                    # # "$ProtectedSettingsPlaceholderValue-$feature-$setting"
+                    # $field.Value = $ConfigurationProtectedSetting[$parsedValue[1]][$parsedValue[2]]
+                    # "$feature.$setting.$ProtectedSettingsPlaceholderValue"
+                    $field.Value = $ConfigurationProtectedSetting[$parsedValue[0]][$parsedValue[1]]
                 }
                 if ($field.Name -eq "global.proxyCert") {
                     $options += " --set-file $($field.Name)=$($field.Value)"
