@@ -5,7 +5,7 @@ Invoke-LiveTestScenario -Name "Create, get, update and remove a new SQL Server" 
     $rgName = $rg.ResourceGroupName
     $location = "eastus"
     $adminSqlLogin = New-LiveTestResourceName
-    $password = "password@123"
+    $password = "*****"
     $serverName = New-LiveTestResourceName
     # Create a Sql Server
     $actual = New-AzSqlServer -ResourceGroupName $rgName `
@@ -18,7 +18,7 @@ Invoke-LiveTestScenario -Name "Create, get, update and remove a new SQL Server" 
     $actual = Get-AzSqlServer -ResourceGroupName $rgName -ServerName $serverName
     Assert-AreEqual $serverName $actual.ServerName
     # Update a Sql server
-    $updatedPassword = "newpassword@123"
+    $updatedPassword = "*****"
     $secureString = ConvertTo-SecureString $updatedPassword -AsPlainText -Force
     $null = Set-AzSqlServer -ResourceGroupName $rgName -ServerName $serverName -PublicNetworkAccess Disabled
     $actual = Get-AzSqlServer -ResourceGroupName $rgName -ServerName $serverName
@@ -37,7 +37,7 @@ $RgName = $ServerResourceGroup.ResourceGroupName
 $ResourceGroupLocation = $ServerResourceGroup.Location
 Write-Host "##[section]Successfully created the resource group for sql server." -ForegroundColor Green
 $AdminSqlLogin = New-LiveTestResourceName
-$Password = "password@1234"
+$Password = "*****"
 $ServerName = New-LiveTestResourceName
 
 $SqlServer = New-AzSqlServer -ResourceGroupName $RgName `

@@ -29,7 +29,7 @@ Invoke-LiveTestScenario -Name "Removes a virtual machine from Azure" -Descriptio
     $name = New-LiveTestResourceName
 
     $VMLocalAdminUser = New-LiveTestResourceName;
-    $VMLocalAdminSecurePassword = ConvertTo-SecureString "Aalexwdy5#" -AsPlainText -Force;
+    $VMLocalAdminSecurePassword = ConvertTo-SecureString "*****" -AsPlainText -Force;
     $LocationName = "eastus";
     $domainNameLabel = New-LiveTestResourceName;
     $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);

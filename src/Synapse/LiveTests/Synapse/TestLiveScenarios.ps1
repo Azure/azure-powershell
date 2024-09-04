@@ -34,7 +34,7 @@ Invoke-LiveTestScenario -Name "Create synapse data flow" -Description "Test crea
     $file = "$fileName.json"
 
     $username = "sqladmin"
-    $password = ConvertTo-SecureString "Password123!" -AsPlainText -Force
+    $password = ConvertTo-SecureString "*****" -AsPlainText -Force
     $sqlAdminCred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $username, $password
     New-AzSynapseWorkspace -Name $wsName -ResourceGroupName $rgName -Location $location -DefaultDataLakeStorageAccountName $saName -DefaultDataLakeStorageFilesystem $fsName -SqlAdministratorLoginCredential $sqlAdminCred
     New-AzSynapseFirewallRule -WorkspaceName $wsName -AllowAllIp
