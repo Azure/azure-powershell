@@ -135,7 +135,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
             catch (Exception ex)
             {
                 TraceLog(ex.ToString(), EventLevel.Error);
-                throw;
+                //throw;
+                serverInfo = new ManagedIdentityConfigurationInfo(LocalServerType.HybridServer, RegisteredServerAuthType.Certificate);
             }
 
             return serverInfo;
