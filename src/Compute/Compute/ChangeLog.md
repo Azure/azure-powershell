@@ -20,6 +20,9 @@
 
 -->
 ## Upcoming Release
+* Added `EnableResilientVMCreate` and `EnableResilientVMDelete` parameters to `Update-AzVmss` and `New-AzVmssConfig` cmdlets for enhanced VM resilience options.
+
+## Version 8.3.0
 * Fixed secrets exposure in example documentation.
 * References are updated to use 2024-07-01 ComputeRP and 2024-03-02 DiskRP REST API calls.
 * Added information on how to find VM Images when using `New-AzVM` with `-Image` parameter.

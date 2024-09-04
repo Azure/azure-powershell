@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.3
 * Added warnings for upcoming breaking changes to align the MI best practices.
 
 ## Version 1.0.2
