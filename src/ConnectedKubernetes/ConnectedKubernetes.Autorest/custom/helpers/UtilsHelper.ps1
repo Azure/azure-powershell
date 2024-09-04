@@ -56,22 +56,30 @@ function ConvertTo-ArcAgentryConfiguration {
 
     # Do not send protected settings to CCRP
     foreach ($feature in $combinedKeys) {
+
+        $settings = ($ConfigurationSetting.ContainsKey($feature) ? $ConfigurationSetting[$feature] : @{})
         if ($CCRP) {
             $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
                 Feature = $feature
-                Setting = $ConfigurationSetting[$feature]
+                Setting = $settings
             }
-        } else {
+        }
+        else {
+            # We pass redacted protected settings to the Config DP but we pass
+            # them via the "settings" field!
+            if ($RedactedProtectedConfiguration.ContainsKey($feature)) {
+                $settings += $RedactedProtectedConfiguration[$feature]
+            }
             $ArcAgentryConfiguration = @{
-                "Feature"          = $feature
-                "Setting"          = ($ConfigurationSetting.ContainsKey($feature) ? $ConfigurationSetting[$feature] : @{})
-                "ProtectedSetting" = ($RedactedProtectedConfiguration.ContainsKey($feature) ? $RedactedProtectedConfiguration[$feature] : @{})
+                Feature  = $feature
+                Settings = $settings
             }
         }
         $null = $arcAgentryConfigs.Add($ArcAgentryConfiguration)
     }
 
-    return $arcAgentryConfigs
+    # Force only returning the list and not anything else!
+    return (, $arcAgentryConfigs)
 }
 
 # Note that this method edits the script variable PSBoundParameters.
