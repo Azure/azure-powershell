@@ -915,6 +915,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 if (!this.IsParameterBound(c => c.SkuName))
                 {
+                    if (vSku == null)
+                    {
+                        vSku = new Sku();
+                    }
                     vSku.Name = VmSizeMix;
                 }
             }
