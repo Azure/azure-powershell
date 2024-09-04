@@ -84,6 +84,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             switch (this.ParameterSetName)
             {
                 case Constants.ShareParameterSetName:
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
                     share = this.ShareClient;
                     this.SnapshotTime = Util.GetSnapshotTimeFromUri(share.Uri);
                     break;

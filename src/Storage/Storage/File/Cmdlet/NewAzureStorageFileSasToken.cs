@@ -67,12 +67,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         public string Path { get; set; }
 
         [Parameter(Mandatory = true,
-            HelpMessage = "CloudFile instance to represent the file to get SAS token against.",
+            HelpMessage = "ShareFlieClient instance to represent the file to get SAS token against.",
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = FileClientSasPermissionParameterSet)]
         [Parameter(Mandatory = true,
-            HelpMessage = "CloudFile instance to represent the file to get SAS token against.",
+            HelpMessage = "ShareFileClient instance to represent the file to get SAS token against.",
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = FileClientSasPolicyParameterSet)]
@@ -136,6 +136,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             if (null != this.ShareFileClient)
             {
+                CheckContextForObjectInput((AzureStorageContext)this.Context);
                 fileClient = this.ShareFileClient;
                 shareClient = Util.GetTrack2ShareReference(fileClient.ShareName,
                         (AzureStorageContext)this.Context,

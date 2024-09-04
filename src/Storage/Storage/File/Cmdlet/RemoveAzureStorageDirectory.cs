@@ -78,6 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             switch (this.ParameterSetName)
             {
                 case Constants.DirectoryParameterSetName:
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
                     baseDirClient = this.ShareDirectoryClient;
                     break;
 
@@ -89,6 +90,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     break;
 
                 case Constants.ShareParameterSetName:
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
                     baseDirClient = this.ShareClient.GetRootDirectoryClient();
                     break;
 

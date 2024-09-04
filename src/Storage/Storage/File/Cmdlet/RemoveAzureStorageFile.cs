@@ -88,6 +88,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             switch (this.ParameterSetName)
             {
                 case Constants.FileParameterSetName:
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
                     fileToBeRemoved = this.ShareFileClient;
                     break;
 
@@ -98,10 +99,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     break;
 
                 case Constants.ShareParameterSetName:
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
                     fileToBeRemoved = this.ShareClient.GetRootDirectoryClient().GetFileClient(this.Path);
                     break;
 
                 case Constants.DirectoryParameterSetName:
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
                     fileToBeRemoved = this.ShareDirectoryClient.GetFileClient(this.Path);
                     break;
 

@@ -67,6 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             if (this.ShareFileClient != null)
             {
+                CheckContextForObjectInput((AzureStorageContext)this.Context);
                 file = this.ShareFileClient;
             }
             else

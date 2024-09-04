@@ -120,6 +120,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(Mandatory = false, ParameterSetName = FileFileParameterSet, HelpMessage = "ShareFileClient object indicated the Dest file.")]
         [Parameter(Mandatory = false, ParameterSetName = UriFileParameterSet, HelpMessage = "ShareFileClient object indicated the Dest file.")]
         [ValidateNotNull]
+        [Alias("DestFile")]
         public ShareFileClient DestShareFileClient { get; set; }
 
         [Alias("SrcContext")]

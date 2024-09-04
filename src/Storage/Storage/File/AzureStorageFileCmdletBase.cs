@@ -134,5 +134,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             }
             return false;
         }
+
+        protected void CheckContextForObjectInput(AzureStorageContext context)
+        {
+            if (context == null)
+            {
+                throw new InvalidOperationException("Could not get the storage context. Please pass in a storage context with \"-Context\" parameter (can be created with New-AzStorageContext cmdlet), " +
+                            "or set the current storage context with Set-AzCurrentStorageAccount cmdlet.");
+            }
+        }
     }
 }

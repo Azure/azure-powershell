@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 using Azure.Storage.Files.Shares;
 using Azure.Storage.Files.Shares.Models;
+using System;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
@@ -73,6 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     break;
 
                 case Constants.ShareParameterSetName:
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
                     share = this.ShareClient;
                     break;
 
