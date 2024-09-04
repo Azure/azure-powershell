@@ -499,7 +499,7 @@ Accept wildcard characters: False
 
 ### -Sku
 The type of Redis Enterprise cluster to deploy.
-Allowed values: Enterprise_E10, Enterprise_E20, Enterprise_E50, Enterprise_E100, EnterpriseFlash_F300, EnterpriseFlash_F700, EnterpriseFlash_F1500
+Allowed values: Enterprise_E1, Enterprise_E5, Enterprise_E10, Enterprise_E20, Enterprise_E50, Enterprise_E100, Enterprise_E400, Enterprise_E400,EnterpriseFlash_F300, EnterpriseFlash_F700, EnterpriseFlash_F1500
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName
