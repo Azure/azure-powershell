@@ -14,6 +14,11 @@
 # is regenerated.
 # ----------------------------------------------------------------------------------
 
+[System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '',
+    Justification = 'Kubernetes is a recognised term', Scope = 'Function', Target = 'New-AzConnectedKubernetes')]
+[CmdletBinding()]
+param()
+
 <#
 .Synopsis
 API to register a new Kubernetes cluster and create a tracked resource in Azure Resource Manager (ARM).
@@ -29,12 +34,6 @@ Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview
 .Link
 https://learn.microsoft.com/powershell/module/az.connectedkubernetes/new-azconnectedkubernetes
 #>
-
-[System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '',
-    Justification = 'Kubernetes is a recognised term', Scope = 'Function', Target = 'New-AzConnectedKubernetes')]
-[CmdletBinding()]
-param()
-
 function New-AzConnectedKubernetes {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', SupportsShouldProcess, PositionalBinding = $false, ConfirmImpact = 'Medium')]
