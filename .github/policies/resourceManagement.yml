@@ -208,7 +208,6 @@ configuration:
         - mentionUsers:
             mentionees:
             - athipp
-            - taiwu
             - minghan
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
@@ -481,6 +480,24 @@ configuration:
             - jim-minter
             - julienstroheker
             - amanohar
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: ASTRO
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: ASTRO
+        then:
+        - mentionUsers:
+            mentionees:
+            - Reshmi-Sriram
+            - banggaurav
+            - charanjeet2008
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -1007,6 +1024,22 @@ configuration:
         - mentionUsers:
             mentionees:
             - swmachan
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: Cognitive Services
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Cognitive Services
+        then:
+        - mentionUsers:
+            mentionees:
+            - gxy001
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -1917,6 +1950,22 @@ configuration:
         - mentionUsers:
             mentionees:
             - arpit-gagneja
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: ElasticSan
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: ElasticSan
+        then:
+        - mentionUsers:
+            mentionees:
+            - blueww
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -3339,6 +3388,23 @@ configuration:
         - mentionUsers:
             mentionees:
             - ricardo-espinoza
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: Quota
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Quota
+        then:
+        - mentionUsers:
+            mentionees:
+            - rahuls-microsoft
+            - devatula
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:

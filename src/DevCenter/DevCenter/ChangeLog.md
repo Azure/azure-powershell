@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.0
 * Fixed secrets exposure in example documentation.
 * Updated control plane to 2024-05-01-preview and added deprecation warnings
 

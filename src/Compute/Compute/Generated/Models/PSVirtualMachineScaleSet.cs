@@ -74,5 +74,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         //     api-version: 2022-03-01.
         public DateTime? TimeCreated { get; private set; }
         public string Etag { get; private set; }
+
+        public ResiliencyPolicy ResiliencyPolicy { get; set; }
     }
 }
