@@ -25,6 +25,16 @@
 * Added support for `DefaultOutboundAccess` property in `Set-AzVirtualNetworkSubnetConfig` command
 * Added support for `EnabledFilteringCriteria` property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
 * Added support of `UserAssignedIdentityId` Property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
+* Onboarded Azure Virtual Network Manager Cmdlets for IpamPool
+    'Get-AzNetworkManagerAssociatedResourcesList',
+    'Get-AzNetworkManagerIpamPool',
+    'Get-AzNetworkManagerIpamPoolStaticCidr',
+    'Get-AzNetworkManagerIpamPoolUsage',
+    'New-AzNetworkManagerIpamPool',
+    'New-AzNetworkManagerIpamPoolStaticCidr',
+    'Remove-AzNetworkManagerIpamPool',
+    'Remove-AzNetworkManagerIpamPoolStaticCidr',
+    'Set-AzNetworkManagerIpamPool'
 
 ## Version 7.8.0
 * Added new cmdlets to support Save & Commit (AzureFirewallPolicy draft)

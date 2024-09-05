@@ -699,3 +699,55 @@ function Test-NetworkManagerResourceMinimumParameterCreate
         Clean-ResourceGroup $rgname
 	}
 }
+
+function Test-NetworkManagerIpamPoolCRUD
+{
+    # Setup
+    # Need to update subscriptionId before runing in live mode
+    $rgName = Get-ResourceGroupName
+    $networkManagerName = Get-ResourceName
+    $ipamPoolName = Get-ResourceName
+    $rglocation = "centraluseuap"
+    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
+    $addressPrefixes  = @("10.0.0.0/8")
+
+    try{
+        #Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation -Tags @{ testtag = "testval" } 
+
+        # Create Scope
+        $subscriptions  = @($subscriptionId)
+        $managementGroups  = @($managementGroupId)
+        $scope = New-AzNetworkManagerScope -Subscription $subscriptions
+
+        # Define access
+        $access  = @("Connectivity")
+
+        # Create network manager
+        New-AzNetworkManager -ResourceGroupName $rgName -Name $networkManagerName -NetworkManagerScope $scope -NetworkManagerScopeAccess $access -Location $rglocation
+
+        # Create ipam pool
+        New-AzNetworkManagerIpamPool -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $ipamPoolName -Location $rglocation -AddressPrefixes $addressPrefixes
+
+        $ipamPool = Get-AzNetworkManagerIpamPool -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $ipamPoolName
+        Assert-NotNull $ipamPool;
+        Assert-AreEqual $ipamPoolName $ipamPool.Name;
+        Assert-AreEqual $rglocation $ipamPool.Location;
+        Assert-AreEqual $ipamPool.Properties.AddressPrefixes[0] $addressPrefixes[0];
+
+        # Update access
+        $ipamPool.Properties.AddressPrefixes.Add("11.0.0.0/8");
+        $newIpamPool = Set-AzNetworkManagerIpamPool -InputObject $ipamPool
+        Assert-AreEqual  $newIpamPool.Properties.AddressPrefixes[0] "10.0.0.0/8";
+        Assert-AreEqual  $newIpamPool.Properties.AddressPrefixes[1] "11.0.0.0/8";
+
+        # Delete network manager
+        $job = Remove-AzNetworkManagerIpamPool -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $ipamPoolName -PassThru -Force -AsJob;
+        $job | Wait-Job;
+        $removeResult = $job | Receive-Job;
+	}
+    finally{
+        # Cleanup
+        Clean-ResourceGroup $rgName
+	}
+}
