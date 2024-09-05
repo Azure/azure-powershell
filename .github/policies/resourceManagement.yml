@@ -731,6 +731,22 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
+              label: Cloud Service (Ext)
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Cloud Service (Ext)
+        then:
+        - mentionUsers:
+            mentionees:
+            - hirenshah1
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
               label: Cloud Shell
         - hasLabel:
             label: Service Attention
@@ -1615,7 +1631,6 @@ configuration:
             mentionees:
             - edwinc
             - mvvsubbu
-            - v-vyedavelly
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -2384,6 +2399,23 @@ configuration:
         - mentionUsers:
             mentionees:
             - Lighthouse-Azure
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: Management Groups
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Management Groups
+        then:
+        - mentionUsers:
+            mentionees:
+            - rthorn17
+            - cemheren
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
