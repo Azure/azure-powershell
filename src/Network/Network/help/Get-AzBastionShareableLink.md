@@ -243,4 +243,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-### [Bastion ShareableLink](https://aka.ms/bastionshareablelink)
+[Bastion Shareable Link](https://aka.ms/bastionshareablelink)
