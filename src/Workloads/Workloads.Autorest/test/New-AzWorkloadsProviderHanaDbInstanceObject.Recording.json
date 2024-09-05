@@ -3,7 +3,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances/suha-hana-1?api-version=2023-04-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"providerSettings\": {\r\n      \"providerType\": \"SapHana\",\r\n      \"hostname\": \"10.0.81.4\",\r\n      \"dbName\": \"SYSTEMDB\",\r\n      \"sqlPort\": \"1433\",\r\n      \"instanceNumber\": \"00\",\r\n      \"dbUsername\": \"SYSTEM\",\r\n      \"dbPassword\": \"mX5Ext661bQN\",\r\n      \"sslPreference\": \"Disabled\",\r\n      \"sapSid\": \"X00\"\r\n    }\r\n  }\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"providerSettings\": {\r\n      \"providerType\": \"SapHana\",\r\n      \"hostname\": \"10.0.81.4\",\r\n      \"dbName\": \"SYSTEMDB\",\r\n      \"sqlPort\": \"1433\",\r\n      \"instanceNumber\": \"00\",\r\n      \"dbUsername\": \"SYSTEM\",\r\n      \"dbPassword\": \"dbPassword\",\r\n      \"sslPreference\": \"Disabled\",\r\n      \"sapSid\": \"X00\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
