@@ -30,17 +30,21 @@ namespace Tools.Common.Loaders
 {
     public class MetadataLoader
     {
+        private static string _rootPath = Path.GetFullPath(Path.Combine(Assembly.GetExecutingAssembly().Location, "..", "..", ".."));
+
         public static ModuleMetadata GetModuleMetadata(string moduleName)
         {
-            string rootPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", ".."));
-            string modulePsd1Path = Directory.GetFiles(Path.Combine(rootPath, "artifacts"), $"{moduleName}.psd1", SearchOption.AllDirectories)[0];
+            // bez: notice that this search way always find artifacts/Debug/{moduleName}/psd1 first, which may cause some issues
+            // to work around this issue, clear Debug folder if we are intended to bump version for Release
+            string modulePsd1Path = Directory.GetFiles(Path.Combine(_rootPath, "artifacts"), $"{moduleName}.psd1", SearchOption.AllDirectories)[0];
             if (modulePsd1Path == null)
             {
-                Console.Error.WriteLine($"Cannot find {moduleName}.psd1 in {Path.Combine(rootPath, "artifacts")}!");
+                Console.Error.WriteLine($"Cannot find {moduleName}.psd1 in {Path.Combine(_rootPath, "artifacts")}!");
             }
             return GetModuleMetadata(moduleName, modulePsd1Path);
         }
-        public static ModuleMetadata GetModuleMetadata(string moduleName, string modulePsd1Path)
+
+        private static ModuleMetadata GetModuleMetadata(string moduleName, string modulePsd1Path)
         {
             using (var powershell = PowerShell.Create(RunspaceMode.NewRunspace))
             {
@@ -49,15 +53,14 @@ namespace Tools.Common.Loaders
                     powershell.AddScript("Set-ExecutionPolicy Unrestricted -Scope Process -ErrorAction Ignore");
                 }
                 powershell.AddScript("$error.clear()");
-                powershell.AddScript($"Write-Debug \"current directory: { AppDomain.CurrentDomain.BaseDirectory }\"");
-                string rootPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", ".."));
-                string repoToolsPath = Path.Combine(rootPath, "tools");
+                powershell.AddScript($"Write-Debug \"current directory: { Assembly.GetExecutingAssembly().Location}\"");
+                string repoToolsPath = Path.Combine(_rootPath, "tools");
                 powershell.AddScript($"cd {repoToolsPath}\\ModuleMetadata");
                 powershell.AddScript($"Import-Module {repoToolsPath}\\ModuleMetadata\\GetModuleMetadata.psm1");
-                string accountsPsd1Path = Directory.GetFiles(Path.Combine(rootPath, "artifacts"), "Az.Accounts.psd1", SearchOption.AllDirectories)[0];
+                string accountsPsd1Path = Directory.GetFiles(Path.Combine(_rootPath, "artifacts"), "Az.Accounts.psd1", SearchOption.AllDirectories)[0];
                 if (accountsPsd1Path == null)
                 {
-                    Console.Error.WriteLine($"Cannot find Az.Accounts.psd1 in {Path.Combine(rootPath, "artifacts", "Accounts")}!");
+                    Console.Error.WriteLine($"Cannot find Az.Accounts.psd1 in {Path.Combine(_rootPath, "artifacts", "Accounts")}!");
                 }
                 powershell.AddScript($"Import-Module {accountsPsd1Path}");
                 powershell.AddScript($"(Get-ModuleMetadata -Psd1Path {modulePsd1Path} -ModuleName {moduleName}).ToJsonString()");

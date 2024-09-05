@@ -215,7 +215,8 @@ function Remove-ResourceGroup
             Write-Output $true
         }
         else {
-            throw ($response.Content | ConvertFrom-Json -Depth 100).error.message
+            $message = "Status: $($response.StatusCode): " + ($response.Content | ConvertFrom-Json -Depth 100).error.message
+            throw $message
         }
     }
 
@@ -250,6 +251,7 @@ if ($UsePreviousConfigForRecord) {
 # example: $val = $env.AddWithCache('key', $val, $true)
 $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) { return $this[$key] } else { $this[$key] = $val; return $val } } -Name 'AddWithCache'
 function setupEnv() {
+    Write-Host -ForegroundColor Magenta "Setting up globals"
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = Get-SubscriptionId
@@ -328,17 +330,29 @@ function setupEnv() {
     $env['invalidPolicyDefinitionReference'] = 'InvalidPolicyDefinitionReference'
     $env['invalidPolicySetDefinitionRequest'] = "[InvalidCreatePolicySetDefinitionRequest] : The policy set definition 'someName' create request is invalid. At least one policy definition must be referenced."
     $env['multiplePolicyDefinitionParams'] = "Cannot bind parameter because parameter 'PolicyDefinition' is specified more than once"
+    $env['versionRequiresNameOrId'] = 'Version is only allowed if Name or Id  are provided.'
+    $env['listVersionsRequiresNameOrId'] = 'ListVersions is only allowed if Name or Id  are provided.'
 
+    # create a couple of test objects
+    $env['customSubDefName'] = Get-ResourceName
+    $env['customSubDefinition'] = New-AzPolicyDefinition -Name $env.customSubDefName -Policy '{ "if": { "field": "location", "equals": "westus" }, "then": { "effect": "audit" } }'
+    $env['customSubSetDefName'] = Get-ResourceName
+    $env['customSubSetDefinition'] = New-AzPolicySetDefinition -Name $env.customSubSetDefName -PolicyDefinition ("[{""policyDefinitionId"":""" + $($env.customSubDefinition).Id + """}]")
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
 
     Write-Host -ForegroundColor Magenta Writing environment file $envFile with $env.Count entries
-    set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
+    set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env -Depth 100)
 }
 function cleanupEnv() {
+
+    Write-Host -ForegroundColor Magenta "Cleaning up globals"
     # Clean resources you create for testing
+    $null = Remove-AzPolicySetDefinition -Name $env.customSubSetDefName -Confirm:$false
+    $null = Remove-AzPolicyDefinition -Name $env.customSubDefName -Confirm:$false
     $null = Remove-AzUserAssignedIdentity -ResourceGroupName $env.rgName -Name $env.userAssignedIdentityName
     $null = Remove-ResourceGroup -Name $env.rgName
+    Write-Host -ForegroundColor Magenta "Finished cleaning up globals"
 }

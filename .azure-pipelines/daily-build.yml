@@ -14,7 +14,7 @@ pr: none
 
 jobs:
 - job: DailyBuild
-  timeoutInMinutes: 180
+  timeoutInMinutes: 360
   pool: pool-windows-2019
   steps:
   - task: PowerShell@2
@@ -58,7 +58,7 @@ jobs:
       script: |
         $command = "`$PSVersionTable `
         Get-PSRepository `
-        ./tools/RunVersionController.ps1 -Release 'Daily Build $(today)' `
+        ./tools/RunVersionController.ps1 -Release 'Daily Build $(today)' -ReleaseType $(ReleaseType)`
         Exit"
         dotnet tool run pwsh -c $command
 
@@ -77,20 +77,15 @@ jobs:
       arguments: 'build.proj /t:Build /p:Configuration=Release;TurnOnTestCoverage=true;ModifiedModuleBuild=true'
 
   - task: EsrpCodeSigning@4
+    displayName: "Sign Dll [Authenticode + Strong Name]"
     inputs:
       ConnectedServiceName: '$(signServiceConnection)'
       FolderPath: 'artifacts'
       Pattern: |
-        Release/**/Microsoft*Azure*PowerShell*Cmdlets*.dll
-        Release/**/Microsoft.Azure.PowerShell.*.Sdk.dll
+        Release/**/Microsoft*Azure*PowerShell*.dll
         Release/**/Az.*.private.dll
-        Release/**/Microsoft.Azure.PowerShell.AssemblyLoading.dll
-        Release/**/Microsoft.Azure.PowerShell.Authentication.dll
-        Release/**/Microsoft.Azure.PowerShell.Authentication.ResourceManager.dll
-        Release/**/Microsoft.Azure.PowerShell.Authenticators.dll
-        Release/**/Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext.dll
         Release/**/Microsoft.Azure.Commands.*.AlcWrapper.dll
-        !Release/**/Microsoft*Azure*PowerShell*Cmdlets*.Test.dll
+        InstallerChecks.dll
       UseMinimatch: true
       signConfigType: 'inlineSignParams'
       inlineOperation: |
@@ -133,7 +128,42 @@ jobs:
       SessionTimeout: '60'
       MaxConcurrency: '50'
       MaxRetryAttempts: '5'
-
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
+    displayName: "Sign Scripts [Authenticode]"
+    inputs:
+      ConnectedServiceName: '$(signServiceConnection)'
+      FolderPath: 'artifacts'
+      Pattern: |
+        Release/**/*.ps1
+        Release/**/*.psm1
+        Release/**/*.ps1xml
+        Release/**/*.js
+        InstallModule.ps1
+      UseMinimatch: true
+      signConfigType: inlineSignParams
+      inlineOperation: |
+        [
+          {
+            "KeyCode": "CP-230012",
+            "OperationCode": "SigntoolSign",
+            "Parameters": {
+              "OpusName": "Microsoft",
+              "OpusInfo": "http://www.microsoft.com",
+              "FileDigest": "/fd \"SHA256\"",
+              "PageHash": "/NPH",
+              "TimeStamp": "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
+            },
+            "ToolName": "sign",
+            "ToolVersion": "1.0"
+          },
+          {
+            "KeyCode": "CP-230012",
+            "OperationCode": "SigntoolVerify",
+            "Parameters": {},
+            "ToolName": "sign",
+            "ToolVersion": "1.0"
+          }
+        ]
   - task: EsrpCodeSigning@4
     displayName: 'Sign 3rd Party [Strong Name]'
     inputs:

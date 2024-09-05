@@ -52,6 +52,7 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [ValidateSet('Default', 'DoNotValidate')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute('Default', 'DoNotValidate')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # Whether to validate the exemption is at or under the assignment scope.
@@ -71,6 +72,7 @@ param(
 
     [Parameter(ParameterSetName='Default', Mandatory, ValueFromPipelineByPropertyName)]
     [ValidateSet('Waiver', 'Mitigated')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute('Waiver', 'Mitigated')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The policy exemption category

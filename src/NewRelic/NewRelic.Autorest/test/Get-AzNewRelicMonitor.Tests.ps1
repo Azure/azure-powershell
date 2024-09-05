@@ -14,17 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNewRelicMonitor'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzNewRelicMonitor' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+Describe 'Get-AzNewRelicMonitor' { #Scenario Test
+    It 'MonitorListSub' -skip {
+        {
+            $result = Get-AzNewRelicMonitor
+            $result.Count | Should -BeGreaterThan 5
+        } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' -skip {

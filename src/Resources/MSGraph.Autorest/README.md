@@ -49,7 +49,7 @@ In this directory, run AutoRest:
 ``` yaml
 version: "3.9.5"
 use-extension:
-  "@autorest/powershell": "4.0.0-dev.10"
+  "@autorest/powershell": "4.0.0-dev.12"
 
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -335,4 +335,17 @@ directive:
           - DisplayName
           - Id
           - OdataType
+
+  # Characters '×'，'’'，'–' existed in swagger with larger character code than 127. They are blocking signing process, hence replace them with '*',''','-'
+  - from: openapi-document
+    where: $
+    transform: $ = $.replace(/×/g, '\*');
+
+  - from: openapi-document
+    where: $
+    transform: $ = $.replace(/’/g, '\'');
+
+  - from: openapi-document
+    where: $
+    transform: $ = $.replace(/–/g, '\-');
 ```
