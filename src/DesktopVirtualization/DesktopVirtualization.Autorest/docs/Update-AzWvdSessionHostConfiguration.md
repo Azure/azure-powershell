@@ -19,7 +19,7 @@ Update-AzWvdSessionHostConfiguration -HostPoolName <String> -ResourceGroupName <
  [-BootDiagnosticInfoStorageUri <String>] [-CustomConfigurationScriptUrl <String>]
  [-CustomInfoResourceId <String>] [-DiskInfoType <VirtualMachineDiskType>]
  [-DomainCredentialsPasswordKeyVaultSecretUri <String>] [-DomainCredentialsUsernameKeyVaultSecretUri <String>]
- [-FriendlyName <String>] [-ImageInfoType <Type>] [-MarketplaceInfoExactVersion <String>]
+ [-FriendlyName <String>] [-ImageInfoImageType <Type>] [-MarketplaceInfoExactVersion <String>]
  [-MarketplaceInfoOffer <String>] [-MarketplaceInfoPublisher <String>] [-MarketplaceInfoSku <String>]
  [-NetworkInfoSecurityGroupId <String>] [-NetworkInfoSubnetId <String>] [-SecurityInfoSecureBootEnabled]
  [-SecurityInfoType <VirtualMachineSecurityType>] [-SecurityInfoVTpmEnabled]
@@ -35,7 +35,7 @@ Update-AzWvdSessionHostConfiguration -InputObject <IDesktopVirtualizationIdentit
  [-AvailabilityZone <Int32[]>] [-BootDiagnosticInfoEnabled] [-BootDiagnosticInfoStorageUri <String>]
  [-CustomConfigurationScriptUrl <String>] [-CustomInfoResourceId <String>]
  [-DiskInfoType <VirtualMachineDiskType>] [-DomainCredentialsPasswordKeyVaultSecretUri <String>]
- [-DomainCredentialsUsernameKeyVaultSecretUri <String>] [-FriendlyName <String>] [-ImageInfoType <Type>]
+ [-DomainCredentialsUsernameKeyVaultSecretUri <String>] [-FriendlyName <String>] [-ImageInfoImageType <Type>]
  [-MarketplaceInfoExactVersion <String>] [-MarketplaceInfoOffer <String>] [-MarketplaceInfoPublisher <String>]
  [-MarketplaceInfoSku <String>] [-NetworkInfoSecurityGroupId <String>] [-NetworkInfoSubnetId <String>]
  [-SecurityInfoSecureBootEnabled] [-SecurityInfoType <VirtualMachineSecurityType>] [-SecurityInfoVTpmEnabled]
@@ -267,7 +267,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ImageInfoType
+### -ImageInfoImageType
 The type of image session hosts use in the hostpool.
 
 ```yaml
@@ -360,7 +360,7 @@ Accept wildcard characters: False
 
 ### -NetworkInfoSecurityGroupId
 The resource ID of the security group.
-Any allowable/open ports should be specified in the NSG.
+Any allowable/open ports should be specified in the Network Security Group(NSG).
 
 ```yaml
 Type: System.String
@@ -467,6 +467,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -558,6 +559,7 @@ Accept wildcard characters: False
 
 ### -VMSizeId
 The id of the size of a virtual machine connected to a hostpool.
+Example: Standard_D2as_v6
 
 ```yaml
 Type: System.String
@@ -626,7 +628,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.ISessionHostConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240408Preview.ISessionHostConfiguration
 
 ## NOTES
 

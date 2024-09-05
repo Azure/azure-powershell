@@ -1,40 +1,55 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdmsixpackage
+online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdsessionhostmanagementsupdatestatus
 schema: 2.0.0
 ---
 
-# Remove-AzWvdMsixPackage
+# Get-AzWvdSessionHostManagementsUpdateStatus
 
 ## SYNOPSIS
-Remove an MSIX Package.
+Get the session host update status for a given hostpool.
 
 ## SYNTAX
 
-### Delete (Default)
+### Get (Default)
 ```
-Remove-AzWvdMsixPackage -FullName <String> -HostPoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzWvdSessionHostManagementsUpdateStatus -HostPoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### GetViaIdentity
 ```
-Remove-AzWvdMsixPackage -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzWvdSessionHostManagementsUpdateStatus -InputObject <IDesktopVirtualizationIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Remove an MSIX Package.
+Get the session host update status for a given hostpool.
 
 ## EXAMPLES
 
-### Example 1: Delete MSIX Package by Package Full Name
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzWvdMsixPackage -HostPoolName HostPoolName -ResourceGroupName ResourceGroupName -SubscriptionId SubscriptionId -FullName PackageFullName
+{{ Add code here }}
 ```
 
-This command deletes a MSIX Package in a HostPool
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -54,27 +69,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FullName
-The version specific package full name of the MSIX package within specified hostpool
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: MsixPackageFullName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -HostPoolName
 The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -90,7 +90,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -100,28 +100,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -136,44 +121,13 @@ The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
+Type: System.String[]
+Parameter Sets: Get
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -187,7 +141,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240408Preview.ISessionHostManagementUpdateStatus
 
 ## NOTES
 

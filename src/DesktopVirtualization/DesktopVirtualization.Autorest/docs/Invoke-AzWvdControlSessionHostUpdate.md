@@ -22,15 +22,15 @@ Invoke-AzWvdControlSessionHostUpdate -HostPoolName <String> -ResourceGroupName <
 ### Post
 ```
 Invoke-AzWvdControlSessionHostUpdate -HostPoolName <String> -ResourceGroupName <String>
- -HostPoolControlParameter <IHostPoolControlParameter> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -HostPoolUpdateControlParameter <IHostPoolUpdateControlParameter> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PostViaIdentity
 ```
 Invoke-AzWvdControlSessionHostUpdate -InputObject <IDesktopVirtualizationIdentity>
- -HostPoolControlParameter <IHostPoolControlParameter> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -HostPoolUpdateControlParameter <IHostPoolUpdateControlParameter> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PostViaIdentityExpanded
@@ -120,22 +120,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HostPoolControlParameter
-Represents properties for a hostpool update.
-To construct, see NOTES section for HOSTPOOLCONTROLPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IHostPoolControlParameter
-Parameter Sets: Post, PostViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -HostPoolName
 The name of the host pool within the specified resource group
 
@@ -148,6 +132,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HostPoolUpdateControlParameter
+Represents properties for a hostpool update control request.
+To construct, see NOTES section for HOSTPOOLUPDATECONTROLPARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240408Preview.IHostPoolUpdateControlParameter
+Parameter Sets: Post, PostViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -200,6 +200,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -249,7 +250,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IHostPoolControlParameter
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240408Preview.IHostPoolUpdateControlParameter
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 

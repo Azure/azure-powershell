@@ -14,15 +14,15 @@ Create or update a host pool.
 
 ### CreateExpanded (Default)
 ```
-New-AzWvdHostPool -HostPoolType <HostPoolType> -LoadBalancerType <LoadBalancerType> -Name <String>
- -PreferredAppGroupType <PreferredAppGroupType> -ResourceGroupName <String> [-Location <String>]
+New-AzWvdHostPool -HostPoolType <HostPoolType> -LoadBalancerType <LoadBalancerType> -Location <String>
+ -Name <String> -PreferredAppGroupType <PreferredAppGroupType> -ResourceGroupName <String>
  [-ManagementType <ManagementType>] [-SubscriptionId <String>]
  [-AgentUpdateMaintenanceWindow <IMaintenanceWindowProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <SessionHostComponentUpdateType>]
  [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
  [-DirectUdp <DirectUdp>] [-ExpirationTime <DateTime>] [-FriendlyName <String>]
- [-IdentityType <ResourceIdentityType>] [-Kind <String>] [-ManagedBy <String>]
- [-ManagedPrivateUdp <ManagedPrivateUdp>] [-MaxSessionLimit <Int32>]
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>]
+ [-ManagedBy <String>] [-ManagedPrivateUdp <ManagedPrivateUdp>] [-MaxSessionLimit <Int32>]
  [-PersonalDesktopAssignmentType <PersonalDesktopAssignmentType>] [-PlanName <String>] [-PlanProduct <String>]
  [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
  [-PublicNetworkAccess <HostpoolPublicNetworkAccess>] [-PublicUdp <PublicUdp>]
@@ -115,7 +115,7 @@ Maintenance windows are 2 hours long.
 To construct, see NOTES section for AGENTUPDATEMAINTENANCEWINDOW properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IMaintenanceWindowProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240408Preview.IMaintenanceWindowProperties[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -295,10 +295,27 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-The identity type.
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ResourceIdentityType
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ManagedServiceIdentityType
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityUserAssignedIdentity
+The set of user assigned identities associated with the resource.
+The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The dictionary values can be empty objects ({}) in requests.
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -310,7 +327,8 @@ Accept wildcard characters: False
 ```
 
 ### -Kind
-Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g.
+Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
+E.g.
 ApiApps are a kind of Microsoft.Web/sites type.
 If supported, the resource provider must validate and persist this value.
 
@@ -686,7 +704,8 @@ Accept wildcard characters: False
 
 ### -SkuName
 The name of the SKU.
-Ex - P3.
+E.g.
+P3.
 It is typically a letter+number code
 
 ```yaml
@@ -809,6 +828,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -920,7 +940,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IHostPool
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240408Preview.IHostPool
 
 ## NOTES
 

@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the DesktopVirtualization service.
 
 ---
-## Status
-[![Az.DesktopVirtualization](https://img.shields.io/powershellgallery/v/Az.DesktopVirtualization.svg?style=flat-square&label=Az.DesktopVirtualization "Az.DesktopVirtualization")](https://www.powershellgallery.com/packages/Az.DesktopVirtualization/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

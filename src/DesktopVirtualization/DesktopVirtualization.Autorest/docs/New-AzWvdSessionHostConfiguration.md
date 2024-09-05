@@ -14,7 +14,7 @@ Create or update a SessionHostConfiguration.
 
 ```
 New-AzWvdSessionHostConfiguration -HostPoolName <String> -ResourceGroupName <String>
- -DiskInfoType <VirtualMachineDiskType> -DomainInfoJoinType <DomainJoinType> -ImageInfoType <Type>
+ -DiskInfoType <VirtualMachineDiskType> -DomainInfoJoinType <DomainJoinType> -ImageInfoImageType <Type>
  -NetworkInfoSubnetId <String> -VMAdminCredentialsPasswordKeyVaultSecretUri <String>
  -VMAdminCredentialsUsernameKeyVaultSecretUri <String> -VMNamePrefix <String> -VMSizeId <String>
  [-SubscriptionId <String>] [-ActiveDirectoryInfoDomainName <String>] [-ActiveDirectoryInfoOuPath <String>]
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -ActiveDirectoryInfoOuPath
-The ou path.
+The organizational unit(OU) path.
 
 ```yaml
 Type: System.String
@@ -129,7 +129,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureActiveDirectoryInfoMdmProviderGuid
-The mdm guid.
+The Mobile Device Management(MDM) guid.
 
 ```yaml
 Type: System.String
@@ -312,7 +312,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ImageInfoType
+### -ImageInfoImageType
 The type of image session hosts use in the hostpool.
 
 ```yaml
@@ -389,7 +389,7 @@ Accept wildcard characters: False
 
 ### -NetworkInfoSecurityGroupId
 The resource ID of the security group.
-Any allowable/open ports should be specified in the NSG.
+Any allowable/open ports should be specified in the Network Security Group(NSG).
 
 ```yaml
 Type: System.String
@@ -497,6 +497,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -589,6 +590,7 @@ Accept wildcard characters: False
 
 ### -VMSizeId
 The id of the size of a virtual machine connected to a hostpool.
+Example: Standard_D2as_v6
 
 ```yaml
 Type: System.String
@@ -655,7 +657,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.ISessionHostConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240408Preview.ISessionHostConfiguration
 
 ## NOTES
 

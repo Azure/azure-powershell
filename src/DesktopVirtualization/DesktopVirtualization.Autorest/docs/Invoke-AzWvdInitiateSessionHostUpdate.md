@@ -17,7 +17,7 @@ Initiates a hostpool update or schedule an update for the future.
 Invoke-AzWvdInitiateSessionHostUpdate -HostPoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-ScheduledDateTime <DateTime>] [-ScheduledDateTimeZone <String>]
  [-UpdateDeleteOriginalVM] [-UpdateLogOffDelayMinute <Int32>] [-UpdateLogOffMessage <String>]
- [-UpdateMaxVmsRemoved <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-UpdateMaxVmsRemoved <Int32>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -25,14 +25,14 @@ Invoke-AzWvdInitiateSessionHostUpdate -HostPoolName <String> -ResourceGroupName 
 ```
 Invoke-AzWvdInitiateSessionHostUpdate -HostPoolName <String> -ResourceGroupName <String>
  -UpdateSessionHostsRequestBody <IUpdateSessionHostsRequestBody> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PostViaIdentity
 ```
 Invoke-AzWvdInitiateSessionHostUpdate -InputObject <IDesktopVirtualizationIdentity>
- -UpdateSessionHostsRequestBody <IUpdateSessionHostsRequestBody> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -UpdateSessionHostsRequestBody <IUpdateSessionHostsRequestBody> [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PostViaIdentityExpanded
@@ -40,7 +40,7 @@ Invoke-AzWvdInitiateSessionHostUpdate -InputObject <IDesktopVirtualizationIdenti
 Invoke-AzWvdInitiateSessionHostUpdate -InputObject <IDesktopVirtualizationIdentity>
  [-ScheduledDateTime <DateTime>] [-ScheduledDateTimeZone <String>] [-UpdateDeleteOriginalVM]
  [-UpdateLogOffDelayMinute <Int32>] [-UpdateLogOffMessage <String>] [-UpdateMaxVmsRemoved <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,21 +61,6 @@ Invoke-AzWvdInitiateSessionHostUpdate -HostPoolName HostPoolName `
 This command starts a sessionHostUpdate operation on the given hostpool.
 
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -124,8 +109,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -188,6 +173,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -267,7 +253,7 @@ Object containing the definition for properties to be used for a sessionHostUpda
 To construct, see NOTES section for UPDATESESSIONHOSTSREQUESTBODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IUpdateSessionHostsRequestBody
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240408Preview.IUpdateSessionHostsRequestBody
 Parameter Sets: Post, PostViaIdentity
 Aliases:
 
@@ -314,7 +300,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IUpdateSessionHostsRequestBody
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240408Preview.IUpdateSessionHostsRequestBody
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 
