@@ -1031,6 +1031,22 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
+              label: Cognitive Services
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Cognitive Services
+        then:
+        - mentionUsers:
+            mentionees:
+            - gxy001
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
               label: Commerce
         - hasLabel:
             label: Service Attention
@@ -3372,6 +3388,23 @@ configuration:
         - mentionUsers:
             mentionees:
             - ricardo-espinoza
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: Quota
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Quota
+        then:
+        - mentionUsers:
+            mentionees:
+            - rahuls-microsoft
+            - devatula
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:

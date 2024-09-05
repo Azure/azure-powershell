@@ -10,17 +10,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Implements GuestAgent DELETE method.</summary>
+    /// <summary>The operation to update a virtual machine instance.</summary>
     /// <remarks>
-    /// [OpenAPI] Delete=>DELETE:"/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/guestAgents/default"
+    /// [OpenAPI] Update=>PATCH:"/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.InternalExport]
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzStackHCIVMGuestAgent_Delete", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(bool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Description(@"Implements GuestAgent DELETE method.")]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzStackHCIVMVirtualMachine_UpdateViaJsonString", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Description(@"The operation to update a virtual machine instance.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.HttpPath(Path = "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/guestAgents/default", ApiVersion = "2024-01-01")]
-    public partial class RemoveAzStackHCIVMGuestAgent_Delete : global::System.Management.Automation.PSCmdlet,
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.HttpPath(Path = "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default", ApiVersion = "2024-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.NotSuggestDefaultParameterSet]
+    public partial class UpdateAzStackHCIVMVirtualMachine_UpdateViaJsonString : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IContext
     {
@@ -94,6 +95,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
+        /// <summary>Backing field for <see cref="JsonString" /> property.</summary>
+        private string _jsonString;
+
+        /// <summary>Json string supplied to the Update operation</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Json string supplied to the Update operation")]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"Json string supplied to the Update operation",
+        SerializedName = @"JsonString",
+        PossibleTypes = new [] { typeof(string) })]
+        public string JsonString { get => this._jsonString; set => this._jsonString = value; }
+
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
@@ -109,13 +123,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command asynchronously")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
-
-        /// <summary>
-        /// When specified, forces the cmdlet return a 'bool' given that there isn't a return type by default.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Returns true when the command succeeds")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.ParameterCategory.Runtime)]
-        public global::System.Management.Automation.SwitchParameter PassThru { get; set; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.HttpPipeline" /> that the remote call will use.
@@ -167,24 +174,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
         partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
-        /// <c>overrideOnNoContent</c> will be called before the regular onNoContent has been processed, allowing customization of
-        /// what happens on that response. Implement this method in a partial class to enable this behavior
-        /// </summary>
-        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="returnNow">/// Determines if the rest of the onNoContent method should be processed, or if the method should
-        /// return immediately (set to true to skip further processing )</param>
-
-        partial void overrideOnNoContent(global::System.Net.Http.HttpResponseMessage responseMessage, ref global::System.Threading.Tasks.Task<bool> returnNow);
-
-        /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance">Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -205,10 +204,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
         }
 
         /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
-        /// <returns>a duplicate instance of RemoveAzStackHCIVMGuestAgent_Delete</returns>
-        public Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets.RemoveAzStackHCIVMGuestAgent_Delete Clone()
+        /// <returns>a duplicate instance of UpdateAzStackHCIVMVirtualMachine_UpdateViaJsonString</returns>
+        public Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets.UpdateAzStackHCIVMVirtualMachine_UpdateViaJsonString Clone()
         {
-            var clone = new RemoveAzStackHCIVMGuestAgent_Delete();
+            var clone = new UpdateAzStackHCIVMVirtualMachine_UpdateViaJsonString();
             clone.__correlationId = this.__correlationId;
             clone.__processRecordId = this.__processRecordId;
             clone.DefaultProfile = this.DefaultProfile;
@@ -222,6 +221,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
             clone.ResourceUri = this.ResourceUri;
+            clone.JsonString = this.JsonString;
             return clone;
         }
 
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'GuestAgentDelete' operation"))
+                if (ShouldProcess($"Call remote 'VirtualMachineInstancesUpdate' operation"))
                 {
                     if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
                     {
@@ -438,7 +438,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.GuestAgentDelete(ResourceUri, onNoContent, onOk, onDefault, this, Pipeline);
+                    await this.Client.VirtualMachineInstancesUpdateViaJsonString(ResourceUri, _jsonString, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.UndeclaredResponseException urexception)
@@ -455,19 +455,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
             }
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RemoveAzStackHCIVMGuestAgent_Delete" /> cmdlet class.
-        /// </summary>
-        public RemoveAzStackHCIVMGuestAgent_Delete()
-        {
-
-        }
-
         /// <summary>Interrupts currently running code within the command.</summary>
         protected override void StopProcessing()
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UpdateAzStackHCIVMVirtualMachine_UpdateViaJsonString" /> cmdlet class.
+        /// </summary>
+        public UpdateAzStackHCIVMVirtualMachine_UpdateViaJsonString()
+        {
+
         }
 
         /// <param name="sendToPipeline"></param>
@@ -527,50 +527,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
             }
         }
 
-        /// <summary>a delegate that is called when the remote service returns 204 (NoContent).</summary>
-        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
-        /// </returns>
-        private async global::System.Threading.Tasks.Task onNoContent(global::System.Net.Http.HttpResponseMessage responseMessage)
-        {
-            using( NoSynchronizationContext )
-            {
-                var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
-                overrideOnNoContent(responseMessage, ref _returnNow);
-                // if overrideOnNoContent has returned true, then return right away.
-                if ((null != _returnNow && await _returnNow))
-                {
-                    return ;
-                }
-                // onNoContent - response for 204 /
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
-                {
-                    WriteObject(true);
-                }
-            }
-        }
-
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance">Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance> response)
         {
             using( NoSynchronizationContext )
             {
                 var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
-                overrideOnOk(responseMessage, ref _returnNow);
+                overrideOnOk(responseMessage, response, ref _returnNow);
                 // if overrideOnOk has returned true, then return right away.
                 if ((null != _returnNow && await _returnNow))
                 {
                     return ;
                 }
-                // onOk - response for 200 /
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
+                // onOk - response for 200 / application/json
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance
+                var result = (await response);
+                if (null != result)
                 {
-                    WriteObject(true);
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
                 }
             }
         }
