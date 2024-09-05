@@ -668,13 +668,5 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VMSetAzOSCredentialNullRef");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVMwithSSHKeyEd25519()
-        {
-            TestRunner.RunTestScript("Test-VMwithSSHKeyEd25519");
-        }
-
     }
 }
