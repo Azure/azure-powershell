@@ -279,8 +279,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         {
             var context = inContext as AzureStorageContext;
 
-            // if TableStorageAccount == null and not using Oauth, need create the TableStorageAccount track1 object for table cmdlets.
-            if ((context == null && inContext != null) || (context.TableStorageAccount == null && context.StorageAccount != null && context.StorageAccount.Credentials != null && !context.StorageAccount.Credentials.IsToken))
+            // if TableStorageAccount == null and not using Oauth, need create the TableStorageAccount (from CosmosDB table SDK) object for table cmdlets.
+            if ((context == null && inContext != null) || (context != null && context.TableStorageAccount == null && (context.StorageAccount != null && context.StorageAccount.Credentials != null && !context.StorageAccount.Credentials.IsToken)))
             {
                 context = new AzureStorageContext(inContext.GetCloudStorageAccount(), null, DefaultContext, WriteDebug);
             }
