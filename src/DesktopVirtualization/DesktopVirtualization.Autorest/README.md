@@ -59,12 +59,12 @@ title: DesktopVirtualizationClient
 #  "@autorest/powershell": "3.x"
 
 directive:
-  - where:
-      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
-    remove: true
-  - where:
-      variant: ^CreateViaIdentity.*$
-    remove: true
+#- where:
+#      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+#    remove: true
+#  - where:
+#      variant: ^CreateViaIdentity.*$
+#    remove: true
   - where:
       verb: New
       subject: HostPool

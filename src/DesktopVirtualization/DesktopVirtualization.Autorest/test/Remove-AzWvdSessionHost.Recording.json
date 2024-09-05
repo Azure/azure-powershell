@@ -7,11 +7,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "319" ],
-        "x-ms-client-request-id": [ "bcfe0481-5a95-451e-a49f-418c133074be" ],
+        "x-ms-client-request-id": [ "10aefd38-2883-4fad-9c89-c02a62fbc81d" ],
         "CommandName": [ "Get-AzWvdSessionHost" ],
         "FullCommandName": [ "Get-AzWvdSessionHost_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.2.0", "PSVersion/v7.2.23", "Az.DesktopVirtualization/6.0.0" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.2.23", "Az.DesktopVirtualization/6.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,31 +22,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Set-Cookie": [ "ARRAffinity=39d91f16fdd59b39d7a07780844d80b88a73a7f54a8a5e7eeddb8cc0cb631057;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=39d91f16fdd59b39d7a07780844d80b88a73a7f54a8a5e7eeddb8cc0cb631057;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
+        "Set-Cookie": [ "ARRAffinity=bcbcd66544f5ddaf4cbead41410626b9ca9d605ee7d3a04c141d9e19b964fb41;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=bcbcd66544f5ddaf4cbead41410626b9ca9d605ee7d3a04c141d9e19b964fb41;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
         "X-Rate-Limit-Limit": [ "0" ],
         "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
         "X-Rate-Limit-Reset": [ "0" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JVc2VyU2Vzc2lvbkhQL3Nlc3Npb25Ib3N0cy9EZWxldGU0VGVzdC0z" ],
-        "x-ms-lamport-ts": [ "177290028" ],
-        "x-ms-correlation-id": [ "f4c87d72-e166-4000-a642-9198997d9b50" ],
-        "x-ms-request-id": [ "bcfe0481-5a95-451e-a49f-418c133074be" ],
+        "x-ms-lamport-ts": [ "177296572" ],
+        "x-ms-correlation-id": [ "b5e90e95-a776-4e43-98bd-cb90ee5be7e9" ],
+        "x-ms-request-id": [ "10aefd38-2883-4fad-9c89-c02a62fbc81d" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "499" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "7499" ],
-        "x-ms-correlation-request-id": [ "dba53960-ae67-46e0-b7e8-3fdd62f0e567" ],
-        "x-ms-routing-request-id": [ "WESTUS:20240905T091615Z:dba53960-ae67-46e0-b7e8-3fdd62f0e567" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "498" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "7498" ],
+        "x-ms-correlation-request-id": [ "afb97add-e911-4c97-a71c-30725d03f316" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20240905T103811Z:afb97add-e911-4c97-a71c-30725d03f316" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 53FD5A5699CA4167B6CB35026100BBB3 Ref B: SJC211051201019 Ref C: 2024-09-05T09:16:15Z" ],
-        "Date": [ "Thu, 05 Sep 2024 09:16:15 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 8262C1F3151C4E52813B4D94BC376CDC Ref B: SN4AA2022404035 Ref C: 2024-09-05T10:38:11Z" ],
+        "Date": [ "Thu, 05 Sep 2024 10:38:11 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "119" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"404\",\"message\":\"ActivityId: f4c87d72-e166-4000-a642-9198997d9b50 Error: SessionHost does not exist\"}}",
+      "Content": "{\"error\":{\"code\":\"404\",\"message\":\"ActivityId: b5e90e95-a776-4e43-98bd-cb90ee5be7e9 Error: SessionHost does not exist\"}}",
       "isContentBase64": false
     }
   }
