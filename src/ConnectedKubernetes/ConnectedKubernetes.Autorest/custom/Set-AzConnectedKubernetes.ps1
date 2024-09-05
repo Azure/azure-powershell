@@ -285,7 +285,7 @@ function Set-AzConnectedKubernetes {
         Write-Debug "Checking if Azure Hybrid Benefit is opted in and processing the EULA."
         . "$PSScriptRoot/helpers/HelmHelper.ps1"
         . "$PSScriptRoot/helpers/ConfigDPHelper.ps1"
-        . "$PSScriptRoot/helpers/AZCloudMetadataHelper.ps1"
+        . "$PSScriptRoot/helpers/AzCloudMetadataHelper.ps1"
         . "$PSScriptRoot/helpers/UtilsHelper.ps1"
 
         # Configuration is structured as a hashtable of hashtables where the final

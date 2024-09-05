@@ -37,7 +37,7 @@ function Get-ConfigDPEndpoint {
         [Parameter(Mandatory = $true)]
         [PSCustomObject]$cloudMetadata
     )
-    . "$PSScriptRoot\AZCloudMetadataHelper.ps1"
+    . "$PSScriptRoot\AzCloudMetadataHelper.ps1"
 
     $ReleaseTrain = $null
     # Get the default config dataplane endpoint.  Note that there may be code
