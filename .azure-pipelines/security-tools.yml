@@ -45,6 +45,8 @@ jobs:
       script: dotnet msbuild build.proj /t:"Build;GenerateHelp" /p:"PullRequestNumber=$(System.PullRequest.PullRequestNumber);IsSecurityCheck=true"
     env:
       OCTOKITPAT: $(GithubToken)
+
+  - task: NuGetAuthenticate@1
   
   - task: PowerShell@2
     displayName: Run CredScan
