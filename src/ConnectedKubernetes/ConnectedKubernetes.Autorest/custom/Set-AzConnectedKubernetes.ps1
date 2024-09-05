@@ -30,8 +30,54 @@ Set-AzConnectedKubernetes -ClusterName azps_test_cluster1 -ResourceGroupName azp
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IConnectedCluster>: 
+  Location <String>: The geo-location where the resource lives
+  AgentPublicKeyCertificate <String>: Base64 encoded public certificate used by the agent to do the initial handshake to the backend services in Azure.
+  IdentityType <ResourceIdentityType>: The type of identity used for the connected cluster. The type 'SystemAssigned, includes a system created identity. The type 'None' means no identity is assigned to the connected cluster.
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [AadProfileAdminGroupObjectID <String[]>]: The list of AAD group object IDs that will have admin role of the cluster.
+  [AadProfileEnableAzureRbac <Boolean?>]: Whether to enable Azure RBAC for Kubernetes authorization.
+  [AadProfileTenantId <String>]: The AAD tenant ID to use for authentication. If not specified, will use the tenant of the deployment subscription.
+  [ArcAgentProfileAgentAutoUpgrade <AutoUpgradeOptions?>]: Indicates whether the Arc agents on the be upgraded automatically to the latest version. Defaults to Enabled.
+  [ArcAgentProfileAgentError <IAgentError[]>]: List of arc agentry and system components errors on the cluster resource.
+  [ArcAgentProfileDesiredAgentVersion <String>]: Version of the Arc agents to be installed on the cluster resource
+  [ArcAgentProfileSystemComponent <ISystemComponent[]>]: List of system extensions that are installed on the cluster resource.
+    [MajorVersion <Int32?>]: Major Version of the system extension that is currently installed on the cluster resource.
+    [Type <String>]: Type of the system extension
+    [UserSpecifiedVersion <String>]: Version of the system extension to be installed on the cluster resource.
+  [ArcAgentryConfiguration <IArcAgentryConfigurations[]>]: Configuration settings for customizing the behavior of the connected cluster.
+    [Feature <String>]: Specifies the name of the feature for the configuration setting.
+    [ProtectedSetting <IArcAgentryConfigurationsProtectedSettings>]: The configuration settings for the feature that contain any sensitive or secret information.
+      [(Any) <String>]: This indicates any property can be added to this object.
+    [Setting <IArcAgentryConfigurationsSettings>]: The configuration settings for the feature that do not contain any sensitive or secret information.
+      [(Any) <String>]: This indicates any property can be added to this object.
+  [AzureHybridBenefit <AzureHybridBenefit?>]: Indicates whether Azure Hybrid Benefit is opted in
+  [Distribution <String>]: The Kubernetes distribution running on this connected cluster.
+  [DistributionVersion <String>]: The Kubernetes distribution version on this connected cluster.
+  [GatewayEnabled <Boolean?>]: Indicates whether the gateway for arc router connectivity is enabled.
+  [GatewayResourceId <String>]: The resource ID of the gateway used for the Arc router feature.
+  [Infrastructure <String>]: The infrastructure on which the Kubernetes cluster represented by this connected cluster is running on.
+  [Kind <ConnectedClusterKind?>]: The kind of connected cluster.
+  [OidcIssuerProfileEnabled <Boolean?>]: Whether to enable oidc issuer for workload identity integration.
+  [OidcIssuerProfileSelfHostedIssuerUrl <String>]: The issuer url for public cloud clusters - AKS, EKS, GKE - used for the workload identity feature.
+  [PrivateLinkScopeResourceId <String>]: This is populated only if privateLinkState is enabled. The resource id of the private link scope this connected cluster is assigned to, if any.
+  [PrivateLinkState <PrivateLinkState?>]: Property which describes the state of private link on a connected cluster resource.
+  [ProvisioningState <ProvisioningState?>]: Provisioning state of the connected cluster resource.
+  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
+  [SystemDataCreatedBy <String>]: The identity that created the resource.
+  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
+  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource modification (UTC).
+  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
+  [SystemDataLastModifiedByType <LastModifiedByType?>]: The type of identity that last modified the resource.
+  [WorkloadIdentityEnabled <Boolean?>]: Whether to enable or disable the workload identity Webhook
 .Link
-https://learn.microsoft.com/powershell/module/az.connectedkubernetes/new-azconnectedkubernetes
+https://learn.microsoft.com/powershell/module/az.connectedkubernetes/set-azconnectedkubernetes
 #>
 function Set-AzConnectedKubernetes {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster])]
