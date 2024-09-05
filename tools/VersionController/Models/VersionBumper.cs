@@ -58,7 +58,7 @@ namespace VersionController.Models
             _releaseType = releaseType;
         }
 
-        public VersionBumper(VersionFileHelper fileHelper, IList<string> changedModules, AzurePSVersion assignedVersion)
+        public VersionBumper(VersionFileHelper fileHelper, IList<string> changedModules, AzurePSVersion assignedVersion, ReleaseType releaseType = ReleaseType.STS)
         {
             _fileHelper = fileHelper;
             _metadataHelper = new VersionMetadataHelper(_fileHelper);
@@ -66,6 +66,7 @@ namespace VersionController.Models
             _logger = _loggerFactory.CreateLogger<VersionBumper>();
             _changedModules = changedModules;
             _assignedVersion = assignedVersion;
+            _releaseType = releaseType;
         }
 
         /// <summary>
