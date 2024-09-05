@@ -42,8 +42,8 @@ Creates a Bastion Shareable Links for all the VMs specified in the request.
 
 ### Example 1
 ```powershell
-PS C:\> $vm = Get-AzVM -ResourceGroupName $RgName -Name $vmName
-PS C:\> New-AzBastionShareableLink -ResourceGroupName $RgName -Name $bastionName -TargetVmId $vm.Id
+$vm = Get-AzVM -ResourceGroupName $RgName -Name $vmName
+New-AzBastionShareableLink -ResourceGroupName $RgName -Name $bastionName -TargetVmId $vm.Id
 ```
 
 ```output
@@ -58,10 +58,10 @@ PS C:\> New-AzBastionShareableLink -ResourceGroupName $RgName -Name $bastionName
 
 ### Example 2
 ```powershell
-PS C:\> $vm1 = Get-AzVM -ResourceGroupName $RgName -Name $vmName1
-PS C:\> $vm2 = Get-AzVM -ResourceGroupName $RgName -Name $vmName2
-PS C:\> $bastion = Get-AzBastion -ResourceGroupName $RgName -Name $bastionName
-PS C:\> New-AzBastionShareableLink -InputObject $bastion -TargetVmId $vm1.Id, $vm2.Id
+$vm1 = Get-AzVM -ResourceGroupName $RgName -Name $vmName1
+$vm2 = Get-AzVM -ResourceGroupName $RgName -Name $vmName2
+$bastion = Get-AzBastion -ResourceGroupName $RgName -Name $bastionName
+New-AzBastionShareableLink -InputObject $bastion -TargetVmId $vm1.Id, $vm2.Id
 ```
 
 ```output

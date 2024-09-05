@@ -43,7 +43,7 @@ Return the Bastion Shareable Links for all the VMs specified in the request.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzBastionShareableLink -ResourceGroupName $RgName -Name $bastionName
+Get-AzBastionShareableLink -ResourceGroupName $RgName -Name $bastionName
 ```
 
 ```output
@@ -58,7 +58,7 @@ PS C:\> Get-AzBastionShareableLink -ResourceGroupName $RgName -Name $bastionName
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzBastionShareableLink -InputObject $bastion -TargetVmId $vm1.Id
+Get-AzBastionShareableLink -InputObject $bastion -TargetVmId $vm1.Id
 ```
 
 ```output
