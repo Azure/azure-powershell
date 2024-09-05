@@ -22,11 +22,12 @@ Describe 'New-AzWvdSessionHostManagement' {
             -ScheduledDateTimeZone "UTC" `
             -UpdateLogOffDelayMinute 1 `
             -UpdateMaxVmsRemoved 1 `
-            -UpdateLogoffMessage "HostpoolUpdate is great!"
+            -UpdateLogoffMessage "HostpoolUpdate is great!" `
+            -UpdateDeleteOriginalVm
 
         $management = Get-AzWvdSessionHostManagement -SubscriptionId $env.SubscriptionId `
             -ResourceGroupName $env.ResourceGroupPersistent `
-            -HostPoolName $env.AutomatedHostpoolPersistent 
+            -HostPoolName $env.AutomatedHostPoolPersistent 
 
         $management.ScheduledDateTimeZone | Should -Be "UTC"
         $management.UpdateLogOffDelayMinute | Should -Be 1
