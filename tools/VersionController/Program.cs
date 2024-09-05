@@ -32,7 +32,7 @@ namespace VersionController
         private static SyntaxChangelogGenerator _syntaxChangelogGenerator = new SyntaxChangelogGenerator();
         private static Dictionary<string, AzurePSVersion> _minimalVersion = new Dictionary<string, AzurePSVersion>();
         private static List<string> _projectDirectories, _outputDirectories;
-        private static string _rootDirectory, _moduleNameFilter, _exceptionsDirectory;
+        private static string _rootDirectory, _moduleNameFilter, _exceptionsDirectory, _assignedVersion;
         private static ReleaseType _releaseType = ReleaseType.STS;
         private static bool _generateSyntaxChangelog = true;
 
@@ -264,7 +264,7 @@ namespace VersionController
 
                 var outputModuleManifestFile = outputModuleManifest.FirstOrDefault();
 
-                _versionBumper = new VersionBumper(new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath), changedModules, _releaseType, _assignedVersion);
+                _versionBumper = new VersionBumper(new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath), changedModules,new AzurePSVersion(_assignedVersion), _releaseType);
                 _versionBumper.PSRepositories = targetRepositories;
                 if (_minimalVersion.ContainsKey(moduleName))
                 {
