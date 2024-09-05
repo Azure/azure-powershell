@@ -1,34 +1,34 @@
 ---
 external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/import-azredisenterprisecache
+online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/update-azredisenterprisecachedatabasedbredisversion
 schema: 2.0.0
 ---
 
-# Import-AzRedisEnterpriseCache
+# Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion
 
 ## SYNOPSIS
-Imports a database file to target database.
+Upgrades the database Redis version to the latest available.
 
 ## SYNTAX
 
 ```
-Import-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> -SasUri <String[]>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion -ClusterName <String> -DatabaseName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Imports a database file to target database.
+Upgrades the database Redis version to the latest available.
 
 ## EXAMPLES
 
-### Example 1: Import database from file
+### Example 1: Upgrade database Redis version
 ```powershell
-Import-AzRedisEnterpriseCache -ClusterName "MyCache1" -ResourceGroupName "MyGroup" -SasUri @("<sas-uri>")
+Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion -ClusterName "MyCache" -ResourceGroupName "MyResourceGroup" -DatabaseName "default"
 ```
 
-This command imports data from a database file into the database of the Redis Enterprise cache named MyCache.
+Upgrades the database Redis version to the latest available.
 
 ## PARAMETERS
 
@@ -53,7 +53,22 @@ The name of the Redis Enterprise cluster.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: Name
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatabaseName
+The name of the Redis Enterprise database.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: True
 Position: Named
@@ -63,7 +78,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -92,42 +108,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SasUri
-SAS URIs for the target blobs to import from
-
-```yaml
-Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -194,10 +180,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-Import-AzRedisEnterpriseCacheDatabase
 
 ## RELATED LINKS
 

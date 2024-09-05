@@ -137,15 +137,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.IAccessKeys
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240601Preview.IAccessKeys
 
 ## NOTES
 
 ALIASES
 
-### Get-AzRedisEnterpriseCacheDatabaseKey
+Get-AzRedisEnterpriseCacheDatabaseKey
 
-### Get-AzRedisEnterpriseCacheAccessKey
+Get-AzRedisEnterpriseCacheAccessKey
 
 ## RELATED LINKS
 
