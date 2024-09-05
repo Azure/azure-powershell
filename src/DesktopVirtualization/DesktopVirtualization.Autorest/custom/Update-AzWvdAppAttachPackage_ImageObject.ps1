@@ -1,4 +1,4 @@
-function New-AzWvdAppAttachPackage_ImageObject {
+function Update-AzWvdAppAttachPackage_ImageObject {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackage])]
     [CmdletBinding(PositionalBinding=$false, ConfirmImpact='Medium')]
     param(
@@ -22,12 +22,6 @@ function New-AzWvdAppAttachPackage_ImageObject {
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
-
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-        [System.String]
-        # The geo-location where the resource lives
-        ${Location},
 
         [Parameter()]
         [Alias("DisplayName")]
@@ -70,17 +64,17 @@ function New-AzWvdAppAttachPackage_ImageObject {
         # Specifies how to register Package in feed.
         ${ImageIsRegularRegistration},
 
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-        [System.Management.Automation.SwitchParameter]
-        # Specifies if the package should be returned
-        ${PassThru},
-
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
         [System.String]
         # URL of keyvault location to store certificate
         ${KeyVaultUrl},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # Specifies if the package should be returned
+        ${PassThru},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -134,8 +128,8 @@ function New-AzWvdAppAttachPackage_ImageObject {
     process {
 
         $finalParameters = @{}
-
-        $cmd = Get-Command New-AzWvdAppAttachPackage
+        
+        $cmd = Get-Command Update-AzWvdAppAttachPackage
         $params = $cmd.ParameterSets.Where({$_.Name -eq $cmd.DefaultParameterSet}).Parameters.Name
 
         # Add all properties from image object, since this is an app attach package it should match the parameters
@@ -162,7 +156,7 @@ function New-AzWvdAppAttachPackage_ImageObject {
                 $finalParameters[$key] = $PSBoundParameters[$key]
             }
         }
-        $appAttachPackage = New-AzWvdAppAttachPackage @finalParameters
+        $appAttachPackage = Update-AzWvdAppAttachPackage @finalParameters
 
         if ($PassThru) {
             return $appAttachPackage
