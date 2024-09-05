@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* test
 
 ## Version 1.9.0
 * Fixed an issue that `Update-AzDatabricksWorkspace` doesn't work.[#25743]
