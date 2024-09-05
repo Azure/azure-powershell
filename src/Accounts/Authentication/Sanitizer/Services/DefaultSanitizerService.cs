@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services
             { "Microsoft.Azure.Storage.File.CloudFileDirectory", new[] { "Parent" } },
         };
 
-        private readonly SecretMasker _secretMaster = new SecretMasker(WellKnownRegexPatterns.HighConfidenceMicrosoftSecurityModels, generateCorrelatingIds: true);
+        private readonly SecretMasker _secretMasker = new SecretMasker(WellKnownRegexPatterns.HighConfidenceMicrosoftSecurityModels, generateCorrelatingIds: true);
 
         public bool TrySanitizeData(string data, out string sanitizedData)
         {
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services
 
             if (!string.IsNullOrWhiteSpace(data))
             {
-                var detections = _secretMaster.DetectSecrets(data);
+                var detections = _secretMasker.DetectSecrets(data);
                 return detections.Any();
             }
 
