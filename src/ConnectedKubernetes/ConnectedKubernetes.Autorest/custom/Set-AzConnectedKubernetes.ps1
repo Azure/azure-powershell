@@ -284,7 +284,7 @@ function Set-AzConnectedKubernetes {
         Write-Debug "Checking if Azure Hybrid Benefit is opted in and processing the EULA."
         . "$PSScriptRoot/helpers/HelmHelper.ps1"
         . "$PSScriptRoot/helpers/ConfigDPHelper.ps1"
-        . "$PSScriptRoot/helpers/AZCloudMetadataHelper.ps1"
+        . "$PSScriptRoot/helpers/AzCloudMetadataHelper.ps1"
         . "$PSScriptRoot/helpers/UtilsHelper.ps1"
 
         # Configuration is structured as a hashtable of hashtables where the final
@@ -292,8 +292,7 @@ function Set-AzConnectedKubernetes {
         Test-ConfigurationSyntax -name 'ConfigurationSetting'
         Test-ConfigurationSyntax -configuration 'ConfigurationProtectedSetting'
 
-        # $ProtectedSettingsPlaceholderValue = "redacted"
-        $ProtectedSettingsPlaceholderValue = "ClientKnown"
+        $ProtectedSettingsPlaceholderValue = "redacted"
 
         if ($AzureHybridBenefit) {
             if (!$AcceptEULA) {
@@ -542,8 +541,7 @@ function Set-AzConnectedKubernetes {
                 $RedactedProtectedConfiguration[$feature] = @{}
             }
             foreach ($setting in $ConfigurationProtectedSetting[$feature].Keys) {
-                # $RedactedProtectedConfiguration[$feature][$setting] = "$ProtectedSettingsPlaceholderValue-$feature-$setting"
-                $RedactedProtectedConfiguration[$feature][$setting] = "$feature.$setting.$ProtectedSettingsPlaceholderValue"
+                $RedactedProtectedConfiguration[$feature][$setting] = "${ProtectedSettingsPlaceholderValue}:${feature}:${setting}"
             }
         }
         #Endregion
@@ -634,10 +632,8 @@ function Set-AzConnectedKubernetes {
 
             foreach ($field in $helmValuesContent.PSObject.Properties) {
                 if ($ProtectedSettingsPlaceholderValue -in $field.Value) {
-                    $parsedValue = $field.Value.Split("-")
-                    # # "$ProtectedSettingsPlaceholderValue-$feature-$setting"
-                    # $field.Value = $ConfigurationProtectedSetting[$parsedValue[1]][$parsedValue[2]]
-                    # "$feature.$setting.$ProtectedSettingsPlaceholderValue"
+                    $parsedValue = $field.Value.Split(":")
+                    # "${ProtectedSettingsPlaceholderValue}:${feature}:${setting}"
                     $field.Value = $ConfigurationProtectedSetting[$parsedValue[0]][$parsedValue[1]]
                 }
                 if ($field.Name -eq "global.proxyCert") {
