@@ -18,7 +18,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFabricCapacity'))
 
 Describe 'Remove-AzFabricCapacity' {
     It 'Delete' {
-        $newCapacityName = RandomString -allChars $true -len 12
+        $newCapacityName = "azpowershellfabriccapacity"
         $newCapacityId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.Fabric/capacities/$($newCapacityName)"
 
         $result = New-AzFabricCapacity `

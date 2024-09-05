@@ -18,7 +18,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFabricCapacity'))
 
 Describe 'New-AzFabricCapacity' {
     It 'CreateExpanded' {
-        $newCapacityName = RandomString -allChars $true -len 12
+        $newCapacityName = "azpowershellfabriccapacity"
         $newCapacityId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.Fabric/capacities/$($newCapacityName)"
 
         $result = New-AzFabricCapacity `
@@ -31,9 +31,5 @@ Describe 'New-AzFabricCapacity' {
         Validate_Capacity $result $newCapacityName $newCapacityId $env.Location "Active" "Succeeded" $env.SkuName
 
         Remove-AzFabricCapacity -ResourceGroupName $env.ResourceGroupName -CapacityName $newCapacityName 
-    }
-
-    It 'CreateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
