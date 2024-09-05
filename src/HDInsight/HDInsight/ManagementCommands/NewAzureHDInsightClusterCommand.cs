@@ -375,6 +375,15 @@ namespace Microsoft.Azure.Commands.HDInsight
         [PSArgumentCompleter(Management.HDInsight.Models.PrivateLink.Enabled, Management.HDInsight.Models.PrivateLink.Disabled)]
         public string PrivateLink { get; set; }
 
+        [Parameter(HelpMessage = "Gets or sets the ipTag type: Example FirstPartyUsage.")]
+        public string PublicIpTagType { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets value of the IpTag associated with the public IP. Example HDInsight, SQL, Storage etc")]
+        public string PublicIpTag { get; set; }
+
+        [Parameter(HelpMessage = "A value to describe how the outbound dependencies of a HDInsight cluster are managed. 'Managed' means that the outbound dependencies are managed by the HDInsight service. 'External' means that the outbound dependencies are managed by a customer specific solution.")]
+        public string OutboundDependenciesManagedType { get; set; }
+
         [Parameter(HelpMessage = "Enables HDInsight compute isolation feature.")]
         public SwitchParameter EnableComputeIsolation { get; set; }
 
@@ -580,7 +589,19 @@ namespace Microsoft.Azure.Commands.HDInsight
             NetworkProperties networkProperties = null;
             if (ResourceProviderConnection != null || PrivateLink != null)
             {
-                networkProperties = new NetworkProperties(ResourceProviderConnection, PrivateLink);
+                networkProperties = new NetworkProperties(null,resourceProviderConnection:ResourceProviderConnection, PrivateLink);
+            }
+            if (OutboundDependenciesManagedType != null && networkProperties != null)
+            {
+                networkProperties.OutboundDependenciesManagedType = OutboundDependenciesManagedType;
+            }
+            if (PublicIpTag != null && PublicIpTagType != null)
+            {
+                if(networkProperties == null)
+                {
+                    networkProperties = new NetworkProperties();
+                }
+                networkProperties.PublicIPTag = new IpTag(PublicIpTagType, PublicIpTag);
             }
 
             // Handle compute isolation properties

@@ -14,6 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Astro.Cmdlets
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Astronomer.Astro/organizations/{organizationName}"
     /// </remarks>
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Astro.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzAstroOrganization_UpdateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.IOrganizationResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Astro.Description(@"Update a OrganizationResource")]

@@ -23,7 +23,7 @@ Set-AzRecoveryServicesVaultProperty [-SoftDeleteFeatureState <String>]
 ### AzureRSVaultCMKParameterSet
 ```
 Set-AzRecoveryServicesVaultProperty [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- -EncryptionKeyId <String> [-KeyVaultSubscriptionId <String>] [-InfrastructureEncryption]
+ [-Token <String>] -EncryptionKeyId <String> [-KeyVaultSubscriptionId <String>] [-InfrastructureEncryption]
  [-UseSystemAssignedIdentity <Boolean>] [-UserAssignedIdentity <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -174,7 +174,7 @@ Auxiliary access token for authenticating critical operation to resource guard s
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureRSVaultSoftDelteParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False

@@ -659,7 +659,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddVMDataDisk()
         {
-            TestRunner.RunTestScript("Test-AddVMDataDisk");
+            TestRunner.RunTestScript("Test-AddRemoveVMDataDisk");
         }
 
         [Fact]

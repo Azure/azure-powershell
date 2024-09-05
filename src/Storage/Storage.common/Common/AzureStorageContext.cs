@@ -12,12 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.WindowsAzure.Commands.Common.Storage
+namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
+    using global::Azure.Storage.Files.Shares.Models;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Storage;
     using System;
     using System.Collections.Generic;
+    using XTable = Microsoft.Azure.Cosmos.Table;
 
     /// <summary>
     /// Storage context
@@ -65,6 +67,21 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
         /// Storage account in context
         /// </summary>
         public virtual CloudStorageAccount StorageAccount { get; protected set; }
+
+        /// <summary>
+        /// Storage account in context
+        /// </summary>
+        public virtual XTable.CloudStorageAccount TableStorageAccount { get; protected set; }
+
+        /// <summary>
+        /// Storage Library Track2 Oauth credential
+        /// </summary>
+        public virtual AzureSessionCredential Track2OauthToken { get; set; }
+
+        /// <summary>
+        /// Share File Request Intent, only for file oauth
+        /// </summary>
+        public virtual ShareTokenIntent? ShareTokenIntent { get; set; }
 
         /// <summary>
         /// Endpoint suffix (everything after "table.", "blob." or "queue.")
@@ -129,9 +146,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
         /// Create a storage context usign cloud storage account
         /// </summary>
         /// <param name="account">cloud storage account</param>
-        public AzureStorageContext(CloudStorageAccount account)
+        /// <param name="accountName">Storage account name</param>
+        /// <param name="DefaultContext"></param>
+        /// <param name="logWriter"></param>
+        public AzureStorageContext(CloudStorageAccount account, string accountName = null, IAzureContext DefaultContext = null, DebugLogWriter logWriter = null)
         {
             StorageAccount = account;
+            TableStorageAccount = XTable.CloudStorageAccount.Parse(StorageAccount.ToString(true));
 
             if (account.BlobEndpoint != null)
             {
@@ -153,20 +174,30 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
                 FileEndPoint = account.FileEndpoint.ToString();
             }
 
-            StorageAccountName = account.Credentials.AccountName;
+            StorageAccountName = string.IsNullOrEmpty(accountName) ?
+                (account.Credentials is null ? null : account.Credentials.AccountName)
+                : accountName;
             Context = this;
             Name = String.Empty;
 
             if (string.IsNullOrEmpty(StorageAccountName))
             {
-                if (account.Credentials.IsSAS)
+                if (account.Credentials != null && account.Credentials.IsSAS)
                 {
                     StorageAccountName = "[SasToken]";
                 }
-                else
+                else if (account.Credentials != null && account.Credentials.IsToken)
+                {
+                    StorageAccountName = "[AccessToken]";
+                }
+                else if (account.Credentials != null && account.Credentials.IsAnonymous)
                 {
                     StorageAccountName = "[Anonymous]";
                 }
+            }
+            if (account.Credentials != null && account.Credentials.IsToken)
+            {
+                Track2OauthToken = new AzureSessionCredential(DefaultContext, logWriter);
             }
         }
 
