@@ -45,13 +45,27 @@ jobs:
       script: dotnet msbuild build.proj /t:"Build;GenerateHelp" /p:"PullRequestNumber=$(System.PullRequest.PullRequestNumber);IsSecurityCheck=true"
     env:
       OCTOKITPAT: $(GithubToken)
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@3
+  
+  - task: PowerShell@2
     displayName: Run CredScan
+    env:
+      GUARDIAN_DEFAULT_PACKAGE_SOURCE_SECRET: $(System.AccessToken)
+      GDN_CREDSCAN_OUTPUTTYPE: sarif
+      Scan_Folder: SecurityTmp
+      GDN_CREDSCAN_SUPPRESSIONSPATH: tools/SecurityTools/CredScanSuppressions.json
+      GDN_CREDSCAN_SUPPRESSASERROR: False
     inputs:
-      toolMajorVersion: V2
-      outputFormat: sarif
-      scanFolder: SecurityTmp
-      suppressionsFile: tools/SecurityTools/CredScanSuppressions.json
+      targetType: inline
+      script: |
+        $orgName = ($env:SYSTEM_COLLECTIONURI -split '/')[-2]
+        nuget.exe sources Add -Name "Guardian" -Source "https://pkgs.dev.azure.com/${orgName}/_packaging/Guardian1ESPTUpstreamOrgFeed/nuget/v3/index.json"
+        nuget.exe install Microsoft.Guardian.Cli
+        $toolsPath = Join-Path ("Microsoft.Guardian.Cli*" | Resolve-Path) tools
+        $env:Path = "$toolsPath;$env:Path"
+        $env:GDN_CREDSCAN_TARGETDIRECTORY = (Resolve-Path $env:Scan_Folder).Path
+        guardian init -f
+        guardian run -t CredScan
+
   - task: PowerShell@2
     displayName: Generate a response text file for BinSkim
     inputs:
