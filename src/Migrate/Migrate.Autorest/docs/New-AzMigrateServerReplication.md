@@ -14,12 +14,11 @@ Starts replication for the specified server.
 
 ### ByIdDefaultUser (Default)
 ```
-New-AzMigrateServerReplication -DiskType <String> -LicenseType <String> -LinuxLicenseType <String>
- -MachineId <String> -OSDiskID <String> -TargetNetworkId <String> -TargetResourceGroupId <String>
- -TargetSubnetName <String> -TargetVMName <String> [-DiskEncryptionSetID <String>]
- [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>]
- [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-PerformAutoResync <String>]
- [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
+New-AzMigrateServerReplication -DiskType <String> -LicenseType <String> -MachineId <String> -OSDiskID <String>
+ -TargetNetworkId <String> -TargetResourceGroupId <String> -TargetSubnetName <String> -TargetVMName <String>
+ [-DiskEncryptionSetID <String>] [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>]
+ [-LinuxLicenseType <String>] [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>]
+ [-PerformAutoResync <String>] [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
  [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
  [-TestSubnetName <String>] [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>]
@@ -29,8 +28,8 @@ New-AzMigrateServerReplication -DiskType <String> -LicenseType <String> -LinuxLi
 ### ByIdPowerUser
 ```
 New-AzMigrateServerReplication -DiskToInclude <IVMwareCbtDiskInput[]> -LicenseType <String>
- -LinuxLicenseType <String> -MachineId <String> -TargetNetworkId <String> -TargetResourceGroupId <String>
- -TargetSubnetName <String> -TargetVMName <String> [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>]
+ -MachineId <String> -TargetNetworkId <String> -TargetResourceGroupId <String> -TargetSubnetName <String>
+ -TargetVMName <String> [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-LinuxLicenseType <String>]
  [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-PerformAutoResync <String>]
  [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
@@ -42,9 +41,9 @@ New-AzMigrateServerReplication -DiskToInclude <IVMwareCbtDiskInput[]> -LicenseTy
 ### ByInputObjectDefaultUser
 ```
 New-AzMigrateServerReplication -DiskType <String> -InputObject <IVMwareMachine> -LicenseType <String>
- -LinuxLicenseType <String> -OSDiskID <String> -TargetNetworkId <String> -TargetResourceGroupId <String>
- -TargetSubnetName <String> -TargetVMName <String> [-DiskEncryptionSetID <String>]
- [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>]
+ -OSDiskID <String> -TargetNetworkId <String> -TargetResourceGroupId <String> -TargetSubnetName <String>
+ -TargetVMName <String> [-DiskEncryptionSetID <String>]
+ [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-LinuxLicenseType <String>]
  [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-PerformAutoResync <String>]
  [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
@@ -56,8 +55,8 @@ New-AzMigrateServerReplication -DiskType <String> -InputObject <IVMwareMachine> 
 ### ByInputObjectPowerUser
 ```
 New-AzMigrateServerReplication -DiskToInclude <IVMwareCbtDiskInput[]> -InputObject <IVMwareMachine>
- -LicenseType <String> -LinuxLicenseType <String> -TargetNetworkId <String> -TargetResourceGroupId <String>
- -TargetSubnetName <String> -TargetVMName <String> [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>]
+ -LicenseType <String> -TargetNetworkId <String> -TargetResourceGroupId <String> -TargetSubnetName <String>
+ -TargetVMName <String> [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-LinuxLicenseType <String>]
  [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-PerformAutoResync <String>]
  [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
@@ -254,7 +253,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

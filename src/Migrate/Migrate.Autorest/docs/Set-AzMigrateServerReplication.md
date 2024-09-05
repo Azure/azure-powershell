@@ -14,12 +14,11 @@ Updates the target properties for the replicating server.
 
 ### ByIDVMwareCbt (Default)
 ```
-Set-AzMigrateServerReplication -LinuxLicenseType <String> -TargetObjectID <String>
- [-DiskToUpdate <IVMwareCbtUpdateDiskInput[]>] [-NicToUpdate <IVMwareCbtNicInput[]>]
- [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-TargetAvailabilitySet <String>]
- [-TargetAvailabilityZone <String>] [-TargetBootDiagnosticsStorageAccount <String>] [-TargetDiskName <String>]
- [-TargetNetworkId <String>] [-TargetResourceGroupID <String>] [-TargetVMName <String>]
- [-TargetVMSize <String>] [-TestNetworkId <String>]
+Set-AzMigrateServerReplication -TargetObjectID <String> [-DiskToUpdate <IVMwareCbtUpdateDiskInput[]>]
+ [-LinuxLicenseType <String>] [-NicToUpdate <IVMwareCbtNicInput[]>] [-SqlServerLicenseType <String>]
+ [-SubscriptionId <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetDiskName <String>] [-TargetNetworkId <String>]
+ [-TargetResourceGroupID <String>] [-TargetVMName <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
  [-UpdateDiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-UpdateDiskTagOperation <String>]
  [-UpdateNicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-UpdateNicTagOperation <String>]
  [-UpdateTag <Hashtable>] [-UpdateTagOperation <String>]
@@ -29,12 +28,11 @@ Set-AzMigrateServerReplication -LinuxLicenseType <String> -TargetObjectID <Strin
 
 ### ByInputObjectVMwareCbt
 ```
-Set-AzMigrateServerReplication -InputObject <IMigrationItem> -LinuxLicenseType <String>
- [-DiskToUpdate <IVMwareCbtUpdateDiskInput[]>] [-NicToUpdate <IVMwareCbtNicInput[]>]
- [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-TargetAvailabilitySet <String>]
- [-TargetAvailabilityZone <String>] [-TargetBootDiagnosticsStorageAccount <String>] [-TargetDiskName <String>]
- [-TargetNetworkId <String>] [-TargetResourceGroupID <String>] [-TargetVMName <String>]
- [-TargetVMSize <String>] [-TestNetworkId <String>]
+Set-AzMigrateServerReplication -InputObject <IMigrationItem> [-DiskToUpdate <IVMwareCbtUpdateDiskInput[]>]
+ [-LinuxLicenseType <String>] [-NicToUpdate <IVMwareCbtNicInput[]>] [-SqlServerLicenseType <String>]
+ [-SubscriptionId <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetDiskName <String>] [-TargetNetworkId <String>]
+ [-TargetResourceGroupID <String>] [-TargetVMName <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
  [-UpdateDiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-UpdateDiskTagOperation <String>]
  [-UpdateNicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-UpdateNicTagOperation <String>]
  [-UpdateTag <Hashtable>] [-UpdateTagOperation <String>]
@@ -170,7 +168,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

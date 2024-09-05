@@ -62,7 +62,7 @@ function New-AzMigrateServerReplication {
         # Specifies if Azure Hybrid benefit for SQL Server is applicable for the server to be migrated.
         ${SqlServerLicenseType},
 
-        [Parameter(Mandatory)]
+        [Parameter()]
         [ValidateSet( "NotSpecified", "NoLicenseType", "LinuxServer")]
         [ArgumentCompleter( { "NotSpecified", "NoLicenseType", "LinuxServer" })]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]

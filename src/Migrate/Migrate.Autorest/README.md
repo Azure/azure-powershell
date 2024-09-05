@@ -289,7 +289,7 @@ directive:
   - from: Microsoft.RecoveryServices/stable/2024-01-01/service.json
     where:
       verb: Remove$
-      subject: ReplicationPolicy$|ReplicationProtectionContainerMapping$
+      subject: ReplicationPolicy$|ReplicationProtectionContainerMapping$|ReplicationFabricInfra$
     remove: true
   - from: Microsoft.RecoveryServices/stable/2024-01-01/service.json
     where:
