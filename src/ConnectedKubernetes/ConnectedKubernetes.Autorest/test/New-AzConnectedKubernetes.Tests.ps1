@@ -10,7 +10,6 @@ if (($null -eq $TestName) -or ($TestName -contains 'New-AzConnectedKubernetes'))
         $currentPath = Split-Path -Path $currentPath -Parent
     }
     . ($mockingPath | Select-Object -First 1).FullName
-    # !!PDS: Better way to do this?
     . "$PSScriptRoot/../custom/helpers/HelmHelper.ps1"
     . "$PSScriptRoot/../custom/helpers/ConfigDPHelper.ps1"
     . "$PSScriptRoot/../custom/helpers/AzCloudMetadataHelper.ps1"
@@ -142,7 +141,6 @@ Describe 'Get-ConfigDpDefaultEndpoint' {
         $configDpEndpoint | Should -Be "https://eastus2.dp.kubernetesconfiguration.azure.com"
     }
 
-    # !!PDS: How do we validate this?  Need to check endpoint on a sovereign cloud.
     It 'Sovereign cloud' {
         {
             $cloudMetadata = [PSCustomObject]@{

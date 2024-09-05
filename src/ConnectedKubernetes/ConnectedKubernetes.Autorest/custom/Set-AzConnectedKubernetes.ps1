@@ -293,8 +293,7 @@ function Set-AzConnectedKubernetes {
         Test-ConfigurationSyntax -name 'ConfigurationSetting'
         Test-ConfigurationSyntax -configuration 'ConfigurationProtectedSetting'
 
-        # $ProtectedSettingsPlaceholderValue = "redacted"
-        $ProtectedSettingsPlaceholderValue = "ClientKnown"
+        $ProtectedSettingsPlaceholderValue = "redacted"
 
         if ($AzureHybridBenefit) {
             if (!$AcceptEULA) {
@@ -543,8 +542,7 @@ function Set-AzConnectedKubernetes {
                 $RedactedProtectedConfiguration[$feature] = @{}
             }
             foreach ($setting in $ConfigurationProtectedSetting[$feature].Keys) {
-                # $RedactedProtectedConfiguration[$feature][$setting] = "$ProtectedSettingsPlaceholderValue-$feature-$setting"
-                $RedactedProtectedConfiguration[$feature][$setting] = "$feature.$setting.$ProtectedSettingsPlaceholderValue"
+                $RedactedProtectedConfiguration[$feature][$setting] = "${ProtectedSettingsPlaceholderValue}:${feature}:${setting}"
             }
         }
         #Endregion
@@ -635,10 +633,8 @@ function Set-AzConnectedKubernetes {
 
             foreach ($field in $helmValuesContent.PSObject.Properties) {
                 if ($ProtectedSettingsPlaceholderValue -in $field.Value) {
-                    $parsedValue = $field.Value.Split("-")
-                    # # "$ProtectedSettingsPlaceholderValue-$feature-$setting"
-                    # $field.Value = $ConfigurationProtectedSetting[$parsedValue[1]][$parsedValue[2]]
-                    # "$feature.$setting.$ProtectedSettingsPlaceholderValue"
+                    $parsedValue = $field.Value.Split(":")
+                    # "${ProtectedSettingsPlaceholderValue}:${feature}:${setting}"
                     $field.Value = $ConfigurationProtectedSetting[$parsedValue[0]][$parsedValue[1]]
                 }
                 if ($field.Name -eq "global.proxyCert") {
