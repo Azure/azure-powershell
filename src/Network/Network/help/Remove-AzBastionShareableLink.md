@@ -43,10 +43,7 @@ Deletes the Bastion Shareable Links for all the VMs specified in the request.
 
 ### Example 1
 ```powershell
-Remove-AzBastionShareableLink -ResourceGroupName $RgName -Name $bastionName -TargetVmId $vm.Id
-Confirm
-Are you sure you want to remove Bastion shareable link(s)?
-[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
+Remove-AzBastionShareableLink -ResourceGroupName $RgName -Name $bastionName -TargetVmId $vm.Id -Force
 ```
 
 ### Example 2
