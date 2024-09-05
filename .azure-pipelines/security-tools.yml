@@ -19,41 +19,53 @@ jobs:
   steps:
   - checkout: self
     fetchTags: false
-  - template: util/get-github-pat-steps.yml
-  - task: PowerShell@2
-    displayName: Install platyPS
-    inputs:
-      targetType: inline
-      script: Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser
-      pwsh: true
-  - task: NodeTool@0
-    displayName: Install Node 14.17.1
-    condition: eq(variables.IsGenerateBased, true)
-    inputs:
-      versionSpec: 14.17.1
+  # - template: util/get-github-pat-steps.yml
+  # - task: PowerShell@2
+    # displayName: Install platyPS
+    # inputs:
+      # targetType: inline
+      # script: Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser
+      # pwsh: true
+  # - task: NodeTool@0
+    # displayName: Install Node 14.17.1
+    # condition: eq(variables.IsGenerateBased, true)
+    # inputs:
+      # versionSpec: 14.17.1
 
-  - task: PowerShell@2
-    displayName: Install autorest
-    condition: eq(variables.IsGenerateBased, true)
-    inputs:
-      targetType: inline
-      script: npm install autorest@latest;$env:NODE_OPTIONS="--max-old-space-size=65536"
-  - task: PowerShell@2
-    displayName: Build
-    inputs:
-      targetType: inline
-      script: dotnet msbuild build.proj /t:"Build;GenerateHelp" /p:"PullRequestNumber=$(System.PullRequest.PullRequestNumber);IsSecurityCheck=true"
-    env:
-      OCTOKITPAT: $(GithubToken)
+  # - task: PowerShell@2
+    # displayName: Install autorest
+    # condition: eq(variables.IsGenerateBased, true)
+    # inputs:
+      # targetType: inline
+      # script: npm install autorest@latest;$env:NODE_OPTIONS="--max-old-space-size=65536"
+  # - task: PowerShell@2
+    # displayName: Build
+    # inputs:
+      # targetType: inline
+      # script: dotnet msbuild build.proj /t:"Build;GenerateHelp" /p:"PullRequestNumber=$(System.PullRequest.PullRequestNumber);IsSecurityCheck=true"
+    # env:
+      # OCTOKITPAT: $(GithubToken)
 
   - task: NuGetAuthenticate@1
   
   - task: PowerShell@2
-    displayName: Run CredScan
+    displayName: Create a test file
+    env: 
+      Token: $(System.AccessToken)
+    inputs:
+      targetType: inline
+      script: |
+        New-Item -Type Directory testfolder
+        Set-Location testfolder
+        Write-Output "hello" > test.txt
+        Write-Output $env:Token >> test.txt
+
+  - task: PowerShell@2
+    displayName: Test 2 
     env:
       GUARDIAN_DEFAULT_PACKAGE_SOURCE_SECRET: $(System.AccessToken)
       GDN_CREDSCAN_OUTPUTTYPE: sarif
-      Scan_Folder: SecurityTmp
+      Scan_Folder: testfolder
       GDN_CREDSCAN_SUPPRESSIONSPATH: tools/SecurityTools/CredScanSuppressions.json
       GDN_CREDSCAN_SUPPRESSASERROR: False
     inputs:
