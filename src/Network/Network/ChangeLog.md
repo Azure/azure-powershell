@@ -20,6 +20,8 @@
 
 ## Upcoming Release
 * Onboarded `Microsoft.VideoIndexer/accounts` to private link cmdlets
+* Added optional parameter `-DestinationIpAddress` to the following cmdlets:  
+    - `New-AzPrivateLinkService`
 
 ## Version 7.8.1
 * Fixed secrets exposure in example documentation.

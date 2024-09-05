@@ -104,6 +104,12 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The destination IP address")]
+        public string DestinationIPAddress { get; set; }
+
         private PSPrivateLinkService CreatePSPrivateLinkService()
         {
             var psPrivateLinkService = new PSPrivateLinkService
@@ -134,6 +140,8 @@ namespace Microsoft.Azure.Commands.Network
             {
                 psPrivateLinkService.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
             }
+
+            psPrivateLinkService.DestinationIPAddress = this.DestinationIPAddress;
 
             var plsModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PrivateLinkService>(psPrivateLinkService);
             plsModel.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);

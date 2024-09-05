@@ -5664,6 +5664,10 @@
                 <Label>ExtendedLocation</Label>
                 <PropertyName>ExtendedLocationText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>DestinationIPAddress</Label>
+                <PropertyName>DestinationIPAddress</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

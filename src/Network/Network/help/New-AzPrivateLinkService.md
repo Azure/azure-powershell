@@ -16,7 +16,7 @@ Creates a private link service
 New-AzPrivateLinkService -Name <String> -ResourceGroupName <String> -Location <String>
  -LoadBalancerFrontendIpConfiguration <PSFrontendIPConfiguration[]>
  -IpConfiguration <PSPrivateLinkServiceIpConfiguration[]> [-Visibility <String[]>] [-AutoApproval <String[]>]
- [-EnableProxyProtocol] [-EdgeZone <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DestinationIpAddress <String>] [-EnableProxyProtocol] [-EdgeZone <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
