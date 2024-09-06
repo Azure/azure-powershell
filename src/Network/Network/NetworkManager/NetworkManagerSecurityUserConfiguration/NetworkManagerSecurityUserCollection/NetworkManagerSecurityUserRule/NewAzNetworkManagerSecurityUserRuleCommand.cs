@@ -186,6 +186,7 @@ namespace Microsoft.Azure.Commands.Network
             var userRuleResponse = this.NetworkManagerSecurityUserRuleOperationClient.CreateOrUpdate(this.ResourceGroupName, this.NetworkManagerName, this.SecurityUserConfigurationName, this.RuleCollectionName, this.Name, userRuleModel);
 
             var psUserRule = this.ToPSSecurityUserRule(userRuleResponse);
+            psUserRule.Name = this.Name;
             psUserRule.ResourceGroupName = this.ResourceGroupName;
             psUserRule.NetworkManagerName = this.NetworkManagerName;
             psUserRule.SecurityUserConfigurationName = this.SecurityUserConfigurationName;

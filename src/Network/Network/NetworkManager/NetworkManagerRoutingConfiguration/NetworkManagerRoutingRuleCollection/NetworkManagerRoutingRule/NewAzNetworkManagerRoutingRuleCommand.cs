@@ -136,6 +136,7 @@ namespace Microsoft.Azure.Commands.Network
             var routingRuleModel = NetworkResourceManagerProfile.Mapper.Map<MNM.RoutingRule>(routingRule);
             var routingRuleResponse = this.NetworkManagerRoutingRuleOperationClient.CreateOrUpdate(this.ResourceGroupName, this.NetworkManagerName, this.RoutingConfigurationName, this.RuleCollectionName, this.Name, routingRuleModel);
             var psRoutingRule = this.ToPSRoutingRule(routingRuleResponse);
+            psRoutingRule.Name = this.Name;
             psRoutingRule.ResourceGroupName = this.ResourceGroupName;
             psRoutingRule.NetworkManagerName = this.NetworkManagerName;
             psRoutingRule.RoutingConfigurationName = this.RoutingConfigurationName;
