@@ -41,7 +41,7 @@ try-require:
   - $(repo)/specification/standbypool/resource-manager/readme.powershell.md
 
 # For new RP, the version is 0.1.0
-module-version: 0.2.0
+module-version: 0.1.0
 # Normally, title is the service name
 title: StandbyPool
 subject-prefix: Standby
