@@ -16,6 +16,7 @@
 
 [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '',
     Justification = 'Kubernetes is a recognised term', Scope = 'Function', Target = 'Set-AzConnectedKubernetes')]
+[CmdletBinding()]
 param()
 
 <#
