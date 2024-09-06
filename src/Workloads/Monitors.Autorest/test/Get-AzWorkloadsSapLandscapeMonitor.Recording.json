@@ -1,0 +1,86 @@
+{
+  "Get-AzWorkloadsSapLandscapeMonitor+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/sapLandscapeMonitor/default?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/sapLandscapeMonitor/default?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "f08259a7-2535-489b-b86a-b2b33ff0e080" ],
+        "CommandName": [ "Get-AzWorkloadsSapLandscapeMonitor" ],
+        "FullCommandName": [ "Get-AzWorkloadsSapLandscapeMonitor_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Workloads/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000af15-0000-3400-0000-641833fe0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "9ab54aed-432a-4352-9eb1-43ab17c30527" ],
+        "x-ms-correlation-request-id": [ "48a61608-3c69-427d-b489-f072292f849f" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230320T103350Z:48a61608-3c69-427d-b489-f072292f849f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 20 Mar 2023 10:33:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "760" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/sapLandscapeMonitor/default\",\"name\":\"default\",\"type\":\"microsoft.workloads/monitors/saplandscapemonitor\",\"systemData\":{\"createdBy\":\"sshrivastava@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-20T10:22:49.8861623Z\",\"lastModifiedBy\":\"sshrivastava@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-20T10:22:54.4019279Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"grouping\":{\"landscape\":[{\"name\":\"NonProd\",\"topSid\":[\"SID1\",\"SID2\"]}],\"sapApplication\":[{\"name\":\"ERP1\",\"topSid\":[\"SID1\",\"SID2\"]}]},\"topMetricsThresholds\":[{\"name\":\"Instance Availability\",\"green\":90,\"yellow\":75,\"red\":50}]}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzWorkloadsSapLandscapeMonitor+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/sapLandscapeMonitor/default?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/sapLandscapeMonitor/default?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "e874d75c-9747-478e-a8dc-93ae54b16be9" ],
+        "CommandName": [ "Get-AzWorkloadsSapLandscapeMonitor" ],
+        "FullCommandName": [ "Get-AzWorkloadsSapLandscapeMonitor_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Workloads/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000af15-0000-3400-0000-641833fe0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "e34fb723-84a2-4099-9712-08d038eadb07" ],
+        "x-ms-correlation-request-id": [ "f3022a9e-177a-4424-899b-eab0b4a8e9e3" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230320T103352Z:f3022a9e-177a-4424-899b-eab0b4a8e9e3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 20 Mar 2023 10:33:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "760" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/sapLandscapeMonitor/default\",\"name\":\"default\",\"type\":\"microsoft.workloads/monitors/saplandscapemonitor\",\"systemData\":{\"createdBy\":\"sshrivastava@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-20T10:22:49.8861623Z\",\"lastModifiedBy\":\"sshrivastava@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-20T10:22:54.4019279Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"grouping\":{\"landscape\":[{\"name\":\"NonProd\",\"topSid\":[\"SID1\",\"SID2\"]}],\"sapApplication\":[{\"name\":\"ERP1\",\"topSid\":[\"SID1\",\"SID2\"]}]},\"topMetricsThresholds\":[{\"name\":\"Instance Availability\",\"green\":90,\"yellow\":75,\"red\":50}]}}",
+      "isContentBase64": false
+    }
+  }
+}
