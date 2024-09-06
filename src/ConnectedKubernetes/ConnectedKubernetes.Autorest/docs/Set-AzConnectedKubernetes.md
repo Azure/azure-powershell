@@ -94,27 +94,32 @@ API to set properties of the connected cluster resource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Disable gateway feature  of a connected kubernetes.
 ```powershell
-{{ Add code here }}
+Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -DisableGateway
 ```
 
 ```output
-{{ Add output here }}
+Location Name              ResourceGroupName
+-------- ----              -----------------
+eastus   azps_test_cluster azps_test_group
 ```
 
-{{ Add description here }}
+This command disable gateway feature of a connected kubernetes.
 
-### Example 2: {{ Add title here }}
+### Example 2: Enable gateway feature of connected kubernetes.
 ```powershell
-{{ Add code here }}
+Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -EnableGateway -GatewayResourceId gatewayResourceId
+
 ```
 
 ```output
-{{ Add output here }}
+Location Name              ResourceGroupName
+-------- ----              -----------------
+eastus   azps_test_cluster azps_test_group
 ```
 
-{{ Add description here }}
+This command disable gateway feature of a connected kubernetes.
 
 ## PARAMETERS
 
