@@ -75,7 +75,7 @@ jobs:
         #nuget.exe sources Add -Name "Guardian" -Source "https://pkgs.dev.azure.com/${orgName}/_packaging/Guardian1ESPTUpstreamOrgFeed/nuget/v3/index.json"
         #nuget.exe install Microsoft.Guardian.Cli
         nuget.exe install Microsoft.Security.DevOps.Cli
-        $toolsPath = Join-Path ("Microsoft.Guardian.Cli*" | Resolve-Path) tools
+        $toolsPath = Join-Path ("Microsoft.Security.DevOps.Cli*" | Resolve-Path) tools
         $env:Path = "$toolsPath;$env:Path"
         $env:GDN_CREDSCAN_TARGETDIRECTORY = (Resolve-Path $env:Scan_Folder).Path
         guardian init -f
