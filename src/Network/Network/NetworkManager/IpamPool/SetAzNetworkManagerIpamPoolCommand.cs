@@ -24,7 +24,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerIpamPool", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManager))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerIpamPool", SupportsShouldProcess = true), OutputType(typeof(PSIpamPool))]
     public class SetAzNetworkManagerIpamPoolCommand : IpamPoolBaseCmdlet
     {
         [Parameter(

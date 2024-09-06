@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSIpamPool GetIpamPool(string resourceGroupName, string networkManagerName, string poolName)
         {
             var ipamPool = this.IpamPoolClient.Get(resourceGroupName, networkManagerName, poolName);
-            var psIpamPool = NetworkResourceManagerProfile.Mapper.Map<PSIpamPool>(ipamPool);
+            var psIpamPool = ToPsIpamPool(ipamPool);
             psIpamPool.Tags = ipamPool.Tags;
             psIpamPool.ResourceGroupName = resourceGroupName;
             psIpamPool.NetworkManagerName = networkManagerName;
@@ -64,6 +64,18 @@ namespace Microsoft.Azure.Commands.Network
         {
             var psIpamPool = NetworkResourceManagerProfile.Mapper.Map<PSIpamPool>(ipamPool);
             return psIpamPool;
+        }
+
+        public PSPoolAssociation ToPsPoolAssociation(Management.Network.Models.PoolAssociation poolAssociation)
+        {
+            var psPoolAssociation = NetworkResourceManagerProfile.Mapper.Map<PSPoolAssociation>(poolAssociation);
+            return psPoolAssociation;
+        }
+
+        public PSPoolUsage ToPsPoolUsage(Management.Network.Models.PoolUsage poolUsage)
+        {
+            var psPoolUsage = NetworkResourceManagerProfile.Mapper.Map<PSPoolUsage>(poolUsage);
+            return psPoolUsage;
         }
     }
 }

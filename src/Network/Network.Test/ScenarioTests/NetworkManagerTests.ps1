@@ -741,7 +741,27 @@ function Test-NetworkManagerIpamPoolCRUD
         Assert-AreEqual  $newIpamPool.Properties.AddressPrefixes[0] "10.0.0.0/8";
         Assert-AreEqual  $newIpamPool.Properties.AddressPrefixes[1] "11.0.0.0/8";
 
-        # Delete network manager
+        # Get Pool Usage
+        $poolUsage = Get-AzNetworkManagerIpamPoolUsage -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -IpamPoolName $ipamPoolName
+        Assert-NotNull $poolUsage;
+        Assert-NotNull $poolUsage.ChildPools.Count 0;
+        Assert-AreEqual $poolUsage.AddressPrefixes.Count 1;
+        Assert-AreEqual $poolUsage.AddressPrefixes[0] "10.0.0.0/7";
+        Assert-AreEqual $poolUsage.AllocatedAddressPrefixes.Count 0;
+        Assert-AreEqual $poolUsage.ReservedAddressPrefixes.Count 0;
+        Assert-AreEqual $poolUsage.AvailableAddressPrefixes.Count 1;
+        Assert-AreEqual $poolUsage.AvailableAddressPrefixes[0] "10.0.0.0/7";
+        Assert-AreEqual $poolUsage.TotalNumberOfIPAddresses "33554432";
+        Assert-AreEqual $poolUsage.NumberOfAllocatedIPAddresses "0";
+        Assert-AreEqual $poolUsage.NumberOfReservedIPAddresses "0";
+        Assert-AreEqual $poolUsage.NumberOfAvailableIPAddresses "33554432";
+
+        # Get Associated Resources
+        $listAssociatedResources = Get-AzNetworkManagerAssociatedResourcesList -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -IpamPoolName $ipamPoolName
+        Assert-NotNull $listAssociatedResources;
+        Assert-AreEqual $listAssociatedResources.Count 0;
+
+        # Delete IpamPool
         $job = Remove-AzNetworkManagerIpamPool -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $ipamPoolName -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;

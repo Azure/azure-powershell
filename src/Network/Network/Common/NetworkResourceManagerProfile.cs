@@ -2308,6 +2308,9 @@ namespace Microsoft.Azure.Commands.Network
                 // IpamPool
                 cfg.CreateMap<ANM.PSIpamPool, MNM.IpamPool>();
                 cfg.CreateMap<ANM.PSIpamPoolProperties, MNM.IpamPoolProperties>();
+                cfg.CreateMap<ANM.PSPoolAssociation, MNM.PoolAssociation>();
+                cfg.CreateMap<ANM.PSPoolUsage, MNM.PoolUsage>();
+                cfg.CreateMap<ANM.PSResourceBasics, MNM.ResourceBasics>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.NetworkManager, ANM.PSNetworkManager>();
@@ -2351,6 +2354,9 @@ namespace Microsoft.Azure.Commands.Network
                 // IpamPool
                 cfg.CreateMap<MNM.IpamPool, ANM.PSIpamPool>();
                 cfg.CreateMap<MNM.IpamPoolProperties, ANM.PSIpamPoolProperties>();
+                cfg.CreateMap<MNM.PoolAssociation, ANM.PSPoolAssociation>();
+                cfg.CreateMap<MNM.PoolUsage, ANM.PSPoolUsage>();
+                cfg.CreateMap<MNM.ResourceBasics, ANM.PSResourceBasics>();
             });
             _mapper = config.CreateMapper();
         }

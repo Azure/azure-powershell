@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerIpamPool", DefaultParameterSetName = "NoExpand"), OutputType(typeof(PSNetworkManager))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerIpamPool", DefaultParameterSetName = "NoExpand"), OutputType(typeof(PSIpamPool))]
     public class GetAzNetworkManagerIpamPoolCommand : IpamPoolBaseCmdlet
     {
         [Alias("ResourceName")]
