@@ -32,11 +32,15 @@ Imports a database file to target database.
 ### [Invoke-AzRedisEnterpriseCacheDatabaseFlush](Invoke-AzRedisEnterpriseCacheDatabaseFlush.md)
 Flushes all the keys in this database and also from its linked databases.
 
+### [Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup](Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup.md)
+Forcibly recreates an existing database on the specified cluster, and rejoins it to an existing replication group.
+**IMPORTANT NOTE:** All data in this database will be discarded, and the database will temporarily be unavailable while rejoining the replication group.
+
 ### [Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink](Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink.md)
 Forcibly removes the link to the specified database resource.
 
 ### [New-AzRedisEnterpriseCache](New-AzRedisEnterpriseCache.md)
-Creates or updates an existing (overwrite/recreate, with potential downtime) cache cluster with an associated database.
+Creates a Redis Enterprise cache.
 
 ### [New-AzRedisEnterpriseCacheDatabase](New-AzRedisEnterpriseCacheDatabase.md)
 Creates a database for a Redis Enterprise cache.
@@ -55,4 +59,7 @@ Updates an existing RedisEnterprise cluster
 
 ### [Update-AzRedisEnterpriseCacheDatabase](Update-AzRedisEnterpriseCacheDatabase.md)
 Updates an existing Redis Enterprise database
+
+### [Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion](Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion.md)
+Upgrades the database Redis version to the latest available.
 
