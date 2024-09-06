@@ -19,12 +19,6 @@ Update-AzWvdDesktop -ApplicationGroupName <String> -Name <String> -ResourceGroup
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityApplicationGroup
-```
-Update-AzWvdDesktop -ApplicationGroupInputObject <IDesktopVirtualizationIdentity> -Name <String>
- -Desktop <IDesktopPatch> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityApplicationGroupExpanded
 ```
 Update-AzWvdDesktop -ApplicationGroupInputObject <IDesktopVirtualizationIdentity> -Name <String>
@@ -82,7 +76,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: UpdateViaIdentityApplicationGroup, UpdateViaIdentityApplicationGroupExpanded
+Parameter Sets: UpdateViaIdentityApplicationGroupExpanded
 Aliases:
 
 Required: True
@@ -135,21 +129,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Desktop
-Desktop properties that can be patched.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopPatch
-Parameter Sets: UpdateViaIdentityApplicationGroup
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -218,7 +197,7 @@ The name of the desktop within the specified desktop group
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityApplicationGroup, UpdateViaIdentityApplicationGroupExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaIdentityApplicationGroupExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: DesktopName
 
 Required: True
@@ -310,8 +289,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopPatch
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 

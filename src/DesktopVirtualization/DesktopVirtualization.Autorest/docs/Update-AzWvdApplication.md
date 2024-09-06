@@ -22,12 +22,6 @@ Update-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <S
  [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityApplicationGroup
-```
-Update-AzWvdApplication -ApplicationGroupInputObject <IDesktopVirtualizationIdentity> -Name <String>
- -Application <IApplicationPatch> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityApplicationGroupExpanded
 ```
 Update-AzWvdApplication -ApplicationGroupInputObject <IDesktopVirtualizationIdentity> -Name <String>
@@ -87,27 +81,12 @@ This command updates a Windows Virtual Desktop Application in an applicaton Grou
 
 ## PARAMETERS
 
-### -Application
-Application properties that can be patched.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatch
-Parameter Sets: UpdateViaIdentityApplicationGroup
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ApplicationGroupInputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: UpdateViaIdentityApplicationGroup, UpdateViaIdentityApplicationGroupExpanded
+Parameter Sets: UpdateViaIdentityApplicationGroupExpanded
 Aliases:
 
 Required: True
@@ -348,7 +327,7 @@ The name of the application within the specified application group
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityApplicationGroup, UpdateViaIdentityApplicationGroupExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaIdentityApplicationGroupExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: ApplicationName
 
 Required: True
@@ -455,8 +434,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatch
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 

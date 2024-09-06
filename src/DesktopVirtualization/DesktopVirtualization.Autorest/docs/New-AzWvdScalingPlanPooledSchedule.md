@@ -26,26 +26,6 @@ New-AzWvdScalingPlanPooledSchedule -ResourceGroupName <String> -ScalingPlanName 
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityScalingPlan
-```
-New-AzWvdScalingPlanPooledSchedule -ScalingPlanInputObject <IDesktopVirtualizationIdentity>
- -ScalingPlanScheduleName <String> -ScalingPlanSchedule <IScalingPlanPooledSchedule>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityScalingPlanExpanded
-```
-New-AzWvdScalingPlanPooledSchedule -ScalingPlanInputObject <IDesktopVirtualizationIdentity>
- -ScalingPlanScheduleName <String> [-DaysOfWeek <String[]>] [-OffPeakLoadBalancingAlgorithm <String>]
- [-OffPeakStartTimeHour <Int32>] [-OffPeakStartTimeMinute <Int32>] [-PeakLoadBalancingAlgorithm <String>]
- [-PeakStartTimeHour <Int32>] [-PeakStartTimeMinute <Int32>] [-RampDownCapacityThresholdPct <Int32>]
- [-RampDownForceLogoffUser] [-RampDownLoadBalancingAlgorithm <String>] [-RampDownMinimumHostsPct <Int32>]
- [-RampDownNotificationMessage <String>] [-RampDownStartTimeHour <Int32>] [-RampDownStartTimeMinute <Int32>]
- [-RampDownStopHostsWhen <String>] [-RampDownWaitTimeMinute <Int32>] [-RampUpCapacityThresholdPct <Int32>]
- [-RampUpLoadBalancingAlgorithm <String>] [-RampUpMinimumHostsPct <Int32>] [-RampUpStartTimeHour <Int32>]
- [-RampUpStartTimeMinute <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaJsonFilePath
 ```
 New-AzWvdScalingPlanPooledSchedule -ResourceGroupName <String> -ScalingPlanName <String>
@@ -108,7 +88,7 @@ Set of days of the week on which this schedule is active.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityScalingPlanExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -169,7 +149,7 @@ Load balancing algorithm for off-peak period.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityScalingPlanExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -184,7 +164,7 @@ The hour.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityScalingPlanExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -199,7 +179,7 @@ The minute.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityScalingPlanExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -214,7 +194,7 @@ Load balancing algorithm for peak period.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityScalingPlanExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -229,7 +209,7 @@ The hour.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityScalingPlanExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -244,7 +224,7 @@ The minute.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityScalingPlanExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -259,7 +239,7 @@ Capacity threshold for ramp down period.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityScalingPlanExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -274,7 +254,7 @@ Should users be logged off forcefully from hosts.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityScalingPlanExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -289,7 +269,7 @@ Load balancing algorithm for ramp down period.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityScalingPlanExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -304,7 +284,7 @@ Minimum host percentage for ramp down period.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityScalingPlanExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -319,7 +299,7 @@ Notification message for users during ramp down period.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityScalingPlanExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -334,7 +314,7 @@ The hour.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityScalingPlanExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -349,7 +329,7 @@ The minute.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityScalingPlanExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -364,7 +344,7 @@ Specifies when to stop hosts during ramp down period.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityScalingPlanExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -379,7 +359,7 @@ Number of minutes to wait to stop hosts during ramp down period.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityScalingPlanExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -394,7 +374,7 @@ Capacity threshold for ramp up period.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityScalingPlanExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -409,7 +389,7 @@ Load balancing algorithm for ramp up period.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityScalingPlanExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -424,7 +404,7 @@ Minimum host percentage for ramp up period.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityScalingPlanExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -439,7 +419,7 @@ The hour.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityScalingPlanExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -454,7 +434,7 @@ The minute.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityScalingPlanExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -470,28 +450,13 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScalingPlanInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: CreateViaIdentityScalingPlan, CreateViaIdentityScalingPlanExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -500,28 +465,13 @@ The name of the scaling plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScalingPlanSchedule
-Represents a ScalingPlanPooledSchedule definition.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedule
-Parameter Sets: CreateViaIdentityScalingPlan
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -546,7 +496,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -591,10 +541,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedule
 
 ## OUTPUTS
 

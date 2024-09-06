@@ -86,9 +86,9 @@ function Unregister-AzWvdApplicationGroup {
         [System.String]
         ${WorkspaceName},
 
-        [Parameter(Mandatory, HelpMessage='ResourceGroupName Path')]
-        [System.String]
+        [Parameter(Mandatory, HelpMessage='AppGroup Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+        [System.String]
         ${ApplicationGroupPath}
     )
 

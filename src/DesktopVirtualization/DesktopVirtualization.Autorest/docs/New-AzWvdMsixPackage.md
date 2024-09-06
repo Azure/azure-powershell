@@ -22,21 +22,6 @@ New-AzWvdMsixPackage -FullName <String> -HostPoolName <String> -ResourceGroupNam
  [<CommonParameters>]
 ```
 
-### CreateViaIdentityHostPool
-```
-New-AzWvdMsixPackage -FullName <String> -HostPoolInputObject <IDesktopVirtualizationIdentity>
- -MsixPackage <IMsixPackage> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityHostPoolExpanded
-```
-New-AzWvdMsixPackage -FullName <String> -HostPoolInputObject <IDesktopVirtualizationIdentity>
- [-DisplayName <String>] [-ImagePath <String>] [-IsActive] [-IsRegularRegistration] [-LastUpdated <DateTime>]
- [-PackageApplication <IMsixPackageApplications[]>] [-PackageDependency <IMsixPackageDependencies[]>]
- [-PackageFamilyName <String>] [-PackageName <String>] [-PackageRelativePath <String>] [-Version <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaJsonFilePath
 ```
 New-AzWvdMsixPackage -FullName <String> -HostPoolName <String> -ResourceGroupName <String>
@@ -127,7 +112,7 @@ User friendly Name to be displayed in the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityHostPoolExpanded, PackageAlias
+Parameter Sets: CreateExpanded, PackageAlias
 Aliases:
 
 Required: False
@@ -142,7 +127,7 @@ The version specific package full name of the MSIX package within specified host
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityHostPool, CreateViaIdentityHostPoolExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: MsixPackageFullName
 
 Required: True
@@ -152,27 +137,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HostPoolInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: CreateViaIdentityHostPool, CreateViaIdentityHostPoolExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -HostPoolName
 The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString, PackageAlias
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -187,7 +157,7 @@ VHD/CIM image path on Network Share.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityHostPoolExpanded, PackageAlias
+Parameter Sets: CreateExpanded, PackageAlias
 Aliases:
 
 Required: False
@@ -202,7 +172,7 @@ Make this version of the package the active one across the hostpool.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityHostPoolExpanded, PackageAlias
+Parameter Sets: CreateExpanded, PackageAlias
 Aliases:
 
 Required: False
@@ -217,7 +187,7 @@ Specifies how to register Package in feed.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityHostPoolExpanded, PackageAlias
+Parameter Sets: CreateExpanded, PackageAlias
 Aliases:
 
 Required: False
@@ -262,28 +232,13 @@ Date Package was last updated, found in the appxmanifest.xml.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded, CreateViaIdentityHostPoolExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MsixPackage
-Schema for MSIX Package properties.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackage
-Parameter Sets: CreateViaIdentityHostPool
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -307,7 +262,7 @@ List of package applications.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageApplications[]
-Parameter Sets: CreateExpanded, CreateViaIdentityHostPoolExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -322,7 +277,7 @@ List of package dependencies.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageDependencies[]
-Parameter Sets: CreateExpanded, CreateViaIdentityHostPoolExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -338,7 +293,7 @@ Contains Package Name and Publisher name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityHostPoolExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -353,7 +308,7 @@ Package Name from appxmanifest.xml.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityHostPoolExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -368,7 +323,7 @@ Relative Path to the package inside the image.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityHostPoolExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -384,7 +339,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString, PackageAlias
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -400,7 +355,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString, PackageAlias
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -415,7 +370,7 @@ Package version found in the appxmanifest.xml.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityHostPoolExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -460,10 +415,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackage
 
 ## OUTPUTS
 

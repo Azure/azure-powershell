@@ -48,7 +48,7 @@ Unregister the Windows virtual desktop application group.
 ## PARAMETERS
 
 ### -ApplicationGroupPath
-ResourceGroupName Path
+AppGroup Path
 
 ```yaml
 Type: System.String
