@@ -410,6 +410,7 @@ namespace Microsoft.Azure.Commands.Network
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSVirtualNetwork, MNM.SubResource>();
                 cfg.CreateMap<CNM.PSAddressSpace, MNM.AddressSpace>();
+                cfg.CreateMap<CNM.PSIpamPoolPrefixAllocation, MNM.IpamPoolPrefixAllocation>();
                 cfg.CreateMap<CNM.PSVirtualNetwork, MNM.VirtualNetwork>()
                     .ForMember(
                         dest => dest.IPAllocations,
@@ -421,6 +422,7 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.SubResource, CNM.PSVirtualNetwork>();
                 cfg.CreateMap<MNM.AddressSpace, CNM.PSAddressSpace>();
+                cfg.CreateMap<MNM.IpamPoolPrefixAllocation, CNM.PSIpamPoolPrefixAllocation>();
                 cfg.CreateMap<MNM.VirtualNetwork, CNM.PSVirtualNetwork>()
                     .ForMember(
                         dest => dest.IpAllocations,

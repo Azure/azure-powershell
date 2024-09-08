@@ -717,7 +717,6 @@ function Test-NetworkManagerIpamPoolCRUD
 
         # Create Scope
         $subscriptions  = @($subscriptionId)
-        $managementGroups  = @($managementGroupId)
         $scope = New-AzNetworkManagerScope -Subscription $subscriptions
 
         # Define access
