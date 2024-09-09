@@ -54,4 +54,4 @@ the submodule along with handwritten part will be both imported for local tests.
 ## Archive generated assets
 **Note: This section is for Azure-PowerShell team internal**
 
-Soon after a PR for generated submodule was merged, a PR with title: `[skip ci] Archive ${CommitId}` will be created automatically. It should contains file changes under `/generated/ModuleRootName/SubModule.Autorest`, please confirm `/generated/ModuleRootName/SubModule.Autorest/generate-info.json` was updated and is the same as the file from ${CommitId}
+Soon after a PR for generated submodule was merged, a PR with title: `[skip ci] Archive ${CommitId}` will be created automatically. It should contains file changes under `/generated/ModuleRootName/SubModule.Autorest`, please confirm `/generated/ModuleRootName/SubModule.Autorest/generate-info.json` was updated and is the same as `/src/ModuleRootName/SubModule.Autorest/generate-info.json`
