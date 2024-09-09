@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Onboarded `Microsoft.VideoIndexer/accounts` to private link cmdlets
 
 ## Version 7.8.1
 * Fixed secrets exposure in example documentation.
