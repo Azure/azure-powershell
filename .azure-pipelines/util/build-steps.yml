@@ -202,6 +202,13 @@ steps:
     targetType: inline
     pwsh: true
     script: |
+      if ("Commit" -eq "$(TriggerType)") {
+        $prTitle = "[skip ci] Archive $(Trigger)"
+      } elseif ("TargetModule" -eq "$(TriggerType)") {
+        $prTitle = "[skip ci] Archive selected modules"
+      } else {
+        return
+      }
       $tmpBranchName = "$(TmpBranchName)"
       $baseBranchName = "$(BaseBranchName)"
       $generatedPath = Join-Path "$(Build.SourcesDirectory)" 'generated'
@@ -209,8 +216,7 @@ steps:
       if ((-not $diff) -or ($null -eq $diff) -or (0 -eq $diff.Count)) {
         return
       }
-
-      $prTitle = "[skip ci] Archive generated assets to $baseBranchName"
+      
       $prDescription = "triggered by: $(TriggerType) ($(Trigger))"
       $prScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'Github' 'CreatePR.ps1'
 

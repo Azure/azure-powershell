@@ -44,7 +44,7 @@ ModuleRoot.sln
  ## Test the entire module
 This used to be impossible on generation branch when you working on submodule part of a hybrid module. Now you can do
 ```
-/tools/BuildScripts/BuildModules.ps1 -TargetModule ${ModuleRootName}
+./tools/BuildScripts/BuildModules.ps1 -TargetModule ${ModuleRootName}
 Import-Module artifacts/Debug/Az.${ModuleRootName}/Az.${ModuleRootName}.psd1
 ```
 the submodule along with handwritten part will be both imported for local tests.
