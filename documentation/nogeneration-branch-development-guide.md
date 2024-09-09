@@ -22,6 +22,8 @@ The directory you will work on is `SubModule.Autorest`
 ## Code Changes
 You might have noticed that files under `SubModule.Autorest` are almost identical as they used to be in generation branch. Code changes are also identical as what you used to do in generation branch.
 
+**Note: Please include release notes along with your code changes in `/src/ModuleRootName/ParentModule/Changelog.md`**
+
 ## Commit and Pull Request
 **Note: Please double check file `generate-info.json` under `SubModule.Autorest` was updated each time `build-module.ps1` was executed, please be sure to include this change in your PR, PR validation will fail otherwise**
 
@@ -39,7 +41,14 @@ will be synced to
 ```
 and if you are adding a new submodule, this new module will also be added in
 ```
-ModuleRoot.sln
+/src/ModuleRootName/ModuleRoot.sln
+/src/ModuleRootName/ParentModule/Az.ModuleRoot.psd1
+```
+Besides, if the module is completely new, these below item will also be created
+```
+/src/ModuleRootName/ParentModule/Changelog.md
+/src/ModuleRootName/ParentModule/ParentModule.csproj
+/src/ModuleRootName/ParentModule/Properties/AssemblyInfo.cs
 ```
 Please be sure to use `git add` to commit these changes in your pull request.
 
@@ -54,4 +63,4 @@ the submodule along with handwritten part will be both imported for local tests.
 ## Archive generated assets
 **Note: This section is for Azure-PowerShell team internal**
 
-Soon after a PR for generated submodule was merged, a PR with title: `[skip ci] Archive ${CommitId}` will be created automatically. It should contains file changes under `/generated/ModuleRootName/SubModule.Autorest`, please confirm `/generated/ModuleRootName/SubModule.Autorest/generate-info.json` was updated and is the same as `/src/ModuleRootName/SubModule.Autorest/generate-info.json`
+Soon after a PR for generated submodule was merged, a PR with title: `[skip ci] Archive ${CommitId}` will be created automatically. It should contains file changes under `/generated/ModuleRootName/SubModule.Autorest`, please confirm `/generated/ModuleRootName/SubModule.Autorest/generate-info.json` was updated and is the same as `/src/ModuleRootName/SubModule.Autorest/generate-info.json`.
