@@ -39,10 +39,8 @@ The final command assigns the policy in $Policy at the level of a resource group
 The **ResourceId** property of $ResourceGroup identifies the resource group.
 
 ### Example 4: Policy assignment at resource group level with policy parameter file
-Create a file called _AllowedLocations.json_ in the local working directory with the following content.
-
 ```powershell
-{
+'{
     "listOfAllowedLocations":  {
       "value": [
         "westus",
@@ -50,15 +48,16 @@ Create a file called _AllowedLocations.json_ in the local working directory with
         "japanwest"
       ]
     }
-}
+}' > .\AllowedLocations.json
 
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.DisplayName -eq 'Allowed locations'}
 New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameter .\AllowedLocations.json
 ```
 
-The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet and stores it in the $ResourceGroup variable.
-The second command gets the built-in policy definition for allowed locations by using the Get-AzPolicyDefinition cmdlet and stores it in the $Policy variable.
+The first command creates a parameter file called _AllowedLocations.json_ in the local working directory.
+The second command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet and stores it in the $ResourceGroup variable.
+The third command gets the built-in policy definition for allowed locations by using the Get-AzPolicyDefinition cmdlet and stores it in the $Policy variable.
 The final command assigns the policy in $Policy at the resource group identified by the **ResourceId** property of $ResourceGroup using the policy parameter file AllowedLocations.json from the local working directory.
 
 ### Example 5: Policy assignment with a system assigned managed identity
@@ -151,10 +150,8 @@ The final command assigns the policy in $Policy at the level of a resource group
 The **ResourceId** property of $ResourceGroup identifies the resource group.
 
 ### Example 12: [Backcompat] Policy assignment at resource group level with policy parameter file
-Create a file called _AllowedLocations.json_ in the local working directory with the following content.
-
 ```powershell
-{
+'{
     "listOfAllowedLocations":  {
       "value": [
         "westus",
@@ -162,13 +159,14 @@ Create a file called _AllowedLocations.json_ in the local working directory with
         "japanwest"
       ]
     }
-}
+}' > .\AllowedLocations.json
 
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations'}
 New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameter .\AllowedLocations.json
 ```
 
-The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet and stores it in the $ResourceGroup variable.
-The second command gets the built-in policy definition for allowed locations by using the Get-AzPolicyDefinition cmdlet and stores it in the $Policy variable.
+The first command creates a parameter file called _AllowedLocations.json_ in the local working directory.
+The second command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet and stores it in the $ResourceGroup variable.
+The third command gets the built-in policy definition for allowed locations by using the Get-AzPolicyDefinition cmdlet and stores it in the $Policy variable.
 The final command assigns the policy in $Policy at the resource group identified by the **ResourceId** property of $ResourceGroup using the policy parameter file AllowedLocations.json from the local working directory.
