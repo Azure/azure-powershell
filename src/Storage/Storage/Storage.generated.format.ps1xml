@@ -332,8 +332,8 @@
         <TypeName>Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageFileDirectory</TypeName>
       </ViewSelectedBy>
       <GroupBy>
-        <ScriptBlock>if ($_.CloudFile -eq $null) {$_.CloudFileDirectory.Parent.SnapshotQualifiedUri} else {$_.CloudFile.Parent.SnapshotQualifiedUri}</ScriptBlock>
-        <Label>Directory</Label>
+        <ScriptBlock>if ($_.ShareFileClient -eq $null) {$_.ShareDirectoryClient.ShareName} else {$_.ShareFileClient.ShareName}</ScriptBlock>
+        <Label>Share</Label>
       </GroupBy>
       <TableControl>
         <TableHeaders>
