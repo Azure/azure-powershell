@@ -229,7 +229,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.4'; },
             @{ModuleName = 'Az.VoiceServices'; RequiredVersion = '0.1.2'; }, 
             @{ModuleName = 'Az.Websites'; RequiredVersion = '3.2.1'; }, 
             @{ModuleName = 'Az.WindowsIotServices'; RequiredVersion = '0.1.1'; }, 
-            @{ModuleName = 'Az.Workloads'; RequiredVersion = '0.2.1'; })
+            @{ModuleName = 'Az.Workloads'; RequiredVersion = '0.3.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
