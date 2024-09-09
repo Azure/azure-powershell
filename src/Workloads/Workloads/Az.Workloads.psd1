@@ -55,8 +55,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.4'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Monitors.Autorest/bin/Az.Monitors.private.dll', 
-               'SapVirtualInstance.Autorest/bin/Az.SapVirtualInstance.private.dll', 
-               'Workloads.Autorest/bin/Az.Workloads.private.dll'
+               'SapVirtualInstance.Autorest/bin/Az.SapVirtualInstance.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 ScriptsToProcess = @()
@@ -66,13 +65,11 @@ TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'Monitors.Autorest/Az.Monitors.format.ps1xml', 
-               'SapVirtualInstance.Autorest/Az.SapVirtualInstance.format.ps1xml', 
-               'Workloads.Autorest/Az.Workloads.format.ps1xml'
+               'SapVirtualInstance.Autorest/Az.SapVirtualInstance.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('Monitors.Autorest/Az.Monitors.psm1', 
-               'SapVirtualInstance.Autorest/Az.SapVirtualInstance.psm1', 
-               'Workloads.Autorest/Az.Workloads.psm1')
+               'SapVirtualInstance.Autorest/Az.SapVirtualInstance.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Get-AzWorkloadsMonitor', 'Get-AzWorkloadsProviderInstance', 
