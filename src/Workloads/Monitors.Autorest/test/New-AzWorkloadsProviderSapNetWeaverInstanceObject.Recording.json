@@ -3,7 +3,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances/suha-nw-1?api-version=2023-04-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"providerSettings\": {\r\n      \"providerType\": \"SapNetWeaver\",\r\n      \"sapSid\": \"L13\",\r\n      \"sapHostname\": \"10.0.82.4\",\r\n      \"sapInstanceNr\": \"00\",\r\n      \"sapHostFileEntries\": [ \"[\\\"10.0.82.4 l13appvm0.ams.azure.com l13appvm0\\\",\\\"10.0.82.5 l13ascsvm.ams.azure.com l13ascsvm\\\"]\" ],\r\n      \"sapUsername\": \"AMSUSER\",\r\n      \"sapPassword\": \"Password@1234\",\r\n      \"sapClientId\": \"000\",\r\n      \"sslPreference\": \"Disabled\"\r\n    }\r\n  }\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"providerSettings\": {\r\n      \"providerType\": \"SapNetWeaver\",\r\n      \"sapSid\": \"L13\",\r\n      \"sapHostname\": \"10.0.82.4\",\r\n      \"sapInstanceNr\": \"00\",\r\n      \"sapHostFileEntries\": [ \"[\\\"10.0.82.4 l13appvm0.ams.azure.com l13appvm0\\\",\\\"10.0.82.5 l13ascsvm.ams.azure.com l13ascsvm\\\"]\" ],\r\n      \"sapUsername\": \"AMSUSER\",\r\n      \"sapPassword\": \"*****\",\r\n      \"sapClientId\": \"000\",\r\n      \"sslPreference\": \"Disabled\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
