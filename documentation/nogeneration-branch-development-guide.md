@@ -23,7 +23,7 @@ The directory you will work on is `SubModule.Autorest`
 You might have noticed that files under `SubModule.Autorest` are almost identical as they used to be in generation branch. Code changes are also identical as what you used to do in generation branch.
 
 ## Commit and Pull Request
-**Note: Please double check file `generate-info.json` under `SubModule.Autorest` was updated each time `build-module.ps1` was executed**
+**Note: Please double check file `generate-info.json` under `SubModule.Autorest` was updated each time `build-module.ps1` was executed, please be sure to include this change in your PR, PR validation will fail otherwise**
 
 **Note: Besides changes under `SubModule.Autorest`, there are something more under `ParentModule` and possibly `ModuleRoot.sln`.**
 
