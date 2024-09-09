@@ -21,7 +21,7 @@ Get-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <Str
 
 ### GetViaIdentity
 ```
-Get-AzWorkloadsSapLandscapeMonitor -InputObject <IWorkloadsIdentity> [-DefaultProfile <PSObject>]
+Get-AzWorkloadsSapLandscapeMonitor -InputObject <IMonitorsIdentity> [-DefaultProfile <PSObject>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
@@ -123,7 +123,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 

@@ -21,7 +21,7 @@ Update-AzWorkloadsMonitor -Name <String> -ResourceGroupName <String> [-Subscript
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWorkloadsMonitor -InputObject <IWorkloadsIdentity> [-IdentityType <ManagedServiceIdentityType>]
+Update-AzWorkloadsMonitor -InputObject <IMonitorsIdentity> [-IdentityType <ManagedServiceIdentityType>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 Type of manage identity
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.ManagedServiceIdentityType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.ManagedServiceIdentityType
 Parameter Sets: (All)
 Aliases:
 
@@ -95,7 +95,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 

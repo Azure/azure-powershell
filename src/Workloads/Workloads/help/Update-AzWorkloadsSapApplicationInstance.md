@@ -22,7 +22,7 @@ Update-AzWorkloadsSapApplicationInstance -Name <String> -ResourceGroupName <Stri
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWorkloadsSapApplicationInstance -InputObject <IWorkloadsIdentity> [-Tag <Hashtable>]
+Update-AzWorkloadsSapApplicationInstance -InputObject <ISapVirtualInstanceIdentity> [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -83,7 +83,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
