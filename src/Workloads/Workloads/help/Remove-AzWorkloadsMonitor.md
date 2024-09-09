@@ -21,7 +21,7 @@ Remove-AzWorkloadsMonitor -Name <String> -ResourceGroupName <String> [-Subscript
 
 ### DeleteViaIdentity
 ```
-Remove-AzWorkloadsMonitor -InputObject <IWorkloadsIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Remove-AzWorkloadsMonitor -InputObject <IMonitorsIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -98,7 +98,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 

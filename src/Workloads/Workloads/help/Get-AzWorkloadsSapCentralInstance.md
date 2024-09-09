@@ -28,7 +28,7 @@ Get-AzWorkloadsSapCentralInstance -Name <String> -ResourceGroupName <String> -Sa
 
 ### GetViaIdentity
 ```
-Get-AzWorkloadsSapCentralInstance -InputObject <IWorkloadsIdentity> [-DefaultProfile <PSObject>]
+Get-AzWorkloadsSapCentralInstance -InputObject <ISapVirtualInstanceIdentity> [-DefaultProfile <PSObject>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
@@ -86,7 +86,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 

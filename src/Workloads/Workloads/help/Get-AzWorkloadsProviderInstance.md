@@ -27,7 +27,7 @@ Get-AzWorkloadsProviderInstance -MonitorName <String> -Name <String> -ResourceGr
 
 ### GetViaIdentity
 ```
-Get-AzWorkloadsProviderInstance -InputObject <IWorkloadsIdentity> [-DefaultProfile <PSObject>]
+Get-AzWorkloadsProviderInstance -InputObject <IMonitorsIdentity> [-DefaultProfile <PSObject>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
@@ -106,7 +106,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 

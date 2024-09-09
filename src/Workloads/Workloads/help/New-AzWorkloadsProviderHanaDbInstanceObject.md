@@ -194,7 +194,7 @@ Accept wildcard characters: False
 Gets or sets certificate preference if secure communication is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SslPreference
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference
 Parameter Sets: (All)
 Aliases:
 

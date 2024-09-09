@@ -28,13 +28,14 @@ Start-AzWorkloadsSapCentralInstance -Name <String> -ResourceGroupName <String> -
 
 ### StartViaIdentityExpanded
 ```
-Start-AzWorkloadsSapCentralInstance -InputObject <IWorkloadsIdentity> [-StartVM] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzWorkloadsSapCentralInstance -InputObject <ISapVirtualInstanceIdentity> [-StartVM]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### StartViaIdentity
 ```
-Start-AzWorkloadsSapCentralInstance -InputObject <IWorkloadsIdentity> -Body <IStartRequest>
+Start-AzWorkloadsSapCentralInstance -InputObject <ISapVirtualInstanceIdentity> -Body <IStartRequest>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -144,7 +145,7 @@ Start SAP instance(s) request body.
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.IStartRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.IStartRequest
 Parameter Sets: Start, StartViaIdentity
 Aliases:
 
@@ -176,7 +177,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 Parameter Sets: StartViaIdentityExpanded, StartViaIdentity
 Aliases:
 
