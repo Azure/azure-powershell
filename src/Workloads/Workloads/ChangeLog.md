@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Split Az.Workloads into two sub-modules
 
 ## Version 0.2.1
 * Fixed secrets exposure in example documentation.

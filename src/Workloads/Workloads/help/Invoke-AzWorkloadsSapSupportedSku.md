@@ -17,7 +17,7 @@ Get a list of SAP supported SKUs for ASCS, Application and Database tier.
 Invoke-AzWorkloadsSapSupportedSku -Location <String> [-SubscriptionId <String>] -AppLocation <String>
  -DatabaseType <SapDatabaseType> -DeploymentType <SapDeploymentType> -Environment <SapEnvironmentType>
  -SapProduct <SapProductType> [-HighAvailabilityType <SapHighAvailabilityType>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SapViaIdentityExpanded
@@ -25,7 +25,7 @@ Invoke-AzWorkloadsSapSupportedSku -Location <String> [-SubscriptionId <String>] 
 Invoke-AzWorkloadsSapSupportedSku -InputObject <IWorkloadsIdentity> -AppLocation <String>
  -DatabaseType <SapDatabaseType> -DeploymentType <SapDeploymentType> -Environment <SapEnvironmentType>
  -SapProduct <SapProductType> [-HighAvailabilityType <SapHighAvailabilityType>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -177,6 +177,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SapProduct
 Defines the SAP Product type.
 
@@ -243,12 +258,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapSupportedSku
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapSupportedSku
 
 ## NOTES
+
+ALIASES
+
+Invoke-AzVISSupportedSku
 
 ## RELATED LINKS
