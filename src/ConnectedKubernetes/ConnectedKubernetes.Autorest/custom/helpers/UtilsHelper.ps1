@@ -49,7 +49,7 @@ function ConvertTo-ArcAgentryConfiguration {
     else {
         $arcAgentryConfigs = New-Object System.Collections.ArrayList
         $combinedKeys = $ConfigurationSetting.Keys + $RedactedProtectedConfiguration.Keys
-        $combinedKeys = $combinedKeys | Get-Unique
+        $combinedKeys = $combinedKeys | Select-Object -Unique
     }
 
     Write-Debug "Combined keys: $combinedKeys"
@@ -65,14 +65,11 @@ function ConvertTo-ArcAgentryConfiguration {
             }
         }
         else {
-            # We pass redacted protected settings to the Config DP but we pass
-            # them via the "settings" field!
-            if ($RedactedProtectedConfiguration.ContainsKey($feature)) {
-                $settings += $RedactedProtectedConfiguration[$feature]
-            }
+            $protectedSettings = ($RedactedProtectedConfiguration.ContainsKey($feature) ? $RedactedProtectedConfiguration[$feature] : @{})
             $ArcAgentryConfiguration = @{
                 Feature  = $feature
                 Settings = $settings
+                ProtectedSettings = $protectedSettings
             }
         }
         $null = $arcAgentryConfigs.Add($ArcAgentryConfiguration)
