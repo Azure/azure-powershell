@@ -405,6 +405,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzFirewallPolicyExplicitProxy](./New-AzFirewallPolicyExplicitProxy.md)
-[New-AzFirewallPolicySnat](./New-AzFirewallPolicySnat.md)
