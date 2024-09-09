@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.0.4
+* Added customized UserAgent for ARM telemetry.
+* Fixed secrets exposure in example documentation.
 * Updated `Connect-AzAccount` to fix a display issue in PowerShell ISE [#24556].
 * Updated the reference of Azure PowerShell Common to 1.3.100-preview.
 * Used Azure.Identity and Azure.Core directly for client assertion [#22628].

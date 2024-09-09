@@ -36,26 +36,26 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 {
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
     {
-        private const string flexibleOrchestrationMode = "Flexible", uniformOrchestrationMode = "Uniform";
+        private const string flexibleOrchestrationMode = "Flexible", uniformOrchestrationMode = "Uniform", vmSizeMix = "Mix";
         // SimpleParameterSet
         [Parameter(
-            ParameterSetName = SimpleParameterSet, 
+            ParameterSetName = SimpleParameterSet,
             Mandatory = false,
             HelpMessage = "The name of the image for VMs in this Scale Set. If no value is provided, the 'Windows Server 2016 DataCenter' image will be used.")]
         [PSArgumentCompleter(
-            "CentOS85Gen2", 
-            "Debian11", 
-            "OpenSuseLeap154Gen2", 
-            "RHELRaw8LVMGen2", 
-            "SuseSles15SP3", 
-            "Ubuntu2204", 
-            "FlatcarLinuxFreeGen2", 
-            "Win2022Datacenter", 
+            "CentOS85Gen2",
+            "Debian11",
+            "OpenSuseLeap154Gen2",
+            "RHELRaw8LVMGen2",
+            "SuseSles15SP3",
+            "Ubuntu2204",
+            "FlatcarLinuxFreeGen2",
+            "Win2022Datacenter",
             "Win2022AzureEditionCore",
             "Win2022AzureEdition",
-            "Win2019Datacenter", 
-            "Win2016Datacenter", 
-            "Win2012R2Datacenter", 
+            "Win2019Datacenter",
+            "Win2016Datacenter",
+            "Win2012R2Datacenter",
             "Win2012Datacenter")]
         [Alias("Image")]
         public string ImageName { get; set; } = ConstantValues.DefaultVMandVMSSImage;
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public int[] DataDiskSizeInGb { get; set; }
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage ="Use this to create the Scale set in a single placement group, default is multiple groups")]
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage = "Use this to create the Scale set in a single placement group, default is multiple groups")]
         public SwitchParameter SinglePlacementGroup;
 
         [Alias("ProximityPlacementGroup")]
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "The eviction policy for the low priority virtual machine scale set.  Only supported values are 'Deallocate' and 'Delete'.")]
         [PSArgumentCompleter("Deallocate", "Delete")]
         public string EvictionPolicy { get; set; }
-        
+
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
             HelpMessage = "The max price of the billing of a low priority virtual machine scale set.")]
         public double MaxPrice { get; set; }
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = SimpleParameterSet,
             HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
         public string SharedGalleryImageId { get; set; }
-        
+
         [Parameter(
            HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. UefiSettings will not be enabled unless this property is set.",
            ParameterSetName = SimpleParameterSet,
@@ -255,6 +255,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
         public bool? EnableSecureBoot { get; set; } = null;
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Array of VM sizes for the scale set.")]
+        public string[] SkuProfileVmSize { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Allocation strategy for the SKU profile.")]
+        [PSArgumentCompleter("LowestPrice", "CapacityOptimized")]
+        public string SkuProfileAllocationStrategy { get; set; }
 
         const int FirstPortRangeStart = 50000;
 
@@ -279,7 +294,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             public ImageAndOsType ImageAndOsType { get; set; }
 
             public string DefaultLocation => "eastus";
-            
+
             public async Task<ResourceConfig<VirtualMachineScaleSet>> CreateConfigAsync()
             {
                 if (_cmdlet.OrchestrationMode == uniformOrchestrationMode)
@@ -295,7 +310,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
                         ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
-               
+
 
                 // generate a domain name label if it's not specified.
                 _cmdlet.DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
@@ -333,7 +348,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     sku: (noZones && _cmdlet.SinglePlacementGroup.IsPresent)
                         ? LoadBalancerStrategy.Sku.Basic
                         : LoadBalancerStrategy.Sku.Standard,
-                    edgeZone : _cmdlet.EdgeZone);
+                    edgeZone: _cmdlet.EdgeZone);
 
                 var frontendIpConfiguration = loadBalancer.CreateFrontendIPConfiguration(
                     name: _cmdlet.FrontendPoolName,
@@ -395,7 +410,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         _cmdlet.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
                     }
                 }
-                
+
                 if (_cmdlet.IsParameterBound(c => c.SecurityType))
                 {
                     if (_cmdlet.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || _cmdlet.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
@@ -404,6 +419,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
                         _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
                     }
+                }
+
+                SkuProfileVMSize[] skuProfileVmSizes = null;
+                if (_cmdlet.IsParameterBound(c => c.SkuProfileVmSize))
+                {
+                    List<SkuProfileVMSize> skuProfileVMSizeList = new List<SkuProfileVMSize>();
+                    foreach (string vmSize in _cmdlet.SkuProfileVmSize)
+                    {
+                        skuProfileVMSizeList.Add(new SkuProfileVMSize()
+                        {
+                            Name = vmSize,
+                        });
+                    }
+                    skuProfileVmSizes = skuProfileVMSizeList.ToArray();
                 }
 
                 Dictionary<string, List<string>> auxAuthHeader = null;
@@ -464,7 +493,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     securityType: _cmdlet.SecurityType,
                     enableVtpm: _cmdlet.EnableVtpm,
                     enableSecureBoot: _cmdlet.EnableSecureBoot,
-                    enableAutomaticOSUpgradePolicy:  _cmdlet.EnableAutomaticOSUpgrade == true ? true : (bool?)null,
+                    enableAutomaticOSUpgradePolicy: _cmdlet.EnableAutomaticOSUpgrade == true ? true : (bool?)null,
+                    skuProfileVmSize: skuProfileVmSizes,
+                    skuProfileAllocationStrategy: _cmdlet.SkuProfileAllocationStrategy,
                     ifMatch: _cmdlet.IfMatch,
                     ifNoneMatch: _cmdlet.IfNoneMatch
                     );
@@ -535,7 +566,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             backendPort: backendPort);
                     }
                 }
-                
+
                 if (_cmdlet.IsParameterBound(c => c.SecurityType)
                     && _cmdlet.SecurityType != null)
                 {
@@ -567,6 +598,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 var hostGroup = resourceGroup.CreateDedicatedHostGroupSubResourceFunc(_cmdlet.HostGroupId);
 
+                SkuProfileVMSize[] skuProfileVmSizes = null;
+                if (_cmdlet.IsParameterBound(c => c.SkuProfileVmSize))
+                {
+                    List<SkuProfileVMSize> skuProfileVMSizeList = new List<SkuProfileVMSize>();
+                    foreach (string vmSize in _cmdlet.SkuProfileVmSize)
+                    {
+                        skuProfileVMSizeList.Add(new SkuProfileVMSize()
+                        {
+                            Name = vmSize,
+                        });
+                    }
+                    skuProfileVmSizes = skuProfileVMSizeList.ToArray();
+                }
+
                 Dictionary<string, List<string>> auxAuthHeader = null;
                 if (!string.IsNullOrEmpty(_cmdlet.ImageReferenceId))
                 {
@@ -594,7 +639,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     imageAndOsType: ImageAndOsType,
                     adminUsername: _cmdlet.Credential.UserName,
                     adminPassword: new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
-                    vmSize: _cmdlet.VmSize,
+                    vmSize: _cmdlet.IsParameterBound(c => c.SkuProfileVmSize) && !_cmdlet.IsParameterBound(c => c.VmSize) ? vmSizeMix : _cmdlet.VmSize,
                     instanceCount: _cmdlet.InstanceCount,
                     dataDisks: _cmdlet.DataDiskSizeInGb,
                     zones: _cmdlet.Zone,
@@ -617,13 +662,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     enableVtpm: _cmdlet.EnableVtpm,
                     enableSecureBoot: _cmdlet.EnableSecureBoot,
                     enableAutomaticOSUpgradePolicy: _cmdlet.EnableAutomaticOSUpgrade == true ? true : (bool?)null,
+                    skuProfileVmSize: skuProfileVmSizes,
+                    skuProfileAllocationStrategy: _cmdlet.SkuProfileAllocationStrategy,
                     auxAuthHeader: auxAuthHeader,
                     ifMatch: _cmdlet.IfMatch,
                     ifNoneMatch: _cmdlet.IfNoneMatch
                     );
             }
         }
-        
+
         async Task SimpleParameterSetExecuteCmdlet(IAsyncCmdlet asyncCmdlet)
         {
             bool loadBalancerNamePassedIn = !String.IsNullOrWhiteSpace(LoadBalancerName);
@@ -658,7 +705,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 && !this.IsParameterBound(c => c.SharedGalleryImageId))
             {
                 this.SecurityType = ConstantValues.TrustedLaunchSecurityType;
-                if (!this.IsParameterBound(c => c.ImageName) && !this.IsParameterBound(c => c.ImageReferenceId) 
+                if (!this.IsParameterBound(c => c.ImageName) && !this.IsParameterBound(c => c.ImageReferenceId)
                     && !this.IsParameterBound(c => c.SharedGalleryImageId))
                 {
                     this.ImageName = ConstantValues.TrustedLaunchDefaultImageAlias;
@@ -697,7 +744,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.EnableVtpm = this.EnableVtpm ?? true;
                     this.EnableSecureBoot = this.EnableSecureBoot ?? true;
-                }          
+                }
             }
 
             var parameters = new Parameters(this, client);
@@ -734,12 +781,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     connectionString);
                 asyncCmdlet.WriteVerbose(
                     Resources.VmssPortRange,
-                    port, 
+                    port,
                     range);
                 asyncCmdlet.WriteObject(psObject);
             }
         }
-        
+
         /// <summary>
         /// Heres whats happening here :
         /// If "SystemAssignedIdentity" and "UserAssignedIdentity" are both present we set the type of identity to be SystemAssignedUsrAssigned and set the user 
@@ -758,7 +805,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     Type = !isUserAssignedEnabled ?
                            ResourceIdentityType.SystemAssigned :
                            (SystemAssignedIdentity.IsPresent ? ResourceIdentityType.SystemAssignedUserAssigned : ResourceIdentityType.UserAssigned),
-                    UserAssignedIdentities = isUserAssignedEnabled 
+                    UserAssignedIdentities = isUserAssignedEnabled
                                              ? new Dictionary<string, UserAssignedIdentitiesValue>()
                                              {
                                                  { UserAssignedIdentity, new UserAssignedIdentitiesValue()}

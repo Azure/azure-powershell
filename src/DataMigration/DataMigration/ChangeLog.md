@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.14.7
+* Fixed secrets exposure in example documentation.
+
 ## Version 0.14.6
 * Introduced secrets detection feature to safeguard sensitive data.
 

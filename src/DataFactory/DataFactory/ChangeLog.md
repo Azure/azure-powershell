@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 1.18.7
+* Supported managed identity for Data Factory Azure File connector.
+* Supported ServicePrincipalCert Auth for Data Factory Rest connector.
+* Supported ServicePrincipalCert Auth for Data Factory SharePointOnlineList connector.
+
 ## Version 1.18.6
 * Added security enhancement feature snowflake support storage integration.
 * Supported 'domain' Property In Dynamics Family.

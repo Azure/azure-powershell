@@ -19,6 +19,12 @@
 -->
 
 ## Upcoming Release
+* Removed `Experimental` notice from `-WithSource` parameter to `Publish-AzBicepModule`
+
+## Version 7.4.0
+* Fixed secrets exposure in example documentation.
+* `Remove-AzResourceGroup` - support parameter "[-ForceDeletionType]".
+* Removed specific characters from the codebase to unblock digital signature verification.
 
 ## Version 7.3.0
 * Added null check and empty list check to the permissions object in the ToPSRoleDefinition method.
