@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added support to create, get and delete Bastion shareable links
+    - `New-AzBastionShareableLink`
+    - `Get-AzBastionShareableLink`
+    - `Remove-AzBastionShareableLink`
 * Fixed a bug in cmdlet `Invoke-AzFirewallPacketCapture` which caused the packet capture request to be stuck in a waiting for activation state. 
 * Updated cmdlet to add the property of `Sensitivity`, and updated corresponding cmdlets.
     - `New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`
