@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.2.1'
+ModuleVersion = '0.3.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -58,10 +58,10 @@ RequiredAssemblies = 'Monitors.Autorest/bin/Az.Monitors.private.dll',
                'SapVirtualInstance.Autorest/bin/Az.SapVirtualInstance.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = @()
+# ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = @()
+# TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'Monitors.Autorest/Az.Monitors.format.ps1xml', 
@@ -142,7 +142,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Workloads'
+        Tags = 'Azure','ResourceManager','ARM','PSModule','Workloads'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -154,7 +154,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed secrets exposure in example documentation.'
+        ReleaseNotes = '* Split Az.Workloads into two sub-modules'
 
         # Prerelease string of this module
         # Prerelease = ''
@@ -167,7 +167,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
-} # End of PrivateData hashtable
+ } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''
