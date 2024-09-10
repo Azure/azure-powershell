@@ -641,7 +641,8 @@ function Test-NetworkManagerResourceMinimumParameterCreate
     # Setup
     $rgName = Get-ResourceGroupName
     $networkManagerName = Get-ResourceName
-    $networkGroupName = Get-ResourceName
+    $vnetNetworkGroupName = Get-ResourceName
+    $subnetNetworkGroupName = Get-ResourceName
     $staticMemberName = Get-ResourceName
     $connectivityConfigurationName = Get-ResourceName
     $SecurityConfigurationName = Get-ResourceName
@@ -670,15 +671,18 @@ function Test-NetworkManagerResourceMinimumParameterCreate
         # Create network manager
         New-AzNetworkManager -ResourceGroupName $rgname -Name $networkManagerName -NetworkManagerScope $scope -NetworkManagerScopeAccess $access -Location $rglocation
 
-        # Create a network group
-        New-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName
+        # Create a vnet and subnet network group
+        New-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $vnetNetworkGroupName
+        New-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $subnetNetworkGroupName -MemberType "Subnet"
 
         # Create a static member
-        New-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $networkGroupName -Name $staticMemberName -ResourceId $vnetId
+        New-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $vnetNetworkGroupName -Name $staticMemberName -ResourceId $vnetId
+        New-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $subnetNetworkGroupName -Name $staticMemberName -ResourceId $subnetId
 
         # Create connectivity group item and config
-        $networkGroup = Get-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName 
-        $connectivityGroupItem = New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId $networkGroup.Id
+        $vnetNetworkGroup = Get-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $vnetNetworkGroupName 
+        $subnetNetworkGroup = Get-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $subnetNetworkGroupName 
+        $connectivityGroupItem = New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId $vnetNetworkGroup.Id
         $connectivityGroup  = @($connectivityGroupItem)  
         New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -Name $connectivityConfigurationName -NetworkManagerName $networkManagerName -ConnectivityTopology "Mesh" -AppliesToGroup $connectivityGroup -DeleteExistingPeering 
 
@@ -687,7 +691,7 @@ function Test-NetworkManagerResourceMinimumParameterCreate
 
         # Create a security admin rule collection
         [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityGroupItem]]$configGroup  = @() 
-        $groupItem = New-AzNetworkManagerSecurityGroupItem -NetworkGroupId $networkGroup.Id
+        $groupItem = New-AzNetworkManagerSecurityGroupItem -NetworkGroupId $vnetNetworkGroup.Id
         $configGroup.Add($groupItem)
         New-AzNetworkManagerSecurityAdminRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityConfigurationName -Name $RuleCollectionName -AppliesToGroup $configGroup 
         
@@ -702,7 +706,7 @@ function Test-NetworkManagerResourceMinimumParameterCreate
 
         # Create a routing rule collection
         [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerRoutingGroupItem]]$configGroup  = @() 
-        $groupItem = New-AzNetworkManagerRoutingGroupItem -NetworkGroupId $networkGroup.Id
+        $groupItem = New-AzNetworkManagerRoutingGroupItem -NetworkGroupId $subnetNetworkGroup.Id
         $configGroup.Add($groupItem)
         New-AzNetworkManagerRoutingRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -Name $RuleCollectionName -AppliesTo $configGroup 
         
@@ -716,7 +720,7 @@ function Test-NetworkManagerResourceMinimumParameterCreate
 
         # Create a security user rule collection
         [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityUserGroupItem]]$configGroup  = @() 
-        $groupItem = New-AzNetworkManagerSecurityUserGroupItem -NetworkGroupId $networkGroup.Id
+        $groupItem = New-AzNetworkManagerSecurityUserGroupItem -NetworkGroupId $subnetNetworkGroup.Id
         $configGroup.Add($groupItem)
         New-AzNetworkManagerSecurityUserRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName -Name $RuleCollectionName -AppliesToGroup $configGroup 
         
@@ -786,6 +790,11 @@ function Test-NetworkManagerRoutingRuleCRUD
         Assert-NotNull $routingConfig;
         Assert-AreEqual $RoutingConfigurationName $routingConfig.Name;
 
+        # Validate List Routing config command
+        $routingConfigs = Get-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName
+        Assert-NotNull $routingConfigs
+        Assert-AreEqual 1 $routingConfigs.Count
+
         $routingConfig.Description = "A different description."
         $routingConfig = Set-AzNetworkManagerRoutingConfiguration -InputObject $routingConfig
         Assert-NotNull $routingConfig;
@@ -817,6 +826,11 @@ function Test-NetworkManagerRoutingRuleCRUD
             Assert-AreEqual $expectedItem $actualItem
         }
 
+        # Validate List Routing rule collection command
+        $ruleCollections = Get-AzNetworkManagerRoutingRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName
+        Assert-NotNull $ruleCollections
+        Assert-AreEqual 1 $ruleCollections.Count
+
         $ruleCollection.Description = "Sample rule Collection Description"
         $ruleCollection = Set-AzNetworkManagerRoutingRuleCollection -InputObject $ruleCollection
         Assert-NotNull $ruleCollection;
@@ -840,6 +854,12 @@ function Test-NetworkManagerRoutingRuleCRUD
         Assert-AreEqual $nextHop.NextHopAddress $routingRule.NextHop.NextHopAddress
         Assert-AreEqual $nextHop.NextHopType $routingRule.NextHop.NextHopType
 
+        # Validate List Routing rules command
+        $routingRules = Get-AzNetworkManagerRoutingRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -RuleCollectionName $RuleCollectionName
+        Assert-NotNull $routingRules
+        Assert-AreEqual 1 $routingRules.Count
+
+        $$routingRule.Description = "A different description."
         $newRoutingRule = Set-AzNetworkManagerRoutingRule -InputObject $routingRule
         Assert-NotNull $newRoutingRule;
         Assert-AreEqual $RuleName $newRoutingRule.Name;
@@ -863,21 +883,36 @@ function Test-NetworkManagerRoutingRuleCRUD
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 
+        $deletedResource = Get-AzNetworkManagerRoutingRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName
+        Assert-Null $deletedResource
+
         $job = Remove-AzNetworkManagerRoutingRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -Name $RuleCollectionName -ForceDelete -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
+
+        $removedRuleCollection = Get-AzNetworkManagerRoutingRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -Name $RuleCollectionName;
+        Assert-Null $removedRuleCollection;
 
         $job = Remove-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName -ForceDelete -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 
+        $removedRoutingConfiguration = Get-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName;
+        Assert-Null $removedRoutingConfiguration;
+
         $job = Remove-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $vnetNetworkGroupName -Name $staticMemberName -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 
+        $removedStaticMember = Get-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $vnetNetworkGroupName -Name $staticMemberName;
+        Assert-Null $removedStaticMember;
+
         $job = Remove-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $subnetNetworkGroupName -Name $staticMemberName -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
+
+        $removedStaticMember = Get-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $subnetNetworkGroupName -Name $staticMemberName;
+        Assert-Null $removedStaticMember;
 
         $job = Remove-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $vnetNetworkGroupName -PassThru -Force -AsJob;
         $job | Wait-Job;
@@ -948,6 +983,11 @@ function Test-NetworkManagerSecurityUserRuleCRUD
         Assert-NotNull $securityUserConfig;
         Assert-AreEqual $securityUserConfigurationName $securityUserConfig.Name;
 
+        # Validate List Security User config command
+        $securityUserConfigs = Get-AzNetworkManagerSecurityUserConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName
+        Assert-NotNull $securityUserConfigs
+        Assert-AreEqual 1 $securityUserConfigs.Count
+
         $securityUserConfig.Description = "A different description."
         $securityUserConfig = Set-AzNetworkManagerSecurityUserConfiguration -InputObject $securityUserConfig
         Assert-NotNull $securityUserConfig;
@@ -965,6 +1005,11 @@ function Test-NetworkManagerSecurityUserRuleCRUD
         Assert-AreEqual $RuleCollectionName $ruleCollection.Name;
         Assert-AreEqual $networkGroup.Id $ruleCollection.AppliesToGroups[0].NetworkGroupId;
 
+        # Validate List Security User collection command
+        $ruleCollections = Get-AzNetworkManagerSecurityUserRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName
+        Assert-NotNull $ruleCollections
+        Assert-AreEqual 1 $ruleCollections.Count
+
         $ruleCollection.Description = "Sample rule Collection Description"
         $ruleCollection = Set-AzNetworkManagerSecurityUserRuleCollection -InputObject $ruleCollection
         Assert-NotNull $ruleCollection;
@@ -975,13 +1020,10 @@ function Test-NetworkManagerSecurityUserRuleCRUD
         $sourceAddressPrefixes = @()
         $sourceAddressPrefixes += New-AzNetworkManagerAddressPrefixItem -AddressPrefix "10.1.0.0/24" -AddressPrefixType "IPPrefix"
         $sourceAddressPrefixes += New-AzNetworkManagerAddressPrefixItem -AddressPrefix "50.1.0.0/24" -AddressPrefixType "IPPrefix"
-        #$sourceAddressPrefixes += New-AzNetworkManagerAddressPrefixItem -AddressPrefix "60.1.0.0/24" -AddressPrefixType "IPPrefix"
 
         # Add destination address prefix items to the array
         $destinationAddressPrefixes = @()
         $destinationAddressPrefixes += New-AzNetworkManagerAddressPrefixItem -AddressPrefix "6.6.6.6/32" -AddressPrefixType "IPPrefix"
-        #$destinationAddressPrefixes += New-AzNetworkManagerAddressPrefixItem -AddressPrefix "7.7.7.7/32" -AddressPrefixType "IPPrefix"
-        #$destinationAddressPrefixes += New-AzNetworkManagerAddressPrefixItem -AddressPrefix "7.7.7.7/32" -AddressPrefixType "IPPrefix"
 
         $sourcePortList = @("100", "80")
         $destinationPortList = @("99", "200")
@@ -1002,6 +1044,12 @@ function Test-NetworkManagerSecurityUserRuleCRUD
         Assert-AreEqual "6.6.6.6/32" $userRule.Destinations[0].AddressPrefix
         Assert-AreEqual "IPPrefix" $userRule.Destinations[0].AddressPrefixType
 
+        # Validate List Security User rule command
+        $userRules = Get-AzNetworkManagerSecurityUserRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -SecurityUserConfigurationName $SecurityUserConfigurationName -RuleCollectionName $RuleCollectionName
+        Assert-NotNull $userRules
+        Assert-AreEqual 1 $userRules.Count
+
+        $userRule.Description = "A different description."
         $newSecurityUserRule = Set-AzNetworkManagerSecurityUserRule -InputObject $userRule
         Assert-NotNull $newSecurityUserRule;
         Assert-AreEqual $RuleName $newSecurityUserRule.Name;
@@ -1025,17 +1073,33 @@ function Test-NetworkManagerSecurityUserRuleCRUD
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 
+        # Check if the resource was deleted
+        $deletedRule = Get-AzNetworkManagerSecurityUserRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName
+        Assert-Null $deletedRule;
+
         $job = Remove-AzNetworkManagerSecurityUserRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName -Name $RuleCollectionName -ForceDelete -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
+
+        # Check if the resource was deleted
+        $deletedRuleCollection = Get-AzNetworkManagerSecurityUserRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName -Name $RuleCollectionName
+        Assert-Null $deletedRuleCollection;
 
         $job = Remove-AzNetworkManagerSecurityUserConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityUserConfigurationName -ForceDelete -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 
+        # Check if the resource was deleted
+        $deletedConfiguration = Get-AzNetworkManagerSecurityUserConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityUserConfigurationName
+        Assert-Null $deletedConfiguration;
+
         $job = Remove-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $networkGroupName -Name $staticMemberName -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
+
+        # Check if the resource was deleted
+        $deletedStaticMember = Get-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $networkGroupName -Name $staticMemberName
+        Assert-Null $deletedStaticMember;
 
         $job = Remove-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName -PassThru -Force -AsJob;
         $job | Wait-Job;
