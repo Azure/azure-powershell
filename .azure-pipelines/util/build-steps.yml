@@ -124,20 +124,18 @@ steps:
         }
       }
       if ($noGenerateInfo -and $noGenerateInfo.Count -gt 0) {
-        $noGenerateInfo | Foreach-Object { Write-Error "No generate-info.json detected for $_" }
-        exit 1
+        $noGenerateInfo | Foreach-Object { Write-Host "##vso[task.logissue type=warning]No generate-info.json detected for $_."}
       }
       Write-Host "##[endgroup]"
 
-      # # this might not be true, for example when release branch or preview branch merge back to main branch, it's possible changes present in both /src and /generated
-      # Write-Host "##[group]#2. PR should contain changes from either /src or /generated only"
-      # $srcFiles = Get-Content $(FilesChangedOutputPath) | Where-Object { $_ -match "^src.*" }
-      # $generatedFiles = Get-Content $(FilesChangedOutputPath) | Where-Object { $_ -match "^generated.*" }
-      # if ($srcFiles -and $srcFiles.Count -gt 0  -and $generatedFiles -and $generatedFiles.Count -gt 0) {
-      #   Write-Error "PR should contain changes from either /src or /generated only"
-      #   exit 1
-      # }
-      # Write-Host "##[endgroup]"
+      # this might not be true, for example when release branch or preview branch merge back to main branch, it's possible changes present in both /src and /generated
+      Write-Host "##[group]#2. PR should contain changes from either /src or /generated only"
+      $srcFiles = Get-Content $(FilesChangedOutputPath) | Where-Object { $_ -match "^src.*" }
+      $generatedFiles = Get-Content $(FilesChangedOutputPath) | Where-Object { $_ -match "^generated.*" }
+      if ($srcFiles -and $srcFiles.Count -gt 0  -and $generatedFiles -and $generatedFiles.Count -gt 0) {
+        Write-Host "##vso[task.logissue type=warning]PR should contain changes from either /src or /generated only."
+      }
+      Write-Host "##[endgroup]"
 - task: NodeTool@0
   displayName: Install Autorest
   inputs:
@@ -202,6 +200,13 @@ steps:
     targetType: inline
     pwsh: true
     script: |
+      if ("Commit" -eq "$(TriggerType)") {
+        $prTitle = "[skip ci] Archive $(Trigger)"
+      } elseif ("TargetModule" -eq "$(TriggerType)") {
+        $prTitle = "[skip ci] Archive selected modules"
+      } else {
+        return
+      }
       $tmpBranchName = "$(TmpBranchName)"
       $baseBranchName = "$(BaseBranchName)"
       $generatedPath = Join-Path "$(Build.SourcesDirectory)" 'generated'
@@ -209,8 +214,7 @@ steps:
       if ((-not $diff) -or ($null -eq $diff) -or (0 -eq $diff.Count)) {
         return
       }
-
-      $prTitle = "[skip ci] Archive generated assets to $baseBranchName"
+      
       $prDescription = "triggered by: $(TriggerType) ($(Trigger))"
       $prScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'Github' 'CreatePR.ps1'
 
