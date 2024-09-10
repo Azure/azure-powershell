@@ -725,7 +725,17 @@ function Test-NetworkManagerResourceMinimumParameterCreate
         New-AzNetworkManagerSecurityUserRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName -Name $RuleCollectionName -AppliesToGroup $configGroup 
         
         # Create a security user rule
-        New-AzNetworkManagerSecurityUserRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName  -RuleCollectionName $RuleCollectionName -Name $RuleName -Protocol "TCP" -Direction "Inbound"
+        $sourceAddressPrefixes = @()
+        $sourceAddressPrefixes += New-AzNetworkManagerAddressPrefixItem -AddressPrefix "10.1.0.0/24" -AddressPrefixType "IPPrefix"
+        $sourceAddressPrefixes += New-AzNetworkManagerAddressPrefixItem -AddressPrefix "50.1.0.0/24" -AddressPrefixType "IPPrefix"
+
+        # Add destination address prefix items to the array
+        $destinationAddressPrefixes = @()
+        $destinationAddressPrefixes += New-AzNetworkManagerAddressPrefixItem -AddressPrefix "6.6.6.6/32" -AddressPrefixType "IPPrefix"
+
+        $sourcePortList = @("100", "80")
+        $destinationPortList = @("99", "200")
+        New-AzNetworkManagerSecurityUserRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName  -RuleCollectionName $RuleCollectionName -Name $RuleName -Protocol "TCP" -Direction "Inbound" -SourcePortRange $sourcePortList -DestinationPortRange $destinationPortList -SourceAddressPrefix $sourceAddressPrefixes -DestinationAddressPrefix $destinationAddressPrefixes
     }
     finally
     {
