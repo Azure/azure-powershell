@@ -160,7 +160,7 @@ pac158,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac159,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCI.2.4.0.zip;sourceType=sa]Az.StackHCI,2.4.0
 pac160,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCIVM.1.0.4.zip;sourceType=sa]Az.StackHCIVM,1.0.4
 pac161,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StandbyPool.0.1.1.zip;sourceType=sa]Az.StandbyPool,0.1.1
-pac162,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Storage.7.3.0.zip;sourceType=sa]Az.Storage,7.3.0
+pac162,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Storage.7.3.1.zip;sourceType=sa]Az.Storage,7.3.1
 pac163,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageAction.0.1.0.zip;sourceType=sa]Az.StorageAction,0.1.0
 pac164,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageCache.0.1.1.zip;sourceType=sa]Az.StorageCache,0.1.1
 pac165,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageMover.1.4.0.zip;sourceType=sa]Az.StorageMover,1.4.0
@@ -175,5 +175,5 @@ pac173,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac174,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.VoiceServices.0.1.2.zip;sourceType=sa]Az.VoiceServices,0.1.2
 pac175,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Websites.3.2.1.zip;sourceType=sa]Az.Websites,3.2.1
 pac176,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.WindowsIotServices.0.1.1.zip;sourceType=sa]Az.WindowsIotServices,0.1.1
-pac177,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Workloads.0.2.1.zip;sourceType=sa]Az.Workloads,0.2.1
+pac177,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Workloads.0.3.0.zip;sourceType=sa]Az.Workloads,0.3.0
 

@@ -53,6 +53,23 @@ jobs:
       scanFolder: SecurityTmp
       suppressionsFile: tools/SecurityTools/CredScanSuppressions.json
   - task: PowerShell@2
+    displayName: Run external CredScan
+    env:
+      GDN_CREDSCAN_OUTPUTTYPE: sarif
+      Scan_Folder: SecurityTmp
+      GDN_CREDSCAN_SUPPRESSIONSPATH: tools/SecurityTools/CredScanSuppressions.json
+      GDN_CREDSCAN_SUPPRESSASERROR: False
+    inputs:
+      targetType: inline
+      script: |
+        nuget.exe install Microsoft.Security.DevOps.Cli
+        $toolsPath = Join-Path ("Microsoft.Security.DevOps.Cli*" | Resolve-Path) tools
+        $env:Path = "$toolsPath;$env:Path"
+        $env:GDN_CREDSCAN_TARGETDIRECTORY = (Resolve-Path $env:Scan_Folder).Path
+        guardian init -f
+        guardian run -t CredScan
+
+  - task: PowerShell@2
     displayName: Generate a response text file for BinSkim
     inputs:
       targetType: 'inline'
