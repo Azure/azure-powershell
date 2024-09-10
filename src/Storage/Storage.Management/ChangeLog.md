@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add live test to cover File and Table services, and cover Storage context created from both Storage account and manully.
 
 ## Version 7.3.1
 * Fixed issue that table cmdlet fail when execute with Storage context get from StorageAccount object and based on sharedkey authentication.
