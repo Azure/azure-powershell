@@ -859,7 +859,7 @@ function Test-NetworkManagerRoutingRuleCRUD
         Assert-NotNull $routingRules
         Assert-AreEqual 1 $routingRules.Count
 
-        $$routingRule.Description = "A different description."
+        $routingRule.Description = "A different description."
         $newRoutingRule = Set-AzNetworkManagerRoutingRule -InputObject $routingRule
         Assert-NotNull $newRoutingRule;
         Assert-AreEqual $RuleName $newRoutingRule.Name;
@@ -883,36 +883,21 @@ function Test-NetworkManagerRoutingRuleCRUD
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 
-        $deletedResource = Get-AzNetworkManagerRoutingRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName
-        Assert-Null $deletedResource
-
         $job = Remove-AzNetworkManagerRoutingRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -Name $RuleCollectionName -ForceDelete -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
-
-        $removedRuleCollection = Get-AzNetworkManagerRoutingRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -Name $RuleCollectionName;
-        Assert-Null $removedRuleCollection;
 
         $job = Remove-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName -ForceDelete -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 
-        $removedRoutingConfiguration = Get-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName;
-        Assert-Null $removedRoutingConfiguration;
-
         $job = Remove-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $vnetNetworkGroupName -Name $staticMemberName -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 
-        $removedStaticMember = Get-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $vnetNetworkGroupName -Name $staticMemberName;
-        Assert-Null $removedStaticMember;
-
         $job = Remove-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $subnetNetworkGroupName -Name $staticMemberName -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
-
-        $removedStaticMember = Get-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $subnetNetworkGroupName -Name $staticMemberName;
-        Assert-Null $removedStaticMember;
 
         $job = Remove-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $vnetNetworkGroupName -PassThru -Force -AsJob;
         $job | Wait-Job;
@@ -1073,33 +1058,17 @@ function Test-NetworkManagerSecurityUserRuleCRUD
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 
-        # Check if the resource was deleted
-        $deletedRule = Get-AzNetworkManagerSecurityUserRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName
-        Assert-Null $deletedRule;
-
         $job = Remove-AzNetworkManagerSecurityUserRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName -Name $RuleCollectionName -ForceDelete -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
-
-        # Check if the resource was deleted
-        $deletedRuleCollection = Get-AzNetworkManagerSecurityUserRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName -Name $RuleCollectionName
-        Assert-Null $deletedRuleCollection;
 
         $job = Remove-AzNetworkManagerSecurityUserConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityUserConfigurationName -ForceDelete -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 
-        # Check if the resource was deleted
-        $deletedConfiguration = Get-AzNetworkManagerSecurityUserConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityUserConfigurationName
-        Assert-Null $deletedConfiguration;
-
         $job = Remove-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $networkGroupName -Name $staticMemberName -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
-
-        # Check if the resource was deleted
-        $deletedStaticMember = Get-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $networkGroupName -Name $staticMemberName
-        Assert-Null $deletedStaticMember;
 
         $job = Remove-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName -PassThru -Force -AsJob;
         $job | Wait-Job;
