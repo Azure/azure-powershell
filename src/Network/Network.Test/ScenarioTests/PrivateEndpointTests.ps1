@@ -71,7 +71,7 @@ function Test-PrivateEndpointCRUD
         $IpConfiguration = New-AzPrivateLinkServiceIpConfig -Name $IpConfigurationName -PrivateIpAddress 10.0.3.5 -Subnet $vnet.subnets[2];
         $LoadBalancerFrontendIpConfiguration = Get-AzLoadBalancer -Name $ilbName | Get-AzLoadBalancerFrontendIpConfig;
 
-        $job = New-AzPrivateLinkService -ResourceGroupName $rgName -Name $rname -Location $location -IpConfiguration $IpConfiguration -LoadBalancerFrontendIpConfiguration $LoadBalancerFrontendIpConfiguration -DestinationIpAddress $DestinationIpAddress -AsJob;
+        $job = New-AzPrivateLinkService -ResourceGroupName $rgname -Name $PrivateLinkServiceName -Location $location -IpConfiguration $IpConfiguration -LoadBalancerFrontendIpConfiguration $LoadBalancerFrontendIpConfiguration -AsJob;
         $job | Wait-Job
         $plscreate = $job | Receive-Job
         $vPrivateLinkService = Get-AzPrivateLinkService -Name $PrivateLinkServiceName -ResourceGroupName $rgName
