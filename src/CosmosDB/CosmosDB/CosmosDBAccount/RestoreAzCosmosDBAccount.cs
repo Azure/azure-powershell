@@ -101,15 +101,19 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     if (restorableAccount.CreationTime.HasValue &&
                         restorableAccount.CreationTime < utcRestoreDateTime)
                     {
-                        if (restorableAccount.DeletionTime.HasValue && restorableAccount.DeletionTime >= utcRestoreDateTime)
+                        if (restorableAccount.DeletionTime.HasValue)
                         {
-                            sourceAccountToRestore = restorableAccount;
-                            isSourceRestorableAccountDeleted = true;
-                            break;
+                            if (restorableAccount.DeletionTime >= utcRestoreDateTime)
+                            {
+                                sourceAccountToRestore = restorableAccount;
+                                isSourceRestorableAccountDeleted = true;
+                                break;
+                            }
                         }
                         else
                         {
                             sourceAccountToRestore = restorableAccount;
+                            isSourceRestorableAccountDeleted = false;
                             break;
                         }
                     }
