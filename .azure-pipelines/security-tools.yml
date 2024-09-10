@@ -52,11 +52,9 @@ jobs:
       outputFormat: sarif
       scanFolder: SecurityTmp
       suppressionsFile: tools/SecurityTools/CredScanSuppressions.json
-  - task: NuGetAuthenticate@1
   - task: PowerShell@2
     displayName: Run external CredScan
     env:
-      GUARDIAN_DEFAULT_PACKAGE_SOURCE_SECRET: $(System.AccessToken)
       GDN_CREDSCAN_OUTPUTTYPE: sarif
       Scan_Folder: SecurityTmp
       GDN_CREDSCAN_SUPPRESSIONSPATH: tools/SecurityTools/CredScanSuppressions.json
