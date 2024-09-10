@@ -217,7 +217,6 @@ namespace VersionController
 
                 var bumpingModule = _moduleNameFilter.Replace(Psd1NameExtension, "");
                 List<string> _minimalVersionContent = new List<string>() { header };
-                
                 foreach (var line in lines)
                 {
                     var cols = line.Split(",").Select(c => c.StartsWith("\"") ? c.Substring(1) : c)
