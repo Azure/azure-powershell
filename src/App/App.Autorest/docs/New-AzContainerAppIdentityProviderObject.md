@@ -262,7 +262,6 @@ Accept wildcard characters: False
 ### -CustomOpenIdConnectProvider
 The map of the name of the alias of each custom Open ID Connect provider to the
         configuration settings of the custom Open ID Connect provider.
-To construct, see NOTES section for CUSTOMOPENIDCONNECTPROVIDER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersCustomOpenIdConnectProviders

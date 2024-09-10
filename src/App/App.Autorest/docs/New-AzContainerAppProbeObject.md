@@ -79,7 +79,6 @@ Accept wildcard characters: False
 ### -HttpGetHttpHeader
 Custom headers to set in the request.
 HTTP allows repeated headers.
-To construct, see NOTES section for HTTPGETHTTPHEADER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeHttpGetHttpHeadersItem[]
