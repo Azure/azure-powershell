@@ -19,7 +19,7 @@
 --->
 
 ## Upcoming Release
-* *Added optional parameter `-DestinationIpAddress` to the following cmdlets:  
+* *Added optional parameter `-DestinationIPAddress` to the following cmdlets:  
     - `New-AzPrivateLinkService`
 
 ## Version 7.8.1
