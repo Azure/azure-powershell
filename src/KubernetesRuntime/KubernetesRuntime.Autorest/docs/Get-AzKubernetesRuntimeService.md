@@ -14,12 +14,13 @@ Get a ServiceResource
 
 ### List (Default)
 ```
-Get-AzKubernetesRuntimeService -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzKubernetesRuntimeService -ArcConnectedClusterUri <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzKubernetesRuntimeService -Name <String> -ResourceUri <String> [-DefaultProfile <PSObject>]
+Get-AzKubernetesRuntimeService -ArcConnectedClusterUri <String> -Name <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -36,7 +37,7 @@ Get a ServiceResource
 
 ### Example 1: Get all Kubernetes Runtime service objects in a cluster
 ```powershell
-Get-AzKubernetesRuntimeService -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1
+Get-AzKubernetesRuntimeService -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1
 ```
 
 ```output
@@ -58,7 +59,7 @@ Get all Kubernetes Runtime service objects for the connected cluster.
 
 ### Example 2: Get a Kubernetes Runtime service object for a connected cluster.
 ```powershell
-Get-AzKubernetesRuntimeService -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Name storageclass
+Get-AzKubernetesRuntimeService -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Name storageclass
 ```
 
 ```output
@@ -79,6 +80,21 @@ Type                         : microsoft.kubernetesruntime/services
 Get a Kubernetes Runtime service object for a connected cluster.
 
 ## PARAMETERS
+
+### -ArcConnectedClusterUri
+The fully qualified Azure Resource manager identifier of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List
+Aliases: ResourceUri
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -118,21 +134,6 @@ The name of the the service
 Type: System.String
 Parameter Sets: Get
 Aliases: ServiceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceUri
-The fully qualified Azure Resource manager identifier of the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
 
 Required: True
 Position: Named

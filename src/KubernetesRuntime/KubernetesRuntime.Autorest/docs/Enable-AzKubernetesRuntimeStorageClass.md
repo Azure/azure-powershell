@@ -13,7 +13,7 @@ Enable Arc storage class service in a connected cluster.
 ## SYNTAX
 
 ```
-Enable-AzKubernetesRuntimeStorageClass -ResourceUri <String> [-ReleaseTrain <String>]
+Enable-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri <String> [-ReleaseTrain <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Enable Arc storage class service in a connected cluster.
 
 ### Example 1: Enable Arc storage class service in a connected cluster
 ```powershell
-Enable-AzKubernetesRuntimeStorageClass -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1
+Enable-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1
 ```
 
 ```output
@@ -40,7 +40,7 @@ Returns the created Azure resources.
 
 ### Example 2: Enable Arc storage class service in a connected cluster using dev release train extension
 ```powershell
-Enable-AzKubernetesRuntimeStorageClass -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -ReleaseTrain dev
+Enable-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -ReleaseTrain dev
 ```
 
 ```output
@@ -55,6 +55,21 @@ Enables Arc storage class service in a connected cluster using dev release train
 Returns the created Azure resources.
 
 ## PARAMETERS
+
+### -ArcConnectedClusterUri
+The resource uri of the connected cluster
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ResourceUri
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -81,21 +96,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceUri
-The resource uri of the connected cluster
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

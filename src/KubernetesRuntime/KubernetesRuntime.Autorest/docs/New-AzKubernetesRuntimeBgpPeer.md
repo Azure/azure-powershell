@@ -14,19 +14,20 @@ Create a BgpPeer
 
 ### CreateExpanded (Default)
 ```
-New-AzKubernetesRuntimeBgpPeer -Name <String> -ResourceUri <String> [-MyAsn <Int32>] [-PeerAddress <String>]
- [-PeerAsn <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzKubernetesRuntimeBgpPeer -ArcConnectedClusterUri <String> -Name <String> [-MyAsn <Int32>]
+ [-PeerAddress <String>] [-PeerAsn <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzKubernetesRuntimeBgpPeer -Name <String> -ResourceUri <String> -JsonFilePath <String>
+New-AzKubernetesRuntimeBgpPeer -ArcConnectedClusterUri <String> -Name <String> -JsonFilePath <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzKubernetesRuntimeBgpPeer -Name <String> -ResourceUri <String> -JsonString <String>
+New-AzKubernetesRuntimeBgpPeer -ArcConnectedClusterUri <String> -Name <String> -JsonString <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -37,12 +38,27 @@ Create a BgpPeer
 
 ### Example 1: Create a bgp peer from a connected cluster
 ```powershell
-New-AzKubernetesRuntimeBgpPeer -Name test1 -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -MyAsn 10000 -PeerAsn 20000 -PeerAddress 192.168.50.1
+New-AzKubernetesRuntimeBgpPeer -Name test1 -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -MyAsn 10000 -PeerAsn 20000 -PeerAddress 192.168.50.1
 ```
 
 Create a bgp peer from a connected cluster.
 
 ## PARAMETERS
+
+### -ArcConnectedClusterUri
+The fully qualified Azure Resource manager identifier of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ResourceUri
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -174,21 +190,6 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceUri
-The fully qualified Azure Resource manager identifier of the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

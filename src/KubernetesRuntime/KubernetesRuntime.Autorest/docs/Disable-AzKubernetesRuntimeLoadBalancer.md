@@ -13,8 +13,8 @@ Disable Arc load balancer service in a connected cluster.
 ## SYNTAX
 
 ```
-Disable-AzKubernetesRuntimeLoadBalancer -ResourceUri <String> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Disable-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterUri <String> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,13 +24,28 @@ Disable Arc load balancer service in a connected cluster.
 
 ### Example 1: Disable Arc Networking service in a connected cluster
 ```powershell
-Disable-AzKubernetesRuntimeLoadBalancer -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1
+Disable-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1
 ```
 
 Disables Arc Networking service in a connected cluster.
 Returns the deleted Azure resources.
 
 ## PARAMETERS
+
+### -ArcConnectedClusterUri
+The resource uri of the connected cluster
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ResourceUri
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -42,21 +57,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceUri
-The resource uri of the connected cluster
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

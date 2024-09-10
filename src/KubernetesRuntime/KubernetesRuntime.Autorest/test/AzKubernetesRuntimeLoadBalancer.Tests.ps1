@@ -24,7 +24,7 @@ Describe 'AzKubernetesRuntimeLoadBalancer' {
             return
         }
 
-        $output = Enable-AzKubernetesRuntimeLoadBalancer -ResourceUri $resourceUri
+        $output = Enable-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterUri $resourceUri
 
         $output.Extension.Name | Should -Be $extensionName
 
@@ -40,18 +40,18 @@ Describe 'AzKubernetesRuntimeLoadBalancer' {
         Write-Host "Creating a load balancer"
 
         $output = New-AzKubernetesRuntimeLoadBalancer `
-            -ResourceUri $resourceUri `
+            -ArcConnectedClusterUri $resourceUri `
             -Name $newLoadBalancerName `
             -Address $address `
             -AdvertiseMode $advertiseMode -Verbose
 
         $output.TypeProperty.Type | Should -Be $typeProperty.Type
 
-        Get-AzKubernetesRuntimeLoadBalancer -ResourceUri $resourceUri -Name $newLoadBalancerName | ConvertTo-Json | Should -Be ($output | ConvertTo-Json)
+        Get-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterUri $resourceUri -Name $newLoadBalancerName | ConvertTo-Json | Should -Be ($output | ConvertTo-Json)
 
-        Remove-AzKubernetesRuntimeLoadBalancer -ResourceUri $resourceUri -Name $newLoadBalancerName
+        Remove-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterUri $resourceUri -Name $newLoadBalancerName
 
-        { Get-AzKubernetesRuntimeLoadBalancer -ResourceUri $resourceUri -Name $newLoadBalancerName } | Should -Throw
+        { Get-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterUri $resourceUri -Name $newLoadBalancerName } | Should -Throw
 
     }
 
@@ -61,7 +61,7 @@ Describe 'AzKubernetesRuntimeLoadBalancer' {
             return
         }
 
-        Disable-AzKubernetesRuntimeLoadBalancer -ResourceUri $resourceUri
+        Disable-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterUri $resourceUri
 
         { Get-AzKubernetesExtension -ResourceGroupName $env.ResourceGroup -ClusterName $env.ArcName -ClusterType ConnectedClusters -Name $extensionName } | Should -Throw
     }

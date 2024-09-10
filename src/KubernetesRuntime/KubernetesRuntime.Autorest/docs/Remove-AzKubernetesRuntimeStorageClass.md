@@ -14,8 +14,8 @@ Delete a StorageClassResource
 
 ### Delete (Default)
 ```
-Remove-AzKubernetesRuntimeStorageClass -Name <String> -ResourceUri <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri <String> -Name <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -32,12 +32,27 @@ Delete a StorageClassResource
 ### Example 1: Remove storage class from a connected cluster
 ```powershell
 Remove-AzKubernetesRuntimeStorageClass `
-    -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Name "default"
+    -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Name "default"
 ```
 
 Remove a storage class from a connected cluster.
 
 ## PARAMETERS
+
+### -ArcConnectedClusterUri
+The fully qualified Azure Resource manager identifier of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: ResourceUri
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -124,21 +139,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceUri
-The fully qualified Azure Resource manager identifier of the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

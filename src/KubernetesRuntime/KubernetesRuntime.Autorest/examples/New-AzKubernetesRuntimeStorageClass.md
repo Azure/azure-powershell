@@ -8,7 +8,7 @@ $typeProperties = New-AzKubernetesRuntimeNfsStorageClassTypePropertiesObject `
     -SubDir "subdir"
 
 New-AzKubernetesRuntimeStorageClass `
-    -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 `
+    -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 `
     -Name "nfs-test" `
     -TypeProperty $typeProperties
 ```

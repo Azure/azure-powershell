@@ -14,13 +14,14 @@ Get a StorageClassResource
 
 ### List (Default)
 ```
-Get-AzKubernetesRuntimeStorageClass -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzKubernetesRuntimeStorageClass -Name <String> -ResourceUri <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri <String> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -36,19 +37,34 @@ Get a StorageClassResource
 
 ### Example 1: List all storage classes of a connected cluster 
 ```powershell
-Get-AzKubernetesRuntimeStorageClass -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1
+Get-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1
 ```
 
 Lists all storage classes of a connected cluster.
 
 ### Example 2: Get a storage class of a connected cluster
 ```powershell
-Get-AzKubernetesRuntimeStorageClass -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Name "default"
+Get-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Name "default"
 ```
 
 Gets detailed information of a storage class of a connected cluster
 
 ## PARAMETERS
+
+### -ArcConnectedClusterUri
+The fully qualified Azure Resource manager identifier of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List
+Aliases: ResourceUri
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -88,21 +104,6 @@ The name of the the storage class
 Type: System.String
 Parameter Sets: Get
 Aliases: StorageClassName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceUri
-The fully qualified Azure Resource manager identifier of the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
 
 Required: True
 Position: Named

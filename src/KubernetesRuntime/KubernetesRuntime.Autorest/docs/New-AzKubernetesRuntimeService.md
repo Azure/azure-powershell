@@ -14,19 +14,19 @@ Create a ServiceResource
 
 ### CreateExpanded (Default)
 ```
-New-AzKubernetesRuntimeService -Name <String> -ResourceUri <String> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzKubernetesRuntimeService -ArcConnectedClusterUri <String> -Name <String> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzKubernetesRuntimeService -Name <String> -ResourceUri <String> -JsonFilePath <String>
+New-AzKubernetesRuntimeService -ArcConnectedClusterUri <String> -Name <String> -JsonFilePath <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzKubernetesRuntimeService -Name <String> -ResourceUri <String> -JsonString <String>
+New-AzKubernetesRuntimeService -ArcConnectedClusterUri <String> -Name <String> -JsonString <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Create a ServiceResource
 
 ### Example 1: Create a Kubernetes Runtime service for storage class service
 ```powershell
-New-AzKubernetesRuntimeService -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Name storageclass
+New-AzKubernetesRuntimeService -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Name storageclass
 ```
 
 ```output
@@ -58,6 +58,21 @@ Type                         : microsoft.kubernetesruntime/services
 Create a Kubernetes Runtime service object for storage class service.
 
 ## PARAMETERS
+
+### -ArcConnectedClusterUri
+The fully qualified Azure Resource manager identifier of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ResourceUri
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -112,21 +127,6 @@ The name of the the service
 Type: System.String
 Parameter Sets: (All)
 Aliases: ServiceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceUri
-The fully qualified Azure Resource manager identifier of the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
 
 Required: True
 Position: Named

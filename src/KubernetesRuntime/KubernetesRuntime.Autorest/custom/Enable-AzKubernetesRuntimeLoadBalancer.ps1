@@ -31,10 +31,11 @@ function Enable-AzKubernetesRuntimeLoadBalancer {
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
+        [Alias('ResourceUri')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Category('Path')]
         [System.String]
         # The resource uri of the connected cluster 
-        ${ResourceUri},
+        ${ArcConnectedClusterUri},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Category('Body')]
@@ -134,7 +135,7 @@ function Enable-AzKubernetesRuntimeLoadBalancer {
 
             . "$PSScriptRoot/Helpers.ps1"
 
-            $connected_cluster_resource_id = [ConnectedClusterResourceId]::Parse($ResourceUri)
+            $connected_cluster_resource_id = [ConnectedClusterResourceId]::Parse($ArcConnectedClusterUri)
             
             CheckRPRegistration -SubscriptionId $connected_cluster_resource_id.SubscriptionId
 

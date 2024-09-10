@@ -74,6 +74,12 @@ directive:
   - no-inline:
     - StorageClassTypeProperties
 
+  - where:
+      parameter-name: ResourceUri
+    set:
+      parameter-name: ArcConnectedClusterUri
+      alias: ResourceUri
+
   - model-cmdlet:
     - model-name: NativeStorageClassTypeProperties
     - model-name: RwxStorageClassTypeProperties

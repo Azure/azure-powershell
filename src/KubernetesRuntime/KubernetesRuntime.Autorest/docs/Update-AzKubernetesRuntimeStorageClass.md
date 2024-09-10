@@ -14,12 +14,12 @@ Update a StorageClassResource
 
 ### UpdateExpanded (Default)
 ```
-Update-AzKubernetesRuntimeStorageClass -Name <String> -ResourceUri <String> [-AccessMode <String[]>]
- [-AllowVolumeExpansion <String>] [-DataResilience <String>] [-FailoverSpeed <String>]
- [-Limitation <String[]>] [-MountOption <String[]>] [-Performance <String>] [-Priority <Int64>]
- [-TypePropertyAzureStorageAccountKey <SecureString>] [-TypePropertyAzureStorageAccountName <String>]
- [-TypePropertyBackingStorageClassName <String>] [-TypePropertyDomain <String>]
- [-TypePropertyMountPermission <String>] [-TypePropertyOnDelete <String>]
+Update-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri <String> -Name <String>
+ [-AccessMode <String[]>] [-AllowVolumeExpansion <String>] [-DataResilience <String>]
+ [-FailoverSpeed <String>] [-Limitation <String[]>] [-MountOption <String[]>] [-Performance <String>]
+ [-Priority <Int64>] [-TypePropertyAzureStorageAccountKey <SecureString>]
+ [-TypePropertyAzureStorageAccountName <String>] [-TypePropertyBackingStorageClassName <String>]
+ [-TypePropertyDomain <String>] [-TypePropertyMountPermission <String>] [-TypePropertyOnDelete <String>]
  [-TypePropertyPassword <SecureString>] [-TypePropertyServer <String>] [-TypePropertyShare <String>]
  [-TypePropertySource <String>] [-TypePropertySubDir <String>] [-TypePropertyUsername <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -40,13 +40,13 @@ Update-AzKubernetesRuntimeStorageClass -InputObject <IKubernetesRuntimeIdentity>
 
 ### UpdateViaJsonFilePath
 ```
-Update-AzKubernetesRuntimeStorageClass -Name <String> -ResourceUri <String> -JsonFilePath <String>
+Update-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri <String> -Name <String> -JsonFilePath <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
-Update-AzKubernetesRuntimeStorageClass -Name <String> -ResourceUri <String> -JsonString <String>
+Update-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri <String> -Name <String> -JsonString <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -58,7 +58,7 @@ Update a StorageClassResource
 ### Example 1: Update properties of a storage class of a connected cluster
 ```powershell
 Update-AzKubernetesRuntimeStorageClass `
-    -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 `
+    -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 `
     -Name "default" `
     -TypePropertyAzureStorageAccountName "accountName"
 ```
@@ -68,7 +68,7 @@ Update the `typeProperties.azureStorageAccountName` property of the storage clas
 ### Example 2: Update secret property of a storage class of a connected cluster
 ```powershell
 Update-AzKubernetesRuntimeStorageClass `
-    -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 `
+    -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 `
     -Name "default" `
     -TypePropertyAzureStorageAccountKey $(ConvertTo-SecureString 'accountKey' -AsPlainText)
 ```
@@ -101,6 +101,21 @@ Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ArcConnectedClusterUri
+The fully qualified Azure Resource manager identifier of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Aliases: ResourceUri
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -298,21 +313,6 @@ Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceUri
-The fully qualified Azure Resource manager identifier of the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -14,8 +14,8 @@ Update a ServiceResource
 
 ### UpdateExpanded (Default)
 ```
-Update-AzKubernetesRuntimeService -Name <String> -ResourceUri <String> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzKubernetesRuntimeService -ArcConnectedClusterUri <String> -Name <String> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -31,12 +31,27 @@ Update a ServiceResource
 
 ### Example 1: Update a Kubernetes Runtime service object
 ```powershell
-Update-AzKubernetesRuntimeService -ResourceUri /subscriptions/de3c4d5e-af08-451a-a873-438d86ab6f4b/resourceGroups/jundachen/providers/Microsoft.Kubernetes/connectedClusters/test-3-arc -Name storageclass
+Update-AzKubernetesRuntimeService -ArcConnectedClusterUri /subscriptions/de3c4d5e-af08-451a-a873-438d86ab6f4b/resourceGroups/jundachen/providers/Microsoft.Kubernetes/connectedClusters/test-3-arc -Name storageclass
 ```
 
 Update a Kubernetes Runtime service object.
 
 ## PARAMETERS
+
+### -ArcConnectedClusterUri
+The fully qualified Azure Resource manager identifier of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases: ResourceUri
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -76,21 +91,6 @@ The name of the the service
 Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases: ServiceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceUri
-The fully qualified Azure Resource manager identifier of the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
 
 Required: True
 Position: Named

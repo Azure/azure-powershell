@@ -1,6 +1,6 @@
 ### Example 1: Create a Kubernetes Runtime service for storage class service
 ```powershell
-New-AzKubernetesRuntimeService -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Name storageclass
+New-AzKubernetesRuntimeService -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Name storageclass
 ```
 
 ```output

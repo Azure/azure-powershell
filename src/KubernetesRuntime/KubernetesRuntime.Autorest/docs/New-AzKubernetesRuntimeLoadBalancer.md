@@ -14,20 +14,20 @@ Create a LoadBalancer
 
 ### CreateExpanded (Default)
 ```
-New-AzKubernetesRuntimeLoadBalancer -Name <String> -ResourceUri <String> [-Address <String[]>]
+New-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterUri <String> -Name <String> [-Address <String[]>]
  [-AdvertiseMode <String>] [-BgpPeer <String[]>] [-ServiceSelector <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzKubernetesRuntimeLoadBalancer -Name <String> -ResourceUri <String> -JsonFilePath <String>
+New-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterUri <String> -Name <String> -JsonFilePath <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzKubernetesRuntimeLoadBalancer -Name <String> -ResourceUri <String> -JsonString <String>
+New-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterUri <String> -Name <String> -JsonString <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -38,14 +38,14 @@ Create a LoadBalancer
 
 ### Example 1: Create a load balancer from a connected cluster
 ```powershell
-New-AzKubernetesRuntimeLoadBalancer -Name test1 -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Address "192.168.50.1/32" -AdvertiseMode ARP
+New-AzKubernetesRuntimeLoadBalancer -Name test1 -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Address "192.168.50.1/32" -AdvertiseMode ARP
 ```
 
 Create a load balancer from a connected cluster.
 
 ### Example 2: Create a load balancer with service selector specified
 ```powershell
-New-AzKubernetesRuntimeLoadBalancer -Name test1 -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Address "192.168.50.1/32" -AdvertiseMode ARP -ServiceSelector @{"a"= "b"; "c"="d"}
+New-AzKubernetesRuntimeLoadBalancer -Name test1 -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Address "192.168.50.1/32" -AdvertiseMode ARP -ServiceSelector @{"a"= "b"; "c"="d"}
 ```
 
 Create a load balancer with service selector specified.
@@ -53,7 +53,7 @@ It restricts the load balancer works for related service.
 
 ### Example 3: Create a load balancer with bgp peers specified
 ```powershell
-New-AzKubernetesRuntimeLoadBalancer -Name test1 -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Address "192.168.50.1/32" -AdvertiseMode ARP -BgpPeer bgptest1
+New-AzKubernetesRuntimeLoadBalancer -Name test1 -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Address "192.168.50.1/32" -AdvertiseMode ARP -BgpPeer bgptest1
 ```
 
 Create a load balancer with bgp peers specified.
@@ -85,6 +85,21 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ArcConnectedClusterUri
+The fully qualified Azure Resource manager identifier of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ResourceUri
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -192,21 +207,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceUri
-The fully qualified Azure Resource manager identifier of the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

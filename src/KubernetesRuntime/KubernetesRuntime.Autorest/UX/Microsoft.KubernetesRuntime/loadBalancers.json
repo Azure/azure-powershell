@@ -16,8 +16,8 @@
         "parameterSets": [
           {
             "parameters": [
-              "-Name <String>",
-              "-ResourceUri <String>"
+              "-ArcConnectedClusterUri <String>",
+              "-Name <String>"
             ]
           }
         ]
@@ -27,12 +27,12 @@
           "description": "Get a LoadBalancer",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.loadBalancerName]"
+              "name": "-ArcConnectedClusterUri",
+              "value": "[Path.resourceUri]"
             },
             {
-              "name": "-ResourceUri",
-              "value": "[Path.resourceUri]"
+              "name": "-Name",
+              "value": "[Path.loadBalancerName]"
             }
           ]
         }
@@ -49,8 +49,8 @@
         "parameterSets": [
           {
             "parameters": [
-              "-Name <String>",
-              "-ResourceUri <String>"
+              "-ArcConnectedClusterUri <String>",
+              "-Name <String>"
             ]
           }
         ]
@@ -60,12 +60,12 @@
           "description": "Delete a LoadBalancer",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.loadBalancerName]"
+              "name": "-ArcConnectedClusterUri",
+              "value": "[Path.resourceUri]"
             },
             {
-              "name": "-ResourceUri",
-              "value": "[Path.resourceUri]"
+              "name": "-Name",
+              "value": "[Path.loadBalancerName]"
             }
           ]
         }

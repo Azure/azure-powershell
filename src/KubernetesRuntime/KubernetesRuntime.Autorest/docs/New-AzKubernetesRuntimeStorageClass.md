@@ -14,7 +14,7 @@ Create a StorageClassResource
 
 ### CreateExpanded (Default)
 ```
-New-AzKubernetesRuntimeStorageClass -Name <String> -ResourceUri <String> [-AccessMode <String[]>]
+New-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri <String> -Name <String> [-AccessMode <String[]>]
  [-AllowVolumeExpansion <String>] [-DataResilience <String>] [-FailoverSpeed <String>]
  [-Limitation <String[]>] [-MountOption <String[]>] [-Performance <String>] [-Priority <Int64>]
  [-Provisioner <String>] [-TypeProperty <IStorageClassTypeProperties>] [-VolumeBindingMode <String>]
@@ -23,13 +23,13 @@ New-AzKubernetesRuntimeStorageClass -Name <String> -ResourceUri <String> [-Acces
 
 ### CreateViaJsonFilePath
 ```
-New-AzKubernetesRuntimeStorageClass -Name <String> -ResourceUri <String> -JsonFilePath <String>
+New-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri <String> -Name <String> -JsonFilePath <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzKubernetesRuntimeStorageClass -Name <String> -ResourceUri <String> -JsonString <String>
+New-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri <String> -Name <String> -JsonString <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -48,7 +48,7 @@ $typeProperties = New-AzKubernetesRuntimeNfsStorageClassTypePropertiesObject `
     -SubDir "subdir"
 
 New-AzKubernetesRuntimeStorageClass `
-    -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 `
+    -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 `
     -Name "nfs-test" `
     -TypeProperty $typeProperties
 ```
@@ -81,6 +81,21 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ArcConnectedClusterUri
+The fully qualified Azure Resource manager identifier of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ResourceUri
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -278,21 +293,6 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceUri
-The fully qualified Azure Resource manager identifier of the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

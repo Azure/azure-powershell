@@ -31,10 +31,11 @@ function Disable-AzKubernetesRuntimeStorageClass {
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
+        [Alias('ResourceUri')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Category('Path')]
         [System.String]
         # The resource uri of the connected cluster 
-        ${ResourceUri},
+        ${ArcConnectedClusterUri},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -128,7 +129,7 @@ function Disable-AzKubernetesRuntimeStorageClass {
 
             . "$PSScriptRoot/Helpers.ps1"
 
-            $connected_cluster_resource_id = [ConnectedClusterResourceId]::Parse($ResourceUri)
+            $connected_cluster_resource_id = [ConnectedClusterResourceId]::Parse($ArcConnectedClusterUri)
 
             Write-Output "Uninstalling storage class Arc extension in cluster $($connected_cluster_resource_id.ClusterName) in resource group $($connected_cluster_resource_id.ResourceGroup)..."
 

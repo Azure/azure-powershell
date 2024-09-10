@@ -14,7 +14,7 @@ Update a LoadBalancer
 
 ### UpdateExpanded (Default)
 ```
-Update-AzKubernetesRuntimeLoadBalancer -Name <String> -ResourceUri <String> [-Address <String[]>]
+Update-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterUri <String> -Name <String> [-Address <String[]>]
  [-AdvertiseMode <String>] [-BgpPeer <String[]>] [-ServiceSelector <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -33,7 +33,7 @@ Update a LoadBalancer
 
 ### Example 1: Update a load balancer from a connected cluster
 ```powershell
-Update-AzKubernetesRuntimeLoadBalancer -Name test1 -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Address 192.168.50.5/32
+Update-AzKubernetesRuntimeLoadBalancer -Name test1 -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Address 192.168.50.5/32
 ```
 
 Update a load balancer from a connected cluster
@@ -64,6 +64,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ArcConnectedClusterUri
+The fully qualified Azure Resource manager identifier of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases: ResourceUri
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -156,21 +171,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceUri
-The fully qualified Azure Resource manager identifier of the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

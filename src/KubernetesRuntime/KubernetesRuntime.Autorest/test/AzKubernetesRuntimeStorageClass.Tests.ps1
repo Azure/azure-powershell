@@ -24,7 +24,7 @@ Describe 'AzKubernetesRuntimeStorageClass' {
             return
         }
 
-        $output = Enable-AzKubernetesRuntimeStorageClass -ResourceUri $resourceUri
+        $output = Enable-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri $resourceUri
 
         $output.Extension.Name | Should -Be $extensionName
         $output.StorageClassContributorRoleAssignment.ObjectId | Should -Be $output.Extension.IdentityPrincipalId
@@ -35,7 +35,7 @@ Describe 'AzKubernetesRuntimeStorageClass' {
 
 
     It 'Gets storage classes' {
-        Get-AzKubernetesRuntimeStorageClass -ResourceUri $resourceUri | Should -Not -Be $null
+        Get-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri $resourceUri | Should -Not -Be $null
     }
 
     $typeProperties = @(
@@ -66,17 +66,17 @@ Describe 'AzKubernetesRuntimeStorageClass' {
             Write-Host "Creating SC $newStorageClassName"
 
             $output = New-AzKubernetesRuntimeStorageClass `
-                -ResourceUri $resourceUri `
+                -ArcConnectedClusterUri $resourceUri `
                 -Name $newStorageClassName `
                 -TypeProperty $typeProperty -Verbose
     
             $output.TypeProperty.Type | Should -Be $typeProperty.Type
     
-            Get-AzKubernetesRuntimeStorageClass -ResourceUri $resourceUri -Name $newStorageClassName | ConvertTo-Json | Should -Be ($output | ConvertTo-Json)
+            Get-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri $resourceUri -Name $newStorageClassName | ConvertTo-Json | Should -Be ($output | ConvertTo-Json)
 
-            Remove-AzKubernetesRuntimeStorageClass -ResourceUri $resourceUri -Name $newStorageClassName
+            Remove-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri $resourceUri -Name $newStorageClassName
 
-            { Get-AzKubernetesRuntimeStorageClass -ResourceUri $resourceUri -Name $newStorageClassName } | Should -Throw
+            { Get-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri $resourceUri -Name $newStorageClassName } | Should -Throw
 
         }
     }
@@ -87,7 +87,7 @@ Describe 'AzKubernetesRuntimeStorageClass' {
             return
         }
 
-        Disable-AzKubernetesRuntimeStorageClass -ResourceUri $resourceUri
+        Disable-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri $resourceUri
 
         { Get-AzKubernetesExtension -ResourceGroupName $env.ResourceGroup -ClusterName $env.ArcName -ClusterType ConnectedClusters -Name $extensionName } | Should -Throw
     }

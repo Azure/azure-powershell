@@ -14,7 +14,7 @@ Update a BgpPeer
 
 ### UpdateExpanded (Default)
 ```
-Update-AzKubernetesRuntimeBgpPeer -Name <String> -ResourceUri <String> [-MyAsn <Int32>]
+Update-AzKubernetesRuntimeBgpPeer -ArcConnectedClusterUri <String> -Name <String> [-MyAsn <Int32>]
  [-PeerAddress <String>] [-PeerAsn <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -33,12 +33,27 @@ Update a BgpPeer
 
 ### Example 1: Update a bgp peer from a connected cluster
 ```powershell
-Update-AzKubernetesRuntimeBgpPeer -Name test1 -ResourceUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -MyAsn 10000 -PeerAsn 20000 -PeerAddress 192.168.50.2
+Update-AzKubernetesRuntimeBgpPeer -Name test1 -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -MyAsn 10000 -PeerAsn 20000 -PeerAddress 192.168.50.2
 ```
 
 Update a bgp peer from a connected cluster.
 
 ## PARAMETERS
+
+### -ArcConnectedClusterUri
+The fully qualified Azure Resource manager identifier of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases: ResourceUri
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -155,21 +170,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceUri
-The fully qualified Azure Resource manager identifier of the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
