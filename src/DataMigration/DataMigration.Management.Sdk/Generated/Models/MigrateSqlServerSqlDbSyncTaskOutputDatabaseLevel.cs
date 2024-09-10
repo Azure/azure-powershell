@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
 
         /// <param name="latency">CDC apply latency
         /// </param>
-        public MigrateSqlServerSqlDbSyncTaskOutputDatabaseLevel(string id = default(string), string databaseName = default(string), System.DateTime? startedOn = default(System.DateTime?), System.DateTime? endedOn = default(System.DateTime?), string migrationState = default(string), long? incomingChanges = default(long?), long? appliedChanges = default(long?), long? cdcInsertCounter = default(long?), long? cdcDeleteCounter = default(long?), long? cdcUpdateCounter = default(long?), long? fullLoadCompletedTables = default(long?), long? fullLoadLoadingTables = default(long?), long? fullLoadQueuedTables = default(long?), long? fullLoadErroredTables = default(long?), bool? initializationCompleted = default(bool?), long? latency = default(long?))
+        public MigrateSqlServerSqlDbSyncTaskOutputDatabaseLevel(string id = default(string), string databaseName = default(string), System.DateTimeOffset? startedOn = default(System.DateTimeOffset?), System.DateTimeOffset? endedOn = default(System.DateTimeOffset?), string migrationState = default(string), long? incomingChanges = default(long?), long? appliedChanges = default(long?), long? cdcInsertCounter = default(long?), long? cdcDeleteCounter = default(long?), long? cdcUpdateCounter = default(long?), long? fullLoadCompletedTables = default(long?), long? fullLoadLoadingTables = default(long?), long? fullLoadQueuedTables = default(long?), long? fullLoadErroredTables = default(long?), bool? initializationCompleted = default(bool?), long? latency = default(long?))
 
         : base(id)
         {
@@ -109,13 +109,13 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets migration start time
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "startedOn")]
-        public System.DateTime? StartedOn {get; private set; }
+        public System.DateTimeOffset? StartedOn {get; private set; }
 
         /// <summary>
         /// Gets migration end time
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "endedOn")]
-        public System.DateTime? EndedOn {get; private set; }
+        public System.DateTimeOffset? EndedOn {get; private set; }
 
         /// <summary>
         /// Gets migration state that this database is in Possible values include: &#39;UNDEFINED&#39;, &#39;CONFIGURING&#39;, &#39;INITIALIAZING&#39;, &#39;STARTING&#39;, &#39;RUNNING&#39;, &#39;READY_TO_COMPLETE&#39;, &#39;COMPLETING&#39;, &#39;COMPLETE&#39;, &#39;CANCELLING&#39;, &#39;CANCELLED&#39;, &#39;FAILED&#39;

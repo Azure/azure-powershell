@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
 
         /// <param name="objectSummary">Summary of object results in the migration
         /// </param>
-        public MigrateSqlServerSqlDbTaskOutputDatabaseLevel(string id = default(string), string databaseName = default(string), System.DateTime? startedOn = default(System.DateTime?), System.DateTime? endedOn = default(System.DateTime?), string state = default(string), string stage = default(string), string statusMessage = default(string), string message = default(string), long? numberOfObjects = default(long?), long? numberOfObjectsCompleted = default(long?), long? errorCount = default(long?), string errorPrefix = default(string), string resultPrefix = default(string), System.Collections.Generic.IList<ReportableException> exceptionsAndWarnings = default(System.Collections.Generic.IList<ReportableException>), string objectSummary = default(string))
+        public MigrateSqlServerSqlDbTaskOutputDatabaseLevel(string id = default(string), string databaseName = default(string), System.DateTimeOffset? startedOn = default(System.DateTimeOffset?), System.DateTimeOffset? endedOn = default(System.DateTimeOffset?), string state = default(string), string stage = default(string), string statusMessage = default(string), string message = default(string), long? numberOfObjects = default(long?), long? numberOfObjectsCompleted = default(long?), long? errorCount = default(long?), string errorPrefix = default(string), string resultPrefix = default(string), System.Collections.Generic.IList<ReportableException> exceptionsAndWarnings = default(System.Collections.Generic.IList<ReportableException>), string objectSummary = default(string))
 
         : base(id)
         {
@@ -105,13 +105,13 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets migration start time
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "startedOn")]
-        public System.DateTime? StartedOn {get; private set; }
+        public System.DateTimeOffset? StartedOn {get; private set; }
 
         /// <summary>
         /// Gets migration end time
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "endedOn")]
-        public System.DateTime? EndedOn {get; private set; }
+        public System.DateTimeOffset? EndedOn {get; private set; }
 
         /// <summary>
         /// Gets current state of migration Possible values include: &#39;None&#39;, &#39;InProgress&#39;, &#39;Failed&#39;, &#39;Warning&#39;, &#39;Completed&#39;, &#39;Skipped&#39;, &#39;Stopped&#39;

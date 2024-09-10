@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// <param name="totalDocuments">The total number of documents on the source at the beginning of the Copying
         /// stage, or -1 if the total count was unknown
         /// </param>
-        public MongoDbProgress(long bytesCopied, long documentsCopied, string elapsedTime, System.Collections.Generic.IDictionary<string, MongoDbError> errors, long eventsPending, long eventsReplayed, string state, long totalBytes, long totalDocuments, System.DateTime? lastEventTime = default(System.DateTime?), System.DateTime? lastReplayTime = default(System.DateTime?), string name = default(string), string qualifiedName = default(string))
+        public MongoDbProgress(long bytesCopied, long documentsCopied, string elapsedTime, System.Collections.Generic.IDictionary<string, MongoDbError> errors, long eventsPending, long eventsReplayed, string state, long totalBytes, long totalDocuments, System.DateTimeOffset? lastEventTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastReplayTime = default(System.DateTimeOffset?), string name = default(string), string qualifiedName = default(string))
 
         {
             this.BytesCopied = bytesCopied;
@@ -143,14 +143,14 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// oplog event has been received yet
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastEventTime")]
-        public System.DateTime? LastEventTime {get; set; }
+        public System.DateTimeOffset? LastEventTime {get; set; }
 
         /// <summary>
         /// Gets or sets the timestamp of the last oplog event replayed, or null if no
         /// oplog event has been replayed yet
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastReplayTime")]
-        public System.DateTime? LastReplayTime {get; set; }
+        public System.DateTimeOffset? LastReplayTime {get; set; }
 
         /// <summary>
         /// Gets or sets the name of the progress object. For a collection, this is the

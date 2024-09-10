@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
 
         /// <param name="exceptionsAndWarnings">Migration exceptions and warnings
         /// </param>
-        public MigrateSqlServerSqlMISyncTaskOutputDatabaseLevel(string id = default(string), string sourceDatabaseName = default(string), string migrationState = default(string), System.DateTime? startedOn = default(System.DateTime?), System.DateTime? endedOn = default(System.DateTime?), BackupSetInfo fullBackupSetInfo = default(BackupSetInfo), BackupSetInfo lastRestoredBackupSetInfo = default(BackupSetInfo), System.Collections.Generic.IList<BackupSetInfo> activeBackupSets = default(System.Collections.Generic.IList<BackupSetInfo>), string containerName = default(string), string errorPrefix = default(string), bool? isFullBackupRestored = default(bool?), System.Collections.Generic.IList<ReportableException> exceptionsAndWarnings = default(System.Collections.Generic.IList<ReportableException>))
+        public MigrateSqlServerSqlMISyncTaskOutputDatabaseLevel(string id = default(string), string sourceDatabaseName = default(string), string migrationState = default(string), System.DateTimeOffset? startedOn = default(System.DateTimeOffset?), System.DateTimeOffset? endedOn = default(System.DateTimeOffset?), BackupSetInfo fullBackupSetInfo = default(BackupSetInfo), BackupSetInfo lastRestoredBackupSetInfo = default(BackupSetInfo), System.Collections.Generic.IList<BackupSetInfo> activeBackupSets = default(System.Collections.Generic.IList<BackupSetInfo>), string containerName = default(string), string errorPrefix = default(string), bool? isFullBackupRestored = default(bool?), System.Collections.Generic.IList<ReportableException> exceptionsAndWarnings = default(System.Collections.Generic.IList<ReportableException>))
 
         : base(id)
         {
@@ -102,13 +102,13 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets database migration start time
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "startedOn")]
-        public System.DateTime? StartedOn {get; private set; }
+        public System.DateTimeOffset? StartedOn {get; private set; }
 
         /// <summary>
         /// Gets database migration end time
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "endedOn")]
-        public System.DateTime? EndedOn {get; private set; }
+        public System.DateTimeOffset? EndedOn {get; private set; }
 
         /// <summary>
         /// Gets details of full backup set

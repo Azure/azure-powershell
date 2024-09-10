@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// <param name="status">Current status of validation at the database level
         /// Possible values include: &#39;Default&#39;, &#39;NotStarted&#39;, &#39;Initialized&#39;,
         /// &#39;InProgress&#39;, &#39;Completed&#39;, &#39;CompletedWithIssues&#39;, &#39;Stopped&#39;, &#39;Failed&#39;</param>
-        public MigrationValidationDatabaseLevelResult(string id = default(string), string migrationId = default(string), string sourceDatabaseName = default(string), string targetDatabaseName = default(string), System.DateTime? startedOn = default(System.DateTime?), System.DateTime? endedOn = default(System.DateTime?), DataIntegrityValidationResult dataIntegrityValidationResult = default(DataIntegrityValidationResult), SchemaComparisonValidationResult schemaValidationResult = default(SchemaComparisonValidationResult), QueryAnalysisValidationResult queryAnalysisValidationResult = default(QueryAnalysisValidationResult), string status = default(string))
+        public MigrationValidationDatabaseLevelResult(string id = default(string), string migrationId = default(string), string sourceDatabaseName = default(string), string targetDatabaseName = default(string), System.DateTimeOffset? startedOn = default(System.DateTimeOffset?), System.DateTimeOffset? endedOn = default(System.DateTimeOffset?), DataIntegrityValidationResult dataIntegrityValidationResult = default(DataIntegrityValidationResult), SchemaComparisonValidationResult schemaValidationResult = default(SchemaComparisonValidationResult), QueryAnalysisValidationResult queryAnalysisValidationResult = default(QueryAnalysisValidationResult), string status = default(string))
 
         {
             this.Id = id;
@@ -106,13 +106,13 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets validation start time
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "startedOn")]
-        public System.DateTime? StartedOn {get; private set; }
+        public System.DateTimeOffset? StartedOn {get; private set; }
 
         /// <summary>
         /// Gets validation end time
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "endedOn")]
-        public System.DateTime? EndedOn {get; private set; }
+        public System.DateTimeOffset? EndedOn {get; private set; }
 
         /// <summary>
         /// Gets provides data integrity validation result between the source and

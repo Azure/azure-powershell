@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
 
         /// <param name="isBackupRestored">Whether the backup set is restored or not
         /// </param>
-        public BackupSetInfo(string backupSetId = default(string), string firstLsn = default(string), string lastLsn = default(string), System.DateTime? lastModifiedTime = default(System.DateTime?), string backupType = default(string), System.Collections.Generic.IList<BackupFileInfo> listOfBackupFiles = default(System.Collections.Generic.IList<BackupFileInfo>), string databaseName = default(string), System.DateTime? backupStartDate = default(System.DateTime?), System.DateTime? backupFinishedDate = default(System.DateTime?), bool? isBackupRestored = default(bool?))
+        public BackupSetInfo(string backupSetId = default(string), string firstLsn = default(string), string lastLsn = default(string), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), string backupType = default(string), System.Collections.Generic.IList<BackupFileInfo> listOfBackupFiles = default(System.Collections.Generic.IList<BackupFileInfo>), string databaseName = default(string), System.DateTimeOffset? backupStartDate = default(System.DateTimeOffset?), System.DateTimeOffset? backupFinishedDate = default(System.DateTimeOffset?), bool? isBackupRestored = default(bool?))
 
         {
             this.BackupSetId = backupSetId;
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets or sets last modified time of the backup file in share location
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastModifiedTime")]
-        public System.DateTime? LastModifiedTime {get; set; }
+        public System.DateTimeOffset? LastModifiedTime {get; set; }
 
         /// <summary>
         /// Gets or sets enum of the different backup types Possible values include: &#39;Database&#39;, &#39;TransactionLog&#39;, &#39;File&#39;, &#39;DifferentialDatabase&#39;, &#39;DifferentialFile&#39;, &#39;Partial&#39;, &#39;DifferentialPartial&#39;
@@ -123,13 +123,13 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets or sets date and time that the backup operation began
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "backupStartDate")]
-        public System.DateTime? BackupStartDate {get; set; }
+        public System.DateTimeOffset? BackupStartDate {get; set; }
 
         /// <summary>
         /// Gets or sets date and time that the backup operation finished
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "backupFinishedDate")]
-        public System.DateTime? BackupFinishedDate {get; set; }
+        public System.DateTimeOffset? BackupFinishedDate {get; set; }
 
         /// <summary>
         /// Gets or sets whether the backup set is restored or not

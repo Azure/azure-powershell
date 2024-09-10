@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
 
         /// <param name="backupFinishDate">Date and time when the backup operation finished.
         /// </param>
-        public DatabaseBackupInfo(string databaseName = default(string), string backupType = default(string), System.Collections.Generic.IList<string> backupFiles = default(System.Collections.Generic.IList<string>), int? position = default(int?), bool? isDamaged = default(bool?), bool? isCompressed = default(bool?), int? familyCount = default(int?), System.DateTime? backupFinishDate = default(System.DateTime?))
+        public DatabaseBackupInfo(string databaseName = default(string), string backupType = default(string), System.Collections.Generic.IList<string> backupFiles = default(System.Collections.Generic.IList<string>), int? position = default(int?), bool? isDamaged = default(bool?), bool? isCompressed = default(bool?), int? familyCount = default(int?), System.DateTimeOffset? backupFinishDate = default(System.DateTimeOffset?))
 
         {
             this.DatabaseName = databaseName;
@@ -117,6 +117,6 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets date and time when the backup operation finished.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "backupFinishDate")]
-        public System.DateTime? BackupFinishDate {get; private set; }
+        public System.DateTimeOffset? BackupFinishDate {get; private set; }
     }
 }

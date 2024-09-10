@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
 
         /// <param name="migrationEligibility">Information about eligibility of agent job for migration.
         /// </param>
-        public ConnectToSourceSqlServerTaskOutputAgentJobLevel(string id = default(string), string name = default(string), string jobCategory = default(string), bool? isEnabled = default(bool?), string jobOwner = default(string), System.DateTime? lastExecutedOn = default(System.DateTime?), System.Collections.Generic.IList<ReportableException> validationErrors = default(System.Collections.Generic.IList<ReportableException>), MigrationEligibilityInfo migrationEligibility = default(MigrationEligibilityInfo))
+        public ConnectToSourceSqlServerTaskOutputAgentJobLevel(string id = default(string), string name = default(string), string jobCategory = default(string), bool? isEnabled = default(bool?), string jobOwner = default(string), System.DateTimeOffset? lastExecutedOn = default(System.DateTimeOffset?), System.Collections.Generic.IList<ReportableException> validationErrors = default(System.Collections.Generic.IList<ReportableException>), MigrationEligibilityInfo migrationEligibility = default(MigrationEligibilityInfo))
 
         : base(id)
         {
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets uTC Date and time when the Agent Job was last executed.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastExecutedOn")]
-        public System.DateTime? LastExecutedOn {get; private set; }
+        public System.DateTimeOffset? LastExecutedOn {get; private set; }
 
         /// <summary>
         /// Gets validation errors

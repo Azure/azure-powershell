@@ -20,6 +20,7 @@ reflect-api-versions: true
 azure-arm: true
 license-header: MICROSOFT_MIT_NO_VERSION
 clear-output-folder: true
+useDateTimeOffset: true
 ```
 
 

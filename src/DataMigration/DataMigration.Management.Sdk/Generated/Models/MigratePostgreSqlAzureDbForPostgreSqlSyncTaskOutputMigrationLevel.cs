@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
 
         /// <param name="targetServer">Target server name
         /// </param>
-        public MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevel(string id = default(string), System.DateTime? startedOn = default(System.DateTime?), System.DateTime? endedOn = default(System.DateTime?), string sourceServerVersion = default(string), string sourceServer = default(string), string targetServerVersion = default(string), string targetServer = default(string))
+        public MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevel(string id = default(string), System.DateTimeOffset? startedOn = default(System.DateTimeOffset?), System.DateTimeOffset? endedOn = default(System.DateTimeOffset?), string sourceServerVersion = default(string), string sourceServer = default(string), string targetServerVersion = default(string), string targetServer = default(string))
 
         : base(id)
         {
@@ -65,13 +65,13 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets migration start time
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "startedOn")]
-        public System.DateTime? StartedOn {get; private set; }
+        public System.DateTimeOffset? StartedOn {get; private set; }
 
         /// <summary>
         /// Gets migration end time
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "endedOn")]
-        public System.DateTime? EndedOn {get; private set; }
+        public System.DateTimeOffset? EndedOn {get; private set; }
 
         /// <summary>
         /// Gets source server version

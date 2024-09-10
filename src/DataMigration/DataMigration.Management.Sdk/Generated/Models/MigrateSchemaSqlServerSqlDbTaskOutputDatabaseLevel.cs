@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
 
         /// <param name="fileId">Identifier for the file resource containing the schema of this database
         /// </param>
-        public MigrateSchemaSqlServerSqlDbTaskOutputDatabaseLevel(string id = default(string), string databaseName = default(string), string state = default(string), string stage = default(string), System.DateTime? startedOn = default(System.DateTime?), System.DateTime? endedOn = default(System.DateTime?), string databaseErrorResultPrefix = default(string), string schemaErrorResultPrefix = default(string), long? numberOfSuccessfulOperations = default(long?), long? numberOfFailedOperations = default(long?), string fileId = default(string))
+        public MigrateSchemaSqlServerSqlDbTaskOutputDatabaseLevel(string id = default(string), string databaseName = default(string), string state = default(string), string stage = default(string), System.DateTimeOffset? startedOn = default(System.DateTimeOffset?), System.DateTimeOffset? endedOn = default(System.DateTimeOffset?), string databaseErrorResultPrefix = default(string), string schemaErrorResultPrefix = default(string), long? numberOfSuccessfulOperations = default(long?), long? numberOfFailedOperations = default(long?), string fileId = default(string))
 
         : base(id)
         {
@@ -103,13 +103,13 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets migration start time
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "startedOn")]
-        public System.DateTime? StartedOn {get; private set; }
+        public System.DateTimeOffset? StartedOn {get; private set; }
 
         /// <summary>
         /// Gets migration end time
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "endedOn")]
-        public System.DateTime? EndedOn {get; private set; }
+        public System.DateTimeOffset? EndedOn {get; private set; }
 
         /// <summary>
         /// Gets prefix string to use for querying errors for this database

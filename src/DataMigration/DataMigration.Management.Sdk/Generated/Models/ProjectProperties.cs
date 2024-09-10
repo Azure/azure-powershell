@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
 
         /// <param name="provisioningState">The project&#39;s provisioning state
         /// Possible values include: &#39;Deleting&#39;, &#39;Succeeded&#39;</param>
-        public ProjectProperties(string sourcePlatform, string targetPlatform, System.DateTime? creationTime = default(System.DateTime?), ConnectionInfo sourceConnectionInfo = default(ConnectionInfo), ConnectionInfo targetConnectionInfo = default(ConnectionInfo), System.Collections.Generic.IList<DatabaseInfo> databasesInfo = default(System.Collections.Generic.IList<DatabaseInfo>), string provisioningState = default(string))
+        public ProjectProperties(string sourcePlatform, string targetPlatform, System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), ConnectionInfo sourceConnectionInfo = default(ConnectionInfo), ConnectionInfo targetConnectionInfo = default(ConnectionInfo), System.Collections.Generic.IList<DatabaseInfo> databasesInfo = default(System.Collections.Generic.IList<DatabaseInfo>), string provisioningState = default(string))
 
         {
             this.SourcePlatform = sourcePlatform;
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets uTC Date and time when project was created
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "creationTime")]
-        public System.DateTime? CreationTime {get; private set; }
+        public System.DateTimeOffset? CreationTime {get; private set; }
 
         /// <summary>
         /// Gets or sets information for connecting to source

@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
 
         /// <param name="size">File size.
         /// </param>
-        public ProjectFileProperties(string extension = default(string), string filePath = default(string), System.DateTime? lastModified = default(System.DateTime?), string mediaType = default(string), long? size = default(long?))
+        public ProjectFileProperties(string extension = default(string), string filePath = default(string), System.DateTimeOffset? lastModified = default(System.DateTimeOffset?), string mediaType = default(string), long? size = default(long?))
 
         {
             this.Extension = extension;
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets modification DateTime.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastModified")]
-        public System.DateTime? LastModified {get; private set; }
+        public System.DateTimeOffset? LastModified {get; private set; }
 
         /// <summary>
         /// Gets or sets file content type. This property can be modified to reflect

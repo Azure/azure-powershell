@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
 
         /// <param name="lastModifiedTime">Last modified time on target
         /// </param>
-        public MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputTableLevel(string id = default(string), string tableName = default(string), string databaseName = default(string), long? cdcInsertCounter = default(long?), long? cdcUpdateCounter = default(long?), long? cdcDeleteCounter = default(long?), System.DateTime? fullLoadEstFinishTime = default(System.DateTime?), System.DateTime? fullLoadStartedOn = default(System.DateTime?), System.DateTime? fullLoadEndedOn = default(System.DateTime?), long? fullLoadTotalRows = default(long?), string state = default(string), long? totalChangesApplied = default(long?), long? dataErrorsCounter = default(long?), System.DateTime? lastModifiedTime = default(System.DateTime?))
+        public MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputTableLevel(string id = default(string), string tableName = default(string), string databaseName = default(string), long? cdcInsertCounter = default(long?), long? cdcUpdateCounter = default(long?), long? cdcDeleteCounter = default(long?), System.DateTimeOffset? fullLoadEstFinishTime = default(System.DateTimeOffset?), System.DateTimeOffset? fullLoadStartedOn = default(System.DateTimeOffset?), System.DateTimeOffset? fullLoadEndedOn = default(System.DateTimeOffset?), long? fullLoadTotalRows = default(long?), string state = default(string), long? totalChangesApplied = default(long?), long? dataErrorsCounter = default(long?), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?))
 
         : base(id)
         {
@@ -124,19 +124,19 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets estimate to finish full load
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "fullLoadEstFinishTime")]
-        public System.DateTime? FullLoadEstFinishTime {get; private set; }
+        public System.DateTimeOffset? FullLoadEstFinishTime {get; private set; }
 
         /// <summary>
         /// Gets full load start time
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "fullLoadStartedOn")]
-        public System.DateTime? FullLoadStartedOn {get; private set; }
+        public System.DateTimeOffset? FullLoadStartedOn {get; private set; }
 
         /// <summary>
         /// Gets full load end time
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "fullLoadEndedOn")]
-        public System.DateTime? FullLoadEndedOn {get; private set; }
+        public System.DateTimeOffset? FullLoadEndedOn {get; private set; }
 
         /// <summary>
         /// Gets number of rows applied in full load
@@ -166,6 +166,6 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets last modified time on target
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastModifiedTime")]
-        public System.DateTime? LastModifiedTime {get; private set; }
+        public System.DateTimeOffset? LastModifiedTime {get; private set; }
     }
 }

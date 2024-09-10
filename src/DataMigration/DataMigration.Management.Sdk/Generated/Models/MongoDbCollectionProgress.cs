@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// <param name="totalDocuments">The total number of documents on the source at the beginning of the Copying
         /// stage, or -1 if the total count was unknown
         /// </param>
-        public MongoDbCollectionProgress(long bytesCopied, long documentsCopied, string elapsedTime, System.Collections.Generic.IDictionary<string, MongoDbError> errors, long eventsPending, long eventsReplayed, string state, long totalBytes, long totalDocuments, System.DateTime? lastEventTime = default(System.DateTime?), System.DateTime? lastReplayTime = default(System.DateTime?), string name = default(string), string qualifiedName = default(string))
+        public MongoDbCollectionProgress(long bytesCopied, long documentsCopied, string elapsedTime, System.Collections.Generic.IDictionary<string, MongoDbError> errors, long eventsPending, long eventsReplayed, string state, long totalBytes, long totalDocuments, System.DateTimeOffset? lastEventTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastReplayTime = default(System.DateTimeOffset?), string name = default(string), string qualifiedName = default(string))
 
         : base(bytesCopied, documentsCopied, elapsedTime, errors, eventsPending, eventsReplayed, state, totalBytes, totalDocuments, lastEventTime, lastReplayTime, name, qualifiedName)
         {

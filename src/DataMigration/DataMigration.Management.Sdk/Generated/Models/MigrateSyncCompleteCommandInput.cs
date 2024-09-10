@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
 
         /// <param name="commitTimeStamp">Time stamp to complete
         /// </param>
-        public MigrateSyncCompleteCommandInput(string databaseName, System.DateTime? commitTimeStamp = default(System.DateTime?))
+        public MigrateSyncCompleteCommandInput(string databaseName, System.DateTimeOffset? commitTimeStamp = default(System.DateTimeOffset?))
 
         {
             this.DatabaseName = databaseName;
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets or sets time stamp to complete
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "commitTimeStamp")]
-        public System.DateTime? CommitTimeStamp {get; set; }
+        public System.DateTimeOffset? CommitTimeStamp {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

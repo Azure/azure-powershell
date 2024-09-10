@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// <param name="databases">The progress of the databases in the migration. The keys are the names of
         /// the databases
         /// </param>
-        public MongoDbMigrationProgress(long bytesCopied, long documentsCopied, string elapsedTime, System.Collections.Generic.IDictionary<string, MongoDbError> errors, long eventsPending, long eventsReplayed, string state, long totalBytes, long totalDocuments, System.DateTime? lastEventTime = default(System.DateTime?), System.DateTime? lastReplayTime = default(System.DateTime?), string name = default(string), string qualifiedName = default(string), System.Collections.Generic.IDictionary<string, MongoDbDatabaseProgress> databases = default(System.Collections.Generic.IDictionary<string, MongoDbDatabaseProgress>))
+        public MongoDbMigrationProgress(long bytesCopied, long documentsCopied, string elapsedTime, System.Collections.Generic.IDictionary<string, MongoDbError> errors, long eventsPending, long eventsReplayed, string state, long totalBytes, long totalDocuments, System.DateTimeOffset? lastEventTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastReplayTime = default(System.DateTimeOffset?), string name = default(string), string qualifiedName = default(string), System.Collections.Generic.IDictionary<string, MongoDbDatabaseProgress> databases = default(System.Collections.Generic.IDictionary<string, MongoDbDatabaseProgress>))
 
         : base(bytesCopied, documentsCopied, elapsedTime, errors, eventsPending, eventsReplayed, state, totalBytes, totalDocuments, lastEventTime, lastReplayTime, name, qualifiedName)
         {

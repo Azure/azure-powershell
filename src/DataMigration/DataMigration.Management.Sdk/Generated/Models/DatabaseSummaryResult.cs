@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
 
         /// <param name="sizeMb">Size of the database in megabytes
         /// </param>
-        public DatabaseSummaryResult(string name = default(string), System.DateTime? startedOn = default(System.DateTime?), System.DateTime? endedOn = default(System.DateTime?), string state = default(string), string statusMessage = default(string), long? itemsCount = default(long?), long? itemsCompletedCount = default(long?), string errorPrefix = default(string), string resultPrefix = default(string), double? sizeMb = default(double?))
+        public DatabaseSummaryResult(string name = default(string), System.DateTimeOffset? startedOn = default(System.DateTimeOffset?), System.DateTimeOffset? endedOn = default(System.DateTimeOffset?), string state = default(string), string statusMessage = default(string), long? itemsCount = default(long?), long? itemsCompletedCount = default(long?), string errorPrefix = default(string), string resultPrefix = default(string), double? sizeMb = default(double?))
 
         : base(name, startedOn, endedOn, state, statusMessage, itemsCount, itemsCompletedCount, errorPrefix, resultPrefix)
         {
