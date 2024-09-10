@@ -58,7 +58,10 @@ title: DesktopVirtualizationClient
 # use-extension:
 #  "@autorest/powershell": "3.x"
 
+#v4 migration settings
 keep-pec-and-plr: true
+disable-transform-identity-type: true
+flatten-userassignedidentity: false
 
 directive:
   - where:

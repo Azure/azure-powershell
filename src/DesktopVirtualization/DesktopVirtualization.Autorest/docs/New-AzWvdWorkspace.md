@@ -15,8 +15,8 @@ Create a workspace.
 ### CreateExpanded (Default)
 ```
 New-AzWvdWorkspace -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-ApplicationGroupReference <String[]>] [-Description <String>] [-EnableSystemAssignedIdentity]
- [-FriendlyName <String>] [-Kind <String>] [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>]
+ [-ApplicationGroupReference <String[]>] [-Description <String>] [-FriendlyName <String>]
+ [-IdentityType <String>] [-Kind <String>] [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>]
  [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
  [-PublicNetworkAccess <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
  [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -124,11 +124,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableSystemAssignedIdentity
-Decides if enable a system assigned identity for the resource.
+### -FriendlyName
+Friendly name of Workspace.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -139,8 +139,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FriendlyName
-Friendly name of Workspace.
+### -IdentityType
+The identity type.
 
 ```yaml
 Type: System.String

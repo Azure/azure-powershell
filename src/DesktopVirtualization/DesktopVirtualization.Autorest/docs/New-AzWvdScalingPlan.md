@@ -15,8 +15,8 @@ Create a scaling plan.
 ### CreateExpanded (Default)
 ```
 New-AzWvdScalingPlan -Name <String> -ResourceGroupName <String> -Location <String> -TimeZone <String>
- [-SubscriptionId <String>] [-Description <String>] [-EnableSystemAssignedIdentity] [-ExclusionTag <String>]
- [-FriendlyName <String>] [-HostPoolReference <IScalingHostPoolReference[]>] [-HostPoolType <String>]
+ [-SubscriptionId <String>] [-Description <String>] [-ExclusionTag <String>] [-FriendlyName <String>]
+ [-HostPoolReference <IScalingHostPoolReference[]>] [-HostPoolType <String>] [-IdentityType <String>]
  [-Kind <String>] [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>]
  [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
  [-Schedule <IScalingSchedule[]>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
@@ -166,21 +166,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableSystemAssignedIdentity
-Decides if enable a system assigned identity for the resource.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ExclusionTag
 Exclusion tag for scaling plan.
 
@@ -228,6 +213,21 @@ Accept wildcard characters: False
 
 ### -HostPoolType
 HostPool type for desktop.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+The identity type.
 
 ```yaml
 Type: System.String

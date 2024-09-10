@@ -19,7 +19,7 @@ New-AzWvdHostPool -HostPoolType <String> -LoadBalancerType <String> -Location <S
  [-AgentUpdateMaintenanceWindow <IMaintenanceWindowProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <String>]
  [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
- [-EnableSystemAssignedIdentity] [-ExpirationTime <DateTime>] [-FriendlyName <String>] [-Kind <String>]
+ [-ExpirationTime <DateTime>] [-FriendlyName <String>] [-IdentityType <String>] [-Kind <String>]
  [-ManagedBy <String>] [-MaxSessionLimit <Int32>] [-PersonalDesktopAssignmentType <String>]
  [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
  [-PlanVersion <String>] [-PublicNetworkAccess <String>] [-RegistrationInfoToken <String>]
@@ -240,21 +240,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableSystemAssignedIdentity
-Decides if enable a system assigned identity for the resource.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ExpirationTime
 Expiration time of registration token.
 
@@ -294,6 +279,21 @@ Parameter Sets: CreateExpanded, FullScenarioCreate
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+The identity type.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
