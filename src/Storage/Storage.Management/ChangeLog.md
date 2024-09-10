@@ -50,6 +50,10 @@
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
     
+## Version 7.3.1
+* Fixed issue that table cmdlet fail when execute with Storage context get from StorageAccount object and based on sharedkey authentication.
+* Refined Storage account cmdlet output context generation function based on OAuth token 
+
 ## Version 7.3.0
 * Supported account tier Cold
     - `New-AzStorageAccount`

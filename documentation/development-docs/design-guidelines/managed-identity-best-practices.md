@@ -58,3 +58,32 @@ We are recommended to use string array as the type of UserAssignedIdentity with 
 - No syntax changes if service supports one more user assigned identity in future;
 - Service will provide correct error response if customer reaches the count limitation of `UserAssignedIdentity` ideally, which means no harm.
 
+### How to disable transforming IdentityType and UserAssignedIdentity to avoid breaking changes when migrate from autorest.powershell v3 to v4.
+See details at [here](https://github.com/Azure/autorest.powershell/blob/main/docs/migration-from-v3-to-v4.md#how-to-mitigate-the-breaking-changes-of-managed-identity-best-practice-alignment).
+
+### What should I do to mitigate one patch operation which is reported to parameter IdentityType can not be transformed as the best practice design?
+
+autorest.powershell is unable to transform IdentityType as the best practice design for certain reasons. To mitigate this issue,
+- Include a customization script to transform the parameter IdentityType to EnableSystemAssignedIdentity by `get` + `patch` update for this type of operation. The following are the detailed steps on how to accomplish this.
+  - disable transformation for the operation which reported error in README.md by
+  ```
+  disable-transform-identity-type-for-operation
+    - Operation_id
+  ```
+  - hide the corresponding Update cmdlet in directive by
+  ```
+   -  where:
+        verb: Update
+        subject: {Subject-Name}
+      hide: true
+  ```
+  - run `autorest` and `./build-module.ps1`
+  - manually change IdentityType to EnableSystemAssignedIdentity<bool> in `Update-Az{ModuleName}{Subject-Name}` like
+  ```
+      [Parameter()]
+      [Microsoft.Azure.PowerShell.Cmdlets.{ModuleName}.Category('Body')]
+      [System.Nullable[System.Boolean]]
+      # Decides if enable a system assigned identity for the resource.
+      ${EnableSystemAssignedIdentity},
+  ```
+  - calculate the value of IdentityType as swagger defined in process block, see [instance](https://github.com/Azure/azure-powershell/blob/827001c79c4416e0b74f5857c2ad72b7932b1f9a/src/Astro/Astro.Autorest/custom/Update-AzAstroOrganization.ps1#L269) for Update-Az{ModuleName}{Subject-Name}.
