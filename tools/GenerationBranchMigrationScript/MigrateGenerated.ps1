@@ -72,6 +72,10 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
     $helpFolderPath = Join-Path $sourceSubModulePath "help"
     $docsFolderPath = Join-Path $sourceSubModulePath "docs"
     Move-Item $helpFolderPath $docsFolderPath
+
+    # Delete *.ps1 under *.Autorest, no need to check-in these files
+    $doNotDelete=@('test-module.ps1', 'check-dependencies.ps1')
+    Get-ChildItem $sourceSubModulePath -Filter '*.ps1' | Where-Object { $_.Name -NotIn $doNotDelete } | Foreach-Object { Remove-Item $_.FullName -Force }
 }
 
 # have to do it in another loop because csproj need to be all moved to /generated before add into sln
