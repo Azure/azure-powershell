@@ -1,6 +1,6 @@
 {
   "resourceType": "elasticSans/volumegroups",
-  "apiVersion": "2022-12-01-preview",
+  "apiVersion": "2023-01-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.elasticsan"
   },

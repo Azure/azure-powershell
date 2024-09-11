@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the ElasticSan service.
 
 ---
-## Status
-[![Az.ElasticSan](https://img.shields.io/powershellgallery/v/Az.ElasticSan.svg?style=flat-square&label=Az.ElasticSan "Az.ElasticSan")](https://www.powershellgallery.com/packages/Az.ElasticSan/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

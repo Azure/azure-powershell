@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMLWorkspaceComponentCon
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzMLWorkspaceComponentContainer' {
-    It 'CreateExpanded' {
+Describe 'New-AzMLWorkspaceComponentContainer' { #Moved
+    It 'CreateExpanded' -skip {
         { 
             New-AzMLWorkspaceComponentContainer -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name component-pwsh01 -IsArchived
             # Operation DeleteComponentContainer Not Allowed

@@ -16,30 +16,30 @@ Creates or updates a catalog.
 ```
 New-AzDevCenterAdminCatalog -DevCenterName <String> -Name <String> -ResourceGroupName <String>
  -AdoGitSecretIdentifier <String> -AdoGitUri <String> [-SubscriptionId <String>] [-AdoGitBranch <String>]
- [-AdoGitPath <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-AdoGitPath <String>] [-SyncType <CatalogSyncType>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpandedGitHub
 ```
 New-AzDevCenterAdminCatalog -DevCenterName <String> -Name <String> -ResourceGroupName <String>
  -GitHubSecretIdentifier <String> -GitHubUri <String> [-SubscriptionId <String>] [-GitHubBranch <String>]
- [-GitHubPath <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-GitHubPath <String>] [-SyncType <CatalogSyncType>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpandedAdo
 ```
 New-AzDevCenterAdminCatalog -InputObject <IDevCenterIdentity> -AdoGitSecretIdentifier <String>
- -AdoGitUri <String> [-AdoGitBranch <String>] [-AdoGitPath <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -AdoGitUri <String> [-AdoGitBranch <String>] [-AdoGitPath <String>] [-SyncType <CatalogSyncType>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpandedGitHub
 ```
 New-AzDevCenterAdminCatalog -InputObject <IDevCenterIdentity> -GitHubSecretIdentifier <String>
- -GitHubUri <String> [-GitHubBranch <String>] [-GitHubPath <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -GitHubUri <String> [-GitHubBranch <String>] [-GitHubPath <String>] [-SyncType <CatalogSyncType>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -322,6 +322,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SyncType
+Indicates the type of sync that is configured for the catalog.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogSyncType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -362,7 +392,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ICatalog
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalog
 
 ## NOTES
 
