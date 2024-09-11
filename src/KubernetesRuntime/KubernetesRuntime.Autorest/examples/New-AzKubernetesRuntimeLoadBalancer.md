@@ -10,7 +10,7 @@ Create a load balancer from a connected cluster.
 New-AzKubernetesRuntimeLoadBalancer -Name test1 -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Address "192.168.50.1/32" -AdvertiseMode ARP -ServiceSelector @{"a"= "b"; "c"="d"}
 ```
 
-Create a load balancer with service selector specified. It restricts the load balancer works for related service. 
+Create a load balancer with service selector specified. It restricts the load balancer works for related service.
 
 ### Example 3: Create a load balancer with bgp peers specified
 ```powershell
