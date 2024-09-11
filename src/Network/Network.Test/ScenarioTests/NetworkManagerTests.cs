@@ -106,5 +106,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NetworkManagerIpamPoolCRUD");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
+        public void NetworkManagerIpamPoolStaticCidrCRUD()
+        {
+            TestRunner.RunTestScript("Test-NetworkManagerIpamPoolStaticCidrCRUD");
+        }
     }
 }
