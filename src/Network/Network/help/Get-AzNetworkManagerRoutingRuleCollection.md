@@ -59,7 +59,7 @@ SystemData        : {
                     }
 ```
 
-Gets a rule collection with a routing configuration.
+Gets a rule collection within a routing configuration.
 
 ### Example 2
 ```powershell
@@ -88,7 +88,7 @@ SystemData        : {
                       "LastModifiedAt": "2021-10-18T04:06:03"
                     }
 
-                    Name              : TestRC2
+Name              : TestRC2
 Description       : Sample rule Collection Description
 Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/routingConfigurations/TestRoutingConfig/ruleCollections/TestRC2
 Type              : Microsoft.Network/networkManagers/routingConfigurations/ruleCollections

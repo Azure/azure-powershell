@@ -41,7 +41,7 @@ The **New-AzNetworkManagerRoutingRule** cmdlet creates a routing rule.
 ```powershell
 $destination = New-AzNetworkManagerRoutingRuleDestination -DestinationAddress "10.1.1.1/32" -Type "AddressPrefix" 
 $nextHop = New-AzNetworkManagerRoutingRuleNextHop -NextHopType "VirtualAppliance" -NextHopAddress "2.2.2.2"
-New-AzNetworkManagerRoutingRule -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -ConfigName "psRoutingConfig" -RuleCollectionName "psRuleCollection" -Name "psRule" -Description "TestDescription" -Destination $destination -NextHopAddressPrefix $nextHop
+New-AzNetworkManagerRoutingRule -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -ConfigName "psRoutingConfig" -RuleCollectionName "psRuleCollection" -Name "psRule" -Description "TestDescription" -Destination $destination -NextHop $nextHop
 ```
 
 ```output

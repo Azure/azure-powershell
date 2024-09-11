@@ -62,7 +62,7 @@ Etag                      :
 Id                        : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/routingConfigurations/psRoutingConfig/ruleCollections/psRuleCollection/rules/psRule
 ```
 
-Updates a network manager routing rule's destination'.
+Updates a network manager routing rule's destination.
 
 ## PARAMETERS
 
