@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.network/new-azn
 schema: 2.0.0
 ---
 
-# New-AzNetworkManagerRoutingRuleNextHopCommand
+# New-AzNetworkManagerRoutingRuleNextHop
 
 ## SYNOPSIS
 Creates a network manager routing rule next hop.
@@ -13,22 +13,22 @@ Creates a network manager routing rule next hop.
 ## SYNTAX
 
 ```
-New-AzNetworkManagerRoutingRuleNextHopCommand -DestinationAddress <String> -Type <String>
+New-AzNetworkManagerRoutingRuleNextHop -DestinationAddress <String> -Type <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzNetworkManagerRoutingRuleNextHopCommand** cmdlet creates a network manager routing rule next hop.
+The **New-AzNetworkManagerRoutingRuleNextHop** cmdlet creates a network manager routing rule next hop.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-New-AzNetworkManagerRoutingRuleNextHopCommand -DestinationAddress "ApiManagement" -Type "ServiceTag"
+New-AzNetworkManagerRoutingRuleNextHop -DestinationAddress "ApiManagement" -Type "ServiceTag"
 ```
 
 ```output
-NextHopAddress		NextHopType
+NextHopAddress	   NextHopType
 ------------------ -----------------
 ApiManagement      ServiceTag
 ```
@@ -37,13 +37,13 @@ Creates a network manager service tag routing rule next hop.
 
 ### Example 2
 ```powershell
-New-AzNetworkManagerRoutingRuleNextHopCommand -NextHopAddress "10.0.0.1" -NextHopType "AddressPrefix"
+New-AzNetworkManagerRoutingRuleNextHop -NextHopAddress "10.0.0.1" -NextHopType "AddressPrefix"
 ```
 
 ```output
-NextHopAddress		NextHopType
+NextHopAddress	   NextHopType
 ------------------ -----------------
-10.0.0.1			AddressPrefix
+10.0.0.1		   AddressPrefix
 ```
 
 Creates a network manager routing rule next hop object.

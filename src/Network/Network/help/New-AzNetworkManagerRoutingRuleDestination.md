@@ -37,13 +37,13 @@ Creates a network manager service tag routing rule destination.
 
 ### Example 2
 ```powershell
-New-AzNetworkManagerRoutingRuleDestination -DestinationAddress "10.0.0.1" -AddressPrefixType "AddressPrefix"
+New-AzNetworkManagerRoutingRuleDestination -DestinationAddress "10.0.0.1" -Type "AddressPrefix"
 ```
 
 ```output
 DestinationAddress Type
 ------------------ -----------------
-10.0.0.1			AddressPrefix
+10.0.0.1		   AddressPrefix
 ```
 
 Creates a network manager routing rule destination object.

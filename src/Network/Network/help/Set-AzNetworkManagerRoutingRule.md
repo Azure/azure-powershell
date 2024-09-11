@@ -26,7 +26,7 @@ The **Set-AzNetworkManagerRoutingRule** cmdlet updates a network manager routing
 ### Example 1
 ```powershell
 $destination = New-AzNetworkManagerRoutingRuleDestination -DestinationAddress "10.1.1.1/32" -Type "AddressPrefix" 
-$RoutingRule = Get-AzNetworkManagerRoutingRule  -Name "psRule" -RuleCollectionName "psRuleCollection" -RoutingConfigurationName "psRoutingConfig" -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup" -Destination $destination
+$RoutingRule = Get-AzNetworkManagerRoutingRule  -Name "psRule" -RuleCollectionName "psRuleCollection" -RoutingConfigurationName "psRoutingConfig" -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup"
 Set-AzNetworkManagerRoutingRule -InputObject $RoutingRule
 ```
 

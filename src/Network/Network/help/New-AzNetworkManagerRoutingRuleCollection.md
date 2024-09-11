@@ -33,11 +33,10 @@ New-AzNetworkManagerRoutingRuleCollection -ResourceGroupName "psResourceGroup" -
 ```
 
 ```output
-AppliesTo     : {/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup}
-AppliesTo : [
+AppliesTo           : {/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup}
+AppliesTo           : [
                         {
-                          "NetworkGroupId":
-                      "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup"
+                          "NetworkGroupId": "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup"
                         }
                       ]
 DisplayName         :
@@ -63,7 +62,7 @@ Creates a routing rule collection with a network group member.
 ## PARAMETERS
 
 ### -AppliesTo
-Applies To Groups.
+Network group to apply the routing rule collection to.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerRoutingGroupItem[]
