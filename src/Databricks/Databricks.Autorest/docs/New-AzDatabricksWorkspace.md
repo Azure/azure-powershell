@@ -19,13 +19,14 @@ New-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> -Location <
  [-Authorization <IWorkspaceProviderAuthorization[]>]
  [-AutomaticClusterUpdateValue <AutomaticClusterUpdateValue>]
  [-ComplianceSecurityProfileComplianceStandard <ComplianceStandard[]>]
- [-ComplianceSecurityProfileValue <ComplianceSecurityProfileValue>]
+ [-ComplianceSecurityProfileValue <ComplianceSecurityProfileValue>] [-DefaultCatalogInitialType <InitialType>]
  [-DefaultStorageFirewall <DefaultStorageFirewall>] [-EnableNoPublicIP] [-EncryptionKeyName <String>]
  [-EncryptionKeySource <KeySource>] [-EncryptionKeyVaultUri <String>] [-EncryptionKeyVersion <String>]
  [-EnhancedSecurityMonitoringValue <EnhancedSecurityMonitoringValue>] [-LoadBalancerBackendPoolName <String>]
- [-LoadBalancerId <String>] [-ManagedDiskKeyVaultPropertiesKeyName <String>]
- [-ManagedDiskKeyVaultPropertiesKeyVaultUri <String>] [-ManagedDiskKeyVaultPropertiesKeyVersion <String>]
- [-ManagedDiskRotationToLatestKeyVersionEnabled] [-ManagedResourceGroupName <String>]
+ [-LoadBalancerId <String>] [-ManagedDiskKeySource <EncryptionKeySource>]
+ [-ManagedDiskKeyVaultPropertiesKeyName <String>] [-ManagedDiskKeyVaultPropertiesKeyVaultUri <String>]
+ [-ManagedDiskKeyVaultPropertiesKeyVersion <String>] [-ManagedDiskRotationToLatestKeyVersionEnabled]
+ [-ManagedResourceGroupName <String>] [-ManagedServiceKeySource <EncryptionKeySource>]
  [-ManagedServicesKeyVaultPropertiesKeyName <String>] [-ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]
  [-ManagedServicesKeyVaultPropertiesKeyVersion <String>] [-NatGatewayName <String>] [-PrepareEncryption]
  [-PrivateSubnetName <String>] [-PublicIPName <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
@@ -229,6 +230,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultCatalogInitialType
+Defines the initial type of the default catalog.
+Possible values (case-insensitive): HiveMetastore, UnityCatalog
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.InitialType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -396,6 +413,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ManagedDiskKeySource
+The encryption keySource (provider).
+Possible values (case-insensitive): Microsoft.Keyvault
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ManagedDiskKeyVaultPropertiesKeyName
 The name of KeyVault key.
 
@@ -461,6 +494,22 @@ The managed resource group Id.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedServiceKeySource
+The encryption keySource (provider).
+Possible values (case-insensitive): Microsoft.Keyvault
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource
 Parameter Sets: (All)
 Aliases:
 
@@ -747,6 +796,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -861,17 +911,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`AUTHORIZATION <IWorkspaceProviderAuthorization[]>`: The workspace provider authorizations.
-  - `PrincipalId <String>`: The provider's principal identifier. This is the identity that the provider will use to call ARM to manage the workspace resources.
-  - `RoleDefinitionId <String>`: The provider's role definition identifier. This role will define all the permissions that the provider must have on the workspace's container resource group. This role definition cannot have permission to delete the resource group.
 
 ## RELATED LINKS
 
