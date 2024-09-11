@@ -27,7 +27,7 @@ Get-AzNetworkManagerRoutingRule -Name <String> -RuleCollectionName <String>
 ```
 
 ## DESCRIPTION
-The **Get-AzNetworkManagerRoutingRule** cmdlets gets routing rule in a network manager.
+The **Get-AzNetworkManagerRoutingRule** cmdlets gets a routing rule in a network manager.
 
 ## EXAMPLES
 

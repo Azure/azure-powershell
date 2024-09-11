@@ -38,7 +38,7 @@ Get-AzNetworkManagerRoutingConfiguration  -Name "TestRoutingConfig" -NetworkMana
 
 ```output
 Name               : TestRoutingConfig
-Description        : DESCription
+Description        : Description
 Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/routingConfigurations/TestRoutingConfig
 Type               : Microsoft.Network/networkManagers/routingConfigurations
 Etag               : "00000000-0000-0000-0000-000000000000"
