@@ -678,10 +678,10 @@ function Set-AzConnectedKubernetes {
             Write-Debug "Helm values: ${helmValuesContent}."
 
             foreach ($field in $helmValuesContent.PSObject.Properties) {
-                if ($ProtectedSettingsPlaceholderValue -in $field.Value) {
+                if($field.Value.StartsWith($ProtectedSettingsPlaceholderValue)){
                     $parsedValue = $field.Value.Split(":")
                     # "${ProtectedSettingsPlaceholderValue}:${feature}:${setting}"
-                    $field.Value = $ConfigurationProtectedSetting[$parsedValue[0]][$parsedValue[1]]
+                    $field.Value = $ConfigurationProtectedSetting[$parsedValue[1]][$parsedValue[2]]
                 }
                 if ($field.Name -eq "global.proxyCert") {
                     $options += " --set-file $($field.Name)=$($field.Value)"
