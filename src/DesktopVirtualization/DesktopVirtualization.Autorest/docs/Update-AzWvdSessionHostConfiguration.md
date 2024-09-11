@@ -55,7 +55,7 @@ Update a SessionHostConfiguration.
 Update-AzWvdSessionHostConfiguration -ResourceGroupName ResourceGroupName `
                             -HostPoolName HostPoolName `
                             -DiskInfoType "Standard_LRS" `
-                            -ImageInfoType "Marketplace" `
+                            -ImageInfoImageType "Marketplace" `
                             -NetworkInfoSubnetId "/subscriptions/{subscriptionId}/resourceGroups/resourceGrouName/providers/Microsoft.Network/virtualNetworks/{vNetName}/subnets/default" `
                             -VMAdminCredentialsPasswordKeyvaultSecretUri "PasswordSecretUri" `
                             -VMAdminCredentialsUserNameKeyvaultSecretUri "PasswordUsernameUri" `

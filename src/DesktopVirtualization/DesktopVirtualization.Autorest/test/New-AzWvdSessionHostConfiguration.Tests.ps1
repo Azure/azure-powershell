@@ -40,7 +40,7 @@ Describe 'New-AzWvdSessionHostConfiguration' {
 
             $configuration = New-AzWvdSessionHostConfiguration -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroup `
                 -HostPoolName $env.HostPool -DiskInfoType "Standard_LRS" `
-                -DomainInfoJoinType "AzureActiveDirectory" -ImageInfoType "Marketplace" `
+                -DomainInfoJoinType "AzureActiveDirectory" -ImageInfoImageType "Marketplace" `
                 -NetworkInfoSubnetId "/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.Network/virtualNetworks/alecbUserSession-vnet/subnets/default" `
                 -VMAdminCredentialsPasswordKeyvaultSecretUri "https://hpuposhkv.vault.azure.net/secrets/LocalAdminPW" `
                 -VMAdminCredentialsUserNameKeyvaultSecretUri "https://hpuposhkv.vault.azure.net/secrets/LocalAdminUserName" `

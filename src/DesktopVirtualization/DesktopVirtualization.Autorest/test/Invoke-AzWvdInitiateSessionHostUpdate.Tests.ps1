@@ -22,7 +22,6 @@ Describe 'Invoke-AzWvdInitiateSessionHostUpdate' {
         -UpdateDeleteOriginalVM `
         -UpdateLogOffDelayMinute 0 `
         -UpdateLogOffMessage 'Updating Session Hosts. Will Log off' `
-        -UpdateMaxVmsRemoved 1 `
-        -NoWait
+        -UpdateMaxVmsRemoved 1 
     }
 }
