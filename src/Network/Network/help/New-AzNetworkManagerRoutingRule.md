@@ -115,7 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -Destination
-Destination Address.
+Destination Address and type.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerRoutingRuleDestination[]
@@ -235,7 +235,7 @@ Accept wildcard characters: True
 ```
 
 ### -NextHop
-Next hop type.
+Next hop address and type.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerRoutingRuleNextHop
