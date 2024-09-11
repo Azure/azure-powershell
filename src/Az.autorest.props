@@ -74,6 +74,7 @@
         <ModuleCustomFiles Include="$(RepoSrc)$(PsRootModuleName)\$(PsModuleFolder)\custom\**\*.*"/>
         <ModuleTestFiles Include="$(RepoSrc)\$(PsRootModuleName)\$(PsModuleFolder)\test\**\*.*"/>
         <UtilsFiles Include="$(RepoSrc)\$(PsRootModuleName)\$(PsModuleFolder)\utils\**\*.*"/>
+        <ResourcesFiles Include="$(RepoSrc)\$(PsRootModuleName)\$(PsModuleFolder)\resources\**\*.*"/>
         <ModuleGeneratedFiles Include="generated\**\*.*"/>
   </ItemGroup>
 

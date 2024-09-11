@@ -42,7 +42,7 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
     New-GenerateInfoJson -GeneratedDirectory $sourceSubModulePath
 
     # Move files from src to generated
-    $fileToMove = @('generated', 'generate-info.json', "Az.$subModuleNameTrimmed.psd1", "Az.$subModuleNameTrimmed.psm1", "Az.$subModuleNameTrimmed.format.ps1xml", 'exports', 'internal', "Az.$subModuleNameTrimmed.csproj", 'test-module.ps1', 'check-dependencies.ps1')
+    $fileToMove = @('generated', 'generate-info.json', "resources", "Az.$subModuleNameTrimmed.psd1", "Az.$subModuleNameTrimmed.psm1", "Az.$subModuleNameTrimmed.format.ps1xml", 'exports', 'internal', "Az.$subModuleNameTrimmed.csproj", 'test-module.ps1', 'check-dependencies.ps1')
     $fileToMove | Foreach-Object {
         $fromPath = Join-Path $sourceSubModulePath $_
         $toPath = Join-Path $generatedSubModulePath $_
