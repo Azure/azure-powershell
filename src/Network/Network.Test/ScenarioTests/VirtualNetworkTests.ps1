@@ -1817,3 +1817,12 @@ function Test-VirtualNetworkEncryption
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests creating, updating & deleting a virtualNetwork with encryption.
+.DESCRIPTION
+#>
+function Test-VirtualNetworkPrivateEndpointVNetPolicies
+{
+}
