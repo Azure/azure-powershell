@@ -22,27 +22,32 @@ Get the Windows virtual desktop registration info.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get Existing Registration Info from Hostpool
 ```powershell
-{{ Add code here }}
+Get-AzWvdRegistrationInfo -ResourceGroupName rgName -HostPoolName hpName
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ExpirationTime        RegistrationTokenOperation Token
+--------------        -------------------------- -----
+5/10/2023 12:00:00 PM None                       <base64 encoded string>
+
 ```
 
-{{ Add description here }}
+Retrieves Registration Info for the chosen hostpool.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get Empty Registration Info from HostPool 
 ```powershell
-{{ Add code here }}
+Get-AzWvdRegistrationInfo -ResourceGroupName rgName -HostPoolname hpName
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ExpirationTime RegistrationTokenOperation Token
+-------------- -------------------------- -----
+               None
 ```
 
-{{ Add description here }}
+Returns an empty Registration Info for the chosen Hostpool if the Hostpool doesn't have any Registration Info.
 
 ## PARAMETERS
 
