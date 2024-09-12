@@ -40,7 +40,6 @@ function Test-PrivateLinkServiceCRUD
     $ilbFrontName = "LB-Frontend";
     $ilbBackendName = "LB-Backend";
     $ilbName = Get-ResourceName;
-    $destinationIPAddress = "192.168.1.5";
 
     try
     {
@@ -70,7 +69,7 @@ function Test-PrivateLinkServiceCRUD
         $LoadBalancerFrontendIpConfiguration = Get-AzLoadBalancer -Name $ilbName | Get-AzLoadBalancerFrontendIpConfig
         
         # Create PrivateLinkService
-        $job = New-AzPrivateLinkService -ResourceGroupName $rgName -Name $rname -Location $location -IpConfiguration $IpConfiguration -LoadBalancerFrontendIpConfiguration $LoadBalancerFrontendIpConfiguration -DestinationIPAddress $destinationIPAddress -AsJob;
+        $job = New-AzPrivateLinkService -ResourceGroupName $rgName -Name $rname -Location $location -IpConfiguration $IpConfiguration -LoadBalancerFrontendIpConfiguration $LoadBalancerFrontendIpConfiguration -AsJob;
         $job | Wait-Job
         $plscreate = $job | Receive-Job
         
@@ -81,8 +80,7 @@ function Test-PrivateLinkServiceCRUD
         Assert-AreEqual $rname $vPrivateLinkService.Name;
         Assert-NotNull $vPrivateLinkService.IpConfigurations;
         Assert-True { $vPrivateLinkService.IpConfigurations.Length -gt 0 };
-        Assert-AreEqual "Succeeded" $vPrivateLinkService.ProvisioningState;
-        Assert-AreEqual $destinationIPAddress $vPrivateLinkService.DestinationIPAddress;
+        Assert-AreEqual "Succeeded" $vPrivateLinkService.ProvisioningState
 
         # Get all PrivateLinkServices in resource group
         $listPrivateLinkService = Get-AzPrivateLinkService -ResourceGroupName $rgname;

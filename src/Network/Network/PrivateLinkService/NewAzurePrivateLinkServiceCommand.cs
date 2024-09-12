@@ -53,16 +53,16 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The front end ip configuration")]
-        [ValidateNotNullOrEmpty]
-        public PSFrontendIPConfiguration[] LoadBalancerFrontendIpConfiguration { get; set; }
-
-        [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
            HelpMessage = "The ip configuration")]
         [ValidateNotNullOrEmpty]
         public PSPrivateLinkServiceIpConfiguration[] IpConfiguration { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The front end ip configuration")]
+        [ValidateNotNullOrEmpty]
+        public PSFrontendIPConfiguration[] LoadBalancerFrontendIpConfiguration { get; set; }
 
         [Parameter(
           Mandatory = false,
