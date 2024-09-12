@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.6
 * Added capability to provide Min/Max Throughput RU Consumption
 * Added SecuredByPerimeter value to PublicNetworkAccess enum
 * Added Default Priority Level and Priority Based Execution enablement features
@@ -30,6 +32,61 @@
 
 ## Version 2.0.5
 * Added PublicNetworkAccess parameter to `Restore-AzCosmosDBAccount`.
+
+## Version 1.14.5
+* Fixed secrets exposure in example documentation.
+
+## Version 1.14.4
+* Fixed the issue that Azure.Core.AccessToken is used before assigned.
+
+## Version 1.14.3
+* Removed the out-of-date breaking change message for `Get-AzCosmosDBAccountKey`.
+
+## Version 1.14.2
+* Upgraded Azure.Core to 1.37.0.
+
+## Version 1.14.1
+* Fixed validation issues in same-account collection/container/graph and database/table/Gremlin restores, affecting the following cmdlets:
+- Restore-AzCosmosDBSqlDatabase
+- Restore-AzCosmosDBSqlContainer
+- Restore-AzCosmosDBMongoDBDatabase
+- Restore-AzCosmosDBMongoDBCollection
+- Restore-AzCosmosDBGremlinDatabase
+- Restore-AzCosmosDBGremlinGraph
+- Restore-AzCosmosDBTable
+* Upgraded SDK `Azure.Security.KeyVault.Keys` TO 4.6.0-beta.1.
+* Added breaking change message for ListConnectionStrings changes
+
+## Version 1.14.0
+* Introduced Restore-AzCosmosDBSqlDatabase, Restore-AzCosmosDBSqlContainer to restore deleted database and containers in the same account for SQL.
+* Introduced Restore-AzCosmosDBMongoDBDatabase, Restore-AzCosmosDBMongoDBCollection to restore deleted database and collections in the same account for MongoDB.
+* Introduced Restore-AzCosmosDBGremlinDatabase, Restore-AzCosmosDBGremlinGraph to restore deleted database and graph in the same account for Gremlin.
+* Introduced Restore-AzCosmosDBTable to restore deleted table in the same account.
+
+## Version 1.13.0
+* Added new parameter `EnableBurstCapacity` to `Update-AzCosmosDBAccount` and `New-AzCosmosDBAccount`.
+* Added new paramater `MinimalTlsVersion` to `Update-AzCosmosDBAccount` and `New-AzCosmosDBAccount`.
+* Added new property `CustomerManagedKeyStatus` to `Get-AzCosmosDBAccount`.
+
+## Version 1.12.0
+* Added PublicNetworkAccess parameter to `Restore-AzCosmosDBAccount`.
+* Upgraded Azure.Core to 1.35.0.
+
+## Version 1.11.3
+* Updated Azure.Core to 1.34.0.
+
+## Version 1.11.2
+* Updated Azure.Core to 1.33.0.
+
+## Version 1.11.1
+* Locations showed in response included status, isSubscriptionRegionAccessAllowedForRegular and isSubscriptionRegionAccessAllowedForAz properties
+
+## Version 1.11.0
+* Added support for Continuous 7 Days backup mode.
+* Added new parameter `EnablePartitionMerge` to `Update-AzCosmosDBAccount` and `New-AzCosmosDBAccount`.
+
+## Version 1.10.1
+* Updated Azure.Core to 1.31.0.
 
 ## Version 1.10.0
 * Introduced restorable apis support for Gremlin and Table, which includes:
