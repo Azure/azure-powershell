@@ -318,7 +318,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 null,
                 false,
                 mockOpenIDConfig.Object,
-                null);
+                null,
+                IsInteractiveContextSelectionEnabled: false);
 
             Assert.Equal("2021-01-01", client.SubscriptionAndTenantClient.ApiVersion);
             Assert.Equal(tenantA, azureRmProfile.DefaultContext.Tenant.Id.ToString());

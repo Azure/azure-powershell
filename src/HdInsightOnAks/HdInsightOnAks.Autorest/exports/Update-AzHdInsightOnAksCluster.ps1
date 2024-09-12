@@ -28,17 +28,9 @@ $yarnComponentConfig = New-AzHdInsightOnAksClusterServiceConfigObject -Component
 $yarnServiceConfigProfile = New-AzHdInsightOnAksClusterServiceConfigsProfileObject -ServiceName "yarn-service" -Config $yarnComponentConfig
 
 Update-AzHdInsightOnAksCluster -ResourceGroupName $clusterResourceGroupName -PoolName $clusterpoolName -Name $clusterName -ClusterProfileServiceConfigsProfile $yarnServiceConfigProfile
-.Example
-$clusterResourceGroupName = "Group"
-$clusterpoolName = "ps-test-pool"
-$clusterName = "flinkcluster"
-$hotfixObj = New-AzHdInsightOnAksClusterHotfixUpgradeObject -ComponentName Webssh -TargetBuildNumber 7 -TargetClusterVersion "1.1.1" -TargetOssVersion "0.4.2"
-Update-AzHdInsightOnAksCluster -ResourceGroupName $clusterResourceGroupName -ClusterName $clusterName -ClusterPoolName $clusterpoolName -ClusterUpgradeRequest $hotfixObj
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatch
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
 .Outputs
@@ -48,6 +40,14 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+CATALOGOPTIONHIVE <IHiveCatalogOption[]>: hive catalog options.
+  CatalogName <String>: Name of trino catalog which should use specified hive metastore.
+  MetastoreDbConnectionUrl <String>: Connection string for hive metastore database.
+  MetastoreWarehouseDir <String>: Metastore root directory URI, format: abfs[s]://<container>@<account_name>.dfs.core.windows.net/<path>. More details: https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction-abfs-uri
+  [MetastoreDbConnectionAuthenticationMode <String>]: The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
+  [MetastoreDbConnectionPasswordSecret <String>]: Secret reference name from secretsProfile.secrets containing password for database connection.
+  [MetastoreDbConnectionUserName <String>]: User name for database connection.
+
 CLUSTERPATCHREQUEST <IClusterPatch>: The patch for a cluster.
   [ApplicationLogStdErrorEnabled <Boolean?>]: True if stderror is enabled, otherwise false.
   [ApplicationLogStdOutEnabled <Boolean?>]: True if stdout is enabled, otherwise false.
@@ -56,6 +56,13 @@ CLUSTERPATCHREQUEST <IClusterPatch>: The patch for a cluster.
   [AutoscaleProfileAutoscaleType <String>]: User to specify which type of Autoscale to be implemented - Scheduled Based or Load Based.
   [AutoscaleProfileEnabled <Boolean?>]: This indicates whether auto scale is enabled on HDInsight on AKS cluster.
   [AutoscaleProfileGracefulDecommissionTimeout <Int32?>]: This property is for graceful decommission timeout; It has a default setting of 3600 seconds before forced shutdown takes place. This is the maximal time to wait for running containers and applications to complete before transition a DECOMMISSIONING node into DECOMMISSIONED. The default value is 3600 seconds. Negative value (like -1) is handled as infinite timeout.
+  [CatalogOptionHive <List<IHiveCatalogOption>>]: hive catalog options.
+    CatalogName <String>: Name of trino catalog which should use specified hive metastore.
+    MetastoreDbConnectionUrl <String>: Connection string for hive metastore database.
+    MetastoreWarehouseDir <String>: Metastore root directory URI, format: abfs[s]://<container>@<account_name>.dfs.core.windows.net/<path>. More details: https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction-abfs-uri
+    [MetastoreDbConnectionAuthenticationMode <String>]: The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
+    [MetastoreDbConnectionPasswordSecret <String>]: Secret reference name from secretsProfile.secrets containing password for database connection.
+    [MetastoreDbConnectionUserName <String>]: User name for database connection.
   [ClusterProfileScriptActionProfile <List<IScriptActionProfile>>]: The script action profile list.
     Name <String>: Script name.
     Service <List<String>>: List of services to apply the script action.
@@ -66,7 +73,7 @@ CLUSTERPATCHREQUEST <IClusterPatch>: The patch for a cluster.
     [TimeoutInMinute <Int32?>]: Timeout duration for the script action in minutes.
   [ClusterProfileServiceConfigsProfile <List<IClusterServiceConfigsProfile>>]: The service configs profiles.
     Config <List<IClusterServiceConfig>>: List of service configs.
-      Component <String>: Name of the component the config files should apply to.
+      ComponentName <String>: Name of the component the config files should apply to.
       File <List<IClusterConfigFile>>: List of Config Files.
         FileName <String>: Configuration file name.
         [Content <String>]: Free form content of the entire configuration file.
@@ -75,6 +82,10 @@ CLUSTERPATCHREQUEST <IClusterPatch>: The patch for a cluster.
         [Value <IClusterConfigFileValues>]: List of key value pairs         where key represents a valid service configuration name and value represents the value of the config.
           [(Any) <String>]: This indicates any property can be added to this object.
     ServiceName <String>: Name of the service the configurations should apply to.
+  [CoordinatorDebugEnable <Boolean?>]: The flag that if enable debug or not.
+  [CoordinatorDebugPort <Int32?>]: The debug port.
+  [CoordinatorDebugSuspend <Boolean?>]: The flag that if suspend debug or not.
+  [CoordinatorHighAvailabilityEnabled <Boolean?>]: The flag that if enable coordinator HA, uses multiple coordinator replicas with auto failover, one per each head node. Default: true.
   [DatabaseHost <String>]: The database URL
   [DatabaseName <String>]: The database name
   [DatabasePasswordSecretRef <String>]: Reference for the database password
@@ -107,9 +118,27 @@ CLUSTERPATCHREQUEST <IClusterPatch>: The patch for a cluster.
     EndTime <String>: User has to set the end time of current schedule configuration, format like 10:30 (HH:MM).
     StartTime <String>: User has to set the start time of current schedule configuration, format like 10:30 (HH:MM).
   [ScheduleBasedConfigTimeZone <String>]: User has to specify the timezone on which the schedule has to be set for schedule based autoscale configuration.
+  [SecretProfileKeyVaultResourceId <String>]: Name of the user Key Vault where all the cluster specific user secrets are stored.
+  [SecretProfileSecret <List<ISecretReference>>]: Properties of Key Vault secret.
+    ReferenceName <String>: Reference name of the secret to be used in service configs.
+    SecretName <String>: Object identifier name of the secret in key vault.
+    Type <String>: Type of key vault object: secret, key or certificate.
+    [Version <String>]: Version of the secret in key vault.
   [SshProfileCount <Int32?>]: Number of ssh pods per cluster.
+  [SshProfileVMSize <String>]: The virtual machine SKU.
+  [StorageHivecatalogName <String>]: Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.
+  [StorageHivecatalogSchema <String>]: Schema of the above catalog to use, to mount query logs as external tables, if not specified tables will be mounted under schema trinologs.
+  [StoragePartitionRetentionInDay <Int32?>]: Retention period for query log table partitions, this doesn't have any affect on actual data.
+  [StoragePath <String>]: Azure storage location of the blobs.
   [Tag <IClusterPatchTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
+  [UserPluginSpecPlugin <List<ITrinoUserPlugin>>]: Trino user plugins.
+    [Enabled <Boolean?>]: Denotes whether the plugin is active or not.
+    [Name <String>]: This field maps to the sub-directory in trino plugins location, that will contain all the plugins under path.
+    [Path <String>]: Fully qualified path to the folder containing the plugins.
+  [WorkerDebugEnable <Boolean?>]: The flag that if enable debug or not.
+  [WorkerDebugPort <Int32?>]: The debug port.
+  [WorkerDebugSuspend <Boolean?>]: The flag that if suspend debug or not.
 
 CLUSTERPOOLINPUTOBJECT <IHdInsightOnAksIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the HDInsight cluster.
@@ -130,7 +159,7 @@ CLUSTERPROFILESCRIPTACTIONPROFILE <IScriptActionProfile[]>: The script action pr
 
 CLUSTERPROFILESERVICECONFIGSPROFILE <IClusterServiceConfigsProfile[]>: The service configs profiles.
   Config <List<IClusterServiceConfig>>: List of service configs.
-    Component <String>: Name of the component the config files should apply to.
+    ComponentName <String>: Name of the component the config files should apply to.
     File <List<IClusterConfigFile>>: List of Config Files.
       FileName <String>: Configuration file name.
       [Content <String>]: Free form content of the entire configuration file.
@@ -139,9 +168,6 @@ CLUSTERPROFILESERVICECONFIGSPROFILE <IClusterServiceConfigsProfile[]>: The servi
       [Value <IClusterConfigFileValues>]: List of key value pairs         where key represents a valid service configuration name and value represents the value of the config.
         [(Any) <String>]: This indicates any property can be added to this object.
   ServiceName <String>: Name of the service the configurations should apply to.
-
-CLUSTERUPGRADEREQUEST <IClusterUpgrade>: Cluster Upgrade.
-  UpgradeType <String>: Type of upgrade.
 
 INPUTOBJECT <IHdInsightOnAksIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the HDInsight cluster.
@@ -163,6 +189,17 @@ SCHEDULEBASEDCONFIGSCHEDULE <ISchedule[]>: This specifies the schedules where sc
   Day <List<String>>: User has to set the days where schedule has to be set for autoscale operation.
   EndTime <String>: User has to set the end time of current schedule configuration, format like 10:30 (HH:MM).
   StartTime <String>: User has to set the start time of current schedule configuration, format like 10:30 (HH:MM).
+
+SECRETPROFILESECRET <ISecretReference[]>: Properties of Key Vault secret.
+  ReferenceName <String>: Reference name of the secret to be used in service configs.
+  SecretName <String>: Object identifier name of the secret in key vault.
+  Type <String>: Type of key vault object: secret, key or certificate.
+  [Version <String>]: Version of the secret in key vault.
+
+USERPLUGINSPECPLUGIN <ITrinoUserPlugin[]>: Trino user plugins.
+  [Enabled <Boolean?>]: Denotes whether the plugin is active or not.
+  [Name <String>]: This field maps to the sub-directory in trino plugins location, that will contain all the plugins under path.
+  [Path <String>]: Fully qualified path to the folder containing the plugins.
 .Link
 https://learn.microsoft.com/powershell/module/az.hdinsightonaks/update-azhdinsightonakscluster
 #>
@@ -176,12 +213,6 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
-    [Parameter(ParameterSetName='Upgrade', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpool', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpoolExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
     [Alias('ClusterName')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [System.String]
@@ -192,10 +223,6 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
-    [Parameter(ParameterSetName='Upgrade', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
     [Alias('ClusterPoolName')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [System.String]
@@ -206,10 +233,6 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
-    [Parameter(ParameterSetName='Upgrade', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -220,10 +243,6 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
     [Parameter(ParameterSetName='UpdateViaJsonString')]
-    [Parameter(ParameterSetName='Upgrade')]
-    [Parameter(ParameterSetName='UpgradeExpanded')]
-    [Parameter(ParameterSetName='UpgradeViaJsonFilePath')]
-    [Parameter(ParameterSetName='UpgradeViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -233,8 +252,6 @@ param(
 
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpgradeViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity]
     # Identity Parameter
@@ -242,8 +259,6 @@ param(
 
     [Parameter(ParameterSetName='UpdateViaIdentityClusterpool', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpool', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpoolExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity]
     # Identity Parameter
@@ -324,6 +339,15 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHiveCatalogOption[]]
+    # hive catalog options.
+    ${CatalogOptionHive},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScriptActionProfile[]]
     # The script action profile list.
     ${ClusterProfileScriptActionProfile},
@@ -336,6 +360,39 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigsProfile[]]
     # The service configs profiles.
     ${ClusterProfileServiceConfigsProfile},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The flag that if enable debug or not.
+    ${CoordinatorDebugEnable},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Int32]
+    # The debug port.
+    ${CoordinatorDebugPort},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The flag that if suspend debug or not.
+    ${CoordinatorDebugSuspend},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The flag that if enable coordinator HA, uses multiple coordinator replicas with auto failover, one per each head node.
+    # Default: true.
+    ${CoordinatorHighAvailabilityEnabled},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
@@ -537,9 +594,66 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Name of the user Key Vault where all the cluster specific user secrets are stored.
+    ${SecretProfileKeyVaultResourceId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReference[]]
+    # Properties of Key Vault secret.
+    ${SecretProfileSecret},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.Int32]
     # Number of ssh pods per cluster.
     ${SshProfileCount},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # The virtual machine SKU.
+    ${SshProfileVMSize},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.
+    ${StorageHivecatalogName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Schema of the above catalog to use, to mount query logs as external tables, if not specified tables will be mounted under schema trinologs.
+    ${StorageHivecatalogSchema},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Int32]
+    # Retention period for query log table partitions, this doesn't have any affect on actual data.
+    ${StoragePartitionRetentionInDay},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Azure storage location of the blobs.
+    ${StoragePath},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
@@ -550,36 +664,50 @@ param(
     # Resource tags.
     ${Tag},
 
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoUserPlugin[]]
+    # Trino user plugins.
+    ${UserPluginSpecPlugin},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The flag that if enable debug or not.
+    ${WorkerDebugEnable},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Int32]
+    # The debug port.
+    ${WorkerDebugPort},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The flag that if suspend debug or not.
+    ${WorkerDebugSuspend},
+
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
     # Path of Json file supplied to the Update operation
     ${JsonFilePath},
 
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
     # Json string supplied to the Update operation
     ${JsonString},
-
-    [Parameter(ParameterSetName='Upgrade', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpool', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade]
-    # Cluster Upgrade.
-    ${ClusterUpgradeRequest},
-
-    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpoolExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpgradeViaIdentityExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("AKSPatchUpgrade", "HotfixUpgrade")]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
-    [System.String]
-    # Type of upgrade.
-    ${UpgradeType},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -676,16 +804,8 @@ begin {
             UpdateViaIdentityExpanded = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpdateViaIdentityExpanded';
             UpdateViaJsonFilePath = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpdateViaJsonFilePath';
             UpdateViaJsonString = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpdateViaJsonString';
-            Upgrade = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_Upgrade';
-            UpgradeExpanded = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpgradeExpanded';
-            UpgradeViaIdentity = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpgradeViaIdentity';
-            UpgradeViaIdentityClusterpool = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpgradeViaIdentityClusterpool';
-            UpgradeViaIdentityClusterpoolExpanded = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpgradeViaIdentityClusterpoolExpanded';
-            UpgradeViaIdentityExpanded = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpgradeViaIdentityExpanded';
-            UpgradeViaJsonFilePath = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpgradeViaJsonFilePath';
-            UpgradeViaJsonString = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpgradeViaJsonString';
         }
-        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString', 'Upgrade', 'UpgradeExpanded', 'UpgradeViaJsonFilePath', 'UpgradeViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {

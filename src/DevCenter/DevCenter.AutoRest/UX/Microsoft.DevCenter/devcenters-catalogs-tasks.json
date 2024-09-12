@@ -1,0 +1,105 @@
+{
+  "resourceType": "devcenters/catalogs/tasks",
+  "apiVersion": "2024-05-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.devcenter"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDevCenterAdminCustomizationTaskErrorDetail",
+      "description": "Gets Customization Task error details",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/tasks/{taskName}/getErrorDetails",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradmincustomizationtaskerrordetail"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CatalogName <String>",
+              "-DevCenterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-TaskName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets Customization Task error details",
+          "parameters": [
+            {
+              "name": "-CatalogName",
+              "value": "[Path.catalogName]"
+            },
+            {
+              "name": "-DevCenterName",
+              "value": "[Path.devCenterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-TaskName",
+              "value": "[Path.taskName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzDevCenterAdminCustomizationTask",
+      "description": "Gets a Task from the catalog",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/tasks/{taskName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradmincustomizationtask"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CatalogName <String>",
+              "-DevCenterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-TaskName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a Task from the catalog",
+          "parameters": [
+            {
+              "name": "-CatalogName",
+              "value": "[Path.catalogName]"
+            },
+            {
+              "name": "-DevCenterName",
+              "value": "[Path.devCenterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-TaskName",
+              "value": "[Path.taskName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

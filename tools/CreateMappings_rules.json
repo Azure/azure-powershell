@@ -903,5 +903,13 @@
   {
     "module": "Informatica",
     "alias": "Informatica"
+  },
+  {
+    "module": "Oracle",
+    "alias": "Oracle"
+  },
+  {
+    "alias": "Astro",
+    "module": "Astro"
   }
 ]

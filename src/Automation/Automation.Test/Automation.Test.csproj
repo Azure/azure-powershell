@@ -14,12 +14,9 @@
     <PackageReference Include="MSTest.TestAdapter" Version="1.2.1" />
     <PackageReference Include="MSTest.TestFramework" Version="1.2.1" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Automation.Sdk\Automation.Sdk.csproj" />
-  </ItemGroup>
   
   <ItemGroup>
+    <ProjectReference Include="..\Automation.Management.Sdk\Automation.Management.Sdk.csproj" />
     <ProjectReference Include="..\Automation\Automation.csproj" />
   </ItemGroup>
 

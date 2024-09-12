@@ -1,8 +1,8 @@
 <Project>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.2.10" IncludeAssets="All" />
-    <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.7" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.2.21" IncludeAssets="All" />
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.8" />
     <PackageReference Include="System.Security.Cryptography.Xml" Version="6.0.1" />
     <PackageReference Include="System.Security.Cryptography.Pkcs" Version="6.0.4" />
   </ItemGroup>

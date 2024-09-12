@@ -26,6 +26,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support
         /// </returns>
         public global::System.Collections.Generic.IEnumerable<global::System.Management.Automation.CompletionResult> CompleteArgument(global::System.String commandName, global::System.String parameterName, global::System.String wordToComplete, global::System.Management.Automation.Language.CommandAst commandAst, global::System.Collections.IDictionary fakeBoundParameters)
         {
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AutoML".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AutoML'", "AutoML", global::System.Management.Automation.CompletionResultType.ParameterValue, "AutoML");
+            }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Command".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Command'", "Command", global::System.Management.Automation.CompletionResultType.ParameterValue, "Command");
@@ -37,6 +41,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Pipeline".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Pipeline'", "Pipeline", global::System.Management.Automation.CompletionResultType.ParameterValue, "Pipeline");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Spark".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Spark'", "Spark", global::System.Management.Automation.CompletionResultType.ParameterValue, "Spark");
             }
         }
     }

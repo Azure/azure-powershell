@@ -1,0 +1,14 @@
+{
+  "SubscriptionId": "653983b8-683a-427c-8c27-9e9624ce9176",
+  "dataLocation": "UnitedStates",
+  "senderAddress": "DoNotReply@77b648d3-93fd-4797-bbd9-f3ff4c79bc33.azurecomm.net",
+  "persistentDomainResourceName": "persistentDomainResourceName9wfoxs.net",
+  "rstr2": "8unare",
+  "resourceGroup": "testgroup9wfoxs",
+  "endPoint": "https://persistentCommResourceName9wfoxs.UnitedStates.communication.azure.com",
+  "location": "Global",
+  "rstr1": "9wfoxs",
+  "persistentEmailResourceName": "persistentEmailResourceName9wfoxs",
+  "persistentCommResourceName": "persistentCommResourceName9wfoxs",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+}

@@ -19,9 +19,13 @@
     <PackageReference Include="Azure.Storage.Queues" Version="12.16.0" />
     <PackageReference Include="Microsoft.Azure.Cosmos.Table" Version="1.0.8" />
     <PackageReference Include="System.Security.Permissions" Version="4.7.0" />
-    <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.2.2" />
-    <PackageReference Include="Microsoft.Azure.Storage.File" Version="11.2.2" />
-    <PackageReference Include="Microsoft.Azure.Storage.Queue" Version="11.2.2" />
+    <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.2.3" />
+    <PackageReference Include="Microsoft.Azure.Storage.File" Version="11.2.3" />
+    <PackageReference Include="Microsoft.Azure.Storage.Queue" Version="11.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Storage.common\Storage.common.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Storage.DataMovement">

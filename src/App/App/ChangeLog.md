@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.1
+* Fixed secrets exposure in example documentation.
+
 ## Version 1.0.0
 * General availability for module Az.App.
 * Upgraded api version to 2023-05-01.

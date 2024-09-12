@@ -42,6 +42,13 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string[] DataDiskNames { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "Sets provided disks' detachOption property to ForceDetach. Only applicable for managed data disks.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter ForceDetach { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.ShouldProcess("DataDisk", VerbsCommon.Remove))
@@ -53,20 +60,36 @@ namespace Microsoft.Azure.Commands.Compute
                     var disks = storageProfile.DataDisks.ToList();
                     var comp = StringComparison.OrdinalIgnoreCase;
 
-                    if (DataDiskNames == null)
-                    {
-                        disks.Clear();
-                    }
-                    else
-                    {
-                        foreach (var diskName in DataDiskNames)
-                        {
-                            disks.RemoveAll(d => string.Equals(d.Name, diskName, comp));
+                    if (this.ForceDetach != true) {
+                        if (DataDiskNames == null){
+                            disks.Clear();
+                        }
+                        else{
+                            foreach (var diskName in DataDiskNames){
+                                disks.RemoveAll(d => string.Equals(d.Name, diskName, comp));
+                            }
                         }
                     }
+                    else{
+                        if (this.DataDiskNames == null){
+                            foreach (var disk in disks){
+                                disk.DetachOption = "ForceDetach";
+                                disk.ToBeDetached = true;
+                            }
+                        }
+                        else
+                        {
+                            foreach (var disk in disks){
+                               if (DataDiskNames.Contains(disk.Name)){
+                                    disk.ToBeDetached = true;
+                                    disk.DetachOption = "ForceDetach";
+                               }
+                            }
+                        }
+                    }
+                    
                     storageProfile.DataDisks = disks;
                 }
-
                 this.VM.StorageProfile = storageProfile;
 
                 WriteObject(this.VM);

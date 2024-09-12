@@ -20,7 +20,7 @@ Gets the proof of possession nonce.
 .Description
 Gets the proof of possession nonce.
 .Example
-Get-AzSphereCertificateProof -CatalogName test2024 -ResourceGroupName joyer-test -SerialNumber 'serial number' -ProofOfPossessionNonce proofOfPossessionNonce
+Get-AzSphereCertificateProof -CatalogName test2024 -ResourceGroupName group-test -SerialNumber 'serial number' -ProofOfPossessionNonce proofOfPossessionNonce
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity

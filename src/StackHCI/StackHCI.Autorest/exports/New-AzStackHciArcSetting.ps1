@@ -23,12 +23,12 @@ Create ArcSetting for HCI cluster.
 New-AzStackHciArcSetting -ResourceGroupName "test-rg" -ClusterName "myCluster"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IArcSetting
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IArcSetting
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhciarcsetting
 #>
 function New-AzStackHciArcSetting {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IArcSetting])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IArcSetting])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -49,6 +49,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter()]
