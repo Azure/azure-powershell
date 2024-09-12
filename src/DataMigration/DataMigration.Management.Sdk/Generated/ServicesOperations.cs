@@ -1971,13 +1971,13 @@ namespace Microsoft.Azure.Management.DataMigration
             _url = _url.Replace("{serviceName}", System.Uri.EscapeDataString(serviceName));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (deleteRunningTasks != null)
-            {
-                _queryParameters.Add(string.Format("deleteRunningTasks={0}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(deleteRunningTasks, this.Client.SerializationSettings).Trim('"'))));
-            }
             if (this.Client.ApiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+            }
+            if (deleteRunningTasks != null)
+            {
+                _queryParameters.Add(string.Format("deleteRunningTasks={0}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(deleteRunningTasks, this.Client.SerializationSettings).Trim('"'))));
             }
             if (_queryParameters.Count > 0)
             {
