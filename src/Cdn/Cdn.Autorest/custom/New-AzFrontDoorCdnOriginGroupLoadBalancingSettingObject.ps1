@@ -21,12 +21,12 @@ Create an in-memory object for LoadBalancingSettingsParameters.
 Create an in-memory object for LoadBalancingSettingsParameters.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.LoadBalancingSettingsParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.LoadBalancingSettingsParameters
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject
 #>
 function New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.LoadBalancingSettingsParameters')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.LoadBalancingSettingsParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -42,7 +42,7 @@ function New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.LoadBalancingSettingsParameters]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.LoadBalancingSettingsParameters]::New()
 
         if ($PSBoundParameters.ContainsKey('AdditionalLatencyInMillisecond')) {
             $Object.AdditionalLatencyInMillisecond = $AdditionalLatencyInMillisecond

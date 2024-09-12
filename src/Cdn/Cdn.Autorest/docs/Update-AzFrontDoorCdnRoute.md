@@ -19,7 +19,7 @@ Update-AzFrontDoorCdnRoute -EndpointName <String> -Name <String> -ProfileName <S
  [-CacheConfigurationQueryStringCachingBehavior <AfdQueryStringCachingBehavior>]
  [-CompressionSettingContentTypesToCompress <String[]>] [-CompressionSettingIsCompressionEnabled]
  [-CustomDomain <IActivatedResourceReference[]>] [-EnabledState <EnabledState>]
- [-ForwardingProtocol <ForwardingProtocol>] [-HttpsRedirect <HttpsRedirect>]
+ [-ForwardingProtocol <ForwardingProtocol>] [-GrpcState <AfdRouteGrpcState>] [-HttpsRedirect <HttpsRedirect>]
  [-LinkToDefaultDomain <LinkToDefaultDomain>] [-OriginGroupId <String>] [-OriginPath <String>]
  [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>] [-SupportedProtocol <AfdEndpointProtocols[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -31,7 +31,7 @@ Update-AzFrontDoorCdnRoute -InputObject <ICdnIdentity> [-CacheConfigurationQuery
  [-CacheConfigurationQueryStringCachingBehavior <AfdQueryStringCachingBehavior>]
  [-CompressionSettingContentTypesToCompress <String[]>] [-CompressionSettingIsCompressionEnabled]
  [-CustomDomain <IActivatedResourceReference[]>] [-EnabledState <EnabledState>]
- [-ForwardingProtocol <ForwardingProtocol>] [-HttpsRedirect <HttpsRedirect>]
+ [-ForwardingProtocol <ForwardingProtocol>] [-GrpcState <AfdRouteGrpcState>] [-HttpsRedirect <HttpsRedirect>]
  [-LinkToDefaultDomain <LinkToDefaultDomain>] [-OriginGroupId <String>] [-OriginPath <String>]
  [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>] [-SupportedProtocol <AfdEndpointProtocols[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -168,7 +168,7 @@ Domains referenced by this endpoint.
 To construct, see NOTES section for CUSTOMDOMAIN properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IActivatedResourceReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IActivatedResourceReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -231,6 +231,22 @@ Protocol this rule will use when forwarding traffic to backends.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ForwardingProtocol
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GrpcState
+Whether or not gRPC is enabled on this route.
+Permitted values are 'Enabled' or 'Disabled'
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdRouteGrpcState
 Parameter Sets: (All)
 Aliases:
 
@@ -399,7 +415,7 @@ rule sets referenced by this endpoint.
 To construct, see NOTES section for RULESET properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IResourceReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -480,7 +496,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IRoute
 
 ## NOTES
 
