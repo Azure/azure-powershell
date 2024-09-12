@@ -128,18 +128,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerNameParameterSet)]
         [Parameter(HelpMessage = "Source Azure Storage Context Object",
             Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ShareNameParameterSet)]
-        [Parameter(HelpMessage = "Source Azure Storage Context Object",
-            Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerParameterSet)]
-        [Parameter(HelpMessage = "Source Azure Storage Context Object",
-            Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobFilePathParameterSet)]
-        [Parameter(HelpMessage = "Source Azure Storage Context Object",
-            Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobFileParameterSet)]
-        [Parameter(HelpMessage = "Source Azure Storage Context Object",
-            Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ShareParameterSet)]
-        [Parameter(HelpMessage = "Source Azure Storage Context Object",
-            Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = FileFileParameterSet)]
-        [Parameter(HelpMessage = "Source Azure Storage Context Object",
-            Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = FileFilePathParameterSet)]
+        //[Parameter(HelpMessage = "Source Azure Storage Context Object",
+            //Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerParameterSet)]
+        //[Parameter(HelpMessage = "Source Azure Storage Context Object",
+        //    Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobFilePathParameterSet)]
+        //[Parameter(HelpMessage = "Source Azure Storage Context Object",
+        //    Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobFileParameterSet)]
+        //[Parameter(HelpMessage = "Source Azure Storage Context Object",
+            //Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ShareParameterSet)]
+        //[Parameter(HelpMessage = "Source Azure Storage Context Object",
+        //    Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = FileFileParameterSet)]
+        //[Parameter(HelpMessage = "Source Azure Storage Context Object",
+        //    Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = FileFilePathParameterSet)]
         public override IStorageContext Context { get; set; }
 
         [Parameter(HelpMessage = "Destination Storage context object", ParameterSetName = ContainerNameParameterSet)]
@@ -198,13 +198,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         private AzureStorageContext GetSourceContext()
         {
             if (this.ParameterSetName == ContainerNameParameterSet ||
-                this.ParameterSetName == ShareNameParameterSet || 
-                this.ParameterSetName == ContainerParameterSet || 
-                this.ParameterSetName == BlobFilePathParameterSet ||
-                this.ParameterSetName == BlobFileParameterSet ||
-                this.ParameterSetName == ShareParameterSet ||
-                this.ParameterSetName == FileFilePathParameterSet || 
-                this.ParameterSetName == FileFileParameterSet)
+                this.ParameterSetName == ShareNameParameterSet
+                //this.ParameterSetName == ContainerParameterSet || 
+                //this.ParameterSetName == BlobFilePathParameterSet ||
+                //this.ParameterSetName == BlobFileParameterSet ||
+                //this.ParameterSetName == ShareParameterSet
+                //this.ParameterSetName == FileFilePathParameterSet || 
+                //this.ParameterSetName == FileFileParameterSet
+                )
             {
                 return this.GetCmdletStorageContext();
             }
@@ -391,10 +392,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             ShareFileClient destFile = this.GetDestFile();
 
-            if (((AzureStorageContext)this.Context).Track2OauthToken != null
-                && string.Compare(sourceFile.Uri.Host, destFile.Uri.Host, ignoreCase: true) != 0)
+            //if (((AzureStorageContext)this.Context).Track2OauthToken != null
+            //    && string.Compare(sourceFile.Uri.Host, destFile.Uri.Host, ignoreCase: true) != 0)
+            //{
+            //    WriteWarning("The source File is on Azure AD credential, might cause cross account file copy fail. Please use source File based on SharedKey or SAS creadencial to avoid the failure.");
+            //}
+
+            if (!sourceFile.CanGenerateSasUri && string.Compare(sourceFile.Uri.Host, destFile.Uri.Host, ignoreCase: true) != 0)
             {
-                WriteWarning("The source File is on Azure AD credential, might cause cross account file copy fail. Please use source File based on SharedKey or SAS creadencial to avoid the failure.");
+                WriteWarning("The source File cannot generate SAS Uri and might cause cross account file copy failures. Please use source File based on SharedKey or SAS creadencial to avoid the failure.");
             }
 
             Func<long, Task> taskGenerator = (taskId) => StartAsyncCopy(
