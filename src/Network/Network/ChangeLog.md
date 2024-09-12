@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Onboarded `Microsoft.VideoIndexer/accounts` to private link cmdlets
 * Added support to create, get and delete Bastion shareable links
     - `New-AzBastionShareableLink`
     - `Get-AzBastionShareableLink`
