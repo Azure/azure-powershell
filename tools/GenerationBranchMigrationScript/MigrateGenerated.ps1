@@ -42,7 +42,7 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
     New-GenerateInfoJson -GeneratedDirectory $sourceSubModulePath
 
     # Move files from src to generated
-    $fileToMove = @('generated', 'generate-info.json', "resources", "Az.$subModuleNameTrimmed.psd1", "Az.$subModuleNameTrimmed.psm1", "Az.$subModuleNameTrimmed.format.ps1xml", 'exports', 'internal', "Az.$subModuleNameTrimmed.csproj", 'test-module.ps1', 'check-dependencies.ps1')
+    $fileToMove = @('Properties', 'license.txt', 'generated', 'generate-info.json', 'resources', "Az.$subModuleNameTrimmed.psd1", "Az.$subModuleNameTrimmed.psm1", "Az.$subModuleNameTrimmed.format.ps1xml", 'exports', 'internal', "Az.$subModuleNameTrimmed.csproj", 'test-module.ps1', 'check-dependencies.ps1')
     $fileToMove | Foreach-Object {
         $fromPath = Join-Path $sourceSubModulePath $_
         $toPath = Join-Path $generatedSubModulePath $_
@@ -76,6 +76,10 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
     # Delete *.ps1 under *.Autorest, no need to check-in these files
     $doNotDelete=@('test-module.ps1', 'check-dependencies.ps1')
     Get-ChildItem $sourceSubModulePath -Filter '*.ps1' | Where-Object { $_.Name -NotIn $doNotDelete } | Foreach-Object { Remove-Item $_.FullName -Force }
+
+    # add .gitignore and .gitattributes to every *.Autorest
+    $assetsPath = Join-Path $PSScriptRoot 'assets'
+    Get-ChildItem $assetsPath | Foreach-Object { Copy-Item $_.FullName $sourceSubModulePath }
 }
 
 # have to do it in another loop because csproj need to be all moved to /generated before add into sln
