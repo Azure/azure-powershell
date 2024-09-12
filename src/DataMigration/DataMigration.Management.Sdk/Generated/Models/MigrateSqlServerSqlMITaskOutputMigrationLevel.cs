@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
 
         /// <param name="exceptionsAndWarnings">Migration exceptions and warnings.
         /// </param>
-        public MigrateSqlServerSqlMITaskOutputMigrationLevel(string id = default(string), System.DateTimeOffset? startedOn = default(System.DateTimeOffset?), System.DateTimeOffset? endedOn = default(System.DateTimeOffset?), string status = default(string), string state = default(string), string agentJobs = default(string), string logins = default(string), string message = default(string), string serverRoleResults = default(string), System.Collections.Generic.IList<OrphanedUserInfo> orphanedUsersInfo = default(System.Collections.Generic.IList<OrphanedUserInfo>), string databases = default(string), string sourceServerVersion = default(string), string sourceServerBrandVersion = default(string), string targetServerVersion = default(string), string targetServerBrandVersion = default(string), System.Collections.Generic.IList<ReportableException> exceptionsAndWarnings = default(System.Collections.Generic.IList<ReportableException>))
+        public MigrateSqlServerSqlMITaskOutputMigrationLevel(string id = default(string), System.DateTimeOffset? startedOn = default(System.DateTimeOffset?), System.DateTimeOffset? endedOn = default(System.DateTimeOffset?), string status = default(string), string state = default(string), System.Collections.Generic.IDictionary<string, string> agentJobs = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> logins = default(System.Collections.Generic.IDictionary<string, string>), string message = default(string), System.Collections.Generic.IDictionary<string, StartMigrationScenarioServerRoleResult> serverRoleResults = default(System.Collections.Generic.IDictionary<string, StartMigrationScenarioServerRoleResult>), System.Collections.Generic.IList<OrphanedUserInfo> orphanedUsersInfo = default(System.Collections.Generic.IList<OrphanedUserInfo>), System.Collections.Generic.IDictionary<string, string> databases = default(System.Collections.Generic.IDictionary<string, string>), string sourceServerVersion = default(string), string sourceServerBrandVersion = default(string), string targetServerVersion = default(string), string targetServerBrandVersion = default(string), System.Collections.Generic.IList<ReportableException> exceptionsAndWarnings = default(System.Collections.Generic.IList<ReportableException>))
 
         : base(id)
         {
@@ -128,13 +128,13 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets selected agent jobs as a map from name to id
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "agentJobs")]
-        public string AgentJobs {get; private set; }
+        public System.Collections.Generic.IDictionary<string, string> AgentJobs {get; private set; }
 
         /// <summary>
         /// Gets selected logins as a map from name to id
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "logins")]
-        public string Logins {get; private set; }
+        public System.Collections.Generic.IDictionary<string, string> Logins {get; private set; }
 
         /// <summary>
         /// Gets migration progress message
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets map of server role migration results.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "serverRoleResults")]
-        public string ServerRoleResults {get; private set; }
+        public System.Collections.Generic.IDictionary<string, StartMigrationScenarioServerRoleResult> ServerRoleResults {get; private set; }
 
         /// <summary>
         /// Gets list of orphaned users.
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets selected databases as a map from database name to database id
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "databases")]
-        public string Databases {get; private set; }
+        public System.Collections.Generic.IDictionary<string, string> Databases {get; private set; }
 
         /// <summary>
         /// Gets source server version

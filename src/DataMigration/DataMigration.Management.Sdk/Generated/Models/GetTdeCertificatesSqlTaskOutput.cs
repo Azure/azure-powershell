@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
 
         /// <param name="validationErrors">Validation errors
         /// </param>
-        public GetTdeCertificatesSqlTaskOutput(string base64EncodedCertificates = default(string), System.Collections.Generic.IList<ReportableException> validationErrors = default(System.Collections.Generic.IList<ReportableException>))
+        public GetTdeCertificatesSqlTaskOutput(System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<string>> base64EncodedCertificates = default(System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<string>>), System.Collections.Generic.IList<ReportableException> validationErrors = default(System.Collections.Generic.IList<ReportableException>))
 
         {
             this.Base64EncodedCertificates = base64EncodedCertificates;
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets mapping from certificate name to base 64 encoded format.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "base64EncodedCertificates")]
-        public string Base64EncodedCertificates {get; private set; }
+        public System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<string>> Base64EncodedCertificates {get; private set; }
 
         /// <summary>
         /// Gets validation errors

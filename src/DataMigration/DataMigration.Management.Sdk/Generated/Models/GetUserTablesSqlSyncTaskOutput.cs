@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
 
         /// <param name="validationErrors">Validation errors
         /// </param>
-        public GetUserTablesSqlSyncTaskOutput(string databasesToSourceTables = default(string), string databasesToTargetTables = default(string), string tableValidationErrors = default(string), System.Collections.Generic.IList<ReportableException> validationErrors = default(System.Collections.Generic.IList<ReportableException>))
+        public GetUserTablesSqlSyncTaskOutput(System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<DatabaseTable>> databasesToSourceTables = default(System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<DatabaseTable>>), System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<DatabaseTable>> databasesToTargetTables = default(System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<DatabaseTable>>), System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<string>> tableValidationErrors = default(System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<string>>), System.Collections.Generic.IList<ReportableException> validationErrors = default(System.Collections.Generic.IList<ReportableException>))
 
         {
             this.DatabasesToSourceTables = databasesToSourceTables;
@@ -56,19 +56,19 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets mapping from database name to list of source tables
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "databasesToSourceTables")]
-        public string DatabasesToSourceTables {get; private set; }
+        public System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<DatabaseTable>> DatabasesToSourceTables {get; private set; }
 
         /// <summary>
         /// Gets mapping from database name to list of target tables
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "databasesToTargetTables")]
-        public string DatabasesToTargetTables {get; private set; }
+        public System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<DatabaseTable>> DatabasesToTargetTables {get; private set; }
 
         /// <summary>
         /// Gets mapping from database name to list of validation errors
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tableValidationErrors")]
-        public string TableValidationErrors {get; private set; }
+        public System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<string>> TableValidationErrors {get; private set; }
 
         /// <summary>
         /// Gets validation errors

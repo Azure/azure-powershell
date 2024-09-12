@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
 
         /// <param name="exceptionsAndWarnings">Migration exceptions and warnings.
         /// </param>
-        public MigrateSqlServerSqlDbTaskOutputMigrationLevel(string id = default(string), System.DateTimeOffset? startedOn = default(System.DateTimeOffset?), System.DateTimeOffset? endedOn = default(System.DateTimeOffset?), long? durationInSeconds = default(long?), string status = default(string), string statusMessage = default(string), string message = default(string), string databases = default(string), string databaseSummary = default(string), MigrationValidationResult migrationValidationResult = default(MigrationValidationResult), MigrationReportResult migrationReportResult = default(MigrationReportResult), string sourceServerVersion = default(string), string sourceServerBrandVersion = default(string), string targetServerVersion = default(string), string targetServerBrandVersion = default(string), System.Collections.Generic.IList<ReportableException> exceptionsAndWarnings = default(System.Collections.Generic.IList<ReportableException>))
+        public MigrateSqlServerSqlDbTaskOutputMigrationLevel(string id = default(string), System.DateTimeOffset? startedOn = default(System.DateTimeOffset?), System.DateTimeOffset? endedOn = default(System.DateTimeOffset?), long? durationInSeconds = default(long?), string status = default(string), string statusMessage = default(string), string message = default(string), System.Collections.Generic.IDictionary<string, string> databases = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, DatabaseSummaryResult> databaseSummary = default(System.Collections.Generic.IDictionary<string, DatabaseSummaryResult>), MigrationValidationResult migrationValidationResult = default(MigrationValidationResult), MigrationReportResult migrationReportResult = default(MigrationReportResult), string sourceServerVersion = default(string), string sourceServerBrandVersion = default(string), string targetServerVersion = default(string), string targetServerBrandVersion = default(string), System.Collections.Generic.IList<ReportableException> exceptionsAndWarnings = default(System.Collections.Generic.IList<ReportableException>))
 
         : base(id)
         {
@@ -140,13 +140,13 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets selected databases as a map from database name to database id
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "databases")]
-        public string Databases {get; private set; }
+        public System.Collections.Generic.IDictionary<string, string> Databases {get; private set; }
 
         /// <summary>
         /// Gets summary of database results in the migration
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "databaseSummary")]
-        public string DatabaseSummary {get; private set; }
+        public System.Collections.Generic.IDictionary<string, DatabaseSummaryResult> DatabaseSummary {get; private set; }
 
         /// <summary>
         /// Gets or sets migration Validation Results

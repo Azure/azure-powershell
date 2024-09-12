@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
 
         /// <param name="validationErrors">Validation errors
         /// </param>
-        public GetUserTablesSqlTaskOutput(string id = default(string), string databasesToTables = default(string), System.Collections.Generic.IList<ReportableException> validationErrors = default(System.Collections.Generic.IList<ReportableException>))
+        public GetUserTablesSqlTaskOutput(string id = default(string), System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<DatabaseTable>> databasesToTables = default(System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<DatabaseTable>>), System.Collections.Generic.IList<ReportableException> validationErrors = default(System.Collections.Generic.IList<ReportableException>))
 
         {
             this.Id = id;
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets mapping from database name to list of tables
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "databasesToTables")]
-        public string DatabasesToTables {get; private set; }
+        public System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<DatabaseTable>> DatabasesToTables {get; private set; }
 
         /// <summary>
         /// Gets validation errors

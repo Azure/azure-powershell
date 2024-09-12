@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
 
         /// <param name="validationErrors">Validation errors
         /// </param>
-        public ConnectToSourceSqlServerTaskOutputTaskLevel(string id = default(string), string databases = default(string), string logins = default(string), string agentJobs = default(string), string databaseTdeCertificateMapping = default(string), string sourceServerVersion = default(string), string sourceServerBrandVersion = default(string), System.Collections.Generic.IList<ReportableException> validationErrors = default(System.Collections.Generic.IList<ReportableException>))
+        public ConnectToSourceSqlServerTaskOutputTaskLevel(string id = default(string), System.Collections.Generic.IDictionary<string, string> databases = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> logins = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> agentJobs = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> databaseTdeCertificateMapping = default(System.Collections.Generic.IDictionary<string, string>), string sourceServerVersion = default(string), string sourceServerBrandVersion = default(string), System.Collections.Generic.IList<ReportableException> validationErrors = default(System.Collections.Generic.IList<ReportableException>))
 
         : base(id)
         {
@@ -73,25 +73,25 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets source databases as a map from database name to database id
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "databases")]
-        public string Databases {get; private set; }
+        public System.Collections.Generic.IDictionary<string, string> Databases {get; private set; }
 
         /// <summary>
         /// Gets source logins as a map from login name to login id.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "logins")]
-        public string Logins {get; private set; }
+        public System.Collections.Generic.IDictionary<string, string> Logins {get; private set; }
 
         /// <summary>
         /// Gets source agent jobs as a map from agent job name to id.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "agentJobs")]
-        public string AgentJobs {get; private set; }
+        public System.Collections.Generic.IDictionary<string, string> AgentJobs {get; private set; }
 
         /// <summary>
         /// Gets mapping from database name to TDE certificate name, if applicable
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "databaseTdeCertificateMapping")]
-        public string DatabaseTdeCertificateMapping {get; private set; }
+        public System.Collections.Generic.IDictionary<string, string> DatabaseTdeCertificateMapping {get; private set; }
 
         /// <summary>
         /// Gets source server version

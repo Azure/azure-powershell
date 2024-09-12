@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
 
         /// <param name="targetServerName">Name of target server
         /// </param>
-        public NonSqlMigrationTaskOutput(string id = default(string), System.DateTimeOffset? startedOn = default(System.DateTimeOffset?), System.DateTimeOffset? endedOn = default(System.DateTimeOffset?), string status = default(string), string dataMigrationTableResults = default(string), string progressMessage = default(string), string sourceServerName = default(string), string targetServerName = default(string))
+        public NonSqlMigrationTaskOutput(string id = default(string), System.DateTimeOffset? startedOn = default(System.DateTimeOffset?), System.DateTimeOffset? endedOn = default(System.DateTimeOffset?), string status = default(string), System.Collections.Generic.IDictionary<string, NonSqlDataMigrationTableResult> dataMigrationTableResults = default(System.Collections.Generic.IDictionary<string, NonSqlDataMigrationTableResult>), string progressMessage = default(string), string sourceServerName = default(string), string targetServerName = default(string))
 
         {
             this.Id = id;
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// value the table result object
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "dataMigrationTableResults")]
-        public string DataMigrationTableResults {get; private set; }
+        public System.Collections.Generic.IDictionary<string, NonSqlDataMigrationTableResult> DataMigrationTableResults {get; private set; }
 
         /// <summary>
         /// Gets message about the progress of the migration

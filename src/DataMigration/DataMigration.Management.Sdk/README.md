@@ -94,6 +94,60 @@ directive:
   - from: MigrateSqlServerSqlMiSyncTask.json
     where: $.definitions.MigrateSqlServerSqlMISyncTaskOutput
     transform: $['required'] = ['resultType']
+  - from: ConnectToSourceSqlServerTask.json
+    where: $.definitions.ConnectToSourceSqlServerTaskOutputTaskLevel.properties.databases
+    transform: $['type'] = "object"
+  - from: ConnectToSourceSqlServerTask.json
+    where: $.definitions.ConnectToSourceSqlServerTaskOutputTaskLevel.properties.logins
+    transform: $['type'] = "object"
+  - from: ConnectToSourceSqlServerTask.json
+    where: $.definitions.ConnectToSourceSqlServerTaskOutputTaskLevel.properties.agentJobs
+    transform: $['type'] = "object"
+  - from: ConnectToSourceSqlServerTask.json
+    where: $.definitions.ConnectToSourceSqlServerTaskOutputTaskLevel.properties.databaseTdeCertificateMapping
+    transform: $['type'] = "object"
+  - from: ConnectToTargetSqlDbTask.json
+    where: $.definitions.ConnectToTargetSqlDbTaskOutput.properties.databases
+    transform: $['type'] = "object"
+  - from: GetTdeCertificatesSqlTask.json
+    where: $.definitions.GetTdeCertificatesSqlTaskOutput.properties.base64EncodedCertificates
+    transform: $['type'] = "object"
+  - from: GetUserTablesSqlSyncTask.json
+    where: $.definitions.GetUserTablesSqlSyncTaskOutput.properties.databasesToSourceTables
+    transform: $['type'] = "object"
+  - from: GetUserTablesSqlSyncTask.json
+    where: $.definitions.GetUserTablesSqlSyncTaskOutput.properties.databasesToTargetTables
+    transform: $['type'] = "object"
+  - from: GetUserTablesSqlSyncTask.json
+    where: $.definitions.GetUserTablesSqlSyncTaskOutput.properties.tableValidationErrors
+    transform: $['type'] = "object"
+  - from: GetUserTablesSqlTask.json
+    where: $.definitions.GetUserTablesSqlTaskOutput.properties.databasesToTables
+    transform: $['type'] = "object"
+  - from: MigrateSqlServerSqlDbTask.json
+    where: $.definitions.MigrateSqlServerSqlDbTaskOutputDatabaseLevel.properties.objectSummary
+    transform: $['type'] = "object"
+  - from: MigrateSqlServerSqlDbTask.json
+    where: $.definitions.MigrateSqlServerSqlDbTaskOutputMigrationLevel.properties.databases
+    transform: $['type'] = "object"
+  - from: MigrateSqlServerSqlDbTask.json
+    where: $.definitions.MigrateSqlServerSqlDbTaskOutputMigrationLevel.properties.databaseSummary
+    transform: $['type'] = "object"
+  - from: MigrateSqlServerSqlMITask.json
+    where: $.definitions.MigrateSqlServerSqlMITaskOutputMigrationLevel.properties.agentJobs
+    transform: $['type'] = "object"
+  - from: MigrateSqlServerSqlMITask.json
+    where: $.definitions.MigrateSqlServerSqlMITaskOutputMigrationLevel.properties.logins
+    transform: $['type'] = "object"
+  - from: MigrateSqlServerSqlMITask.json
+    where: $.definitions.MigrateSqlServerSqlMITaskOutputMigrationLevel.properties.serverRoleResults
+    transform: $['type'] = "object"
+  - from: MigrateSqlServerSqlMITask.json
+    where: $.definitions.MigrateSqlServerSqlMITaskOutputMigrationLevel.properties.databases
+    transform: $['type'] = "object"
+  - from: TasksCommon.json
+    where: $.definitions.NonSqlMigrationTaskOutput.properties.dataMigrationTableResults
+    transform: $['type'] = "object"
   - where:
       model-name: ConnectToTargetSqlDbSyncTaskInput
     set:

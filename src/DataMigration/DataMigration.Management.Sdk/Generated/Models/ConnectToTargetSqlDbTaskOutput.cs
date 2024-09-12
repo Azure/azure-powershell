@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
 
         /// <param name="targetServerBrandVersion">Target server brand version
         /// </param>
-        public ConnectToTargetSqlDbTaskOutput(string id = default(string), string databases = default(string), string targetServerVersion = default(string), string targetServerBrandVersion = default(string))
+        public ConnectToTargetSqlDbTaskOutput(string id = default(string), System.Collections.Generic.IDictionary<string, string> databases = default(System.Collections.Generic.IDictionary<string, string>), string targetServerVersion = default(string), string targetServerBrandVersion = default(string))
 
         {
             this.Id = id;
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets source databases as a map from database name to database id
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "databases")]
-        public string Databases {get; private set; }
+        public System.Collections.Generic.IDictionary<string, string> Databases {get; private set; }
 
         /// <summary>
         /// Gets version of the target server

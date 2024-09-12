@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.DataMigration.Models
 
         /// <param name="objectSummary">Summary of object results in the migration
         /// </param>
-        public MigrateSqlServerSqlDbTaskOutputDatabaseLevel(string id = default(string), string databaseName = default(string), System.DateTimeOffset? startedOn = default(System.DateTimeOffset?), System.DateTimeOffset? endedOn = default(System.DateTimeOffset?), string state = default(string), string stage = default(string), string statusMessage = default(string), string message = default(string), long? numberOfObjects = default(long?), long? numberOfObjectsCompleted = default(long?), long? errorCount = default(long?), string errorPrefix = default(string), string resultPrefix = default(string), System.Collections.Generic.IList<ReportableException> exceptionsAndWarnings = default(System.Collections.Generic.IList<ReportableException>), string objectSummary = default(string))
+        public MigrateSqlServerSqlDbTaskOutputDatabaseLevel(string id = default(string), string databaseName = default(string), System.DateTimeOffset? startedOn = default(System.DateTimeOffset?), System.DateTimeOffset? endedOn = default(System.DateTimeOffset?), string state = default(string), string stage = default(string), string statusMessage = default(string), string message = default(string), long? numberOfObjects = default(long?), long? numberOfObjectsCompleted = default(long?), long? errorCount = default(long?), string errorPrefix = default(string), string resultPrefix = default(string), System.Collections.Generic.IList<ReportableException> exceptionsAndWarnings = default(System.Collections.Generic.IList<ReportableException>), System.Collections.Generic.IDictionary<string, DataItemMigrationSummaryResult> objectSummary = default(System.Collections.Generic.IDictionary<string, DataItemMigrationSummaryResult>))
 
         : base(id)
         {
@@ -178,6 +178,6 @@ namespace Microsoft.Azure.Management.DataMigration.Models
         /// Gets summary of object results in the migration
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "objectSummary")]
-        public string ObjectSummary {get; private set; }
+        public System.Collections.Generic.IDictionary<string, DataItemMigrationSummaryResult> ObjectSummary {get; private set; }
     }
 }
