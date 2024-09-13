@@ -3338,7 +3338,7 @@
       }
     ],
     "Names": {
-      "Test-VirtualNetworkEncryption": [
+      "Test-VirtualNetworkPrivateEndpointVNetPolicies": [
         "ps2247",
         "ps9339",
         "ps5391",
