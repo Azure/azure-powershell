@@ -25,7 +25,7 @@ using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserGroupItem"), OutputType(typeof(PSNetworkManagerSecurityUserGroupItem))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserGroupItem", SupportsShouldProcess = false), OutputType(typeof(PSNetworkManagerSecurityUserGroupItem))]
     public class NewAzNetworkManagerSecurityUserGroupItemCommand : NetworkManagerBaseCmdlet
     {
         [Parameter(

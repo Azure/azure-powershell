@@ -746,7 +746,7 @@ function Test-NetworkManagerResourceMinimumParameterCreate
 
 <#
 .SYNOPSIS
-Tests creating/getting/deleting new simple public networkmanager routing Configuration/RuleCollection/Rule
+Tests creating/getting/deleting new simple networkmanager Routing Configuration/RuleCollection/Rule
 #>
 function Test-NetworkManagerRoutingRuleCRUD
 {
@@ -767,7 +767,8 @@ function Test-NetworkManagerRoutingRuleCRUD
     $vnetName = "SwaggerStackVnet"
     $vnetRGName = "SwaggerStackRG"
 
-    try{
+    try
+    {
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
 
@@ -993,7 +994,7 @@ function Test-NetworkManagerSecurityUserRuleCRUD
         $groupItem = New-AzNetworkManagerSecurityUserGroupItem -NetworkGroupId $networkGroup.Id
         $configGroup.Add($groupItem)
 
-        New-AzNetworkManagerSecurityUserRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName -Name $RuleCollectionName -AppliesToGroups $configGroup
+        New-AzNetworkManagerSecurityUserRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName -Name $RuleCollectionName -AppliesToGroup $configGroup
 
         $ruleCollection = Get-AzNetworkManagerSecurityUserRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName -Name $RuleCollectionName
         Assert-NotNull $ruleCollection;
