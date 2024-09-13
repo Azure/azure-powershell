@@ -825,4 +825,13 @@
   <data name="BastionTunnelingAndSessionRecordingNotAllowed" xml:space="preserve">
     <value>Tunneling and session recording cannot be enabled together</value>
   </data>
+  <data name="BastionShareableLinkConfirmRemove" xml:space="preserve">
+    <value>Are you sure you want to remove Bastion shareable link(s)?</value>
+  </data>
+  <data name="BastionShareableLinkRemoving" xml:space="preserve">
+    <value>Removing Bastion shareable link(s)</value>
+  </data>
+  <data name="BastionShareableLinkNotEnabled" xml:space="preserve">
+    <value>Shareable link feature is not enabled</value>
+  </data>
 </root>
