@@ -677,6 +677,7 @@ function Set-AzConnectedKubernetes {
             $helmValuesContent = $helmValuesDp.helmValuesContent
             Write-Debug "Helm values: ${helmValuesContent}."
 
+            $optionsFromDp = ""
             foreach ($field in $helmValuesContent.PSObject.Properties) {
                 if($field.Value.StartsWith($ProtectedSettingsPlaceholderValue)){
                     $parsedValue = $field.Value.Split(":")
@@ -684,10 +685,12 @@ function Set-AzConnectedKubernetes {
                     $field.Value = $ConfigurationProtectedSetting[$parsedValue[1]][$parsedValue[2]]
                 }
                 if ($field.Name -eq "global.proxyCert") {
-                    $options += " --set-file $($field.Name)=$($field.Value)"
+                    $optionsFromDp += " --set-file $($field.Name)=$($field.Value)"
                 }
-                $options += " --set $($field.Name)=$($field.Value)"
+                $optionsFromDp += " --set $($field.Name)=$($field.Value)"
             }
+            # In helm, priority is given to new values, so we append $options contains user input last
+            $options = $optionsFromDp + $options
 
             # Set agent version in registry path
             if ($ExistConnectedKubernetes.AgentVersion) {

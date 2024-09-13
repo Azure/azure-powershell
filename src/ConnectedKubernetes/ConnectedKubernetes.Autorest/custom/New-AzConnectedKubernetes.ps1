@@ -628,6 +628,7 @@ function New-AzConnectedKubernetes {
             # protected settings to the helm options and replace any placeholders
             # with the values that we have stored in the protected settings
             # hashtable.
+            $optionsFromDp = ""
             foreach ($field in $helmValuesContent.PSObject.Properties) {
                 if($field.Value.StartsWith($ProtectedSettingsPlaceholderValue)){
                     $parsedValue = $field.Value.Split(":")
@@ -635,10 +636,12 @@ function New-AzConnectedKubernetes {
                     $field.Value = $ConfigurationProtectedSetting[$parsedValue[1]][$parsedValue[2]]
                 }
                 if ($field.Name -eq "global.proxyCert") {
-                    $options += " --set-file $($field.Name)=$($field.Value)"
+                    $optionsFromDp += " --set-file $($field.Name)=$($field.Value)"
                 }
-                $options += " --set $($field.Name)=$($field.Value)"
+                $optionsFromDp += " --set $($field.Name)=$($field.Value)"
             }
+            # In helm, priority is given to new values, so we append $options contains user input last
+            $options = $optionsFromDp + $options
         }
 
         # Get helm chart path (within the OCI registry).
