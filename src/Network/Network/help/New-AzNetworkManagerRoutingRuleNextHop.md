@@ -13,7 +13,7 @@ Creates a network manager routing rule next hop.
 ## SYNTAX
 
 ```
-New-AzNetworkManagerRoutingRuleNextHop -DestinationAddress <String> -Type <String>
+New-AzNetworkManagerRoutingRuleNextHop -NextHopAddress <String> -NextHopType <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
