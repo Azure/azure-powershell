@@ -154,7 +154,7 @@
               </ListItem>
               <ListItem>
                 <Label>PrivateEndpointVNetPolicies</Label>
-                <PropertyName>PrivateEndpointVNetPoliciesText</PropertyName>
+                <PropertyName>PrivateEndpointVNetPolicies</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
