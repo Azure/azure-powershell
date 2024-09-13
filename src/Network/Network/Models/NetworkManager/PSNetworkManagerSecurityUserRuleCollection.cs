@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
         public IList<PSNetworkManagerSecurityUserGroupItem> AppliesToGroups { get; set; }
 
         [JsonIgnore]
-        public string AppliesToGroupsText
+        public string AppliesToGroupText
         {
             get { return JsonConvert.SerializeObject(AppliesToGroups, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }

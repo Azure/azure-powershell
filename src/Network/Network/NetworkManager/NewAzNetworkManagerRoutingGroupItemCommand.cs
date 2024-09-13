@@ -25,7 +25,7 @@ using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingGroupItem"), OutputType(typeof(PSNetworkManagerRoutingGroupItem))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingGroupItem", SupportsShouldProcess = false), OutputType(typeof(PSNetworkManagerRoutingGroupItem))]
     public class NewAzNetworkManagerRoutingGroupItemCommand : NetworkManagerBaseCmdlet
     {
         [Parameter(

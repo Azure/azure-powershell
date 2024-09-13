@@ -27,7 +27,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingRuleDestination"), OutputType(typeof(PSNetworkManagerRoutingRuleDestination))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingRuleDestination", SupportsShouldProcess = false), OutputType(typeof(PSNetworkManagerRoutingRuleDestination))]
     public class NewAzNetworkManagerRoutingRuleDestinationCommand : NetworkManagerBaseCmdlet
     {
         [Parameter(
