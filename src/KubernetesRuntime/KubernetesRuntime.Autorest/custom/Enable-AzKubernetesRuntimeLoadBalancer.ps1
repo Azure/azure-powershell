@@ -135,7 +135,7 @@ function Enable-AzKubernetesRuntimeLoadBalancer {
 
             . "$PSScriptRoot/Helpers.ps1"
 
-            $connected_cluster_resource_id = [ConnectedClusterResourceId]::Parse($ArcConnectedClusterUri)
+            $connected_cluster_resource_id = [ConnectedClusterResourceId]::Parse($ArcConnectedClusterId)
             
             CheckRPRegistration -SubscriptionId $connected_cluster_resource_id.SubscriptionId
 

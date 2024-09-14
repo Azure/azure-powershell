@@ -129,7 +129,7 @@ function Disable-AzKubernetesRuntimeLoadBalancer {
 
             . "$PSScriptRoot/Helpers.ps1"
 
-            $connected_cluster_resource_id = [ConnectedClusterResourceId]::Parse($ArcConnectedClusterUri)
+            $connected_cluster_resource_id = [ConnectedClusterResourceId]::Parse($ArcConnectedClusterId)
 
             Write-Output "Uninstalling Arc Networking extension in cluster $($connected_cluster_resource_id.ClusterName) in resource group $($connected_cluster_resource_id.ResourceGroup)..."
 
