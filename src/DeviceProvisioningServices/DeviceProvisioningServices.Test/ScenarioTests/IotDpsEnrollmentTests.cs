@@ -24,7 +24,7 @@ namespace Commands.DeviceProvisioningServices.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IotDpsEnrollmentLifeCycle()
         {
             TestRunner.RunTestScript("Test-AzIotDpsEnrollmentLifeCycle");
