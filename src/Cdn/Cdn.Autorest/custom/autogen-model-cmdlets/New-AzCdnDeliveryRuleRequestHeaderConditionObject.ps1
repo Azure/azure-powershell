@@ -21,12 +21,12 @@ Create an in-memory object for DeliveryRuleRequestHeaderCondition.
 Create an in-memory object for DeliveryRuleRequestHeaderCondition.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRequestHeaderCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.DeliveryRuleRequestHeaderCondition
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleRequestHeaderConditionObject
 #>
 function New-AzCdnDeliveryRuleRequestHeaderConditionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRequestHeaderCondition')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.DeliveryRuleRequestHeaderCondition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -47,6 +47,10 @@ function New-AzCdnDeliveryRuleRequestHeaderConditionObject {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform])]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform[]]
         $ParameterTransform,
+        [Parameter(Mandatory)]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleConditionParametersType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleConditionParametersType]
+        $ParameterTypeName,
         [Parameter(Mandatory, HelpMessage="The name of the condition for the delivery rule.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable])]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable]
@@ -54,7 +58,7 @@ function New-AzCdnDeliveryRuleRequestHeaderConditionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRequestHeaderCondition]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.DeliveryRuleRequestHeaderCondition]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterMatchValue')) {
             $Object.ParameterMatchValue = $ParameterMatchValue
@@ -70,6 +74,9 @@ function New-AzCdnDeliveryRuleRequestHeaderConditionObject {
         }
         if ($PSBoundParameters.ContainsKey('ParameterTransform')) {
             $Object.ParameterTransform = $ParameterTransform
+        }
+        if ($PSBoundParameters.ContainsKey('ParameterTypeName')) {
+            $Object.ParameterTypeName = $ParameterTypeName
         }
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name

@@ -21,12 +21,12 @@ Create an in-memory object for DeliveryRuleCacheExpirationAction.
 Create an in-memory object for DeliveryRuleCacheExpirationAction.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleCacheExpirationAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.DeliveryRuleCacheExpirationAction
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleCacheExpirationActionObject
 #>
 function New-AzCdnDeliveryRuleCacheExpirationActionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleCacheExpirationAction')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.DeliveryRuleCacheExpirationAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -37,20 +37,27 @@ function New-AzCdnDeliveryRuleCacheExpirationActionObject {
         [Parameter(HelpMessage="The duration for which the content needs to be cached. Allowed format is [d.]hh:mm:ss.")]
         [string]
         $ParameterCacheDuration,
+        [Parameter(Mandatory)]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleActionParametersType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleActionParametersType]
+        $ParameterTypeName,
         [Parameter(Mandatory, HelpMessage="The name of the action for the delivery rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleActionName])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleActionName]
         $Name
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleCacheExpirationAction]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.DeliveryRuleCacheExpirationAction]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterCacheBehavior')) {
             $Object.ParameterCacheBehavior = $ParameterCacheBehavior
         }
         if ($PSBoundParameters.ContainsKey('ParameterCacheDuration')) {
             $Object.ParameterCacheDuration = $ParameterCacheDuration
+        }
+        if ($PSBoundParameters.ContainsKey('ParameterTypeName')) {
+            $Object.ParameterTypeName = $ParameterTypeName
         }
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name

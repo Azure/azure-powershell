@@ -21,12 +21,12 @@ Create an in-memory object for DeliveryRulePostArgsCondition.
 Create an in-memory object for DeliveryRulePostArgsCondition.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRulePostArgsCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.DeliveryRulePostArgsCondition
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRulePostArgsConditionObject
 #>
 function New-AzCdnDeliveryRulePostArgsConditionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRulePostArgsCondition')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.DeliveryRulePostArgsCondition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -47,6 +47,10 @@ function New-AzCdnDeliveryRulePostArgsConditionObject {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform])]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform[]]
         $ParameterTransform,
+        [Parameter(Mandatory)]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleConditionParametersType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleConditionParametersType]
+        $ParameterTypeName,
         [Parameter(Mandatory, HelpMessage="The name of the condition for the delivery rule.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable])]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable]
@@ -54,7 +58,7 @@ function New-AzCdnDeliveryRulePostArgsConditionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRulePostArgsCondition]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.DeliveryRulePostArgsCondition]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterMatchValue')) {
             $Object.ParameterMatchValue = $ParameterMatchValue
@@ -70,6 +74,9 @@ function New-AzCdnDeliveryRulePostArgsConditionObject {
         }
         if ($PSBoundParameters.ContainsKey('ParameterTransform')) {
             $Object.ParameterTransform = $ParameterTransform
+        }
+        if ($PSBoundParameters.ContainsKey('ParameterTypeName')) {
+            $Object.ParameterTypeName = $ParameterTypeName
         }
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name

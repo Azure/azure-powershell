@@ -21,12 +21,12 @@ Create an in-memory object for UserManagedHttpsParameters.
 Create an in-memory object for UserManagedHttpsParameters.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UserManagedHttpsParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.UserManagedHttpsParameters
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnUserManagedHttpsParametersObject
 #>
 function New-AzCdnUserManagedHttpsParametersObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UserManagedHttpsParameters')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.UserManagedHttpsParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -42,6 +42,10 @@ function New-AzCdnUserManagedHttpsParametersObject {
         [Parameter(Mandatory, HelpMessage="Subscription Id of the user's Key Vault containing the SSL certificate.")]
         [string]
         $CertificateSourceParameterSubscriptionId,
+        [Parameter(Mandatory)]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateSourceParametersType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateSourceParametersType]
+        $CertificateSourceParameterTypeName,
         [Parameter(Mandatory, HelpMessage="The name of the user's Key Vault containing the SSL certificate.")]
         [string]
         $CertificateSourceParameterVaultName,
@@ -60,7 +64,7 @@ function New-AzCdnUserManagedHttpsParametersObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UserManagedHttpsParameters]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.UserManagedHttpsParameters]::New()
 
         if ($PSBoundParameters.ContainsKey('CertificateSourceParameterResourceGroupName')) {
             $Object.CertificateSourceParameterResourceGroupName = $CertificateSourceParameterResourceGroupName
@@ -73,6 +77,9 @@ function New-AzCdnUserManagedHttpsParametersObject {
         }
         if ($PSBoundParameters.ContainsKey('CertificateSourceParameterSubscriptionId')) {
             $Object.CertificateSourceParameterSubscriptionId = $CertificateSourceParameterSubscriptionId
+        }
+        if ($PSBoundParameters.ContainsKey('CertificateSourceParameterTypeName')) {
+            $Object.CertificateSourceParameterTypeName = $CertificateSourceParameterTypeName
         }
         if ($PSBoundParameters.ContainsKey('CertificateSourceParameterVaultName')) {
             $Object.CertificateSourceParameterVaultName = $CertificateSourceParameterVaultName

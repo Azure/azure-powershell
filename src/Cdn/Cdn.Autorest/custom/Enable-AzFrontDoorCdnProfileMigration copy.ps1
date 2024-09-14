@@ -25,7 +25,7 @@ PS C:\> {{ Add code here }}
 PS C:\> {{ Add code here }}
 {{ Add output here }}
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IMigrateResult
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.IMigrateResult
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/enable-azfrontdoorcdnprofilemigration
 #>

@@ -21,12 +21,12 @@ Create an in-memory object for CdnManagedHttpsParameters.
 Create an in-memory object for CdnManagedHttpsParameters.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CdnManagedHttpsParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.CdnManagedHttpsParameters
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnManagedHttpsParametersObject
 #>
 function New-AzCdnManagedHttpsParametersObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CdnManagedHttpsParameters')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.CdnManagedHttpsParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -34,6 +34,10 @@ function New-AzCdnManagedHttpsParametersObject {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateType])]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateType]
         $CertificateSourceParameterCertificateType,
+        [Parameter(Mandatory)]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateSourceParametersType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateSourceParametersType]
+        $CertificateSourceParameterTypeName,
         [Parameter(Mandatory, HelpMessage="Defines the source of the SSL certificate.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateSource])]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateSource]
@@ -49,10 +53,13 @@ function New-AzCdnManagedHttpsParametersObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.CdnManagedHttpsParameters]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.CdnManagedHttpsParameters]::New()
 
         if ($PSBoundParameters.ContainsKey('CertificateSourceParameterCertificateType')) {
             $Object.CertificateSourceParameterCertificateType = $CertificateSourceParameterCertificateType
+        }
+        if ($PSBoundParameters.ContainsKey('CertificateSourceParameterTypeName')) {
+            $Object.CertificateSourceParameterTypeName = $CertificateSourceParameterTypeName
         }
         if ($PSBoundParameters.ContainsKey('CertificateSource')) {
             $Object.CertificateSource = $CertificateSource

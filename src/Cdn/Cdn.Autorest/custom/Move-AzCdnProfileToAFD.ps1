@@ -27,11 +27,11 @@ This step prepares the profile for migration and will be followed by Commit to f
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ICdnMigrationToAfdParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.ICdnMigrationToAfdParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IMigrateResult
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.IMigrateResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -66,7 +66,7 @@ MIGRATIONPARAMETER <ICdnMigrationToAfdParameters>: Request body for Migrate oper
 https://learn.microsoft.com/powershell/module/az.cdn/move-azcdnprofiletoafd
 #>
 function Move-AzCdnProfileToAFD {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IMigrateResult])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.IMigrateResult])]
     [CmdletBinding(DefaultParameterSetName='MigrateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='Migrate', Mandatory)]
@@ -103,7 +103,7 @@ function Move-AzCdnProfileToAFD {
         [Parameter(ParameterSetName='Migrate', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName='MigrateViaIdentity', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ICdnMigrationToAfdParameters]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.ICdnMigrationToAfdParameters]
         # Request body for Migrate operation.
         # To construct, see NOTES section for MIGRATIONPARAMETER properties and create a hash table.
         ${MigrationParameter},
@@ -112,7 +112,7 @@ function Move-AzCdnProfileToAFD {
         [Parameter(ParameterSetName='MigrateViaIdentityExpanded')]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IMigrationEndpointMapping[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.IMigrationEndpointMapping[]]
         # A name map between classic CDN endpoints and AFD Premium/Standard endpoints.
         # To construct, see NOTES section for MIGRATIONENDPOINTMAPPING properties and create a hash table.
         ${MigrationEndpointMapping},

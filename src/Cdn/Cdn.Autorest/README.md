@@ -32,8 +32,10 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/preview/2024-05-01-preview/afdx.json
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/preview/2024-05-01-preview/cdn.json
+  # - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/preview/2024-05-01-preview/afdx.json
+  # - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/preview/2024-05-01-preview/cdn.json
+  - C:/Users/jingnanxu/source/repos/rest-09-01/specification/cdn/resource-manager/Microsoft.Cdn/stable/2024-09-01/afdx.json
+  - C:/Users/jingnanxu/source/repos/rest-09-01/specification/cdn/resource-manager/Microsoft.Cdn/stable/2024-09-01/cdn.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 

@@ -21,12 +21,12 @@ Create an in-memory object for UrlRewriteAction.
 Create an in-memory object for UrlRewriteAction.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlRewriteAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.UrlRewriteAction
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnUrlRewriteActionObject
 #>
 function New-AzCdnUrlRewriteActionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlRewriteAction')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.UrlRewriteAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,14 +39,18 @@ function New-AzCdnUrlRewriteActionObject {
         [Parameter(Mandatory, HelpMessage="define a request URI pattern that identifies the type of requests that may be rewritten. If value is blank, all strings are matched.")]
         [string]
         $ParameterSourcePattern,
+        [Parameter(Mandatory)]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleActionParametersType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleActionParametersType]
+        $ParameterTypeName,
         [Parameter(Mandatory, HelpMessage="The name of the action for the delivery rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleActionName])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleActionName]
         $Name
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlRewriteAction]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.UrlRewriteAction]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterDestination')) {
             $Object.ParameterDestination = $ParameterDestination
@@ -56,6 +60,9 @@ function New-AzCdnUrlRewriteActionObject {
         }
         if ($PSBoundParameters.ContainsKey('ParameterSourcePattern')) {
             $Object.ParameterSourcePattern = $ParameterSourcePattern
+        }
+        if ($PSBoundParameters.ContainsKey('ParameterTypeName')) {
+            $Object.ParameterTypeName = $ParameterTypeName
         }
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name

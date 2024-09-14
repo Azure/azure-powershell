@@ -21,12 +21,12 @@ Create an in-memory object for MigrationWebApplicationFirewallMapping.
 Create an in-memory object for MigrationWebApplicationFirewallMapping.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MigrationWebApplicationFirewallMapping
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.MigrationWebApplicationFirewallMapping
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject
 #>
 function New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MigrationWebApplicationFirewallMapping')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.MigrationWebApplicationFirewallMapping')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,7 +39,7 @@ function New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MigrationWebApplicationFirewallMapping]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.MigrationWebApplicationFirewallMapping]::New()
 
         if ($PSBoundParameters.ContainsKey('MigratedFromId')) {
             $Object.MigratedFromId = $MigratedFromId

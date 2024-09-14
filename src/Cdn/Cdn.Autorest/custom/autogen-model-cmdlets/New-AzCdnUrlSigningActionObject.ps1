@@ -21,12 +21,12 @@ Create an in-memory object for UrlSigningAction.
 Create an in-memory object for UrlSigningAction.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlSigningAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.UrlSigningAction
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnUrlSigningActionObject
 #>
 function New-AzCdnUrlSigningActionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlSigningAction')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.UrlSigningAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -35,22 +35,29 @@ function New-AzCdnUrlSigningActionObject {
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Algorithm]
         $ParameterAlgorithm,
         [Parameter(HelpMessage="Defines which query string parameters in the url to be considered for expires, key id etc. .")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IUrlSigningParamIdentifier[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.IUrlSigningParamIdentifier[]]
         $ParameterNameOverride,
+        [Parameter(Mandatory)]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleActionParametersType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleActionParametersType]
+        $ParameterTypeName,
         [Parameter(Mandatory, HelpMessage="The name of the action for the delivery rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleActionName])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleActionName]
         $Name
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.UrlSigningAction]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.UrlSigningAction]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterAlgorithm')) {
             $Object.ParameterAlgorithm = $ParameterAlgorithm
         }
         if ($PSBoundParameters.ContainsKey('ParameterNameOverride')) {
             $Object.ParameterNameOverride = $ParameterNameOverride
+        }
+        if ($PSBoundParameters.ContainsKey('ParameterTypeName')) {
+            $Object.ParameterTypeName = $ParameterTypeName
         }
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name
