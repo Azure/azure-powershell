@@ -14,19 +14,19 @@ Create a ServiceResource
 
 ### CreateExpanded (Default)
 ```
-New-AzKubernetesRuntimeService -ArcConnectedClusterUri <String> -Name <String> [-DefaultProfile <PSObject>]
+New-AzKubernetesRuntimeService -ArcConnectedClusterId <String> -Name <String> [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzKubernetesRuntimeService -ArcConnectedClusterUri <String> -Name <String> -JsonFilePath <String>
+New-AzKubernetesRuntimeService -ArcConnectedClusterId <String> -Name <String> -JsonFilePath <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzKubernetesRuntimeService -ArcConnectedClusterUri <String> -Name <String> -JsonString <String>
+New-AzKubernetesRuntimeService -ArcConnectedClusterId <String> -Name <String> -JsonString <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -59,7 +59,7 @@ Create a Kubernetes Runtime service object for storage class service.
 
 ## PARAMETERS
 
-### -ArcConnectedClusterUri
+### -ArcConnectedClusterId
 The fully qualified Azure Resource manager identifier of the resource.
 
 ```yaml

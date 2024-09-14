@@ -13,7 +13,7 @@ Enable Arc load balancer service in a connected cluster.
 ## SYNTAX
 
 ```
-Enable-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterUri <String> [-ReleaseTrain <String>]
+Enable-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterId <String> [-ReleaseTrain <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Returns the created Azure resources.
 
 ## PARAMETERS
 
-### -ArcConnectedClusterUri
+### -ArcConnectedClusterId
 The resource uri of the connected cluster
 
 ```yaml

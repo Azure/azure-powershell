@@ -14,7 +14,7 @@ Delete a LoadBalancer
 
 ### Delete (Default)
 ```
-Remove-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterUri <String> -Name <String>
+Remove-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterId <String> -Name <String>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -38,7 +38,7 @@ Remove a load balancer from a connected cluster
 
 ## PARAMETERS
 
-### -ArcConnectedClusterUri
+### -ArcConnectedClusterId
 The fully qualified Azure Resource manager identifier of the resource.
 
 ```yaml

@@ -16,7 +16,7 @@
         "parameterSets": [
           {
             "parameters": [
-              "-ArcConnectedClusterUri <String>",
+              "-ArcConnectedClusterId <String>",
               "-Name <String>"
             ]
           }
@@ -27,7 +27,7 @@
           "description": "Get a BgpPeer",
           "parameters": [
             {
-              "name": "-ArcConnectedClusterUri",
+              "name": "-ArcConnectedClusterId",
               "value": "[Path.resourceUri]"
             },
             {
@@ -49,7 +49,7 @@
         "parameterSets": [
           {
             "parameters": [
-              "-ArcConnectedClusterUri <String>",
+              "-ArcConnectedClusterId <String>",
               "-Name <String>"
             ]
           }
@@ -60,7 +60,7 @@
           "description": "Delete a BgpPeer",
           "parameters": [
             {
-              "name": "-ArcConnectedClusterUri",
+              "name": "-ArcConnectedClusterId",
               "value": "[Path.resourceUri]"
             },
             {

@@ -13,7 +13,7 @@ Enable Arc storage class service in a connected cluster.
 ## SYNTAX
 
 ```
-Enable-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri <String> [-ReleaseTrain <String>]
+Enable-AzKubernetesRuntimeStorageClass -ArcConnectedClusterId <String> [-ReleaseTrain <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -56,7 +56,7 @@ Returns the created Azure resources.
 
 ## PARAMETERS
 
-### -ArcConnectedClusterUri
+### -ArcConnectedClusterId
 The resource uri of the connected cluster
 
 ```yaml

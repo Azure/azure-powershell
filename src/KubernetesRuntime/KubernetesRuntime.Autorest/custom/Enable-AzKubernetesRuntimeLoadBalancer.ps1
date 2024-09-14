@@ -35,7 +35,7 @@ function Enable-AzKubernetesRuntimeLoadBalancer {
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Category('Path')]
         [System.String]
         # The resource uri of the connected cluster 
-        ${ArcConnectedClusterUri},
+        ${ArcConnectedClusterId},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Category('Body')]

@@ -14,7 +14,7 @@ Update a BgpPeer
 
 ### UpdateExpanded (Default)
 ```
-Update-AzKubernetesRuntimeBgpPeer -ArcConnectedClusterUri <String> -Name <String> [-MyAsn <Int32>]
+Update-AzKubernetesRuntimeBgpPeer -ArcConnectedClusterId <String> -Name <String> [-MyAsn <Int32>]
  [-PeerAddress <String>] [-PeerAsn <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -40,7 +40,7 @@ Update a bgp peer from a connected cluster.
 
 ## PARAMETERS
 
-### -ArcConnectedClusterUri
+### -ArcConnectedClusterId
 The fully qualified Azure Resource manager identifier of the resource.
 
 ```yaml

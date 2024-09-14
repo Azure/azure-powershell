@@ -13,7 +13,7 @@ Disable Arc storage class service in a connected cluster.
 ## SYNTAX
 
 ```
-Disable-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri <String> [-DefaultProfile <PSObject>]
+Disable-AzKubernetesRuntimeStorageClass -ArcConnectedClusterId <String> [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ Returns the deleted Azure resources.
 
 ## PARAMETERS
 
-### -ArcConnectedClusterUri
+### -ArcConnectedClusterId
 The resource uri of the connected cluster
 
 ```yaml

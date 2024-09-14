@@ -13,7 +13,7 @@ Disable Arc load balancer service in a connected cluster.
 ## SYNTAX
 
 ```
-Disable-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterUri <String> [-DefaultProfile <PSObject>]
+Disable-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterId <String> [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Returns the deleted Azure resources.
 
 ## PARAMETERS
 
-### -ArcConnectedClusterUri
+### -ArcConnectedClusterId
 The resource uri of the connected cluster
 
 ```yaml

@@ -14,7 +14,7 @@ Update a LoadBalancer
 
 ### UpdateExpanded (Default)
 ```
-Update-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterUri <String> -Name <String> [-Address <String[]>]
+Update-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterId <String> -Name <String> [-Address <String[]>]
  [-AdvertiseMode <String>] [-BgpPeer <String[]>] [-ServiceSelector <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -70,7 +70,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ArcConnectedClusterUri
+### -ArcConnectedClusterId
 The fully qualified Azure Resource manager identifier of the resource.
 
 ```yaml

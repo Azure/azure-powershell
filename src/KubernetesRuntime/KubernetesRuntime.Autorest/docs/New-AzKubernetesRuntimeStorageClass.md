@@ -14,7 +14,7 @@ Create a StorageClassResource
 
 ### CreateExpanded (Default)
 ```
-New-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri <String> -Name <String> [-AccessMode <String[]>]
+New-AzKubernetesRuntimeStorageClass -ArcConnectedClusterId <String> -Name <String> [-AccessMode <String[]>]
  [-AllowVolumeExpansion <String>] [-DataResilience <String>] [-FailoverSpeed <String>]
  [-Limitation <String[]>] [-MountOption <String[]>] [-Performance <String>] [-Priority <Int64>]
  [-Provisioner <String>] [-TypeProperty <IStorageClassTypeProperties>] [-VolumeBindingMode <String>]
@@ -23,13 +23,13 @@ New-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri <String> -Name <Stri
 
 ### CreateViaJsonFilePath
 ```
-New-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri <String> -Name <String> -JsonFilePath <String>
+New-AzKubernetesRuntimeStorageClass -ArcConnectedClusterId <String> -Name <String> -JsonFilePath <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri <String> -Name <String> -JsonString <String>
+New-AzKubernetesRuntimeStorageClass -ArcConnectedClusterId <String> -Name <String> -JsonString <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -87,7 +87,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ArcConnectedClusterUri
+### -ArcConnectedClusterId
 The fully qualified Azure Resource manager identifier of the resource.
 
 ```yaml

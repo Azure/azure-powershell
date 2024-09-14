@@ -14,13 +14,13 @@ Get a LoadBalancer
 
 ### List (Default)
 ```
-Get-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterUri <String> [-DefaultProfile <PSObject>]
+Get-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterUri <String> -Name <String>
+Get-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterId <String> -Name <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -51,7 +51,7 @@ Get a load balancer of a connected cluster
 
 ## PARAMETERS
 
-### -ArcConnectedClusterUri
+### -ArcConnectedClusterId
 The fully qualified Azure Resource manager identifier of the resource.
 
 ```yaml

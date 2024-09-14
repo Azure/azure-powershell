@@ -14,20 +14,20 @@ Create a BgpPeer
 
 ### CreateExpanded (Default)
 ```
-New-AzKubernetesRuntimeBgpPeer -ArcConnectedClusterUri <String> -Name <String> [-MyAsn <Int32>]
+New-AzKubernetesRuntimeBgpPeer -ArcConnectedClusterId <String> -Name <String> [-MyAsn <Int32>]
  [-PeerAddress <String>] [-PeerAsn <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzKubernetesRuntimeBgpPeer -ArcConnectedClusterUri <String> -Name <String> -JsonFilePath <String>
+New-AzKubernetesRuntimeBgpPeer -ArcConnectedClusterId <String> -Name <String> -JsonFilePath <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzKubernetesRuntimeBgpPeer -ArcConnectedClusterUri <String> -Name <String> -JsonString <String>
+New-AzKubernetesRuntimeBgpPeer -ArcConnectedClusterId <String> -Name <String> -JsonString <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -45,7 +45,7 @@ Create a bgp peer from a connected cluster.
 
 ## PARAMETERS
 
-### -ArcConnectedClusterUri
+### -ArcConnectedClusterId
 The fully qualified Azure Resource manager identifier of the resource.
 
 ```yaml

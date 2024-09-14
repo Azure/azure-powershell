@@ -14,13 +14,13 @@ Get a BgpPeer
 
 ### List (Default)
 ```
-Get-AzKubernetesRuntimeBgpPeer -ArcConnectedClusterUri <String> [-DefaultProfile <PSObject>]
+Get-AzKubernetesRuntimeBgpPeer -ArcConnectedClusterId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzKubernetesRuntimeBgpPeer -ArcConnectedClusterUri <String> -Name <String> [-DefaultProfile <PSObject>]
+Get-AzKubernetesRuntimeBgpPeer -ArcConnectedClusterId <String> -Name <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -51,7 +51,7 @@ Get a bgp peer of a connected cluster
 
 ## PARAMETERS
 
-### -ArcConnectedClusterUri
+### -ArcConnectedClusterId
 The fully qualified Azure Resource manager identifier of the resource.
 
 ```yaml

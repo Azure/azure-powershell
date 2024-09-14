@@ -35,7 +35,7 @@ function Disable-AzKubernetesRuntimeStorageClass {
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Category('Path')]
         [System.String]
         # The resource uri of the connected cluster 
-        ${ArcConnectedClusterUri},
+        ${ArcConnectedClusterId},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]

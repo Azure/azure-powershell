@@ -77,7 +77,7 @@ directive:
   - where:
       parameter-name: ResourceUri
     set:
-      parameter-name: ArcConnectedClusterUri
+      parameter-name: ArcConnectedClusterId
       alias: ResourceUri
 
   - model-cmdlet:

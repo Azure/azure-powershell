@@ -14,13 +14,13 @@ Get a StorageClassResource
 
 ### List (Default)
 ```
-Get-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri <String> [-DefaultProfile <PSObject>]
+Get-AzKubernetesRuntimeStorageClass -ArcConnectedClusterId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri <String> -Name <String>
+Get-AzKubernetesRuntimeStorageClass -ArcConnectedClusterId <String> -Name <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -51,7 +51,7 @@ Gets detailed information of a storage class of a connected cluster
 
 ## PARAMETERS
 
-### -ArcConnectedClusterUri
+### -ArcConnectedClusterId
 The fully qualified Azure Resource manager identifier of the resource.
 
 ```yaml

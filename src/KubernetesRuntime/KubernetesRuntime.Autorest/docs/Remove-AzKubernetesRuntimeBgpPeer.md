@@ -14,7 +14,7 @@ Delete a BgpPeer
 
 ### Delete (Default)
 ```
-Remove-AzKubernetesRuntimeBgpPeer -ArcConnectedClusterUri <String> -Name <String> [-DefaultProfile <PSObject>]
+Remove-AzKubernetesRuntimeBgpPeer -ArcConnectedClusterId <String> -Name <String> [-DefaultProfile <PSObject>]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -38,7 +38,7 @@ Remove a bgp peer from a connected cluster.
 
 ## PARAMETERS
 
-### -ArcConnectedClusterUri
+### -ArcConnectedClusterId
 The fully qualified Azure Resource manager identifier of the resource.
 
 ```yaml

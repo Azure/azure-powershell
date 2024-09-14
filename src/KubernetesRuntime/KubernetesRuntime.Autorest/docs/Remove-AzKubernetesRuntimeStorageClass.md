@@ -14,7 +14,7 @@ Delete a StorageClassResource
 
 ### Delete (Default)
 ```
-Remove-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri <String> -Name <String>
+Remove-AzKubernetesRuntimeStorageClass -ArcConnectedClusterId <String> -Name <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -39,7 +39,7 @@ Remove a storage class from a connected cluster.
 
 ## PARAMETERS
 
-### -ArcConnectedClusterUri
+### -ArcConnectedClusterId
 The fully qualified Azure Resource manager identifier of the resource.
 
 ```yaml

@@ -14,12 +14,12 @@ Update a StorageClassResource
 
 ### UpdateExpanded (Default)
 ```
-Update-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri <String> -Name <String>
- [-AccessMode <String[]>] [-AllowVolumeExpansion <String>] [-DataResilience <String>]
- [-FailoverSpeed <String>] [-Limitation <String[]>] [-MountOption <String[]>] [-Performance <String>]
- [-Priority <Int64>] [-TypePropertyAzureStorageAccountKey <SecureString>]
- [-TypePropertyAzureStorageAccountName <String>] [-TypePropertyBackingStorageClassName <String>]
- [-TypePropertyDomain <String>] [-TypePropertyMountPermission <String>] [-TypePropertyOnDelete <String>]
+Update-AzKubernetesRuntimeStorageClass -ArcConnectedClusterId <String> -Name <String> [-AccessMode <String[]>]
+ [-AllowVolumeExpansion <String>] [-DataResilience <String>] [-FailoverSpeed <String>]
+ [-Limitation <String[]>] [-MountOption <String[]>] [-Performance <String>] [-Priority <Int64>]
+ [-TypePropertyAzureStorageAccountKey <SecureString>] [-TypePropertyAzureStorageAccountName <String>]
+ [-TypePropertyBackingStorageClassName <String>] [-TypePropertyDomain <String>]
+ [-TypePropertyMountPermission <String>] [-TypePropertyOnDelete <String>]
  [-TypePropertyPassword <SecureString>] [-TypePropertyServer <String>] [-TypePropertyShare <String>]
  [-TypePropertySource <String>] [-TypePropertySubDir <String>] [-TypePropertyUsername <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -40,13 +40,13 @@ Update-AzKubernetesRuntimeStorageClass -InputObject <IKubernetesRuntimeIdentity>
 
 ### UpdateViaJsonFilePath
 ```
-Update-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri <String> -Name <String> -JsonFilePath <String>
+Update-AzKubernetesRuntimeStorageClass -ArcConnectedClusterId <String> -Name <String> -JsonFilePath <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
-Update-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri <String> -Name <String> -JsonString <String>
+Update-AzKubernetesRuntimeStorageClass -ArcConnectedClusterId <String> -Name <String> -JsonString <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -107,7 +107,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ArcConnectedClusterUri
+### -ArcConnectedClusterId
 The fully qualified Azure Resource manager identifier of the resource.
 
 ```yaml

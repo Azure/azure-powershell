@@ -14,20 +14,20 @@ Create a LoadBalancer
 
 ### CreateExpanded (Default)
 ```
-New-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterUri <String> -Name <String> [-Address <String[]>]
+New-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterId <String> -Name <String> [-Address <String[]>]
  [-AdvertiseMode <String>] [-BgpPeer <String[]>] [-ServiceSelector <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterUri <String> -Name <String> -JsonFilePath <String>
+New-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterId <String> -Name <String> -JsonFilePath <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterUri <String> -Name <String> -JsonString <String>
+New-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterId <String> -Name <String> -JsonString <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -91,7 +91,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ArcConnectedClusterUri
+### -ArcConnectedClusterId
 The fully qualified Azure Resource manager identifier of the resource.
 
 ```yaml

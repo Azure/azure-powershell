@@ -14,13 +14,13 @@ Get a ServiceResource
 
 ### List (Default)
 ```
-Get-AzKubernetesRuntimeService -ArcConnectedClusterUri <String> [-DefaultProfile <PSObject>]
+Get-AzKubernetesRuntimeService -ArcConnectedClusterId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzKubernetesRuntimeService -ArcConnectedClusterUri <String> -Name <String> [-DefaultProfile <PSObject>]
+Get-AzKubernetesRuntimeService -ArcConnectedClusterId <String> -Name <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -81,7 +81,7 @@ Get a Kubernetes Runtime service object for a connected cluster.
 
 ## PARAMETERS
 
-### -ArcConnectedClusterUri
+### -ArcConnectedClusterId
 The fully qualified Azure Resource manager identifier of the resource.
 
 ```yaml
