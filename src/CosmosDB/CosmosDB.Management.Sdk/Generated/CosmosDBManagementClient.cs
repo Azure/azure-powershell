@@ -113,6 +113,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </summary>
         public virtual IPartitionKeyRangeIdRegionOperations PartitionKeyRangeIdRegion { get; private set; }
         /// <summary>
+        /// Gets the IGraphResourcesOperations
+        /// </summary>
+        public virtual IGraphResourcesOperations GraphResources { get; private set; }
+        /// <summary>
         /// Gets the ISqlResourcesOperations
         /// </summary>
         public virtual ISqlResourcesOperations SqlResources { get; private set; }
@@ -136,6 +140,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Gets the ILocationsOperations
         /// </summary>
         public virtual ILocationsOperations Locations { get; private set; }
+        /// <summary>
+        /// Gets the IDataTransferJobsOperations
+        /// </summary>
+        public virtual IDataTransferJobsOperations DataTransferJobs { get; private set; }
         /// <summary>
         /// Gets the ICassandraClustersOperations
         /// </summary>
@@ -456,12 +464,14 @@ namespace Microsoft.Azure.Management.CosmosDB
             this.CollectionPartition = new CollectionPartitionOperations(this);
             this.PartitionKeyRangeId = new PartitionKeyRangeIdOperations(this);
             this.PartitionKeyRangeIdRegion = new PartitionKeyRangeIdRegionOperations(this);
+            this.GraphResources = new GraphResourcesOperations(this);
             this.SqlResources = new SqlResourcesOperations(this);
             this.MongoDbResources = new MongoDbResourcesOperations(this);
             this.TableResources = new TableResourcesOperations(this);
             this.CassandraResources = new CassandraResourcesOperations(this);
             this.GremlinResources = new GremlinResourcesOperations(this);
             this.Locations = new LocationsOperations(this);
+            this.DataTransferJobs = new DataTransferJobsOperations(this);
             this.CassandraClusters = new CassandraClustersOperations(this);
             this.CassandraDataCenters = new CassandraDataCentersOperations(this);
             this.NotebookWorkspaces = new NotebookWorkspacesOperations(this);
@@ -481,7 +491,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             this.RestorableTableResources = new RestorableTableResourcesOperations(this);
             this.Service = new ServiceOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2023-11-15";
+            this.ApiVersion = "2024-02-15-preview";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;
@@ -513,8 +523,12 @@ namespace Microsoft.Azure.Management.CosmosDB
             };
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<BackupPolicy>("type"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<BackupPolicy>("type"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<DataTransferDataSourceSink>("component"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<DataTransferDataSourceSink>("component"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ServiceResourceProperties>("serviceType"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ServiceResourceProperties>("serviceType"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<BaseCosmosDataTransferDataSourceSink>("component"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<BaseCosmosDataTransferDataSourceSink>("component"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Azure.CloudErrorJsonConverter());

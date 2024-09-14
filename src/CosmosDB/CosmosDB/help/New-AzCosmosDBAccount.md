@@ -19,11 +19,13 @@ New-AzCosmosDBAccount [-EnableAutomaticFailover] [-EnableMultipleWriteLocations]
  -Name <String> [-DefaultConsistencyLevel <String>] [-IpRule <String[]>]
  [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>]
  [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
- [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] [-AsJob]
- [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
- [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>] [-EnableBurstCapacity <Boolean>]
- [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>] [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-EnablePartitionMerge <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>]
+ [-EnableBurstCapacity <Boolean>] [-EnablePriorityBasedExecution <Boolean>] [-DefaultPriorityLevel <String>]
+ [-AsJob] [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
+ [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>] [-BackupStorageRedundancy <String>]
+ [-BackupPolicyType <String>] [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-EnablePartitionMerge <Boolean>]
+ [-EnableMaterializedViews <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-EnablePerRegionPerPartitionAutoscale <Boolean>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -156,20 +158,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableBurstCapacity
-Bool to indicate if Burst Capacity is enabled on the account.
-
-```yaml
-Type: System.Nullable`1[System.Boolean]
-Parameter Sets: (All)
-Aliases:
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -BackupStorageRedundancy
 The redundancy type of the backup Storage account
 
@@ -207,6 +195,21 @@ The tier of continuous backups mode on the Cosmos DB account. Accepted values: C
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContinuousTier
+The tier of continuous backups mode on the Cosmos DB account. Accepted values: Continuous7Days, Continuous30Days
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
 Required: False
 Position: Named
 Default value: None
@@ -307,8 +310,69 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableBurstCapacity
+Bool to indicate if Burst Capacity is enabled on the account.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnablePriorityBasedExecution
+Bool to indicate if Priority Based Execution is enabled on the account.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultPriorityLevel
+Default priority level of requests for Cosmos DB database account.
+Accepted values: High, Low
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableFreeTier
 Bool to indicate if FreeTier is enabled on the account.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableMaterializedViews
+Bool to indicate if Materializedviews is enabled on the account.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -588,6 +652,21 @@ Array of PSVirtualNetworkRuleObjects for virtual network.
 
 ```yaml
 Type: Microsoft.Azure.Commands.CosmosDB.Models.PSVirtualNetworkRule[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnablePerRegionPerPartitionAutoscale
+Bool to indicate if per-region, per-partition autoscale is enabled on the account.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 

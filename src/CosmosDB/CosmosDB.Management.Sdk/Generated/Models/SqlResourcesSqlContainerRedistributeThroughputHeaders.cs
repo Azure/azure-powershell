@@ -7,18 +7,18 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 {
     using System.Linq;
 
-    public partial class ServiceCreateHeaders
+    public partial class SqlResourcesSqlContainerRedistributeThroughputHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the ServiceCreateHeaders class.
+        /// Initializes a new instance of the SqlResourcesSqlContainerRedistributeThroughputHeaders class.
         /// </summary>
-        public ServiceCreateHeaders()
+        public SqlResourcesSqlContainerRedistributeThroughputHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ServiceCreateHeaders class.
+        /// Initializes a new instance of the SqlResourcesSqlContainerRedistributeThroughputHeaders class.
         /// </summary>
 
         /// <param name="azureAsyncOperation">
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="location">
         /// </param>
-        public ServiceCreateHeaders(string azureAsyncOperation = default(string), string location = default(string))
+        public SqlResourcesSqlContainerRedistributeThroughputHeaders(string azureAsyncOperation = default(string), string location = default(string))
 
         {
             this.AzureAsyncOperation = azureAsyncOperation;

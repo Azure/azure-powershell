@@ -148,7 +148,7 @@ Try {
 
 function Test-MongoInAccountRestoreOperationsSharedRUResourcesCmdlets
 {
-  $AccountName = "mongo-db00045"
+  $AccountName = "mongo-db000045"
   $rgName = "CosmosDBResourceGroup46"
   $DatabaseName = "dbName"
   $CollectionName = "collection"
@@ -1132,4 +1132,212 @@ Try {
         Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
         Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
 	}
+}
+<#
+.SYNOPSIS
+Test mongodb collection Throughput redistribution cmdlets
+#>
+function Test-MongoDBCollectionAdaptiveRUCmdlets
+{
+  $AccountName = "mongomergeaccount"
+  $rgName = "canary-sdk-test"
+  $DatabaseName = "adaptiverudatabase"
+  $ContainerName = "adaptiveruContainer"
+
+  $ShardKey = "shardKeyPath"
+  $ContainerThroughputValue = 24000
+  $UpdatedContainerThroughputValue = 2000
+
+  Try{
+
+      New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      New-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $ContainerThroughputValue -Name $ContainerName -Shard $ShardKey
+      Update-AzCosmosDBMongoDBCollectionThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -Throughput $UpdatedContainerThroughputValue
+      $partitions = Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -AllPartitions
+      Assert-AreEqual $partitions.Count 4
+      $sources = @()
+      $targets = @()
+      Foreach($partition in $partitions)
+      {
+          Assert-AreEqual $partition.Throughput 500
+          if($partition.Id -lt 2)
+          {
+            $throughput = $partition.Throughput - 100
+            $sources += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partition.Id -Throughput $throughput
+          }
+          else
+          {
+              $throughput = $partition.Throughput + 100
+              $targets += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partition.Id -Throughput $throughput
+          }
+      }
+      
+      $newPartitions = Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -SourcePhysicalPartitionThroughputObject $sources -TargetPhysicalPartitionThroughputObject $targets
+      Assert-AreEqual $newPartitions.Count 4
+      Foreach($partition in $newPartitions)
+      {
+          if($partition.Id -lt 2)
+          {
+            Assert-AreEqual $partition.Throughput 400
+          }
+          else
+          {
+              Assert-AreEqual $partition.Throughput 600              
+          }
+      }      
+
+      $resetPartitions = Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -EqualDistributionPolicy
+      
+      Assert-AreEqual $resetPartitions.Count 4
+
+      Foreach($partition in $resetPartitions)
+      {
+          Assert-AreEqual $partition.Throughput 500          
+      }
+
+      $somePartitions = Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -PhysicalPartitionIds ('0', '1')
+      Assert-AreEqual $somePartitions.Count 2
+  }
+  Finally{
+      Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+      Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}
+
+<#
+.SYNOPSIS
+Test mongodb database Throughput redistribution cmdlets
+#>
+function Test-MongoDBDatabaseAdaptiveRUCmdlets
+{
+  $AccountName = "sharedadrutest"
+  $rgName = "canary-sdk-test"
+  $DatabaseName = "adaptiverudatabase"
+
+  $DatabaseThroughputValue = 34000
+  $UpdatedDatabaseThroughputValue = 2000
+
+  Try{
+      New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $DatabaseThroughputValue
+      Update-AzCosmosDBMongoDBDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $UpdatedDatabaseThroughputValue
+      $partitions = Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -AllPartitions
+      Assert-AreEqual $partitions.Count 4
+      $sources = @()
+      $targets = @()
+      $oldPartitions = @()
+      for($i = 0; $i -lt $partitions.Count; $i++)
+      {
+          Assert-AreEqual $partitions[$i].Throughput 500
+          if($i -lt 2)
+          {
+            $throughput = $partitions[$i].Throughput - 100
+            $sources += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partitions[$i].Id -Throughput $throughput
+          }
+          else
+          {
+              $throughput = $partitions[$i].Throughput + 100
+              $targets += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partitions[$i].Id -Throughput $throughput
+          }
+          $oldPartitions += $partitions[$i]
+      }
+      
+      $newPartitions = Update-AzCosmosDBMongoDBDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -SourcePhysicalPartitionThroughputObject $sources -TargetPhysicalPartitionThroughputObject $targets
+      Assert-AreEqual $newPartitions.Count 4
+      for($i = 0; $i -lt $newPartitions.Count; $i++)
+      {
+          if($newPartitions[$i].Id -eq $oldPartitions[0].Id -or $newPartitions[$i].Id -eq $oldPartitions[1].Id)
+          {
+              Assert-AreEqual $newPartitions[$i].Throughput 400
+          }
+          else
+          {
+              Assert-AreEqual $newPartitions[$i].Throughput 600              
+          }
+      }      
+      
+      $resetPartitions = Update-AzCosmosDBMongoDBDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -EqualDistributionPolicy
+      
+      Assert-AreEqual $resetPartitions.Count 4
+
+      Foreach($partition in $resetPartitions)
+      {
+          Assert-AreEqual $partition.Throughput 500          
+      }
+
+      $somePartitions = Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -PhysicalPartitionIds ($oldPartitions[0].Id, $oldPartitions[1].Id)
+      Assert-AreEqual $somePartitions.Count 2
+  }
+  Finally{
+      Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}
+
+<#
+.SYNOPSIS
+Test mongodb merge cmdlet
+#>
+function Test-MongoDBCollectionMergeCmdlet
+{
+  $AccountName = "mongomergeaccount"
+  $rgName = "canary-sdk-test"
+  $DatabaseName = "mergedatabase"
+  $ContainerName = "mergecontainer"
+
+  $ShardKey = "shardKeyPath"
+
+  $ContainerThroughputValue = 24000
+  $UpdatedContainerThroughputValue = 2000
+
+  Try{
+
+      New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      New-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $ContainerThroughputValue -Name $ContainerName -Shard $ShardKey
+      Update-AzCosmosDBMongoDBCollectionThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -Throughput $UpdatedContainerThroughputValue
+      $physicalPartitionStorageInfos = Invoke-AzCosmosDBMongoDBCollectionMerge -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -Force
+      Assert-AreEqual $physicalPartitionStorageInfos.Count 1
+      if($physicalPartitionStorageInfos[0].Id.contains("mergeTarget"))
+      {
+          throw "Name of partition: " + $physicalPartitionStorageInfos[0].Id + " Unexpected Id: mergeTarget"
+      }
+
+  }
+  Finally{
+      Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+      Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}
+
+<#
+.SYNOPSIS
+Test mongodb merge cmdlet
+#>
+function Test-MongoDBDatabaseMergeCmdlet
+{
+  $AccountName = "mongomergeaccount"
+  $rgName = "canary-sdk-test"
+  $DatabaseName = "mergedatabase"
+  $ContainerName = "mergecontainer"
+
+  $ShardKey = "shardKeyPath"
+
+  $ContainerThroughputValue = 24000
+  $UpdatedContainerThroughputValue = 2000
+
+  Try{
+
+      New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $ContainerThroughputValue
+      New-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -Shard $ShardKey
+      Update-AzCosmosDBMongoDBDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $UpdatedContainerThroughputValue
+      $physicalPartitionStorageInfos = Invoke-AzCosmosDBMongoDBDatabaseMerge -ResourceGroupName $rgName -AccountName $AccountName -Name $DatabaseName -Force
+      Assert-AreEqual $physicalPartitionStorageInfos.Count 1
+      if($physicalPartitionStorageInfos[0].Id.contains("mergeTarget"))
+      {
+          throw "Name of partition: " + $physicalPartitionStorageInfos[0].Id + " Unexpected Id: mergeTarget"
+      }
+
+  }
+  Finally{
+      Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+      Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
 }

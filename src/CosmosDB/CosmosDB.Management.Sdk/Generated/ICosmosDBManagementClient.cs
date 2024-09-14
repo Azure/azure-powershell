@@ -134,6 +134,11 @@ namespace Microsoft.Azure.Management.CosmosDB
         IPartitionKeyRangeIdRegionOperations PartitionKeyRangeIdRegion { get; }
 
         /// <summary>
+        /// Gets the IGraphResourcesOperations
+        /// </summary>
+        IGraphResourcesOperations GraphResources { get; }
+
+        /// <summary>
         /// Gets the ISqlResourcesOperations
         /// </summary>
         ISqlResourcesOperations SqlResources { get; }
@@ -162,6 +167,11 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Gets the ILocationsOperations
         /// </summary>
         ILocationsOperations Locations { get; }
+
+        /// <summary>
+        /// Gets the IDataTransferJobsOperations
+        /// </summary>
+        IDataTransferJobsOperations DataTransferJobs { get; }
 
         /// <summary>
         /// Gets the ICassandraClustersOperations

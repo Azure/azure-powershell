@@ -16,10 +16,6 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
 {
     internal static class Constants
     {
-
-        public const string DeprecateByAzVersion12 = "12.0.0";
-        public const string DeprecateByVersion2 = "2.0.0";
-
         public const string ResourceGroupNameHelpMessage = "Name of resource group.";
         public const string ResourceIdHelpMessage = "ResourceId of the resource.";
 
@@ -54,17 +50,22 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string AccountKeyTypeHelpMessage = "Value from: {ConnectionStrings, Keys, ReadOnlyKeys}. Default is Keys.";
         public const string DisableKeyBasedMetadataWriteAccessHelpMessage = "Disable write operations on metadata resources (databases, containers, throughput) via account keys";
         public const string PublicNetworkAccessHelpMessage = "Whether or not public endpoint access is allowed for this server. Possible values include: 'Enabled', 'Disabled'";
+        public const string DisableTtlHelpMessage = "Bool to indicate if restored account is going to have Time-To-Live disabled.";
         public const string KeyVaultUriHelpMessage = "URI of the KeyVault";
         public const string EnableFreeTierHelpMessage = "Bool to indicate if FreeTier is enabled on the account.";
         public const string EnableAnalyticalStorageHelpMessage = "Bool to indicate if AnalyticalStorage is enabled on the account.";
+        public const string EnableMaterializedViewsHelpMessage = "Bool to indicate if Materializedviews is enabled on the account.";
         public const string EnableBurstCapacityHelpMessage = "Bool to indicate if Burst Capacity is enabled on the account.";
         public const string ServerVersionHelpMessage = "ServerVersion, valid only in case of MongoDB Accounts.";
         public const string NetworkAclBypassHelpMessage = "Whether or not Network Acl Bypass is enabled for this account for Synapse Link. Possible values include: 'None', 'AzureServices'.";
         public const string NetworkAclBypassResourceIdHelpMessage = "List of Resource Ids to allow Network Acl Bypass for Synapse Link.";
         public const string DatabaseResourceIdHelpMessage = "ResourceId of the database.";
         public const string AnalyticalStorageSchemaTypeHelpMessage = "The schema type for analytical storage. Valid values include: 'WellDefined' and 'FullFidelity'.";
+        public const string EnablePriorityBasedExecutionHelpMessage = "Bool to indicate if Priority Based Execution is enabled on the account.";
+        public const string DefaultPriorityLevelHelpMessage = "The Default Priority Level of requests for the CosmosDB database account. Accepted values: High, Low. Default is High.";
         public const string EnablePartitionMergeHelpMessage = "Enables partition merge feature on the Cosmos DB database account. Accepted values: false, true";
         public const string MinimalTlsVersionHelpMessage = "Indicates the minimum allowed Tls version. The default value is Tls 1.2. Cassandra and Mongo APIs only work with Tls 1.2. Possible values include: 'Tls', 'Tls11', 'Tls12'.";
+        public const string EnablePerRegionPerPartitionAutoscaleHelpMessage = "Bool to indicate if Per-Region, Per-Partition autoscale is enabled on the account.";
 
         //Restore specific help messages
         public const string IsRestoreRequestHelpMessage = "Indicates that the new Cosmos DB account request is a restore request.";
@@ -77,10 +78,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string RestoreDatabaseNameHelpMessage = "The name of the database to restore";
         public const string RestoreCollectionNamesHelpMessage = "The names of the collections to be restored. (If not provided, all the collections will be restored)";
         public const string RestoreSourceDatabaseAccountNameHelpMessage = "The name of the source database account of the restore.";
-        public const string RestoreLocationNameHelpMessage = "The location of the source account from which restore is triggered. This will also be the write region of the restored account";
+        public const string RestoreLocationNameHelpMessage = "This is the write region of the restored account. This is also the location of the source account where its backups are located if source_backup_location is not provided.";
         public const string RestorableDatabaseAccountObjectHelpMessage = "CosmosDB Restorable Database Account object";
         public const string RestorableSqlDatabaseObjectHelpMessage = "CosmosDB Restorable Sql Database object";
         public const string RestorableMongoDBDatabaseObjectHelpMessage = "CosmosDB Restorable MongoDB Database object";
+        public const string SourceBackupLocationHelpMessage = "This is the location of the source account where backups are located. Provide this value if the source and target are in different locations.";
 
         //Backup specific help messages
         public const string BackupPolicyHelpMessage = "The backup policy to indicate how the backups of the account should be taken";
@@ -142,9 +144,19 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string CompositePathHelpMessage = "The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)";
         public const string CompositePathOrderTypeHelpMessage = " Gets or sets sort order for composite paths. Possible values include: 'Ascending', 'Descending'";
         public const string SqlContainerAnalyticalStorageTtlHelpMessage = "TTL for Analytical Storage (in Seconds).";
+        public const string SqlContainerMaterializedViewHelpMessage = "Materializedview Definition";
         public const string ClientEncryptionKeyObjectHelpMessage = "Client Encryption Key object.";
         public const string RestorableSqlContainersFeedStartTimeHelpMessage = "Restorable Sql containers event feed start time.";
         public const string RestorableSqlContainersFeedEndTimeHelpMessage = "Restorable Sql containers event feed end time.";
+        public const string IsPartitionMergeSimulationHelpMessage = "Boolean to indicate whether or not this is a simulated operation (true if not specified).";
+        public const string PhysicalPartitionIdHelpMessage = "Id of the physical partition.";
+        public const string PhysicalPartitionThroughputHelpMessage = "Throughput of the physical partition.";
+        public const string SourcePhysicalPartitionThroughputHelpMessage = "Source physical partitions";
+        public const string TargetPhysicalPartitionThroughputHelpMessage = "Target physical partitions";
+        public const string GetAllPhysicalPartitionsThroughputHelpMessage = "Set this switch to get the throughput for all physical partitions.";
+        public const string ResetPartitionThroughputLayoutHelpMessage = "Set this switch to reset the throughput layout for all partitions.";
+        public const string PhysicalPartitionThroughputInfosHelpMessage = "List of PhysicalPartitionInfo objects for which throughput needs to be retrieved..";
+        public const string PhysicalPartitionIdsHelpMessage = "List of PhysicalPartitionId for which throughput needs to be retrieved.";
 
         //SQL Client Side Encryption
         public const string ClientEncryptionKeyName = "Client Encryption Key name.";

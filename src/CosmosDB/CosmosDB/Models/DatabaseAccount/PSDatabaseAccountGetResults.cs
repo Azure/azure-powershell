@@ -67,8 +67,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             RestoreParameters = new PSRestoreParameters(databaseAccountGetResults.RestoreParameters);
             CreateMode = databaseAccountGetResults.CreateMode;
             AnalyticalStorageConfiguration = new PSAnalyticalStorageConfiguration(databaseAccountGetResults.AnalyticalStorageConfiguration);
+            EnableMaterializedViews = databaseAccountGetResults.EnableMaterializedViews;
+            EnablePriorityBasedExecution = databaseAccountGetResults.EnablePriorityBasedExecution;
+            DefaultPriorityLevel = databaseAccountGetResults.DefaultPriorityLevel;
             EnablePartitionMerge = databaseAccountGetResults.EnablePartitionMerge;
             MinimalTlsVersion = databaseAccountGetResults.MinimalTlsVersion;
+            EnablePerRegionPerPartitionAutoscale = databaseAccountGetResults.EnablePerRegionPerPartitionAutoscale;
         }
 
         //
@@ -177,6 +181,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets the URI of the key vault
         public string KeyVaultKeyUri { get; set; }
+        //
+        // Summary:
         //     Gets or sets list of Private Endpoint Connections configured for the Cosmos DB account.
         public IList<PrivateEndpointConnection> PrivateEndpointConnections { get; set; }
         //
@@ -236,9 +242,26 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         //     Gets or sets the AnalyticalStorageConfiguration of the CosmosDB Account
         public PSAnalyticalStorageConfiguration AnalyticalStorageConfiguration { get; set; }
         //
+        // Summary:
+        //     Gets or sets flag to indicate whether materialized views is enabled.
+        public bool? EnableMaterializedViews { get; set; }
+        //
+        // Summary:
+        //     Gets or sets flag to indicate whether Priority Based Execution is enabled.
+        public bool? EnablePriorityBasedExecution { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the DefaultPriorityLevel of the CosmosDB Account.
+        public string DefaultPriorityLevel { get; set; }
+        //
         //
         // Summary:
         //     Gets or sets the MinimalTlsVersion of the CosmosDB Account
         public string MinimalTlsVersion { get; set; }
+        //
+        //
+        // Summary:
+        //     Gets or sets flag to indicate whether per-region, per-partition autoscale is enabled.
+        public bool? EnablePerRegionPerPartitionAutoscale { get; set; }
     }
 }

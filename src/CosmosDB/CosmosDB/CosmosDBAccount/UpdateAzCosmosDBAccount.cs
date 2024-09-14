@@ -98,22 +98,38 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 databaseAccountUpdateParameters.EnableAnalyticalStorage = EnableAnalyticalStorage;
             }
-            if (EnablePartitionMerge != null)
-            {
-                databaseAccountUpdateParameters.EnablePartitionMerge = EnablePartitionMerge;
-            }
             if (EnableBurstCapacity != null)
             {
                 databaseAccountUpdateParameters.EnableBurstCapacity = EnableBurstCapacity;
+            }
+            if(EnableMaterializedViews != null)
+            {
+                databaseAccountUpdateParameters.EnableMaterializedViews = EnableMaterializedViews;
+            }
+            if (EnablePartitionMerge != null)
+            {
+                databaseAccountUpdateParameters.EnablePartitionMerge = EnablePartitionMerge;
             }
             if (NetworkAclBypass != null)
             {
                 databaseAccountUpdateParameters.NetworkAclBypass =
                     NetworkAclBypass == "AzureServices" ? SDKModel.NetworkAclBypass.AzureServices : SDKModel.NetworkAclBypass.None;
             }
+            if (EnablePriorityBasedExecution != null)
+            {
+                databaseAccountUpdateParameters.EnablePriorityBasedExecution = EnablePriorityBasedExecution;
+            }
+            if (DefaultPriorityLevel != null)
+            {
+                databaseAccountUpdateParameters.DefaultPriorityLevel = DefaultPriorityLevel;
+            }
             if(MinimalTlsVersion != null)
             {
                 databaseAccountUpdateParameters.MinimalTlsVersion = MinimalTlsVersion;
+            }
+            if (EnablePerRegionPerPartitionAutoscale != null)
+            {
+                databaseAccountUpdateParameters.EnablePerRegionPerPartitionAutoscale = EnablePerRegionPerPartitionAutoscale;
             }
 
             if (!string.IsNullOrEmpty(DefaultConsistencyLevel))
@@ -196,7 +212,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
             }
 
-            // Update backup policy to ContinuousModeBackupPolicy
             if (!string.IsNullOrEmpty(ContinuousTier))
             {
                 if (!(!string.IsNullOrEmpty(BackupPolicyType) &&
@@ -233,7 +248,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     };
                 }
             }
-
+            
             // Update analytical storage schema type.
             databaseAccountUpdateParameters.AnalyticalStorageConfiguration = CreateAnalyticalStorageConfiguration(AnalyticalStorageSchemaType);
 
