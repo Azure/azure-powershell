@@ -30,6 +30,9 @@
 * Added support for `DefaultOutboundAccess` property in `Set-AzVirtualNetworkSubnetConfig` command
 * Added support for `EnabledFilteringCriteria` property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
 * Added support of `UserAssignedIdentityId` Property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
+* Added support of `DestinationIPAddress` property in `New-AzPrivateLinkService` command
+    - `LoadBalancerFrontendIpConfiguration` is not a mandatory parameter anymore.
+    - The user can provide either `LoadBalancerFrontendIpConfiguration` or `DestinationIPAddress`.
 
 ## Version 7.8.0
 * Added new cmdlets to support Save & Commit (AzureFirewallPolicy draft)
