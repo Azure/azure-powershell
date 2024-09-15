@@ -911,5 +911,9 @@
   {
     "alias": "Astro",
     "module": "Astro"
+  },
+  {
+    "module": "Fabric",
+    "alias": "Fabric"
   }
 ]
