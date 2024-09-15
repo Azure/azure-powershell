@@ -20,7 +20,8 @@ New-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> [-Su
  [-DistributionVersion <String>] [-Infrastructure <String>] [-PrivateLinkScopeResourceId <String>]
  [-PrivateLinkState <PrivateLinkState>] [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>]
  [-CustomLocationsOid <String>] [-AcceptEULA] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ConfigurationSetting <Hashtable>] [-ConfigurationProtectedSetting <Hashtable>] [-GatewayResourceId <String>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -199,6 +200,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ConfigurationProtectedSetting
+Arc Agentry System Protected Configuration (hash table of hash tables).
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConfigurationSetting
+Arc Agentry System Configuration (hash table of hash tables).
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ContainerLogPath
 Override the default container log path to enable fluent-bit logging.
 
@@ -276,6 +307,21 @@ Accept wildcard characters: False
 
 ### -DistributionVersion
 The Kubernetes distribution version on this connected cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GatewayResourceId
+Arc Gateway resource Id
 
 ```yaml
 Type: System.String
@@ -454,6 +500,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProvisioningState
 Provisioning state of the connected cluster resource.
 
@@ -568,7 +629,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster
 
 ## NOTES
 
