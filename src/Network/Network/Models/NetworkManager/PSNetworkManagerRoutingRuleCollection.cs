@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
         [JsonProperty(Order = 1)]
         public IList<PSNetworkManagerRoutingGroupItem> AppliesTo { get; set; }
 
-        public SwitchParameter DisableBgpRoutePropagation { get; set; }
+        public string DisableBgpRoutePropagation { get; set; }
 
         [JsonIgnore]
         public string AppliesToText

@@ -708,7 +708,7 @@ function Test-NetworkManagerResourceMinimumParameterCreate
         [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerRoutingGroupItem]]$configGroup  = @() 
         $groupItem = New-AzNetworkManagerRoutingGroupItem -NetworkGroupId $subnetNetworkGroup.Id
         $configGroup.Add($groupItem)
-        New-AzNetworkManagerRoutingRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -Name $RuleCollectionName -AppliesTo $configGroup 
+        New-AzNetworkManagerRoutingRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -Name $RuleCollectionName -AppliesTo $configGroup -DisableBgpRoutePropagation "True"
         
         # Create a routing rule
         $destination = New-AzNetworkManagerRoutingRuleDestination -DestinationAddress "10.1.1.1/32" -Type "AddressPrefix" 
@@ -819,7 +819,7 @@ function Test-NetworkManagerRoutingRuleCRUD
         $configGroup.Add($vnetGroupItem)
         $configGroup.Add($subnetGroupItem)
 
-        New-AzNetworkManagerRoutingRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -Name $RuleCollectionName -AppliesTo $configGroup -DisableBgpRoutePropagation
+        New-AzNetworkManagerRoutingRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -Name $RuleCollectionName -AppliesTo $configGroup -DisableBgpRoutePropagation "False"
 
         $ruleCollection = Get-AzNetworkManagerRoutingRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -Name $RuleCollectionName
         Assert-NotNull $ruleCollection;
@@ -1020,6 +1020,7 @@ function Test-NetworkManagerSecurityUserRuleCRUD
         # Add destination address prefix items to the array
         $destinationAddressPrefixes = @()
         $destinationAddressPrefixes += New-AzNetworkManagerAddressPrefixItem -AddressPrefix "6.6.6.6/32" -AddressPrefixType "IPPrefix"
+        $destinationAddressPrefixes += New-AzNetworkManagerAddressPrefixItem -AddressPrefix "7.7.7.7/32" -AddressPrefixType "IPPrefix"
 
         $sourcePortList = @("100", "80")
         $destinationPortList = @("99", "200")
@@ -1037,8 +1038,12 @@ function Test-NetworkManagerSecurityUserRuleCRUD
         Assert-AreEqual "200" $userRule.DestinationPortRanges[1]
         Assert-AreEqual "10.1.0.0/24" $userRule.Sources[0].AddressPrefix
         Assert-AreEqual "IPPrefix" $userRule.Sources[0].AddressPrefixType
+        Assert-AreEqual "50.1.0.0/24" $userRule.Sources[1].AddressPrefix
+        Assert-AreEqual "IPPrefix" $userRule.Sources[1].AddressPrefixType
         Assert-AreEqual "6.6.6.6/32" $userRule.Destinations[0].AddressPrefix
         Assert-AreEqual "IPPrefix" $userRule.Destinations[0].AddressPrefixType
+        Assert-AreEqual "7.7.7.7/32" $userRule.Destinations[1].AddressPrefix
+        Assert-AreEqual "IPPrefix" $userRule.Destinations[1].AddressPrefixType
 
         # Validate List Security User rule command
         $userRules = Get-AzNetworkManagerSecurityUserRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -SecurityUserConfigurationName $SecurityUserConfigurationName -RuleCollectionName $RuleCollectionName
@@ -1089,7 +1094,8 @@ function Test-NetworkManagerSecurityUserRuleCRUD
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 	}
-    finally{
+    finally
+    {
         # Cleanup
         Clean-ResourceGroup $rgname
 	}

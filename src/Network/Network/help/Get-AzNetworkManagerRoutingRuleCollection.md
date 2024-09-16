@@ -48,7 +48,7 @@ AppliesTo         : [
                         "NetworkGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/testng"
                       }
                     ]
-DisableBgpRoutePropagation : False
+DisableBgpRoutePropagation : "False"
 SystemData        : {
                       "CreatedBy": "00000000-0000-0000-0000-000000000000",
                       "CreatedByType": "Application",
@@ -78,7 +78,7 @@ AppliesTo         : [
                         "NetworkGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/testng"
                       }
                     ]
-DisableBgpRoutePropagation : False
+DisableBgpRoutePropagation : "False"
 SystemData        : {
                       "CreatedBy": "00000000-0000-0000-0000-000000000000",
                       "CreatedByType": "Application",
