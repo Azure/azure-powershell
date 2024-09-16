@@ -24,7 +24,7 @@ The **New-AzNetworkManagerRoutingRuleNextHop** cmdlet creates a network manager 
 
 ### Example 1
 ```powershell
-New-AzNetworkManagerRoutingRuleNextHop -DestinationAddress "ApiManagement" -Type "ServiceTag"
+New-AzNetworkManagerRoutingRuleNextHop -NextHopAddress "ApiManagement" -NextHopType "ServiceTag"
 ```
 
 ```output
