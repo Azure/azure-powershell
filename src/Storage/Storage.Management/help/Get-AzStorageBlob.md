@@ -474,6 +474,22 @@ Accept wildcard characters: False
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
+## BlobProperties
+
+Lists the blob properties that include (but not limited to) LastModified, CreatedOn, Metadata, ObjectReplicationDestinationPolicyId, ObjectReplicationSourceProperties, BlobType, CopyCompletedOn, CopyStatusDescription, CopyProgress, CopyStatus, BlobCopyStatus, IsIncrementalCopy, DestinationSnapshot, LeaseDuration, LeaseState, LeaseStatus, ContentLength, ContentType, ETag, ContentHash, ContentEncoding, ContentDisposition, ContentLanguage, CacheControl, BlobSequenceNumber, AcceptRanges, BlobCommittedBlockCount, IsServerEncrypted, EncryptionKeySha256, EncryptionScope, AccessTier, AccessTierInferred, ArchiveStatus, AccessTierChangedOn, VersionId, IsLatestVersion, TagCount, ExpiresOn, IsSealed, RehydratePriority, LastAccessed, ImmutabilityPolicy, HasLegalHold
+
+## EXAMPLE
+
+```powershell
+(Get-AzStorageBlob -Container "ContainerName" -Blob "blob" -Context $ctx).BlobProperties.ImmutabilityPolicy
+```
+
+```output
+ExpiresOn                   PolicyMode
+---------                   ----------
+9/17/2024 2:49:32 AM +00:00   Unlocked
+```
+
 ## INPUTS
 
 ### System.String
