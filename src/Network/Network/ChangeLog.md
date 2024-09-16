@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Onboarded `Microsoft.VideoIndexer/accounts` to private link cmdlets
 * Added support to create, get and delete Bastion shareable links
     - `New-AzBastionShareableLink`
     - `Get-AzBastionShareableLink`
@@ -41,6 +42,9 @@
     - `New/Get/Remove/Set-AzNetworkManagerSecurityUserRule`
     - `New-AzNetworkManagerSecurityUserGroupItem`
 * Added support for `MemberType` property in `New-AzNetworkManagerSecurityUserGroupItem` command
+* Added support of `DestinationIPAddress` property in `New-AzPrivateLinkService` command
+    - `LoadBalancerFrontendIpConfiguration` is not a mandatory parameter anymore.
+    - The user can provide either `LoadBalancerFrontendIpConfiguration` or `DestinationIPAddress`.
 
 ## Version 7.8.0
 * Added new cmdlets to support Save & Commit (AzureFirewallPolicy draft)
