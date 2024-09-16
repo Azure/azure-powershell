@@ -896,17 +896,39 @@ function Test-NetworkManagerRoutingRuleCRUD
         # Uncomment during Record to allow time for commit
         # Start-TestSleep -Seconds 60
 
-        $job = Remove-AzNetworkManagerRoutingRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName -ForceDelete -PassThru -Force -AsJob;
-        $job | Wait-Job;
-        $removeResult = $job | Receive-Job;
+        try
+        {
+            $job = Remove-AzNetworkManagerRoutingRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName -ForceDelete -PassThru -Force -AsJob;
+            $job | Wait-Job;
+            $removeResult = $job | Receive-Job;
 
-        $job = Remove-AzNetworkManagerRoutingRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -Name $RuleCollectionName -ForceDelete -PassThru -Force -AsJob;
-        $job | Wait-Job;
-        $removeResult = $job | Receive-Job;
+            # Get the network manager routing rule
+            $networkManagerRoutingRule = Get-AzNetworkManagerRoutingRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName
+        }
+        catch { }
 
-        $job = Remove-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName -ForceDelete -PassThru -Force -AsJob;
-        $job | Wait-Job;
-        $removeResult = $job | Receive-Job;
+
+        try
+        {
+            $job = Remove-AzNetworkManagerRoutingRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -Name $RuleCollectionName -ForceDelete -PassThru -Force -AsJob;
+            $job | Wait-Job;
+            $removeResult = $job | Receive-Job;
+
+            # Get the network manager routing rule collection
+            $networkManagerRoutingRuleCollection = Get-AzNetworkManagerRoutingRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -Name $RuleCollectionName
+        }
+        catch { }
+
+        try
+        {
+            $job = Remove-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName -ForceDelete -PassThru -Force -AsJob;
+            $job | Wait-Job;
+            $removeResult = $job | Receive-Job;
+
+            # Get the network manager routing rule collection
+            $networkManagerRoutingConfiguration = Get-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName
+        }
+        catch { }
 
         $job = Remove-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $vnetNetworkGroupName -Name $staticMemberName -PassThru -Force -AsJob;
         $job | Wait-Job;
@@ -1078,17 +1100,38 @@ function Test-NetworkManagerSecurityUserRuleCRUD
         # Uncomment during Record to allow time for commit
         # Start-TestSleep -Seconds 60
 
-        $job = Remove-AzNetworkManagerSecurityUserRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName -ForceDelete -PassThru -Force -AsJob;
-        $job | Wait-Job;
-        $removeResult = $job | Receive-Job;
+        try {
+            # Remove the network manager security user rule
+            $job = Remove-AzNetworkManagerSecurityUserRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName -ForceDelete -PassThru -Force -AsJob
+            $job | Wait-Job
+            $removeResult = $job | Receive-Job
 
-        $job = Remove-AzNetworkManagerSecurityUserRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName -Name $RuleCollectionName -ForceDelete -PassThru -Force -AsJob;
-        $job | Wait-Job;
-        $removeResult = $job | Receive-Job;
+            # Get the network manager security user rule
+            $networkManagerSecurityUserRule = Get-AzNetworkManagerSecurityUserRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName
+        }
+        catch { }
 
-        $job = Remove-AzNetworkManagerSecurityUserConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityUserConfigurationName -ForceDelete -PassThru -Force -AsJob;
-        $job | Wait-Job;
-        $removeResult = $job | Receive-Job;
+        try {
+			# Remove the network manager security user rule collection
+			$job = Remove-AzNetworkManagerSecurityUserRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName -Name $RuleCollectionName -ForceDelete -PassThru -Force -AsJob
+			$job | Wait-Job
+			$removeResult = $job | Receive-Job
+
+			# Get the network manager security user rule collection
+			$networkManagerSecurityUserRuleCollection = Get-AzNetworkManagerSecurityUserRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName -Name $RuleCollectionName
+		}
+		catch { }
+
+        try {
+            # Remove the network manager security user configuration
+            $job = Remove-AzNetworkManagerSecurityUserConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityUserConfigurationName -ForceDelete -PassThru -Force -AsJob;
+            $job | Wait-Job;
+            $removeResult = $job | Receive-Job;
+
+            # Get the network manager security user configuration
+            $networkManagerSecurityUserConfiguration = Get-AzNetworkManagerSecurityUserConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityUserConfigurationName
+        }
+        catch { }
 
         $job = Remove-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $networkGroupName -Name $staticMemberName -PassThru -Force -AsJob;
         $job | Wait-Job;
