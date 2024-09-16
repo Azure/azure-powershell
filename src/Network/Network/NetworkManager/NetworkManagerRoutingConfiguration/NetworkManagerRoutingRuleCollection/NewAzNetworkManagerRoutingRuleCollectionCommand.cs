@@ -78,10 +78,10 @@ namespace Microsoft.Azure.Commands.Network
         public virtual PSNetworkManagerRoutingGroupItem[] AppliesTo { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "DisableBgpRoutePropagation.")]
-        public SwitchParameter DisableBgpRoutePropagation { get; set; } = true;
+        public string DisableBgpRoutePropagation { get; set; }
 
         [Parameter(
             Mandatory = false,
