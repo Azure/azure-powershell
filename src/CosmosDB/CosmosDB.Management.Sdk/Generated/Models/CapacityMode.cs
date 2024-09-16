@@ -7,18 +7,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 {
 
     /// <summary>
-    /// Defines values for ServerVersion.
+    /// Defines values for CapacityMode.
     /// </summary>
 
 
-    public static class ServerVersion
+    public static class CapacityMode
     {
-        public const string Three2 = "3.2";
-        public const string Three6 = "3.6";
-        public const string Four0 = "4.0";
-        public const string Four2 = "4.2";
-        public const string Five0 = "5.0";
-        public const string Six0 = "6.0";
-        public const string Seven0 = "7.0";
+        public const string None = "None";
+        public const string Provisioned = "Provisioned";
+        public const string Serverless = "Serverless";
     }
 }

@@ -7,18 +7,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 {
 
     /// <summary>
-    /// Defines values for ServerVersion.
+    /// Defines values for CapacityModeTransitionStatus.
     /// </summary>
 
 
-    public static class ServerVersion
+    public static class CapacityModeTransitionStatus
     {
-        public const string Three2 = "3.2";
-        public const string Three6 = "3.6";
-        public const string Four0 = "4.0";
-        public const string Four2 = "4.2";
-        public const string Five0 = "5.0";
-        public const string Six0 = "6.0";
-        public const string Seven0 = "7.0";
+        public const string Invalid = "Invalid";
+        public const string Initialized = "Initialized";
+        public const string InProgress = "InProgress";
+        public const string Completed = "Completed";
+        public const string Failed = "Failed";
     }
 }
