@@ -32,12 +32,12 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: edf14cc0a577f6b9c4e3ce018cec0c383e64b7b0
+commit: 40923289b489ac3f2a96d274ca5fbf0e4457e5d4
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/preview/2024-06-01-preview/redisenterprise.json
+  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/preview/2024-09-01-preview/redisenterprise.json
 
 module-version: 1.0.0
 title: RedisEnterpriseCache
@@ -80,6 +80,11 @@ directive:
       alias:
         - Get-AzRedisEnterpriseCacheDatabaseKey
         - Get-AzRedisEnterpriseCacheAccessKey
+  - where:
+      verb: New
+      subject: AccessPolicyAssignmentUpdate
+    set:
+      subject: AccessPolicyAssignment
   - where:
       verb: Import|Export
       subject: (^Database)(.*)
