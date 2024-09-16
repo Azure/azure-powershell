@@ -205,7 +205,7 @@ directive:
       default:
         script: "'latest'"
 
-  # Rename Get-StandbyVirtualMachine to StandbyVM
+  # Remove Get-StandbyVirtualMachine
   - where:
       verb: Get
       subject: StandbyVirtualMachine
