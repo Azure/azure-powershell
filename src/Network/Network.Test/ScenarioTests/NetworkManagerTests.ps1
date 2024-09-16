@@ -23,7 +23,7 @@ function Test-NetworkManagerCRUD
     $rgName = Get-ResourceGroupName
     $networkManagerName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
+    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
     $managementGroupId = "/providers/Microsoft.Management/managementGroups/SwaggerStackTestMG"
 
     try{
@@ -78,7 +78,7 @@ function Test-NetworkManagerGroupCRUD
     $networkManagerName = Get-ResourceName
     $networkGroupName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
+    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
 
     try{
         #Create the resource group
@@ -139,8 +139,8 @@ function Test-NetworkManagerStaticMemberCRUD
     $networkGroupName = Get-ResourceName
     $staticMemberName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
-    $vnetId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
+    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
+    $vnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
 
     try{
         #Create the resource group
@@ -206,9 +206,9 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
     $staticMemberName = Get-ResourceName
     $connectivityConfigurationName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
-    $vnetId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
-    $hubId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet-Hub" 
+    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
+    $vnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
+    $hubId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet-Hub" 
     $vnetName = "SwaggerStackVnet"
     $vnetRGName = "SwaggerStackRG"
     
@@ -269,7 +269,8 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         $regions = @($rglocation)  
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -ConfigurationId $configids -CommitType "Connectivity" 
 
-        Start-TestSleep -Seconds 60
+        # Uncomment during Record to allow time for commit
+        # Start-TestSleep -Seconds 60
 
         $deploymentStatus = Get-AzNetworkManagerDeploymentStatus -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Region $regions -DeploymentType "Connectivity"
         Assert-NotNull $deploymentStatus;
@@ -306,7 +307,8 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
 
         $job = Remove-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $connectivityConfigurationName -ForceDelete -PassThru -Force -AsJob;
 
-        Start-TestSleep -Seconds 60
+        # Uncomment during Record to allow time for commit
+        # Start-TestSleep -Seconds 60
 
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
@@ -346,8 +348,8 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
     $RuleCollectionName = Get-ResourceName
     $RuleName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
-    $vnetId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
+    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
+    $vnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
     $vnetName = "SwaggerStackVnet"
     $vnetRGName = "SwaggerStackRG"
 
@@ -434,7 +436,8 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         $regions = @($rglocation)  
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -ConfigurationId $configids -CommitType "SecurityAdmin" 
 
-        Start-TestSleep -Seconds 60
+        # Uncomment during Record to allow time for commit
+        # Start-TestSleep -Seconds 60
        
         $deploymentStatus = Get-AzNetworkManagerDeploymentStatus -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Region $regions -DeploymentType "SecurityAdmin"
         Assert-NotNull $deploymentStatus;
@@ -483,7 +486,8 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
 
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -CommitType "SecurityAdmin" 
 
-        Start-TestSleep -Seconds 60
+        # Uncomment during Record to allow time for commit
+        # Start-TestSleep -Seconds 60
 
         $job = Remove-AzNetworkManagerSecurityAdminRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -SecurityAdminConfigurationName $SecurityConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName -ForceDelete -PassThru -Force -AsJob;
         $job | Wait-Job;
@@ -528,7 +532,7 @@ function Test-NetworkManagerScopeConnectionCRUD
     $networkManagerName = Get-ResourceName
     $scopeConnectionName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
+    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
 
     try{
         #Create the resource group
@@ -579,7 +583,7 @@ function Test-NetworkManagerSubscriptionConnectionCRUD
 {
     # Setup
     $networkManagerConnectionName = Get-ResourceName
-    $networkManagerId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/networkManagers/SwaggerStackNetworkManager"
+    $networkManagerId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/networkManagers/SwaggerStackNetworkManager"
 
     try{
         New-AzNetworkManagerSubscriptionConnection -Name $networkManagerConnectionName -NetworkManagerId $networkManagerId -Description "SampleDescription" 
@@ -609,7 +613,7 @@ function Test-NetworkManagerManagementGroupConnectionCRUD
 {
     # Setup
     $networkManagerConnectionName = Get-ResourceName
-    $networkManagerId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/networkManagers/SwaggerStackNetworkManager"
+    $networkManagerId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/networkManagers/SwaggerStackNetworkManager"
     $managementGroupId = "SwaggerStackTestMG"
 
     try{
@@ -652,9 +656,9 @@ function Test-NetworkManagerResourceMinimumParameterCreate
     $RuleName = Get-ResourceName
     $scopeConnectionName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
-    $vnetId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
-    $subnetId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet/subnets/subnet1"
+    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
+    $vnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
+    $subnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet/subnets/subnet1"
 
     try{
         #Create the resource group
@@ -761,9 +765,9 @@ function Test-NetworkManagerRoutingRuleCRUD
     $RuleCollectionName = Get-ResourceName
     $RuleName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
-    $vnetId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
-    $subnetId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet/subnets/subnet1"
+    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
+    $vnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
+    $subnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet/subnets/subnet1"
     $vnetName = "SwaggerStackVnet"
     $vnetRGName = "SwaggerStackRG"
 
@@ -879,7 +883,8 @@ function Test-NetworkManagerRoutingRuleCRUD
         $regions = @($rglocation)  
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -ConfigurationId $configIds -CommitType "Routing" 
 
-        Start-TestSleep -Seconds 60
+        # Uncomment during Record to allow time for commit
+        # Start-TestSleep -Seconds 60
        
         $deploymentStatus = Get-AzNetworkManagerDeploymentStatus -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Region $regions -DeploymentType "Routing"
         Assert-NotNull $deploymentStatus;
@@ -888,7 +893,8 @@ function Test-NetworkManagerRoutingRuleCRUD
 
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -CommitType "Routing" 
 
-        Start-TestSleep -Seconds 60
+        # Uncomment during Record to allow time for commit
+        # Start-TestSleep -Seconds 60
 
         $job = Remove-AzNetworkManagerRoutingRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName -ForceDelete -PassThru -Force -AsJob;
         $job | Wait-Job;
@@ -945,9 +951,9 @@ function Test-NetworkManagerSecurityUserRuleCRUD
     $RuleCollectionName = Get-ResourceName
     $RuleName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
-    $vnetId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
-    $subnetId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet/subnets/subnet1"
+    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
+    $vnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
+    $subnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet/subnets/subnet1"
     $vnetName = "SwaggerStackVnet"
     $vnetRGName = "SwaggerStackRG"
 
@@ -1059,7 +1065,8 @@ function Test-NetworkManagerSecurityUserRuleCRUD
         $regions = @($rglocation)  
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -ConfigurationId $configIds -CommitType "SecurityUser" 
 
-        Start-TestSleep -Seconds 60
+        # Uncomment during Record to allow time for commit
+        # Start-TestSleep -Seconds 60
        
         $deploymentStatus = Get-AzNetworkManagerDeploymentStatus -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Region $regions -DeploymentType "SecurityUser"
         Assert-NotNull $deploymentStatus;
@@ -1068,7 +1075,8 @@ function Test-NetworkManagerSecurityUserRuleCRUD
 
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -CommitType "SecurityUser" 
 
-        Start-TestSleep -Seconds 60
+        # Uncomment during Record to allow time for commit
+        # Start-TestSleep -Seconds 60
 
         $job = Remove-AzNetworkManagerSecurityUserRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName -ForceDelete -PassThru -Force -AsJob;
         $job | Wait-Job;
