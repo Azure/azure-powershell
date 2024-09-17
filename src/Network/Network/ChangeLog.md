@@ -51,6 +51,7 @@
 ## Version 7.8.1
 * Fixed secrets exposure in example documentation.
 * Onboarded `Microsoft.App/managedEnvironments` to private link cmdlets
+* Added support for `PrivateEndpointVNetPolicies` property in `New-AzVirtualNetwork`
 
 ## Version 7.8.0
 * Added new cmdlets to support Save & Commit (AzureFirewallPolicy draft)
