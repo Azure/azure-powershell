@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501
         /// The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Inlined)]
-        public string ManagedDiskKeySource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionEntitiesDefinitionInternal)Entity).ManagedDiskKeySource; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource? ManagedDiskKeySource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionEntitiesDefinitionInternal)Entity).ManagedDiskKeySource; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionEntitiesDefinitionInternal)Entity).ManagedDiskKeySource = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource)""); }
 
         /// <summary>The name of KeyVault key.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Inlined)]
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501
         /// The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Inlined)]
-        public string ManagedServiceKeySource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionEntitiesDefinitionInternal)Entity).ManagedServiceKeySource; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource? ManagedServiceKeySource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionEntitiesDefinitionInternal)Entity).ManagedServiceKeySource; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionEntitiesDefinitionInternal)Entity).ManagedServiceKeySource = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource)""); }
 
         /// <summary>The name of KeyVault key.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Databricks.PropertyOrigin.Inlined)]
@@ -71,14 +71,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501
         /// <summary>Internal Acessors for EntityManagedService</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionV2 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspacePropertiesEncryptionInternal.EntityManagedService { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionEntitiesDefinitionInternal)Entity).ManagedService; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionEntitiesDefinitionInternal)Entity).ManagedService = value; }
 
-        /// <summary>Internal Acessors for ManagedDiskKeySource</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspacePropertiesEncryptionInternal.ManagedDiskKeySource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionEntitiesDefinitionInternal)Entity).ManagedDiskKeySource; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionEntitiesDefinitionInternal)Entity).ManagedDiskKeySource = value; }
-
         /// <summary>Internal Acessors for ManagedDiskKeyVaultProperty</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IManagedDiskEncryptionKeyVaultProperties Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspacePropertiesEncryptionInternal.ManagedDiskKeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionEntitiesDefinitionInternal)Entity).ManagedDiskKeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionEntitiesDefinitionInternal)Entity).ManagedDiskKeyVaultProperty = value; }
-
-        /// <summary>Internal Acessors for ManagedServiceKeySource</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspacePropertiesEncryptionInternal.ManagedServiceKeySource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionEntitiesDefinitionInternal)Entity).ManagedServiceKeySource; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionEntitiesDefinitionInternal)Entity).ManagedServiceKeySource = value; }
 
         /// <summary>Internal Acessors for ManagedServiceKeyVaultProperty</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionV2KeyVaultProperties Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspacePropertiesEncryptionInternal.ManagedServiceKeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionEntitiesDefinitionInternal)Entity).ManagedServiceKeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionEntitiesDefinitionInternal)Entity).ManagedServiceKeyVaultProperty = value; }
@@ -98,11 +92,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Description = @"The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault",
         SerializedName = @"keySource",
-        PossibleTypes = new [] { typeof(string) })]
-        string ManagedDiskKeySource { get;  }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource? ManagedDiskKeySource { get; set; }
         /// <summary>The name of KeyVault key.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
         Required = false,
@@ -142,11 +136,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Description = @"The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault",
         SerializedName = @"keySource",
-        PossibleTypes = new [] { typeof(string) })]
-        string ManagedServiceKeySource { get;  }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource? ManagedServiceKeySource { get; set; }
         /// <summary>The name of KeyVault key.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
         Required = false,
@@ -186,7 +180,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501
         /// <summary>
         /// The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault
         /// </summary>
-        string ManagedDiskKeySource { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource? ManagedDiskKeySource { get; set; }
         /// <summary>The name of KeyVault key.</summary>
         string ManagedDiskKeyVaultPropertiesKeyName { get; set; }
         /// <summary>The URI of KeyVault.</summary>
@@ -202,7 +196,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501
         /// <summary>
         /// The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault
         /// </summary>
-        string ManagedServiceKeySource { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource? ManagedServiceKeySource { get; set; }
         /// <summary>Key Vault input properties for encryption.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionV2KeyVaultProperties ManagedServiceKeyVaultProperty { get; set; }
         /// <summary>The name of KeyVault key.</summary>

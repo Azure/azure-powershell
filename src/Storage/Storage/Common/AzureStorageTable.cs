@@ -19,7 +19,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     using global::Azure.Data.Tables;
     using Microsoft.Azure.Cosmos.Table;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
-    using Microsoft.WindowsAzure.Commands.Storage;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
 
     /// <summary>
     /// Azure storage table object

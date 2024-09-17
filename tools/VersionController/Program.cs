@@ -208,15 +208,15 @@ namespace VersionController
             var executingAssemblyPath = Assembly.GetExecutingAssembly().Location;
             var versionControllerDirectory = Directory.GetParent(executingAssemblyPath).FullName;
             var miniVersionFile = Path.Combine(versionControllerDirectory, "MinimalVersion.csv");
+            var changedModuleNames = changedModules.Select(c => Path.GetFileName(c).Replace(".psd1", ""));
             if (File.Exists(miniVersionFile))
             {
                 var file = File.ReadAllLines(miniVersionFile);
                 var header = file.First();
-                var lines = file.Skip(1).Where(c => !string.IsNullOrEmpty(c));
+                var lines = file.Skip(1).Where(c => !string.IsNullOrWhiteSpace(c));
 
                 var bumpingModule = _moduleNameFilter.Replace(Psd1NameExtension, "");
                 List<string> _minimalVersionContent = new List<string>() { header };
-
                 foreach (var line in lines)
                 {
                     var cols = line.Split(",").Select(c => c.StartsWith("\"") ? c.Substring(1) : c)
@@ -227,7 +227,8 @@ namespace VersionController
                         _minimalVersion.Add(cols[0], new AzurePSVersion(cols[1]));
 
                         // Bump one module, only remove its minimal version from MinimalVersion.csv content
-                        if (!string.IsNullOrEmpty(bumpingModule) && !cols[0].Equals(bumpingModule))
+                        if (!string.IsNullOrEmpty(bumpingModule) && !cols[0].Equals(bumpingModule) ||
+                            !changedModuleNames.Contains(cols[0]))
                         {
                             _minimalVersionContent.Add(line);
                         }
