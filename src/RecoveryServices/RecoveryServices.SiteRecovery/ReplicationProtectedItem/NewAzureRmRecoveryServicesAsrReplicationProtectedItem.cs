@@ -223,8 +223,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets the ID of the Azure storage account to replicate to.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails)]
         [ValidateNotNullOrEmpty]
         public string RecoveryAzureStorageAccountId { get; set; }
@@ -839,6 +839,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         Resources.DiskTagCannotBeSet,
                         this.DiskTag,
                         this.UseManagedDisk));
+            }
+
+            if(!string.IsNullOrEmpty(this.RecoveryAzureStorageAccountId)
+                && !string.IsNullOrEmpty(this.LogStorageAccountId))
+            {
             }
 
             if (!string.IsNullOrEmpty(this.RecoveryAzureNetworkId))
