@@ -315,6 +315,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string Location { get => _parametersBody.Location ?? null; set => _parametersBody.Location = value; }
 
+        /// <summary>
+        /// The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault",
+        SerializedName = @"keySource",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource ManagedDiskKeySource { get => _parametersBody.ManagedDiskKeySource ?? ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource)""); set => _parametersBody.ManagedDiskKeySource = value; }
+
         /// <summary>The name of KeyVault key.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of KeyVault key.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
@@ -371,6 +385,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         SerializedName = @"managedResourceGroupId",
         PossibleTypes = new [] { typeof(string) })]
         public string ManagedResourceGroupId { get => _parametersBody.ManagedResourceGroupId ?? null; set => _parametersBody.ManagedResourceGroupId = value; }
+
+        /// <summary>
+        /// The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault",
+        SerializedName = @"keySource",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource))]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource ManagedServiceKeySource { get => _parametersBody.ManagedServiceKeySource ?? ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource)""); set => _parametersBody.ManagedServiceKeySource = value; }
 
         /// <summary>The name of KeyVault key.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of KeyVault key.")]

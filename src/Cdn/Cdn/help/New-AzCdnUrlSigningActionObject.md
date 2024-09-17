@@ -14,7 +14,7 @@ Create an in-memory object for UrlSigningAction.
 
 ```
 New-AzCdnUrlSigningActionObject -Name <DeliveryRuleAction> [-ParameterAlgorithm <Algorithm>]
- [-ParameterNameOverride <IUrlSigningParamIdentifier[]>] [-ProgressAction <ActionPreference>]
+ [-ParameterNameOverride <IUrlSigningParamIdentifier[]>]
  [<CommonParameters>]
 ```
 
@@ -77,21 +77,6 @@ To construct, see NOTES section for PARAMETERNAMEOVERRIDE properties and create 
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IUrlSigningParamIdentifier[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
