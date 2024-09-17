@@ -1,4 +1,3 @@
-```csharp
 //
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
@@ -81,13 +80,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     if (this.IsParameterBound(c => c.Redeploy))
                     {
-                        parameters.Redeploy = this.Redeploy; // This line is causing the error
+                        var redeployResult = DedicatedHostsClient.Redeploy(resourceGroupName, hostGroupName, Name);
+                        WriteObject(redeployResult);
                     }
+                    else
+                    {
+                        var result = DedicatedHostsClient.Update(resourceGroupName, hostGroupName, Name, parameters);
 
-                    var result = DedicatedHostsClient.Update(resourceGroupName, hostGroupName, Name, parameters);
-                    var psObject = new PSHost();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<DedicatedHost, PSHost>(result, psObject);
-                    WriteObject(psObject);
+                        var psObject = new PSHost();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<DedicatedHost, PSHost>(result, psObject);
+                        WriteObject(psObject);
+                    }
                 }
             });
         }
@@ -129,7 +132,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public DedicatedHostLicenseTypes LicenseType { get; set; }
 
         [Parameter(
-            Mandatory = false)]
+            Mandatory = false,
+            HelpMessage = "Redeploy the dedicated host. The operation will complete successfully once the dedicated host has migrated to a new node and is running. To determine the health of VMs deployed on the dedicated host after the redeploy check the Resource Health Center in the Azure Portal. Please refer to https://docs.microsoft.com/azure/service-health/resource-health-overview for more details.")]
         public bool Redeploy { get; set; }
 
         [Parameter(
@@ -141,4 +145,3 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
     }
 }
-```
