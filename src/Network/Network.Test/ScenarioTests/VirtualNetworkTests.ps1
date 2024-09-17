@@ -1841,7 +1841,7 @@ function Test-VirtualNetworkPrivateEndpointVNetPolicies
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
         # Create two virtual networks with encryption property
-        New-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.1.0.0/16 -EnableEncryption true -EncryptionEnforcementPolicy "dropUnencrypted" -PrivateEndpointVNetPolicies "Disabled"
+        New-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.1.0.0/16 -EnableEncryption true -EncryptionEnforcementPolicy "dropUnencrypted" -PrivateEndpointVNetPoliciesValue "Disabled"
         New-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.2.0.0/16 -EnableEncryption true -EncryptionEnforcementPolicy "dropUnencrypted"
 
         # Perform GET operations to retrieve both virtual networks and verify that the encryption property is set to the expected value
