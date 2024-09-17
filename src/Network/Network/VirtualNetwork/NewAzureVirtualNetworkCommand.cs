@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The PrivateEndpointVNetPolicies of the virtual network")]
-        public string PrivateEndpointVNetPolicies { get; set; }
+        public string PrivateEndpointVNetPoliciesValue { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -197,6 +197,11 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrEmpty(this.EdgeZone))
             {
                 vnet.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
+            }
+
+            if(!string.IsNullOrEmpty(this.PrivateEndpointVNetPoliciesValue))
+            {
+                vnet.PrivateEndpointVNetPolicies = this.PrivateEndpointVNetPoliciesValue;
             }
 
             // Map to the sdk object
