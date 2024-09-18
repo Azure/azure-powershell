@@ -74,8 +74,6 @@ directive:
   - model-cmdlet:
     - model-name: ManagedIdentitySpec
       cmdlet-name: New-AzHdInsightOnAksManagedIdentityObject
-    - model-name: ClusterHotfixUpgradeProperties
-      cmdlet-name: New-AzHdInsightOnAksClusterHotfixUpgradeObject
     - model-name: ClusterPoolAksPatchVersionUpgradeProperties
       cmdlet-name: New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject
     - model-name: NodeProfile
@@ -340,9 +338,22 @@ directive:
 # The below customize the output model   
   - where:
       verb: Update
-      subject: [Cluster|ClusterPool] 
+      subject: [Cluster] 
       variant: [Upgrade|UpgradeExpanded|UpgradeViaIdentity|UpgradeViaIdentityExpanded|UpgradeViaJsonFilePath|UpgradeViaJsonString]
     set:
-      verb: Upgrade
-
+      verb: Invoke
+      subject: ClusterUpgrade
+  - where:
+      verb: Update
+      subject: [ClusterManualRollback] 
+      variant: [Upgrade|UpgradeExpanded|UpgradeViaIdentity|UpgradeViaIdentityExpanded|UpgradeViaJsonFilePath|UpgradeViaJsonString]
+    set:
+      verb: Invoke
+  - where:
+      verb: Update
+      subject: [ClusterPool] 
+      variant: [Upgrade|UpgradeExpanded|UpgradeViaIdentity|UpgradeViaIdentityExpanded|UpgradeViaJsonFilePath|UpgradeViaJsonString]
+    set:
+      verb: Invoke
+      subject: ClusterPoolUpgrade
 ```
