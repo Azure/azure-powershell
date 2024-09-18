@@ -394,13 +394,12 @@ function Set-AzConnectedKubernetes {
             }
             if ((-not $PSBoundParameters.ContainsKey('GatewayResourceId')) -and (-not [String]::IsNullOrEmpty($InputObject.GatewayResourceId))) {
                 $GatewayResourceId = $InputObject.GatewayResourceId
+                $PSBoundParameters.Add('GatewayResourceId', $GatewayResourceId)
             }
 
             if (-not $PSBoundParameters.ContainsKey('DisableGateway')) {
-                #XW remove debug log
-                $DisalbeAutoUpgradeFromInputObject = $InputObject.ArcAgentProfileAgentAutoUpgrade
-                Write-Debug "DisableGateway: $DisalbeAutoUpgradeFromInputObject"
                 $DisableGateway = ($InputObject.ArcAgentProfileAgentAutoUpgrade -eq 'Disabled')
+                $PSBoundParameters.Add('GatewayEnabled', $DisableGateway)
             }
         }
 
@@ -484,7 +483,7 @@ function Set-AzConnectedKubernetes {
 
         $options = ""
 
-        if ($DisableAutoUpgrade) {
+        if ($DisableAutoUpgrade -or ($ExistConnectedKubernetes.ArcAgentProfileAgentAutoUpgrade -eq 'Disabled')) {
             $options += " --set systemDefaultValues.azureArcAgents.autoUpdate=false"
             $Null = $PSBoundParameters.Remove('DisableAutoUpgrade')
             $PSBoundParameters.Add('ArcAgentProfileAgentAutoUpgrade', 'Disabled')
@@ -523,6 +522,9 @@ function Set-AzConnectedKubernetes {
         #Endregion
 
         #Region Deal with configuration settings and protected settings
+        
+        # If the user does not provide proxy settings, or configuration settings, we shall use arc config of existing object
+        $useExistingArcConfiguration = $true
         if ($null -eq $ConfigurationSetting) {
             $ConfigurationSetting = @{}
         }
@@ -534,6 +536,7 @@ function Set-AzConnectedKubernetes {
             foreach ($arcAgentConfig in $InputObject.ArcAgentryConfiguration) {
                 $ConfigurationSetting[$arcAgentConfig.feature] = $arcAgentConfig.settings
                 $ConfigurationProtectedSetting[$arcAgentConfig.feature] = $arcAgentConfig.protectedSettings
+                $useExistingArcConfiguration = $false
             }
         }
 
@@ -549,6 +552,7 @@ function Set-AzConnectedKubernetes {
             # Note how we are removing k8s parameters from the list of parameters
             # to pass to the internal (creates ARM object) command.
             $Null = $PSBoundParameters.Remove('HttpProxy')
+            $useExistingArcConfiguration = $false
         }
         if (-not ([string]::IsNullOrEmpty($HttpsProxy))) {
             $HttpsProxyStr = $HttpsProxy.ToString()
@@ -556,17 +560,20 @@ function Set-AzConnectedKubernetes {
             $HttpsProxyStr = $HttpsProxyStr -replace '/', '\/'
             $ConfigurationProtectedSetting["proxy"]["https_proxy"] = $HttpsProxyStr
             $Null = $PSBoundParameters.Remove('HttpsProxy')
+            $useExistingArcConfiguration = $false
         }
         if (-not ([string]::IsNullOrEmpty($NoProxy))) {
             $NoProxy = $NoProxy -replace ',', '\,'
             $NoProxy = $NoProxy -replace '/', '\/'
             $ConfigurationProtectedSetting["proxy"]["no_proxy"] = $NoProxy
             $Null = $PSBoundParameters.Remove('NoProxy')
+            $useExistingArcConfiguration = $false
         }        
 
         try {
             if ((-not ([string]::IsNullOrEmpty($ProxyCert))) -and (Test-Path $ProxyCert)) {
                 $ConfigurationProtectedSetting["proxy"]["proxy_cert"] = $ProxyCert
+                $useExistingArcConfiguration = $false
             }
         }
         catch {
@@ -623,17 +630,22 @@ function Set-AzConnectedKubernetes {
         # values from $PSBoundParameters.
         if ($PSBoundParameters.ContainsKey('ConfigurationSetting')) {
             $PSBoundParameters.Remove('ConfigurationSetting')
+            $useExistingArcConfiguration = $false
         }
         if ($PSBoundParameters.ContainsKey('ConfigurationProtectedSetting')) {
             $PSBoundParameters.Remove('ConfigurationProtectedSetting')
+            $useExistingArcConfiguration = $false
         }
 
-        # XW what if input object has configs but set not provide such
-        $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
-        
+        if ($useExistingArcConfiguration) {
+            $PSBoundParameters.Add('ArcAgentryConfiguration', $ExistConnectedKubernetes.ArcAgentryConfiguration)        
+        } else {
+            $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
+        }
+
         $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes @PSBoundParameters
-        if ($Response.StatusCode -ne 200) {
-            Write-Error "Failed to update connected kubernetes resource."
+        if ((-not $WhatIfPreference) -and (-not $Response)) {
+            Write-Error "Failed to update the connected cluster resource"
             return
         }
         $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration $RedactedProtectedConfiguration -CCRP $false
@@ -650,7 +662,12 @@ function Set-AzConnectedKubernetes {
             $Response['properties'] = @{}
         }
 
-        $Response['properties']['arcAgentryConfigurations'] = $arcAgentryConfigs
+        if ($useExistingArcConfiguration) {
+            $Response['properties']['arcAgentryConfigurations'] = $ExistConnectedKubernetes.ArcAgentryConfiguration        
+        } else {
+            $Response['properties']['arcAgentryConfigurations'] = $arcAgentryConfigs
+        }
+        
 
         # Retrieving Helm chart OCI (Open Container Initiative) Artifact location
         Write-Debug "Retrieving Helm chart OCI (Open Container Initiative) Artifact location."

@@ -585,6 +585,11 @@ function New-AzConnectedKubernetes {
         Write-Verbose "Creating 'Kubernetes - Azure Arc' object in Azure"
         $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
 
+        if ((-not $WhatIfPreference) -and (-not $Response)) {
+            Write-Error "Failed to create the connected cluster resource."
+            return
+        }
+
         $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration $RedactedProtectedConfiguration -CCRP $false
 
         # Convert the $Response object into a nested hashtable.
@@ -659,7 +664,7 @@ function New-AzConnectedKubernetes {
             $options += " --debug"
         }
         if ($PSCmdlet.ShouldProcess($ClusterName, "Update Kubernetes cluster with Azure Arc")) {
-            Write-Output "Executing helm upgrade command, this can take a few minutes...."
+            Write-Host "Executing helm upgrade command, this can take a few minutes...."
             try {
                 helm upgrade `
                     --install azure-arc `
