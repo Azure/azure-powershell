@@ -12,21 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commerce.UsageAggregates;
-
 namespace Microsoft.Azure.Commands.UsageAggregates
 {
     using Commerce.UsageAggregates.Models;
     using Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.Common.Authentication;
+    using Microsoft.Azure.Commerce.UsageAggregates;
     using ResourceManager.Common;
     using System;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, "UsageAggregates"), OutputType(typeof(UsageAggregationGetResponse))]
-    public class GetUsageAggregatesCommand : AzureRMCmdlet
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "UsageAggregates"), OutputType(typeof(UsageAggregationGetResponse))]
+    [Alias("Get-UsageAggregates")]
+    public class GetAzureRmUsageAggregatesCommand : AzureRMCmdlet
     {
         private UsageAggregationManagementClient _theClient;
         private AggregationGranularity _aggregationGranularity = AggregationGranularity.Daily;
