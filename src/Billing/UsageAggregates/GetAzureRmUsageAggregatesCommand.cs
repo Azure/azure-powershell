@@ -12,12 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;	
+using Microsoft.Azure.Commands.Common.Authentication.Models;	
+using Microsoft.Azure.Commerce.UsageAggregates;
+
 namespace Microsoft.Azure.Commands.UsageAggregates
 {
     using Commerce.UsageAggregates.Models;
     using Common.Authentication.Abstractions;
-    using Microsoft.Azure.Commands.Common.Authentication;
-    using Microsoft.Azure.Commerce.UsageAggregates;
     using ResourceManager.Common;
     using System;
     using System.Management.Automation;

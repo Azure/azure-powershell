@@ -38,7 +38,9 @@ This command retrieves the reported usage data for the subscription between 5/2/
 ## PARAMETERS
 
 ### -AggregationGranularity
-Value is either daily (default) or hourly to tell the API how to return the results grouped by day or hour.
+Specifies the aggregation precision of the data.	Value is either daily (default) or hourly to tell the API how to return the results grouped by day or hour.
+Valid values are: Daily and Hourly.	
+The default value is Daily.
 
 ```yaml
 Type: Microsoft.Azure.Commerce.UsageAggregates.Models.AggregationGranularity
@@ -54,7 +56,11 @@ Accept wildcard characters: False
 ```
 
 ### -ContinuationToken
-Retrieved from previous calls, this is the bookmark used for progress when the responses are paged.
+Specifies the continuation token that was retrieved from the response body in the previous call.	Retrieved from previous calls, this is the bookmark used for progress when the responses are paged.
+For a large result set, responses are paged by using continuation tokens.	
+The continuation token serves as a bookmark for progress.	
+If you do not specify this parameter, the data is retrieved from the beginning of the day or hour specified in *ReportedStartTime*.	
+We recommend that you follow the next link in the response to page though the data.
 
 ```yaml
 Type: System.String
@@ -84,7 +90,11 @@ Accept wildcard characters: False
 ```
 
 ### -ReportedEndTime
-The end of the time range to retrieve data for.
+Specifies the reported end time for when resource usage was recorded in the Azure billing system.	The end of the time range to retrieve data for.
+Azure is a distributed system, spanning multiple datacenters around the world, so there is a delay between when the resource was actually consumed, which is the resource usage time, and when the usage event reached the billing system, which is the resource usage reported time.	
+In order to get all usage events for a subscription that are reported for a time period, you query by reported time.	
+Even though you query by reported time, the cmdlet aggregates the response data by the resource usage time.	
+The resource usage data is the useful pivot for analyzing the data.
 
 ```yaml
 Type: System.DateTime
@@ -99,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReportedStartTime
-The start of the time range to retrieve data for.
+Specifies the reported start time for when resource usage was recorded in the Azure billing system.
 
 ```yaml
 Type: System.DateTime
@@ -114,7 +124,11 @@ Accept wildcard characters: False
 ```
 
 ### -ShowDetails
-When set to true (default), the aggregates are broken down into the instance metadata which is more granular.
+Indicates whether this cmdlet returns instance-level details with the usage data.	When set to true (default), the aggregates are broken down into the instance metadata which is more granular.
+The default value is $True.	
+If $False, the service aggregates the results on the server side, and therefore returns fewer aggregate groups.	
+For example, if you are running three websites, by default you will get three line items for website consumption.	
+However, when the value is $False, all the data for the same **subscriptionId**, **meterId**, **usageStartTime**, and **usageEndTime** is collapsed into a single line item.
 
 ```yaml
 Type: System.Boolean
