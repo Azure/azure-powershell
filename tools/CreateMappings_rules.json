@@ -915,5 +915,9 @@
   {
     "module": "Fabric",
     "alias": "Fabric"
+  },
+  {
+    "alias": "KubernetesRuntime",
+    "module": "KubernetesRuntime"
   }
 ]
