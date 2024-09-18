@@ -3381,8 +3381,8 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - tjsomasundaram
-            - aimankhan
+            - sreehari-ms
+            - vivekkhare31
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -3767,6 +3767,22 @@ configuration:
         - mentionUsers:
             mentionees:
             - nazang
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: SelfHelp
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: SelfHelp
+        then:
+        - mentionUsers:
+            mentionees:
+            - kenabd
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
