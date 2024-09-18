@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;	
+using Microsoft.Azure.Commands.Common.Authentication.Models;	
 using Microsoft.Azure.Commerce.UsageAggregates;
 
 namespace Microsoft.Azure.Commands.UsageAggregates
@@ -25,12 +24,13 @@ namespace Microsoft.Azure.Commands.UsageAggregates
     using System;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, "UsageAggregates"), OutputType(typeof(UsageAggregationGetResponse))]
-    public class GetUsageAggregatesCommand : AzureRMCmdlet
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "UsageAggregate"), OutputType(typeof(UsageAggregationGetResponse))]
+    [Alias("Get-UsageAggregates")]
+    public class GetAzureRmUsageAggregateCommand : AzureRMCmdlet
     {
         private UsageAggregationManagementClient _theClient;
         private AggregationGranularity _aggregationGranularity = AggregationGranularity.Daily;
-        private bool _showDetails = true;
+        private bool _showDetail = true;
 
         [Parameter(Mandatory = true, HelpMessage = "The start of the time range to retrieve data for.")]
         public DateTime ReportedStartTime { get; set; }
@@ -45,11 +45,12 @@ namespace Microsoft.Azure.Commands.UsageAggregates
             set { _aggregationGranularity = value; }
         }
 
+        [Alias("ShowDetails")]
         [Parameter(Mandatory = false, HelpMessage = "When set to true (default), the aggregates are broken down into the instance metadata which is more granular.")]
-        public bool ShowDetails
+        public bool ShowDetail
         {
-            get { return _showDetails; }
-            set { _showDetails = value; }
+            get { return _showDetail; }
+            set { _showDetail = value; }
         }
 
         [Parameter(Mandatory = false, HelpMessage = "Retrieved from previous calls, this is the bookmark used for progress when the responses are paged.")]
@@ -64,7 +65,7 @@ namespace Microsoft.Azure.Commands.UsageAggregates
             }
 
             UsageAggregationGetResponse aggregations = _theClient.UsageAggregates.Get(ReportedStartTime,
-                ReportedEndTime, AggregationGranularity, ShowDetails,
+                ReportedEndTime, AggregationGranularity, ShowDetail,
                 ContinuationToken);
 
             WriteObject(aggregations);

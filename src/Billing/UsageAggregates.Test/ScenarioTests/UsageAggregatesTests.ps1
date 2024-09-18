@@ -16,8 +16,8 @@
 .SYNOPSIS
 Tests retrieving some usage data
 #>
-function Test-GetUsageAggregatesWithDefaultParameters()
+function Test-GetAzUsageAggregateWithDefaultParameters()
 {
-	$result = Get-UsageAggregates -ReportedStartTime "5/1/2015" -ReportedEndTime "5/2/2015"
+	$result = Get-AzUsageAggregate -ReportedStartTime "5/1/2015" -ReportedEndTime "5/2/2015"
 	Write-Debug $result
 }

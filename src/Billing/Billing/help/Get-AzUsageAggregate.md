@@ -1,12 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.UsageAggregates.dll-Help.xml
 Module Name: Az.Billing
-ms.assetid: 52B3ECCB-80E5-4E16-954A-B83D0BDC7E22
-online version: https://learn.microsoft.com/powershell/module/az.billing/get-usageaggregates
+online version: https://learn.microsoft.com/powershell/module/az.billing/get-azusageaggregate
 schema: 2.0.0
 ---
 
-# Get-UsageAggregates
+# Get-AzUsageAggregate
 
 ## SYNOPSIS
 Gets the reported Azure subscription usage details.
@@ -14,13 +13,13 @@ Gets the reported Azure subscription usage details.
 ## SYNTAX
 
 ```
-Get-UsageAggregates -ReportedStartTime <DateTime> -ReportedEndTime <DateTime>
- [-AggregationGranularity <AggregationGranularity>] [-ShowDetails <Boolean>] [-ContinuationToken <String>]
+Get-AzUsageAggregate -ReportedStartTime <DateTime> -ReportedEndTime <DateTime>
+ [-AggregationGranularity <AggregationGranularity>] [-ShowDetail <Boolean>] [-ContinuationToken <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-UsageAggregates** cmdlet gets aggregated Azure subscription usage data by the following properties: 
+The **Get-AzUsageAggregate** cmdlet gets aggregated Azure subscription usage data by the following properties: 
 - Start and end times of when the usage was reported.
 - Aggregation precision, either daily or hourly.
 - Instance level detail for multiple instances of the same resource.
@@ -31,7 +30,7 @@ For more information, see Azure Billing REST API Referencehttps://msdn.microsoft
 
 ### Example 1: Retrieve subscription data
 ```powershell
-Get-UsageAggregates -ReportedStartTime "5/2/2015" -ReportedEndTime "5/5/2015"
+Get-AzUsageAggregate -ReportedStartTime "5/2/2015" -ReportedEndTime "5/5/2015"
 ```
 
 This command retrieves the reported usage data for the subscription between 5/2/2015 and 5/5/2015.
@@ -76,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -124,7 +123,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ShowDetails
+### -ShowDetail
 Indicates whether this cmdlet returns instance-level details with the usage data.
 The default value is $True.
 If $False, the service aggregates the results on the server side, and therefore returns fewer aggregate groups.
@@ -134,7 +133,7 @@ However, when the value is $False, all the data for the same **subscriptionId**,
 ```yaml
 Type: System.Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: ShowDetails
 
 Required: False
 Position: Named
@@ -144,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
