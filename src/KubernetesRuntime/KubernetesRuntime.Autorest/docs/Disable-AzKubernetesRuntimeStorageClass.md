@@ -24,7 +24,7 @@ Disable Arc storage class service in a connected cluster.
 
 ### Example 1: Disable Arc storage class service in a connected cluster
 ```powershell
-Disable-AzKubernetesRuntimeStorageClass -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1
+Disable-AzKubernetesRuntimeStorageClass -ArcConnectedClusterId /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1
 ```
 
 ```output

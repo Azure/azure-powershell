@@ -37,7 +37,7 @@ Get a ServiceResource
 
 ### Example 1: Get all Kubernetes Runtime service objects in a cluster
 ```powershell
-Get-AzKubernetesRuntimeService -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1
+Get-AzKubernetesRuntimeService -ArcConnectedClusterId /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1
 ```
 
 ```output
@@ -59,7 +59,7 @@ Get all Kubernetes Runtime service objects for the connected cluster.
 
 ### Example 2: Get a Kubernetes Runtime service object for a connected cluster.
 ```powershell
-Get-AzKubernetesRuntimeService -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Name storageclass
+Get-AzKubernetesRuntimeService -ArcConnectedClusterId /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1 -Name storageclass
 ```
 
 ```output

@@ -24,7 +24,7 @@ Enable Arc load balancer service in a connected cluster.
 
 ### Example 1: Enable Arc Networking service in a connected cluster
 ```powershell
-Enable-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterUri /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1
+Enable-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterId /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1
 ```
 
 Enables Arc Networking service in a connected cluster.
