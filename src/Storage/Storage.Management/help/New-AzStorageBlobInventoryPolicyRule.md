@@ -18,14 +18,14 @@ New-AzStorageBlobInventoryPolicyRule [-Name] <String> [-Disabled] -Destination <
  -Schedule <String> -BlobSchemaField <String[]> -BlobType <String[]> [-PrefixMatch <String[]>]
  [-ExcludePrefix <String[]>] [-IncludeSnapshot] [-IncludeBlobVersion] [-IncludeDeleted]
  [-CreationTimeLastNDay <Int32>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ContainerRuleParameterSet
 ```
 New-AzStorageBlobInventoryPolicyRule [-Name] <String> [-Disabled] -Destination <String> -Format <String>
  -Schedule <String> -ContainerSchemaField <String[]> [-PrefixMatch <String[]>] [-ExcludePrefix <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -283,21 +283,6 @@ Sets an array of strings for blob prefixes to be matched..
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
