@@ -18,10 +18,12 @@ New-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -Loc
  [-OnboardingTimeout <Int32>] [-ProxyCert <String>] [-SubscriptionId <String>] [-AcceptEULA]
  [-AzureHybridBenefit <AzureHybridBenefit>] [-CustomLocationsOid <String>] [-Distribution <String>]
  [-DistributionVersion <String>] [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>]
+ [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>]
  [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
- [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
- [-GatewayResourceId <String>] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-WorkloadIdentityEnabled]
+ [-DefaultProfile <PSObject>] [-AsJob] [-ConfigurationProtectedSetting <Hashtable>]
+ [-ConfigurationSetting <Hashtable>] [-GatewayResourceId <String>] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -455,6 +457,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OidcIssuerProfileEnabled
+Whether to enable oidc issuer for workload identity integration.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OidcIssuerProfileSelfHostedIssuerUrl
+The issuer url for public cloud clusters - AKS, EKS, GKE - used for the workload identity feature.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OnboardingTimeout
 The time required (in seconds) for the arc-agent pods to be installed on the kubernetes cluster.
 
@@ -566,6 +598,21 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkloadIdentityEnabled
+Whether to enable or disable the workload identity Webhook
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
