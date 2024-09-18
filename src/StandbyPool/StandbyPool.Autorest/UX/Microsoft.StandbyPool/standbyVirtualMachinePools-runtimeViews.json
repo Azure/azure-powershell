@@ -1,32 +1,31 @@
 {
-  "resourceType": "standbyVirtualMachinePools/standbyVirtualMachines",
-  "apiVersion": "2023-12-01-preview",
+  "resourceType": "standbyVirtualMachinePools/runtimeViews",
+  "apiVersion": "2024-03-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.standbypool"
   },
   "commands": [
     {
-      "name": "Get-AzStandbyVMPoolVM",
-      "description": "Get a StandbyVirtualMachineResource",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/standbyVirtualMachines/{standbyVirtualMachineName}",
+      "name": "Get-AzStandbyVMPoolStatus",
+      "description": "Get a StandbyVirtualMachinePoolRuntimeViewResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/runtimeViews/{runtimeView}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.standbypool/get-azstandbyvmpoolvm"
+          "url": "https://learn.microsoft.com/powershell/module/az.standbypool/get-azstandbyvmpoolstatus"
         },
         "parameterSets": [
           {
             "parameters": [
               "-Name <String>",
               "-ResourceGroupName <String>",
-              "[-SubscriptionId <String[]>]",
-              "-VMName <String>"
+              "[-SubscriptionId <String[]>]"
             ]
           }
         ]
       },
       "examples": [
         {
-          "description": "Get a StandbyVirtualMachineResource",
+          "description": "Get a StandbyVirtualMachinePoolRuntimeViewResource",
           "parameters": [
             {
               "name": "-Name",
@@ -39,10 +38,6 @@
             {
               "name": "-SubscriptionId",
               "value": "[Path.subscriptionId]"
-            },
-            {
-              "name": "-VMName",
-              "value": "[Path.standbyVirtualMachineName]"
             }
           ]
         }

@@ -10,16 +10,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Get a StandbyVirtualMachineResource</summary>
+    /// <summary>
+    /// List StandbyContainerGroupPoolRuntimeViewResource resources by StandbyContainerGroupPoolResource
+    /// </summary>
     /// <remarks>
-    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/standbyVirtualMachines/{standbyVirtualMachineName}"
+    /// [OpenAPI] ListByStandbyPool=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}/runtimeViews"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzStandbyVMPoolVM_Get")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Description(@"Get a StandbyVirtualMachineResource")]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzStandbyContainerGroupPoolStatus_List")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResource))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Description(@"List StandbyContainerGroupPoolRuntimeViewResource resources by StandbyContainerGroupPoolResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/standbyVirtualMachines/{standbyVirtualMachineName}", ApiVersion = "2023-12-01-preview")]
-    public partial class GetAzStandbyVMPoolVM_Get : global::System.Management.Automation.PSCmdlet,
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}/runtimeViews", ApiVersion = "2024-03-01")]
+    public partial class GetAzStandbyContainerGroupPoolStatus_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IContext
     {
@@ -42,6 +44,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Cmdlets
 
         /// <summary>A buffer to record first returned object in response.</summary>
         private object _firstResponse = null;
+
+        /// <summary>A flag to tell whether it is the first onOK call.</summary>
+        private bool _isFirst = true;
+
+        /// <summary>Link to retrieve next page.</summary>
+        private string _nextLink;
 
         /// <summary>
         /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
@@ -99,15 +107,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Cmdlets
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
-        /// <summary>Name of the standby virtual machine pool</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the standby virtual machine pool")]
+        /// <summary>Name of the standby container group pool</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the standby container group pool")]
         [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Name of the standby virtual machine pool",
-        SerializedName = @"standbyVirtualMachinePoolName",
+        Description = @"Name of the standby container group pool",
+        SerializedName = @"standbyContainerGroupPoolName",
         PossibleTypes = new [] { typeof(string) })]
-        [global::System.Management.Automation.Alias("StandbyVirtualMachinePoolName")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.ParameterCategory.Path)]
         public string Name { get => this._name; set => this._name = value; }
 
@@ -165,21 +172,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.ParameterCategory.Path)]
         public string[] SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
-        /// <summary>Backing field for <see cref="VMName" /> property.</summary>
-        private string _vMName;
-
-        /// <summary>Name of the standby virtual machine</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the standby virtual machine")]
-        [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"Name of the standby virtual machine",
-        SerializedName = @"standbyVirtualMachineName",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::System.Management.Automation.Alias("StandbyVirtualMachineName")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.ParameterCategory.Path)]
-        public string VMName { get => this._vMName; set => this._vMName = value; }
-
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
@@ -197,12 +189,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResource">Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourceListResult">Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourceListResult</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourceListResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -251,9 +243,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Cmdlets
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAzStandbyVMPoolVM_Get" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="GetAzStandbyContainerGroupPoolStatus_List" /> cmdlet class.
         /// </summary>
-        public GetAzStandbyVMPoolVM_Get()
+        public GetAzStandbyContainerGroupPoolStatus_List()
         {
 
         }
@@ -396,13 +388,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.StandbyVirtualMachinesGet(SubscriptionId, ResourceGroupName, Name, VMName, onOk, onDefault, this, Pipeline);
+                        await this.Client.StandbyContainerGroupPoolRuntimeViewsListByStandbyPool(SubscriptionId, ResourceGroupName, Name, onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,VMName=VMName})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -480,12 +472,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResource">Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourceListResult">Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourceListResult</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourceListResult> response)
         {
             using( NoSynchronizationContext )
             {
@@ -497,13 +489,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResource
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourceListResult
                 var result = (await response);
-                if (null != result)
+                // response should be returning an array of some kind. +Pageable
+                // pageable / value / nextLink
+                if (null != result.Value)
                 {
-                    if (0 == _responseSize)
+                    if (0 == _responseSize && 1 == result.Value.Count)
                     {
-                        _firstResponse = result;
+                        _firstResponse = result.Value[0];
                         _responseSize = 1;
                     }
                     else
@@ -513,8 +507,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Cmdlets
                             // Flush buffer
                             WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
                         }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        var values = new System.Collections.Generic.List<System.Management.Automation.PSObject>();
+                        foreach( var value in result.Value )
+                        {
+                            values.Add(value.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(values, true);
                         _responseSize = 2;
+                    }
+                }
+                _nextLink = result.NextLink;
+                if (_isFirst)
+                {
+                    _isFirst = false;
+                    while (!String.IsNullOrEmpty(_nextLink))
+                    {
+                        if (responseMessage.RequestMessage is System.Net.Http.HttpRequestMessage requestMessage )
+                        {
+                            requestMessage = requestMessage.Clone(new global::System.Uri( _nextLink ),Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Method.Get );
+                            await ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                            await this.Client.StandbyContainerGroupPoolRuntimeViewsListByStandbyPool_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                        }
                     }
                 }
             }

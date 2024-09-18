@@ -16,16 +16,19 @@
 
 <#
 .Synopsis
-Get a StandbyVirtualMachineResource
+Get a StandbyVirtualMachinePoolRuntimeViewResource
 .Description
-Get a StandbyVirtualMachineResource
+Get a StandbyVirtualMachinePoolRuntimeViewResource
 .Example
-Get-AzStandbyVMPoolVM -Name testPool -SubscriptionId f8da6e30-a9d8-48ab-b05c-3f7fe482e13b -ResourceGroupName test-standbypool 
+Get-AzStandbyVMPoolStatus `
+-SubscriptionId f8da6e30-a9d8-48ab-b05c-3f7fe482e13b `
+-ResourceGroupName test-standbypool `
+-Name testPool
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResource
+Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -34,6 +37,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IStandbyPoolIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuntimeView <String>]: The unique identifier for the runtime view. The input string should be the word 'latest', which will get the latest runtime view of the pool, otherwise the request will fail with NotFound exception.
   [StandbyContainerGroupPoolName <String>]: Name of the standby container group pool
   [StandbyVirtualMachineName <String>]: Name of the standby virtual machine
   [StandbyVirtualMachinePoolName <String>]: Name of the standby virtual machine pool
@@ -42,20 +46,20 @@ INPUTOBJECT <IStandbyPoolIdentity>: Identity Parameter
 STANDBYVIRTUALMACHINEPOOLINPUTOBJECT <IStandbyPoolIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuntimeView <String>]: The unique identifier for the runtime view. The input string should be the word 'latest', which will get the latest runtime view of the pool, otherwise the request will fail with NotFound exception.
   [StandbyContainerGroupPoolName <String>]: Name of the standby container group pool
   [StandbyVirtualMachineName <String>]: Name of the standby virtual machine
   [StandbyVirtualMachinePoolName <String>]: Name of the standby virtual machine pool
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
-https://learn.microsoft.com/powershell/module/az.standbypool/get-azstandbyvmpoolvm
+https://learn.microsoft.com/powershell/module/az.standbypool/get-azstandbyvmpoolstatus
 #>
-function Get-AzStandbyVMPoolVM {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResource])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+function Get-AzStandbyVMPoolStatus {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResource])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
-    [Alias('StandbyVirtualMachinePoolName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Category('Path')]
     [System.String]
     # Name of the standby virtual machine pool
@@ -77,14 +81,6 @@ param(
     # The ID of the target subscription.
     # The value must be an UUID.
     ${SubscriptionId},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='GetViaIdentityStandbyVirtualMachinePool', Mandatory)]
-    [Alias('StandbyVirtualMachineName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Category('Path')]
-    [System.String]
-    # Name of the standby virtual machine
-    ${VMName},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Category('Path')]
@@ -173,10 +169,10 @@ begin {
         }
 
         $mapping = @{
-            Get = 'Az.StandbyPool.private\Get-AzStandbyVMPoolVM_Get';
-            GetViaIdentity = 'Az.StandbyPool.private\Get-AzStandbyVMPoolVM_GetViaIdentity';
-            GetViaIdentityStandbyVirtualMachinePool = 'Az.StandbyPool.private\Get-AzStandbyVMPoolVM_GetViaIdentityStandbyVirtualMachinePool';
-            List = 'Az.StandbyPool.private\Get-AzStandbyVMPoolVM_List';
+            Get = 'Az.StandbyPool.private\Get-AzStandbyVMPoolStatus_Get';
+            GetViaIdentity = 'Az.StandbyPool.private\Get-AzStandbyVMPoolStatus_GetViaIdentity';
+            GetViaIdentityStandbyVirtualMachinePool = 'Az.StandbyPool.private\Get-AzStandbyVMPoolStatus_GetViaIdentityStandbyVirtualMachinePool';
+            List = 'Az.StandbyPool.private\Get-AzStandbyVMPoolStatus_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
@@ -186,6 +182,9 @@ begin {
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
+        }
+        if (('Get', 'GetViaIdentityStandbyVirtualMachinePool') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Version') ) {
+            $PSBoundParameters['Version'] = 'latest'
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

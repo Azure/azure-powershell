@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Get-AzStandbyVMPoolVM'))
+if(($null -eq $TestName) -or ($TestName -contains 'Get-AzStandbyVMPoolStatus'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzStandbyVMPoolVM.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzStandbyVMPoolStatus.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,20 +14,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzStandbyVMPoolVM'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzStandbyVMPoolVM' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
+Describe 'Get-AzStandbyVMPoolStatus' {
     It 'Get' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetViaIdentityStandbyVirtualMachinePool' -skip {
+    It 'List' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GetViaIdentityStandbyVirtualMachinePool' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
