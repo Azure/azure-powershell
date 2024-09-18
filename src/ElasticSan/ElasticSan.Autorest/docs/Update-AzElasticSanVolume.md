@@ -15,27 +15,28 @@ Update an Volume.
 ### UpdateExpanded (Default)
 ```
 Update-AzElasticSanVolume -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- -VolumeGroupName <String> [-SubscriptionId <String>] [-SizeGiB <Int64>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -VolumeGroupName <String> [-SubscriptionId <String>] [-ManagedByResourceId <String>] [-SizeGiB <Int64>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityElasticSanExpanded
 ```
 Update-AzElasticSanVolume -ElasticSanInputObject <IElasticSanIdentity> -Name <String>
- -VolumeGroupName <String> [-SizeGiB <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -VolumeGroupName <String> [-ManagedByResourceId <String>] [-SizeGiB <Int64>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-SizeGiB <Int64>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-ManagedByResourceId <String>]
+ [-SizeGiB <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityVolumegroupExpanded
 ```
-Update-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdentity> [-SizeGiB <Int64>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
+ [-ManagedByResourceId <String>] [-SizeGiB <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,7 +107,6 @@ Accept wildcard characters: False
 
 ### -ElasticSanInputObject
 Identity Parameter
-To construct, see NOTES section for ELASTICSANINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -137,7 +137,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -148,6 +147,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ManagedByResourceId
+Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -229,7 +243,6 @@ Accept wildcard characters: False
 
 ### -VolumegroupInputObject
 Identity Parameter
-To construct, see NOTES section for VOLUMEGROUPINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity

@@ -1,17 +1,17 @@
 {
-  "resourceType": "elasticSans/volumegroups",
+  "resourceType": "elasticSans/volumegroups/snapshots",
   "apiVersion": "2024-05-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.elasticsan"
   },
   "commands": [
     {
-      "name": "Get-AzElasticSanVolumeGroup",
-      "description": "Get either a list of all volume groups from an Elastic SAN or get a single volume group from an Elastic SAN.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}",
+      "name": "Get-AzElasticSanVolumeSnapshot",
+      "description": "Get a Volume Snapshot.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/snapshots/{snapshotName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanvolumegroup"
+          "url": "https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanvolumesnapshot"
         },
         "parameterSets": [
           {
@@ -19,14 +19,15 @@
               "-ElasticSanName <String>",
               "-Name <String>",
               "-ResourceGroupName <String>",
-              "[-SubscriptionId <String[]>]"
+              "[-SubscriptionId <String[]>]",
+              "-VolumeGroupName <String>"
             ]
           }
         ]
       },
       "examples": [
         {
-          "description": "Get either a list of all volume groups from an Elastic SAN or get a single volume group from an Elastic SAN.",
+          "description": "Get a Volume Snapshot.",
           "parameters": [
             {
               "name": "-ElasticSanName",
@@ -34,7 +35,7 @@
             },
             {
               "name": "-Name",
-              "value": "[Path.volumeGroupName]"
+              "value": "[Path.snapshotName]"
             },
             {
               "name": "-ResourceGroupName",
@@ -43,18 +44,22 @@
             {
               "name": "-SubscriptionId",
               "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VolumeGroupName",
+              "value": "[Path.volumeGroupName]"
             }
           ]
         }
       ]
     },
     {
-      "name": "Remove-AzElasticSanVolumeGroup",
-      "description": "Delete an VolumeGroup.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}",
+      "name": "Remove-AzElasticSanVolumeSnapshot",
+      "description": "Delete a Volume Snapshot.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/snapshots/{snapshotName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.elasticsan/remove-azelasticsanvolumegroup"
+          "url": "https://learn.microsoft.com/powershell/module/az.elasticsan/remove-azelasticsanvolumesnapshot"
         },
         "parameterSets": [
           {
@@ -62,14 +67,15 @@
               "-ElasticSanName <String>",
               "-Name <String>",
               "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]"
+              "[-SubscriptionId <String>]",
+              "-VolumeGroupName <String>"
             ]
           }
         ]
       },
       "examples": [
         {
-          "description": "Delete an VolumeGroup.",
+          "description": "Delete a Volume Snapshot.",
           "parameters": [
             {
               "name": "-ElasticSanName",
@@ -77,7 +83,7 @@
             },
             {
               "name": "-Name",
-              "value": "[Path.volumeGroupName]"
+              "value": "[Path.snapshotName]"
             },
             {
               "name": "-ResourceGroupName",
@@ -86,6 +92,10 @@
             {
               "name": "-SubscriptionId",
               "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VolumeGroupName",
+              "value": "[Path.volumeGroupName]"
             }
           ]
         }
