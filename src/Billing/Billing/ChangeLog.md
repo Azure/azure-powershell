@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* The command set `Get-UsageAggregates` has been renamed to `Get-AzUsageAggregates` and the alias `Get-UsageAggregates` has been added.
+* The command set `Get-UsageAggregates` has been renamed to `Get-AzUsageAggregate` and the alias `Get-UsageAggregates` has been added.
 
 ## Version 2.0.4
 * Removed the outdated deps.json file.

@@ -85,7 +85,7 @@ CmdletsToExport = 'Get-AzBillingAccount', 'Get-AzBillingInvoice', 'Get-AzBilling
                'Get-AzConsumptionReservationDetail', 
                'Get-AzConsumptionReservationSummary', 
                'Get-AzConsumptionUsageDetail', 'Get-AzEnrollmentAccount', 
-               'Get-AzInvoiceSection', 'Get-AzUsageAggregates', 
+               'Get-AzInvoiceSection', 'Get-AzUsageAggregate', 
                'New-AzConsumptionBudget', 'Remove-AzConsumptionBudget', 
                'Set-AzConsumptionBudget'
 
