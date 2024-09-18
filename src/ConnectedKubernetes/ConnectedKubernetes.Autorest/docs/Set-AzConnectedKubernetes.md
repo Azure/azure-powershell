@@ -20,9 +20,10 @@ Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -Loc
  [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
  [-CustomLocationsOid <String>] [-Distribution <String>] [-DistributionVersion <String>]
  [-GatewayResourceId <String>] [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>]
+ [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>]
  [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
- [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-WorkloadIdentityEnabled]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Set
@@ -32,9 +33,11 @@ Set-AzConnectedKubernetes -InputObject <IConnectedCluster> [-ContainerLogPath <S
  [-AcceptEULA] [-AzureHybridBenefit <AzureHybridBenefit>] [-ConfigurationProtectedSetting <Hashtable>]
  [-ConfigurationSetting <Hashtable>] [-CustomLocationsOid <String>] [-Distribution <String>]
  [-DistributionVersion <String>] [-GatewayResourceId <String>] [-Infrastructure <String>]
- [-KubeConfig <String>] [-KubeContext <String>] [-PrivateLinkScopeResourceId <String>]
+ [-KubeConfig <String>] [-KubeContext <String>] [-OidcIssuerProfileEnabled]
+ [-OidcIssuerProfileSelfHostedIssuerUrl <String>] [-PrivateLinkScopeResourceId <String>]
  [-PrivateLinkState <PrivateLinkState>] [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WorkloadIdentityEnabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### SetDisableGateway
@@ -45,9 +48,10 @@ Set-AzConnectedKubernetes -DisableGateway -InputObject <IConnectedCluster> [-Con
  [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
  [-CustomLocationsOid <String>] [-Distribution <String>] [-DistributionVersion <String>]
  [-GatewayResourceId <String>] [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>]
+ [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>]
  [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
- [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-WorkloadIdentityEnabled]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetEnableGateway
@@ -58,9 +62,10 @@ Set-AzConnectedKubernetes -EnableGateway -InputObject <IConnectedCluster> [-Cont
  [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
  [-CustomLocationsOid <String>] [-Distribution <String>] [-DistributionVersion <String>]
  [-GatewayResourceId <String>] [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>]
+ [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>]
  [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
- [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-WorkloadIdentityEnabled]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetExpandedDisableGateway
@@ -71,9 +76,10 @@ Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -Dis
  [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
  [-CustomLocationsOid <String>] [-Distribution <String>] [-DistributionVersion <String>]
  [-GatewayResourceId <String>] [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>]
+ [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>]
  [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
- [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-WorkloadIdentityEnabled]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetExpandedEnableGateway
@@ -84,9 +90,10 @@ Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -Ena
  [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
  [-CustomLocationsOid <String>] [-Distribution <String>] [-DistributionVersion <String>]
  [-GatewayResourceId <String>] [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>]
+ [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>]
  [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
- [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-WorkloadIdentityEnabled]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -483,6 +490,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OidcIssuerProfileEnabled
+Whether to enable oidc issuer for workload identity integration.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OidcIssuerProfileSelfHostedIssuerUrl
+The issuer url for public cloud clusters - AKS, EKS, GKE - used for the workload identity feature.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PrivateLinkScopeResourceId
 The resource id of the private link scope this connected cluster is assigned to, if any.
 
@@ -579,6 +616,21 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkloadIdentityEnabled
+Whether to enable or disable the workload identity Webhook
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
