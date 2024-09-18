@@ -582,7 +582,7 @@ function New-AzConnectedKubernetes {
 
         $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
 
-        Write-Verbose "Creating 'Kubernetes - Azure Arc' object in Azure"
+        Write-Host "Creating 'Kubernetes - Azure Arc' object in Azure"
         $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
 
         if ((-not $WhatIfPreference) -and (-not $Response)) {

@@ -397,13 +397,12 @@ function Set-AzConnectedKubernetes {
                 $PSBoundParameters.Add('GatewayResourceId', $GatewayResourceId)
             }
 
-            if (-not $PSBoundParameters.ContainsKey('DisableGateway')) {
-                $DisableGateway = ($InputObject.ArcAgentProfileAgentAutoUpgrade -eq 'Disabled')
-                $PSBoundParameters.Add('GatewayEnabled', $DisableGateway)
+            if (-not $PSBoundParameters.ContainsKey('DisableAutoUpgrade')) {
+                $DisableAutoUpgrade = ($InputObject.ArcAgentProfileAgentAutoUpgrade -eq 'Disabled')
             }
         }
 
-        if (-not [String]::IsNullOrEmpty($GatewayResourceId)) {
+        if (-not [String]::IsNullOrEmpty($GatewayResourceId) -and -not $DisableGateway) {
             Write-Debug "Gateway enabled"
             $PSBoundParameters.Add('GatewayEnabled', $true)
         }
@@ -524,7 +523,15 @@ function Set-AzConnectedKubernetes {
         #Region Deal with configuration settings and protected settings
         
         # If the user does not provide proxy settings, or configuration settings, we shall use arc config of existing object
-        $useExistingArcConfiguration = $true
+        $userProvidedArcConfiguration = (
+            ($null -ne $InputObject) -and ($InputObject.ArcAgentryConfiguration.Length > 0) `
+            -and (-not ([string]::IsNullOrEmpty($HttpProxy))) `
+            -and (-not ([string]::IsNullOrEmpty($HttpsProxy))) `
+            -and (-not ([string]::IsNullOrEmpty($NoProxy))) `
+            -and ((-not ([string]::IsNullOrEmpty($ProxyCert)))) `
+            -and ($PSBoundParameters.ContainsKey('ConfigurationSetting')) `
+            -and ($PSBoundParameters.ContainsKey('ConfigurationProtectedSetting')))
+        
         if ($null -eq $ConfigurationSetting) {
             $ConfigurationSetting = @{}
         }
@@ -536,7 +543,6 @@ function Set-AzConnectedKubernetes {
             foreach ($arcAgentConfig in $InputObject.ArcAgentryConfiguration) {
                 $ConfigurationSetting[$arcAgentConfig.feature] = $arcAgentConfig.settings
                 $ConfigurationProtectedSetting[$arcAgentConfig.feature] = $arcAgentConfig.protectedSettings
-                $useExistingArcConfiguration = $false
             }
         }
 
@@ -552,7 +558,6 @@ function Set-AzConnectedKubernetes {
             # Note how we are removing k8s parameters from the list of parameters
             # to pass to the internal (creates ARM object) command.
             $Null = $PSBoundParameters.Remove('HttpProxy')
-            $useExistingArcConfiguration = $false
         }
         if (-not ([string]::IsNullOrEmpty($HttpsProxy))) {
             $HttpsProxyStr = $HttpsProxy.ToString()
@@ -560,20 +565,17 @@ function Set-AzConnectedKubernetes {
             $HttpsProxyStr = $HttpsProxyStr -replace '/', '\/'
             $ConfigurationProtectedSetting["proxy"]["https_proxy"] = $HttpsProxyStr
             $Null = $PSBoundParameters.Remove('HttpsProxy')
-            $useExistingArcConfiguration = $false
         }
         if (-not ([string]::IsNullOrEmpty($NoProxy))) {
             $NoProxy = $NoProxy -replace ',', '\,'
             $NoProxy = $NoProxy -replace '/', '\/'
             $ConfigurationProtectedSetting["proxy"]["no_proxy"] = $NoProxy
             $Null = $PSBoundParameters.Remove('NoProxy')
-            $useExistingArcConfiguration = $false
         }        
 
         try {
             if ((-not ([string]::IsNullOrEmpty($ProxyCert))) -and (Test-Path $ProxyCert)) {
                 $ConfigurationProtectedSetting["proxy"]["proxy_cert"] = $ProxyCert
-                $useExistingArcConfiguration = $false
             }
         }
         catch {
@@ -630,19 +632,18 @@ function Set-AzConnectedKubernetes {
         # values from $PSBoundParameters.
         if ($PSBoundParameters.ContainsKey('ConfigurationSetting')) {
             $PSBoundParameters.Remove('ConfigurationSetting')
-            $useExistingArcConfiguration = $false
         }
         if ($PSBoundParameters.ContainsKey('ConfigurationProtectedSetting')) {
             $PSBoundParameters.Remove('ConfigurationProtectedSetting')
-            $useExistingArcConfiguration = $false
         }
 
-        if ($useExistingArcConfiguration) {
-            $PSBoundParameters.Add('ArcAgentryConfiguration', $ExistConnectedKubernetes.ArcAgentryConfiguration)        
-        } else {
+        if ($userProvidedArcConfiguration) {
             $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
+        } else {
+            $PSBoundParameters.Add('ArcAgentryConfiguration', $ExistConnectedKubernetes.ArcAgentryConfiguration)        
         }
 
+        Write-Host "Updating the connected cluster resource...."
         $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes @PSBoundParameters
         if ((-not $WhatIfPreference) -and (-not $Response)) {
             Write-Error "Failed to update the connected cluster resource"
@@ -662,10 +663,10 @@ function Set-AzConnectedKubernetes {
             $Response['properties'] = @{}
         }
 
-        if ($useExistingArcConfiguration) {
-            $Response['properties']['arcAgentryConfigurations'] = $ExistConnectedKubernetes.ArcAgentryConfiguration        
-        } else {
+        if ($userProvidedArcConfiguration) {
             $Response['properties']['arcAgentryConfigurations'] = $arcAgentryConfigs
+        } else {
+            $Response['properties']['arcAgentryConfigurations'] = $ExistConnectedKubernetes.ArcAgentryConfiguration
         }
         
 
@@ -674,6 +675,8 @@ function Set-AzConnectedKubernetes {
         $ResponseStr = $Response | ConvertTo-Json -Depth 10
         Write-Debug "PUT response: $ResponseStr"
         
+        Write-Host "Preparing helm ...."
+
         if ($PSCmdlet.ShouldProcess('configDP', 'get helm values from config DP')) {
             $helmValuesDp = Get-HelmValuesFromConfigDP `
                 -configDPEndpoint $configDPEndpoint `
@@ -737,6 +740,7 @@ function Set-AzConnectedKubernetes {
             }
         }
 
+        Write-Host "Executing helm upgrade, this can take a few minutes ...."
         Write-Debug $options -ErrorAction Continue
         if ($DebugPreference -eq "Continue") {
             $options += " --debug"
