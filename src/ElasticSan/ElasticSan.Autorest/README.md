@@ -143,7 +143,7 @@ directive:
       subject: ^VolumeGroup$
     hide: true
   - where:
-      verb: New
+      verb: ^New$|^Update$
       subject: Volume
       parameter-name: ManagedByResourceId
     hide: true
