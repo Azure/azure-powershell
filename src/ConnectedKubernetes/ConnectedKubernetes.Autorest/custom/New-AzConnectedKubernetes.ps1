@@ -423,6 +423,7 @@ function New-AzConnectedKubernetes {
         if ($DisableAutoUpgrade) {
             $options += " --set systemDefaultValues.azureArcAgents.autoUpdate=false"
             $Null = $PSBoundParameters.Remove('DisableAutoUpgrade')
+            $PSBoundParameters.Add('ArcAgentProfileAgentAutoUpgrade', 'Disabled')
         }
         if (-not ([string]::IsNullOrEmpty($ContainerLogPath))) {
             $options += " --set systemDefaultValues.fluent-bit.containerLogPath=$ContainerLogPath"
@@ -658,6 +659,7 @@ function New-AzConnectedKubernetes {
             $options += " --debug"
         }
         if ($PSCmdlet.ShouldProcess($ClusterName, "Update Kubernetes cluster with Azure Arc")) {
+            Write-Output "Executing helm upgrade command, this can take a few minutes...."
             try {
                 helm upgrade `
                     --install azure-arc `

@@ -25,7 +25,7 @@ API to set properties of the connected cluster resource
 .Description
 API to set properties of the connected cluster resource
 .Example
-Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -EnableGateway -GatewayResourceId $gatewayResourceId
+Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -GatewayResourceId $gatewayResourceId
 .Example
 Set-AzConnectedKubernetes -ClusterName azps_test_cluster1 -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01 -DisableGateway
 
@@ -87,7 +87,6 @@ function Set-AzConnectedKubernetes {
         Justification = 'Code published before this issue was identified')]
     param(
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory)]
-        [Parameter(ParameterSetName = 'SetExpandedEnableGateway', Mandatory)]
         [Parameter(ParameterSetName = 'SetExpandedDisableGateway', Mandatory)]
         [Alias('Name')]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
@@ -96,7 +95,6 @@ function Set-AzConnectedKubernetes {
         ${ClusterName},
 
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory)]
-        [Parameter(ParameterSetName = 'SetExpandedEnableGateway', Mandatory)]
         [Parameter(ParameterSetName = 'SetExpandedDisableGateway', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
         [System.String]
@@ -105,7 +103,6 @@ function Set-AzConnectedKubernetes {
         ${ResourceGroupName},
 
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory)]
-        [Parameter(ParameterSetName = 'SetExpandedEnableGateway', Mandatory)]
         [Parameter(ParameterSetName = 'SetExpandedDisableGateway', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [System.String]
@@ -113,7 +110,6 @@ function Set-AzConnectedKubernetes {
         ${Location},
 
         [Parameter(ParameterSetName = 'Set', Mandatory)]
-        [Parameter(ParameterSetName = 'SetEnableGateway', Mandatory)]
         [Parameter(ParameterSetName = 'SetDisableGateway', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster]
@@ -308,12 +304,6 @@ function Set-AzConnectedKubernetes {
         # Arc Agentry System Protected Configuration
         ${ConfigurationProtectedSetting},
 
-        [Parameter(ParameterSetName = 'SetEnableGateway', Mandatory)]
-        [Parameter(ParameterSetName = 'SetExpandedEnableGateway', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('body')]
-        [System.Management.Automation.SwitchParameter]
-        ${EnableGateway},
-
         [Parameter(ParameterSetName = 'SetDisableGateway', Mandatory)]
         [Parameter(ParameterSetName = 'SetExpandedDisableGateway', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('body')]
@@ -323,7 +313,7 @@ function Set-AzConnectedKubernetes {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('body')]
         [System.String]
-        # Arc Gateway resource Id
+        # Arc Gateway resource Id, providing this will enable the gateway
         ${GatewayResourceId}
     )
 
@@ -397,23 +387,25 @@ function Set-AzConnectedKubernetes {
             $ResourceGroupName = $InputObject.ResourceGroupName
             $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
 
-            if ((-not $PSBoundParameters.ContainsKey('EnableGateway')) -and (-not $PSBoundParameters.ContainsKey('DisableGateway'))) {
-                if ($InputObject.GatewayEnabled) {
-                    $EnableGateway = $InputObject.GatewayEnabled
-                }
+            if (-not $PSBoundParameters.ContainsKey('DisableGateway')) {
                 if (-not $InputObject.GatewayEnabled) {
                     $DisableGateway = -not $InputObject.GatewayEnabled
                 }
             }
             if ((-not $PSBoundParameters.ContainsKey('GatewayResourceId')) -and (-not [String]::IsNullOrEmpty($InputObject.GatewayResourceId))) {
                 $GatewayResourceId = $InputObject.GatewayResourceId
-                $PSBoundParameters.Add('GatewayResourceId', $GatewayResourceId)
+            }
+
+            if (-not $PSBoundParameters.ContainsKey('DisableGateway')) {
+                #XW remove debug log
+                $DisalbeAutoUpgradeFromInputObject = $InputObject.ArcAgentProfileAgentAutoUpgrade
+                Write-Debug "DisableGateway: $DisalbeAutoUpgradeFromInputObject"
+                $DisableGateway = ($InputObject.ArcAgentProfileAgentAutoUpgrade -eq 'Disabled')
             }
         }
 
-        if ($EnableGateway) {
+        if (-not [String]::IsNullOrEmpty($GatewayResourceId)) {
             Write-Debug "Gateway enabled"
-            $Null = $PSBoundParameters.Remove('EnableGateway')
             $PSBoundParameters.Add('GatewayEnabled', $true)
         }
         # If DisableGateway is provided then set the gateway as disabled and remove gateway resourceId from parameters
@@ -453,7 +445,6 @@ function Set-AzConnectedKubernetes {
         $ReleaseNamespaces = Get-HelmReleaseNamespaces -KubeConfig $KubeConfig -KubeContext $KubeContext
         $ReleaseNamespace = $ReleaseNamespaces['ReleaseNamespace']
         $ReleaseInstallNamespace = $ReleaseNamespaces['ReleaseInstallNamespace']
-
 
         #Endregion
 
@@ -496,6 +487,7 @@ function Set-AzConnectedKubernetes {
         if ($DisableAutoUpgrade) {
             $options += " --set systemDefaultValues.azureArcAgents.autoUpdate=false"
             $Null = $PSBoundParameters.Remove('DisableAutoUpgrade')
+            $PSBoundParameters.Add('ArcAgentProfileAgentAutoUpgrade', 'Disabled')
         }
         if (-not ([string]::IsNullOrEmpty($ContainerLogPath))) {
             $options += " --set systemDefaultValues.fluent-bit.containerLogPath=$ContainerLogPath"
@@ -636,9 +628,14 @@ function Set-AzConnectedKubernetes {
             $PSBoundParameters.Remove('ConfigurationProtectedSetting')
         }
 
+        # XW what if input object has configs but set not provide such
         $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
-
+        
         $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes @PSBoundParameters
+        if ($Response.StatusCode -ne 200) {
+            Write-Error "Failed to update connected kubernetes resource."
+            return
+        }
         $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration $RedactedProtectedConfiguration -CCRP $false
 
         # Convert the $Response object into a nested hashtable.
