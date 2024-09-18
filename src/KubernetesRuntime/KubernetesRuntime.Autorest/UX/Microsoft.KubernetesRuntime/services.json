@@ -1,0 +1,75 @@
+{
+  "resourceType": "services",
+  "apiVersion": "2024-03-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.kubernetesruntime"
+  },
+  "commands": [
+    {
+      "name": "Get-AzKubernetesRuntimeService",
+      "description": "Get a ServiceResource",
+      "path": "/{resourceUri}/providers/Microsoft.KubernetesRuntime/services/{serviceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.kubernetesruntime/get-azkubernetesruntimeservice"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ArcConnectedClusterId <String>",
+              "-Name <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a ServiceResource",
+          "parameters": [
+            {
+              "name": "-ArcConnectedClusterId",
+              "value": "[Path.resourceUri]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.serviceName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzKubernetesRuntimeService",
+      "description": "Delete a ServiceResource",
+      "path": "/{resourceUri}/providers/Microsoft.KubernetesRuntime/services/{serviceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.kubernetesruntime/remove-azkubernetesruntimeservice"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ArcConnectedClusterId <String>",
+              "-Name <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a ServiceResource",
+          "parameters": [
+            {
+              "name": "-ArcConnectedClusterId",
+              "value": "[Path.resourceUri]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.serviceName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
