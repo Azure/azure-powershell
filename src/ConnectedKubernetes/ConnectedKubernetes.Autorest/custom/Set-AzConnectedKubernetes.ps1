@@ -229,6 +229,24 @@ function Set-AzConnectedKubernetes {
         ${CustomLocationsOid},
 
         [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # Whether to enable oidc issuer for workload identity integration.
+        ${OidcIssuerProfileEnabled},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+        [System.String]
+        # The issuer url for public cloud clusters - AKS, EKS, GKE - used for the workload identity feature.
+        ${OidcIssuerProfileSelfHostedIssuerUrl},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # Whether to enable or disable the workload identity Webhook
+        ${WorkloadIdentityEnabled},
+
+        [Parameter()]
         [System.Management.Automation.SwitchParameter]
         # Accept EULA of ConnectedKubernetes, legal term will pop up without this parameter provided
         ${AcceptEULA},
@@ -759,6 +777,28 @@ function Set-AzConnectedKubernetes {
                 throw "Unable to install helm release"
             }
             Return $Response
+        }
+
+        if ($PSCmdlet.ShouldProcess($ClusterName, "Check agent state of the connected cluster")) {
+            if ($PSBoundParameters.ContainsKey('OidcIssuerProfileEnabled') -or $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled') ) {
+                $ExistConnectedKubernetes = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
+    
+                Write-Host "Cluster configuration is in progress..."
+                $timeout = [datetime]::Now.AddMinutes(60)
+    
+                while (($ExistConnectedKubernetes.ArcAgentProfileAgentState -ne "Succeeded") -and ($ExistConnectedKubernetes.ArcAgentProfileAgentState -ne "Failed") -and ([datetime]::Now -lt $timeout)) {
+                    Start-Sleep -Seconds 30
+                    $ExistConnectedKubernetes = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
+                }
+    
+                if ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Succeeded") {
+                    Write-Host "Cluster configuration succeeded."
+                } elseif ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Failed") {
+                    Write-Error "Cluster configuration failed."
+                } else {
+                    Write-Error "Cluster configuration timed out after 60 minutes."
+                }      
+            }
         }
     }
 }
