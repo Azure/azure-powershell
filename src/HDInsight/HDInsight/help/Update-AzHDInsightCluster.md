@@ -13,9 +13,9 @@ Update tags or managed identities for a HDInsight cluster.
 ## SYNTAX
 
 ```
-Update-AzHDInsightCluster [-ClusterName] <String> [-IdentityType <String>] [-IdentityId <String>]
+Update-AzHDInsightCluster [-ClusterName] <String> [-IdentityType <String>] [-IdentityId <String[]>]
  [-Tag <System.Collections.Generic.Dictionary`2[System.String,System.String]>] [-ResourceGroupName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -76,7 +76,6 @@ $identityType = "SystemAssigned,UserAssigned"
 Update-AzHDInsightCluster -ClusterName $clusterName -IdentityType $identityType -IdentityId $identityId
 ```
 
-
 ## PARAMETERS
 
 ### -ClusterName
@@ -113,7 +112,7 @@ Accept wildcard characters: False
 Gets or sets the list of user identities associated with the cluster.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -132,6 +131,21 @@ Possible values include: SystemAssigned, UserAssigned.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+Specifies how the cmdlet should handle progress updates.
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
