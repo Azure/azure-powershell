@@ -1,22 +1,22 @@
 {
   "resourceType": "monitors",
-  "apiVersion": "2022-07-01",
+  "apiVersion": "2024-01-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.newrelic"
   },
   "commands": [
     {
-      "name": "Get-AzNewRelicMonitor",
-      "description": "Get a NewRelicMonitorResource",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}",
+      "name": "Get-AzNewRelicBillingInfo",
+      "description": "Get marketplace info mapped to the given monitor.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/getBillingInfo",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.newrelic/get-aznewrelicmonitor"
+          "url": "https://learn.microsoft.com/powershell/module/az.newrelic/get-aznewrelicbillinginfo"
         },
         "parameterSets": [
           {
             "parameters": [
-              "-Name <String>",
+              "-MonitorName <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String[]>]"
             ]
@@ -25,10 +25,10 @@
       },
       "examples": [
         {
-          "description": "Get a NewRelicMonitorResource",
+          "description": "Get marketplace info mapped to the given monitor.",
           "parameters": [
             {
-              "name": "-Name",
+              "name": "-MonitorName",
               "value": "[Path.monitorName]"
             },
             {

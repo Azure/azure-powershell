@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the DevCenter service.
 
 ---
-## Status
-[![Az.DevCenter](https://img.shields.io/powershellgallery/v/Az.DevCenter.svg?style=flat-square&label=Az.DevCenter "Az.DevCenter")](https://www.powershellgallery.com/packages/Az.DevCenter/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -31,14 +28,14 @@ For information on how to develop for `Az.DevCenter`, see [how-to.md](how-to.md)
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: b5e14f2fcc1e0de74c4dcf1d6e518f9faf743417
+commit: 490e7fec728b018ff3ab103a6e1cb09644452ccf
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2023-10-01-preview/commonDefinitions.json
-  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2023-10-01-preview/devcenter.json
-  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2023-10-01-preview/vdi.json
+  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2024-05-01-preview/commonDefinitions.json
+  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2024-05-01-preview/devcenter.json
+  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2024-05-01-preview/vdi.json
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
 use-extension:
   "@autorest/powershell": "3.x"
@@ -49,6 +46,24 @@ directive:
     transform: >
       $['200'] = {
         "description": "OK. Successfully initiated sync."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/sync"].post.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. Successfully initiated sync."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/connect"].post.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/connect"].post.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
       }
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/galleries/{galleryName}"].put.responses
@@ -71,6 +86,147 @@ directive:
         "description": "OK. The request has succeeded.",
         "schema": {"$ref": "#/definitions/Catalog"}
       }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}"].put.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded.",
+        "schema": {"$ref": "#/definitions/Catalog"}
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/environmentDefinitions/{environmentDefinitionName}"].get.operationId
+    transform: >-
+      return "ProjectEnvironmentDefinitions_Get"
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/environmentDefinitions"].get.operationId
+    transform: >-
+      return "ProjectEnvironmentDefinitions_List"
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/environmentDefinitions/{environmentDefinitionName}/getErrorDetails"].post.operationId
+    transform: >-
+      return "ProjectEnvironmentDefinitions_GetErrorDetails"
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/attachednetworks/{attachedNetworkConnectionName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/devboxdefinitions/{devBoxDefinitionName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/galleries/{galleryName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/schedules/{scheduleName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/plans/{planName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/plans/{planName}/members/{memberName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}/runHealthChecks"].post.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/runHealthChecks"].post.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded."
+      }
+  #Use v3 for OperationStatus, remove this for breaking change version
+  - from: swagger-document
+    where: $.definitions
+    transform: >
+      $['OperationStatus'] = {
+        "description": "The current status of an async operation",
+        "type": "object",
+        "allOf": [
+          {
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/490e7fec728b018ff3ab103a6e1cb09644452ccf/specification/common-types/resource-management/v3/types.json#/definitions/OperationStatusResult"
+          }
+        ],
+        "properties": {
+          "resourceId": {
+            "description": "The id of the resource.",
+            "type": "string",
+            "readOnly": true
+          },
+          "properties": {
+            "description": "Custom operation properties, populated only for a successful operation.",
+            "type": "object",
+            "readOnly": true
+          }
+        }
+      }
+  - where:
+      verb: Get
+      subject: OperationStatus
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: OperationStatus
+        replacement-cmdlet-output-type: OperationStatus
+        deprecated-output-properties:
+          - ResourceId
+        change-description: The element type for property 'ResourceId' has been removed.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.0.0
+        change-effective-date: 2024/11/19
   - where:
       parameter-name: Top
     hide: true
@@ -169,6 +325,11 @@ directive:
       subject: ExecuteCheckNameAvailability
       variant: ^Execute$|^ExecuteViaIdentity$
     remove: true
+  - where:
+      verb: Invoke
+      subject: ExecuteCheckScopedNameAvailability
+      variant: ^Execute$|^ExecuteViaIdentity$
+    remove: true
 # Set required parameters    
   - where:
       verb: New
@@ -187,14 +348,10 @@ directive:
     hide: true
   - where:
       verb: New
-      subject: ^AttachedNetwork$|^Catalog$|^DevBoxDefinition$|^Gallery$|^NetworkConnection$|^Pool$|^Project$|^ProjectEnvironmentType$
+      subject: ^AttachedNetwork$|^Catalog$|^DevBoxDefinition$|^Gallery$|^NetworkConnection$|^Pool$|^Project$|^ProjectEnvironmentType$|^ProjectCatalog$|^Plan$|^PlanMember$
     hide: true
   - where:
-      subject: ^CatalogDevBoxDefinition$|^CatalogDevBoxDefinitionErrorDetail$|^CustomizationTask|^CustomizationTaskErrorDetail$
-    hide: true
-  - where:
-      verb: Connect
-      subject: Catalog
+      subject: ^CatalogDevBoxDefinition$|^CatalogDevBoxDefinitionErrorDetail$|^EncryptionSet$
     hide: true
   - where:
       subject: OperationStatuses

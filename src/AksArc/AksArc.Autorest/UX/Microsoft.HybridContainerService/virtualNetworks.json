@@ -1,0 +1,85 @@
+{
+  "resourceType": "virtualNetworks",
+  "apiVersion": "2024-01-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.aksarc"
+  },
+  "commands": [
+    {
+      "name": "Get-AzAksArcVirtualNetwork",
+      "description": "Lists the virtual networks in the specified resource group",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.aksarc/get-azaksarcvirtualnetwork"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the specified virtual network resource",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.virtualNetworkName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzAksArcVirtualNetwork",
+      "description": "Deletes the specified virtual network resource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.aksarc/remove-azaksarcvirtualnetwork"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes the specified virtual network resource",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.virtualNetworkName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -10,7 +10,7 @@ schema: 2.0.0
 ## SYNOPSIS
 Gets the list of endpoints that VNET Injected Workspace calls Azure Databricks Control Plane.
 You must configure outbound access with these endpoints.
-For more information, see https://learn.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
+For more information, see https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
 
 ## SYNTAX
 
@@ -22,7 +22,7 @@ Get-AzDatabricksOutboundNetworkDependenciesEndpoint -ResourceGroupName <String> 
 ## DESCRIPTION
 Gets the list of endpoints that VNET Injected Workspace calls Azure Databricks Control Plane.
 You must configure outbound access with these endpoints.
-For more information, see https://learn.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
+For more information, see https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
 
 ## EXAMPLES
 
@@ -82,6 +82,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
@@ -117,11 +118,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IOutboundEnvironmentEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IOutboundEnvironmentEndpoint
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

@@ -7,11 +7,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "13" ],
-        "x-ms-client-request-id": [ "25b90e3a-dd12-400a-a558-beb1bcd58151" ],
+        "x-ms-client-request-id": [ "e92f4155-08ea-4ae5-9916-ae956189857b" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyExemption_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,22 +23,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
-        "x-ms-request-id": [ "7c0637f3-9f9d-4f03-b3f3-26acc4688777" ],
-        "x-ms-correlation-request-id": [ "7c0637f3-9f9d-4f03-b3f3-26acc4688777" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240615T012329Z:7c0637f3-9f9d-4f03-b3f3-26acc4688777" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "def1a1c0-5df4-4a26-9fb4-10d7392053e7" ],
+        "x-ms-correlation-request-id": [ "def1a1c0-5df4-4a26-9fb4-10d7392053e7" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240905T201417Z:def1a1c0-5df4-4a26-9fb4-10d7392053e7" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: CF794AF6636C4DF1B585BBF56C796240 Ref B: CO6AA3150217035 Ref C: 2024-06-15T01:23:29Z" ],
-        "Date": [ "Sat, 15 Jun 2024 01:23:28 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E6751176493741A892E49ABD627C19F6 Ref B: CO6AA3150218047 Ref C: 2024-09-05T20:14:17Z" ],
+        "Date": [ "Thu, 05 Sep 2024 20:14:17 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2621" ],
+        "Content-Length": [ "6962" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/e4d662572b4f40409eed77e8\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Mitigated\",\"displayName\":\"Azure Governance Performance Test - tony-test-modifyDenyMG\",\"description\":\"\",\"expiresOn\":\"2024-02-10T08:00:00Z\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/411d2dfc3efb44bc89510bf3\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"411d2dfc3efb44bc89510bf3\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-01-18T19:32:04.6336364Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-02-01T05:41:56.656852Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/46aec00d695c4c83b704a532\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - robga keyvault location\",\"description\":\"\",\"resourceSelectors\":[{\"name\":\"1\",\"selectors\":[{\"kind\":\"resourceLocation\",\"in\":[\"westus\"]}]}],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/949bf29bfc4d493da3d53e91\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"949bf29bfc4d493da3d53e91\",\"systemData\":{\"createdBy\":\"robga@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-06T17:03:40.4464856Z\",\"lastModifiedBy\":\"robga@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-06T17:27:21.7158092Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/c691bb62817b40fda56c1b77\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - qingye-test-exemptionOnMG\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/dcfaaf0f40374736afbffed9\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"dcfaaf0f40374736afbffed9\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-27T17:08:45.1562625Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-06-27T17:08:45.1562625Z\"}}]}",
+      "Content": "{\"value\":[{\"properties\":{\"policyAssignmentId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyAssignments/21eb5353068a4525b9472686\",\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - tony-test-modifyDenyMG\",\"description\":\"Testing correct passthru of DisplayName and Description properties in Update-AzPolicyExemption\",\"expiresOn\":\"2024-06-28T00:00:00Z\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/cstack-test\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"cstack-test\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-27T21:06:51.3210135Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-27T21:08:37.8053623Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/e4d662572b4f40409eed77e8\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Mitigated\",\"displayName\":\"Azure Governance Performance Test - tony-test-modifyDenyMG\",\"description\":\"\",\"expiresOn\":\"2024-02-10T08:00:00Z\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/411d2dfc3efb44bc89510bf3\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"411d2dfc3efb44bc89510bf3\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-01-18T19:32:04.6336364Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-02-01T05:41:56.656852Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/46aec00d695c4c83b704a532\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - robga keyvault location\",\"description\":\"\",\"resourceSelectors\":[{\"name\":\"1\",\"selectors\":[{\"kind\":\"resourceLocation\",\"in\":[\"westus\"]}]}],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/949bf29bfc4d493da3d53e91\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"949bf29bfc4d493da3d53e91\",\"systemData\":{\"createdBy\":\"robga@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-06T17:03:40.4464856Z\",\"lastModifiedBy\":\"robga@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-06T17:27:21.7158092Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyAssignments/8bea7adb75c44b11bbd2385e\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - tony-test-remeNonCompliantResourceCount-mg\",\"expiresOn\":\"2024-08-16T07:00:00Z\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyExemptions/c5aa9c33c134480bb1eed2ad\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"c5aa9c33c134480bb1eed2ad\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-08-15T20:11:15.2530087Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-08-15T20:11:15.2530087Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyAssignments/8bea7adb75c44b11bbd2385e\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - tony-test-remeNonCompliantResourceCount-mg\",\"expiresOn\":\"2025-08-16T07:00:00Z\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyExemptions/ef84f139b2ad46619aa4a10f\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"ef84f139b2ad46619aa4a10f\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-08-15T20:11:50.3679676Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-08-15T20:11:50.3679676Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyAssignments/8bea7adb75c44b11bbd2385e\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - tony-test-remeNonCompliantResourceCount-mg\",\"expiresOn\":\"2024-08-18T07:00:00Z\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyExemptions/640c31bb1b654126b3f7af1c\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"640c31bb1b654126b3f7af1c\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-08-15T20:12:08.0593408Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-08-15T20:12:08.0593408Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyAssignments/8bea7adb75c44b11bbd2385e\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - tony-test-remeNonCompliantResourceCount-mg\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyExemptions/e0c22d8951ea460abbd92c64\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"e0c22d8951ea460abbd92c64\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-08-16T05:17:59.2656118Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-08-16T05:17:59.2656118Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/c691bb62817b40fda56c1b77\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - qingye-test-exemptionOnMG\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/dcfaaf0f40374736afbffed9\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"dcfaaf0f40374736afbffed9\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-27T17:08:45.1562625Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-06-27T17:08:45.1562625Z\"}}]}",
       "isContentBase64": false
     }
   },
@@ -50,11 +49,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "14" ],
-        "x-ms-client-request-id": [ "5d73d9d4-4e9b-4e17-a0c7-84616865efc9" ],
+        "x-ms-client-request-id": [ "2fc36774-4a2e-43b1-9104-e33550da0f65" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyExemption_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -65,16 +64,15 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-request-id": [ "4c5cb6ef-268f-4226-88f3-1da52294b48f" ],
-        "x-ms-correlation-request-id": [ "4c5cb6ef-268f-4226-88f3-1da52294b48f" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240615T012329Z:4c5cb6ef-268f-4226-88f3-1da52294b48f" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-request-id": [ "0fde35e5-373c-4ed6-8e57-1c7e92de1d5d" ],
+        "x-ms-correlation-request-id": [ "0fde35e5-373c-4ed6-8e57-1c7e92de1d5d" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240905T201417Z:0fde35e5-373c-4ed6-8e57-1c7e92de1d5d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F2D4E5E0907F4E649B61B00545186BF8 Ref B: CO6AA3150217035 Ref C: 2024-06-15T01:23:29Z" ],
-        "Date": [ "Sat, 15 Jun 2024 01:23:28 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 83BE7525D95A46728A66A9B78FE28E1B Ref B: CO6AA3150218047 Ref C: 2024-09-05T20:14:17Z" ],
+        "Date": [ "Thu, 05 Sep 2024 20:14:17 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "108" ],
@@ -93,11 +91,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "15" ],
-        "x-ms-client-request-id": [ "09680d91-e2f1-434d-a11a-b534bb4b3b4f" ],
+        "x-ms-client-request-id": [ "62171e7b-48c5-4eec-b9f8-b3bf5939bbda" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyExemption_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -108,16 +106,15 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
-        "x-ms-request-id": [ "735e4b31-900b-4fd7-9bfb-3885448511d3" ],
-        "x-ms-correlation-request-id": [ "735e4b31-900b-4fd7-9bfb-3885448511d3" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240615T012329Z:735e4b31-900b-4fd7-9bfb-3885448511d3" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-request-id": [ "35960fac-6220-4e4f-a49a-588f4eca11b1" ],
+        "x-ms-correlation-request-id": [ "35960fac-6220-4e4f-a49a-588f4eca11b1" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240905T201417Z:35960fac-6220-4e4f-a49a-588f4eca11b1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 49ACF13C27664798BC176AEB716812FB Ref B: CO6AA3150217035 Ref C: 2024-06-15T01:23:29Z" ],
-        "Date": [ "Sat, 15 Jun 2024 01:23:28 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 809E46217161405584497192B21F69B4 Ref B: CO6AA3150218047 Ref C: 2024-09-05T20:14:17Z" ],
+        "Date": [ "Thu, 05 Sep 2024 20:14:17 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "108" ],
@@ -136,11 +133,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "16" ],
-        "x-ms-client-request-id": [ "6b79b270-cee9-42e5-8d15-db9d6fbfe56d" ],
+        "x-ms-client-request-id": [ "8f1f0693-5d59-49b0-a2b3-87178510f4a1" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyExemption_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -151,16 +148,15 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-request-id": [ "552025eb-f1af-4cfb-90cf-8db0e11a4376" ],
-        "x-ms-correlation-request-id": [ "552025eb-f1af-4cfb-90cf-8db0e11a4376" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240615T012329Z:552025eb-f1af-4cfb-90cf-8db0e11a4376" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-request-id": [ "cc467fc7-538f-4577-b109-3884b3ea7136" ],
+        "x-ms-correlation-request-id": [ "cc467fc7-538f-4577-b109-3884b3ea7136" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240905T201417Z:cc467fc7-538f-4577-b109-3884b3ea7136" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 497869D06EA544CA85BC4B4CD867F994 Ref B: CO6AA3150217035 Ref C: 2024-06-15T01:23:29Z" ],
-        "Date": [ "Sat, 15 Jun 2024 01:23:28 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E1B49E3CC8BE45DAB2E046E9D053F434 Ref B: CO6AA3150218047 Ref C: 2024-09-05T20:14:17Z" ],
+        "Date": [ "Thu, 05 Sep 2024 20:14:17 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "108" ],
@@ -179,11 +175,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "17" ],
-        "x-ms-client-request-id": [ "fef3d7dd-0aa1-4bdf-a519-ad2c6e8c6eda" ],
+        "x-ms-client-request-id": [ "3af2ab1a-b51e-44ec-a313-73b77cf47d84" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyExemption_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -195,14 +191,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "f95407b9-0b12-4224-8c92-40a4123ff9f9" ],
-        "x-ms-correlation-request-id": [ "f95407b9-0b12-4224-8c92-40a4123ff9f9" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240615T012329Z:f95407b9-0b12-4224-8c92-40a4123ff9f9" ],
+        "x-ms-request-id": [ "46720dec-a16c-46ee-9200-b97636bc94a5" ],
+        "x-ms-correlation-request-id": [ "46720dec-a16c-46ee-9200-b97636bc94a5" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240905T201418Z:46720dec-a16c-46ee-9200-b97636bc94a5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 50277CA605764E77858B6D7A2898F44D Ref B: CO6AA3150217035 Ref C: 2024-06-15T01:23:29Z" ],
-        "Date": [ "Sat, 15 Jun 2024 01:23:28 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 5B9EC0E757FB4C88B4148D629C1F2B2A Ref B: CO6AA3150218047 Ref C: 2024-09-05T20:14:18Z" ],
+        "Date": [ "Thu, 05 Sep 2024 20:14:17 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
@@ -221,11 +217,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "18" ],
-        "x-ms-client-request-id": [ "513cba1e-d9f6-430d-b93f-2276f8a9e1cd" ],
+        "x-ms-client-request-id": [ "48dbef1f-9b1f-46c3-a7bc-07c96439a1cd" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyExemption_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -237,22 +233,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-request-id": [ "1d9662cc-a0e3-40f0-9467-c3f92c35ede0" ],
-        "x-ms-correlation-request-id": [ "1d9662cc-a0e3-40f0-9467-c3f92c35ede0" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240615T012329Z:1d9662cc-a0e3-40f0-9467-c3f92c35ede0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "4de0541a-19bf-4611-8b2f-280d9fb82733" ],
+        "x-ms-correlation-request-id": [ "4de0541a-19bf-4611-8b2f-280d9fb82733" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240905T201418Z:4de0541a-19bf-4611-8b2f-280d9fb82733" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C72C67B9021843DCB0F5A8B77B33B611 Ref B: CO6AA3150217035 Ref C: 2024-06-15T01:23:29Z" ],
-        "Date": [ "Sat, 15 Jun 2024 01:23:28 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 19F006CF2EF64E2CB5D05DA164BFC872 Ref B: CO6AA3150218047 Ref C: 2024-09-05T20:14:18Z" ],
+        "Date": [ "Thu, 05 Sep 2024 20:14:18 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2621" ],
+        "Content-Length": [ "6962" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/e4d662572b4f40409eed77e8\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Mitigated\",\"displayName\":\"Azure Governance Performance Test - tony-test-modifyDenyMG\",\"description\":\"\",\"expiresOn\":\"2024-02-10T08:00:00Z\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/411d2dfc3efb44bc89510bf3\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"411d2dfc3efb44bc89510bf3\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-01-18T19:32:04.6336364Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-02-01T05:41:56.656852Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/46aec00d695c4c83b704a532\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - robga keyvault location\",\"description\":\"\",\"resourceSelectors\":[{\"name\":\"1\",\"selectors\":[{\"kind\":\"resourceLocation\",\"in\":[\"westus\"]}]}],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/949bf29bfc4d493da3d53e91\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"949bf29bfc4d493da3d53e91\",\"systemData\":{\"createdBy\":\"robga@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-06T17:03:40.4464856Z\",\"lastModifiedBy\":\"robga@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-06T17:27:21.7158092Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/c691bb62817b40fda56c1b77\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - qingye-test-exemptionOnMG\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/dcfaaf0f40374736afbffed9\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"dcfaaf0f40374736afbffed9\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-27T17:08:45.1562625Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-06-27T17:08:45.1562625Z\"}}]}",
+      "Content": "{\"value\":[{\"properties\":{\"policyAssignmentId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyAssignments/21eb5353068a4525b9472686\",\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - tony-test-modifyDenyMG\",\"description\":\"Testing correct passthru of DisplayName and Description properties in Update-AzPolicyExemption\",\"expiresOn\":\"2024-06-28T00:00:00Z\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/cstack-test\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"cstack-test\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-27T21:06:51.3210135Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-27T21:08:37.8053623Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/e4d662572b4f40409eed77e8\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Mitigated\",\"displayName\":\"Azure Governance Performance Test - tony-test-modifyDenyMG\",\"description\":\"\",\"expiresOn\":\"2024-02-10T08:00:00Z\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/411d2dfc3efb44bc89510bf3\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"411d2dfc3efb44bc89510bf3\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-01-18T19:32:04.6336364Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-02-01T05:41:56.656852Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/46aec00d695c4c83b704a532\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - robga keyvault location\",\"description\":\"\",\"resourceSelectors\":[{\"name\":\"1\",\"selectors\":[{\"kind\":\"resourceLocation\",\"in\":[\"westus\"]}]}],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/949bf29bfc4d493da3d53e91\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"949bf29bfc4d493da3d53e91\",\"systemData\":{\"createdBy\":\"robga@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-06T17:03:40.4464856Z\",\"lastModifiedBy\":\"robga@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-06T17:27:21.7158092Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyAssignments/8bea7adb75c44b11bbd2385e\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - tony-test-remeNonCompliantResourceCount-mg\",\"expiresOn\":\"2024-08-16T07:00:00Z\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyExemptions/c5aa9c33c134480bb1eed2ad\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"c5aa9c33c134480bb1eed2ad\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-08-15T20:11:15.2530087Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-08-15T20:11:15.2530087Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyAssignments/8bea7adb75c44b11bbd2385e\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - tony-test-remeNonCompliantResourceCount-mg\",\"expiresOn\":\"2025-08-16T07:00:00Z\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyExemptions/ef84f139b2ad46619aa4a10f\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"ef84f139b2ad46619aa4a10f\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-08-15T20:11:50.3679676Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-08-15T20:11:50.3679676Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyAssignments/8bea7adb75c44b11bbd2385e\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - tony-test-remeNonCompliantResourceCount-mg\",\"expiresOn\":\"2024-08-18T07:00:00Z\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyExemptions/640c31bb1b654126b3f7af1c\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"640c31bb1b654126b3f7af1c\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-08-15T20:12:08.0593408Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-08-15T20:12:08.0593408Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyAssignments/8bea7adb75c44b11bbd2385e\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - tony-test-remeNonCompliantResourceCount-mg\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyExemptions/e0c22d8951ea460abbd92c64\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"e0c22d8951ea460abbd92c64\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-08-16T05:17:59.2656118Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-08-16T05:17:59.2656118Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/c691bb62817b40fda56c1b77\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - qingye-test-exemptionOnMG\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/dcfaaf0f40374736afbffed9\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"dcfaaf0f40374736afbffed9\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-27T17:08:45.1562625Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-06-27T17:08:45.1562625Z\"}}]}",
       "isContentBase64": false
     }
   },
@@ -264,11 +259,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "19" ],
-        "x-ms-client-request-id": [ "dcee6868-89bf-495e-b91f-909f9cb43953" ],
+        "x-ms-client-request-id": [ "61bda337-02a8-48a9-bf83-e087dfca693c" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyExemption_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -280,15 +275,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-request-id": [ "94e5ca64-a636-49ea-a263-37972b0af3b0" ],
-        "x-ms-correlation-request-id": [ "94e5ca64-a636-49ea-a263-37972b0af3b0" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240615T012329Z:94e5ca64-a636-49ea-a263-37972b0af3b0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "e6a69948-d3b9-4d29-9a20-37fb0aeffad0" ],
+        "x-ms-correlation-request-id": [ "e6a69948-d3b9-4d29-9a20-37fb0aeffad0" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240905T201418Z:e6a69948-d3b9-4d29-9a20-37fb0aeffad0" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8917BAC3198A4404AAE4F09C0792DEA9 Ref B: CO6AA3150217035 Ref C: 2024-06-15T01:23:29Z" ],
-        "Date": [ "Sat, 15 Jun 2024 01:23:28 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 933B192A754242ED9A5A70C27188823C Ref B: CO6AA3150218047 Ref C: 2024-09-05T20:14:18Z" ],
+        "Date": [ "Thu, 05 Sep 2024 20:14:18 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "12" ],
@@ -307,11 +301,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "20" ],
-        "x-ms-client-request-id": [ "f01a8c4b-de21-4e2d-9324-0ea8f7ac6950" ],
+        "x-ms-client-request-id": [ "50949d06-7367-411c-9dab-3b9b1dd05b48" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyExemption_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -323,22 +317,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-request-id": [ "194a2f2b-de36-4086-9a58-7e59d9af03cc" ],
-        "x-ms-correlation-request-id": [ "194a2f2b-de36-4086-9a58-7e59d9af03cc" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240615T012329Z:194a2f2b-de36-4086-9a58-7e59d9af03cc" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-request-id": [ "85215db9-39d4-41a7-a1bd-0fd19d4bdce6" ],
+        "x-ms-correlation-request-id": [ "85215db9-39d4-41a7-a1bd-0fd19d4bdce6" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240905T201418Z:85215db9-39d4-41a7-a1bd-0fd19d4bdce6" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: CF95D0A322324972B673084436D393CD Ref B: CO6AA3150217035 Ref C: 2024-06-15T01:23:29Z" ],
-        "Date": [ "Sat, 15 Jun 2024 01:23:28 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 07954002FC084934A0F7AD50AFAA63CD Ref B: CO6AA3150218047 Ref C: 2024-09-05T20:14:18Z" ],
+        "Date": [ "Thu, 05 Sep 2024 20:14:18 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2621" ],
+        "Content-Length": [ "6962" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/e4d662572b4f40409eed77e8\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Mitigated\",\"displayName\":\"Azure Governance Performance Test - tony-test-modifyDenyMG\",\"description\":\"\",\"expiresOn\":\"2024-02-10T08:00:00Z\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/411d2dfc3efb44bc89510bf3\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"411d2dfc3efb44bc89510bf3\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-01-18T19:32:04.6336364Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-02-01T05:41:56.656852Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/46aec00d695c4c83b704a532\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - robga keyvault location\",\"description\":\"\",\"resourceSelectors\":[{\"name\":\"1\",\"selectors\":[{\"kind\":\"resourceLocation\",\"in\":[\"westus\"]}]}],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/949bf29bfc4d493da3d53e91\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"949bf29bfc4d493da3d53e91\",\"systemData\":{\"createdBy\":\"robga@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-06T17:03:40.4464856Z\",\"lastModifiedBy\":\"robga@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-06T17:27:21.7158092Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/c691bb62817b40fda56c1b77\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - qingye-test-exemptionOnMG\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/dcfaaf0f40374736afbffed9\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"dcfaaf0f40374736afbffed9\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-27T17:08:45.1562625Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-06-27T17:08:45.1562625Z\"}}]}",
+      "Content": "{\"value\":[{\"properties\":{\"policyAssignmentId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyAssignments/21eb5353068a4525b9472686\",\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - tony-test-modifyDenyMG\",\"description\":\"Testing correct passthru of DisplayName and Description properties in Update-AzPolicyExemption\",\"expiresOn\":\"2024-06-28T00:00:00Z\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/cstack-test\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"cstack-test\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-27T21:06:51.3210135Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-27T21:08:37.8053623Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/e4d662572b4f40409eed77e8\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Mitigated\",\"displayName\":\"Azure Governance Performance Test - tony-test-modifyDenyMG\",\"description\":\"\",\"expiresOn\":\"2024-02-10T08:00:00Z\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/411d2dfc3efb44bc89510bf3\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"411d2dfc3efb44bc89510bf3\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-01-18T19:32:04.6336364Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-02-01T05:41:56.656852Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/46aec00d695c4c83b704a532\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - robga keyvault location\",\"description\":\"\",\"resourceSelectors\":[{\"name\":\"1\",\"selectors\":[{\"kind\":\"resourceLocation\",\"in\":[\"westus\"]}]}],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/949bf29bfc4d493da3d53e91\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"949bf29bfc4d493da3d53e91\",\"systemData\":{\"createdBy\":\"robga@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-06T17:03:40.4464856Z\",\"lastModifiedBy\":\"robga@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-06T17:27:21.7158092Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyAssignments/8bea7adb75c44b11bbd2385e\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - tony-test-remeNonCompliantResourceCount-mg\",\"expiresOn\":\"2024-08-16T07:00:00Z\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyExemptions/c5aa9c33c134480bb1eed2ad\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"c5aa9c33c134480bb1eed2ad\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-08-15T20:11:15.2530087Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-08-15T20:11:15.2530087Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyAssignments/8bea7adb75c44b11bbd2385e\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - tony-test-remeNonCompliantResourceCount-mg\",\"expiresOn\":\"2025-08-16T07:00:00Z\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyExemptions/ef84f139b2ad46619aa4a10f\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"ef84f139b2ad46619aa4a10f\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-08-15T20:11:50.3679676Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-08-15T20:11:50.3679676Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyAssignments/8bea7adb75c44b11bbd2385e\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - tony-test-remeNonCompliantResourceCount-mg\",\"expiresOn\":\"2024-08-18T07:00:00Z\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyExemptions/640c31bb1b654126b3f7af1c\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"640c31bb1b654126b3f7af1c\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-08-15T20:12:08.0593408Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-08-15T20:12:08.0593408Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyAssignments/8bea7adb75c44b11bbd2385e\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - tony-test-remeNonCompliantResourceCount-mg\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyExemptions/e0c22d8951ea460abbd92c64\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"e0c22d8951ea460abbd92c64\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-08-16T05:17:59.2656118Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-08-16T05:17:59.2656118Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/c691bb62817b40fda56c1b77\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - qingye-test-exemptionOnMG\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/dcfaaf0f40374736afbffed9\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"dcfaaf0f40374736afbffed9\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-27T17:08:45.1562625Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-06-27T17:08:45.1562625Z\"}}]}",
       "isContentBase64": false
     }
   },
@@ -350,11 +343,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "21" ],
-        "x-ms-client-request-id": [ "9dc82ddc-0dce-4f95-8dee-b5b5056649ad" ],
+        "x-ms-client-request-id": [ "48b06cbc-ba78-4be3-b483-8ab185f6fac2" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyExemption_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -365,16 +358,15 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-request-id": [ "52cb04f3-0783-4542-81cb-5e2ee350d7dd" ],
-        "x-ms-correlation-request-id": [ "52cb04f3-0783-4542-81cb-5e2ee350d7dd" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240615T012330Z:52cb04f3-0783-4542-81cb-5e2ee350d7dd" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-request-id": [ "06dcfb1d-9ac2-4c90-a2ee-c25b2f1ab231" ],
+        "x-ms-correlation-request-id": [ "06dcfb1d-9ac2-4c90-a2ee-c25b2f1ab231" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240905T201418Z:06dcfb1d-9ac2-4c90-a2ee-c25b2f1ab231" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 05C8C90CE0C6478EB5E0213AABE30065 Ref B: CO6AA3150217035 Ref C: 2024-06-15T01:23:29Z" ],
-        "Date": [ "Sat, 15 Jun 2024 01:23:29 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 7D480B8FF3FD48FBA92A96060B47FCA4 Ref B: CO6AA3150218047 Ref C: 2024-09-05T20:14:18Z" ],
+        "Date": [ "Thu, 05 Sep 2024 20:14:18 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "108" ],
@@ -393,11 +385,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "22" ],
-        "x-ms-client-request-id": [ "b5c968e0-6cae-409b-a20c-6eddbd2e04c9" ],
+        "x-ms-client-request-id": [ "a77a1f35-2a27-449c-8944-bc04ee5f43b9" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyExemption_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -409,15 +401,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-request-id": [ "f537cded-3944-49b7-b1e3-4371bfc02c45" ],
-        "x-ms-correlation-request-id": [ "f537cded-3944-49b7-b1e3-4371bfc02c45" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240615T012330Z:f537cded-3944-49b7-b1e3-4371bfc02c45" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-request-id": [ "d3e1e3a4-0498-4c41-a3c8-a1a97931b101" ],
+        "x-ms-correlation-request-id": [ "d3e1e3a4-0498-4c41-a3c8-a1a97931b101" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240905T201419Z:d3e1e3a4-0498-4c41-a3c8-a1a97931b101" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 63AC53D1E6AF418F9EF6567D6C151D2F Ref B: CO6AA3150217035 Ref C: 2024-06-15T01:23:30Z" ],
-        "Date": [ "Sat, 15 Jun 2024 01:23:29 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 410B47AEDA514D8BBE6318F067C56F42 Ref B: CO6AA3150218047 Ref C: 2024-09-05T20:14:19Z" ],
+        "Date": [ "Thu, 05 Sep 2024 20:14:18 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "12" ],
@@ -436,11 +427,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "23" ],
-        "x-ms-client-request-id": [ "15ede5a7-5954-478b-b62d-63128a4059c6" ],
+        "x-ms-client-request-id": [ "d99c8303-34e3-44c7-ae72-37a7b343ded9" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyExemption_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -452,22 +443,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-request-id": [ "53000648-94b2-4c8e-992f-cc8440ed8f27" ],
-        "x-ms-correlation-request-id": [ "53000648-94b2-4c8e-992f-cc8440ed8f27" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240615T012330Z:53000648-94b2-4c8e-992f-cc8440ed8f27" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "84185ead-227f-4fc5-b8ec-1327f457e73c" ],
+        "x-ms-correlation-request-id": [ "84185ead-227f-4fc5-b8ec-1327f457e73c" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240905T201419Z:84185ead-227f-4fc5-b8ec-1327f457e73c" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: BB8063C27E5E4E508F6AB0C658AA2393 Ref B: CO6AA3150217035 Ref C: 2024-06-15T01:23:30Z" ],
-        "Date": [ "Sat, 15 Jun 2024 01:23:29 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 5FA94498558746BDA8B2B49FB7C30D10 Ref B: CO6AA3150218047 Ref C: 2024-09-05T20:14:19Z" ],
+        "Date": [ "Thu, 05 Sep 2024 20:14:19 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2621" ],
+        "Content-Length": [ "6962" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/e4d662572b4f40409eed77e8\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Mitigated\",\"displayName\":\"Azure Governance Performance Test - tony-test-modifyDenyMG\",\"description\":\"\",\"expiresOn\":\"2024-02-10T08:00:00Z\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/411d2dfc3efb44bc89510bf3\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"411d2dfc3efb44bc89510bf3\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-01-18T19:32:04.6336364Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-02-01T05:41:56.656852Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/46aec00d695c4c83b704a532\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - robga keyvault location\",\"description\":\"\",\"resourceSelectors\":[{\"name\":\"1\",\"selectors\":[{\"kind\":\"resourceLocation\",\"in\":[\"westus\"]}]}],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/949bf29bfc4d493da3d53e91\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"949bf29bfc4d493da3d53e91\",\"systemData\":{\"createdBy\":\"robga@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-06T17:03:40.4464856Z\",\"lastModifiedBy\":\"robga@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-06T17:27:21.7158092Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/c691bb62817b40fda56c1b77\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - qingye-test-exemptionOnMG\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/dcfaaf0f40374736afbffed9\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"dcfaaf0f40374736afbffed9\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-27T17:08:45.1562625Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-06-27T17:08:45.1562625Z\"}}]}",
+      "Content": "{\"value\":[{\"properties\":{\"policyAssignmentId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyAssignments/21eb5353068a4525b9472686\",\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - tony-test-modifyDenyMG\",\"description\":\"Testing correct passthru of DisplayName and Description properties in Update-AzPolicyExemption\",\"expiresOn\":\"2024-06-28T00:00:00Z\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/cstack-test\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"cstack-test\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-27T21:06:51.3210135Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-27T21:08:37.8053623Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/e4d662572b4f40409eed77e8\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Mitigated\",\"displayName\":\"Azure Governance Performance Test - tony-test-modifyDenyMG\",\"description\":\"\",\"expiresOn\":\"2024-02-10T08:00:00Z\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/411d2dfc3efb44bc89510bf3\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"411d2dfc3efb44bc89510bf3\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-01-18T19:32:04.6336364Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-02-01T05:41:56.656852Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/46aec00d695c4c83b704a532\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - robga keyvault location\",\"description\":\"\",\"resourceSelectors\":[{\"name\":\"1\",\"selectors\":[{\"kind\":\"resourceLocation\",\"in\":[\"westus\"]}]}],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/949bf29bfc4d493da3d53e91\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"949bf29bfc4d493da3d53e91\",\"systemData\":{\"createdBy\":\"robga@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-06T17:03:40.4464856Z\",\"lastModifiedBy\":\"robga@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-06T17:27:21.7158092Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyAssignments/8bea7adb75c44b11bbd2385e\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - tony-test-remeNonCompliantResourceCount-mg\",\"expiresOn\":\"2024-08-16T07:00:00Z\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyExemptions/c5aa9c33c134480bb1eed2ad\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"c5aa9c33c134480bb1eed2ad\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-08-15T20:11:15.2530087Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-08-15T20:11:15.2530087Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyAssignments/8bea7adb75c44b11bbd2385e\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - tony-test-remeNonCompliantResourceCount-mg\",\"expiresOn\":\"2025-08-16T07:00:00Z\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyExemptions/ef84f139b2ad46619aa4a10f\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"ef84f139b2ad46619aa4a10f\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-08-15T20:11:50.3679676Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-08-15T20:11:50.3679676Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyAssignments/8bea7adb75c44b11bbd2385e\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - tony-test-remeNonCompliantResourceCount-mg\",\"expiresOn\":\"2024-08-18T07:00:00Z\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyExemptions/640c31bb1b654126b3f7af1c\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"640c31bb1b654126b3f7af1c\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-08-15T20:12:08.0593408Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-08-15T20:12:08.0593408Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyAssignments/8bea7adb75c44b11bbd2385e\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - tony-test-remeNonCompliantResourceCount-mg\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/microsoft.management/managementgroups/azgovperftest/providers/Microsoft.Authorization/policyExemptions/e0c22d8951ea460abbd92c64\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"e0c22d8951ea460abbd92c64\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-08-16T05:17:59.2656118Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-08-16T05:17:59.2656118Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/c691bb62817b40fda56c1b77\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - qingye-test-exemptionOnMG\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/dcfaaf0f40374736afbffed9\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"dcfaaf0f40374736afbffed9\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-27T17:08:45.1562625Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-06-27T17:08:45.1562625Z\"}}]}",
       "isContentBase64": false
     }
   }

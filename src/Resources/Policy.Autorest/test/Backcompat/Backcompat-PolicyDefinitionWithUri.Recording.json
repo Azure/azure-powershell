@@ -18,22 +18,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-request-id": [ "1ae52016-4d2d-4d5f-bcce-5e3cded24a2a" ],
-        "x-ms-correlation-request-id": [ "1ae52016-4d2d-4d5f-bcce-5e3cded24a2a" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240615T012528Z:1ae52016-4d2d-4d5f-bcce-5e3cded24a2a" ],
+        "x-ms-request-id": [ "747784fc-d268-4b58-b11a-4f5a720797a3" ],
+        "x-ms-correlation-request-id": [ "747784fc-d268-4b58-b11a-4f5a720797a3" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240905T201554Z:747784fc-d268-4b58-b11a-4f5a720797a3" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5BD3287A04464DE0BC959FDF5273EA8F Ref B: CO6AA3150217035 Ref C: 2024-06-15T01:25:27Z" ],
-        "Date": [ "Sat, 15 Jun 2024 01:25:27 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: FEC7671ADE6948A2B2C672697AC31E5A Ref B: CO6AA3150218047 Ref C: 2024-09-05T20:15:54Z" ],
+        "Date": [ "Thu, 05 Sep 2024 20:15:54 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "926" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"policyType\":\"Custom\",\"mode\":\"All\",\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-06-15T01:25:27.9422821Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"policyRule\":{\"if\":{\"source\":\"action\",\"equals\":\"Microsoft.Resources/Subscriptions/ResourceGroups/write\"},\"then\":{\"effect\":\"deny\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithUri01\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithUri01\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-15T01:25:27.9173628Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-15T01:25:27.9173628Z\"}}",
+      "Content": "{\"properties\":{\"policyType\":\"Custom\",\"mode\":\"All\",\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-09-05T20:15:54.2770125Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"policyRule\":{\"if\":{\"source\":\"action\",\"equals\":\"Microsoft.Resources/Subscriptions/ResourceGroups/write\"},\"then\":{\"effect\":\"deny\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithUri01\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithUri01\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-05T20:15:54.2513353Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-05T20:15:54.2513353Z\"}}",
       "isContentBase64": false
     }
   },
@@ -44,12 +43,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "223" ],
-        "x-ms-client-request-id": [ "da232dda-cc26-459b-a782-0863d56653fb" ],
+        "x-ms-unique-id": [ "191" ],
+        "x-ms-client-request-id": [ "58ad1e9c-1414-4f84-979e-edbb7b01e173" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyDefinition_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -61,22 +60,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
-        "x-ms-request-id": [ "c1906f02-47a0-4f29-b50a-e7aefa2d4e1a" ],
-        "x-ms-correlation-request-id": [ "c1906f02-47a0-4f29-b50a-e7aefa2d4e1a" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240615T012528Z:c1906f02-47a0-4f29-b50a-e7aefa2d4e1a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "6efffb2a-78e7-4923-8bb7-c0a57b737b92" ],
+        "x-ms-correlation-request-id": [ "6efffb2a-78e7-4923-8bb7-c0a57b737b92" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240905T201554Z:6efffb2a-78e7-4923-8bb7-c0a57b737b92" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: FAD700510A3F4817B9ED5FA9CB98E8D1 Ref B: CO6AA3150217035 Ref C: 2024-06-15T01:25:28Z" ],
-        "Date": [ "Sat, 15 Jun 2024 01:25:27 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 49FEA1E6498845C3BA5475F74A9D604C Ref B: CO6AA3150218047 Ref C: 2024-09-05T20:15:54Z" ],
+        "Date": [ "Thu, 05 Sep 2024 20:15:54 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "926" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"policyType\":\"Custom\",\"mode\":\"All\",\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-06-15T01:25:27.9422821Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"policyRule\":{\"if\":{\"source\":\"action\",\"equals\":\"Microsoft.Resources/Subscriptions/ResourceGroups/write\"},\"then\":{\"effect\":\"deny\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithUri01\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithUri01\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-15T01:25:27.9173628Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-15T01:25:27.9173628Z\"}}",
+      "Content": "{\"properties\":{\"policyType\":\"Custom\",\"mode\":\"All\",\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-09-05T20:15:54.2770125Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"policyRule\":{\"if\":{\"source\":\"action\",\"equals\":\"Microsoft.Resources/Subscriptions/ResourceGroups/write\"},\"then\":{\"effect\":\"deny\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithUri01\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithUri01\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-05T20:15:54.2513353Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-05T20:15:54.2513353Z\"}}",
       "isContentBase64": false
     }
   },
@@ -87,12 +85,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "224" ],
-        "x-ms-client-request-id": [ "1828ad5e-c503-469d-938e-a155d6b2e437" ],
+        "x-ms-unique-id": [ "192" ],
+        "x-ms-client-request-id": [ "55df51f6-5d79-4d14-875d-2dd4d19c3b03" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Remove-AzPolicyDefinition_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.2", "Az.Policy/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.4.5", "Az.Policy/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -104,22 +102,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-request-id": [ "019154b8-7722-4235-87ee-b9bf42dbaf88" ],
-        "x-ms-correlation-request-id": [ "019154b8-7722-4235-87ee-b9bf42dbaf88" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240615T012529Z:019154b8-7722-4235-87ee-b9bf42dbaf88" ],
+        "x-ms-request-id": [ "35a4b76f-7736-4705-946c-64a7a8ff20f8" ],
+        "x-ms-correlation-request-id": [ "35a4b76f-7736-4705-946c-64a7a8ff20f8" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240905T201555Z:35a4b76f-7736-4705-946c-64a7a8ff20f8" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 2D09FBE4968D476F84E3B23B2869BC71 Ref B: CO6AA3150217035 Ref C: 2024-06-15T01:25:28Z" ],
-        "Date": [ "Sat, 15 Jun 2024 01:25:28 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: A49B5639C88041348C3E61FF61757779 Ref B: CO6AA3150218047 Ref C: 2024-09-05T20:15:54Z" ],
+        "Date": [ "Thu, 05 Sep 2024 20:15:55 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "926" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"policyType\":\"Custom\",\"mode\":\"All\",\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-06-15T01:25:27.9422821Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"policyRule\":{\"if\":{\"source\":\"action\",\"equals\":\"Microsoft.Resources/Subscriptions/ResourceGroups/write\"},\"then\":{\"effect\":\"deny\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithUri01\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithUri01\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-15T01:25:27.9173628Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-15T01:25:27.9173628Z\"}}",
+      "Content": "{\"properties\":{\"policyType\":\"Custom\",\"mode\":\"All\",\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-09-05T20:15:54.2770125Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"policyRule\":{\"if\":{\"source\":\"action\",\"equals\":\"Microsoft.Resources/Subscriptions/ResourceGroups/write\"},\"then\":{\"effect\":\"deny\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psBackcompat-PolicyDefinitionWithUri01\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psBackcompat-PolicyDefinitionWithUri01\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-05T20:15:54.2513353Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-05T20:15:54.2513353Z\"}}",
       "isContentBase64": false
     }
   }

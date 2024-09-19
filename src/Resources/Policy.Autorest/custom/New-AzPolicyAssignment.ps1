@@ -78,6 +78,14 @@ param(
     # Accept policy definition or policy set definition object
     ${PolicyDefinition},
 
+    [Parameter(ParameterSetName='ParameterObject')]
+    [Parameter(ParameterSetName='ParameterString')]
+    [Parameter(ParameterSetName='PolicyDefinitionOrPolicySetDefinition')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # Indicate version of policy definition or policy set definition
+    ${DefinitionVersion},
+
     [Parameter(ParameterSetName='ParameterObject', Mandatory)]
     [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
@@ -105,6 +113,7 @@ param(
     [Parameter(ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [ValidateSet('Default', 'DoNotEnforce')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute('Default', 'DoNotEnforce')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The policy assignment enforcement mode.
@@ -113,6 +122,7 @@ param(
 
     [Parameter()]
     [ValidateSet('None', 'SystemAssigned', 'UserAssigned')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute('None', 'SystemAssigned', 'UserAssigned')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The identity type.
@@ -142,6 +152,20 @@ param(
     # The messages that describe why a resource is non-compliant with the policy.
     # To construct, see NOTES section for NONCOMPLIANCEMESSAGE properties and create a hash table.
     ${NonComplianceMessage},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride[]]
+    # The policy property value override.
+    ${Override},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    # The resource selector list to filter policies by resource properties.
+    ${ResourceSelector},
 
     [Parameter()]
     [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
@@ -302,11 +326,29 @@ process {
     # route the input policy id to the correct place
     if ($calledParameters.ContainsKey('PolicyDefinition')) {
 
+        $definitionId = $PolicyDefinition
+        if ($PolicyDefinition.Id) {
+            $definitionId = $PolicyDefinition.Id
+        }
+
         # parse the definition Id to determine the format (policy [set] definition and versioned or not)
-        $parsedPolicyId = parsePolicyId $PolicyDefinition.Id
+        $parsedPolicyId = ParsePolicyId $definitionId
         if ($parsedPolicyId.ArtifactRef) {
-            # handle versioned policy [set] references
-            $calledParameters.DefinitionVersion = $parsedPolicyId.VersionRef
+            if ($DefinitionVersion) {
+                $parsedVersion = ParsePolicyVersion $DefinitionVersion
+
+                if ($writeln) {
+                    Write-Host -ForegroundColor Cyan "Artifact: $($parsedPolicyId.Artifact), VersionRef: $($parsedVersion.VersionRef)."
+                }
+
+                if ($parsedPolicyId.VersionRef -ne $parsedVersion.VersionRef) {
+                   throw "Definition version is ambiguous. PolicyDefinition version resolved to $($parsedPolicyId.VersionRef), but DefinitionVersion was $DefinitionVersion."
+                }
+            }
+            else {
+                # handle versioned policy [set] references
+                $calledParameters.DefinitionVersion = $parsedPolicyId.VersionRef
+            }
         }
 
         $calledParameters.PolicyDefinitionId = $parsedPolicyId.Artifact

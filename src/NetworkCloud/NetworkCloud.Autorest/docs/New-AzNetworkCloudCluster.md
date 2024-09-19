@@ -45,7 +45,7 @@ $computerackdefinition = @(@{IRackDefinition = "The list of rack definitions for
 $tagHash = @{
     tag = "tag"
 }
-$securePassword = ConvertTo-SecureString "password" -asplaintext -force
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 
 New-AzNetworkCloudCluster -ResourceGroupName resourceGroup -Name clusterName -AggregatorOrSingleRackDefinitionNetworkRackId rackId -AggregatorOrSingleRackDefinitionRackSerialNumber sr1234 -AggregatorOrSingleRackDefinitionRackSkuId rackSku -ClusterType clustertype -ClusterVersion clusterversion -ExtendedLocationName CmExtendedLocation -ExtendedLocationType CustomLocation -Location location -NetworkFabricId networkFabricId -SubscriptionId subscriptionId -AggregatorOrSingleRackDefinitionAvailabilityZone avilabilityzone -AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration $baremetalmachineconfigurationdata -AggregatorOrSingleRackDefinitionRackLocation rackLocation -AggregatorOrSingleRackDefinitionStorageApplianceConfiguration $storageapplianceconfigurationdata -AnalyticsWorkspaceId anlyticsWorkSpaceId -ClusterServicePrincipalApplicationId clusterServicePrincipalAppId -ClusterServicePrincipalId ClusterServicePrincipalId -ClusterServicePrincipalPassword $securePassword -ClusterServicePrincipalTenantId tenantId -ComputeRackDefinition $computerackdefinition -Tag $tagHash
 ```

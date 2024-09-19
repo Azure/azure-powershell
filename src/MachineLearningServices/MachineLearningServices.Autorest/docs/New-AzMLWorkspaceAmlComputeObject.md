@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspaceAmlComputeObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceAmlComputeObject
 schema: 2.0.0
 ---
 
@@ -320,11 +320,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AmlCompute
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.AmlCompute
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

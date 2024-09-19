@@ -194,7 +194,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # Do not use – reserved for future use.
+    # Do not use - reserved for future use.
     ${IsResourceAccount},
 
     [Parameter()]
