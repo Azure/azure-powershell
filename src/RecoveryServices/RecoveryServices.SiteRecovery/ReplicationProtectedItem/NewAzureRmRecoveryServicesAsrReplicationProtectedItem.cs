@@ -842,8 +842,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             }
 
             if(!string.IsNullOrEmpty(this.RecoveryAzureStorageAccountId)
-                && !string.IsNullOrEmpty(this.LogStorageAccountId))
+                && !string.IsNullOrEmpty(this.UseManagedDisksForReplication))
             {
+                throw new PSArgumentException(
+                    string.Format(Resources.IncorrectParameters));
             }
 
             if (!string.IsNullOrEmpty(this.RecoveryAzureNetworkId))
@@ -911,15 +913,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
             }
 
+            string deploymentType = string.Empty;
             if (this.RecoveryAzureStorageAccountId != null)
             {
                 providerSettings.TargetStorageAccountId =
                     this.RecoveryAzureStorageAccountId;
+                deploymentType = Utilities.GetValueFromArmId(
+                    this.RecoveryAzureStorageAccountId,
+                    ARMResourceTypeConstants.Providers);
             }
-
-            var deploymentType = Utilities.GetValueFromArmId(
-                this.RecoveryAzureStorageAccountId,
-                ARMResourceTypeConstants.Providers);
+            else
+            {
+                if(this.LogStorageAccountId != null)
+                {
+                    deploymentType = Utilities.GetValueFromArmId(
+                    this.LogStorageAccountId,
+                    ARMResourceTypeConstants.Providers);
+                }
+            }
+            
             if (deploymentType.ToLower()
                 .Contains(Constants.Classic.ToLower()))
             {
