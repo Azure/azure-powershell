@@ -411,7 +411,7 @@ New-AzHDInsightCluster `
     -SshCredential $clusterCreds
 ```
 
-### Example 9: Create an Azure HDInsight cluster with Enterprise Security Package(ESP) and Enable HDInsight ID Broker.
+### Example 9: Create an Azure HDInsight cluster with Enterprise Security Package(ESP), Enable HDInsight ID Broker and using WASB storage.
 ```powershell
 # Primary storage account info
 $storageAccountResourceGroupName = "Group"
