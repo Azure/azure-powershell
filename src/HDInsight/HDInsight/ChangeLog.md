@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Added parameter `-Tag` to cmdlet `New-AzHDInsightCluster` to set cluster tags.
+* Changed the type of property "IdentityId" in command `Update-AzHDInsightCluster` from `string`  to `string[]`.
+* Fixed a bug: Error occurs when setting the same assigned identity for storage and esp configurations.
 
 ## Version 6.2.0
 * Added new feature: Enable adding public IP tags to clusters. 
