@@ -1,4 +1,4 @@
-### Example 1: Disable gateway feature  of a connected kubernetes.
+### Example 1: Disable gateway feature of a connected kubernetes.
 ```powershell
 Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -DisableGateway
 ```
@@ -13,7 +13,7 @@ This command disable gateway feature of a connected kubernetes.
 
 ### Example 2: Enable gateway feature of connected kubernetes.
 ```powershell
-Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -EnableGateway -GatewayResourceId gatewayResourceId
+Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -GatewayResourceId gatewayResourceId
 
 ```
 

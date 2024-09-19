@@ -25,7 +25,7 @@ API to set properties of the connected cluster resource
 .Description
 API to set properties of the connected cluster resource
 .Example
-Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -EnableGateway -GatewayResourceId $gatewayResourceId
+Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -GatewayResourceId $gatewayResourceId
 .Example
 Set-AzConnectedKubernetes -ClusterName azps_test_cluster1 -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01 -DisableGateway
 
@@ -87,7 +87,6 @@ function Set-AzConnectedKubernetes {
         Justification = 'Code published before this issue was identified')]
     param(
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory)]
-        [Parameter(ParameterSetName = 'SetExpandedEnableGateway', Mandatory)]
         [Parameter(ParameterSetName = 'SetExpandedDisableGateway', Mandatory)]
         [Alias('Name')]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
@@ -96,7 +95,6 @@ function Set-AzConnectedKubernetes {
         ${ClusterName},
 
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory)]
-        [Parameter(ParameterSetName = 'SetExpandedEnableGateway', Mandatory)]
         [Parameter(ParameterSetName = 'SetExpandedDisableGateway', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
         [System.String]
@@ -105,7 +103,6 @@ function Set-AzConnectedKubernetes {
         ${ResourceGroupName},
 
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory)]
-        [Parameter(ParameterSetName = 'SetExpandedEnableGateway', Mandatory)]
         [Parameter(ParameterSetName = 'SetExpandedDisableGateway', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [System.String]
@@ -113,7 +110,6 @@ function Set-AzConnectedKubernetes {
         ${Location},
 
         [Parameter(ParameterSetName = 'Set', Mandatory)]
-        [Parameter(ParameterSetName = 'SetEnableGateway', Mandatory)]
         [Parameter(ParameterSetName = 'SetDisableGateway', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster]
@@ -326,12 +322,6 @@ function Set-AzConnectedKubernetes {
         # Arc Agentry System Protected Configuration
         ${ConfigurationProtectedSetting},
 
-        [Parameter(ParameterSetName = 'SetEnableGateway', Mandatory)]
-        [Parameter(ParameterSetName = 'SetExpandedEnableGateway', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('body')]
-        [System.Management.Automation.SwitchParameter]
-        ${EnableGateway},
-
         [Parameter(ParameterSetName = 'SetDisableGateway', Mandatory)]
         [Parameter(ParameterSetName = 'SetExpandedDisableGateway', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('body')]
@@ -341,7 +331,7 @@ function Set-AzConnectedKubernetes {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('body')]
         [System.String]
-        # Arc Gateway resource Id
+        # Arc Gateway resource Id, providing this will enable the gateway
         ${GatewayResourceId}
     )
 
@@ -415,10 +405,7 @@ function Set-AzConnectedKubernetes {
             $ResourceGroupName = $InputObject.ResourceGroupName
             $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
 
-            if ((-not $PSBoundParameters.ContainsKey('EnableGateway')) -and (-not $PSBoundParameters.ContainsKey('DisableGateway'))) {
-                if ($InputObject.GatewayEnabled) {
-                    $EnableGateway = $InputObject.GatewayEnabled
-                }
+            if (-not $PSBoundParameters.ContainsKey('DisableGateway')) {
                 if (-not $InputObject.GatewayEnabled) {
                     $DisableGateway = -not $InputObject.GatewayEnabled
                 }
@@ -427,11 +414,14 @@ function Set-AzConnectedKubernetes {
                 $GatewayResourceId = $InputObject.GatewayResourceId
                 $PSBoundParameters.Add('GatewayResourceId', $GatewayResourceId)
             }
+
+            if (-not $PSBoundParameters.ContainsKey('DisableAutoUpgrade')) {
+                $DisableAutoUpgrade = ($InputObject.ArcAgentProfileAgentAutoUpgrade -eq 'Disabled')
+            }
         }
 
-        if ($EnableGateway) {
+        if (-not [String]::IsNullOrEmpty($GatewayResourceId) -and -not $DisableGateway) {
             Write-Debug "Gateway enabled"
-            $Null = $PSBoundParameters.Remove('EnableGateway')
             $PSBoundParameters.Add('GatewayEnabled', $true)
         }
         # If DisableGateway is provided then set the gateway as disabled and remove gateway resourceId from parameters
@@ -472,7 +462,6 @@ function Set-AzConnectedKubernetes {
         $ReleaseNamespace = $ReleaseNamespaces['ReleaseNamespace']
         $ReleaseInstallNamespace = $ReleaseNamespaces['ReleaseInstallNamespace']
 
-
         #Endregion
 
         #Region validate release namespace
@@ -511,9 +500,9 @@ function Set-AzConnectedKubernetes {
 
         $options = ""
 
-        if ($DisableAutoUpgrade) {
-            $options += " --set systemDefaultValues.azureArcAgents.autoUpdate=false"
+        if ($DisableAutoUpgrade -or ($ExistConnectedKubernetes.ArcAgentProfileAgentAutoUpgrade -eq 'Disabled')) {
             $Null = $PSBoundParameters.Remove('DisableAutoUpgrade')
+            $PSBoundParameters.Add('ArcAgentProfileAgentAutoUpgrade', 'Disabled')
         }
         if (-not ([string]::IsNullOrEmpty($ContainerLogPath))) {
             $options += " --set systemDefaultValues.fluent-bit.containerLogPath=$ContainerLogPath"
@@ -549,6 +538,17 @@ function Set-AzConnectedKubernetes {
         #Endregion
 
         #Region Deal with configuration settings and protected settings
+        
+        # If the user does not provide proxy settings, or configuration settings, we shall use arc config of existing object
+        $userProvidedArcConfiguration = (
+            ($null -ne $InputObject) -and ($InputObject.ArcAgentryConfiguration.Length > 0) `
+            -and (-not ([string]::IsNullOrEmpty($HttpProxy))) `
+            -and (-not ([string]::IsNullOrEmpty($HttpsProxy))) `
+            -and (-not ([string]::IsNullOrEmpty($NoProxy))) `
+            -and ((-not ([string]::IsNullOrEmpty($ProxyCert)))) `
+            -and ($PSBoundParameters.ContainsKey('ConfigurationSetting')) `
+            -and ($PSBoundParameters.ContainsKey('ConfigurationProtectedSetting')))
+        
         if ($null -eq $ConfigurationSetting) {
             $ConfigurationSetting = @{}
         }
@@ -654,9 +654,18 @@ function Set-AzConnectedKubernetes {
             $PSBoundParameters.Remove('ConfigurationProtectedSetting')
         }
 
-        $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
+        if ($userProvidedArcConfiguration) {
+            $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
+        } else {
+            $PSBoundParameters.Add('ArcAgentryConfiguration', $ExistConnectedKubernetes.ArcAgentryConfiguration)        
+        }
 
+        Write-Output "Updating the connected cluster resource...."
         $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes @PSBoundParameters
+        if ((-not $WhatIfPreference) -and (-not $Response)) {
+            Write-Error "Failed to update the 'Kubernetes - Azure Arc' resource"
+            return
+        }
         $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration $RedactedProtectedConfiguration -CCRP $false
 
         # Convert the $Response object into a nested hashtable.
@@ -671,13 +680,20 @@ function Set-AzConnectedKubernetes {
             $Response['properties'] = @{}
         }
 
-        $Response['properties']['arcAgentryConfigurations'] = $arcAgentryConfigs
+        if ($userProvidedArcConfiguration) {
+            $Response['properties']['arcAgentryConfigurations'] = $arcAgentryConfigs
+        } else {
+            $Response['properties']['arcAgentryConfigurations'] = $ExistConnectedKubernetes.ArcAgentryConfiguration
+        }
+        
 
         # Retrieving Helm chart OCI (Open Container Initiative) Artifact location
         Write-Debug "Retrieving Helm chart OCI (Open Container Initiative) Artifact location."
         $ResponseStr = $Response | ConvertTo-Json -Depth 10
         Write-Debug "PUT response: $ResponseStr"
         
+        Write-Output "Preparing helm ...."
+
         if ($PSCmdlet.ShouldProcess('configDP', 'get helm values from config DP')) {
             $helmValuesDp = Get-HelmValuesFromConfigDP `
                 -configDPEndpoint $configDPEndpoint `
@@ -741,6 +757,7 @@ function Set-AzConnectedKubernetes {
             }
         }
 
+        Write-Output "Executing helm upgrade, this can take a few minutes ...."
         Write-Debug $options -ErrorAction Continue
         if ($DebugPreference -eq "Continue") {
             $options += " --debug"
@@ -765,7 +782,7 @@ function Set-AzConnectedKubernetes {
             if ($PSBoundParameters.ContainsKey('OidcIssuerProfileEnabled') -or $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled') ) {
                 $ExistConnectedKubernetes = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
     
-                Write-Host "Cluster configuration is in progress..."
+                Write-Output "Cluster configuration is in progress..."
                 $timeout = [datetime]::Now.AddMinutes(60)
     
                 while (($ExistConnectedKubernetes.ArcAgentProfileAgentState -ne "Succeeded") -and ($ExistConnectedKubernetes.ArcAgentProfileAgentState -ne "Failed") -and ([datetime]::Now -lt $timeout)) {
@@ -774,7 +791,7 @@ function Set-AzConnectedKubernetes {
                 }
     
                 if ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Succeeded") {
-                    Write-Host "Cluster configuration succeeded."
+                    Write-Output "Cluster configuration succeeded."
                 } elseif ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Failed") {
                     Write-Error "Cluster configuration failed."
                 } else {
