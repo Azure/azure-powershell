@@ -439,7 +439,7 @@ function New-AzConnectedKubernetes {
         $options = ""
 
         if ($DisableAutoUpgrade) {
-            $options += " --set systemDefaultValues.azureArcAgents.autoUpdate=false"
+            # $options += " --set systemDefaultValues.azureArcAgents.autoUpdate=false"
             $Null = $PSBoundParameters.Remove('DisableAutoUpgrade')
             $PSBoundParameters.Add('ArcAgentProfileAgentAutoUpgrade', 'Disabled')
         }
@@ -604,7 +604,7 @@ function New-AzConnectedKubernetes {
         $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
 
         if ((-not $WhatIfPreference) -and (-not $Response)) {
-            Write-Error "Failed to create the connected cluster resource."
+            Write-Error "Failed to create the 'Kubernetes - Azure Arc' resource."
             return
         }
 

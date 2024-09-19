@@ -501,7 +501,6 @@ function Set-AzConnectedKubernetes {
         $options = ""
 
         if ($DisableAutoUpgrade -or ($ExistConnectedKubernetes.ArcAgentProfileAgentAutoUpgrade -eq 'Disabled')) {
-            $options += " --set systemDefaultValues.azureArcAgents.autoUpdate=false"
             $Null = $PSBoundParameters.Remove('DisableAutoUpgrade')
             $PSBoundParameters.Add('ArcAgentProfileAgentAutoUpgrade', 'Disabled')
         }
@@ -664,7 +663,7 @@ function Set-AzConnectedKubernetes {
         Write-Host "Updating the connected cluster resource...."
         $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes @PSBoundParameters
         if ((-not $WhatIfPreference) -and (-not $Response)) {
-            Write-Error "Failed to update the connected cluster resource"
+            Write-Error "Failed to update the 'Kubernetes - Azure Arc' resource"
             return
         }
         $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration $RedactedProtectedConfiguration -CCRP $false
