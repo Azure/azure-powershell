@@ -660,7 +660,7 @@ function Set-AzConnectedKubernetes {
             $PSBoundParameters.Add('ArcAgentryConfiguration', $ExistConnectedKubernetes.ArcAgentryConfiguration)        
         }
 
-        Write-Host "Updating the connected cluster resource...."
+        Write-Output "Updating the connected cluster resource...."
         $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes @PSBoundParameters
         if ((-not $WhatIfPreference) -and (-not $Response)) {
             Write-Error "Failed to update the 'Kubernetes - Azure Arc' resource"
@@ -692,7 +692,7 @@ function Set-AzConnectedKubernetes {
         $ResponseStr = $Response | ConvertTo-Json -Depth 10
         Write-Debug "PUT response: $ResponseStr"
         
-        Write-Host "Preparing helm ...."
+        Write-Output "Preparing helm ...."
 
         if ($PSCmdlet.ShouldProcess('configDP', 'get helm values from config DP')) {
             $helmValuesDp = Get-HelmValuesFromConfigDP `
@@ -757,7 +757,7 @@ function Set-AzConnectedKubernetes {
             }
         }
 
-        Write-Host "Executing helm upgrade, this can take a few minutes ...."
+        Write-Output "Executing helm upgrade, this can take a few minutes ...."
         Write-Debug $options -ErrorAction Continue
         if ($DebugPreference -eq "Continue") {
             $options += " --debug"
@@ -782,7 +782,7 @@ function Set-AzConnectedKubernetes {
             if ($PSBoundParameters.ContainsKey('OidcIssuerProfileEnabled') -or $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled') ) {
                 $ExistConnectedKubernetes = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
     
-                Write-Host "Cluster configuration is in progress..."
+                Write-Output "Cluster configuration is in progress..."
                 $timeout = [datetime]::Now.AddMinutes(60)
     
                 while (($ExistConnectedKubernetes.ArcAgentProfileAgentState -ne "Succeeded") -and ($ExistConnectedKubernetes.ArcAgentProfileAgentState -ne "Failed") -and ([datetime]::Now -lt $timeout)) {
@@ -791,7 +791,7 @@ function Set-AzConnectedKubernetes {
                 }
     
                 if ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Succeeded") {
-                    Write-Host "Cluster configuration succeeded."
+                    Write-Output "Cluster configuration succeeded."
                 } elseif ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Failed") {
                     Write-Error "Cluster configuration failed."
                 } else {
