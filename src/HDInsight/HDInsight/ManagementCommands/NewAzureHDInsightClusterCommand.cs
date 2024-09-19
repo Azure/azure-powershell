@@ -393,6 +393,9 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets or sets the availability zones.")]
         public string[] Zone { get; set; }
 
+        [Parameter(HelpMessage = "Gets or sets the cluster tags.")]
+        public Dictionary<string,string> Tag { get; set; }
+
         [Parameter(HelpMessage = "Gets or sets the private link configuration.")]
         public AzureHDInsightPrivateLinkConfiguration[] PrivateLinkConfiguration { get; set; }
 
@@ -541,7 +544,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 {
                     clusterIdentity.UserAssignedIdentities.Add(AssignedIdentity, new UserAssignedIdentity());
                 }
-                if (StorageAccountManagedIdentity != null)
+                if (StorageAccountManagedIdentity != null && !clusterIdentity.UserAssignedIdentities.ContainsKey(StorageAccountManagedIdentity))
                 {
                     clusterIdentity.UserAssignedIdentities.Add(StorageAccountManagedIdentity, new UserAssignedIdentity());
                 }
@@ -615,7 +618,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             ClusterCreateParametersExtended createParams = new ClusterCreateParametersExtended
             {
                 Location = Location,
-                //Tags = Tags,  //To Do add this Tags parameter
+                Tags = Tag,
                 Zones = Zone,
                 Properties = new ClusterCreateProperties
                 {
