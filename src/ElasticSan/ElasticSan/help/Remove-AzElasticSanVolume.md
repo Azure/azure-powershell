@@ -16,7 +16,7 @@ Delete an Volume.
 ```
 Remove-AzElasticSanVolume -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -VolumeGroupName <String> [-DeleteSnapshot <String>] [-ForceDelete <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,20 +24,20 @@ Remove-AzElasticSanVolume -ElasticSanName <String> -Name <String> -ResourceGroup
 ```
 Remove-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
  [-DeleteSnapshot <String>] [-ForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityElasticSan
 ```
 Remove-AzElasticSanVolume -Name <String> -VolumeGroupName <String> -ElasticSanInputObject <IElasticSanIdentity>
  [-DeleteSnapshot <String>] [-ForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-DeleteSnapshot <String>] [-ForceDelete <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -202,6 +202,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
