@@ -55,7 +55,7 @@ nested-object-to-string: true
 
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
 use-extension:
-  "@autorest/powershell": "3.x"
+  "@autorest/powershell": "4.x"
 
 directive:
   - from: swagger-document
@@ -74,42 +74,77 @@ directive:
     - HealthProbeParameters
   # Generate memory object as parameter of the cmelet.
   - model-cmdlet:
-    - ResourceReference
+    - model-name: ResourceReference
+      cmdlet-name: New-AzCdnResourceReferenceObject
     # origin group parameters
-    - HealthProbeParameters
-    - ResponseBasedOriginErrorDetectionParameters
+    - model-name: HealthProbeParameters
+      cmdlet-name: New-AzCdnHealthProbeParametersObject
+    - model-name: ResponseBasedOriginErrorDetectionParameters
+      cmdlet-name: New-AzCdnResponseBasedOriginErrorDetectionParametersObject
     # https
-    - UserManagedHttpsParameters
-    - CdnManagedHttpsParameters
-    - DeliveryRule
+    - model-name: UserManagedHttpsParameters
+      cmdlet-name: New-AzCdnUserManagedHttpsParametersObject
+    - model-name: CdnManagedHttpsParameters
+      cmdlet-name: New-AzCdnManagedHttpsParametersObject
+    - model-name: DeliveryRule
+      cmdlet-name: New-AzCdnDeliveryRuleObject
     # CDN condition
-    - DeliveryRuleRemoteAddressCondition
-    - DeliveryRuleRequestMethodCondition
-    - DeliveryRuleQueryStringCondition
-    - DeliveryRulePostArgsCondition
-    - DeliveryRuleRequestUriCondition
-    - DeliveryRuleRequestHeaderCondition
-    - DeliveryRuleRequestBodyCondition
-    - DeliveryRuleRequestSchemeCondition
-    - DeliveryRuleUrlPathCondition
-    - DeliveryRuleUrlFileExtensionCondition
-    - DeliveryRuleUrlFileNameCondition
-    - DeliveryRuleHttpVersionCondition
-    - DeliveryRuleCookiesCondition
-    - DeliveryRuleIsDeviceCondition
+    - model-name: DeliveryRuleRemoteAddressCondition
+      cmdlet-name: New-AzCdnDeliveryRuleRemoteAddressConditionObject
+    - model-name: DeliveryRuleRequestMethodCondition
+      cmdlet-name: New-AzCdnDeliveryRuleRequestMethodConditionObject
+    - model-name: DeliveryRuleQueryStringCondition
+      cmdlet-name: New-AzCdnDeliveryRuleQueryStringConditionObject
+    - model-name: DeliveryRulePostArgsCondition
+      cmdlet-name: New-AzCdnDeliveryRulePostArgsConditionObject
+    - model-name: DeliveryRuleRequestUriCondition
+      cmdlet-name: New-AzCdnDeliveryRuleRequestUriConditionObject
+    - model-name: DeliveryRuleRequestHeaderCondition
+      cmdlet-name: New-AzCdnDeliveryRuleRequestHeaderConditionObject
+    - model-name: DeliveryRuleRequestBodyCondition
+      cmdlet-name: New-AzCdnDeliveryRuleRequestBodyConditionObject
+    - model-name: DeliveryRuleRequestSchemeCondition
+      cmdlet-name: New-AzCdnDeliveryRuleRequestSchemeConditionObject
+    - model-name: DeliveryRuleUrlPathCondition 
+      cmdlet-name: New-AzCdnDeliveryRuleUrlPathConditionObject
+    - model-name: DeliveryRuleUrlFileExtensionCondition 
+      cmdlet-name: New-AzCdnDeliveryRuleUrlFileExtensionConditionObject
+    - model-name:  DeliveryRuleUrlFileNameCondition
+      cmdlet-name: New-AzCdnDeliveryRuleUrlFileNameConditionObject
+    - model-name:  DeliveryRuleHttpVersionCondition
+      cmdlet-name: New-AzCdnDeliveryRuleHttpVersionConditionObject
+    - model-name:  DeliveryRuleCookiesCondition
+      cmdlet-name: New-AzCdnDeliveryRuleCookiesConditionObject
+    - model-name:  DeliveryRuleIsDeviceCondition
+      cmdlet-name: New-AzCdnDeliveryRuleIsDeviceConditionObject
     # CDN action
-    - DeliveryRuleCacheExpirationAction
-    - DeliveryRuleCacheKeyQueryStringAction
-    - OriginGroupOverrideAction
-    - UrlRedirectAction
-    - UrlSigningAction
-    - UrlRewriteAction
-    - DeliveryRuleRequestHeaderAction
-    - DeliveryRuleResponseHeaderAction
+    - model-name:  DeliveryRuleCacheExpirationAction
+      cmdlet-name: New-AzCdnDeliveryRuleCacheExpirationActionObject
+    - model-name:  DeliveryRuleCacheKeyQueryStringAction
+      cmdlet-name: New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject
+    - model-name:  OriginGroupOverrideAction
+      cmdlet-name: New-AzCdnOriginGroupOverrideActionObject
+    - model-name:  UrlRedirectAction
+      cmdlet-name: New-AzFrontDoorCdnRuleUrlRedirectActionObject
+    - model-name:  UrlRewriteAction
+      cmdlet-name: New-AzFrontDoorCdnRuleUrlRewriteActionObject
+    - model-name:  UrlAction
+      cmdlet-name: New-AzFrontDoorCdnRuleUrlActionObject
+    - model-name:  DeliveryRuleRequestHeaderAction
+      cmdlet-name: New-AzCdnDeliveryRuleRequestHeaderActionObject
+    - model-name:  DeliveryRuleResponseHeaderAction
+      cmdlet-name: New-AzCdnDeliveryRuleResponseHeaderActionObject
+    - model-name: UrlSigningAction
+      cmdlet-name: New-AzFrontDoorCdnRuleUrlSigningActionObject
     # CDN content
-    - PurgeParameters
-    - LoadParameters
-    - MigrationEndpointMapping
+    - model-name: PurgeParameters
+      cmdlet-name: New-AzCdnPurgeParametersObject
+    - model-name: LoadParameters
+      cmdlet-name: New-AzCdnLoadParametersObject
+    - model-name: LoadParameters
+      cmdlet-name: New-AzCdnLoadParametersObject
+    - model-name: MigrationEndpointMapping
+      cmdlet-name: New-AzCdnMigrationEndpointMappingObject
 
     # AFDX profile LogScrubbing, need to rename the memory ojects, not sure how to rename a memory object currently.
     # - ProfileLogScrubbing
