@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a new action group or Create an existing one.
+Create a new action group or update an existing one.
 .Description
-Create a new action group or Create an existing one.
+Create a new action group or update an existing one.
 .Example
 $email1 = New-AzActionGroupEmailReceiverObject -EmailAddress user@example.com -Name user1
 $sms1 = New-AzActionGroupSmsReceiverObject -CountryCode '{countrycode}' -Name user2 -PhoneNumber '{phonenumber}'
