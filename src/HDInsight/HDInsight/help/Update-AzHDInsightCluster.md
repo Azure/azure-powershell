@@ -38,10 +38,9 @@ Update-AzHDInsightCluster -ClusterName $clusterName -Tag $tags
 ```powershell
 $clusterName = "your-hadoop-001"
 $identityType = "UserAssigned"
-$identityId = "/subscriptions/00000000-0000-0000-0000-000000000000
-/resourceGroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdi-msi"
+$identityId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft ManagedIdentity/userAssignedIdentities/hdi-msi"
 
-Update-AzHDInsightCluster -ClusterName $clusterName -IdentityType UserAssigned -IdentityId $identityId
+Update-AzHDInsightCluster -ClusterName $clusterName -IdentityType $identityType -IdentityId $identityId
 ```
 
 ### Example 3: Update manage identity with multiple UserAssigned msi.
@@ -49,8 +48,8 @@ Update-AzHDInsightCluster -ClusterName $clusterName -IdentityType UserAssigned -
 $clusterName = "your-hadoop-001"
 $identityType = "UserAssigned"
 $identityIds = @(
-	"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdi-msi",
-	"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdi-msi1"
+ "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdi-msi",
+ "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdi-msi1"
 )
 
 Update-AzHDInsightCluster -ClusterName $clusterName -IdentityType $identityType -IdentityId $identityIds
@@ -60,8 +59,7 @@ Update-AzHDInsightCluster -ClusterName $clusterName -IdentityType $identityType 
 ```powershell
 $clusterName = "your-hadoop-001"
 $identityType = "SystemAssigned"
-$identityId = "/subscriptions/00000000-0000-0000-0000-000000000000
-/resourceGroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdi-msi"
+$identityId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdi-msi"
 
 Update-AzHDInsightCluster -ClusterName $clusterName -IdentityType $identityType
 ```
@@ -69,7 +67,7 @@ Update-AzHDInsightCluster -ClusterName $clusterName -IdentityType $identityType
 ### Example 5: Update manage identity with SystemAssigned,UserAssigned msi.
 ```powershell
 $clusterName = "your-hadoop-001"
-$identityId = "/subscriptions/00000000-0000-0000-0000-000000000000
+$identityId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdi-msi"
 $identityType = "SystemAssigned,UserAssigned"
 /resourceGroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdi-msi"
 
