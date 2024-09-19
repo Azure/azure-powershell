@@ -58,7 +58,8 @@ namespace Microsoft.Azure.Management.HDInsight
         /// The resource tags.
         /// </param>
         /// <param name='identity'>
-        /// The identity of the cluster, if configured.
+        /// The identity of the cluster, if configured. Setting this property will
+        /// override the existing identity configuration of the cluster.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
