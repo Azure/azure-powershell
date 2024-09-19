@@ -222,6 +222,13 @@ directive:
       default:
         script: '"default"'
 
+  - from: swagger-document
+    where: $.definitions.AccessPolicyAssignment
+    transform: $['required'] = ['properties']
+  - from: swagger-document
+    where: $.definitions.AccessPolicyAssignmentProperties.properties.user
+    transform: $['required'] = ['objectId']
+
   # DatabaseName parameter to have value 'default'
   - where:
       verb: Invoke
@@ -231,7 +238,6 @@ directive:
     set:
       default:
         script: '"default"'
-
   # Fix bugs in generated code from namespace conflict
   - from: source-file-csharp
     where: $
