@@ -382,13 +382,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
-        /// <summary>Do not use – reserved for future use.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Do not use – reserved for future use.")]
+        /// <summary>Do not use - reserved for future use.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Do not use - reserved for future use.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Do not use – reserved for future use.",
+        Description = @"Do not use - reserved for future use.",
         SerializedName = @"isResourceAccount",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter IsResourceAccount { get => _body.IsResourceAccount ?? default(global::System.Management.Automation.SwitchParameter); set => _body.IsResourceAccount = value; }

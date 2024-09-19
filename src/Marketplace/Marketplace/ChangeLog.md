@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed Microsoft.Azure.Management.Marketplace 1.1.0 dependencies
+* Added Microsoft.Azure.PowerShell.Marketplace.Management.Sdk
 
 ## Version 0.5.0
 * Introduced secrets detection feature to safeguard sensitive data.

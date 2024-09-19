@@ -21,12 +21,12 @@ Create an in-memory object for SasDatastoreCredentials.
 Create an in-memory object for SasDatastoreCredentials.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SasDatastoreCredentials
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.SasDatastoreCredentials
 .Link
-https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreSasCredentialObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceDatastoreSasCredentialObject
 #>
 function New-AzMLWorkspaceDatastoreSasCredentialObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SasDatastoreCredentials')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.SasDatastoreCredentials')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -36,9 +36,9 @@ function New-AzMLWorkspaceDatastoreSasCredentialObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SasDatastoreCredentials]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.SasDatastoreCredentials]::New()
         $Object.CredentialsType = 'Sas'
-        $Secret = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SasDatastoreSecrets]::New()
+        $Secret = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.SasDatastoreSecrets]::New()
         $Secret.SecretsType = 'Sas'
         if ($PSBoundParameters.ContainsKey('SasToken')) {
             $Secret.SasToken = $SasToken

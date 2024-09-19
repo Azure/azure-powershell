@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(string))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Communication.Description(@"Links an Azure Notification Hub to this communication service.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Communication.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Communication.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}/linkNotificationHub", ApiVersion = "2020-08-20")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Communication.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}/linkNotificationHub", ApiVersion = "2023-06-01-preview")]
     public partial class SetAzCommunicationServiceNotificationHub_LinkExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IEventListener
     {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>Description of an Azure Notification Hub to link to the communication service</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ILinkNotificationHubParameters _linkNotificationHubParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.LinkNotificationHubParameters();
+        private Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ILinkNotificationHubParameters _linkNotificationHubParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.LinkNotificationHubParameters();
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -152,12 +152,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>The ID of the target subscription.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription.")]
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription. The value must be an UUID.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The ID of the target subscription.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.DefaultInfo(
@@ -172,24 +172,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ILinkedNotificationHub">Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ILinkedNotificationHub</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ILinkedNotificationHub">Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ILinkedNotificationHub</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ILinkedNotificationHub> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ILinkedNotificationHub> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'CommunicationServiceLinkNotificationHub' operation"))
+                if (ShouldProcess($"Call remote 'CommunicationServicesLinkNotificationHub' operation"))
                 {
                     using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IEventListener)this).Token) )
                     {
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.CommunicationServiceLinkNotificationHub(SubscriptionId, ResourceGroupName, CommunicationServiceName, _linkNotificationHubParametersBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.CommunicationServicesLinkNotificationHub(SubscriptionId, ResourceGroupName, CommunicationServiceName, _linkNotificationHubParametersBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.UndeclaredResponseException urexception)
@@ -397,12 +397,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, CommunicationServiceName=CommunicationServiceName, body=_linkNotificationHubParametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -437,12 +437,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ILinkedNotificationHub">Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ILinkedNotificationHub</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ILinkedNotificationHub">Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ILinkedNotificationHub</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ILinkedNotificationHub> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ILinkedNotificationHub> response)
         {
             using( NoSynchronizationContext )
             {
@@ -454,7 +454,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ILinkedNotificationHub
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ILinkedNotificationHub
                 WriteObject((await response).ResourceId);
             }
         }

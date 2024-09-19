@@ -64,6 +64,13 @@ Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -EnforcementMode Defa
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicy'
 Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -NonComplianceMessage @{Message="All resources must follow resource naming guidelines."}
 .Example
+$ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")})}
+Update-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -ResourceSelector $ResourceSelector
+.Example
+$Selector = @{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")}
+$Override = @(@{Kind = "policyEffect"; Value = 'Disabled'; Selector = @($Selector)})
+Update-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -Override $Override
+.Example
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId
 Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -EnforcementMode Default
@@ -154,6 +161,20 @@ param(
     [System.String[]]
     # The policy's excluded scopes.
     ${NotScope},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride[]]
+    # The policy property value override.
+    ${Override},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    # The resource selector list to filter policies by resource properties.
+    ${ResourceSelector},
 
     [Parameter()]
     [AllowEmptyCollection()]

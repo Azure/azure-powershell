@@ -45,7 +45,7 @@ Specify the *Status* parameter to get the instance view of a virtual machine ins
 
 ## EXAMPLES
 
-### Example 1: Get model and instance view properties
+### Example 1: Get model properties of the virtual machine named VirtualMachine07
 ```powershell
 Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 ```

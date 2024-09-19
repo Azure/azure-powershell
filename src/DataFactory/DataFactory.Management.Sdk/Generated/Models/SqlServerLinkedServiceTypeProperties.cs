@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </param>
 
         /// <param name="authenticationType">The type used for authentication. Type: string.
-        /// Possible values include: &#39;SQL&#39;, &#39;Windows&#39;</param>
+        /// Possible values include: &#39;SQL&#39;, &#39;Windows&#39;, &#39;UserAssignedManagedIdentity&#39;</param>
 
         /// <param name="userName">The on-premises Windows authentication user name. Type: string (or
         /// Expression with resultType string).
@@ -145,7 +145,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="alwaysEncryptedSettings">Sql always encrypted properties.
         /// </param>
-        public SqlServerLinkedServiceTypeProperties(object server = default(object), object database = default(object), object encrypt = default(object), object trustServerCertificate = default(object), object hostNameInCertificate = default(object), object applicationIntent = default(object), object connectTimeout = default(object), object connectRetryCount = default(object), object connectRetryInterval = default(object), object loadBalanceTimeout = default(object), object commandTimeout = default(object), object integratedSecurity = default(object), object failoverPartner = default(object), object maxPoolSize = default(object), object minPoolSize = default(object), object multipleActiveResultSets = default(object), object multiSubnetFailover = default(object), object packetSize = default(object), object pooling = default(object), object connectionString = default(object), string authenticationType = default(string), object userName = default(object), SecretBase password = default(SecretBase), string encryptedCredential = default(string), SqlAlwaysEncryptedProperties alwaysEncryptedSettings = default(SqlAlwaysEncryptedProperties))
+
+        /// <param name="credential">The credential reference containing authentication information.
+        /// </param>
+        public SqlServerLinkedServiceTypeProperties(object server = default(object), object database = default(object), object encrypt = default(object), object trustServerCertificate = default(object), object hostNameInCertificate = default(object), object applicationIntent = default(object), object connectTimeout = default(object), object connectRetryCount = default(object), object connectRetryInterval = default(object), object loadBalanceTimeout = default(object), object commandTimeout = default(object), object integratedSecurity = default(object), object failoverPartner = default(object), object maxPoolSize = default(object), object minPoolSize = default(object), object multipleActiveResultSets = default(object), object multiSubnetFailover = default(object), object packetSize = default(object), object pooling = default(object), object connectionString = default(object), string authenticationType = default(string), object userName = default(object), SecretBase password = default(SecretBase), string encryptedCredential = default(string), SqlAlwaysEncryptedProperties alwaysEncryptedSettings = default(SqlAlwaysEncryptedProperties), CredentialReference credential = default(CredentialReference))
 
         : base(server, database, encrypt, trustServerCertificate, hostNameInCertificate, applicationIntent, connectTimeout, connectRetryCount, connectRetryInterval, loadBalanceTimeout, commandTimeout, integratedSecurity, failoverPartner, maxPoolSize, minPoolSize, multipleActiveResultSets, multiSubnetFailover, packetSize, pooling)
         {
@@ -155,6 +158,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.Password = password;
             this.EncryptedCredential = encryptedCredential;
             this.AlwaysEncryptedSettings = alwaysEncryptedSettings;
+            this.Credential = credential;
             CustomInit();
         }
 
@@ -172,7 +176,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public object ConnectionString {get; set; }
 
         /// <summary>
-        /// Gets or sets the type used for authentication. Type: string. Possible values include: &#39;SQL&#39;, &#39;Windows&#39;
+        /// Gets or sets the type used for authentication. Type: string. Possible values include: &#39;SQL&#39;, &#39;Windows&#39;, &#39;UserAssignedManagedIdentity&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "authenticationType")]
         public string AuthenticationType {get; set; }
@@ -203,6 +207,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "alwaysEncryptedSettings")]
         public SqlAlwaysEncryptedProperties AlwaysEncryptedSettings {get; set; }
+
+        /// <summary>
+        /// Gets or sets the credential reference containing authentication
+        /// information.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "credential")]
+        public CredentialReference Credential {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -219,6 +230,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             if (this.AlwaysEncryptedSettings != null)
             {
                 this.AlwaysEncryptedSettings.Validate();
+            }
+            if (this.Credential != null)
+            {
+                this.Credential.Validate();
             }
         }
     }

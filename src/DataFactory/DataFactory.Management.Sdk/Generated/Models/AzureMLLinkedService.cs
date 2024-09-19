@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// be used to connect with related store or compute resource.
         /// </param>
 
+        /// <param name="version">Version of the linked service.
+        /// </param>
+
         /// <param name="connectVia">The integration runtime reference.
         /// </param>
 
@@ -73,9 +76,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="authentication">Type of authentication (Required to specify MSI) used to connect to
         /// AzureML. Type: string (or Expression with resultType string).
         /// </param>
-        public AzureMLLinkedService(object mlEndpoint, SecretBase apiKey, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object updateResourceEndpoint = default(object), object servicePrincipalId = default(object), SecretBase servicePrincipalKey = default(SecretBase), object tenant = default(object), string encryptedCredential = default(string), object authentication = default(object))
+        public AzureMLLinkedService(object mlEndpoint, SecretBase apiKey, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object updateResourceEndpoint = default(object), object servicePrincipalId = default(object), SecretBase servicePrincipalKey = default(SecretBase), object tenant = default(object), string encryptedCredential = default(string), object authentication = default(object))
 
-        : base(additionalProperties, connectVia, description, parameters, annotations)
+        : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
             this.MlEndpoint = mlEndpoint;
             this.ApiKey = apiKey;

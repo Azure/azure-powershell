@@ -20,7 +20,7 @@ Create a Catalog
 .Description
 Create a Catalog
 .Example
-New-AzSphereCatalog -name test2024 -ResourceGroupName joyer-test -Location global
+New-AzSphereCatalog -name test2024 -ResourceGroupName group-test -Location global
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICatalog

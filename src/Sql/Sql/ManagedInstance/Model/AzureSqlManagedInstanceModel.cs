@@ -206,5 +206,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
         /// </summary>
         public string ExternalGovernanceStatus { get; set; }
+
+        /// <summary>
+        /// Gets or sets the authentication metadata mode of the managed instance.
+        /// Possible values include: &#39;AzureAD&#39;, &#39;Paired&#39;, &#39;Windows&#39;
+        /// </summary>
+        public string AuthenticationMetadata { get; set; }
     }
 }

@@ -120,6 +120,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).ExtensionName = (string) content.GetValueForProperty("ExtensionName",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).ExtensionName, global::System.Convert.ToString);
             }
+            if (content.Contains("DeploymentSettingsName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).DeploymentSettingsName = (string) content.GetValueForProperty("DeploymentSettingsName",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).DeploymentSettingsName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).ResourceUri = (string) content.GetValueForProperty("ResourceUri",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).ResourceUri, global::System.Convert.ToString);
+            }
+            if (content.Contains("EdgeDeviceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).EdgeDeviceName = (string) content.GetValueForProperty("EdgeDeviceName",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).EdgeDeviceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SecuritySettingsName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).SecuritySettingsName = (string) content.GetValueForProperty("SecuritySettingsName",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).SecuritySettingsName, global::System.Convert.ToString);
+            }
+            if (content.Contains("UpdateName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).UpdateName = (string) content.GetValueForProperty("UpdateName",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).UpdateName, global::System.Convert.ToString);
+            }
+            if (content.Contains("UpdateRunName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).UpdateRunName = (string) content.GetValueForProperty("UpdateRunName",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).UpdateRunName, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -160,6 +184,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
             if (content.Contains("ExtensionName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).ExtensionName = (string) content.GetValueForProperty("ExtensionName",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).ExtensionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DeploymentSettingsName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).DeploymentSettingsName = (string) content.GetValueForProperty("DeploymentSettingsName",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).DeploymentSettingsName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).ResourceUri = (string) content.GetValueForProperty("ResourceUri",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).ResourceUri, global::System.Convert.ToString);
+            }
+            if (content.Contains("EdgeDeviceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).EdgeDeviceName = (string) content.GetValueForProperty("EdgeDeviceName",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).EdgeDeviceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SecuritySettingsName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).SecuritySettingsName = (string) content.GetValueForProperty("SecuritySettingsName",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).SecuritySettingsName, global::System.Convert.ToString);
+            }
+            if (content.Contains("UpdateName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).UpdateName = (string) content.GetValueForProperty("UpdateName",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).UpdateName, global::System.Convert.ToString);
+            }
+            if (content.Contains("UpdateRunName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).UpdateRunName = (string) content.GetValueForProperty("UpdateRunName",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentityInternal)this).UpdateRunName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

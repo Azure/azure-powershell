@@ -78,5 +78,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// <value>The SystemData.</value>
         public PSSystemData SystemData { get; set; }
 
+        /// <summary>
+        /// Managed Identity for Storage Sync Service
+        /// </summary>
+        public ManagedServiceIdentity Identity { get; set; }
+
     }
 }

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
 online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/update-azmlworkspaceonlineendpoint
 schema: 2.0.0
@@ -14,16 +14,18 @@ Update Online Endpoint (asynchronous).
 
 ### UpdateExpanded (Default)
 ```
-Update-AzMLWorkspaceOnlineEndpoint -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssigned <Hashtable>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzMLWorkspaceOnlineEndpoint -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -WorkspaceName <String> [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssigned <Hashtable>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzMLWorkspaceOnlineEndpoint -InputObject <IMachineLearningServicesIdentity>
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssigned <Hashtable>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,9 +39,9 @@ Update-AzMLWorkspaceOnlineEndpoint -ResourceGroupName ml-rg-test -WorkspaceName 
 ```
 
 ```output
-Location Name         SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType AzureAsyncOperation Kind    ResourceGroupName
--------- ----         -------------------  -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- ------------------- ----    -----------------
-eastus   online-cli01 5/19/2022 2:47:34 AM Lucas Yao (Wicresoft North America)                         5/19/2022 2:48:26 AM                                                                               Managed ml-rg-test
+Location Name         SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Kind    ResourceGroupName
+-------- ----         -------------------  -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- ----    -----------------
+eastus   online-cli01 5/19/2022 2:47:34 AM UserName (Example)                  5/19/2022 2:48:26 AM                                                                                   Managed ml-rg-test
 ```
 
 Update Online Endpoint (asynchronous)
@@ -50,9 +52,9 @@ Get-AzMLWorkspaceOnlineEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlw
 ```
 
 ```output
-Location Name         SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType AzureAsyncOperation Kind    ResourceGroupName
--------- ----         -------------------  -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- ------------------- ----    -----------------
-eastus   online-cli01 5/19/2022 2:47:34 AM Lucas Yao (Wicresoft North America)                         5/19/2022 2:48:26 AM                                                                               Managed ml-rg-test
+Location Name         SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Kind    ResourceGroupName
+-------- ----         -------------------  -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- ----    -----------------
+eastus   online-cli01 5/19/2022 2:47:34 AM UserName (Example)                  5/19/2022 2:48:26 AM                                                                                   Managed ml-rg-test
 ```
 
 Update Online Endpoint (asynchronous) by pipeline
@@ -75,7 +77,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -268,31 +271,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IOnlineEndpoint
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IMachineLearningServicesIdentity>`: Identity Parameter
-  - `[ComputeName <String>]`: Name of the Azure Machine Learning compute.
-  - `[ConnectionName <String>]`: Friendly name of the workspace connection
-  - `[DeploymentName <String>]`: Inference deployment identifier.
-  - `[EndpointName <String>]`: Inference Endpoint name.
-  - `[Id <String>]`: The name and identifier for the Job. This is case-sensitive.
-  - `[Id1 <String>]`: Resource identity path
-  - `[Location <String>]`: The location for which resource usage is queried.
-  - `[Name <String>]`: Container name. This is case-sensitive.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the workspace
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[Version <String>]`: Version identifier. This is case-sensitive.
-  - `[WorkspaceName <String>]`: Name of Azure Machine Learning workspace.
-
 ## RELATED LINKS
-

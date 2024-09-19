@@ -39,6 +39,10 @@ New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $
 $VM = Get-AzVM -Name 'SpecialVM'
 $Assignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment'
 New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $Assignment -Scope $SpecialVM.Id -ExemptionCategory Waiver
+.Example
+$Assignment = Get-AzPolicyAssignment -Name 'VirtualMachineAssignment'
+$ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; In = @("eastus", "eastus2")})}
+New-AzPolicyExemption -Name 'VirtualMachinePolicyExemption' -PolicyAssignment $Assignment -ResourceSelector $ResourceSelector
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption
@@ -107,6 +111,13 @@ param(
     [System.String[]]
     # The policy definition reference ID list when the associated policy assignment is an assignment of a policy set definition.
     ${PolicyDefinitionReferenceId},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    # The resource selector list to filter policies by resource properties.
+    ${ResourceSelector},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
