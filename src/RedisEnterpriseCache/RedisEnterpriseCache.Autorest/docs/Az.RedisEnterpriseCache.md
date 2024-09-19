@@ -17,6 +17,9 @@ Exports a database file from target database.
 ### [Get-AzRedisEnterpriseCache](Get-AzRedisEnterpriseCache.md)
 Gets information about a Redis Enterprise cluster and its associated databases.
 
+### [Get-AzRedisEnterpriseCacheAccessPolicyAssignment](Get-AzRedisEnterpriseCacheAccessPolicyAssignment.md)
+Gets information about access policy assignment for database.
+
 ### [Get-AzRedisEnterpriseCacheDatabase](Get-AzRedisEnterpriseCacheDatabase.md)
 Gets information about a database in a Redis Enterprise cluster.
 
@@ -42,6 +45,9 @@ Forcibly removes the link to the specified database resource.
 ### [New-AzRedisEnterpriseCache](New-AzRedisEnterpriseCache.md)
 Creates a Redis Enterprise cache.
 
+### [New-AzRedisEnterpriseCacheAccessPolicyAssignment](New-AzRedisEnterpriseCacheAccessPolicyAssignment.md)
+Creates/Updates a particular access policy assignment for a database
+
 ### [New-AzRedisEnterpriseCacheDatabase](New-AzRedisEnterpriseCacheDatabase.md)
 Creates a database for a Redis Enterprise cache.
 
@@ -49,13 +55,16 @@ Creates a database for a Redis Enterprise cache.
 Regenerates an access key for a Redis Enterprise database.
 
 ### [Remove-AzRedisEnterpriseCache](Remove-AzRedisEnterpriseCache.md)
-Deletes a RedisEnterprise cache cluster.
+Deletes a Redis Enterprise cache cluster.
+
+### [Remove-AzRedisEnterpriseCacheAccessPolicyAssignment](Remove-AzRedisEnterpriseCacheAccessPolicyAssignment.md)
+Deletes a single access policy assignment.
 
 ### [Remove-AzRedisEnterpriseCacheDatabase](Remove-AzRedisEnterpriseCacheDatabase.md)
 Deletes a single database in a Redis Enterprise cache.
 
 ### [Update-AzRedisEnterpriseCache](Update-AzRedisEnterpriseCache.md)
-Updates an existing RedisEnterprise cluster
+Updates an existing Redis Enterprise cluster
 
 ### [Update-AzRedisEnterpriseCacheDatabase](Update-AzRedisEnterpriseCacheDatabase.md)
 Updates an existing Redis Enterprise database

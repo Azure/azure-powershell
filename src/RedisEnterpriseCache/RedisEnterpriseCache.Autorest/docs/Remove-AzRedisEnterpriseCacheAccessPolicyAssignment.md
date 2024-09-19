@@ -1,55 +1,41 @@
 ---
 external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/invoke-azredisenterprisecachedatabaseflush
+online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/remove-azredisenterprisecacheaccesspolicyassignment
 schema: 2.0.0
 ---
 
-# Invoke-AzRedisEnterpriseCacheDatabaseFlush
+# Remove-AzRedisEnterpriseCacheAccessPolicyAssignment
 
 ## SYNOPSIS
-Flushes all the keys in this database and also from its linked databases.
+Deletes a single access policy assignment.
 
 ## SYNTAX
 
-### FlushExpanded (Default)
+### Delete (Default)
 ```
-Invoke-AzRedisEnterpriseCacheDatabaseFlush -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Id <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Flush
-```
-Invoke-AzRedisEnterpriseCacheDatabaseFlush -ClusterName <String> -ResourceGroupName <String>
- -Parameter <IFlushParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzRedisEnterpriseCacheAccessPolicyAssignment -ClusterName <String> -DatabaseName <String>
+ -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### FlushViaIdentity
+### DeleteViaIdentity
 ```
-Invoke-AzRedisEnterpriseCacheDatabaseFlush -InputObject <IRedisEnterpriseCacheIdentity>
- -Parameter <IFlushParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### FlushViaIdentityExpanded
-```
-Invoke-AzRedisEnterpriseCacheDatabaseFlush -InputObject <IRedisEnterpriseCacheIdentity> [-Id <String[]>]
+Remove-AzRedisEnterpriseCacheAccessPolicyAssignment -InputObject <IRedisEnterpriseCacheIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Flushes all the keys in this database and also from its linked databases.
+Deletes a single access policy assignment.
 
 ## EXAMPLES
 
-### Example 1: Flush Cache
+### Example 1: Remove access policy assignment.
 ```powershell
-Invoke-AzRedisEnterpriseCacheDatabaseFlush -ClusterName "MyCache" -ResourceGroupName "MyResourceGroup" -Id @("Mydatabase1") , @("MyLinkedDatabase1")
+ Remove-AzRedisEnterpriseCacheAccessPolicyAssignment -ClusterName "MyCache" -DatabaseName "default" -ResourceGroupName "MyGroup" -Name "testAccessPolicyAssignmentName"
 ```
 
-Flushes all the keys in this database and also from its linked databases.
+This command removes an Access Policy Assignment (Redis User) named testAccessPolicyAssignmentName from Redis enterprise cache named MyCache.
 
 ## PARAMETERS
 
@@ -73,7 +59,22 @@ The name of the Redis Enterprise cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Flush, FlushExpanded
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatabaseName
+The name of the Redis Enterprise database.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -99,34 +100,34 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-The identifiers of all the other database resources in the georeplication group to be flushed.
-
-```yaml
-Type: System.String[]
-Parameter Sets: FlushExpanded, FlushViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
-Parameter Sets: FlushViaIdentity, FlushViaIdentityExpanded
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the Redis Enterprise database access policy assignment.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: AccessPolicyAssignmentName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -142,22 +143,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Parameter
-Parameters for a Redis Enterprise active geo-replication flush operation
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IFlushParameters
-Parameter Sets: Flush, FlushViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -182,7 +167,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Flush, FlushExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -197,7 +182,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Flush, FlushExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: False
@@ -242,8 +227,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IFlushParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 
