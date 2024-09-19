@@ -21,7 +21,7 @@ Describe 'New-AzRedisEnterpriseCache' {
             Sku = "Enterprise_E10"
             Capacity = 4
             MinimumTlsVersion = "1.2"
-            Zone = @("1", "2", "3")
+            #Zone = @("1", "2", "3")
             ClientProtocol = "Encrypted"
             ClusteringPolicy = "OSSCluster"
             EvictionPolicy = "VolatileLRU"
