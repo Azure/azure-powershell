@@ -15,31 +15,16 @@ Creates/Updates a particular access policy assignment for a database
 ### CreateExpanded (Default)
 ```
 New-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName <String> -ClusterName <String>
- -DatabaseName <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-AccessPolicyName <String>]
- [-UserObjectId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Create
-```
-New-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName <String> -ClusterName <String>
- -DatabaseName <String> -ResourceGroupName <String> -Parameter <IAccessPolicyAssignment>
+ -DatabaseName <String> -ResourceGroupName <String> -AccessPolicyName <String> -UserObjectId <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzRedisEnterpriseCacheAccessPolicyAssignment -InputObject <IRedisEnterpriseCacheIdentity>
- -Parameter <IAccessPolicyAssignment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzRedisEnterpriseCacheAccessPolicyAssignment -InputObject <IRedisEnterpriseCacheIdentity>
- [-AccessPolicyName <String>] [-UserObjectId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -AccessPolicyName <String> -UserObjectId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,7 +71,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -240,7 +225,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
