@@ -15,25 +15,25 @@ Gets a gallery image
 ### BySubscription (Default)
 ```
 Get-AzStackHCIVMImage [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-NoWait]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Get-AzStackHCIVMImage [-SubscriptionId <String[]>] -Name <String> -ResourceGroupName <String>
- [-DefaultProfile <PSObject>] [-NoWait] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-NoWait] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByResourceGroup
 ```
 Get-AzStackHCIVMImage [-SubscriptionId <String[]>] -ResourceGroupName <String> [-DefaultProfile <PSObject>]
- [-NoWait] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Get-AzStackHCIVMImage [-SubscriptionId <String[]>] -ResourceId <String> [-DefaultProfile <PSObject>] [-NoWait]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,6 +106,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

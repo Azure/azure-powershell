@@ -261,7 +261,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         Description = @"The resource selector list to filter policies by resource properties.",
         SerializedName = @"resourceSelectors",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExport]
         public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[] ResourceSelector { get => _parametersBody.ResourceSelector?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.ResourceSelector = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector>(value) : null); }
 
         /// <summary>Backing field for <see cref="Scope" /> property.</summary>
@@ -519,10 +518,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
                 if (true == this.MyInvocation?.BoundParameters?.ContainsKey("MetadataTable"))
                 {
                     MetadataTable = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesMetadata)this.MyInvocation.BoundParameters["MetadataTable"];
-                }
-                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("ResourceSelector"))
-                {
-                    ResourceSelector = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[])this.MyInvocation.BoundParameters["ResourceSelector"];
                 }
                 try
                 {

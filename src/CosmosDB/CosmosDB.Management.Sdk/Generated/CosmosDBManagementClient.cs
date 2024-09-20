@@ -481,7 +481,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             this.RestorableTableResources = new RestorableTableResourcesOperations(this);
             this.Service = new ServiceOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2023-11-15";
+            this.ApiVersion = "2024-08-15";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;
@@ -515,6 +515,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<BackupPolicy>("type"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ServiceResourceProperties>("serviceType"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ServiceResourceProperties>("serviceType"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ServiceResourceCreateUpdateProperties>("serviceType"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ServiceResourceCreateUpdateProperties>("serviceType"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Azure.CloudErrorJsonConverter());

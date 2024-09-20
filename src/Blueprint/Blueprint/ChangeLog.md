@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed Microsoft.Azure.Management.Blueprint 0.20.7-preview dependencies
+* Added Microsoft.Azure.PowerShell.Blueprint.Management.Sdk
 
 ## Version 0.4.3
 * Removed the outdated deps.json file.

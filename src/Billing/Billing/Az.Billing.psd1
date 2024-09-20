@@ -85,7 +85,7 @@ CmdletsToExport = 'Get-AzBillingAccount', 'Get-AzBillingInvoice', 'Get-AzBilling
                'Get-AzConsumptionReservationDetail', 
                'Get-AzConsumptionReservationSummary', 
                'Get-AzConsumptionUsageDetail', 'Get-AzEnrollmentAccount', 
-               'Get-AzInvoiceSection', 'Get-UsageAggregates', 
+               'Get-AzInvoiceSection', 'Get-AzUsageAggregate', 
                'New-AzConsumptionBudget', 'Remove-AzConsumptionBudget', 
                'Set-AzConsumptionBudget'
 
@@ -93,7 +93,7 @@ CmdletsToExport = 'Get-AzBillingAccount', 'Get-AzBillingInvoice', 'Get-AzBilling
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = @()
+AliasesToExport = 'Get-UsageAggregates'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

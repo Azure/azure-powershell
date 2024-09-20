@@ -14,21 +14,21 @@ Removes a data flow from Data Factory.
 
 ### ByFactoryName (Default)
 ```
-Remove-AzDataFactoryV2DataFlow [-Name] <String> [-Force] [-ResourceGroupName] <String>
+Remove-AzDataFactoryV2DataFlow [-Name] <String> [-PassThru] [-Force] [-ResourceGroupName] <String>
  [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Remove-AzDataFactoryV2DataFlow [-InputObject] <PSDataset> [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzDataFactoryV2DataFlow [-InputObject] <PSDataFlow> [-PassThru] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Remove-AzDataFactoryV2DataFlow [-Force] [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzDataFactoryV2DataFlow [-PassThru] [-Force] [-ResourceId] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 The data flow object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.DataFactoryV2.Models.PSDataset
+Type: Microsoft.Azure.Commands.DataFactoryV2.Models.PSDataFlow
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -121,6 +121,21 @@ Aliases: DataFlowName
 
 Required: True
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+If specified will write true in case operation succeeds. This parameter is optional.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -153,21 +168,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PassThru
-If specified will write true in case operation succeeds. This parameter is optional.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

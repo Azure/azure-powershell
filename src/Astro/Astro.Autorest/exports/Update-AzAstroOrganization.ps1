@@ -44,8 +44,8 @@ function Update-AzAstroOrganization {
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Alias('OrganizationName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Path')]
     [System.String]
@@ -53,8 +53,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -62,8 +62,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
     [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -78,11 +78,10 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
+    [System.Nullable[System.Boolean]]
+    # Decides if enable a system assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -194,17 +193,17 @@ param(
     # User's principal name
     ${UserUpn},
 
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
-    [System.String]
-    # Path of Json file supplied to the Update operation
-    ${JsonFilePath},
-
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
     [System.String]
     # Json string supplied to the Update operation
     ${JsonString},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -293,12 +292,12 @@ begin {
         }
 
         $mapping = @{
-            UpdateExpanded = 'Az.Astro.private\Update-AzAstroOrganization_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.Astro.private\Update-AzAstroOrganization_UpdateViaIdentityExpanded';
-            UpdateViaJsonFilePath = 'Az.Astro.private\Update-AzAstroOrganization_UpdateViaJsonFilePath';
-            UpdateViaJsonString = 'Az.Astro.private\Update-AzAstroOrganization_UpdateViaJsonString';
+            UpdateExpanded = 'Az.Astro.custom\Update-AzAstroOrganization';
+            UpdateViaJsonString = 'Az.Astro.custom\Update-AzAstroOrganization';
+            UpdateViaJsonFilePath = 'Az.Astro.custom\Update-AzAstroOrganization';
+            UpdateViaIdentityExpanded = 'Az.Astro.custom\Update-AzAstroOrganization';
         }
-        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('UpdateExpanded', 'UpdateViaJsonString', 'UpdateViaJsonFilePath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {

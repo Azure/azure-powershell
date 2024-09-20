@@ -2312,7 +2312,7 @@ $Locations = Get-AzLocation | Where-Object displayname -like '*east*'
 $AllowedLocations = @{'listOfAllowedLocations'=($Locations.location)}
 New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameterObject $AllowedLocations
 .Example
-{
+'{
     "listOfAllowedLocations":  {
       "value": [
         "westus",
@@ -2320,7 +2320,7 @@ New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinitio
         "japanwest"
       ]
     }
-}
+}' > .\AllowedLocations.json
 
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.DisplayName -eq 'Allowed locations'}
@@ -2343,13 +2343,22 @@ $PolicySet = Get-AzPolicySetDefinition -Name 'VirtualMachinePolicySet'
 $NonComplianceMessages = @(@{Message="Only DsV2 SKUs are allowed."; PolicyDefinitionReferenceId="DefRef1"}, @{Message="Virtual machines must follow cost management best practices."})
 New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicySetDefinition $PolicySet -NonComplianceMessage $NonComplianceMessages
 .Example
+$Policy = Get-AzPolicyDefinition -Name 'VirtualMachinePolicy'
+$ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; In = @("eastus", "eastus2")})}
+New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicyDefinition $Policy -ResourceSelector $ResourceSelector
+.Example
+$Policy = Get-AzPolicyDefinition -Name 'VirtualMachinePolicy'
+$Selector = @{Kind = "resourceLocation"; In = @("eastus", "eastus2")}
+$Override = @(@{Kind = "policyEffect"; Value = 'Disabled'; Selector = @($Selector)})
+New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicyDefinition $Policy -Override $Override
+.Example
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations'}
 $Locations = Get-AzLocation | Where-Object displayname -like '*east*'
 $AllowedLocations = @{'listOfAllowedLocations'=($Locations.location)}
 New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameterObject $AllowedLocations
 .Example
-{
+'{
     "listOfAllowedLocations":  {
       "value": [
         "westus",
@@ -2357,7 +2366,7 @@ New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinitio
         "japanwest"
       ]
     }
-}
+}' > .\AllowedLocations.json
 
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations'}
@@ -2462,6 +2471,20 @@ param(
     [System.String[]]
     # The policy's excluded scopes.
     ${NotScope},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride[]]
+    # The policy property value override.
+    ${Override},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    # The resource selector list to filter policies by resource properties.
+    ${ResourceSelector},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -2953,6 +2976,10 @@ New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $
 $VM = Get-AzVM -Name 'SpecialVM'
 $Assignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment'
 New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $Assignment -Scope $SpecialVM.Id -ExemptionCategory Waiver
+.Example
+$Assignment = Get-AzPolicyAssignment -Name 'VirtualMachineAssignment'
+$ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; In = @("eastus", "eastus2")})}
+New-AzPolicyExemption -Name 'VirtualMachinePolicyExemption' -PolicyAssignment $Assignment -ResourceSelector $ResourceSelector
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption
@@ -3021,6 +3048,13 @@ param(
     [System.String[]]
     # The policy definition reference ID list when the associated policy assignment is an assignment of a policy set definition.
     ${PolicyDefinitionReferenceId},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    # The resource selector list to filter policies by resource properties.
+    ${ResourceSelector},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4771,6 +4805,13 @@ Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -EnforcementMode Defa
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicy'
 Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -NonComplianceMessage @{Message="All resources must follow resource naming guidelines."}
 .Example
+$ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")})}
+Update-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -ResourceSelector $ResourceSelector
+.Example
+$Selector = @{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")}
+$Override = @(@{Kind = "policyEffect"; Value = 'Disabled'; Selector = @($Selector)})
+Update-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -Override $Override
+.Example
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId
 Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -EnforcementMode Default
@@ -4861,6 +4902,20 @@ param(
     [System.String[]]
     # The policy's excluded scopes.
     ${NotScope},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride[]]
+    # The policy property value override.
+    ${Override},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    # The resource selector list to filter policies by resource properties.
+    ${ResourceSelector},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -5384,6 +5439,9 @@ Update-AzPolicyExemption -Id $PolicyExemption.ResourceId -ClearExpiration
 $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07'
 Update-AzPolicyExemption -Id $PolicyExemption.ResourceId -ExemptionCategory Mitigated
 .Example
+$ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")})}
+Update-AzPolicyExemption -Name 'VirtualMachineExemption' -ResourceSelector $ResourceSelector
+.Example
 $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07'
 Set-AzPolicyExemption -Id $PolicyExemption.ResourceId -ClearExpiration
 
@@ -5454,6 +5512,13 @@ param(
     [System.String]
     # The option whether validate the exemption is at or under the assignment scope.
     ${AssignmentScopeValidation},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    # The resource selector list to filter policies by resource properties.
+    ${ResourceSelector},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
