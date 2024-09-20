@@ -26,7 +26,7 @@ List configurationAssignments for resource.
 
 ### Example 1
 ```powershell
-Get-AzConfigurationAssignment -ResourceGroupName smdtest$location -ResourceParentType hostGroups -ResourceParentName smddhg$location -ResourceType hosts -ResourceName smddh$location -ProviderName Microsoft.Compute
+Get-AzConfigurationAssignment -ResourceGroupName smdtestwestus2 -ResourceParentType hostGroups -ResourceParentName smddhgwestus2 -ResourceType hosts -ResourceName smddhwestus2 -ProviderName Microsoft.Compute
 ```
 
 ```output
@@ -38,6 +38,36 @@ Type                       : Microsoft.Maintenance/configurationAssignments
 ```
 
 List configurationAssignments for dedicated host.
+
+### Example 2
+```powershell
+Get-AzConfigurationAssignment -ResourceGroupName 'rgtestwestus2' -ProviderName Microsoft.Compute -ResourceType virtualmachines -ResourceName 'LAPTOP-ABCDEFG'
+```
+
+```output
+MaintenanceConfigurationId : /subscriptions/42c974dd-2c03-4f1b-96ad-b07f050aaa74/resourcegroups/maintenanceconfigurations/providers/microsoft.maintenance/maintenanceconfigurations/dynamicfiltertag
+ResourceId                 : /subscriptions/42c974dd-2c03-4f1b-96ad-b07f050aaa74/resourcegroups/rgtestwestus2/providers/microsoft.hybridcompute/machines/laptop-abcdefg
+Id                         : /subscriptions/42c974dd-2c03-4f1b-96ad-b07f050aaa747/resourcegroups/rgtestwestus2/providers/Microsoft.HybridCompute/machines/LAPTOP-ABCDEFG/providers/Microsoft.Maintenance/configurationAssignments/pphsfbx2qur7k-azpolicy
+Name                       : pphsfbx2qur7k-azpolicy
+Type                       : Microsoft.Maintenance/configurationAssignments
+```
+
+List configurationAssignments for Azure VMs in Guest scope.
+
+### Example 3
+```powershell
+Get-AzConfigurationAssignment -ResourceGroupName 'ArcMachines' -ProviderName Microsoft.HybridCompute -ResourceType machines -ResourceName 'LAPTOP-IVMI31G2'
+```
+
+```output
+MaintenanceConfigurationId : /subscriptions/42c974dd-2c03-4f1b-96ad-b07f050aaa74/resourcegroups/maintenanceconfigurations/providers/microsoft.maintenance/maintenanceconfigurations/dynamicfiltertag
+ResourceId                 : /subscriptions/42c974dd-2c03-4f1b-96ad-b07f050aaa74/resourcegroups/arcmachines/providers/microsoft.hybridcompute/machines/laptop-ivmi31g2
+Id                         : /subscriptions/42c974dd-2c03-4f1b-96ad-b07f050aaa747/resourcegroups/arcmachines/providers/Microsoft.HybridCompute/machines/LAPTOP-IVMI31G2/providers/Microsoft.Maintenance/configurationAssignments/pphsfbx2qur7k-azpolicy
+Name                       : pphsfbx2qur7k-azpolicy
+Type                       : Microsoft.Maintenance/configurationAssignments
+```
+
+List configurationAssignments for Arc VMs in Guest scope.
 
 ## PARAMETERS
 

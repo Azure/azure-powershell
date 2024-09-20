@@ -17,7 +17,7 @@ Create a OrganizationResource
 New-AzAstroOrganization -Name <String> -ResourceGroupName <String> -Location <String>
  -MarketplaceSubscriptionId <String> -OfferDetailOfferId <String> -OfferDetailPlanId <String>
  -OfferDetailPublisherId <String> -UserEmailAddress <String> -UserFirstName <String> -UserLastName <String>
- [-SubscriptionId <String>] [-IdentityType <String>] [-MarketplaceSubscriptionStatus <String>]
+ [-SubscriptionId <String>] [-EnableSystemAssignedIdentity] [-MarketplaceSubscriptionStatus <String>]
  [-OfferDetailPlanName <String>] [-OfferDetailTermId <String>] [-OfferDetailTermUnit <String>]
  [-PartnerOrganizationPropertyOrganizationId <String>] [-PartnerOrganizationPropertyOrganizationName <String>]
  [-PartnerOrganizationPropertyWorkspaceId <String>] [-PartnerOrganizationPropertyWorkspaceName <String>]
@@ -130,11 +130,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: CreateExpanded
 Aliases:
 

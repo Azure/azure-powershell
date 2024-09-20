@@ -19,7 +19,15 @@
 -->
 
 ## Upcoming Release
-* Fixed secrets exposure in example documentation.
+* Fixed a bug: Error occurs when setting the same assigned identity for storage and esp configurations.
+
+## Version 6.2.0
+* Added new feature: Enable adding public IP tags to clusters. 
+* Added commands for manage Azure Monitor Agent
+    - Command `Get-AzHDInsightAzureMonitorAgent` to get the Azure Monitor Agent status of HDInsight cluster.
+    - Command `Enable-AzHDInsightAzureMonitorAgent` to enable the Azure Monitor Agent in HDInsight cluster.
+    - Command `Disable-AzHDInsightAzureMonitorAgent` to disable the Azure Monitor Agent in HDInsight cluster.
+    - Command `Update-AzHDInsightCluster` to update tags or identity for HDInsight cluster.
 
 ## Version 6.1.0
 * Added new feature: Enable secure channels while creating a new cluster.

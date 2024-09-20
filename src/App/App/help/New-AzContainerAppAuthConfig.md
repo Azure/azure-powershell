@@ -23,21 +23,21 @@ New-AzContainerAppAuthConfig -ContainerAppName <String> -Name <String> -Resource
  [-LoginAllowedExternalRedirectUrl <String[]>] [-LoginPreserveUrlFragmentsForLogin]
  [-NonceExpirationInterval <String>] [-NonceValidateNonce] [-PlatformEnabled]
  [-PlatformRuntimeVersion <String>] [-RouteApiPrefix <String>] [-RouteLogoutEndpoint <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzContainerAppAuthConfig -ContainerAppName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzContainerAppAuthConfig -ContainerAppName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityContainerAppExpanded
@@ -51,7 +51,7 @@ New-AzContainerAppAuthConfig -Name <String> -ContainerAppInputObject <IAppIdenti
  [-LoginAllowedExternalRedirectUrl <String[]>] [-LoginPreserveUrlFragmentsForLogin]
  [-NonceExpirationInterval <String>] [-NonceValidateNonce] [-PlatformEnabled]
  [-PlatformRuntimeVersion <String>] [-RouteApiPrefix <String>] [-RouteLogoutEndpoint <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -64,7 +64,8 @@ New-AzContainerAppAuthConfig -InputObject <IAppIdentity> [-CookieExpirationConve
  [-IdentityProvider <IIdentityProviders>] [-LoginAllowedExternalRedirectUrl <String[]>]
  [-LoginPreserveUrlFragmentsForLogin] [-NonceExpirationInterval <String>] [-NonceValidateNonce]
  [-PlatformEnabled] [-PlatformRuntimeVersion <String>] [-RouteApiPrefix <String>]
- [-RouteLogoutEndpoint <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RouteLogoutEndpoint <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,7 +92,6 @@ Create the AuthConfig for a Container App.
 
 ### -ContainerAppInputObject
 Identity Parameter
-To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -273,7 +273,6 @@ Accept wildcard characters: False
 
 ### -IdentityProvider
 The configuration settings of each of the identity providers used to configure ContainerApp Service Authentication/Authorization.
-To construct, see NOTES section for IDENTITYPROVIDER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProviders
@@ -289,7 +288,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -431,6 +429,21 @@ The RuntimeVersion of the Authentication / Authorization feature in use for the 
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityContainerAppExpanded, CreateViaIdentityExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

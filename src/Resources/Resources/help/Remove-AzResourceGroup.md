@@ -16,14 +16,14 @@ Removes a resource group.
 ### RemoveByResourceGroupName (Default)
 ```
 Remove-AzResourceGroup [-Name] <String> [-ForceDeletionType <String>] [-Force] [-AsJob] [-ApiVersion <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### RemoveByResourceGroupId
 ```
 Remove-AzResourceGroup -Id <String> [-ForceDeletionType <String>] [-Force] [-AsJob] [-ApiVersion <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 

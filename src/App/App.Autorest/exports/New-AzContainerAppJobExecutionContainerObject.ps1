@@ -56,7 +56,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IEnvironmentVar[]]
     # Container environment variables.
-    # To construct, see NOTES section for ENV properties and create a hash table.
     ${Env},
 
     [Parameter()]
