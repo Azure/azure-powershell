@@ -54,37 +54,9 @@ Set-AzConnectedKubernetes -DisableGateway -InputObject <IConnectedCluster> [-Con
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### SetEnableGateway
-```
-Set-AzConnectedKubernetes -EnableGateway -InputObject <IConnectedCluster> [-ContainerLogPath <String>]
- [-DisableAutoUpgrade] [-HttpProxy <Uri>] [-HttpsProxy <Uri>] [-NoProxy <String>] [-ProxyCert <String>]
- [-SubscriptionId <String>] [-AcceptEULA] [-AzureHybridBenefit <AzureHybridBenefit>]
- [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
- [-CustomLocationsOid <String>] [-Distribution <String>] [-DistributionVersion <String>]
- [-GatewayResourceId <String>] [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>]
- [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>]
- [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
- [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-WorkloadIdentityEnabled]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### SetExpandedDisableGateway
 ```
 Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -DisableGateway -Location <String>
- [-ContainerLogPath <String>] [-DisableAutoUpgrade] [-HttpProxy <Uri>] [-HttpsProxy <Uri>] [-NoProxy <String>]
- [-ProxyCert <String>] [-SubscriptionId <String>] [-AcceptEULA] [-AzureHybridBenefit <AzureHybridBenefit>]
- [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
- [-CustomLocationsOid <String>] [-Distribution <String>] [-DistributionVersion <String>]
- [-GatewayResourceId <String>] [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>]
- [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>]
- [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
- [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-WorkloadIdentityEnabled]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### SetExpandedEnableGateway
-```
-Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -EnableGateway -Location <String>
  [-ContainerLogPath <String>] [-DisableAutoUpgrade] [-HttpProxy <Uri>] [-HttpsProxy <Uri>] [-NoProxy <String>]
  [-ProxyCert <String>] [-SubscriptionId <String>] [-AcceptEULA] [-AzureHybridBenefit <AzureHybridBenefit>]
  [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
@@ -101,7 +73,7 @@ API to set properties of the connected cluster resource
 
 ## EXAMPLES
 
-### Example 1: Disable gateway feature  of a connected kubernetes.
+### Example 1: Disable gateway feature of a connected kubernetes.
 ```powershell
 Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -DisableGateway
 ```
@@ -116,7 +88,7 @@ This command disable gateway feature of a connected kubernetes.
 
 ### Example 2: Enable gateway feature of connected kubernetes.
 ```powershell
-Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -EnableGateway -GatewayResourceId gatewayResourceId
+Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -GatewayResourceId gatewayResourceId
 
 ```
 
@@ -180,7 +152,7 @@ The name of the Kubernetes cluster on which get is called.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetExpandedDisableGateway, SetExpandedEnableGateway
+Parameter Sets: SetExpanded, SetExpandedDisableGateway
 Aliases: Name
 
 Required: True
@@ -325,23 +297,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableGateway
-
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SetEnableGateway, SetExpandedEnableGateway
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -GatewayResourceId
-Arc Gateway resource Id
+Arc Gateway resource Id, providing this will enable the gateway
 
 ```yaml
 Type: System.String
@@ -405,7 +362,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster
-Parameter Sets: Set, SetDisableGateway, SetEnableGateway
+Parameter Sets: Set, SetDisableGateway
 Aliases:
 
 Required: True
@@ -450,7 +407,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetExpandedDisableGateway, SetExpandedEnableGateway
+Parameter Sets: SetExpanded, SetExpandedDisableGateway
 Aliases:
 
 Required: True
@@ -586,7 +543,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetExpandedDisableGateway, SetExpandedEnableGateway
+Parameter Sets: SetExpanded, SetExpandedDisableGateway
 Aliases:
 
 Required: True
