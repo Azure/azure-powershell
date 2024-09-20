@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedMachineExtension
 
 ## SYNOPSIS
-The operation to Create the extension.
+The operation to create or update the extension.
 
 ## SYNTAX
 
@@ -81,7 +81,7 @@ New-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGr
 ```
 
 ## DESCRIPTION
-The operation to Create the extension.
+The operation to create or update the extension.
 
 ## EXAMPLES
 
@@ -207,7 +207,6 @@ Accept wildcard characters: False
 
 ### -ExtensionParameter
 Describes a Machine Extension.
-To construct, see NOTES section for EXTENSIONPARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtension
@@ -253,7 +252,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -359,7 +357,6 @@ Accept wildcard characters: False
 
 ### -MachineInputObject
 Identity Parameter
-To construct, see NOTES section for MACHINEINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity

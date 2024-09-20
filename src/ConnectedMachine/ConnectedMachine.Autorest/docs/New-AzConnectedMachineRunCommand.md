@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedMachineRunCommand
 
 ## SYNOPSIS
-The operation to Create a run command.
+The operation to create or update a run command.
 
 ## SYNTAX
 
@@ -103,7 +103,7 @@ New-AzConnectedMachineRunCommand -MachineName <String> -ResourceGroupName <Strin
 ```
 
 ## DESCRIPTION
-The operation to Create a run command.
+The operation to create or update a run command.
 
 ## EXAMPLES
 
@@ -257,7 +257,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -318,7 +317,6 @@ Accept wildcard characters: False
 
 ### -MachineInputObject
 Identity Parameter
-To construct, see NOTES section for MACHINEINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -413,7 +411,6 @@ Accept wildcard characters: False
 
 ### -Parameter
 The parameters used by the script.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IRunCommandInputParameter[]
@@ -429,7 +426,6 @@ Accept wildcard characters: False
 
 ### -ProtectedParameter
 The parameters used by the script.
-To construct, see NOTES section for PROTECTEDPARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IRunCommandInputParameter[]
@@ -506,7 +502,6 @@ Accept wildcard characters: False
 
 ### -RunCommandProperty
 Describes a Run Command
-To construct, see NOTES section for RUNCOMMANDPROPERTY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommand

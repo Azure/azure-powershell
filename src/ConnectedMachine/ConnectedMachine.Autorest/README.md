@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the ConnectedMachine service.
 
 ---
-## Status
-[![Az.ConnectedMachine](https://img.shields.io/powershellgallery/v/Az.ConnectedMachine.svg?style=flat-square&label=Az.ConnectedMachine "Az.ConnectedMachine")](https://www.powershellgallery.com/packages/Az.ConnectedMachine/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -51,6 +48,10 @@ input-file:
 module-version: 0.5.0
 title: ConnectedMachine
 subject-prefix: 'Connected'
+# becasue autorest.powershell is unable to transform IdentityType as the best practice design if it uses managed identity
+# we hide the original cmdlet and custom it under /custom folder
+disable-transform-identity-type-for-operation:
+  - Machines_Update
 
 directive:
   - from: swagger-document
@@ -366,12 +367,13 @@ directive:
       verb: Invoke
     remove: true
 
-  # Removing non-expand commands
+  # becasue autorest.powershell is unable to transform IdentityType as the best practice design if it uses managed identity
+  # we hide the original cmdlet and custom it under /custom folder
   - where:
-      subject: MachinePatch
-      variant: ^(Install)(?!.*?Expanded|JsonFilePath|JsonString)
-    remove: true
- 
+      subject: Machine
+      verb: Update
+    hide: true
+
   # Completers
   - where:
       parameter-name: Location
@@ -396,6 +398,5 @@ directive:
   - model-cmdlet:
     - model-name: LicenseDetails
       cmdlet-name: New-AzConnectedLicenseDetail
-
 
 ```
