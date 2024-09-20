@@ -919,5 +919,9 @@
   {
     "alias": "KubernetesRuntime",
     "module": "KubernetesRuntime"
+  },
+  {
+    "module": "Terraform",
+    "alias": "Terraform"
   }
 ]
