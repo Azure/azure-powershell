@@ -19,20 +19,20 @@
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "9a34a3a0-e23d-47fe-b79f-0ae026b33a16" ],
-        "x-ms-correlation-request-id": [ "69e6dcc4-6d5d-4466-b538-8a511e0bbcdc" ],
-        "x-ms-routing-request-id": [ "EASTUS:20240920T032321Z:69e6dcc4-6d5d-4466-b538-8a511e0bbcdc" ],
+        "x-ms-request-id": [ "64e6be6a-9201-4e27-b1fb-f90ac8354a0d" ],
+        "x-ms-correlation-request-id": [ "56e37000-8bf9-464e-ab93-21d396a30021" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20240920T035636Z:56e37000-8bf9-464e-ab93-21d396a30021" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0F0BCE7BAB764093BD1427546F46F54C Ref B: MNZ221060609039 Ref C: 2024-09-20T03:23:20Z" ],
-        "Date": [ "Fri, 20 Sep 2024 03:23:20 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 8C683D81BD9340F38FCCBF8F98619D89 Ref B: MNZ221060610027 Ref C: 2024-09-20T03:56:35Z" ],
+        "Date": [ "Fri, 20 Sep 2024 03:56:36 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "413" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3\",\"name\":\"myScope3\",\"type\":\"Microsoft.HybridCompute/privateLinkScopes\",\"location\":\"westcentralus\",\"properties\":{\"privateLinkScopeId\":\"0e5142f4-beae-4a05-8082-ad0d0ea8321d\",\"publicNetworkAccess\":\"Enabled\",\"provisioningState\":\"Succeeded\",\"privateEndpointConnections\":[]}}",
+      "Content": "{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3\",\"name\":\"myScope3\",\"type\":\"Microsoft.HybridCompute/privateLinkScopes\",\"location\":\"westcentralus\",\"properties\":{\"privateLinkScopeId\":\"3d3b6265-c0f0-41a2-9154-b8062a3039ae\",\"publicNetworkAccess\":\"Enabled\",\"provisioningState\":\"Succeeded\",\"privateEndpointConnections\":[]}}",
       "isContentBase64": false
     }
   }
