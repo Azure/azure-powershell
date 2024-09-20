@@ -45,7 +45,7 @@ input-file:
   - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-05-20-preview/HybridCompute.json
   - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-05-20-preview/privateLinkScopes.json
  
-module-version: 0.5.0
+module-version: 0.1.0
 title: ConnectedMachine
 subject-prefix: 'Connected'
 # becasue autorest.powershell is unable to transform IdentityType as the best practice design if it uses managed identity

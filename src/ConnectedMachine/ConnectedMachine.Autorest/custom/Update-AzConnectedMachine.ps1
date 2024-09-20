@@ -138,7 +138,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Astro.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.Nullable[System.Boolean]]
     # Decides if enable a system assigned identity for the resource.
     ${EnableSystemAssignedIdentity},
