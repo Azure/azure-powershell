@@ -15,29 +15,29 @@ Checks if resource connectedEnvironmentName is available.
 ### CheckExpanded (Default)
 ```
 Test-AzContainerAppConnectedEnvNameAvailability -ConnectedEnvironmentName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Name <String>] [-Type <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-Name <String>] [-Type <String>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Check
 ```
 Test-AzContainerAppConnectedEnvNameAvailability -ConnectedEnvironmentName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -CheckNameAvailabilityRequest <ICheckNameAvailabilityRequest>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaJsonFilePath
 ```
 Test-AzContainerAppConnectedEnvNameAvailability -ConnectedEnvironmentName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaJsonString
 ```
 Test-AzContainerAppConnectedEnvNameAvailability -ConnectedEnvironmentName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +62,6 @@ Checks if resource connectedEnvironmentName is available.
 
 ### -CheckNameAvailabilityRequest
 The check availability request body.
-To construct, see NOTES section for CHECKNAMEAVAILABILITYREQUEST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICheckNameAvailabilityRequest
@@ -144,6 +143,21 @@ The name of the resource for which availability needs to be checked.
 Type: System.String
 Parameter Sets: CheckExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
