@@ -18,7 +18,7 @@ Update-AzRedisEnterpriseCacheDatabase -ClusterName <String> -ResourceGroupName <
  [-SubscriptionId <String>] [-ClientProtocol <Protocol>] [-EvictionPolicy <EvictionPolicy>]
  [-AofPersistenceEnabled] [-AofPersistenceFrequency <AofFrequency>] [-RdbPersistenceEnabled]
  [-RdbPersistenceFrequency <RdbFrequency>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -26,7 +26,7 @@ Update-AzRedisEnterpriseCacheDatabase -ClusterName <String> -ResourceGroupName <
 Update-AzRedisEnterpriseCacheDatabase -InputObject <IRedisEnterpriseCacheIdentity> [-ClientProtocol <Protocol>]
  [-EvictionPolicy <EvictionPolicy>] [-AofPersistenceEnabled] [-AofPersistenceFrequency <AofFrequency>]
  [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <RdbFrequency>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -203,6 +203,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RdbPersistenceEnabled
 [Preview] Sets whether RDB persistence is enabled.
 After enabling RDB persistence, you will be unable to disable it.
@@ -307,7 +322,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.IDatabase
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IDatabase
 
 ## NOTES
 
