@@ -397,4 +397,5 @@ directive:
     - model-name: LicenseDetails
       cmdlet-name: New-AzConnectedLicenseDetail
 
+
 ```
