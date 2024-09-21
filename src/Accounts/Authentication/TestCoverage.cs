@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     secretsDetected = qos.SanitizerInfo.SecretsDetected.ToString().ToLowerInvariant();
                     if (qos.SanitizerInfo.SecretsDetected)
                     {
-                        detectedProperties = qos.SanitizerInfo.DetectedProperties.Count == 0 ? "[PlainText]" : string.Join(";", qos.SanitizerInfo.DetectedProperties);
+                        detectedProperties = qos.SanitizerInfo.DetectedProperties.IsEmpty ? "[PlainText]" : string.Join(";", qos.SanitizerInfo.DetectedProperties.PropertyNames);
                     }
                 }
                 var csvItem = GenerateCsvItem(moduleName, commandName, qos.ParameterSetName, qos.Parameters, sourceScriptName, qos.ScriptLineNumber, qos.StartTime.UtcDateTime.ToString("yyyy-MM-ddTHH:mm:ss"), qos.EndTime.UtcDateTime.ToString("yyyy-MM-ddTHH:mm:ss"), totalDuration.ToString("F4"), sanitizeDuration.ToString("F4"), sanitizePercentage.ToString("P2"), secretsDetected, detectedProperties, qos.IsSuccess);
