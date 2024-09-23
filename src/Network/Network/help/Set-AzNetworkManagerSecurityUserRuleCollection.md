@@ -12,10 +12,17 @@ Updates a network manager security user rule collection.
 
 ## SYNTAX
 
+### ByInputObject (Default)
 ```
-Set-AzNetworkManagerSecurityUserRuleCollection -InputObject <PSNetworkManagerSecurityUserRuleCollection>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzNetworkManagerSecurityUserRuleCollection [-Name <String>]
+ -InputObject <PSNetworkManagerSecurityUserRuleCollection> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Set-AzNetworkManagerSecurityUserRuleCollection [-Name <String>] -ResourceId <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,7 +112,7 @@ The NetworkManagerSecurityUserRuleCollection
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityUserRuleCollection
-Parameter Sets: (All)
+Parameter Sets: ByInputObject
 Aliases:
 
 Required: True
@@ -115,18 +122,33 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -Name
+The resource name.
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
+Type: System.String
 Parameter Sets: (All)
-Aliases: proga
+Aliases: ResourceName
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: True
+```
+
+### -ResourceId
+NetworkManager SecurityUserCollection Id
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases: SecurityUserCollectionId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

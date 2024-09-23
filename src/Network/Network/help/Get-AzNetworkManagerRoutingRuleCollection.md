@@ -12,18 +12,30 @@ Gets a routing rule collection in a network manager.
 
 ## SYNTAX
 
-### NoExpand (Default)
+### ByList (Default)
 ```
 Get-AzNetworkManagerRoutingRuleCollection [-Name <String>] -RoutingConfigurationName <String>
  -NetworkManagerName <String> -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
-### Expand
+### ByName
 ```
 Get-AzNetworkManagerRoutingRuleCollection -Name <String> -RoutingConfigurationName <String>
  -NetworkManagerName <String> -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Get-AzNetworkManagerRoutingRuleCollection -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ByInputObject
+```
+Get-AzNetworkManagerRoutingRuleCollection -InputObject <PSNetworkManagerRoutingRuleCollection>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -128,12 +140,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The input object containing the necessary properties.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerRoutingRuleCollection
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: NoExpand
+Parameter Sets: ByList
 Aliases: ResourceName
 
 Required: False
@@ -145,7 +172,7 @@ Accept wildcard characters: True
 
 ```yaml
 Type: System.String
-Parameter Sets: Expand
+Parameter Sets: ByName
 Aliases: ResourceName
 
 Required: True
@@ -160,7 +187,7 @@ The network manager name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByList, ByName
 Aliases:
 
 Required: True
@@ -168,21 +195,6 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
@@ -190,7 +202,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByList, ByName
 Aliases:
 
 Required: True
@@ -200,12 +212,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
 
+### -ResourceId
+NetworkManager RoutingCollection Id
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases: RoutingCollectionId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -RoutingConfigurationName
 The network manager routing configuration name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByList, ByName
 Aliases: ConfigName
 
 Required: True

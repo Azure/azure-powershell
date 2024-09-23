@@ -14,8 +14,8 @@ Creates a network manager group.
 
 ```
 New-AzNetworkManagerGroup -Name <String> -NetworkManagerName <String> -ResourceGroupName <String>
- [-Description <String>] [-IfMatch <String>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Description <String>] [-MemberType <String>] [-IfMatch <String>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -146,6 +146,22 @@ If match header.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MemberType
+Network Group member type. Valid values include 'VirtualNetwork' and 'Subnet'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: VirtualNetwork, Subnet
 
 Required: False
 Position: Named
