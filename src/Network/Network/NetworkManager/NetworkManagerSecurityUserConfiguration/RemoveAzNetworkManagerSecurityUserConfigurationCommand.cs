@@ -12,29 +12,37 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserConfiguration", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserConfiguration", SupportsShouldProcess = true, DefaultParameterSetName = ByName), OutputType(typeof(bool))]
     public class RemoveAzNetworkManagerSecurityUserConfigurationCommand : NetworkManagerSecurityUserConfigurationBaseCmdlet
     {
+        private const string ByName = "ByName";
+        private const string ByResourceId = "ByResourceId";
+        private const string ByInputObject = "ByInputObject";
+
         [Alias("ResourceName")]
         [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
-        [ResourceNameCompleter("Microsoft.Network/networkManagers/securityUserConfigurations", "ResourceGroupName", "NetworkManagerName")]
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource name.",
+           ParameterSetName = ByName)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Network/networkManagers/securityUserConfigurations", "ResourceGroupName", "NetworkManagerName")]
         [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager name.")]
+           HelpMessage = "The network manager name.",
+           ParameterSetName = ByName)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
         [SupportsWildcards]
@@ -43,11 +51,27 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The resource group name.",
+            ParameterSetName = ByName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The SecurityUser Configuration resource.",
+            ParameterSetName = ByInputObject)]
+        [ValidateNotNull]
+        public PSNetworkManagerSecurityUserConfiguration InputObject { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The resource id.",
+            ParameterSetName = ByResourceId)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -68,25 +92,58 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+
+            var (resourceGroupName, networkManagerName, securityUserConfigurationName) = GetParameters();
+
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Properties.Resources.RemovingResource, Name),
+                string.Format(Properties.Resources.RemovingResource, securityUserConfigurationName),
                 Properties.Resources.RemoveResourceMessage,
-                Name,
-                () =>
-                {
-                    bool forceDelete = false;
-                    if (ForceDelete.IsPresent)
-                    {
-                        forceDelete = true;
-                    }
+                securityUserConfigurationName,
+                () => RemoveSecurityUserConfiguration(resourceGroupName, networkManagerName, securityUserConfigurationName));
+        }
 
-                    this.NetworkManagerSecurityUserConfigurationClient.Delete(this.ResourceGroupName, this.NetworkManagerName, this.Name, forceDelete);
-                    if (PassThru.IsPresent)
-                    {
-                        WriteObject(true);
-                    }
-                });
+        private void RemoveSecurityUserConfiguration(string resourceGroupName, string networkManagerName, string securityUserConfigurationName)
+        {
+            bool forceDelete = ForceDelete.IsPresent;
+
+            this.NetworkManagerSecurityUserConfigurationClient.Delete(resourceGroupName, networkManagerName, securityUserConfigurationName, forceDelete);
+            if (PassThru.IsPresent)
+            {
+                WriteObject(true);
+            }
+        }
+
+        private (string resourceGroupName, string networkManagerName, string securityUserConfigurationName) GetParameters()
+        {
+            switch (this.ParameterSetName)
+            {
+                case ByResourceId:
+                    var resourceId = this.ResourceId;
+                    return (
+                        NetworkBaseCmdlet.GetResourceGroup(resourceId),
+                        NetworkBaseCmdlet.GetResourceName(resourceId, "networkManagers"),
+                        NetworkBaseCmdlet.GetResourceName(resourceId, "securityUserConfigurations")
+                    );
+
+                case ByInputObject:
+                    var inputObject = this.InputObject;
+                    return (
+                        inputObject.ResourceGroupName,
+                        inputObject.NetworkManagerName,
+                        inputObject.Name
+                    );
+
+                case ByName:
+                    return (
+                        this.ResourceGroupName,
+                        this.NetworkManagerName,
+                        this.Name
+                    );
+
+                default:
+                    throw new PSArgumentException("Invalid parameter set");
+            }
         }
     }
 }

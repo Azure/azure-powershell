@@ -27,23 +27,28 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserConfiguration", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerSecurityUserConfiguration))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserConfiguration", SupportsShouldProcess = true, DefaultParameterSetName = ByName), OutputType(typeof(PSNetworkManagerSecurityUserConfiguration))]
     public class NewAzNetworkManagerSecurityUserConfigurationCommand : NetworkManagerSecurityUserConfigurationBaseCmdlet
     {
+        private const string ByName = "ByName";
+        private const string ByInputObject = "ByInputObject";
+
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
+            HelpMessage = "The resource name.",
+            ParameterSetName = ByName)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/securityUserConfigurations", "ResourceGroupName", "NetworkManagerName")]
         [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager name.")]
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The network manager name.",
+            ParameterSetName = ByName)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string NetworkManagerName { get; set; }
@@ -51,17 +56,26 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The resource group name.",
+            ParameterSetName = ByName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
-         Mandatory = false,
-         ValueFromPipelineByPropertyName = true,
-         HelpMessage = "Description.")]
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "Description.",
+             ParameterSetName = ByName)]
         public virtual string Description { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The input object representing the securityUser configuration.",
+            ParameterSetName = ByInputObject)]
+        public PSNetworkManagerSecurityUserConfiguration InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -74,24 +88,29 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            var present = this.IsNetworkManagerSecurityUserConfigurationPresent(this.ResourceGroupName, this.NetworkManagerName, this.Name);
+
+            var (resourceGroupName, networkManagerName, securityUserConfigurationName) = GetParameters();
+
+            var present = this.IsNetworkManagerSecurityUserConfigurationPresent(resourceGroupName, networkManagerName, securityUserConfigurationName);
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Properties.Resources.OverwritingResource, Name),
+                string.Format(Properties.Resources.OverwritingResource, securityUserConfigurationName),
                 Properties.Resources.CreatingResourceMessage,
-                Name,
+                securityUserConfigurationName,
                 () =>
                 {
-                    var networkManagerSecurityUserConfiguration = this.CreateNetworkManagerSecurityUserConfiguration();
+                    var networkManagerSecurityUserConfiguration = this.CreateNetworkManagerSecurityUserConfiguration(resourceGroupName, networkManagerName, securityUserConfigurationName);
                     WriteObject(networkManagerSecurityUserConfiguration);
                 },
                 () => present);
         }
 
-        private PSNetworkManagerSecurityUserConfiguration CreateNetworkManagerSecurityUserConfiguration()
+        private PSNetworkManagerSecurityUserConfiguration CreateNetworkManagerSecurityUserConfiguration(string resourceGroupName, string networkManagerName, string securityUserConfigurationName)
         {
-            var securityUserConfig = new PSNetworkManagerSecurityUserConfiguration();
-            securityUserConfig.Name = this.Name;
+            var securityUserConfig = new PSNetworkManagerSecurityUserConfiguration
+            {
+                Name = securityUserConfigurationName
+            };
 
             if (!string.IsNullOrEmpty(this.Description))
             {
@@ -102,10 +121,25 @@ namespace Microsoft.Azure.Commands.Network
             var securityUserConfigModel = NetworkResourceManagerProfile.Mapper.Map<MNM.SecurityUserConfiguration>(securityUserConfig);
 
             // Execute the Create SecurityUser Config call
-            this.NetworkManagerSecurityUserConfigurationClient.CreateOrUpdate(this.ResourceGroupName, this.NetworkManagerName, this.Name, securityUserConfigModel);
+            this.NetworkManagerSecurityUserConfigurationClient.CreateOrUpdate(resourceGroupName, networkManagerName, securityUserConfigurationName, securityUserConfigModel);
 
-            var psSecurityUserConfig = this.GetNetworkManagerSecurityUserConfiguration(this.ResourceGroupName, this.NetworkManagerName, this.Name);
+            var psSecurityUserConfig = this.GetNetworkManagerSecurityUserConfiguration(resourceGroupName, networkManagerName, securityUserConfigurationName);
             return psSecurityUserConfig;
+        }
+
+        private (string resourceGroupName, string networkManagerName, string securityUserConfigurationName) GetParameters()
+        {
+            switch (this.ParameterSetName)
+            {
+                case ByName:
+                    return (this.ResourceGroupName, this.NetworkManagerName, this.Name);
+
+                case ByInputObject:
+                    return (this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name);
+
+                default:
+                    throw new PSArgumentException("Invalid parameter set");
+            }
         }
     }
 }

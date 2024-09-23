@@ -25,39 +25,117 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRule", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerSecurityUserRule))]
+    /// <summary>
+    /// Cmdlet to set a Network Manager SecurityUser Rule.
+    /// </summary>
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRule", SupportsShouldProcess = true, DefaultParameterSetName = ByInputObject), OutputType(typeof(PSNetworkManagerSecurityUserRule))]
     public class SetAzNetworkManagerSecurityUserRuleCommand : NetworkManagerSecurityUserRuleBaseCmdlet
     {
+        private const string ByResourceId = "ByResourceId";
+        private const string ByInputObject = "ByInputObject";
+
+        [Alias("ResourceName")]
         [Parameter(
+           ParameterSetName = ByInputObject,
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource name.")]
+        [Parameter(
+           ParameterSetName = ByResourceId,
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource name.")]
+        [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Network/networkManagers/securityUserConfigurations/ruleCollections/rules", "ResourceGroupName", "NetworkManagerName", "SecurityUserConfigurationName", "RuleCollectionName")]
+        [SupportsWildcards]
+        public string Name { get; set; }
+
+        [Parameter(
+            ParameterSetName = ByInputObject,
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The Network Manager SecurityUser Rule")]
         public PSNetworkManagerSecurityUserRule InputObject { get; set; }
 
+        [Parameter(
+            ParameterSetName = "ByResourceId",
+            Mandatory = true,
+            HelpMessage = "NetworkManager SecurityUserRule Id",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        [Alias("SecurityUserRuleId")]
+        public string ResourceId { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        /// <summary>
+        /// Executes the cmdlet.
+        /// </summary>
         public override void Execute()
         {
-            if (this.ShouldProcess(this.InputObject.Name, VerbsLifecycle.Restart))
+            if (this.ShouldProcess(this.InputObject?.Name ?? this.Name, VerbsLifecycle.Restart))
             {
                 base.Execute();
 
-                // Map to the sdk object
-                SecurityUserRule securityUserRuleModel;
-                if (this.InputObject.GetType().Name == "PSNetworkManagerSecurityUserRule")
-                {
-                    securityUserRuleModel = NetworkResourceManagerProfile.Mapper.Map<SecurityUserRule>(InputObject);
-                }
-                else
-                {
-                    throw new ErrorException("Unknown SecurityUser Rule Type");
-                }
+                var (resourceGroupName, networkManagerName, securityUserConfigurationName, ruleCollectionName, ruleName) = ExtractResourceDetails();
 
-                // Execute the PUT NetworkManagerSecurityUserRule call
-                var securityUserRuleResponse = this.NetworkManagerSecurityUserRuleOperationClient.CreateOrUpdate(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.SecurityUserConfigurationName, this.InputObject.RuleCollectionName, this.InputObject.Name, securityUserRuleModel);
+                var securityUserRuleModel = MapToSdkObject();
+
+                var securityUserRuleResponse = this.NetworkManagerSecurityUserRuleOperationClient.CreateOrUpdate(
+                    resourceGroupName,
+                    networkManagerName,
+                    securityUserConfigurationName,
+                    ruleCollectionName,
+                    ruleName,
+                    securityUserRuleModel);
+
                 var psSecurityUserRule = this.ToPSSecurityUserRule(securityUserRuleResponse);
                 WriteObject(psSecurityUserRule);
+            }
+        }
+
+        /// <summary>
+        /// Extracts resource details from either ResourceId or InputObject.
+        /// </summary>
+        /// <returns>Tuple containing resource details.</returns>
+        private (string resourceGroupName, string networkManagerName, string securityUserConfigurationName, string ruleCollectionName, string ruleName) ExtractResourceDetails()
+        {
+            if (!string.IsNullOrEmpty(this.ResourceId))
+            {
+                return (
+                    NetworkBaseCmdlet.GetResourceGroup(this.ResourceId),
+                    NetworkBaseCmdlet.GetResourceName(this.ResourceId, "networkManagers"),
+                    NetworkBaseCmdlet.GetResourceName(this.ResourceId, "securityUserConfigurations"),
+                    NetworkBaseCmdlet.GetResourceName(this.ResourceId, "ruleCollections"),
+                    this.Name ?? NetworkBaseCmdlet.GetResourceName(this.ResourceId, "rules")
+                );
+            }
+            else
+            {
+                return (
+                    this.InputObject.ResourceGroupName,
+                    this.InputObject.NetworkManagerName,
+                    this.InputObject.SecurityUserConfigurationName,
+                    this.InputObject.RuleCollectionName,
+                    this.InputObject.Name
+                );
+            }
+        }
+
+        /// <summary>
+        /// Maps the InputObject to the SDK's SecurityUserRule object.
+        /// </summary>
+        /// <returns>Mapped SecurityUserRule object.</returns>
+        private SecurityUserRule MapToSdkObject()
+        {
+            if (this.InputObject.GetType().Name == "PSNetworkManagerSecurityUserRule")
+            {
+                return NetworkResourceManagerProfile.Mapper.Map<SecurityUserRule>(InputObject);
+            }
+            else
+            {
+                throw new ErrorException("Unknown SecurityUser Rule Type");
             }
         }
     }
