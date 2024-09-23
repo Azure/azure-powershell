@@ -12,10 +12,17 @@ Updates a network manager security user configuration.
 
 ## SYNTAX
 
+### ByInputObject (Default)
 ```
-Set-AzNetworkManagerSecurityUserConfiguration -InputObject <PSNetworkManagerSecurityUserConfiguration>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzNetworkManagerSecurityUserConfiguration [-Name <String>]
+ -InputObject <PSNetworkManagerSecurityUserConfiguration> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Set-AzNetworkManagerSecurityUserConfiguration [-Name <String>] -ResourceId <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,7 +94,7 @@ The NetworkManagerSecurityUserConfiguration
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityUserConfiguration
-Parameter Sets: (All)
+Parameter Sets: ByInputObject
 Aliases:
 
 Required: True
@@ -97,18 +104,33 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -Name
+The resource name.
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
+Type: System.String
 Parameter Sets: (All)
-Aliases: proga
+Aliases: ResourceName
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: True
+```
+
+### -ResourceId
+NetworkManager SecurityUserConfiguration Id
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases: SecurityUserConfigurationId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
