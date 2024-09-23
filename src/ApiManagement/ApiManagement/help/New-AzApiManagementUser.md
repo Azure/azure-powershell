@@ -27,7 +27,7 @@ The **New-AzApiManagementUser** cmdlet registers a new user.
 ### Example 1: Register a new user
 ```powershell
 $apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-$securePassword = ConvertTo-SecureString "qwerty" -AsPlainText -Force
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzApiManagementUser -Context $apimContext -FirstName "Patti" -LastName "Fuller" -Email "Patti.Fuller@contoso.com" -Password $securePassword
 ```
 

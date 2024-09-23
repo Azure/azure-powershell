@@ -159,7 +159,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         Description = @"The resource selector list to filter policies by resource properties.",
         SerializedName = @"resourceSelectors",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExport]
         public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[] ResourceSelector { get => _parametersBody.ResourceSelector?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.ResourceSelector = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector>(value) : null); }
 
         /// <summary>Backing field for <see cref="Scope" /> property.</summary>
@@ -386,10 +385,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
                     Pipeline.Append((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelineAppend) ?? HttpPipelineAppend);
                 }
                 // get the client instance
-                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("ResourceSelector"))
-                {
-                    ResourceSelector = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[])this.MyInvocation.BoundParameters["ResourceSelector"];
-                }
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }

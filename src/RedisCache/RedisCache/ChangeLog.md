@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.10.0
 * Added support for Disabling Access Keys Authentication
 
 ## Version 1.9.1

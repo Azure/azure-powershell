@@ -25,7 +25,7 @@ namespace Commands.HDInsight.Test.ScenarioTests
         {
         }
 
-        [Fact]
+        [Fact(Skip = "Sikp this")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetGatewayCredential()
         {

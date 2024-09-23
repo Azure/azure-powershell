@@ -16,10 +16,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMLWorkspaceDataContaine
 
 Describe 'Get-AzMLWorkspaceDataContainer' {
     It 'List' {
-        { Get-AzMLWorkspaceDataContainer  -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-portal01 } | Should -Not -Throw
+        { Get-AzMLWorkspaceDataContainer  -ResourceGroupName $env.TestGroupName -WorkspaceName $env.mainWorkspace } | Should -Not -Throw
     }
 
     It 'Get' {
-        { Get-AzMLWorkspaceDataContainer  -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-portal01 -Name iris-data } | Should -Not -Throw
+        { Get-AzMLWorkspaceDataContainer  -ResourceGroupName $env.TestGroupName -WorkspaceName $env.mainWorkspace -Name $env.datacontainer } | Should -Not -Throw
     }
 }

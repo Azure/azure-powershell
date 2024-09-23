@@ -19,6 +19,14 @@
 -->
 ## Upcoming Release
 
+## Version 0.18.0
+* Fixed some minor issues
+* Added `SnapshotName` to `New-AzNetAppFilesBackup`
+* Fixed `New-AzNetAppFilesBackup`, `Label` is not a requred parameter
+
+## Version 0.17.0
+* Updated to api-version 2024-03-01
+
 ## Version 0.16.0
 * Updated to api-version 2023-11-01
 * Fixed some minor issues

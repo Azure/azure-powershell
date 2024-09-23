@@ -126,7 +126,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 TotalThroughputMibps = capacityPool.TotalThroughputMibps,
                 UtilizedThroughputMibps = capacityPool.UtilizedThroughputMibps,
                 CoolAccess = capacityPool.CoolAccess,
-                SystemData = capacityPool.SystemData?.ToPsSystemData()
+                SystemData = capacityPool.SystemData?.ToPsSystemData(),
+                EncryptionType = capacityPool.EncryptionType
             };
         }
 

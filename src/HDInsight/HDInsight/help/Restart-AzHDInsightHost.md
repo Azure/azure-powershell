@@ -15,7 +15,8 @@ Restarts the specific hosts of HDInsight cluster.
 ### SetByNameParameterSet (Default)
 ```
 Restart-AzHDInsightHost [[-ResourceGroupName] <String>] [-ClusterName] <String> [-Name] <String[]> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByAzureHDInsightHostInfoParameterSet

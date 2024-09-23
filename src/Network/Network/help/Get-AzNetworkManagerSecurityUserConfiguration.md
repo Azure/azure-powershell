@@ -12,18 +12,28 @@ Gets a network security user configuration in a network manager.
 
 ## SYNTAX
 
-### NoExpand (Default)
+### ByList (Default)
 ```
-Get-AzNetworkManagerSecurityUserConfiguration [-Name <String>] -NetworkManagerName <String>
- -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+Get-AzNetworkManagerSecurityUserConfiguration -NetworkManagerName <String> -ResourceGroupName <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByName
+```
+Get-AzNetworkManagerSecurityUserConfiguration -Name <String> -NetworkManagerName <String>
+ -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Get-AzNetworkManagerSecurityUserConfiguration -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### Expand
+### ByInputObject
 ```
-Get-AzNetworkManagerSecurityUserConfiguration -Name <String> -NetworkManagerName <String>
- -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+Get-AzNetworkManagerSecurityUserConfiguration -InputObject <PSNetworkManagerSecurityUserConfiguration>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -111,24 +121,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The input object containing the necessary properties.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityUserConfiguration
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: NoExpand
-Aliases: ResourceName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
-```
-
-```yaml
-Type: System.String
-Parameter Sets: Expand
+Parameter Sets: ByName
 Aliases: ResourceName
 
 Required: True
@@ -143,7 +156,7 @@ The network manager name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByList, ByName
 Aliases:
 
 Required: True
@@ -151,21 +164,6 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
@@ -173,7 +171,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByList, ByName
 Aliases:
 
 Required: True
@@ -181,6 +179,21 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
+```
+
+### -ResourceId
+NetworkManager SecurityUserConfiguration Id
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases: SecurityUserConfigurationId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
 ```
 
 ### CommonParameters

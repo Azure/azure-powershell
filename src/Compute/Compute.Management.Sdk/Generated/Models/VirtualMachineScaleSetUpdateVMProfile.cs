@@ -37,6 +37,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// profile.</param>
         /// <param name="networkProfile">The virtual machine scale set network
         /// profile.</param>
+        /// <param name="securityPostureReference">The virtual machine scale
+        /// set security posture reference.</param>
         /// <param name="securityProfile">The virtual machine scale set
         /// Security profile</param>
         /// <param name="diagnosticsProfile">The virtual machine scale set
@@ -55,11 +57,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="hardwareProfile">Specifies the hardware profile
         /// related details of a scale set. Minimum api-version:
         /// 2021-11-01.</param>
-        public VirtualMachineScaleSetUpdateVMProfile(VirtualMachineScaleSetUpdateOSProfile osProfile = default(VirtualMachineScaleSetUpdateOSProfile), VirtualMachineScaleSetUpdateStorageProfile storageProfile = default(VirtualMachineScaleSetUpdateStorageProfile), VirtualMachineScaleSetUpdateNetworkProfile networkProfile = default(VirtualMachineScaleSetUpdateNetworkProfile), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), VirtualMachineScaleSetExtensionProfile extensionProfile = default(VirtualMachineScaleSetExtensionProfile), string licenseType = default(string), BillingProfile billingProfile = default(BillingProfile), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), VirtualMachineScaleSetHardwareProfile hardwareProfile = default(VirtualMachineScaleSetHardwareProfile))
+        public VirtualMachineScaleSetUpdateVMProfile(VirtualMachineScaleSetUpdateOSProfile osProfile = default(VirtualMachineScaleSetUpdateOSProfile), VirtualMachineScaleSetUpdateStorageProfile storageProfile = default(VirtualMachineScaleSetUpdateStorageProfile), VirtualMachineScaleSetUpdateNetworkProfile networkProfile = default(VirtualMachineScaleSetUpdateNetworkProfile), SecurityPostureReferenceUpdate securityPostureReference = default(SecurityPostureReferenceUpdate), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), VirtualMachineScaleSetExtensionProfile extensionProfile = default(VirtualMachineScaleSetExtensionProfile), string licenseType = default(string), BillingProfile billingProfile = default(BillingProfile), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), VirtualMachineScaleSetHardwareProfile hardwareProfile = default(VirtualMachineScaleSetHardwareProfile))
         {
             OsProfile = osProfile;
             StorageProfile = storageProfile;
             NetworkProfile = networkProfile;
+            SecurityPostureReference = securityPostureReference;
             SecurityProfile = securityProfile;
             DiagnosticsProfile = diagnosticsProfile;
             ExtensionProfile = extensionProfile;
@@ -93,6 +96,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "networkProfile")]
         public VirtualMachineScaleSetUpdateNetworkProfile NetworkProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets the virtual machine scale set security posture
+        /// reference.
+        /// </summary>
+        [JsonProperty(PropertyName = "securityPostureReference")]
+        public SecurityPostureReferenceUpdate SecurityPostureReference { get; set; }
 
         /// <summary>
         /// Gets or sets the virtual machine scale set Security profile

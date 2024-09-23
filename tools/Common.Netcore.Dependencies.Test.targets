@@ -17,7 +17,7 @@
     <PackageReference Include="xunit.runner.console" Version="2.4.0" />
     <PackageReference Include="System.Reflection.TypeExtensions" Version="4.5.0" />
     <Reference Include="System.Net.Http" />
-    <PackageReference Include="Newtonsoft.Json" version="13.0.2" />
+    <PackageReference Include="Newtonsoft.Json" version="13.0.3" />
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.2.0" />
   </ItemGroup>
 
@@ -34,7 +34,7 @@
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
     <!-- version of SDK should reference https://docs.microsoft.com/en-us/powershell/azure/what-is-azure-powershell -->
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5" />
   </ItemGroup>
 

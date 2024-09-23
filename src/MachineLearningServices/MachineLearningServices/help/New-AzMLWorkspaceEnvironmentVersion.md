@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
 online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceenvironmentversion
 schema: 2.0.0
@@ -14,12 +14,13 @@ Creates or updates an EnvironmentVersion.
 
 ```
 New-AzMLWorkspaceEnvironmentVersion -Name <String> -ResourceGroupName <String> -Version <String>
- -WorkspaceName <String> [-SubscriptionId <String>] [-BuildContextUri <String>]
- [-BuildDockerfilePath <String>] [-CondaFile <String>] [-Description <String>] [-Image <String>] [-IsAnonymou]
- [-IsArchived] [-LivenessRoutePath <String>] [-LivenessRoutePort <Int32>] [-OSType <OperatingSystemType>]
- [-ReadinessRoutePath <String>] [-ReadinessRoutePort <Int32>] [-ResourceBaseProperty <Hashtable>]
- [-ScoringRoutePath <String>] [-ScoringRoutePort <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -WorkspaceName <String> [-SubscriptionId <String>] [-AutoRebuild <AutoRebuildSetting>]
+ [-BuildContextUri <String>] [-BuildDockerfilePath <String>] [-CondaFile <String>] [-Description <String>]
+ [-Image <String>] [-IsAnonymou] [-IsArchived] [-LivenessRoutePath <String>] [-LivenessRoutePort <Int32>]
+ [-OSType <OperatingSystemType>] [-ReadinessRoutePath <String>] [-ReadinessRoutePort <Int32>]
+ [-ResourceBaseProperty <Hashtable>] [-ScoringRoutePath <String>] [-ScoringRoutePort <Int32>] [-Stage <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,12 +36,27 @@ New-AzMLWorkspaceEnvironmentVersion -ResourceGroupName ml-rg-test -WorkspaceName
 ```output
 Name SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy            SystemDataLastModifiedByType ResourceGroupName
 ---- -------------------  -------------------                 ----------------------- ------------------------ ------------------------            ---------------------------- -----------------
-1    5/31/2022 8:28:35 AM Lucas Yao (Wicresoft North America) User                    5/31/2022 8:28:35 AM     Lucas Yao (Wicresoft North America) User                         ml-rg-test
+1    5/31/2022 8:28:35 AM UserName (Example)                  User                    5/31/2022 8:28:35 AM     UserName (Example)                  User                         ml-rg-test
 ```
 
 Creates or updates an EnvironmentVersion.
 
 ## PARAMETERS
+
+### -AutoRebuild
+Defines if image needs to be rebuilt based on base image changes.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.AutoRebuildSetting
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -BuildContextUri
 [Required] URI of the Docker build context used to build the image.
@@ -89,7 +105,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -119,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -Image
-Name of the image that will be used for the environment.\<seealso href="https://learn.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image" /\>
+Name of the image that will be used for the environment.\<seealso href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image" /\>
 
 ```yaml
 Type: System.String
@@ -315,6 +332,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Stage
+Stage in the environment lifecycle assigned to this environment
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -414,11 +446,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IEnvironmentVersion
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IEnvironmentVersion
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

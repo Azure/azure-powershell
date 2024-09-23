@@ -13,7 +13,7 @@ Creates a network manager routing rule next hop.
 ## SYNTAX
 
 ```
-New-AzNetworkManagerRoutingRuleNextHop -NextHopAddress <String> -NextHopType <String>
+New-AzNetworkManagerRoutingRuleNextHop [-NextHopAddress <String>] -NextHopType <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -50,6 +50,21 @@ Creates a network manager routing rule next hop object.
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NextHopAddress
 NextHopAddress
 
@@ -58,7 +73,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -72,27 +87,12 @@ NextHopAddress NextHopType.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: AddressPrefix, ServiceTag
+Accepted values: Internet, NoNextHop, VirtualAppliance, VirtualNetworkGateway, VnetLocal
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

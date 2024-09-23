@@ -27,7 +27,7 @@ Add a new node type to a existing cluster.
 
 ### Example 1
 ```powershell
-$pwd = ConvertTo-SecureString -String 'Password$123456' -AsPlainText -Force
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Add-AzServiceFabricNodeType -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeType 'n2' -Capacity 5 -VmUserName 'adminName' -VmPassword $pwd
 ```
 
@@ -41,7 +41,7 @@ discovered preexiting Node Type VMSS, substituting ImageSku with 18.04-LTS.
 
 
 ```powershell
-$pwd = ConvertTo-SecureString -String 'Password$123456' -AsPlainText -Force
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $resourceGroup = "Group2"
 $clusterName = "Contoso01SFCluster"
 $nodeTypeName = "n3"

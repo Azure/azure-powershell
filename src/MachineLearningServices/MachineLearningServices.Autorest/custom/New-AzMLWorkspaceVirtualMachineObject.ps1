@@ -21,12 +21,12 @@ Create an in-memory object for VirtualMachine.
 Create an in-memory object for VirtualMachine.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.VirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.VirtualMachine
 .Link
-https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceVirtualMachineObject
+https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspaceVirtualMachineObject
 #>
 function New-AzMLWorkspaceVirtualMachineObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.VirtualMachine')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.VirtualMachine')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -69,7 +69,7 @@ function New-AzMLWorkspaceVirtualMachineObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.VirtualMachine]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.VirtualMachine]::New()
         $Object.Type = 'VirtualMachine'
 
         if ($PSBoundParameters.ContainsKey('Description')) {
