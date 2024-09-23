@@ -26,32 +26,37 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingRuleCollection", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerRoutingRuleCollection))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingRuleCollection", SupportsShouldProcess = true, DefaultParameterSetName = ByName), OutputType(typeof(PSNetworkManagerRoutingRuleCollection))]
     public class NewAzNetworkManagerRoutingRuleCollectionCommand : NetworkManagerRoutingRuleCollectionBaseCmdlet
     {
+        private const string ByName = "ByName";
+        private const string ByInputObject = "ByInputObject";
+
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
+            HelpMessage = "The resource name.",
+            ParameterSetName = ByName)]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.Network/networkManagers/routingConfigurations/ruleCollections", "ResourceGroupName", "NetworkManagerName", "RoutingConfigurationName")]
         [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Alias("ConfigName")]
         [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager routing configuration name.")]
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The network manager routing configuration name.",
+            ParameterSetName = ByName)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string RoutingConfigurationName { get; set; }
 
         [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager name.")]
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The network manager name.",
+            ParameterSetName = ByName)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string NetworkManagerName { get; set; }
@@ -59,29 +64,39 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The resource group name.",
+            ParameterSetName = ByName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
-         Mandatory = false,
-         ValueFromPipelineByPropertyName = true,
-         HelpMessage = "Description.")]
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "Description.",
+             ParameterSetName = ByName)]
         public virtual string Description { get; set; }
 
         [Parameter(
-         Mandatory = true,
-         ValueFromPipelineByPropertyName = true,
-         HelpMessage = "Applies To.")]
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ByName,
+            HelpMessage = "Applies To.")]
         public virtual PSNetworkManagerRoutingGroupItem[] AppliesTo { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ByName,
             HelpMessage = "DisableBgpRoutePropagation.")]
         public string DisableBgpRoutePropagation { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The input object representing the routing collection.",
+            ParameterSetName = ByInputObject)]
+        public PSNetworkManagerRoutingRuleCollection InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -94,43 +109,72 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            var present = this.IsNetworkManagerRoutingRuleCollectionPresent(this.ResourceGroupName, this.NetworkManagerName, this.RoutingConfigurationName, this.Name);
+
+            var (resourceGroupName, networkManagerName, routingConfigurationName, routingRuleCollectionName, description, appliesTo, disableBgpRoutePropagation) = ExtractParameters();
+
+            var present = this.IsNetworkManagerRoutingRuleCollectionPresent(resourceGroupName, networkManagerName, routingConfigurationName, routingRuleCollectionName);
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Properties.Resources.OverwritingResource, Name),
+                string.Format(Properties.Resources.OverwritingResource, routingRuleCollectionName),
                 Properties.Resources.CreatingResourceMessage,
-                Name,
+                routingRuleCollectionName,
                 () =>
                 {
-                    var networkManagerRoutingRuleCollection = this.CreateNetworkManagerRoutingRuleCollection();
+                    var networkManagerRoutingRuleCollection = this.CreateNetworkManagerRoutingRuleCollection(resourceGroupName, networkManagerName, routingConfigurationName, routingRuleCollectionName, description, appliesTo, disableBgpRoutePropagation);
                     WriteObject(networkManagerRoutingRuleCollection);
                 },
                 () => present);
         }
 
-        private PSNetworkManagerRoutingRuleCollection CreateNetworkManagerRoutingRuleCollection()
+        private PSNetworkManagerRoutingRuleCollection CreateNetworkManagerRoutingRuleCollection(string resourceGroupName, string networkManagerName, string routingConfigurationName, string routingRuleCollectionName, string description, PSNetworkManagerRoutingGroupItem[] appliesTo, string disableBgpRoutePropagation)
         {
             var ruleCollection = new PSNetworkManagerRoutingRuleCollection
             {
-                Name = this.Name
+                Name = routingRuleCollectionName,
+                Description = description,
+                AppliesTo = appliesTo.ToList(),
+                DisableBgpRoutePropagation = disableBgpRoutePropagation
             };
-
-            if (!string.IsNullOrEmpty(this.Description))
-            {
-                ruleCollection.Description = this.Description;
-            }
-
-            ruleCollection.AppliesTo = this.AppliesTo.ToList();
-            ruleCollection.DisableBgpRoutePropagation = this.DisableBgpRoutePropagation;
 
             // Map to the sdk object
             var ruleCollectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.RoutingRuleCollection>(ruleCollection);
 
             // Execute the Create Routing Rule Collection call
-            this.NetworkManagerRoutingRuleCollectionClient.CreateOrUpdate(this.ResourceGroupName, this.NetworkManagerName, this.RoutingConfigurationName, this.Name, ruleCollectionModel);
+            this.NetworkManagerRoutingRuleCollectionClient.CreateOrUpdate(resourceGroupName, networkManagerName, routingConfigurationName, routingRuleCollectionName, ruleCollectionModel);
 
-            var psRoutingRuleCollection = this.GetNetworkManagerRoutingRuleCollection(this.ResourceGroupName, this.NetworkManagerName, this.RoutingConfigurationName, this.Name);
+            var psRoutingRuleCollection = this.GetNetworkManagerRoutingRuleCollection(resourceGroupName, networkManagerName, routingConfigurationName, routingRuleCollectionName);
             return psRoutingRuleCollection;
+        }
+
+        private (string resourceGroupName, string networkManagerName, string routingConfigurationName, string routingRuleCollectionName, string description, PSNetworkManagerRoutingGroupItem[] appliesTo, string disableBgpRoutePropagation) ExtractParameters()
+        {
+            switch (this.ParameterSetName)
+            {
+                case ByInputObject:
+                    return (
+                        this.InputObject.ResourceGroupName,
+                        this.InputObject.NetworkManagerName,
+                        this.InputObject.RoutingConfigurationName,
+                        this.InputObject.Name,
+                        this.InputObject.Description,
+                        this.InputObject.AppliesTo.ToArray(),
+                        this.InputObject.DisableBgpRoutePropagation
+                    );
+
+                case ByName:
+                    return (
+                        this.ResourceGroupName,
+                        this.NetworkManagerName,
+                        this.RoutingConfigurationName,
+                        this.Name,
+                        this.Description,
+                        this.AppliesTo,
+                        this.DisableBgpRoutePropagation
+                    );
+
+                default:
+                    throw new PSArgumentException("Invalid parameter set");
+            }
         }
     }
 }

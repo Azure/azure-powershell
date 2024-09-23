@@ -27,23 +27,28 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingConfiguration", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerRoutingConfiguration))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingConfiguration", SupportsShouldProcess = true, DefaultParameterSetName = ByName), OutputType(typeof(PSNetworkManagerRoutingConfiguration))]
     public class NewAzNetworkManagerRoutingConfigurationCommand : NetworkManagerRoutingConfigurationBaseCmdlet
     {
+        private const string ByName = "ByName";
+        private const string ByInputObject = "ByInputObject";
+
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
+            HelpMessage = "The resource name.",
+            ParameterSetName = ByName)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/routingConfigurations", "ResourceGroupName", "NetworkManagerName")]
         [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager name.")]
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The network manager name.",
+            ParameterSetName = ByName)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string NetworkManagerName { get; set; }
@@ -51,17 +56,26 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The resource group name.",
+            ParameterSetName = ByName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
-         Mandatory = false,
-         ValueFromPipelineByPropertyName = true,
-         HelpMessage = "Description.")]
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "Description.",
+             ParameterSetName = ByName)]
         public virtual string Description { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The input object representing the routing configuration.",
+            ParameterSetName = ByInputObject)]
+        public PSNetworkManagerRoutingConfiguration InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -74,25 +88,28 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            var present = this.IsNetworkManagerRoutingConfigurationPresent(this.ResourceGroupName, this.NetworkManagerName, this.Name);
+
+            var (resourceGroupName, networkManagerName, routingConfigurationName) = GetParameters();
+
+            var present = this.IsNetworkManagerRoutingConfigurationPresent(resourceGroupName, networkManagerName, routingConfigurationName);
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Properties.Resources.OverwritingResource, Name),
+                string.Format(Properties.Resources.OverwritingResource, routingConfigurationName),
                 Properties.Resources.CreatingResourceMessage,
-                Name,
+                routingConfigurationName,
                 () =>
                 {
-                    var networkManagerRoutingConfiguration = this.CreateNetworkManagerRoutingConfiguration();
+                    var networkManagerRoutingConfiguration = this.CreateNetworkManagerRoutingConfiguration(resourceGroupName, networkManagerName, routingConfigurationName);
                     WriteObject(networkManagerRoutingConfiguration);
                 },
                 () => present);
         }
 
-        private PSNetworkManagerRoutingConfiguration CreateNetworkManagerRoutingConfiguration()
+        private PSNetworkManagerRoutingConfiguration CreateNetworkManagerRoutingConfiguration(string resourceGroupName, string networkManagerName, string routingConfigurationName)
         {
             var routingConfig = new PSNetworkManagerRoutingConfiguration
             {
-                Name = this.Name
+                Name = routingConfigurationName
             };
 
             if (!string.IsNullOrEmpty(this.Description))
@@ -104,10 +121,25 @@ namespace Microsoft.Azure.Commands.Network
             var routingConfigModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkManagerRoutingConfiguration>(routingConfig);
 
             // Execute the Create Routing Config call
-            this.NetworkManagerRoutingConfigurationClient.CreateOrUpdate(this.ResourceGroupName, this.NetworkManagerName, this.Name, routingConfigModel);
+            this.NetworkManagerRoutingConfigurationClient.CreateOrUpdate(resourceGroupName, networkManagerName, routingConfigurationName, routingConfigModel);
 
-            var psRoutingConfig = this.GetNetworkManagerRoutingConfiguration(this.ResourceGroupName, this.NetworkManagerName, this.Name);
+            var psRoutingConfig = this.GetNetworkManagerRoutingConfiguration(resourceGroupName, networkManagerName, routingConfigurationName);
             return psRoutingConfig;
+        }
+
+        private (string resourceGroupName, string networkManagerName, string routingConfigurationName) GetParameters()
+        {
+            switch (this.ParameterSetName)
+            {
+                case ByName:
+                    return (this.ResourceGroupName, this.NetworkManagerName, this.Name);
+
+                case ByInputObject:
+                    return (this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name);
+
+                default:
+                    throw new PSArgumentException("Invalid parameter set");
+            }
         }
     }
 }

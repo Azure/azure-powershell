@@ -19,29 +19,31 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest.Azure;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingRule", DefaultParameterSetName = "NoExpand"), OutputType(typeof(PSNetworkManagerRoutingRule))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingRule", DefaultParameterSetName = ByListParameterSet), OutputType(typeof(PSNetworkManagerRoutingRule))]
     public class GetAzNetworkManagerRoutingRuleCommand : NetworkManagerRoutingRuleBaseCmdlet
     {
+        private const string ByListParameterSet = "ByList";
+        private const string ByNameParameterSet = "ByName";
+        private const string ByResourceIdParameterSet = "ByResourceId";
+        private const string ByInputObjectParameterSet = "ByInputObject";
+
         [Alias("ResourceName")]
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.",
-            ParameterSetName = "NoExpand")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
-            ParameterSetName = "Expand")]
+            ParameterSetName = ByNameParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/routingConfigurations/ruleCollections/rules", "ResourceGroupName", "NetworkManagerName", "RoutingConfigurationName", "RuleCollectionName")]
         [SupportsWildcards]
         public string Name { get; set; }
@@ -49,7 +51,13 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager routing rule collection name.")]
+           HelpMessage = "The network manager routing rule collection name.",
+           ParameterSetName = ByListParameterSet)]
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The network manager routing rule collection name.",
+           ParameterSetName = ByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/routingConfigurations/ruleCollections", "ResourceGroupName", "NetworkManagerName", "RoutingConfigurationName")]
         [SupportsWildcards]
@@ -57,18 +65,30 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("ConfigName")]
         [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager routing configuration name.")]
+            Mandatory = true,
+            ParameterSetName = ByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The network manager routing configuration name.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ByListParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The network manager routing configuration name.")]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/routingConfigurations", "ResourceGroupName", "NetworkManagerName")]
         [SupportsWildcards]
         public virtual string RoutingConfigurationName { get; set; }
 
         [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager name.")]
+            Mandatory = true,
+            ParameterSetName = ByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The network manager name.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ByListParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The network manager name.")]
         [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
@@ -76,40 +96,146 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+            ParameterSetName = ByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ByListParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ByResourceIdParameterSet,
+            HelpMessage = "NetworkManager RoutingRule Id",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        [Alias("RoutingRuleId")]
+        public string ResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The input object containing the necessary properties.",
+            ParameterSetName = ByInputObjectParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public PSNetworkManagerRoutingRule InputObject { get; set; }
+
 
         public override void Execute()
         {
             base.Execute();
-            if (this.Name != null)
+
+            try
+            {
+                if (this.ParameterSetName == ByResourceIdParameterSet)
+                {
+                    ProcessByResourceId();
+                }
+                else if (this.ParameterSetName == ByInputObjectParameterSet)
+                {
+                    ProcessByInputObject();
+                }
+                else if (this.ParameterSetName == ByNameParameterSet)
+                {
+                    ProcessByName(expand: true);
+                }
+                else if (this.ParameterSetName == ByListParameterSet)
+                {
+                    ProcessByName(expand: false);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new PSInvalidOperationException($"An error occurred while executing the cmdlet: {ex.Message}", ex);
+            }
+        }
+
+        private void ProcessByResourceId()
+        {
+            if (string.IsNullOrEmpty(this.ResourceId))
+            {
+                throw new PSArgumentNullException(nameof(this.ResourceId), "ResourceId cannot be null or empty.");
+            }
+
+            try
+            {
+                var parsedResourceId = new ResourceIdentifier(this.ResourceId);
+
+                // Validate the format of the ResourceId
+                var segments = parsedResourceId.ParentResource.Split('/');
+                if (segments.Length < 6)
+                {
+                    throw new PSArgumentException("Invalid ResourceId format. Ensure the ResourceId is in the correct format.");
+                }
+
+                this.Name = parsedResourceId.ResourceName;
+                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+                this.NetworkManagerName = segments[1];
+                this.RoutingConfigurationName = segments[3];
+                this.RuleCollectionName = segments[5];
+
+                var routingRule = this.GetNetworkManagerRoutingRule(this.ResourceGroupName, this.NetworkManagerName, this.RoutingConfigurationName, this.RuleCollectionName, this.Name);
+                WriteObject(routingRule);
+            }
+            catch (Exception ex)
+            {
+                throw new PSArgumentException($"Failed to parse ResourceId: {ex.Message}", nameof(this.ResourceId));
+            }
+        }
+
+        private void ProcessByName(bool expand)
+        {
+            if (expand)
             {
                 var routingRule = this.GetNetworkManagerRoutingRule(this.ResourceGroupName, this.NetworkManagerName, this.RoutingConfigurationName, this.RuleCollectionName, this.Name);
-
                 WriteObject(routingRule);
             }
             else
             {
-                var routingRulePage = this.NetworkManagerRoutingRuleOperationClient.List(this.ResourceGroupName, this.NetworkManagerName, this.RoutingConfigurationName, this.RuleCollectionName);
-
-                // Get all resources by polling on next page link
-                var routingRuleCollectionList = ListNextLink<RoutingRule>.GetAllResourcesByPollingNextLink(routingRulePage, this.NetworkManagerRoutingRuleOperationClient.ListNext);
-
-                var pSNetworkManagerRoutingRules = new List<PSNetworkManagerRoutingRule>();
-                foreach (var rule in routingRuleCollectionList)
-                {
-                    var psRule = this.ToPSRoutingRule(rule);
-                    psRule.ResourceGroupName = this.ResourceGroupName;
-                    pSNetworkManagerRoutingRules.Add(psRule);
-                }
-
-                WriteObject(pSNetworkManagerRoutingRules);
+                ProcessAll();
             }
+        }
+
+        private void ProcessAll()
+        {
+            var routingRulePage = this.NetworkManagerRoutingRuleOperationClient.List(this.ResourceGroupName, this.NetworkManagerName, this.RoutingConfigurationName, this.RuleCollectionName);
+
+            // Get all resources by polling on next page link
+            var routingRuleCollectionList = ListNextLink<RoutingRule>.GetAllResourcesByPollingNextLink(routingRulePage, this.NetworkManagerRoutingRuleOperationClient.ListNext);
+
+            var pSNetworkManagerRoutingRules = new List<PSNetworkManagerRoutingRule>();
+            foreach (var rule in routingRuleCollectionList)
+            {
+                var psRule = this.ToPSRoutingRule(rule);
+                psRule.ResourceGroupName = this.ResourceGroupName;
+                pSNetworkManagerRoutingRules.Add(psRule);
+            }
+
+            WriteObject(pSNetworkManagerRoutingRules);
+        }
+
+        private void ProcessByInputObject()
+        {
+            if (InputObject == null)
+            {
+                throw new PSArgumentNullException(nameof(InputObject));
+            }
+
+            // Extract properties from InputObject
+            string resourceGroupName = InputObject.ResourceGroupName;
+            string networkManagerName = InputObject.NetworkManagerName;
+            string routingConfigurationName = InputObject.RoutingConfigurationName;
+            string ruleCollectionName = InputObject.RuleCollectionName;
+            string name = InputObject.Name;
+
+            var routingRule = GetNetworkManagerRoutingRule(resourceGroupName, networkManagerName, routingConfigurationName, ruleCollectionName, name);
+
+            WriteObject(routingRule);
         }
     }
 }
-

@@ -24,37 +24,93 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingRuleCollection", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerRoutingRuleCollection))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingRuleCollection", SupportsShouldProcess = true, DefaultParameterSetName = ByInputObject), OutputType(typeof(PSNetworkManagerRoutingRuleCollection))]
     public class SetAzNetworkManagerRoutingRuleCollection : NetworkManagerRoutingRuleCollectionBaseCmdlet
     {
+        private const string ByResourceId = "ByResourceId";
+        private const string ByInputObject = "ByInputObject";
+
+        [Alias("ResourceName")]
         [Parameter(
+           ParameterSetName = ByInputObject,
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource name.")]
+        [Parameter(
+           ParameterSetName = ByResourceId,
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource name.")]
+        [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Network/networkManagers/routingConfigurations/ruleCollections", "ResourceGroupName", "NetworkManagerName", "RoutingConfigurationName")]
+        [SupportsWildcards]
+        public string Name { get; set; }
+
+        [Parameter(
+            ParameterSetName = ByInputObject,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The NetworkManagerRoutingRuleCollection")]
+            HelpMessage = "The Network Manager Routing Collection")]
         public PSNetworkManagerRoutingRuleCollection InputObject { get; set; }
+
+        [Parameter(
+            ParameterSetName = "ByResourceId",
+            Mandatory = true,
+            HelpMessage = "NetworkManager RoutingCollection Id",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        [Alias("RoutingCollectionId")]
+        public string ResourceId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {
-            if (this.ShouldProcess(this.InputObject.Name, VerbsLifecycle.Restart))
-            {
-                base.Execute();
+            base.Execute();
 
-                if (!this.IsNetworkManagerRoutingRuleCollectionPresent(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.RoutingConfigurationName, this.InputObject.Name))
+            var (resourceGroupName, networkManagerName, routingConfigurationName, routingRuleCollectionName) = ExtractParameters();
+
+            if (this.ShouldProcess(routingRuleCollectionName, VerbsLifecycle.Restart))
+            {
+                if (!this.IsNetworkManagerRoutingRuleCollectionPresent(resourceGroupName, networkManagerName, routingConfigurationName, routingRuleCollectionName))
                 {
-                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.InputObject.Name));
+                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, routingRuleCollectionName));
                 }
 
                 // Map to the sdk object
                 var routingRuleCollectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.RoutingRuleCollection>(this.InputObject);
 
                 // Execute the PUT NetworkManagerRoutingRuleCollection call
-                this.NetworkManagerRoutingRuleCollectionClient.CreateOrUpdate(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.RoutingConfigurationName, this.InputObject.Name, routingRuleCollectionModel);
+                this.NetworkManagerRoutingRuleCollectionClient.CreateOrUpdate(resourceGroupName, networkManagerName, routingConfigurationName, routingRuleCollectionName, routingRuleCollectionModel);
 
-                var psRoutingRuleCollection = this.GetNetworkManagerRoutingRuleCollection(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.RoutingConfigurationName, this.InputObject.Name);
+                var psRoutingRuleCollection = this.GetNetworkManagerRoutingRuleCollection(resourceGroupName, networkManagerName, routingConfigurationName, routingRuleCollectionName);
                 WriteObject(psRoutingRuleCollection);
+            }
+        }
+
+        private (string resourceGroupName, string networkManagerName, string routingConfigurationName, string routingRuleCollectionName) ExtractParameters()
+        {
+            switch (this.ParameterSetName)
+            {
+                case ByInputObject:
+                    return (
+                        this.InputObject.ResourceGroupName,
+                        this.InputObject.NetworkManagerName,
+                        this.InputObject.RoutingConfigurationName,
+                        this.InputObject.Name
+                    );
+
+                case ByResourceId:
+                    return (
+                        NetworkBaseCmdlet.GetResourceGroup(this.ResourceId),
+                        NetworkBaseCmdlet.GetResourceName(this.ResourceId, "networkManagers"),
+                        NetworkBaseCmdlet.GetResourceName(this.ResourceId, "routingConfigurations"),
+                        NetworkBaseCmdlet.GetResourceName(this.ResourceId, "ruleCollections")
+                    );
+
+                default:
+                    throw new PSArgumentException("Invalid parameter set");
             }
         }
     }

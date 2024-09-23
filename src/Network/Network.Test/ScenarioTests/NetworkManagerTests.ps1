@@ -23,7 +23,7 @@ function Test-NetworkManagerCRUD
     $rgName = Get-ResourceGroupName
     $networkManagerName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
+    $subscriptionId = "/subscriptions/16319507-0b13-46b9-9dcb-b943a4ee1d70"
     $managementGroupId = "/providers/Microsoft.Management/managementGroups/SwaggerStackTestMG"
 
     try{
@@ -78,7 +78,7 @@ function Test-NetworkManagerGroupCRUD
     $networkManagerName = Get-ResourceName
     $networkGroupName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
+    $subscriptionId = "/subscriptions/16319507-0b13-46b9-9dcb-b943a4ee1d70"
 
     try{
         #Create the resource group
@@ -139,8 +139,8 @@ function Test-NetworkManagerStaticMemberCRUD
     $networkGroupName = Get-ResourceName
     $staticMemberName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
-    $vnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
+    $subscriptionId = "/subscriptions/16319507-0b13-46b9-9dcb-b943a4ee1d70"
+    $vnetId = "/subscriptions/16319507-0b13-46b9-9dcb-b943a4ee1d70/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
 
     try{
         #Create the resource group
@@ -206,9 +206,9 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
     $staticMemberName = Get-ResourceName
     $connectivityConfigurationName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
-    $vnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
-    $hubId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet-Hub" 
+    $subscriptionId = "/subscriptions/16319507-0b13-46b9-9dcb-b943a4ee1d70"
+    $vnetId = "/subscriptions/16319507-0b13-46b9-9dcb-b943a4ee1d70/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
+    $hubId = "/subscriptions/16319507-0b13-46b9-9dcb-b943a4ee1d70/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet-Hub" 
     $vnetName = "SwaggerStackVnet"
     $vnetRGName = "SwaggerStackRG"
     
@@ -348,8 +348,8 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
     $RuleCollectionName = Get-ResourceName
     $RuleName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
-    $vnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
+    $subscriptionId = "/subscriptions/16319507-0b13-46b9-9dcb-b943a4ee1d70"
+    $vnetId = "/subscriptions/16319507-0b13-46b9-9dcb-b943a4ee1d70/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
     $vnetName = "SwaggerStackVnet"
     $vnetRGName = "SwaggerStackRG"
 
@@ -532,7 +532,7 @@ function Test-NetworkManagerScopeConnectionCRUD
     $networkManagerName = Get-ResourceName
     $scopeConnectionName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
+    $subscriptionId = "/subscriptions/16319507-0b13-46b9-9dcb-b943a4ee1d70"
 
     try{
         #Create the resource group
@@ -583,7 +583,7 @@ function Test-NetworkManagerSubscriptionConnectionCRUD
 {
     # Setup
     $networkManagerConnectionName = Get-ResourceName
-    $networkManagerId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/networkManagers/SwaggerStackNetworkManager"
+    $networkManagerId = "/subscriptions/16319507-0b13-46b9-9dcb-b943a4ee1d70/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/networkManagers/SwaggerStackNetworkManager"
 
     try{
         New-AzNetworkManagerSubscriptionConnection -Name $networkManagerConnectionName -NetworkManagerId $networkManagerId -Description "SampleDescription" 
@@ -613,7 +613,7 @@ function Test-NetworkManagerManagementGroupConnectionCRUD
 {
     # Setup
     $networkManagerConnectionName = Get-ResourceName
-    $networkManagerId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/networkManagers/SwaggerStackNetworkManager"
+    $networkManagerId = "/subscriptions/16319507-0b13-46b9-9dcb-b943a4ee1d70/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/networkManagers/SwaggerStackNetworkManager"
     $managementGroupId = "SwaggerStackTestMG"
 
     try{
@@ -656,9 +656,9 @@ function Test-NetworkManagerResourceMinimumParameterCreate
     $RuleName = Get-ResourceName
     $scopeConnectionName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
-    $vnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
-    $subnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet/subnets/subnet1"
+    $subscriptionId = "/subscriptions/16319507-0b13-46b9-9dcb-b943a4ee1d70"
+    $vnetId = "/subscriptions/16319507-0b13-46b9-9dcb-b943a4ee1d70/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
+    $subnetId = "/subscriptions/16319507-0b13-46b9-9dcb-b943a4ee1d70/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet/subnets/subnet1"
 
     try{
         #Create the resource group
@@ -763,11 +763,12 @@ function Test-NetworkManagerRoutingRuleCRUD
     $staticMemberName = Get-ResourceName
     $RoutingConfigurationName = Get-ResourceName
     $RuleCollectionName = Get-ResourceName
-    $RuleName = Get-ResourceName
+    $RuleName1 = Get-ResourceName
+    $RuleName2 = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
-    $vnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
-    $subnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet/subnets/subnet1"
+    $subscriptionId = "/subscriptions/16319507-0b13-46b9-9dcb-b943a4ee1d70"
+    $vnetId = "/subscriptions/16319507-0b13-46b9-9dcb-b943a4ee1d70/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
+    $subnetId = "/subscriptions/16319507-0b13-46b9-9dcb-b943a4ee1d70/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet/subnets/subnet1"
     $vnetName = "SwaggerStackVnet"
     $vnetRGName = "SwaggerStackRG"
 
@@ -853,31 +854,62 @@ function Test-NetworkManagerRoutingRuleCRUD
         Assert-AreEqual "Sample rule Collection Description" $ruleCollection.Description;
  
         # Create a Routing Rule
-        $destination = New-AzNetworkManagerRoutingRuleDestination -DestinationAddress "10.1.1.1/32" -Type "AddressPrefix" 
-        $nextHop = New-AzNetworkManagerRoutingRuleNextHop -NextHopType "VirtualAppliance" -NextHopAddress "2.2.2.2"
+        $destination1 = New-AzNetworkManagerRoutingRuleDestination -DestinationAddress "10.1.1.1/32" -Type "AddressPrefix" 
+        $nextHop1 = New-AzNetworkManagerRoutingRuleNextHop -NextHopType "VirtualAppliance" -NextHopAddress "2.2.2.2"
 
-        New-AzNetworkManagerRoutingRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -RuleCollectionName $RuleCollectionName -ResourceName $RuleName -Destination $destination -NextHop $nextHop
+        $destination2 = New-AzNetworkManagerRoutingRuleDestination -DestinationAddress "20.1.1.1/32" -Type "AddressPrefix" 
+        $nextHop2 = New-AzNetworkManagerRoutingRuleNextHop -NextHopType "VirtualAppliance" -NextHopAddress "2.2.2.2"
 
-        $routingRule = Get-AzNetworkManagerRoutingRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName
+        New-AzNetworkManagerRoutingRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -RuleCollectionName $RuleCollectionName -ResourceName $RuleName1 -Destination $destination1 -NextHop $nextHop1
 
+        # Create a Routing Rule using InputObject parameter set
+        $inputObject = @{
+            Name                    = $RuleName2
+            RuleCollectionName      = $RuleCollectionName
+            RoutingConfigurationName = $RoutingConfigurationName
+            NetworkManagerName      = $networkManagerName
+            ResourceGroupName       = $rgname
+            Description             = "Sample rule description"
+            Destination             = $destination2
+            NextHop                 = $nextHop2
+        }
+
+        New-AzNetworkManagerRoutingRule -InputObject $inputObject
+
+        # Test NoExpandParameterSet - List all the routing rules in a collection
+        $routingRule = Get-AzNetworkManagerRoutingRule -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -ConfigName $routingConfigurationName -RuleCollectionName $ruleCollectionName
+        Assert-AreEqual 2 $routingRule.Count
         Assert-NotNull $routingRule
-        Assert-AreEqual $RuleName $routingRule.Name
-        Assert-AreEqual $RoutingConfigurationName $routingRule.RoutingConfigurationName
-        Assert-AreEqual $RuleCollectionName $routingRule.RuleCollectionName
-        Assert-AreEqual $destination.DestinationAddress $routingRule.Destination.DestinationAddress
-        Assert-AreEqual $destination.Type $routingRule.Destination.Type
-        Assert-AreEqual $nextHop.NextHopAddress $routingRule.NextHop.NextHopAddress
-        Assert-AreEqual $nextHop.NextHopType $routingRule.NextHop.NextHopType
 
-        # Validate List Routing rules command
-        $routingRules = Get-AzNetworkManagerRoutingRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -RuleCollectionName $RuleCollectionName
-        Assert-NotNull $routingRules
-        Assert-AreEqual 1 $routingRules.Count
+        # Test ExpandParameterSet
+        $routingRule = Get-AzNetworkManagerRoutingRule -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -ConfigName $routingConfigurationName -RuleCollectionName $ruleCollectionName -ResourceName $RuleName1
+        Assert-NotNull $routingRule
+        Assert-AreEqual $ruleName1 $routingRule.Name
+        Assert-AreEqual $routingConfigurationName $routingRule.RoutingConfigurationName
+        Assert-AreEqual $ruleCollectionName $routingRule.RuleCollectionName
+        Assert-AreEqual $destination1.DestinationAddress $routingRule.Destination.DestinationAddress
+        Assert-AreEqual $destination1.Type $routingRule.Destination.Type
+        Assert-AreEqual $nextHop1.NextHopAddress $routingRule.NextHop.NextHopAddress
+        Assert-AreEqual $nextHop1.NextHopType $routingRule.NextHop.NextHopType
+
+        # Test ByResourceIdParameterSet
+        $resourceId = $routingRule.Id
+        $routingRule = Get-AzNetworkManagerRoutingRule -ResourceId $resourceId
+        Assert-NotNull $routingRule
+        Assert-AreEqual $resourceId $routingRule.Id
+
+        # Test ByInputObjectParameterSet
+        $inputObject = $routingRule
+        $routingRule = Get-AzNetworkManagerRoutingRule -InputObject $inputObject
+        Assert-NotNull $routingRule
+        Assert-AreEqual $inputObject.Name $routingRule.Name
+        Assert-AreEqual $inputObject.RoutingConfigurationName $routingRule.RoutingConfigurationName
+        Assert-AreEqual $inputObject.RuleCollectionName $routingRule.RuleCollectionName
 
         $routingRule.Description = "A different description."
         $newRoutingRule = Set-AzNetworkManagerRoutingRule -InputObject $routingRule
         Assert-NotNull $newRoutingRule;
-        Assert-AreEqual $RuleName $newRoutingRule.Name;
+        Assert-AreEqual $RuleName1 $newRoutingRule.Name;
 
         $configIds  = @($routingConfig.Id)
         $regions = @($rglocation)  
@@ -973,9 +1005,9 @@ function Test-NetworkManagerSecurityUserRuleCRUD
     $RuleCollectionName = Get-ResourceName
     $RuleName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
-    $vnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
-    $subnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet/subnets/subnet1"
+    $subscriptionId = "/subscriptions/16319507-0b13-46b9-9dcb-b943a4ee1d70"
+    $vnetId = "/subscriptions/16319507-0b13-46b9-9dcb-b943a4ee1d70/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
+    $subnetId = "/subscriptions/16319507-0b13-46b9-9dcb-b943a4ee1d70/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet/subnets/subnet1"
     $vnetName = "SwaggerStackVnet"
     $vnetRGName = "SwaggerStackRG"
 

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
 using System.Management.Automation;
@@ -21,11 +22,16 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingRuleCollection", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzNetworkManagerRoutingRuleCollectionCommand : NetworkManagerRoutingRuleCollectionBaseCmdlet
     {
+        private const string ByName = "ByName";
+        private const string ByResourceId = "ByResourceId";
+        private const string ByInputObject = "ByInputObject";
+
         [Alias("ResourceName")]
         [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource name.",
+           ParameterSetName = ByName)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/routingConfigurations/ruleCollections", "ResourceGroupName", "NetworkManagerName", "RoutingConfigurationName")]
         [SupportsWildcards]
@@ -35,29 +41,47 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager routing configuration name.")]
-        [ResourceNameCompleter("Microsoft.Network/networkManagers/routingConfigurations", "ResourceGroupName", "NetworkManagerName")]
+           HelpMessage = "The network manager routing configuration name.",
+           ParameterSetName = ByName)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Network/networkManagers/routingConfigurations", "ResourceGroupName", "NetworkManagerName")]
         [SupportsWildcards]
         public virtual string RoutingConfigurationName { get; set; }
 
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager name.")]
-        [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
+           HelpMessage = "The network manager name.",
+           ParameterSetName = ByName)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
         [SupportsWildcards]
         public virtual string NetworkManagerName { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The resource group name.",
+            ParameterSetName = ByName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The Routing rule collection resource.",
+            ParameterSetName = ByInputObject)]
+        [ValidateNotNull]
+        public PSNetworkManagerRoutingRuleCollection InputObject { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The resource id.",
+            ParameterSetName = ByResourceId)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -78,25 +102,57 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+
+            var (resourceGroupName, networkManagerName, routingConfigurationName, routingRuleCollectionName) = ExtractParameters();
+
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Properties.Resources.RemovingResource, Name),
+                string.Format(Properties.Resources.RemovingResource, routingRuleCollectionName),
                 Properties.Resources.RemoveResourceMessage,
-                Name,
+                routingRuleCollectionName,
                 () =>
                 {
-                    bool forceDelete = false;
-                    if (ForceDelete.IsPresent)
-                    {
-                        forceDelete = true;
-                    }
+                    bool forceDelete = ForceDelete.IsPresent;
 
-                    this.NetworkManagerRoutingRuleCollectionClient.Delete(this.ResourceGroupName, this.NetworkManagerName, this.RoutingConfigurationName, this.Name, forceDelete);
+                    this.NetworkManagerRoutingRuleCollectionClient.Delete(resourceGroupName, networkManagerName, routingConfigurationName, routingRuleCollectionName, forceDelete);
                     if (PassThru.IsPresent)
                     {
                         WriteObject(true);
                     }
                 });
+        }
+
+        private (string resourceGroupName, string networkManagerName, string routingConfigurationName, string routingRuleCollectionName) ExtractParameters()
+        {
+            switch (this.ParameterSetName)
+            {
+                case ByInputObject:
+                    return (
+                        this.InputObject.ResourceGroupName,
+                        this.InputObject.NetworkManagerName,
+                        this.InputObject.RoutingConfigurationName,
+                        this.InputObject.Name
+                    );
+
+                case ByResourceId:
+                    return (
+                        NetworkBaseCmdlet.GetResourceGroup(this.ResourceId),
+                        NetworkBaseCmdlet.GetResourceName(this.ResourceId, "networkManagers"),
+                        NetworkBaseCmdlet.GetResourceName(this.ResourceId, "routingConfigurations"),
+                        NetworkBaseCmdlet.GetResourceName(this.ResourceId, "ruleCollections")
+                    );
+
+                case ByName:
+                    return (
+                        this.ResourceGroupName,
+                        this.NetworkManagerName,
+                        this.RoutingConfigurationName,
+                        this.Name
+                    );
+
+                default:
+                    throw new PSArgumentException("Invalid parameter set");
+            }
         }
     }
 }
