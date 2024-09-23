@@ -164,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Specifies container group profile id of standby container groups.",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Specifies revision of container group profile.",
         SerializedName = @"revision",
         PossibleTypes = new [] { typeof(long) })]
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Specifies subnet Ids for container group.",
         SerializedName = @"subnetIds",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet) })]
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Specifies maximum number of standby container groups in the standby pool.",
         SerializedName = @"maxReadyCapacity",
         PossibleTypes = new [] { typeof(long) })]
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Specifies refill policy of the pool.",
         SerializedName = @"refillPolicy",
         PossibleTypes = new [] { typeof(string) })]

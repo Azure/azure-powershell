@@ -15,25 +15,25 @@ Get a StandbyContainerGroupPoolResource
 ### List (Default)
 ```
 Get-AzStandbyContainerGroupPool [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzStandbyContainerGroupPool -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzStandbyContainerGroupPool -InputObject <IStandbyPoolIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +41,7 @@ Get a StandbyContainerGroupPoolResource
 
 ## EXAMPLES
 
-### Example 1: Get a standby container pool
+### Example 1: Get a standby container group pool
 ```powershell
 Get-AzStandbyContainerGroupPool `
 -SubscriptionId f8da6e30-a9d8-48ab-b05c-3f7fe482e13b `
@@ -73,7 +73,7 @@ Tag                               : {
 Type                              : microsoft.standbypool/standbycontainergrouppools
 ```
 
-Above command is getting a standby container pool.
+Above command is getting a standby container group pool.
 
 ## PARAMETERS
 
@@ -117,6 +117,21 @@ Parameter Sets: Get
 Aliases: StandbyContainerGroupPoolName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

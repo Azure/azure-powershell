@@ -10,16 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Get a StandbyVirtualMachineResource</summary>
+    /// <summary>Get a StandbyVirtualMachinePoolRuntimeViewResource</summary>
     /// <remarks>
-    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/standbyVirtualMachines/{standbyVirtualMachineName}"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/runtimeViews/{runtimeView}"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzStandbyVMPoolVM_GetViaIdentity")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Description(@"Get a StandbyVirtualMachineResource")]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzStandbyVMPoolStatus_GetViaIdentityStandbyVirtualMachinePool")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResource))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Description(@"Get a StandbyVirtualMachinePoolRuntimeViewResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/standbyVirtualMachines/{standbyVirtualMachineName}", ApiVersion = "2023-12-01-preview")]
-    public partial class GetAzStandbyVMPoolVM_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/runtimeViews/{runtimeView}", ApiVersion = "2024-03-01")]
+    public partial class GetAzStandbyVMPoolStatus_GetViaIdentityStandbyVirtualMachinePool : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IContext
     {
@@ -85,14 +85,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
-        /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity _inputObject;
-
-        /// <summary>Identity Parameter</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Identity Parameter", ValueFromPipeline = true)]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.ParameterCategory.Path)]
-        public Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity InputObject { get => this._inputObject; set => this._inputObject = value; }
-
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
@@ -125,6 +117,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
+        /// <summary>Backing field for <see cref="StandbyVirtualMachinePoolInputObject" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity _standbyVirtualMachinePoolInputObject;
+
+        /// <summary>Identity Parameter</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Identity Parameter", ValueFromPipeline = true)]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.ParameterCategory.Path)]
+        public Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentity StandbyVirtualMachinePoolInputObject { get => this._standbyVirtualMachinePoolInputObject; set => this._standbyVirtualMachinePoolInputObject = value; }
+
+        /// <summary>Backing field for <see cref="Version" /> property.</summary>
+        private string _version;
+
+        /// <summary>
+        /// The unique identifier for the runtime view. The input string should be the word 'latest', which will get the latest runtime
+        /// view of the pool, otherwise the request will fail with NotFound exception.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The unique identifier for the runtime view. The input string should be the word 'latest', which will get the latest runtime view of the pool, otherwise the request will fail with NotFound exception.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The unique identifier for the runtime view. The input string should be the word 'latest', which will get the latest runtime view of the pool, otherwise the request will fail with NotFound exception.",
+        SerializedName = @"runtimeView",
+        PossibleTypes = new [] { typeof(string) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.DefaultInfo(
+        Name = @"",
+        Description =@"",
+        Script = @"'latest'",
+        SetCondition = @"")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.DoNotExport]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.ParameterCategory.Path)]
+        public string Version { get => this._version; set => this._version = value; }
+
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
@@ -142,12 +165,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResource">Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResource">Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResource</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -196,9 +219,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Cmdlets
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAzStandbyVMPoolVM_GetViaIdentity" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="GetAzStandbyVMPoolStatus_GetViaIdentityStandbyVirtualMachinePool" /> cmdlet
+        /// class.
         /// </summary>
-        public GetAzStandbyVMPoolVM_GetViaIdentity()
+        public GetAzStandbyVMPoolStatus_GetViaIdentityStandbyVirtualMachinePool()
         {
 
         }
@@ -336,39 +360,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Cmdlets
                     Pipeline.Append((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelineAppend) ?? HttpPipelineAppend);
                 }
                 // get the client instance
+                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("Version"))
+                {
+                    Version = (string)this.MyInvocation.BoundParameters["Version"];
+                }
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    if (InputObject?.Id != null)
+                    if (StandbyVirtualMachinePoolInputObject?.Id != null)
                     {
-                        await this.Client.StandbyVirtualMachinesGetViaIdentity(InputObject.Id, onOk, onDefault, this, Pipeline);
+                        this.StandbyVirtualMachinePoolInputObject.Id += $"/runtimeViews/{(global::System.Uri.EscapeDataString(this.Version.ToString()))}";
+                        await this.Client.StandbyVirtualMachinePoolRuntimeViewsGetViaIdentity(StandbyVirtualMachinePoolInputObject.Id, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
                         // try to call with PATH parameters from Input Object
-                        if (null == InputObject.SubscriptionId)
+                        if (null == StandbyVirtualMachinePoolInputObject.SubscriptionId)
                         {
-                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.SubscriptionId"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("StandbyVirtualMachinePoolInputObject has null value for StandbyVirtualMachinePoolInputObject.SubscriptionId"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, StandbyVirtualMachinePoolInputObject) );
                         }
-                        if (null == InputObject.ResourceGroupName)
+                        if (null == StandbyVirtualMachinePoolInputObject.ResourceGroupName)
                         {
-                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ResourceGroupName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("StandbyVirtualMachinePoolInputObject has null value for StandbyVirtualMachinePoolInputObject.ResourceGroupName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, StandbyVirtualMachinePoolInputObject) );
                         }
-                        if (null == InputObject.StandbyVirtualMachinePoolName)
+                        if (null == StandbyVirtualMachinePoolInputObject.StandbyVirtualMachinePoolName)
                         {
-                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.StandbyVirtualMachinePoolName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("StandbyVirtualMachinePoolInputObject has null value for StandbyVirtualMachinePoolInputObject.StandbyVirtualMachinePoolName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, StandbyVirtualMachinePoolInputObject) );
                         }
-                        if (null == InputObject.StandbyVirtualMachineName)
-                        {
-                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.StandbyVirtualMachineName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
-                        }
-                        await this.Client.StandbyVirtualMachinesGet(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.StandbyVirtualMachinePoolName ?? null, InputObject.StandbyVirtualMachineName ?? null, onOk, onDefault, this, Pipeline);
+                        await this.Client.StandbyVirtualMachinePoolRuntimeViewsGet(StandbyVirtualMachinePoolInputObject.SubscriptionId ?? null, StandbyVirtualMachinePoolInputObject.ResourceGroupName ?? null, StandbyVirtualMachinePoolInputObject.StandbyVirtualMachinePoolName ?? null, Version, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { })
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Version=Version})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -446,12 +471,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResource">Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResource">Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResource</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -463,7 +488,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResource
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResource
                 var result = (await response);
                 if (null != result)
                 {
