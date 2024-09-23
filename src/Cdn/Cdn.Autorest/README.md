@@ -331,17 +331,17 @@ directive:
         preview-message: This is a test preview message.
         stimated-ga-date: 2024-08-30
 
-  # https://github.com/Azure/autorest.powershell/issues/906
-  - where:
-      model-name: AfdDomainUpdatePropertiesParameters
-      property-name: PreValidatedCustomDomainResourceId
-    set:
-      property-name: AfdDomainUpdatePropertiesParametersPreValidatedCustomDomainResourceId
-  - where:
-      model-name: AfdDomainUpdatePropertiesParameters
-      property-name: PreValidatedCustomDomainResourceIdId
-    set:
-      property-name: PreValidatedCustomDomainResourceId
+  # # https://github.com/Azure/autorest.powershell/issues/906
+  # - where:
+  #     model-name: AfdDomainUpdatePropertiesParameters
+  #     property-name: PreValidatedCustomDomainResourceId
+  #   set:
+  #     property-name: AfdDomainUpdatePropertiesParametersPreValidatedCustomDomainResourceId
+  # - where:
+  #     model-name: AfdDomainUpdatePropertiesParameters
+  #     property-name: PreValidatedCustomDomainResourceIdId
+  #   set:
+  #     property-name: PreValidatedCustomDomainResourceId
 
   # Customize the output table formatting
   - where:
