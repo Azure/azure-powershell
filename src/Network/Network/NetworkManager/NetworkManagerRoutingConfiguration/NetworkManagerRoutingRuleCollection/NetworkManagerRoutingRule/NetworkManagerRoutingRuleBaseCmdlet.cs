@@ -51,7 +51,6 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-
         public PSNetworkManagerRoutingRule GetNetworkManagerRoutingRule(string resourceGroupName, string networkManagerName, string configName, string ruleCollectionName, string name)
         {
             var routingRule = this.NetworkManagerRoutingRuleOperationClient.Get(resourceGroupName, networkManagerName, configName, ruleCollectionName, name);

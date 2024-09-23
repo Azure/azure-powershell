@@ -24,37 +24,97 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingConfiguration", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerRoutingConfiguration))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingConfiguration", SupportsShouldProcess = true, DefaultParameterSetName = ByInputObject), OutputType(typeof(PSNetworkManagerRoutingConfiguration))]
     public class SetAzNetworkManagerRoutingConfiguration : NetworkManagerRoutingConfigurationBaseCmdlet
     {
+        private const string ByResourceId = "ByResourceId";
+        private const string ByInputObject = "ByInputObject";
+
+        [Alias("ResourceName")]
         [Parameter(
+           ParameterSetName = ByInputObject,
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource name.")]
+        [Parameter(
+           ParameterSetName = ByResourceId,
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource name.")]
+        [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName", "NetworkManagerName")]
+        [SupportsWildcards]
+        public string Name { get; set; }
+
+        [Parameter(
+            ParameterSetName = ByInputObject,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The NetworkManagerRoutingConfiguration")]
+            HelpMessage = "The Network Manager RoutingConfiguration")]
         public PSNetworkManagerRoutingConfiguration InputObject { get; set; }
+
+        [Parameter(
+            ParameterSetName = "ByResourceId",
+            Mandatory = true,
+            HelpMessage = "NetworkManager RoutingConfiguration Id",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        [Alias("RoutingConfigurationId")]
+        public string ResourceId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {
-            if (this.ShouldProcess(InputObject.Name, VerbsLifecycle.Restart))
-            {
-                base.Execute();
+            base.Execute();
 
-                if (!this.IsNetworkManagerRoutingConfigurationPresent(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name))
+            var (resourceGroupName, networkManagerName, routingConfigurationName, routingConfiguration) = GetParameters();
+
+            if (this.ShouldProcess(routingConfigurationName, VerbsCommon.Set))
+            {
+                if (!this.IsNetworkManagerRoutingConfigurationPresent(resourceGroupName, networkManagerName, routingConfigurationName))
                 {
-                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.InputObject.Name));
+                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, routingConfigurationName));
                 }
 
-                // Map to the sdk object
-                var routingConfigModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkManagerRoutingConfiguration>(this.InputObject);
+                // Map to the SDK object
+                var routingConfigModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkManagerRoutingConfiguration>(routingConfiguration);
 
                 // Execute the PUT NetworkManagerRoutingConfiguration call
-                this.NetworkManagerRoutingConfigurationClient.CreateOrUpdate(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name, routingConfigModel);
+                this.NetworkManagerRoutingConfigurationClient.CreateOrUpdate(resourceGroupName, networkManagerName, routingConfigurationName, routingConfigModel);
 
-                var psRoutingConfig = this.GetNetworkManagerRoutingConfiguration(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name);
+                var psRoutingConfig = this.GetNetworkManagerRoutingConfiguration(resourceGroupName, networkManagerName, routingConfigurationName);
                 WriteObject(psRoutingConfig);
+            }
+        }
+
+        private (string resourceGroupName, string networkManagerName, string routingConfigurationName, PSNetworkManagerRoutingConfiguration routingConfiguration) GetParameters()
+        {
+            switch (this.ParameterSetName)
+            {
+                case ByResourceId:
+                    return (
+                        NetworkBaseCmdlet.GetResourceGroup(this.ResourceId),
+                        NetworkBaseCmdlet.GetResourceName(this.ResourceId, "networkManagers"),
+                        NetworkBaseCmdlet.GetResourceName(this.ResourceId, "routingConfigurations"),
+                        this.GetNetworkManagerRoutingConfiguration(
+                            NetworkBaseCmdlet.GetResourceGroup(this.ResourceId),
+                            NetworkBaseCmdlet.GetResourceName(this.ResourceId, "networkManagers"),
+                            NetworkBaseCmdlet.GetResourceName(this.ResourceId, "routingConfigurations")
+                        )
+                    );
+
+                case ByInputObject:
+                    return (
+                        this.InputObject.ResourceGroupName,
+                        this.InputObject.NetworkManagerName,
+                        this.InputObject.Name,
+                        this.InputObject
+                    );
+
+                default:
+                    throw new ArgumentException("Invalid parameter set");
             }
         }
     }
