@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.Network
         private const string ByNameParameterSet = "ByName";
         private const string ByResourceIdParameterSet = "ByResourceId";
         private const string ByInputObjectParameterSet = "ByInputObject";
+        private const string ByResourceGroupAndNameParameterSet = "ByResourceGroupAndName";
 
         [Alias("ResourceName")]
         [Parameter(
@@ -44,6 +45,11 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
             ParameterSetName = ByNameParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource name.",
+            ParameterSetName = ByResourceGroupAndNameParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/securityUserConfigurations/ruleCollections/rules", "ResourceGroupName", "NetworkManagerName", "SecurityUserConfigurationName", "RuleCollectionName")]
         [SupportsWildcards]
         public string Name { get; set; }
@@ -104,6 +110,11 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = ByListParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ByResourceGroupAndNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
@@ -147,6 +158,10 @@ namespace Microsoft.Azure.Commands.Network
                 else if (this.ParameterSetName == ByListParameterSet)
                 {
                     ProcessByName(expand: false);
+                }
+                else if (this.ParameterSetName == ByResourceGroupAndNameParameterSet)
+                {
+                    ProcessByResourceGroupAndNameAsync();
                 }
             }
             catch (Exception ex)
@@ -236,6 +251,44 @@ namespace Microsoft.Azure.Commands.Network
             var securityUserRule = GetNetworkManagerSecurityUserRule(resourceGroupName, networkManagerName, securityUserConfigurationName, ruleCollectionName, name);
 
             WriteObject(securityUserRule);
+        }
+
+        private void ProcessByResourceGroupAndNameAsync()
+        {
+            // List all network managers in the resource group
+            var networkManagers = this.NetworkClient.NetworkManagementClient.NetworkManagers.List(this.ResourceGroupName);
+
+            foreach (var networkManager in networkManagers)
+            {
+                // List all securityUser configurations in the network manager
+                var securityUserConfigurations = this.NetworkClient.NetworkManagementClient.SecurityUserConfigurations.List(this.ResourceGroupName, networkManager.Name);
+
+                foreach (var securityUserConfiguration in securityUserConfigurations)
+                {
+                    // List all rule collections in the securityUser configuration
+                    var ruleCollections = this.NetworkClient.NetworkManagementClient.SecurityUserRuleCollections.List(this.ResourceGroupName, networkManager.Name, securityUserConfiguration.Name);
+
+                    foreach (var ruleCollection in ruleCollections)
+                    {
+                        // Try to get the securityUser rule by name
+                        try
+                        {
+                            var securityUserRule = this.GetNetworkManagerSecurityUserRule(this.ResourceGroupName, networkManager.Name, securityUserConfiguration.Name, ruleCollection.Name, this.Name);
+                            if (securityUserRule != null)
+                            {
+                                WriteObject(securityUserRule);
+                                return;
+                            }
+                        }
+                        catch
+                        {
+                            // Ignore exceptions and continue searching
+                        }
+                    }
+                }
+            }
+
+            throw new PSArgumentException($"SecurityUser rule '{this.Name}' not found in resource group '{this.ResourceGroupName}'.");
         }
     }
 }

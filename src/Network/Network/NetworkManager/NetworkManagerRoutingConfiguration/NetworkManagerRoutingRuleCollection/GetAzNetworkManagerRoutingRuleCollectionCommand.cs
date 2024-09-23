@@ -29,18 +29,19 @@ namespace Microsoft.Azure.Commands.Network
         private const string ByNameParameterSet = "ByName";
         private const string ByResourceIdParameterSet = "ByResourceId";
         private const string ByInputObjectParameterSet = "ByInputObject";
+        private const string ByResourceGroupAndNameParameterSet = "ByResourceGroupAndName";
 
         [Alias("ResourceName")]
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.",
-            ParameterSetName = ByListParameterSet)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
             ParameterSetName = ByNameParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource name.",
+            ParameterSetName = ByResourceGroupAndNameParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/routingConfigurations/ruleCollections", "ResourceGroupName", "NetworkManagerName", "RoutingConfigurationName")]
         [SupportsWildcards]
         public virtual string Name { get; set; }
@@ -83,6 +84,11 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ParameterSetName = ByListParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ByResourceGroupAndNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -154,9 +160,46 @@ namespace Microsoft.Azure.Commands.Network
                     WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psRuleCollectionList), true);
                     break;
 
+                case ByResourceGroupAndNameParameterSet:
+                    ProcessByResourceGroupAndNameAsync();
+                    break;
+
                 default:
                     break;
             }
+        }
+
+        private void ProcessByResourceGroupAndNameAsync()
+        {
+            // List all network managers in the resource group
+            var networkManagers = this.NetworkClient.NetworkManagementClient.NetworkManagers.List(this.ResourceGroupName);
+
+            foreach (var networkManager in networkManagers)
+            {
+                // List all routing configurations in the network manager
+                var routingConfigurations = this.NetworkClient.NetworkManagementClient.NetworkManagerRoutingConfigurations.List(this.ResourceGroupName, networkManager.Name);
+
+                foreach (var routingConfiguration in routingConfigurations)
+                {
+                    // List all rule collections in the routing configuration
+                    var ruleCollections = this.NetworkClient.NetworkManagementClient.RoutingRuleCollections.List(this.ResourceGroupName, networkManager.Name, routingConfiguration.Name);
+
+                    foreach (var ruleCollection in ruleCollections)
+                    {
+                        if (ruleCollection.Name.Equals(this.Name, System.StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            var psRuleCollection = this.ToPsNetworkManagerRoutingRuleCollection(ruleCollection);
+                            psRuleCollection.ResourceGroupName = this.ResourceGroupName;
+                            psRuleCollection.NetworkManagerName = networkManager.Name;
+                            psRuleCollection.RoutingConfigurationName = routingConfiguration.Name;
+                            WriteObject(psRuleCollection);
+                            return;
+                        }
+                    }
+                }
+            }
+
+            throw new PSArgumentException($"Routing rule '{this.Name}' not found in resource group '{this.ResourceGroupName}'.");
         }
     }
 }

@@ -817,6 +817,12 @@ function Test-NetworkManagerRoutingRuleCRUD
         Assert-AreEqual "A different description." $routingConfig.Description;
         Assert-AreEqual $RoutingConfigurationName $routingConfig.Name;
 
+        # Test ByResourceGroupAndNameParameterSet
+        $routingConfigGet = Get-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgName -Name $RoutingConfigurationName
+        Assert-NotNull $routingConfigGet
+        Assert-AreEqual $routingConfig.Name $routingConfigGet.Name
+        Assert-AreEqual $routingConfig.NetworkManagerName $routingConfigGet.NetworkManagerName
+
         # Create a Routing Rule Collection
         [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerRoutingGroupItem]]$configGroup  = @() 
         $vnetGroupItem = New-AzNetworkManagerRoutingGroupItem -NetworkGroupId $vnetNetworkGroup.Id
@@ -852,6 +858,13 @@ function Test-NetworkManagerRoutingRuleCRUD
         Assert-NotNull $ruleCollection;
         Assert-AreEqual $RuleCollectionName $ruleCollection.Name;
         Assert-AreEqual "Sample rule Collection Description" $ruleCollection.Description;
+
+        # Test ByResourceGroupAndNameParameterSet
+        $ruleCollectionGet = Get-AzNetworkManagerRoutingRuleCollection -ResourceGroupName $rgName -Name $RuleCollectionName
+        Assert-NotNull $ruleCollectionGet
+        Assert-AreEqual $ruleCollection.Name $ruleCollectionGet.Name
+        Assert-AreEqual $ruleCollection.RoutingConfigurationName $ruleCollectionGet.RoutingConfigurationName
+        Assert-AreEqual $ruleCollection.RuleCollectionName $ruleCollectionGet.RuleCollectionName
  
         # Create a Routing Rule
         $destination1 = New-AzNetworkManagerRoutingRuleDestination -DestinationAddress "10.1.1.1/32" -Type "AddressPrefix" 
@@ -901,6 +914,13 @@ function Test-NetworkManagerRoutingRuleCRUD
         # Test ByInputObjectParameterSet
         $inputObject = $routingRule
         $routingRule = Get-AzNetworkManagerRoutingRule -InputObject $inputObject
+        Assert-NotNull $routingRule
+        Assert-AreEqual $inputObject.Name $routingRule.Name
+        Assert-AreEqual $inputObject.RoutingConfigurationName $routingRule.RoutingConfigurationName
+        Assert-AreEqual $inputObject.RuleCollectionName $routingRule.RuleCollectionName
+
+        # Test ByResourceGroupAndNameParameterSet
+        $routingRule = Get-AzNetworkManagerRoutingRule -ResourceGroupName $rgName -Name $RuleName1
         Assert-NotNull $routingRule
         Assert-AreEqual $inputObject.Name $routingRule.Name
         Assert-AreEqual $inputObject.RoutingConfigurationName $routingRule.RoutingConfigurationName
@@ -1050,6 +1070,12 @@ function Test-NetworkManagerSecurityUserRuleCRUD
         Assert-AreEqual "A different description." $securityUserConfig.Description;
         Assert-AreEqual $SecurityUserConfigurationName $securityUserConfig.Name;
 
+        # Test ByResourceGroupAndNameParameterSet
+        $securityUserConfigGet = Get-AzNetworkManagerSecurityUserConfiguration -ResourceGroupName $rgName -Name $SecurityUserConfigurationName
+        Assert-NotNull $securityUserConfigGet
+        Assert-AreEqual $securityUserConfig.Name $securityUserConfigGet.Name
+        Assert-AreEqual $securityUserConfig.NetworkManagerName $securityUserConfigGet.NetworkManagerName
+
         [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityUserGroupItem]]$configGroup  = @() 
         $groupItem = New-AzNetworkManagerSecurityUserGroupItem -NetworkGroupId $networkGroup.Id
         $configGroup.Add($groupItem)
@@ -1060,6 +1086,13 @@ function Test-NetworkManagerSecurityUserRuleCRUD
         Assert-NotNull $ruleCollection;
         Assert-AreEqual $RuleCollectionName $ruleCollection.Name;
         Assert-AreEqual $networkGroup.Id $ruleCollection.AppliesToGroups[0].NetworkGroupId;
+
+        # Test ByResourceGroupAndNameParameterSet
+        $ruleCollectionGet = Get-AzNetworkManagerSecurityUserRuleCollection -ResourceGroupName $rgName -Name $RuleCollectionName
+        Assert-NotNull $ruleCollectionGet
+        Assert-AreEqual $ruleCollection.Name $ruleCollectionGet.Name
+        Assert-AreEqual $ruleCollection.SecurityUserConfigurationName $ruleCollectionGet.SecurityUserConfigurationName
+        Assert-AreEqual $ruleCollection.RuleCollectionName $ruleCollectionGet.RuleCollectionName
 
         # Validate List Security User collection command
         $ruleCollections = Get-AzNetworkManagerSecurityUserRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName
@@ -1114,6 +1147,13 @@ function Test-NetworkManagerSecurityUserRuleCRUD
         $newSecurityUserRule = Set-AzNetworkManagerSecurityUserRule -InputObject $userRule
         Assert-NotNull $newSecurityUserRule;
         Assert-AreEqual $RuleName $newSecurityUserRule.Name;
+
+        # Test ByResourceGroupAndNameParameterSet
+        $securityUserRuleGet = Get-AzNetworkManagerSecurityUserRule -ResourceGroupName $rgName -Name $RuleName
+        Assert-NotNull $securityUserRuleGet
+        Assert-AreEqual $userRule.Name $securityUserRuleGet.Name
+        Assert-AreEqual $userRule.SecurityUserConfigurationName $securityUserRuleGet.SecurityUserConfigurationName
+        Assert-AreEqual $userRule.RuleCollectionName $securityUserRuleGet.RuleCollectionName
 
         $configIds  = @($securityUserConfig.Id)
         $regions = @($rglocation)  
