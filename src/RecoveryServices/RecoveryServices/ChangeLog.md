@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed bug for making RecoveryAzureStorageAccountId parameter optional in `New-ASRReplicationProtectedItem` cmdlet of H2A.
 
 ## Version 7.1.0
 * Added MUA support for CMK Encryption properties of Recovery Services Vault. Updated the  VaultProperty command to use underlying Vault APIs.
