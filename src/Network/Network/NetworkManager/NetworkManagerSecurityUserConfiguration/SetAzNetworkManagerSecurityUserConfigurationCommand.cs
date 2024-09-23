@@ -24,37 +24,97 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserConfiguration", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerSecurityUserConfiguration))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserConfiguration", SupportsShouldProcess = true, DefaultParameterSetName = ByInputObject), OutputType(typeof(PSNetworkManagerSecurityUserConfiguration))]
     public class SetAzNetworkManagerSecurityUserConfiguration : NetworkManagerSecurityUserConfigurationBaseCmdlet
     {
+        private const string ByResourceId = "ByResourceId";
+        private const string ByInputObject = "ByInputObject";
+
+        [Alias("ResourceName")]
         [Parameter(
+           ParameterSetName = ByInputObject,
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource name.")]
+        [Parameter(
+           ParameterSetName = ByResourceId,
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource name.")]
+        [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName", "NetworkManagerName")]
+        [SupportsWildcards]
+        public string Name { get; set; }
+
+        [Parameter(
+            ParameterSetName = ByInputObject,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The NetworkManagerSecurityUserConfiguration")]
+            HelpMessage = "The Network Manager SecurityUserConfiguration")]
         public PSNetworkManagerSecurityUserConfiguration InputObject { get; set; }
+
+        [Parameter(
+            ParameterSetName = "ByResourceId",
+            Mandatory = true,
+            HelpMessage = "NetworkManager SecurityUserConfiguration Id",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        [Alias("SecurityUserConfigurationId")]
+        public string ResourceId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {
-            if (this.ShouldProcess(InputObject.Name, VerbsLifecycle.Restart))
-            {
-                base.Execute();
+            base.Execute();
 
-                if (!this.IsNetworkManagerSecurityUserConfigurationPresent(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name))
+            var (resourceGroupName, networkManagerName, securityUserConfigurationName, securityUserConfiguration) = GetParameters();
+
+            if (this.ShouldProcess(securityUserConfigurationName, VerbsCommon.Set))
+            {
+                if (!this.IsNetworkManagerSecurityUserConfigurationPresent(resourceGroupName, networkManagerName, securityUserConfigurationName))
                 {
-                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.InputObject.Name));
+                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, securityUserConfigurationName));
                 }
 
-                // Map to the sdk object
-                var securityUserConfigModel = NetworkResourceManagerProfile.Mapper.Map<MNM.SecurityUserConfiguration>(this.InputObject);
+                // Map to the SDK object
+                var securityUserConfigModel = NetworkResourceManagerProfile.Mapper.Map<MNM.SecurityUserConfiguration>(securityUserConfiguration);
 
                 // Execute the PUT NetworkManagerSecurityUserConfiguration call
-                this.NetworkManagerSecurityUserConfigurationClient.CreateOrUpdate(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name, securityUserConfigModel);
+                this.NetworkManagerSecurityUserConfigurationClient.CreateOrUpdate(resourceGroupName, networkManagerName, securityUserConfigurationName, securityUserConfigModel);
 
-                var psSecurityUserConfig = this.GetNetworkManagerSecurityUserConfiguration(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name);
+                var psSecurityUserConfig = this.GetNetworkManagerSecurityUserConfiguration(resourceGroupName, networkManagerName, securityUserConfigurationName);
                 WriteObject(psSecurityUserConfig);
+            }
+        }
+
+        private (string resourceGroupName, string networkManagerName, string securityUserConfigurationName, PSNetworkManagerSecurityUserConfiguration securityUserConfiguration) GetParameters()
+        {
+            switch (this.ParameterSetName)
+            {
+                case ByResourceId:
+                    return (
+                        NetworkBaseCmdlet.GetResourceGroup(this.ResourceId),
+                        NetworkBaseCmdlet.GetResourceName(this.ResourceId, "networkManagers"),
+                        NetworkBaseCmdlet.GetResourceName(this.ResourceId, "securityUserConfigurations"),
+                        this.GetNetworkManagerSecurityUserConfiguration(
+                            NetworkBaseCmdlet.GetResourceGroup(this.ResourceId),
+                            NetworkBaseCmdlet.GetResourceName(this.ResourceId, "networkManagers"),
+                            NetworkBaseCmdlet.GetResourceName(this.ResourceId, "securityUserConfigurations")
+                        )
+                    );
+
+                case ByInputObject:
+                    return (
+                        this.InputObject.ResourceGroupName,
+                        this.InputObject.NetworkManagerName,
+                        this.InputObject.Name,
+                        this.InputObject
+                    );
+
+                default:
+                    throw new ArgumentException("Invalid parameter set");
             }
         }
     }

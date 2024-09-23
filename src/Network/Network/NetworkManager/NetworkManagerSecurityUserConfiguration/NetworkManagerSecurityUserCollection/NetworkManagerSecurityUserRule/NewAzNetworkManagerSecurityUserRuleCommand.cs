@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,39 +28,46 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRule", SupportsShouldProcess = true, DefaultParameterSetName = "Custom"), OutputType(typeof(PSNetworkManagerSecurityUserRule))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRule", SupportsShouldProcess = true, DefaultParameterSetName = ByName), OutputType(typeof(PSNetworkManagerSecurityUserRule))]
     public class NewAzNetworkManagerSecurityUserRuleCommand : NetworkManagerSecurityUserRuleBaseCmdlet
     {
+        private const string ByName = "ByName";
+        private const string ByInputObject = "ByInputObject";
+
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
+            HelpMessage = "The resource name.",
+            ParameterSetName = ByName)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public string Name { get; set; }
 
         [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager security user rule collection name.")]
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The network manager security user rule collection name.",
+            ParameterSetName = ByName)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string RuleCollectionName { get; set; }
 
         [Alias("ConfigName")]
         [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager security user configuration name.")]
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The network manager security user configuration name.",
+            ParameterSetName = ByName)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string SecurityUserConfigurationName { get; set; }
 
         [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager name.")]
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The network manager name.",
+            ParameterSetName = ByName)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string NetworkManagerName { get; set; }
@@ -67,7 +75,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The resource group name.",
+            ParameterSetName = ByName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
@@ -76,22 +85,22 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "Description.",
-             ParameterSetName = "Custom")]
+             ParameterSetName = ByName)]
         public virtual string Description { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
             HelpMessage = "Protocol of Rule. Valid values include 'Tcp', 'Udp', 'Icmp', 'Esp', 'Any', and 'Ah'.",
-            ParameterSetName = "Custom")]
+            ParameterSetName = ByName)]
         [ValidateSet("Tcp", "Udp", "Icmp", "Esp", "Any", "Ah", IgnoreCase = true)]
         public string Protocol { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
             HelpMessage = "Direction of Rule. Valid values include 'Inbound' and 'Outbound'.",
-            ParameterSetName = "Custom")]
+            ParameterSetName = ByName)]
         [ValidateSet("Inbound", "Outbound", IgnoreCase = true)]
         public string Direction { get; set; }
 
@@ -99,29 +108,36 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Source Address Prefixes.",
-           ParameterSetName = "Custom")]
+           ParameterSetName = ByName)]
         public PSNetworkManagerAddressPrefixItem[] SourceAddressPrefix { get; set; }
 
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Destination Address Prefixes.",
-           ParameterSetName = "Custom")]
+           ParameterSetName = ByName)]
         public PSNetworkManagerAddressPrefixItem[] DestinationAddressPrefix { get; set; }
 
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Source Port Ranges.",
-           ParameterSetName = "Custom")]
+           ParameterSetName = ByName)]
         public string[] SourcePortRange { get; set; }
 
         [Parameter(
-           Mandatory = false,
+            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Destination Port Ranges.",
-           ParameterSetName = "Custom")]
+           ParameterSetName = ByName)]
         public string[] DestinationPortRange { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The input object representing the routing rule.",
+            ParameterSetName = ByInputObject)]
+        public PSNetworkManagerSecurityUserRule InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -134,7 +150,18 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+
+            if (this.ParameterSetName == ByInputObject)
+            {
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.NetworkManagerName = this.InputObject.NetworkManagerName;
+                this.SecurityUserConfigurationName = this.InputObject.SecurityUserConfigurationName;
+                this.RuleCollectionName = this.InputObject.RuleCollectionName;
+                this.Name = this.InputObject.Name;
+            }
+
             var present = this.IsNetworkManagerSecurityUserRulePresent(this.ResourceGroupName, this.NetworkManagerName, this.SecurityUserConfigurationName, this.RuleCollectionName, this.Name);
+
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.OverwritingResource, Name),
@@ -150,35 +177,44 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSNetworkManagerSecurityUserRule CreateNetworkManagerSecurityUserRule()
         {
-            var securityUserRule = new PSNetworkManagerSecurityUserRule
-            {
-                Protocol = this.Protocol,
-                Direction = this.Direction
-            };
+            PSNetworkManagerSecurityUserRule securityUserRule;
 
-            if (this.SourcePortRange != null)
+            if (this.ParameterSetName == ByInputObject)
             {
-                securityUserRule.SourcePortRanges = this.SourcePortRange.ToList();
+                securityUserRule = this.InputObject;
             }
-
-            if (this.DestinationPortRange != null)
+            else
             {
-                securityUserRule.DestinationPortRanges = this.DestinationPortRange.ToList();
-            }
+                securityUserRule = new PSNetworkManagerSecurityUserRule
+                {
+                    Protocol = this.Protocol,
+                    Direction = this.Direction
+                };
 
-            if (this.SourceAddressPrefix != null)
-            {
-                securityUserRule.Sources = this.SourceAddressPrefix.ToList();
-            }
+                if (this.SourcePortRange != null)
+                {
+                    securityUserRule.SourcePortRanges = this.SourcePortRange.ToList();
+                }
 
-            if (this.DestinationAddressPrefix != null)
-            {
-                securityUserRule.Destinations = this.DestinationAddressPrefix.ToList();
-            }
+                if (this.DestinationPortRange != null)
+                {
+                    securityUserRule.DestinationPortRanges = this.DestinationPortRange.ToList();
+                }
 
-            if (!string.IsNullOrEmpty(this.Description))
-            {
-                securityUserRule.Description = this.Description;
+                if (this.SourceAddressPrefix != null)
+                {
+                    securityUserRule.Sources = this.SourceAddressPrefix.ToList();
+                }
+
+                if (this.DestinationAddressPrefix != null)
+                {
+                    securityUserRule.Destinations = this.DestinationAddressPrefix.ToList();
+                }
+
+                if (!string.IsNullOrEmpty(this.Description))
+                {
+                    securityUserRule.Description = this.Description;
+                }
             }
 
             // Map to the sdk object

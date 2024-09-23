@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingRule", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingRule", SupportsShouldProcess = true, DefaultParameterSetName = ByName), OutputType(typeof(bool))]
     public class RemoveAzNetworkManagerRoutingRuleCommand : NetworkManagerRoutingRuleBaseCmdlet
     {
         private const string ByName = "ByName";

@@ -24,37 +24,93 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRuleCollection", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerSecurityUserRuleCollection))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRuleCollection", SupportsShouldProcess = true, DefaultParameterSetName = ByInputObject), OutputType(typeof(PSNetworkManagerSecurityUserRuleCollection))]
     public class SetAzNetworkManagerSecurityUserRuleCollection : NetworkManagerSecurityUserRuleCollectionBaseCmdlet
     {
+        private const string ByResourceId = "ByResourceId";
+        private const string ByInputObject = "ByInputObject";
+
+        [Alias("ResourceName")]
         [Parameter(
+           ParameterSetName = ByInputObject,
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource name.")]
+        [Parameter(
+           ParameterSetName = ByResourceId,
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource name.")]
+        [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Network/networkManagers/securityUserConfigurations/ruleCollections", "ResourceGroupName", "NetworkManagerName", "SecurityUserConfigurationName")]
+        [SupportsWildcards]
+        public string Name { get; set; }
+
+        [Parameter(
+            ParameterSetName = ByInputObject,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The NetworkManagerSecurityUserRuleCollection")]
+            HelpMessage = "The Network Manager SecurityUser Collection")]
         public PSNetworkManagerSecurityUserRuleCollection InputObject { get; set; }
+
+        [Parameter(
+            ParameterSetName = "ByResourceId",
+            Mandatory = true,
+            HelpMessage = "NetworkManager SecurityUserCollection Id",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        [Alias("SecurityUserCollectionId")]
+        public string ResourceId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {
-            if (this.ShouldProcess(this.InputObject.Name, VerbsLifecycle.Restart))
-            {
-                base.Execute();
+            base.Execute();
 
-                if (!this.IsNetworkManagerSecurityUserRuleCollectionPresent(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.SecurityUserConfigurationName, this.InputObject.Name))
+            var (resourceGroupName, networkManagerName, securityUserConfigurationName, securityUserRuleCollectionName) = ExtractParameters();
+
+            if (this.ShouldProcess(securityUserRuleCollectionName, VerbsLifecycle.Restart))
+            {
+                if (!this.IsNetworkManagerSecurityUserRuleCollectionPresent(resourceGroupName, networkManagerName, securityUserConfigurationName, securityUserRuleCollectionName))
                 {
-                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.InputObject.Name));
+                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, securityUserRuleCollectionName));
                 }
 
                 // Map to the sdk object
                 var securityUserRuleCollectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.SecurityUserRuleCollection>(this.InputObject);
 
                 // Execute the PUT NetworkManagerSecurityUserRuleCollection call
-                this.NetworkManagerSecurityUserRuleCollectionClient.CreateOrUpdate(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.SecurityUserConfigurationName, this.InputObject.Name, securityUserRuleCollectionModel);
+                this.NetworkManagerSecurityUserRuleCollectionClient.CreateOrUpdate(resourceGroupName, networkManagerName, securityUserConfigurationName, securityUserRuleCollectionName, securityUserRuleCollectionModel);
 
-                var psSecurityUserRuleCollection = this.GetNetworkManagerSecurityUserRuleCollection(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.SecurityUserConfigurationName, this.InputObject.Name);
+                var psSecurityUserRuleCollection = this.GetNetworkManagerSecurityUserRuleCollection(resourceGroupName, networkManagerName, securityUserConfigurationName, securityUserRuleCollectionName);
                 WriteObject(psSecurityUserRuleCollection);
+            }
+        }
+
+        private (string resourceGroupName, string networkManagerName, string securityUserConfigurationName, string securityUserRuleCollectionName) ExtractParameters()
+        {
+            switch (this.ParameterSetName)
+            {
+                case ByInputObject:
+                    return (
+                        this.InputObject.ResourceGroupName,
+                        this.InputObject.NetworkManagerName,
+                        this.InputObject.SecurityUserConfigurationName,
+                        this.InputObject.Name
+                    );
+
+                case ByResourceId:
+                    return (
+                        NetworkBaseCmdlet.GetResourceGroup(this.ResourceId),
+                        NetworkBaseCmdlet.GetResourceName(this.ResourceId, "networkManagers"),
+                        NetworkBaseCmdlet.GetResourceName(this.ResourceId, "securityUserConfigurations"),
+                        NetworkBaseCmdlet.GetResourceName(this.ResourceId, "ruleCollections")
+                    );
+
+                default:
+                    throw new PSArgumentException("Invalid parameter set");
             }
         }
     }

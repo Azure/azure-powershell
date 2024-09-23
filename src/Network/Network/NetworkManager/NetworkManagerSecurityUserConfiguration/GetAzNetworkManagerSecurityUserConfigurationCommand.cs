@@ -23,67 +23,117 @@ using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserConfiguration", DefaultParameterSetName = "NoExpand"), OutputType(typeof(PSNetworkManagerSecurityUserConfiguration))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserConfiguration", DefaultParameterSetName = ByListParameterSet), OutputType(typeof(PSNetworkManagerSecurityUserConfiguration))]
     public class GetAzNetworkManagerSecurityUserConfigurationCommand : NetworkManagerSecurityUserConfigurationBaseCmdlet
     {
+        private const string ByListParameterSet = "ByList";
+        private const string ByNameParameterSet = "ByName";
+        private const string ByResourceIdParameterSet = "ByResourceId";
+        private const string ByInputObjectParameterSet = "ByInputObject";
+
         [Alias("ResourceName")]
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
-            ParameterSetName = "NoExpand")]
-        [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource name.",
-           ParameterSetName = "Expand")]
+            ParameterSetName = ByNameParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/securityUserConfigurations", "ResourceGroupName", "NetworkManagerName")]
         [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager name.")]
+            Mandatory = true,
+            ParameterSetName = ByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The network manager name.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ByListParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The network manager name.")]
         [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string NetworkManagerName { get; set; }
 
         [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
+            Mandatory = true,
+            ParameterSetName = ByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ByListParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ByResourceIdParameterSet,
+            HelpMessage = "NetworkManager SecurityUserConfiguration Id",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        [Alias("SecurityUserConfigurationId")]
+        public string ResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The input object containing the necessary properties.",
+            ParameterSetName = ByInputObjectParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public PSNetworkManagerSecurityUserConfiguration InputObject { get; set; }
+
         public override void Execute()
         {
             base.Execute();
-            if (this.Name != null)
+
+            switch (this.ParameterSetName)
             {
-                var nmSecurityUserConfiguration = this.GetNetworkManagerSecurityUserConfiguration(this.ResourceGroupName, this.NetworkManagerName, this.Name);
-                WriteObject(nmSecurityUserConfiguration);
-            }
-            else
-            {
-                var securityUserConfigurationPage = this.NetworkManagerSecurityUserConfigurationClient.List(this.ResourceGroupName, this.NetworkManagerName);
+                case ByNameParameterSet:
+                    var nmSecurityUserConfigurationByName = this.GetNetworkManagerSecurityUserConfiguration(this.ResourceGroupName, this.NetworkManagerName, this.Name);
+                    WriteObject(nmSecurityUserConfigurationByName);
+                    break;
 
-                // Get all resources by polling on next page link
-                var securityUserConfigurationList = ListNextLink<SecurityUserConfiguration>.GetAllResourcesByPollingNextLink(securityUserConfigurationPage, this.NetworkManagerSecurityUserConfigurationClient.ListNext);
-                var psNmSecurityUserConfigList = new List<PSNetworkManagerSecurityUserConfiguration>();
+                case ByResourceIdParameterSet:
+                    var resourceId = this.ResourceId;
+                    var resourceGroupName = NetworkBaseCmdlet.GetResourceGroup(resourceId);
+                    var networkManagerName = NetworkBaseCmdlet.GetResourceName(resourceId, "networkManagers");
+                    var securityUserConfigurationName = NetworkBaseCmdlet.GetResourceName(resourceId, "securityUserConfigurations");
+                    var nmSecurityUserConfigurationByResourceId = this.GetNetworkManagerSecurityUserConfiguration(resourceGroupName, networkManagerName, securityUserConfigurationName);
+                    WriteObject(nmSecurityUserConfigurationByResourceId);
+                    break;
 
-                foreach (var securityUserConfiguration in securityUserConfigurationList)
-                {
-                    var psNmSecurityUserConfig = this.ToPsNetworkManagerSecurityUserConfiguration(securityUserConfiguration);
-                    psNmSecurityUserConfig.ResourceGroupName = this.ResourceGroupName;
-                    psNmSecurityUserConfig.NetworkManagerName = this.NetworkManagerName;
-                    psNmSecurityUserConfigList.Add(psNmSecurityUserConfig);
-                }
+                case ByInputObjectParameterSet:
+                    var inputObject = this.InputObject;
+                    var nmSecurityUserConfigurationByInputObject = this.GetNetworkManagerSecurityUserConfiguration(inputObject.ResourceGroupName, inputObject.NetworkManagerName, inputObject.Name);
+                    WriteObject(nmSecurityUserConfigurationByInputObject);
+                    break;
 
-                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psNmSecurityUserConfigList), true);
+                case ByListParameterSet:
+                    var securityUserConfigurationPage = this.NetworkManagerSecurityUserConfigurationClient.List(this.ResourceGroupName, this.NetworkManagerName);
+
+                    // Get all resources by polling on next page link
+                    var securityUserConfigurationList = ListNextLink<SecurityUserConfiguration>.GetAllResourcesByPollingNextLink(securityUserConfigurationPage, this.NetworkManagerSecurityUserConfigurationClient.ListNext);
+                    var psNmSecurityUserConfigList = new List<PSNetworkManagerSecurityUserConfiguration>();
+
+                    foreach (var securityUserConfiguration in securityUserConfigurationList)
+                    {
+                        var psNmSecurityUserConfig = this.ToPsNetworkManagerSecurityUserConfiguration(securityUserConfiguration);
+                        psNmSecurityUserConfig.ResourceGroupName = this.ResourceGroupName;
+                        psNmSecurityUserConfig.NetworkManagerName = this.NetworkManagerName;
+                        psNmSecurityUserConfigList.Add(psNmSecurityUserConfig);
+                    }
+
+                    WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psNmSecurityUserConfigList), true);
+                    break;
+
+                default:
+                    break;
             }
         }
     }
