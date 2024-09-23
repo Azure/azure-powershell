@@ -129,13 +129,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(HelpMessage = "Source Azure Storage Context Object",
             Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ShareNameParameterSet)]
         //[Parameter(HelpMessage = "Source Azure Storage Context Object",
-            //Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerParameterSet)]
+        //Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerParameterSet)]
+        [Parameter(HelpMessage = "Source Azure Storage Context Object",
+            Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobFilePathParameterSet)]
+        [Parameter(HelpMessage = "Source Azure Storage Context Object",
+            Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobFileParameterSet)]
         //[Parameter(HelpMessage = "Source Azure Storage Context Object",
-        //    Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobFilePathParameterSet)]
-        //[Parameter(HelpMessage = "Source Azure Storage Context Object",
-        //    Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobFileParameterSet)]
-        //[Parameter(HelpMessage = "Source Azure Storage Context Object",
-            //Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ShareParameterSet)]
+        //Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ShareParameterSet)]
         //[Parameter(HelpMessage = "Source Azure Storage Context Object",
         //    Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = FileFileParameterSet)]
         //[Parameter(HelpMessage = "Source Azure Storage Context Object",
@@ -198,12 +198,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         private AzureStorageContext GetSourceContext()
         {
             if (this.ParameterSetName == ContainerNameParameterSet ||
-                this.ParameterSetName == ShareNameParameterSet
+                this.ParameterSetName == ShareNameParameterSet 
                 //this.ParameterSetName == ContainerParameterSet || 
                 //this.ParameterSetName == BlobFilePathParameterSet ||
                 //this.ParameterSetName == BlobFileParameterSet ||
                 //this.ParameterSetName == ShareParameterSet
-                //this.ParameterSetName == FileFilePathParameterSet || 
+                //this.ParameterSetName == FileFilePathParameterSet 
                 //this.ParameterSetName == FileFileParameterSet
                 )
             {
@@ -348,7 +348,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 taskId,
                 destFile,
                 () => this.ConfirmOverwrite(Util.GetSnapshotQualifiedUri(blob.Uri), Util.GetSnapshotQualifiedUri(destFile.Uri)),
-                () => destFile.StartCopyAsync(blob.GenerateUriWithCredentials((AzureStorageContext)this.Context), cancellationToken: this.CmdletCancellationToken));
+                () => destFile.StartCopyAsync(blob.GenerateUriWithCredentialsForBlob((AzureStorageContext)this.Context), cancellationToken: this.CmdletCancellationToken));
 
             this.RunTask(taskGenerator);
         }
@@ -398,7 +398,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             //    WriteWarning("The source File is on Azure AD credential, might cause cross account file copy fail. Please use source File based on SharedKey or SAS creadencial to avoid the failure.");
             //}
 
-            if (!sourceFile.CanGenerateSasUri && string.Compare(sourceFile.Uri.Host, destFile.Uri.Host, ignoreCase: true) != 0)
+            if (!sourceFile.CanGenerateSasUri && (sourceFile.Uri.Query != null && !sourceFile.Uri.Query.Contains("sig=")) && string.Compare(sourceFile.Uri.Host, destFile.Uri.Host, ignoreCase: true) != 0)
             {
                 WriteWarning("The source File cannot generate SAS Uri and might cause cross account file copy failures. Please use source File based on SharedKey or SAS creadencial to avoid the failure.");
             }
