@@ -686,9 +686,9 @@ function Test-NetworkManagerResourceMinimumParameterCreate
         # Create connectivity group item and config
         $vnetNetworkGroup = Get-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $vnetNetworkGroupName 
         $subnetNetworkGroup = Get-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $subnetNetworkGroupName 
-        #$connectivityGroupItem = New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId $vnetNetworkGroup.Id
-        #$connectivityGroup  = @($connectivityGroupItem)  
-        #New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -Name $connectivityConfigurationName -NetworkManagerName $networkManagerName -ConnectivityTopology "Mesh" -AppliesToGroup $connectivityGroup -DeleteExistingPeering 
+        $connectivityGroupItem = New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId $vnetNetworkGroup.Id
+        $connectivityGroup  = @($connectivityGroupItem)  
+        New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -Name $connectivityConfigurationName -NetworkManagerName $networkManagerName -ConnectivityTopology "Mesh" -AppliesToGroup $connectivityGroup -DeleteExistingPeering 
 
         # Create a security admin config
         New-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityConfigurationName
